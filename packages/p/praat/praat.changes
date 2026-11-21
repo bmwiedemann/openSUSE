@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:52:18 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.03:
+  * Allow concurrent use of Praat 6 and Praat 7.
+  * Prevent potential division by zero in Sound: To Pitch... (this
+    could cause incomplete drawing in the Pitch window).
+  * Made Table: Line graph... resistant against undefined values.
+  * Corpus: read Kiel corpus files.
+- Drop praat-improper-n_dims-argument-validation.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Sun Oct 18 05:08:39 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - CVE-2026-110698: praat: improper n_dims argument validation in

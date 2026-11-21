@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:38:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2.0:
+  * Add note about requirements lower bounds
+  * Declare Python 3.15 support
+  * Use pyproject.toml to maintain coverage options
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Remove Python 3.10 support
+  * tox: Use new constraints option
+
+-------------------------------------------------------------------
 Mon May 18 10:00:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.1:

@@ -23,23 +23,23 @@
 %bcond_with libalternatives
 %endif
 Name:           python-nibabel
-Version:        5.4.2
+Version:        5.5.0
 Release:        0
 Summary:        Tool to access multiple neuroimaging data formats
 License:        MIT
 URL:            https://nipy.org/nibabel
 # SourceRepository: https://github.com/nipy/nibabel
 Source:         https://files.pythonhosted.org/packages/source/n/nibabel/nibabel-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#nipy/nibabel#1569
-Patch0:         support-python-315.patch
-BuildRequires:  %{python_module base >= 3.10}
+# PATCH-FIX-UPSTREAM CVE-2026-118590.patch bsc#1289568 gh#nipy/nibabel#1587
+Patch0:         CVE-2026-118590.patch
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.25
-Requires:       python-packaging >= 17
+Requires:       python-numpy >= 2.0
+Requires:       python-packaging >= 20
 Recommends:     python-Pillow
 Recommends:     python-h5py
 Recommends:     python-pydicom >= 1
@@ -62,11 +62,12 @@ Requires(postun): update-alternatives
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module importlib-resources >= 5.12 if %python-base < 3.12}
-BuildRequires:  %{python_module numpy >= 1.25}
-BuildRequires:  %{python_module packaging >= 17}
+BuildRequires:  %{python_module numpy >= 2.0}
+BuildRequires:  %{python_module packaging >= 20}
 BuildRequires:  %{python_module pydicom >= 1}
 BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-httpserver}
+BuildRequires:  %{python_module pytest-run-parallel}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}

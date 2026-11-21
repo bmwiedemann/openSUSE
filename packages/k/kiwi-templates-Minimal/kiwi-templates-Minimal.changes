@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:16:32 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Use ttyAMA0 as the serial console on aarch64, ttyS0 does not
+  exist there
+
+-------------------------------------------------------------------
 Fri Oct  9 14:20:58 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Compatibility with KIWI 11:

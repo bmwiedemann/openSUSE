@@ -30,6 +30,8 @@ Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetu
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 Patch0:         cryptsetup-fips140-3.patch
+# PATCH-FIX-SUSE: Changes to add CNSA 1.0 and 2.0 compliance: (jsc#PED-16991)
+Patch1:         cryptsetup-cnsa-default-sha512.patch
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
 BuildRequires:  fdupes
@@ -129,11 +131,16 @@ rm -f man/*.8
   --enable-gcrypt-pbkdf2 \
   --enable-libargon2 \
   --with-luks2-pbkdf=pbkdf2 \
+  --with-luks1-hash=sha512 \
+  --with-plain-hash=sha512 \
+  --with-plain-keybits=512 \
+  --with-verity-hash=sha512 \
 %if %{?suse_version} < 1550
   --with-default-luks-format=LUKS1 \
 %endif
   --with-luks2-lock-path=/run/cryptsetup \
   --with-tmpfilesdir='%{_tmpfilesdir}'
+
 %make_build
 
 %install

@@ -149,4 +149,16 @@
 </comment>
     <requestid>1362415</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3bc02bce877ddcb491981be10348cefb</srcmd5>
+    <version>2.9</version>
+    <time>1794411027</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9:
+  * Fix concurrent CFITSIO access in external solvers.
+  * Report extracted star counts when parallel solving fails.
+  * Correct library names in the pkg-config file.
+</comment>
+    <requestid>1396894</requestid>
+  </revision>
 </revisionlist>

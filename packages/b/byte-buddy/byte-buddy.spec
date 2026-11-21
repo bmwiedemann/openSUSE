@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://bytebuddy.net/
 Source0:        https://github.com/raphw/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
+BuildRequires:  java >= 1.8
 BuildRequires:  fdupes
 BuildRequires:  jurand
 BuildRequires:  maven-local
@@ -117,11 +118,17 @@ rm -rf %{name}-agent/src/main/resources/win32-x86{,-64}
     org.apache.maven:maven-resolver-provider:\${version.maven}:provided \
     byte-buddy-maven-plugin
 
+# Ensure the version is correct and not the jdk5 specific one.
+%pom_xpath_set -r "pom:project/pom:version" "%{version}"
+%pom_xpath_set -r "pom:parent/pom:version" "%{version}"
+
+# The official build process also uses the upgrade-release profile but we
+# don't need it because our asm is already built for jdk8
 %{mvn_package} :byte-buddy-parent __noinstall
 
+
 %build
-%{mvn_build} -f -s -- \
-    -Dsource=8
+%{mvn_build} -f -s -- -Dbytecode.main.version=8
 
 %install
 %mvn_install

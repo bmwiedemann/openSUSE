@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:33:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.2.0
+  * Fix compatibility with the development version of GAP, where
+    `Grobner`, `SGrobner` and everything built on them failed with
+    the error "`<type>` implies `IsDataObjectRep` but `<obj>`
+    requires `IsComponentObjectRep`".
+  * Fix `InstallNoncommutativeMonomialOrdering` failing when given
+    the name of the new ordering as a string, as the manual
+    describes
+  * Fix module elements being printed without their zero
+    components, e.g. `[ b - 1 ]` instead of `[ b - 1 , 0]`, after
+    an earlier computation used fewer module generators.
+
+-------------------------------------------------------------------
 Tue Sep 10 08:59:55 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.1.0

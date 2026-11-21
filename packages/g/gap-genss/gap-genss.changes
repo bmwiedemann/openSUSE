@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 15 15:05:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * Fix stabilizer chains whose size does not divide the group
+    order.
+  * `SetwiseStabilizer` and `SetwiseStabilizerPartitionBacktrack`
+    return the stabilizer with considerably fewer generators.
+  * Speed up the identity test for projective matrix groups by
+    avoiding a matrix copy per call.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:06:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.10

@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 3.0.0b2
+%define realversion 3.0.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-postgresqlflexibleservers
-Version:        3.0.0~b2
+Version:        3.0.0~b3
 Release:        0
 Summary:        Microsoft Azure Postgresqlflexibleservers Management Client Library for Python
 License:        MIT

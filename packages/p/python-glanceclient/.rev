@@ -795,4 +795,12 @@ update to version 2.3.0
   * Zuul: do not use USE_PYTHON3</comment>
     <requestid>1376145</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6f64b2b6c4f31ff3cfa871e97208aafb</srcmd5>
+    <version>4.13.0</version>
+    <time>1794591076</time>
+    <user>anag_factory</user>
+    <comment>- is now compatible with newer urllib3 as well</comment>
+    <requestid>1397037</requestid>
+  </revision>
 </revisionlist>

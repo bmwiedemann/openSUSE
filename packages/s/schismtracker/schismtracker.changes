@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  3 12:43:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20261102
+  * Stop samples before exchanging/swapping (fixes a possible crash
+    when either sample is playing)
+  * Re-implemented VU meters on muted channels
+  * Optimized sample minimum/maximum functions to allow only one
+    iteration over the sample (affects VU meters and oscilloscope
+    views)
+  * Send AdLib note-ons even when the channel is muted to make them
+    act more like traditional PCM samples
+  * ULT: Fix possible buffer overflow in sample reading
+    [CVE-2026-112007]
+
+-------------------------------------------------------------------
 Tue May 26 00:20:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add a runtime dependency on SDL3 because one was missing.

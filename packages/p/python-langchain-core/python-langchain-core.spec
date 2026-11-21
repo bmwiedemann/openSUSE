@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-core
-Version:        1.7.3
+Version:        1.8.4
 Release:        0
 Summary:        Building applications with LLMs through composability
 License:        MIT
@@ -33,7 +33,7 @@ Requires:       python-PyYAML >= 5.3
 Requires:       python-certifi >= 2026.10.19
 Requires:       python-httpx >= 0.23.0
 Requires:       python-jsonpatch >= 1.33
-Requires:       python-langchain-protocol >= 0.0.20
+Requires:       python-langchain-protocol >= 0.0.22
 Requires:       python-langsmith >= 0.14.9
 Requires:       python-packaging >= 23.2
 Requires:       python-pydantic >= 2.7.4
@@ -48,7 +48,7 @@ BuildRequires:  %{python_module certifi >= 2026.10.19}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httpx >= 0.23.0}
 BuildRequires:  %{python_module jsonpatch >= 1.33}
-BuildRequires:  %{python_module langchain-protocol >= 0.0.20}
+BuildRequires:  %{python_module langchain-protocol >= 0.0.22}
 BuildRequires:  %{python_module langsmith >= 0.14.9}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging >= 23.2}
@@ -98,11 +98,16 @@ ecosystem.
 #   does a blocking os.stat on the CA bundle that blockbuster flags in the async
 #   tests (openSUSE-specific), so the whole transport module is skipped;
 # - the public-URL/webhook SSRF tests need live DNS resolution (offline build);
+# - the uuid7 run-tree/tracing tests and test_uuid7 fail against
+#   python-uuid-utils 1.0.0, whose uuid7() takes only `nanoseconds=`
+#   while langchain-core and langsmith still pass `timestamp=`/`nanos=`
+#   (upstream CI pins uuid-utils 0.17.0); production call sites use
+#   bare uuid7() and are unaffected.
 # - test_benchmark_model asserts 1000 fake invokes finish in under one second
 #   and already fails on slower OBS i586 workers (same fail on devel 1.5.6).
-%pytest tests/unit_tests --ignore tests/unit_tests/indexing/test_in_memory_indexer.py --ignore tests/unit_tests/language_models/test_compat_bridge.py --ignore tests/unit_tests/stores/test_in_memory.py --ignore tests/unit_tests/vectorstores/test_in_memory.py --ignore tests/unit_tests/test_ssrf_policy_transport.py --deselect tests/unit_tests/runnables/test_graph.py::test_graph_single_runnable --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence_map --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_https_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_http_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_https_only_mode --deselect tests/unit_tests/test_ssrf_protection.py::TestIsSafeUrl::test_safe_url_returns_true --deselect tests/unit_tests/test_ssrf_protection.py::TestSSRFProtectedUrlType::test_valid_url_accepted --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_slack_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_discord_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_webhook_site --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_ngrok_url --deselect tests/unit_tests/language_models/chat_models/test_benchmark.py::test_benchmark_model
+%pytest tests/unit_tests --ignore tests/unit_tests/indexing/test_in_memory_indexer.py --ignore tests/unit_tests/language_models/test_compat_bridge.py --ignore tests/unit_tests/stores/test_in_memory.py --ignore tests/unit_tests/vectorstores/test_in_memory.py --ignore tests/unit_tests/test_ssrf_policy_transport.py --deselect tests/unit_tests/runnables/test_graph.py::test_graph_single_runnable --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence --deselect tests/unit_tests/runnables/test_graph.py::test_graph_sequence_map --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_https_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_valid_public_http_url --deselect tests/unit_tests/test_ssrf_protection.py::TestValidateSafeUrl::test_https_only_mode --deselect tests/unit_tests/test_ssrf_protection.py::TestIsSafeUrl::test_safe_url_returns_true --deselect tests/unit_tests/test_ssrf_protection.py::TestSSRFProtectedUrlType::test_valid_url_accepted --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_slack_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_discord_webhook --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_webhook_site --deselect tests/unit_tests/test_ssrf_protection.py::TestRealWorldURLs::test_ngrok_url --deselect tests/unit_tests/language_models/chat_models/test_benchmark.py::test_benchmark_model --deselect tests/unit_tests/utils/test_uuid_utils.py::test_uuid7 --deselect tests/unit_tests/runnables/test_tracing_interops.py::test_config_traceable_handoff --deselect tests/unit_tests/runnables/test_tracing_interops.py::test_config_traceable_async_handoff --deselect "tests/unit_tests/runnables/test_tracing_interops.py::test_tree_is_constructed[ls]" --deselect "tests/unit_tests/runnables/test_tracing_interops.py::test_tree_is_constructed[lc]" --deselect tests/unit_tests/runnables/test_tracing_interops.py::test_traceable_parent_run_map_cleanup --deselect tests/unit_tests/runnables/test_tracing_interops.py::test_traceable_parent_run_map_cleanup_with_sibling_children --deselect tests/unit_tests/runnables/test_tracing_interops.py::test_traceable_parent_run_map_no_runttree_accumulation --deselect tests/unit_tests/runnables/test_tracing_interops.py::TestLangsmithInheritableTracingDefaultsInConfigure::test_inheritable_metadata_concurrent_invocations_remain_isolated --deselect "tests/unit_tests/tracers/test_address.py::test_ambient_destination[parent-destination0]" --deselect "tests/unit_tests/tracers/test_address.py::test_ambient_destination[parent-destination1]" --deselect tests/unit_tests/tracers/test_address.py::test_parent_destination_overrides_tracer --deselect "tests/unit_tests/tracers/test_address.py::test_tracer_kwargs_parent_destination[destination0]" --deselect "tests/unit_tests/tracers/test_address.py::test_tracer_kwargs_parent_destination[destination1]" --deselect tests/unit_tests/tracers/test_address.py::test_addressed_parent_replica_inherited_outside_context --deselect tests/unit_tests/tracers/test_base_tracer.py::test_traceable_to_tracing --deselect tests/unit_tests/tracers/test_langchain.py::test_tracer_with_run_tree_parent
 
-%files %python_files
+%files %{python_files}
 %doc README.md
 %license LICENSE
 %{python_sitelib}/langchain_core

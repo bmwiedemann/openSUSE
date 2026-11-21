@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov 18 20:42:52 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 1.5.5 (bsc#1290898)
+  * CVE-2026-76422: Fixed Rust-to-C logging so rendered messages
+    are passed as data rather than as C format strings.
+  * CVE-2026-76411: Fixed URL canonicalization length accounting
+    that could write beyond a stack buffer while scanning crafted
+    email with full-hash phishing database entries loaded.
+  * CVE-2026-76415: Fixed yC executable unpacker offset validation
+    that could underflow and read beyond a heap buffer.
+  * CVE-2026-76414: Bounded CHM directory traversal to prevent
+    cyclic directory data from causing an infinite scan loop.
+  * CVE-2026-76416: Validated InstallShield file table counts and
+    offsets, and applied scan time limits, to prevent malformed
+    archives from pinning a scan worker.
+  * CVE-2026-76417: Fixed OLE2 property traversal recursion
+    accounting to prevent stack exhaustion.
+  * CVE-2026-76421: Validated LZX match offsets to prevent a
+    malformed CHM archive from causing an out-of-bounds heap
+    write.
+  * CVE-2026-76430: Bounded UPX decompression and PE rebuilding
+    output to prevent out-of-bounds heap writes.
+  * CVE-2026-76516: Enforced file-count and scan-size limits
+    before XAR extraction writes to prevent exhausting temporary
+    storage.
+  * CVE-2026-76515: Bounded OLE2 directory-chain traversal and
+    applied scan time limits to prevent excessive CPU use.
+  * Tightened the built-in HTML file type signatures so XML and
+    custom elements whose names merely start with an HTML tag
+    name are not classified as HTML.
+  * Sigtool now retries after a delay when building a database
+    archive whose MD5 hash begins with "00", preserving
+    compatibility with ClamAV 1.1 through 1.4.
+  * Restored clamsubmit sample submissions after the service
+    changed its presigned-upload endpoint from GET to POST.
+  * Improved compatibility with OpenSSL 4 and reduced hashing
+    overhead by reusing digest implementations.
+  * Upgraded the Rust anyhow and rand dependencies to resolve the
+    RUSTSEC-2026-0190 and RUSTSEC-2026-0097 advisories.
+
+-------------------------------------------------------------------
 Fri Sep  4 11:02:03 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Put libclamunrar into an optional subpackage, because it has a

@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.8
+Version:        3.14.10
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0

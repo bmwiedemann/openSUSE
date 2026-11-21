@@ -20,26 +20,26 @@
 %define cppname libplist++-2_0-12
 # only use primary python on Factory...
 %define pythons python3
+%define python_subpackage_only 1
 # ... and python311 on SLE 15 derivates
 %{?sle15_python_module_pythons}
 Name:           libplist
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Library for handling Apple Binary and XML Property Lists
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 URL:            https://github.com/libimobiledevice/libplist
 Source:         https://github.com/libimobiledevice/libplist/archive/%{version}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  %{python_module Cython >= 3.0}
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module Cython >= 3.0}
-BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module setuptools}
-%define python_subpackage_only 1
 %python_subpackages
 
 %description
@@ -70,9 +70,9 @@ from XML to binary.
 
 %package -n libplist-2_0-devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
+Requires:       %{cname} = %{version}
 Provides:       libplist-devel = %{version}
 Obsoletes:      libplist-devel < %{version}
-Requires:       %{cname} = %{version}
 
 %description -n libplist-2_0-devel
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -81,10 +81,10 @@ This package contains the development files for C.
 
 %package -n libplist++-2_0-devel
 Summary:        Library for handling Apple Binary and XML Property Lists -- Development Files
-Provides:       libplist++-devel = %{version}
-Obsoletes:      libplist++-devel < %{version}
 Requires:       %{cppname} = %{version}
 Requires:       pkgconfig(libplist-2.0)
+Provides:       libplist++-devel = %{version}
+Obsoletes:      libplist++-devel < %{version}
 
 %description -n libplist++-2_0-devel
 libplist is a library for handling Apple Binary and XML Property Lists.
@@ -105,11 +105,11 @@ This package contains the python bindings.
 
 %build
 autoreconf -fvi
-%{python_expand %configure --disable-static PACKAGE_VERSION=%{version} PYTHON=/usr/bin/python%{$python_bin_suffix}}
+%{python_expand %configure --disable-static PACKAGE_VERSION=%{version} PYTHON=%{_bindir}/python%{$python_bin_suffix}}
 %make_build
 
 %check
-TZ=Europe/Vienna make check VERBOSE=1
+TZ=Europe/Vienna %make_build check
 
 %install
 %make_install
@@ -118,10 +118,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # needed by python-imobiledevice build
 install -D -m 0644 cython/plist.pxd %{buildroot}%{_includedir}/plist/cython/plist.pxd
 
-%post -n %{cname} -p /sbin/ldconfig
-%postun -n %{cname} -p /sbin/ldconfig
-%post -n %{cppname} -p /sbin/ldconfig
-%postun -n %{cppname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{cname}
+%ldconfig_scriptlets -n %{cppname}
 
 %files -n %{cname}
 %license COPYING COPYING.LESSER

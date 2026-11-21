@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphene
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        GraphQL Framework for Python
 License:        MIT
 URL:            https://github.com/graphql-python/graphene
 Source:         https://github.com/graphql-python/graphene/archive/v%{version}.tar.gz#/graphene-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support graphql-core 3.3 changes
+Patch0:         support-graphql-core-3.3.patch
 BuildRequires:  %{python_module graphql-core >= 3.1}
 BuildRequires:  %{python_module graphql-relay >= 3.1}
 BuildRequires:  %{python_module pip}

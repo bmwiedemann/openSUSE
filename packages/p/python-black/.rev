@@ -686,4 +686,28 @@ Version 26.5.0
     before, within and after groups of same-name decorated functions</comment>
     <requestid>1360011</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>f9a3dacdde853cdd6f39ef935deb1a5b</srcmd5>
+    <version>26.10.1</version>
+    <time>1793724676</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.10.1:
+  * Fix a long Jupyter notebook assignment magic (for example `x
+    = !ls -la`) being wrapped in parentheses, which IPython can no
+    longer run; such cells are now left unchanged
+  * Keep repeated lines outside the selected `--line-ranges`
+    unchanged
+  * Fix `--line-ranges` formatting lines that follow a statement
+    when formatting joins or re-indents that statement
+  * Fix `--line-ranges` crashing with an internal error when an
+    unselected statement has a `# fmt: skip` comment on the last
+    line before a closing bracket
+  * Prevent moving an encoding declaration (for example `# -*-
+    coding: latin-1 -*-`) onto the first two lines of a file
+  * Fix adding an extra trailing blank line inside a multi-line
+    module docstring when its last line is near the line length limit
+
+    + Introduces the 2026 stable style</comment>
+    <requestid>1394329</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 %define pluginAPI 4
 
 Name:           evince
-Version:        48.4
+Version:        48.5
 Release:        0
 Summary:        GNOME Document Viewer
 License:        GPL-2.0-or-later
@@ -31,8 +31,6 @@ URL:            https://wiki.gnome.org/Apps/Evince
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM evince-kpathsea.patch -- Fix build with gcc 15
 Patch0:         evince-kpathsea.patch
-# PATCH-FIX-UPSTREAM evince-CVE-2026-63729.patch bsc#1272433 alynx.zhou@suse.com -- Fix use-after-free in synctex_parser.c
-Patch1:         evince-CVE-2026-63729.patch
 
 BuildRequires:  c_compiler
 BuildRequires:  desktop-file-utils

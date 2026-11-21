@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug  2 00:07:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update quote-quot to version 0.2.2.0.
+  ## 0.2.2.0
+
+  * Add `quoteDiv`, `quoteMod` and `quoteDivMod`.
+  * Define `instance MulHi {Int,Word}64` even on 32-bit arch.
+
+-------------------------------------------------------------------
 Mon Apr 11 18:57:22 UTC 2022 - Peter Simons <psimons@suse.com>
 
 - Add quote-quot at version 0.2.1.0.

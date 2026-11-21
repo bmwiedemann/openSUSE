@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Oct  6 20:37:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.8:
+  * Document the `YR_RE_SCAN_LIMIT` regular expression scan limit
+  * BUGFIX: Bound rule table index in `OP_PUSH_RULE` and
+    `OP_INIT_RULE` (#2230).
+  * BUGFIX: Bound tilde stream row-count read in `dotnet` module
+  * BUGFIX: Bound repeat stack depth in `_yr_re_fiber_sync`
+  * BUGFIX: Fix memory leak in `yr_rules_load_stream` (e13acd3d).
+  * BUGFIX: Add missing `yr_le16toh` byte-swapping in `pe` module
+    (a2ff0db0).
+  * BUGFIX: Validate summary counts in `yr_rules_from_arena`
+  * BUGFIX: Cast `e_lfanew` to `int32_t` before sign check in
+    `pe_get_header` (#2228).
+  * BUGFIX: Bound export name count against 32-bit overflow in
+    `pe_parse_exports` (#2227).
+  * BUGFIX: Null-terminate authenticode digest/thumbprint hex
+    buffers in `pe` module (#2221).
+  * BUGFIX: Fix string memory leak in CLI `args_free` (#2220).
+  * BUGFIX: Honor `-w`/`--no-warnings` for the file-too-large
+    skip message in CLI (#2219).
+  * BUGFIX: Avoid pointer wrap for large index in
+    `str_table_entry` (#2217).
+  * BUGFIX: Bound iterator item count against value stack depth
+    in `yr_execute_code` (#2216).
+  * BUGFIX: Byte-swap `sh_entry_count` in ELF symtab/dynsym link
+    check (#2214).
+  * BUGFIX: Validate relocation target reference buffer ID and
+    offset in `yr_arena_load_stream` (#2213).
+  * BUGFIX: Fix `INT64_MIN` undefined behavior in grammar
+    constant folding (`*`, ``, unary `-`) (#2211).
+  * BUGFIX: Fix HWASan trap due to unaligned access in arena
+    relocation (#2215).
+  * BUGFIX: Bound relocation read by reference size in
+    `yr_arena_load_stream` (#2212).
+  * BUGFIX: Harden PE delayed import parser and `dotnet` blob
+    stream parsing (#2201).
+  * BUGFIX: Enable split ID bounds check in `_yr_re_fiber_sync`
+    (#2208).
+  * BUGFIX: Bound fat architecture count against integer overflow
+    in `macho` module (#2209).
+  * BUGFIX: Read `dotnet` and `pe` file fields through unaligned
+    access helpers (#2210).
+  * BUGFIX: Remove double byte-swap of `NumberOfNames` in
+    `pe_parse_exports` (#2206).
+  * BUGFIX: Check relocation `buffer_id` before dereference in
+    `yr_arena_load_stream` (#2202).
+  * BUGFIX: Cast character inputs to `unsigned char` before
+    `ctype` calls in `pe` and `elf` parsers (#2203).
+  * BUGFIX: Avoid unaligned pointer casts in arena operations to
+    prevent HWASan traps (#2204).
+  * BUGFIX: Bound DEX ID table reads against file size in `dex`
+    module (#2205).
+  * BUGFIX: Fix build issues with OpenSSL 4.0 (#2233).
+  * Contributors: @cblichmann @jmestwa-coder @munzzyy
+    @q1930893235 @TristanInSec @wazeer
+- update to 4.5.7:
+  * BUGFIX: Guard against undersized rich header in while parsing
+    PE files (#2200).
+  * BUGFIX: Abort the collection of resources in `pe` module when
+    `MAX_RESOURCES` is reached (9d09369).
+- update to 4.5.6:
+  * BUGFIX: Out of bounds read while parsing .NET files (#2196).
+  * BUGFIX: Make yr_string_set_destroy non-public (#2191).
+
+-------------------------------------------------------------------
 Fri Jan  2 09:30:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.5:

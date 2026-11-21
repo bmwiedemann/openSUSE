@@ -60,4 +60,18 @@
     <comment>- remove Provides: secret-tool (forwarded request 1279088 from rrahl0)</comment>
     <requestid>1279090</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>52bbc626cf522bb1a73fea7d753db501</srcmd5>
+    <version>0.6.0</version>
+    <time>1794591380</time>
+    <user>anag_factory</user>
+    <comment>- Pin internal subpackage dependencies to the same EVR.
+- Require the daemon and xdg-desktop-portal for the portal.
+- Move Secret Service activation files and the gnome-keyring
+  conflict to oo7-daemon.
+- Add user unit lifecycle hooks for the daemon and portal.
+
+- update to version 0.5.0: (forwarded request 1392228 from VaiTon)</comment>
+    <requestid>1397306</requestid>
+  </revision>
 </revisionlist>

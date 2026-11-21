@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 21:19:07 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update haskell-src-meta to version 0.8.16.
+  Upstream has not updated the file "ChangeLog" since the last
+  release.
+
+-------------------------------------------------------------------
 Tue Jan  6 14:14:09 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update haskell-src-meta to version 0.8.15 revision 1.

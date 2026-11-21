@@ -163,4 +163,12 @@ Local aarch64 build green, 3517 tests pass, rpmlint 0 badness.</comment>
     <comment>Update rtk to 1.1.0.</comment>
     <requestid>1393585</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5df2c6515919bbd0f9783d5c833f408e</srcmd5>
+    <version>1.2.0</version>
+    <time>1794236897</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.0</comment>
+    <requestid>1396323</requestid>
+  </revision>
 </revisionlist>

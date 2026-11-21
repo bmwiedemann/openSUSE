@@ -597,4 +597,51 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases from 7.3-rc1</comment>
     <requestid>1381445</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cc89e77afa224c44019a701c18b6a9f5</srcmd5>
+    <version>20261031</version>
+    <time>1793989992</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.4-rc1
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * qcom: update LPAICP firmware for shikra platform
+  * qcom: update Rubik Pi 3 ADSP firmware
+  * qcom: update CDSP firmware for shikra platform
+
+- Update to version 20261022 (git commit 412eb7861d40):
+  * qcom: Add gpu firmwares for Nord chipset
+
+- Update to version 20261021 (git commit 084e837ec47f):
+  * qcom:x1e80100: Support for Lenovo Yoga Slim7 Snapdragon platform CDSP
+
+- Update to version 20261017 (git commit a2dcb924f089):
+  * Update ADSP firmware for Qualcomm qcs615 platform.
+
+- Update to version 20261014 (git commit d5455717ead0):
+  * qcom:Update qdsp6sw firmware for shikra platform
+
+- Update to version 20261012 (git commit b9df1a1aa45b):
+  * qcom: update HPASS firmware for nord platform
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * qcom: update LPAICP firmware for shikra platform
+  * qcom: update ADSP firmware for glymur platform
+  * qcom: fix qcs8300 gpdspr.jsn symlink target
+  * qcom: update ADSP firmware for x1e80100 platform
+  * qcom: add ADSP firmware for eliza platform</comment>
+    <requestid>1394990</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>2997c2dd67a28025cfe90ceba2bbd84a</srcmd5>
+    <version>20261109</version>
+    <time>1794816374</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261109 (git commit 69e51bb26f3f):
+  * qcom: Update qdsp6sw firmware for shikra platform
+  * Update HPASS firmware for Qualcomm nord platform.
+  * qcom: add QUPv3 firmware for eliza
+  * qcom: Update the ThinkPad T14s G6 CDSP</comment>
+    <requestid>1396923</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:43:35 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.12.1
+  * The QtQuickControls2 module was added to PyQt6.
+  * PYQT_PDF_VERSION and PYQT_PDF_VERSION_STR was added to the
+    QtPdf module.
+  * All .pyi stub files pass flake8-pyi tests.
+
+-------------------------------------------------------------------
 Sun Oct 18 09:11:33 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.12.0

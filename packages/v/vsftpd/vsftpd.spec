@@ -1,7 +1,7 @@
 #
 # spec file for package vsftpd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Name:           vsftpd
 Version:        3.0.5
 Release:        0
 Summary:        Very Secure FTP Daemon - Written from Scratch
-License:        SUSE-GPL-2.0-with-openssl-exception
+License:        LicenseRef-SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Networking/Ftp/Servers
 URL:            https://security.appspot.com/vsftpd.html
 Source0:        https://security.appspot.com/downloads/%{name}-%{version}.tar.gz
@@ -102,6 +102,12 @@ Patch46:        0001-Fix-default-value-of-strict_ssl_read_eof-in-man-page.patch
 #PATCH-FIX-OPENSUSE bsc#1211301 Enable crypto-policies support
 Patch47:        vsftpd-use-system-wide-crypto-policy.patch
 Patch48:        terminate-peers-on-quit.patch
+#PATCH-FIX-OPENSUSE bsc#1288996 CVE-2026-119568 bind data channel TLS session to control channel
+Patch49:        vsftpd-CVE-2026-119568.patch
+#PATCH-FIX-OPENSUSE do not leak library diagnostics on stderr to FTP clients
+Patch50:        vsftpd-no-stderr-on-control-connection.patch
+#PATCH-FIX-OPENSUSE bsc#1288995 CVE-2026-119567 apply cmds_denied to RFC 775 aliases
+Patch51:        vsftpd-CVE-2026-119567.patch
 BuildRequires:  libcap-devel
 %if 0%{?suse_version} == 1315
 BuildRequires:  libopenssl-1_1-devel >= 1.1.1
@@ -191,6 +197,9 @@ tests.
 %patch -P 46 -p1
 %patch -P 47 -p1
 %patch -P 48 -p1
+%patch -P 49 -p1
+%patch -P 50 -p1
+%patch -P 51 -p1
 
 %build
 %define seccomp_opts -D_GNU_SOURCE -DUSE_SECCOMP

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Nov 16 11:21:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20261114
+  + review/fix teraterm special keys -TD
+  + add kp5/kbeg to xterm+noapp (report by Jakub Horky)
+  + add kbeg to linux-basic, konsole, terminology (patches by Jakub Horky)
+  + add st-0.9.2 -TD
+  + revise numeric keypad for iterm2, nsterm, mlterm -TD
+  + make c++ binding's "operator=" private, since those do construct new
+    copies (patch by Martin Mirchev).
+
+-------------------------------------------------------------------
+Mon Nov  9 08:22:25 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20261107
+  + check for terminating NUL in canonical_name() for infocmp -F
+    (report/testcase by Martin Mirchev).
+  + fix an infinite loop in parse_ti_delay() on malformed terminfo
+    (report/testcase by Martin Mirchev).
+  + add valid_div() check to tparm '/' and '%' operators to guard against
+    SIGFPE on dividing INT_MIN by -1 (report/testcase by Martin Mirchev).
+  + add sanity-checks to _nc_infotocap() when moving mandatory padding
+    (report/testcase by Martin Mirchev).
+  + reorder check for missing '\0' in str_table and a strlen() call
+    (report/testcase by Martin Mirchev).
+  + add check in decode_xterm_X10() to ensure that enough bytes were
+    read (report by Martin Mirchev).
+  + use CLOCK_MONOTONIC instead of CLOCK_REALTIME when it is available
+    (patch by Yeatol).
+  + add limit check in lib_add_wch.c (report/testcase by Serhiy
+    Storchaka),
+  + improve cleanup on EOF in next_char (report by Oliver Zhang).
+  + improve fix for filling cells for multicolumn characters in
+    lib_addch.c (patch by Vassili Courzakis).
+  + fixes for tvi910, tvi950, wy100 (patch by Adam Di Carlo)
+- Add ncurses patch 20261031
+  + improve configure check for wcwidth, for msys2 port.
+  + modify configure check for multiuser systems to use getent if it is
+    available.
+  + remove obsolete configure macro CF_LDFLAGS_STATIC (prompted by
+    discussion with Julian Waters).
+  + modify convert_strings to disallow overlapping strings.
+  + add null-pointer checks for terminfo/termcap function parameters.
+  + pad str_table with a '\0' in case of malformed terminfo data which
+    omits a '\0' on the final string (report/testcase by Can Ozkan).
+
+-------------------------------------------------------------------
+Mon Oct 26 09:26:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20261024
+  + modify initialization for term-driver return terminfo data when given
+    a name in $TERM unless _nc_console_vt_supported() returns true, as in
+    the missing-name branch (patch by Daniel Aliev).
+  + correct initialization of fallback entries which using term-driver
+    configuration (patch by Daniel Aliev).
+  + correct limit check in lib_ins_wch.c (patch by Serhiy Storchaka,
+    cf: 20260815)
+  + initialize sp->_wacs_map for each screen, rather than reusing data,
+    to help with delscreen (patch by Serhiy Storchaka, cf: 20260523).
+  + improve ripoff window cleanup in delwin (report by Serhiy Storchaka).
+  + fix a duplicate declaration of _nc_gettimeofday() (report by Abril
+    Rincon Blanco).
+  + improve check for end of file in next_char() (report by Lingfeng
+    Chen).
+
+-------------------------------------------------------------------
 Tue Oct 20 13:13:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Make patch FORTIFY_SOURCE_3-fix.patch optional means only for

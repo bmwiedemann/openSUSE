@@ -36,6 +36,7 @@ Tue Mar 24 10:46:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
     (include/unicode_blocks.re).
   * Case-insensitive string literals now use Unicode case mapping
     for UTF8, UTF16, UTF32 and UCS2 encodings.
+  * Fix CVE-2026-2903. [bsc#1258707]
 
 -------------------------------------------------------------------
 Sun Dec 21 09:31:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>

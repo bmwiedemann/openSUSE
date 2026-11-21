@@ -85,4 +85,24 @@
   so that clang can link wasm32-wasip1 binaries with a WASI sysroot.</comment>
     <requestid>1392308</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8047401cddaf6f6c04d07b0f6dd09e8</srcmd5>
+    <version>23.1.5</version>
+    <time>1794932180</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 23.1.5.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.</comment>
+    <requestid>1397751</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7769afaba37777ce97c1b58968565ff5</srcmd5>
+    <version>23.1.6</version>
+    <time>1795103642</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 23.1.6.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.</comment>
+    <requestid>1398415</requestid>
+  </revision>
 </revisionlist>

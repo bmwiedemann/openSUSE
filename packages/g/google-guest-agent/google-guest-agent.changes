@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:03:54 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Fix the source URL
+
+-------------------------------------------------------------------
+Thu Nov  5 12:38:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20261105.00
+  * Refuse Windows account changes on Active Directory domain
+    controllers. (#642)
+- Remove stale Go module version overrides in _service file
+
+-------------------------------------------------------------------
 Mon Nov  2 11:22:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/go-jose/go-jose to v4.1.6 (bsc#1288375,

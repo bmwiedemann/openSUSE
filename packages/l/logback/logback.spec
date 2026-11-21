@@ -17,7 +17,7 @@
 
 
 Name:           logback
-Version:        1.6.5
+Version:        1.6.6
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
@@ -25,7 +25,6 @@ Group:          Development/Libraries/Java
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         filtering.patch
-Patch10:        jline-3.30.x.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
@@ -36,7 +35,7 @@ BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
-BuildRequires:  mvn(org.jline:jansi-core)
+BuildRequires:  mvn(org.jline:jansi-core) >= 4
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
 BuildRequires:  mvn(org.tukaani:xz)
@@ -64,15 +63,6 @@ Group:          Documentation/HTML
 %description javadoc
 API documentation for the Logback library
 
-%package access
-Summary:        Logback-access module for Servlet integration
-Group:          Development/Libraries/Java
-
-%description access
-The logback-access module integrates with Servlet containers, such as Tomcat
-and Jetty, to provide HTTP-access log functionality. Note that you could
-easily build your own module on top of logback-core.
-
 %package examples
 Summary:        Logback Examples Module
 Group:          Development/Libraries/Java
@@ -83,9 +73,6 @@ logback-examples module.
 %prep
 %setup -q
 %patch -P 0 -p1
-%if %{?pkg_vcmp:%pkg_vcmp jline3-jansi-core < 4}%{!?pkg_vcmp:0}
-%patch -P 10 -p1
-%endif
 
 chmod -x README.md LICENSE.txt
 find . -type f -exec chmod -x {} \;
@@ -115,7 +102,7 @@ rm -r %{name}-*/src/test/java/*
 %pom_xpath_remove "pom:build/pom:extensions"
 %pom_xpath_remove "pom:profiles"
 
-%{mvn_package} ":%{name}-access" access
+%{mvn_package} ":%{name}-access" __noinstall
 %{mvn_package} ":%{name}-examples" examples
 
 %build
@@ -136,9 +123,6 @@ ln -sf %{_mavenpomdir}/%{name}/%{name}-examples.pom %{buildroot}%{_datadir}/%{na
 %license LICENSE.txt
 
 %files javadoc -f .mfiles-javadoc
-%license LICENSE.txt
-
-%files access -f .mfiles-access
 %license LICENSE.txt
 
 %files examples -f .mfiles-examples

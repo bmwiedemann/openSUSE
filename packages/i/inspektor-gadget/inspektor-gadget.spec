@@ -17,7 +17,7 @@
 
 
 Name:           inspektor-gadget
-Version:        0.57.0
+Version:        0.58.0
 Release:        0
 Summary:        An eBPF tool and systems inspection framework
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         inspektor-gadget-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.5
+BuildRequires:  go1.26 >= 1.26.10
 BuildRequires:  zsh
 # /usr/bin/ig conflicts with igrep
 Conflicts:      igrep

@@ -227,4 +227,15 @@
   using a git checkout.</comment>
     <requestid>1371795</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>f1cd9d66fd9a5c88f1fba839dfb485a0</srcmd5>
+    <version>2.66.10</version>
+    <time>1793899171</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+
+- Update URL to new home.</comment>
+    <requestid>1394829</requestid>
+  </revision>
 </revisionlist>

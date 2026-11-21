@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-http-transport
-Version:        0.66b0
+Version:        0.66b1
 Release:        0
 Summary:        OpenTelemetry Exporters HTTP transport
 License:        Apache-2.0

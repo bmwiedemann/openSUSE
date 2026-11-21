@@ -17,14 +17,13 @@
 
 
 Name:           git-annex
-Version:        10.20260624
+Version:        10.20261113
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-persistent-2.12.0.1-include-the-code-from-persistent.patch
-Patch1:         0001-Build-with-ram-instead-of-memory-package-to-support-.patch
+Patch01:        0001-Build-with-ram-instead-of-memory-package-to-support-.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -50,10 +49,14 @@ BuildRequires:  ghc-aws-devel
 BuildRequires:  ghc-aws-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-blake3-devel
+BuildRequires:  ghc-blake3-prof
 BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-bloomfilter-devel
 BuildRequires:  ghc-bloomfilter-prof
+BuildRequires:  ghc-botan-low-devel
+BuildRequires:  ghc-botan-low-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
@@ -116,8 +119,8 @@ BuildRequires:  ghc-http-conduit-devel
 BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
-BuildRequires:  ghc-magic-devel
-BuildRequires:  ghc-magic-prof
+BuildRequires:  ghc-libmagic-devel
+BuildRequires:  ghc-libmagic-prof
 BuildRequires:  ghc-memory-devel
 BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-microlens-devel
@@ -138,14 +141,20 @@ BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-network-uri-prof
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-optparse-applicative-prof
+BuildRequires:  ghc-os-string-devel
+BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-path-pieces-devel
 BuildRequires:  ghc-path-pieces-prof
 BuildRequires:  ghc-persistent-devel
 BuildRequires:  ghc-persistent-prof
 BuildRequires:  ghc-persistent-sqlite-devel
 BuildRequires:  ghc-persistent-sqlite-prof
+BuildRequires:  ghc-persistent-template-devel
+BuildRequires:  ghc-persistent-template-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-regex-tdfa-devel
@@ -219,6 +228,8 @@ BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-warp-prof
 BuildRequires:  ghc-warp-tls-devel
 BuildRequires:  ghc-warp-tls-prof
+BuildRequires:  ghc-xxhash-ffi-devel
+BuildRequires:  ghc-xxhash-ffi-prof
 BuildRequires:  ghc-yesod-core-devel
 BuildRequires:  ghc-yesod-core-prof
 BuildRequires:  ghc-yesod-devel
@@ -275,8 +286,12 @@ Optional dependency offering bash completion for git-annex
 %autosetup -p1
 
 %build
-%define cabal_configure_options -f+assistant -f+dbus -f+magicmime -f+production -f+torrentparser -f-benchmark -f-ospath
+%define cabal_configure_options -f+assistant -f+blake3 -f+botan -f+dbus -f+magicmime -f+production -f+torrentparser -f+xxh3 -f-benchmark -f-debuglocks -f-memory -f-nollmdependencies -f-ospath -f-tastytap
 %ghc_bin_build
+# without the stamp, `make install-bins` reconfigures with the Makefile's own
+# options, discarding the ones above, and rebuilds+relinks the binary
+mkdir -p tmp
+touch tmp/configure-stamp
 
 %check
 %make_build DESTDIR=%{buildroot} BUILDER=./Setup test

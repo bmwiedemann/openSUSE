@@ -1,7 +1,7 @@
 #
 # spec file for package steampipe
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           steampipe
-Version:        2.4.7
+Version:        2.5.0
 Release:        0
 Summary:        Query various APIs and services via SQL language
-License:         	AGPL-3.0-only
+License:        AGPL-3.0-only
 URL:            https://github.com/turbot/steampipe
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz

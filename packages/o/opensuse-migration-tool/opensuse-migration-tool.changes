@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 04 17:10:35 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20261104.561a15e:
+  * Drop selinux and apparmor and pipewire  migration
+    potentially eliminates boo#1289474
+
+-------------------------------------------------------------------
+Thu Oct 15 10:52:15 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20261015.a7bd330:
+  * Update 16.1 to Stable
+  * Care only about state based distributions in diff
+
+-------------------------------------------------------------------
 Sun May 17 16:56:14 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260517.df4e731:

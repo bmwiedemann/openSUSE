@@ -136,4 +136,19 @@
     <comment>1</comment>
     <requestid>1376745</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>8c9865bc8d70480e0d7c85cebe7f58a2</srcmd5>
+    <version>5.8.7.1+git20260818.04ed700</version>
+    <time>1794591217</time>
+    <user>anag_factory</user>
+    <comment>- Add rtl88x2bu-leap-16.1-cfg80211.patch to fix cfg80211 callback
+  signatures for Leap 16.1's kernel.
+- Add rtl88x2bu-rename-get-ra.patch to fix a PowerPC kernel helper
+  name collision.
+- Provide a make_build fallback for older RPM versions.
+- Keep the kernel module directory fallback available on older RPMs.
+- Add rtl88x2bu-linux-7.3.patch to fix build with kernel 7.3
+</comment>
+    <requestid>1397164</requestid>
+  </revision>
 </revisionlist>

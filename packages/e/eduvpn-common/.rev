@@ -39,4 +39,12 @@
     <comment>Modify .changes as in declined #1368355 (forwarded request 1368390 from reneum)</comment>
     <requestid>1368391</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aca4c6bde78bb7474975d588caf9c6c6</srcmd5>
+    <version>5.0.4</version>
+    <time>1794242725</time>
+    <user>anag_factory</user>
+    <comment>update eduvpn-common to 5.0.4 (forwarded request 1396341 from reneum)</comment>
+    <requestid>1396343</requestid>
+  </revision>
 </revisionlist>

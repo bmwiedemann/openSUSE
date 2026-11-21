@@ -55,4 +55,36 @@
     <comment></comment>
     <requestid>1327001</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>bae2f1185872b841c7b030d4550f3636</srcmd5>
+    <version>0.6.0</version>
+    <time>1793991437</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395710</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8a0dc22e81e59e708ae9b98b4d93c03e</srcmd5>
+    <version>0.6.1</version>
+    <time>1794090863</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396065</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48e67f168decf0a2315bc4adb3f48272</srcmd5>
+    <version>0.7.1</version>
+    <time>1794828609</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397846</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3282e268177d2c0c17961a330ca46cb</srcmd5>
+    <version>0.7.2</version>
+    <time>1795023062</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398315</requestid>
+  </revision>
 </revisionlist>

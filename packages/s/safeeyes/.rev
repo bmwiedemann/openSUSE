@@ -259,4 +259,33 @@
   * New release #910</comment>
     <requestid>1376919</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1ccb5a8789267a2979e8d9db45f17d35</srcmd5>
+    <version>3.6.0</version>
+    <time>1794591326</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.0:
+  * Fix broken star history chart in README #904
+  * Fix #906 #908
+  * Bump pytest from 8.3.5 to 9.0.3 #909
+  * Drop support for end-of-life Python 3.10 #915
+  * trayicon: root GetLayout reply at the requested parent id #916
+  * Add desktop file for settings to fix #919 #920
+  * Apply, OK, Cancel buttons in settings #917, which was originally proposed by
+  * settings: save the postpone unit by index, not its translated label #918</comment>
+    <requestid>1397274</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>bba9f3fc32f54fb5c209a8a71f0f6a81</srcmd5>
+    <version>3.6.1</version>
+    <time>1795023121</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.1:
+  * Drop support for end-of-life Python 3.10 #915
+  * trayicon: root GetLayout reply at the requested parent id #916
+  * Add desktop file for settings to fix #919 #920
+  * Apply, OK, Cancel buttons in settings #917
+  * settings: save the postpone unit #918</comment>
+    <requestid>1398382</requestid>
+  </revision>
 </revisionlist>

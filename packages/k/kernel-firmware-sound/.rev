@@ -556,4 +556,41 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases from 7.3-rc1</comment>
     <requestid>1381448</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>4b3edba2c288bc475f3e41bc1e27e0d1</srcmd5>
+    <version>20261022</version>
+    <time>1793989999</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.4-rc1
+
+- Update to version 20261022 (git commit 412eb7861d40):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.5 build
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * cirrus: cs35l41: Add firmware and tuning for Lenovo Thinkbook laptops
+  * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops
+  * cirrus: cs42l45: Add CS42L49 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l57 cs35l63: Add firmware for some Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for a Dell laptop
+  * cirrus: cs35l41: Add support for Lenovo Yoga Slim 7 Carbon 14ACN6</comment>
+    <requestid>1394993</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>404668959aff535b724b617c5a7d02da</srcmd5>
+    <version>20261109</version>
+    <time>1794816375</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261109 (git commit 69e51bb26f3f):
+  * amd-sof: Add ACP 7.F SOF topology for RT721
+  * amd-sof: Add ACP 7.F SOF topologies
+  * amd-sof: Add ACP 7.F SOF firmware
+  * cirrus: cs35l63: Firmware for Lenovo laptops with SSID 2369 and 236a
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs35l57: Add firmware for Cirrus CS35L57 for a Lenovo laptop
+  * cirrus: cs42l45: Update CS42L49 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 family for various Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops</comment>
+    <requestid>1396925</requestid>
+  </revision>
 </revisionlist>

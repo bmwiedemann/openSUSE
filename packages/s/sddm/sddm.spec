@@ -108,6 +108,8 @@ Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
 Requires:       sddm-greeter-qt%{qtver} = %{version}
 Requires:       xdm
+# 00-general.conf defines ServerPath=/usr/bin/X
+Requires:       /usr/bin/X
 %if %qt6
 Provides:       sddm = %{version}
 # Some third-party-themes use Qt 5 still

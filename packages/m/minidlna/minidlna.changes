@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 13 16:25:04 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- add some of debian's patches to fix CVE-2026-29508
+- added patches:
+  - 17-Replace-rm-rf-with-in-process-deletion-code.patch
+    fix potential quoting issues
+  - 18-CVE-2026-29508-dff-parser-bounds.patch
+    fix memory safety issues in dff parser
+  - 19-upnpevents-unsubscribe-while-connecting.patch
+    drop notifications if unsubscribed
+  - 20-select-del-after-fini.patch
+    fix potential double free
+  - 22-dsf-parser-bounds.patch
+    fix memory safety issues in dsf parser
+
+-------------------------------------------------------------------
 Wed Aug 21 18:06:14 CEST 2024 - ro@suse.de
 
 - add some of debian's patches and switch back to ffmpeg-7

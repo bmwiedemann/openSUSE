@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 984503d80fd68f4a96a428414c6e59a98dcd33e9
+%define git_version bda6eccc3a8f52e00696cf733b6e4f042d56655c
 
 Name:           kernel-firmware-network
-Version:        20260813
+Version:        20261031
 Release:        0
 Summary:        Kernel firmware files for various network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261019.tar.gz#/kernel-firmware-tools-20261019.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -72,6 +72,8 @@ Supplements:    modalias(pci:v000010B7d0000990Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CFd000011A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001148d00004400sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001148d00004500sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000139Ad00000005sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v0000139Ad00000007sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C1d00000008sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C1d00000009sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001600sv*sd*bc*sc*i*)

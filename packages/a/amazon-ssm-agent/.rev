@@ -768,4 +768,27 @@
     (bsc#1254082, CVE-2025-47914) (forwarded request 1393425 from glaubitz)</comment>
     <requestid>1393429</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>84713b94fc93607c0d4e23d3aceb5397</srcmd5>
+    <version>3.3.5708.0</version>
+    <time>1793817835</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.5708.0
+  * Send bucket-owner header on s3 http/https fallback
+  * Only write serial port messages when running in EC2
+  * Apply IMDS retry bound in fallback config path
+  * Harden input validation for Linux domain join parameters
+  * Add multicloud support enabling SSM Agent registration with GCP
+  * Add sqv fallthrough for setupcli when gpg is not installed
+- Add missing Bugzilla and CVE references for golang.org/x/net (forwarded request 1394722 from glaubitz)</comment>
+    <requestid>1394745</requestid>
+  </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>827e41dc163d13e66268e3f3d77bac22</srcmd5>
+    <version>3.3.5828.0</version>
+    <time>1794411012</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396877</requestid>
+  </revision>
 </revisionlist>

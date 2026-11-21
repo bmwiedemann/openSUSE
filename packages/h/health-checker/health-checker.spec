@@ -78,7 +78,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/kernel
 echo '3' > %{buildroot}%{_sysconfdir}/kernel/tries
 # Add autoreboot on kernel panic
 mkdir -p %{buildroot}%{_prefix}/lib/sysctl.d
-echo 'panic=5' > %{buildroot}%{_prefix}/lib/sysctl.d/health-checker.conf
+echo 'kernel.panic = 5' > %{buildroot}%{_prefix}/lib/sysctl.d/health-checker.conf
 %fdupes %{buildroot}%{_mandir}
 %fdupes %{buildroot}%{_mandir}
 

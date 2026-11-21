@@ -17,7 +17,7 @@
 
 
 Name:           pandoc-cli
-Version:        3.10
+Version:        3.14
 Release:        0
 Summary:        Conversion between documentation formats
 License:        GPL-2.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  ghc-wai-extra-devel
 BuildRequires:  ghc-wai-extra-prof
 BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-warp-prof
-Requires:       ghc-pandoc = %{version}
+Requires:       pandoc-data = %{version}
 Provides:       pandoc = %{version}
 Obsoletes:      pandoc < 3
 ExcludeArch:    %{ix86}

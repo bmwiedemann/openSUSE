@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 12 09:45:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-124584: refuse symlink following and directory escape
+  in gzip extractor (boo#1289739)
+  * Sanitize embedded original filename, keep output inside outdir,
+    number instead of following pre-planted symlinks; Python path
+    opens with O_NOFOLLOW|O_EXCL.
+  * Add patool-CVE-2026-124584-gzip-symlink.patch
+    (no upstream fix yet).
+
+-------------------------------------------------------------------
 Sat Sep 12 14:12:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - update to 4.1.0:

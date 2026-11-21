@@ -1,7 +1,7 @@
 #
 # spec file for package perl-UUID-Tiny
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-UUID-Tiny
-Version:        1.04
-Release:        0
 %define cpan_name UUID-Tiny
+Name:           perl-UUID-Tiny
+Version:        1.40.0
+Release:        0
+# 1.04 -> normalize -> 1.40.0
+%define cpan_version 1.04
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pure Perl UUID Support With Functional Interface
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/UUID-Tiny/
-Source:         http://www.cpan.org/authors/id/C/CA/CAUGUSTIN/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CA/CAUGUSTIN/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-#BuildRequires: perl(Digest::SHA)
-#BuildRequires: perl(Digest::SHA1)
-#BuildRequires: perl(Digest::SHA::PurePerl)
-#BuildRequires: perl(UUID::Tiny)
+Provides:       perl(UUID::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -60,7 +59,7 @@ complicated.
 If you need raw performance for UUID creation, or the real MAC address in
 version 1 UUIDs, or an OO interface, and if you can afford module
 compilation and installation on the target system, then better look at
-other CPAN UUID modules like the Data::UUID manpage.
+other CPAN UUID modules like Data::UUID.
 
 This module is "fork safe", especially for random UUIDs (it works around
 Perl's rand() problem when forking processes).
@@ -71,14 +70,14 @@ Digest::SHA seem so have trouble with threads. There is a test file for
 threads, but it is de-activated. So use at your own risk!
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -86,7 +85,6 @@ threads, but it is de-activated. So use at your own risk!
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

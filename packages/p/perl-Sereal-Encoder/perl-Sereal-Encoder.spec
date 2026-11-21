@@ -18,10 +18,10 @@
 
 %define cpan_name Sereal-Encoder
 Name:           perl-Sereal-Encoder
-Version:        5.10.0
+Version:        7.1.0
 Release:        0
-# 5.010 -> normalize -> 5.10.0
-%define cpan_version 5.010
+# 7.001 -> normalize -> 7.1.0
+%define cpan_version 7.001
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (encoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,13 +33,13 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Devel::CheckLib) >= 1.160
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.0
 BuildRequires:  perl(ExtUtils::ParseXS) >= 2.21
-BuildRequires:  perl(Sereal::Decoder) >= 5.10
+BuildRequires:  perl(Sereal::Decoder) >= 7.1
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 5.10
+Requires:       perl(Sereal::Decoder) >= 7.1
 Provides:       perl(Sereal::Encoder) = %{version}
 Provides:       perl(Sereal::Encoder::Constants) = %{version}
 %undefine       __perllib_provides
@@ -49,12 +49,17 @@ Provides:       perl(Sereal::Encoder::Constants) = %{version}
 This library implements an efficient, compact-output, and feature-rich
 serializer using a binary protocol called _Sereal_. Its sister module
 Sereal::Decoder implements a decoder for this format. The two are released
-separately to allow for independent and safer upgrading. If you care
-greatly about performance, consider reading the Sereal::Performance
-documentation after finishing this document.
+separately to allow for independent and safer upgrading. This distribution
+requires Perl 5.14 or newer. If you care greatly about performance,
+consider reading the Sereal::Performance documentation after finishing this
+document.
 
 The Sereal protocol version emitted by this encoder implementation is
-currently protocol version 5 by default.
+currently protocol version 7 by default. See FLOATING-POINT
+INTEROPERABILITY for floating-point compatibility with protocol versions 1
+through 6 and other Perl builds. Protocol version 7 documents require a
+decoder with protocol version 7 support, so upgrade the decoder before
+switching the encoder to its default output.
 
 The protocol specification and many other bits of documentation can be
 found in the github repository. Right now, the specification is at
@@ -85,6 +90,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes
+%doc Changes SECURITY
 
 %changelog

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 03 12:38:46 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 0.13.0:
+  * docs: release 0.13.0
+  * ci: publish the CHANGELOG.md section as release notes
+  * ci: build on macos-26 and windows-2025
+  * chore: bump Go toolchain to 1.26.9
+  * fix(module): skip testdata directories when rewriting imports
+  * fix(api): version pkg.go.dev cache entries and document GOMODUPGRADE_CACHE_DIR
+  * feat: add a --cooldown flag
+  * feat: enable major version upgrades via pkg.go.dev
+  * feat(prompt): replace survey with huh for interactive module selection
+  * docs: add CHANGELOG.md and link it from the readme
+  * docs: add CLAUDE.md with project conventions
+  * refactor: extract shared seams before landing three feature branches
+  * chore: ignore some .claude files / directories
+  * chore: upgrade dependencies
+  * chore: migrate CLI from urfave/cli v2 to v3
+  * chore: automate GitHub Action version pinning with pinact
+  * fix: upgrade to Go 1.26.3 to satisfy gopls requirements
+  * chore: migrate from Nix/Makefile to mise for tool management
+  * docs: add integration with other tools
+
+-------------------------------------------------------------------
 Tue Sep 23 07:24:13 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 0.12.0:

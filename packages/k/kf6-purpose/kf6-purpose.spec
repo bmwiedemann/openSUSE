@@ -19,14 +19,14 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.purpose|org\\.kde\\.kdeconnect|SSO\\.OnlineAccounts).*
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define rname purpose
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-purpose
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later

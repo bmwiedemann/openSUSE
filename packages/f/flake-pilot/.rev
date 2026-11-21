@@ -396,4 +396,16 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
   Add --force option to flake-ctl firecracker remove</comment>
     <requestid>1373633</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>7d85474b0239b6d7e2171c41245b5b64</srcmd5>
+    <version>3.2.19</version>
+    <time>1794932461</time>
+    <user>anag_factory</user>
+    <comment>- security audit done and approved
+
+  https://bugzilla.suse.com/show_bug.cgi?id=1285113
+
+- Bump version: 3.2.18 → 3.2.19</comment>
+    <requestid>1395449</requestid>
+  </revision>
 </revisionlist>

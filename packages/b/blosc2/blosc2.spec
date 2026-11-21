@@ -17,10 +17,10 @@
 
 
 # Adjust baselibs.conf if this changes
-%define major 9
+%define major 10
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        3.3.5
+Version:        3.5.0
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -36,7 +36,7 @@ BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 # 32-bit no longer supported: https://github.com/Blosc/c-blosc2/issues/790#issuecomment-4934468722
-ExcludeArch:    %ix86 %arm
+ExcludeArch:    %{ix86} %{arm}
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -101,8 +101,7 @@ pushd build
 ctest --tests-regex "${single_thread_tests}"
 popd
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE.txt LICENSES/*.txt

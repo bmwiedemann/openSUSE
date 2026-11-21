@@ -76,4 +76,13 @@
      releases.</comment>
     <requestid>1353761</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>9d447e59d43ef1cdff1795e761b6febe</srcmd5>
+    <version>0.160.0</version>
+    <time>1793990623</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-IRI/Changes</comment>
+    <requestid>1395141</requestid>
+  </revision>
 </revisionlist>

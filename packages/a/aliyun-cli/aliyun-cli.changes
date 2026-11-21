@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:38:02 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.5.3
+  * feat: pass an OIDC token into commands by @yndu13 in (#1482)
+  * fix: forward source IP context to ossutil by @PanPanZou in (#1489)
+  * fix: reuse source metadata for OSS transfer progress by @PanPanZou
+    in (#1487)
+  * fix: respect AI mode for MCP authentication errors by @PanPanZou
+    in (#1488)
+  * feat: integrate Bailian standalone CLI binaries by @api-tool-agent
+    in (#1486)
+  * feat: bridge dgate as an external CLI command by @huangjunying-229
+    in (#1492)
+  * refactor(pricing): migrate CLI and plugin runtime to SDK v2
+    by @api-tool-agent in (#1494)
+  * fix: reuse preinstalled ossutil and isolate installation files
+    by @PanPanZou in (#1490)
+  * feat: add CLI telemetry by @AllyW in (#1493)
+  * feat: verify plugin and upgrade artifacts by @yndu13 in (#1474)
+  * fix: refine environment detection by @AllyW in (#1501)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
+Mon Nov  2 16:00:26 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Wed Oct 28 15:08:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/klauspost/compress to v1.20.3

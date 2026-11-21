@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu Nov 19 00:13:02 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.105.0:
+  * chore(deps): Bump zod from 4.3.6 to 4.6.6 in /evals
+  * chore(deps): Bump @hono/node-server from 2.1.5 to 2.1.9 in /evals
+  * chore(deps): Bump hono from 4.13.13 to 4.13.19 in /evals
+  * test(run view): cover agent JSON views that get no event hint
+  * test(run watch): cover agent runs that get no event hint
+  * test(run watch): stop the hint test when watching fails
+  * fix(evals): tell apart GraphQL status reads by their variables
+  * fix(evals): run only the raw-API graders when replaying raw-API trials
+  * test(event): cover completing the check suite event type
+  * fix(evals): default the fixture identity when retrying cleanup
+  * test(event listen): cover sanitizing the end of stream frame
+  * test(api): check the error in the gh event listen hint tests
+  * test(event subscription delete): cover argument parsing
+  * test(event subscription view): cover argument parsing
+  * test(event subscription create): cover stdout and stderr TTY states apart
+  * test(event subscription list): cover the configured default host
+  * fix(event listen): honor an HTTP date in Retry-After
+  * fix(eventstream): split a buffered line after a skipped LF
+  * feat(run): point agents watching pull request runs at gh event listen
+  * feat(event): support check suite status events
+  * fix(event listen): report a deleted subscription clearly
+  * fix(event listen): print each event without waiting for the next heartbeat
+  * docs(event): document the event listening preview
+  * docs(evals): add skills for running and writing evals
+  * chore(evals): add the agent eval harness and event scenarios
+  * docs(skills): document gh event listen in the gh skill
+  * feat(gh api): suggest gh event listen to agents for pull request endpoints
+  * feat(pr): suggest gh event listen to agents in pr view, pr create and pr help
+  * feat(event/shared): add a listen hint for agents
+  * feat(event subscription delete): add gh event subscription delete
+  * feat(event subscription view): add gh event subscription view
+  * feat(event subscription create): add gh event subscription create
+  * feat(event subscription list): add gh event subscription list
+  * feat(event listen): add gh event listen
+  * feat(event/shared): add shared helpers for event commands
+  * feat(event/client): add an Event Subscriptions API client
+  * feat(eventstream): add a server-sent events frame reader
+  * Check fallback comment sizes before uploads
+  * chore(deps): Bump golang.org/x/crypto from 0.58.0 to 0.59.0
+  * chore(deps): Bump golang.org/x/term from 0.47.0 to 0.48.0
+  * Make triage formatting checks nonblocking
+  * chore(deps): Bump golang.org/x/text from 0.43.0 to 0.44.0
+
+-------------------------------------------------------------------
+Thu Nov 12 20:24:08 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.104.0:
+  * Use REST to apply triage labels
+  * chore(deps): Bump github.com/klauspost/compress from 1.20.3 to 1.20.4
+  * chore(deps): Bump charm.land/lipgloss/v2 from 2.0.6 to 2.1.0
+  * chore(deps): Bump the codeql-actions group across 1 directory with 3 updates
+  * Bump Go to 1.27.4
+  * chore(deps): Bump golang.org/x/sys from 0.49.0 to 0.50.0
+  * Render auth status errors consistently in authEntry.String
+  * Show underlying auth status errors on terminal stderr
+  * Initial plan
+  * Fix repeated Dependabot triage assessments
+  * chore(deps): Bump github.com/spf13/pflag from 1.0.10 to 1.1.0 (#14963)
+  * Apply issue triage labels directly
+  * chore(deps): Bump golang.org/x/sync from 0.24.0 to 0.25.0 (#14998)
+  * Provide verified build versions to triage
+  * Fix fixture URL boundaries in triage reports
+  * Use a synthetic namespace for triage fixtures
+  * Remove accidental triage model pin
+  * Add ghmock reproduction skill
+  * Use the issue comment update endpoint
+  * Repair triage publication retries
+  * Keep triage comments short and attach reports
+  * Correct reproduction evidence and source labels
+  * Reproduce issue reports with ghmock
+  * Remove duplicate fixture regression checks
+  * Preserve fixture paths and transport evidence
+  * Add Git and configuration fixtures to ghmock
+  * Remove unused terminal waiting state
+  * Retain complete terminal interaction evidence
+  * Support HTTPS and terminal prompts in ghmock
+  * Update scaffold checker result binding
+  * Align fixture consumers with request selection
+  * Repair fixture generation and platform checks
+  * Scaffold and export mock API fixtures
+  * Remove unused GraphQL checker plumbing
+  * Correct GraphQL query and response validation
+  * Validate mock API requests and responses
+  * Remove unused runner members
+  * Correct request selection and run comparisons
+  * Add a fake GitHub API runner
+  * Mention github.localhost in GH_TOKEN help
+  * Clarify token hosts in `gh api` help
+  * Clarify which hosts use GH_ENTERPRISE_TOKEN
+  * chore: align repository gh-aw installers with v1.0.1
+  * chore: regenerate triage workflows with gh-aw v1.0.1
+  * chore(deps): Bump github.com/yuin/goldmark from 1.8.6 to 1.8.7
+  * chore(deps): Bump charm.land/bubbletea/v2 from 2.1.0 to 2.1.1
+  * chore(deps): Bump github.com/sigstore/sigstore-go from 1.3.0 to 1.4.0
+  * Test ShowRefs option separator
+  * chore(deps): Bump google.golang.org/grpc from 1.84.0 to 1.85.0
+  * Remove obsolete Git test seams
+  * Improve git client tests
+  * Test git transports with local remotes
+  * Refactor git graph tests to use real repos
+  * Test git client with real repositories
+  * Add acceptance test for deleting a private repo with forks
+  * Accept cascading fork deletion in acceptance cleanup
+  * Require confirmation before deleting a private repo's forks
+  * Fix local extension install test path normalization
+  * fix(gh auth refresh): preserve scopes when the token refresh is skipped
+  * fix: warn about skipped token refreshes before exiting
+  * fix(config): skip token refresh when the state directory is not writable
+  * Only save Go caches from trunk
+  * Share Go setup and caching via a local action
+  * Always run tests when reusing the race build cache
+  * Use separate Go caches for race and non-race builds
+  * clarify node ID template index contract
+  * Add private vulnerability report form
+  * chore(deps): Bump the codeql-actions group with 3 updates
+  * Replace msgpack with a minimal node ID encoder
+
+-------------------------------------------------------------------
 Mon Oct 26 18:02:47 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.103.3:

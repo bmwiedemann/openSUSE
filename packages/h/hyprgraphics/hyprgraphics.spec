@@ -17,10 +17,10 @@
 #
 
 
-%define sover 4
+%define sover 5
 
 Name:           hyprgraphics
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Hyprland graphics / resource utilities
 License:        BSD-3-Clause
@@ -34,6 +34,7 @@ BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(hyprutils) >= 0.8.0
 BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libjxl_cms)

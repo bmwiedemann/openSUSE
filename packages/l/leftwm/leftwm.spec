@@ -17,7 +17,7 @@
 
 
 Name:           leftwm
-Version:        0.5.4+git68.g11abfdfce1a3064790b1a1b507a0d5eeb66a6d6b
+Version:        0.5.5+git4.gd652e2f4e4cdf0365ce3ac32e6cdbe3e7d5bd2f5
 Release:        0
 Summary:        A tiling window manager for adventurers
 License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR MPL-2.0) AND BSD-2-Clause AND BSD-3-Clause AND (MIT OR Unlicense)

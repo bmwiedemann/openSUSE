@@ -202,7 +202,6 @@ Recommends:     NetworkManager-openvpn-gnome
 Recommends:     NetworkManager-pptp-gnome
 Recommends:     desktop-data-SLE-extra
 %endif
-Recommends:     malcontent-control
 # openSUSE welcome is our 'welcome app'
 %if 0%{?is_opensuse}
 Recommends:     opensuse-welcome-launcher
@@ -453,7 +452,6 @@ Recommends:     loupe
 #
 # Packages that really make sense
 #
-Recommends:     gnome-photos
 Recommends:     simple-scan
 Suggests:       gthumb
 Supplements:    packageand(patterns-gnome-gnome:patterns-desktop-imaging)

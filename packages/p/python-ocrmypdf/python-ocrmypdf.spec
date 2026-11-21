@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ocrmypdf
-Version:        17.13.0
+Version:        17.14.0
 Release:        0
 Summary:        OCRmyPDF adds an OCR text layer to scanned PDF files
 License:        MPL-2.0
@@ -169,6 +169,8 @@ donttest+=" or test_rotate_pages_ocr_timeout"
 donttest+=" or test_gray_mask_ocrs_to_text"
 donttest+=" or test_cropbox_outside_mediabox_yields_valid_output"
 donttest+=" or test_reversed_mediabox_does_not_crash"
+# we don't have a package for RapidOCR yet
+donttest+=" or rapidocr"
 %pytest -k "not ($donttest)" --ignore=tests/test_links.py
 
 %post

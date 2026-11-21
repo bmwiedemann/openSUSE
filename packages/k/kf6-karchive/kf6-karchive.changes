@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * kzip: set the UTF-8 flag on names that are not ASCII
+  * kzip: read legacy names in the Windows OEM code page (kde#89051)
+  * kzip: read the Info-ZIP Unicode Path extra field
+  * kzip: read names without the UTF-8 flag as code page 437
+  * k7zip: validate the coder graph of each folder
+  * KTar: Write the end of archive marker
+  * Clean forward and includes
+  * CMake config: tag LibZstd properly as REQUIRED when searched
+  * KTar: Use extension to determine mimetype if contents give default mime
+  * CI: Use latest cmake via pip for oss-fuzz build job
+  * k7zip: decode the files on first read, not on open
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

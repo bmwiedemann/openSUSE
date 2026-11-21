@@ -1,8 +1,7 @@
-From da210b312eab6444f6d20d62dc6c3c47413b93b2 Mon Sep 17 00:00:00 2001
+From 6a89a0d04e88e2b160881514ded7b69080bd141f Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Mon, 7 Apr 2025 13:53:56 +0200
-Subject: [PATCH 15/48] [gdb/testsuite] Compile ada hello world for
- skip_ada_tests
+Subject: [PATCH 05/52] Compile ada hello world for skip_ada_tests
 
 For openSUSE Leap 15.0 with gcc-PIE installed (which makes gcc create PIE
 executables by default) we get:
@@ -42,10 +41,10 @@ gdb/testsuite/ChangeLog:
  2 files changed, 39 insertions(+)
 
 diff --git a/gdb/testsuite/lib/ada.exp b/gdb/testsuite/lib/ada.exp
-index 05151d3d8f1..4d04d597474 100644
+index 50067eb2707..e24df9a20e2 100644
 --- a/gdb/testsuite/lib/ada.exp
 +++ b/gdb/testsuite/lib/ada.exp
-@@ -109,12 +109,43 @@ proc gdb_compile_ada_1 {source dest type options} {
+@@ -119,12 +119,43 @@ proc gdb_compile_ada_1 {source dest type options} {
  # compile was successful.
  
  proc gdb_compile_ada {source dest type options} {
@@ -90,7 +89,7 @@ index 05151d3d8f1..4d04d597474 100644
  # used a different naming convention from many of the other gdb tests,
  # and this difference was preserved during the conversion to
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index 5d909e937db..fda55e06277 100644
+index a572fee63e6..8c684d8cc9a 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
 @@ -157,6 +157,7 @@ load_lib cache.exp
@@ -99,9 +98,9 @@ index 5d909e937db..fda55e06277 100644
  load_lib check-test-names.exp
 +load_lib ada.exp
  
- # The path to the GCORE script to test.
- global GCORE
-@@ -2715,6 +2716,13 @@ proc allow_ada_tests {} {
+ # The path to the GDB binary to test.
+ global GDB
+@@ -2978,6 +2979,13 @@ proc allow_ada_tests {} {
  	# Currently gdb_ada_compile doesn't support remote host.
  	return 0
      }
@@ -116,5 +115,5 @@ index 5d909e937db..fda55e06277 100644
  }
  
 -- 
-2.43.0
+2.51.0
 

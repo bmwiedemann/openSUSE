@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 30 12:21:16 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 9.2.0
+  * Fixed support for Python 3.16 alpha 0
+  * PDF build crash since LaTeX June 2026 release if tables are styled
+    with 'colorrows'
+  * Fix JavaScript search for languages whose stemmer class name does
+    not match the language name
+  * Drop Python 3.12 support
+  * Support Docutils 0.23
+- Drop cpython-autodoc.patch and tests.patch, no longer needed
+
+-------------------------------------------------------------------
 Mon Oct 12 12:16:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream cpython-autodoc.patch to fix tests

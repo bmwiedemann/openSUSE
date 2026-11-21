@@ -1,7 +1,7 @@
 #
 # spec file for package fmit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fmit
-Version:        1.3.3
+Version:        1.4.6
 Release:        0
 Summary:        A free musical instrument tuner
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

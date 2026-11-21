@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 16 11:23:30 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Disabled static library requires to cmake(iir) (it's needed for dosbox).
+
+-------------------------------------------------------------------
 Wed Oct 28 08:11:28 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 1.11.1

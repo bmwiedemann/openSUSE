@@ -34,6 +34,11 @@ License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-qt5compat-rpmlintrc
+# PATCH-FIX-UPSTREAM -- CVE-2026-100140
+Patch0:         CVE-2026-100140-qt5compat-6.12-0001.diff
+Patch1:         CVE-2026-100140-qt5compat-6.12-0002.diff
+Patch2:         CVE-2026-100140-qt5compat-6.12-0003.diff
+Patch3:         CVE-2026-100140-qt5compat-6.12-0004.diff
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core) = %{real_version}

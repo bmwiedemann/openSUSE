@@ -15,8 +15,8 @@ Index: bluez-5.82/Makefile.am
 ===================================================================
 --- bluez-5.82.orig/Makefile.am
 +++ bluez-5.82/Makefile.am
-@@ -615,8 +615,8 @@ unit_test_gdbus_client_LDADD = gdbus/lib
- 				src/libshared-glib.la $(GLIB_LIBS) $(DBUS_LIBS)
+@@ -732,8 +732,8 @@ unit_test_gdbus_client_LDADD = gdbus/lib
+ 				$(GLIB_LIBS) $(DBUS_LIBS)
  
  if OBEX
 -unit_tests += unit/test-gobex-header unit/test-gobex-packet unit/test-gobex \

@@ -17,10 +17,10 @@
 
 
 Name:           mdbook
-Version:        0.4.49
+Version:        0.5.4
 Release:        0
 Summary:        Create books from markdown
-License:        (Apache-2.0 OR MIT) AND Unicode-DFS-2016 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0
+License:        (Apache-2.0 OR MIT) AND Unicode-3.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND (Apache-2.0 OR BSD-2-Clause OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CC-BY-4.0 AND CC0-1.0 AND ISC AND MIT AND MPL-2.0
 URL:            https://github.com/rust-lang/mdBook
 Source0:        mdBook-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -42,7 +42,7 @@ mdbook is a utility to create books from Markdown files
 %{cargo_install} --all-features
 
 %check
-%{cargo_test} --no-default-features -- --skip test::failing_tests
+%{cargo_test} --no-default-features
 
 %files
 %license LICENSE

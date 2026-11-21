@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 11 04:52:16 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.30.1
+  * Fixed an error when displaying message processing status in received
+    message list.
+
+-------------------------------------------------------------------
+Tue Nov 10 09:00:04 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- disable tests on 32 bit
+
+-------------------------------------------------------------------
+Tue Nov 10 07:23:02 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.30.0
+  * Message database code is shared with mobile application.
+  * Data-box list can be filtered according to listed box names, identifiers or
+    logins.
+  * Data-box list can be sorted according to box name, number of unread
+    messages or last synchronisation time, or listed as arranged by the user.
+  * Account database code is shared with mobile application.
+  * Storing database format version into message database. Performing message
+    database compatibility conversions according to stored version information.
+  * Fixed an error when reading accessibility data from message list causing the
+    application to abort on an assertion check.
+  * A message can be reported to contain spam. A notification is shown in the
+    message list if the message has been marked as spam by the ISDS.
+- remove 0001-datovka.pro-drop-removal-of-libQt6Core-from-quazip-l.patch
+  (upstream)
+- cleanup spec (lrelease is not invoked from .pro)
+- enable tests in a new %check
+
+-------------------------------------------------------------------
 Thu Aug 27 06:26:36 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.29.5

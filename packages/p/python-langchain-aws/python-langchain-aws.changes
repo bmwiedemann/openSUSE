@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:24:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.10.0:
+  * ChatBedrockConverse gains the ultrafast service tier and a
+    normalized finish reason in response metadata
+  * Support GPT-6.2 Sol and Astra; named tool_choice for Z.ai GLM
+    and DeepSeek V3.x on ChatBedrockConverse
+  * Report reasoning tokens in ChatAnthropicBedrock streaming
+    usage; reuse the sync stream parser in BedrockLLM async
+    streams
+  * Keep per-call stop sequences out of model_kwargs when
+    streaming; read Kendra date attributes returned as datetime
+  * Support aws-sdk-bedrock-runtime v0.13 on ChatBedrockNovaSonic
+  * Align Claude model profiles with langchain-anthropic and GPT
+    profiles with langchain-openai; disable temperature where
+    unsupported and document reasoning effort defaults
+  * Drop Python 3.10 support (requires-python >= 3.11)
+- Raise the langchain-core floor to >= 1.8.0 per upstream
+
+-------------------------------------------------------------------
+Wed Nov 11 12:59:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.3:
+  * AgentCore web search toolkit: Web Search API support and
+    fixed-rule options
+  * Support Claude Fable 5.2
+  * ChatBedrockConverse keeps JSON tool result keys unchanged
+  * Refreshed the bundled Bedrock model profile data
+- Changes in 1.9.2:
+  * ChatBedrockConverse supports mid-conversation system messages
+  * Support ca and in Bedrock cross-region inference profiles
+  * Bedrock error parity for Anthropic stream errors and guardrail
+    results on streamed responses
+  * GPT-6.1 Terra support, GPT 5.5+ sampling-param handling and
+    Gemma 4/Grok 4 via the Mantle OpenAI passthrough
+  * AgentCore code interpreter honors the 100 MB upload limit
+- Raise the langchain-core floor to >= 1.7.6 per upstream
+
+-------------------------------------------------------------------
 Mon Oct 26 19:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.9.1:

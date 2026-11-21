@@ -237,4 +237,44 @@ all changelog gates clean.
     <comment>Update goose to 1.57.0 (filtered vendor)</comment>
     <requestid>1394158</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>eeb83d85ab99176b574891abb01eee21</srcmd5>
+    <version>1.57.0</version>
+    <time>1793991466</time>
+    <user>anag_factory</user>
+    <comment>Drop Windows-only prebuilt objects from goose vendor: 43 MSVC/Windows files, test fixtures excepted.</comment>
+    <requestid>1395754</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8f4a764e40ce2bcbd312633c9ddf4c0b</srcmd5>
+    <version>1.59.0</version>
+    <time>1794590992</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.59.0: declarative providers, agent hook ops, vulnerable zip 8.6.0 eliminated (boo#1287926).</comment>
+    <requestid>1396967</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>08142c41846900cd5cac275535750407</srcmd5>
+    <version>1.59.1</version>
+    <time>1794838462</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.59.1: adaptive thinking for Claude Fable 5.2, Databricks Gemini tool-call ids, vendored deps refresh.</comment>
+    <requestid>1397758</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2a1db10b38d5c984840a6f3d394748b0</srcmd5>
+    <version>1.59.2</version>
+    <time>1794932343</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.59.2: Databricks provider drops thinking blocks bound to another prefix.</comment>
+    <requestid>1398019</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5f4bbc01683aac57867c85dab9a53090</srcmd5>
+    <version>1.60.1</version>
+    <time>1795103798</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.60.1: oi-kit operations, Cortecs/Onysoft providers, Dutch translation, vendored refresh.</comment>
+    <requestid>1398629</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Oct 27 12:53:07 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- CVE-2026-115905, CVE-2026-115906, CVE-2026-115907,
+  CVE-2026-115908, CVE-2026-115909: Update zip crate to fix several
+  security vulnerabilities (bsc#1287931)
+  * Add patch fix-for-CVE-2026-115905.patch
+
+-------------------------------------------------------------------
+Thu Oct 22 09:54:02 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Update to 1.19.2:
+  * CVE-2026-103061: arbitrary directory deletion via path
+    traversal in package metadata (bsc#1285067)
+  * Set minimum required Erlang version to 27
+  * All features and bug fixes are extensively highlighted with
+    examples in upstream's blog post at
+    https://gleam.run/news/gleam-doesnt-compile-to-erlang-source-anymore/
+    and changelogs at
+    https://github.com/gleam-lang/gleam/blob/v1.19.0/CHANGELOG.md &
+    https://github.com/gleam-lang/gleam/blob/v1.19.1/CHANGELOG.md &
+    https://github.com/gleam-lang/gleam/blob/v1.19.2/CHANGELOG.md .
+    Some of the highlights include:
+      - Gleam can now generate Erlang abstract forms, making the
+        compilation much faster.
+      - JavaScript code generation optimization including pattern
+        matching.
+      - The --src-only flag has been renamed to --no-dev.
+      - Improved error messages.
+      - Smaller binary build cache.
+      - Compiling for BEAM targets not creates .app files.
+      - It gained the ability to specify OTP application names.
+
+-------------------------------------------------------------------
 Mon Aug  3 12:58:42 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
 
 - Update to 1.18.1:

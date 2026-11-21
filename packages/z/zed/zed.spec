@@ -22,7 +22,7 @@
 %global build_rustflags "-C" "linker=clang" "-C" "link-arg=-fuse-ld=%{_bindir}/mold" "-C" "debuginfo=1" "-C" "incremental=false" "-C" "strip=none"
 %global appid dev.zed.Zed
 Name:           zed
-Version:        1.26.2
+Version:        1.28.1
 Release:        0
 Summary:        A high-performance, multiplayer code editor
 # The zed and cli crates are GPL-3.0-or-later. The rest of the tag is the
@@ -44,20 +44,9 @@ URL:            https://zed.dev
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        %{name}-rpmlintrc
-# The vendor closure carries test-only fixtures the prebuilt-binary scan
-# flags: libloading's Windows DLLs, wit-parser UI-test inputs, minidump's
-# ELF fixture and the async-compression/async_zip/flate2/zip decode-error
-# corpora. None is built, linked, loaded or shipped on Linux. Everything
-# else the scan flags is unbundled, not excepted: cargo_vendor filter=true
-# keeps the Windows/wasm-only crates out of the tarball, and the few files
-# the filter leaves are stripped at repack with their .cargo-checksum.json
-# entries (psm's wasm32-only object, wit-bindgen's wasm-only runfiles).
-# wit-component's prebuilt libdl.so is embedded by its Linker through
-# include_bytes!, so the tarball carries a patched tree: the
-# use_built_in_libdl option (field, setter, use-site and test-harness
-# block) is removed — nothing in the vendored closure calls it — and the
-# payload is deleted. OpenConsole.exe stays out of the source tarball via
-# the _service exclude (Windows-installer-only, cfg(windows)-gated).
+# Fixtures and other-platform objects the scan flags are declared below; none
+# is built, linked, loaded or shipped on Linux. The rest is unbundled
+# (cargo_vendor filter=true) or stripped at repack with checksums dropped.
 # Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
 # Source-Binary-Exception: vendor.tar.zst:vendor/wit-parser-*/tests/ui/kinds-of-deps/deps/*.wasm -- test-data: WIT parser UI-test inputs parsed as data, never executed
 # Source-Binary-Exception: vendor.tar.zst:vendor/minidump-writer-*/tests/tiny.elf -- test-data: tiny ELF fixture parsed as data by minidump-writer's tests, never executed
@@ -65,7 +54,10 @@ Source2:        %{name}-rpmlintrc
 # Source-Binary-Exception: vendor.tar.zst:vendor/async_zip-*/src/tests/read/compression/zstd.data -- test-data: zstd decode fixture read by async_zip's read tests, never executed
 # Source-Binary-Exception: vendor.tar.zst:vendor/async_zip-*/tests/test_inputs/sample_data.zstd.zip* -- test-data: zip corpus with zstd-compressed members read by async_zip's tests, never executed
 # Source-Binary-Exception: vendor.tar.zst:vendor/flate2-*/tests/corrupt-gz-file.bin -- test-data: gzip decode-error fixture read by flate2's corrupt-file tests, never executed
-# Source-Binary-Exception: vendor.tar.zst:vendor/zip-*/tests/data/* -- test-data: AES and bad-offset zip fixtures read by zip's encryption and invalid-input tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/aws-lc-sys-*/builder/prebuilt-nasm/*.obj -- other-platform: Windows MSVC prebuilt objects, linked only when target_os is windows (see builder/main.rs use_prebuilt_nasm)
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/*.o -- other-platform: Windows preassembled objects, linked only for WINDOWS nasm/win32n targets (see build.rs AsmTarget)
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: wasm32 stack-switching object, linked only for wasm32 targets (see build.rs find_assembly)
+# Source-Binary-Exception: vendor.tar.zst:vendor/wit-bindgen-rt-*/src/cabi_realloc.o -- other-platform: wasm guest realloc shim, linked only into wasm32 WASI guests
 # PATCH-FIX-OPENSUSE zed-system-node-only.patch -- never download a second Node.js at run time; the package Requires the distribution's
 Patch0:         zed-system-node-only.patch
 # PATCH-FIX-OPENSUSE zed-telemetry-off-by-default.patch -- diagnostics/metrics default off; still switchable in the settings UI
@@ -149,6 +141,35 @@ j["files"]["build.rs"] = hashlib.sha256((d / "build.rs").read_bytes()).hexdigest
 cs.write_text(json.dumps(j))
 CKSUM
 
+# wit-component embeds a prebuilt libdl.so for wasm guests behind a branch
+# nothing enables, so remove the branch (both copies) and let the tarball
+# drop the file; checksums updated like above.
+python3 - <<'WITDL'
+import hashlib, json, pathlib
+old = '''\
+        if self.use_built_in_libdl {
+            self.use_built_in_libdl = false;
+            self = self.library("libdl.so", include_bytes!("../libdl.so"), false)?;
+        }
+'''
+n = 0
+for d in sorted(pathlib.Path("vendor").glob("wit-component-*")):
+    if not d.is_dir():
+        continue
+    p = d / "src/linking.rs"
+    if not p.is_file():
+        continue
+    s = p.read_text()
+    if old in s:
+        p.write_text(s.replace(old, ""))
+        cs = d / ".cargo-checksum.json"
+        j = json.loads(cs.read_text())
+        j["files"]["src/linking.rs"] = hashlib.sha256(p.read_bytes()).hexdigest()
+        cs.write_text(json.dumps(j))
+        n += 1
+assert n > 0, "builtin-libdl branch not found -- check whether upstream moved it"
+WITDL
+
 # .cargo/config.toml comes from the vendor tarball: obs-service-cargo merges
 # upstream's settings (symbol-mangling-version=v0 and --cfg tokio_unstable,
 # both of which the source needs) with the vendored-source replacements, so it
@@ -180,13 +201,8 @@ export PROTOC_INCLUDE=%{_includedir}
 # system glib flags. -fno-lto undoes the -flto=auto in %%optflags: rustc
 # calls mold without -plugin, so an LTO bitcode object is fatal at link.
 export CXXFLAGS="%{optflags} -fno-lto $(pkg-config --cflags gio-2.0 glib-2.0 gobject-2.0)"
-# NOTE for spec-cleaner: the cargo build invocation below must keep the
-# braced macro form, with the cargo arguments appended as plain shell text.
-# Unbracing it makes rpm parse the first argument as a macro option, and the
-# build fails at spec-parse time with a cargo_build invalid-option error
-# (same class as devel:tools/openai-codex 0.165.0, staging decline). Do not
-# "fix".
-%{cargo_build} --package zed --package cli
+# the -- keeps rpm from reading cargo's flags as macro options (do not "fix").
+%cargo_build -- --package zed --package cli
 
 target/release/cli --completions bash > completions.bash
 target/release/cli --completions fish > completions.fish

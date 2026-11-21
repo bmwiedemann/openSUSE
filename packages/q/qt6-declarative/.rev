@@ -548,4 +548,22 @@
   * 0001-Fix-teardown-hang-with-QuickPixmapReader.patch</comment>
     <requestid>1393388</requestid>
   </revision>
+  <revision rev="67" vrev="3">
+    <srcmd5>cad45506b9da026f2919458ac92ac122</srcmd5>
+    <version>6.12.0</version>
+    <time>1793899699</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (boo#1287613, QTBUG-150769)
+  * 0001-QQuickItemView-don-t-leave-dangling-entries-in-unreq.patch</comment>
+    <requestid>1394772</requestid>
+  </revision>
+  <revision rev="68" vrev="4">
+    <srcmd5>dc7fda5f346ba70d23b6219b5317d7be</srcmd5>
+    <version>6.12.0</version>
+    <time>1794236565</time>
+    <user>anag_factory</user>
+    <comment>- Re-add 0001-QML-engine-Correctly-compare-composites-when-multipl.patch
+  (boo#1289020)</comment>
+    <requestid>1395916</requestid>
+  </revision>
 </revisionlist>

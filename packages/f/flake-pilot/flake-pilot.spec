@@ -19,7 +19,7 @@
 
 
 Name:           flake-pilot
-Version:        3.1.45
+Version:        3.2.19
 Release:        0
 Summary:        Launcher for flake applications
 License:        MIT
@@ -29,10 +29,7 @@ Packager:       Marcus Schaefer <marcus.schaefer@suse.com>
 Group:          System/Management
 URL:            https://github.com/OSInside/flake-pilot
 Source0:        %{name}.tar.gz
-Source1:        cargo_config
 Source2:        %{name}-rpmlintrc
-# SUSE-specific source additions (1001+)
-Source1001:     systemd-tmpfiles-for-suse.conf
 %if 0%{?debian} || 0%{?ubuntu}
 Requires:       golang-github-containers-common
 %endif
@@ -51,6 +48,7 @@ BuildRequires:  glibc-static
 BuildRequires:  cargo
 BuildRequires:  openssl-devel
 BuildRequires:  rust
+BuildRequires:  systemd-rpm-macros
 %endif
 %if 0%{?debian} || 0%{?ubuntu}
 BuildRequires:  libssl-dev
@@ -60,6 +58,17 @@ BuildRequires:  python3-pygments
 BuildRequires:  rust-all
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
+%global sci_static no
+%ifnarch ppc64le
+%if 0%{?fedora} || (0%{?suse_version} && 0%{?suse_version} >= 1600)
+%global sci_static yes
+%endif
+%endif
+%global tmpfiles_statedirs no
+%if 0%{?suse_version} >= 1600
+%global tmpfiles_statedirs yes
+%endif
 
 %description
 Run flake applications using a symlink structure pointing
@@ -73,9 +82,22 @@ Group:          System/Management
 Requires:       podman
 Requires:       rsync
 Requires:       sudo
+# the helper runs system wide flakes for the calling user
+Requires:       flake-pilot = %{version}-%{release}
 
 %description -n flake-pilot-podman
 Launcher for OCI containers based applications through podman
+
+%package -n flake-pilot-bubblewrap
+Summary:        Bubblewrap pilot
+Group:          System/Management
+Requires:       bubblewrap
+Requires:       sudo
+# the helper mounts a root filesystem with mount points below it
+Requires:       flake-pilot = %{version}-%{release}
+
+%description -n flake-pilot-bubblewrap
+Launcher for applications running in a bubblewrap sandbox
 
 %package -n flake-pilot-firecracker
 Summary:        FireCracker pilot
@@ -90,6 +112,7 @@ Requires:       rsync
 Requires:       firecracker
 %endif
 Requires:       e2fsprogs
+Requires:       nfs-kernel-server
 Requires:       sudo
 Requires:       xz
 
@@ -116,6 +139,7 @@ execution interface
 %package -n flake-pilot-firecracker-guestvm-tools
 Summary:        FireCracker guest VM tools
 Group:          System/Management
+Requires:       nfs-client
 
 %description -n flake-pilot-firecracker-guestvm-tools
 Guest VM tools to help with firecracker workloads
@@ -124,69 +148,56 @@ Guest VM tools to help with firecracker workloads
 %setup -q -n flake-pilot
 
 %build
-mkdir -p .cargo
-cp %{SOURCE1} .cargo/config.toml
-make build
-%ifnarch ppc64le
-%if 0%{?fedora} || (0%{?suse_version} && 0%{?suse_version} >= 1600)
-make compile_sci_static
-%endif
-%endif
+make SCI_STATIC=%{sci_static} build
 
 %install
-make DESTDIR=%{buildroot}/ install
+make DESTDIR=%{buildroot}/ \
+    TMPFILESDIR=%{_tmpfilesdir} \
+    TMPFILES_STATEDIRS=%{tmpfiles_statedirs} \
+    install
 
-test -f target/*-unknown-linux-gnu/static/sci && \
-make DESTDIR=%{buildroot}/ install_sci_static || \
-make DESTDIR=%{buildroot}/ install_sci
-
-mkdir -p %{buildroot}/overlayroot
-mkdir -p %{buildroot}/usr/lib/flake-pilot
-
-%if 0%{?suse_version} >= 1600
-install -D -m 644 %{SOURCE1001} %{buildroot}%{_tmpfilesdir}/flake-pilot-firecracker.conf
-%else
-mkdir -p %{buildroot}/var/lib/firecracker/images
-mkdir -p %{buildroot}/var/lib/firecracker/storage
-%endif
-
-mkdir -p %{buildroot}/etc/dracut.conf.d
-mkdir -p %{buildroot}/usr/lib/dracut/modules.d/80netstart
-cp -a firecracker-pilot/dracut/usr/lib/dracut/modules.d/80netstart/* \
-    %{buildroot}/usr/lib/dracut/modules.d/80netstart
-install -m 644 firecracker-pilot/dracut/etc/dracut.conf.d/extramodules.conf \
-    %{buildroot}/etc/dracut.conf.d/extramodules.conf
-
-install -m 755 %{buildroot}/usr/sbin/sci \
-    %{buildroot}/usr/lib/flake-pilot/sci
-
-mkdir -p %{buildroot}/etc
-install -m 644 flakes.yml %{buildroot}/etc/flakes.yml
-
-%pre
-# Permissions changed from previous versions, handle the transition
-if [ $1 -gt 1 ]; then
-    flakes_dir="/tmp/flakes/"
-    if [ -d "$flakes_dir/" ]; then
-        flakes_perm=$(/usr/bin/stat -c "%a" "$flakes_dir")
-        if [ "$flakes_perm" -ne "1777" ]; then
-            /usr/bin/chmod +t $flakes_dir
-            # If the permissions were not already set we also need to worry
-            # about the content.
-            # For podman we need a copy of the .cid file in the new hierarchy
-            # so flake-pilot knows which Container ID to use to tell podman to
-            # shut the container down. podman cleans up the original cid file
-            # the copy remains and eventually gets garbage collected by
-            # flake pilot
+# After 3.1.37 the organization and permission handling of state files
+# has changed. Handle the transition
+%triggerun -- flake-pilot <= 3.1.37
+    flakes_dir="/tmp/flakes"
+    if [ -d "$flakes_dir" ] && [ ! -L "$flakes_dir" ]; then
+        # While we operate on the directory we need to ensure root
+        # is in control
+        # Do not follow symlinks for the permission operations. An
+        # attacker might have replaced the directory we checked for with a
+        # link by the time we get here.
+        chown -h root "$flakes_dir"
+        chgrp -h root /tmp/flakes
+        chmod -h 600 /tmp/flakes
+        # Verify we have what we expect
+        flakes_perm=$(/usr/bin/stat -c "%u:%g:%a" "$flakes_dir")
+        if [ "$flakes_perm" != "0:0:600" ]; then
+            echo "Improper permissions on $flakes_dir please remove "
+            echo "to start over"
+            exit 0
+        fi
+        usr_flakes=$(ls -d "$flakes_dir"/*/ 2> /dev/null)
+        # If subdirectories exist we are already on the version of flake
+        # that has the expected structure, or the user did something they
+        # were not supposed to do. In either case we skip any operation
+        if [ -z "$usr_flakes" ]; then
+            # For podman we need a copy of the .cid file in the new
+            # hierarchy so flake-pilot knows which Container ID to
+            # use to tell podman to shut the container down. podman
+            # cleans up the original cid file the copy remains and
+            # eventually gets garbage collected by flake pilot
             # For microVMs the .mid file needs to get moved and renamed to
             # allow flake-pilot to clean up
+            created_dirs=" "
             for filepath in "$flakes_dir"/*; do
-                [ -f "$filepath" ] || continue
+	        if [ -L "$filepath" ] || [ ! -f "$filepath" ]; then
+		    continue
+	        fi	     
 
                 filename=$(basename "$filepath")
 
                 # Match format: prefix_username.extension
-                # Extract username (part after first '_' and before last '.')
+		# Extract username (part after first '_' and before last '.')
                 username=$(echo "$filename" | grep -E '^[^_]+_[^.]+\.' | awk -F'[_.]' '{print $2}')
                 # Extract the command name
                 cmdname=$(echo "$filename" | grep -E '^[^_]+_[^.]+\.' | awk -F'[_.]' '{print $1}')
@@ -194,57 +205,117 @@ if [ $1 -gt 1 ]; then
                     # Look up UID for the extracted username
                     if uid=$(id -u "$username" 2>/dev/null); then
                         user_dir="$flakes_dir/$uid"
-                        # Create user directory if it doesn't exist
-                        if [ ! -d "$user_dir" ]; then
-                            mkdir -p "$user_dir"
-                        fi
+		        case "$created_dirs" in
+                            *" $uid "*) ;;
+                            *)
+                                if [ -e "$user_dir" ] || [ -L "$user_dir" ]; then
+		                    echo "$user_dir exists, this is unexpected."
+			            echo "Stop any running flakes (aws, az) and "
+			            echo "remove $flakes_dir. Cannot migrate to"
+			            echo "new structure in a safe way."
+				    # Set the permissions back to what we expected before we started
+	                            chmod -h 777 "$flakes_dir"
+			            exit 0
+                                fi
+                                mkdir "$user_dir"
+                                created_dirs="$created_dirs$uid "
+                            ;;
+                        esac
                         if [[ "$filename" == *".vmid"* ]]; then
-                            mv "$filepath" "$user_dir/$cmdname.vmid"
+                            mv -T "$filepath" "$user_dir/$cmdname.vmid"
                         else
                             # We need the .cid files in 2 places
-                            cp "$filepath" "$user_dir/$cmdname.cid"
+                            cp --no-dereference --remove-destination "$filepath" "$user_dir/$cmdname.cid"
                         fi
                     fi
                     # Fix the directory permissions
-                    chown "$uid" "$user_dir"
-                    chgrp "$uid" "$user_dir"
-                    chmod 700 "$user_dir"
+                    chown -h "$uid" "$user_dir"
+                    chgrp -h "$uid" "$user_dir"
+                    chmod -h 700 "$user_dir"
                 fi
             done
+            # Now set the top level directory to the desired permissions
+            chmod 1777 $flakes_dir
+	    exit 0
         fi
+	# If we get here something went wrong set the permissions back to
+	# our expected starting state
+	chmod -h 777 "$flakes_dir"
     fi
-fi
 
+%post
+# Create the meta data directory now, not only at the next boot.
+# An existing directory which belongs to another user is handed
+# over to root
+%if 0%{?suse_version} || 0%{?fedora}
+%tmpfiles_create flake-pilot.conf
+%else
+if [ -x /usr/bin/systemd-tmpfiles ]; then
+    /usr/bin/systemd-tmpfiles --create %{_tmpfilesdir}/flake-pilot.conf || :
+fi
+%endif
 
 %files
 %defattr(-,root,root)
 %dir /etc/flakes
 %config /etc/flakes.yml
-/usr/bin/flake-ctl
-/usr/share/bash-completion/completions/flake-ctl
-%doc /usr/share/man/man8/flake-pilot.8.gz
-%doc /usr/share/man/man8/flake-ctl.8.gz
-%doc /usr/share/man/man8/flake-ctl-init.8.gz
-%doc /usr/share/man/man8/flake-ctl-list.8.gz
+%{_tmpfilesdir}/flake-pilot.conf
+%{_bindir}/flake-ctl
+# The helper performs every privileged action of flake-pilot. It is
+# called through sudo and must only be writable by root. Its path
+# is compiled into the tools calling it
+%dir /usr/libexec/flake-pilot
+%attr(0755,root,root) /usr/libexec/flake-pilot/flake-pilot-helper
+%{_datadir}/bash-completion/completions/flake-ctl
+%doc doc/sudoers/flake-pilot.sudoers
+%doc %{_mandir}/man8/flake-pilot-helper.8.gz
+%doc %{_mandir}/man8/flake-pilot.8.gz
+%doc %{_mandir}/man8/flake-ctl.8.gz
+%doc %{_mandir}/man8/flake-ctl-init.8.gz
+%doc %{_mandir}/man8/flake-ctl-list.8.gz
 
-%post
-if [ -d /tmp/flakes ];then
-    # make sure to move an eventually existing
-    # tmp flakes dir to sticky bit permissions
-    chmod 1777 /tmp/flakes
-fi
+%post -n flake-pilot-podman
+%if 0%{?suse_version} >= 1600
+  %tmpfiles_create flake-pilot-podman.conf
+%endif
 
 %files -n flake-pilot-podman
 %config /etc/flakes/container-flake.yaml
 %config /etc/flakes/storage.conf
-/usr/bin/podman-pilot
+%if 0%{?suse_version} >= 1600
+%{_tmpfilesdir}/flake-pilot-podman.conf
+%ghost %dir /var/lib/podman
+%ghost %dir %attr(0700,root,root) /var/lib/podman/storage
+%else
+%dir /var/lib/podman
+%dir %attr(0700,root,root) /var/lib/podman/storage
+%endif
+%dir /usr/lib/podman
+%dir %attr(0700,root,root) /usr/lib/podman/storage
+%{_bindir}/podman-pilot
 /usr/sbin/flake-registry
-%doc /usr/share/man/man8/flake-ctl-podman-load.8.gz
-%doc /usr/share/man/man8/flake-ctl-podman-pull.8.gz
-%doc /usr/share/man/man8/flake-ctl-podman-register.8.gz
-%doc /usr/share/man/man8/flake-ctl-podman-remove.8.gz
-%doc /usr/share/man/man8/flake-ctl-podman-show.8.gz
-%doc /usr/share/man/man8/podman-pilot.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-export.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-load.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-build.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-pull.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-register.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-remove.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-reset.8.gz
+%doc %{_mandir}/man8/flake-ctl-podman-show.8.gz
+%doc %{_mandir}/man8/podman-pilot.8.gz
+
+%files -n flake-pilot-bubblewrap
+%config /etc/flakes/bubblewrap-flake.yaml
+%{_bindir}/bubblewrap-pilot
+%doc %{_mandir}/man8/flake-ctl-bubblewrap-register.8.gz
+%doc %{_mandir}/man8/flake-ctl-bubblewrap-remove.8.gz
+%doc %{_mandir}/man8/flake-ctl-bubblewrap-show.8.gz
+%doc %{_mandir}/man8/bubblewrap-pilot.8.gz
+
+%if 0%{?suse_version} >= 1600
+%post -n flake-pilot-firecracker
+%tmpfiles_create flake-pilot-firecracker.conf
+%endif
 
 %files -n flake-pilot-firecracker
 %if 0%{?suse_version} >= 1600
@@ -257,28 +328,35 @@ fi
 %dir /var/lib/firecracker/images
 %dir /var/lib/firecracker/storage
 %endif
-%dir /usr/lib/flake-pilot
 %config /etc/flakes/firecracker-flake.yaml
 %config /etc/flakes/firecracker.json
-%doc /usr/share/man/man8/flake-ctl-firecracker-pull.8.gz
-%doc /usr/share/man/man8/flake-ctl-firecracker-remove.8.gz
-%doc /usr/share/man/man8/flake-ctl-firecracker-register.8.gz
-%doc /usr/share/man/man8/flake-ctl-firecracker-show.8.gz
-/usr/bin/firecracker-pilot
-%doc /usr/share/man/man8/firecracker-pilot.8.gz
-/usr/lib/flake-pilot/sci
+%doc %{_mandir}/man8/flake-ctl-firecracker-pull.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-build.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-remove.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-register.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-show.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-network-init.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-network-add.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-network-remove.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-network-cleanup.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-volume-export.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-volume-release.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-volume-add.8.gz
+%doc %{_mandir}/man8/flake-ctl-firecracker-volume-remove.8.gz
+%{_bindir}/firecracker-pilot
+%doc %{_mandir}/man8/firecracker-pilot.8.gz
 
 %files -n flake-pilot-firecracker-dracut-netstart
-%dir /usr/lib/dracut
-%dir /usr/lib/dracut/modules.d
-%dir /usr/lib/dracut/modules.d/80netstart
+%dir %{_prefix}/lib/dracut
+%dir %{_prefix}/lib/dracut/modules.d
+%dir %{_prefix}/lib/dracut/modules.d/80netstart
 %dir /etc/dracut.conf.d
-/usr/lib/dracut/modules.d/80netstart
+%{_prefix}/lib/dracut/modules.d/80netstart
 %config /etc/dracut.conf.d/extramodules.conf
 
 %files -n flake-pilot-firecracker-guestvm-tools
 %dir /overlayroot
 /usr/sbin/sci
-%doc /usr/share/man/man8/sci.8.gz
+%doc %{_mandir}/man8/sci.8.gz
 
 %changelog

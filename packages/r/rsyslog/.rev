@@ -1758,4 +1758,20 @@ Last accepted SR#253447 from opensuse132-syncer to rsyslog 8.4.1 contained an in
     <comment>update changelog to include CVE and bugnumber (bsc#1286926)</comment>
     <requestid>1393384</requestid>
   </revision>
+  <revision rev="196" vrev="5">
+    <srcmd5>75721da423430c54de4d4824e4da6d27</srcmd5>
+    <version>8.2608.0</version>
+    <time>1794816443</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397062</requestid>
+  </revision>
+  <revision rev="197" vrev="6">
+    <srcmd5>93b952f3f26266c1a01c45b5c12d783d</srcmd5>
+    <version>8.2608.0</version>
+    <time>1795103648</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398457</requestid>
+  </revision>
 </revisionlist>

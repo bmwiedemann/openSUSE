@@ -23,13 +23,16 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        1.4.0
+Version:        1.5.2
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 118 vendored dependencies are
-# MIT (58), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Legal-Review-Notice: pi itself is MIT. The 122 vendored dependencies are
+# MIT (59), Apache-2.0 (38), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (3),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
+# - The QuickJS runtime is built from Source20/21 (MIT quickjs-wasi 3.6.2,
+#   MIT quickjs-ng 6d46d07, Apache-2.0 ada 3.4.3).
+# - mbedtls 4.0 is Apache-2.0 OR GPL-2.0-or-later; Apache-2.0 is elected.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense
 URL:            https://github.com/earendil-works/pi
 Source0:        https://registry.npmjs.org/%{npm_name}/-/pi-coding-agent-%{version}.tgz
@@ -38,14 +41,34 @@ Source1:        LICENSE
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source12:       node_modules.sums
+# The vendored sources above carry no prebuilt binaries: the tarballs
+# with them are stripped when the node_modules service output is made
+# (dev/optional platform .node addons are dropped outright -- the
+# --omit=dev --omit=optional install below never fetches them -- and
+# pi-tui, photon-node and quickjs-wasi are repacked without their
+# binary members, with the lockfile integrity hashes re-taken).
+# Source0 stays byte-identical to upstream (download_files requires
+# it); its one prebuilt binary is excepted below. After every
+# `osc service manualrun`, re-apply the same strip before committing,
+# or source-binaries.py goes red again.
 Source13:       %{name}-rpmlintrc
+Source20:       https://github.com/vercel-labs/quickjs-wasi/archive/refs/tags/quickjs-wasi@3.6.2.tar.gz#/quickjs-wasi-3.6.2.tar.gz
+Source21:       https://github.com/quickjs-ng/quickjs/archive/6d46d07d04041b40f4f49eaa7fdebe44c314c699.tar.gz#/quickjs-ng-6d46d07.tar.gz
 Patch0:         pi-disable-self-update.patch
 # PATCH-FIX-OPENSUSE pi-use-modular-runtime.patch mpluskal@suse.com -- point bin and the rpc-entry export at the modular runtime we ship and patch, not at the pre-bundled copy
 Patch1:         pi-use-modular-runtime.patch
+BuildRequires:  binaryen
+BuildRequires:  clang >= 23
 BuildRequires:  fdupes
+# libclang_rt23 >= 23.1.4 carries the wasm32 builtins the link needs.
+BuildRequires:  libclang_rt23 >= 23.1.4
+BuildRequires:  lld
+BuildRequires:  llvm >= 23
 BuildRequires:  local-npm-registry
+BuildRequires:  make
 BuildRequires:  nodejs >= 22.19.0
 BuildRequires:  nodejs-packaging
+BuildRequires:  wasi-libc
 Requires:       nodejs >= 22.19.0
 Recommends:     %{name}-examples = %{version}-%{release}
 # On Linux dist/utils/clipboard.js drives these tools directly -- copying
@@ -64,6 +87,10 @@ Conflicts:      cln
 # be unbundled.
 Provides:       bundled(highlight.js)
 Provides:       bundled(marked)
+# The wasm runtime below links these; their versions are in the notice above.
+Provides:       bundled(ada) = 3.4.3
+Provides:       bundled(mbedtls) = 4.0.0
+Provides:       bundled(quickjs-ng) = 0.17.0
 BuildArch:      noarch
 %include        %{_sourcedir}/node_modules.spec.inc
 
@@ -110,7 +137,9 @@ rm -rf dist/bundle
 # The doom-overlay example ships doom.wasm/doom.js built from doomgeneric,
 # which is derived from the GPL-2.0 id Software Doom sources -- the complete
 # corresponding source is not in this package, and the extension downloads a
-# non-redistributable shareware WAD on first run.
+# non-redistributable shareware WAD on first run. Source0 stays pristine
+# (see above), so this rm keeps it out of the payload instead.
+# Source-Binary-Exception: */examples/extensions/doom-overlay/* -- test-data: example asset only, deleted in %%prep and never shipped, loaded or linked by anything this package builds or tests; not rebuildable here without the full Doom sources
 rm -rf examples/extensions/doom-overlay
 
 # Upstream stopped shipping a shrinkwrap in 1.0.1 (it was production-only and
@@ -134,8 +163,9 @@ cd %{name}
 # between build hosts. Since 0.99.0 the dev-side vite chain adds rolldown,
 # lightningcss and fsevents platform packages to the optional set (1.2.0
 # dropped the @earendil-works/chord dependency that used to pull in
-# esbuild's platform packages). Source10 and the vendored archive keep the
-# optional entries; the install below simply skips them.
+# esbuild's platform packages). Those tarballs are stripped from the vendored
+# archive outright (see above); Source10 keeps their entries and the install
+# below simply never fetches them.
 local-npm-registry %{_sourcedir} install --omit=dev --omit=optional --ignore-scripts
 rm -f npm-shrinkwrap.json package-lock.json
 
@@ -146,9 +176,23 @@ rm -f npm-shrinkwrap.json package-lock.json
 # package, so it goes and clipboard.js falls back to the xclip/wl-clipboard
 # tools recommended above. The darwin and win32 addons are never loaded here.
 # photon-node is loaded lazily behind a try/catch and only powers image
-# conversion, so it degrades gracefully.
+# conversion, so it degrades gracefully. The vendored pi-tui and photon-node
+# tarballs are already repacked without these (see above); the rms stay so a
+# service refresh that restores the binaries still cannot reach the payload.
 rm -rf node_modules/@earendil-works/pi-tui/native
 rm -f node_modules/@silvia-odwyer/photon-node/photon_rs_bg.wasm
+
+# The sandbox runtime is built from Source20/21 with the
+# distribution toolchain, then installed over the stripped tree.
+mkdir -p %{_builddir}/quickjs-wasi %{_builddir}/qjs-sdk/bin
+tar -xzf %{SOURCE20} -C %{_builddir}/quickjs-wasi --strip-components=1
+tar -xzf %{SOURCE21} -C %{_builddir}/quickjs-wasi/quickjs-ng --strip-components=1
+for t in clang clang++ llvm-ar wasm-ld; do ln -sf %{_bindir}/$t %{_builddir}/qjs-sdk/bin/$t; done
+# The C interface must match the vendored JS exactly.
+grep -q '"version": "3.6.2"' node_modules/quickjs-wasi/package.json
+%make_build -C %{_builddir}/quickjs-wasi quickjs.wasm extensions/encoding/encoding.so extensions/headers/headers.so extensions/structured-clone/structured-clone.so extensions/crypto/crypto.so WASI_SDK=%{_builddir}/qjs-sdk SYSROOT=%{_datadir}/wasi-sysroot WASM_OPT=%{_bindir}/wasm-opt
+cp -p %{_builddir}/quickjs-wasi/quickjs.wasm node_modules/quickjs-wasi/quickjs.wasm
+for e in encoding headers structured-clone crypto; do install -D -m644 %{_builddir}/quickjs-wasi/extensions/$e/$e.so node_modules/quickjs-wasi/extensions/$e/$e.so; done
 
 # Zero-length sources upstream never trimmed.
 find . -type f -size 0 -delete
@@ -208,6 +252,30 @@ export PI_TELEMETRY=0
 mkdir -p "$HOME"
 # The %%{_bindir} symlink is absolute and does not resolve inside the buildroot.
 test "$(node %{buildroot}%{nodejs_sitelib}/%{npm_name}/dist/cli.js --version)" = "%{version}"
+
+# The wasm runtime is built above: a script must evaluate to a real result,
+# and every shipped extension must load and answer a basic call.
+cd %{buildroot}%{nodejs_sitelib}/%{npm_name}
+node --input-type=module -e '
+import { QuickJS } from "./node_modules/quickjs-wasi/dist/index.js";
+import { readFileSync } from "node:fs";
+const dir = "./node_modules/quickjs-wasi";
+const wasm = readFileSync(dir + "/quickjs.wasm");
+const vm = await QuickJS.create({ wasm });
+if (vm.dump(vm.evalCode("40 + 2")) !== 42) throw new Error("codemode wasm smoke failed");
+vm.dispose();
+const probes = {
+  "encoding": "new TextDecoder().decode(new TextEncoder().encode(\"hi\"))",
+  "headers": "new Headers({\"x-a\": \"1\"}).get(\"x-a\")",
+  "structured-clone": "structuredClone({a: [1, 2]}).a[1]",
+  "crypto": "crypto.getRandomValues(new Uint8Array(8)).length"
+};
+const wants = { "encoding": "hi", "headers": "1", "structured-clone": 2, "crypto": 8 };
+for (const name of Object.keys(probes)) {
+  const v = await QuickJS.create({ wasm, extensions: [{ name, wasm: readFileSync(dir + "/extensions/" + name + "/" + name + ".so") }] });
+  if (v.dump(v.evalCode(probes[name])) !== wants[name]) throw new Error(name + " smoke failed");
+  v.dispose();
+}'
 
 %files
 # Marked in place rather than copied to %%{_docdir}: pi resolves README.md and

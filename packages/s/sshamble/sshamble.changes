@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  6 06:56:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.1
+  * No functional changes.
+
+-------------------------------------------------------------------
+Thu Nov  5 19:59:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.0
+  * Add vuln-sshhole check for OpenSSH on musl without PAM.
+  * add vuln-coreos-pam-permit check for CoreOS Alpha 104x PAM
+    bypass.
+
+-------------------------------------------------------------------
 Fri Sep 11 11:18:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.4

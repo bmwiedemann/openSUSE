@@ -323,4 +323,12 @@
     <comment>Do not require the jaxp_parser_impl, but xerces-j2 directly</comment>
     <requestid>1302883</requestid>
   </revision>
+  <revision rev="44" vrev="311">
+    <srcmd5>a8309042e5ee1457548d717652ae809f</srcmd5>
+    <version>1.4</version>
+    <time>1794932482</time>
+    <user>anag_factory</user>
+    <comment>bsc#1290492 CVE-2026-90436</comment>
+    <requestid>1398162</requestid>
+  </revision>
 </revisionlist>

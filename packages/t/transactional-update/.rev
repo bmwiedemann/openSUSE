@@ -1635,4 +1635,54 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 </comment>
     <requestid>1366737</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>78c82f8f3edc0c33f530fcf2479dc378</srcmd5>
+    <version>6.2.0</version>
+    <time>1794590885</time>
+    <user>anag_factory</user>
+    <comment>This submission depends on https://build.opensuse.org/request/show/1393620 for the updated D-Bus policy file.
+
+- Version 6.2.0:
+  * Make cleanup management meaningful again by moving it into the
+    tukit core; with snapper no cleanup algorithm will be set any
+    more when creating a new snapshot, only after explicitly
+    calling 'cleanup' (like it used to work before); this avoids
+    some border cases where snapshots may have been deleted while
+    still in use
+  * State to be preserved over multiple runs stays in
+    /var/lib/misc/transactional-update.state, volatile state only
+    relevant for the current run (e.g. which reboot method would
+    be required to boot that snapshot) is now stored in
+    /run/transactional-update.state
+  * API: Return snapshot number on rollback - on some systems one
+    may get a new snapshot as a copy of the rollback
+  * snapper: Fix duplicate overlay mount during migration
+    [bsc#1272529]
+  * tukit: Use fstab entry to determine ro/rw status to support
+    switching back and forth between them in the future
+  * tukit: Add 'directory' SnapshotManager implementation: Intended
+    for testing purposes, doesn't require root permissions
+  * tests: Use this 'directory' implementation to add unit tests
+    for tukit
+  * t-u: Fix reboot level handling when continuing snapshots
+  * tukit: Make snapshots directory configurable
+  * tukit: More detailed error messages
+  * tukit: Fix incomplete help for --options parameter
+  * tukit: Ignore errors on unmount of different namespaces
+  * tukit: Use /etc mount information of snapshot for syncing
+  * tukit: Fix wrong file system type for old overlayfs check
+  * tukit: Create /var/lib/misc if it doesn't exist
+  * tukitd: Formally require root perms for Snapshot D-Bus calls
+  * create_dirs_from_rpmdb: Explicitly chown created directories
+  * all: Consistently use /run instead of /var/run
+  * doc: Add missing doc files to dist package
+  * doc: Fix wrong example DBus call
+  * doc: Add missing 'Delete' D-Bus interface description
+  * doc: Add missing 'RollbackTo' D-Bus interface description
+  * doc: Fix wrong reference in 'Close' D-Bus interface
+  * all: Some code cleanup
+- Explicitly depend on Python 3
+- Remove some outdated dependencies</comment>
+    <requestid>1393649</requestid>
+  </revision>
 </revisionlist>

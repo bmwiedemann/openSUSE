@@ -27,31 +27,41 @@ refer legacy patches:
   https://listman.redhat.com/archives/lvm-devel/2015-March/msg00053.html
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
----
- scripts/fsadm.sh | 88 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 86 insertions(+), 2 deletions(-)
 
-Index: LVM2.2.03.38/scripts/fsadm.sh
+---
+2026-11-06:
+Since commit 2575c7d9079ed was introduced,
+do not check $LVM, explicitly use grep and /dev/null as upstream.
+The commit aslo splits decode_size() into prepare_resize() and lvresize_reexec_only().
+TEMPDIR is created when temp_mount() is called, adjust resize_btrfs().
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+
+---
+ scripts/fsadm.sh | 92 ++++++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 90 insertions(+), 2 deletions(-)
+
+Index: LVM2.2.03.44/scripts/fsadm.sh
 ===================================================================
---- LVM2.2.03.38.orig/scripts/fsadm.sh	2025-12-23 13:05:56.339324006 +0800
-+++ LVM2.2.03.38/scripts/fsadm.sh	2025-12-23 13:07:44.671817336 +0800
-@@ -22,6 +22,7 @@
- # ext2/ext3/ext4: resize2fs, tune2fs
- # reiserfs: resize_reiserfs, reiserfstune
- # xfs: xfs_growfs, xfs_info
+--- LVM2.2.03.44.orig/scripts/fsadm.sh	2026-10-29 10:48:33.745723070 +0100
++++ LVM2.2.03.44/scripts/fsadm.sh	2026-10-29 10:50:56.951663211 +0100
+@@ -28,6 +28,7 @@
+ # reiserfs: resize_reiserfs, debugreiserfs
+ # xfs: xfs_growfs, xfs_info, xfs_db, xfs_repair
+ # crypto_LUKS: cryptsetup
 +# btrfs: btrfs
  #
  # Return values:
  #   0 success
-@@ -88,6 +89,7 @@
- # XFS_REPAIR -n is used when XFS_CHECK is not found
+@@ -92,6 +93,7 @@
  XFS_REPAIR="xfs_repair"
+ FSCK="fsck"
  CRYPTSETUP="cryptsetup"
 +BTRFS="btrfs"
+ STAT="stat"
  
- # user may override lvm location by setting LVM_BINARY
- LVM=${LVM_BINARY:-lvm}
-@@ -107,6 +109,9 @@
+ MOUNT="mount"
+@@ -138,6 +140,9 @@
  MOUNTPOINT=
  MOUNTED=
  REMOUNT=
@@ -61,17 +71,18 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
  PROCDIR="/proc"
  PROCMOUNTS="$PROCDIR/mounts"
  PROCSELFMOUNTINFO="$PROCDIR/self/mountinfo"
-@@ -276,6 +281,33 @@
- 	verbose "\"$FSTYPE\" filesystem found on \"$VOLUME\"."
+@@ -444,6 +449,35 @@
+ 	validate_fs_tools "$FSTYPE"
  }
  
++
 +check_findmnt() {
-+	FINDMNT=$(which findmnt 2>$NULL)
++	FINDMNT=$(command -v findmnt 2>/dev/null)
 +	test -n "$FINDMNT"
 +}
 +
 +detect_fs_uuid() {
-+	UUID=$($BLKID -o value -c $NULL -s UUID "$VOLUME" 2>$NULL)
++	UUID=$("$BLKID" -o value -c /dev/null -s UUID "$VOLUME" 2>/dev/null)
 +	test -n "$UUID"
 +}
 +
@@ -82,7 +93,7 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
 +	IFS=" $(echo -n -e '\t')"
 +
 +	read -r TMP<<EOF
-+$($FINDMNT -nuP -o TARGET,UUID 2>$NULL | $GREP "$UUID")
++$("$FINDMNT" -nuP -o TARGET,UUID 2>/dev/null | grep "$UUID")
 +EOF
 +
 +	TMP=${TMP##*TARGET=\"}
@@ -92,11 +103,12 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
 +
 +	IFS=$STR_IFS
 +}
- 
- # Check that passed mounted MAJOR:MINOR is not matching $MAJOR:MINOR of resized $VOLUME
- validate_mounted_major_minor() {
-@@ -404,7 +436,11 @@
- # check if the given device is already mounted and where
++
+ # detect filesystem on the given device
+ # dereference device name if it is symbolic link
+ # Sets: VOLUME, VOLUME_ORIG, RVOLUME, FSTYPE, MAJORMINOR
+@@ -610,7 +644,11 @@
+ # Sets: MOUNTED (mountpoint path or empty)
  # FIXME: resolve swap usage and device stacking
  detect_mounted() {
 -	if test -e "$PROCSELFMOUNTINFO"; then
@@ -108,7 +120,7 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
  		detect_mounted_with_proc_self_mountinfo
  	elif test -e "$PROCMOUNTS"; then
  		detect_mounted_with_proc_mounts
-@@ -713,6 +749,47 @@
+@@ -1025,6 +1063,52 @@
  		      "Target size: $CRYPT_RESIZE_BLOCKS sectors."
  }
  
@@ -118,11 +130,15 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
 +# - cannot resize when unmounted
 +########################
 +resize_btrfs() {
++	local IFS='
++'
++	prepare_resize "$1" 1
++	lvresize_reexec_only && return 0
 +	detect_mounted
 +	MOUNTPOINT=$MOUNTED
 +	if [ -z "$MOUNTED" ]; then
-+		MOUNTPOINT=$TEMPDIR
 +		temp_mount || error "Cannot mount Btrfs filesystem"
++		MOUNTPOINT=$TEMPDIR
 +	fi
 +
 +	verbose "Parsing $BTRFS filesystem show \"$MOUNTPOINT\""
@@ -153,20 +169,21 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
 +	dry "$BTRFS" filesystem resize "$BTRFS_DEVID":"$NEWSIZE" "$MOUNTPOINT"
 +}
 +
++
  ####################
  # Resize filesystem
- ####################
-@@ -736,6 +813,7 @@
- 	  "crypto_LUKS")
- 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required to resize LUKS volume."
- 		CMD=resize_luks ;;
-+	  "btrfs") CMD=resize_btrfs ;;
+ # Sets: NEWSIZE, NEWSIZE_ORIG
+@@ -1049,6 +1133,7 @@
+ 	  reiserfs)	CMD=resize_reiser ;;
+ 	  xfs)		CMD=resize_xfs ;;
+ 	  crypto_LUKS)	CMD=resize_luks ;;
++		"btrfs") CMD=resize_btrfs ;;
  	  *) error "Filesystem \"$FSTYPE\" on device \"$VOLUME\" is not supported by this tool." ;;
  	esac
  
-@@ -820,6 +898,12 @@
- 		which "$CRYPTSETUP" >"$NULL" 2>&1 || error "$CRYPTSETUP utility required."
- 		check_luks || error "Crypto luks check failed."
+@@ -1180,6 +1265,12 @@
+ 	  crypto_LUKS)
+ 		check_luks || error "LUKS check failed on \"$VOLUME\"."
  		;;
 +	  "btrfs") #mount the device first and then run scrub
 +		 MOUNTPOINT=$TEMPDIR
@@ -177,12 +194,12 @@ Index: LVM2.2.03.38/scripts/fsadm.sh
  	  *)
  		error "Filesystem \"$FSTYPE\" on device \"$VOLUME\" is not supported by this tool." ;;
  	esac
-@@ -838,7 +922,7 @@
- for i in "$TUNE_EXT" "$RESIZE_EXT" "$TUNE_REISER" "$RESIZE_REISER" \
- 	"$TUNE_XFS" "$RESIZE_XFS" "$MOUNT" "$UMOUNT" "$MKDIR" \
- 	"$RMDIR" "$BLOCKDEV" "$BLKID" "$GREP" "$READLINK" \
--	"$DATE" "$FSCK" "$XFS_CHECK" "$XFS_REPAIR" "$LVM" ; do
-+	"$DATE" "$FSCK" "$XFS_CHECK" "$XFS_REPAIR" "$LVM" "$BTRFS" ; do
+@@ -1315,7 +1406,7 @@
+ for i in "$TUNE_EXT" "$RESIZE_EXT" "$DEBUG_REISER" "$RESIZE_REISER" \
+ 	"$TUNE_XFS" "$XFS_DB" "$RESIZE_XFS" "$MOUNT" "$UMOUNT" "$MKDIR" \
+ 	"$RMDIR" "$BLOCKDEV" "$BLKID" "$AWK" "$READLINK" "$STAT" \
+-	"$DATE" "$FSCK" "$XFS_CHECK" "$XFS_REPAIR"; do
++	"$DATE" "$FSCK" "$XFS_CHECK" "$XFS_REPAIR" "$BTRFS" ; do
  	test -n "$i" || error "Required command definitions in the script are missing!"
  done
  

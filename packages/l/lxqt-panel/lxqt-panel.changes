@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:01:18 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.1:
+  * Workaround for a bad behavior of wlroots that prevented an auto-hiding
+    panel from being shown after VT switching.
+
+-------------------------------------------------------------------
+Fri Nov  6 09:25:06 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Fixed Network Monitor Plugin not respecting lxqt-panel's icon size.
+  * Added new option to Network Monitor Plugin's config to 'Prefer system
+    icons'.
+  * Change tooltip in Status Notifier if an app sets title instead of
+    tooltip (some GTK apps can't set the tooltip but may change the title).
+  * Fixes to wheel scrolling in Volume Control plugin.
+  * Do not close Task Manager's group popup on showing its context menu.
+  * Added minimum width config option to Custom Command plugin.
+  * Save the icon path when selected via file picker in Custom Command
+    plugin's config dialog.
+  * Made the D-Bus task command work with auto-hiding panels.
+  * Removed Wayfire from the list of compositors that support an
+    unfocusable panel (because its version 0.11 would make popup windows
+    unfocusable too).
+  * Fixed desktop file lookups in the Wayfire backend.
+  * Made the Close button the default button for config dialogs of relevant
+    plugins.
+  * Show the current brightness in the tooltip of backlight plugin.
+- Drop unused and obsolete Requires
+  * menu-cache
+
+-------------------------------------------------------------------
+Mon Oct 12 14:54:06 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Drop unused and obsolete BuildRequires
+  * pkgconfig(libmenu-cache)
+  * pkgconfig(xcomposite)
+
+-------------------------------------------------------------------
 Fri May 29 14:19:34 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.1:

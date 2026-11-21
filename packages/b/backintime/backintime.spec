@@ -21,18 +21,21 @@
 %else
 %{?sle15_python_module_pythons}
 %endif
-
 Name:           backintime
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
-Group:          Productivity/Archiving/Backup
 License:        GPL-2.0-or-later
 URL:            https://github.com/bit-team/backintime
 Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  man
+BuildRequires:  python-rpm-macros
+BuildRequires:  rubygem(asciidoctor)
 # TEST REQUIREMENTS (only works on real hardware)
 #BuildRequires:  %#{python_module packaging}
 #BuildRequires:  %#{python_module dbus-python}
@@ -42,12 +45,8 @@ BuildRequires:  %{python_module devel >= 3.11}
 #BuildRequires:  rsync
 #BuildRequires:  udev
 # /TEST REQUIREMENTS
-BuildConflicts: python3-devel < 3.11
-BuildRequires:  fdupes
-BuildRequires:  hicolor-icon-theme
-BuildRequires:  man
-BuildRequires:  python-rpm-macros
-BuildRequires:  rubygem(asciidoctor)
+BuildConflicts: pkgconfig(python3) < 3.11
+BuildConflicts: pkgconfig(python3-embed) < 3.11
 Requires:       %{python_flavor}-dbus-python
 Requires:       %{python_flavor}-keyring
 Requires:       %{python_flavor}-packaging
@@ -104,17 +103,20 @@ sed -i -e "s|'backintime-common'|'backintime'|g" common/config.py
 sed -i -e "s|/share/doc/|/share/doc/packages/|g" common/configure qt/configure
 sed -i -e "s|backintime-common|backintime|g" common/configure qt/configure
 
-# Fix shebangs
-%python_expand sed -i "s|#!/usr/bin/env python|#!/usr/bin/$python|g" common/askpass.py
-sed -i "s|#!/usr/bin/env bash|#!/bin/bash|g"  qt/backintime-qt_polkit
+# Fix shebangs. Match the literal shebang text as written in the files;
+# a macro in the search pattern may expand to something that does not match.
+%python_expand sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/$python|g" common/askpass.py
+sed -i "s|#!%{_bindir}/env bash|#!/bin/bash|g"  qt/backintime-qt_polkit
 
 pushd common
+# FIXME: you should use the %%configure macro
 %python_expand ./configure --python="%{_bindir}/$python"
-make %{?_smp_mflags}
+%make_build
 popd
 pushd qt
+# FIXME: you should use the %%configure macro
 %python_expand ./configure --python="%{_bindir}/$python"
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -125,6 +127,10 @@ popd
 pushd qt
 %make_install
 popd
+
+# Keep the dbus service byte-identical to the reviewed one
+# (boo#1288838): unversioned python3 keeps the whitelist digest.
+sed -i 's|^Exec=%{_bindir}/python3[.0-9]* |Exec=%{_bindir}/python3 |' %{buildroot}%{_datadir}/dbus-1/system-services/net.launchpad.backintime.serviceHelper.service
 
 %find_lang %{name} --without-kde --without-gnome
 
@@ -137,7 +143,6 @@ popd
 rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 
 %files
-%defattr(-,root,root)
 %{_bindir}/%{name}
 %{_bindir}/%{name}-askpass
 %{_datadir}/%{name}/
@@ -145,9 +150,9 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %{_iconsdir}/hicolor/scalable/apps/%{name}.svg
 %{_iconsdir}/hicolor/scalable/actions/show-hidden.svg
 %{_docdir}/%{name}/
-%{_mandir}/man1/%{name}-askpass.1%{ext_man}
-%{_mandir}/man5/%{name}-config.5%{ext_man}
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}-askpass.1%{?ext_man}
+%{_mandir}/man5/%{name}-config.5%{?ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %config %{_sysconfdir}/xdg/autostart/backintime.desktop
 %exclude %{_docdir}/%{name}-*/
 %exclude %{_datadir}/%{name}/qt
@@ -156,7 +161,6 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %files lang -f %{name}.lang
 
 %files qt
-%defattr(-,root,root)
 %{_bindir}/%{name}-qt
 %{_bindir}/%{name}-qt_polkit
 %{_datadir}/applications/%{name}-qt.desktop
@@ -170,7 +174,7 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/net.launchpad.backintime.policy
 %{_docdir}/%{name}-qt/
-%{_mandir}/man1/%{name}-qt.1%{ext_man}
+%{_mandir}/man1/%{name}-qt.1%{?ext_man}
 %dir %{_datadir}/dbus-1/system.d
 %{_datadir}/dbus-1/system.d/net.launchpad.backintime.serviceHelper.conf
 %{_datadir}/metainfo/io.github.bit_team.back_in_time.gui.metainfo.xml

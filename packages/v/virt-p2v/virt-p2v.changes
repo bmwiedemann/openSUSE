@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:58:49 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- add patch dependencies.patch
+  * make virt-p2v-make-disk work by not requiring obsolete packages
+
+-------------------------------------------------------------------
 Fri Feb 14 11:13:49 MST 2025 - carnold@suse.com
 
 - Update to version 1.42.4 (jsc#PED-8910)

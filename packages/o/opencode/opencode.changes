@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Sun Nov 15 17:10:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.0:
+  * Background subagents by default, session IDs, idle reports
+  * Quieter transcripts by default (low verbosity)
+  * Jump to an earlier prompt in the desktop client
+  * MCP events (experimental); shell commands survive handoffs
+  * Timeout promotes to background; Windows shells
+  * Freeform tool input; LM Studio decision models
+  * Truncation keeps the head; tail no longer loads the full file
+  * Provider client-cert TLS; Code Mode compact results
+  * Many TUI, desktop and SDK fixes; see upstream release notes
+- Bump the @opentui/core pin to 0.8.4 (lockstep with opentui)
+- process-daemon (pty helper) 0.5.0 -> 0.5.2
+- Bump the @opencode/pty pin to 0.5.2
+
+-------------------------------------------------------------------
+Wed Nov 11 13:19:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.7 (the full list is the v2.2.6..v2.2.7 release
+  notes upstream publishes)
+  * Core: GitHub Copilot Auto pool routing; MCP logins survive
+    token-refresh races; read takes a negative offset and suggests
+    close file names; shell results end with the exit code or
+    signal and zsh globs pass through; cache warming follows the
+    model's cache TTL; MCP tool calls with bad output schemas no
+    longer fail and MCP prompts survive refresh failures;
+    background compaction no longer stops a Claude Agent session
+    mid tool call; legacy auth.json imports on fresh setup
+  * TUI: session exports land in the working directory; child
+    sessions list by exact ID; the terminal's light or dark mode is
+    followed; dialog buttons take keyboard focus; the model picker
+    Usage action moved to /usage
+  * Breaking for direct @opencode/ai importers: ImageResponse.image
+    is gone (read response.images[0]); several SDK endpoints no
+    longer wait for plugins on a still-loading Location
+  * Many more fixes and improvements
+- Upstream moved to the anomalyco org: the sources already fetch
+  from github.com/anomalyco/opencode (verified against the v2.2.7
+  tag tarball; sst redirects there), so no spec change was needed
+- Lockstep to the opentui 0.8.3 runtime again: the tag pins
+  @opentui/* 0.8.1, so the tree is rebased onto 0.8.3 through
+  upstream's own script/upgrade-opentui.ts before the install and
+  %prep checks that pin
+- Retrace the vendor keep list (349 of 1851 store entries): the
+  closure moves for @modelcontextprotocol 2.3.1 to 2.4.0 and drops
+  @ai-sdk/provider-utils (gitlab-ai-provider re-resolved at the
+  same 6.23.1)
+- Legal review re-derived for the new tree: 346 packages, same
+  10-licence set (MIT 190, Apache-2.0 66, ISC 65, rest as before),
+  no copyleft and no proprietary packages - the
+  @anthropic-ai/claude-agent-sdk 0.3.301 stays externalized and the
+  retraced tree still drops its store entry with zero SDK bytes in
+  the tarball
+- Refresh the pty helper sources: packages/process-daemon is
+  byte-identical to 2.2.6, so Source20 is repacked under the new
+  name (ghostty-revision unchanged, Source22 untouched) and the
+  cargo closure re-vendors to a byte-identical vendor.tar.zst
+  (cargo_vendor runs with update=false now: its update step
+  re-resolves onto the newest 1.90-compatible crates and dies on
+  the locked flag)
+- All five patches apply clean against 2.2.7; fff 0.10.5, bun-pty
+  0.4.11, photon-node 0.3.4 and parcel 2.5.1 are unchanged, so the
+  %prep pin checks pass unmodified; bun 1.4.4 still matches the
+  tag's pin, so Patch0 stays an inert guard for the next skew; no
+  new runtime dependencies
+
+-------------------------------------------------------------------
+Sun Nov  8 09:21:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.6 (the full list is the v2.2.5..v2.2.6 release
+  notes upstream publishes)
+  * Core: opt-in shared MCP connections (pool: true); opencode run
+    starts sessions in a new git worktree (-w/--worktree) or
+    already archived (--archived); provider/model session warming
+    with cache-TTL auto interval; websearch.use policy and
+    all-flags switches; experimental Code Mode VM (off by
+    default); Azure Messages support for Foundry Claude models
+  * Hardening: server API serves file reads and media as
+    sandboxed downloads and refuses cross-site browser
+    navigation; webfetch and Code Mode fetch reject URLs with
+    credentials and re-check every redirect against the rules
+  * TUI, desktop and GUI plugins: plugin themes and CodeBlock
+    registries; mobile composer dock; scroll-on-send setting;
+    prompt history kept to 200 entries; many crash and focus
+    fixes
+  * Many more fixes and improvements
+- Lockstep to the opentui 0.8.3 runtime: the tag pins @opentui/*
+  0.8.1 but Factory ships only 0.8.3, so the tree is rebased onto
+  0.8.3 through upstream's own script/upgrade-opentui.ts before
+  the install and %prep checks that pin; the 0.8.3 highlight
+  queries are byte-identical to 0.8.0's, so the packaged
+  tree-sitter modules and versions are unchanged
+- Refresh the pty helper sources: packages/process-daemon 0.4.0
+  to 0.5.0 (new Source20; ghostty-revision unchanged, so
+  Source22 is untouched) with its locked cargo closure
+  re-vendored (new vendor.tar.zst, file set identical); the npm
+  @opencode/pty in the tree stays 0.4.0
+- Retrace the vendor keep list (350 of 1846 store entries): the
+  closure moves for effect 4.0.6 to 4.1.0 (new
+  @effect/sql-sqlite-bun) and @opentui 0.8.0 to 0.8.3 with
+  their re-resolved entries
+- Legal review re-derived for the new tree: 347 packages, same
+  10-licence set (MIT 190, Apache-2.0 67, ISC 65, rest as
+  before) except the two @opentui/core-linux-* 0.8.3 entries now
+  declaring MIT AND LGPL-2.1-or-later (was MIT; opentui 0.8.3
+  decodes video via FFmpeg built from source in its own
+  package, whose License tag carries the grant). Their prebuilt
+  .so files are deleted from the tree and the runtime loads the
+  opentui package's build instead, so no copyleft ships here;
+  no proprietary packages - the @anthropic-ai/claude-agent-sdk
+  0.3.301 stays externalized (see below), and the retraced tree
+  still drops its store entry with zero SDK bytes in the
+  tarball
+- Build web-tree-sitter's tree-sitter.wasm from source instead of
+  shipping the npm prebuilt: emcc compiles the tree-sitter 0.25.10
+  sources (new Source30) to the MAIN_MODULE the grammar side
+  modules link against (EXPORT_ALL keeps env.__stack_pointer
+  for emscripten 6), and bun rebundles the TS bindings the way
+  upstream's script/build.js does; glue and wasm come from the
+  same build.
+  The npm prebuilts leave the vendor tarball at tarball time, the
+  Source-Binary-Exception goes away with them, and %check (which
+  loads every system grammar through this runtime) is the
+  acceptance test; new BuildRequires: emscripten >= 6.0.3
+- All five patches apply clean against 2.2.6 (with offsets
+  only); fff 0.10.5, bun-pty 0.4.11, photon-node 0.3.4 and
+  parcel 2.5.1 are unchanged, so the %prep pin checks pass
+  unmodified; bun 1.4.4 now matches the tag's pin, so Patch0 is
+  an inert guard for the next skew; no new runtime
+  dependencies
+
+-------------------------------------------------------------------
 Sat Oct 31 14:42:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the pty helper from source instead of shipping upstream's

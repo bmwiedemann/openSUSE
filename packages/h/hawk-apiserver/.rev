@@ -131,4 +131,44 @@
     <comment>1</comment>
     <requestid>1394422</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8dd86f8b6c5f8de38530d9a762e24750</srcmd5>
+    <version>0.6.1+git.1793691082.74381dc</version>
+    <time>1793725129</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394626</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>8fddf9f5fe12258c59d54bf2e7afc136</srcmd5>
+    <version>0.6.6+git.1793960618.9177347</version>
+    <time>1793990668</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395793</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9330f52514a71cb1b944ebcdd17a16f7</srcmd5>
+    <version>0.6.8+git.1794043145.c24a18d</version>
+    <time>1794090771</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1395981</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>50f7139f6b67ca2517fbe0483a8c5d72</srcmd5>
+    <version>0.7.0+git.1794052406.f1b2139</version>
+    <time>1794591407</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397330</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>dd6e2d0a8cbe9237f94b97b0bf7c688d</srcmd5>
+    <version>0.8.0+git.1794489643.2e2ae4a</version>
+    <time>1794932443</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398089</requestid>
+  </revision>
 </revisionlist>

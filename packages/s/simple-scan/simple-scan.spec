@@ -24,7 +24,8 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/simple-scan
 Source0:        %{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM glgo#GNOME/simple-scan#605
+Patch0:         simple-scan-desktop.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -34,10 +35,10 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.38
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.10.0
+BuildRequires:  pkgconfig(gtk4) >= 4.15.2
 BuildRequires:  pkgconfig(gusb) >= 0.2.7
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libwebp)

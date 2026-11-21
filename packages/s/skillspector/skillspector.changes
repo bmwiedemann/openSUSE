@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:22:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.13.3:
+  * Scan integrity: baseline and recursive reports can no longer
+    overwrite the primary input or a child skill input, missing
+    custom YARA rule directories report incomplete inspection,
+    and artifact inspection continues after a matcher timeout
+  * Detection coverage: npx commands in JSON MCP configs, Pipenv
+    dependencies and locked versions, urllib-header credential
+    flows, agent-memory writes from test carriers, CRLF-shebang
+    launchers, and restored PowerShell SC3/P2 checks
+  * Deselect two retry-after deadline tests: the Factory SDK names
+    the rate-limit failure OpenAIRateLimitError, not RateLimitError
+    (deterministic mismatch; deadline behavior itself still passes
+    and stays covered by the build_context deadline tests)
+  * Fewer false incomplete scans: bounded shell syntax, generated
+    browser-template text, and Markdown code-fence line handling
+  * Large scans: configurable tool-description batch limit and a
+    longer default workflow deadline
+
+-------------------------------------------------------------------
 Thu Oct 29 10:14:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.13.2:

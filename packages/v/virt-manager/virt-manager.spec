@@ -48,7 +48,7 @@ Summary:        Virtual Machine Manager
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            http://virt-manager.org/
-Source0:        https://releases.pagure.org/virt-manager/virt-manager-%{version}.tar.xz
+Source0:        https://github.com/virt-manager/virt-manager/releases/download/v%{version}/virt-manager-%{version}.tar.xz
 Source1:        virt-install.rb
 Source2:        virt-install.desktop
 Source3:        virt-manager-supportconfig

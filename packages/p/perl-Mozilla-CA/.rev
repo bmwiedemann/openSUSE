@@ -145,4 +145,23 @@
         sha256: 06c08d7dafd876971eb1124fe67f847ec0c7a158d3ea53cbe940e2ea9791f4c3</comment>
     <requestid>1392070</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>88a2cb28be6a3c4abf7b1eb83a09630b</srcmd5>
+    <version>20261105.0.0</version>
+    <time>1794162142</time>
+    <user>dimstar_suse</user>
+    <comment>- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+
+- updated to 20261105.0.0 (20261105)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+  20261105
+    - Include metadata with certificates in bundle file
+    - Update from Mozilla repository to 2026-11-05
+    - Removed certificates:
+      - emSign ECC Root CA - C3
+        sha256: bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3
+      - emSign Root CA - C1
+        sha256: 125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f</comment>
+    <requestid>1396140</requestid>
+  </revision>
 </revisionlist>

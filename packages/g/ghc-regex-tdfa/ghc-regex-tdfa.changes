@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct 20 17:11:33 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update regex-tdfa to version 1.3.2.7.
+  ### 1.3.2.7
+
+  _2026-10-20 Andreas Abel_
+
+  - Replace `memcpy` foreign imports with `copyMutableByteArray#` (David Himmelstrup [#78](https://github.com/haskell-hvr/regex-tdfa/issues/78))
+  - Tested with GHC 8.0 - 10.0.1 alpha1
+
+-------------------------------------------------------------------
+Thu Aug 13 16:21:47 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update regex-tdfa to version 1.3.2.6.
+  ### 1.3.2.6
+
+  _2026-08-13 Andreas Abel_
+
+  - Address deprecation warning for (Data.IntSet.fold) ([#76](https://github.com/haskell-hvr/regex-tdfa/issues/76))
+  - Tested with GHC 8.0 - 9.14.1
+
+-------------------------------------------------------------------
 Mon Sep 29 20:12:38 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update regex-tdfa to version 1.3.2.5.

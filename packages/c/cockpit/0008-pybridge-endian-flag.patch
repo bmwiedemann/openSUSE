@@ -17,10 +17,10 @@ https://github.com/systemd/systemd/pull/36784#issuecomment-2734771532
  1 file changed, 5 insertions(+), 2 deletions(-)
 
 diff --git a/src/cockpit/channels/dbus.py b/src/cockpit/channels/dbus.py
-index 5fc52c3a8..3ebc6404a 100644
+index 2d284e7..93e4eef 100644
 --- a/src/cockpit/channels/dbus.py
 +++ b/src/cockpit/channels/dbus.py
-@@ -38,6 +38,7 @@ import asyncio
+@@ -26,6 +26,7 @@ import asyncio
  import errno
  import json
  import logging
@@ -28,7 +28,7 @@ index 5fc52c3a8..3ebc6404a 100644
  import traceback
  import xml.etree.ElementTree as ET
  
-@@ -48,6 +49,8 @@ from ..channel import Channel, ChannelError
+@@ -36,6 +37,8 @@ from ..channel import Channel, ChannelError
  
  logger = logging.getLogger(__name__)
  
@@ -37,7 +37,7 @@ index 5fc52c3a8..3ebc6404a 100644
  # The dbusjson3 payload
  #
  # This channel payload type translates JSON encoded messages on a
-@@ -174,6 +177,7 @@ class DBusChannel(Channel):
+@@ -162,6 +165,7 @@ class DBusChannel(Channel):
      name = None
      bus = None
      owner = None
@@ -45,7 +45,7 @@ index 5fc52c3a8..3ebc6404a 100644
  
      async def setup_name_owner_tracking(self):
          def send_owner(owner):
-@@ -346,10 +350,9 @@ class DBusChannel(Channel):
+@@ -334,10 +338,9 @@ class DBusChannel(Channel):
              # If the method call has kicked off any signals related to
              # watch processing, wait for that to be done.
              async with self.watch_processing_lock:
@@ -54,9 +54,6 @@ index 5fc52c3a8..3ebc6404a 100644
                      reply=[reply.get_body()], id=cookie,
 -                    flags="<" if flags is not None else None,
 +                    flags=self.endianness,
-                     type=reply.get_signature(True))  # noqa: FBT003
+                     type=reply.get_signature(True))  # ruff: ignore[boolean-positional-value-in-call]
          except BusError as error:
              # actually, should send the fields from the message body
--- 
-2.48.1
-

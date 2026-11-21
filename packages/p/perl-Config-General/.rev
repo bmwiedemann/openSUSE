@@ -318,4 +318,17 @@
     <comment></comment>
     <requestid>1237579</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>44d98f28566e7b3d6698655fd73c3f14</srcmd5>
+    <version>2.690.0</version>
+    <time>1795103872</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.690.0 (2.69)
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+  2.69  - fix Changelog
+  2.68  - fixes fix codeberg.org/scip/Config-General/issues/10:
+          and closes CVE-2026-129820 + CVE-2026-129821:
+          validate incoming config hashes, forbid comment, here-doc and include markers</comment>
+    <requestid>1398691</requestid>
+  </revision>
 </revisionlist>

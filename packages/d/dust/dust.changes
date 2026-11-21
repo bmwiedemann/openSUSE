@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 09 09:49:29 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.7:
+  * ci: try fix risc64 build
+  * fix(config): handle ambiguous local midnight
+  * fix: show a size that rounds up to 10 without a decimal place
+  * version: increment version
+  * deps: cargo update
+  * feat: support ignore-directory and invert-filter in config file
+  * maybe fix windows build
+  * fix windows
+  * perf(walk): cache per-dir stat to eliminate duplicate syscall
+  * perf(walk): skip per-file statx in --filecount mode
+  * perf(walk): trim filter-path overhead and skip ignore_file when off
+  * docs: add link to a live browser demo
+  * ci: release a Windows ARM64 GNU-family artifact
+  * fix: reject partial min-size matches like 1.5M
+  * fix: exit quietly on broken pipe instead of panicking
+  * version: increment version
+
+-------------------------------------------------------------------
+Thu Sep 17 06:05:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.6:
+  * perf(walk): swap FxHash for inode dedup HashSet
+  * perf(walk): flatten recursion via rayon::scope, drop -S stack-size knob
+  * Update clap_mangen build dependency from 0.2 to 0.3
+  * Update sysinfo dependency to version 0.39
+
+-------------------------------------------------------------------
 Thu Aug 20 06:16:50 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.2.5:

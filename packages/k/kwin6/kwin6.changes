@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:32:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:43:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+  * input: don't wait for all buttons to be released to stop moveresize
+  * multigpuswapchain: fix the Nvidia workaround (kde#527163)
+  * multigpuswapchain: fix the amdgpu workaround
+  * plugins/screencast: fix jagged cursor (kde#528423)
+  * backends/drm: also clear non-shadowbuffer swapchain damage tracking
+  * core/gbmgraphicsbufferallocator: override the modifier with INVALID where needed (kde#527421)
+  * outputconfigurationstore: improve the default scale for handhelds and tablets
+  * backends/libinput: list devices during setup
+  * kcms/decoration: Apply next state when it changes
+  * Fix sRGB inverse EOTF linear segment (kde#528375)
+  * workspace: ignore dpms wakeups once the system is going to sleep (kde#528221)
+  * opengl: honor KWIN_DISABLE_UDMABUF_IMPORT without a DRM device
+  * Provide no-<feature> cli options even if built without <feature>
+  * effect/offscreenquickview: delete the forwarding input devices
+  * core: Expose left, top, right and bottom of Rect and RectF as properties
+  * plugins/screentransform: Paint the entire snapshot, not a subset
+  * compositor: handle possibly missing render device (kde#527984)
+  * scene/windowitem: emit Window::damaged when the window opacity changes (kde#502748)
+  * plugins/dimscreen: add window class for pinentry-qt in wayland
+  * core/renderloop: fix scheduling with triple buffering and commit timing
+  * xx-pip-v1: Preserve resize anchors at screen edges (kde#527641)
+  * plugins/zoom: fix adjacent monitor detection in Push mode
+  * wayland/surface: remove the primary output
+  * scene: only progress fifo and commit timing on one SceneView
+  * Make maximize guides work as expected with floating point geometry
+  * Fix a typo in Workspace::adjustWindowSize() (kde#465124)
+  * main: add a hang detection thread
+  * dpmsinputeventfilter: cancel touch sequences when turning screens off
+  * outputconfigurationstore: avoid interlaced modes if progressive is preferred
+- Drop patch, merged upstream:
+  * 0001-compositor-handle-possibly-missing-render-device.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 09:15:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add xwayland build dependency
+
+-------------------------------------------------------------------
+Wed Nov  4 12:05:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#527984, boo#1289320)
+  * 0001-compositor-handle-possibly-missing-render-device.patch
+
+-------------------------------------------------------------------
 Tue Oct 27 18:10:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

@@ -80,7 +80,7 @@ Index: conf/main.cf
 +masquerade_classes = envelope_sender, header_sender, header_recipient
 +masquerade_domains = 
 +masquerade_exceptions = 
-+#myhostname = 
++myhostname = 
 +mydestination = $myhostname, localhost.$mydomain, localhost
 +mynetworks_style = subnet
 +#mynetworks = 

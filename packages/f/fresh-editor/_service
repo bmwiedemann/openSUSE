@@ -3,7 +3,7 @@
         <param name="url">https://github.com/sinelaw/fresh</param>
         <param name="scm">git</param>
         <param name="exclude">.git</param>
-        <param name="revision">v0.5.5</param>
+        <param name="revision">v0.5.9</param>
         <param name="versionformat">v@PARENT_TAG@</param>
         <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
         <param name="changesgenerate">enable</param>
@@ -19,6 +19,8 @@
     <service name="cargo_vendor" mode="manual">
         <param name="srcdir">fresh</param>
         <param name="compression">zst</param>
+        <param name="filter">true</param>
+        <param name="update">true</param>
     </service>
     <service name="cargo_audit" mode="manual">
         <param name="srcdir">fresh</param>

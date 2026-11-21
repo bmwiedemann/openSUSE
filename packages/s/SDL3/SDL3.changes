@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:51:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.20
+  * Improved Wayland clipboard handling
+  * Fixed color cursor alpha mask on X11
+  * Fixed a crash when Vulkan texture memory binding fails
+  * Fixed transparent windows using the Vulkan renderer
+  * Improved handling of Nintendo Switch controller calibration
+  * Fixed Nintendo Switch controllers failing because of missing
+    stick and IMU calibration
+  * Fixed reports stopping on the Flydigi Vader 5 Pro while the
+    Flydigi Space Station service is running
+  * Added support for rumble and trigger rumble on the Flydigi
+    Vader 5 Pro
+  * Added support for the 8BitDo Ultimate 2C Wireless controller
+    via HIDAPI
+
+-------------------------------------------------------------------
 Sat Oct  3 00:56:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.18

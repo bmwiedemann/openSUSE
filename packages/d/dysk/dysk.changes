@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 04 09:56:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.8.2:
+  * explain file locations
+  * update CONTRIBUTING rules
+  * update changelog
+  * Show control characters as \xNN escapes
+  * fix terminal escape injection from mount metadata
+  * on release, upload per target binaries
+
+-------------------------------------------------------------------
 Mon Oct 19 05:05:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.8.1:

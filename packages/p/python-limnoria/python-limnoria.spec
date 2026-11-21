@@ -30,6 +30,8 @@ URL:            https://github.com/ProgVal/Limnoria
 Source:         https://files.pythonhosted.org/packages/source/l/limnoria/limnoria-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Skip Fediverse webfinger tests that don't seem to mock correctly
 Patch0:         skip-fediverse-profile-tests.patch
+# PATCH-FIX-OPENSUSE Increase timeout for multiprocessing.spawn test
+Patch1:         increase-sedregex-spawn-timeout.patch
 BuildRequires:  %{python_module PySocks}
 BuildRequires:  %{python_module chardet}
 BuildRequires:  %{python_module cryptography}
@@ -172,6 +174,6 @@ export PYTHONPATH=%{buildroot}%{$python_sitelib}/
 %python_alternative %{_mandir}/man1/supybot-test.1
 %python_alternative %{_mandir}/man1/supybot-wizard.1
 %{python_sitelib}/supybot/
-%{python_sitelib}/limnoria-%{version}*.*-info
+%{python_sitelib}/limnoria-%{version}.dist-info
 
 %changelog

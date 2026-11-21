@@ -1,8 +1,9 @@
 <?xml version="1.0" ?>
 <services>
-  <service name="download_files" mode="manual" />
+  <service name="download_files" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="src">*.tar.gz</param>
-    <param name="update">true</param>
+    <param name="update">false</param>
+    <param name="filter">true</param>
   </service>
 </services>

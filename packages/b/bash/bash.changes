@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov  4 15:24:44 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Fix spelling and wording in summaries and descriptions.
+- Replace the deprecated PreReq with Requires(pre) in the bash-sh subpackage.
+- Run spec-cleaner in full mode.
+- Use the %configure macro for both configure invocations.
+- Collapse the three identical %if %{with alternatives} blocks in the preamble into one.
+
+-------------------------------------------------------------------
 Wed Oct  7 09:24:48 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add temporary patch bash-5.3.19-workaround.patch from mailing list

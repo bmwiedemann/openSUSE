@@ -1,8 +1,127 @@
 -------------------------------------------------------------------
+Thu Nov 12 16:02:19 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1290237: Update to 17.12:
+  https://www.postgresql.org/docs/17/release-17-12.html
+  https://www.postgresql.org/about/news/p-3442/
+
+  * CVE-2026-6460: Add defenses against problems caused by altering
+    composite types concurrently with operations on data of those
+    types
+  * CVE-2026-116306: Cope with concurrent rowtype changes in
+    ExecEvalFieldStore[De]Form()
+  * CVE-2026-16237: Enforce view row visibility in INSERT ... ON
+    CONFLICT
+  * CVE-2026-120146: Align REASSIGN OWNED's caller-privilege checks
+    with ALTER ... OWNER TO's checks
+  * CVE-2026-116310: Fix use-after-free in COPY FROM ON_ERROR
+    reporting
+  * CVE-2026-116332: Disallow closing a portal that is still being
+    set up
+  * CVE-2026-120143: Forcibly close portals associated with
+    transition tables at the end of the trigger function
+  * CVE-2026-116304: Fix race condition leading to use-after-free
+    in shared tupledesc management
+  * CVE-2026-120152: Fix use-after-free in pg_show_all_settings()
+  * CVE-2026-120150: Fix use-after-free in expanded-record domain
+    constraint checking
+  * CVE-2026-116328: Prevent memory corruption after a large
+    allocation in a generation memory context is freed
+  * CVE-2026-116315: Fix buffer overrun in tsvector_delete()
+  * CVE-2026-116317: Fix buffer overrun in ts_rank_cd()
+  * CVE-2026-116321: Prevent construction of invalid name values
+    via element assignment
+  * CVE-2026-116327: Treat application of a leaky function to a
+    CaseTestExpr or internal Param node as leaky
+  * CVE-2026-116331: Don't generate an index-based plan for an
+    aggregate whose input and output types don't match
+  * CVE-2026-116312: Avoid inserting the wrong tuple into a trigger
+    transition table in a MERGE that does an INSERT followed by an
+    UPDATE
+  * CVE-2026-116335: Check that commutator and negator operator
+    pairs return the same data type
+  * CVE-2026-116336: Prevent functions in index predicates and
+    expressions from breaking REINDEX CONCURRENTLY by manipulating
+    the indexes
+  * CVE-2026-6467: Prevent corrupting a newly-installed extension
+    by renaming its target schema during CREATE EXTENSION or by
+    installing it into a temporary schema
+  * CVE-2026-120153: Reject more unsafe names in extension script
+    substitutions
+  * CVE-2026-116303: Check EXECUTE privilege before calling cast
+    functions within to_json() and other conversion-to-JSON code
+  * CVE-2026-116311: Prevent DROP OWNED BY from changing row-level
+    security policies on tables that the current user does not own
+  * CVE-2026-116316: Disallow security-restricted operations from
+    creating types in temporary schemas
+  * CVE-2026-120149: Avoid out-of-bounds accesses in FDW batch
+    inserts
+  * CVE-2026-116333: Avoid out-of-bounds reads in parallel btree
+    scans with array keys
+  * CVE-2026-120148: Refuse to create extended statistics on
+    expressions of transient types
+  * CVE-2026-120145: Reject system catalogs as logical replication
+    targets
+  * CVE-2026-120154: Check ON CONFLICT target row against RLS
+    policies before applying user quals
+  * CVE-2026-14661: Validate all connection options in replication
+    subscriptions and contrib/dblink
+  * CVE-2026-120142: Handle dropped columns safely while comparing
+    row types
+  * CVE-2026-18447: Disallow declaring SQL functions as returning
+    type "any"
+  * CVE-2026-120139: Harden more memory-size calculations against
+    integer overflow
+  * CVE-2026-120141: Fix type confusion in set-returning functions
+    that return RECORD, when materialized in a query's target list
+  * CVE-2026-120151: Cope with concurrent rowtype changes in
+    PL/pgSQL record field assignment
+  * CVE-2026-116326: Support tied Perl objects in PL/Perl and
+    associated contrib modules
+  * CVE-2026-116309: Fix type confusion in PL/Perl's
+    get_perl_array_ref()
+  * CVE-2026-116320: Fix use-after-free in scans of Perl arrays and
+    hashes
+  * CVE-2026-116319: Fix use-after-free in
+    plperl_return_next_internal()
+  * CVE-2026-116307: In PL/Perl, fix use-after-free triggered by
+    releasing a prepared query that is being executed
+  * CVE-2026-116323: Fix use-after-free hazards in re-entrant use
+    of PL/Tcl
+  * CVE-2026-120147: Reject re-entrant use of contrib/dblink
+  * CVE-2026-116308: In contrib/dict_int, return NULL for zero-
+    length tokens
+  * CVE-2026-116325: Ensure that reindexdb correctly quotes index
+    names it is dealing with
+  * CVE-2026-116330: Make the \[un]restrict commands functional in
+    pg_dump's tar-format output
+  * CVE-2026-116314: Harden pg_restore against corrupt archive
+    files
+  * CVE-2026-16240: Fix use of externally-controlled format string
+    in pg_basebackup
+  * CVE-2026-6464: Ensure that psql counts all the COPY FROM STDIN
+    commands appearing in a multi-query command string
+
+-------------------------------------------------------------------
+Fri Oct 16 09:58:11 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Sync spec file with postgresql19:
+  * Support prerelease versions via the prerelease macro.
+  * Add files that are new in PostgreSQL 19 conditionally.
+  * Let genlists also collect translations that don't belong to a
+    binary and use it for the postgresql-regress translations.
+
+-------------------------------------------------------------------
 Wed Sep 30 13:31:18 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Require libicu-devel from the server-devel package when building
   with ICU support.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:56:59 UTC 2026 - Reinhard Max <max@suse.com>
+
+- llvmjit-devel: require the main clang and llvm packages again
+  instead of their -devel packages.
 
 -------------------------------------------------------------------
 Thu Aug 20 11:55:10 UTC 2026 - Reinhard Max <max@suse.com>
@@ -84,6 +203,11 @@ Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
   /usr/bin/clang symlink, which will now be contained in the
   metapackage only. If older LLVM versions are required, the
   compiler binary has to be provided via CLANG=clang-<N>.
+
+-------------------------------------------------------------------
+Fri Jun 12 20:10:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump packaging level to 19
 
 -------------------------------------------------------------------
 Wed May 13 08:26:21 UTC 2026 - Reinhard Max <max@suse.com>

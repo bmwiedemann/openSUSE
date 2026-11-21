@@ -305,4 +305,17 @@
           99b221485fffe09ae308ccbda2b1cf8e5c67a08d</comment>
     <requestid>1376321</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>37fc60ac54120a0b4c1a28d4a8e84f72</srcmd5>
+    <version>2.225.0</version>
+    <time>1793725189</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.225.0 (2.225)
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+    2.225 9 October 2026
+        * update to version 2,225
+          Fri Oct 9 14:54:19 2026 +0100
+          1729a1df449e82fd9677240b59690f029af028e3</comment>
+    <requestid>1394677</requestid>
+  </revision>
 </revisionlist>

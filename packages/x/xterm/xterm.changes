@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  1 18:26:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 412:
+  * improve fix for regex-selection of a wrapped line
+  * correct limits for a partial screen clear operation
+  * amend DECRQM 1046 response to return set when
+    titeInhibit is set
+  * update wcwidth tables to Unicode 18.0.0
+  * update config.guess and config.sub
+- Spec cleanup: drop obsolete Group tags, use macros for
+  fonts dir and man extension, use pkgconfig(ncursesw)
+  for the wide-curses dependency
+
+-------------------------------------------------------------------
 Tue Oct  6 20:26:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 411:

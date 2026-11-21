@@ -43,4 +43,12 @@ read-only attachments, Template.set_alias(). Drops a now-obsolete
     <comment>Update python-cubesandbox to 0.7.3: E2B-compatible MCP gateway support, network and stability fixes.</comment>
     <requestid>1384881</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>822fb4793b39789a67d593baf43155ce</srcmd5>
+    <version>0.8.0</version>
+    <time>1794591253</time>
+    <user>anag_factory</user>
+    <comment>Update python-cubesandbox to 0.8.0: server-side fork(), is_running(), binary-safe files.read, snapshot and volume additions.</comment>
+    <requestid>1397189</requestid>
+  </revision>
 </revisionlist>

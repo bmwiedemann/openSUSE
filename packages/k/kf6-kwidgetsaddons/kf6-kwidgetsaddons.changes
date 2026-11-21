@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * Remove unimplemented methods
+  * KMessageWidget: Draw the border 1px wide in all positions
+  * Update kcharselect-data to Unicode 18.0
+  * kdatetable use en_US. "colour" -> "color"
+  * Set KPageWidget's layout content margins to 0 (kde#527178)
+  * KFontChooser: fix font feature setting (kde#523757)
+  * kselectaction: Delete menu immediately
+  * KCapacityBar: Remove direct painter, use CE_ProgressBar instead
+  * high-contrast color scheme check helper: drop code variant for Qt < 6.10
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

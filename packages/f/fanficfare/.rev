@@ -155,4 +155,41 @@
   - adapter_ficbooknet: Fix author for site change</comment>
     <requestid>1382182</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3ed90c99087cad690116bac046f0445</srcmd5>
+    <version>4.63.0</version>
+    <time>1793725101</time>
+    <user>anag_factory</user>
+    <comment>- Update to the version 4.63.0:
+  - Update translations.
+  - Plugin only: use_camoufox option using Calibre recipes.py
+    Browser. #1444
+  - Add do_camoufox_warmup optional feature
+  - Fix continue_on_chapter_error with fff_chapter_data
+  - adapter_royalroadcom: Take Legacy dateUpdated/datePublished
+    from oldest/newest chapter dates. See also #1445
+  - Update bundled certifi to 2026.10.23
+  - adapter_royalroadcom: Fix for dateUpdated in new UI, thanks
+    VictorVow(#1445)
+  - adapter_royalroadcom: Increase default sleep time.
+  - Plugin: Show book title in BG job title when only one.
+  - Add use_series_page_metadata option, defaults false.
+  - Add QuitDecorator to fetches to allow plugin prog bar quit to
+    work better.
+  - adapter_storiesonlinenet: Fix for site login change.
+  - Change how chapter metadata is stored in chapter files
+  - Fix mark new/unnew works with preserved chapters
+  - Add first_chapter/last_chapter to valid settings list.
+  - Fix numChapters for update_preserve_deleted_chapters
+  - Don't skip equal-count chapter swaps when preserving deleted
+    chapters #1428, thanks kitoma!
+  - Fixing Unnew for #1434.
+  - RoyalRoad: Handle email-click URLs in geturls, not adapter.
+    For reasons. #1429
+  - adapter_fanficsme: Fix word count for site change. Closes
+    #1433
+  - Plugin: avoid blocking the event loop #1430, thanks,
+    logologist</comment>
+    <requestid>1394608</requestid>
+  </revision>
 </revisionlist>

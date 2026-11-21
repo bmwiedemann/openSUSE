@@ -17,7 +17,7 @@
 
 
 Name:           cherrytree
-Version:        1.7.2
+Version:        1.7.3
 Release:        0
 Summary:        A hierarchical note taking application
 License:        GPL-3.0-or-later AND LGPL-2.1-only
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  python3-lxml
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) >= 6.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(gtksourceview-4)

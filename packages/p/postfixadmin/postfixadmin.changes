@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 18 12:20:40 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to PostfixAdmin 4.0.7
+  - security fixes (including CVE-2026-127178 aka boo#1290587)
+  - fix missing texts for non-english languages
+  - some other minor fixes, see CHANGELOG.TXT for all details
+
+-------------------------------------------------------------------
+Sun Nov  8 19:00:54 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to PostfixAdmin 4.0.6
+  - MFA/TOTP Support
+  - OpenDKIM domain key handling
+  - Remove the dependency on 'doveadm pw'
+  - dark theme
+  - lots of small improvements and fixes
+  - see CHANGELOG.TXT for all the details
+
+-------------------------------------------------------------------
 Sun Jan  5 17:25:04 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to PostfixAdmin 3.3.15

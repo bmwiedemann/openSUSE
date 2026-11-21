@@ -1,7 +1,7 @@
 #
 # spec file for package ddcutil
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           ddcutil
-Version:        2.2.7
+Version:        3.0.2
 Release:        0
 Summary:        Utility to query and update monitor settings
 License:        GPL-2.0-or-later
-Group:          System/GUI/Other
 URL:            https://github.com/rockowitz/ddcutil
 Source:         https://github.com/rockowitz/ddcutil/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE ddcutil-strtol-erange.patch -- fail str_to_long() on strtol ERANGE instead of clamping, fixing str_to_int() on ILP32 (i586 %check failure)
+Patch0:         ddcutil-strtol-erange.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -35,13 +36,13 @@ BuildRequires:  libi2c0-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
+BuildRequires:  pkgconfig(jansson) >= 2.0
 BuildRequires:  pkgconfig(libacl)
-BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(libdrm) >= 2.4.67
 BuildRequires:  pkgconfig(libkmod)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.15
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     ddcutil-i2c-udev-rules
@@ -59,7 +60,6 @@ applied.
 
 %package -n libddcutil5
 Summary:        Shared library to query and update monitor settings
-Group:          System/Libraries
 Suggests:       ddcutil-i2c-udev-rules
 # libddcutil.so.4 was wrongly packaged as libddcutil3 after the 1.x upgrade
 Conflicts:      libddcutil3 >= 1.0
@@ -73,7 +73,6 @@ Device on USB.
 
 %package -n libddcutil-devel
 Summary:        Development files for libddcutil
-Group:          Development/Libraries/C and C++
 Requires:       libddcutil5 = %{version}
 
 %description -n libddcutil-devel
@@ -81,7 +80,6 @@ Header files and pkgconfig control file for libddcutil.
 
 %package -n ddcutil-i2c-udev-rules
 Summary:        Udev rules to grant logged in users DDC/CI access
-Group:          Hardware/Other
 Requires:       libddcutil5 = %{version}
 Provides:       ddcutil:%{_udevrulesdir}/60-ddcutil.rules
 BuildArch:      noarch

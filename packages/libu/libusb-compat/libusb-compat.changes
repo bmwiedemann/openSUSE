@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:34:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.9:
+  * Fix memory leaks in USB bus and device cleanup: release device
+    references in the exit destructor, free per-device config data,
+    and plug leaks in error paths.
+  * Modernize autoconf macros and detect the libusb-1.0 SONAME via
+    objdump instead of ldd, which is safe for cross-compilation.
+  * testlibusb: enlarge the description buffer, silencing
+    -Wformat-truncation warnings.
+  * Release tarball now ships a pre-generated configure script, so no
+    bootstrap step is needed at build time.
+- Drop Group tags, add explicit gcc and make BuildRequires, and
+  version the libusb-1.0 BuildRequires floor (>= 0.9.1) to match
+  upstream's configure check.
+
+-------------------------------------------------------------------
 Sun Jan 29 09:37:23 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.8:

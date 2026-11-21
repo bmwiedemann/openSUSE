@@ -627,4 +627,41 @@
   - Allowed newer Google Auth versions for the Google One Tap backend.</comment>
     <requestid>1386271</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bd493426c785d4e1561eed032d7ede48</srcmd5>
+    <version>7.2.0</version>
+    <time>1794591257</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.2.0:
+  * Add a OneLogin OpenID Connect backend with S256 PKCE enabled by default.
+  * Pass changed user field names from the default details pipeline to a
+    storage hook.
+  * Preserve native framework response types across strategies, backends,
+    authentication actions, and decorated partial pipeline steps.
+  * Route reused Discourse callbacks and missing nonces through configured
+    authentication error handling instead of raising unhandled errors.
+  * Expand type annotations across strategy, backend, and session helpers.
+  * Bind SAML responses to the initiating browser session and ignore legacy
+    RelayState session IDs to prevent login CSRF. (CVE-2026-126775,
+    bsc#1290115)
+  * Add Casdoor OpenID Connect backend with PKCE enabled by default.
+  * Keep authentication backends immutably bound to the strategy instance
+    they were created with.
+  * Fix strategy response typing for partial pipeline steps.
+  * Treat rejected Bitbucket refresh tokens as dead grants.
+  * Drop support for Python 3.9 and add support for Python 3.14.
+  * Add Weblate OpenID Connect backend with Hosted Weblate defaults,
+    configurable issuer, and PKCE support.
+  * Add a strategy-aware backend get_title() method for sign-in labels.
+  * Add backends for the WLCG IAM testing site, Ping Identity OIDC, uffd
+    OAuth2, Clever, Twitter OAuth2, and e-infra.cz.
+  * Replace python-jose with PyJWT.
+  * Bind OpenID Connect nonces to the initiating browser session and OAuth2
+    state to reject foreign auth codes. (CVE-2026-115910, bsc#1288018)
+  * Require session-bound signed transaction values on OpenID callbacks and
+    reject unsolicited assertions.
+  * Reject EVE Online sign-ins when a character's owner hash changes to
+    prevent transferred characters from reusing local accounts.</comment>
+    <requestid>1397201</requestid>
+  </revision>
 </revisionlist>

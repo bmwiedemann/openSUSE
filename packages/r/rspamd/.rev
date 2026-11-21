@@ -642,4 +642,12 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1393417</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>ad277f308d00762add6d40f8cb0476a6</srcmd5>
+    <version>4.3.0</version>
+    <time>1794816470</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.0</comment>
+    <requestid>1397486</requestid>
+  </revision>
 </revisionlist>

@@ -1368,4 +1368,20 @@ I would be grateful.
 - Add missing build dependency (boo#1286338)</comment>
     <requestid>1386983</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>7d9aa6e633b9c4685fb9970b4bc3f6ec</srcmd5>
+    <version>26.08.3</version>
+    <time>1793990325</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395248</requestid>
+  </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>253262f64d79bee4a4a42a20a5b1d1b1</srcmd5>
+    <version>26.08.3</version>
+    <time>1794816521</time>
+    <user>anag_factory</user>
+    <comment>- Make sure kdenlive is rebuilt if opentimelineio is updated (boo#1290457)</comment>
+    <requestid>1397637</requestid>
+  </revision>
 </revisionlist>

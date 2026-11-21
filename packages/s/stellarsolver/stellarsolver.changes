@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:00:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.9:
+  * Fix concurrent CFITSIO access in external solvers.
+  * Report extracted star counts when parallel solving fails.
+  * Correct library names in the pkg-config file.
+
+-------------------------------------------------------------------
 Mon Jun 29 11:58:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.8:

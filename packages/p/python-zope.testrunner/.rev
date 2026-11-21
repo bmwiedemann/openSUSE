@@ -313,4 +313,12 @@
     failure reporting.</comment>
     <requestid>1374982</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>3a870bc5e996707735d056e517b6f105</srcmd5>
+    <version>8.3</version>
+    <time>1795023070</time>
+    <user>anag_factory</user>
+    <comment>- Don't use python -m zope.testrunnner to run the testsuite.</comment>
+    <requestid>1398275</requestid>
+  </revision>
 </revisionlist>

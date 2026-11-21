@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/fortio/fortio</param>
-              <param name="changesrevision">67ce9fa2a3a62fdb2f7a0d2b50acda1f7002d32b</param></service></servicedata>
+              <param name="changesrevision">67ce9fa2a3a62fdb2f7a0d2b50acda1f7002d32b</param></service><service name="tar_scm">
+                <param name="url">https://github.com/fortio/fortio.git</param>
+              <param name="changesrevision">d940ff1a1ade9926677f96827174c5593bdae6d6</param></service></servicedata>

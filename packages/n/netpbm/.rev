@@ -1082,4 +1082,28 @@ trigered by: https://build.opensuse.org/request/show/312207 (forwarded request 3
     <comment>Update netpbm to 11.16.1 (forwarded request 1385799 from pluskalm)</comment>
     <requestid>1386189</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>9f629044700baca6ab5e71d727e7e36d</srcmd5>
+    <version>11.16.1</version>
+    <time>1793990244</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1289288], [bsc#1289290], [bsc#1289291], [bsc#1289293], [bsc#1289294], [bsc#1289296], [bsc#1289297], CVE-2026-120431, CVE-2026-120432, CVE-2026-120433, CVE-2026-120434, CVE-2026-120435, CVE-2026-120436, CVE-2026-120437</comment>
+    <requestid>1395421</requestid>
+  </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>7c6499ba9dd850c50e35882edef0e039</srcmd5>
+    <version>11.16.3</version>
+    <time>1794597150</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1286093], CVE-2026-112275</comment>
+    <requestid>1396835</requestid>
+  </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>bc6fe5c80ff35b387f4d7c40ad8a8c43</srcmd5>
+    <version>11.16.5</version>
+    <time>1795182243</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1286094], CVE-2026-112276</comment>
+    <requestid>1398594</requestid>
+  </revision>
 </revisionlist>

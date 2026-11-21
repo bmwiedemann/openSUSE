@@ -41,8 +41,6 @@ Patch2:         plymouth-manpages.patch
 Patch3:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
 Patch4:         plymouth-keep-KillMode-none.patch
-# PATCH-FIX-OPENSUSE plymouth-install-label-library-and-font-file-to-initrd.patch boo#1183425 boo#1184309 qzhao@suse.com -- Pack label plugin and font into initram to ensure notice info could successfully show when partition encrypted.
-Patch5:         plymouth-install-label-library-and-font-file-to-initrd.patch
 # PATCH-FIX-OPENSUSE plymouth-quiet-dracut-build-info.patch bsc#1189613 qzhao@suse.com -- Hide unuseful output when re-generate initrd.
 Patch6:         plymouth-quiet-dracut-build-info.patch
 # PATCH-FIX-OPENSUSE plymouth-watermark-config.patch bsc#1189613 qzhao@suse.com -- Add two-step water mark config support.
@@ -53,6 +51,10 @@ Patch8:         plymouth-log-on-default.patch
 Patch9:         plymouth-screen-twice-scale-on-160DPI-higher.patch
 # PATCH-FIX-OPENSUSE plymouth-crash-avoid-on-keyboard-remove-input-handler.patch bsc#1193736 qzhao@suse.com -- Confirm keyboard handler list not NULL before release memory to avoid crash.
 Patch10:        plymouth-crash-avoid-on-keyboard-remove-input-handler.patch
+# PATCH-FIX-OPENSUSE plymouth-populate-initrd-theme-font.patch boo#1289972 aplanas@suse.com -- Copy the font of the theme for the label-freetype plugin in the initrd.
+Patch11:        plymouth-populate-initrd-theme-font.patch
+# PATCH-FIX-UPSTREAM plymouth-label-freetype-measure-hidden.patch boo#1289972 aplanas@suse.com -- Measure the hidden labels, so the first message is drawn (upstream commit 8af62d1).
+Patch12:        plymouth-label-freetype-measure-hidden.patch
 # PATCH-FIX-SLE plymouth-support-multi-monitor-hotplugin.patch bsc#1231214 qzhao@suse.com -- support the 2nd monitor hotplugin to the system to display the same content with the first monitor.
 Patch13:        plymouth-support-multi-monitor-hotplugin.patch
 # PATCH-FIX-SLE plymouth-select_fb_for_vmware.patch bsc#1234643 qzhao@suse.com -- use frame-buffer in vmware VM platform.
@@ -165,6 +167,8 @@ and headers needed to develop 3rd party splash plugins for Plymouth.
 Summary:        Plymouth related utilities for dracut
 Group:          System/Base
 Requires:       %{name} = %{version}
+# The text in the initrd is drawn by the FreeType label plugin
+Requires:       %{name}-plugin-label-ft = %{version}
 Supplements:    (plymouth and dracut)
 BuildArch:      noarch
 
@@ -307,6 +311,8 @@ spins in the shape of an infinity sign.
 %package theme-spinner
 Summary:        Plymouth "Spinner" theme
 Group:          System/Base
+# Font of the theme
+Requires:       cantarell-fonts
 Requires:       %{name}-plugin-two-step = %{version}
 Requires(post): %{name}-scripts
 BuildArch:      noarch
@@ -363,21 +369,11 @@ This package contains the "bgrt" boot splash theme for
 Plymouth.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 13 -p1
+%autosetup -N
+# Patches 0-99 are applied everywhere, 100 and above only in SLE
+%autopatch -p1 -M 99
 %if !0%{?is_opensuse}
-%patch -P 100 -p1
+%autopatch -p1 -m 100
 %endif
 autoreconf -ivf
 

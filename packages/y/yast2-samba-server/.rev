@@ -741,4 +741,13 @@
     <comment>submit new version 5.0.2</comment>
     <requestid>1342596</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>cd68c7855c90f3b1443d6d302db6fc6a</srcmd5>
+    <version>5.0.2</version>
+    <time>1794324583</time>
+    <user>anag_factory</user>
+    <comment>- Supplement samba only when yast2 is already installed. If yast is not
+  installed on the system, we do not want to pull it in (boo#1289484).</comment>
+    <requestid>1396461</requestid>
+  </revision>
 </revisionlist>

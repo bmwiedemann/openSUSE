@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 17 17:10:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Keep old style vendor script around
+- Fix up pkg-config files
+- Restore build-id again
+
+-------------------------------------------------------------------
+Sun Nov  1 19:07:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the build with zig 0.17:
+  * vendor.tar.zst: unpack the 37 zig packages into p/<hash>/;
+    zig 0.17 stores fetched packages as compressed p/<hash>.tar.gz,
+    which zig build --system cannot find, so the build stopped with
+    "package not found" for uucode and translate_c
+  * vendor.tar.zst: remove the prebuilt Windows, macOS and Java
+    binaries and test fixtures that gettext, imgui, breakpad and
+    sentry carry
+  * vendor.sh: unpack the fetched packages, delete those binaries,
+    and keep the test directories, which the translate_c build
+    reads
+  * Install with a relative lib dir, as zig 0.17 does not apply
+    DESTDIR to an absolute one
+  * Recreate the ghostty terminfo alias, a symlink that zig 0.17
+    does not install
+  * Fix prefix and libdir in libghostty-vt.pc and do not ship the
+    static library
+- The vendored libxml2 is not built, as fontconfig is linked from
+  the system, so the package is not affected by:
+  * CVE-2025-6021 (boo#1244594)
+  * CVE-2025-8732 (boo#1247855)
+- Spec cleanup
+
+-------------------------------------------------------------------
+Tue Oct 27 19:29:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.4.0
+  https://ghostty.org/docs/install/release-notes/1-4-0
+
+-------------------------------------------------------------------
 Sat Oct  3 16:03:46 UTC 2026 - C Aasted <dezzadk@gmail.com>
 
 - Fix proper /usr/share/vim/site runtimepath for plugin

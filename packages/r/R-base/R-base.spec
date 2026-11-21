@@ -23,7 +23,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.6.1
+Version:        4.6.2
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.xz
@@ -114,16 +114,15 @@ AT&T Bell Laboratories by Rick Becker, John Chambers and Allan Wilks.
 %configure --enable-R-shlib LIBnn=%{_lib}
 
 make %{?_smp_mflags}
-#make
 make pdf
-%if 0%{?suse_version} > 1320
+#%if 0%{?suse_version} > 1320
 make info
 # Convert to UTF-8
 for i in doc/manual/R-intro.info doc/manual/R-FAQ.info doc/FAQ doc/manual/R-admin.info doc/manual/R-exts.info-1; do
   iconv -f iso-8859-1 -t utf-8 -o $i{.utf8,}
   mv $i{.utf8,}
 done
-%endif
+#%endif
 
 %install
 make DESTDIR=%{buildroot} install
@@ -1371,7 +1370,7 @@ This packages provides R-boot, one of the recommended packages.
 
 %package -n R-class
 Summary:        Package provides recommended R-class
-Version:        7.3.23
+Version:        7.3.24
 Release:        %release
 Requires:       R-base
 
@@ -1403,7 +1402,7 @@ This packages provides R-class, one of the recommended packages.
 
 %package -n R-cluster
 Summary:        Package provides recommended R-cluster
-Version:        2.1.8.2
+Version:        2.1.8.3
 Release:        %release
 Requires:       R-base
 
@@ -1458,7 +1457,7 @@ This packages provides R-codetools, one of the recommended packages.
 
 %package -n R-foreign
 Summary:        Package provides recommended R-foreign
-Version:        0.8.91
+Version:        0.8.92
 Release:        %release
 Requires:       R-base
 
@@ -1488,7 +1487,7 @@ This packages provides R-foreign, one of the recommended packages.
 
 %package -n R-KernSmooth
 Summary:        Package provides recommended R-KernSmooth
-Version:        2.23.26
+Version:        2.23.27
 Release:        %release
 Requires:       R-base
 
@@ -1517,7 +1516,7 @@ This packages provides R-KernSmooth, one of the recommended packages.
 
 %package -n R-lattice
 Summary:        Package provides recommended R-lattice
-Version:        0.22.9
+Version:        0.23.1
 Release:        %release
 Requires:       R-base
 
@@ -1552,7 +1551,7 @@ This packages provides R-lattice, one of the recommended packages.
 
 %package -n R-MASS
 Summary:        Package provides recommended R-MASS
-Version:        7.3.65
+Version:        7.3.66
 Release:        %release
 Requires:       R-base
 
@@ -1585,7 +1584,7 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.7.5
+Version:        1.7.6
 Release:        %release
 Requires:       R-base
 Obsoletes:      R-Matrix-devel <= 1.3.2
@@ -1677,7 +1676,7 @@ This packages provides R-mgcv, one of the recommended packages.
 
 %package -n R-nlme
 Summary:        Package provides recommended R-nlme
-Version:        3.1.169
+Version:        3.1.171
 Release:        %release
 Requires:       R-base
 
@@ -1709,7 +1708,7 @@ This packages provides R-nlme, one of the recommended packages.
 
 %package -n R-nnet
 Summary:        Package provides recommended R-nnet
-Version:        7.3.20
+Version:        7.3.21
 Release:        %release
 Requires:       R-base
 
@@ -1773,7 +1772,7 @@ This packages provides R-rpart, one of the recommended packages.
 
 %package -n R-spatial
 Summary:        Package provides recommended R-spatial
-Version:        7.3.18
+Version:        7.3.19
 Release:        %release
 Requires:       R-base
 
@@ -1786,6 +1785,7 @@ This packages provides R-spatial, one of the recommended packages.
 %dir %{_libdir}/R/library/spatial/
 %{_libdir}/R/library/spatial/CITATION
 %{_libdir}/R/library/spatial/DESCRIPTION
+%{_libdir}/R/library/spatial/data/
 %{_libdir}/R/library/spatial/help/
 %{_libdir}/R/library/spatial/html/
 %{_libdir}/R/library/spatial/INDEX
@@ -1806,7 +1806,7 @@ This packages provides R-spatial, one of the recommended packages.
 
 %package -n R-survival
 Summary:        Package provides recommended R-survival
-Version:        3.8.6
+Version:        3.8.12
 Release:        %release
 Requires:       R-base
 

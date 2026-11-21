@@ -16,12 +16,12 @@
 #
 
 
-%define libname libumf0
+%define libname libumf1
 Name:           unified-memory-framework
-Version:        0.11.0
+Version:        1.3.0
 Release:        0
 Summary:        oneAPI Unified Memory Framework (UMF)
-License:        Apache-2.0
+License:        Apache-2.0 WITH LLVM-exception
 URL:            https://github.com/oneapi-src/unified-memory-framework
 Source0:        https://github.com/oneapi-src/unified-memory-framework/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
@@ -41,6 +41,7 @@ from others and allocated using different hardware resources as required.
 
 %package -n %{libname}
 Summary:        oneAPI Unified Memory Framework (UMF)
+Recommends:     libtbbmalloc2
 
 %description -n %{libname}
 The Unified Memory Framework (UMF) is a library for constructing allocators
@@ -96,9 +97,9 @@ rm %{buildroot}%{_datadir}/doc/umf/LICENSE.TXT
 %doc README.md
 %doc licensing/third-party-programs.txt
 
-%{_libdir}/libumf.so.0
-%{_libdir}/libumf.so.0.0.0
-%{_libdir}/libumf_proxy.so.0
+%{_libdir}/libumf.so.1
+%{_libdir}/libumf.so.%{version}
+%{_libdir}/libumf_proxy.so.1
 
 %files devel
 %{_libdir}/libumf.so

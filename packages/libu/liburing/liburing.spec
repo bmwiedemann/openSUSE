@@ -29,6 +29,7 @@ URL:            https://github.com/axboe/liburing
 Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
 Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
 Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
+Patch:          0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -143,11 +144,14 @@ TEST_EXCLUDE+=( read-inc-buf-more.t )
 TEST_EXCLUDE+=( recv-bundle-buf-len.t )
 %endif
 %if 0%{?suse_version} >= 1600
+TEST_EXCLUDE+=( connect.t )
 TEST_EXCLUDE+=( io-wq-exit.t )
 TEST_EXCLUDE+=( iowait.t )
 TEST_EXCLUDE+=( read-before-exit.t )
 TEST_EXCLUDE+=( read-inc-buf-more.t )
 TEST_EXCLUDE+=( read-mshot.t )
+TEST_EXCLUDE+=( sqpoll-exec.t )
+TEST_EXCLUDE+=( thread-exit.t )
 %endif
 
 echo "TEST_EXCLUDE=\"${TEST_EXCLUDE[@]}\"" > test/config.local

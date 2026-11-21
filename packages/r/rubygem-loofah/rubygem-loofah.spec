@@ -24,11 +24,11 @@
 #
 
 Name:           rubygem-loofah
-Version:        2.25.2
+Version:        2.25.3
 Release:        0
 %define mod_name loofah
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{ruby >= 3.2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/flavorjones/loofah

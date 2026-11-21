@@ -20,17 +20,16 @@
 %define lib_name librocksdb11
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        11.12
+Version:        11.13.2
 Release:        0
 Summary:        Library for embeddable, persistent and fast key-value store
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause
 URL:            https://rocksdb.org/
 Source:         https://github.com/facebook/rocksdb/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         rocksdb-8.0.0-reproducible.patch
 Patch1:         rocksdb-8.0.0-shared-liburing.patch
 Patch2:         rocksdb-8.0.0-rpath.patch
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.12
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Snappy)
 BuildRequires:  pkgconfig(bzip2)
@@ -45,7 +44,7 @@ BuildRequires:  pkgconfig(jemalloc)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gflags)
 %else
-BuildRequires:  gflags-devel-static
+BuildRequires:  pkgconfig(gflags_static)
 %endif
 
 %description

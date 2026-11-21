@@ -1,7 +1,7 @@
-diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource-agents-4.18.0+git81.694408f0/doc/man/Makefile.am
---- resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am	2026-08-10 12:12:31.000000000 +0200
-+++ resource-agents-4.18.0+git81.694408f0/doc/man/Makefile.am	2026-08-11 16:54:34.921117088 +0200
-@@ -77,69 +77,46 @@
+diff -rup resource-agents-4.18.0+git118.8806b1e9-orig/doc/man/Makefile.am resource-agents-4.18.0+git118.8806b1e9/doc/man/Makefile.am
+--- resource-agents-4.18.0+git118.8806b1e9-orig/doc/man/Makefile.am	2026-11-11 08:00:29.000000000 +0100
++++ resource-agents-4.18.0+git118.8806b1e9/doc/man/Makefile.am	2026-11-13 12:29:14.157131208 +0100
+@@ -77,69 +77,46 @@ clean-local:
  # 12126 on savannah.gnu.org. But, maybe it gets fixed soon, it was
  # first reported in 1995 and added to Savannah in in 2005...
  if BUILD_DOC
@@ -72,7 +72,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource
                            ocf_heartbeat_galera.7 \
                            ocf_heartbeat_ganesha-nfs.7 \
                            ocf_heartbeat_garbd.7 \
-@@ -151,24 +128,13 @@
+@@ -151,24 +128,13 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_iface-bridge.7 \
                            ocf_heartbeat_iface-macvlan.7 \
                            ocf_heartbeat_iface-vlan.7 \
@@ -97,7 +97,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource
                            ocf_heartbeat_named.7 \
                            ocf_heartbeat_nfsnotify.7 \
                            ocf_heartbeat_nfsserver.7 \
-@@ -177,10 +143,6 @@
+@@ -177,10 +143,6 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_nvmet-namespace.7 \
                            ocf_heartbeat_nvmet-port.7 \
                            ocf_heartbeat_openstack-info.7 \
@@ -108,7 +108,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource
                            ocf_heartbeat_oraasm.7 \
                            ocf_heartbeat_oracle.7 \
                            ocf_heartbeat_oralsnr.7 \
-@@ -188,41 +150,25 @@
+@@ -188,43 +150,22 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_ovsmonitor.7 \
                            ocf_heartbeat_pgagent.7 \
                            ocf_heartbeat_pgsql.7 \
@@ -134,6 +134,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource
 -                          ocf_heartbeat_symlink.7 \
 -                          ocf_heartbeat_syslog-ng.7 \
 -                          ocf_heartbeat_tomcat.7 \
+-                          ocf_heartbeat_valkey.7 \
 -                          ocf_heartbeat_varnish.7 \
 -                          ocf_heartbeat_vdo-vol.7 \
 -                          ocf_heartbeat_vmware.7 \
@@ -148,16 +149,14 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/doc/man/Makefile.am resource
 -if BUILD_AZURE_EVENTS
 -man_MANS           	+= ocf_heartbeat_azure-events.7
 -endif
-+#if BUILD_AZURE_EVENTS
-+#man_MANS           	+= ocf_heartbeat_azure-events.7
-+#endif
- 
+-
  if BUILD_AZURE_EVENTS_AZ
  man_MANS           	+= ocf_heartbeat_azure-events-az.7
-diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resource-agents-4.18.0+git81.694408f0/heartbeat/Makefile.am
---- resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am	2026-08-10 12:12:31.000000000 +0200
-+++ resource-agents-4.18.0+git81.694408f0/heartbeat/Makefile.am	2026-08-11 16:56:59.909067729 +0200
-@@ -50,39 +50,24 @@
+ endif
+diff -rup resource-agents-4.18.0+git118.8806b1e9-orig/heartbeat/Makefile.am resource-agents-4.18.0+git118.8806b1e9/heartbeat/Makefile.am
+--- resource-agents-4.18.0+git118.8806b1e9-orig/heartbeat/Makefile.am	2026-11-11 08:00:29.000000000 +0100
++++ resource-agents-4.18.0+git118.8806b1e9/heartbeat/Makefile.am	2026-11-13 12:27:01.849769973 +0100
+@@ -50,39 +50,24 @@ IPv6addr_LDADD          = -lplumb $(LIBN
  send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
  send_ua_LDADD           = $(LIBNETLIBS)
  
@@ -198,7 +197,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resour
  			VirtualDomain		\
  			WAS			\
  			WAS6			\
-@@ -93,14 +78,11 @@
+@@ -93,14 +78,11 @@ ocf_SCRIPTS	      = AoEtarget		\
  			aliyun-vpc-move-ip	\
  			anything		\
  			apache			\
@@ -213,7 +212,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resour
  			corosync-qnetd		\
  			crypt			\
  			db2			\
-@@ -109,11 +91,8 @@
+@@ -109,11 +91,8 @@ ocf_SCRIPTS	      = AoEtarget		\
  			dummypy			\
  			docker			\
  			docker-compose		\
@@ -225,7 +224,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resour
  			galera			\
  			ganesha-nfs		\
  			garbd			\
-@@ -122,25 +101,15 @@
+@@ -122,25 +101,15 @@ ocf_SCRIPTS	      = AoEtarget		\
  			iSCSILogicalUnit	\
  			iSCSITarget		\
  			ibmmq			\
@@ -252,7 +251,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resour
  			named			\
  			nfsnotify		\
  			nfsserver		\
-@@ -148,11 +117,6 @@
+@@ -148,11 +117,6 @@ ocf_SCRIPTS	      = AoEtarget		\
  			nvmet-subsystem		\
  			nvmet-namespace		\
  			nvmet-port		\
@@ -264,7 +263,7 @@ diff -ru resource-agents-4.18.0+git81.694408f0-orig/heartbeat/Makefile.am resour
  			oraasm			\
  			oracle			\
  			oralsnr			\
-@@ -160,38 +124,21 @@
+@@ -160,38 +124,21 @@ ocf_SCRIPTS	      = AoEtarget		\
  			ovsmonitor		\
  			pgagent			\
  			pgsql			\

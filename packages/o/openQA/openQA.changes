@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795089075.1f7748a4:
+  * feat: use storage-centric names for cleanup
+  * fix(openqa-clone-custom-git-refspec): fail fast on errors
+  * feat: Add OpenQA::ProhibitEscapedDelimiters PerlCritic policy
+  * feat(api): expose worker and host activity and unused filtering in API
+  * feat(schema): add query methods to detect unused workers and hosts
+  * docs: Fix list in "Cleanup of assets, results and other data" section
+  * ci(mergify): auto-merge documentation bot PRs on gh-pages
+  * chore(deps): bump helm/kind-action (#8124)
+  * fix: Validate and clamp time_limit_days
+  * chore(deps-dev): bump @csstools/selector-specificity from 6.0.0 to 6.0.1 (#8067)
+  * chore(deps): bump d3-force from 3.0.0 to 3.0.1 (#8099)
+  * fix(systemd): handle stop in openqa-enqueue-*.service
+  * fix(style): prevent markdown checker from reading directories
+  * feat(settings): Add _DROP_SETTINGS to remove settings from jobs
+  * docs: Revise definition of scenario to include history isolation
+  * ci(mergify): add observation rule for documentation bot PRs
+  * refactor(css): Move dark mode colors into theme variables
+  * fix(css): Darken all progress bars in dark mode
+  * fix(css): Increase contrast of label and flag bubbles in dark mode
+  * fix(css): Brighten text in red card headers in dark mode
+  * fix(css): Use dark colors for comment bubbles in dark mode
+  * fix(css): Make cancelled and aborted buttons readable in dark mode
+  * fix(css): Improve dark mode contrast of the job info box header
+  * fix(css): Improve dark mode contrast of red card headers
+  * fix(css): Improve dark mode contrast of failed bars in group overview
+  * fix: Allow deleting verbatim force_result comments
+  * fix(rest): avoid ?format=* deprecation warning
+  * fix(worker): Send test schedule in status updates until acknowledged
+  * fix(worker): Do not conclude ongoing upload on reconnect for active jobs
+  * feat(nginx): Add an optional route to the decision model servers
+  * refactor(nginx): Set the LLM proxy options for the whole server
+  * feat: Add openQA-llm-decision-server sub-package
+
+-------------------------------------------------------------------
+Fri Nov 13 07:54:22 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794546444.43a39e23:
+  * chore(deps): Dependency cron 2026-11-13
+  * fix(clone-job): Ignore missing assets cleared by overrides
+  * feat(api): Add admin endpoint to list users
+  * chore(gitignore): ignore __pycache__ dirs
+  * fix(ObsRsync): Fail with 404 instead of 500 on request to missing file
+  * refactor(investigation): Simplify listing of failure changes
+  * refactor(investigation): Look up the git timeout once
+  * refactor(investigation): Move git helpers out of Jobs.pm
+  * fix(investigation): Avoid whole-tree git grep for tagged needles
+  * chore(deps): Dependency cron 2026-11-12
+  * chore(deps): bump d3-axis from 3.0.0 to 3.0.1 (#8092)
+  * feat: Add help popover for running jobs and dynamic limits
+  * feat: Add permission flags to API keys
+  * feat(scheduler): Specify unscheduled job reasons
+  * perf(container): Don't load the multimodal projector of the LLM
+
+-------------------------------------------------------------------
+Wed Nov 11 14:41:34 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794406390.a3042dd3:
+  * fix(webui-container): Ensure Apache starts after updating to Leap 16.1
+  * refactor(investigation): Make tree_file private
+  * chore(deps): bump d3-brush from 3.0.0 to 3.0.1 (#8082)
+  * refactor(investigation): Use DateTime for the failure window start
+  * fix(investigation): Do not log expected git outcomes as problems
+  * feat: Clarify dynamic limit heading on tests page
+  * feat: Use Leap 16.1 based containers
+  * fix: Use Leap 16.1 repos consistently in web UI Dockerfile
+  * feat: Update containers to Leap 16.1
+  * feat(worker): Log lock information for easier debugging
+  * fix(worker): Fix updating expiration when lock name is empty
+  * fix: Revert user roles on anonymize
+  * fix(nginx): Pass an LLM request to the next server on a 503
+  * perf(nginx): Route LLM requests by openQA job
+  * feat(api): Add link to /api_help from 404 page
+  * chore(openapi): Adjust description for /users/me/api_keys
+  * feat(openapi-docs): Add recently added /jobs/{jobid}/history
+  * fix(assets): Add workaround for broken JS minifier
+  * feat(swagger): Add swagger-ui npm for OpenAPI documentation
+  * feat: Generate all endpoints in public/openapi.yaml
+
+-------------------------------------------------------------------
+Mon Nov 09 16:30:54 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794241825.17f574df:
+  * chore(deps): bump d3-geo from 3.1.1 to 3.1.2 (#8075)
+
+-------------------------------------------------------------------
+Mon Nov 09 00:24:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794183862.c3440c51:
+  * feat(investigation): List recent commits to files of failed modules
+
+-------------------------------------------------------------------
+Sat Nov 07 13:21:35 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794057672.cbb4e678:
+  * chore(deps): bump d3-delaunay from 6.0.4 to 6.0.6 (#8068)
+
+-------------------------------------------------------------------
+Fri Nov 06 05:06:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793941560.e7928f89:
+  * chore(deps): Dependency cron 2026-11-06
+
+-------------------------------------------------------------------
+Thu Nov 05 17:29:56 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793899653.3dd0d9c0:
+  * chore(deps-dev): bump stylelint-scss from 7.0.0 to 7.4.0 (#8064)
+
+-------------------------------------------------------------------
+Thu Nov 05 11:10:08 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793876996.ef220dfd:
+  * fix(ci): Add missing architecture setting in obs workflow
+
+-------------------------------------------------------------------
+Thu Nov 05 08:54:46 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793868658.dfa961c2:
+  * chore(deps-dev): bump eslint from 10.2.1 to 10.13.0 (#8056)
+  * test(devel-mode): Avoid sporadic failures when waiting for uploads
+
+-------------------------------------------------------------------
+Wed Nov 04 16:54:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793809764.4e765df8:
+  * feat(worker): Improve warning on failed health checks
+
+-------------------------------------------------------------------
+Wed Nov 04 15:26:02 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793805947.6de9429d:
+  * ci: Enable packaging checks for Leap 16.1
+  * fix(openQA.spec): package system resources as root, not as geekotest
+
+-------------------------------------------------------------------
+Wed Nov 04 12:43:30 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793793355.58c4f04c:
+  * feat(investigation): Improve git diff --stat filename output
+  * refactor(investigation): Add an options hash to git_diff parameters
+
+-------------------------------------------------------------------
+Wed Nov 04 07:38:15 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793777871.7773352c:
+  * chore(deps-dev): bump @csstools/media-query-list-parser
+
+-------------------------------------------------------------------
+Tue Nov 03 18:35:57 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793730939.c4b8f9f6:
+  * feat: Set application name of DB connections for easier tracking
+  * test(api-key-ui): Fix sporadic failures
+
+-------------------------------------------------------------------
+Tue Nov 03 16:14:56 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793722468.aa0c30fc:
+  * docs: Mention the `max_connections` PostgreSQL setting
+
+-------------------------------------------------------------------
+Tue Nov 03 05:54:25 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793682485.ae04aa33:
+  * chore(deps): Dependency cron 2026-11-03
+
+-------------------------------------------------------------------
+Tue Nov 03 02:54:27 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793674456.f48b3512:
+  * fix(auth): log stray OpenID callbacks as info
+
+-------------------------------------------------------------------
+Mon Nov 02 18:54:24 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793643862.95842f6a:
+  * feat(worker): Add upload inactivity timeout
+  * feat(worker): Add upload timeout via MAX_UPLOAD_TIME
+
+-------------------------------------------------------------------
+Mon Nov 02 18:02:36 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793641808.5ee26040:
+  * test(scalability): Avoid running dummy isotovideo in parallel
+  * test(scalability): Fix sporadic test failure
+
+-------------------------------------------------------------------
+Mon Nov 02 16:54:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793635054.fe4b39a3:
+  * feat(docs): add Ecosystem guide
+
+-------------------------------------------------------------------
+Mon Nov 02 15:54:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793632686.cbcf1318:
+  * chore(deps-dev): bump prettier from 3.9.6 to 3.9.10 (#8006)
+  * feat(logfile): Link from details step to logfile search
+  * feat(logfile): Add filter/search mode switch
+  * refactor: Use subtests in `handle client status changes`
+  * fix(worker): handle re-connect for active/stopping jobs
+
+-------------------------------------------------------------------
+Mon Nov 02 13:31:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793625680.02c36bd1:
+  * chore(deps): bump actions/setup-python (#8047)
+  * fix(prio): use global default as base without job group
+  * feat(logfile): Account for toolbar in line scroll
+  * feat(logfile): Make filter toolbar sticky
+
+-------------------------------------------------------------------
+Mon Nov 02 10:54:30 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793613565.05d22b0d:
+  * feat(archive-downloads): Avoid failing Minion jobs when restarting Gru
+
+-------------------------------------------------------------------
 Mon Nov 02 09:34:16 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1793612038.36a015f4:

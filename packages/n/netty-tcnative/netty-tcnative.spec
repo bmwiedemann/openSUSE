@@ -17,13 +17,13 @@
 
 
 %global namedreltag .Final
-%global namedversion %{version}%{?namedreltag}
 %if 0%{?suse_version} < 1500 || 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
 Name:           netty-tcnative
-Version:        2.0.84
+Version:        2.0.86
 Release:        0
+%global namedversion %{version}%{?namedreltag}
 Summary:        Fork of Tomcat Native with improved OpenSSL and mavenized build
 License:        Apache-2.0
 Group:          Development/Libraries/Java

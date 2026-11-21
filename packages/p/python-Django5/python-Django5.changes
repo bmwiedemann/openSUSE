@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:40:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.19
+  * CVE-2026-108147: Potential memory exhaustion in MultiPartParser
+    via base64-encoded file upload (bsc#1289340)
+  * CVE-2026-111211: Potential log injection via unescaped geometry
+    form values (bsc#1289344)
+  * CVE-2026-111362: Server-side request forgery via crs member of
+    GeoJSON geometries (bsc#1289345)
+  * CVE-2026-113593: Potential exposure of private data via empty
+    and missing Vary headers (bsc#1289348)
+  * CVE-2026-114582: Server-side request forgery via SpatialReference
+    string input (bsc#1289350)
+
+-------------------------------------------------------------------
 Fri Oct  9 09:04:20 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.18

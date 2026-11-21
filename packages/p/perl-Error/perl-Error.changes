@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov  7 22:09:44 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.170.310 (0.17031)
+   see /usr/share/doc/packages/perl-Error/Changes
+
+  0.17031         2026-10-27
+      - t/08warndie.t - update to handle blead's updated line number tracking by richardleach
+          - https://github.com/shlomif/perl-error.pm/pull/6
+          - Thanks @richardleach .
+
+-------------------------------------------------------------------
 Wed Feb 19 12:39:42 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

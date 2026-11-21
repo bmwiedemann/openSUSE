@@ -407,4 +407,12 @@ SONAME is unchanged (libstoragemgmt.so.1), so no subpackage rename and
 no file moved between subpackages. No CVEs in the crossed range.</comment>
     <requestid>1379357</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>3dadb55b7247cdd3fc1424892c54e88b</srcmd5>
+    <version>1.12.0</version>
+    <time>1794816354</time>
+    <user>anag_factory</user>
+    <comment>Update libstoragemgmt to 1.12.0: daemon IPC hardening, sense-data/VPD fixes, canonical /run/lsm paths.</comment>
+    <requestid>1397539</requestid>
+  </revision>
 </revisionlist>

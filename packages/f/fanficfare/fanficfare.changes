@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Nov  3 06:36:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to the version 4.63.0:
+  - Update translations.
+  - Plugin only: use_camoufox option using Calibre recipes.py
+    Browser. #1444
+  - Add do_camoufox_warmup optional feature
+  - Fix continue_on_chapter_error with fff_chapter_data
+  - adapter_royalroadcom: Take Legacy dateUpdated/datePublished
+    from oldest/newest chapter dates. See also #1445
+  - Update bundled certifi to 2026.10.23
+  - adapter_royalroadcom: Fix for dateUpdated in new UI, thanks
+    VictorVow(#1445)
+  - adapter_royalroadcom: Increase default sleep time.
+  - Plugin: Show book title in BG job title when only one.
+  - Add use_series_page_metadata option, defaults false.
+  - Add QuitDecorator to fetches to allow plugin prog bar quit to
+    work better.
+  - adapter_storiesonlinenet: Fix for site login change.
+  - Change how chapter metadata is stored in chapter files
+  - Fix mark new/unnew works with preserved chapters
+  - Add first_chapter/last_chapter to valid settings list.
+  - Fix numChapters for update_preserve_deleted_chapters
+  - Don't skip equal-count chapter swaps when preserving deleted
+    chapters #1428, thanks kitoma!
+  - Fixing Unnew for #1434.
+  - RoyalRoad: Handle email-click URLs in geturls, not adapter.
+    For reasons. #1429
+  - adapter_fanficsme: Fix word count for site change. Closes
+    #1433
+  - Plugin: avoid blocking the event loop #1430, thanks,
+    logologist
+  - Plugin: Add modal dialog for imap/urls from page/series page
+    fetches to allow safe threading re:#1430
+  - Plugin: Fix Anthology update for ad-hoc(no series URL)
+    anthologies(broken by ini_snippets)
+  - adapter_sofurrycom: Fix for login, closes #1426, thanks dbhmw
+  - adapter_royalroadcom: isUnlocked flag isn't accurate, but
+    null or empty subscriptionTiers is?
+  - adapter_royalroadcom: Fix for older py3 versions, reported in
+    #1428
+- Update to the version 4.62.0:
+  - Update translations.
+  - base_otw_adapter: chaptersummary can suddenly be a div
+    instead of blockquote sometimes.
+  - adapter_royalroadcom: Updates for RR's Redesign. Supports
+    both for the moment.
+  - Plugin: Remove user/pass from ini snippets before logging,
+    same as 'safe' personal.ini.
+  - base_otw_adapter: More robust bookmark handling
+  - Add 525 errors to list of codes to retry, on by default, set
+    retry_http_525_failures:False to disable.
+  - New option max_request_retries to set connection retry limit.
+    From #1418
+  - Plugin: Apply INI Snippet to Get URLs from Web Page and
+    anthology update.
+  - New update_preserve_deleted_chapters feature, see #1414,
+    thanks, kitoma
+  - New update_check_recent_chapters feature, see #1414, thanks,
+    kitoma
+  - adapter_sofurrycom: Fixes for login, closes #1416
+  - Document ffnet only try_shortened_title_urls setting
+  - Increase default image_max_size to 2500, 2500
+  - epub update: Don't strip h2/h3 tags that aren't chapter
+    titles. Thanks, kitoma (#1412)
+  - adapter_literotica: Fix for pagination links change, thanks
+    akshayrangnekar(#1411)
+  - adapter_ficbooknet: Fix author for site change
+
+-------------------------------------------------------------------
 Fri Oct  2 20:32:03 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to the version 4.61.0:

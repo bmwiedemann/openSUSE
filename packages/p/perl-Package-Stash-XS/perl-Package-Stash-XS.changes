@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  6 12:05:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.320.0 (0.32)
+   see /usr/share/doc/packages/perl-Package-Stash-XS/Changes
+
+  0.32      2026-10-05 20:06:40Z
+        - no runtime changes since 0.31-TRIAL
+
+  0.31      2026-09-22 22:59:10Z (TRIAL RELEASE)
+        - potential patch for perl issue #24845
+
+-------------------------------------------------------------------
 Tue May 20 11:13:14 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

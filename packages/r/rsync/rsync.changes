@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Nov  4 09:31:28 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Update to 3.5.2
+  - Security fixes:
+    - Bounded strong-checksum work when a malicious receiver
+      supplies weak checksums that collide with consecutive
+      rolling windows (CVE-2026-119741, bsc#1289289).
+  - Bug fixes:
+    - Fixed interrupted `--append` and `--inplace` transfers
+      writing the final 256 KiB buffer twice. An interrupted
+      destination now remains a clean prefix which the next
+      transfer can resume or repair.
+    - Fixed uploads through `rrsync` when the destination file
+      already exists.
+    - Fixed poor matching performance on large sparse and
+      repeated-block files when duplicate checksum chains
+      exhausted the search limit.
+    - Prevented the `--inplace` matcher from advancing its
+      aligned basis index beyond the available checksum entries.
+      This avoids signed overflow on large source files when the
+      peer supplies a small block count.
+    - Recovered from failed hard-link creation without aborting
+      or hanging the generator.
+    - Prevented an out-of-bounds write while invalidating a
+      sender checksum after a file read error when the
+      negotiated checksum length is zero.
+    - Fixed a daemon receiver stack overflow when queued
+      deletion output reached `--max-alloc`.
+    - Fixed a `--files-from` pull from a subdirectory of a daemon
+      module, which read each listed file from the module root
+      instead.
+    - Fixed password files whose first line is empty.
+    - Escaped terminal control characters in filenames and
+      diagnostics written to standard output, standard error and
+      log files.
+    - Restored daemon startup from accepted named Unix sockets on
+      standard input.
+    - Fixed forward-DNS hostname entries in daemon `hosts allow`
+      and `hosts deny` lists for IPv6 peers.
+    - Preserved Unix symlink permissions on systems which require
+      `fchmodat()` to change the mode of a symlink rather than its
+      target.
+  - Enhancements:
+    - Added `--nice` to adjust CPU and I/O scheduling priorities
+      for local and remote rsync processes.
+    - Added `--delay-symlinks` to defer creating new and changed
+      symlinks until other transferred files are in place. It
+      implies `--no-inc-recursive` and requires protocol 29 or
+      newer.
+
+-------------------------------------------------------------------
 Sun Oct 25 15:47:50 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Add rsync-direct-interpreters.patch: use direct interpreter

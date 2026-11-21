@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:20:43 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.7.4:
+  * dependency: bump golang.org/x/net from v0.61.0 to v0.62.0
+  * etcdserver: drop expected legacy v2 WAL requests instead of replaying them
+  * Define alarmStore as an atomic pointer to avoid race condition
+  * prevent the adjusted commit-index from exceeding the last index on force-new-cluster (#22655)
+
+-------------------------------------------------------------------
 Fri Oct 23 09:25:56 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.7.3:
@@ -52,17 +61,12 @@ Sat Jul 11 23:57:14 UTC 2026 - Elisei Roca <eroca@suse.com>
 Wed Jul 01 21:01:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.6.13: (GHSA-3wh4-j44w-pg92 boo#1270046)
-  * version: bump up to 3.6.13
-  * Reject the client request if the client certificate has been
-    revoked
+  * Reject the client request if the client certificate has been revoked
   * Update incorrect log message
   * server/auth: accept bearer-prefixed auth tokens
   * Bump OpenTelemetry dependencies to v1.43.0 (CVE-2026-29181
     CVE-2026-39883)
-  * build(deps): bump distroless/static-debian12 from `20bc6c0`
-    to `9c346e4`
   * Bump golang.org/x/crypto to v0.52.0
-  * Update Go to 1.25.11
   * Add V2Depr1WriteOnlySkipCheck to bypass the v2 data store check
 
 -------------------------------------------------------------------
@@ -73,7 +77,6 @@ Tue Jun 02 09:15:20 UTC 2026 - Elisei Roca <eroca@suse.com>
   * client/pkg/fileutil: use os.Getuid() to skip TestIsDirWriteable as root
   * etcdutl: validate data file path and return consistent errors instead of panic when given non-existent paths
   * bugfix: MemberUpdate implicitly and unexpectedly promotes a learner
-  * Bump Go to 1.25.10
 
 -------------------------------------------------------------------
 Sun May 03 16:22:03 UTC 2026 - Elisei Roca <eroca@suse.com>
@@ -84,7 +87,11 @@ Sun May 03 16:22:03 UTC 2026 - Elisei Roca <eroca@suse.com>
   * move function CheckTxnAuth from package txn to apply
   * Bump golang.org/x/image to v0.39.0 to resolve GO-2026-4962
   * Fix the issue of not being able to adding new member when one existing member is down
-  * *: bump go to 1.25.9
+
+-------------------------------------------------------------------
+Mon Apr  6 06:02:39 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- v3.6.10 includes fixes for CVE-2026-33186 (bsc#1260275), CVE-2026-33343 (bsc#1260845), and CVE-2026-33413 (bsc#1260850)
 
 -------------------------------------------------------------------
 Wed Apr 01 19:40:42 UTC 2026 - Elisei Roca <eroca@suse.com>

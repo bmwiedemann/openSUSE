@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:29:49 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Silence libexpat deprecation errors
+
+-------------------------------------------------------------------
 Mon Sep 14 11:05:12 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Backport upstream patch to fix compilation issues:

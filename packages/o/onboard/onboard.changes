@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 18 17:46:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.4-6:
+  * Features: Add physical-layout setting to choose ISO/ANSI key geometry
+  * Fixes:
+    + Fix live color updates for Pressed/Active/Locked/Scanned states
+    + Osk_udev: hold the GIL in the udev monitor callback (fixes segfault with
+      Python 3.14)
+    + WaylandUtils: don't wipe other KWin rules on Plasma 6.8
+    + Fix OOB std::vector access
+    + Use running interpreter for settings dialog; add tray icon fallback
+  * Other:
+    + Add customizable theme colors
+    + Debian/changelog: correct 1.4.4-5 entry, backfill missing 1.4.4-4 entry
+    + OnboardIndicator: Fix instantiation of OnboardProxy
+    + Setup.py: fix get_pkg_version for versions like '51.beta'
+    + Updatechangelog.sh: warn before release_current() silently drops
+      classified entries
+    + Updatechangelog.sh: include README.md in version-bump commit
+  * Updated translations.
+- Drop 1ced23c0.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Aug 26 06:36:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 1ced23c0.patch: Fix build against GNOME alpha/beta/rc
@@ -116,7 +139,7 @@ Wed Sep  3 08:07:33 UTC 2025 - pgajdos@suse.com
 -------------------------------------------------------------------
 Fri Jun 20 03:18:28 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Use pyproject macros from python-rpm-macros to build and install. 
+- Use pyproject macros from python-rpm-macros to build and install.
 
 -------------------------------------------------------------------
 Tue May  6 06:51:10 UTC 2025 - BZZZZ DZZZZ <alanas.00@mail.ru>
@@ -231,5 +254,5 @@ Thu Aug 14 07:38:02 UTC 2014 - and.november@opensuse.org
 -------------------------------------------------------------------
 Tue Jan 28 14:25:16 UTC 2014 - and.november@opensuse.org
 
-- update to version 0.99.0 
+- update to version 0.99.0
 

@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sun Oct 25 19:09:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.22.0:
+  * Add Barbican secret store migrate helper
+  * Fix Barbican key-manager microversion negotiation
+  * config: Pass status code retry options to adapter
+  * Bump testtools minimum version
+  * connect_as: don't let OS_* vars override project
+  * Remove Resource.has_body attribute
+  * docs: Add guide on configuring service tokens
+  * docs: Merge connect, connect-via-config docs
+  * examples: Remove redundant Opts object
+  * volume: Add 'details' parameter to 'attachments' proxy method
+  * Add SDK support for Barbican container ACL operations
+  * Remove Resource.create_returns_body attribute
+  * Remove Resource.create_requires_id attribute
+  * Remove Resource.create_method attribute
+  * image: Parse boolean string properties leniently
+  * image: Parse hw_vif_multiqueue_enabled as BoolStr
+  * Clean up connection resources upon garbage collection
+  * accelerator: Add device status field and enable/disable
+    support
+  * Replace atexit with weakref.finalize
+  * tox: Run mypy over package
+  * placement: Add support for usages
+  * placement: Add support for bulk update, delete resource
+    provider inventories
+  * placement: Add support for deleting resource provider traits
+  * placement: Add support for allocation candidates
+  * placement: Add support for resource provider allocations
+  * placement: Add support for bulk create of allocations
+  * placement: Add support for allocations
+  * placement: Allow empty commit on resource class
+  * placement: Fix trait create and exists
+  * config: Stop ignoring .0 microversions
+  * Bump up deprecation timeline for passing dicts to cloud APIs
+  * Bump up deprecation timeline for deprecated cloud filter
+    kwarg
+  * trivial: Remove dead TODO
+  * docs: Add missing service guides
+  * Fix typo
+  * zuul: Make openstacksdk-functional-devstack-networking-ext
+    voting
+  * zuul: Use proper boolean values
+  * zuul: Remove more dead jobs
+  * zuul: Remove unused jobs
+  * docs: Add proxy, auth plugin guides
+  * docs: Resolve shade TODOs
+  * proxy: Group methods
+  * Bump up deprecation timeline for deprecated proxy, cloud
+    methods
+  * Bump up deprecation timeline for CloudConfig class
+  * trivial: Typo fix
+  * heat: Fix stack query tag parameters
+  * typing: Remove unnecessary cast
+  * zuul: Make openstacksdk-functional-devstack-magnum voting
+  * functional: Reorganise cloud functional tests by service
+  * key-manager: Fix SecretACL proxy and broken functional tests
+  * docs: Remove transition_from_profile doc
+  * resource: Fix re-entrant alias resolution
+  * config: Separate parsing of .cache section
+  * docs: Update metrics guide
+  * typing: Simplify QueryParamters type handling further
+  * typing: Simplify QueryParamters type handling
+  * typing: Resolve TODO
+  * Ignore AuthPluginException in get_all()
+  * image: Add support for cache clean and prune APIs
+  * Fix typos
+  * fix: Close underlying keystoneauth connection on exit
+  * stats: Fix prometheus histogram units
+  * identity: Remove TagMixin from Domain
+  * config: Separate parsing of .metrics section
+  * config: Separate parsing of .client section
+  * config: Add missing docs for CloudRegion
+  * config: Rewrap exception message
+  * docs: Move MFA section under auth
+  * Update master for stable/2026.2
+  * Fix typo
+
+-------------------------------------------------------------------
 Mon Sep  7 07:17:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.20.0:

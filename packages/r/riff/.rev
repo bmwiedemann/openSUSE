@@ -346,4 +346,17 @@
     Now it points to the first change in the file.</comment>
     <requestid>1371510</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>2922ab1ea3926cf9af3b9be0f1347dd8</srcmd5>
+    <version>3.7.0</version>
+    <time>1794236874</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.7.0:
+  Handle jj diff --tool riff better:
+  * jj's left/ and right/ path prefixes are no longer highlighted as changes in
+  j file headers
+  * Hyperlinks now point to your real working copy files, not to jj's
+    temporary diff directory</comment>
+    <requestid>1396297</requestid>
+  </revision>
 </revisionlist>

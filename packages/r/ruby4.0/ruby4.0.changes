@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Thu Nov 19 00:21:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.10
+  - GHSA-34m4-m9fh-gqp5: Heap buffer overflow in case conversion of
+    strings Ruby has a one-byte heap-based buffer overflow in the
+    case conversion of strings. Changing the case of a crafted
+    string may allow remote code execution. We are aware of PoCs
+    that prove this flaw can be used to trigger RCE in some
+    scenarios.
+  - GHSA-7x2q-68qv-6p8x: Double free in regular expression
+    compilation Ruby has a double free in its regular expression
+    engine. Compiling a crafted regular expression pattern may
+    allow remote code execution in applications that compile
+    attacker-controlled patterns. We are aware of PoCs that prove
+    this flaw can be used to trigger RCE in some scenarios.
+  - GHSA-87fm-7w84-j2px: Integer overflow in case conversion of
+    strings Ruby has an integer overflow in the case conversion of
+    strings, which causes a heap-based buffer overflow. Changing
+    the case of a crafted string may allow remote code execution.
+    We are aware of PoCs that prove this flaw can be used to
+    trigger RCE in some scenarios.
+  - GHSA-wpqw-5qxg-m68r: Out-of-bounds read in case-insensitive
+    regular expression matching Ruby has an out-of-bounds read in
+    its regular expression engine. Matching against a crafted
+    regular expression pattern may allow remote code execution in
+    applications that use attacker-controlled patterns. We are
+    aware of PoCs that prove this flaw can lead to memory
+    corruption in an attacker-controlled way.
+  - GHSA-3p8q-wmhx-vm2w: Heap buffer overflow in regular expression
+    compilation Ruby has an integer overflow in its regular
+    expression engine, which causes a heap-based buffer overflow.
+    Compiling a crafted regular expression pattern may allow remote
+    code execution in applications that compile attacker-controlled
+    patterns. We are aware of PoCs that prove this flaw can be used
+    to trigger RCE in some scenarios.
+  - GHSA-7whj-cfh7-xgm4: Heap buffer overflow in Regexp#to_s Ruby
+    has a heap-based buffer overflow in Regexp#to_s. Converting a
+    crafted regular expression to a string may allow information
+    disclosure or remote code execution in applications that
+    compile attacker-controlled patterns. We are aware of PoCs that
+    prove this flaw can be used to trigger RCE in some scenarios.
+  - GHSA-pvgc-g7gj-pv6h: Out-of-bounds read in case-insensitive
+    backreference matching Ruby has an out-of-bounds read in its
+    regular expression engine. Matching a crafted string may
+    disclose memory contents or crash the process.
+
+  - Bug #22477: rb_ec_clear_vm_stack() can still clear the VM stack
+    before ec->cfp = NULL on aarch64
+  - Bug #22451: Coderange may be set incorrectly when concatenating
+    a string into itself
+  - Bug #22476: rb_profile_frames() called from a signal handler
+    segfaults while vm_make_env_each() is escaping a chain of
+    frames
+  - Bug #20655: Calling continuation triggers ensure function of
+    rb_ensure
+  - JIT: Reject --{y,z}jit-exec-mem-size values that overflow the
+    u32 reservation size by st0012 · Pull Request #19720
+  - Bug #22512: Overflow in st_init_existing_table_with_size /
+    Hash.new(capacity:)
+  - Bug #22511: Please backport ee90e8e380 (concurrent set size
+    overcount) to 4.0: fstring table keeps doubling in long-running
+    apps
+  - Bug #22504: Empty keyword hash mishandled when calling a Method
+    proc through the C API
+  - Fix: Do not fast_fallback if local_port is explicitly specified
+    by shioimm · Pull Request #15732
+  - Bug #21512: Socket.tcp_with_fast_fallback('example.com', 80,
+    '127.0.0.1') fails with unknown socket domain: ipv4
+    (SocketError)
+  - Bug #22529: Array#fill should respect frozenness from yields
+  - Bug #22535: Release mode segfault due to half-initialized error
+    in singleton_method
+  - Bug #22420: require "strscan" no longer activates the default
+    gem, so a newer installed strscan is ignored and later loaded
+    twice
+  - Bug #22423: String#initialize(encoding:) stores an inflated
+    capacity and writes past the malloc'd buffer on append
+    (rb_str_init termlen double-adjust)
+  - Bug #22427: --enable=zjit does not enable ZJIT
+  - Bug #22436: Array#zip with a method_missing-based argument
+    leaks a stale block handler (segfault when the next C-called
+    method yields)
+  - Bug #22449: Out-of-bounds in Array#sample when array modified
+  - Bug #22450: Jump value attaches block in incorrect place under
+    parse.y
+  - Bug #22458: Time#strftime out-of-bound access
+  - Bug #22461: Use-after-free in String formatting with wide
+    character encodings
+  - Bug #22467: IO#readpartial can raise EFAULT during GC.compact
+    in another thread
+  - Bug #22471: Thread#name= on a terminated thread may dump core
+  - Bug #22479: File.realdirpath returns a wrong path when GC runs
+    while it resolves a relative symlink
+  - Bug #22480: Ruby's release tarballs are not POSIX compliant
+    since 2018
+  - Bug #22491: The number of captures may change depending on the
+    encoding of the target string
+  - Bug #22492: String#rindex misses a match with a leading .* in
+    multiline mode
+  - Bug #22494: Regexp search misses a match when an assertion
+    precedes a leading .*
+  - Bug #22498: Proc#== does not return true for the same lexical
+    code block
+  - Bug #22500: Keyword arguments can be freed during argument
+    setup when a method has more than 31 keywords
+  - Bug #22517: Some String methods return a UTF-16/32 string
+    without room for its terminator
+  - Bug #22518: String#unpack("m") computes the buffer size with an
+    overflowing multiplication
+  - Bug #22382: IO#write of a shareable String from multiple
+    Ractors causes use-after-free
+  - Bug #22541: Thread#raise and Fiber#raise can set VM throw data
+    as Exception#cause, causing a crash.
+  - Bug #22258: Update bundled json to >= 2.19.2 on ruby_4_0
+    (CVE-2026-33210)
+  - Bug #22470: Array#find and Array#rfind arity change between
+    versions 3 and 4
+  - Bug #21142: Lazy enumerator .each_with_index ignores .take(0)
+    before it
+  - Bug #22539: Class#new shouldn't call refined initialize methods
+  - Bug #22389: Hang on GC.compact
+  - Bug #22495: UTF-32 strings with a byte 0x80 or more in the most
+    significant position are reported as valid
+  - Bug #22540: Process.spawn leaves the env, umask, and
+    redirections applied in the parent on Windows when chdir: fails
+  - Bug #21974: Cannot inspect RubyVM::AST for CDECL
+  - Fix IO::Buffer#each_byte bounds check by afurm · Pull Request
+    #16823
+  - Skip whitespace in rb_memory_view_parse_item_format fill pass
+    by fuzzyrichie · Pull Request #19807
+  - Bug #22433: IO#sysread and IO#pread are inconsistent for length
+    0 and negative numbers
+  - Bug #21854: ruby-prof breaks on 4.0.1
+  - rb_fiber_scheduler_blocking_operation_wait can garbage collect
+    blocking_operation incorrectly. by samuel-williams-shopify ·
+    Pull Request #16908
+  - Bug #22409: ASan UAF and Assertion Failed:
+    gc_validate_pc:CFP_PC(cfp) >= iseq_encoded: PC not set when
+    allocating, breaking tracing
+  - Bug #22543: Segmentation fault when compiling CONST ||= value,
+    CONST &&= value or CONST += value under #
+    shareable_constant_value: literal (Prism compiler)
+  - Ensure safe handling of hexdump width. by ioquatix · Pull
+    Request #16593
+  - Bug #22261: ruby-head builds have been failing on aarch64-linux
+    CI in ruby/ruby-dev-builder
+  - Bug #22333: Assertion Failed: ary_resize_capa:RARRAY_LEN(ary)
+    <= capacity
+  - Check the result of compile_length_tree() at every call site by
+    mame · Pull Request #19505
+  - Bug #22557: parse.y segmentation fault parsing malformed nested
+    case
+  - Bug #22560: parse.y hits UNREACHABLE_RETURN(0) after
+    compile_error in rb_parser_enc_cr_str_buf_cat
+  - Bug #22556: Clarify &&= and ||= on multi-line
+  - Bug #22537: IO#gets(nil, limit) stops right after a 0xFF byte
+  - Bug #22597: Regexp named capture names with invalid source
+    encoding
+  - Bug #22599: parse.y rejects valid retry after a class / class
+    << self definition inside rescue (Invalid retry after ensure)
+  - Bug #22412: Assertion Failed: vm_ep_in_heap_p_:env->ep == ep
+  - Bug #22553: Segfault when several Ractors call Kernel#class or
+    #frozen? on objects of many classes
+  - YJIT: Add frozen guard for struct aset by tekknolagi · Pull
+    Request #15835
+  - Bug #22410: IO#external_encoding / IO#internal_encoding
+    segfault on an uninitialized IO
+
+-------------------------------------------------------------------
 Wed Oct 28 16:17:49 UTC 2026 - Eduardo Navarro <enavarro@suse.com>
 
 - Set the alternative names inside the loop in %post and %preun.

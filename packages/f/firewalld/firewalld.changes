@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:08:03 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.2:
+  * fix(nftables): prerouting cannot reliably determine egress
+  * fix(ci): git: use https protocol
+  * fix(runtime-to-permanent): copy empty config fields
+  * fix(firewall-cmd): don't shadow config import
+  * fix(firewall): prefer values() over items()
+- Changes from version 2.5.1:
+  * fix(check_config): do not check combined zone file name length
+  * doc(firewall-cmd): remove duplicate --permanent
+  * fix(firewall-cmd): avoid extra newline with empty message
+  * fix(dispatch): OUTPUT and POSTROUTING should terminate with ACCEPT
+- Changes from version 2.5.0:
+  * feat(firewall-config): support gnome automatic dark theme
+  * feat(watcher): log warning if configuration changed
+  * feat(service): add Solr
+- Changes from version 2.4.4 - 2.3.4: Please see
+  https://github.com/firewalld/firewalld/releases
+
+-------------------------------------------------------------------
+Thu Oct 22 07:28:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.3.4:
+  * This is a bug fix only release.
+    + fix(firewall-config): _load_store_append(): properly get runtime zone
+    + fix(check-config): check combined zones
+    + fix(firewall-cmd): dbus: wait for connection
+    + fix(check_config): do not check combined zone file name length
+    + fix(build): dist: add missing policy xmlschema
+    + fix(firewall-cmd): use config.VERSION for --version
+    + fix(firewall-cmd): handle no options when not running
+- Changes from version 2.3.3:
+  * This is a bug fix only release.
+    + fix(nftables): batch ipset elements in set_restore to avoid O(n²)
+      insertion cost
+    + fix(firewalld): spin trying to acquire dbus
+    + fix(systemd): do not wait on dbus
+    + fix(zone): forward: support timeout
+    + fix(policy): support timeouts
+    + fix(cli): policy: allow timeout with --ingress-zone/--egress-zone
+    + fix(watcher): delete timeout before calling callback
+    + fix(watcher): disable while writing configuration
+    + fix(watcher): clear timeouts on reload
+    + fix(service): steam-streaming: add ports for VR
+    + fix(bash): add completion for --service
+    + fix(policy): use PK_ACTION_CONFIG for set{ZoneSettings2,PolicySettings}
+    + fix(rpm): drop dependency on dbus-x11
+- Drop 0003-CVE-2026-4948-fix-dbus-setter-authorization.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sat Oct 17 19:20:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add zsh BuildRequires: Needed due to zsh-completion dirs.
@@ -8,8 +59,8 @@ Wed May 27 16:16:23 UTC 2026 - Rahul Jain <rahul.jain@suse.com>
 
   * Fix CVE-2026-4948: local unprivileged users can modify firewall
     state due to D-Bus setter mis-authorizations (bsc#1260903)
-    [+ 0003-CVE-2026-4948-fix-dbus-setter-authorization.patch]                                                                                                                                                                             
-                                                                                                                                                                      
+    [+ 0003-CVE-2026-4948-fix-dbus-setter-authorization.patch]
+
 -------------------------------------------------------------------
 Wed Jan 21 08:12:36 UTC 2026 - Rahul Jain <rahul.jain@suse.com>
 

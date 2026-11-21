@@ -18,11 +18,10 @@
 
 %bcond_without  apparmor
 Name:           hostapd
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Daemon for running a WPA capable Access Point
 License:        BSD-3-Clause OR GPL-2.0-only
-Group:          Hardware/Wifi
 URL:            https://w1.fi/
 Source:         https://w1.fi/releases/hostapd-%{version}.tar.gz
 Source1:        https://w1.fi/releases/hostapd-%{version}.tar.gz.asc
@@ -31,21 +30,12 @@ Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
-# PATCH-FIX-UPSTREAM CVE-2025-24912.patch, bsc#1239461, CVE-2025-24912
-Patch1:         CVE-2025-24912.patch
-# PATCH-FIX-UPSTREAM bsc#1268083 hostapd segmentation fault during fast restart cycles
-Patch2:         nl80211_NULL_pointer_check_for_link.patch
-# PATCH-FIX-UPSTREAM CVE-2026-58374, bsc#1269892 Missing multi-link parsing validation
-Patch3:         CVE-2026-58374.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-2/
-Patch4:         Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
-# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-3/
-Patch5:         SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
-BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  sqlite3-devel
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
+BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libnl-route-3.0)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %if %{with apparmor}
@@ -91,8 +81,8 @@ install -m 644 hostapd.8 %{buildroot}/%{_mandir}/man8
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/hostapd.service
 %if %{with apparmor}
 # AppArmor profile
-mkdir -p %{buildroot}%{_sysconfdir}/apparmor.d
-install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+mkdir -p %{buildroot}%{apparmor_profilesdir}
+install -m 0644 %{SOURCE5} %{buildroot}%{apparmor_profilesdir}/usr.sbin.hostapd
 %endif
 
 %pre
@@ -101,7 +91,7 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.hostap
 %post
 %service_add_post hostapd.service
 %if %{with apparmor}
-%apparmor_reload %{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+%apparmor_reload %{apparmor_profilesdir}/usr.sbin.hostapd
 %endif
 
 %preun
@@ -113,8 +103,8 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.hostap
 %files
 %config(noreplace) %{_sysconfdir}/hostapd.*
 %if %{with apparmor}
-%dir %{_sysconfdir}/apparmor.d
-%config %{_sysconfdir}/apparmor.d/usr.sbin.hostapd
+%dir %{apparmor_profilesdir}
+%config %{apparmor_profilesdir}/usr.sbin.hostapd
 %endif
 %{_sbindir}/*
 %license COPYING

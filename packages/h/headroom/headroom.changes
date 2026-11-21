@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:21:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.42.0:
+  * Proxy turn hooks rewrite OpenAI Responses requests over HTTP
+    and WebSocket; their savings show in /stats extension_savings
+  * Per-request saved-tokens and counterfactual savings records
+  * Cache: bounded router compression cache (overflow in SQLite),
+    prefix-tracker state survives graceful proxy restarts
+  * Batch: live contexts survive capacity cleanup; native Gemini
+    continuation tools preserved
+  * HEADROOM_TELEMETRY=off now stops the anonymous beacon
+  * CVE-2026-59951: MCP SDK floor raised to 1.30.0 (proxy extra)
+  * Vendored Rust tree refreshed (rustls 0.23.46 for
+    RUSTSEC-2026-0346..0349, base64 0.23.1); licence set
+    unchanged (Apache-2.0 AND MPL-2.0)
+
+-------------------------------------------------------------------
 Thu Oct 15 04:57:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.41.0 (includes 0.40.0):

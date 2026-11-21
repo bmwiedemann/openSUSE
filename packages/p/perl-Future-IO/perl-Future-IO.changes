@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Apr  8 20:10:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+
+  0.23    2026-03-12
+          [CHANGES]
+           * Improved performance of ImplBase's timer queue implementation
+           * Also probe for KQueue implementation on OpenBSD and Darwin
+          [BUGFIXES]
+           * Fixed handling of `O_NONBLOCK` flag on default impl
+           * Ensure that `->poll` enqueued during another `->poll` in default
+             impl is not immediately invoked
+  0.22    2026-02-27
+          [CHANGES]
+           * Document that you should always `poll` for at least one of the
+             `POLLIN`, `POLLOUT` or `POLLPRI` flags
+           * Provide optional base implementation methods for handling an
+             alarm+sleep timer queue, to reduce code duplication
+           * Probe for `Future::IO::Impl::KQueue` on FreeBSD
+          [BUGFIXES]
+           * Make sure to actually load the `POSIX` module to get its constants
+           * Skip over probed impl modules that do not support the `poll` method
+  0.21    2026-02-26
+          [CHANGES]
+           * Much improved default internal implementation:
+              - Supports ->poll with `POLLPRI`
+              - Supports ->poll on multiple filehandles at once
+          [BUGFIXES]
+           * Need to `->poll` for both `POLLOUT` and `POLLPRI` while waiting for
+             `->connect`; this may make it work on Windows
+  0.20    2026-02-10
+          [CHANGES]
+           * Also export and document the `POLLPRI` polling constant
+           * Add `PERL_FUTURE_IO_IMPL` environment variable
+  0.19    2026-01-18
+          [CHANGES]
+           * Added new `->poll` method as a neater and standardised way of doing
+             what used to informally use ->ready_for_read or ->ready_for_write
+           * Clarify in documentation the limits of guarantees around what
+             happens when filehandle IO futures are cancelled
+  0.18    2026-01-08
+          [CHANGES]
+           * Added `->load_best_impl`
+          [BUGFIXES]
+           * Require `Test::Future::IO::Impl` version 0.16 for portability
+             bugfixes to the 'connect' and 'send' tests
+           * Be prepared for the fact that `IO::Socket->send` might throw
+           * Don't close() the local end of the STDIN stream in System.pm, as
+             that upsets most implementation modules
+           * `->send` in ImplBase should try agian using _send1, not _syswrite1
+
+-------------------------------------------------------------------
 Fri Aug 22 21:34:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.170.0 (0.17)

@@ -2,6 +2,7 @@
 # spec file for package libdnf-plugin-txnupd
 #
 # Copyright (c) 2026 Neal Gompa.
+# Copyright (c) 2026 Shawn W Dunn <sfalken@kalpadesktop.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,15 +23,12 @@
 
 
 Name:           libdnf-plugin-txnupd
-Version:        0.3.0
+Version:        0.4.0
 Release:        0
 Summary:        Plugin for libdnf5 to implement transactional updates
 License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/VelocityLimitless/Projects/libdnf-plugin-txnupd
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
-
-# Backports from upstream
-Patch0001:      %{url}/-/commit/3add4c39b5506f8bfafd1daca3bf6165e55c5e18.patch
 
 BuildRequires:  cmake
 BuildRequires:  make

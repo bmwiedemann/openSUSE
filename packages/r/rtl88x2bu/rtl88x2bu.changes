@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 12 17:18:16 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add rtl88x2bu-leap-16.1-cfg80211.patch to fix cfg80211 callback
+  signatures for Leap 16.1's kernel.
+- Add rtl88x2bu-rename-get-ra.patch to fix a PowerPC kernel helper
+  name collision.
+- Provide a make_build fallback for older RPM versions.
+- Keep the kernel module directory fallback available on older RPMs.
+
+-------------------------------------------------------------------
+Thu Nov 12 11:37:27 UTC 2026 - Bernhard AI Wiedemann <obsclaudebmw@lsmod.de>
+
+- Add rtl88x2bu-linux-7.3.patch to fix build with kernel 7.3
+
+-------------------------------------------------------------------
 Wed Sep  9 13:33:22 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build for kernel-longterm (boo#1217824)

@@ -2600,4 +2600,26 @@ for 12.3</comment>
   * profiles: add &quot;meta&quot; action for ksysguard processlisthelper (bsc#1281596)</comment>
     <requestid>1385164</requestid>
   </revision>
+  <revision rev="279" vrev="1">
+    <srcmd5>ee312cac3272e52ab04c2979575fc441</srcmd5>
+    <version>1550+20261022.94b1369</version>
+    <time>1794590884</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20261022.94b1369:
+  * profiles: added new systemd actions (bsc#1282497)</comment>
+    <requestid>1387132</requestid>
+  </revision>
+  <revision rev="280" vrev="1">
+    <srcmd5>0cc773fb9ac173895255989db81134a2</srcmd5>
+    <version>1550+20261111.e9efe0a</version>
+    <time>1794932202</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20261111.e9efe0a:
+  * profiles: add owly action (bsc#1288451)
+  * profiles: whitelist GNOME/resources kill pkexec action (bsc#1287627)
+
+- Update to version 1550+20261030.04c49cd:
+  * profiles: add keepassxc self-auth action (bsc#1286643)</comment>
+    <requestid>1397878</requestid>
+  </revision>
 </revisionlist>

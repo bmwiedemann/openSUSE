@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 17 17:17:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix requires
+
+-------------------------------------------------------------------
+Sun Nov  8 17:59:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.17.0:
+  * Add ShowOneWithDetails for field-oriented tables
+  * Add release notes build
+  * Move dependencies to pyproject.toml
+  * Normalize sort column names
+  * Gracefully handle metadata
+
+-------------------------------------------------------------------
 Mon Sep  7 07:15:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.16.0:

@@ -275,4 +275,28 @@ unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
     <comment>Update picsart-gen-ai to 2.86.0.</comment>
     <requestid>1392929</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8fd23faca3f0ecee56ca44bc5eb41f53</srcmd5>
+    <version>2.87.1</version>
+    <time>1793991446</time>
+    <user>anag_factory</user>
+    <comment>Forward picsart-gen-ai 2.87.1 to Factory</comment>
+    <requestid>1395734</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>91fa7ebaf3483e2883f2c84eb9c0faff</srcmd5>
+    <version>2.88.1</version>
+    <time>1794428325</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.88.1 (fixes GHSA-6jwq-xf8q-xcwh in vendored brace-expansion)</comment>
+    <requestid>1396936</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9ded2d3277cd853fde311d2cc2e1fead</srcmd5>
+    <version>2.89.1</version>
+    <time>1794932316</time>
+    <user>anag_factory</user>
+    <comment>Update picsart-gen-ai to 2.89.1: new credits history subcommand, unchanged deps, no copyleft</comment>
+    <requestid>1397998</requestid>
+  </revision>
 </revisionlist>

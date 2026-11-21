@@ -184,7 +184,10 @@ echo "SECURE_BOOT=\"${secure_boot}\"" >> /etc/sysconfig/bootloader
 # Add default kernel boot options
 #--------------------------------------
 consoles='console=ttyS0,115200 console=tty0'
-[[ "$kiwi_profiles" == *"RaspberryPi2"* ]] && consoles='console=ttyAMA0,115200 console=tty0'
+[[ "$(uname -m)" == "aarch64" ]] && consoles='console=ttyAMA0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"Pine64"* ]] && consoles='console=ttyS0,115200 console=tty0'
+[[ "$kiwi_profiles" == *"RaspberryPi"* ]] && consoles='' # autodetect
+[[ "$kiwi_profiles" == *"RaspberryPi2"* ]] && consoles='' # autodetect
 [[ "$kiwi_profiles" == *"Rock64"* ]] && consoles='console=ttyS2,1500000 console=tty0'
 [[ "$kiwi_profiles" == *"ppc64"* ]] && consoles='console=hvc0,115200 console=tty0'
 [[ "$kiwi_profiles" == *"s390x-Cloud"* ]] && consoles='' # autodetect

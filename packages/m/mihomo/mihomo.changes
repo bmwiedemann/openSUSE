@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:58:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.34:
+  * Support Snell protocol version 6 for outbound and inbound
+    (#3410), multiple users for the shadowsocks listener (#3383)
+    and ss-password generation in the command line tool (#3372)
+  * mieru inbound: new tcp-idle-timeout option to close idle TCP
+    connections (#3354)
+  * Fix a SOCKS domain length arithmetic overflow (#3359), ssh
+    clients not closing on connection write errors, an empty age
+    secret key breaking DecryptBytes (#3450), and data arriving
+    with the HTTP proxy CONNECT response being dropped (#3382)
+  * Fix tun auto route rules, easytier stalling on undrained host
+    packets (#3400) and tfo-go on go1.26.9+ and go1.27.2+;
+    httpupgrade share links now convert to ws with
+    v2ray-http-upgrade (#3415)
+  * Embedded easytier-go bumped to keep guest memory off the Go
+    heap (#3454); utls updated to a go1.26-based release
+- Build the embedded EasyTier WASI core (easytier_core.wasm) from
+  source (easytier-wasi-2.7.0+2abb167.tar.zst, the vendored
+  easytier-go's commit) instead of shipping upstream's prebuilt
+  binary; new BuildRequires rust/cargo >= 1.95, binaryen,
+  protobuf-devel and zstd
+- EasyTier outbound only on x86_64 and aarch64, where Factory's
+  rust ships the wasm32-wasip1 std; other arches build with
+  upstream's no_easytier tag
+
+-------------------------------------------------------------------
 Thu Oct 22 10:01:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.33:

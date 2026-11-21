@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Nov 12 16:45:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 4.7.0
+  * Major changes
+    + Require Java 11 or newer
+    + Complete the JPMS migration and use the standard Java
+      ServiceLoader for terminal provider discovery
+    + Remove the JNA terminal provider; keep the JNI and FFM
+      providers
+    + Remove all previously deprecated APIs
+    + Add the jline-shell, jline-prompt and jline-picocli modules
+    + Add terminal graphics, Kitty keyboard protocol, in-band
+      resize, synchronized output and grapheme cluster support
+    + Add Windows code page auto-detection, musl libc and AIX
+      support
+  * Security Fixes
+    + Prevent heap overflow in CLibrary.ioctl(int, long, int[])
+      (GHSA-p73x-fv3x-mvv6)
+    + Create editor temp files with owner-only permissions
+      (GHSA-7whq-538g-8928)
+    + Skip history expansion for masked input
+      (GHSA-rcc3-r7r7-qvg2)
+    + Enforce the NEW-ENVIRON variable limit across frames
+      (GHSA-7qh2-r6cc-r47w)
+    + Guard the history /pattern regex search against ReDoS
+      (GHSA-vrw4-fppg-3rhf)
+  * Bug Fixes
+    + Reduce terminal startup latency with deferred build and
+      provider short-circuit
+    + Count halfwidth katakana voiced and semi-voiced sound marks
+      in display width
+    + Preserve the command buffer when the edit-and-execute secure
+      temp file fails
+    + Remove the eager native library load from the JLineLibrary
+      static initializer
+    + Fix terminal color palette initialization and FFM signal
+      handling
+    + Prevent keystroke theft by the pump thread
+  * Packaging changes
+    + Add picocli, prompt and shell subpackages
+    + Drop the curses and terminal-jna subpackages
+    + Add the picocli build dependency
+- Modified patch:
+  * 0001-Remove-optional-dependency-on-universalchardet.patch
+    + rediff and include the fix for module-info.java
+
+-------------------------------------------------------------------
 Wed Sep 23 13:12:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.17

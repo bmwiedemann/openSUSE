@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Nov 18 14:16:24 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Update v1.5.3
+  * Add test for "en0 + en1 -> bond0 -> br0 -> br0.2002"
+  * Cargo update
+  * Fix ip6.addr_gen_mode handling, default is EUI64
+    [bsc#1279546]
+
+-------------------------------------------------------------------
 Fri Aug 14 09:30:58 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update v1.5.2

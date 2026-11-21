@@ -1,145 +1,1399 @@
 -------------------------------------------------------------------
-Wed Jul 10 10:29:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+Mon Nov 02 15:11:35 UTC 2026 - Mia Herkt <mia@0x0.st>
 
-- Update to 0.9:
-
-## [0.9] - 2024-05-01
-
-This release has been long in the works but its time now. There
-have been many additions and bugfixes since 0.8. In particular
-changes to the Lua API have made it easier to extend `vis` in all
-sorts of ways that were previously difficult or impossible. As
-always the appreciation towards contributors new and old can not
-be understated; thanks goes out to everyone for their efforts!
-
-A summary of changes follows:
-
-### Core
-
-- Compare non-existing files by name and existing files by inode
-- Do tilde expansion only for the tilde character at the beginning of the pattern.
-- Add word wrapping via breakat and wrapcolumn options
-- Add ansi escaping values and theming keyword for dimmed text
-- Allow statusbar to disabled
-- Default theme was changed to one that uses the terminal colors directly.
-
-### Lua
-
-- filetype: support filetype detection via hashbang
-- filetype: many new file extensions are covered
-- Resync the lexers with Scintillua
-- Implement Selection:remove()
-- Allow underscore (_) in command names
-- Allow nil in vis:pipe() File and Range parameters
-- Add fullscreen param to vis_pipe_collect() and vis:pipe()
-- Access and set all available editor options
-- Implementation of the non-blocking process running Lua API
-- Make expandtab and tabwidth options window-local
-- Drop redrawtime option
-- Add a Lua constant for UI_STYLE_LEXER_MAX
-- Report viewport as lines in addition to bytes
-- Add `win:style_pos()` for styling a specific window cell.
-- Add `UI_DRAW` event for last minute changes to the drawn window.
-- Report viewport dimensions
-
-### Misc
-
-- Add a basic .editorconfig file
-- Don't set _FORTIFY_SOURCE in configure
-- Many documentation improvements.
-- Make vis-open and vis-complete more POSIX compliant
-- vis-clipboard: clean up bashisms and make shellcheck happy.
-- vis-clipboard: add support for wayclip
-- vis-open: allow to show files vertically
-
-### Bugfixes
-
-- fix warning by dealing with error value from fchdir in text-io.c
-- text-io: close "cwd" in all cases
-- vis-complete: Fix commandline options handling
-- vis-clipboard: make xsel honor --selection
-- wl-paste and wl-copy should not add \n to the end of the clipboard.
-- fix a bug with using regex to close windows (i.e. `:X/re/q`)
-- Limit to lines within range for inner text objects
-- vis-clipboard: don't fail when sel is primary on unsupported platforms
-- fix { moving back too much if cursor is at start of a line
-- Print keybindings containing space correctly in help window
-- Prevent flickering in curses
-- vis-menu: try to preserve valid Unicode points
-- lua: make sure lpeg is in fact optional
-- vis-single: respect TMPDIR
-- lua: fail when mapping a key to an invalid handler type
-- vis_pipe: correctly return non-zero exit status
-- view: skip empty cells before applying a style
-- sam: reject invalid ranges for cmd_extract ("x"/"y")
-- Fix upper/lower case conversions with `gU` and `gu`.
-- lua: complete-word: use internal regex for splitting words
-- Theme application was refactored and should be more consistent now.
-
-### Deprecation Notices
-
-The option names `show-spaces`, `show-tabs`, `show-newlines`,
-`show-eof`, and `change-256colors` are all deprecated and will be
-removed for the next release, use the name without the `-` instead
-(e.g. showeof). This was done to avoid inconsistencies between the
-lua option names and the `:set option` names.
-
-The complete changelog can be viewed on
-https://git.sr.ht/~martanne/vis/log/v0.9
-
-- Removed patch upstreamed 675-nb-subproc-runner.patch
-- Add vis-test-builtin_strncpy-bounds.patch to improve testing
-  infrastructure.
+- Update to version 0.9+git.1793606990.d89b6c27:
+  * lua: filetype: update filetype fallback to scintillua 6.8
+  * lua/lexers: update to scintillua 6.8
+  * lua: add more context and an usage example to win:status documentation
+  * Handle use of '~' in --prefix argument modified:   configure
+  * lua: filetype: detect filetype without lpeg
+  * view: Line: clean up member names
+  * view: remove Line::cells_index
+  * view: remove Line::prev & Line::next
+  * view: delete View::topline & View::bottomline
+  * view: merge text_buffer into same allocation as other view data
+  * view: split VisCell storage up like in UI
+  * view: split up cell and line storage
+  * ui-terminal: avoid unlikely overflow in cell count calculation
+  * core: remove extern keyword usage on global arrays
+  * vis-options: fix unlikely name_copy leak
+  * gitignore: ignore tags
+  * core: use tagged union for Movement function pointers
+  * lua: correct vis.lexers and vis.lpeg documentation
+  * ui-curses: disable useless 8-bit mode
+  * macOS: define _DARWIN_C_SOURCE before _XOPEN_SOURCE
+  * util/curses: silence warning about unused function
+  * README: remove closed name and logo issues from contribution suggestions
+  * util: add os_write_file, cleanup write_all
+  * ui: vt100: handle EINTR and partial writes
+  * revert "CI: build and test on FreeBSD and OpenBSD"
+  * CI: build and test on FreeBSD and OpenBSD
+  * map: use str8 for vis_map_put/delete
+  * map: make vis_map_get/vis_map_closest take str8 as key
+  * map: make vis_map_prefix take a str8
+  * map: start migrating to keys with length
 
 -------------------------------------------------------------------
-Thu Jul 20 10:32:12 UTC 2023 - Matej Cepl <mcepl@suse.com>
+Sat Aug 22 19:35:34 UTC 2026 - Mia Herkt <mia@0x0.st>
 
-- Clean up SPEC file.
+- Update to version 0.9+git.1787198347.254329d9:
+  * core: allow cells to hold up to 6 bytes
+  * split up calculation, fix issue on 32bit systems
+  * test/util: silence build warnings with vendored termkey
+  * view: view_redraw_center: simplify line calculations
+  * vis.c: macro_replay_internal: cleanup unnecessary input writes
+  * window_draw_eof: remove impossible condition check
+  * ui: vt100: drop extra memset call
+  * main: ka_selections_case: precompute max length for wide char buffer
+  * ui: split cell style and cell data into separate arrays
+  * ui: vt100: flatten blitting loop into loop over all cells
+  * implement case switching as key action
+  * ui: avoid invalid chars and handle wide chars in info line
+  * view: workaround cursor landing past edge of terminal when file has 1 line
 
 -------------------------------------------------------------------
-Tue Feb 28 11:07:05 UTC 2023 - Matej Cepl <mcepl@suse.com>
+Sun Jul 26 23:08:21 UTC 2026 - Mia Herkt <mia@0x0.st>
 
-- Add 675-nb-subproc-runner.patch (gh#martanne/vis!675) with
-  support for the non-blocking subprocess runner.
+- Disable parallel jobs for doc build as well (race conditions)
 
 -------------------------------------------------------------------
-Tue Nov  1 15:07:35 UTC 2022 - Matej Cepl <mcepl@suse.com>
+Sun Jul 26 14:12:33 UTC 2026 - Mia Herkt <mia@0x0.st>
 
-- Update to 0.8:
-  - build: add git based version information back
-  - lexers: fix bug in bash lexer for last here-doc
-  - vis: make O implementation independent of <Up> mapping
-  - fix typos in comments
-  - lua: fix luacheck warnings 
-  - vis: rename to/till motion internals 
-  - vis: implement multiline to/till motions
-  - vis-lua: provide file.permission property 
-  - Mention pkg-config in README 
-  - lexers/strace: improve comments, field names and syscall results
-  - lexers/git-rebase: also highlight break command
-  - filetype: Set "bash" for APKBUILD and .ebuild.
-  - filetype: Detect make shebang for "makefile".
-  - Adding .sv extension to verilog syntax highlighter
-  - build: update alpine in docker build to version 3.13
-  - sam: only skip the last empty match if it follows a newline
-  - sam: produce empty match at the end of looped range
-  - test: update
-  - gitignore: remove vim specific swap files 
-  - sam: tweak handling of zero length matches in y commands 
-  - sam: simplify trailing match handling for x/y commands
-  - vis: correctly close pipe connected to stdin of external process 
-  - add lua5.4 in configure script
-  - vis: Add readline Ctrl+A/E bindings
-  - ci: verify codecov script before using it
-  - ci: verify coverity scan script before using it
-  - filetype: Set "groovy" for Jenkinsfile
-  - README: x/freenode/c/libera/ 
-  - Set version to 0.8
+- Update to version vis-0.9+git.1783899844.8302c8e1:
+  * configure: fix tryflag in -Wno- case; add -Wno-override-init (GCC)
+  * man/vis: dot-register not mentioned in man page
+  * ui: vt100: use fixed size loop for vis_cell_equal
+  * text: don't add 0 block to text block array
+  * core: pack cell data into 16 bytes
+  * ui: vt100: introduce double buffering
+  * lua: remove win:style_define and win.STYLE_*
+  * ui: pack cell styles in 8 bytes; cleanup handling of unset colors
+  * ui: add vis_ui_style_push()
+  * ui: remove per window styles
+  * lua: add vis.API to make feature checks easier
+  * lua: fix all broken reference links in documentation
+  * lua: complete-word: fix completion of words without submitted characters in prefix
+  * man/vis: correct name of numbers option
+  * core: cleanup vis_file_new
+  * ui: fix sidebar number buffer overflow
+  * buffer: make 0 termination a required caller request
+  * build: build with lua 5.5 in docker
+  * build: update alpine in docker build to version 3.24
+  * vis: file_new: don't look at internal files when matching
+  * ui: package cell buffer as a struct; use mmap allocation
+  * ui: ui_window_draw: don't grab topline before resize
+  * tests: switch to standard C.UTF-8 locale
+  * util: zero_struct: add extra braces around argument
+  * termkey: remove support for >4 byte utf-8; use our internal utf-8 conversion
+  * core: cache file display name
+  * termkey: make start flags an explicit parameter
+  * termkey: merge init_abstract and init_from_fd
+  * termkey: remove all flags which vis doesn't care about
+  * unibilium: use stack buffer for file path
+  * vis: add basic Debug Info section to :help
+  * termkey: pass term in from vis
+  * termkey: remove NOSTART flag
+  * ui: simplify update of cursor position
+  * build: do not install libtermkey(-dev) for docker
+  * ci: drop unnecessary libtermkey install
+  * core/termkey: remove termkey_alloc; caller now owns Termkey struct
+  * build: remove support for system termkey
+  * termkey: termkey_init: remove impossible failure case
+  * termkey: change TermKey::buffer to fixed size
+  * termkey: remove TermKey::keynames array
+  * unibilium: remove short names
+  * unibilium: use a single allocation for required space
+  * unibilium: delete extra component dynamic arrays
+  * termkey: clean up DriverNode nonsense
+  * termkey: flatten termkey_drivers table
+  * termkey: remove weird TermKey::methods table
+  * termkey: delete unused ti_getstr_hook
+  * build: allow vendored termkey
+  * add vendored unibilium to support vendored termkey
+  * lua/vis-std: make vis more robust against missing default theme files
+  * plugins: filetype: set syntax on FILE_SAVE_POST event
+  * ui: sidebar: use file lines instead of screen lines to compute sidebar_width
+  * tests: lua: add position conversion tests
+  * lua: add functions to switch between byte offset and line number/column
+  * ui: curses: use ceiling rounding in RGB scale conversion
+  * ui: ui_die: don't stop termkey after termkey has been killed
+  * view: fix styling near end of line
+  * vis: set default escape delay during init
+  * vis: store escape delay internally
+  * core: replace memchr with internal memory_scan_forward
+  * sam: remove use of strtol/strtoull
+  * vis-menu: replace strtoul with internal procedure
+  * ui: perform style conversion without strdup
+  * add integer conversion procedure; remove atoi usage
+  * ui: merge ui_terminal_init/ui_init & ui_term_backend_init/ui_backend_init
+  * ui: remove Ui::vis pointer
+  * vis-lua: remove unnecessary redirection for vis.ui and vis.registers
+  * lua/lexers: update to scintillua 6.7 (#1354)
+  * lua: complete-word: ensure mode is reset to INSERT on exit
+  * core: remove second linked list of windows
+  * vis-prompt: consolidate search and command prompts
+  * vis-prompt: scroll history into view on <Up>
+  * vis-prompt: prevent double entry to one line prompt
+  * cleanup compiler warnings
+  * ui: implement numberwidth option
+  * tests: lua: add option-register test
+  * core: unify lua and :set option handling
+  * tests: lua/test.sh: clear out garbage/completely wrong comments
+  * util: don't use strlen in str8_from_c_str
+  * vis-lua: use str8 for path adding
+  * text: pass Fileranges by value where they are meant to be const
+  * vis: fix 2 typoes
+  * ci: update to checkout v6 to shut up warning
+  * view: delete cell_blank, create when needed
+  * configure: fall back to brew for lpeg detection on macOS
+  * vis-clipboard: add support for termux
+  * man/vis-clipboard: document wayland and wsl clipboard tools
+  * lexer: correct loop variable assignment change
+  * number-inc-dec: fix not changing the whole number
+  * number-inc-dec: fix starting position
+  * number-inc-dec: fix wrong increment in a word
+  * lua: tell vis-menu to draw at the bottom of the terminal
+  * ui: track and inform terminal about cursor position
+  * view: view_resize: remove extra memset
+  * vis: ensure internal files are available during QUIT
+  * vis: ensure QUIT is last event during shutdown
+  * vis-lua: drop all if !L
+
+-------------------------------------------------------------------
+Tue Dec  2 21:46:10 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Build the devel branch.
+
+-------------------------------------------------------------------
+Tue Nov 18 21:17:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Back to the main branch.
+
+-------------------------------------------------------------------
+Tue Nov 18 18:11:01 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch back to RemoteAsset.
+
+-------------------------------------------------------------------
+Thu Nov 13 21:44:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Another attempt to fix vis:communicate() (failed)
+
+-------------------------------------------------------------------
+Sat Oct 11 17:12:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to depending on the luajit-* packages.
+
+-------------------------------------------------------------------
+Mon Oct  6 22:39:29 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Another attempt to make vis:communicate(name, command) work.
+
+-------------------------------------------------------------------
+Mon Oct  6 19:50:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix FTBFS in vis-lua.c.
+
+-------------------------------------------------------------------
+Sun Oct  5 23:37:50 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add "fix(lua): Prevent crash in subprocess handling with LuaJIT" patch
+
+-------------------------------------------------------------------
+Sun Oct  5 21:13:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add patches porting vis to use LuaJIT instead of Lua54.
+- Change SPEC file accordingly.
+
+-------------------------------------------------------------------
+Sun Sep 21 20:25:24 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Yet more recent refreshed patch for gh#martanne/vis!1264
+
+-------------------------------------------------------------------
+Fri Sep 19 20:49:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use refreshed patch for gh#martanne/vis!1264
+
+-------------------------------------------------------------------
+Tue Sep 16 22:23:52 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rebase on the current origin/master.
+
+-------------------------------------------------------------------
+Tue Sep 16 10:04:33 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use combined patch instead
+  (https://lists.sr.ht/~martanne/devel/patches/62149).
+
+-------------------------------------------------------------------
+Tue Sep 16 09:16:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add https://git.sr.ht/~mcepl/vis/commit/8270b2063d5d  fixing
+  nasty error in the previous commit.
+
+-------------------------------------------------------------------
+Mon Sep 15 20:55:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add https://git.sr.ht/~mcepl/vis/log/1230-WIN_OPEN-nil (for
+  gh#martanne/vis#1230)
+
+-------------------------------------------------------------------
+Mon Aug 18 09:26:03 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add the patch from gh#martanne/vis!1260
+
+-------------------------------------------------------------------
+Mon Jul 28 21:34:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Run all tests
+
+-------------------------------------------------------------------
+Sun Jul 27 17:23:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add commit e10ad1c6f64580ae05f02c6849eb7a7fdf2e7908
+  Add InsertEnter/InsertLeave core events
+
+-------------------------------------------------------------------
+Wed Jun 25 08:51:57 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 16e31ceb to 630693bf:
+  - doc: source_suffix should be a map, not a list
+
+-------------------------------------------------------------------
+Fri Jun 13 16:40:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from bef22619 to 16e31ceb:
+  - lua/lexers: update to scintillua 6.5
+  - doc: fix Markdown in CHANGELOG.md
+  - doc: fix Doxygen comments for vis-subprocess.c
+  - doc: fix Doxygen comments for view.h
+  - doc: fix Doxygen comments for text.h
+  - doc: fix Doxygen comments for vis.h
+  - doc: fix Doxygen comments for map.h
+  - doc: change default_role to 'c:any'
+  - use <vis-prompt-show> instead of ':'
+  - build: update alpine in docker build to version 3.22
+- More Doxygen-related devel patches used
+
+-------------------------------------------------------------------
+Thu Jun 12 17:06:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add Doxygen clean up commits.
+
+-------------------------------------------------------------------
+Sun May 25 20:00:20 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rebase devel on the top of synchronization with scintillua_6.5
+  release.
+
+-------------------------------------------------------------------
+Tue May 20 14:02:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Use new version gh#martanne/vis!1243 patch.
+
+-------------------------------------------------------------------
+Mon May 19 00:35:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from ba20a03e to bef22619:
+  - ci: drop ubuntu-20.04, deprecated
+  - vis.1: fix typo
+
+-------------------------------------------------------------------
+Mon May 19 00:29:46 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from ba20a03e to d9b0117c:
+
+
+-------------------------------------------------------------------
+Sat May 17 09:17:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add 'build: allow vendored termkey' from gh#martanne/vis!1241
+
+-------------------------------------------------------------------
+Wed Apr 23 22:46:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- update scintillua patches
+- add patch 1240-support-SIGWINCH-resizing (gh#martanne/vis!1240)
+  for testing
+
+-------------------------------------------------------------------
+Sat Apr 19 15:55:13 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update rest.lua lexer again for the upstream PR.
+
+-------------------------------------------------------------------
+Thu Apr  3 15:29:26 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch to repository-as-submodule.
+
+-------------------------------------------------------------------
+Thu Apr 03 06:42:17 UTC 2025 - mcepl@cepl.eu
+
+- Update to version 0.9+git.1743662388.48639f5a:
+  * WIP scintillua(mail): for use inside of MUA
+  * WIP scintillua(fountain): lexer for writing screenplays
+  * WIP scintillua(usfm): extremely WIP USFM lexer
+  * scintillua(rest): modernize rest lexer
+  * scintillua(asciidoc): AsciiDoc lexer
+  * scintillua(rpmspec): update rpmspec lexer, to follow modern standard
+  * scintillua(lisp): modernization and Kiril’s improvement
+  * WIP doc(Doxyfile): improve Doxyfile generation and docs
+  * fix: clean -Wparentheses warning in main.c
+  * feat(vis-clipboard): make wayclip primary on Wayland, and --paste strips EOL
+  * scintillua(PR): add git-commit message lexer & its file extension in detect
+  * scintillua(DONTSEND): synchronization with gh#orbitalquark/scintillua@default
+  * on <C-n>, flip new selection if the old selection was flipped raised in issue 1022: https://github.com/martanne/vis/issues/1022
+  * replace instances of Filerange sel with Filerange range roughly: x/^static.*\)\s+\{$/ { .,/^\}$/ g/Filerange sel/ { x/\b(new)?sel\b/ x/sel/c/range/ } }
+
+-------------------------------------------------------------------
+Thu Apr  3 06:41:40 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewritten devel branch, and all scintillua work moved there
+
+-------------------------------------------------------------------
+Wed Apr 02 20:46:55 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.9+git.1743626734.60a19aac:
+  * doc: improve creation of directories and debugging
+
+-------------------------------------------------------------------
+Wed Apr 02 19:47:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.9+git.1743622499.960fd78:
+  * doc: improve creation of directories and debugging
+
+-------------------------------------------------------------------
+Tue Apr  1 13:51:17 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 286fd30f to ba20a03e:
+  - filetype: use .container extension for podman containers
+  - vis-clipboard: add wsl support with wslclip
+
+-------------------------------------------------------------------
+Mon Mar 31 22:47:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- add .container as extension for systemd.unit file format
+
+-------------------------------------------------------------------
+Sun Mar 23 16:28:05 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 862c33fe to 286fd30f:
+  - doc: upgrade Doxyfile via doxygen -u (1.13.2)
+  - Dockerfile: Upgrade lua5.3 to 5.4
+
+-------------------------------------------------------------------
+Tue Mar  4 15:48:54 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from b68b822b to 862c33fe:
+  - buffer: remove more unused exposed functions
+  - buffer: remove buffer_printf
+
+-------------------------------------------------------------------
+Tue Feb 25 15:33:40 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 54a2036c to b68b822b:
+  - ci: also don't fail when the coverage file doesn't download correctly
+
+-------------------------------------------------------------------
+Sat Feb 22 20:48:22 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Reapply gh#martanne/vis!1173
+
+-------------------------------------------------------------------
+Sat Feb 22 20:02:44 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- fix previous “style_set” commit.
+
+-------------------------------------------------------------------
+Sat Feb 22 19:37:12 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 0208d7a9 to 54a2036c:
+  - ci: don't let test coverage upload fail a workflow
+  - style_set: add option to keep non-default style values
+
+-------------------------------------------------------------------
+Sat Feb 22 16:38:27 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 4970df09 to 0208d7a9:
+  - update to scintillua-6.4 + 1 (org-mode lexer)
+  - complete-filename: speed-up the tilda handling
+  - introduce new `asciidoc` file type
+
+-------------------------------------------------------------------
+Thu Feb 20 23:12:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- New version of gh#martanne/vis!1173 PR.
+
+-------------------------------------------------------------------
+Wed Feb 19 22:53:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh#martanne/vis!1173
+
+-------------------------------------------------------------------
+Mon Feb 10 00:03:39 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Synchronize scintillua lexers up to
+  gh#orbitalquark/scintillua@e3f26372c91a.
+
+-------------------------------------------------------------------
+Fri Feb  7 22:07:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add jeremybobbin scintillua patch git-commit lexer
+  (gh#orbitalquark/scintillua!142).
+
+-------------------------------------------------------------------
+Mon Jan 20 06:52:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from e9e0927c to 4970df09:
+  - complete-filename: complete tilda as $HOME as well
+- testing profiled version
+
+-------------------------------------------------------------------
+Sun Jan 19 16:41:25 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Improved version of the “complete-filename: complete tilda as
+  $HOME as well” patch.
+
+-------------------------------------------------------------------
+Sun Jan 12 23:17:08 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 1b483c2c to e9e0927c:
+  - test: add a couple missed files to .gitignore
+  - sam: fix small oversight in cmd_filter
+  - buffer: drop buffer_move function
+
+-------------------------------------------------------------------
+Sun Jan 12 13:40:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 72c26fc0 to 1b483c2c:
+  - array: delete oneliners
+  - buffer: clear out one line functions
+  - buffer: delete pointless buffer_init function
+- Generate manpages.
+
+-------------------------------------------------------------------
+Fri Jan 10 09:48:58 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from d5db964a to 72c26fc0:
+  - ui: pass window id when setting style
+
+-------------------------------------------------------------------
+Wed Jan  8 14:42:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Add wayclip for further development.
+
+-------------------------------------------------------------------
+Wed Jan  8 12:03:30 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update BRs: we don’t need lua-busted any more, but we could use
+  lua-penlight.
+
+-------------------------------------------------------------------
+Mon Jan  6 18:19:47 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from e9fb2f04 to d5db964a:
+  - scripts: make option listing more consistent
+  - scripts: fix shellcheck warnings and make scripts more uniform
+  - curses ui: fix default color detection
+  - ui: remove useless memcpy call
+  - ui-vt100: write ouptut using write(3)
+  - remove duplicated read_buffer functions
+  - accommodate vis for changes with updates in the lexers
+  - Add Nix lexer
+  - Recognize float suffixes in C lexer
+  - Migrate Haskell lexer
+  - Add Factor lexer
+  - Rename 'ansi_c', 'dmd', and 'rstats' lexers to 'c', 'd', and 'r'
+  - lexers: switch to tabs for indentation
+  - Fix errors with folding in reST lexer
+  - Output lexer: match absolute program paths instead of just names
+  - Migrate Literate Coffeescript lexer
+  - Allow unfinished Makefile function definitions to be highlighted
+  - Update lexer LDoc
+  - Add 'org' directive to asm lexer
+  - Increase the default LPeg stack size
+  - Add C23 attributes to C lexer
+  - Improve performance of the text lexer
+
+-------------------------------------------------------------------
+Fri Jan  3 09:07:00 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 97567b77 to e9fb2f04:
+  - vis-clipboard: redirect wl-copy stderr so that it actually exits
+  - introduce new 'meson' file type and meson options filenames
+  - build: update alpine in docker build to version 3.21
+
+-------------------------------------------------------------------
+Thu Jan  2 22:41:36 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from f840bcaf to 97567b77:
+  - ci: remove lua-busted
+  - check the life time of subprocesses before freeing vis
+  - move waiting and potentially killing a subprocess into a helper function
+  - fix: correct URL of the Busted Lua unit testing framework.
+  - no longer depend on lua-busted
+
+-------------------------------------------------------------------
+Fri Dec 27 09:33:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update scintillua lexers once more (this time up to a864eb0).
+
+-------------------------------------------------------------------
+Mon Dec 23 19:20:28 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Just reorganization of the code repo.
+
+-------------------------------------------------------------------
+Mon Dec  2 16:46:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Ignore -Wparentheses
+
+-------------------------------------------------------------------
+Mon Dec  2 14:08:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from c0d083f4 to f840bcaf:
+  - lua: fix table member reference in set_syntax
+
+-------------------------------------------------------------------
+Fri Nov 15 12:32:30 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add clean-if-main branch
+
+-------------------------------------------------------------------
+Fri Nov  1 13:04:21 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add review_vis-clipboard branch
+
+-------------------------------------------------------------------
+Wed Oct 30 15:56:46 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add patch from gh#martanne/vis#1211
+
+-------------------------------------------------------------------
+Sat Oct 26 14:34:37 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from c8694ee0 to c0d083f4:
+  - document changing the displayed file of a window via lua
+  - fix[filetype]: Recognize Cython source files as Python as well
+  - vis: introduce new `usfm` file type
+  - doc: Add link for the development dicussion email list to README.md
+
+-------------------------------------------------------------------
+Thu Oct 17 08:39:00 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove whole speeding lexers PR, it has been rejected upstream
+  as whole.
+
+-------------------------------------------------------------------
+Sun Oct  6 21:03:49 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Back to downloading code from git.cepl.eu.
+- Add USFM file type.
+
+-------------------------------------------------------------------
+Wed Sep 25 08:33:52 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add vis-file_exists branch.
+- Back to Sourcehut upstream.
+
+-------------------------------------------------------------------
+Tue Sep 24 21:50:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add rebased upstream PRs for scintillua:
+  * https://github.com/orbitalquark/scintillua/pull/15
+  * https://github.com/orbitalquark/scintillua/pull/16
+  * https://github.com/orbitalquark/scintillua/pull/17
+
+-------------------------------------------------------------------
+Fri Sep 13 12:58:13 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from d8276d91 to c8694ee0:
+  - lua: add tests for the different vis.pipe argument variants
+  - lua: improve argument parsing in vis.pipe
+  - complete-word: pipe the candidates directly to the command
+  - support piping a buffer to an external process
+
+-------------------------------------------------------------------
+Thu Sep 12 05:47:24 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from cb63b7e2 to d8276d91:
+  - ci: install busted to run lua tests
+
+-------------------------------------------------------------------
+Wed Aug 28 15:36:11 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 2d87fdc0 to cb63b7e2:
+  - introduce new `wiki` file type
+  - introduce new `org` file type
+
+-------------------------------------------------------------------
+Tue Aug 27 13:27:40 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add patch "introduce new `org` file type"
+- Add PR https://github.com/martanne/vis/pull/1082
+
+-------------------------------------------------------------------
+Wed Jun  5 06:33:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Revert back from gh#martanne/vis!1173.
+
+-------------------------------------------------------------------
+Thu May 30 16:17:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 70fa1e85 to a7aac104:
+  - Fail silently when syntax has no lexer
+  - remove the vis->initialized member
+
+-------------------------------------------------------------------
+Tue May 28 19:36:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 4d38c3a9 to 70fa1e85:
+  - combine Win and UiWin
+  - remove SyntaxSymbol redirection type
+- Add gh#martanne/vis!1173 for testing.
+
+-------------------------------------------------------------------
+Fri May 24 06:56:05 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 7554ecd7 to 4d38c3a9:
+  - drop cell_blank from View
+  - build: update alpine in docker build to version 3.20
+
+-------------------------------------------------------------------
+Wed May 22 07:01:20 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 00e10a7f to 7554ecd7:
+  - remove some view pointer chasing
+  - remove some ui pointer chasing
+  - replace UiTerm with Ui & delete function pointers
+  - replace UiTermWin with UiWin & remove function pointers
+  - make Selection unopaque
+  - make View unopaque
+  - cleanup some single line get/set functions
+  - cleanup vis event interface
+  - Merge vis-tests into test directory
+- Bump the base of the version number from 0.8 to 0.9.
+
+-------------------------------------------------------------------
+Tue May 21 22:21:28 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Revert the last commit, which seem to break the build.
+
+-------------------------------------------------------------------
+Tue May 21 20:36:38 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 777b11c4 to 00e10a7f:
+  - fix primary cursor color display
+
+-------------------------------------------------------------------
+Mon May 13 14:36:19 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 50a76733 to 777b11c4:
+  - enable warnings in default CFLAGS
+  - lua: allow changing the displayed file of a window
+- Adding gh#martanne/vis!1191 for testing.
+
+-------------------------------------------------------------------
+Fri May 10 12:04:54 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from b6ae2fb7 to 50a76733:
+  - drop deprecated option names
+
+-------------------------------------------------------------------
+Tue May  7 08:19:45 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 4d5bfb80 to b6ae2fb7:
+  - lua: filetype: properly search for lexer path
+  - lua: themes: add `STYLE_CODE`
+  - configure: check for 'lua5.4-lpeg' too
+  - set version to v0.9-git
+  - release 0.9
+
+-------------------------------------------------------------------
+Wed May  1 07:08:43 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 675ab49e to 4d5bfb80:
+  - lua: complete-filename: use biggest possible prefix
+
+-------------------------------------------------------------------
+Tue Apr 30 22:35:10 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 1fc17562 to 675ab49e:
+  - lua: uncomment list of lexer specific styles in default theme
+  - lua: Serve viewport dimensions in viewport table
+  - Emit an event (ui_draw) immediately before drawing the screen
+  - Add Lua function to Win for directly editing cell styling by position
+  - lua: small filetype/style setting cleanup
+
+-------------------------------------------------------------------
+Sat Apr 27 19:49:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from ad03feb0 to 1fc17562:
+  - lua: Report viewport lines and bytes in one table
+
+-------------------------------------------------------------------
+Sun Apr 21 18:44:27 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 025ab0f5 to ad03feb0:
+  - vis-cmd: silence gcc warning & remove strlen call
+
+-------------------------------------------------------------------
+Sun Apr 21 15:59:01 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 6f537f30 to 025ab0f5:
+  - ci: fix macOS runner
+  - Disable reverse with "notreverse" in style definitions
+  - Add a Lua constant for UI_STYLE_LEXER_MAX
+  - plugins/filetype: fix javascript/typescript detection
+
+-------------------------------------------------------------------
+Thu Mar 28 16:44:12 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Throw away gh#martanne/vis!1173 and my fix for it.
+
+-------------------------------------------------------------------
+Wed Mar 27 13:50:41 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Merge the tests/ submodule.
+
+-------------------------------------------------------------------
+Wed Mar 27 13:01:18 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 49442e51 to 6f537f30:
+  - lua: update default themes
+  - lua: cache loaded lexers
+  - lua: update default plugins to work with scintillua 6.2
+  - Get lexers from the subdirectory of directories on the path.
+  - update lexers to orbitalquark/scintillua@b789dde
+  - ui: refactor style handling
+
+-------------------------------------------------------------------
+Tue Mar 26 07:21:30 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from faa4089a to 49442e51:
+  - Add parentheses around '&&' within '||'.
+  - complete-word: restore mode to INSERT on exit
+
+-------------------------------------------------------------------
+Thu Mar 21 20:00:50 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 8fccd1bb to faa4089a:
+  - Fix typos
+
+-------------------------------------------------------------------
+Mon Mar 18 10:37:17 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add gh#martanne/vis!1173 to devel for testing.
+
+-------------------------------------------------------------------
+Fri Mar 15 14:35:15 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 4d97ccc6 to 8fccd1bb:
+  - filetype.lua: add typst detection
+
+-------------------------------------------------------------------
+Sun Mar 10 23:53:59 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 3d1c3c15 to 4d97ccc6:
+  - lua: filetype: add JSX and Typescript extensions
+
+-------------------------------------------------------------------
+Sun Mar 10 18:46:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 004800e3 to 3d1c3c15:
+  - Support selection of primary or regular clipboard (wayclip)
+
+-------------------------------------------------------------------
+Sat Mar  9 15:00:06 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 64c0092d to 004800e3:
+  - lua: complete-word: use internal regex for splitting words
+
+-------------------------------------------------------------------
+Fri Mar  1 22:02:35 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from d3e4af1f to 64c0092d:
+  - Introduce new `modula2` and `modula3` file types.
+
+-------------------------------------------------------------------
+Fri Feb 16 11:35:57 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 34e69620 to d3e4af1f:
+  - Replace use of tr(1) with awk(1).
+
+-------------------------------------------------------------------
+Mon Feb  5 13:55:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 5cd6d033 to 34e69620:
+  - use correct apostrophe in error message
+  - allow disabling of statusbar
+
+-------------------------------------------------------------------
+Fri Feb  2 22:45:53 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Add testing support of the patch to avoid non-Unicode aware tr(1).
+
+-------------------------------------------------------------------
+Fri Jan 26 17:16:29 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 8ff0bea5 to 5cd6d033:
+  - fix bug report template
+  - add github issue templates
+  - lua: fix deprecated name for change-256colors
+
+-------------------------------------------------------------------
+Mon Dec 18 11:01:01 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 0f7ddc17 to 8ff0bea5:
+  - complete-filename: include '{' in leading delimiter pattern
+  - build: update alpine in docker build to version 3.19
+
+-------------------------------------------------------------------
+Sat Dec  9 01:03:48 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from f1abd792 to 0f7ddc17:
+  - lua: drop redrawtime option
+  - lua: filetype: use alt_name field to alias to other lexers
+
+-------------------------------------------------------------------
+Sun Dec  3 00:55:10 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 7d0baa4b to f1abd792:
+  - Add ansi escaping values and theming keyword for dimmed text
+  - Recognize also Python type stub files.
+
+-------------------------------------------------------------------
+Fri Dec  1 09:02:00 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 1e64b1c1 to 7d0baa4b:
+  - luadoc: fix broken link and add links between vis/win.options
+  - destroy the correct subprocess
+
+-------------------------------------------------------------------
+Mon Nov 13 14:29:23 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Add rebased patch from gh#martanne/vis!1154.
+
+-------------------------------------------------------------------
+Sat Nov  4 00:48:13 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 18c72a15 to 1e64b1c1:
+  - lua: refactor complete-filename plugin
+
+-------------------------------------------------------------------
+Tue Oct 24 14:37:11 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 045ef7a1 to 18c72a15:
+  - sam: reject invalid ranges for cmd_extract ("x"/"y")
+
+-------------------------------------------------------------------
+Mon Oct 23 21:28:21 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix lock with `:2x/foo/<cr>`.
+
+-------------------------------------------------------------------
+Mon Oct 23 15:51:25 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Rebase new update of lexers
+
+-------------------------------------------------------------------
+Sat Oct 21 12:41:53 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from be89a645 to 045ef7a1:
+  - apply configured foreground to matching pair
+  - apply configured foreground to selections
+
+-------------------------------------------------------------------
+Mon Oct 16 16:05:02 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from aa18162e to be89a645:
+  - view: skip empty cells before applying a style
+
+-------------------------------------------------------------------
+Fri Oct 13 21:22:57 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from d7cd42e6 to aa18162e:
+  - vis_pipe: correctly return non-zero exit status
+
+-------------------------------------------------------------------
+Tue Oct 10 13:28:54 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from cbaa0d8c to d7cd42e6:
+  - ci: test: update submodule
+  - revert c22b2c2 & 364d212
+
+-------------------------------------------------------------------
+Thu Oct  5 18:23:38 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 3d83d771 to cbaa0d8c:
+  - lua: filetype: fix fstab detection
+  - fix literal makefile name detection
+
+-------------------------------------------------------------------
+Thu Oct  5 14:00:59 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Update from 312a16ea to 3d83d771:
+  - vis-lua: fail when mapping a key to an invalid handler type
+
+-------------------------------------------------------------------
+Wed Oct  4 19:58:37 UTC 2023 - Matej Cepl <mcepl@cepl.eu>
+
+- Another rebase of updated lexers on the top of the current
+  master (merge of update-lexers branches from the rnpnr's repo).
+
+-------------------------------------------------------------------
+Thu Sep 28 08:59:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update from 2dcd9ac8 to 312a16ea:
+  - vis-complete: also split on `\`
+
+-------------------------------------------------------------------
+Wed Sep 27 16:05:54 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update from dac6a7e5 to 2dcd9ac8:
+  - filetype.lua: add common *roff extensions
+  - vis-menu.c: add space for terminating NUL byte
+  - vis-subprocess.c: remove unnecessary NULL check
+
+-------------------------------------------------------------------
+Fri Sep 22 21:35:42 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update from 7367ea8a to dac6a7e5:
+  - vis-complete: use hand picked set of characters for word splitting
+  - vis-single: respect TMPDIR
+
+-------------------------------------------------------------------
+Wed Sep 20 16:20:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update from de315f87 to 7367ea8a:
+  - filetype: add psm1 and search for xml using mime type
+  - vis-subprocess.c: fix signature of new_process_in_pool()
+
+-------------------------------------------------------------------
+Sat Aug 26 00:11:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1692979777.2c5e6928:
+  - configure: also check for lua-5.4
+  - lua api: fix a couple typos in process_response()
+    documentation
+  - Implementation of the non-blocking process running Lua API
+  - sam.c: rename a number of options to match lua api
+  - Lua API: access and set all available options
+
+-------------------------------------------------------------------
+Sun Aug 20 19:20:16 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1692310337.09ba77aa:
+  - build: don't use the '|' GNU extension
+  - build: don't pollute base dir with .o and .d files
+
+------------------------------------------------------------------
+Thu Aug 17 19:11:20 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1692198809.3134de12:
+  - build: stop setting _POSIX_C_SOURCE
+  - build: support incremental rebuilds
+
+-------------------------------------------------------------------
+Tue Aug 15 23:29:53 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1692023996.711447a:
+  - vis-complete: handle non-ascii text
+  - vis-menu: try to preserve valid Unicode points
+
+-------------------------------------------------------------------
+Sun Aug 13 07:15:26 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1691882787.adc803f:
+  ci: freebsd: use lua 5.3 like the others
+
+-------------------------------------------------------------------
+Sat Aug 12 22:03:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Building with all proposed changes from scintillua_6.2 tag
+  included.
+
+-------------------------------------------------------------------
+Sat Aug 12 06:44:49 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- python3-Sphinx all the time
+
+-------------------------------------------------------------------
+Sat Aug 12 05:06:13 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- And back ...
+
+-------------------------------------------------------------------
+Fri Aug 11 22:43:41 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Temporary switch to master
+
+-------------------------------------------------------------------
+Fri Aug 11 20:11:24 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1691671026.f4840ed:
+  - vis-lua.c: stop obj_ref_get() from leaving the lua stack modified
+
+-------------------------------------------------------------------
+Mon Aug  7 16:38:31 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Squash whole gh#martanne/vis!675 (in the current form) into one
+  commit.
+
+-------------------------------------------------------------------
+Fri Aug  4 20:46:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to d1f2c27 on master:
+  * Prevent flickering in curses
+
+-------------------------------------------------------------------
+Tue Aug  1 22:32:46 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 32e20a2 on master:
+  * vis-open: allow to show files vertically
+  * view.c: add word wrapping
+  * view: refactor view_addch
+
+-------------------------------------------------------------------
+Fri Jul 28 14:46:50 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add PRs from https://github.com/martanne/vis-test:
+  - core/Makefile: Respect $CC and $CFLAGS
+  - vim/test.sh: use ${CPP:-cpp} instead of hardcoding to cpp
+  - Improved Lua API testing system
+  - New vis:communicate function test
+  - Little improvements of the output readability
+  - Added test of stderr output event and writing to the process
+    stdin
+  - Fixes a typo in the word response
+
+-------------------------------------------------------------------
+Mon Jul 24 14:57:07 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Merge in test-vis submodule (
+  https://lists.sr.ht/~martanne/devel/%3C676026b7-b33a-7b21-d6f4-3fa9277d12f0%40cepl.eu%3E)
+
+-------------------------------------------------------------------
+Wed Jul 19 06:10:37 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8+git.1689736840.47ac03a:
+  - 47ac03a vis:pipe(): don't segfault if vis->win isn't present
+  - 80fbb7e Add fullscreen param to vis_pipe_collect
+  - 599ced0 fix warning about field width not being an int
+  - 6be370d Print keybindings containing space correctly
+  - e728898 partial revert of commit f55312ba
+
+-------------------------------------------------------------------
+Tue Feb 21 19:33:29 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- We apparently don't need luaterm at all. Weird.
+
+-------------------------------------------------------------------
+Wed Feb 15 12:24:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update to version 0.8+git.1676316750.7e88dff:
+  - vis-open: further improvement & clean-up
+  - Do tilde expansion only for the tilde character at the
+    beginning of the pattern.
+  - Correct initial value of 'syntax' option, which is not 'off'
+  - text-io: close "cwd" in all cases
+
+-------------------------------------------------------------------
+Mon Jan 30 12:21:45 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Add Suggests: par_text for regormatting.
+
+-------------------------------------------------------------------
+Tue Jan 10 21:58:27 UTC 2023 - Matej Cepl <mcepl@suse.com>
+
+- Update scintillua (gh#martanne/vis#1068).
+
+-------------------------------------------------------------------
+Fri Dec 23 18:02:28 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add support for wayclip (https://sr.ht/~noocsharp/wayclip/;
+  gh#martanne/vis#1037).
+
+-------------------------------------------------------------------
+Wed Dec  7 22:55:00 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add patch to vis-clipboard: make xsel honor --selection
+  (gh#martanne/vis#1050).
+
+-------------------------------------------------------------------
+Tue Dec  6 15:37:07 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add patch for checking error in fchdir(), gh#martanne/vis#1058.
+
+-------------------------------------------------------------------
+Tue Nov 29 23:15:36 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Large update to new scintillua lexers, and rebase all remaining
+  branches.
+
+-------------------------------------------------------------------
+Tue Nov  1 15:17:39 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.8 series.
+
+-------------------------------------------------------------------
+Sun May 29 18:00:53 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1653832963.0cc684f:
+  * filetype: Set diff filetype for COMMIT_EDITMSG files
+  * filetype: Allow ".PKGBUILD" extension for PKGBUILDs
+  * filetype: add .glif to xml
+  * filetype.lua: Add "text/x-script.python" to python
+  * README: fix typo
+
+-------------------------------------------------------------------
+Thu May 05 15:10:36 UTC 2022 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1651608857.d0808c7:
+  * Re-enabled tre by #including <stddef.h>.
+  * README: x/freenode/c/libera/
+
+-------------------------------------------------------------------
+Fri Apr 29 23:27:53 UTC 2022 - Matej Cepl <mcepl@suse.com>
+
+- Add 1000-reenable-stddef-musl.patch (gh#martanne/vis#1000).
+
+-------------------------------------------------------------------
+Fri Dec 31 21:07:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no-EOL-to-wl-clipboard.patch to eliminate unnecessary
+ on paste.
+
+-------------------------------------------------------------------
+Sun Dec 26 19:58:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- So, I'll try 675-non-block_subproc.patch again.
+- But comment out 558-gf_reimplementation.patch again, because it
+  causes gh#martanne/vis#827.
+
+-------------------------------------------------------------------
+Mon Dec 20 11:21:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Mix patches again
+
+-------------------------------------------------------------------
+Sun Dec 19 15:03:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Comment out 558-gf_reimplementation.patch, because it seems to
+  ignite gh#martanne/vis#827 again.
+
+-------------------------------------------------------------------
+Tue Dec 14 11:41:12 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 558-gf_reimplementation.patch to add advanced
+  reimplementation of `gf` command.
+- Add vis-rpmlintrc to avoid complaints about bashisms in
+  vis-clipboard (gh#martanne/vis#990).
+
+-------------------------------------------------------------------
+Wed Nov 17 18:10:33 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 977-makefile-multiple-targets.patch to fix lexers/makefile
+
+-------------------------------------------------------------------
+Sun Aug 22 16:47:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add patch 946-non-ASCII-completion.patch fixing gh#martanne/vis#941
+- Add patch 948-soft-word-wrapping.patch adding wrapping of lines.
+- Add patch 617-vis-highlight.patch to add vis-highlight command.
+- Add patch 959-flexible-insert-completion.patch to improve
+  insert completion (and make it possible to use
+  https://github.com/jpaulogg/vis-ins-completion)
+
+-------------------------------------------------------------------
+Sat May 15 20:25:45 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1618946717.1a958f2:
+  * filetype: Set "groovy" for Jenkinsfile
+  * ci: verify coverity scan script before using it
+  * ci: verify codecov script before using it
+  * vis: Add readline Ctrl+A/E bindings
+  * add lua5.4 in configure script
+
+-------------------------------------------------------------------
+Tue Feb 16 18:11:34 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1613402937.0cccd6e:
+  * vis: correctly close pipe connected to stdin of external process
+  * sam: simplify trailing match handling for x/y commands
+  * sam: tweak handling of zero length matches in y commands
+  * gitignore: remove vim specific swap files
+
+-------------------------------------------------------------------
+Fri Feb  5 23:55:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 699-no-crash-reenter-prompt.patch to fix
+  gh#martanne/vis#628.
 
 -------------------------------------------------------------------
 Fri Feb  5 23:00:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add BR libselinux-devel to make vis SELinux aware.
+
+-------------------------------------------------------------------
+Fri Feb  5 21:53:41 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1611579794.29f89df:
+  * test: update
+  * sam: produce empty match at the end of looped range
+  * sam: only skip the last empty match if it follows a newline
+  * build: update alpine in docker build to version 3.13
+  * Adding .sv extension to verilog syntax highlighter
+  * filetype: Detect make shebang for "makefile".
+  * filetype: Set "bash" for APKBUILD and .ebuild.
+- Add libselinux-devel BR to enable SELinux support.
+
+-------------------------------------------------------------------
+Mon Jan 18 18:48:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch to Lua 5.4 by force.
+- Add back non-block_subproc.patch (rebase of gh#martanne/vis#675
+  on the top of master).
+
+-------------------------------------------------------------------
+Thu Jan 14 17:32:17 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.7+git.1609943606.686ba1c:
+  * lexers/git-rebase: also highlight break command
+  * lexers/strace: improve comments, field names and syscall results
+  * Mention pkg-config in README
+  * vis-lua: provide file.permission property
+  * vis: implement multiline to/till motions
+  * vis: rename to/till motion internals
+  * lua: fix luacheck warnings
+  * fix typos in comments
+  * vis: make O implementation independent of <Up> mapping
+  * lexers: fix bug in bash lexer for last here-doc
+  * build: add git based version information back
+  * Set version to 0.7
+  * Add gemini lexer
+  * Zig filetype entry.
+  * Adding Zig lexer.
+  * Heredocs with "-" can have spaces before closing
+  * lexers: add meson build file lexer
+  * ci: avoid usage of ::add-path:: command in GitHub action
+  * test: update
+  * view: make view_selections_dispose_all O(n)
+  * Make SourceHut badge show status of master branch commits
+  * correct a couple of typos and distinguish between immediate and waiting operators
+  * vis: fix <C-c> processing after SIGINT
+  * build: fix curses library/pkg-config name
+  * vis: use localtime_r(3) instead of localtime(3)
+  * sam: simplify boolean expression, start < end implies end > 0
+  * map: remove no longer used map_leaf function
+  * build: use feature test macros for memrchr configure check
+  * build: add -D_NETBSD_SOURCE for NetBSD
+  * lua: fix typo in lilypond file extension
+  * test: update
+  * text: simplify iterator_init
+  * text: fix invalid pointer comparison
+  * text: avoid invalid pointer arithmetic
+  * test: update
+  * text: move higher level utility functions to separate file
+  * text: move generic iterator functionality to separate file
+  * text: move I/O related code to separate file
+  * build: list source files on separate lines
+  * text: provide public text_iterator_init
+  * text: rename internal text_iterator_init
+  * text: mark return value of text_iterator_text as const
+  * text: make text_snapshot return whether it succeeded
+  * array: mark array_peek argument as const
+  * array: mark array_capacity argument as const
+  * array: mark array_init_from argument as const
+  * text: mark text_delete_range range argument as const
+  * text: mark text_save_write_range range argument as const
+  * text: mark text_mmaped argument as const
+  * array: mark array_get_ptr argument as const
+  * array: mark array_get argument as const
+  * array: mark array_length argument as const
+  * text: mark text_write{,_range} argument as const
+  * text: mark text_size argument as const
+  * text: mark text_mark_get argument as const
+  * text: mark text_iterator_byte_get argument as const
+  * text: mark text_bytes_alloc0 argument as const
+  * text: mark text_byte(s)_get argument as const
+  * text: mark text_iterator_get argument as const
+  * text: mark text_state argument as const
+  * text: mark text_modified argument as const
+  * text: mark text_stat argument as const
+  * text: introduce text_iterator_text
+  * text: introduce text_iterator_has_{next,prev}
+  * text: add namespace prefix to block type constants
+  * text: avoid direct access to txt->blocks in I/O related code
+  * text: introduce text_saved
+  * text: use public text_stat interface where possible
+  * text: introduce block_load
+  * text: store blocks in array
+  * text: simplify reading of initial file content
+  * vis: add vis-selection-new-match-all
+  * vis: refactor selections_match_next
+  * text: add text_object_find_next/prev
+  * filetype: and Node.js module extensions
+  * test: update
+  * lexers: add .ts as a javascript (until typescript gets its own)
+  * Add ignorecase option
+  * lexers: add Mikrotik RouterOS script lexer
+  * filetype: do not match text/plain too early
+  * filetype: use scheme lexer for racket files
+  * text: improve text_line_down on the last line of the file
+  * vis-lua: provide vis.mark property
+  * vis-lua: use utility function to translate mark names
+  * vis: provide reverse mapping function for mark names
+  * vis-lua: provide vis.register property
+  * vis-lua: use utility function to translate register names
+  * vis: provide reverse mapping function for register names
+  * vis-lua: fix mark_names Lua doc indentation
+  * Pass up terminal CSI as events to Lua.
+  * text: improve and simplify inner word text object
+  * vis: improve C-n behavior in visual mode
+  * vis: implement C-n in normal mode with a mapping to viw
+  * text: make inner text objects work on single delimiting symbols
+  * text: provide save function taking a directory descriptor
+  * text: provide load function taking a directory descriptor
+  * text: move misplaced text_save documentation snippet
+  * vis-lua: fix redraw method name in API documentation
+  * vis-lua: make file.modified assignable
+  * doc: update doxygen configuration
+  * Update copyright year
+  * doc: update version number in doxygen config
+  * doc: use c as default sphinx role
+  * doc: enable C syntax highlighting by default
+  * doc: fix a couple of API doc warnings
+  * vis: remove ae outer entire text object
+  * vis: remove ie inner entire text object
+  * vis: remove z> rightmost pairwise selection combinator
+  * vis: remove z< leftmost pairwise selection combinator
+  * vis: remove z- shorter pairwise selection combinator
+  * vis: remove z+ longer pairwise selection combinator
+  * vis: remove z& pairwise selection intersection
+  * vis: remove z| pairwise union
+  * vis: remove commented entries from default config
+  * vis: use ~ instead of ! for selection complement
+  * vis: remove ~ as alias for g~
+  * vis: remove window related aliases from default config
+  * vis: remove special key aliases from default config
+  * test: update
+  * test: update
+  * support for primary clipboard
+  * vis-open: add trailing "/" for the folders
+  * build: mark distclean and testclean targets as PHONY
+  * Makefile: add testclean target
+  * Makefile: add distclean target
+  * build: define LUA_COMPAT_5_3
+  * text: simplify remapping of original file content
+  * text: remove dead store
+  * text: code cleanup, use local variable
+  * text: fix typo in comments, no code change
+  * Support wayland clipboard (wl-clipboard)
+  * build: add git based version information back
+  * build: set version to 0.6
+  * ui: fix terminal UI on serial console
 
 -------------------------------------------------------------------
 Tue Dec  8 18:42:07 UTC 2020 - Matej Cepl <mcepl@suse.com>
@@ -331,4 +1585,3 @@ Sun Sep 22 01:22:08 CEST 2019 - Matej Cepl <mcepl@suse.com>
 Mon Dec 12 21:42:43 UTC 2016 - code@baez.nyc
 
 initial build from git
-

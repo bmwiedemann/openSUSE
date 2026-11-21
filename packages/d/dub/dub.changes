@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  1 16:22:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.43.0:
+  * Added `dub generate ninja` command introducing Ninja build
+    backend.
+  * Fixed `--conf` options not being passed to LDC's linker
+    step.
+  * Fixed Windows response file quoting for paths with trailing
+    backslashes.
+  * Repacked source tarball to unbundle prebuilt Windows DLLs.
+
+-------------------------------------------------------------------
 Fri Aug 14 06:12:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 1.42.0

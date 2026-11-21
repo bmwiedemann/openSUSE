@@ -431,4 +431,12 @@
     <comment>Fix build in factory (forwarded request 1366183 from fstrba)</comment>
     <requestid>1366185</requestid>
   </revision>
+  <revision rev="60" vrev="6">
+    <srcmd5>daebbb608d7293a4cb93de0fc4595a1d</srcmd5>
+    <version>1.4.0</version>
+    <time>1794591172</time>
+    <user>anag_factory</user>
+    <comment>Fix build with binutils &gt;= 2.44 (bfd_boolean/FALSE removed)</comment>
+    <requestid>1397096</requestid>
+  </revision>
 </revisionlist>

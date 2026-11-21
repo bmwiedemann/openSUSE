@@ -54,6 +54,8 @@ Patch9:         axis-CVE-2014-3596.patch
 Patch10:        unimplemented-saaj13-methods.patch
 # PATCH-FIX-UPSTREAM bsc#1218605 CVE-2023-51441 SSRF when untrusted input is passed to the service admin HTTP API
 Patch11:        axis-CVE-2023-51441.patch
+# PATCH-FIX-UPSTREAM bsc#1290492 CVE-2026-90436 Remote code execution via insecure deserialization of SOAP fault messages 
+Patch12:        axis-CVE-2026-90436.patch
 BuildRequires:  ant
 BuildRequires:  ant-jdepend
 BuildRequires:  antlr
@@ -108,6 +110,7 @@ Manual for axis
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 
 # Remove provided binaries
 find . "(" -name "*.jar" -o -name "*.zip" -o -name "*.class" ")" -delete

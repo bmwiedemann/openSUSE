@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:03:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.2:
+  * Fix service-token presence bypass of access_rules and token
+    bind
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.2
+  * Update .gitreview for stable/2026.2
+
+-------------------------------------------------------------------
 Mon Sep  7 09:38:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0.1:

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Nov 19 18:32:51 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add blender-4.5-cmake-4.5.patch to fix build with CMake 4.5
+
+-------------------------------------------------------------------
+Tue Nov 10 20:18:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.16
+  - 720f35f7bec GreasePencil: Hide 'Duration' parameter from
+    "Insert Blank Frame" operator.
+  - 2ceeae23bd9 Fix: Handling of invalid values in Curves readfile
+    code.
+  - 6203ccead7b Fix: Handling of invalid values in GreasePencil
+    readfile code.
+  - 67dc293bb13 GreasePencil: Disable 'duration' and 'end frame'
+    features.
+  - 602742a4ea0 Fix: Grease Pencil: Replace end frames on load by
+    empty drawing.
+  - 773d2b52efb Fix: Curves: Attribute validator allows invalid
+    curve type.
+  - c3a4aa5b6cd Fix #165789: Holes in the result of the skin
+    modifier
+  - c74c5911d57 Fix #165588: `libraries.write` crashes due to
+    unsynchronized view layer.
+  - 8ece9e77fcc LineArt: Allow curves objects to be loaded into
+    calculation
+  - e6e8519a7d4 Fix: Leak converting single value attributes to
+    CustomData
+  - 0a4b2c8ec3e Fix: Leak of sequencer strip data from newer blend
+    files
+  - 7af29fbdd3a Fix: Leak of asset shelf region data from newer
+    blend files
+  - 6f4558a82c8 Fix: Leak of library link main list on invalid
+    blend file
+  - f7201859938 Fix: Core: ASAN error reading null sequencer
+    seqbasep
+  - 54d299e7851 Fix: Build: Add PIP_BUILD_CONSTRAINT for new pip
+    versions
+  - a0b5246b8e4 Deps: Pin version of Pip package `setuptools-scm`
+    using contraints
+  - dfc5900d81c Python: Update certifi to 2026.10.19 and pip to
+    26.2.2
+
+-------------------------------------------------------------------
 Sat Oct 24 00:29:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.15

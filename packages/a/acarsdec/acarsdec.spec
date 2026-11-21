@@ -18,7 +18,7 @@
 
 
 Name:           acarsdec
-Version:        4.6
+Version:        4.7
 Release:        0
 Summary:        ACARS SDR decoder
 # Legal-Review-Notice: every source file carries a boilerplate naming the "GNU

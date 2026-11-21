@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sat Oct 24 20:02:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.36.7 (tracks Kubernetes 1.36, k8s.io v0.36.3):
+  * Annotations moved to Kubernetes-recommended naming (*.crio.io);
+    --insecure-registries option removed; default seccomp profile
+    configurable per runtime
+  * Checkpoint/restore reworked with a new config block; CNI plugin
+    health monitoring; TLS settings for the API server; GOMAXPROCS
+    floor for containers
+  * Drop crio-status: upstream removed the binary and its shell
+    completions; ship the new crio.conf.d.5 man page and build man
+    pages with go-md2man (add gcc/make/go-md2man BuildRequires,
+    require golang(API) >= 1.26)
+  * CVE-2022-4318 (boo#1206370): reject newline in HOME env to stop
+    /etc/passwd tampering
+  * CVE-2023-6476 (boo#1218685): filter prefixed annotations so pods
+    cannot escape resource confinement via UnifiedCgroup
+  * CVE-2024-3154 (boo#1223339): stop arbitrary systemd property
+    injection via pod annotations
+  * CVE-2022-2995 (boo#1202806): fix supplementary groups handling
+    (fixed upstream in 1.25.0)
+  * CVE-2024-8676 (boo#1233812): checkpoint/restore triggerable from
+    other namespaces
+  * CVE-2026-15809 (boo#1271723): reject raw newline bytes in HOME
+    env to stop /etc/passwd injection
+  * CVE-2026-17113 (boo#1277049): fix daemon crash on malformed OCI
+    image env
+  * CVE-2026-76061 (boo#1284434): fix bind_mount_prefix symlink
+    resolution
+  * CVE-2022-28948 (boo#1248560), CVE-2022-21698 (boo#1248716):
+    update gopkg.in/yaml.v3 to v3.0.1, prometheus/client_golang to
+    v1.23.2
+  * CVE-2024-3727 (boo#1224125), CVE-2024-9676 (boo#1231786):
+    update go.podman.io/image to v5.38.0, go.podman.io/storage to
+    v1.61.1
+  * CVE-2024-45337 (boo#1234580), CVE-2025-22869 (boo#1239419),
+    CVE-2025-47913 (boo#1253589), CVE-2025-47914 (boo#1254048),
+    CVE-2025-58181 (boo#1253907): update golang.org/x/crypto to
+    v0.48.0
+  * CVE-2024-45338 (boo#1235363), CVE-2025-22872 (boo#1241835),
+    CVE-2025-47911 (boo#1251513), CVE-2025-58190 (boo#1251688):
+    update golang.org/x/net to v0.51.0
+  * CVE-2024-9341 (boo#1231230): update go.podman.io/common to
+    v0.66.2 (FIPS crypto-policy directory mounting)
+  * CVE-2024-45310 (boo#1257434): update vendored
+    opencontainers/runc to v1.4.0
+  * CVE-2025-21613 (boo#1247625): update go-git to v5.16.3
+  * CVE-2025-58058 (boo#1248945): update ulikunitz/xz to v0.5.15
+  * CVE-2026-33186 (boo#1260291): update grpc to v1.79.3
+    (authorization bypass via :path pseudo-header)
+  * CVE-2026-34986: update go-jose/v4 to v4.1.4 (Go JOSE DoS)
+  * CVE-2026-35469: update moby/spdystream to v0.5.1
+  * CVE-2025-58183: update vbatts/tar-split to v0.12.2 (unbounded
+    allocation parsing GNU sparse maps)
+  * CVE-2026-62146 (boo#1283521): drop internal annotations
+    from user input (GHSA-6wmc-5877-hgc9)
+  * CVE-2026-92574 (boo#1282259): checkpoint restore uses CRI
+    request annotations and recomputed internal annotations
+    instead of checkpoint archive content
+  * CVE-2025-0750 (boo#1236479): validate emptyDirVolName
+    (DNS1123) and securely join pod-log paths so log
+    mount/unmount cannot escape to host paths
+  * is not affected by CVE-2024-5154 (boo#1225576): only 1.28.6,
+    1.29.4 and 1.30.0 were ever affected
+  * is not affected by CVE-2024-28180 (boo#1235208): go-jose.v2 no
+    longer vendored, go-jose/v4 is 4.1.4
+  * is not affected by CVE-2024-44337 (boo#1231718),
+    CVE-2024-6104 (boo#1227032): gomarkdown and go-retryablehttp
+    no longer vendored
+  * is not affected by CVE-2024-11218 (boo#1236274): buildah is not
+    vendored in this package
+- License is now Apache-2.0 AND MPL-2.0: MPL-2.0 code from hashicorp
+  errwrap and go-multierror and parts of cyphar filepath-securejoin
+  is linked into crio
+- Drop the rpmlintrc: all its filters went stale (conmon/pause
+  binaries and libcontainers warnings are gone with this update)
+
+-------------------------------------------------------------------
 Thu Aug 31 09:46:11 UTC 2023 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - (bsc#1214406) update `kubelet.env`:

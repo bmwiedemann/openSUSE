@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:11:53 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.8:
+  * Security release addressing 32 vulnerabilities, along with
+    performance, accuracy, and stability issues.
+  * CVE assignments were pending at the time of release.
+  * All tickets:
+    https://redmine.openinfosecfoundation.org/versions/238
+  * Release announcement:
+    https://forum.suricata.io/t/suricata-8-0-8-released/6548
+- Require Rust 1.75.0 as specified by upstream.
+- Require hwloc 2.0.0 or newer for the enabled hwloc support.
+
+-------------------------------------------------------------------
 Fri Sep 18 11:13:47 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 8.0.7:

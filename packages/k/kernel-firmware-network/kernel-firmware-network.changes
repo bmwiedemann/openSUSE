@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:02:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.4-rc1
+
+-------------------------------------------------------------------
+Mon Nov  2 07:19:57 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * wilc1000: update WILC1000/WILC3000 firmware to v16.5.2
+
+-------------------------------------------------------------------
 Wed Sep  2 13:01:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.3-rc1

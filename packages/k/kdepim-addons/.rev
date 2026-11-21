@@ -1051,4 +1051,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383448</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>cf38cc627ba24a3d4bad8e37c1442e7a</srcmd5>
+    <version>26.08.3</version>
+    <time>1793989815</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395249</requestid>
+  </revision>
 </revisionlist>

@@ -43,6 +43,10 @@ Source99:       qt6-declarative-rpmlintrc
 Patch0:         0001-qmlimportscanner-Include-module-versions-again.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-teardown-hang-with-QuickPixmapReader.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-QQuickItemView-don-t-leave-dangling-entries-in-unreq.patch
+# PATCH-FIX-UPSTREAM
+Patch3:         0001-QML-engine-Correctly-compare-composites-when-multipl.patch
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

@@ -399,4 +399,12 @@
     <comment>Plasma 6.8.2 (forwarded request 1393228 from krop)</comment>
     <requestid>1393309</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>868c050b2a52638b81e28b3bb0c0c535</srcmd5>
+    <version>6.8.3</version>
+    <time>1794590783</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.3</comment>
+    <requestid>1396767</requestid>
+  </revision>
 </revisionlist>

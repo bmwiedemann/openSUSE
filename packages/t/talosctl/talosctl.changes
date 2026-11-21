@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 13 05:31:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.6:
+  * Dependency Changes
+    - github.com/gopacket/gopacket v1.7.1 -> v1.7.2
+    - github.com/klauspost/compress v1.19.2 -> v1.20.2
+    - github.com/osrg/gobgp/v4 v4.8.0 -> v4.10.0
+    - github.com/siderolabs/pkgs v1.14.0-48-gf4bda77 ->
+      v1.14.0-59-ge6ad19d
+    - github.com/siderolabs/talos/pkg/machinery v1.14.5 -> v1.14.6
+    - github.com/siderolabs/tools v1.14.0-11-g8dad45e ->
+      v1.14.0-12-g5959f76
+    - golang.org/x/net v0.61.0 -> v0.62.0
+
+-------------------------------------------------------------------
 Thu Oct 29 06:18:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.14.5:

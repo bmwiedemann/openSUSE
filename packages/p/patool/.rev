@@ -35,4 +35,12 @@ shell-quoting fixes, zpaqfranz for ZPAQ, SECURITY.md. Testsuite runs in
 %check (83 passed), spec cleaned. Built green on aarch64.</comment>
     <requestid>1377553</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>2633da31d648d376975ef16733f99021</srcmd5>
+    <version>4.1.0</version>
+    <time>1794591108</time>
+    <user>anag_factory</user>
+    <comment>Fix CVE-2026-124584 symlink following in gzip extractor (boo#1289739), harden gzip/py_gzip paths.</comment>
+    <requestid>1397057</requestid>
+  </revision>
 </revisionlist>

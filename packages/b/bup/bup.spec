@@ -17,34 +17,22 @@
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-
 %define with_test 0
 %define pythons python3
-
 Name:           bup
-Version:        0.33.10
+Version:        0.34
 Release:        0
 Summary:        Backup program based on git
 License:        LGPL-2.0-only
-Group:          Productivity/Archiving/Backup
 URL:            https://bup.github.io/
 Source0:        https://github.com/bup/bup/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  git-core >= 1.5.6
-%ifnarch %ix86
-BuildRequires:  pandoc
-%endif
-BuildRequires:  %{python_module devel >= 3.7}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module fuse}
 BuildRequires:  %{python_module pylibacl}
 BuildRequires:  %{python_module pyxattr}
 BuildRequires:  %{python_module tornado}
+BuildRequires:  git-core >= 1.5.6
 BuildRequires:  perl(Time::HiRes)
-%if %{with_test}
-BuildRequires:  %{python_module pylint}
-BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  rsync
-%endif
 Requires:       %{python_flavor}
 Requires:       %{python_flavor}-fuse
 Requires:       %{python_flavor}-pylibacl
@@ -52,6 +40,15 @@ Requires:       %{python_flavor}-pyxattr
 Requires:       %{python_flavor}-tornado
 Requires:       git-core >= 1.5.6
 Requires:       par2
+%ifnarch %{ix86}
+BuildRequires:  pandoc
+%endif
+%if %{with_test}
+BuildRequires:  %{python_module pylint}
+BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  rsync
+%endif
 
 %description
 Very efficient backup system based on the git packfile format,
@@ -83,7 +80,7 @@ find -type f -name ".gitignore" -exec rm {} \;
 
 %check
 %if %{with_test}
-make check
+%make_build check
 %endif
 
 %files
@@ -99,7 +96,7 @@ make check
 %{_prefix}/lib/%{name}/cmd/*
 %{_prefix}/lib/%{name}/web/*
 %{_prefix}/lib/%{name}/web/static/*
-%ifnarch %ix86
+%ifnarch %{ix86}
 %{_docdir}/%{name}/
 %{_mandir}/man1/*
 %{_mandir}/man5/*

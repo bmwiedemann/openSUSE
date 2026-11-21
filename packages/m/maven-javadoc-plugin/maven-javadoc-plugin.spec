@@ -51,7 +51,7 @@ BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
-BuildRequires:  modello >= 2.0.0
+BuildRequires:  modello-ant-task
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-interactivity-api

@@ -261,4 +261,61 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update python-langchain-core to 1.7.3.</comment>
     <requestid>1394130</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>413f5d90eb1cd70209220199e0979ef5</srcmd5>
+    <version>1.7.4</version>
+    <time>1793817975</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.7.4</comment>
+    <requestid>1394852</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e9fe387e193f860ce63c0c881c1628cc</srcmd5>
+    <version>1.7.6</version>
+    <time>1793991491</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.7.6: Gemini safety blocks as refusals, standard blocks.</comment>
+    <requestid>1395829</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>86006546b80b7e27e75d95d4df1ff58f</srcmd5>
+    <version>1.7.7</version>
+    <time>1794324601</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.7</comment>
+    <requestid>1396524</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2c523031f45f76b5293e1a3c600e63f0</srcmd5>
+    <version>1.8.0</version>
+    <time>1794590980</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.8.0: drop EOL Python 3.10, add decision models.</comment>
+    <requestid>1396963</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>4af18225ac945eedabe46db82f8b5fb4</srcmd5>
+    <version>1.8.1</version>
+    <time>1794932314</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.8.1: per-context LangSmith gateway routing.</comment>
+    <requestid>1398006</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>88fe98525755540fc3b54542bf534128</srcmd5>
+    <version>1.8.3</version>
+    <time>1795103772</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.8.3: gateway headers, warning-filter fixes.</comment>
+    <requestid>1398602</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a19b8e4f73a2b7e33e8f7d1b0b15a2bf</srcmd5>
+    <version>1.8.4</version>
+    <time>1795182497</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.8.4: finish-reason standardization, HITL tool-message tagging.
+- Needs sr#1398889 (python-langchain-protocol 0.0.22) first.</comment>
+    <requestid>1398897</requestid>
+  </revision>
 </revisionlist>

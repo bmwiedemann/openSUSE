@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 30 09:02:43 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.9.0
+  * Fix: auth/login-cache: partially missing thread-safety
+  * Fix: auth/login-cache: add lock around remove expired entry
+  * Fix: sharing/delete collection: fix uncatched collection URI without trailing '/'
+  * Fix: auth/sharing+rights: refactoring "user_groups" handling to be thread-safe
+  * Fix: REPORT expand: non-recurring events with a TZID were time-range filtered by their local time read as UTC
+  * Fix: typo in /.mobileconfig
+  * Fix: empty text-match filter no longer fails the REPORT
+  * Fix: WebUI/Sharing: property overrides on transformed shares
+  * Fix: PUT request: accept If-Match: * for an existing item
+  * Fix: REPORT with calendar-data parses every item with vobject just to count VEVENTs (10× slower than needed)
+  * Fix: Honor zero-offset VALARM triggers in time-range filters
+  * Fix: time-range filter on VTODO with only CREATED and COMPLETED
+  * Fix: sharing: broken support for custom database_path
+  * Fix: addressbook-query prop-filter defaults to test="anyof"
+  * Improvement: sharing/api: reject unsupported overlay properties depending on collection type and conversion
+  * Improvement: sharing/bday: remove default "(BDAY)" suffix from overlayed "displayname"
+  * Adjustment WebUI: show incoming shares as cards
+  * Extension: contrib/Apache reference config supports now also HTTP2
+  * Extension: HTTP version added to request log
+  * Add: [server] type: serve with hypercorn, which additionally speaks HTTP/2 over cleartext (H2C) on the same socket (pip install radicale[h2])
+  * Add: storage-hook supports now placeholder 'actor' (useful for shared collection)
+  * Add: new permission 'l' for locking properties by blocking write access to properties (PROPPATCH) and suppressing write-properties (PROPFIND)
+
+-------------------------------------------------------------------
 Sat Oct 10 13:24:08 UTC 2026 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.8.3

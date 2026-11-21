@@ -35,4 +35,40 @@
     <comment>1</comment>
     <requestid>1383620</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f74a598838978dca91c586a01dcaf042</srcmd5>
+    <version>1.4.0</version>
+    <time>1795023151</time>
+    <user>anag_factory</user>
+    <comment>- Keep old style vendor script around
+- Fix up pkg-config files
+- Restore build-id again
+
+- Fix the build with zig 0.17:
+  * vendor.tar.zst: unpack the 37 zig packages into p/&lt;hash&gt;/;
+    zig 0.17 stores fetched packages as compressed p/&lt;hash&gt;.tar.gz,
+    which zig build --system cannot find, so the build stopped with
+    &quot;package not found&quot; for uucode and translate_c
+  * vendor.tar.zst: remove the prebuilt Windows, macOS and Java
+    binaries and test fixtures that gettext, imgui, breakpad and
+    sentry carry
+  * vendor.sh: unpack the fetched packages, delete those binaries,
+    and keep the test directories, which the translate_c build
+    reads
+  * Install with a relative lib dir, as zig 0.17 does not apply
+    DESTDIR to an absolute one
+  * Recreate the ghostty terminfo alias, a symlink that zig 0.17
+    does not install
+  * Fix prefix and libdir in libghostty-vt.pc and do not ship the
+    static library
+- The vendored libxml2 is not built, as fontconfig is linked from
+  the system, so the package is not affected by:
+  * CVE-2025-6021 (boo#1244594)
+  * CVE-2025-8732 (boo#1247855)
+- Spec cleanup
+
+- Update to 1.4.0
+  https://ghostty.org/docs/install/release-notes/1-4-0</comment>
+    <requestid>1398422</requestid>
+  </revision>
 </revisionlist>

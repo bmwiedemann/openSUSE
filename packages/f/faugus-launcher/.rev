@@ -931,4 +931,12 @@
   * Reorder</comment>
     <requestid>1377789</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a9fa24a4694e133c79207b9d2be52041</srcmd5>
+    <version>2.5.7</version>
+    <time>1793817943</time>
+    <user>anag_factory</user>
+    <comment>Bump to version 2.5.7</comment>
+    <requestid>1394817</requestid>
+  </revision>
 </revisionlist>

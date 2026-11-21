@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 19 01:26:56 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20261119.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20261119
+  * Add 4.0.10
+  * Add 3.4.13
+  * Add 3.3.14
+  * Build Ruby < 3.2 with GCC 15 everywhere, not only on Fedora by @eregon in #2649
+  * Put -std=gnu17 on CC for Ruby 2.7 too, its configure ignores cflags by @eregon in #2650
+  * Build OpenSSL 1.0 without parallel make by @hsbt in #2651
+  * Add JRuby 10.1.3.0 by @sferik in #2652
+  * JRuby 10.0.8.0 by @headius in #2653
+  * Use OpenSSL 3.5.9 for Ruby 3.3.14, 3.4.13 and 4.0.10 by @hsbt in #2654
+
+-------------------------------------------------------------------
 Fri Oct 23 08:36:54 UTC 2026 - Müller <expeehaa@outlook.com>
 
 - Add explicit dependencies on awk and xargs.

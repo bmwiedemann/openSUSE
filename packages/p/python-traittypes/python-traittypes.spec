@@ -1,7 +1,7 @@
 #
 # spec file for package python-traittypes
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,15 @@
 
 
 Name:           python-traittypes
-Version:        0.2.1
+Version:        0.2.3
 Release:        0
 Summary:        Scipy trait types
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-widgets/traittypes
 Source:         https://files.pythonhosted.org/packages/source/t/traittypes/traittypes-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM gh#jupyter-widgets/traittypes#43
-Patch0:         python-traittypes-remove-nose.patch
-# PATCH-FIX-UPSTREAM gh#jupyter-widgets/traittypes#32
-Patch1:         python-fix-nptypes.patch
+# PATCH-FIX-OPENSUSE python-traittypes-fix-tests.patch -- Fix test failures with modern xarray and pandas
+Patch0:         python-traittypes-fix-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -61,9 +59,7 @@ sed -i '1{/^#!/d}' traittypes/tests/test_validators.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# no xarray for Python 3.9 anymore
-python39_ignore="--ignore traittypes/tests/test_traittypes.py"
-%pytest traittypes ${$python_ignore}
+%pytest traittypes
 
 %files %{python_files}
 %doc README.md

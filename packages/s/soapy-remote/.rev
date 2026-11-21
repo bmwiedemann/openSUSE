@@ -187,4 +187,12 @@ Built locally on Tumbleweed/aarch64; rpmlint reports 0 errors, 0 warnings,
     <comment>Update soapy-remote to 0.5.3 (ref-clock API, GNU install dirs, SoapySDR 0.8.1 floor).</comment>
     <requestid>1384072</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1595cc4a5c61aa36e8a49ed7b7bfc34b</srcmd5>
+    <version>0.5.4</version>
+    <time>1794816481</time>
+    <user>anag_factory</user>
+    <comment>Update soapy-remote to 0.5.4: stream/RPC robustness fixes</comment>
+    <requestid>1397529</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package bzflag
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           bzflag
-Version:        2.4.30
+Version:        2.4.32
 Release:        0
 Summary:        3D Networked Multiplayer Tank Battle Game
 License:        GPL-2.0-or-later

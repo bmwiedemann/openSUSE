@@ -205,4 +205,12 @@ signature verified against the packaged keyring. (forwarded request 1368497 from
     <comment>1</comment>
     <requestid>1373471</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5c8d5098b80421f37c619143aa6fe905</srcmd5>
+    <version>1.19.0</version>
+    <time>1793899177</time>
+    <user>anag_factory</user>
+    <comment>Update nghttp3 to 1.19.0</comment>
+    <requestid>1394842</requestid>
+  </revision>
 </revisionlist>

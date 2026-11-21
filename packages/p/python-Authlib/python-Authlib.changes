@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:30:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.5 (security fixes in 1.9.2 through 1.9.5):
+  * 1.9.5, CVE-2026-114615: authlib.jose also refuses OpenSSH
+    keys with a tab after the key type and SSH certificates
+    as HMAC secrets, completing the algorithm-confusion fix
+    (boo#1287193)
+  * 1.9.4: IDJAGGrant exposes verified claims as
+    request.id_jag_claims; resolve users by iss and sub
+  * 1.9.3: OpenID Connect implicit and hybrid grants refuse
+    response_mode=form_post with non-http(s) redirect URIs
+  * 1.9.2: ID-JAG access tokens are limited to the scopes in
+    the ID-JAG scope claim, not the client's full
+    registration
+
+-------------------------------------------------------------------
 Sun Nov  1 16:30:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.9.1:

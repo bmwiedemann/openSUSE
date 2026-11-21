@@ -169,4 +169,12 @@
   * JWK: Handle key set equality comparisons with unrelated types.</comment>
     <requestid>1386102</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>db66aa65fc751987167540d8d6cb83b4</srcmd5>
+    <version>1.7.7</version>
+    <time>1794410811</time>
+    <user>dimstar_suse</user>
+    <comment>Add two CVE and bug references</comment>
+    <requestid>1396626</requestid>
+  </revision>
 </revisionlist>

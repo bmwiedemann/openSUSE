@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:58:57 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.7.0:
+  Handle jj diff --tool riff better:
+  * jj's left/ and right/ path prefixes are no longer highlighted as changes in
+  j file headers
+  * Hyperlinks now point to your real working copy files, not to jj's
+    temporary diff directory
+
+-------------------------------------------------------------------
 Mon Aug 17 06:22:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.6.2:

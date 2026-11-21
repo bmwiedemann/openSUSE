@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Oct 31 15:39:17 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.4:
+  * Overhaul architecture and split into sub-crates (mdbook-core,
+    mdbook-driver, mdbook-html, mdbook-markdown, mdbook-renderer).
+  * Switch web server in `mdbook serve` from warp to axum.
+  * Switch internal logging to tracing.
+  * Add zoomable images feature.
+  * Add keyboard shortcut popup ('?') and '/' search shortcut.
+  * Load search index on-demand when search is opened.
+  * Drop legacy config format and google-analytics support.
+  * Fix color formatting for rustdoc error messages
+    (CVE-2025-58160).
+  * Many bug fixes and UI improvements across 0.5.x.
+- CVE-2023-26964 (boo#1210358): is not affected by stream stacking
+  in h2/hyper as h2 is no longer used and hyper is updated to
+  1.12.0.
+- Update License tag to match current crate dependencies.
+- Remove --skip test::failing_tests in %check as test passes now.
+
+-------------------------------------------------------------------
 Thu Mar 12 06:10:58 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Skip failing test correctly now.

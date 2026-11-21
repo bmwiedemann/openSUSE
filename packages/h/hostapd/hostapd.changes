@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Oct 18 10:59:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.12:
+  * More complete EHT/IEEE 802.11be/Wi-Fi 7 support, with fixes
+    for message validation issues that could enable DoS attacks
+  * Support RSN overriding, e.g. WPA3-Personal Compatibility Mode
+  * Reject unexpected SAE password identifier to avoid a DoS attack
+    against a specific station; mandate SAE H2E with password ids
+  * Support SPP A-MSDU negotiation and IEEE 802.11bi functionality
+    (EPPKE, association frame encryption, PMKID privacy)
+  * Support Automated Frequency Coordination (AFC) on 6 GHz
+  * EAP-TEAP protocol changes based on RFC 9930, incompatible
+    with previous versions
+  * Remove obsolete Host AP and Atheros WEXT driver interfaces
+  * Move rate configuration to BSS level instead of per-radio
+  * hostapd is not affected by CVE-2019-5061 (boo#1159188):
+    IAPP support was removed upstream in 2.10
+  * hostapd is not affected by CVE-2019-10064 (boo#1165295):
+    PRNG seeding was fixed upstream in 2.10
+  * hostapd is not affected by CVE-2022-37660 (boo#1237073):
+    the PKEX code is deleted on success since 2.11
+- Drop CVE-2025-24912.patch, fixed upstream
+- Drop nl80211_NULL_pointer_check_for_link.patch, fixed upstream
+- Drop CVE-2026-58374.patch, fixed upstream
+- Drop Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch,
+  fixed upstream
+- Drop SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch,
+  fixed upstream
+- Spec cleanup (spec-cleaner pass)
+
+-------------------------------------------------------------------
 Thu Jul 23 16:24:39 UTC 2026 - chris@computersalat.de
 
 - Update hostapd.service

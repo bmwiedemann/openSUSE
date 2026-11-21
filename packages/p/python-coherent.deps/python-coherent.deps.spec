@@ -17,7 +17,7 @@
 
 
 Name:           python-coherent.deps
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Utilities for resolving imports to dependencies
 License:        MIT

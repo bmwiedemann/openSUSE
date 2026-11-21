@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 19 13:03:11 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.72.1
+
+- Update to 3.72.1
+  * Bugfixes and minor changes:
+    - macOS: Fixed a regression in toolbar sizing with certain
+      screen resolutions
+
+-------------------------------------------------------------------
+Sat Nov 14 16:09:34 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.72.0
+
+- Update to 3.72.0
+  * Fixed vulnerabilities:
+    - Updated to libfilezilla 0.59.0 and fzssh 1.5.2
+    - Fixed various crashes
+    - FTP over TLS: Add strict PROT P requirement, disconnect if
+      input buffer is non-empty after AUTH
+    - MSW: File editing now disallows setting direct associations
+      to cmd.exe and powershell.exe
+    - FTP: If the experimental "Strip VMS revisions" is set in
+      filezilla.xml, filenames were not correctly sanitized when
+      connecting to FTP servers configured with server type VMS in
+      the Site Manager
+    - FTP: Passive mode data connections are now always established
+      to the same IP address as the control connection, this can be
+      reverted to previous behavior in the Site Manager on a per-site
+      basis
+- Changes from 3.72.0-rc1
+  * New features:
+    - Added support for SSH proxies
+    - SFTP: Added dynamic request pipeline depth calculation to
+      improve download performance with some servers
+    - SFTP: Added option to disable use of SSH agent to settings
+      dialog
+  * Bugfixes and minor changes:
+    - Fixed layout issues in the Site Manager
+    - macOS: Improved UI layout on macOS 27
+    - macOS: Fixed a regression in number formatting
+
+-------------------------------------------------------------------
 Fri Aug 28 10:42:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.71.1
 
 - Update to 3.71.1

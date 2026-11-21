@@ -142,4 +142,12 @@
   * fix(search): mark unavailable episode search results with isAvailable</comment>
     <requestid>1378684</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>eab18bd4c7dcb165744213c990713587</srcmd5>
+    <version>1.12.4</version>
+    <time>1795023017</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.12.4</comment>
+    <requestid>1398231</requestid>
+  </revision>
 </revisionlist>

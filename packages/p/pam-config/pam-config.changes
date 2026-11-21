@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:19:34 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Replace the deprecated PreReq tags with Requires(post): pam
+  and pam-extra are consumed by the %post/%posttrans scriptlets,
+  which run pam-config itself
+- Declare gcc and make as BuildRequires: the package compiles C
+  sources and neither is part of the default buildroot
+- Drop the obsolete Group tag
+- Explain in pam-config-rpmlintrc why its filter stays: the
+  /etc/pam.d/common-*-pc entries are %ghost files that pam-config
+  generates in /etc at install time; the shipped static vendor
+  copies live in /usr/lib/pam.d in the pam package, so the
+  move-to-usr rule for shipped files does not apply to them
+- Document in the spec why the generated common-*-pc files use
+  plain %config and not %config(noreplace): pam-config rewrites
+  them on every run
+
+-------------------------------------------------------------------
 Mon Feb 16 14:12:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2.14+git.20260216:

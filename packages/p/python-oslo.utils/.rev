@@ -740,4 +740,20 @@
   * Drop Python 3.10</comment>
     <requestid>1376093</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9a2f798c523975e8887b91857bd99212</srcmd5>
+    <version>10.3.0</version>
+    <time>1795023004</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.3.0:
+  * reno: Update master for unmaintained/2025.1
+  * Stop logging LUKS key material
+  * Use pyproject.toml to maintain coverage options
+  * Fix mypy errors in StringToBytesTest scenario lists
+  * Declare Python 3.15 support
+  * Fix typo
+  * Update master for stable/2026.2
+  * Replace deprecated pyparsing interface</comment>
+    <requestid>1398203</requestid>
+  </revision>
 </revisionlist>

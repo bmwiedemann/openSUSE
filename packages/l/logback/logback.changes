@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Nov 12 15:56:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.6.6
+  * Changes of version 1.6.6
+    + LoggingEventVO now rejects, during deserialization, throwable
+      proxies whose cause or suppressed entries point back into the
+      graph of proxies, for example to their own parent. Such
+      graphs cannot be produced by logback itself. However, a
+      crafted stream sent to a socket receiver could use
+      serialization back-references to build them, after which
+      DefaultThrowableRenderer and SyslogAppender would loop forever
+      and the recursive converters would overflow the stack. These
+      streams are now rejected with an InvalidObjectException.
+      Circular exceptions logged by the application are still
+      transmitted correctly.
+    + FileNamePattern now escapes characters with a special meaning
+      in regular expressions, such as (, [ or +, when converting the
+      literal parts of a file name pattern into a regex. Previously,
+      RollingFileAppender failed to start when the path contained an
+      unbalanced parenthesis, as in C:/Users/Michael(Financ.
+      Moreover, with SizeAndTimeBasedRollingPolicy and a pattern
+      such as app.%d.(%i).log, existing archives were not recognized.
+      After a restart within the same period, the next rollover
+      could overwrite an existing archive, and maxHistory and
+      totalSizeCap never removed such archives. Regex metacharacters
+      in %d{...} date patterns are now escaped as well.
+    + The conversion of date patterns into regular expressions now
+      follows the rules of DateTimeFormatter, which logback uses to
+      format dates, instead of those of SimpleDateFormat. In
+      particular, the L (stand-alone month) pattern letter is now
+      supported.
+    + SyslogOutputStream now connects its DatagramSocket to the
+      syslog host. Previously, the socket was bound to the wildcard
+      address, so that hardened environments saw an unconnected UDP
+      listener on all interfaces for as long as the application ran.
+      If the socket cannot be connected, for example because the
+      network is not yet available, SyslogOutputStream falls back to
+      an unconnected socket and SyslogAppenderBase emits a warning.
+      When a datagram sent on a connected socket fails due to an
+      ICMP "port unreachable" message caused by an earlier datagram,
+      the datagram is sent once more so that no message is lost. If
+      the retry also fails, a single warning is emitted instead of
+      one error per event.
+    + OutputStreamAppender now stops its encoder when the appender
+      is stopped. Previously, encoders holding resources until they
+      were stopped, such as those of logstash-logback-encoder, were
+      never released, causing heap growth at each reconfiguration.
+    + During variable substitution, an unmatched right curly brace
+      now causes an error to be reported, with the original value
+      left unchanged. Previously, the brace and all subsequent
+      characters were silently dropped, so that %m}some text became
+      %m.
+    + LogbackMDCAdapter now stores MDC entries in a LinkedHashMap,
+      so that the %X converter outputs them in insertion order.
+- Do not package the access submodule, since it is only a pom with
+  relocation notice
+- Removed patch:
+  * jline-3.30.x.patch
+    + build against jline3 >= 4 instead.
+
+-------------------------------------------------------------------
 Thu Oct  1 18:53:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.5

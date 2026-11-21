@@ -180,4 +180,20 @@
   consuming projects</comment>
     <requestid>1194080</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ec10cd8a466de6a1ee085033d4e4450</srcmd5>
+    <version>1.11.1</version>
+    <time>1794816455</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.11.1</comment>
+    <requestid>1397363</requestid>
+  </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2547bb6e62bf0c450da796cbb0d218f8</srcmd5>
+    <version>1.11.1</version>
+    <time>1795103579</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1398182</requestid>
+  </revision>
 </revisionlist>

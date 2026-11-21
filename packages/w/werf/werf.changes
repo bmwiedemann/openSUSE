@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:08:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.84.1:
+  * Bug Fixes
+    - build: prevent empty-body errors when retrying registry
+      uploads (#8100) (59bfe8b)
+    - build: restore Docker Hub login for build and export (#8119)
+      (65befdd)
+    - deploy, tracking: stop uninstall and dismiss hanging on
+      elimination (#8120) (4dcffaf)
+    - deploy: stop helm dependency update panicking without
+      Chart.lock (#8121) (8f4f6fc)
+    - deploy: use saved plans that contain a blind apply (#8103)
+      (8a834d7)
+
+-------------------------------------------------------------------
+Fri Nov 13 05:32:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.84.0:
+  * Features
+    - build: publish cached images with require-built-images
+      (#8096) (bf5c561)
+- Update to version 2.83.1:
+  * Bug Fixes
+    - build: avoid panic on cache-repo errors without final-repo
+      (#8088) (acdca35)
+
+-------------------------------------------------------------------
 Thu Oct 29 05:36:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.83.0:

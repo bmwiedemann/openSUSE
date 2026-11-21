@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:37:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.20.0
+  - Sec #22178: Fix ownership when restore --ownership-by-name
+    cannot resolve names
+  - Sec #22180: Reject duplicate or out-of-order node names during
+    restore
+  - Fix #21977: Don't crash on truncated key or config file
+  - Fix #22007: Redact swift backend password in debug log output
+  - Fix #22051: Reject empty repository location files
+  - Fix #22085: Restore partially matching hard-linked files
+    correctly
+  - Fix #22092: Handle empty directories from older repaired
+    snapshots
+  - Fix #22112: Don't reset stats progress bar counters for every
+    snapshot
+  - Fix #22120: Improve error message when prune fails to list pack
+    files
+  - Fix #22136: Improve resilience of repository v2 upgrade
+    rollback
+  - Fix #22163: Error on too large numbers in --keep-within*
+    durations
+  - Fix #22181: Do not delete files in directories whose tree
+    cannot be loaded
+  - Chg #22104: Require Go 1.26.10 or newer
+  - Enh #3129: Add JSON support to prune command
+  - Enh #5189: Add option to disable AWS S3 dual-stack endpoints
+  - Enh #5248: Add warmup support for check on the S3 backend
+  - Enh #5372: Support specifying snapshot ID in list packs command
+  - Enh #5741: Support Multi-Bucket Application Keys in the b2
+    backend
+  - Enh #21845: Handle missing pack files in repair packs
+  - Enh #21870: Show excluded items during backup in verbose mode
+  - Enh #21883: Handle corrupted pack files in find --pack
+  - Enh #21892: Make repair snapshots --forget remove broken
+    snapshots
+  - Enh #21937: Reduce memory usage of the in-memory index
+
+  For all the details see:
+  https://github.com/restic/restic/releases/tag/v0.20.0
+
+- refresh patches to apply cleanly again:
+  disable-selfupdate.patch
+  testsuite-use-python3.patch
+- track series file for easier quilt usage
+
+-------------------------------------------------------------------
 Sun Jul  5 12:27:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.19.1

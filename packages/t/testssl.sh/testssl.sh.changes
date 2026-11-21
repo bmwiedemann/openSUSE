@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  4 20:05:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.5
+  * Fix potential injection issues @ $NODE, $PROXY, $XMPP_HOST and
+    $PORT and $dl by providing general validation functions.
+  * Fix a potential format string issue (printf needed '%s').
+  * remove eMudhra certificates by updating Linux, Mozilla and Java
+    CA store.
+  * Improve handling of short-lived certificates.
+  * Be more patient wrt TLS 1.3 session ticket to arrive.
+
+-------------------------------------------------------------------
 Mon Jul 13 07:22:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.4

@@ -790,4 +790,22 @@
     changes for Alberta, CA and Morocco.</comment>
     <requestid>1366957</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>a899bfdfd900ab4374d73f4fc77c8476</srcmd5>
+    <version>2.720.0</version>
+    <time>1793990071</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.720.0 (2.72)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.72    2026-10-28
+  - This release is based on version 2026f of the Olson database. This release includes contemporary
+    changes for Cuba.
+  2.71    2026-09-30
+  - This release is based on version 2026e of the Olson database. This release includes contemporary
+    changes for Manitoba, CA.
+  2.70    2026-09-20
+  - This release is based on version 2026d of the Olson database. This release includes contemporary
+    changes for Canada's Northwest Territories.</comment>
+    <requestid>1395146</requestid>
+  </revision>
 </revisionlist>

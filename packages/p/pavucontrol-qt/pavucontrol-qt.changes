@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:02:24 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.1:
+  * Handled stream state changes and prevented memory leaks (in
+    MinimalStreamWidget).
+  * Fixed a case of hanging on restarting the sound server, by fixing the
+    iterator invalidation in MainWindow::removeAllWidgets.
+
+-------------------------------------------------------------------
+Fri Nov  6 09:47:02 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * Updated peak meter latency handling.
+  * Implemented Bluetooth codec selection and UI integration.
+
+-------------------------------------------------------------------
 Tue Apr 21 14:34:47 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

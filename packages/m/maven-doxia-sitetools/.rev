@@ -113,4 +113,12 @@ put into adi:2</comment>
     <comment>bsc#1273186</comment>
     <requestid>1369195</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>904a5902fb3439b318c23338964269d7</srcmd5>
+    <version>2.1.0</version>
+    <time>1794318111</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396448</requestid>
+  </revision>
 </revisionlist>

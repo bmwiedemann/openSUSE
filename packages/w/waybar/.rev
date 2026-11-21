@@ -1234,4 +1234,41 @@
   * fix: backlight/slider fix rounding issue on scroll up (forwarded request 1333390 from fbonazzi)</comment>
     <requestid>1333437</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>f3bac0ac44c3ae7780a001c18951c701</srcmd5>
+    <version>0.16.0</version>
+    <time>1794236892</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.16.0:
+  * fix: update tooltip method to use pango markup formatting
+  * fix(image): treat missing interval as once
+  * fix: remove unnecessary console log for battery status
+  * memory: use markup rather than text for memory tooltip
+  * fix: use pango markup for consistent formatting in format and tooltip-format
+  * fix: use SafeSignal in ipc in order to not call GTK funcs from a thread
+  * fix(keyboard-state): fix segfault on device hotplug removal
+  * hyprland/workspaces: Add enable-bar-scroll option
+  * bump: niri/workspaces: change icons priority
+  * fix: ensure AAppIconLabel image remains not visibile if icons are disabled
+  * fix(cava): remove silent CSS class on reactivation
+  * feat: add tooltip-format config option in cpu module
+  * battery: power switch events
+  * feat: add {tooltip} in format replacements in custom module
+  * feat(niri): niri depends on socket
+  * fix: owerwrite handleScroll to remove any scrolling handling from group
+  * fix(mpris): fall back to next non-ignored player and prefer playing players
+  * bluetooth: fix segfault when DBus manager fails to initialize
+  * battery: fix SIGABRT on USB device unplug race condition
+  * mpd: fix socket FD leak on system-level connection errors
+  * [WIP] Fix waybar responsiveness and interaction issues
+  * fix(util): ensure SleeperThread lifecycle safety and thread sync
+  * fix(util): bound SafeSignal queue growth under burst load
+  * fix: float interval cast
+  * fix(command): return non-zero when child exec fails
+  * fix(network): align tooltip and tooltip text
+  * perf(memory): optimize string operations; remove deep copies, memdup, and icon theme rescanning
+  * fix(hyprland-ipc): harden fd lifecycle and listener loop
+  * fix: sync tooltip updates without resetting hover state</comment>
+    <requestid>1396316</requestid>
+  </revision>
 </revisionlist>

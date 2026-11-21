@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov  4 09:49:35 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add BuildRequires python3-python-pkcs11, required by configure
+- Update to 1.10.1
+  + Fixed:
+    * Revert commit fab314 - "configure: detect --prefix when checking
+      for P11_KIT" This will fix all of the work-arounds in package
+      scripts.
+- Update to 1.10
+  + Added:
+    * DB Schema Change from 8 to 9.
+    * Backup your DB before upgrading
+  + Fixed:
+    * Formatting of error cases.
+    * tpm backend: tpm_unseal returning false, instead of NULL. Fixes
+      compiler warnings.
+    * warning: src/lib/utils.c:243:17: error: initialization discards
+      'const' qualifier from pointer target type.
+    * missing ECDH1_DERIVE in supported mechanisms. See PR #913 for
+      details.
+    * Database upgrade failure on upgrade ERROR: Backup DB exists at
+      "/etc/tpm2_pkcs11/tpm2_pkcs11.sqlite3.old" not overwriting....
+      o Looking for .old when it should have been .bak.
+    * Database version 7 to 8 upgrade could have missed performing the
+      upgrade of the database through the C code, add DB Schema
+      version 9 and perform the update.
+    * Use ASN1 OpenSSL helpers rather than direct struct access. Newer
+      OpenSSL everything is opaque.
+- Update 1.9.2
+  + Fixed:
+    * Fix tpm2_ptool destroy command failures.
+    * Warning "UserWarning: Unknown distribution option:
+      'tests_require'" from setup.py.
+    * Missing SHA1-RSA-PKCS from CKM_ALLOWED_MECHANISMS.
+    * In tests requiring Python, don't override HOME as it may be
+      needed for user installed packages.
+    * Certificate finding logic in pkcs11-tool usage where --label was
+      used instead of --token-label.
+    * Configure: Fix detection of javac.
+    * Configure: Fix detection of pkcs11 python module.
+    * Fix incorrect logging statement in create_pkcs_store.sh.
+    * Fix links in documentation.
+    * Fix OpenSuse Leap CI builds.
+    * Fix improper handling of chunks across IV multi-part handling.
+    * Fix memory leak.
+  + Added:
+    * Add support for importing persistent TPM2 keys with tpm2_ptool.
+
+-------------------------------------------------------------------
 Wed Jun 10 01:07:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install the tools.

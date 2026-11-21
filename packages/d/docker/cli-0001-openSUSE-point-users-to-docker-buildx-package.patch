@@ -1,4 +1,4 @@
-From 1b069c6dbffdd1124bbb56ced41c4c3803cb4d75 Mon Sep 17 00:00:00 2001
+From 43464d0be2ee426b339e00f25e5c3aa97ae4e07d Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <cyphar@cyphar.com>
 Date: Mon, 1 Sep 2025 16:05:24 +1000
 Subject: [PATCH 1/2] openSUSE: point users to docker-buildx package
@@ -8,8 +8,6 @@ context of (open)SUSE packaging and might confuse users, as they just
 need to install the "docker-buildx" package.
 
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
-Signed-off-by: rcmadhankumar <madhankumar.chellamuthu@suse.com>
-(cherry picked from commit b9da04f83eeadb027d5f3a85186b9ada3c7723d2)
 ---
  cmd/docker/builder.go | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)

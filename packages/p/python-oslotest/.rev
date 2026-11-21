@@ -441,4 +441,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355594</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>bee04b67554a8b0d83058dee15692127</srcmd5>
+    <version>6.2.0</version>
+    <time>1795023003</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2.0:
+  * Add note about requirements lower bounds
+  * Declare Python 3.15 support
+  * Use pyproject.toml to maintain coverage options
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Remove Python 3.10 support
+  * tox: Use new constraints option</comment>
+    <requestid>1398189</requestid>
+  </revision>
 </revisionlist>

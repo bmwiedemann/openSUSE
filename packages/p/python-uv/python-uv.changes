@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:39:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.9 (upstream release 2026-11-17):
+  * Preview: PEP 832 `.venv` redirect files for project
+    environments; `http2-keep-alive` to close unresponsive
+    HTTP/2 connections with active requests
+  * Performance: smaller lockfiles and faster reads by
+    factoring repeated environment-marker conditions
+  * Fixes: reject wheels advertised under a different package
+    name; `uv lock --locked` with equivalent platform markers;
+    quote environment markers containing apostrophes; report
+    which musl interpreter failed the version check
+  * Upstream raised MSRV to 1.98: bump cargo BuildRequires
+    floor to >= 1.98
+  * Re-vendor: dependency refresh, no new copyleft in the
+    linked graph (licence tag unchanged)
+
+-------------------------------------------------------------------
+Thu Nov 12 19:46:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.8 (upstream release 2026-11-12):
+  * Python: managed CPython 3.16.0a2; refreshed 3.11-3.15
+    builds (pip 26.3, zlib 1.4, Expat 2.10.0)
+  * Preview: wheel variants from local paths, direct URLs and
+    Git repos in platform-specific resolutions; x86-64
+    microarchitecture, AArch64 and TPU detection for variant
+    selection; quarantined packages in `uv audit`
+  * Performance: no duplicate environment builds for
+    concurrent `uvx` / `uv run --with` invocations
+  * Fixes: owner-only permissions on Unix plaintext credential
+    files; per-index exclude-newer cutoffs; negative extra
+    markers on constraints; recursive extras from scoped
+    overrides; `activate.bat` with apostrophes in the path
+  * Re-vendor: dependency refresh, no new copyleft in the
+    linked graph (licence tag unchanged)
+
+-------------------------------------------------------------------
+Thu Nov  5 17:50:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use the unmodified upstream tarball and cargo_vendor output:
+  prebuilt files for other platforms (Windows launchers, import
+  libraries and nasm objects, a wasm32 object) are declared
+  instead of stripped
+- Refresh the vendored crates (mime 0.3.18, svgtypes 0.16.2,
+  winnow 1.0.5); the linked licence set is unchanged
+
+-------------------------------------------------------------------
+Tue Nov  3 18:34:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.7 (upstream release 2026-11-03):
+  * Preview: --output-version for `uv workspace metadata`;
+    `uv audit` merges aliased OSV records into a single finding
+  * Fixes: workspace member paths treated as literals;
+    allow uvx with versioned local CPython builds; valid
+    module names for digit-led project names; keep comments
+    around inline dependency groups on `uv add`; `uv remove`
+    with an empty inline tool.uv.sources table
+  * Re-vendor: dependency refresh, no new copyleft in the
+    linked graph (licence tag unchanged)
+  * Spec cleanup: modern macro forms (%{ix86} in ExcludeArch,
+    %python_files in %files), no functional change
+  * Unbundle prebuilt binaries from the sources: repacked
+    sdist drops the six prebuilt Windows trampoline launchers
+    (Windows-only; the Linux build never reads them); stripped
+    the vendor tree of Windows-only objects (windows_*/lib import
+    libraries, ring pregenerated objects, aws-lc-sys prebuilt-nasm
+    objects, psm wasm32 object); test-corpus fixtures under tests/
+    dirs covered by Source-Binary-Exception lines
+  * Cap build parallelism by available memory (%limit_build):
+    one rustc can peak ~7 GB while -j follows cores, not RAM;
+    fixes worker-dependent OOM kills (seen on ppc64le); ppc64le
+    workers raised to 9 GB like aarch64/riscv64/s390x
+
+-------------------------------------------------------------------
 Wed Oct 28 23:42:44 UTC 2026 - José Gómez <jose.gomez@suse.com>
 
 - lower debug info level from 2 to 1. Inspired from:

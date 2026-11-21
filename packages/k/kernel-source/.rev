@@ -7695,4 +7695,28 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.3.1 &amp; revive arm32 &amp; some other fixes; bugs: bsc#1012628 bsc#1244337 bsc#1284523 bsc#1285896</comment>
     <requestid>1394060</requestid>
   </revision>
+  <revision rev="868" vrev="1">
+    <srcmd5>d9ee10976de8fff8515bcfdb25ccaa5b</srcmd5>
+    <version>7.3.3</version>
+    <time>1794236604</time>
+    <user>anag_factory</user>
+    <comment>7.3.3 &amp; 7.3.2 &amp; iouring fix; bugs: bsc#1012628 bsc#1289176 bsc#1289181 bsc#1289182 bsc#1289188 bsc#1289189 bsc#1289193 bsc#1289204 bsc#1289209 bsc#1289215 bsc#1289216 bsc#1289217 bsc#1289218 bsc#1289219 bsc#1289220 bsc#1289221 bsc#1289222 bsc#1289223 bsc#1289224 bsc#1289225 bsc#1289226 bsc#1289227 bsc#1289228 bsc#1289229 bsc#1289285 bsc#1289298 bsc#1289306 bsc#1289343 bsc#1289347</comment>
+    <requestid>1396051</requestid>
+  </revision>
+  <revision rev="869" vrev="1">
+    <srcmd5>ce52288c9179ad51a7d6f39a5458938a</srcmd5>
+    <version>7.3.4</version>
+    <time>1794816365</time>
+    <user>anag_factory</user>
+    <comment>7.3.4 &amp; Rust enabled &amp; scsi_debug fix; bugs: bsc#1012628 bsc#1258538 bsc#1289562</comment>
+    <requestid>1396741</requestid>
+  </revision>
+  <revision rev="870" vrev="1">
+    <srcmd5>d53110d6886ede7fa1dfdff002e2ac8a</srcmd5>
+    <version>7.3.5</version>
+    <time>1795182256</time>
+    <user>anag_factory</user>
+    <comment>7.3.5; bugs: bsc#1012628</comment>
+    <requestid>1398326</requestid>
+  </revision>
 </revisionlist>

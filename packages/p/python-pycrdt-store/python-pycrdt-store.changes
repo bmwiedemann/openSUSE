@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:00:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.1.5
+  * Bump pycrdt to >=0.14.0,<0.15.0
+- Update to 0.1.4
+  * Bump pycrdt to >=0.13.0,<0.14.0
+
+-------------------------------------------------------------------
 Sun Mar 22 17:21:23 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.1.3

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:30:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.003000
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+  3.003000    2026-08-06
+      * Link to t/19utf8.t from the POD .
+          - https://github.com/shlomif/perl-Config-IniFiles/issues/14
+          - Thanks to @rdiez .
+
+-------------------------------------------------------------------
 Mon Jun 15 11:23:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.002000

@@ -74,8 +74,6 @@ Requires:       gsettings-desktop-schemas
 Requires:       libgnome-desktop-3_0-common >= %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
-Provides:       gnome-version = %{version}
-Obsoletes:      gnome-version < %{version}
 
 %description -n libgnome-desktop-3-21
 The libgnome-desktop library provides API shared by several applications
@@ -138,6 +136,8 @@ Requires:       gsettings-desktop-schemas
 Requires:       libgnome-desktop-3_0-common >= %{version}
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
+Provides:       gnome-version = %{version}
+Obsoletes:      gnome-version < %{version}
 
 %description -n libgnome-desktop-4-2
 The libgnome-desktop library provides API shared by several applications

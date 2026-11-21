@@ -14,13 +14,22 @@
 #
 
 Name:           rpmcrab
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Rust rewrite of rpmlint
 License:        GPL-2.0-or-later
 URL:            https://github.com/plusky/rpmcrab
 Source:         https://github.com/plusky/rpmcrab/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Re-vendor per bump with plain `cargo vendor vendor` (unversioned dirs),
+# then strip the Windows-only import libraries no Linux target reads:
+#   python3 <skill>/scripts/vendor-strip.py vendor.tar.zst -o vendor.tar.zst 'winapi-i686-pc-windows-gnu/lib/**' 'winapi-x86_64-pc-windows-gnu/lib/**'
 Source1:        vendor.tar.zst
+# Test corpus the suite reads as data, never executed or linked:
+# Source-Binary-Exception: rpmcrab-*.tar.gz:*/tests/parity/* -- test-data: parity-test corpus RPMs the checks lint as input, never executed
+# Source-Binary-Exception: rpmcrab-*.tar.gz:*/tests/fixtures/* -- test-data: fixture RPMs the tests read as lint input, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/rpm/tests/* -- test-data: rpm crate testsuite assets, never built or run for the Linux target
+# Source-Binary-Exception: vendor.tar.zst:vendor/librpm/testdata/* -- test-data: librpm testsuite distro-RPM fixtures, read only by its own tests
+# Source-Binary-Exception: vendor.tar.zst:vendor/libloading/tests/* -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
 # Shells own the completion dirs installed below (cf. helm)
 BuildRequires:  bash-completion
 BuildRequires:  cargo
@@ -95,7 +104,7 @@ BuildArch:      noarch
 Fish command line completion support for rpmcrab.
 
 %package rpmlint-compat
-Summary:        rpmlint compatibility symlinks for rpmcrab
+Summary:        Rpmlint compatibility symlinks for rpmcrab
 Requires:       %{name} = %{version}-%{release}
 # PolkitCheck reads the standard profile from the installed
 # polkit-default-privs data, mirrored from rpmlint-mini
@@ -105,7 +114,7 @@ Conflicts:      rpmlint
 Conflicts:      rpmlint-mini
 # Drop-in replacement for rpmlint and rpmlint-mini
 Provides:       rpmlint
-Provides:       rpmlint-mini
+Provides:       rpmlint-mini = 2.10.0+git20261020.513f17e8
 BuildArch:      noarch
 
 %description rpmlint-compat
@@ -126,7 +135,7 @@ directory = "vendor"
 EOF
 
 %build
-%{cargo_build} --package rpmcrab
+%cargo_build -- --package rpmcrab
 
 %install
 %{cargo_install -p crates/rpmcrab}
@@ -140,7 +149,7 @@ ln -sf %{_bindir}/rpmcrab %{buildroot}%{_bindir}/rpmlint
 ln -sf %{_mandir}/man1/rpmcrab.1%{?ext_man} %{buildroot}%{_mandir}/man1/rpmlint.1%{?ext_man}
 
 %check
-%{cargo_test}
+%cargo_test
 
 %files
 %license LICENSE

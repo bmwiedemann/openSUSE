@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:36:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.2.0
+  * Reject duplicate Content-Length header in h1_encoder
+    by @shpark1104 in (#571)
+  * Stream manager config by @TingDaoK in (#595)
+- from version 1.1.1
+  * Make ubsan useful by @sfod in (#587)
+  * Add path to responds immediately for H2 mock server
+    by @xiazhvera in (#593)
+- from version 1.1.0
+  * chore: address TODO comments by @azkrishpy in (#576)
+  * chore: remove unreachable OOM handling by @azkrishpy in (#577)
+  * chore: document and pin existing behavior by @azkrishpy in (#578)
+  * chore: make h2benchmark configurable by @azkrishpy in (#580)
+  * Lower fuzz test log level to avoid ctest running out of memory
+    by @sfod in (#589)
+  * Socks5 support by @bretambrose in (#585)
+  * fix: validate HTTP/2 request pseudo headers by @azkrishpy in (#581)
+  * fix: harden HPACK decoding and table sizing by @azkrishpy in (#582)
+  * fix: validate WebSocket CLOSE frames by @azkrishpy in #583
+  * fix: strip absolute-form request-target to spec by @azkrishpy in (#584)
+  * Securely destroying data path by @rakshil14-2 in (#590)
+  * Move l4 proxy config to end of public structs by @bretambrose in (#591)
+- from version 1.0.0
+  * Clean up docs by @azkrishpy in (#573)
+  * chore(release): add governance files by @azkrishpy in (#575)
+- Add Provides and Obsoletes for previous shared library version
+- Pass installation path of aws-c-common cmake modules in CMAKE_PREFIX_PATH
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Fri May 22 07:41:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.11.0

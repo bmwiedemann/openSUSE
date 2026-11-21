@@ -1,8 +1,5 @@
 #!/bin/sh
 set -x
-# The dependencies tarball is quite large, so we
-# reduce it here by removing unecessary files for
-# building (e.g, test files).
 
 export SUBDIR="vendor/zig/"
 export ZIG_GLOBAL_CACHE_DIR="${PWD}/${SUBDIR}"
@@ -31,7 +28,17 @@ while IFS= read -r url; do
   }
 done < "$ZON_TXT_FILE"
 
+# zig 0.17 keeps fetched packages compressed as p/<hash>.tar.gz, but
+# `zig build --system` only finds them unpacked as p/<hash>/
+for f in "${SUBDIR}"p/*.tar.gz; do
+  tar -xzf "$f" -C "${SUBDIR}p" && rm "$f"
+done
 
-find "${SUBDIR}" -type d -iname test -print0 | xargs -r0 rm -rv
+# Drop the prebuilt binaries some dependencies carry (Windows and macOS
+# tools, test fixtures, Java build wrappers); the build uses none of them
+find "${SUBDIR}p" -type f \( -name '*.[ao]' -o -name '*.so' -o -name '*.class' \
+  -o -name '*.jar' -o -name '*.exe' -o -name '*.dll' -o -name '*.lib' \
+  -o -name crashInMain -o -name crashduringload -o -name dump_syms_dwarf_data \
+  -o -name sentry_example \) -print -delete
 
 tar --zstd -cvf ../vendor.tar.zst "${SUBDIR}"

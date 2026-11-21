@@ -17,25 +17,23 @@
 
 
 Name:           lsvpd
-Version:        1.7.17
+Version:        1.7.18
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         lsvpd-Add-FRU-number-for-Spyre-cards.patch
-Patch2:         lsvpd-Fix-description-for-Nvidia-specific-Adapters.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel
 BuildRequires:  libtool
-BuildRequires:  libvpd-devel
+BuildRequires:  pkgconfig
 BuildRequires:  sg3_utils-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libvpd_cxx-2) >= 2.2.9
+BuildRequires:  pkgconfig(zlib)
 Requires:       /bin/sed
-Recommends:     hwdata
+Recommends:     pkgconfig(hwdata)
 ExclusiveArch:  ppc ppc64 ppc64le
 
 %description

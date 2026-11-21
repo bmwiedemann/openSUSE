@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Nov  9 16:12:59 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.0.3:
+  * The library is now named libwannier90 for both serial and MPI
+    builds (the prior _mpi suffix has been removed)
+    [gh#wannier-developers/wannier90#680].
+  * w90_free() deallocates a library-mode data object;
+    w90_print_timings() prints the timing report
+    [gh#wannier-developers/wannier90#712]
+    [gh#wannier-developers/wannier90#707].
+  * w90_is_mpi_build() informs the calling program whether the
+    library is compiled with MPI
+    [gh#wannier-developers/wannier90#733].
+  * New keyword write_ndegen_applied: seedname_hr.dat, _r.dat and
+    _tb.dat are written on the expanded (full) Wigner-Seitz R
+    list, allowing interpolation via a plain Fourier sum
+    [gh#wannier-developers/wannier90#702].
+  * transl_inv_full (translation-equivariant position matrix
+    elements) now also applies to seedname_r.dat and _tb.dat
+    outputs; with use_ws_distance this requires
+    write_ndegen_applied [gh#wannier-developers/wannier90#702].
+  * For full list of improvements and bug fixes, see
+    <https://github.com/wannier-developers/wannier90/releases/tag/v4.0.3>
+- Drop patches either committed upstream or fixed otherwise:
+  * wannier90-arm64-disable-failing-test.patch
+  * wannier90-disable-failing-test.patch
+- Add BuildRequires: python3-pytest and python3-PyYAML now needed
+  for running regression tests.
+- Drop memory constraints during build: tests are not as memory
+  intensive any more; also drop _constraints file.
+- Update shlib package name for openmpi flavours in keeping with
+  upstream change (drop "_mpi" suffix).
+
+-------------------------------------------------------------------
 Mon Sep 14 20:06:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Packaging fix: requires shared library from devel package.

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 14:23:15 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.2:
+  * Use portable mkdir and dirname in create_file mode so parent
+    directories are created for nested paths
+  * Detach silent commands into their own process group so
+    background jobs survive terminal exit
+- Changes in version 1.1.1:
+  * Fix results reshuffling during search
+  * Default search to the default skim algorithm (Arinae)
+- Changes in version 1.1.0:
+  * Create file or directory (ending path with /) using :cc key
+    binding
+  * Optimize performance using rayon
+  * Allow reading LuaJIT bytecode as init files
+- Correct License tag to GPL-3.0-only AND MIT to include vendored
+  direct dependency snailquote (GPL-3.0-only)
+- Enable update=true in cargo_vendor service and refresh
+  vendor.tar.zst
+- Add %check section to run the cargo test suite
+
+-------------------------------------------------------------------
 Sun Sep 21 15:12:17 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.0.1:

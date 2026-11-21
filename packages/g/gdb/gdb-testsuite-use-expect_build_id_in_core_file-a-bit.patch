@@ -1,8 +1,7 @@
-From 26fdff8f7404ee0f9ae957fd5640d43eb6d86820 Mon Sep 17 00:00:00 2001
+From eec11ae8eb4e70c07c882b749a0b3b74d776904f Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Mon, 13 Oct 2025 20:54:43 +0200
-Subject: [PATCH 04/25] [gdb/testsuite] Use expect_build_id_in_core_file a bit
- more
+Subject: [PATCH 16/52] Use expect_build_id_in_core_file a bit more
 
 Recent commit c1950dcc04c ("gdb/testsuite: fix failure from
 gdb.python/py-corefile.exp") introduced proc expect_build_id_in_core_file,
@@ -29,10 +28,10 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33528
  4 files changed, 70 insertions(+)
 
 diff --git a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
-index f02876e1453..af143b7d506 100644
+index 204b924d02e..6519575cf23 100644
 --- a/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
 +++ b/gdb/testsuite/gdb.debuginfod/corefile-mapped-file.exp
-@@ -81,6 +81,9 @@ if {[prepare_for_testing_full "build exec which loads the shared library" \
+@@ -82,6 +82,9 @@ if {[prepare_for_testing_full "build exec which loads the shared library" \
      return
  }
  
@@ -43,7 +42,7 @@ index f02876e1453..af143b7d506 100644
      return
  }
 diff --git a/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp b/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
-index 98c4535fca7..07f0a0f170b 100644
+index 67d9237d43c..a22fa597602 100644
 --- a/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
 +++ b/gdb/testsuite/gdb.debuginfod/solib-with-soname.exp
 @@ -96,6 +96,10 @@ if { [build_executable "build executable" ${binfile} ${srcfile2} \
@@ -58,7 +57,7 @@ index 98c4535fca7..07f0a0f170b 100644
  # into a separate file (e.g. the cc-with-gnu-debuglink.exp board) then
  # this test isn't going to work.
 diff --git a/gdb/testsuite/gdb.python/py-missing-objfile.exp b/gdb/testsuite/gdb.python/py-missing-objfile.exp
-index 8488047d105..2786bdfb2ed 100644
+index ce4dc76b71e..2cc7dc87926 100644
 --- a/gdb/testsuite/gdb.python/py-missing-objfile.exp
 +++ b/gdb/testsuite/gdb.python/py-missing-objfile.exp
 @@ -183,6 +183,11 @@ with_test_prefix "no objfiles available" {
@@ -74,11 +73,11 @@ index 8488047d105..2786bdfb2ed 100644
      # Another sanity check that GDB can find the files via the
      # debug-file-directory.
 diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
-index b103c117258..47cff389a41 100644
+index 8c684d8cc9a..8ea7412f827 100644
 --- a/gdb/testsuite/lib/gdb.exp
 +++ b/gdb/testsuite/lib/gdb.exp
-@@ -11044,5 +11044,63 @@ gdb_caching_proc root_user {} {
-     return [expr $uid == 0]
+@@ -11724,5 +11724,63 @@ gdb_caching_proc have_startup_shell {} {
+     return $supported
  }
  
 +# Return true if we expect the build-id from FILENAME to be included

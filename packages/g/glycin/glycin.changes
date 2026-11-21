@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 18 07:58:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix version requirements for libjxl BuildRequires: there seems to be no
+  indication left that < 0.13 would be enforced.
+
+-------------------------------------------------------------------
+Tue Nov  3 15:52:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.6:
+  * This release contains the following new component versions
+    + libglycin 2.2.6
+    + libglycin-gtk4 2.2.6
+  * Fixed: meson: Fix build configuration failing if either libglycin or
+    libglycin-gtk4 option being enabled.
+- Stop passing libglycin=true to meson setup in glycin-loaders.spec.inc
+  following upstream changes yet again.
+
+-------------------------------------------------------------------
 Tue Oct 27 06:12:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.2.5:

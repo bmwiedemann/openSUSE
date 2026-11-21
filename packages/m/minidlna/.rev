@@ -115,4 +115,23 @@
 - add br for pkgconfig(libffmpegthumbnailer) (forwarded request 1195166 from oertel)</comment>
     <requestid>1195167</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>2b5b233f0a4624cc127a7c3a825be255</srcmd5>
+    <version>1.3.3</version>
+    <time>1794816458</time>
+    <user>anag_factory</user>
+    <comment>- add some of debian's patches to fix CVE-2026-29508
+- added patches:
+  - 17-Replace-rm-rf-with-in-process-deletion-code.patch
+    fix potential quoting issues
+  - 18-CVE-2026-29508-dff-parser-bounds.patch
+    fix memory safety issues in dff parser
+  - 19-upnpevents-unsubscribe-while-connecting.patch
+    drop notifications if unsubscribed
+  - 20-select-del-after-fini.patch
+    fix potential double free
+  - 22-dsf-parser-bounds.patch
+    fix memory safety issues in dsf parser</comment>
+    <requestid>1397392</requestid>
+  </revision>
 </revisionlist>

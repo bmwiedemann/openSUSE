@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:47:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnucash-swig-py3.patch: replace obsolete Python 2 PyInt_*
+  calls with PyLong_* in bindings/python/ to fix Python 3 build.
+
+-------------------------------------------------------------------
 Tue Jul 14 16:08:18 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - fix s390x builds (boo#1268177): fix-BigEndian-s390x.patch

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 10:00:01 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 4.5.0:
+  * Do not choose the format of URLs sent to XdgDesktop::startDetached().
+
+-------------------------------------------------------------------
 Mon Apr 20 15:14:24 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 4.4.0:

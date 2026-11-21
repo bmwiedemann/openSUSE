@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           libpisp
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        RPi ISP helper library
 Group:          System/Libraries
@@ -27,7 +27,7 @@ URL:            https://github.com/raspberrypi/libpisp
 Source:         https://github.com/raspberrypi/libpisp/archive/refs/tags/v%{version}.tar.gz#/libpisp-%{version}.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  libboost_log-devel
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} <= 1610
 BuildRequires:  libboost_system-devel
 %endif
 BuildRequires:  libboost_thread-devel

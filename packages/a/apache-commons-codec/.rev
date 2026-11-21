@@ -314,4 +314,12 @@
     <comment>1.22.0</comment>
     <requestid>1351134</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d237c85aef758f6ba36e4992b03b186b</srcmd5>
+    <version>1.23.0</version>
+    <time>1794410662</time>
+    <user>dimstar_suse</user>
+    <comment>1.23.0 with security fixes</comment>
+    <requestid>1396510</requestid>
+  </revision>
 </revisionlist>

@@ -32,7 +32,7 @@
 %define _appdef     %{_x11data}/app-defaults
 %define _gnplttex   tex/latex/gnuplot
 Name:           gnuplot%{?psuffix}
-Version:        6.0.5
+Version:        6.0.6
 Release:        0
 URL:            https://www.gnuplot.info/
 Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
@@ -62,13 +62,13 @@ BuildRequires:  plotutils-devel
 BuildRequires:  qt6-linguist-devel
 BuildRequires:  readline-devel
 BuildRequires:  wxGTK3-devel >= 3
-BuildRequires:  zziplib
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Core5Compat)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Svg)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(caca)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(freetype2)
@@ -77,8 +77,11 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcerf)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} == 1500
 BuildRequires:  gcc13-PIE
 BuildRequires:  gcc13-c++

@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.15.0
+Version:        3.16.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -50,7 +50,6 @@ Source23:       prepare_webassets.sh
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
-Patch3:         0003-Fix-CVE-2026-93753.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
 BuildRequires:  firewall-macros
@@ -58,8 +57,8 @@ BuildRequires:  firewall-macros
 # Adding glibc-devel-static seems to be required for linking if building
 # with -buildmode=pie
 BuildRequires:  glibc-devel-static
+BuildRequires:  go1.27 >= 1.27.3
 BuildRequires:  golang-github-prometheus-promu >= 0.14.0
-BuildRequires:  golang(API) >= 1.25
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version} >= 1500
 Recommends:     firewalld-prometheus-config

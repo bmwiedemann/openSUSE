@@ -55,4 +55,17 @@
     <comment></comment>
     <requestid>1237580</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>050511fae95171b4defb75ecc69a0f68</srcmd5>
+    <version>0.240.0</version>
+    <time>1794162146</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.240.0 (0.24)
+   see /usr/share/doc/packages/perl-URI-db/Changes
+  0.24 2026-09-26T17:16:03Z
+       - Changed the URI::mysql `dbi_dsn()` back to use the DBD::mysql driver.
+         URI::mariadb, however, still uses DBD::MariaDB. Thanks to Alastair
+         Douglas for the completely reasonable gripe (#29).</comment>
+    <requestid>1396143</requestid>
+  </revision>
 </revisionlist>

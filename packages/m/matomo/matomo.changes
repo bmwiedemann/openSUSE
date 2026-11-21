@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:09:54 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.3
+
+- Update to 5.14.3
+  * Core improvements
+    - #25375 Show which compliance policy settings a request changed.
+    - #25380 Add AI data processing consent setting to AI Providers.
+    - #25392 Report provider-billed cost in AI provider responses.
+    - #25400 Allow compliance settings to set their position in the table.
+    - #25404 Fix AI Providers header.
+    - #25405 Require AI processing consent for Goal Recommendations.
+    - #25457 Hide top controls on the Marketplace overview.
+    - #25470 Limit web searches per AI request and fix web search count.
+    - #25495, #24980 Send weekly and monthly scheduled reports based on the site’s local day.
+    - #25511 Fix several issues in the redesigned Marketplace.
+    - #25515, #25440 Publish AI Providers events for cloud integration.
+    - #25541 Use GET for Marketplace requests without a request body.
+    - #25557 Bring Goal Recommendations improvements to Matomo 5.
+    - #25594, #25567 Allow admins to disable the PHP critical vulnerability warning via config.
+
+-------------------------------------------------------------------
 Thu Oct 22 09:36:20 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.2
 
 - Update to 5.14.2

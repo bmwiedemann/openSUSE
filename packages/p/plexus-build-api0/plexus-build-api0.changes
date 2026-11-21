@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 12:13:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the plexus-metadata-generator ant task instead of the command
+  line tool
+
+-------------------------------------------------------------------
 Thu May 16 05:17:10 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use sisu-plexus instead of plexus-containers-container-default

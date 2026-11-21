@@ -957,4 +957,12 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385406</requestid>
   </revision>
+  <revision rev="115" vrev="2">
+    <srcmd5>95a344c827c8c5cce35bda5cefd4df19</srcmd5>
+    <version>2.90.0</version>
+    <time>1793899170</time>
+    <user>anag_factory</user>
+    <comment>- Update URL to new home.</comment>
+    <requestid>1394828</requestid>
+  </revision>
 </revisionlist>

@@ -163,4 +163,20 @@
       - Fixed typos, reported by Florian Schlichting in RT#119000</comment>
     <requestid>1294879</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a1274f86e04c8002730f0db6b1bfe72e</srcmd5>
+    <version>0.830.0</version>
+    <time>1794090806</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.830.0 (0.83)
+   see /usr/share/doc/packages/perl-Mail-Sendmail/Changes
+  0.83 2026-07-04 NEILB
+      - strip CR/LF from header values, to prevent insertion of rogue headers.
+        Deals with issue in CVE-2026-13092. Pull request from Olaf Alders++.
+      - Tried using [PkgVersion] so $VERSION would be auto managed, but
+        caused issues testing as the code expects $VERSION to be there pre-build.
+      - switched to a new test Sendmail server for t/original.t, as the old
+        one was no longer accepting connections.</comment>
+    <requestid>1396032</requestid>
+  </revision>
 </revisionlist>

@@ -149,4 +149,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1334353</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5b570cfd8909a73aeda0c578321e0d96</srcmd5>
+    <version>0.5.5+git4.gd652e2f4e4cdf0365ce3ac32e6cdbe3e7d5bd2f5</version>
+    <time>1794838487</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.5+git4.gd652e2f4e4cdf0365ce3ac32e6cdbe3e7d5bd2f5:
+  * Merge pull request #1379 from mpinhede/feat-hold-or-release-key
+  * chore(release): bump lefthk to 0.4 in lock
+  * fix(keybind): Fix leftwm-check that would report overlap for keybind that have different on_release values
+  * feat(keybind): Add 'on_release' on keybind to match lefthk new feature</comment>
+    <requestid>1397883</requestid>
+  </revision>
 </revisionlist>

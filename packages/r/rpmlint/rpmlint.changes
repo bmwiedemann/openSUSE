@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:05:54 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261112.acc4ace9:
+  * sysctl-whitelist: update health-checker digest (bsc#1289763)
+
+-------------------------------------------------------------------
+Thu Nov 12 09:28:54 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261111.aa5e4443:
+  * dbus-services: whitelist owly (bsc#1288451)
+  * test/test_world_writable: fix assertion
+  * dbus-services: add plasma6-login-manager(-kcm) (bsc#1260402, bsc#1260039)
+
+-------------------------------------------------------------------
+Tue Nov 10 10:38:10 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20261110.ea50e74a:
+  * dbus-services: add tukitd backward compatibility entry (bsc#1286924)
+
+-------------------------------------------------------------------
+Mon Nov 09 11:45:18 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261109.6cd551cd:
+  * whitelistings: reinstate systemd 261 entries for compat (bsc#1282497)
+
+-------------------------------------------------------------------
+Fri Nov 06 12:18:21 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261106.8eae64bd:
+  * dbus-services: adjust backintime Qt service digest (bsc#1288838)
+  * systemd-tmpfiles: whitelist flake-pilot /tmp/flakes (bsc#1285113)
+  * dbus-services: adjust systemd import1 D-Bus config digest (bsc#1282497)
+
+-------------------------------------------------------------------
+Thu Oct 29 12:25:37 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261029.7f24f179:
+  * FileDigestCheck: ignore symbolic links targeting other restricted files
+  * dbus-services: adjust tukitd whitelisting (bsc#1286924)
+
+-------------------------------------------------------------------
+Mon Oct 26 09:29:10 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261026.783e34a5:
+  * security.toml: allow symlinks in Varlink socket units (bsc#1287673)
+
+-------------------------------------------------------------------
+Fri Oct 23 07:12:23 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 2.10.0+git20261023.1f39d4f4:
+  * varlink-whitelist: added systemd v262 changes (bsc#1282497)
+
+-------------------------------------------------------------------
 Tue Oct 20 11:06:14 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.10.0+git20261020.513f17e8:

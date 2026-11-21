@@ -2,7 +2,7 @@
 # spec file for package gdcm
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2019-2025 Dr. Axel Braun
+# Copyright (c) 2019-2026 Dr. Axel Braun <docb@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,15 @@
 %define         soname %(echo "%{series}" | tr '.' '_')
 %define         libsocksoname  libsocketxx1_2
 Name:           gdcm
-Version:        3.2.5
+Version:        3.2.7
 Release:        0
 Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
 Source0:        %{name}-%{version}.tar.zst
-Patch1:         gdcm-2.4.0-usecopyright.patch
+# PATCH-FIX-UPSTREAM gdcm-swig-py3.patch -- replace obsolete PyString_* and PyInt_* with Python 3 C API in SWIG interface
+Patch0:         gdcm-swig-py3.patch
 BuildRequires:  CharLS-devel >= 2.0
 BuildRequires:  cmake
 BuildRequires:  docbook5-xsl-stylesheets
@@ -143,7 +144,7 @@ rm -rf Utilities/wxWidgets
 
 # build fails with poppler 25.10, currently only TW
 %if 0%{?suse_version} > 1600
-sed -i 's:getLength:size:' Applications/Cxx/{gdcminfo.cxx,gdcmpdf.cxx}
+##% sed -i 's:getLength:size:' Applications/Cxx/{gdcminfo.cxx,gdcmpdf.cxx}
 %endif
 
 %build

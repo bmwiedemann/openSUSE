@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-common
-Version:        0.66b0
+Version:        0.66b1
 Release:        0
 Summary:        OpenTelemetry OTLP HTTP export utilities
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 # SECTION test requirements
-BuildRequires:  %{python_module opentelemetry-sdk = 1.45.0}
+BuildRequires:  %{python_module opentelemetry-sdk = 1.45.1}
 BuildRequires:  %{python_module opentelemetry-exporter-http-transport}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module iniconfig}
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module mocket}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-opentelemetry-sdk = 1.45.0
+Requires:       python-opentelemetry-sdk = 1.45.1
 Recommends:     python-opentelemetry-exporter-http-transport
 BuildArch:      noarch
 %python_subpackages

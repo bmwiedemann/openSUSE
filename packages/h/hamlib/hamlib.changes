@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:30:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add hamlib-swig-py3.patch: replace obsolete PyInt_FromLong with
+  PyLong_FromLong in bindings/hamlib.swg for Python 3.
+
+-------------------------------------------------------------------
 Sun Jun 21 15:27:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.7.2:

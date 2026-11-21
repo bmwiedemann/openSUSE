@@ -1073,4 +1073,25 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
     <comment> (forwarded request 1279637 from iznogood)</comment>
     <requestid>1280036</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>99e31d1bd3a3a18aa4feeecefc3ddb7f</srcmd5>
+    <version>43.0+77</version>
+    <time>1794597156</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 43.0+77:
+  * Code cleanup
+  * Refactor code to improve speed
+  * Refactor message formatter code
+  * Add context menu option to copy URLs on the updates window
+  * Revert log window as resizable
+  * Fix crash on searching package
+  * Register missing PK future-state info enum entries
+  * Fix tests after addition of Deepin desktop to PK groups
+  * Updated translations.
+- Refresh patches with quilt.
+- Switch to source service for tarball.
+- Split out repo handling into own sub-package.
+- Drop obsolete Group tag.</comment>
+    <requestid>1396859</requestid>
+  </revision>
 </revisionlist>

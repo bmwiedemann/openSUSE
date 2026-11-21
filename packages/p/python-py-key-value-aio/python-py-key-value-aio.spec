@@ -17,7 +17,7 @@
 
 
 Name:           python-py-key-value-aio
-Version:        0.4.6
+Version:        0.5.0
 Release:        0
 Summary:        Async key-value store abstraction with multiple backends
 License:        Apache-2.0

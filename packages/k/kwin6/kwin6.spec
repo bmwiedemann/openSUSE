@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -129,6 +129,7 @@ BuildRequires:  pkgconfig(xcb-xinput) >= 1.10
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.10
 BuildRequires:  pkgconfig(xkbcommon) >= 0.7.0
 BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xwayland)
 # Needs setcap
 BuildRequires:  libcap-progs
 Requires:       breeze6-decoration >= %{_plasma6_bugfix}

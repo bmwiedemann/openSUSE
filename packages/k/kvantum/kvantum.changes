@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 10 19:08:36 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 1.1.9
+ * Check genuine mouse events before window dragging.
+ * Workaround for a Qt bug that may report a highlighted action in
+   a menu while there is none.
+ * Removed the workaround for RTL menus of Qt 6.11 (the problems seem
+   to be fixed in Qt 6.11.2).
+ * Added an option for compiling Kvantum without X11 dependency.
+   If it is enabled, Kvantum will still work on X11 but without
+   compositing. It is only for Qt6.
+ * Consider the window's device pixel ratio when getting pixmap from
+   icon (in `getPixmapFromIcon()`).
+ * Added a workaround for a regression that started with the blur
+   effect of KWin 6.5 and rarely resulted in artifacts on resizing,
+   especially on tiling.
+ * Added a workaround to Kvantum Manager for local URLs in Qt 6.12,
+   which could not open them without a scheme.
+
+-------------------------------------------------------------------
 Tue Jun  2 16:57:42 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 1.1.8

@@ -18,7 +18,7 @@
 
 %define cpan_name DB_File
 Name:           perl-DB_File
-Version:        1.860
+Version:        1.861
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl access to Berkeley DB 1.x

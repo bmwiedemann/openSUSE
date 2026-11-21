@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 11 14:02:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.20
+  * Changes
+    + BATIK-1397: Throw exception when SVG has circular reference
+      (bsc#1290048, CVE-2026-111792)
+    + BATIK-1399: Harden validation in SAXDocumentFactory
+      (bsc#1290047, CVE-2026-90993)
+    + BATIK-1398: Check url protocol when loading document
+      (bsc#1290073, CVE-2026-89326)
+    + BATIK-1395: Add secure processing to XMLInputHandler
+    + BATIK-1394: Use document baseuri for color profile
+      (bsc#1290060, CVE-2026-49236)
+    + BATIK-1393: Data url handles mediatype as host
+      (bsc#1290068, CVE-2026-44929)
+    + BATIK-1392: Make font values xml safe (bsc#1290059,
+      CVE-2026-40853)
+    + BATIK-1391: Correct url
+    + BATIK-1388: Show css error message when no base uri
+    + BATIK-1386: Mark vendor properties as comments
+    + BATIK-1380: Remove xml-apis from modules that don't require it
+    + BATIK-1271: Make AWTGlyphGeometryCache thread safe
+    + FOP-3284: Reduce access rights to temp files
+- Update to version 1.19
+  * Changes
+    + BATIK-1374: Automatic-Module-Name incorrect
+    + BATIK-1373: Squiggle has wrong version text
+    + BATIK-1375: Optimise mvn repo checking
+    + FOP-3180: Glyph positions ignored when using a custom font
+
+-------------------------------------------------------------------
 Sat Oct 12 16:20:27 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 1.18

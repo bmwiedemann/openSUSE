@@ -1,5 +1,5 @@
---- swig/charmap.i	2013-03-05 21:43:50.000000000 +0100
-+++ /home/user/charmap.i	2020-05-01 13:23:59.945483980 +0200
+--- swig/charmap.i	2026-11-16 16:19:55.704420824 +0100
++++ swig/charmap.i	2026-11-16 16:19:55.723051418 +0100
 @@ -40,7 +40,7 @@
  	$result = newSVpvn(arg1->buf_data, arg1->buf_size);
  	argvi++;
@@ -9,3 +9,23 @@
  #elif defined SWIGRUBY
  	$result = arg1->buf_data ? rb_str_new(arg1->buf_data, arg1->buf_size) : Qnil;
  #elif defined SWIGTCL
+@@ -64,7 +64,7 @@
+   char **p;
+   $result = PyList_New(0);
+   for (p = $1; p && *p; p++)
+-    PyList_Append($result, PyString_FromString(*p));
++    PyList_Append($result, PyUnicode_FromString(*p));
+ #elif defined SWIGRUBY
+   char **p;
+   $result = rb_ary_new();
+@@ -85,8 +85,8 @@
+ #if defined SWIGPERL
+ 	$1 = SvPV($input,$2);
+ #elif defined SWIGPYTHON
+-	$1 = PyString_AsString($input);
+-	$2 = PyString_Size($input);
++	$1 = PyBytes_AsString($input);
++	$2 = PyBytes_Size($input);
+ #elif defined SWIGRUBY
+ 	$1 = RSTRING_PTR($input);
+ 	$2 = (int) RSTRING_LEN($input);

@@ -121,4 +121,12 @@
     <comment>1</comment>
     <requestid>1378148</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>1a9d27eeaf2e2bd3a0674bfde2ea1886</srcmd5>
+    <version>51.0</version>
+    <time>1795182557</time>
+    <user>anag_factory</user>
+    <comment>- Package previously excluded polkit policy file.</comment>
+    <requestid>1398922</requestid>
+  </revision>
 </revisionlist>

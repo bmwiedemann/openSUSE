@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Oct 10 07:21:30 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-CVE-2026-104619.patch: zypp: Add version checks
+  when updating packages (bsc#1284389, CVE-2026-104619).
+- Add PackageKit-CVE-2026-104620.patch: zypp: sanitize RPM tag name
+  to prevent path traversal in temp files
+  (bsc#1284954, CVE-2026-104620).
+
+-------------------------------------------------------------------
 Thu Oct  8 14:59:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to meson.build.

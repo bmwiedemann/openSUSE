@@ -222,4 +222,41 @@
   * Fixed `prime_factors` to preserve integer factors.</comment>
     <requestid>1359229</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8a37bf6ea617f2b106b6c93d76d6cbad</srcmd5>
+    <version>0.11.0</version>
+    <time>1795023034</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.0:
+  * `compose` now supplies an `AutoNamespace` to any *default*
+    implementation taking a `namespace` parameter: the namespace
+    itself when called as `xp.my_func(...)`, so its dtype and
+    device defaults apply, otherwise one from the first argument
+    if it matches the dispatched backend. Implementations
+    registered for a specific backend keep their own signatures.
+  * Namespaces from `get_namespace` are now stable objects:
+    registering a function drops their cached lookups rather than
+    discarding the namespaces, so one already held picks up the
+    new function.
+  * `autoray.lazy` `&quot;sum&quot;`, `&quot;prod&quot;`, `&quot;min&quot;` and `&quot;max&quot;` now
+    accept `keepdims`, matching the eager and array API
+    signatures. The reduced axes are kept as size 1 in the
+    inferred lazy shape.
+  * Added the lazy reductions `&quot;mean&quot;`, `&quot;std&quot;`, `&quot;var&quot;`,
+    `&quot;all&quot;`, `&quot;any&quot;`, `&quot;count_nonzero&quot;`, `&quot;argmin&quot;` and
+    `&quot;argmax&quot;`, which also take `axis` and `keepdims`, and
+    `&quot;cumsum&quot;`, which takes `axis` and accumulates over the
+    flattened array when it is `None`. `&quot;argmin&quot;` and `&quot;argmax&quot;`
+    follow the eager convention of only accepting a scalar
+    `axis`. Backend support for `keepdims` varies: see `XFAILS`
+    in `tests/conftest.py`.
+  * The lazy reductions and `&quot;cumsum&quot;` pass any further keyword
+    arguments, such as `ddof` or `dtype`, straight through to the
+    backend function. A `LazyArray` supplied this way, for
+    example as `where`, is tracked as a dependency of the result.
+  * Added `random_array`, i.e. `do(&quot;random.array&quot;, ...)`, for
+    backend-agnostic normal, uniform and rademacher random
+    arrays. It accepts backend-specific generators or seeds,</comment>
+    <requestid>1398254</requestid>
+  </revision>
 </revisionlist>

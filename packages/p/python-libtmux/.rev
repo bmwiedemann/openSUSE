@@ -257,4 +257,13 @@ update to 0.47.0</comment>
     <comment></comment>
     <requestid>1365239</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>e9ad67e98f474d05905bb5af21f2bcf7</srcmd5>
+    <version>0.62.0</version>
+    <time>1794932431</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-tmux-3.8.patch:
+  * Support changes required by tmux 3.8.</comment>
+    <requestid>1398029</requestid>
+  </revision>
 </revisionlist>

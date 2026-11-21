@@ -30,6 +30,8 @@ URL:            https://lutris.net
 Source0:        https://github.com/lutris/lutris/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.apparmor
 Patch0:         fix-webkit-typelib.patch
+# PATCH-FIX-UPSTREAM fix-removed-attributes-in-gnomedesktop.patch -- fix compatibility with newer GNOME versions
+Patch1:         fix-removed-attributes-in-gnomedesktop.patch
 Requires:       xrandr
 # boo#1213440
 Recommends:     ca-certificates-steamtricks

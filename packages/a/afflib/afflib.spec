@@ -19,7 +19,7 @@
 
 %define sover 0
 Name:           afflib
-Version:        3.7.22
+Version:        3.7.23
 Release:        0
 Summary:        Library and tools for working with the Advanced Forensics Format
 License:        BSD-4-Clause

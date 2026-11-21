@@ -21,7 +21,7 @@
 %define so_suffix -vectorscan
 
 Name:           vectorscan
-Version:        5.4.12
+Version:        5.4.13
 Release:        0
 Summary:        Regular expression matching library
 License:        BSD-3-Clause
@@ -39,6 +39,7 @@ BuildRequires:  gcc9-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ragel
+BuildRequires:  pkgconfig(simde)
 BuildRequires:  pkgconfig(sqlite3)
 Conflicts:      hyperscan
 # Do not support 32-bit Arm - https://github.com/VectorCamp/vectorscan/issues/61

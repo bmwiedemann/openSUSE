@@ -1,7 +1,7 @@
 #
 # spec file for package oo7
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,29 @@
 
 
 Name:           oo7
-Version:        0.4.3
+Version:        0.6.0
 Release:        0
 Summary:        A Secret Service provider
 License:        MIT
-URL:            https://github.com/bilelmoussaoui/oo7
-Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/linux-credentials/oo7
+Source0:        %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+Patch0:         python-no-default.patch
+Patch1:         use-our-cargo-build.patch
 BuildRequires:  cargo-packaging
-BuildRequires:  meson >= 0.59.0
+BuildRequires:  meson >= 1.7
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.80
+BuildRequires:  rust >= 1.92
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd) >= 242
-Requires:       oo7-daemon
-Requires:       oo7-portal
+Requires:       %{name}-daemon = %{version}-%{release}
+Requires:       %{name}-portal = %{version}-%{release}
 
 %description
 James Bond went on a new mission and this time as a Secret Service provider.
 
 %package cli
-Summary:        A CLI application to interact with the system keyring. Replacement of secret-tool
+Summary:        A CLI application to interact with the system keyring
 
 %description cli
 A CLI application to interact with the system keyring. Replacement of the secret-tool utility.
@@ -51,23 +54,65 @@ A cargo credential provider built using oo7 instead of libsecret.
 Summary:        A org.freedesktop.impl.portal.Secret implementation
 Provides:       dbus(org.freedesktop.impl.portal.Secret)
 Provides:       dbus(org.freedesktop.impl.portal.desktop.oo7)
+Requires:       %{name}-daemon = %{version}-%{release}
+Requires:       xdg-desktop-portal
 
 %description portal
 An implementation of org.freedesktop.impl.portal.Secret.
+
+%pre portal
+%systemd_user_pre oo7-portal.service
+
+%post portal
+%systemd_user_post oo7-portal.service
+
+%preun portal
+%systemd_user_preun oo7-portal.service
+
+%postun portal
+%systemd_user_postun_with_restart oo7-portal.service
 
 %package daemon
 Summary:        A org.freedesktop.secrets server implementation
 Provides:       dbus(org.freedesktop.secrets)
 Provides:       dbus(org.gnome.keyring)
+Conflicts:      gnome-keyring
 
 %description daemon
 A D-Bus Secret Service provider. Replacement of the gnome-keyring-daemon.
 
+%pre daemon
+%systemd_user_pre oo7-daemon.service
+
+%post daemon
+%systemd_user_post oo7-daemon.service
+
+%preun daemon
+%systemd_user_preun oo7-daemon.service
+
+%postun daemon
+%systemd_user_postun_with_restart oo7-daemon.service
+
+%dnl %%package pam
+%dnl Summary:        PAM module for oo7 Secret Service integration
+%dnl Requires:       %%{name}-daemon
+
+%dnl %%description pam
+%dnl A PAM (Pluggable Authentication Modules) module that integrates with
+%dnl the oo7 Secret Service daemon to automatically unlock keyrings during user authentication.
+
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
-%{cargo_build} --workspace --exclude 'oo7-portal' --exclude 'oo7-daemon'
+%{cargo_build} \
+  --workspace \
+  --exclude 'python' \
+  --exclude 'pam' \
+  --no-default-features \
+  --features 'tokio openssl_crypto' \
+%dnl --features 'kwallet_migration' ## From 0.7+
+%{?nil}
 
 for d in portal server; do
   pushd $d
@@ -80,6 +125,9 @@ done
 install -d %{buildroot}%{_bindir}
 install -Dm755 %{_builddir}/%{name}-%{version}/target/release/oo7-cli %{buildroot}%{_bindir}/
 install -Dm755 %{_builddir}/%{name}-%{version}/target/release/cargo-credential-oo7 %{buildroot}%{_bindir}/
+install -Dm755 %{_builddir}/%{name}-%{version}/target/release/oo7-portal %{buildroot}%{_libexecdir}/oo7-portal
+install -Dm755 %{_builddir}/%{name}-%{version}/target/release/oo7-daemon %{buildroot}%{_libexecdir}/oo7-daemon
+%dnl install -Dm644 %%{_builddir}/%%{name}-%%{version}/target/release/libpam_oo7.so %%{buildroot}%%{_libdir}/security/pam_oo7.so
 
 for d in portal server; do
   pushd $d
@@ -87,48 +135,43 @@ for d in portal server; do
   popd
 done
 
-%if %{with test}
-%check
-%{cargo_test} -- --skip dbus::collection::tests::create_plain_item \
-  --skip dbus::service::tests::create_collection \
-  --skip dbus::collection::tests::create_encrypted_item
-
-for d in portal server; do
-  pushd $d
-  %meson_test
-  popd
-done
-%endif
-
 %files
 %license LICENSE
 %doc README.md
 
 %files cli
-%doc cli/README.md
 %license LICENSE
+%doc cli/README.md
 %{_bindir}/oo7-cli
 
 %files -n cargo-credential-oo7
-%doc cargo-credential/README.md
 %license LICENSE
+%doc cargo-credential/README.md
 %{_bindir}/cargo-credential-oo7
 
 %files portal
-%doc portal/README.md
 %license LICENSE
-%{_libexecdir}/oo7-portal
-%{_datadir}/applications/oo7-portal.desktop
+%doc portal/README.md
 %dir %{_datadir}/xdg-desktop-portal/
 %dir %{_datadir}/xdg-desktop-portal/portals/
-%{_datadir}/xdg-desktop-portal/portals/oo7-portal.portal
-%{_userunitdir}/oo7-portal.service
+%{_datadir}/applications/oo7-portal.desktop
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.oo7.service
+%{_datadir}/xdg-desktop-portal/portals/oo7-portal.portal
+%{_libexecdir}/oo7-portal
+%{_userunitdir}/dbus-org.freedesktop.impl.portal.desktop.oo7.service
+%{_userunitdir}/oo7-portal.service
 
 %files daemon
-%doc server/README.md
 %license LICENSE
+%doc server/README.md
 %{_libexecdir}/oo7-daemon
+%{_datadir}/dbus-1/services/org.freedesktop.secrets.service
+%{_userunitdir}/dbus-org.freedesktop.secrets.service
 %{_userunitdir}/oo7-daemon.service
+
+%dnl %%files pam
+%dnl %%license LICENSE
+%dnl %%doc pam/README.md
+%dnl %%{_libdir}/security/pam_oo7.so
 
 %changelog

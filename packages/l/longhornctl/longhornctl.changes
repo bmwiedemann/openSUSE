@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:44:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 1.13.0:
+  * feat(preflight): support Elemental3-based SLES systems
+  * fix(enable-spdk): check for iommu support
+    (longhorn/longhorn#12076)
+  * fix(mocks): mock PackageManager
+  * fix: change longhorn-preflight command to longhorn-local
+  * fix: recognize OpenCloudOS as a yum-based distribution
+  * docs: clarify --spdk-options are KEY=VALUE setup.sh env
+    vars
+  * fix: pass --spdk-options to setup.sh as environment
+    variables
+  * fix(platform): detect sle-micro 6.2 transactional systems
+    via variant id
+  * fix(platform): enhance platform detection for transactional
+    suse
+  * fix: linux-modules-package is not required for Ubuntu 26.04+
+  * feat: add --tolerations flag to longhornctl to allow
+    daemonset pods to run on tainted nodes
+  * feat(volume): cli on-demand snapshot checksum for volume
+  * fix: fix validation errors
+  * docs(readme): fix typo
+  * fix: fix isCommandAvailableOnHost
+  * refactor: rename isCommandAvailable to
+    isCommandAvailableOnHost and update references
+  * feat: enhance package manager detection for unsupported OS
+    and add tests
+  * docs: update docs
+  * feat: load ublk_drv module if supported by the kernel
+  * fix: update base image in Dockerfile
+  * chore(dockerfile): update BCI base image
+  * chore(dockerfile): update base image to 15.7
+  * build: update registry.suse.com/bci/golang to 1.26.6
+  * chore: remove dapper
+  * chore: pin golangci-lint
+  * chore: update golangci-lint to v2.12.2
+  * chore: pin GH actions to commit sha
+  * chore: remove "permission-deployments: write" from
+    build.yml
+  * chore: update fossa.yml
+  * chore(workflow): add fossa.yml
+  * chore(vendor): update dependencies
+  * chore(version): update version file to v1.12.0-dev
+  * chore(version): update version file to v1.13.0-dev
+  * release: update version file for v1.13.0-rc1 to v1.13.0
+  * fix(deps): update github.com/longhorn/longhorn-manager to
+    v1.12.1
+  * fix(deps): update k8s.io patch digest dependencies to
+    v0.36.4
+  * fix(deps): update minor dependencies to v0.36.0 and v0.35.0
+  * fix(deps): update sigs.k8s.io/kustomize/kyaml to v0.21.0
+  * fix(deps): update github.com/longhorn/go-common-libs digest
+    to 1a37e0e
+  * build(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+  * build(deps): bump golang.org/x/crypto from 0.50.0 to 0.52.0
+  * chore(deps): update go to v1.25.7
+  * chore(deps): update docker/dockerfile docker tag to v1.26.0
+  * chore(deps): update GitHub actions (checkout v7,
+    fossa-action v2, action-gh-release, codespell)
+  * fix(deps): update module github.com/longhorn/longhorn-manager
+    to v1.10.0
+  * fix(deps): update k8s.io/utils digest to bc988d5
+  * fix(deps): update other patch digest dependencies
+
+-------------------------------------------------------------------
 Mon Sep 29 15:39:42 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 1.10.0:

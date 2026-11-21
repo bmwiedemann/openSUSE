@@ -1,7 +1,7 @@
 #
 # spec file for package dwarf2json
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 LISA GmbH, Bingen, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,15 @@
 
 
 Name:           dwarf2json
-Version:        0.6.0~git.20200714T092604.d1b08fe
+Version:        0.9.0
 Release:        0
 Summary:        Generate ELF/DWARF symbol and type information for volatility3
 License:        BSD-2-Clause-Patent
 URL:            https://github.com/volatilityfoundation/dwarf2json
-Source:         %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source:         https://github.com/volatilityfoundation/dwarf2json/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
+BuildRequires:  zstd
 
 %description
 %{name} is a Go utility that processes files containing symbol and type
@@ -33,16 +34,15 @@ information to generate Volatilty3 Intermediate Symbol File (ISF) JSON output
 suitable for Linux and macOS analysis.
 
 %prep
-%setup -q
-%setup -q -T -D -a 1
+%autosetup -p1 -a 1
 
 %build
 export GOFLAGS="-trimpath -mod=vendor"
-%goprep github.com/volatilityfoundation/dwarf2json 
-%gobuild
+%{goprep} github.com/volatilityfoundation/dwarf2json
+%{gobuild}
 
 %install
-%goinstall
+%{goinstall}
 
 %files
 %license LICENSE.txt

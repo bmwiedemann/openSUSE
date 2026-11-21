@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:04:41 UTC 2026 - Ciro Iriarte <ciro.iriarte@gmail.com>
+
+- Call sphinx through the flavor interpreter ($python) instead of
+  a bare python3, which is not present in the Leap 16.0 build root
+  and breaks the build there.
+
+-------------------------------------------------------------------
 Mon Feb 12 15:24:39 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
 
 - Add fix-ftbfs-python3-12.patch from

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:43:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.350.0 (0.35)
+   see /usr/share/doc/packages/perl-Scope-Upper/Changes
+
+  0.35    2026-11-16 10:30 UTC
+          + Fix : [RT #154985] : given/when/switch leaves perl in 5.41.3
+                  Following their deprecation and subsequent removal from core,
+                  the support for these features is no longer tested starting
+                  perl 5.37.10 and no longer built starting perl 5.41.3.
+                  Thanks James Keenan for reporting and submitting a fix.
+
+          + Fix : [RT #181699] : t/63-uplevel-ctl.t fails on v5.45.4
+                  An hardcoded line value has been adjust for a recent fix
+                  in core.
+                  Thanks Richard Leach for reporting and submitting a fix.
+
+-------------------------------------------------------------------
 Mon Mar 27 03:07:57 UTC 2023 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.34

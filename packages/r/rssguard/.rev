@@ -796,4 +796,12 @@ Verification
     <comment>1</comment>
     <requestid>1372293</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4e01cc22cf9803164edf99a16d3d0f51</srcmd5>
+    <version>5.3.0</version>
+    <time>1794591245</time>
+    <user>anag_factory</user>
+    <comment>Update rssguard to 5.3.0: filter overwrite, auto DB cleanup, OR/AND filters, WordPress/MediaWiki feeds, font fixes.</comment>
+    <requestid>1397198</requestid>
+  </revision>
 </revisionlist>

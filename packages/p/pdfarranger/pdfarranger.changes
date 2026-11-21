@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 08:40:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes to fix build with newer pikepdf versions:
+  * 0001-Add-changes-for-newer-pikepdf.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 19:01:50 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to 1.14.0:

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:34:27 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop the libiio.so.0 0.x compatibility library: it has no
+  SONAME, so it is not shipped; libiio1 ships only libiio.so.1*
+- Drop the deprecated rciiod service compat symlink
+
+-------------------------------------------------------------------
+Tue Nov  3 20:29:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Provide better descriptions (with help from upstream README) and
+  Avoid awkward grammar constructions in summaries.
+- Make build recipe POSIX sh compatible.
+
+-------------------------------------------------------------------
+Tue Nov  3 16:50:02 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop unused BuildRequires: pkgconfig(avahi-core),
+  pkgconfig(avahi-libevent), pkgconfig(python3) and
+  pkgconfig(python3-embed): nothing in the build links or
+  uses them (DNS-SD links only avahi-client and avahi-common;
+  CMake requests only the Python interpreter)
+- python3-pylibiio: require libiio1, which the ctypes bindings
+  load at runtime
+- usb-udev-rules: list the installed rule file instead of
+  owning the whole udev rules directory
+- Correct License tag to BSD-3-Clause AND GPL-2.0-or-later AND
+  LGPL-2.1-or-later AND MIT: the shipped utils are GPL, the
+  public headers are MIT, and iiod embeds a BSD queue header
+
+-------------------------------------------------------------------
+Fri Oct 16 12:59:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.0:
+  * New major v1 API and ABI: SONAME bumped from 0 to 1
+    (libiio0 renamed to libiio1)
+  * Ship the libiio.so.0 compatibility shim so binaries built
+    against libiio 0.x keep working
+  * Public headers moved to includedir/iio/ (include <iio/iio.h>)
+  * New tools iio_event and iio_ping; iio_readdev and iio_writedev
+    merged into iio_rwdev
+  * Support ZSTD-compressed metadata (requires libzstd)
+  * Enable the serial backend (requires libserialport)
+  * Python bindings rebuilt as a pylibiio wheel (module "iio")
+  * iiod: multithreaded client handling, USB transport, network
+    and buffer fixes; v1 clients read v0.x XML
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Mon Sep 30 17:38:43 UTC 2024 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.26

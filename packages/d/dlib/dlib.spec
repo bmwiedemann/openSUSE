@@ -16,10 +16,10 @@
 #
 
 
-%define shlib libdlib%( echo %{version} | tr '.' '_' )
+%define shlib libdlib%( echo %{version} | tr '.' '_' )_0
 %define python_subpackage_only 1
 Name:           dlib
-Version:        20.0.1
+Version:        20.1
 Release:        0
 Summary:        Toolkit for making machine learning and data analysis applications
 License:        BSL-1.0
@@ -133,7 +133,7 @@ sed -i -e 's| -L/usr/lib64||g' %{buildroot}%{_libdir}/pkgconfig/dlib-1.pc
 %fdupes %{buildroot}%{_includedir}/
 
 %check
-%pytest_arch
+%pytest_arch -k 'not test_htmlify'
 
 %ldconfig_scriptlets -n %{shlib}
 

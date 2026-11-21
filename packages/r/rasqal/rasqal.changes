@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov 15 21:08:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- spec cleanups
+
+-------------------------------------------------------------------
 Sat Mar 15 12:24:10 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with pcre2, add rasqal-0.9.33-pcre2.patch from upstream
@@ -30,7 +35,7 @@ Sat Feb  2 15:59:00 UTC 2013 - hrvoje.senjan@gmail.com
 - Update to version 0.9.30:
   + Removed RDQL support
   + Improved floating equality, comparison and promotion rules
-  + Other fixes and improvements 
+  + Other fixes and improvements
 
 -------------------------------------------------------------------
 Fri Feb  1 11:46:32 UTC 2013 - coolo@suse.com
@@ -64,7 +69,7 @@ Mon Jan 23 10:49:20 CET 2012 - dmueller@suse.de
 -------------------------------------------------------------------
 Wed Jan  4 06:20:42 UTC 2012 - crrodriguez@opensuse.org
 
-- remove libmhash buildrequires, which development was 
+- remove libmhash buildrequires, which development was
   abandoned on 2007-08-18 and therefore should not be used.
   the library will fallback to internal hashing routines.
 - remove obsolete configure options/cflags
@@ -72,23 +77,23 @@ Wed Jan  4 06:20:42 UTC 2012 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Wed Dec 21 16:48:07 UTC 2011 - tittiatcoke@gmail.com
 
-- Remove the specific -32bit compilation for 64bit systems. This 
-  as that rasqal depends on mhash for which there is no -32bit 
+- Remove the specific -32bit compilation for 64bit systems. This
+  as that rasqal depends on mhash for which there is no -32bit
   package
 
 -------------------------------------------------------------------
 Wed Dec 21 12:46:07 UTC 2011 - tittiatcoke@gmail.com
 
 - Update to 0.9.28
-  *  Added full support for SPARQL 1.1 draft STRBEFORE, STRAFTER 
+  *  Added full support for SPARQL 1.1 draft STRBEFORE, STRAFTER
      and REPLACE.
-  * Add internal Mersenne Twister PRNG or choose others via 
+  * Add internal Mersenne Twister PRNG or choose others via
     configure
   * Language name 'sparql' is now SPARQL 1.1
-  * The query result formats now all use the W3C Format URIs as 
+  * The query result formats now all use the W3C Format URIs as
     their primary URI
-  * Improved configure check for for ceil(), floor() and round() 
-    to prevent GCC optimizing the test away and getting the wrong 
+  * Improved configure check for for ceil(), floor() and round()
+    to prevent GCC optimizing the test away and getting the wrong
     answer
   * Bugfixes
 
@@ -110,7 +115,7 @@ Mon Sep 19 11:44:05 UTC 2011 - tittiatcoke@gmail.com
   * CONSTRUCT works when working over a query with optionals
   * Updated the CSV and TSV outputs to match the editor's draft
     SPARQL 1.1 Query Results CSV and TSV Formats
-  * Fixed issues: [1]#0000127, [2]#0000423, [3]#0000434, [4]#0000454 
+  * Fixed issues: [1]#0000127, [2]#0000423, [3]#0000434, [4]#0000454
     and [5]#0000459.
 
 
@@ -144,10 +149,10 @@ Sun May 22 19:12:19 UTC 2011 - asterios.dramis@gmail.com
 
 -------------------------------------------------------------------
 Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
-    
+
 - added 32bit compatibility libraries
 - removed package name from summary (fix for RPMLINT warning)
- 
+
 -------------------------------------------------------------------
 Tue Oct 19 17:10:41 CEST 2010 - dmueller@suse.de
 
@@ -214,7 +219,7 @@ Sat Jan  5 01:36:20 CET 2008 - dmueller@suse.de
 Sat Dec 15 12:57:16 CET 2007 - stbinner@suse.de
 
 - Update to version 0.9.15
-   * Many updates for supporting W3C SPARQL Proposed Recommendation. 
+   * Many updates for supporting W3C SPARQL Proposed Recommendation.
      Passes over 92% of the DAWG SPARQL Test Suite.
    * Many query engine improvements.
    * Substantial improvements to datatypes support and evaluation.
@@ -228,7 +233,7 @@ Sun Aug 26 03:44:32 CEST 2007 - crrodriguez@suse.de
 - PCRE is the recommended regex library and the default but
   package neither required pcre-devel nor the autodetection worked.
 - add missing calls to ldconfig.
-- remove unneeded static libraries and libtool archives. 
+- remove unneeded static libraries and libtool archives.
 
 -------------------------------------------------------------------
 Fri May  4 03:19:57 CEST 2007 - dmueller@suse.de

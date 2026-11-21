@@ -18,7 +18,6 @@
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk25-%RELEASE%
 #!BuildTag: opensuse/apache-tomcat:%%tomcat_version%%-openjdk25
 #!BuildTag: opensuse/apache-tomcat:10.1-openjdk25
-#!BuildTag: opensuse/apache-tomcat:latest
 #!BcntSyncTag: apache-tomcat-10-image
 
 #!FilterBaseContainerPkgs

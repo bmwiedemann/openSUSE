@@ -1,7 +1,7 @@
 #
 # spec file for package libiio
 #
-# Copyright (c) 2022-2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,40 +16,50 @@
 #
 
 
-%define so_ver  0
+%define so_ver  1
 Name:           libiio
-Version:        0.26
+Version:        1.0.0
 Release:        0
 Summary:        Industrial I/O tools
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
+License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 URL:            https://wiki.analog.com/resources/tools-software/linux-software/libiio
 Source:         https://github.com/analogdevicesinc/libiio/archive/v%{version}.tar.gz#/libiio-%{version}.tar.gz
 BuildRequires:  bison
-BuildRequires:  cmake >= 3.10
+BuildRequires:  chrpath
+BuildRequires:  cmake >= 3.13
 BuildRequires:  flex
+BuildRequires:  gcc
 BuildRequires:  libaio-devel
-BuildRequires:  libavahi-devel
-BuildRequires:  libusb-1_0-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  python3-devel
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(avahi-client)
+BuildRequires:  pkgconfig(libserialport)
+BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 %{?systemd_requires}
 
 %description
-Library for industrial I/O.
+libiio is used to interface to the Linux Industrial Input/Output
+(IIO) Subsystem, which provides support for devices that in some
+sense are analog to digital or digital to analog converters (ADCs,
+DACs), e.g. sensors, amplifiers, RF transceivers, etc.
 
 %package -n libiio%{so_ver}
 Summary:        Industrial I/O library
-Group:          System/Libraries
 
 %description -n libiio%{so_ver}
-Library for industrial I/O.
+libiio is used to interface to the Linux Industrial Input/Output
+(IIO) Subsystem, which provides support for devices that in some
+sense are analog to digital or digital to analog converters (ADCs,
+DACs), e.g. sensors, amplifiers, RF transceivers, etc.
 
 %package devel
-Summary:        Industrial I/O library -- development files
-Group:          Development/Libraries/C and C++
+Summary:        Development files for the Industrial I/O library
 Requires:       libiio%{so_ver} = %{version}-%{release}
 Recommends:     libiio = %{version}-%{release}
 
@@ -59,8 +69,8 @@ Library for industrial I/O.
 This sub-package contains the development files.
 
 %package -n python3-pylibiio
-Summary:        Industrial I/O library -- Python bindings
-Group:          System/Libraries
+Summary:        Python bindings for the Industrial I/O library
+Requires:       libiio%{so_ver} = %{version}-%{release}
 Obsoletes:      libiio-python < %{version}-%{release}
 Provides:       libiio-python = %{version}-%{release}
 
@@ -70,17 +80,15 @@ Library for industrial I/O.
 This sub-package contains the Python bindings.
 
 %package daemon
-Summary:        Industrial I/O library -- iiod
-Group:          System/Libraries
+Summary:        Industrial I/O library device sharing daemon
 
 %description daemon
-Library for industrial I/O.
-
-This sub-package contains the iiod daemon.
+iiod's purpose is to share local IIO hardware devices over a network,
+USB, or serial connection so they can be accessed remotely by other
+machines
 
 %package usb-udev-rules
-Summary:        Industrial I/O library -- iiod
-Group:          System/Libraries
+Summary:        udev rules for the Industrial I/O library
 
 %description usb-udev-rules
 Library for industrial I/O.
@@ -88,29 +96,39 @@ Library for industrial I/O.
 This sub-package contains a udev rule for granting access to IIO targets
 using the USB transport/backend.
 
-
 %prep
-%setup -q
-sed -i '1s|#!/usr/bin/env python|#!/usr/bin/python3|g' bindings/python/iio.py
+%autosetup -p1
+# __init__.py is imported, never executed: drop the shebang so rpmlint
+# does not flag it as a non-executable script
+sed -i '1{/^#!/d}' bindings/python/iio/__init__.py
 
 %build
+# The 0.x compatibility library has no SONAME, so it is not shipped.
 %cmake \
-  -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
-  -DUDEV_RULES_INSTALL_DIR=%{_udevrulesdir} \
   -DWITH_SYSTEMD=1 \
-  -DPYTHON_BINDINGS=ON \
+  -DWITH_TESTS=ON \
+  -DLIBIIO_COMPAT=OFF \
+  -DUDEV_RULES_INSTALL_DIR=%{_udevrulesdir} \
   -DSYSTEMD_UNIT_INSTALL_DIR=%{_unitdir}
 %cmake_build
+# The Python bindings are no longer installed by CMake, build a wheel instead
+# NOTE: %%cmake_build leaves cwd in build/, hence ../
+cd ../bindings/python
+%python3_pyproject_wheel
 
 %install
 %cmake_install
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciiod
+# Upstream leaves the build-tree RUNPATH in the installed utils; drop it
+chrpath --delete %{buildroot}%{_bindir}/iio*
+# NOTE: each section starts in the source dir, unlike %%build above
+cd bindings/python
+%python3_pyproject_install
 
 %check
+# tests/hardware/test_ad9364 exits 0 without URI_AD9361 set (no hardware)
 %ctest
 
-%post -n libiio%{so_ver} -p /sbin/ldconfig
-%postun -n libiio%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libiio%{so_ver}
 
 %pre daemon
 %service_add_pre iiod.service
@@ -128,31 +146,31 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rciiod
 %license COPYING.txt
 %doc README.md
 %{_bindir}/iio_attr
+%{_bindir}/iio_event
 %{_bindir}/iio_genxml
 %{_bindir}/iio_info
-%{_bindir}/iio_readdev
+%{_bindir}/iio_ping
 %{_bindir}/iio_reg
+%{_bindir}/iio_rwdev
 %{_bindir}/iio_stresstest
-%{_bindir}/iio_writedev
 
 %files -n libiio%{so_ver}
 %{_libdir}/libiio.so.%{so_ver}*
 
-
 %files -n libiio-devel
-%{_includedir}/iio.h
+%{_includedir}/iio/
 %{_libdir}/libiio.so
 %{_libdir}/pkgconfig/libiio.pc
 
 %files -n python3-pylibiio
-%{python3_sitelib}/*
+%{python3_sitelib}/iio
+%{python3_sitelib}/pylibiio-*-info
 
 %files daemon
 %{_sbindir}/iiod
-%{_sbindir}/rciiod
 %{_unitdir}/iiod.service
 
 %files usb-udev-rules
-%{_udevrulesdir}
+%{_udevrulesdir}/90-libiio.rules
 
 %changelog

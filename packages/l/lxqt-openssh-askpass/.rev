@@ -303,4 +303,14 @@
   * Updated translations and bumped the version</comment>
     <requestid>1348572</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>4fcec0a21311f69f93a630d2a9f393f4</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182296</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Supported OpenSSH askpass prompt modes.
+  * CMake maintenance.</comment>
+    <requestid>1398754</requestid>
+  </revision>
 </revisionlist>

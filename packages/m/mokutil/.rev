@@ -298,4 +298,12 @@ bnc#809703: remove the key from the pending request if necessary (forwarded requ
     <comment></comment>
     <requestid>1308783</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8c529ae0953c2ae4396adaf77cdf3cfc</srcmd5>
+    <version>0.7.3</version>
+    <time>1793817761</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394591</requestid>
+  </revision>
 </revisionlist>

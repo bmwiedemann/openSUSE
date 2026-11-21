@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 11 20:35:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.1+35:
+  * palette:
+    + Make Catppuccin support light/dark modes and follow system theme
+    + Preserve user overrides in fast lookup
+    + Avoid eager parsing and reload bursts
+  * util: preserve configured shell path matching
+  * podman: remove parser progress output
+  * process: reduce foreground polling overhead
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 16:12:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

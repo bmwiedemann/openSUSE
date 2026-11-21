@@ -7,4 +7,19 @@
     <comment>drmcru is a modern TUI utility written in Rust for managing Linux DRM/KMS custom resolutions. It allows users to inspect/edit monitor EDID data, export patched EDID binaries, and apply kernel-level overrides. It also features native Hyprland integration for live mode discovery, mode switching, and generating Hyprland monitor rules (hyprland.conf / Lua hl.monitor).</comment>
     <requestid>1383885</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e4fb98fffe358901d1b0680789a7bbc4</srcmd5>
+    <version>0.1.6</version>
+    <time>1793724875</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.1.6:
+  * Avoid SIGPIPE in the UKI test fixture
+  * Prepare 0.1.6 and document verified Limine installation
+  * Preserve boot arguments and images; fix CTA deletion and interlace
+  * Fix clippy warnings from stable toolchain
+  * drmcru: fix cargo audit findings
+  * drmcru: defer protected Limine preflight
+  * Move mkinitcpio EDID entries into a dedicated drop-in</comment>
+    <requestid>1394503</requestid>
+  </revision>
 </revisionlist>

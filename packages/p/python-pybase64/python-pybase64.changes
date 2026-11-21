@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:57:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.2:
+  * Fix deprecated altchars handling when decoding with
+    padded=False: with validate and no padding, the C extension
+    used the strict alphabet translation and raised binascii.Error
+    instead of the expected DeprecationWarning
+  * Refresh bundled libbase64 to 5d5074c
+
+-------------------------------------------------------------------
 Mon Oct  5 06:42:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.1:

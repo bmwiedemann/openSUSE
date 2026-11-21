@@ -171,4 +171,41 @@
     ``:where()`` pseudo-classes and the `!=`` attribute operator.</comment>
     <requestid>1372221</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a30358ff33cc61dbadb90687537b1a1c</srcmd5>
+    <version>1.6.0</version>
+    <time>1794317899</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.0:
+  * Drop support for Python 3.10, add support for 3.15
+  * Backward-incompatible: Relation (for :has()) now takes
+    and exposes a list of (combinator, selector) pairs as
+    arguments, replacing combinator and subselector
+  * Backward-incompatible: the
+    GenericTranslator.xpath_relation_*_combinator() methods
+    now take only the XPath expression of the :has()
+    argument and return an XPath condition string
+  * :has() supports any relative selector list, e.g.
+    :has(&gt; a.important, + p b)
+  * :not() supports complex selector arguments, e.g.
+    :not(a.important[rel] &gt; b)
+  * Add i and s attribute selector flags, e.g.
+    [href^=&quot;HTTP&quot; i], for case-insensitive/sensitive matching
+  * *|element and [*|attrib] match any namespace, including
+    none; [|attrib] added for matching no namespace
+  * Element.namespace and Attrib.namespace are &quot;*&quot; for the
+    namespace wildcard
+  * Align :enabled and :disabled with the HTML Living
+    Standard:
+    - input with no type or type=&quot;hidden&quot; can now be
+      :enabled and :disabled
+    - links (a, area, link with href) are no longer
+      :enabled
+    - form controls inside the first legend of a disabled
+      fieldset are no longer :disabled
+    - option inside a disabled optgroup is now :disabled
+    - command is no longer :enabled or :disabled, keygen
+      is no longer :enabled</comment>
+    <requestid>1396177</requestid>
+  </revision>
 </revisionlist>

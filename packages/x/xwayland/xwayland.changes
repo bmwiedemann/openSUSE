@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Oct 21 12:20:30 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1285087_CVE-2026-109092.patch
+  * X.Org Server XvShmPutImage Shared-Memory Bounds Overflow
+    (bsc#1285087, CVE-2026-109092)
+- bsc1285088_CVE-2026-109093.patch
+  * X.Org Server XTestFakeInput Valuator Stack Out-Of-Bounds Write
+    (bsc#1285088, CVE-2026-109093)
+- bsc1285089_CVE-2026-109094.patch
+  * X.Org Server XRes QueryResourceBytes Swap Path Size Overflow
+    (bsc#1285089, CVE-2026-109094)
+- bsc1285090_CVE-2026-109095.patch
+  * X.Org Server glamor Xv Image Size Integer Overflow
+    (bsc#1285090, CVE-2026-109095)
+- bsc1285091_CVE-2026-109096.patch
+  * X.Org Server XvPutImage Negative Image Size Length Bypass
+    (bsc#1285091, CVE-2026-109096
+- bsc1285093_CVE-2026-109903.patch
+  * X.Org Server XRes QueryClientIds Request Size Overflow
+    (bsc#1285093, CVE-2026-109903)
+- bsc1285094_CVE-2026-109904.patch
+  * X.Org Server XRes QueryClientIds Request Size Overflow
+    (bsc#1285094, CVE-2026-109904)
+
+-------------------------------------------------------------------
 Wed Oct 21 11:38:56 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 24.1.14

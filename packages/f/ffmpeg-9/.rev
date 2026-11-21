@@ -86,4 +86,12 @@
     <comment>- Enable RealAudio Lossless, RealVideo 3.0 and 4.0 decoders.</comment>
     <requestid>1384329</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>c8aa7a109f77535f5fa923eb86a353f5</srcmd5>
+    <version>9.0.2</version>
+    <time>1793817757</time>
+    <user>anag_factory</user>
+    <comment>add bugrefs</comment>
+    <requestid>1394572</requestid>
+  </revision>
 </revisionlist>

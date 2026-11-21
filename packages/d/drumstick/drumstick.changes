@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:53:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.11.2
+  RT library:
+  * Fluidsynth backend: default gain control option
+  * Sonivox backend: Fixed GH ticket #37: - add gain control
+  * Sonivox backend: gain control option
+  * ALSA backend: Fixed GH ticket #31: show ALSA port name instead
+    of index number
+  Widgets library:
+  * Czech translation updated. Thanks to Pavel Fric
+  * Spanish and Galician translations updated
+  * Updated Fluidsynth configuration dialog
+  * Updated Sonivox configuration dialog
+  Utils:
+  * vpiano: implemented a generic raw keyboard event filter
+  General:
+  * Fixed GH ticket #40: prevent Qt5 + Qt6 mix
+  * Fixed embedding Drumstick as submodule or subdirectory
+  * Fixed deprecations
+
+-------------------------------------------------------------------
 Tue Sep  1 15:07:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2.11.1

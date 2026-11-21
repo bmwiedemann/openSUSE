@@ -909,4 +909,49 @@
     <comment>1</comment>
     <requestid>1387746</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>fc47021482c688cea3e79524c2908ac2</srcmd5>
+    <version>1.2.20</version>
+    <time>1793725076</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394576</requestid>
+  </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>ec22aed3bcd8b9b3012e3449f63bfe4e</srcmd5>
+    <version>1.2.21</version>
+    <time>1795023036</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 1.2.21.
+  Changelog: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.21
+  * SECURITY: Refuse porcelain.submodule_update when the submodule path
+    or a parent directory is already a symlink. A victim's worktree could
+    otherwise redirect the clone (including the submodule .git file) into
+    the link target. Reported by AnkitSingh411. (Jelmer Vernooĳ)
+  * SECURITY: Refuse to open a pack index whose fanout claims more objects
+    than the file could possibly hold. Loading previously succeeded and
+    lookups then returned empty names or raised struct errors deep in the
+    call stack. (Jelmer Vernooĳ)
+  * HARDEN: Add a sha1dc extra: pip install dulwich[sha1dc] pulls
+    in the sha1dc package and dulwich picks it up for object ids, so
+    SHA-1 collisions are detected rather than silently accepted. Without it,
+    dulwich falls back to hashlib.sha1. (Jelmer Vernooĳ)
+  * SECURITY: Strip terminal control bytes from sideband progress and fatal
+    messages received from a remote, so a hostile server can no longer inject
+    ANSI escape sequences into the user's terminal (matching git's fix for
+    CVE-2024-52005). (Jelmer Vernooĳ)
+  * HARDEN: Cap tree traversal depth in iter_tree_contents at 1280 levels
+    (core.maxTreeDepth). A tree nested more deeply raises
+    MaxTreeDepthExceeded. (Jelmer Vernooĳ)
+  * Free the object store passed to commit_tree without the cycle
+    collector. Its nested helper functions kept it in a reference cycle,
+    so pack files stayed open after use. (Zainab Mehmut)
+  * Emit the \ No newline at end of file marker when the final line is
+    unchanged context. Patches ending with such a line were truncated and
+    git apply rejected them as corrupt. (Jelmer Vernooĳ, #2543)
+  * Honour protocol.&lt;name&gt;.allow for submodule URLs; the file transport
+    is now refused for submodules by default. (Kartik Kenchi)</comment>
+    <requestid>1398261</requestid>
+  </revision>
 </revisionlist>

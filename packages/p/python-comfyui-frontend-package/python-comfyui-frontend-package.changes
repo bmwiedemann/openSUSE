@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:25:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.10 (backport fixes only on core/1.59,
+  1.59.9 GitHub-only with no PyPI sdist):
+  * Paste keeps name-keyed widget values on pasted custom
+    nodes; late image preview stays off another workflow's
+    node; sidebar resize stays grabbed beside the handle
+  * Queue counts nodes and names running node for Agent-queued
+    runs; agent paused-for-credits notice, history-restore
+    reason, workflow-sync/Desktop error reporting
+  * Open on Cloud: Builds named in Deploy dialog; Deploy
+    offered for non-file missing models; CLI skill controls
+    execution
+  * API: getAuthStore restored for extensions; ClipspaceDialog
+    export restored for comfyAPI shim; extensionless videos
+    without MIME type rejected
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
+Thu Nov 19 07:29:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.8 (crosses 1.59.3, 1.59.4, 1.59.6;
+  backport fixes only on core/1.59):
+  * Cloud: refreshed deployment dialog and agent handoff;
+    local handoff gated with stop before execution;
+    missing model loaders explained; Cloud rollout honored
+  * Agent: send holds and feedback state reported; blank
+    media notice; tour card contrast; debug keeps tool
+    calls; held edits stamped; socket reconnects; Save As
+    keeps chat; tab shows Input needed; off-cloud consent
+    and handshake fixes
+  * Billing tooltips from allowlist; auth sends install id;
+    unsaved-tab draft kept; 3D Viewer label restored with
+    lazy commands
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
+Mon Nov 16 20:33:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.2 (backport fixes only, completes Open on Cloud
+  on core/1.59):
+  * Cloud compatibility: missing node types offer Deploy your setup
+    to Comfy Platform; missing models are listed by name with
+    uploads-unavailable notice
+  * Cloud setup card from compatibility or out-of-memory errors
+    offers Platform, Claude desktop, Codex, or copying the prompt;
+    out-of-memory entry stays hidden while its flag is off
+  * Flag off keeps prior behavior: Cloud entry points hidden,
+    local Global Settings keep their host, agent label stays
+    Build with your agent outside the Cloud menu
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
+Wed Nov 11 19:51:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.1 (crosses 1.59.0; 1.59.1 itself backport fixes
+  only):
+  * Workspace: deployment switcher under the workspace selector;
+    runs and missing-nodes prompts name deployments that can run
+    the workflow; editor opens while custom nodes start, waiting
+    packs show as waiting with refetch and Reload offered;
+    prompt to save unsaved workflows before a deployment switch
+  * Canvas: marquee-select links to hide or delete them; stacked
+    hidden-link labels; node highlights while browsing agent
+    references; rich widget editors stay out of the right panel;
+    assets refresh on websocket events; HDR fallback placeholder
+  * Agent: ask_user questions rendered with ask_kinds advertised;
+    chats named before the first prompt; simplified composer with
+    one backend contract; stale-page notice no longer promises a
+    reload shows the changes; newer-document reload prompt;
+    spoofed video attachments rejected
+  * Auth: local SSO tokens in localStorage under a cross-tab lock;
+    revoked sessions warn and retry once; Desktop sign-in redirect
+    loop fixed; older-browser guards (AbortSignal.any, URL.parse,
+    Intl.Segmenter)
+  * DynamicGroup rows: mint added-row values; drop orphaned
+    promoted inputs; report row refusals and count mismatches
+  * Manager: retry a failed later result page without dropping
+    loaded packs; selected deployment's Release models shown
+  * Billing: unified Billing tab with auto top-up card
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
+Sat Nov  7 13:15:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.58.7 (crosses 1.58.6; backport fixes only):
+  * Agent: keep a restored finished turn's Worked label; keep an
+    unopened unsaved tab when the workflow picker saves it; empty
+    the composer on New Chat while keeping the draft across a
+    refresh; workflow chat follow; support browsers without
+    Intl.Segmenter; drop canvas groups a remote clear removes
+    from the document
+  * Do not mark unedited saved workflows unsaved after a reload
+  * Billing: show <1 and "1 Credit" for small activity charges
+  * Audio: resume a retry from the failed position instead of 0:00
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
+Tue Nov  3 18:47:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.58.5 (backport release):
+  * Canvas: keep rendering after a failed first frame; pick up
+    new node types on reconnect after a restart
+  * Agent: re-send the canvas when an unsaved tab's remembered
+    workflow is not its own; restore pre-reload thinking when
+    the turn finishes
+  * Billing: auto top-up card in the Add credits dialog
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
 Mon Nov  2 13:26:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.58.4 (backport fixes only):

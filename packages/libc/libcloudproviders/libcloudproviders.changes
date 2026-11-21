@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov  4 14:57:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.2:
+  * Allow to use services installed on user side
+  * Prevent many possible crashes
+  * Plug several memory leaks
+  * Improve the D-Bus interface documentation
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Sat Aug 29 13:25:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.1:

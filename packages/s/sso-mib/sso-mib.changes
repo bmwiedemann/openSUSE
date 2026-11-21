@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 3 12:06:47 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Import version 0.11.0
+  New sso-mib-sasl-xoauth2 SASL plugin added via the new
+  libsso-mib-sasl-xoauth2 package.
+
+-------------------------------------------------------------------
 Fri Jul 24 14:28:51 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 0.10.1

@@ -1,7 +1,7 @@
 #
 # spec file for package mariadb-java-client
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mariadb-java-client
-Version:        3.5.0
+Version:        3.5.11
 Release:        0
 Summary:        Connects applications developed in Java to MariaDB and MySQL databases
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -27,11 +27,10 @@ Patch0:         remove_waffle-jna.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
+BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(net.java.dev.jna:jna)
 BuildRequires:  mvn(net.java.dev.jna:jna-platform)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
 BuildRequires:  mvn(org.osgi:osgi.cmpn)
 BuildRequires:  mvn(org.osgi:osgi.core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
@@ -60,19 +59,8 @@ This package contains the API documentation for %{name}.
 %pom_remove_dep org.junit:junit-bom
 %pom_remove_dep org.junit.jupiter:junit-jupiter-engine
 
-# used in buildtime for generating OSGI metadata
-%pom_remove_plugin biz.aQute.bnd:bnd-maven-plugin
-
 %pom_add_dep net.java.dev.jna:jna
 %pom_add_dep net.java.dev.jna:jna-platform
-
-# make the slf4j dependency version-independent
-%pom_remove_dep org.slf4j:slf4j-api
-%pom_add_dep org.slf4j:slf4j-api
-
-# use the latest OSGi implementation
-%pom_change_dep -r :org.osgi.core org.osgi:osgi.core
-%pom_change_dep -r :org.osgi.compendium org.osgi:osgi.cmpn
 
 rm -r src/main/java/org/mariadb/jdbc/plugin/credential/aws
 
@@ -90,7 +78,9 @@ rm -f src/main/java/org/mariadb/jdbc/plugin/authentication/addon/gssapi/WindowsN
 
 %pom_remove_plugin org.jacoco:jacoco-maven-plugin
 %pom_remove_plugin org.apache.maven.plugins:maven-source-plugin
-%pom_remove_plugin org.sonatype.plugins:nexus-staging-maven-plugin
+%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
+%pom_remove_plugin org.cyclonedx:cyclonedx-maven-plugin
+%pom_remove_plugin org.codehaus.gmavenplus:gmavenplus-plugin
 %pom_remove_plugin -r :maven-gpg-plugin
 %pom_remove_plugin -r :maven-javadoc-plugin
 

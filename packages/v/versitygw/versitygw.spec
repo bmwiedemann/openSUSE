@@ -17,7 +17,7 @@
 
 
 Name:           versitygw
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        High-Performance S3 Translation Service
 License:        Apache-2.0

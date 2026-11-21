@@ -1,4 +1,292 @@
 -------------------------------------------------------------------
+Thu Nov 19 02:33:44 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Generate and install bash, fish and zsh completions from the built binary.
+- Added some runtime deps
+
+-------------------------------------------------------------------
+Thu Nov 12 01:57:38 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.5.0:
+  * chore(version): bump version
+  * perf(umbriel): reduce workspace metadata refreshes
+  * chore: i18n update
+  * feat(screenshot): add space as a region move/resize modifier (#4836)
+  * feat(night-light): add schedule toggle for (per) monitor brightness based on sunrise/sunset (#5078)
+  * fix(time): reload system timezone before formatting (#5329)
+  * fix(wallpaper): map the wallpaper once its first image is ready (#5308)
+  * perf(hyprland): track focused output from events, skip no-op plugin ticks
+  * fix(dock): drop tooltip before destroying dock instances Fixes #5311
+  * fix(screenshot): snap region dim strips to device pixels
+  * feat(switcher): add grid layout (#5203)
+  * feat(nix): use Type=notify for the systemd user service (#5318)
+  * fix(apps): exclude publisher namespaces from identity matching
+  * fix(dock): keep active dock items from moving to the front on focus (#5229)
+  * fix(wallpaper): keep configured favorite paths when saving favorites
+  * fix(config): expand wallpaper.favorite.path from config (#5312)
+  * refactor(sway): share one IPC connection across sway backends
+  * fix(sway): refresh the keyboard layout widget on sway input events (#5300)
+  * feat(plugins): add noctalia.nightlight API with state actions and watch (#5301)
+  * fix(control-center): pin home shortcut grid height to its row
+  * fix(network): avoid GCC false positive in settings callback
+  * fix(theme): order surface container tones in custom wallpaper schemes
+  * fix(network): format D-Bus error names compatibly with GCC 14
+  * test: use TEST_CHECK instead of file-local check helpers
+  * test: let TEST_CHECK take expressions containing commas
+  * test(process): use TEST_CHECK instead of a local expect helper
+  * test(process): cover notify readiness datagram and direct-service pid check (#5298)
+  * feat(lockscreen): add CRT transition effect (#4786)
+  * docs(hyprland): add Hyprland permission rules for Noctalia (#5303)
+  * feat(plugins): add paint-only compositing props to declarative UI (#5227)
+  * fix(network): avoid GCC warning when logging settings errors
+  * test(theming): match Hyprland Lua setup instructions
+  * fix(avatar): move shape setting to shell and migrate existing values
+  * fix(pipewire): refresh cached routes after port changes
+  * fix(theming): align Hyprland Lua setup instructions
+  * feat(keybinds): `category_next` and `category_previous` to cycle launcher categories and control center tabs (#5236)
+  * build: split config_schema in smaller cpp files
+  * build: split settings_registry in smaller cpp + rework clang-tidy
+  * build: make Clang and GCC agree on warnings
+  * feat(active-window): option to configure the empty label text (#5291)
+  * fix: place bar sections and the OSD card on whole pixels (#5290)
+  * doc(install): document stonking (Ubuntu 26.10) package (#5288)
+  * chore: i18n update
+  * feat(notifications): option to hide the timeout indicator (#5256)
+  * test(render): remove manual-only shared texture cache test
+  * test(brightness): inject ddc retry delays to speed up service test
+  * chore(lint): run clang-tidy over tests
+  * fix(ipc): keep TOML quotes in config-set paths (#5262)
+  * fix(desktop): center the weather widget content
+  * fix(desktop): stop clipping clock and weather text shadows
+  * fix(desktop): stop clipping the label widget's text shadow (#5285)
+  * chore(flake): update flake.lock
+  * fix(calendar): read calendar-color from the Apple namespace (#5275)
+  * feat(screenshot): add Ctrl+A shortcut to select the full desktop (#5276)
+  * docs(opensuse): add installation guide for Leap 16.0 (#5272)
+  * fix(calendar): skip reminders for declined Google events (#5212)
+  * fix(network): show Wi-Fi off instead of no networks in range (#5225)
+  * feat(screenshot): option to disable the mode suffix to saved filenames (#5255)
+  * fix(mango): reconnect workspace watch socket after it drops
+  * fix(notifications): skip animation when rebuilding already existing toasts (#5260)
+  * docs(plugins): note that sampledAtMs does not track GPU freshness (#5257)
+  * docs(compositors): make disabling layer animations its own step
+  * feat(bar): Allow using workspace id as label source (#4944)
+  * fix(plugins): resolve raw icon names before fuzzy app-id matching (#5251)
+  * fix(templates): keep Ghostty +ssh sessions alive on theme reload (#5241)
+  * fix(launcher): clip the tab-switch slide to the panel body (#5245)
+  * fix(calendar): pass an activation token from event links (#5249)
+  * fix(settings): pass an activation token from plugin links (#5248)
+  * feat(tray): add drawer_button_position option (#5204)
+  * fix(ui): preserve scrollbar hover during measurement
+  * fix(ui): use unsigned length for marquee spacing
+  * feat(lockscreen): add dnd config to enable Do Not Disturb while locked and restore the previous state on unlock (#5162)
+  * chore: i18n update
+  * settings: group widget settings into collapsible cards
+  * feat(bar): add shared custom_label and show_glyph options to all bar widgets (#4683)
+  * fix(shell): don't open window switcher from focused panel key events (#5228)
+  * fix(docs): add missing 'step' property to settings schema (#5230)
+  * docs: note that braces and naming are enforced by the tools
+  * refactor: use PascalCase enumerators and m_ members
+  * style: brace every control statement
+  * docs: document PascalCase enumerators, enum underlying types and noun getters
+  * feat(wayland): expose native window lifecycle and focus APIs
+  * feat(render): cache prepared images by source revision
+  * feat(lib): add reusable grid viewport hooks
+  * feat(render): support packed RGB resampling
+  * fix(controls): preserve artwork sizing and numeric editing
+  * feat(lib): extend menu presentation and highlight controls
+  * feat(lib): add composition and IME focus transfer APIs
+  * feat(lib): support asynchronous text paste
+  * fix(lib): preserve destruction observers across dispatchers
+  * feat(lib): support explicit asset roots
+  * build(lib): make the codec pack opt-in
+  * refactor(lyrics): move desktop lyrics out of core into the official plugin
+  * fix(lyrics): restore GCC 15 compatibility
+  * feat(lyrics): add hide_when_no_media and hide_when_idle options
+  * fix(lyrics): use shift_right compatible with GCC 15 (#5223)
+  * feat(lyrics): add desktop lyrics widget with synced karaoke display
+  * feat(lockscreen): made lockscreen background tint color customizable (#5188)
+  * fix(control-center): reset media progress when the track changes (#5209)
+  * feat(osd): add center position osd (#5215)
+  * refactor(lib): make the shared UI library self-contained and policy-free
+  * refactor(lib): move markdown, pickers, dialogs and fuzzy matching back to the shell
+  * fix(pipewire): keep module-rt out of shell PipeWire contexts
+  * refactor(weather): rename effect sources to weather_effect and move simulations to shell/render
+  * fix(nix): bump devshell to llvmPackages_23 (#5205)
+  * feat(bar): add peek to network widget
+  * feat(bar): add media and tray peek controls
+  * feat(bar): add peek to reveal glyph widget values on hover
+  * refactor(weather): share effect shader noise and split shaders per effect
+  * ui(weather): turn the fog effect into a drifting veil of mist banks
+  * ui(weather): soften and animate the cloud effect with a coherent drifting field
+  * ui(weather): renew the rain effect's static droplets faster and let them slide
+  * ui(weather): soften and animate the snow effect's cloud bank
+  * Weather effects: friendlier Rain/Sun/Snow/Cloud/Fog/Stars visuals (just an idea) (#5155)
+  * refactor(panel): pass the renderer to panel and tab frame ticks
+  * fix(capture): keep the keys on the capture while a panel holds the keyboard (#5140)
+  * feat(network): prompt for VPN secrets (#5076)
+  * feat(startup): add notification-based systemd service for Noctalia (#4707)
+  * fix(capture): use platform foreign toplevels for annotation capture target
+  * feat(tray): add drawer_background_opacity for detached tray drawer
+  * feat(annotate): add a window capture button to the toolbar and shortcut (#5176)
+  * fix(osd): make media volume popup independent of now playing (#5202)
+  * fix(launcher): detect AppImages launched through env or TryExec and use a distinct glyph
+  * feat(calendar): choose which Google calendars to sync (#5095)
+  * wallpaper: sync transitions is true by default
+  * Fix: resolve app icon from desktop-entry hint for notifications (#5195)
+  * feat(wallpaper): add sync transitions option for multi monitor setups (#5198)
+  * feat(dock): make the auto-hide reveal delay configurable
+  * docs(umbriel): update umbriel example config following new changes (#5197)
+  * ci: pin clang-format and clang-tidy to version 23
+  * Add ImageFit api to pixel streams (#5187)
+  * fix(dock): drop redundant lambda parameter list (#5190)
+  * chore: i18n update
+  * feat(theme): add terminal_colors to choose palette or standard ANSI colors
+  * feat(notifications): group history tab notifications by application
+  * template(emacs): useterm colors in message quotes (#5166)
+  * feat(notifications): add newest_on_edge option to stack new toasts at the edge (#4901)
+  * feat(dock): add optional alpha-shaped application icon shadows (#4603)
+  * feat(dock): require a short edge dwell before revealing (#4900)
+  * fix(tray): keep the drawer button input area across icon updates (#5184)
+  * fix(tray): refresh the open drawer when tray items change (#5183)
+  * fix(wallpaper): keep bundled wallpaper as an unsaved fallback (#5175)
+  * fix(panel): open unpinned panels on the pointer's output on labwc (#5173)
+  * feat(settings): match settings search without accents
+  * fix(settings): match settings search case-insensitively beyond ASCII (#5178)
+  * feat(templates): reload running Helix instances after theme apply (#5182)
+  * fix(wayland): drop redundant lambda parameter list
+  * docs: describe the shell-owned layer shell, blur, and protocol-neutral popup parents
+  * refactor(wayland): move ext-background-effect blur to the shell's layer surfaces
+  * refactor(wayland): move layer shell into a shell extension and make popup parenting protocol-neutral
+  * refactor(i18n): move the supported language list to shell settings
+  * fix(panel): merge nested popup grab host check
+  * build: run format, lint, and source checks over lib/
+  * build: move the shared UI library into lib/ with its own meson target
+  * refactor: move build info from core to app
+  * refactor(wayland): publish output-management metadata from a shell extension
+  * docs: describe Wayland registry extensions and the shell-side wayland layout
+  * refactor(compositors): move workspace aggregation and poll sources out of src/wayland
+  * refactor(wayland): move foreign toplevels and compositor-specific managers to shell extensions
+  * refactor(wayland): bind the Hyprland focus grab through a shell extension
+  * refactor(wayland): move clipboard and virtual keyboard services to the shell
+  * refactor(wayland): bind session lock, idle, and gamma managers through a shell extension
+  * refactor(wayland): bind capture managers through shell-side extensions
+  * refactor(wayland): add registry extensions to WaylandConnection
+  * docs: describe custom draw nodes and render extensions
+  * refactor(render): describe the npot mipmap check without naming wallpapers
+  * refactor(render): draw wallpapers and wallpaper masks through custom draw nodes
+  * refactor(render): draw the lockscreen transition through a custom draw node
+  * refactor(render): draw weather effects and graphs through custom draw nodes
+  * refactor(render): draw audio visualizers through custom draw nodes
+  * refactor(render): draw countdown ring and screen corner through custom draw nodes
+  * refactor(render): delete unused linear gradient program
+  * refactor(ui): let the theme service install the startup palette
+  * refactor(ui): move shell app icon colorization settings out of ui
+  * refactor(ui): report keybind rejections through a callback and move KeybindAction to core
+  * refactor(ui): pass dialog popup appearance instead of ConfigService
+  * refactor(core): move time formatting helpers out of time
+  * refactor(ui): move shell and plugin specific controls out of ui
+  * refactor(ui): move surface shadow geometry out of shell and config
+  * refactor(render): move tooltip content types next to InputArea
+  * refactor(core): move PollSource out of app
+  * test: add TEST_NEAR and drop per-file near helpers
+  * fix(ui): resize content panels after scroll content changes (#5154)
+  * feat(icons): add per-component app icon colorization
+  * fix(context-menu): skip toggle glyph for entries without a toggle type
+  * Tweak how "toggle" space is reserved in tray item context menu (#5165)
+  * chore: i18n update
+  * Tray symbolic icons (#5164)
+  * feat(workspaces): add separator color setting
+  * feat(time): add ~ modifier to capitalize localized date names (#5161)
+  * feat(capture): add zoom and pan to the annotation editor (#5111)
+  * feat(workspaces): add configurable text separators
+  * fix(bluetooth): open control center on unanswered pairing requests (#4962)
+  * fix(backdrop): keep the backdrop opaque when tinted (#5163)
+  * Feature: UI - Added border to control center's side panel (#5168)
+  * style(lockscreen): drop empty lambda parameter lists in media controls
+  * feat(lockscreen): add playback controls (prev, play/pause, next) to login box (#4543)
+  * refactor: annotate only results that callers must not ignore
+  * fix(ci): accept equivalent Markdown in PR checklists
+  * feat(dock): support native application icon desaturation (#4600)
+  * feat(plugins): add default follow option for panel floating layer, override per panel (#4590)
+  * feat(plugins): render README images in the plugin store
+  * docs(bar): spacer default is 20, not 8
+  * feat(bar): allow margin_ends as pixels or screen percentage
+  * docs(installation): add missing dependencies and distros to manual installation (#5151)
+  * feat(bar): allow arbitrary monitor selection for the workspaces widget (#4501)
+  * fix(launcher): show emoji categories as icons in full mode
+  * feat(bar): reserve layout only while visible during auto-hide (#4146)
+  * build(nix): fallback when dirtyShortRev is missing in flake.nix (#4646)
+  * feat(plugins): add onSuspend and onResume service callbacks (#5075)
+  * fix(clipboard): offer text aliases for copies with an explicit MIME type (#5120)
+  * feat(tray): allow forcing tray to display desktop icons (#4868)
+  * feat(bar): add expand to spacer to share a lane's free space (#5016)
+  * fix(audio): keep microphone volume changes silent (#5147)
+  * fix(theme): give generated ANSI colors fixed hues and distinct bright variants
+  * fix(config): stop treating settings sunset/sunrise as a legacy schedule
+  * fix(config): preserve the explicit custom_schedule override (#5144)
+  * fix(tray): keep item input areas across icon updates
+  * chore: i18n update
+  * feat(config): let config export omit or blank credentials
+  * fix(session): don't cancel power actions when a hook fails
+  * docs: remove maintainer triage content from CONTRIBUTING
+  * fix(dock): refresh icons in place on icon theme change
+  * fix(audio): notify spectrum listeners added after the first
+  * chore(flake): update flake.lock
+  * fix(plugins)!: require explicit GPU monitoring requests (#5135)
+  * feat(docs): support multi-version documentation (#5137)
+  * fix(input): correct multiline wheel direction and stop snapping scroll to caret
+  * fix(privacy): ignore brief direct V4L2 camera probes
+  * fix(clipboard): paste the live selection instead of the newest history entry
+  * fix(ci): remove redundant lambda parameter lists (#5138)
+  * fix(panel): keep attached panel surface origin on its output
+  * fix(icons): resolve unthemed icons at the top of icon base dirs
+  * fix(control-center): keep showing Noctalia's wallpaper while a plugin owns the outputs
+  * fix(wallpaper): fire wallpaper_changed per connector for startup automation
+  * feat(switcher): add reverse direction to window-switcher IPC (#5131)
+  * feat(switcher): add an icons-only window grid (#4857)
+  * settings: move lock screen and greeter into their own section
+  * feat(theme): keep palette pickers open and preview palettes in the wallpaper panel
+  * fix(wallpaper): keep the panel's theme row inside the panel
+  * fix(settings): cancel a pending option reset on Esc or a click elsewhere
+  * docs(bluetooth): add a Bluetooth service page for [bluetooth] options
+  * fix(upower): key charger sounds on OnBattery, not battery state
+  * fix(wallpaper): wrap repeat fill in the sampler to remove tile seams
+  * fix(settings): show the wallpaper rotation recursive toggle without advanced mode
+  * fix(network): keep NetworkManager backend when it is enabled but not yet running
+  * fix(audio): show real volume above 100% in control center
+  * fix(plugins): react to changes in shell settings read via getSetting
+  * feat(audio): add a configurable visualizer frame rate (#4915)
+  * fix(ui): keep button badge text readable on ghost buttons
+  * chore: i18n update
+  * feat(input): localize special key names in shortcut labels (#5122)
+  * chore(triage): improve REPLY_PLUGIN message
+  * chore(triage): add --allow-voted override to issue-triage apply
+  * ci(triage): move waiting issues to the Waiting column and back on reply
+  * chore(triage): make it clear that those are automated message
+  * fix(privacy): detect direct V4L2 camera access (#4695)
+  * chore(triage): add issue triage tooling and unanswered-issue automation
+  * fix(switcher): stop listing sway/scroll windows twice   Fixes #4780
+  * fix(tray): take over when external watcher exits (#4862)
+  * fix(labwc): focus-bound sticky workspace occupancy tracking (#5119)
+  * fix(tray): ignore item signals sent by other owners (#4859)
+  * feat(templates): theme Umbriel title-bar glyphs
+  * fix(lockscreen): keep custom sleep actions visible (#4929)
+  * feat(battery): fall back to the lowest-charged peripheral in auto mode (#5052)
+  * fix(keyboard-backlight): step backlight by percent of device maximum instead of raw quanta (#5093)
+  * refactor(render): route all CPU image resizing through image_resize
+  * fix(switcher): improve high-DPI preview quality (#4671)
+  * feat(plugins): add noctalia.umbriel.action for typed Umbriel IPC actions (API 45)
+  * fix(network): show a running hotspot as a hotspot, not a joined network (#4984)
+  * fix(dock): prevent layer surface resize desync and icon stretching (#4788)
+  * feat(wallpaper): add fill mode selector to wallpaper panel (#5114)
+  * fix(notifications): keep max_visible when revealing queued toasts (#5117)
+  * fix(weather): map mostly-clear and thunderstorm codes to background effects (#5113)
+  * chore: formatting
+  * claude-companion 1.6.refactor(theme): version palette JSON and key it by color role names
+  * fix(settings): preserve browser activation through URL launches
+
+-------------------------------------------------------------------
 Thu Oct 29 19:07:37 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 5.4.1:

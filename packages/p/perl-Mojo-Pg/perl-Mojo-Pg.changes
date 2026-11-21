@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 09:51:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.10.0 (5.01)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  5.01  2026-10-25
+    - Added support for bulk inserts to insert and insert_p methods in Mojo::Pg::Database.
+
+-------------------------------------------------------------------
 Wed May 13 10:47:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.0.0 (5.0)

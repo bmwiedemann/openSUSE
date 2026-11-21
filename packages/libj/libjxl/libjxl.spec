@@ -16,7 +16,7 @@
 #
 
 
-%define lname   libjxl0_12
+%define lname   libjxl0_13
 %if "@BUILD_FLAVOR@" == "gtk"
 Name:           libjxl-gtk
 %bcond_without gtk
@@ -24,7 +24,7 @@ Name:           libjxl-gtk
 Name:           libjxl
 %bcond_with gtk
 %endif
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        JPEG XL reference implementation
 License:        BSD-3-Clause
@@ -58,8 +58,8 @@ BuildRequires:  pkgconfig(libhwy) >= 1.0.7
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
-%if 0%{?sle_version} == 150700
-BuildRequires:  gcc10-c++
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
 %endif
 %{?suse_build_hwcaps_libs}
 %if %{with gtk}
@@ -121,9 +121,9 @@ tar -xf %{SOURCE2} -C third_party/skcms/
 %autopatch -p1
 
 %build
-%if 0%{?sle_version} == 150700
-export CC=gcc-10
-export CXX=g++-10
+%if 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
 %endif
 
 %cmake -DJPEGXL_FORCE_SYSTEM_HWY=ON -DJPEGXL_FORCE_SYSTEM_BROTLI=ON \

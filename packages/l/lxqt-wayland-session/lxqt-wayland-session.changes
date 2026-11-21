@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:44:44 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.5.0:
+  * Added more fallbacks when no compositor is set.
+  * Added manpage for lxqt-qdbus.
+
+-------------------------------------------------------------------
 Fri Sep 25 11:53:33 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Disable lxqt-river-session since river is being dropped

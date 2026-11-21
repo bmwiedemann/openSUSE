@@ -347,4 +347,12 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
 - convert to autosetup</comment>
     <requestid>1291319</requestid>
   </revision>
+  <revision rev="47" vrev="6">
+    <srcmd5>06acd229121073b5b886120c17dd477d</srcmd5>
+    <version>2.0.16</version>
+    <time>1794932163</time>
+    <user>anag_factory</user>
+    <comment>- add CVE-2025-71436.patch (CVE-2025-71436, bsc#1286364)</comment>
+    <requestid>1386993</requestid>
+  </revision>
 </revisionlist>

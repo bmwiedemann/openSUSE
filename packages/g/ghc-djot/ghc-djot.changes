@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Thu Sep 24 03:30:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.4.3.
+  ## 0.1.4.3 -- 2026-09-23
+
+    * Fix dropped attribute when attaching to last word of merged Strs.
+      E.g. in `x y.z{.c}`, the class was silently discarded.
+
+    * Fix implicit reference labels spanning multiple lines.
+      Two bugs conspired to make `[link\ntext][]` resolve to an empty href
+      even when a "link text" reference was defined.
+
+    * Fix resumable attribute parser ignoring new input on resume.
+      Previously a multiline block attribute followed by an indented
+      block never finished parsing and the attributes were silently
+      dropped, e.g.:
+
+          {#id .class
+            style="color:red"}
+            A paragraph
+
+    * Avoid quadratic inline parsing by caching chunk count. Previously
+      parsing a paragraph was quadratic in the number of lines.
+
+    * Speed up HTML escaping by copying unescaped runs wholesale.
+
+    * Wrap letter list markers around after 26.
+
+    * Fix off-by-one in tab column computation.
+
+    * Propagate inline parse errors in `parseTextLines` instead of crashing.
+
+    * Make NoPos an identity for `<>`, so Monoid Pos is lawful.
+      Previously NoPos was absorbing `(NoPos <> p = NoPos)`,
+      which would silently discard positions in any law-relying generic code
+      (mconcat, fold). The only internal uses of `<>` on Pos (merging
+      adjacent Strs) always combine two Pos or two NoPos values, so this
+      does not change any parsing or rendering behavior.
+
+    * Fix UTF-8 truncation in `inlinesToByteString`.
+
+    * Improve classification of autolinks. Previously `<user.name@example.com>`
+      was rendered as a plain URL link, not an email link. It's an email
+      link if it contains an '@' preceded by a character other than ':'.
+
+    * Preserve soft breaks for CR-only line endings.
+
+    * Add tests for whitespace collapsing in quoted attribute values.
+
+    * Fix off-by-one in `pAtMost`.
+
+    * Skip empty chunks when advancing to the next chunk.
+
+    * Speed up djot rendering of Str inlines:
+
+      + Rewrite `escapeDjot` to work directly on ByteStrings, copying
+        runs of unescapable characters wholesale instead of processing
+        character by character through String. (Equivalence with the
+        old implementation checked with 100,000 QuickCheck cases.)
+      + Skip the smart-punctuation replacement passes when the
+        ByteString contains no 0xE2 byte (the first byte of all the
+        UTF-8 sequences involved), avoiding five `T.replace` traversals
+        per Str in the common case.
+      + Avoid emitting an empty literal after each single-space chunk.
+
+-------------------------------------------------------------------
+Fri Aug 28 05:33:17 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.4.2.
+  ## 0.1.4.2 -- 2026-08-27
+
+    * Djot renderer: emit raw blocks/inlines for formats other than djot (#18).
+
+    * Djot renderer: Fix calculation of fence length. We needed to add
+      one to the length of the biggest backtick string in the code.
+
+    * Fix two bugs in footnote handling:
+
+      - Allow spaces and newlines in footnote references, as with djot.js.
+      - Don't put a duplicate id on a second reference to same note.
+
+-------------------------------------------------------------------
+Tue Jul 21 15:18:45 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update djot to version 0.1.4.1.
+  ## 0.1.4.1 -- 2026-07-21
+
+    * Fix bug in verbatim parsing (#17). We were wrongly allowing
+      backslash escapes for backticks.
+
+    * Fix resolution of reference links with newlines (#16).
+
+-------------------------------------------------------------------
 Tue Mar 17 15:03:34 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update djot to version 0.1.4.

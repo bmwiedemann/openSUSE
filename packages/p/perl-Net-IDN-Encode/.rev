@@ -132,4 +132,41 @@
             uvuni_to_utf8_flags (which is removed in perl 5.38.0)</comment>
     <requestid>1376318</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>79099b0582c5c3626f526e61bd85a0c3</srcmd5>
+    <version>2.600.0</version>
+    <time>1793990634</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.600.0 (2.600)
+   see /usr/share/doc/packages/perl-Net-IDN-Encode/Changes
+  2.600 2026-10-29
+          - stable release of the changes in 2.590 and 2.591
+          - fix CVE-2026-74766, a heap use-after-free in the XS decode_punycode
+          - fix CVE-2026-74765, an integer overflow and out-of-bounds read in the
+            XS encode_punycode
+          - fix CVE-2026-87078, memory leaks when the XS functions reject input
+          - fix CVE-2026-87079, quadratic decoding of large labels
+          - fix CVE-2026-87080, the pure-Perl decoder accepting a truncated label
+          - fix CVE-2026-87081, quadratic encoding of overlong labels in to_ascii
+          - fix CVE-2026-87082, the XS encode_punycode looping for ever on
+            malformed UTF-8 input
+  2.591 2026-10-06 (TRIAL RELEASE)
+          - fix the XS encode_punycode error message on perl 5.12.5
+          - fix warnings from Net::IDN::UTS46 on perl 5.14 and 5.16
+          - fix test failures on perl 5.12 and older, and on Windows
+          - add a GitHub Actions workflow
+  2.590 2026-09-17 (TRIAL RELEASE)
+          - fix CVE-2026-74766, a heap use-after-free in the XS decode_punycode
+            on attacker-supplied punycode
+          - fix CVE-2026-74765, an integer overflow and out-of-bounds read in the
+            XS encode_punycode
+          - fix CVE-2026-87078, memory leaks when the XS functions reject input
+          - fix CVE-2026-87079, the quadratic cost of decoding large labels in
+            the XS backend, and in the pure-Perl backend when the input has the
+            UTF-8 flag set
+          - fix CVE-2026-87080, the pure-Perl decoder treating a truncated label
+            as complete and adding an extra character to the result
+          - fix CVE-2026-87081, the quadratic cost of encoding an overlong label</comment>
+    <requestid>1395153</requestid>
+  </revision>
 </revisionlist>

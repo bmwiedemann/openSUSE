@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-creator
-Version:        26.8.0
+Version:        26.11.0
 Release:        0
 Summary:        A CLI tool for scaffolding Ansible Content
 License:        Apache-2.0
@@ -47,7 +47,7 @@ Source:         ansible-creator-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  git-core
 # https://github.com/ansible/ansible-creator/blob/main/pyproject.toml
-BuildRequires:  %{ansible_python}-base >= 3.10
+BuildRequires:  %{ansible_python}-base >= 3.11
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools >= 65.3.0
 BuildRequires:  %{ansible_python}-setuptools_scm >= 7.0.5
@@ -87,7 +87,12 @@ https://ansible.readthedocs.io/projects/creator/
 %fdupes %{buildroot}%{ansible_python_sitelib}
 
 %check
-export PATH=%{buildroot}%{_bindir}:$PATH
+# avoid the following error:
+# assert 'AssertionError' in '/bin/sh: line 1: python: command not found\n'
+mkdir -p .bin
+ln -s %{_bindir}/%{ansible_python_executable} .bin/python
+export PATH=$PWD/.bin:%{buildroot}%{_bindir}:$PATH
+
 # Integration tests require the installed binary and external tools (npm, ansible-lint)
 # Run only unit tests; skip test_devcontainer_usability which requires npm
 %pytest tests/units -k "not test_devcontainer_usability"

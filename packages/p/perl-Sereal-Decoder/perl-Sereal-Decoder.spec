@@ -18,10 +18,10 @@
 
 %define cpan_name Sereal-Decoder
 Name:           perl-Sereal-Decoder
-Version:        5.11.0
+Version:        7.3.0
 Release:        0
-# 5.011 -> normalize -> 5.11.0
-%define cpan_version 5.011
+# 7.003 -> normalize -> 7.3.0
+%define cpan_version 7.003
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl (decoder part)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -52,12 +52,10 @@ separately to allow for independent and safer upgrading.
 
 This distribution requires Perl 5.14 or newer.
 
-The Sereal protocol versions that are compatible with this decoder
-implementation are currently protocol versions 1, 2, 3, 4 and 5. As it
-stands, it will refuse to attempt to decode future versions of the
-protocol, but if necessary there is likely going to be an option to decode
-the parts of the input that are compatible with version 5 of the protocol.
-The protocol was designed to allow for this.
+This decoder supports Sereal protocol versions 1 through 7 and rejects
+unsupported protocol versions. Tags and compression formats that require a
+newer protocol version than the version declared in a document are
+rejected.
 
 The protocol specification and many other bits of documentation can be
 found in the github repository. Right now, the specification is at
@@ -86,6 +84,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes
+%doc Changes SECURITY
 
 %changelog

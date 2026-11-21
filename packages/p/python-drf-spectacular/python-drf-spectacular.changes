@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 04:26:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-djangorestframework-3.18.patch:
+  * Support changes required by djangorestframework 3.18.
+
+-------------------------------------------------------------------
 Thu Sep 17 00:31:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-django-oauth-toolkit-3.4.patch:

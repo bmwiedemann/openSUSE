@@ -153,4 +153,22 @@
 </comment>
     <requestid>1351251</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e5038c8a71c527d74adc8b051b98657b</srcmd5>
+    <version>2.12.1</version>
+    <time>1793991382</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.12.1:
+  * SST: fix race where readers failed to open the writer contact file on NFS.
+  * bpls: double-precision min/max no longer truncated to integers.
+  * Dill: fix build and runtime failure on arm64 Linux.
+  * BP5: vectorized min/max statistics lower StatsLevel=1 overhead.
+  * MGARD: new lossless_type parameter (huffman or huffman_zstd).
+  * SST/CXI: more descriptive Slingshot fabric error messages.
+  * More info: https://github.com/ornladios/ADIOS2/releases/tag/v2.12.1
+- Dropped patches:
+  * adios2-pr-5006.patch
+</comment>
+    <requestid>1395653</requestid>
+  </revision>
 </revisionlist>

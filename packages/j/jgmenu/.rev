@@ -441,4 +441,14 @@
   * Fix search widget pango markup handling #237 #262</comment>
     <requestid>1378240</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>19865bbfb24d70dc30f07e99efb31346</srcmd5>
+    <version>4.7.1</version>
+    <time>1794236859</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.7.1:
+  * jgmenu-apps: use locale aware sorting for applications and categories #275 #278
+  * contrib/jgmenu-lx: fix build error relating to recent refactoring #273</comment>
+    <requestid>1396291</requestid>
+  </revision>
 </revisionlist>

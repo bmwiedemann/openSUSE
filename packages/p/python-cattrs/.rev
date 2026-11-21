@@ -160,4 +160,41 @@
     with {func}`cattrs.strategies.configure_tagged_union` and</comment>
     <requestid>1346332</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2d177becfb7169f8135416f19a6ae93</srcmd5>
+    <version>26.2.1</version>
+    <time>1794236638</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.2.1:
+  * Fix heterogeneous tuples and `NamedTuple`s with a member type
+    containing a quote in its `repr`, like `tuple[Literal[&quot;a&quot;],
+    int]`, crashing structuring code generation with
+    `SyntaxError`; the index note is now embedded with `repr`.
+  * Fix {func}`transform_error &lt;cattrs.transform_error&gt;` listing
+    the extra keys of a `ForbiddenExtraKeysError` in set
+    iteration order, which made the message differ between runs;
+    the keys are now sorted, like the error's own `__str__`
+    already sorts them.
+  * Fix the `msgpack` and `cbor2` converters unstructuring naive
+    datetimes as local time, which made the serialized value
+    depend on the timezone of the machine doing the
+    unstructuring; naive datetimes are now assumed to be UTC,
+    matching what the structure hooks already read back.
+  * Fix `override(rename=...)` targets containing a quote (or
+    other characters not safe in a bare string literal) crashing
+    code generation with `SyntaxError`; the rename key is now
+    embedded with `repr`.
+  * Fix `Counter` keys not being unstructured with the key type's
+    own hook; the single-type-arg branch passed the whole type-
+    args tuple to the key hook lookup instead of the key type.
+  * Fix `create_default_dis_func
+    &lt;cattrs.disambiguators.create_default_dis_func&gt;` (aka
+    `create_uniq_field_dis_func`) failing to disambiguate valid
+    unions depending on the order of the member classes; unique
+    fields are now resolved iteratively to a fixpoint.
+  * Support more recursive types on 3.14+ with specialized
+    factories for `annotationlib.ForwardRef`.
+  * `Converter &lt;cattrs.Converter&gt;` now uses specialized hook</comment>
+    <requestid>1396185</requestid>
+  </revision>
 </revisionlist>

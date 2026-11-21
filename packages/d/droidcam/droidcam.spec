@@ -17,7 +17,7 @@
 
 
 Name:           droidcam
-Version:        2.1.5
+Version:        2.1.7
 Release:        0
 Summary:        Use an Android/iOS device as a webcam on Linux
 License:        GPL-2.0-or-later

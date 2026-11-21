@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 10:04:00 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- package %{_tmpfilesdir}/*.conf with root ownership. Currently these files
+  are owned by unprivileged service users, allowing them to arbitrarily
+  manipulate systemd-tmpfiles creation rules. This is a defense-in-depth
+  security issue.
+
+-------------------------------------------------------------------
 Fri Sep 11 08:27:37 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add ovs-systemd-reload to fix systemctl reload (bsc#1273198)

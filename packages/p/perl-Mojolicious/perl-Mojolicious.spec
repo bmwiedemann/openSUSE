@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious
 Name:           perl-Mojolicious
-Version:        9.530.0
+Version:        9.540.0
 Release:        0
-# 9.53 -> normalize -> 9.530.0
-%define cpan_version 9.53
+# 9.54 -> normalize -> 9.540.0
+%define cpan_version 9.54
 License:        Artistic-2.0
 Summary:        Real-time web framework
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1683,4 +1683,36 @@
     <comment>Update to version 18.24.3 (forwarded request 1393679 from develop7)</comment>
     <requestid>1393680</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>032da75367a00ca724470518088398a2</srcmd5>
+    <version>18.24.5</version>
+    <time>1794238688</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396350</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>88af1eb70de8e5adf003831e76a6a974</srcmd5>
+    <version>18.24.6</version>
+    <time>1794590994</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.24.6 (forwarded request 1396965 from develop7)</comment>
+    <requestid>1396966</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>b3ba111ee85675e0c8dfe56728ef090d</srcmd5>
+    <version>18.24.7</version>
+    <time>1794816491</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.24.7 (forwarded request 1397577 from develop7)</comment>
+    <requestid>1397579</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>efd46bd39fbbabcaa1eebe4989a8ad5c</srcmd5>
+    <version>18.24.8</version>
+    <time>1794838495</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.24.8 (forwarded request 1397889 from develop7)</comment>
+    <requestid>1397890</requestid>
+  </revision>
 </revisionlist>

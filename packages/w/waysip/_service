@@ -1,10 +1,10 @@
 <services>
   <service name="cargo_vendor" mode="manual">
      <param name="url">https://github.com/waycrate/waysip</param>
-     <param name="revision">master</param>
+     <param name="revision">37c89031a18168d3ea6ceb4b35b848755a45ae62</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
-     <param name="versionrewriteregex">^v?(.*)</param>
+     <param name="versionrewriteregex">^v?(.*)-libwaysip</param>
      <param name="versionrewritepattern">$1</param>
      <param name="changesgenerate">true</param>
      <param name="changesauthor">Soc Virnyl Estela</param>

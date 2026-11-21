@@ -124,4 +124,13 @@
 - Ship license and README in the built packages.</comment>
     <requestid>1378489</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>c587964975784ffc1a3ca0d9a3e853d6</srcmd5>
+    <version>0.30.0</version>
+    <time>1794932430</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-djangorestframework-3.18.patch:
+  * Support changes required by djangorestframework 3.18.</comment>
+    <requestid>1398028</requestid>
+  </revision>
 </revisionlist>

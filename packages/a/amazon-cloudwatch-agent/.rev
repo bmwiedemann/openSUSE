@@ -179,4 +179,19 @@
   (bsc#1288503, CVE-2026-116591) (forwarded request 1393628 from glaubitz)</comment>
     <requestid>1393648</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>b998bd91fefaccb311efd54c331eb6fc</srcmd5>
+    <version>1.300074.0</version>
+    <time>1793899247</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.300074.0
+  * [OpenTelemetry] Upgrade OpenTelemetry dependencies to v0.150.0
+    by @sky333999 in (#2222)
+  * [Agent] Move the agent from AWS SDK for Go v1 to v2 by @sky333999
+    in (#2222) and (#2309)
+- Remove stale Go module version overrides in _service file
+- Update golang.org/x/net to v0.62.0 (bsc#1289384, CVE-2026-78661)
+  (bsc#1289425, CVE-2026-97045) (forwarded request 1395095 from glaubitz)</comment>
+    <requestid>1395109</requestid>
+  </revision>
 </revisionlist>

@@ -17,14 +17,14 @@
 
 
 Name:           frizbee
-Version:        0.1.11
+Version:        0.1.12
 Release:        0
 Summary:        Throw a tag at and it comes back with a checksum
 License:        Apache-2.0
 URL:            https://github.com/stacklok/frizbee
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  go1.26 >= 1.26.8
 
 %description
 Frizbee is a tool you may throw a tag at and it comes back with a checksum.

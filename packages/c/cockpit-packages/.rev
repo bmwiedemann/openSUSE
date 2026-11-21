@@ -109,4 +109,17 @@ outside of Factory
 - Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258640/CVE-2026-26996, bsc#1259015/CVE-2026-27904</comment>
     <requestid>1369280</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4181d2e5a70f5f180fd45d4cf262a7ab</srcmd5>
+    <version>6</version>
+    <time>1793899203</time>
+    <user>anag_factory</user>
+    <comment>Requires 1394884 for cockpit-370
+
+- Update to version 6:
+  * Fix support for Cockpit 370
+  * Require Cockpit 370 for rpm builds
+  * Translation updates</comment>
+    <requestid>1394886</requestid>
+  </revision>
 </revisionlist>

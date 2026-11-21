@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:57:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.5.0:
+  * CVE-2026-122330: divide-by-zero on crafted frames
+    in blosc2_schunk_get_slice_buffer and related slice
+    functions (boo#1289747)
+  * New opt-in read-ahead prefetching for slices of on-disk frames
+  * Faster b2nd slices, frame copies and serialization, new
+    blosc2_schunk_to_buffer_alloc and blosc2_schunk_get_chunk_range
+    APIs, plus leak and robustness fixes
+- Update to 3.4.1: faster in-place writes to on-disk frames,
+  sparse-frame chunk size validation (#822), filter-pipeline and
+  multithreaded DELTA decoding fixes
+- Update to 3.4.0: opt-in Blosc1-compatible chunk writer,
+  bounded-memory variable-length block APIs, DELTA decoding and
+  blocksize tuning fixes, ZFP/b2nd hardening
+- SONAME bump 9 -> 10: libblosc2-9 renamed to libblosc2-10;
+  use %ldconfig_scriptlets macro
+
+-------------------------------------------------------------------
 Sat Oct 17 14:41:37 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 3.3.5 (bugfix and security-hardening release, no API

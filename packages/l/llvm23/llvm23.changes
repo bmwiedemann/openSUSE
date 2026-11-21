@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 17 21:44:50 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.6.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.
+
+-------------------------------------------------------------------
+Sat Nov 14 22:11:47 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.5.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.
+
+-------------------------------------------------------------------
 Sat Oct 24 12:20:55 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 23.1.4.

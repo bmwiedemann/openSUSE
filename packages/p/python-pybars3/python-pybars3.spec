@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybars3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        0.9.7
 Release:        0
 Summary:        Handlebarsjs templating for Python 3 and 2
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/wbond/%{base_name}
 Source:         https://github.com/wbond/%{base_name}/archive/%{version}.tar.gz
+# PATCH-FIX-OPENSUSE bsc#1289150 avoid code injection via bracketed paths
+Patch0:         CVE-2026-119716.patch
 BuildRequires:  %{python_module PyMeta3 >= 0.5.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +42,7 @@ Handlebars.js.  It is a fork of the pybars project that adds Python 3
 compatibility and numerous features from Handlebars.js 2.0.
 
 %prep
-%setup -q -n pybars3-%{version}
+%autosetup -p1 -n pybars3-%{version}
 
 %build
 %pyproject_wheel
@@ -57,6 +58,6 @@ compatibility and numerous features from Handlebars.js 2.0.
 %license LICENSE
 %doc readme.md changelog.md
 %{python_sitelib}/pybars
-%{python_sitelib}/pybars3-%{version}*-info
+%{python_sitelib}/pybars3-%{version}.dist-info
 
 %changelog

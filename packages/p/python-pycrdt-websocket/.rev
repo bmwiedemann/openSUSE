@@ -93,4 +93,12 @@
   * Extract out stores to `pycrdt-store`.</comment>
     <requestid>1341878</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>25ffc183bc568dab7bae9cdc2f896920</srcmd5>
+    <version>0.16.9</version>
+    <time>1795182715</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398954</requestid>
+  </revision>
 </revisionlist>

@@ -92,6 +92,8 @@ and runtime integrity measurement solution.
 %package -n %{name}-config
 Summary:        Configuration file for keylime
 Requires:       python3-%{name} = %{version}
+# Provides the keylime user and group used in the file attributes
+Requires(pre):  %{name}-tpm_cert_store = %{version}
 Conflicts:      rust-keylime
 
 %description -n %{name}-config
@@ -202,7 +204,8 @@ install -Dpm 0644 %{SOURCE3} %{buildroot}%{_distconfdir}/logrotate.d/%{name}
 install -Dpm 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 mkdir -p %{buildroot}%{_prefix}/lib/%{srcname}
-cp -r ./tpm_cert_store %{buildroot}%{_prefix}/lib/%{srcname}/
+install -d -m 0755 %{buildroot}%{_prefix}/lib/%{srcname}/tpm_cert_store
+install -p -m 0644 ./tpm_cert_store/* %{buildroot}%{_prefix}/lib/%{srcname}/tpm_cert_store/
 %fdupes %{buildroot}%{_prefix}/lib/%{srcname}/
 
 # %%check
@@ -297,9 +300,9 @@ cp -r ./tpm_cert_store %{buildroot}%{_prefix}/lib/%{srcname}/
 %{python_sitelib}/keylime-*.dist-info
 
 %files -n %{srcname}-config
-%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/ca.conf
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/logging.conf
+%dir %attr(0750,root,keylime) %{_distconfdir}/%{srcname}
+%_config_norepl %attr(0640,root,keylime) %{_distconfdir}/%{srcname}/ca.conf
+%_config_norepl %attr(0640,root,keylime) %{_distconfdir}/%{srcname}/logging.conf
 
 %files -n %{srcname}-firewalld
 %dir %{_prefix}/lib/firewalld
@@ -307,27 +310,27 @@ cp -r ./tpm_cert_store %{buildroot}%{_prefix}/lib/%{srcname}/
 %{_prefix}/lib/firewalld/services/%{srcname}.xml
 
 %files -n %{srcname}-tpm_cert_store
-%dir %attr(0700,keylime,tss) %{_prefix}/lib/%{srcname}
-%dir %attr(0700,keylime,tss) %{_prefix}/lib/%{srcname}/tpm_cert_store
-%attr(0600,keylime,tss) %{_prefix}/lib/%{srcname}/tpm_cert_store/*
+%dir %{_prefix}/lib/%{srcname}
+%dir %{_prefix}/lib/%{srcname}/tpm_cert_store
+%{_prefix}/lib/%{srcname}/tpm_cert_store/*
 # We use this subpackage to store other unrelated things, as far as is
 # required by all the services
 %{_sysusersdir}/%{srcname}-user.conf
 %{_tmpfilesdir}/%{srcname}.conf
 
 %files -n %{srcname}-registrar
-%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/registrar.conf
+%dir %attr(0750,root,keylime) %{_distconfdir}/%{srcname}
+%_config_norepl %attr(0640,root,keylime) %{_distconfdir}/%{srcname}/registrar.conf
 %{_unitdir}/%{srcname}_registrar.service
 
 %files -n %{srcname}-verifier
-%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/verifier.conf
+%dir %attr(0750,root,keylime) %{_distconfdir}/%{srcname}
+%_config_norepl %attr(0640,root,keylime) %{_distconfdir}/%{srcname}/verifier.conf
 %{_unitdir}/%{srcname}_verifier.service
 
 %files -n %{srcname}-tenant
-%dir %attr(0700,keylime,tss) %{_distconfdir}/%{srcname}
-%_config_norepl %attr (0600,keylime,tss) %{_distconfdir}/%{srcname}/tenant.conf
+%dir %attr(0750,root,keylime) %{_distconfdir}/%{srcname}
+%_config_norepl %attr(0640,root,keylime) %{_distconfdir}/%{srcname}/tenant.conf
 
 %files -n %{srcname}-logrotate
 %_config_norepl %{_distconfdir}/logrotate.d/%{srcname}

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:10:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.1:
+  * Fix intra-cloud region probe timing out on healthy links:
+    per-hop budget raised from 0.2s to 1s, covering DNS, TCP,
+    TLS and the HTTP round trip on cross-region public access
+  * Inconclusive probes are no longer cached as no region: retried
+    on a later call (bounded to 2 attempts) while a confirmed
+    negative is still cached immediately
+  * New MODELSCOPE_DOWNLOAD_REGION_PROBE_TIMEOUT_SECONDS variable
+    tunes the per-hop probe budget (default 1)
+
+-------------------------------------------------------------------
+Mon Nov  9 18:13:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.0:
+  * New modelscope_hub.kernels subpackage: load optimized compute
+    kernels from ModelScope mirrors (get_kernel, install_kernel,
+    load_kernel and others); needs the optional kernels extra,
+    not packaged here
+  * New public cache helpers get_cache_root and
+    resolve_cached_snapshot; MS_CACHE_HOME accepted as legacy
+    cache-root alias; ms-hub cache clear gains --dry-run
+  * local_files_only in snapshot_download and the file-download
+    helpers resolves purely from the local cache, without
+    network or credentials (CacheNotFound when absent)
+  * Legacy snapshot_download keeps the old model-root layout
+    linked to the returned directory for released vLLM callers;
+    cached snapshots are reused instead of re-downloaded
+  * cache clear validates every target before deleting anything
+  * vLLM compatibility now via the legacy cache-path link, with
+    no vLLM import or huggingface_hub dependency; HubConfig
+    expands ~ in cache and config dirs
+
+-------------------------------------------------------------------
 Fri Oct 30 07:58:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.6.1:

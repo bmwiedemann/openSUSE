@@ -442,4 +442,21 @@
     <comment></comment>
     <requestid>1364003</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>3f04fd1124b99cdebe62cff173ca185f</srcmd5>
+    <version>7.14.3</version>
+    <time>1793817770</time>
+    <user>anag_factory</user>
+    <comment>- Fix ownership of packaged files (bsc#1289196)
+  * Install /usr/lib/keylime/tpm_cert_store as root:root, as the
+    EK CA certificates are only read by the services
+  * Install the vendor configuration in /usr/etc/keylime as
+    root:keylime with modes 0750/0640, readable but not writable
+    by the services
+  * Use the keylime group instead of tss in tmpfiles and
+    logrotate, as the server components never access the TPM
+  * keylime-config requires keylime-tpm_cert_store to ensure the
+    keylime user and group exist before installation (forwarded request 1394659 from aplanas)</comment>
+    <requestid>1394661</requestid>
+  </revision>
 </revisionlist>

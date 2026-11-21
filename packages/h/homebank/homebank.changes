@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Nov 12 17:14:14 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.10.4
+  * change: scheduled list, default columns consistent
+    when -> who/what -> how much
+  * change: scheduled list, merged Late+Still columns to Late/Left
+  * change: scheduled list, overdue is in clear text without
+    redundant icon
+  * change: scheduled list, recurrence column title and removed
+    useless icon
+  * change: scheduled list, moved totals below the list,
+    always visible
+  * change: scheduled/templates window added a switcher
+  * bugfix: fix for lp#2111786 was not completely working
+  * bugfix: preference last selected page was not reminded
+  * bugfix: date entry tooltip was incorrect for year
+    (ctrl + shift)
+  * bugfix: transaction sign warning faultly show when no amount
+  * bugfix: transaction window weird display tags widget with
+    some themes
+  * bugfix: lp#22172606 using a template for a new transaction
+    faultly reset date
+  * bugfix: lp#22172430 "Copy clipboard" option could be
+    enriched/clarified
+  * bugfix: lp#22172419 category remains after later add splits
+    to a transaction
+  * bugfix: lp#22172206 "Include Transfer" in Budget Options not
+    persistent across app restarts
+  * bugfix: lp#22172195 global Balance forecast for Next Year
+    doesn't work
+  * bugfix: lp#22169732 split dialog amount focus and select-all
+  * bugfix: lp#22169055 crash when adding the final balancing
+    line to a split transaction
+  * bugfix: lp#22168280 balance report printout ellipsize large
+    numbers
+  * bugfix: lp#22167975 missing icon to apply changes in the split
+    transaction editing dialog
+  * bugfix: lp#22167520 all templates are displayed in the
+    dropdown for the ADD dialog
+    
+-------------------------------------------------------------------
 Tue Sep 15 18:55:01 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.10.3

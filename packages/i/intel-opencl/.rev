@@ -229,4 +229,20 @@
     <comment></comment>
     <requestid>1369113</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>524e799c11c11acb862fc40545597949</srcmd5>
+    <version>26.40.40196.8</version>
+    <time>1793818038</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394899</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>9af7fc0e6a8f7bb2ae74534ba830cd98</srcmd5>
+    <version>26.40.40196.8</version>
+    <time>1794932287</time>
+    <user>anag_factory</user>
+    <comment>Added intel-opencl-level-zero-1.35.patch to fix compatibility with level zero 1.35</comment>
+    <requestid>1397952</requestid>
+  </revision>
 </revisionlist>

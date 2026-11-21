@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:24:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.11.0:
+  * API: add Claude Code managed settings to the Admin API;
+    add the sandbox_egress_restricted error to Admin API
+    plugin methods
+  * Fix client encoding spaces in query strings as %20 so the
+    AWS SigV4 signature matches its query string
+  * Performance: build each structured output schema from a
+    cached raw schema
+  * Docs: clarify input-token rate limit types, name Claude
+    Security in usage reports, note Google Cloud external key
+    provider and key name cannot be changed
+
+-------------------------------------------------------------------
+Thu Nov 19 07:28:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.10.0:
+  * API: beta support for the billing_policy request parameter;
+    contract_spend_limit_reached, linked billing refusal and
+    user_profile_billing_not_authorized error codes; webhook
+    events for external key failure and recovery
+  * Fix client reporting failed aiohttp connections as timeouts;
+    keep deprecated model aliases and nested types working
+  * Rename error data models, deprecating old names; name each
+    SDK's own types in rename deprecations
+  * Docs: clarify AWS KMS keys for workspaces on Claude
+    Platform on AWS, credential get/update/list scope, plugin
+    pin uploads, and plugin scan reason covering errored scans
+  * Internal: no longer report moved classes as breaking changes
+
+-------------------------------------------------------------------
+Mon Nov 16 20:32:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.9.0:
+  * RBAC Role reads add source and error codes; new Update
+    Bundle sets Claude Tag Bundle instructions and returns them
+  * Fix credentials file writing on Windows with Python 3.12
+    and earlier
+  * Harden agent file tools: exact directory compare, resolve
+    dangling symlinks, keep skill dir on failed replace,
+    ignore ripgrep configs, list only regular files
+  * Harden grep tool: absolute PATH-only ripgrep lookup, skip
+    rg inside workdir, 30 second CPU cap without ripgrep
+  * Session runner: keep max_idle countdown across reconnects,
+    stop running tools for terminated sessions
+  * Deprecate old beta header values; stop sending
+    message-batches-2024-09-24 on batch requests
+
+-------------------------------------------------------------------
+Wed Nov 11 12:58:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.8.0:
+  * Analytics summaries and users reports gain Claude Tag
+    metrics; reply_mode added to Claude Tag Slack channel settings
+  * Bedrock: send ";" in a model ID as is, reject empty, "." or
+    ".." prefix before the first ";"
+  * Vertex and Google Cloud: refuse empty model, project ID,
+    region, location or workspace ID instead of writing them
+    into request paths; percent-encode IDs in derived base
+    URLs, ";" as %3B
+
+-------------------------------------------------------------------
+Tue Nov 10 07:28:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.0:
+  * New models claude-fable-5-2 and claude-mythos-5-2; new
+    user_profile.program_status_updated webhook event
+  * Usage and cost reports support parent organization
+    filtering and grouping; new sandbox_egress_restricted
+    error on Admin API write methods
+  * Bedrock/Vertex fixes: missing parse and count_tokens on
+    beta.messages raw/streaming responses, request signing
+    without a Connection header, query list encoding
+  * Client fixes: API errors can be pickled and copied;
+    ANTHROPIC_CUSTOM_HEADERS honored on Bedrock and Vertex
+    clients; structured output keeps const in schemas
+
+-------------------------------------------------------------------
+Sat Nov  7 12:06:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.0 (skipped 2.5.0):
+  * 2.5.0: error classes for HTTP statuses and API error codes,
+    with error_code, details and api_message on APIStatusError;
+    error details types and new error type values; ids filter for
+    listing workspaces
+  * 2.5.0 fixes: OverloadedError and ServiceUnavailableError are
+    now subclasses of InternalServerError; thread-safe first parse
+    of response models; path parameters such as ..;x are rejected;
+    Bedrock guards against empty or dot-only models; Vertex
+    percent-encodes request paths; memory tool keeps /memories
+  * 2.6.0: error codes for ramp limit and External Key validation
+    failures; sign organization members out everywhere;
+    Bedrock/Vertex clients raise error-code and status exception
+    classes; keep custom http_client and aws_profile on copies;
+    stop recording sampling parameters on OpenTelemetry spans
+
+-------------------------------------------------------------------
+Tue Nov  3 18:29:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.0:
+  * New Admin API surface: analytics, spend limits and RBAC
+    management methods, with named beta types for unified
+    metrics and RBAC delete responses
+  * New tool_use_limit_reached_error and
+    compaction_limit_reached_error session error types;
+    user_profile_id on External Keys and Workspaces
+  * Fixes: spend_limit nullable in the spend limit
+    increase-approve response; pydantic now validates
+    omit-accepting parameter types
+
+-------------------------------------------------------------------
 Sun Oct 25 20:36:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.3.0 (skipped 2.2.0):

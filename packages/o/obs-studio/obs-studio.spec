@@ -1,7 +1,7 @@
 #
 # spec file for package obs-studio
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,33 @@
 #
 
 Name:           obs-studio
-Version:        32.2.1
+Version:        33.0.1
 Release:        0
 Summary:        Free and open source software for video recording and live streaming
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://obsproject.com/
-Source:         obs-studio-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Patch0:         disable-x264.patch
 Patch1:         optional-browser-websocket.patch
+Patch2:         modern-gcc-lto.patch
 BuildRequires:  AMF-devel
+BuildRequires:  binutils-devel
+BuildRequires:  libctf0
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.28
 BuildRequires:  cmake(LibDataChannel) >= 0.21.0
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  ffmpeg-8-libavcodec-devel
+BuildRequires:  ffmpeg-8-libavdevice-devel
+BuildRequires:  ffmpeg-8-libavfilter-devel
+BuildRequires:  ffmpeg-8-libavformat-devel
+BuildRequires:  ffmpeg-8-libavutil-devel
+BuildRequires:  ffmpeg-8-libswscale-devel
+BuildRequires:  ffmpeg-8-libswresample-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  mbedtls-2-devel
+BuildRequires:  mbedtls-3-devel
 BuildRequires:  pciutils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -43,11 +53,6 @@ BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jansson) >= 2.14
-BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
-BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl) >= 6.1
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.65
@@ -84,7 +89,6 @@ BuildRequires:  qt6-wayland-devel
 BuildRequires:  simde-devel
 BuildRequires:  sndio-devel
 BuildRequires:  swig >= 4.0.2
-BuildRequires:  update-desktop-files
 BuildRequires:  uthash-devel >= 2.3.0
 BuildRequires:  wayland-devel
 ExclusiveArch:  aarch64 x86_64
@@ -104,7 +108,7 @@ Requires:       %{name} = %{version}
 Devel files for OBS Studio is software designed for capturing, compositing, encoding, recording, and streaming video content, efficiently.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 # NOTE:
@@ -117,20 +121,26 @@ Devel files for OBS Studio is software designed for capturing, compositing, enco
 # The obs-browser and obs-websocket plugins are disabled in-tree and are expected
 # to be provided as external plugins, allowing independent updates and clearer
 # licensing separation.
-cmake -B build/ \
+%cmake \
   -DENABLE_X264=OFF \
+  -DCMAKE_AUTOGEN_PARALLEL:STRING=1 \
   -DENABLE_BROWSER=OFF \
+  -DENABLE_WEBSOCKET=OFF \
   -DENABLE_PLUGINS=ON \
   -DUNIX_STRUCTURE=1 \
-  -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DAPPDATA_RELEASE_DATE=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%d) \
   -DENABLE_NATIVE_NVENC=ON \
   -DENABLE_JACK=ON \
   -DENABLE_SNDIO=ON \
   -DENABLE_AJA=OFF \
   -DOBS_COMPILE_DEPRECATION_AS_WARNING=ON \
-  -DOBS_VERSION_OVERRIDE=%{version}
-make -C build/
+  -DOBS_VERSION_OVERRIDE=%{version} \
+  -DCMAKE_C_FLAGS="-Wno-error" \
+  -DCMAKE_CXX_FLAGS="-Wno-error" \
+  -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O2 -g0 -DNDEBUG" \
+  -DCMAKE_CXX_FLAGS_RELWITHDEBINFO="-O0 -g0 -DNDEBUG"
+
+%cmake_build
 
 %install
 %cmake_install
@@ -138,11 +148,6 @@ find %{buildroot} \( -name '.keepme' -o -name '.gitkeep' \) -delete
 
 %fdupes %{buildroot}%{_datadir}/obs
 %fdupes %{buildroot}%{_libdir}/cmake
-
-find %{buildroot}%{_bindir} -type f -executable -exec %{__strip} --strip-unneeded {} \; || true
-find %{buildroot}%{_libdir} -type f -name "*.so*" -exec %{__strip} --strip-unneeded {} \; || true
-find %{buildroot}%{_libdir}/obs-plugins -type f -name "*.so" -exec %{__strip} --strip-unneeded {} \; || true
-find %{buildroot}%{_libdir}/obs-scripting -type f -name "*.so" -exec %{__strip} --strip-unneeded {} \; || true
 
 %check
 #nothing to do
@@ -159,11 +164,9 @@ find %{buildroot}%{_libdir}/obs-scripting -type f -name "*.so" -exec %{__strip} 
 %license COPYING
 %doc README.rst SECURITY.md
 %{_bindir}/obs
-%ifarch x86_64
 %{_bindir}/obs-nvenc-test
-%endif
 %{_bindir}/obs-ffmpeg-mux
-%{_libdir}/obs-plugins
+%{_libdir}/obs-modules
 %dir %{_libdir}/obs-scripting
 %{_libdir}/obs-scripting/obslua.so
 %{_libdir}/obs-scripting/obspython.py

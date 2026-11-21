@@ -106,4 +106,12 @@
 - Drop enforcing ffmpeg-4, bind against current ffmpeg-7</comment>
     <requestid>1347717</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>996528903f4109cc367a3cf2ffbca364</srcmd5>
+    <version>0.2.23</version>
+    <time>1794591349</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397297</requestid>
+  </revision>
 </revisionlist>

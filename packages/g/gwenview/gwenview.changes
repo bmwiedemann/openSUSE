@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * FITSData::debayer: Check ds1394_height is valid
+  * FITSData::loadFITS: Fix crash due to overflow in calculations
+  * timeutils: read the offset from UTC of the exif date
+  * historymodel: check the recent folders for existence in a thread (kde#526858)
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

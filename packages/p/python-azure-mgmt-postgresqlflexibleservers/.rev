@@ -84,4 +84,15 @@
     <comment></comment>
     <requestid>1364476</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>89cbf52e929f549b64b114b3f95d1ccd</srcmd5>
+    <version>3.0.0~b3</version>
+    <time>1793990642</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.0.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1395416 from glaubitz)</comment>
+    <requestid>1395420</requestid>
+  </revision>
 </revisionlist>

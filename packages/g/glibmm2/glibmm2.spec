@@ -28,7 +28,7 @@ Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler

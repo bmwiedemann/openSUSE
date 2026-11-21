@@ -1,7 +1,7 @@
 #
 # spec file for package minidlna
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 by Lars Vogdt <lars@linux-schulserver.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,12 +37,18 @@ Source4:        %{name}-user.conf
 # VDR FIX thanks to Boris from openSuse
 Patch1:         minidlna-vdr.diff
 Patch2:         01-run-instead-of-var-run.patch
-Patch3:         07-fix-multi-artist-album-handling.patch
-Patch4:         08-Fix-testupnpdescgen-build.patch
-Patch5:         10-do-not-close-socket-on-sighup.patch
-Patch6:         13-spelling-and-typos.patch
-Patch7:         15-thumbnails.patch
-Patch8:         16-Add-compatibility-with-FFMPEG-7.0.patch
+Patch7:         07-fix-multi-artist-album-handling.patch
+Patch8:         08-Fix-testupnpdescgen-build.patch
+Patch10:        10-do-not-close-socket-on-sighup.patch
+Patch13:        13-spelling-and-typos.patch
+Patch15:        15-thumbnails.patch
+Patch16:        16-Add-compatibility-with-FFMPEG-7.0.patch
+Patch17:        17-Replace-rm-rf-with-in-process-deletion-code.patch
+Patch18:        18-CVE-2026-29508-dff-parser-bounds.patch
+Patch19:        19-upnpevents-unsubscribe-while-connecting.patch
+Patch20:        20-select-del-after-fini.patch
+Patch22:        22-dsf-parser-bounds.patch
+
 BuildRequires:  automake
 BuildRequires:  flac-devel
 BuildRequires:  libexif-devel

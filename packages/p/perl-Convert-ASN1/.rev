@@ -245,4 +245,24 @@
 </comment>
     <requestid>1156466</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>49f467d76c074777d384cfa12399cdf7</srcmd5>
+    <version>0.360.0</version>
+    <time>1795103637</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.360.0 (0.36)
+   see /usr/share/doc/packages/perl-Convert-ASN1/ChangeLog
+  0.36 -- Mon Nov 09 18:44:55 AST 2026
+  Release 0.35 as production release.  Includes:
+  Bug Fixes
+  Thanks to Oliver Welter (@oliwel)
+    * Fix year interpretation when decoding UTCTime and GeneralizedTime- #83
+    * Use Sigstore to sign release
+  0.35 -- Sun Nov 08 12:05:15 AST 2026
+  Bug Fixes
+  Thanks to Oliver Welter (@oliwel)
+    * Fix year interpretation when decoding UTCTime and GeneralizedTime- #83
+    * Use Sigstore to sign release</comment>
+    <requestid>1398399</requestid>
+  </revision>
 </revisionlist>

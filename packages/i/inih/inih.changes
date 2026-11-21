@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  3 12:00:47 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- Update to version 63 (CVE-2025-71450 bsc#1289163)
+  * Report file read errors
+  * Normalize CR LF line endings to just LF in test file
+  * Fix multiline continuation names after no-value keys
+  * Expose INI_MAX_SECTION and INI_MAX_NAME in ini.h
+  * Assert on NULL arguments
+  * Bug Fix: OOB Read in ini_parse_stream()
+
+-------------------------------------------------------------------
 Fri Sep 12 08:25:51 UTC 2025 - Matthias Bach <marix@marix.org>
 
 - Update to version 62

@@ -491,4 +491,29 @@
     <comment>Plasma 6.8.2 (forwarded request 1393228 from krop)</comment>
     <requestid>1393321</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>d63c043ac13bccb2375a4960e9d5bc94</srcmd5>
+    <version>6.8.2</version>
+    <time>1793899197</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (kde#527984, boo#1289320)
+  * 0001-compositor-handle-possibly-missing-render-device.patch</comment>
+    <requestid>1394927</requestid>
+  </revision>
+  <revision rev="63" vrev="3">
+    <srcmd5>4f7e51f0fc344fc9052a51a02912ad6b</srcmd5>
+    <version>6.8.2</version>
+    <time>1794317941</time>
+    <user>anag_factory</user>
+    <comment>- Add xwayland build dependency</comment>
+    <requestid>1396280</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>bb4fa6de9ca6f7ed2402c2006ab818eb</srcmd5>
+    <version>6.8.3</version>
+    <time>1794590811</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.3</comment>
+    <requestid>1396779</requestid>
+  </revision>
 </revisionlist>

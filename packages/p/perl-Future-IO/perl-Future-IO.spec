@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Future-IO
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Future-IO
 Name:           perl-Future-IO
-Version:        0.170.0
+Version:        0.230.0
 Release:        0
-# 0.17 -> normalize -> 0.170.0
-%define cpan_version 0.17
+# 0.23 -> normalize -> 0.230.0
+%define cpan_version 0.23
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Future-returning IO methods
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,7 +36,7 @@ BuildRequires:  perl(Module::Build) >= 0.400.400
 BuildRequires:  perl(Struct::Dumb)
 BuildRequires:  perl(Test2::V0)
 BuildRequires:  perl(Test::ExpectAndCheck) >= 0.60
-BuildRequires:  perl(Test::Future::IO::Impl) >= 0.150
+BuildRequires:  perl(Test::Future::IO::Impl) >= 0.210
 Requires:       perl(Future)
 Requires:       perl(Struct::Dumb)
 Provides:       perl(Future::IO) = %{version}

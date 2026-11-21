@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 20 20:34:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 49.2+12:
+  * main: Plug GApplication leak
+  * search-entry: Plug char leak
+  * settings: Plug gchar leaks
+  * yelp: Plug value leak and initialize correctly
+  * app: Free option context
+  * Chain-up constructed methods
+  * Updated translations.
+- Switch to meson BuildSystem.
+
+-------------------------------------------------------------------
 Thu Oct  1 19:48:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update version dependencies according to meson.build.

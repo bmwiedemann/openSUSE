@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:12:40 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 0.9.3 
+- Drop patches now in upstream:
+  * Don-t-check-for-libref_array-explicitly.patch
+  * Fix-cross-compilation.patch
+  * Remove-unneeded-include-in-configure-script.patch
+  * gssproxy-Modernize-systemd.m4-macro.patch
+  * harden_gssproxy.service.patch
+- Fix NULL pointer dereference with no target_name that can lead to
+  daemon crash; (CVE-2026-116497); (bsc#1288030); Add patch
+  0001-CVE-2026-116497.patch
+- Fix installation in transactional systems, use systemd-tmpfiles
+  to create /var/lib/gssproxy and /var/lib/gssproxy/rcache
+
+-------------------------------------------------------------------
 Thu Jun 25 10:24:54 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
 
 - Add package runtime requirement to libverto-module-base (bsc#1268795)

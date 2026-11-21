@@ -1,6 +1,7 @@
 #
 # spec file for package libfm-qt
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,10 +17,10 @@
 #
 
 
-%define   _ver  17
+%define   _ver  18
 %define  _name  libfm-qt6
 Name:           libfm-qt
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Core library of PCManFM-Qt (Qt binding for libfm)
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -28,22 +29,21 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 
-BuildRequires:  cmake(lxqt-menu-data) >= 2.3.0
-BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
+BuildRequires:  cmake(lxqt-menu-data) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 BuildRequires:  pkgconfig(xcb)
 
 %description

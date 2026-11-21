@@ -121,4 +121,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.1 / 7.2-rc1</comment>
     <requestid>1364845</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f9ad21b2aa3b909b6aa22c0dfa9d9e7b</srcmd5>
+    <version>20261014</version>
+    <time>1793989986</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.4-rc1
+
+- Update to version 20261014 (git commit d5455717ead0):
+  * nvidia: Update and add missing firmware files for Tegra SoCs</comment>
+    <requestid>1394988</requestid>
+  </revision>
 </revisionlist>

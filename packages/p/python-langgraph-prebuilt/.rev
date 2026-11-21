@@ -23,4 +23,20 @@
     <comment>Update python-langgraph-prebuilt 1.1.0-&gt;1.1.1 (ToolNode resume fix).</comment>
     <requestid>1384967</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6befa2c4cac8bc457bbf873c54666dd1</srcmd5>
+    <version>1.1.2</version>
+    <time>1794816479</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-prebuilt to 1.1.2: faster create_react_agent loop, ToolNode name may be None.</comment>
+    <requestid>1397533</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c8603a32cd9f7192ac5169d54b12f332</srcmd5>
+    <version>1.1.3</version>
+    <time>1795103770</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-prebuilt to 1.1.3: ToolNode state override reaches tool runtime, Send-dispatched calls get edge state.</comment>
+    <requestid>1398596</requestid>
+  </revision>
 </revisionlist>

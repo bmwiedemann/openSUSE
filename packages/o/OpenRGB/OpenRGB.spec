@@ -51,7 +51,6 @@ BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(hidapi-hidraw)
 BuildRequires:  pkgconfig(libe131)
 Requires:       %{name}-udev-rules = %{version}
-%sysusers_requires
 
 %description
 The purpose of this tool is to control RGB lights on different peripherals.
@@ -60,7 +59,7 @@ Accessing the SMBus is a potentially dangerous operation, so exercise caution.
 %package udev-rules
 BuildArch:      noarch
 Summary:        OpenRGB udev rules
-Requires:       %{name} = %{version}
+%sysusers_requires
 
 %description udev-rules
 This package contains the udev rules for OpenRGB.

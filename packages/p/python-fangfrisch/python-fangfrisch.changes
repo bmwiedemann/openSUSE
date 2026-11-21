@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  8 22:12:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.3:
+  * Breaking change to the builtin "URLhaus" configuration. Users
+    now need to specify a personal authentication key. See
+    https://urlhaus.abuse.ch/ for details.
+
+-------------------------------------------------------------------
 Mon May  5 07:22:04 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.2

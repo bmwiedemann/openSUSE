@@ -7,4 +7,20 @@
     <comment>Update to 8.0.0</comment>
     <requestid>1392358</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d827f66c3512c39e764c1b33629b4e5b</srcmd5>
+    <version>8.1.0</version>
+    <time>1794410993</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.1.0. All map wasm built from source; no prebuilt binaries remain.</comment>
+    <requestid>1396856</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b47d644bf2e629c81f9f7efba9954f3f</srcmd5>
+    <version>8.2.0</version>
+    <time>1794816490</time>
+    <user>anag_factory</user>
+    <comment>Update to 8.2.0 (DSD/DSE voice, DAB fix; reduced AMBE/vocos coverage)</comment>
+    <requestid>1397564</requestid>
+  </revision>
 </revisionlist>

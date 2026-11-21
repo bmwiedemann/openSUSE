@@ -1,7 +1,6 @@
 #
 # spec file for package google-extension-manager
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,12 +24,12 @@
 %define upstream_name google-guest-agent
 
 Name:           google-extension-manager
-Version:        20260903.01
+Version:        20261105.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
 Group:          System/Daemons
-URL:            https://%{provider_prefix}
+URL:            https://github.com/GoogleCloudPlatform/google-guest-agent
 Source0:        %{upstream_name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
@@ -38,8 +37,8 @@ BuildRequires:  golang-packaging
 BuildRequires:  protobuf-devel
 BuildRequires:  protoc-gen-go
 BuildRequires:  protoc-gen-go-grpc
-BuildRequires:  golang(API) = 1.25
-Requires:       google-guest-agent >= 20260903.01
+BuildRequires:  golang(API) = 1.26
+Requires:       google-guest-agent >= 20261105.00
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
 Provides:       google-compute-engine-init = %{version}

@@ -63,4 +63,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282665</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>3efb9e9beb283514f65ec6499ee87512</srcmd5>
+    <version>2.1.1</version>
+    <time>1795023070</time>
+    <user>anag_factory</user>
+    <comment>Modernize PyString_FromString to PyUnicode_FromString in swig/pyiso9660.i (forwarded request 1397924 from dimstar)</comment>
+    <requestid>1398276</requestid>
+  </revision>
 </revisionlist>

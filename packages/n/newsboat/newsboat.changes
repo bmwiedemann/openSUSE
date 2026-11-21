@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:41:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.45.1:
+  * GHSA-78q5-mpjq-5q34: Remote code execution via manual OPML import (`--import-from-opml`)
+
+-------------------------------------------------------------------
 Tue Oct  6 12:19:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.45:

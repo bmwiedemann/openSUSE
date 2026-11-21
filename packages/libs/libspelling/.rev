@@ -141,4 +141,23 @@
 - Relegate license info to License: field.</comment>
     <requestid>1376606</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6c125d6a72991cebe42492840f4ab502</srcmd5>
+    <version>0.4.11</version>
+    <time>1794597167</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.11:
+  * Fix false positives when checking words around punctuation and whitespace
+  * Recheck surrounding words after deleting text
+  * Recheck the buffer after changing languages from the spelling menu
+  * Fix the language submenu action namespace
+  * Fix an uninitialized offset when scanning already checked text
+  * Use a single underline by default to improve rendering performance
+  * Remove incorrect G_GNUC_CONST annotations from type registration functions
+  * Fix documentation dependency links and introspection documentation format
+  * Fix checker to take new reference to provider
+  * Updated translations.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1397042</requestid>
+  </revision>
 </revisionlist>

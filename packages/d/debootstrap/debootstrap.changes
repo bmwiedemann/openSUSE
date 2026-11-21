@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:01:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.145:
+  * Use SHA512 if listed in Release file
+  * work_out_debs: On hurd-any, add seedfiles to fulfill passwd's
+    dependency on systemd-tmpfiles
+
+-------------------------------------------------------------------
 Wed May 27 08:40:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.0.144:
@@ -194,15 +202,15 @@ Wed Jun 28 13:38:35 UTC 2017 - sor.alexei@meowr.ru
   * Add (Ubuntu) bionic as a symlink to gutsy.
   * scripts/gutsy: Incorporate changes from Ubuntu:
     + Synch from scripts/sid.
-    + Fix debootstrap --variant=fakechroot failure because 
+    + Fix debootstrap --variant=fakechroot failure because
       initscripts is no longer part of the base system.
   * Use force_md5 for breezy, dapper and edgy (deb#659360,
     deb#676373). Now you can create Ubuntu breezy/dapper/edgy chroot.
-  * Change repository URI for old Ubuntu releases (deb#676370, 
+  * Change repository URI for old Ubuntu releases (deb#676370,
     deb#839073).
     Archived Ubuntu releases are at old-releases.ubuntu.com/ubuntu
   * Set correct keyring and default mirror for old debian releases.
-    Now you can fetch popato/woody/sarge/etch/lenny/squeeze if you 
+    Now you can fetch popato/woody/sarge/etch/lenny/squeeze if you
     want (deb#891404, deb#600647, deb#792729).
   * Avoid pre-exist directory causes failure (deb#864734).
   * Split common code from scripts/sid to scripts/debian-common and
@@ -346,7 +354,7 @@ Sun Jun 14 19:20:21 UTC 2015 - sleep_walker@suse.cz
       path could lead to printing some strange integer (Closes:
       #709751, #768445, #785276, #774752).  This was reported to
       mostly happen whenever --no-resolve-deps is used.
-      
+
   * Add support for --force-check-gpg so that one can
       programmatically make sure keyring checks are used and that
       no fallback to an https mirror happens (Closes: #661501,

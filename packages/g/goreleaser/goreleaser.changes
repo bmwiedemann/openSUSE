@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Nov 05 08:35:13 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.20.0:
+  * feat(ko): allow templates in platforms (#7233)
+  * chore: lint
+  * refactor: move marshaljson methods to right place
+  * Merge commit from fork
+  * chore(deps): update golang.org/x (#7272)
+  * docs: github app (#7271)
+  * docs: update
+  * docs: update Pro page copy (#7270)
+  * chore(deps): update hextra to v0.13.0 (#7268)
+  * fix(bluesky): do not add a link facet when there is no release URL (#7262)
+  * chore: auto-update generated files (#7266)
+  * feat: allow skipping the changelog with --skip=changelog (#7234)
+  * chore(deps): update mcp/registry
+  * chore(deps): update slack, yaml, go-jose
+  * fix(tmpl): escape backslashes in mdv2escape (#7261)
+  * docs: add --snapshot to quick start single-target builds (#7232)
+  * ci: run build workflow on every pull request (#7265)
+  * chore: auto-update generated files (#7264)
+  * fix(nodedist): handle prerelease versions in generation (#7263)
+  * feat(cask): render `zap :not_required` when no zap directives are set (#7253)
+  * ci(deps): bump the actions group with 3 updates (#7259)
+  * chore(deps): bump the gomod group with 6 updates (#7258)
+  * chore(deps): bump golang from `f2c872b` to `d200d2d` in the docker group across 1 directory (#7257)
+  * feat(gitlab): add asset type selection (#7255)
+  * chore: auto-update generated files (#7254)
+  * feat(winget): update manifest schema to latest (1.28.0) (#7242)
+  * ci(deps): bump the actions group with 6 updates (#7241)
+  * chore(deps): bump the gomod group with 4 updates (#7240)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#7239)
+  * ci(generate): pin @goreleaser/sponsors version (#7236)
+  * docs: v2.19 announcement and docs
+  * chore: auto-update generated files (#7231)
+  * test(archive): use relative source in zstd meta test
+  * chore: schema update
+  * chore: auto-update generated files (#7230)
+  * feat(ko): support linux_capabilities (#7225)
+  * fix(ko): use actual ko version in SPDX SBOM creator (#7226)
+  * docs: fix broken cosign link in rust-zig blog post (#7228)
+  * chore(deps): update go-github (#7221)
+  * chore: update schema
+  * chore: auto-update generated files (#7223)
+  * test: fix lint issues (#7222)
+  * fix(docker): select baseline CPU variants for Docker v2 platforms (#7189)
+  * feat(archive): configure zstd compression level and window size (#7206)
+  * fix(docker/v2): expand global ARG references when resolving the base image (#7203)
+  * fix: share HTTP client per upload config (#6919) (#7212)
+  * sec: update to Go 1.27.3 (#7220)
+  * fix(cask): emit brew-valid casks when builds.ignore drops os/arch combos (#7218)
+  * chore(deps): bump the gomod group with 7 updates (#7214)
+  * ci(deps): bump the actions group with 8 updates (#7215)
+  * chore(deps): bump golang from 1.27.1-alpine to 1.27.2-alpine in the docker group across 1 directory (#7213)
+  * chore: auto-update generated files (#7204)
+  * chore(deps): update nfpm (#7205)
+  * fix(deps): bump moby/sys/user to v0.4.1 (#7202)
+  * sec(deps): bump golang.org/x/ (#7201)
+  * fix: write cask completion stanzas in Homebrew's order (#7198)
+  * fix(archive): propagate tar read errors in Copy (#7194)
+  * fix(git): redact credentials from http remote URLs too (#7191)
+  * feat(nix): drop the nix-hash dependency (#6824)
+  * feat(cask): add hooks install_steps, deprecate raw Ruby hooks (#6873)
+  * feat: graduate stable features out of experimental (#7126)
+  * chore: auto-update generated files (#7200)
+  * ci(deps): bump the actions group with 4 updates (#7197)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#7195)
+  * chore(deps): bump the gomod group with 7 updates (#7196)
+  * chore: auto-update generated files (#7190)
+
+-------------------------------------------------------------------
 Mon Oct 12 09:37:32 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.18.3:

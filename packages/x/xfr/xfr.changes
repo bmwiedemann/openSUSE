@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:32:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Generate and Install manpage und shell-completions.
+
+-------------------------------------------------------------------
+Thu Nov 12 16:57:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0:
+  * fix: keep bidir send TCP_INFO when the receive half fails.
+  * fix: handshake UTF-8 reads, probe-mtu config bitrate, and test
+    coverage.
+  * fix: honour Ctrl-C during connect and handshake.
+  * fix: CLI log-file/max-duration/precedence,
+    TUI settings/theme/elapsed, diff, and -o preflight.
+  * fix: QUIC IPv4 bind, PSK MTU probe, mapped-IP ACL/rate-limit,
+    and Prometheus TCP_INFO.
+  * feat: optional tui feature and minimal router release binaries.
+
+-------------------------------------------------------------------
+Fri Nov  6 19:15:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.1:
+  * chore: replace chrono with jiff for ISO 8601 timestamps.
+  * fix: clearer QUIC timeout, PSK mismatch and IPv6 connect
+    messages.
+  * fix: give each server on a host its own mDNS instance name.
+  * test: wait for the PSK handshake before cancelling the infinite
+    PSK test.
+
+-------------------------------------------------------------------
 Sat Oct 31 10:27:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.0:

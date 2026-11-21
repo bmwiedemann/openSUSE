@@ -1,7 +1,8 @@
-From a7a70544ba0f74633d4473955018fa8277382812 Mon Sep 17 00:00:00 2001
+From 0ed6553f3472d5c89b2dce8105a1a79cf096a131 Mon Sep 17 00:00:00 2001
 From: Andrew Burgess <aburgess@redhat.com>
 Date: Wed, 21 Jan 2026 13:25:43 +0100
-Subject: [PATCH 4/4] gdb: fix gdb.base/inline-frame-cycle-unwind.exp for s390x
+Subject: [PATCH 32/54] gdb: fix gdb.base/inline-frame-cycle-unwind.exp for
+ s390x
 
 With test-case gdb.base/inline-frame-cycle-unwind.exp on s390x-linux, I run
 into:
@@ -120,7 +121,7 @@ Co-Authored-By: Tom de Vries <tdevries@suse.de>
  2 files changed, 60 insertions(+), 19 deletions(-)
 
 diff --git a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
-index 46561a9c9fb..66c59ccfbae 100644
+index 7fc47af624f..c8de25acc38 100644
 --- a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
 +++ b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.exp
 @@ -72,6 +72,9 @@ gdb_continue_to_breakpoint "stop at test breakpoint"
@@ -134,7 +135,7 @@ index 46561a9c9fb..66c59ccfbae 100644
  foreach bt_cmd { "bt" "bt -no-filters" } {
      with_test_prefix "$bt_cmd" {
 diff --git a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
-index 278fa857d5d..17233165d0c 100644
+index 4ab725761aa..90bf429b79f 100644
 --- a/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
 +++ b/gdb/testsuite/gdb.base/inline-frame-cycle-unwind.py
 @@ -13,6 +13,8 @@
@@ -214,8 +215,8 @@ index 278fa857d5d..17233165d0c 100644
 +        # order to force a cycle, and so test GDB.
          for reg in pending_frame.architecture().registers("general"):
              val = pending_frame.read_register(reg)
-             unwinder.add_saved_register(reg, val)
-@@ -75,11 +106,18 @@ gdb.unwinder.register_unwinder(None, TestUnwinder(), True)
+             # Having unavailable registers leads to a fall back to the standard
+@@ -79,11 +110,18 @@ gdb.unwinder.register_unwinder(None, TestUnwinder(), True)
  #
  #   main -> normal_func -> inline_func -> normal_func -> inline_func -> normal_func -> inline_func
  #

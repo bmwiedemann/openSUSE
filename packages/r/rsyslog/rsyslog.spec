@@ -236,8 +236,18 @@ Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
 Source20:       rsyslog-tmpfiles.conf
-Patch1:         0001-fix-RainerScript-replace-heap-buffer-overflow.patch
-Patch2:         0001-imdtls-reject-clients-that-fail-peer-verification.patch
+Patch1:         0001-rainerscript-align-replace-sizing-rewind.patch
+Patch3:         0001-rainerscript-bound-replace-and-wrap-results.patch
+Patch4:         0001-fix-CVE-2026-93404-rsyslog-omclickhouse-SQL-injectio.patch
+Patch5:         0001-CVE-2026-129829-rsyslog-imuxsock-system-timestamp-ou.patch
+Patch6:         0002-CVE-2026-129831-rsyslog-imuxsock-PRI-digit-accumulat.patch
+Patch7:         0003-CVE-2026-129830-rsyslog-imuxsock-TAG-parser-out-of-b.patch
+Patch8:         0004-CVE-2026-129832-rsyslog-local-denial-of-service-vuln.patch
+Patch9:         0005-CVE-2026-129833-rsyslog-mmanon-embedded-IPv4-in-IPv6.patch
+Patch10:        0006-CVE-2026-129836-rsyslog-imdtls-incomplete-handshake-.patch
+Patch11:        0007-CVE-2026-129838-rsyslog-imuxsock-trusted-property-at.patch
+Patch12:        0008-CVE-2026-129839-rsyslog-template-JSON-escaping-defec.patch
+Patch13:        0009-CVE-2026-129837-rsyslog-weekday-formatting-crash-bsc.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing

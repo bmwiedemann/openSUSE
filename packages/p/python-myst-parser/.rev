@@ -173,4 +173,41 @@
   * Support changes required for docutils 0.23.</comment>
     <requestid>1369648</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>e31e9dfc23ca95977530905754f16dfd</srcmd5>
+    <version>5.2.0</version>
+    <time>1795182445</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.0:
+  * Require mdit-py-plugins~=0.7, allow docutils 0.23 (&lt;0.24), and allow
+    flit_core 4 (&lt;5)
+  * Add stable heading anchors (myst_parser.slugs, &quot;github&quot;/&quot;gitlab&quot;/
+    &quot;docutils&quot; presets, HTML id emission, and explicit-id priority)
+  * Add the section_ref extension for section-sign references
+  * Report accurate source lines in warnings, nodes, directives, and
+    {include}d files, and pass full block_text to directives
+  * Allow {table} captions to wrap onto following lines
+  * Expose a document's own front matter to its substitutions
+  * Warn instead of aborting on deeply nested HTML or hostile/malformed
+    YAML front matter, and keep footnotes matching heading names
+  * Warn instead of crashing when linkify is enabled without
+    linkify-it-py, and fix docutils field body / definition bugs
+  * Resolve cross-document [](doc.md#label) links and keep link titles
+    through cross-reference resolution
+  * Keep validated front matter config values, reject global_only
+    options in front matter, and handle nested YAML dates
+  * Fix mixed manual/auto-numbered footnote sorting and parsed-literal
+    indentation
+  * Preserve escapes/entities in image alt text and literal alt text on
+    HTML images
+  * Allow non-identifier substitution keys like {{foo-bar}}
+  * Warn on invalid aliased image attrs or duplicate heading {#id}s, and
+    fix myst_links_external_new_tab rel=&quot;noreferrer&quot;
+  * Strip blank boundary lines from $$ math blocks
+  * Send a User-Agent when fetching remote inventories
+  * Allow setup_sphinx to run twice when myst_parser and myst_nb are
+    both enabled
+- Drop patch support-docutils-0.23.patch, no longer required.</comment>
+    <requestid>1398861</requestid>
+  </revision>
 </revisionlist>

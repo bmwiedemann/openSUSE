@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 12 20:34:09 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1794515638.d6803d9:
+  * docs: Clarify select_console synchronization
+  * fix: disable pretty serial markers when command contains tabs
+  * docs: Describe BIOS lookup in backend_vars
+  * fix: Search bare BIOS file names in distro SeaBIOS locations
+  * fix: Have tests require openssl
+
+-------------------------------------------------------------------
+Wed Nov 04 13:01:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793797288.07b5ebe:
+  * ci: Enable packaging checks for Leap 16.1
+
+-------------------------------------------------------------------
+Mon Nov 02 16:55:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793636648.90d5c84:
+  * feat(exceptions): Use exception for (validate)_script_output
+
+-------------------------------------------------------------------
+Mon Nov 02 15:24:10 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1793633037.0524715:
+  * feat: Configurable SSH port for remote SSH consoles
+  * fix(consoles): Fix localXvnc in containers
+  * build: Add prepare-dev-environment top-level target
+  * fix(svirt): Fix xz detection in the VMware datastore copy script
+
+-------------------------------------------------------------------
 Thu Oct 22 15:46:48 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1792683987.d65739f:

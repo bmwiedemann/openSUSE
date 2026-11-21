@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:41:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.54:
+  * zfs: fix off-by-one in log spacemap unflushed-txg filter
+    (gh#Thomas-Tsai/partclone#325): allocations recorded only
+    in log entries at the unflushed boundary were missing from
+    the image bitmap, leaving blocks unwritten and causing ZFS
+    checksum errors and data corruption on restore
+
+-------------------------------------------------------------------
+Wed Nov 11 12:59:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.53:
+  * clone: fix read/write mismatch on partial last block, affecting
+    NTFS tail restores
+  * tests: fix exFAT last-cluster test on big-endian architectures
+  * build: fix undefined reference to pthread_join on RHEL 8
+
+-------------------------------------------------------------------
 Fri Oct 30 07:58:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.52:

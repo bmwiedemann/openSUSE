@@ -364,24 +364,31 @@ diff -urN chromium-156.0.8063.3/third_party/blink/renderer/platform/fonts/web_fo
 diff -urN chromium-156.0.8078.4.orig/third_party/blink/renderer/platform/BUILD.gn chromium-156.0.8078.4/third_party/blink/renderer/platform/BUILD.gn
 --- chromium-156.0.8078.4.orig/third_party/blink/renderer/platform/BUILD.gn	2026-09-30 01:57:21.000000000 +0200
 +++ chromium-156.0.8078.4/third_party/blink/renderer/platform/BUILD.gn	2026-10-03 15:56:10.679294692 +0200
-@@ -713,8 +725,6 @@
-     "fonts/generic_font_family_settings.cc",
-     "fonts/generic_font_family_settings.h",
-     "fonts/glyph_metrics_map.h",
--    "fonts/ift/ift_patcher.cc",
+@@ -209,7 +209,6 @@
+ source_set("font_rust_headers") {
+   visibility += [ "//third_party/blink/renderer/core:*" ]
+   public = [
 -    "fonts/ift/ift_patcher.h",
-     "fonts/opentype/color_table_lookup.cc",
-     "fonts/opentype/color_table_lookup.h",
-     "fonts/opentype/font_format_check.cc",
-@@ -1845,7 +1845,6 @@
-   deps = [
+     "fonts/opentype/font_format_check.h",
+   ]
+   configs += [
+@@ -221,7 +220,6 @@
+   public_deps = [
      ":font_format_check",
-     ":rustfft_ffi",
+     ":platform_export",
 -    "fonts:ift_patcher_bindings",
-     "//base:base_static",
-     "//base/allocator:buildflags",
-     "//build:chromecast_buildflags",
-@@ -2245,7 +2253,6 @@
+     "//base",
+     "//skia",
+     "//third_party/blink/renderer/platform/wtf",
+@@ -232,7 +230,6 @@
+   public = []
+   sources = [
+     "fonts/font_custom_platform_data.cc",
+-    "fonts/ift/ift_patcher.cc",
+     "fonts/opentype/font_format_check.cc",
+     "fonts/web_font_decoder.cc",
+     "fonts/web_font_typeface_factory.cc",
+@@ -2320,7 +2317,6 @@
      "fonts/font_test.cc",
      "fonts/font_test_utilities.cc",
      "fonts/generic_font_family_settings_test.cc",
@@ -389,6 +396,14 @@ diff -urN chromium-156.0.8078.4.orig/third_party/blink/renderer/platform/BUILD.g
      "fonts/opentype/color_table_lookup_test.cc",
      "fonts/opentype/font_format_check_test.cc",
      "fonts/opentype/font_settings_test.cc",
+@@ -2622,7 +2618,6 @@
+     ":bridge_ice_controller_tests",
+     ":font_rust_headers",
+     ":rustfft_ffi_unittests",
+-    "fonts:ift_patcher_bindings",
+   ]
+ 
+   data_deps = [ ":blink_platform_unittests_data" ]
 --- chromium-156.0.8078.4/third_party/blink/renderer/core/loader/resource/font_resource.h	2026-09-30 01:57:21.000000000 +0200
 +++ chromium-155.0.8059.5/third_party/blink/renderer/core/loader/resource/font_resource.h	2026-09-16 02:15:15.000000000 +0200
 @@ -47,7 +47,6 @@

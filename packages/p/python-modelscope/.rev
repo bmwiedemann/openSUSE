@@ -37,4 +37,12 @@
     <comment>Update python-modelscope to 1.40.2 with Intel XPU support. Requires python-modelscope-hub &gt;= 0.4.6, so this stays unresolvable until SR 1383819 (hub 0.4.6) lands; submit hub first.</comment>
     <requestid>1383824</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f04c5a638405f3b463a045ac897429b</srcmd5>
+    <version>1.40.3</version>
+    <time>1794410676</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.40.3 (requires modelscope-hub &gt;= 0.7.0, now in Factory)</comment>
+    <requestid>1396528</requestid>
+  </revision>
 </revisionlist>

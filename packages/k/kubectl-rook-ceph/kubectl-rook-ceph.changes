@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 11 05:46:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.0:
+  * build(deps): bump github.com/spf13/pflag
+  * core: complete logs targets with the tab key
+  * build(deps): bump github.com/rook/rook
+
+-------------------------------------------------------------------
 Wed Apr 01 04:24:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.6:

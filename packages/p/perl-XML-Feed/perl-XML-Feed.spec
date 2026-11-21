@@ -18,12 +18,14 @@
 
 %define cpan_name XML-Feed
 Name:           perl-XML-Feed
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
+# v1.0.2 -> normalize -> 1.0.2
+%define cpan_version v1.0.2
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Summary:        Syndication feed parser and auto-discovery
+Summary:        XML Syndication Feed Support
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/D/DA/DAVECROSS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildArch:      noarch
@@ -40,7 +42,7 @@ BuildRequires:  perl(Feed::Find)
 BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(HTML::TokeParser)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Fetch)
@@ -60,12 +62,10 @@ Requires:       perl(HTML::Entities)
 Requires:       perl(HTML::TokeParser)
 Requires:       perl(LWP::UserAgent)
 Requires:       perl(Module::Pluggable)
-Requires:       perl(URI)
 Requires:       perl(URI::Fetch)
 Requires:       perl(XML::Atom) >= 0.380
 Requires:       perl(XML::LibXML) >= 1.660
 Requires:       perl(XML::RSS) >= 1.470
-Requires:       perl(XML::XPath)
 %{perl_requires}
 
 %description
@@ -93,7 +93,7 @@ for date handling, _XML::Feed_ converts all date formats transparently into
 DateTime objects, which it then returns to the caller.
 
 %prep
-%autosetup -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

@@ -4291,14 +4291,14 @@ Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.cmake
    gen/bcm/ghashv8-armv7-linux.S
    gen/bcm/ghashv8-armv8-apple.S
    gen/bcm/ghashv8-armv8-linux.S
-@@ -352,6 +354,7 @@ set(
+@@ -385,6 +385,7 @@
    crypto/cpu_arm_freebsd.cc
    crypto/cpu_arm_linux.cc
    crypto/cpu_intel.cc
 +  crypto/cpu_ppc64le.cc
    crypto/crypto.cc
+   crypto/curve25519/cpace.cc
    crypto/curve25519/curve25519.cc
-   crypto/curve25519/curve25519_64_adx.cc
 @@ -2980,6 +2983,7 @@ set(
    gen/test_support/trampoline-armv8-apple.S
    gen/test_support/trampoline-armv8-linux.S
@@ -4327,14 +4327,14 @@ Index: chromium-144.0.7559.59/third_party/boringssl/src/gen/sources.json
        "gen/bcm/ghashv8-armv7-linux.S",
        "gen/bcm/ghashv8-armv8-apple.S",
        "gen/bcm/ghashv8-armv8-linux.S",
-@@ -322,6 +324,7 @@
+@@ -351,6 +351,7 @@
        "crypto/cpu_arm_freebsd.cc",
        "crypto/cpu_arm_linux.cc",
        "crypto/cpu_intel.cc",
 +      "crypto/cpu_ppc64le.cc",
        "crypto/crypto.cc",
+       "crypto/curve25519/cpace.cc",
        "crypto/curve25519/curve25519.cc",
-       "crypto/curve25519/curve25519_64_adx.cc",
 @@ -2892,6 +2895,7 @@
        "gen/test_support/trampoline-armv8-apple.S",
        "gen/test_support/trampoline-armv8-linux.S",

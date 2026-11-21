@@ -25,11 +25,10 @@
 %endif
 %{!?_udevrulesdir: %define _udevrulesdir %{_udevdir}/rules.d}
 Name:           tlp
-Version:        1.10.2
+Version:        1.11.0
 Release:        0
 Summary:        Tools to save battery power on laptops
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Hardware/Mobile
 URL:            https://linrunner.de/tlp
 Source:         TLP-%{version}.tar.zst
 Source10:       tlp-rpmlintrc
@@ -73,7 +72,6 @@ to configure charge thresholds and re-calibrate the battery.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -84,7 +82,6 @@ The official bash completion script for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -94,7 +91,6 @@ The official fish completion script for %{name}.
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -104,7 +100,6 @@ The official zsh completion script for %{name}.
 
 %package rdw
 Summary:        TLP Radio Device Wizard
-Group:          Hardware/Mobile
 Requires:       %{name} = %{version}
 Requires:       NetworkManager >= 1.20
 Requires(pre):  systemd
@@ -118,7 +113,6 @@ switching of Bluetooth, NFC, Wi-Fi and WWAN radio devices on:
 
 %package rdw-bash-completion
 Summary:        Bash Completion for %{name}-rdw
-Group:          System/Shells
 Requires:       %{name}-rdw = %{version}
 Requires:       bash-completion
 Supplements:    (%{name}-rdw and bash-completion)
@@ -129,7 +123,6 @@ The official bash completion script for %{name}-rdw.
 
 %package rdw-fish-completion
 Summary:        Fish Completion for %{name}-rdw
-Group:          System/Shells
 Requires:       %{name}-rdw = %{version}
 Supplements:    (%{name}-rdw and fish)
 BuildArch:      noarch
@@ -139,7 +132,6 @@ The official fish completion script for %{name}-rdw.
 
 %package rdw-zsh-completion
 Summary:        ZSH Completion for %{name}-rdw
-Group:          System/Shells
 Requires:       %{name}-rdw = %{version}
 Supplements:    (%{name}-rdw and zsh)
 BuildArch:      noarch
@@ -149,7 +141,6 @@ The official zsh completion script for %{name}-rdw.
 
 %package pd
 Summary:        TLP Power Profiles Daemon
-Group:          Hardware/Mobile
 Requires:       %{name} = %{version}
 Requires(pre):  systemd
 BuildArch:      noarch
@@ -159,7 +150,6 @@ Power Profiles Daemon replacement for TLP.
 
 %package -n tlpctl-bash-completion
 Summary:        Bash Completion for tlpctl
-Group:          System/Shells
 Requires:       %{name}-pd = %{version}
 Requires:       bash-completion
 Supplements:    (%{name}-pd and bash-completion)
@@ -170,7 +160,6 @@ The official bash completion script for tlpctl.
 
 %package -n tlpctl-fish-completion
 Summary:        Fish Completion for tlpctl
-Group:          System/Shells
 Requires:       %{name}-pd = %{version}
 Supplements:    (%{name}-pd and fish)
 BuildArch:      noarch
@@ -180,7 +169,6 @@ The official fish completion script for tlpctl.
 
 %package -n tlpctl-zsh-completion
 Summary:        ZSH Completion for tlpctl
-Group:          System/Shells
 Requires:       %{name}-pd = %{version}
 Supplements:    (%{name}-pd and zsh)
 BuildArch:      noarch

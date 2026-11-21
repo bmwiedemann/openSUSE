@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 16 08:10:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.5:
+  * Fix out-of-bounds read
+  * Harden multipart download parsing against malicious servers
+  * Harden chunk decompression and header parsing
+
+-------------------------------------------------------------------
 Sat Sep 12 14:17:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - update to 1.5.4:

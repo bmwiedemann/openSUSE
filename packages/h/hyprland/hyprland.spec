@@ -22,7 +22,7 @@
 %bcond_without rtkit
 
 Name:           hyprland
-Version:        0.57.0
+Version:        0.57.2
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -45,7 +45,7 @@ BuildRequires:  glslang-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(aquamarine) >= 0.10.0
+BuildRequires:  pkgconfig(aquamarine) >= 0.16.0
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm) >= 17.1.0

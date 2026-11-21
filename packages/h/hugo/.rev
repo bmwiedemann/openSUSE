@@ -2198,4 +2198,33 @@
     runs 77230eba @bep</comment>
     <requestid>1393981</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>debb83a4c831d944d534b17cf706a0fd</srcmd5>
+    <version>0.170.0</version>
+    <time>1794816475</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.170.0:
+- Packaging improvements:
+  * _service go.mod drop replace for dependency updated by upstream:
+    github.com/go-jose/go-jose/v4=github.com/go-jose/go-jose/v4@v4.1.6
+  * bsc#1288336, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+    github.com/go-jose/go-jose/v4: multiple security issues (forwarded request 1397501 from jfkw)</comment>
+    <requestid>1397502</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>23ec07a8d522fc530dfa25f4d067f501</srcmd5>
+    <version>0.170.1</version>
+    <time>1795023029</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.170.1:
+  * releaser: Bump versions for release of 0.170.1
+  * deps: Upgrade github.com/bep/imagemeta v1.1.1 =&gt; v1.1.2
+  * tpl/tplimpl: Don't add file context to partial return sentinel errors
+  * images: Add fgColor and bgColor options to images.QR and the qr shortcode
+  * tpl/tplimpl: Cleanup vimeo shortcode comments and arg logic
+  * Delete hugolib/integrationtest_builder_test.go
+  * tests: Address deprecation errors
+  * releaser: Prepare repository for 0.171.0-DEV (forwarded request 1398240 from jfkw)</comment>
+    <requestid>1398243</requestid>
+  </revision>
 </revisionlist>

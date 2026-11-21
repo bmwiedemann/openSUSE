@@ -1,4 +1,198 @@
 -------------------------------------------------------------------
+Fri Nov 13 02:57:58 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Remove manual binary stripping in %install to allow proper debuginfo and
+  debugsource package generation. 
+
+-------------------------------------------------------------------
+Tue Nov 10 05:26:24 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Fix build on aarch64: include obs-nvenc-test in the file list for all
+  architectures. 
+
+-------------------------------------------------------------------
+Tue Nov 10 04:28:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 33.0.1:
+  * libobs: Update version to 33.0.1
+  * frontend: Fix plugin restart prompt stale data
+  * obs-browser: Update version to 2.27.5
+  * frontend: Queue navigation in auth window to fix crash
+  * frontend: Fix plugin manager Flatpak data path
+  * libobs/graphics: Restore image memory usage tracking
+  * CI: Update deps to 2026-10-23 release
+  * rtmp-services: Update Twitch/IVS Ingests
+  * obs-browser: Update version to 2.27.4
+  * obs-browser: Update version to 2.27.3
+  * cmake: Fix regression when disabling core modules
+  * rtmp-services: Remove defunct servers/services
+  * build-aux: Update steam vcam script
+  * frontend: Fix add source dialog scrollbar policy
+  * win-dshow: Update virtualcam installer scripts
+  * frontend: Hide warning icon for legacy plugins
+  * frontend: Remove legacy replay buffer hotkey code
+  * obs-websocket: Update version to 5.7.6
+  * frontend: Unparent missing encoders popup
+  * libobs: Fix obs_canvas_reset_video when other canvas is active
+  * frontend: Fix profile import with trailing path slash
+  * obs-browser: Update version to 2.27.2
+  * frontend: Fix removal of missing plugins
+  * frontend: Fix display of plugins in safe mode
+  * frontend: Fix failed plugin popup in safe mode
+  * Update translations from Crowdin
+  * obs-browser: Update version to 2.27.1
+  * libobs: Add PIC to obs-core-modules
+  * obs-websocket: Update version to 5.7.5
+  * shared: Remove Qt<6.10 code
+  * frontend: Remove Qt<6.10 code
+  * linux-v4l2: Remove support for FFmpeg<8.0
+  * obs-ffmpeg: Remove support for FFmpeg<8.0
+  * win-dshow Set minimum FFmpeg version to 8.0
+  * frontend: Set minimum FFmpeg version to 8.0
+  * media-playback: Set minimum FFmpeg version to 8.0
+  * libobs: Increase minimum FFmpeg version to 8.0
+  * decklink: Include previously implicit header for Linux
+  * frontend: Include previously implicit headers for non-Windows
+  * frontend: Restore OBS wrappers in callbacks
+  * docs: Update graphics/image-file.h docs
+  * frontend-tools: Update clock Lua script for new gs_image_file_ex
+  * win-capture: Fix data directory path
+  * cmake: Fix bundling of scripting files on macOS
+  * cmake: Make obs-core-modules header public
+  * frontend: Limit missing encoder check by output mode
+  * libobs: Fix data for updated monitoring
+  * updater: Retain legacy module path support
+  * frontend: Fix source icon state appearing inverted
+  * frontend: Fix rich text on macOS warning popups
+  * frontend: Unregister save replay buffer hotkey
+  * CI: Update sign-windows commit
+  * CI: Update bouf to v0.6.6
+  * CI: Update sign-windows commit
+  * CI: Update game capture path in windows-signing action
+  * libobs: Update version to 33.0.0
+  * CI,build-aux: Update Flatpak to 2026-09-24 deps
+  * frontend-tools: Turn off scripting in Safe Mode
+  * frontend: Add obs_frontend_is_safe_mode_enabled() API call
+  * frontend: Adjust plugin error dialog text
+  * frontend: Avoid exec for plugin window
+  * frontend: Update plugin manager window
+  * frontend: Add InfoChip widget
+  * idian: Fix RowList insert position and count
+  * idian: Style adjustments
+  * frontend: Update app module loading behavior
+  * libobs: Add core module loading functionality
+  * cmake: Add OS_FLATPAK flag
+  * cmake: Change name of core module output directory
+  * cmake: Add concept of "core" modules
+  * cmake: Add explicit target_enable function
+  * rtmp-services: Update IRLToolkit ingest list
+  * rtmp-services: Update Streamway primary ingest
+  * frontend: Update default snap distance
+  * frontend: Improve preview source snapping
+  * rtmp-services: Update Whowatch
+  * linux-alsa: Fix use-after-free crash when USB mic not plugged in
+  * frontend: Refactor ScreenshotObj options
+  * frontend: Demangle ScreenshotObj and OBSBasic
+  * rtmp-services: Add multitrack_video option to PandaTV | 팬더티비 Service
+  * rtmp-services: Add Spoon RTMP service
+  * frontend: Update tab bar styling
+  * libobs: Make sure all code paths leave context
+  * libobs-d3d11: Avoid exceptions in shader cache file handling
+  * frontend: Log item/filter visibility changes
+  * frontend: Log sceneitem and filter enabled state on load
+  * CI, build-aux: Update CEF from 127/6533 to 150/7871
+  * idian: Debounce widget repolishing
+  * idian: Remove Utils inheritance
+  * frontend: Refactor Idian widgets
+  * obs-browser: Update to 2.27.0
+  * libobs-metal: Wrap blitSwapChains in autoreleasepool to fix mach port leak
+  * build-aux: Add versions to Flatpak plugin extension point
+  * nv-filters: Remove CUDA from audio loader
+  * nv-filters: Enable Video FX SDK 1.3.0 for ARM
+  * nv-filters: Do not display VAD for dereverb
+  * nv-filters: Enable audio FX SDK 3.0.0 for ARM
+  * libobs: Create unique groups when duplicating scene
+  * rtmp-services: Remove defunct servers/services
+  * frontend: Fix group icon styling
+  * cmake: Remove MbedTLS custom finder
+  * frontend: Minor Spinbox cleanup
+  * SQUASME: Address review comment
+  * Update codestyle document
+  * Update contribution guidelines for PR reviews
+  * win-capture: Add Roblox window class auto switch to WGC mode
+  * rtmp-services: Update SOOP ingests
+  * docs: Add precision on editable string lists
+  * frontend: Use styling for source items appearance
+  * frontend: Add icon coloring for labels
+  * frontend: Register the replay buffer save hotkey in the frontend
+  * frontend: Add replay buffer saving frontend event
+  * obs-ffmpeg: Add replay buffer saving output signal
+  * libobs: Only emit core signal handlers for public canvases
+  * libobs: Change canvas signal param name to `signal_canvas`
+  * libobs: Fix monitoring hotkey UI updates
+  * libobs: Free monitor hotkeys translations
+  * libobs: Fix deadlock on executing tasks
+  * obs-nvenc: Enable NVENC on Arm64
+  * frontend: Fix dangling pointer in Audio Mixer logging
+  * CI: Update deps to 2026-08-26 release
+  * win-capture: Add Construct 3 window class to WGC match
+  * frontend: Improve spin box UX
+  * libobs, frontend: Add monitoring hotkeys
+  * docs: Mark monitoring_type as deprecated
+  * libobs, frontend: Deprecate source monitoring_type
+  * obs-ffmpeg: Fix B-frame offset calculation in AMF
+  * libobs, docs: Document intended use of obs_module_unload
+  * win-capture: Improve fullscreen window detection
+  * libobs/graphics: Break image file API to prevent ABI issues
+  * libobs/graphics: Hide GIF decoding data from exported header file
+  * libobs/graphics: Update libnsgif to 1.0.0
+  * cmake: Require MbedTLS 3 and exclude 4 or later
+  * obs-outputs: Fix file splitting overshooting when b-frames are used
+  * obs-outputs: Do not drop last packet when flushing Hybrid file
+  * mac-capture: Use 64RGBAHalf pixel format for screen capture when available
+  * libobs-opengl: Support texture creation from IOSurface using RGBA64Half
+  * frontend: Scale simple output recording audio bitrate by channel count
+  * frontend: Ensure pending profile changes are saved
+  * linux-pipewire: Forbid screencast source duplication
+  * frontend: Abort if obs-transitions failed to load
+  * frontend: Add info notices to theme files
+  * win-capture: Reorder capture method dropdown
+  * win-capture: Change capture methods name
+  * frontend: Remove native widget property
+  * obs-frontend-api: Fix repeated preview en-/disables not working
+  * frontend: Don't read unloaded module in source toolbar
+  * frontend: Ensure source type exists before creating toolbar
+  * libobs: Ensure module exists before getting locale string
+  * libobs: Fix file filter for save file path widget
+  * docs: Add deprecation notice for source hiding
+  * libobs: Deprecate source hiding
+  * frontend: Remove superfluous hidden check
+  * frontend: Fix SourceButton rename handler
+  * frontend: Add Encoder availability check
+  * libobs: Update version to 32.2.2
+  * frontend: Fix spacer in permissions dialog
+  * frontend: Update forms to fully qualified enums
+  * frontend: Update invokeMethod to use functions
+  * CI: Remove support for Ubuntu 24.04
+  * frontend, plugins: Remove PreferSystem32Images mitigation
+  * CI: Update minimum macOS version to 26 for building
+  * CI: Update macOS deployment target to macOS 13
+  * mac-virtualcam: Suppress deprecation warnings in DAL module
+  * CI: Update brew unconditionally
+
+-------------------------------------------------------------------
+Tue Nov 10 03:33:46 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Restore and include latest updates and fixes:
+  * Add patch modern-gcc-lto.patch: fallback adjustments for missing optional
+    submodules in CMake.
+  * Add adjustments for x264 plugin disabling and crash fixes in settings
+    (libobs encoder fallback, frontend settings, and obf.c GCC 16 workaround).
+  * Update to version 33.0.1 (including all 33.0.0 changes, obs-browser,
+    websocket updates, and security/build fixes).
+  * Revert unintended overwrite of Bjørn Lie's ffmpeg fixes. 
+
+-------------------------------------------------------------------
 Fri Jul 31 16:23:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(libavcodec), pkgconfig(libavdevice),

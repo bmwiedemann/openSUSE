@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:05:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261109 (git commit 69e51bb26f3f):
+  * mediatek: mt8188: update SCP firmware to v2.0.30090
+
+-------------------------------------------------------------------
+Mon Nov  2 07:19:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * mediatek MT7922: update bluetooth firmware to 20261027203403
+  * linux-firmware: update firmware for MT7922 WiFi device
+
+-------------------------------------------------------------------
+Wed Oct 21 10:55:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261021 (git commit 084e837ec47f):
+  * mediatek MT7925: update bluetooth firmware to 20261016233221
+  * linux-firmware: update firmware for MT7925 WiFi device
+
+-------------------------------------------------------------------
 Wed Sep  2 13:01:22 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.3-rc1

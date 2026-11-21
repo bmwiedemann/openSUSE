@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-Typemaps-Default
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-ExtUtils-Typemaps-Default
-Version:        1.05
-Release:        0
 %define cpan_name ExtUtils-Typemaps-Default
-Summary:        A set of useful typemaps
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/ExtUtils-Typemaps-Default/
-Source:         http://www.cpan.org/authors/id/S/SM/SMUELLER/%{cpan_name}-%{version}.tar.gz
+Name:           perl-ExtUtils-Typemaps-Default
+Version:        1.70.0
+Release:        0
+# 1.07 -> normalize -> 1.70.0
+%define cpan_version 1.07
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Set of useful typemaps
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SM/SMUELLER/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::Typemaps) >= 3.18_03
-BuildRequires:  perl(Module::Build)
-Requires:       perl(ExtUtils::Typemaps) >= 3.18_03
+BuildRequires:  perl(ExtUtils::Typemaps) >= 3.21
+BuildRequires:  perl(Module::Build) >= 0.420
+Requires:       perl(ExtUtils::Typemaps) >= 3.21
+Provides:       perl(ExtUtils::Typemap::Basic) = %{version}
+Provides:       perl(ExtUtils::Typemap::Default) = %{version}
+Provides:       perl(ExtUtils::Typemap::ObjectMap) = %{version}
+Provides:       perl(ExtUtils::Typemap::STL) = %{version}
+Provides:       perl(ExtUtils::Typemap::STL::String) = %{version}
+Provides:       perl(ExtUtils::Typemap::STL::Vector) = %{version}
+Provides:       perl(ExtUtils::Typemaps::Basic) = %{version}
+Provides:       perl(ExtUtils::Typemaps::Default) = %{version}
+Provides:       perl(ExtUtils::Typemaps::ObjectMap) = %{version}
+Provides:       perl(ExtUtils::Typemaps::STL) = %{version}
+Provides:       perl(ExtUtils::Typemaps::STL::List) = %{version}
+Provides:       perl(ExtUtils::Typemaps::STL::String) = %{version}
+Provides:       perl(ExtUtils::Typemaps::STL::Vector) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -41,25 +56,24 @@ provides). These default mappings are currently defined as the combination
 of the mappings provided by the following typemap classes which are
 provided in this distribution:
 
-the ExtUtils::Typemaps::ObjectMap manpage, the ExtUtils::Typemaps::STL
-manpage, the ExtUtils::Typemaps::Basic manpage
+ExtUtils::Typemaps::ObjectMap, ExtUtils::Typemaps::STL,
+ExtUtils::Typemaps::Basic
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes
 
 %changelog

@@ -16,22 +16,23 @@
 #
 
 
-#
 %define _terminfo      %{_datadir}/terminfo
-%define base_version   9.31
-%define git_version    20241202.5865a435
 %global _default_patch_fuzz 1
-
+#
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+# Leap 15.6 has too old autoconf
+%bcond_with    use_system_libev
+%else
+%bcond_without use_system_libev
+%endif
 Name:           rxvt-unicode
-Version:        %{base_version}+git%{git_version}
+Version:        9.32
 Release:        0
-#
 Summary:        Rxvt X Terminal with Unicode Support
-#
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
 URL:            https://software.schmorp.de/pkg/rxvt-unicode.html
-Source:         %{name}-%{version}.tar.gz
+Source:         https://dist.schmorp.de/rxvt-unicode/rxvt-unicode-%{version}.tar.bz2
 Source2:        rxvt-unicode.README.SuSE
 Source3:        rxvt-unicode-256color.desktop
 Source4:        rxvt-unicode.desktop
@@ -42,12 +43,13 @@ Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
 Patch6:         handle-new-tic-and-dont-install-terminfo.patch
 Patch7:         confirm-paste-Change-y-p-n-to-y-f-n-to-preserve-comp.patch
+%if %{with use_system_libev}
 Patch8:         use-system-libev.patch
+%endif
 # https://gitweb.gentoo.org/repo/gentoo.git/commit/?id=785ecf0b5343348e298a5fad9c46ba58b9b303fe
 Patch9:         rxvt-unicode-gcc16-compilation-fix.patch
 # https://lists.schmorp.de/pipermail/rxvt-unicode/2025q4/002704.html
-patch10:        add_OSC_110_111_112_support.patch
-Patch11:        show-git-version-in-release-string.patch
+Patch10:        add_OSC_110_111_112_support.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  libev-devel
@@ -57,7 +59,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
+%if %{with use_system_libev}
+BuildRequires:  autoconf >= 2.71
 BuildRequires:  pkgconfig(libev)
+%endif
 BuildRequires:  pkgconfig(libptytty)
 BuildRequires:  pkgconfig(libstartup-notification-1.0)
 BuildRequires:  pkgconfig(x11)
@@ -85,10 +90,10 @@ install -m 0644 %{SOURCE2} README.SUSE
 # it is problematic with libev
 %define _lto_cflags    %{nil}
 
+%if %{with use_system_libev}
 # need to regenerate bundled configure since use-system-libev.patch modify the build files
 ./autogen.sh
-
-echo "#define GIT_VERSION \"%{git_version}\"" >> src/version.h
+%endif
 
 # --enable-everything adds support for all non-multichoice options listed in ./configure --help,
 # except for: --enable-assert, --enable-256-color, --enable-8bitctrls, --enable-fallback and --enable-smart-resize.
@@ -106,7 +111,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
 export CXXFLAGS="$CFLAGS"
 #
 # build the 256color version
-%configure ${COMMON_CONFIGURE_OPTIONS} --enable-256-color 
+%configure ${COMMON_CONFIGURE_OPTIONS} --enable-256-color
 #
 %make_build
 #

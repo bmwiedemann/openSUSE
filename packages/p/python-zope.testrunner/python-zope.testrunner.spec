@@ -80,8 +80,8 @@ find -size 0 -delete
 
 %if %{with test}
 %check
-%{python_expand #
-$python -m zope.testrunner --test-path=src -vv
+%{python_expand # Work around https://github.com/zopefoundation/zope.testrunner/issues/210
+zope-testrunner-%{$python_bin_suffix} --test-path=src -vv
 }
 %endif
 

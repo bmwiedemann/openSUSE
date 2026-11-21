@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  3 06:39:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Thu Jul  2 07:46:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 4.14.0:
@@ -360,7 +365,7 @@ Sun Jun 16 12:12:29 UTC 2013 - zaitor@opensuse.org
   + Basics, Simple Example: Synchronize code and description
     (bgo#681323).
   + I18n and L10n chapter: Fix broken links (bgo#680546).
-  + gmmproc: 
+  + gmmproc:
     - _WRAP_METHOD: Include docs on wrapping methods with slots
       (bgo#688587).
     - _WRAP_CTOR: Document the new "errthrow" extra argument

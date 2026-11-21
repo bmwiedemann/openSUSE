@@ -413,4 +413,64 @@
     maximum cluster count.</comment>
     <requestid>1371161</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1f6a5f3a395cdda59ef91edcdd51fda6</srcmd5>
+    <version>1.4.4</version>
+    <time>1794410638</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.4:
+  New features:
+  * exfatprogs: add optional I/O statistics collection for profiling
+    read, write, discard, zero-out, and sync operations.
+  Changes:
+  * mkfs.exfat: increase full-format speed by using BLKZEROOUT when
+    supported, selecting larger zeroing batches, and improving quiet
+    and trace progress output.
+  * mkfs.exfat: reduce page-cache pollution during full formatting on
+    systems supporting POSIX_FADV_NOREUSE.
+  Bug fixes:
+  * exfatprogs: fix parsing of kernel versions and boolean environment
+    variables.
+  * mkfs.exfat: avoid memory-reservation failures when creating very
+    large allocation bitmaps.
+  * mkfs.exfat: mark the percentage of used clusters as unknown until
+    it is calculated.
+  * fsck.exfat, exfat2img, and defrag.exfat: reject malformed boot
+    sector geometry and prevent arithmetic overflows and out-of-bounds
+    reads.
+  * fsck.exfat: stop immediately on I/O errors instead of treating them
+    as filesystem inconsistencies.
+  * fsck.exfat: fix missing line breaks in error messages.
+  * fsck.exfat: avoid printing version information during automatic
+    repair with &quot;-p&quot; or &quot;-a&quot;.
+  * dump.exfat: print complete file timestamps in raw and ISO formats.
+  * exfat2img: keep metadata image output on stdout free of status
+    messages.
+  * exfatprogs: correct usage text for overwrite and read-back
+    verification options.</comment>
+    <requestid>1396473</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5b8b1d97d917c50f17be18a0db68c380</srcmd5>
+    <version>1.4.5</version>
+    <time>1795182241</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.5:
+  Features:
+  * mkfs.exfat: add options to set the volume serial, disk GUID,
+    and partition GUID for deterministic filesystem images.
+  Changes:
+  * fsck.exfat: increase duplicate filename detection speed for
+    directories with many files.
+  Bug fixes:
+  * fsck.exfat: distinguish filenames by their full name length to
+    avoid false duplicate-file repairs.
+  * mkfs.exfat: set the protective MBR disk signature to zero as
+    required for GPT.
+  * exfatprogs: restore version output to stdout for command-line
+    compatibility.
+  * exfatprogs: reject invalid boot-sector sector and cluster size
+    bits before shifting.</comment>
+    <requestid>1398593</requestid>
+  </revision>
 </revisionlist>

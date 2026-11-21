@@ -17,7 +17,7 @@
 
 
 Name:           tilth
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Tree-sitter indexed code lookups for humans and AI agents
 # Legal-Review-Notice: upstream is MIT; the remaining tags come from crates
@@ -34,6 +34,10 @@ License:        Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib
 URL:            https://github.com/jahala/tilth
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Stripped from vendor.tar.zst after re-vendoring: wit-bindgen's prebuilt
+# src/rt/libwit_bindgen_cabi.a and wasi-cli@*.wasm (wasm-only inputs; the
+# Linux build never uses them, its build.rs runs on wasm targets only)
+# Source-Binary-Exception: vendor.tar.zst:vendor/wit-bindgen-*/src/rt/*.o -- other-platform: prebuilt CABI objects for wasm32-wasip2/wasip3 targets, unused by the Linux build
 BuildRequires:  cargo-packaging
 # "tilth diff"/"overview" shell out to git at runtime; %%check builds throwaway repos
 BuildRequires:  git-core
@@ -95,7 +99,9 @@ $BIN --completions fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{na
 $BIN --completions zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
-%{cargo_test}
+# Upstream tests share process-global env vars, so run them serially:
+# parallel runs fail flakily (TILTH_FULL_SIZE_CAP=100 leaks across tests)
+%{cargo_test} -- --test-threads=1
 
 %files
 %license LICENSE

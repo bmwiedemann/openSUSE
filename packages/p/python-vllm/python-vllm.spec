@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.32.0
+Version:        0.33.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -70,12 +70,14 @@ Patch0:         vllm-relax-cpu-requirements.patch
 Patch1:         vllm-cpu-disable-rust-frontend.patch
 # PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
 Patch2:         vllm-thinking-budget-scan-cursor.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-18, rebased onto 0.32.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-18, rebased onto 0.33.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
 Patch3:         fix-CVE-2026-105922.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
 BuildRequires:  %{python_module cachetools}
 BuildRequires:  %{python_module devel}
+# torch.utils.cpp_extension (imported by setup.py) needs filelock.
+BuildRequires:  %{python_module filelock}
 BuildRequires:  %{python_module packaging >= 24.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
@@ -88,6 +90,8 @@ BuildRequires:  %{python_module setuptools-rust >= 1.9.0}
 BuildRequires:  %{python_module setuptools-scm >= 8.0}
 # setup.py imports torch at module top to detect the target device.
 BuildRequires:  %{python_module torch >= 2.12.0}
+# setup.py imports torch at module top, which needs typing_extensions.
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -104,13 +108,14 @@ Requires:       alts
 # the target project.  Carry floors at the version upstream actually asks for
 # instead; vllm-relax-cpu-requirements.patch relaxes the same pins in the wheel
 # metadata so the RPM dependencies and the dist-info agree.
-Requires:       python-Pillow >= 12.3.0
+Requires:       python-Pillow >= 13.0.0
 Requires:       python-PyYAML
-Requires:       python-aiohttp >= 3.14.3
+Requires:       python-aiohttp >= 3.14.4
 Requires:       python-anthropic >= 0.71.0
 Requires:       python-blake3
 Requires:       python-cachetools
 Requires:       python-cbor2
+Requires:       python-certifi >= 2026.10.19
 Requires:       python-cloudpickle
 # Upstream pins compressed-tensors == 0.17.0, but an exact RPM pin breaks the
 # package every time the devel project moves.  Every symbol vllm imports from
@@ -140,6 +145,7 @@ Requires:       python-mcp
 Requires:       python-mistral-common >= 1.11.6
 Requires:       python-model-hosting-container-standards >= 0.1.14
 Requires:       python-msgspec
+Requires:       python-multidict >= 6.9.1
 Requires:       python-numba >= 0.65.0
 Requires:       python-numpy
 Requires:       python-openai >= 2.25.0
@@ -155,6 +161,8 @@ Requires:       python-opentelemetry-api >= 1.27.0
 Requires:       python-opentelemetry-exporter-otlp >= 1.27.0
 Requires:       python-opentelemetry-sdk >= 1.27.0
 Requires:       python-opentelemetry-semantic-conventions-ai >= 0.4.1
+# vllm/entrypoints/serve/utils/api_utils.py imports orjson at module top.
+Requires:       python-orjson >= 3.11.6
 # Optional structured-output backend, also LazyLoader-imported.  Its on-disk
 # index cache is keyed on importlib.metadata.version("outlines_core") and is
 # cleared whenever that changes, so the code handles version drift by design.
@@ -190,7 +198,7 @@ Requires:       python-tqdm
 Requires:       python-transformers >= 5.16.1
 Requires:       python-typing_extensions >= 4.10
 Requires:       python-watchfiles
-Requires:       python-xgrammar >= 0.2.1
+Requires:       python-xgrammar >= 0.2.8
 # Limited to the arches python-torch is built for.
 ExclusiveArch:  x86_64 aarch64 riscv64
 %if %{with cpu_kernels}
@@ -326,7 +334,7 @@ export VLLM_TARGET_DEVICE=%{vllm_target_device}
 # Migrate an install that still carries the old update-alternatives symlink.
 %python_libalternatives_reset_alternative vllm
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/vllm

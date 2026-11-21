@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Nov  8 09:18:02 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Fix build with Qt 6.12 by disabling QML cache generation
+
+-------------------------------------------------------------------
+Sun Oct 18 07:54:13 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Delete audacity-rpmlintrc, no longer needed
+
+-------------------------------------------------------------------
+Sat Oct 17 17:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0.1, the major Audacity 4 release:
+  * Interface rebuilt on Qt with native high-DPI rendering;
+    toolbars and panels dock, float, hide, workspaces save layouts
+  * New clip-editing model: direct clip select, multi-clip move,
+    trim and stretch, clip groups, free placement across tracks
+  * Split tool, automatic track creation on paste, alignment guides,
+    per-project snap settings
+  * New .aup4 project format (.aup3 converts forward-only)
+  * Rebuilt-in effects, generators and meters; VST3, Nyquist and
+    LV2 support on Linux; per-track live meters
+  * Dropped in 4.0: Time Tracks, Note/MIDI tracks, Mixer, Macro
+    Manager and scripting pipe, VAMP and LADSPA hosting, Play-at-speed
+  * 4.0.1: export-multiple, portable Windows build, restored
+    Audacity 3 shortcuts, accessibility fixes, AppImage startup fix
+  * Packaging: switch to the audacity-sources tarball (submodules
+    included) with an offline extdeps source cache; link system
+    libraries (EXTDEPS_OVERRIDE_ALL=SYSTEM); drop the 3.x patches
+    audacity-no_buildstamp.patch, audacity-no_return_in_nonvoid.patch
+    and lib64-plugins-default-path.patch (obsolete)
+  * Ship the bundled sbsms runtime in a libsbsms10 subpackage
+    (no sbsms in Factory) and strip its build-tree RPATH;
+    package the versioned 4.0 datadir (languages.json, workspaces)
+  * CVE-2024-50602 (boo#1232608): not affected — links system expat (Factory 2.6.4 floor); rebuilt VST3 SDK vendors no expat
+  * Enable VST3 support by default (opt-in in 3.x): Audacity 4
+    rebuilt VST3 effects on Linux, SDK rebuilt from bundled sources
+  * Drop the audacity-plugins Provides/Obsoletes: the 3.x plugin
+    modules are gone in 4.0
+  * Exclude 32-bit, big-endian and unverified architectures
+    (i586, s390x, ppc64, ppc64le, riscv64)
+  * No %%check section: upstream unit tests are disabled in this build
+  * Restore the Recommends on audacity-lang; drop the unused
+    fdupes and update-desktop-files build requirements
+  * Build with the default Unix Makefiles generator: the macros'
+    build/install steps are make-based, -GNinja left no Makefile
+  * Fix au3 build against wxWidgets without the unsafe string
+    conversion (add audacity-wxstring-untranslatable.patch: route
+    wxString args through the au3::untranslatable bridge)
+
+-------------------------------------------------------------------
 Thu Sep  3 21:06:47 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to 3.7.9

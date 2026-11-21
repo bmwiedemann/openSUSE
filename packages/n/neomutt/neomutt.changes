@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 12 09:32:07 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 20260616:
+  Security:
+  - bcache: sanitize mailbox names that escape the cache dir
+  - auth_gss: fix out-of-bounds read of GSS security token
+  Flull release notes:
+  * https://github.com/neomutt/neomutt/releases/tag/20260616
+- update to 20260504: 
+  Security:
+  - Fix GSSAPI buffer underflow on short unwrapped tokens
+  - Reject percent-encoded NUL bytes in URL decoding
+  - Skip CN fallback when SAN dNSName entries exist (RFC6125)
+  - Cap POP3 UIDL responses to prevent OOM from a malicious server
+  - Harden POP host URL copy
+  Full release notes:
+  * https://github.com/neomutt/neomutt/releases/tag/20260504
+
+-------------------------------------------------------------------
 Mon Apr 20 21:15:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 20260406:

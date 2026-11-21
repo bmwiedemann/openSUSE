@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  8 08:50:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.0.5:
+  * CPU: new AVX rows for CPUs with AVX but without AVX2/FMA
+    (Sandy/Ivy Bridge, Bulldozer family, Jaguar/Puma).
+  * CPU: multi-socket machines report the real core count from
+    /proc/cpuinfo instead of assuming one socket.
+  * CPU: cache sizes the OS lists without one are now measured
+    (e.g. phones hiding cache sizes); unlisted levels are no
+    longer made up.
+  * A held or thermally paused run checkpoints its readings before
+    waiting, so a resumed run keeps them instead of remeasuring.
+
+-------------------------------------------------------------------
 Thu Oct 22 11:42:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.0.4:

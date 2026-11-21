@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:42:52 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.7.1:
+  * jgmenu-apps: use locale aware sorting for applications and categories #275 #278
+  * contrib/jgmenu-lx: fix build error relating to recent refactoring #273
+
+-------------------------------------------------------------------
 Wed Sep 16 05:07:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.7.0:

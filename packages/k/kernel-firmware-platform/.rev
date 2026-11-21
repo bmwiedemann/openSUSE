@@ -288,4 +288,33 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.3-rc1</comment>
     <requestid>1381444</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b9fc6346ad92271706c6c10097a45f67</srcmd5>
+    <version>20261026</version>
+    <time>1793989989</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.4-rc1
+
+- Update to version 20261026 (git commit 98b55c84e8da):
+  * linux-firmware: nxpwifi: add firmware for IW610 WiFi device
+
+- Update to version 20261017 (git commit a2dcb924f089):
+  * rockchip: add PCIe3 PHY firmware for snps-pcie3
+
+- Update to version 20261014 (git commit d5455717ead0):
+  * wfx: update to firmware 3.18
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * panthor: Add initial firmware for Architecture 14.8 Arm Mali GPU</comment>
+    <requestid>1394989</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8fa80a7a643dacf8b09cfd9391e0e48f</srcmd5>
+    <version>20261109</version>
+    <time>1794816373</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261109 (git commit 69e51bb26f3f):
+  * amd_pmf: Add AMD PMF TA Firmware v4 for 1AH_M80H</comment>
+    <requestid>1396922</requestid>
+  </revision>
 </revisionlist>

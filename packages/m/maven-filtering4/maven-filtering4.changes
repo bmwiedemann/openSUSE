@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Wed Nov  4 19:23:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.0.0-beta-2
+  * New features and improvements
+    + feat: support glob patterns in filter file paths
+    + MRESOURCES-162: Add failOnMissingFilterValue option to fail
+      build on unresolved filter tokens
+    + Add per-resource encoding support (MRESOURCES-281)
+    + feat: introduce ChangeDetection strategy for file copy
+    + Add nonFilteredFiles glob exclusions and opt-in
+      gracefulBinaryHandling
+    + Warn when empty filter file entries are skipped
+    + Reuse bounded reader during interpolation
+    + MSHARED-1412: Allow to customize Interpolator used by filter
+  * Bug Fixes
+    + MRESOURCES-254: resolve compound ${} references in property
+      values with custom delimiters
+    + Expand default non-filtered file extensions to include common
+      binary formats
+    + fix: handle symlinks in source and destination for copyFile
+      (MSHARED-1004)
+    + fix: restore first resource entry wins for overlapping
+      declarations
+    + fix: initialize Resource includes/excludes to empty lists
+    + fix: remove sensitive property values from debug log output
+    + Handle relative Windows paths when escaping
+    + Improve malformed input error details
+    + fix: handle missing property values
+    + Fix resource copy log for project base directory
+    + fix: normalize Windows drive paths
+    + Recalculate delimiter reader mark length
+    + Issue 289: filter file names one component at a time
+    + fix: copy missing fields in MavenResourcesExecution.copyOf()
+    + Fix setEscapeString(null) to clear escape state
+    + Add missing EOF checks in
+      MultiDelimiterInterpolatorFilterReaderLineEnding.read()
+  * Documentation updates
+    + Modernise the download page
+  * Maintenance
+    + remove pointless code
+    + Add Apache prefix to ATR project name
+    + Keep SLF4J on 1.7.x and Mockito on 4.x in Dependabot
+    + Unused code
+    + Restore the document metadata dropped when the pages were
+      ported
+    + Port the site documentation from APT to Markdown
+    + Build against Maven 4.0.0-rc-6
+    + Set up for ATR
+    + Cleanup tests
+    + feat: enable prevent branch protection rules
+    + Enable Github Issues
+    + MSHARED-1474: Upgrade to Maven 4.0.0-rc-2
+    + Use Release Drafter from shared and improvements
+    + Add PR Automation
+    + Update CI to use 4.0.0-beta-4. Added JDK 23
+  * Dependency updates
+    + build(deps-dev): bump mockitoVersion from 5.23.0 to 5.24.0
+    + Bump mavenVersion from 4.0.0-rc-2 to 4.0.0-rc-7
+    + Bump org.apache.maven.shared:maven-shared-components from 43
+      to 50
+    + Keep SLF4J on 1.7.x and Mockito on 4.x in Dependabot
+    + Drop Hamcrest from tests
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.27 to
+      1.30.0
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump org.codehaus.plexus:plexus-utils from 3.0.24 to 4.0.3 in
+      /src/test/resources
+    + Bump mockitoVersion from 5.12.0 to 5.23.0
+    + Update to 47 and site to 2.0.0
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 4.0.0-beta-2-SNAPSHOT to
+      4.0.0-beta-4
+    + MSHARED-1455: Upgrade to Maven 4.0.0-rc-1
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0
+- Modified patches:
+  * 0001-Be-gracious-with-binary-files-among-the-resources-to.patch
+  * maven-filtering4-java8compat.patch
+    + rebase
+
+-------------------------------------------------------------------
 Mon Jul 13 16:49:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to the git checkout from 7th of June 2026 (hash 2d20dde)

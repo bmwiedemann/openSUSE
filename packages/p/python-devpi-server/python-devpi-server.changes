@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:07:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.21.0:
+  * Use sha256 for login token signing. Existing tokens will be
+    invalidated, but they are valid for only 10 hours anyway.
+  * Block ``.`` and ``..`` as user and index names.
+  * Reported by Zachariah Mithani [zachariah-mithani] (AploSec)
+  * https://github.com/devpi/devpi/security/advisories/GHSA-w72q-
+    5vww-p2rh
+
+-------------------------------------------------------------------
 Tue Oct 13 14:53:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Drop the pin on setuptools, packages in question have been fixed

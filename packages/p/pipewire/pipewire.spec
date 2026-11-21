@@ -88,6 +88,7 @@ Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
 Patch3:         0003-modules-improve-error-reporting.patch
 Patch5:         pipewire-const-correctness-2.patch
+Patch6:         0001-spa-libcamera-device-0.8-compatibility.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
@@ -486,6 +487,16 @@ Requires:       %{name} >= %{version}-%{release}
 %description config-raop
 This package contains the configuration files to enable the RAOP module.
 
+%package module-ffado
+Summary:        PipeWire media server firewire support
+License:        MIT
+Requires:       %{libpipewire} >= %{version}-%{release}
+Requires:       %{name} >= %{version}-%{release}
+Supplements:    (pipewire and ffado)
+
+%description module-ffado
+This package contains the firewire (FFADO) support for PipeWire.
+
 %lang_package
 
 %prep
@@ -735,6 +746,7 @@ done
 %files modules-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}
 %{_libdir}/pipewire-%{apiver}/libpipewire-module-*.so
+%exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-ffado-driver.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-jack-tunnel.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-jackdbus-detect.so
 %exclude %{_libdir}/pipewire-%{apiver}/libpipewire-module-x11-bell.so
@@ -932,6 +944,9 @@ done
 
 %files config-raop
 %{_datadir}/pipewire/pipewire.conf.d/50-raop.conf
+
+%files module-ffado
+%{_libdir}/pipewire-%{apiver}/libpipewire-module-ffado-driver.so
 
 %package tests
 Summary:        Installed tests for %{name}

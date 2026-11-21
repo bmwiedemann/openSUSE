@@ -198,4 +198,13 @@
 </comment>
     <requestid>1381454</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3b848634866fcae5be40b5ee7a989c94</srcmd5>
+    <version>0.66b1</version>
+    <time>1793724710</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.66b1:
+  * match opentelemetry 1.45.1 release</comment>
+    <requestid>1394357</requestid>
+  </revision>
 </revisionlist>

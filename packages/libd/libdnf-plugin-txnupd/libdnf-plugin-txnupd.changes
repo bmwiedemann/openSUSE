@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 20:50:24 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 0.4.0:
+  * Fix linking with libtukit
+  * Finalize snapshots after libdnf5 closes rpmdb
+  * Log finish() messages in logger
+  * Report snapshot create failures, instead of aborting
+  * apply-live: Sync /etc state before applying snapshot
+  * Drop version information from manpage
+- Drop 3add4c39b5506f8bfafd1daca3bf6165e55c5e18.patch
+
+-------------------------------------------------------------------
 Mon Jun 15 20:57:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Backport fix from upstream to fix linking with libtukit

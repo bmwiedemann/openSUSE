@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sat Nov  7 12:09:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20261107 (1000 upstream commits):
+  * netlink/genl: per-command attribute tables drawn from each
+    handler's policy (ovs, tipc, ethtool, nfsd, nl80211,
+    wireguard, psp, netdev, sunrpc, lockd); ethtool LINKINFO_SET
+    and LINKMODES_SET grammars; drop ids removed upstream
+  * nfnl: per-command tables for nftables, ipset and ctnetlink;
+    typed tuple nests, hook devices, small handles
+  * bpf: LINK_CREATE multi arms the takers accept, kprobe_multi
+    syms from a kallsyms pool, uprobe_multi path/path_fd
+    conformance; landlock ABI 12 handling in the pool ruleset
+  * Harden re-call divergence checks to judge by what the kernel
+    was handed or ran (statmount, get_mempolicy, rt_sigpending,
+    recvmmsg, move_pages, io_submit and more)
+  * compat: compat twins for sendmsg/recvmsg and
+    sendmmsg/recvmmsg, compat iovec/msghdr at the ABI entry
+    width, sixth argument passed in a register
+  * check-static/uapi shims: verify enum shims against the kernel
+    headers including internal names; refuse heap inputs left in
+    a scrubbed arg slot; Makefile refuses a stale config.h
+  * Drop what upstream removed: DCCP and PF_LLC sockets,
+    IPV6_ADDRFORM, LOOP_CHANGE_FD, the NETLINK_XFRM emitter and
+    the socket-family grammar
+
+-------------------------------------------------------------------
+Thu Oct 15 16:30:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20261006:
+  * Drop KVM fuzzing support: kvm fd provider, kvm ioctls
+    (system, vcpu, vm), kvm object pool types, kvm header
+    detection and related stats/telemetry
+
+-------------------------------------------------------------------
 Mon Oct  5 08:05:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20260923:

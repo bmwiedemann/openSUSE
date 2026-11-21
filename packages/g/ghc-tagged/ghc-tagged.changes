@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:16:51 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tagged to version 0.8.11.
+  0.8.11 [2026.09.28]
+  -------------------
+  * Include `Data` and `Generic` instances for `Tagged` when building with
+    MicroHs.
+
+-------------------------------------------------------------------
 Sat Jan  3 14:41:03 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tagged to version 0.8.10 revision 1.

@@ -408,4 +408,38 @@
   (bsc#1288500, CVE-2026-116591) (forwarded request 1393437 from glaubitz)</comment>
     <requestid>1393440</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>ef7f3ce26872f4ca83071bb16e73ddfb</srcmd5>
+    <version>3.5.2</version>
+    <time>1793724904</time>
+    <user>anag_factory</user>
+    <comment>- Enable build on riscv64 (forwarded request 1394517 from Andreas_Schwab)</comment>
+    <requestid>1394545</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8a478fd9fe66b57a4a6d994513c935ae</srcmd5>
+    <version>3.5.3</version>
+    <time>1794318018</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.5.3
+  * feat: pass an OIDC token into commands by @yndu13 in (#1482)
+  * fix: forward source IP context to ossutil by @PanPanZou in (#1489)
+  * fix: reuse source metadata for OSS transfer progress by @PanPanZou
+    in (#1487)
+  * fix: respect AI mode for MCP authentication errors by @PanPanZou
+    in (#1488)
+  * feat: integrate Bailian standalone CLI binaries by @api-tool-agent
+    in (#1486)
+  * feat: bridge dgate as an external CLI command by @huangjunying-229
+    in (#1492)
+  * refactor(pricing): migrate CLI and plugin runtime to SDK v2
+    by @api-tool-agent in (#1494)
+  * fix: reuse preinstalled ossutil and isolate installation files
+    by @PanPanZou in (#1490)
+  * feat: add CLI telemetry by @AllyW in (#1493)
+  * feat: verify plugin and upgrade artifacts by @yndu13 in (#1474)
+  * fix: refine environment detection by @AllyW in (#1501)
+  * Update Aliyun OpenAPI meta data (forwarded request 1396396 from glaubitz)</comment>
+    <requestid>1396402</requestid>
+  </revision>
 </revisionlist>

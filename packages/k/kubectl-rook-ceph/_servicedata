@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/rook/kubectl-rook-ceph</param>
-              <param name="changesrevision">02adc31635ba42502f05e47a08294917cc0e0487</param></service></servicedata>
+              <param name="changesrevision">02adc31635ba42502f05e47a08294917cc0e0487</param></service><service name="tar_scm">
+                <param name="url">https://github.com/rook/kubectl-rook-ceph.git</param>
+              <param name="changesrevision">3c27bc7d0e0a85fef81846be66b5fceb7e67c80a</param></service></servicedata>

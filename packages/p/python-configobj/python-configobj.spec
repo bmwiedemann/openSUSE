@@ -1,7 +1,7 @@
 #
 # spec file for package python-configobj
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@ Version:        5.0.9
 Release:        0
 Summary:        Config file reading, writing and validation
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/DiffSK/configobj
 # No tests in PyPI sdist
 Source:         https://github.com/DiffSK/configobj/archive/refs/tags/v%{version}.tar.gz#/configobj-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE bsc#1286097 ReDoS in section marker parsing
+Patch0:         CVE-2026-112300.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

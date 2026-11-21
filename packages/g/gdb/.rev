@@ -4310,4 +4310,12 @@ Please forward to 13.2, so we can have a working DrKonqi there (forwarded reques
   yama/selinux (jsc#PED-15928).</comment>
     <requestid>1348954</requestid>
   </revision>
+  <revision rev="194" vrev="1">
+    <srcmd5>1f159bfb5f8ea7be5e0e512280e910a2</srcmd5>
+    <version>17.2</version>
+    <time>1794162085</time>
+    <user>dimstar_suse</user>
+    <comment>Fix CVE-2026-13732 and update to 17.2.</comment>
+    <requestid>1395864</requestid>
+  </revision>
 </revisionlist>

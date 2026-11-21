@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov  4 20:31:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.13.0
+  * call: add call_set_close_headers().
+  * amr: respect mode-set instead of using max.
+  * audio: add functions to start and stop the transmit thread.
+  * rtprecv: strip padding from rtp packet.
+  * modules/gzrtp: multistream fix.
+  * webrtc/demo: add loopback switch.
+  * modules/gzrtp: menc_event_h first argument needs to be string.
+  * sdp: refactor sdp_decode_multipart handling and add test.
+  * jbuf: increase jitter influence.
+  * webrtc_aec: enable echo canceller via ApplyConfig.
+  * audio: remember ausrc module and device.
+  * test/sni: replace test certs from libre.
+
+-------------------------------------------------------------------
 Sat Oct 17 05:55:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Remove baresip-devel Recommends from main package, installing

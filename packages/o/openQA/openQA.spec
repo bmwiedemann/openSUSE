@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1793612038.36a015f4
+Version:        5.1795089075.1f7748a4
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -375,6 +375,18 @@ openQA workers can optionally host a local llama.cpp server to provide
 LLM features directly from the worker node. This package provides the
 Podman Quadlet configuration to automatically manage the server.
 
+%package llm-decision-server
+Summary:        Local decision model server for openQA workers
+Requires:       %{name}-worker = %{version}
+Requires:       podman
+
+%description llm-decision-server
+openQA workers can optionally host a second local llama.cpp server with a
+decision model. openqa-llm-investigate asks it for the class of a test
+failure if its option --decision-url (LLM_DECISION_URL) is set. This
+package provides the Podman Quadlet configuration to automatically manage
+the server.
+
 %prep
 %setup -q
 sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
@@ -635,6 +647,17 @@ fi
 %postun llm-server
 %service_del_postun openqa-llm-server.service
 
+%post llm-decision-server
+# ensure the Podman Quadlet generator is run to create the .service unit
+[ -x /usr/bin/systemctl ] && /usr/bin/systemctl daemon-reload || :
+%service_add_post openqa-llm-decision-server.service
+
+%preun llm-decision-server
+%service_del_preun openqa-llm-decision-server.service
+
+%postun llm-decision-server
+%service_del_postun openqa-llm-decision-server.service
+
 %files
 %doc README.md
 %{_sbindir}/rcopenqa-gru
@@ -734,6 +757,9 @@ fi
 %{_datadir}/openqa/script/openqa-webui-daemon
 %{_datadir}/openqa/script/upgradedb
 %{_datadir}/openqa/script/modify_needle
+%if 0%{?suse_version} > 1500
+%{_sysusersdir}/geekotest.conf
+%endif
 # TODO: define final user
 %defattr(-,geekotest,root)
 # attention: never package subdirectories owned by a user other
@@ -751,9 +777,6 @@ fi
 %dir %{_localstatedir}/lib/openqa/share/factory/repo
 %dir %{_localstatedir}/lib/openqa/share/factory/other
 %ghost %{_localstatedir}/log/openqa
-%if 0%{?suse_version} > 1500
-%{_sysusersdir}/geekotest.conf
-%endif
 
 %if %{with devel_package}
 %files devel
@@ -840,17 +863,17 @@ fi
 %{_datadir}/openqa/script/openqa-workercache-daemon
 %{_datadir}/openqa/script/openqa-worker-cacheservice-minion
 %dir %{_localstatedir}/lib/openqa/pool
-%defattr(-,_openqa-worker,root)
-%dir %{_localstatedir}/lib/openqa/cache
-%dir %{_localstatedir}/lib/openqa/cache/podman
-# own one pool - to create the others is task of the admin
-%dir %{_localstatedir}/lib/openqa/pool/1
 %if 0%{?suse_version} > 1500
 %{_sysusersdir}/%{name}-worker.conf
 %endif
 %if 0%{?suse_version} <= 1560
 %{_prefix}/lib/sysctl.d/01-openqa-reload-worker-auto-restart.conf
 %endif
+%defattr(-,_openqa-worker,root)
+%dir %{_localstatedir}/lib/openqa/cache
+%dir %{_localstatedir}/lib/openqa/cache/podman
+# own one pool - to create the others is task of the admin
+%dir %{_localstatedir}/lib/openqa/pool/1
 
 %files client
 %dir %{_datadir}/openqa
@@ -941,6 +964,13 @@ fi
 %dir %{_datadir}/containers
 %dir %{_datadir}/containers/systemd
 %{_datadir}/containers/systemd/openqa-llm-server.container
+%dir /opt/llm
+%dir /opt/llm/models
+
+%files llm-decision-server
+%dir %{_datadir}/containers
+%dir %{_datadir}/containers/systemd
+%{_datadir}/containers/systemd/openqa-llm-decision-server.container
 %dir /opt/llm
 %dir /opt/llm/models
 

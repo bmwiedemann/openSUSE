@@ -824,4 +824,41 @@
   * Enabled Ctrl-Z suspension at the prompt</comment>
     <requestid>1380727</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>884eefa528b93e935be019d04883282b</srcmd5>
+    <version>4.4.1</version>
+    <time>1795182214</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.1:
+  * Enhancements
+  * `set_window_title()` is now an instance method, so title
+    changes use the calling application's terminal.
+  * Added `History.is_persisted()` to check whether a history
+    entry was loaded from a previous session.
+  * Bug Fixes
+  * `History.get()` and `History.span()` raise
+    `HistoryIndexError`, an `IndexError` subclass, for invalid
+    indices and bounded ranges that select no items.
+    Unbounded ranges (`:` and `..`) can still return an empty
+    dictionary. Ranges starting before the beginning of
+    history are rejected instead of clamped.
+  * Malformed ranges, including zero endpoints, raise
+    `HistoryFormatError`, a `ValueError` subclass. The
+    `history` command reports these errors without a
+    traceback hint, and index zero reminds that the first
+    command is command 1.
+  * End-only ranges start at command 1 in the full history,
+    including persisted commands, like explicit-start ranges
+    and single indices. Bare `history` and unbounded ranges
+    still select only the current session unless `--all` is
+    given.
+  * Replaying or editing a selection with persisted commands
+    requires `--all`, including single indices and bounded
+    ranges. Displaying or saving such selections does not,
+    and command numbers are unchanged.
+  * Running, editing, or saving an empty history selection
+    fails before replay, editor launch, or file creation.
+    This covers `history -o` and `history -e` without a</comment>
+    <requestid>1398199</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-globalkeys
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-globalkeys
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Global keyboard shortcuts registration
 License:        LGPL-2.1-or-later
@@ -26,17 +26,17 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
-BuildRequires:  cmake(lxqt) >= %{version}
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
 BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(Qt6Widgets) >= 6.6
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.10.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
+BuildRequires:  cmake(lxqt) >= %{version}
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 Requires:       %{name}-branding = %{version}-%{release}
 

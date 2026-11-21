@@ -21,7 +21,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   34
+%define mfr_revision   35
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -58,7 +58,10 @@ Patch0:         ImageMagick_policy_etc.patch
 Patch1:         ImageMagick-configuration-SUSE.patch
 # library installation
 Patch2:         ImageMagick-library-installable-in-parallel.patch
-Patch1000:      ImageMagick-s390x-disable-tests.patch
+Patch3:         ImageMagick-s390x-disable-tests.patch
+# 16-bit samples byte-swapped in PNG->TIFF [bsc#1282560]
+# https://github.com/ImageMagick/ImageMagick/issues/9095
+Patch4:         ImageMagick-tiff-correct-endianess.patch
 
 BuildRequires:  chrpath
 BuildRequires:  dejavu-fonts
@@ -268,10 +271,7 @@ policy plus disable a few other coders for reading and/or writing.
 %prep
 %setup -q -n ImageMagick-%{source_version}
 cp config/policy-secure.xml config/policy-SUSE.xml
-%autopatch -p1 -M 999
-%ifarch s390x
-%patch -P 1000 -p1
-%endif
+%autopatch -p1
 
 %build
 # bsc#1088463

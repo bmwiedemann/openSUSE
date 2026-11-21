@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:15:38 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Run the offline parts of the upstream test suite in %check.
+
+- Don't package the unversioned liblftp-jobs.so and liblftp-tasks.so
+  symlinks. These are private libraries without public headers, so
+  the symlinks are useless and only triggered rpmlint's
+  devel-file-in-non-devel-package error.
+
+-------------------------------------------------------------------
 Mon Jun  8 15:35:23 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Revert changes to "lftp-4.9.2-cdefs.patch" from 2025-08-06. The

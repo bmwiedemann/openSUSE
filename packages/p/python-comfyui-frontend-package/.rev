@@ -254,4 +254,52 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update to 1.58.4 (backport fixes only: agent, auth, audio, browser-compat and canvas fixes; vendored DOMPurify stays 3.4.13).</comment>
     <requestid>1394467</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>145381ec38c584439b390e17c66593c0</srcmd5>
+    <version>1.58.5</version>
+    <time>1793818007</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.58.5</comment>
+    <requestid>1394861</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ba280aba3c0a65936239eb812a41617f</srcmd5>
+    <version>1.58.7</version>
+    <time>1794090817</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.58.7 (backport fixes only)</comment>
+    <requestid>1396017</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>64cb6e1f7ff075f64040b686bc0e41fa</srcmd5>
+    <version>1.59.1</version>
+    <time>1794590987</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.1: workspace deployment switcher, canvas marquee-select, agent composer rework, SSO fixes.</comment>
+    <requestid>1396964</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>254a31774e280bb52cc1b33e0d4f9614</srcmd5>
+    <version>1.59.2</version>
+    <time>1794932340</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.2: backport fixes completing Open on Cloud on core/1.59.</comment>
+    <requestid>1398014</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1e79becd58acc63714d8aaffb73a93ee</srcmd5>
+    <version>1.59.8</version>
+    <time>1795103784</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.8: Cloud, agent and billing backports.</comment>
+    <requestid>1398607</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>5e7c97cb1b32314851c1d8981d6b0d47</srcmd5>
+    <version>1.59.10</version>
+    <time>1795182491</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.10: backport fixes on core/1.59.</comment>
+    <requestid>1398891</requestid>
+  </revision>
 </revisionlist>

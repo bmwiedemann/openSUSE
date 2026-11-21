@@ -18,7 +18,7 @@
 
 %define lname liblink-grammar5
 Name:           link-grammar
-Version:        5.13.0
+Version:        5.13.2
 Release:        0
 Summary:        Syntactic parser and grammar checker
 License:        LGPL-2.1-only
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libpcre2-8)
-BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(sqlite3) >= 3.0.0
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      perl-clinkgrammar < 5.4.3
 

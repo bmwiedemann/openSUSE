@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:25:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.1:
+  * Annotation queues: agreement on items list and count, set
+    and clear final answer on completed items
+  * Sandbox SDK: volumes, batch delete and usage, tag value
+    IDs on create; workspace resource tag keys and values
+  * Python evaluate() can upload only some runs; local
+    evaluation experiment names preserved
+  * Thread stats add stride and feedback stats; run-rules GET
+    applies all filters together
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
+Tue Nov 17 16:38:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0:
+  * Sessions v2 write APIs and SDK methods; cursor-paginated
+    list with type filter, delete/retrieve, long-lived TTL days
+  * Sandboxes require explicit access-delegation permissions;
+    proxy rules hardened (scheme/port, match_hosts, no creds on
+    non-canonical paths, presigned URL passthrough)
+  * Evaluator metadata field and filtering, bulk example metadata
+    update; annotation queues return rubric keys
+  * Agent UUID on responses, search by name or ID; Prompt Hub
+    repos/commits, workspace secrets and datasets.listV2 in SDKs
+  * Thread-level decision-model run rules with v2 filters;
+    GET /api/v1/runs/rules deprecated; AI search parse exposed
+  * Drop Python 3.10 support (requires-python >= 3.11)
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
+Wed Nov  4 14:19:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build with uuid-utils 1.0 (TypeError: uuid7() got an
+  unexpected keyword argument 'timestamp' in %check):
+  support uuid7(nanoseconds=...) with fallback to the 0.x pair
+  in langsmith-uuid-utils-1.0-compat.patch.
+- Deselect timing-flaky test_refresh_failure_keeps_stale, which
+  asserts a background refresh thread fires within sleep(0.5)
+  and misses the window on loaded ARM builders.
+- Deselect timing-flaky test_app_loop_does_not_back_off, which
+  asserts exact retry sleep sequences and grows an extra retry
+  on loaded ARM builders (aarch64 red, x86_64 green).
+
+-------------------------------------------------------------------
+Mon Nov  2 13:22:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.17:
+  * SDK reads the profile api_key_env in the Python, JS and
+    Java SDKs
+  * CLI gains evaluators create-decision-model; evaluator
+    tables show the effective spend limit
+  * Sandboxes: AWS session tags on proxy role rules
+  * Restore disposable Engine sandboxes with the released SDK
+  * Unify shared-profile OAuth refresh locking across SDKs
+  * Expose v1 session creation and updates in the Python SDK
+  * Run tests with upstream's httpx2_alias sitecustomize so test
+    clients use the httpx2 backend the code expects
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Sat Oct 31 13:40:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.16:

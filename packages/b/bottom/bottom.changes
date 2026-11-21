@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov  1 08:52:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.15.0:
+  Features
+  * Initial Intel GPU support for Linux to get process GPU usage.
+  * Support solid bars using block and square characters via
+    styles.widgets.bar_type.
+  * Add configurable binary disk capacity units for disk widget
+    usage (thanks @pederbe!).
+  * Add configurable binary disk capacity units for disk widget I/O.
+  * Add swap column for processes for Linux.
+  Changes
+  * Enable scrollbars by default.
+  * Show decimal places for disk usage info.
+  Bug Fixes
+  * Fix waking up NVIDIA GPUs when getting stats on Linux.
+  * Fix scrollbars not drawing when height of bar was 2 or less.
+  * Fix an abort (SIGABRT) if the terminal is gone when exiting.
+  Other
+  * Add missing documentation around disk I/O graph.
+
+-------------------------------------------------------------------
+Tue Sep  1 13:47:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.9:
+  Bug Fixes
+  * Fix typo in --help flag.
+  * Fix handling Linux cmdline values that don't have null byte
+    separators.
+  Features
+  * Add option to show zeroed total network usage on startup.
+- Update to version 0.14.8:
+  Bug Fixes
+  * Fix close logic when pressing enter in sort menu.
+  * Fix cgroups v1 swap collection around sentinel max value.
+  Other
+  * Fix schema links + link generation.
+
+-------------------------------------------------------------------
 Tue Jul 28 08:14:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.7:

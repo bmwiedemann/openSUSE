@@ -14,10 +14,11 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+#
 
 
 Name:           QLog
-Version:        0.54.0
+Version:        0.54.2
 Release:        0
 Summary:        Amateur radio logbook software
 License:        GPL-3.0-or-later

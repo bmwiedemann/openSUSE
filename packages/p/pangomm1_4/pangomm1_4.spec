@@ -25,7 +25,7 @@ Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.gtkmm.org
+URL:            https://gtkmm.gnome.org
 Source0:        https://download.gnome.org/sources/pangomm/2.46/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler

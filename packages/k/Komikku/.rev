@@ -868,4 +868,32 @@
   * Updated translations.</comment>
     <requestid>1393558</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>54490881f654c5579570e27e2d7e13da</srcmd5>
+    <version>51.3.0</version>
+    <time>1794410945</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.3.0:
+  * [Reader] RTL/LTR/Vertical pager: Added double page view
+  * [Servers] BDplus (FR): Update
+  * [Servers] JManga (JA): Update
+  * [Servers] Kavita: Fixed wrong volume listing
+  * [Servers] LanorTrad (FR): Update
+  * Updated translations.</comment>
+    <requestid>1396746</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>bd8d9291135e6fe72722a49694fe4465</srcmd5>
+    <version>51.4.0</version>
+    <time>1794932446</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.4.0:
+  * [Card] Fixed Pull-to-Update
+  * [Servers] Added Niadd (DE/ES/FR/IT/pt_BR/RU)
+  * [Servers] MangaHub (EN): Update
+  * [Servers] MangaWorld (IT): Update
+  * [Servers] Rawkuma (JA): Disabled
+  * Updated translations.</comment>
+    <requestid>1398104</requestid>
+  </revision>
 </revisionlist>

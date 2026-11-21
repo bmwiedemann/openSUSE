@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  3 03:21:54 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.3
+  + show help if no args or --help even on unsupported system
+  + remove unused int_to_b64()
+  + on --test-key, return non-zero if test key is not enrolled
+  + introduce --is-sb-enabled parameter
+  + return zero in case --test-key is enrolled
+  + Remove traditional des and md5 passwords
+  + man: fix typo "|- X" -> "| -X"
+  + PasswordCrypt: Fix an ABI issue
+  + Fix bash completion (bsc#1286920)
+- Move the bash completion script to mokutil-bash-completion
+
+-------------------------------------------------------------------
 Thu Oct  2 11:22:06 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

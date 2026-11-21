@@ -150,4 +150,15 @@
 - Update Requires from setup.py (forwarded request 1355289 from glaubitz)</comment>
     <requestid>1355946</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>501a05a385043db37bffb7353eb2790d</srcmd5>
+    <version>2.5.1</version>
+    <time>1793990645</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.5.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1395426 from glaubitz)</comment>
+    <requestid>1395428</requestid>
+  </revision>
 </revisionlist>

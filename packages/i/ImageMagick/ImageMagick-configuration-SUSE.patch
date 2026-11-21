@@ -1,7 +1,7 @@
-Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-35/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-33/config/policy-SUSE.xml
+--- ImageMagick-7.1.2-35.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-35/config/policy-SUSE.xml
 @@ -64,7 +64,7 @@
    <policy domain="resource" name="disk" value="2GiB"/>
  
@@ -27,7 +27,7 @@ Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
  
    <!-- Prevent access to file descriptors. -->
    <policy domain="path" rights="none" pattern="[Ff][Dd\]:*"/>
-@@ -135,6 +135,22 @@
+@@ -139,6 +139,22 @@
  
    <!-- Fail if the target path is a symbolic link. -->
    <policy domain="system" name="symlink"

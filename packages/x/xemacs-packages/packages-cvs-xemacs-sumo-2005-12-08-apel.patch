@@ -1,8 +1,12 @@
 Index: packages/xemacs-packages/apel/install.el
 ===================================================================
---- packages/xemacs-packages/apel/install.el.orig
-+++ packages/xemacs-packages/apel/install.el
-@@ -149,14 +149,17 @@
+---
+ xemacs-packages-20250605/xemacs-packages/apel/install.el |   18 ++++++++-------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+--- xemacs-packages-20250605/xemacs-packages/apel/install.el
++++ xemacs-packages-20250605/xemacs-packages/apel/install.el	2026-10-21 13:43:12.632195304 +0000
+@@ -150,14 +150,17 @@
  	  (featurep 'meadow) ; for Meadow
  	  (and (eq system-type 'windows-nt) ; for NTEmacs
  	       (>= emacs-major-version 20)))
@@ -21,10 +25,10 @@ Index: packages/xemacs-packages/apel/install.el
 -    "local.lisp"))
 +      "local.lisp")))
  
- (defun install-detect-elisp-directory (&optional prefix elisp-prefix
- 						 allow-version-specific)
-@@ -189,16 +192,15 @@
- 							      "\\\\" "/"))))
+ ;; Avoid compile warning.
+ (eval-when-compile (autoload 'replace-in-string "subr"))
+@@ -201,16 +204,15 @@
+ 					   dir)))
  		    (throw 'tag (car rest))))
  	    (setq rest (cdr rest)))))
 -      (expand-file-name (concat (if (and (not (featurep 'xemacs))

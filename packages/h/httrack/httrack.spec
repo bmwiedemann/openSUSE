@@ -19,7 +19,7 @@
 
 %define so_ver 3
 Name:           httrack
-Version:        3.50.0
+Version:        3.51.0
 Release:        0
 Summary:        Offline Browser Utility
 License:        GPL-3.0-or-later
@@ -108,6 +108,7 @@ end
 %postun -n libhttrack%{so_ver} -p /sbin/ldconfig
 
 %files
+%doc AUTHORS ChangeLog
 %license license.txt
 %{_bindir}/htsserver
 %{_bindir}/httrack
@@ -130,6 +131,8 @@ end
 %{_libdir}/pkgconfig/libhttrack.pc
 
 %files doc
+%exclude %{_docdir}/%{name}/AUTHORS
+%exclude %{_docdir}/%{name}/ChangeLog
 %doc %{_docdir}/%{name}
 
 %files -n libhttrack%{so_ver}

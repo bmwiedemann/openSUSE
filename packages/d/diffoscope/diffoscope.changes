@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 17 09:40:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 339:
+  * Rework including .zip-related differences for .odt files.
+  * Add some comments to recent OdtFile changes.
+  * Update copyright years.
+  * Binutils no longer shows the top-level directory; update
+    expected test output.
+  * Mark that the test_nupkg_compressed_files test requires the
+    tlsh Python module. (Closes: #1151752)
+  * Support the dumppdf binary being called dumppdf.py on the
+    host system.
+  * Update copyright years.
+
+-------------------------------------------------------------------
 Wed Oct  7 16:38:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 332:

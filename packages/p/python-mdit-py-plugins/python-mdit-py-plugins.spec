@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mdit-py-plugins
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Collection of plugins for markdown-it-py
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-markdown-it-py >= 2
+Requires:       python-markdown-it-py >= 4.1
 BuildArch:      noarch
 %python_subpackages
 

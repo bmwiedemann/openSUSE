@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Too many changes since 6.31.0, only listing bugfixes:
+  * layouts: only accept forward mouse button when such page exists (kde#494216)
+  * primitives: Align node rect position of Icon to device pixel grid (kde#522336)
+  * WheelHandler: don't transpose the delta on wayland as well (kde#526317)
+  * WheelHandler: don't transpose the delta on wayland as well (kde#526317)
+  * Revert "Add textFormat property to other delegates" (kde#525837)
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

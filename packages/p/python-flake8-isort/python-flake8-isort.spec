@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-isort
-Version:        7.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Plugin integrating isort in flake8
 License:        GPL-2.0-only
@@ -30,14 +30,11 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module isort >= 5.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testfixtures}
-BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-flake8
 Requires:       python-isort >= 5.0.0
-Requires:       python-testfixtures
 BuildArch:      noarch
 %python_subpackages
 
@@ -58,7 +55,7 @@ Use `isort`_ to check if the imports on your python files are sorted the way you
 %pytest ./run_tests.py
 
 %files %{python_files}
-%doc README.rst CHANGES.rst
+%doc README.md CHANGES.md
 %license LICENSE*
 %{python_sitelib}/flake8_isort.py*
 %pycache_only %{python_sitelib}/__pycache__/flake8_isort*

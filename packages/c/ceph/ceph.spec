@@ -32,21 +32,7 @@
 %bcond_without tcmalloc
 %endif
 %bcond_without rbd_ssd_cache
-%ifarch x86_64
-%bcond_without rbd_rwl_cache
-%else
-%bcond_with rbd_rwl_cache
-%endif
 %if 0%{?fedora} || 0%{?rhel} || 0%{?openEuler}
-%if 0%{?rhel} < 9 || 0%{?openEuler}
-%bcond_with system_pmdk
-%else
-%ifarch s390x aarch64
-%bcond_with system_pmdk
-%else
-%bcond_without system_pmdk
-%endif
-%endif
 %bcond_without selinux
 %bcond_without amqp_endpoint
 %bcond_without kafka_endpoint
@@ -58,11 +44,6 @@
 %global _remote_tarball_prefix https://download.ceph.com/tarballs/
 %endif
 %if 0%{?suse_version}
-%ifarch s390x
-%bcond_with system_pmdk
-%else
-%bcond_without system_pmdk
-%endif
 %bcond_with amqp_endpoint
 %bcond_with cephfs_java
 %bcond_with kafka_endpoint
@@ -357,16 +338,6 @@ BuildRequires:  json-devel
 BuildRequires:  nlohmann_json-devel
 %endif
 BuildRequires:  libevent-devel
-%endif
-%if 0%{with system_pmdk}
-%if 0%{?suse_version}
-BuildRequires:  libndctl-devel >= 63
-%else
-BuildRequires:  daxctl-devel >= 63
-BuildRequires:  ndctl-devel >= 63
-%endif
-BuildRequires:  libpmem-devel
-BuildRequires:  libpmemobj-devel >= 1.8
 %endif
 %if 0%{with system_arrow}
 BuildRequires:  libarrow-devel
@@ -1531,14 +1502,8 @@ cmake .. \
 %if 0%{with cmake_verbose_logging}
     -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
 %endif
-%if 0%{with rbd_rwl_cache}
-    -DWITH_RBD_RWL:BOOL=ON \
-%endif
 %if 0%{with rbd_ssd_cache}
     -DWITH_RBD_SSD_CACHE:BOOL=ON \
-%endif
-%if 0%{with system_pmdk}
-    -DWITH_SYSTEM_PMDK:BOOL=ON \
 %endif
 %if 0%{without jaeger}
     -DWITH_JAEGER:BOOL=OFF \

@@ -2159,4 +2159,41 @@
         Fixed inflate_init() dropping the preset dictionary for raw streams with a non-default window. (forwarded request 1386989 from adkorte)</comment>
     <requestid>1387117</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>be3fd31143cd272dc915c838823f525c</srcmd5>
+    <version>8.5.13</version>
+    <time>1795103702</time>
+    <user>anag_factory</user>
+    <comment>- version update to 8.5.13
+- Core:
+  . Fixed bug GH-24184 (System ID not being reinitialized after an Apache
+    graceful restart, potentially causing incompatible OPcache file cache
+    entries to be reused). (Levi Morrison)
+  . Fixed memory leak when an exception already contains the pending exception
+    in its previous chain. (Edmond)
+  . Fixed bug GH-23979 (Nullsafe operator must not flush delayed oplines of an
+    enclosing function). (ndossche)
+  . Fixed memory manager keeping a block reallocated to exactly the size of
+    the next smaller bin in its larger bin, which efree_size() then freed
+    into the wrong one. (Marc Bennewitz)
+  . Fixed bug GH-24081 (User opcode handlers resume execution against a stale
+    frame under ZEND_VM_KIND_TAILCALL). (devnexen)
+  . Fixed bug GH-24218 (Invalid opcode for count() of a literal array
+    without SCCP). (lazerg)
+  . Fix throwing behaviour with recursive arrays in VM. (ndossche)
+  . Fixed skipped catch block when switching fibers during exception unwinding
+    (Nicolas Grekas)
+  . Fix escape analysis for objects implementing ArrayAccess. (ndossche, Arnaud)
+  . Fix UAF for resolved callable zval. (EdmondDantes)
+  . Fix memory leak for nested HTTP calls. (EdmondDantes)
+  . Fix function and constant imports in compile_to_ast and add support
+    for grouping. (Klaas Skelte van der Werf)
+  . Fixed bug GH-24668 (zend_set_local_var() leaks the previous value of an
+    existing CV). (yasu20200121web-prog, lazerg)
+  . Fixed unmapping of an unrelated range when the aligned chunk mmap fails
+    (Marti2203).
+  . Fixed AST printing dropping final on class constants and properties, and
+    abstract on properties. (Jorg Sowa)</comment>
+    <requestid>1398735</requestid>
+  </revision>
 </revisionlist>

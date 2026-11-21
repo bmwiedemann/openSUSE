@@ -17,7 +17,7 @@
 
 
 Name:           gtklock
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        GTK-based lockscreen for Wayland
 License:        GPL-3.0-only

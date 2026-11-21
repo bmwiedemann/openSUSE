@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 10 21:12:28 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.9.7:
+  * pam: fix deadlock on terminate
+  * auth: validate fingerprint D-Bus signal senders
+  * feat: general:disable_screencopy option
+  * core: keep the failure display until the next key press
+
+-------------------------------------------------------------------
 Tue Jul 28 07:07:12 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to version 0.9.6:

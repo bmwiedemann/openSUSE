@@ -17,7 +17,7 @@
 
 
 Name:           gufo
-Version:        0.28.0
+Version:        0.35.0
 Release:        0
 Summary:        Local inference engine for AMD Strix Halo hardware
 License:        MIT
@@ -27,9 +27,12 @@ Source1:        gufo.service
 Source2:        90-gufo.preset
 Source3:        sysconfig.%{name}
 Source4:        gufo-user.conf
+#!CreateArchive
+Source5:        vendor.tar.zst
 
 ExclusiveArch:  x86_64
 
+BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  gcc%{gcc_version}-c++
@@ -42,6 +45,7 @@ BuildRequires:  libavutil-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libuuid-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libswresample-devel
 BuildRequires:  libwebp-devel
@@ -54,6 +58,8 @@ BuildRequires:  rocwmma-devel
 BuildRequires:  soxr-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  xrt-devel
+BuildRequires:  zstd
 BuildRequires:  group(render)
 BuildRequires:  group(video)
 Requires:       group(render)
@@ -68,8 +74,17 @@ for AMD Strix Halo hardware (Ryzen AI MAX+ 395 systems with Radeon 8060S).
 It provides high-performance model serving with support for Qwen3.8, DeepSeek
 V4 Flash, MiniMax H3, Qwen3-TTS, and other models.
 
+%package devel
+Summary:        Development files for gufo
+Requires:       %{name} = %{version}
+
+%description devel
+Development files for gufo, the local inference engine for AMD Strix Halo
+hardware. This package contains the files installed under /usr/lib/gufo.
+
 %prep
-%autosetup -p1
+%autosetup -p1 -a 5
+mv vendor/{.cargo,Cargo.lock,vendor-cargo} .
 
 %build
 export CXX="g++-%gcc_version"
@@ -88,9 +103,11 @@ export CXXFLAGS="$CXXFLAGS -fPIC"
 %cmake_install
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/gufo.service
-%service_add_pre gufo.service
 install -D -m 644 %{SOURCE2} %{buildroot}%{_presetdir}/90-gufo.preset
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/gufo-user.conf
+
+%pre
+%service_add_pre gufo.service
 
 %post
 %sysusers_create gufo-user.conf
@@ -116,5 +133,8 @@ fi
 %{_presetdir}/90-gufo.preset
 %{_sysusersdir}/gufo-user.conf
 %{_fillupdir}/sysconfig.%{name}
+
+%files devel
+/usr/lib/gufo
 
 %changelog

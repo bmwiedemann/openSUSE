@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:34:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.20261029
+   see /usr/share/doc/packages/perl-Mail-AuthenticationResults/Changes
+
+  2.20261029 2026-10-29 12:20:51+11:00 Australia/Melbourne
+    - Fix excessive memory and CPU use when parsing a header
+      containing a large number of assertions. Tokens no longer
+      retain a copy of the remaining header, and string, quoted
+      string, and comment tokens are no longer parsed one character
+      at a time.
+
+-------------------------------------------------------------------
 Mon Feb 16 06:16:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.20260216

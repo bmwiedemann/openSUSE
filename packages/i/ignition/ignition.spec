@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.26.0
+Version:        2.28.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -39,15 +39,11 @@ Source14:       ignition-touch-selinux-autorelabel.conf
 Source15:       ignition-rmcfg-suse.conf
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
+Source99:       vendor.tar.gz
 Patch1:         0001-ignore-missing-qemu-blockdev.patch
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
 Patch3:         0003-Move-the-GPT-header-on-resized-disks.patch
 Patch4:         0004-Order-ignition-disks.service-before-systemd-fsck-roo.patch
-Patch5:         CVE-2026-33186.patch
-Patch6:         CVE-2026-33814.patch
-Patch7:         CVE-2026-39821.patch
-Patch8:         CVE-2026-34986.patch
-Patch9:         CVE-2026-56852.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
@@ -69,7 +65,7 @@ Recommends:     /sbin/udevadm
 Suggests:       /sbin/mdadm
 Provides:       ignition-dracut = 0.0+git20200722.98ed51d
 Obsoletes:      ignition-dracut < 0.0+git20200722.98ed51d
-# Not provided because the mechanism is different
+# No "Provides:" because the mechanism is different / incompatible
 Obsoletes:      ignition-dracut-grub2 < %{version}-%{release}
 %{update_bootloader_requires}
 
@@ -82,8 +78,27 @@ On first boot, Ignition reads its configuration from a source of truth
 (remote URL, network metadata service, hypervisor bridge, etc.) and
 applies the configuration.
 
+%package -n butane
+Summary:        Tool to generate Ignition configs from YAML files
+Group:          System/Management
+License:        Apache-2.0
+# Upgrade from old fcct/ignition-config-transpiler
+Obsoletes:      ignition-config-transpiler < %{version}-%{release}
+Provides:       ignition-config-transpiler = %{version}-%{release}
+Provides:       ignition-config-transpiler%{?_isa} = %{version}-%{release}
+# Upgrade form old separate butane source package
+Provides:       butane = %{version}-%{release}
+Obsoletes:      butane <= 0.29.0
+
+%description -n butane
+Butane translates human-readable Butane Configs into machine-readable
+Ignition configs for provisioning operating systems that use Ignition.
+
 %prep
-%autosetup -p1
+%setup -q
+rm -rf vendor
+%setup -q -T -D -a99
+%autopatch -p1
 
 mkdir -p dracut/30ignition-microos grub systemd_suse/ignition-delete-config.service.d
 chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE12}
@@ -99,13 +114,14 @@ cp %{SOURCE12} dracut/30ignition/ignition-kargs-helper.sh
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
-VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' ./build
+sed -i -e 's|CGO_ENABLED=0|CGO_ENABLED=1|g' build
+VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distro.selinuxRelabel=false -X github.com/coreos/ignition/v2/internal/distro.writeAuthorizedKeysFragment=false ' make ignition ignition-validate butane
 
 %check
 VERSION=%{version} ./build_blackbox_tests
 
 %install
-make -o all install DESTDIR=%{buildroot}
+make install install-butane DESTDIR=%{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/grub.d
 install -d %{buildroot}%{_unitdir}/ignition-delete-config.service.d
@@ -113,6 +129,7 @@ install -p -m 0644 systemd_suse/ignition-delete-config.service.d/* %{buildroot}%
 install -d %{buildroot}%{_sbindir}/
 mv %{buildroot}/usr/libexec/* %{buildroot}/%{_sbindir}/
 rmdir %{buildroot}/usr/libexec
+ln -s butane %{buildroot}%{_bindir}/ignition-config-transpiler
 
 %pre
 %service_add_pre ignition-delete-config.service
@@ -136,11 +153,18 @@ rmdir %{buildroot}/usr/libexec
 # Paths are hardcoded in the Makefile
 /usr/lib/dracut/modules.d/30ignition
 /usr/lib/dracut/modules.d/30ignition-microos
-/usr/bin/ignition-validate
+%{_bindir}/ignition-validate
 /usr/lib/systemd/system/ignition-delete-config.service
 %{_sbindir}/ignition-apply
 %{_sbindir}/ignition-rmcfg
 %dir %{_unitdir}/ignition-delete-config.service.d
 %{_unitdir}/ignition-delete-config.service.d/ignition-rmcfg-suse.conf
+
+%files -n butane
+%license LICENSE
+%doc docs README.md NEWS.md
+%{_bindir}/butane
+%{_bindir}/ignition-config-transpiler
+%{_bindir}/fcct
 
 %changelog

@@ -6027,4 +6027,27 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1392207</requestid>
   </revision>
+  <revision rev="504" vrev="1">
+    <srcmd5>08da85ff0b76c4e54d302af37f427393</srcmd5>
+    <version>11.21</version>
+    <time>1794090822</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1396042</requestid>
+  </revision>
+  <revision rev="505" vrev="1">
+    <srcmd5>75ef917feff515adb629900fc052c26e</srcmd5>
+    <version>11.22</version>
+    <time>1794816530</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.22 release
+  - Locale data updated to Unicode CLDR 49.
+  - AVX support in x86 emulation on ARM64.
+  - Address space randomization.
+  - Improved glyph metrics in Tahoma font.
+  - DTD validation reimplemented in MSXML.
+  - Various bug fixes.
+- update staging to 11.22 release</comment>
+    <requestid>1397688</requestid>
+  </revision>
 </revisionlist>

@@ -92,6 +92,10 @@ Patch15:        gnutls-FIPS-SLI-tls10-PRF.patch
 Patch16:        gnutls-FIPS-SLI-record-MAC.patch
 # PATCH-FIX-SUSE bsc#1284342 FIPS: Mark internal HMAC-SHA-1 when session tickets are enabled as non approved
 Patch17:        gnutls-FIPS-SLI-session-ticket.patch
+# PATCH-FIX-SUSE bsc#1284936 CVE-2026-95184 Enforce permitted and excluded directoryName name constraints
+Patch18:        gnutls-CVE-2026-95184.patch
+# PATCH-FIX-SUSE bsc#1284935 CVE-2026-88648 Enforce msUPN and SRVName otherName name constraints
+Patch19:        gnutls-CVE-2026-88648.patch
 
 BuildRequires:  autogen
 BuildRequires:  automake

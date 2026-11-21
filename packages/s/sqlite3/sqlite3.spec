@@ -40,6 +40,20 @@ Source2:        https://www.sqlite.org/2026/sqlite-doc-%{docversion}.zip
 Source99:       %{name}-rpmlintrc
 Patch0:         sqlite-3.6.23-lemon-system-template.patch
 Patch1:         sqlite-3.49.0-fix-lemon-missing-cflags.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-fix-waliter-test-64k-pages.patch -- waliter.test assumes 4KB pages
+Patch2:         sqlite-3.54.1-fix-waliter-test-64k-pages.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-fix-fts3corrupt4-test-big-endian.patch -- obsolete big-endian special case since 1a888ea60be20a80
+Patch3:         sqlite-3.54.1-fix-fts3corrupt4-test-big-endian.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-fix-shell-import-line-count.patch -- 64 bit argument printed with %d, wrong on 32 bit big-endian
+Patch4:         sqlite-3.54.1-fix-shell-import-line-count.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-CVE-2026-119586-recover-strip-trailing-sql.patch CVE-2026-119586 -- .recover must not copy text after the schema SQL statement
+Patch5:         sqlite-3.54.1-CVE-2026-119586-recover-strip-trailing-sql.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-CVE-2026-119586-recover-safe-mode.patch CVE-2026-119586 -- add .safe command and emit it in .recover output
+Patch6:         sqlite-3.54.1-CVE-2026-119586-recover-safe-mode.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-CVE-2026-119586-safe-mode-hardening.patch CVE-2026-119586 -- .safe unregisters file-writing functions on open databases
+Patch7:         sqlite-3.54.1-CVE-2026-119586-safe-mode-hardening.patch
+# PATCH-FIX-UPSTREAM sqlite-3.54.1-CVE-2026-119586-dump-recover-hardening.patch CVE-2026-119586 -- sanitize .dump comments, strip trailing text for all schema types in .recover
+Patch8:         sqlite-3.54.1-CVE-2026-119586-dump-recover-hardening.patch
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -231,7 +245,15 @@ export CFLAGS="%{optflags} \
 # Allow ASan tests
 ulimit -d unlimited
 
-%make_build devtest
+%if 0%{?suse_version} < 1500
+# gcc 4.8 does not support -fsanitize=undefined
+%define tstrnnr_opts TSTRNNR_OPTS="~ubsan"
+%endif
+%make_build devtest %{?tstrnnr_opts} || {
+	# Show the details of the failed tests in the build log
+	awk '/^### /{p=/\(failed\)/} p' testrunner.log
+	exit 1
+}
 %endif
 
 %install

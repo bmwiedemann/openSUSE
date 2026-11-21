@@ -285,4 +285,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update GUC to v70.72.1 for BMG, LNL, PTL, NVL-S</comment>
     <requestid>1374907</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>01572f81d44344654a9ef386954917f6</srcmd5>
+    <version>20261031</version>
+    <time>1793989971</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261031 (git commit bda6eccc3a8f):
+  * xe: Add GSC 108.0.0.1211 for NVL
+
+- Update aliases from 7.3-rc1</comment>
+    <requestid>1394983</requestid>
+  </revision>
 </revisionlist>

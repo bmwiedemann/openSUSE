@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:37:24 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.12.6
+  - Client: Handle first mouse click inside Connect Dialog box (#3980).
+  - Bugfix: bounds check iChanID before array access (#3840).
+  - JSON-RPC: bound the per-connection read buffer so unterminated input cannot exhaust memory (#3861).
+
+-------------------------------------------------------------------
 Tue Sep  1 16:30:36 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.12.5

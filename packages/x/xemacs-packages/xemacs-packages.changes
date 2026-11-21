@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct 22 06:30:07 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sumo-2025-06-05
+- Remove patches not needed anymore
+  * xemacs-packages-expand-kw.diff
+  * texi-coding.patch
+  * texi.patch
+- Port patches
+  * bugzilla-183805-missing-autoload-cookies.patch
+  * dinbrief.patch
+  * gnus-utf-8.patch
+  * packages-cvs-xemacs-sumo-2005-12-08-apel.patch
+  * reproducible.patch
+  * xemacs-packages-20130822-tramp.patch
+  * xemacs-packages.patch
+
+-------------------------------------------------------------------
 Sat Nov 22 21:26:50 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

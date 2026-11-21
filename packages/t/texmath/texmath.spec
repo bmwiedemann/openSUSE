@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.13.1.2
+Version:        0.13.3.5
 Release:        0
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
@@ -71,10 +71,10 @@ BuildRequires:  ghc-tasty-prof
 %description
 The texmath library provides functions to read and write TeX math, presentation
 MathML, and OMML (Office Math Markup Language, used in Microsoft Office).
-Support is also included for converting math formats to Gnu eqn, typst, and
-pandoc's native format (allowing conversion, via pandoc, to a variety of
-different markup formats). The TeX reader supports basic LaTeX and AMS
-extensions, and it can parse and apply LaTeX macros. (See
+Support is also included for converting math formats to Gnu eqn, typst,
+StarMath, and pandoc's native format (allowing conversion, via pandoc, to a
+variety of different markup formats). The TeX reader supports basic LaTeX and
+AMS extensions, and it can parse and apply LaTeX macros. (See
 <https://johnmacfarlane.net/texmath here> for a live demo of bidirectional
 conversion between LaTeX and MathML.)
 

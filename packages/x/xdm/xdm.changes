@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 11 01:19:47 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Changed display-manager-legacy.service (boo#1289991).
+
+-------------------------------------------------------------------
 Wed Apr 15 07:03:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly BuildRequire update-alternatives and mark it as being
@@ -1123,4 +1128,3 @@ Thu May 10 13:58:38 UTC 2012 - sndirsch@suse.com
 Fri Apr 13 08:46:08 UTC 2012 - vuntz@opensuse.org
 
 - Split xdm from xorg-x11. Initial version: 1.1.10.
-

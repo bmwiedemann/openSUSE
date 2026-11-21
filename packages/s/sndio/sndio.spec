@@ -1,7 +1,7 @@
 #
 # spec file for package sndio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,16 +17,16 @@
 #
 
 
-%define libname libsndio7
+%define libname libsndio9
 Name:           sndio
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Small audio and MIDI framework
 License:        ISC
-Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.sndio.org/
 Source:         https://sndio.org/%{name}-%{version}.tar.gz
-BuildRequires:  pkgconfig
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(libbsd)
 
@@ -40,7 +40,6 @@ of the project goals.
 
 %package -n %{libname}
 Summary:        Small audio and MIDI framework
-Group:          System/Libraries
 
 %description -n %{libname}
 It provides an lightweight audio & MIDI server and a fully documented
@@ -52,7 +51,6 @@ of the project goals.
 
 %package -n sndio-devel
 Summary:        Library Developer Files for sndio
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 
 %description -n sndio-devel
@@ -61,18 +59,23 @@ library.
 
 %package -n sndioctl
 Summary:        Small audio and MIDI framework
-Group:          Productivity/Multimedia/Sound/Midi
 
 %description -n sndioctl
 This package contains the controller binary for sndio.
 
 %prep
 %autosetup -p1
+# Upstream configure did not bump hardcoded version=1.10.0 used for sndio.pc
+sed -i 's/version=1.10.0/version=%{version}/' configure
 
 %build
 export CFLAGS="%{optflags}"
 # not autotools configure
-./configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-alsa --with-libbsd
+./configure \
+  --prefix=%{_prefix} \
+  --libdir=%{_libdir} \
+  --mandir=%{_mandir} \
+  --enable-alsa
 %make_build
 
 %install

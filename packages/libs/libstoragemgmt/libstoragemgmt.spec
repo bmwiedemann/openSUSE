@@ -19,25 +19,24 @@
 %define libname %{name}1
 %bcond_with test
 Name:           libstoragemgmt
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Storage array management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/libstorage/libstoragemgmt
 Source0:        https://github.com/libstorage/libstoragemgmt/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch0:         move_to_run.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  ledmon-devel
 BuildRequires:  libsgutils-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
 BuildRequires:  python3-pywbem
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(ledmon)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
@@ -183,10 +182,9 @@ The %{name}-arcconf-plugin package contains the plugin for Microsemi
 storage.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-# Needed for patch0
 autoreconf -fiv
 %configure \
   --disable-static \

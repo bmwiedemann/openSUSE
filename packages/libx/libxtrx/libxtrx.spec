@@ -102,7 +102,7 @@ A Soapy module that supports XTRX devices within the Soapy API.
 %cmake_install
 install -d %{buildroot}/%{_bindir}
 #install -m 0755 build/examples/xtrx_fft/mainwindow %%{buildroot}/%%{_bindir}/xtrx_fft
-%if 0%{?suse_version} < 1699
+%if 0%{?suse_version} < 1610
 mv %{buildroot}/%{_libdir}/xtrx/xtrx_fft %{buildroot}/%{_bindir}/xtrx_fft
 %endif
 mv %{buildroot}/%{_libdir}/xtrx/test_xtrx %{buildroot}/%{_bindir}/test_xtrx
@@ -128,7 +128,7 @@ mv build/soapy/test_xtrx_soapy %{buildroot}/%{_bindir}/test_xtrx_soapy
 %files -n xtrx-tools
 %{_bindir}/test_xtrx
 %{_bindir}/test_xtrx_soapy
-%if 0%{?suse_version} < 1699
+%if 0%{?suse_version} < 1610
 %{_bindir}/xtrx_fft
 %endif
 

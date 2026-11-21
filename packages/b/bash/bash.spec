@@ -17,6 +17,14 @@
 
 
 %define _buildshell /bin/bash
+%define rl_major 8
+%define rl_version 8.3
+%define         bextend %{nil}
+%define         bversion 5.3
+%define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
+%global         _incdir     %{_includedir}
+%global         _ldldir     %{_libdir}/bash
+%global         _minsh      0
 %if 0%{?suse_version} > 1500
 %bcond_with alternatives
 %else
@@ -24,15 +32,6 @@
 %endif
 # Unicode tests do alloc to much memory
 %bcond_with altarray
-%define rl_major 8
-%define rl_version 8.3
-
-%define         bextend %{nil}
-%define         bversion 5.3
-%define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
-%global         _incdir     %{_includedir}
-%global         _ldldir     %{_libdir}/bash
-%global         _minsh      0
 %bcond_with     import_function
 %bcond_with     sjis
 Name:           bash
@@ -43,7 +42,6 @@ Summary:        The GNU Bourne-Again Shell
 # bugs which will hit at most this package
 #Recommends:	bash-completion
 License:        GPL-3.0-or-later
-Group:          System/Shells
 URL:            https://www.gnu.org/software/bash/bash.html
 # Git:          https://git.savannah.gnu.org/cgit/bash.git
 Source0:        https://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
@@ -100,23 +98,19 @@ BuildRequires:  makeinfo
 BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  sed
-%if %{with alternatives}
-BuildRequires:  update-alternatives
-%endif
 BuildRequires:  pkgconfig(audit)
 BuildRequires:  pkgconfig(ncurses)
 # This has to be always the same version as included in the bash its self
 BuildRequires:  pkgconfig(readline) >= %{rl_version}
-%if %{with alternatives}
-Requires(post): update-alternatives
-Requires(post): libreadline%{rl_major} >= %{rl_version}
-Requires(preun): update-alternatives
-%endif
 Requires:       libreadline%{rl_major} >= %{rl_version}
 Suggests:       bash-doc = %{version}
 Suggests:       command-not-found
 Provides:       /bin/bash
 %if %{with alternatives}
+BuildRequires:  update-alternatives
+Requires(post): libreadline%{rl_major} >= %{rl_version}
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
 Provides:       /bin/sh
 %else
 Suggests:       bash-sh
@@ -125,31 +119,29 @@ Suggests:       bash-sh
 %description
 Bash is an sh-compatible command interpreter that executes commands
 read from standard input or from a file.  Bash incorporates useful
-features from the Korn and C shells (ksh and csh).  Bash is intended to
+features from the Korn shell and the C shell.  Bash is intended to
 be a conformant implementation of the IEEE Posix Shell and Tools
 specification (IEEE Working Group 1003.2).
 
 %package doc
-Summary:        Documentation how to Use the GNU Bourne-Again Shell
-Group:          Documentation/HTML
+Summary:        Documentation on how to use the GNU Bourne-Again Shell
 Supplements:    (bash and patterns-base-documentation)
 Provides:       bash:%{_infodir}/bash.info.gz
 BuildArch:      noarch
 
 %description doc
-This package contains the documentation for using the bourne shell
+This package contains the documentation for using the Bourne shell
 interpreter Bash.
 
 %lang_package
 
 %if %{without alternatives}
 %package sh
-Summary:        Handle behaviour of /bin/sh
-Group:          System/Shells
-Provides:       alternative(sh)
+Summary:        Handle behavior of /bin/sh
+Requires(pre):  bash
 Conflicts:      alternative(sh)
 Provides:       bash:%{_bindir}/sh
-PreReq:         bash
+Provides:       alternative(sh)
 BuildArch:      noarch
 
 %description sh
@@ -158,16 +150,14 @@ Use bash as /bin/sh implementation.
 
 %package devel
 Summary:        Include Files mandatory for Development of bash loadable builtins
-Group:          Development/Languages/C and C++
 
 %description devel
 This package contains the C header files for writing loadable new
 builtins for the interpreter Bash. Use the output of the command
-`pkg-config bash --cflags' on the compilers command line.
+`pkg-config bash --cflags` on the compiler command line.
 
 %package loadables
 Summary:        Loadable bash builtins
-Group:          System/Shells
 Supplements:    %{name} = %{version}
 
 %description loadables
@@ -225,15 +215,14 @@ whoami	      Print out username of current user.
 
 %if 0%{?suse_version} >= 1550
 %package legacybin
-Summary:        Legacy usrmove helper files
-Group:          System/Shells
+Summary:        Legacy helper files
 Requires:       bash = %{version}-%{release}
 Requires:       this-is-only-for-build-envs
 Conflicts:      rpmlib(X-CheckUnifiedSystemdir)
 BuildArch:      noarch
 
 %description legacybin
-Legacy usrmove helper files for the build system. Do not install.
+Legacy helper files for the build system. Do not install.
 %endif
 
 %prep
@@ -406,11 +395,7 @@ test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
   "
   bash support/mkconffiles -v
 %if %{_minsh}
-  ./configure --build=%{_target_cpu}-suse-linux	\
-	--prefix=%{_prefix}		\
-	--mandir=%{_mandir}		\
-	--infodir=%{_infodir}		\
-	--libdir=%{_libdir}		\
+  %configure \
 	--with-curses			\
 	--with-afs			\
 	--with-gnu-ld			\
@@ -439,11 +424,7 @@ test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
   %make_build Program=sh sh
   %make_build distclean
 %endif
-  ./configure --build=%{_target_cpu}-suse-linux	\
-	--prefix=%{_prefix}		\
-	--mandir=%{_mandir}		\
-	--infodir=%{_infodir}		\
-	--libdir=%{_libdir}		\
+  %configure \
 	--docdir=%{_docdir}/%{name}	\
 	--with-curses			\
 	--with-afs			\

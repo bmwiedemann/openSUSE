@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 12:47:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Supplement samba only when yast2 is already installed. If yast is not
+  installed on the system, we do not want to pull it in (boo#1289484).
+
+-------------------------------------------------------------------
 Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507

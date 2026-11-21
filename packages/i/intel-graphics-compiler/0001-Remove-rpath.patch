@@ -9,10 +9,10 @@ Signed-off-by: Patrik Jakobsson <pjakobsson@suse.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/llvm/cmake/modules/AddLLVM.cmake b/llvm/cmake/modules/AddLLVM.cmake
-index 93e6d67551de..259e0d7d3282 100644
+index d3c75fb7dfc5..5fc7b165bf25 100644
 --- a/llvm/cmake/modules/AddLLVM.cmake
 +++ b/llvm/cmake/modules/AddLLVM.cmake
-@@ -2320,8 +2320,8 @@ function(llvm_setup_rpath name)
+@@ -2563,8 +2563,8 @@ function(llvm_setup_rpath name)
      # FIXME: update this when there is better solution.
      set(_install_rpath "${LLVM_LIBRARY_OUTPUT_INTDIR}" "${CMAKE_INSTALL_PREFIX}/lib${LLVM_LIBDIR_SUFFIX}" ${extra_libdir})
    elseif(UNIX)
@@ -20,9 +20,8 @@ index 93e6d67551de..259e0d7d3282 100644
 -    set(_install_rpath "\$ORIGIN/../lib${LLVM_LIBDIR_SUFFIX}")
 +    set(_build_rpath "" ${extra_libdir})
 +    set(_install_rpath "")
-     if(${CMAKE_SYSTEM_NAME} MATCHES "(FreeBSD|DragonFly)")
+     if("${CMAKE_SYSTEM_NAME}" MATCHES "(FreeBSD|DragonFly)")
        set_property(TARGET ${name} APPEND_STRING PROPERTY
                     LINK_FLAGS " -Wl,-z,origin ")
 -- 
 2.51.1
-

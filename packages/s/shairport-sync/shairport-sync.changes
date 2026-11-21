@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 12 11:16:36 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- BuildRequire pkgconfig(libavcodec) and libavformat
+  to build without ffmpeg -mini
+
+-------------------------------------------------------------------
+Sun Nov  1 12:12:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.6.2, including an out-of-bounds fix in
+  DACP's TLV parsing.
+- Add shairport-sync-fix-get_info_response-plist.patch: the
+  AirPlay 2 info plist carries a stray </dict> that libplist
+  rejects at runtime, so AirPlay 2 never starts (upstream
+  issue #2325).
+- Check the info plist parses at build time: the build pipes
+  plistutil into xxd, which hides its failures.
+
+-------------------------------------------------------------------
 Sat Oct 17 16:45:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.6:

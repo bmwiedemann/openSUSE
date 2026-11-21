@@ -20,7 +20,7 @@
 %bcond_without run_tests
 
 Name:           restic
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        BSD-2-Clause
@@ -30,6 +30,7 @@ Source0:        https://github.com/restic/restic/releases/download/v%{version}/%
 Source1:        https://github.com/restic/restic/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
 Source3:        vendor.tar.gz
+Source99:       series
 Patch0:         disable-selfupdate.patch
 Patch1:         build.patch
 Patch2:         testsuite-use-python3.patch

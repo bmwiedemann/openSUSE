@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:48:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.13.1:
+  * Remap OpenAI developer role to system in from_openai
+  * Add shared download timeout for image and audio downloads
+
+-------------------------------------------------------------------
 Wed Oct 28 06:39:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.13.0:

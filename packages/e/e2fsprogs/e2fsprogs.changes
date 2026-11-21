@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:24:03 UTC 2026 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Fix mke2fs creating wrongly sized orphan files since 1.47.4: the
+  kernel refused to mount e.g. a 1G filesystem made with 1k blocks
+  ("orphan file too big"), and filesystems with 2097152 blocks or
+  more (8G with the default 4k blocks) only got a 2 block orphan
+  file. Add two upstream patches:
+  * Revert-libext2fs-fix-orphan-file-size-kernel-limit.patch
+    (reverts the faulty orphan file sizing change of 1.47.4)
+  * libext2fs-cap-orphan-file-size-at-kernel-limit.patch (limits an
+    explicitly requested orphan file size to the kernel limit of
+    512 blocks)
+
+-------------------------------------------------------------------
 Mon Oct 19 12:01:58 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update e2fsprogs.keyring

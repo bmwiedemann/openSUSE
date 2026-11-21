@@ -1,7 +1,7 @@
-From f714c56f3cd13a9216000951f4319250734fc0ae Mon Sep 17 00:00:00 2001
+From b89a9b92917991728190b1adb6a01406c53415de Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Mon, 9 Mar 2026 17:33:47 +0100
-Subject: [PATCH 8/8] [gdb] Enable ptype /o for some dynamic types
+Date: Fri, 3 Apr 2026 15:19:26 +0200
+Subject: [PATCH 60/60] [gdb] Enable ptype /o for some dynamic types
 
 Printing the offsets of a struct containing a flexible array member using
 "ptype /o" currently fails:
@@ -57,6 +57,8 @@ which is too restrictive.
 
 Fix this by using a new function cannot_print_offsets instead.
 
+Reviewed-By: Guinevere Larsen <guinevere@redhat.com>
+
 Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33966
 ---
  gdb/gdbtypes.c                             | 39 ++++++++++++--
@@ -70,10 +72,10 @@ Bug: https://sourceware.org/bugzilla/show_bug.cgi?id=33966
  create mode 100644 gdb/testsuite/gdb.base/ptype-offsets-c.exp
 
 diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
-index 3dc2308f14e..b2660a4d1b3 100644
+index c030e5f41f5..4c7e0f4fd9e 100644
 --- a/gdb/gdbtypes.c
 +++ b/gdb/gdbtypes.c
-@@ -2035,10 +2035,11 @@ array_type_has_dynamic_stride (struct type *type)
+@@ -2036,10 +2036,11 @@ array_type_has_dynamic_stride (struct type *type)
    return prop != nullptr && prop->is_constant ();
  }
  
@@ -87,7 +89,7 @@ index 3dc2308f14e..b2660a4d1b3 100644
  {
    type = check_typedef (type);
  
-@@ -2112,7 +2113,24 @@ is_dynamic_type_internal_1 (struct type *type)
+@@ -2113,7 +2114,24 @@ is_dynamic_type_internal_1 (struct type *type)
  	      continue;
  	    /* If the field has dynamic type, then so does TYPE.  */
  	    if (is_dynamic_type_internal_1 (f.type ()))
@@ -112,8 +114,8 @@ index 3dc2308f14e..b2660a4d1b3 100644
 +	      }
  	    /* If the field is at a fixed offset, then it is not
  	       dynamic.  */
- 	    if (f.loc_kind () != FIELD_LOC_KIND_DWARF_BLOCK)
-@@ -2155,6 +2173,21 @@ is_dynamic_type (struct type *type)
+ 	    if (!f.loc_is_dwarf_block ())
+@@ -2156,6 +2174,21 @@ is_dynamic_type (struct type *type)
    return is_dynamic_type_internal (type, true);
  }
  
@@ -133,13 +135,13 @@ index 3dc2308f14e..b2660a4d1b3 100644
 +}
 +
  static struct type *resolve_dynamic_type_internal
-   (struct type *type, struct property_addr_info *addr_stack,
+   (struct type *type, const property_addr_info *addr_stack,
     const frame_info_ptr &frame, bool top_level);
 diff --git a/gdb/gdbtypes.h b/gdb/gdbtypes.h
-index 8b00fec59a1..9a745ca3e02 100644
+index 75c77b3a90c..74ae1198e88 100644
 --- a/gdb/gdbtypes.h
 +++ b/gdb/gdbtypes.h
-@@ -2629,6 +2629,10 @@ extern struct type *resolve_dynamic_type
+@@ -2647,6 +2647,10 @@ extern struct type *resolve_dynamic_type
     "dynamic".  */
  extern bool is_dynamic_type (struct type *type);
  
@@ -147,11 +149,11 @@ index 8b00fec59a1..9a745ca3e02 100644
 +
 +extern bool cannot_print_offsets (struct type *type);
 +
- extern struct type *check_typedef (struct type *);
- 
- extern void check_stub_method_group (struct type *, int);
+ /* Resolve any dynamic components of FIELD.  FIELD is updated.
+    ADDR_STACK and FRAME are used where necessary to supply information
+    for the resolution process; see resolve_dynamic_type.
 diff --git a/gdb/testsuite/gdb.ada/ptype-o.exp b/gdb/testsuite/gdb.ada/ptype-o.exp
-index 5038ee171d2..7f3ec3ce7a3 100644
+index a65a8003ed3..9c55771c9e5 100644
 --- a/gdb/testsuite/gdb.ada/ptype-o.exp
 +++ b/gdb/testsuite/gdb.ada/ptype-o.exp
 @@ -37,7 +37,7 @@ foreach_gnat_encoding scenario flags {all minimal} {
@@ -276,7 +278,7 @@ index 00000000000..cffcbbeb2f7
 +gdb_test "ptype /o struct nested_flexible_array_member" \
 +    [string_to_regexp [multi_line {*}$l]]
 diff --git a/gdb/typeprint.c b/gdb/typeprint.c
-index 6494103ba93..e7019a378f3 100644
+index 8f2836a610d..48565d6b986 100644
 --- a/gdb/typeprint.c
 +++ b/gdb/typeprint.c
 @@ -452,9 +452,9 @@ whatis_exp (const char *exp, int show)

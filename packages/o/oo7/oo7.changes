@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Sat Oct 24 11:09:04 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Pin internal subpackage dependencies to the same EVR.
+- Require the daemon and xdg-desktop-portal for the portal.
+- Move Secret Service activation files and the gnome-keyring
+  conflict to oo7-daemon.
+- Add user unit lifecycle hooks for the daemon and portal.
+
+-------------------------------------------------------------------
+Thu Jun 18 13:02:05 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 0.6.0:
+  * server: kde plasma prompter support
+  * cli: Add json output format support
+  * oo7-daemon: a replacement of gnome-keyring-daemon or kwallet.
+    It has support for both KDE and GNOME prompting mechanism,
+    used to ask the user to type the password to unlock their
+    keyring. Note that this is an alpha release so bugs are
+    expected.
+  * oo7-python: python bindings of oo7 making it possibly to use the library from Python.
+  * oo7-macros: provides schemas support to oo7
+  * cargo-credential: support openssl
+- Add python-no-default.patch:
+  disable default features in oo7_rs required by oo7-python
+- Add use-our-cargo-build.patch:
+  build rust projects with our macros rather than with meson
+- Prepare for PAM module
+- Disable vendor update: won't build with ashpd 0.13.11
+- Disable tests
+
+-------------------------------------------------------------------
+Fri Aug 29 11:35:58 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to version 0.5.0:
+  * client: Relax IncorrectSecret conditiong
+  * cli: Add custom keyring file supportg
+  * server: Merge Prompting into maing
+  * server: match items if search attributes are a subsetg
+  * client: Manually add a content-type attributeg
+  * client: Export ContentTypeg
+  * daemon: Do not restrict caps on unit fileg
+  * portal: Dont ask for app tokens with schemag
+  * server: Demote info! to debug!g
+  * Add --verbose flags to daemon and portal implg
+  * daemons: Use DoNotQueue when opening connectiong
+  * cli: Improve help and outputg
+  * cli: Display Examples header in bold+underlineg
+  * service: Serve default collection at alias pathg
+  * README: Add testing instructionsg
+  * Make services dbus activableg
+  * Port to the 2024 editiong
+  * Add more logging and always ask for DoNotQueueg
+  * server: Use connection builderg
+  * client: Improve From semantics for Keyg
+  * server: Improve Ownershipg
+  * client: Stop giving mac as Zeroizingg
+  * client: file: item: Remove two clonesg
+  * client: encrypted_item: Remove unnecesary allocsg
+  * client: file: Add {,de}serialization test for Itemg
+  * Systemd credsg
+  * client: Add new Mac struct for constant time eqg
+- build tests by default
+- conflict with gnome-secrets
+
+-------------------------------------------------------------------
 Wed May 21 16:42:44 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove Provides: secret-tool

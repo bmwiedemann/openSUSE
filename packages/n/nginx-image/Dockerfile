@@ -15,7 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/nginx:1.31-%RELEASE%
+#!BuildTag: opensuse/nginx:%%nginx_version%%-%RELEASE%
+#!BuildTag: opensuse/nginx:%%nginx_version%%
 #!BuildTag: opensuse/nginx:1.31
 #!BuildTag: opensuse/nginx:latest
 
@@ -79,13 +80,13 @@ COPY --from=builder /target /
 # labelprefix=org.opensuse.application.nginx
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed NGINX"
 LABEL org.opencontainers.image.description="NGINX open source all-in-one load balancer, content cache and web server based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="1.31"
+LABEL org.opencontainers.image.version="%%nginx_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="1.31-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:1.31-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="%%nginx_version%%-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/nginx:%%nginx_version%%-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"

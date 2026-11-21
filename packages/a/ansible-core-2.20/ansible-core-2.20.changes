@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:45:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.20.11:
+  https://github.com/ansible/ansible/blob/v2.20.11/changelogs/CHANGELOG-v2.20.rst
+  * Minor Changes
+    - ansible-test - Remove unsupported FreeBSD 13.5 remote.
+    - ansible-test - Replace FreeBSD 14.3 remote with 14.5.
+    - ansible-test - Replace RHEL 10.1 remote with 10.2.
+    - ansible-test - Replace RHEL 9.7 remote with 9.8.
+  * Security Fixes
+    - ansible-galaxy collection install - fix validating FILES.json
+      entries are contained in the collection before creating them.
+      (CVE-2026-89091)
+    - ansible-galaxy role install - fix validating the role name is
+      contained to the configured role path. (CVE-2026-105929)
+  * Bugfixes
+    - ansible-test - Restore code coverage reporting for Python
+      code residing in integration tests.
+    - git module - updated to avoid possible incorrect parameters
+      read from the repo targets. CVE-2026-84503
+    - module_utils.mask_url - handle exceptions on parseurl to
+      avoid disclosing url itself.
+    - sudo become plugin, sudo-rs compatibility fix for non english
+      locales
+- remove patch ansible-core-CVE-2026-89091.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 05:22:38 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Security fix for CVE-2026-89091 (bsc#1284847): path traversal in

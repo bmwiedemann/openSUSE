@@ -3214,4 +3214,12 @@
     <comment>Security and Maintenance Update. Fixes for bsc#1283315 CVE-2026-79607 XSA-514, bsc#1283317 CVE-2026-79608 XSA-515, bsc#1283321 CVE-2026-79609 XSA-516, bsc#1283322 CVE-2026-79610 XSA-517, bsc#1283323 CVE-2026-79611 XSA-518. A few other upstream bug fixes included.</comment>
     <requestid>1384649</requestid>
   </revision>
+  <revision rev="380" vrev="1">
+    <srcmd5>9321a1df1f2b09982c6803e64a7fc3d2</srcmd5>
+    <version>4.22.0_08</version>
+    <time>1793817784</time>
+    <user>anag_factory</user>
+    <comment>Security Update. Fix for bsc#1288663 CVE-2026-102703,CVE-2026-102704 XSA-523</comment>
+    <requestid>1394713</requestid>
+  </revision>
 </revisionlist>

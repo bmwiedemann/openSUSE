@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Nov 14 17:05:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.2.1
+  * Bug Fixes
+    + Fix ArrayIndexOutOfBoundsException for surrogate pair in
+      comment at buffer boundary
+  * Documentation updates
+    + Drop the Source Xref menu item
+    + Stop pinning a version in the README snippet
+  * Build
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+    + Bump mavenXmlVersion from 4.0.0-rc-6 to 4.0.0-rc-7
+- Changes of 4.2.0
+  * New features and improvements
+    + Establish an automatic module name
+    + Build the DOM with a local pull builder instead of Maven's
+      deprecated XmlNodeBuilder
+  * Documentation updates
+    + Rewrite README with usage, status and version guidance
+  * Maintenance
+    + Set the next development version to 4.2.0-SNAPSHOT
+    + Build against maven-xml 4.0.0-rc-6
+    + Remove deprecated XmlNode references
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Depend on maven-api-xml at compile and maven-xml at runtime
+    + Bump org.codehaus.plexus:plexus from 25 to 26
+    + Bump release-drafter/release-drafter from 6 to 7.7.0
+
+-------------------------------------------------------------------
 Mon Feb  9 14:38:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 4.1.1

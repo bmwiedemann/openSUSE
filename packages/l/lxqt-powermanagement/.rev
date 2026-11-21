@@ -570,4 +570,14 @@
   * Updated translations</comment>
     <requestid>1348575</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>d8e91eeac51968a1772be6842f7c7509</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182305</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Disabled the battery settings with no battery.
+  * Also, some CMake maintenance.</comment>
+    <requestid>1398758</requestid>
+  </revision>
 </revisionlist>

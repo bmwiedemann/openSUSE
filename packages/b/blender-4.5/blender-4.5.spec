@@ -100,7 +100,7 @@
 %global pkg_name blender
 
 Name:           blender-4.5
-Version:        4.5.15
+Version:        4.5.16
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later AND CC-BY-4.0 AND Apache-2.0 WITH Trademark-Clause AND Apache-2.0
@@ -126,6 +126,7 @@ Patch1:         cmake_manpage_fix.patch
 # PATCH-FIX-UPSTREAM https://projects.blender.org/blender/blender/pulls/149301
 Patch2:         audaspace_1_8_compat.patch
 Patch3:         assert.patch
+Patch4:         blender-4.5-cmake-4.5.patch
 BuildRequires:  %{py3pkg}-devel
 BuildRequires:  %{py3pkg}-numpy-devel
 BuildRequires:  %{py3pkg}-requests

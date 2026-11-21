@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 33b68e2c701198457657c2e656ef9a9cc4272d01
+%define git_version 69e51bb26f3fa3e118dd770f1962a93bed690dc1
 
 Name:           kernel-firmware-qcom
-Version:        20260929
+Version:        20261109
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261111.tar.gz#/kernel-firmware-tools-20261111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -88,6 +88,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Cdsi-phy-7nm-8150C*)
 Supplements:    modalias(of:N*T*Cqcom%2Cdsi-phy-7nmC*)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Celiza-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Celiza-cdsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-dpu)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-mdss)
@@ -98,6 +100,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Cglymur-dpu)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-dpuC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-mdss)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cglymur-soccp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cglymur-soccp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Chdmi-phy-8084)
 Supplements:    modalias(of:N*T*Cqcom%2Chdmi-phy-8084C*)
 Supplements:    modalias(of:N*T*Cqcom%2Chdmi-phy-8660)
@@ -130,6 +134,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-dsi-phy-3nm)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-dsi-phy-3nmC*)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-mdss)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-mdssC*)
+Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-soccp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-soccp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Ckgsl-3d0)
 Supplements:    modalias(of:N*T*Cqcom%2Ckgsl-3d0C*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmdm9607-mss-pil)
@@ -206,6 +212,16 @@ Supplements:    modalias(of:N*T*Cqcom%2Cmsm8998-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8998-mss-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8998-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Cmsm8998-slpi-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-adsp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-adsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp0-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp0-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp1-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp1-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp2-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp2-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp3-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cnord-cdsp3-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cq6v5-pil)
 Supplements:    modalias(of:N*T*Cqcom%2Cq6v5-pilC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm2290-dpu)
@@ -491,6 +507,7 @@ Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-mdssC*)
 Supplements:    modalias(pci:v000017CBd0000A080sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000017CBd0000A100sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000017CBd0000A110sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd0000A111sv*sd*bc*sc*i*)
 
 %description
 This package contains kernel firmware files for Qualcomm device drivers.

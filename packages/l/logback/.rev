@@ -159,4 +159,12 @@
     <comment>Add CVE/bsc reference</comment>
     <requestid>1382219</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3219dc47564b4ee7e1a9813785be3252</srcmd5>
+    <version>1.6.6</version>
+    <time>1794932270</time>
+    <user>anag_factory</user>
+    <comment>1.6.6</comment>
+    <requestid>1397910</requestid>
+  </revision>
 </revisionlist>

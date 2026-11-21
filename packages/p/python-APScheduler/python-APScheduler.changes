@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 04:53:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytz-2026.4.patch:
+  * Support changes required by pytz 2026.4.
+
+-------------------------------------------------------------------
 Tue Aug  4 21:13:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.11.3:

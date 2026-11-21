@@ -129,4 +129,24 @@
 </comment>
     <requestid>1394439</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cd87c0c0423aaa5e6ea6297c7c1c67d8</srcmd5>
+    <version>0.9.5</version>
+    <time>1793817984</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.5</comment>
+    <requestid>1394859</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3e5d308c1d0c70db76c782873b5fe72d</srcmd5>
+    <version>0.9.6</version>
+    <time>1793899236</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.6
+  * Fix regression introduced in 0.9.5 which results in long load times
+    and possible intermittent crashes
+- Spec cleanup: require meson &gt;= 1.1.0, as checked by meson.build
+</comment>
+    <requestid>1395082</requestid>
+  </revision>
 </revisionlist>

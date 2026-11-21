@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  8 22:53:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Declarations for the C99 ``bool`` type in ``<stdbool.h>``
+    were added.
+  * Fused function objects are slightly smaller in the Limited API.
+  * Cython warns when enabling subinterpreter support for modules
+    that cannot currently support it for technical reasons.
+  * The shared module is now automatically declared as
+    ``freethreading_compatible`` and sets
+    ``subinterpretes_compatible`` as applicable
+    (currently depending on memoryview usage).
+    Both are overridable by users as usual.
+
+-------------------------------------------------------------------
 Thu Oct  8 06:15:54 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 3.3.0:

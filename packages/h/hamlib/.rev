@@ -252,4 +252,12 @@
     <comment>hamlib 4.7.2 boo#1268628 boo#1268629 (forwarded request 1360852 from AndreasStieger)</comment>
     <requestid>1360853</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0f5433e1196cafdb58a62870a3637c65</srcmd5>
+    <version>4.7.2</version>
+    <time>1794932433</time>
+    <user>anag_factory</user>
+    <comment>Modernize PyInt_FromLong to PyLong_FromLong in bindings/hamlib.swg</comment>
+    <requestid>1398082</requestid>
+  </revision>
 </revisionlist>

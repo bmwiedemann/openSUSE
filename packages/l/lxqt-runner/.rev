@@ -405,4 +405,15 @@
   * Removed menucache support</comment>
     <requestid>1348578</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>efc7814b9fcf77664e874d082bc38e56</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182311</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Silenced layershell's warnings by updating its code.
+  * CMake maintenance.
+  * Fixed compilation without math support.</comment>
+    <requestid>1398760</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:55:32 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Make the wcurl subpackage noarch: it ships a single shell
+  script wrapper, so the architecture-specific build was
+  flagged by no-binary; also capitalise its summary
+- Drop the obsolete Group tags from the fish and zsh
+  completion subpackages
+
+-------------------------------------------------------------------
 Thu Oct 15 13:43:37 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Enable also the ftp protocol in the mini package so that dnf and

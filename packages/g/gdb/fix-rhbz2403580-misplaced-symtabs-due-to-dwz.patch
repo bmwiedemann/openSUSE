@@ -1,13 +1,12 @@
-From 1a9251041357be4c94971113101086be025affbd Mon Sep 17 00:00:00 2001
+From 9685ffb65167ead2464a13cd44f9f3562bc9789a Mon Sep 17 00:00:00 2001
 From: Andrew Burgess <aburgess@redhat.com>
-Date: Tue, 10 Feb 2026 11:47:12 +0100
-Subject: [PATCH 1/4] fix rhbz2403580 - misplaced symtabs due to dwz
+Date: Thu, 11 Dec 2025 10:33:15 +0000
+Subject: [PATCH 54/54] gdb-rhbz2403580-misplaced-symtabs.patch
 
-Backport upstream commit 70b66cf338b14336 to fix RH BZ 2403580.
-
-Bug: https://bugzilla.redhat.com/show_bug.cgi?id=2403580
-
-Cherry-picked from fedora @ 34c5cd8.
+;; Backport of upstream commit 70b66cf338b14336 to address RHBZ
+;; 2402580.  This backport can be dropped when rebasing to GDB 18.
+;; There were some moderate merge conflicts which needed resolving
+;; when backporting this fix.
 ---
  gdb/dwarf2/line-header.c | 43 ++++++++++++++++++++++++++++++++++++++++
  gdb/dwarf2/line-header.h | 13 +++++++++++-
@@ -15,10 +14,10 @@ Cherry-picked from fedora @ 34c5cd8.
  3 files changed, 64 insertions(+), 7 deletions(-)
 
 diff --git a/gdb/dwarf2/line-header.c b/gdb/dwarf2/line-header.c
-index eddb2ef7ae8..0f4407f2fb2 100644
+index b64dc715129..dc6e1e10935 100644
 --- a/gdb/dwarf2/line-header.c
 +++ b/gdb/dwarf2/line-header.c
-@@ -418,3 +418,46 @@ dwarf_decode_line_header  (sect_offset sect_off, bool is_dwz,
+@@ -424,3 +424,46 @@ dwarf_decode_line_header (sect_offset sect_off, bool is_dwz,
  
    return lh;
  }
@@ -66,7 +65,7 @@ index eddb2ef7ae8..0f4407f2fb2 100644
 +  return m_symtab;
 +}
 diff --git a/gdb/dwarf2/line-header.h b/gdb/dwarf2/line-header.h
-index 30809f69acc..f9b5f81eecd 100644
+index e6f9ea9f2d4..b4427a0e4ad 100644
 --- a/gdb/dwarf2/line-header.h
 +++ b/gdb/dwarf2/line-header.h
 @@ -23,6 +23,7 @@
@@ -98,10 +97,10 @@ index 30809f69acc..f9b5f81eecd 100644
  
  /* The line number information for a compilation unit (found in the
 diff --git a/gdb/dwarf2/read.c b/gdb/dwarf2/read.c
-index f8f411c195a..f4a1eaf0f53 100644
+index b9f95f3dae4..93238155719 100644
 --- a/gdb/dwarf2/read.c
 +++ b/gdb/dwarf2/read.c
-@@ -7669,8 +7669,8 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
+@@ -6227,8 +6227,8 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
  	      sf->symtab = allocate_symtab (cust, name, name_for_id);
  	    }
  
@@ -112,7 +111,7 @@ index f8f411c195a..f4a1eaf0f53 100644
  	}
      }
    else
-@@ -7688,7 +7688,7 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
+@@ -6246,7 +6246,7 @@ dwarf2_cu::setup_type_unit_groups (struct die_info *die)
        for (i = 0; i < file_names.size (); ++i)
  	{
  	  file_entry &fe = file_names[i];
@@ -121,7 +120,7 @@ index f8f411c195a..f4a1eaf0f53 100644
  	}
      }
  
-@@ -13291,7 +13291,7 @@ process_structure_scope (struct die_info *die, struct dwarf2_cu *cu)
+@@ -11591,7 +11591,7 @@ process_structure_scope (struct die_info *die, struct dwarf2_cu *cu)
  	    {
  	      /* Any related symtab will do.  */
  	      symtab
@@ -130,7 +129,7 @@ index f8f411c195a..f4a1eaf0f53 100644
  	    }
  	  else
  	    {
-@@ -18968,6 +18968,9 @@ dwarf_decode_lines (struct line_header *lh, struct dwarf2_cu *cu,
+@@ -16594,6 +16594,9 @@ dwarf_decode_lines (struct line_header *lh, struct dwarf2_cu *cu,
    if (decode_mapping)
      dwarf_decode_lines_1 (lh, cu, lowpc);
  
@@ -140,7 +139,7 @@ index f8f411c195a..f4a1eaf0f53 100644
    /* Make sure a symtab is created for every file, even files
       which contain only variables (i.e. no code with associated
       line numbers).  */
-@@ -18983,7 +18986,7 @@ dwarf_decode_lines (struct line_header *lh, struct dwarf2_cu *cu,
+@@ -16609,7 +16612,7 @@ dwarf_decode_lines (struct line_header *lh, struct dwarf2_cu *cu,
  	sf->symtab = allocate_symtab (cust, sf->name.c_str (),
  				      sf->name_for_id.c_str ());
  
@@ -149,17 +148,15 @@ index f8f411c195a..f4a1eaf0f53 100644
      }
  }
  
-@@ -19256,7 +19259,7 @@ new_symbol (struct die_info *die, struct type *type, struct dwarf2_cu *cu,
- 	  if (fe == NULL)
- 	    complaint (_("file index out of range"));
- 	  else
--	    sym->set_symtab (fe->symtab);
-+	    sym->set_symtab (fe->symtab (*file_cu));
+@@ -16886,7 +16889,7 @@ new_symbol (struct die_info *die, struct type *type, struct dwarf2_cu *cu,
+ 	      if (fe == NULL)
+ 		complaint (_("file index out of range"));
+ 	      else
+-		sym->set_symtab (fe->symtab);
++		sym->set_symtab (fe->symtab (*file_cu));
+ 	    }
  	}
  
-       switch (die->tag)
-
-base-commit: 8b5dc3da60d6c07991821c447f183288c4aac69e
 -- 
 2.51.0
 

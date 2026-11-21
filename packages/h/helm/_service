@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">refs/tags/v4.3.1</param>
+    <param name="revision">refs/tags/v4.3.2</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="set_version" mode="manual">
@@ -17,8 +17,11 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
-    <param name="replace">golang.org/x/sys=golang.org/x/sys@v0.49.1-0.20261022125458-f5cb0306ac0e</param>
-    <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
-    <param name="replace">github.com/klauspost/compress=github.com/klauspost/compress@v1.20.2</param>
+    <param name="replace">golang.org/x/sys=golang.org/x/sys@v0.50.0</param>
+    <param name="replace">github.com/go-jose/go-jose/v4=github.com/go-jose/go-jose/v4@v4.1.6</param>
+    <param name="replace">go.opentelemetry.io/otel=go.opentelemetry.io/otel@v1.47.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace=go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.47.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc=go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc@v1.47.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp=go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp@v1.47.0</param>
   </service>
 </services>

@@ -3839,4 +3839,12 @@
   * bmo#2061391 - perform session object removals under slot lock</comment>
     <requestid>1385947</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>4b7d47b8754548c501b6a9e5c5f80ce1</srcmd5>
+    <version>3.132</version>
+    <time>1793990086</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395161</requestid>
+  </revision>
 </revisionlist>

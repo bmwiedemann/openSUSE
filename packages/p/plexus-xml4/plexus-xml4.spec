@@ -19,7 +19,7 @@
 %global base_name plexus-xml
 %global version_suffix 4
 Name:           %{base_name}%{version_suffix}
-Version:        4.1.1
+Version:        4.2.1
 Release:        0
 Summary:        Plexus XML Utilities
 License:        Apache-2.0

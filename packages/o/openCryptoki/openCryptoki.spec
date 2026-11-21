@@ -27,39 +27,42 @@
 %define oc_cvs_tag opencryptoki
 
 %ifarch s390 s390x
-    %define ocki_conf_flags --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate
+    %define ocki_conf_flags --enable-icatok --enable-ccatok --enable-ep11tok --enable-pkcsep11_migrate --enable-pkcsep11_session
 %else
     %ifnarch i586
-        %define ocki_conf_flags --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --enable-pkcscca_migrate
+        %define ocki_conf_flags --disable-icatok --enable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcsep11_session
     %else
-        %define ocki_conf_flags --disable-icatok --disable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcscca_migrate
+        %define ocki_conf_flags --disable-icatok --disable-ccatok --disable-ep11tok --disable-pkcsep11_migrate --disable-pkcsep11_session
     %endif
 %endif
 
 Name:           openCryptoki
-Version:        3.27.0
+Version:        3.28.0
 Release:        0
-Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
+Summary:        An Implementation of PKCS#11 (Cryptoki) v3.0 for IBM Cryptographic Hardware
 License:        CPL-1.0
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/opencryptoki
 Source:         https://github.com/opencryptoki/%{oc_cvs_tag}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        openCryptoki.pkcsslotd
-Source2:        openCryptoki-TFAQ.html
-Source3:        openCryptoki-rpmlintrc
+Source1:        openCryptoki-TFAQ.html
+Source2:        openCryptoki-rpmlintrc
 # Patch 0 is needed because group pkcs11 doesn't exist in the build environment
 # and because we don't want(?) various file and directory permissions to be 0700.
-Patch000:       ocki-3.27-remove-make-install-chgrp.patch
+Patch000:       ocki-3.28-remove-make-install-chgrp.patch
 #
+Patch010:       openCryptoki-GHSA-79qh-5gjg-gmm8-commit-e987dd3.patch
+Patch011:       openCryptoki-GHSA-79qh-5gjg-gmm8-commit-04eabed.patch
+#
+BuildRequires:  autoconf
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libcap-devel
-BuildRequires:  libitm1
 BuildRequires:  libtool
-BuildRequires:  libudev-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel >= 1.1.1
 BuildRequires:  pkgconfig
@@ -78,14 +81,15 @@ ExclusiveArch:  %{openCryptoki_32bit_arch} %{openCryptoki_64bit_arch}
 %ifarch s390 s390x
 BuildRequires:  libica-devel >= 3.3
 BuildRequires:  libica-tools
+BuildRequires:  libudev-devel
 %endif
 
 %description
-Opencryptoki implements the PKCS#11 specification v2.20 for a set of
-cryptographic hardware, such as IBM 4764 and 4765 crypto cards, and the
-Trusted Platform Module (TPM) chip. Opencryptoki also brings a software
-token implementation that can be used without any cryptographic
-hardware.
+Opencryptoki implements the PKCS#11 specification v3.0 (and partially
+v3.1 and v3.2) for a set of cryptographic hardware, such as IBM 4767,
+4768, 4769 and 4770 crypto cards, and the Trusted Platform Module (TPM)
+chip. Opencryptoki also brings a software token implementation that can
+be used without any cryptographic hardware.
 This package contains the Slot Daemon (pkcsslotd) and general utilities.
 
 %package devel
@@ -93,24 +97,18 @@ Summary:        Development files for openCryptoki, a PKCS#11 implementation for
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       libopenssl-devel >= 1.1.1
-Requires:       openldap2-devel
-Requires:       trousers-devel
-%ifarch s390 s390x
-Requires:       libica-devel >= 3.3
-%endif
+Requires:       openCryptoki = %{version}
 
 %description devel
-The PKCS#11 version 2.01 API implemented for the IBM cryptographic
-cards. This package includes support for the IBM 4758 cryptographic
-co-processor (with the PKCS#11 firmware loaded) and the IBM eServer
-Cryptographic Accelerator (FC 4960 on pSeries).
+Opencryptoki implements the PKCS#11 specification v3.0 (and partially
+v3.1 and v3.2) for IBM cryptographic cards and accelerators.
 This package contains the development header files for building
-opencryptoki and PKCS#11 based applications
+opencryptoki and PKCS#11 based applications.
 
 
 %ifarch %{openCryptoki_32bit_arch}
 %package 32bit
-Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
+Summary:        An Implementation of PKCS#11 (Cryptoki) v3.0 for IBM Cryptographic Hardware
 # this is needed to make sure the pkcs11 group exists before
 # installation:
 Group:          Productivity/Security
@@ -119,18 +117,16 @@ ExclusiveArch:  %{openCryptoki_32bit_arch}
 
 %description 32bit
 This is a re-packaged binary rpm. For the package source, please look
-for the source of the package without the "32bit" ending
+for the source of the package without the "32bit" ending.
 
-The PKCS#11 version 2.11 API implemented for the IBM cryptographic
-cards. This package includes support for the IBM 4758 cryptographic
-coprocessor (with the PKCS#11 firmware loaded) and the IBM eServer
-Cryptographic Accelerator (FC 4960 on pSeries).
+The PKCS#11 version 3.0 API implemented for IBM cryptographic cards.
+This package includes runtime libraries for 32-bit applications.
 
 %endif
 
 %ifarch %{openCryptoki_64bit_arch}
 %package 64bit
-Summary:        An Implementation of PKCS#11 (Cryptoki) v2.11 for IBM Cryptographic Hardware
+Summary:        An Implementation of PKCS#11 (Cryptoki) v3.0 for IBM Cryptographic Hardware
 # this is needed to make sure the pkcs11 group exists before
 # installation:
 Group:          Productivity/Security
@@ -141,10 +137,8 @@ ExclusiveArch:  %{openCryptoki_64bit_arch}
 This is a re-packaged binary rpm. For the package source, please look
 for the source of the package without the "64bit" ending
 
-The PKCS#11 version 2.11 API implemented for the IBM cryptographic
-cards. This package includes support for the IBM 4758 cryptographic
-coprocessor (with the PKCS#11 firmware loaded) and the IBM eServer
-Cryptographic Accelerator (FC 4960 on pSeries).
+The PKCS#11 version 3.0 API implemented for IBM cryptographic cards.
+This package includes runtime libraries for 64-bit applications.
 
 %endif
 
@@ -152,16 +146,20 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 # setup -q -n %%{oc_cvs_tag}-%%{version}
 %autosetup -p 1 -n %{oc_cvs_tag}-%{version}
 
-cp %{SOURCE2} .
+cp %{SOURCE1} .
 
 %build
+dos2unix misc/opencryptoki.pc.in
 ./bootstrap.sh
 
 %configure --with-systemd=%{_unitdir} \
-    --with-libudev=yes \
+    --with-pkcsslotd-user=pkcsslotd \
+    --with-pkcs-group=%{pkcs_group} \
+    --enable-swtok \
+    --enable-icsftok \
     --enable-tpmtok \
-%ifarch aarch64  # Apparently, gcc for aarch64 doesn't support transactional memory
-    --enable-locks \
+%ifarch s390 s390x
+    --with-libudev=yes \
 %endif
     %{ocki_conf_flags}
 
@@ -188,15 +186,12 @@ install -d %{buildroot}%{_sysusersdir}
 # Install the sysusers configuration
 install -D -m 0644 opencryptoki-sysusers.conf %{buildroot}%{_sysusersdir}/opencryptoki.conf
 
-# Move data templates from /var to /usr/share/opencryptoki for tmpfiles to use
-install -d %{buildroot}%{_datadir}/opencryptoki/templates
-install -d %{buildroot}%{_initddir}
 install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
+install -d %{buildroot}%{_tmpfilesdir}
 #
 # Define the tmpfiles.d configuration
 #
-cat > %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+cat > %{buildroot}%{_tmpfilesdir}/opencryptoki.conf <<EOF
 # Type Path        Mode UID  GID  Age Argument
 d /run/opencryptoki 0770 pkcsslotd pkcs11 - -
 d /var/lib/opencryptoki 0770 root pkcs11 - -
@@ -212,7 +207,7 @@ d /var/lock/opencryptoki/icsf 0770 root pkcs11 - -
 EOF
 #
 %ifnarch i586
-cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+cat >> %{buildroot}%{_tmpfilesdir}/opencryptoki.conf <<EOF
 d /var/lib/opencryptoki/ccatok 0770 root pkcs11 - -
 d /var/lib/opencryptoki/ccatok/TOK_OBJ 0770 root pkcs11 - -
 d /var/lock/opencryptoki/ccatok 0770 root pkcs11 - -
@@ -220,7 +215,7 @@ EOF
 %endif
 #
 %ifarch s390 s390x
-cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+cat >> %{buildroot}%{_tmpfilesdir}/opencryptoki.conf <<EOF
 d /var/lib/opencryptoki/ep11tok 0770 root pkcs11 - -
 d /var/lib/opencryptoki/ep11tok/TOK_OBJ 0770 root pkcs11 - -
 d /var/lib/opencryptoki/lite 0770 root pkcs11 - -
@@ -230,7 +225,7 @@ d /var/lock/opencryptoki/lite 0770 root pkcs11 - -
 EOF
 %endif
 #
-cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
+cat >> %{buildroot}%{_tmpfilesdir}/opencryptoki.conf <<EOF
 d /var/log/opencryptoki 0770 root pkcs11 - -
 L+ /etc/pkcs11 - - - - /var/lib/opencryptoki
 EOF
@@ -241,9 +236,11 @@ cat > %{buildroot}%{_unitdir}/pkcsslotd.service.d/10-immutable-paths.conf <<EOF
 ReadWritePaths=/var/lib/opencryptoki/ /var/lock/opencryptoki/
 EOF
 
-# Remove manual directory creation in %%install that belongs in /var
+# Remove manual directory creation in %%install that belongs in /var and /run
 rm -rf %{buildroot}%{_localstatedir}/lib/opencryptoki
 rm -rf %{buildroot}%{_localstatedir}/log/opencryptoki
+rm -rf %{buildroot}%{_localstatedir}/lock
+rm -rf %{buildroot}/run
 #
 mkdir -p %{buildroot}%{_datadir}/opencryptoki
 cp %{buildroot}%{_datadir}/doc/opencryptoki/*.conf %{buildroot}%{_datadir}/opencryptoki

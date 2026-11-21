@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        3.10
+Version:        3.14
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -63,6 +63,8 @@ BuildRequires:  ghc-commonmark-extensions-prof
 BuildRequires:  ghc-commonmark-pandoc-devel
 BuildRequires:  ghc-commonmark-pandoc-prof
 BuildRequires:  ghc-commonmark-prof
+BuildRequires:  ghc-conduit-devel
+BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-crypton-connection-devel
@@ -105,8 +107,6 @@ BuildRequires:  ghc-ipynb-devel
 BuildRequires:  ghc-ipynb-prof
 BuildRequires:  ghc-jira-wiki-markup-devel
 BuildRequires:  ghc-jira-wiki-markup-prof
-BuildRequires:  ghc-libyaml-devel
-BuildRequires:  ghc-libyaml-prof
 BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-mime-types-prof
 BuildRequires:  ghc-mtl-devel
@@ -119,10 +119,6 @@ BuildRequires:  ghc-pandoc-types-devel
 BuildRequires:  ghc-pandoc-types-prof
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-prof
-BuildRequires:  ghc-pretty-devel
-BuildRequires:  ghc-pretty-prof
-BuildRequires:  ghc-pretty-show-devel
-BuildRequires:  ghc-pretty-show-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-random-devel
@@ -146,6 +142,8 @@ BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-texmath-devel
 BuildRequires:  ghc-texmath-prof
+BuildRequires:  ghc-text-builder-devel
+BuildRequires:  ghc-text-builder-prof
 BuildRequires:  ghc-text-conversions-devel
 BuildRequires:  ghc-text-conversions-prof
 BuildRequires:  ghc-text-devel
@@ -172,12 +170,15 @@ BuildRequires:  ghc-xml-devel
 BuildRequires:  ghc-xml-prof
 BuildRequires:  ghc-xml-types-devel
 BuildRequires:  ghc-xml-types-prof
-BuildRequires:  ghc-yaml-devel
-BuildRequires:  ghc-yaml-prof
+BuildRequires:  ghc-yamlet-aeson-devel
+BuildRequires:  ghc-yamlet-aeson-prof
+BuildRequires:  ghc-yamlet-devel
+BuildRequires:  ghc-yamlet-prof
 BuildRequires:  ghc-zip-archive-devel
 BuildRequires:  ghc-zip-archive-prof
 BuildRequires:  ghc-zlib-devel
 BuildRequires:  ghc-zlib-prof
+Requires:       pandoc-data = %{version}-%{release}
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-Diff-devel
@@ -197,17 +198,19 @@ Pandoc is a Haskell library for converting from one markup format to another.
 The formats it can handle include
 
 - light markup formats (many variants of Markdown, reStructuredText, AsciiDoc,
-Org-mode, Muse, Textile, txt2tags, djot) - HTML formats (HTML 4 and 5) - Ebook
-formats (EPUB v2 and v3, FB2) - Documentation formats (GNU TexInfo, Haddock,
-Vimdoc) - Roff formats (man, ms) - TeX formats (LaTeX, ConTeXt) - Typst - XML
-formats (DocBook 4 and 5, JATS, TEI Simple, OpenDocument) - Outline formats
-(OPML) - Bibliography formats (BibTeX, BibLaTeX, CSL JSON, CSL YAML, RIS) -
-Word processor formats (Docx, RTF, ODT) - Interactive notebook formats (Jupyter
-notebook ipynb) - Page layout formats (InDesign ICML) - Wiki markup formats
-(MediaWiki, DokuWiki, TikiWiki, TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki,
-Creole) - Slide show formats (LaTeX Beamer, PowerPoint, Slidy, reveal.js,
-Slideous, S5, DZSlides) - Data formats (CSV and TSV tables, Excel spreadsheets)
-- PDF (via external programs such as pdflatex or wkhtmltopdf)
+Org-mode, Muse, Textile, txt2tags, djot, bbcode) - HTML formats (HTML 4 and 5,
+chunked HTML) - Ebook formats (EPUB v2 and v3, FB2) - Documentation formats
+(GNU TexInfo, Haddock, Vimdoc) - Roff formats (man, ms, mdoc) - TeX formats
+(LaTeX, ConTeXt) - Typst - ANSI-formatted text - XML formats (DocBook 4 and 5,
+JATS, TEI Simple, OpenDocument) - Outline formats (OPML) - Bibliography formats
+(BibTeX, BibLaTeX, CSL JSON, CSL YAML, RIS) - Word processor formats (Docx,
+RTF, ODT, FODT) - Interactive notebook formats (Jupyter notebook ipynb) - Page
+layout formats (InDesign ICML) - Wiki markup formats (MediaWiki, DokuWiki,
+TikiWiki, TWiki, Vimwiki, XWiki, ZimWiki, Jira wiki, Creole) - Slide show
+formats (LaTeX Beamer, PowerPoint, Slidy, reveal.js, Slideous, S5, DZSlides) -
+Data formats (CSV and TSV tables, Excel spreadsheets) - Serialization formats
+(Haskell, JSON, or XML representation of the AST) - PDF (via external programs
+such as pdflatex or wkhtmltopdf)
 
 Pandoc can convert mathematical content in documents between TeX, MathML, Word
 equations, roff eqn, typst, and plain text. It includes a powerful system for
@@ -215,6 +218,14 @@ automatic citations and bibliographies, and it can be customized extensively
 using templates, filters, and custom readers and writers written in Lua.
 
 For the pandoc command-line program, see the 'pandoc-cli' package.
+
+%package -n pandoc-data
+Summary:        Data files for pandoc
+BuildArch:      noarch
+
+%description -n pandoc-data
+This package provides the runtime data files for the pandoc library and
+command-line program.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -262,6 +273,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license COPYING.md
+
+%files -n pandoc-data
+%license COPYING.md
 %dir %{_datadir}/%{pkg_name}-%{version}
 %dir %{_datadir}/%{pkg_name}-%{version}/citeproc
 %dir %{_datadir}/%{pkg_name}-%{version}/citeproc/biblatex-localization
@@ -297,7 +311,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/MANUAL.txt
 %{_datadir}/%{pkg_name}-%{version}/citeproc/biblatex-localization/*.lbx.strings
 %{_datadir}/%{pkg_name}-%{version}/data/abbreviations
-%{_datadir}/%{pkg_name}-%{version}/data/bash_completion.tpl
 %{_datadir}/%{pkg_name}-%{version}/data/creole.lua
 %{_datadir}/%{pkg_name}-%{version}/data/default.csl
 %{_datadir}/%{pkg_name}-%{version}/data/docbook-entities.txt
@@ -421,6 +434,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.s5
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.slideous
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.slidy
+%{_datadir}/%{pkg_name}-%{version}/data/templates/default.t2t
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.tei
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.texinfo
 %{_datadir}/%{pkg_name}-%{version}/data/templates/default.textile

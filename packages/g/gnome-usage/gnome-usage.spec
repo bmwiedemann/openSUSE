@@ -18,7 +18,7 @@
 
 
 Name:           gnome-usage
-Version:        48.0+13
+Version:        48.0+29
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
@@ -35,9 +35,9 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.12
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
-BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libnm)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
+BuildRequires:  pkgconfig(libgtop-2.0) >= 2.34.0
+BuildRequires:  pkgconfig(libnm) >= 1.44.0
 BuildRequires:  pkgconfig(tinysparql-3.0)
 
 %description

@@ -19,7 +19,7 @@
 
 
 Name:           safeeyes
-Version:        3.5.1
+Version:        3.6.1
 Release:        0
 Summary:        Tool for reminding the user to take breaks
 License:        GPL-3.0-only
@@ -37,11 +37,7 @@ BuildRequires:  python3-python-xlib
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
 BuildArch:      noarch
-%if 0%{?suse_version} == 1500
-BuildRequires:  python3-devel >= 3.6
-%else
-BuildRequires:  python3-devel >= 3.10
-%endif
+BuildRequires:  python3-devel >= 3.11
 # MANUAL BEGIN
 Requires:       python3-Babel
 Requires:       python3-cairo >= 1.11.1

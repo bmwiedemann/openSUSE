@@ -3319,4 +3319,13 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   case (BZ #34697) (forwarded request 1382470 from Andreas_Schwab)</comment>
     <requestid>1382471</requestid>
   </revision>
+  <revision rev="310" vrev="4">
+    <srcmd5>6f52602d463e59eddad3925c8f82f0f9</srcmd5>
+    <version>2.44</version>
+    <time>1794590699</time>
+    <user>anag_factory</user>
+    <comment>- intl-restrict-path-traversal.patch: intl: Restrict path traversal when
+  using LANGUAGE env var (CVE-2026-84243, bsc#1289299, BZ #17142) (forwarded request 1396497 from Andreas_Schwab)</comment>
+    <requestid>1396498</requestid>
+  </revision>
 </revisionlist>

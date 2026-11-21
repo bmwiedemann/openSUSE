@@ -276,4 +276,63 @@ Update to version 0.40 (forwarded request 161402 from rusjako)</comment>
     <comment></comment>
     <requestid>1235275</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>cf1e0237e4d6bfa5ba3956c6eaafe09a</srcmd5>
+    <version>1.20261105</version>
+    <time>1794236600</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.20261105
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+  1.20261105 2026-11-06 Australia/Melbourne
+    * Don't canonicalize ARC-Seals once the ARC chain has failed, and only
+      match ARC-Authentication-Results at the start of a header field
+      Thanks to Sidney Markowitz &lt;sidney@apache.org&gt; and the
+      Apache SpamAssassin PMC
+    * Check ARC signature tags and instance numbers before looking up keys
+    * Speed up ARC-Seal canonicalization for long ARC chains
+    * Check ARC instance numbers in the ARC signer, and limit it to 50
+      ARC sets
+    * Speed up DKIM header canonicalization for long h= lists
+    * ARC signer skips messages with unparseable ARC headers rather than
+      dying, and matches ARC header names case insensitively
+    * ARC-Seal canonicalization takes the ARC-Authentication-Results
+      instance from the start of the field
+    * ARC verifier fails a chain with a missing or extra
+      ARC-Authentication-Results header, and no longer warns about a
+      missing cv= tag
+    * Speed up parsing of long header fields, and of header field names,
+      tag lists, h= lists and policy records with long runs of whitespace
+      Thanks to Sidney Markowitz &lt;sidney@apache.org&gt; and the
+      Apache SpamAssassin PMC
+    * Only check test timings under AUTHOR_TESTING, so slow machines
+      don't fail them
+      Thanks to Sidney Markowitz &lt;sidney@apache.org&gt;
+    * Speed up verifying messages with many signatures and many header
+      fields, by indexing the header once for all the signatures
+      Thanks to Sidney Markowitz &lt;sidney@apache.org&gt; and the
+      Apache SpamAssassin PMC</comment>
+    <requestid>1396028</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>37d7eddd5735513bbfa0896abbea4b61</srcmd5>
+    <version>1.20261116</version>
+    <time>1795103639</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.20261116
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+  1.20261116 2026-11-17 Australia/Melbourne
+    * Security: the verifier now rejects (result &quot;invalid&quot;) a
+      DKIM-Signature that has no h= tag or an empty one, whose h= tag
+      doesn't include From, or that has no bh= tag, as RFC 6376 requires.
+      The check meant to reject a missing h= tag never fired, so such a
+      signature covered none of the message's header fields, and without
+      bh= not its body either, yet still passed. One such signature, made
+      with a key published under the signer's own d= domain, verified on
+      any message. Signatures made without bh= by pre-standard drafts of
+      DKIM are now rejected too
+      Thanks to Jakub Kozub
+    * Document that the ARC verifier accepts an ARC-Message-Signature with
+      an empty or missing h= tag, as the ARC test suite expects</comment>
+    <requestid>1398404</requestid>
+  </revision>
 </revisionlist>

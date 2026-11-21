@@ -352,4 +352,12 @@ license=(&quot;Unlicense&quot;), stale for every version since 2023 and not foll
     <comment>Update to 3.0.4</comment>
     <requestid>1387144</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>926d537dcab004f660fcfc73427bd6ac</srcmd5>
+    <version>3.0.5</version>
+    <time>1794162127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.0.5: AVX rows on AVX-without-AVX2 CPUs, real multi-socket core count, measured cache sizes.</comment>
+    <requestid>1396122</requestid>
+  </revision>
 </revisionlist>

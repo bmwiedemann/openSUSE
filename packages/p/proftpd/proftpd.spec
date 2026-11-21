@@ -28,7 +28,7 @@ Summary:        Configurable GPL-licensed FTP server software
 # We only accept updates for "STABLE" Versions
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Servers
-Version:        1.3.9c
+Version:        1.3.9e
 Release:        0
 URL:            http://www.proftpd.org/
 Source0:        %{name}-%{version}.tar.xz
@@ -53,6 +53,8 @@ Patch104:       %{name}_no-BuildDate.patch
 Patch105:       %{name}_env-script-interpreter.patch
 #openSUSE:Security_Features#Systemd_hardening_effort
 Patch106:       harden_proftpd.service.patch
+# PATCH-FIX-UPSTREAM CVE-2026-35025.patch bsc#1269065 -- add mod_procfs core module to block procfs/sysfs paths (Issue #2170)
+Patch107:       CVE-2026-35025.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 BuildRequires:  cyrus-sasl-devel
@@ -146,6 +148,7 @@ This is the SQLite Module for ProFTPD
 %package doc
 Summary:        Documentation for ProFTPD
 Group:          Documentation/HTML
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 
 %description doc

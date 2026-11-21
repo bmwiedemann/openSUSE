@@ -546,4 +546,21 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346750</requestid>
   </revision>
+  <revision rev="61" vrev="11">
+    <srcmd5>1b553367b7568b3ac764a08ca7d15019</srcmd5>
+    <version>20250310</version>
+    <time>1794597146</time>
+    <user>anag_factory</user>
+    <comment>- Do no longer recommend malcontent-control: malcontent has been removed from
+  Tumbleweed due to unaddressed CVEs.</comment>
+    <requestid>1396743</requestid>
+  </revision>
+  <revision rev="62" vrev="12">
+    <srcmd5>2a8ce031bc86357d260d9a95f6aacf05</srcmd5>
+    <version>20250310</version>
+    <time>1795182248</time>
+    <user>anag_factory</user>
+    <comment>- Drop gnome-photos Recommends, package is archived upstream.</comment>
+    <requestid>1398619</requestid>
+  </revision>
 </revisionlist>

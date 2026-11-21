@@ -165,4 +165,38 @@
     <comment>1</comment>
     <requestid>1383310</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7943e3f42fb983d596c09fe3acfface3</srcmd5>
+    <version>0.21.1</version>
+    <time>1795103792</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.1:
+  * feat: Adds min-width parameter to enable toggling of side-by-side based on terminal width #2084
+  * Allow CLI --side-by-side to disable a feature enabled in git config #2319
+  * Bug fix: syntax-highlight deleted files where appropriate #2322
+  * Side by side hunk #2304
+  * Correct tmux hyperlink support documentation #2324
+  * Let --side-by-side keep the line-number formats from the user's features #2321
+  * Keep the user's settings when using builtin features #2326
+  * Update colibri theme and add colibri-colorblind #2329
+  * Switch feature fixes #2330
+  * Bug fix: make a style feature in a features list work #2331
+  * Paint line numbers in the style of their line #2332
+  * Emit the h record when the hunk header row is skipped #2334
+  * Add a TUI based on a fork of gitu #2323
+  * delta-gitu v0.1.19 #2339
+  * Fix the dead macOS download link in the installation docs #2342
+  * Fix tests failing when run in a terminal #2343</comment>
+    <requestid>1398611</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1adfa827836a009148cb79a799e451e7</srcmd5>
+    <version>0.21.2</version>
+    <time>1795182548</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.21.2:
+  * Show TUI setup in the README #2335
+  * Indicate submodule dirty state #2349</comment>
+    <requestid>1398919</requestid>
+  </revision>
 </revisionlist>

@@ -38,7 +38,7 @@ BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  pkgconfig(libdisplay-info) < 0.4
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(systemd)

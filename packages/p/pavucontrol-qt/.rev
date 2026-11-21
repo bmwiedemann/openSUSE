@@ -202,4 +202,20 @@
   * Updated translations and bumped the version</comment>
     <requestid>1348585</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6bc0ef4e97d2bd04adf47f48704984fb</srcmd5>
+    <version>2.5.1</version>
+    <time>1795182330</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.1:
+  * Handled stream state changes and prevented memory leaks (in
+    MinimalStreamWidget).
+  * Fixed a case of hanging on restarting the sound server, by fixing the
+    iterator invalidation in MainWindow::removeAllWidgets.
+
+- Update to version 2.5.0:
+  * Updated peak meter latency handling.
+  * Implemented Bluetooth codec selection and UI integration.</comment>
+    <requestid>1398765</requestid>
+  </revision>
 </revisionlist>

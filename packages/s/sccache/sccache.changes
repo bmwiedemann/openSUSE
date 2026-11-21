@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 14 02:11:04 UTC 2026 - William Brown <william.brown@suse.com>
+
+- Bug 1290218 - CVE-2026-123612 - rustls: writer() before sending the ech_required alert, the authenticated public_name server receives data intended for the inner client
+
+-------------------------------------------------------------------
+Wed Sep 23 02:51:38 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1282211 - CVE-2026-93599,CVE-2026-93602,CVE-2026-93601,CVE-2026-93600 - rustls-webpki multiple issues
+
+-------------------------------------------------------------------
 Tue Sep 15 00:51:46 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.18.0~2:

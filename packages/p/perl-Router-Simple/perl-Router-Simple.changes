@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:35:04 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-Router-Simple/Changes
+
+  0.18 2026-11-05T09:46:23Z
+
+      - Anchor route regexps at the end of the string with \z instead of $,
+        so that a path, method or host with a trailing newline no longer
+        matches. (polamjag)
+      - Require perl 5.10.
+
+-------------------------------------------------------------------
 Mon Apr 13 19:07:42 UTC 2015 - coolo@suse.com
 
 - updated to 0.17

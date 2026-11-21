@@ -209,4 +209,12 @@ put into adi:2</comment>
     <comment>Consider empty release and source strings as null</comment>
     <requestid>1375930</requestid>
   </revision>
+  <revision rev="27" vrev="4">
+    <srcmd5>d8851dd6806311c1d7bfe268013257dc</srcmd5>
+    <version>3.12.0</version>
+    <time>1794318106</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396445</requestid>
+  </revision>
 </revisionlist>

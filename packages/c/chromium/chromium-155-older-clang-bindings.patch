@@ -44,25 +44,10 @@
      def is_const_qualified(self) -> bool:
          """Determine whether a Type has the "const" qualifier set.
  
-@@ -2953,36 +2930,6 @@
-         conf.lib.clang_Type_visitFields(self, fields_visit_callback(visitor), fields)
-         return iter(fields)
+@@ -2953,21 +2930,6 @@
+         conf.lib.clang_visitCXXBaseClasses(self, fields_visit_callback(visitor), bases)
+         return iter(bases)
  
--    def get_bases(self) -> Iterator[Cursor]:
--        """Return an iterator for accessing the base classes of this type."""
--
--        def visitor(base: Cursor, _: Any) -> Literal[1]:
--            assert not base.is_null()
--
--            # Create reference to TU so it isn't GC'd before Cursor.
--            base._tu = self._tu
--            bases.append(base)
--            return 1  # continue
--
--        bases: list[Cursor] = []
--        conf.lib.clang_visitCXXBaseClasses(self, fields_visit_callback(visitor), bases)
--        return iter(bases)
--
 -    def get_methods(self) -> Iterator[Cursor]:
 -        """Return an iterator for accessing the methods of this type."""
 -
@@ -120,11 +105,10 @@
      (
          "clang_parseTranslationUnit",
          [Index, c_interop_string, c_void_p, c_int, c_void_p, c_int, c_int],
-@@ -4335,8 +4274,6 @@
-         [TranslationUnit, SourceRange, POINTER(POINTER(Token)), POINTER(c_uint)],
+@@ -4335,7 +4274,6 @@
      ),
      ("clang_visitChildren", [Cursor, cursor_visit_callback, py_object], c_uint),
--    ("clang_visitCXXBaseClasses", [Type, fields_visit_callback, py_object], c_uint),
+     ("clang_visitCXXBaseClasses", [Type, fields_visit_callback, py_object], c_uint),
 -    ("clang_visitCXXMethods", [Type, fields_visit_callback, py_object], c_uint),
      ("clang_Cursor_getNumArguments", [Cursor], c_int),
      ("clang_Cursor_getArgument", [Cursor, c_uint], Cursor),

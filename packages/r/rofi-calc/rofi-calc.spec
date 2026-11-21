@@ -26,7 +26,6 @@ URL:            https://github.com/svenstaro/rofi-calc
 Source0:        https://github.com/svenstaro/rofi-calc/archive/v%{version}.tar.gz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  rofi-wayland-devel >= 1.5
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40

@@ -2416,4 +2416,20 @@ New upstream release</comment>
     <comment>1</comment>
     <requestid>1384830</requestid>
   </revision>
+  <revision rev="232" vrev="1">
+    <srcmd5>c2d6f6c0010efc953f99ceb4e0525232</srcmd5>
+    <version>26.11.0</version>
+    <time>1794324574</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396299</requestid>
+  </revision>
+  <revision rev="233" vrev="2">
+    <srcmd5>18aca14464c816f8d4b2fbac8cfcfb15</srcmd5>
+    <version>26.11.0</version>
+    <time>1795182345</time>
+    <user>anag_factory</user>
+    <comment>Add CVE ref</comment>
+    <requestid>1398917</requestid>
+  </revision>
 </revisionlist>

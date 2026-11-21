@@ -1,5 +1,0 @@
-<package name="pmdk" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
-  <devel project="hardware:nvdimm" package="pmdk"/>
-</package>

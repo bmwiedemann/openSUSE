@@ -96,11 +96,8 @@ This package contains plugins for %{name}.
 
 # FIXME: create proper configs
 # so far, only Slowroll and Tumbleweed are supported, all others have dependency issues
-%if "%_repository" == "openSUSE_Slowroll"
     ln -s ubuntu.yml qonf/distros/opensuse-slowroll.yml
-%else
     ln -s ubuntu.yml qonf/distros/opensuse-tumbleweed.yml
-%endif
 
 # Configure failed. error was:
 # in 'block in RQonf::QMake#compile': undefined method '>>' for an instance of Process::Status (NoMethodError)

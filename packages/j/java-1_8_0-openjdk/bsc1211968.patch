@@ -1,6 +1,8 @@
---- openjdk/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java	2023-11-14 07:18:11.483931806 +0100
-+++ openjdk/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java	2023-11-14 07:20:21.018138340 +0100
-@@ -253,11 +253,7 @@
+diff --git a/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java b/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java
+index 49f5a90254..2e3d6218d7 100644
+--- a/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java
++++ b/jdk/src/share/classes/sun/security/ssl/DHKeyExchange.java
+@@ -253,11 +253,7 @@ final class DHKeyExchange {
          static {
              String property = GetPropertyAction.privilegedGetProperty(
                      "jdk.tls.ephemeralDHKeySize");

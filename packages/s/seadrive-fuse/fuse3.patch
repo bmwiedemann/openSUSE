@@ -1,26 +1,26 @@
-commit f646ef885f969b15ce59911e5b9b7e16b047da05
+commit 3f51f134bc574ea04d02471740ab0cad2ff38ace
 Author: Paolo Stivanin <info@paolostivanin.com>
 Date:   Tue Jan 13 13:56:28 2026 +0100
 
     Port to fuse3
 
-Index: seadrive-fuse-3.0.24/README.md
+    Switch to the libfuse3 API (FUSE_USE_VERSION 30) and require fuse3.
+
+    Besides the signature changes, handle fuse3's different runtime defaults:
+    - Disable FUSE_CAP_ATOMIC_O_TRUNC in init(): open() doesn't handle O_TRUNC,
+      so overwriting an existing file would leave stale trailing data.
+    - utimens() now gets UTIME_NOW/UTIME_OMIT with tv_sec == 0; resolve them
+      so touch no longer sets mtime to 1970 (and touch -a leaves it alone).
+    - libfuse >= 3.12 caps worker threads at 10, while reads block until the
+      file is downloaded; default to -o max_threads=64 (user value wins).
+    - rename() rejects RENAME_NOREPLACE/RENAME_EXCHANGE with -EINVAL.
+
+    Update README and debian/control (libfuse3-dev, fuse3).
+
+Index: seadrive-fuse-3.0.27/configure.ac
 ===================================================================
---- seadrive-fuse-3.0.24.orig/README.md
-+++ seadrive-fuse-3.0.24/README.md
-@@ -4,7 +4,7 @@ SeaDrive daemon with FUSE interface
- # Building
- ## Ubuntu Linux
- ```
--sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev
-+sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev libfuse3-dev
- ```
- 
- First, you shoud get the latest source of [libsearpc](https://github.com/haiwen/libsearpc) with `v3.2-latest` tag and [seadrive-fuse](https://github.com/haiwen/seadrive-fuse).
-Index: seadrive-fuse-3.0.24/configure.ac
-===================================================================
---- seadrive-fuse-3.0.24.orig/configure.ac
-+++ seadrive-fuse-3.0.24/configure.ac
+--- seadrive-fuse-3.0.27.orig/configure.ac
++++ seadrive-fuse-3.0.27/configure.ac
 @@ -154,7 +154,7 @@ GLIB_REQUIRED=2.16.0
  SEARPC_REQUIRED=1.0
  JANSSON_REQUIRED=2.2.1
@@ -39,22 +39,93 @@ Index: seadrive-fuse-3.0.24/configure.ac
     AC_SUBST(FUSE_CFLAGS)
     AC_SUBST(FUSE_LIBS)
  fi
-Index: seadrive-fuse-3.0.24/src/fuse-ops.c
+Index: seadrive-fuse-3.0.27/debian/control
 ===================================================================
---- seadrive-fuse-3.0.24.orig/src/fuse-ops.c
-+++ seadrive-fuse-3.0.24/src/fuse-ops.c
-@@ -2,8 +2,8 @@
+--- seadrive-fuse-3.0.27.orig/debian/control
++++ seadrive-fuse-3.0.27/debian/control
+@@ -16,7 +16,7 @@ Build-Depends:
+     valac,
+     libjansson-dev,
+     dh-python,
+-    libfuse-dev,
++    libfuse3-dev,
+     libsearpc-dev,
+ Standards-Version: 3.9.5
+ Homepage: http://seafile.com
+@@ -28,6 +28,7 @@ Depends:
+     ${shlibs:Depends},
+     ${misc:Depends},
+     ${python:Depends},
++    fuse3,
+ Suggests: seadrive-gui, seadrive-cli
+ Description: SeaDrive daemon
+  File syncing and sharing software with file encryption and group
+Index: seadrive-fuse-3.0.27/README.md
+===================================================================
+--- seadrive-fuse-3.0.27.orig/README.md
++++ seadrive-fuse-3.0.27/README.md
+@@ -4,7 +4,7 @@ SeaDrive daemon with FUSE interface
+ # Building
+ ## Ubuntu Linux
+ ```
+-sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev
++sudo apt-get install autoconf automake libtool libevent-dev libcurl4-openssl-dev libgtk2.0-dev uuid-dev intltool libsqlite3-dev valac libjansson-dev libssl-dev libfuse3-dev
+ ```
+ 
+ First, you shoud get the latest source of [libsearpc](https://github.com/haiwen/libsearpc) with `v3.2-latest` tag and [seadrive-fuse](https://github.com/haiwen/seadrive-fuse).
+Index: seadrive-fuse-3.0.27/src/file-cache-mgr.c
+===================================================================
+--- seadrive-fuse-3.0.27.orig/src/file-cache-mgr.c
++++ seadrive-fuse-3.0.27/src/file-cache-mgr.c
+@@ -2624,17 +2624,14 @@ file_cache_mgr_is_fetching_file (FileCac
+ 
+ int
+ file_cache_mgr_utimen (FileCacheMgr *mgr, const char *repo_id,
+-                       const char *path, time_t mtime, time_t atime)
++                       const char *path, const struct timespec tv[2])
+ {
+     int ret = 0;
+-    struct utimbuf times;
+     char *ondisk_path = g_build_filename (mgr->priv->base_path, repo_id, path, NULL);
+ 
+-    times.actime = atime;
+-    times.modtime = mtime;
+-    ret = utime (ondisk_path, &times);
++    ret = utimensat (AT_FDCWD, ondisk_path, tv, 0);
+     if (ret < 0) {
+-        seaf_warning ("Failed to utime %s: %s\n", ondisk_path, strerror(errno));
++        seaf_warning ("Failed to utimensat %s: %s\n", ondisk_path, strerror(errno));
+         ret = (-errno);
+     }
+ 
+Index: seadrive-fuse-3.0.27/src/file-cache-mgr.h
+===================================================================
+--- seadrive-fuse-3.0.27.orig/src/file-cache-mgr.h
++++ seadrive-fuse-3.0.27/src/file-cache-mgr.h
+@@ -219,7 +219,7 @@ void
+ file_cache_mgr_cache_file (FileCacheMgr *mgr, const char *repo_id, const char *path, struct _RepoTreeStat *st);
+ 
+ int
+-file_cache_mgr_utimen (FileCacheMgr *mgr, const char *repo_id, const char *path, time_t mtime, time_t atime);
++file_cache_mgr_utimen (FileCacheMgr *mgr, const char *repo_id, const char *path, const struct timespec tv[2]);
+ 
+ /* Functions that only works for files and folders under root directory.
+  * Except for library folders, the root directory can also contain some special
+Index: seadrive-fuse-3.0.27/src/fuse-ops.c
+===================================================================
+--- seadrive-fuse-3.0.27.orig/src/fuse-ops.c
++++ seadrive-fuse-3.0.27/src/fuse-ops.c
+@@ -2,9 +2,6 @@
  
  #if defined __linux__ || defined __APPLE__
  
 -#define FUSE_USE_VERSION  26
 -#include <fuse.h>
-+#define FUSE_USE_VERSION 30
-+#include <fuse3/fuse.h>
- 
+-
  #ifdef __APPLE__
  #include <libproc.h>
-@@ -297,7 +297,7 @@ path_comps_free (FusePathComps *comps)
+ #endif
+@@ -297,7 +294,7 @@ path_comps_free (FusePathComps *comps)
          account_info_free (comps->account_info);
  }
  
@@ -63,18 +134,33 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
  notify_fs_op_error (const char *type, const char *path)
  {
      json_t *msg = json_object();
-@@ -327,8 +327,9 @@ get_category_dir_mtime (const char *serv
+@@ -326,8 +323,24 @@ get_category_dir_mtime (const char *serv
+     return mtime;
  }
  
++void *
++seadrive_fuse_init (struct fuse_conn_info *conn, struct fuse_config *cfg)
++{
++    /* libfuse3 enables atomic O_TRUNC by default, in which case the kernel
++     * expects open() to do the truncation. seadrive_fuse_open() doesn't, so
++     * keep the fuse2 behaviour: truncate() is called before open(O_TRUNC).
++     */
++#if FUSE_VERSION >= FUSE_MAKE_VERSION(3, 17)
++    fuse_unset_feature_flag (conn, FUSE_CAP_ATOMIC_O_TRUNC);
++#else
++    conn->want &= ~FUSE_CAP_ATOMIC_O_TRUNC;
++#endif
++
++    return NULL;
++}
++
  int
 -seadrive_fuse_getattr(const char *path, struct stat *stbuf)
 +seadrive_fuse_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *fi)
  {
-+    (void)fi;
      FusePathComps comps;
      int ret = 0;
-     uid_t uid;
-@@ -446,7 +447,7 @@ readdir_root_accounts (void *buf, fuse_f
+@@ -446,7 +459,7 @@ readdir_root_accounts (void *buf, fuse_f
      }
      for (ptr = accounts; ptr; ptr = ptr->next) {
          account = ptr->data;
@@ -83,7 +169,7 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
      }
      g_list_free_full (accounts, (GDestroyNotify)seaf_account_free);
  
-@@ -467,10 +468,10 @@ readdir_root (AccountInfo *account, void
+@@ -467,10 +480,10 @@ readdir_root (AccountInfo *account, void
          type_str = ptr->data;
  #ifdef __APPLE__
          dname_nfd = g_utf8_normalize (type_str, -1, G_NORMALIZE_NFD);
@@ -96,7 +182,7 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
  #endif
      }
  
-@@ -506,10 +507,10 @@ readdir_category (AccountInfo *account,
+@@ -506,10 +519,10 @@ readdir_category (AccountInfo *account,
          dname = g_path_get_basename (info->display_name);
  #ifdef __APPLE__
          dname_nfd = g_utf8_normalize (dname, -1, G_NORMALIZE_NFD);
@@ -109,7 +195,7 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
  #endif
  
          g_free (dname);
-@@ -558,7 +559,7 @@ readdir_repo (const char *repo_id, const
+@@ -558,7 +571,7 @@ readdir_repo (const char *repo_id, const
          if (seaf_repo_manager_is_path_invisible (seaf->repo_mgr, repo_id, dname)) {
              continue;
          }
@@ -118,7 +204,7 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
      }
      g_hash_table_destroy (dirents);
  
-@@ -570,8 +571,10 @@ out:
+@@ -570,7 +583,8 @@ out:
  int
  seadrive_fuse_readdir(const char *path, void *buf,
                        fuse_fill_dir_t filler, off_t offset,
@@ -126,11 +212,9 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
 +                      struct fuse_file_info *info,
 +                      enum fuse_readdir_flags flags)
  {
-+    (void)flags;
      FusePathComps comps;
      int ret = 0;
- 
-@@ -580,8 +583,8 @@ seadrive_fuse_readdir(const char *path,
+@@ -580,8 +594,8 @@ seadrive_fuse_readdir(const char *path,
      if (!seaf->started)
          return 0;
  
@@ -141,67 +225,117 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.c
  
      memset (&comps, 0, sizeof(comps));
  
-@@ -1233,8 +1236,11 @@ out:
+@@ -1233,13 +1247,17 @@ out:
      return ret;
  }
  
 -int seadrive_fuse_rename (const char *oldpath, const char *newpath)
 +int seadrive_fuse_rename (const char *oldpath, const char *newpath, unsigned int flags)
  {
-+    if (flags != 0)
-+        return -EINVAL;
-+
      FusePathComps comps1, comps2;
      int ret = 0;
  
-@@ -1564,8 +1570,9 @@ int seadrive_fuse_release (const char *p
+     seaf_debug ("rename %s to %s called.\n", oldpath, newpath);
+ 
++    /* RENAME_NOREPLACE and RENAME_EXCHANGE are not supported. */
++    if (flags != 0)
++        return -EINVAL;
++
+     if (!seaf->started)
+         return 0;
+ 
+@@ -1564,7 +1582,7 @@ int seadrive_fuse_release (const char *p
  }
  
  int
 -seadrive_fuse_truncate (const char *path, off_t length)
 +seadrive_fuse_truncate (const char *path, off_t length, struct fuse_file_info *fi)
  {
-+    (void)fi;
      FusePathComps comps;
      char *repo_id, *file_path;
-     FileCacheStat st;
-@@ -1705,8 +1712,9 @@ seadrive_fuse_statfs (const char *path,
+@@ -1705,7 +1723,7 @@ seadrive_fuse_statfs (const char *path,
  }
  
  int
 -seadrive_fuse_chmod (const char *path, mode_t mode)
 +seadrive_fuse_chmod (const char *path, mode_t mode, struct fuse_file_info *fi)
  {
-+    (void)fi;
      RepoTreeStat tree_st;
      char *repo_id = NULL, *file_path = NULL;
-     SeafRepo *repo = NULL;
-@@ -1776,8 +1784,9 @@ out:
+@@ -1776,7 +1794,7 @@ out:
  }
  
  int
 -seadrive_fuse_utimens (const char *path, const struct timespec tv[2])
 +seadrive_fuse_utimens (const char *path, const struct timespec tv[2], struct fuse_file_info *fi)
  {
-+    (void)fi;
      RepoTreeStat tree_st;
      char *repo_id = NULL, *file_path = NULL;
-     SeafRepo *repo = NULL;
-Index: seadrive-fuse-3.0.24/src/fuse-ops.h
+@@ -1784,10 +1802,26 @@ seadrive_fuse_utimens (const char *path,
+     JournalOp *op = NULL;
+     int ret = 0;
+     FusePathComps comps;
+-    time_t atime = tv[0].tv_sec;
+-    time_t mtime = tv[1].tv_sec;
++    struct timespec ts[2], now;
++    time_t mtime;
++    int i;
++
++    /* libfuse3 passes UTIME_NOW / UTIME_OMIT through (with tv_sec == 0).
++     * Resolve UTIME_NOW once so the cache file and the repo tree agree;
++     * UTIME_OMIT is kept and handled by utimensat() and below.
++     */
++    clock_gettime (CLOCK_REALTIME, &now);
++    for (i = 0; i < 2; i++) {
++        ts[i] = tv[i];
++        if (ts[i].tv_nsec == UTIME_NOW)
++            ts[i] = now;
++    }
+ 
+-    seaf_debug ("utimens %s called. mtime = %"G_GINT64_FORMAT"\n", path, mtime);
++    if (ts[1].tv_nsec == UTIME_OMIT)
++        seaf_debug ("utimens %s called. mtime omitted\n", path);
++    else
++        seaf_debug ("utimens %s called. mtime = %"G_GINT64_FORMAT"\n",
++                    path, (gint64)ts[1].tv_sec);
+ 
+     memset (&comps, 0, sizeof(comps));
+ 
+@@ -1815,7 +1849,7 @@ seadrive_fuse_utimens (const char *path,
+         goto out;
+     }
+ 
+-    ret = file_cache_mgr_utimen (seaf->file_cache_mgr, repo_id, file_path, mtime, atime);
++    ret = file_cache_mgr_utimen (seaf->file_cache_mgr, repo_id, file_path, ts);
+     if (ret < 0)
+         goto out;
+ 
+@@ -1829,6 +1863,11 @@ seadrive_fuse_utimens (const char *path,
+         goto out;
+     }
+ 
++    /* Only atime was changed (e.g. touch -a); nothing to record. */
++    if (ts[1].tv_nsec == UTIME_OMIT)
++        goto out;
++
++    mtime = ts[1].tv_sec;
+     if (tree_st.mtime == mtime)
+         goto out;
+ 
+Index: seadrive-fuse-3.0.27/src/fuse-ops.h
 ===================================================================
---- seadrive-fuse-3.0.24.orig/src/fuse-ops.h
-+++ seadrive-fuse-3.0.24/src/fuse-ops.h
+--- seadrive-fuse-3.0.27.orig/src/fuse-ops.h
++++ seadrive-fuse-3.0.27/src/fuse-ops.h
 @@ -3,13 +3,17 @@
  
  #if defined __linux__ || defined __APPLE__
  
--#include <fuse.h>
-+#ifndef FUSE_USE_VERSION
 +#define FUSE_USE_VERSION 30
-+#endif
-+#include <fuse3/fuse.h>
+ #include <fuse.h>
  
 -int seadrive_fuse_getattr(const char *path, struct stat *stbuf);
++void *seadrive_fuse_init (struct fuse_conn_info *conn, struct fuse_config *cfg);
++
 +int seadrive_fuse_getattr(const char *path, struct stat *stbuf, struct fuse_file_info *fi);
  
  int seadrive_fuse_readdir(const char *path, void *buf,
@@ -238,20 +372,42 @@ Index: seadrive-fuse-3.0.24/src/fuse-ops.h
  
  int seadrive_fuse_symlink (const char *from, const char *to);
  
-Index: seadrive-fuse-3.0.24/src/seadrive.c
+Index: seadrive-fuse-3.0.27/src/seadrive.c
 ===================================================================
---- seadrive-fuse-3.0.24.orig/src/seadrive.c
-+++ seadrive-fuse-3.0.24/src/seadrive.c
-@@ -41,9 +41,9 @@ static void print_version ()
+--- seadrive-fuse-3.0.27.orig/src/seadrive.c
++++ seadrive-fuse-3.0.27/src/seadrive.c
+@@ -41,11 +41,8 @@ static void print_version ()
  #include <fcntl.h>
  #include <sys/file.h>
  
 -#define FUSE_USE_VERSION  26
 -#include <fuse.h>
 -#include <fuse_opt.h>
-+#define FUSE_USE_VERSION 30
-+#include <fuse3/fuse.h>
-+#include <fuse3/fuse_opt.h>
- 
+-
  #include "fuse-ops.h"
++#include <fuse_opt.h>
+ 
+ struct options {
+     char *seafile_dir;
+@@ -82,6 +79,7 @@ static struct fuse_opt seadrive_fuse_opt
+ };
+ 
+ static struct fuse_operations seadrive_fuse_ops = {
++    .init = seadrive_fuse_init,
+     .getattr = seadrive_fuse_getattr,
+     .readdir = seadrive_fuse_readdir,
+     .mknod = seadrive_fuse_mknod,
+@@ -547,6 +545,13 @@ main (int argc, char **argv)
+ 
+     seaf_message ("rpc server started.\n");
+ 
++#if FUSE_VERSION >= FUSE_MAKE_VERSION(3, 12)
++    /* libfuse >= 3.12 limits worker threads to 10, but reads block until the
++     * file is downloaded. Inserted first so a user-supplied -o max_threads wins.
++     */
++    fuse_opt_insert_arg (&args, 1, "-omax_threads=64");
++#endif
++
+     fuse_main(args.argc, args.argv, &seadrive_fuse_ops, NULL);
+     fuse_opt_free_args (&args);
  

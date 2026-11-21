@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Nov 14 15:01:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.59.0
+
+- Update to 0.59.0
+  * Fixed vulnerabilities:
+    - MSW: Fix argument quoting when directly trying to start
+      .bat/.cmd as executable
+    - HTTP: Fix redirects on same host but different protocol/port
+  * New features:
+    - Add support for certificates with IP SAN, these can now be
+      checked against the system trust store
+  * Bugfixes and minor changes:
+    - fz::event_with_source accepts const source pointers; source()
+      now returns a const source-identity pointer
+    - Minor fixes to key purpose handling in certificate requests
+- Changes from 0.58.0
+  * New features:
+    - Added fz::socket::srtt to get an estimate of the the smoothed
+      rounttrip time of the connection, if available
+    - Added fz::rename_file flags to control replacement and
+      cross-filesystem copying; no-replace uses native atomic
+      operations where available, otherwise a best-effort check
+    - Added fz::result::cross_device to report filesystem-boundary
+      failures
+    - Added fz::local_filesys modification time overloads for
+      native file and directory handles
+    - Added fz::is_valid_x509_distinguished_name
+    - Added shared interface for buffer access
+  * Bugfixes and minor changes:
+    - fz::uri::get_authority now correctly preserves IPv6 literal
+      addresses
+    - HTTP connections that are kept alive now also use TCP
+      keep-alive and automatically close after a few minutes
+    - MSW: Reading or writing an invalid file handle now reports
+      invalid instead of other, matching Unix
+    - MSW: When impersonating, TOKEN_ONWER is now set on the token
+
+-------------------------------------------------------------------
 Fri Aug 21 08:40:24 UTC 2026 - ecsos <ecsos@opensuse.org> - 0.57.0
 
 - Update to 0.57.0

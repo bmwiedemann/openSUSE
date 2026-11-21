@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:55:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.11:
+  * Add haptic support for Motorola Edge 30 (motorola,dubai)
+  * Manpage improvements
+
+-------------------------------------------------------------------
 Wed Oct 21 07:01:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.8.10:
@@ -22,7 +29,7 @@ Fri Feb 13 16:46:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   + theme: Fix window-close event name
 - Changes from version 0.8.8:
   + Support haptic on Google Nexus 10, Samung Note 10.1
-  + Create uses via systemd-sysusers
+  + Create users via systemd-sysusers
   + Fix max brightness for LED patterns on multicolor LEDs
 - BuildRequire sysuser-tools: the package installs a file to
   %{_sysusersdir}.

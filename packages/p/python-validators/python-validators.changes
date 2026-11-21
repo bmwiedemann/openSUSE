@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Wed Nov  4 06:32:01 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.36.0:
+Breaking
+  * Drops support for Python v3.9 and v3.10.
+    Python v3.11 or newer is required.
+    gh#python-validators/validators#488
+  * Stricter validation: the following inputs, previously accepted
+    by mistake, are now rejected.
+    + isin() now verifies the check digit, which was previously
+      ignored. Lowercase ISINs are still accepted.
+      gh#python-validators/validators#464
+    + cusip() and sedol() require a numeric check digit.
+      gh#python-validators/validators#487
+    + md5(), sha1(), sha224(), sha256(), sha384(), sha512(),
+      base16(), base32(), base58() and base64() reject trailing
+      characters, such as a trailing newline.
+      gh#python-validators/validators#486
+    + ind_pan() requires a full-string match.
+      gh#python-validators/validators#478
+    + fr_ssn() no longer accepts a comma as the gender or Corsica
+      department character.
+      gh#python-validators/validators#469
+    + domain() rejects an underscore in the last label and names
+      longer than 253 octets once IDNA-encoded, as defined by
+      RFC 1035.
+      gh#python-validators/validators#485
+      gh#python-validators/validators#461
+    + mastercard() accepts only the 2221-2720 range of the
+      2-series BINs.
+      gh#python-validators/validators#467
+    + eth_address() rejects non-hexadecimal characters.
+      gh#python-validators/validators#466
+    + mac_address() rejects mixed separators.
+      gh#python-validators/validators#432
+    + slug() rejects a trailing newline, and telnet URIs reject
+      control characters.
+      gh#python-validators/validators#492
+Features
+  * feat(uri): add telnet URI validation per RFC 4248
+    gh#python-validators/validators#446
+  * Accept file:// URLs per RFC 8089
+    gh#python-validators/validators#483
+  * cron: accept a step over a range (e.g. 1-5/2) and in list items
+    gh#python-validators/validators#482
+  * Accept lowercase IBANs in iban()
+    gh#python-validators/validators#471
+  * fix(cron): accept day-of-week 7 as a Sunday alias
+    gh#python-validators/validators#470
+  * Accept a trailing dot on simple hostnames with rfc_1034
+    gh#python-validators/validators#462
+  * fix(crypto_addresses): accept testnet (tb) segwit addresses
+    gh#python-validators/validators#466
+Maintenance
+  * fix: reject MAC addresses with mixed separators
+    gh#python-validators/validators#432
+  * feat: Optimize slug. Extend tests.
+    gh#python-validators/validators#439
+  * chore: update codebase to reflect new username
+    gh#python-validators/validators#447
+  * docs: correct PossibleValueTypes note in between to include
+    None
+    gh#python-validators/validators#460
+  * chore: use native pyproject config for tox and pytest
+    gh#python-validators/validators#490
+  * test: cover RFC length limits for domain() and hostname()
+    gh#python-validators/validators#493
+  * chore!: adopt uv and PEP 735 dependency groups
+    gh#python-validators/validators#495
+  * docs: explain why the documentation is hosted on the
+    maintainer's fork
+    gh#python-validators/validators#497
+  * docs: hide badges from the man page; upgrade docs tooling to
+    latest stable
+    gh#python-validators/validators#498
+
+-------------------------------------------------------------------
 Thu May  1 08:02:35 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.35.0:

@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-19214-g121e5318a7
+%define LEECHCRAFT_VERSION 0.6.70-19424-g027e980fd1
 
 %define azoth_postfix %{so_ver}
 %define db_postfix %{so_ver}
@@ -49,8 +49,12 @@
 %define xpc_postfix %{so_ver}
 %define xsd_postfix %{so_ver}
 
+%if 0%{?suse_version} < 1699
+%define _lto_cflags %{nil}
+%endif
+
 Name:           leechcraft
-Version:        0.6.70+git.19214.g121e5318a7
+Version:        0.6.70+git.19424.g027e980fd1
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -59,9 +63,7 @@ URL:            https://leechcraft.org
 Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECHCRAFT_VERSION}.tar.xz
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
-# PATCH-FIX-UPSTREAM Fix testWaitManyFirstFailureInOrderWins doing exact string match:
-# https://github.com/0xd34df00d/leechcraft/commit/a31f194
-Patch0:         leechcraft-0.6.70-19214-g121e5318a7+a31f194.patch
+
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -78,7 +80,6 @@ BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_container-devel >= 1.76.0
 BuildRequires:  libboost_date_time-devel
 BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_locale-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libjpeg-devel
@@ -110,7 +111,6 @@ BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(hunspell) >= 1.5.1
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
@@ -130,17 +130,14 @@ BuildRequires:  projectM-qt6-devel >= 4
 BuildRequires:  pkgconfig(libqrencode)
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libswresample)
-BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  qt6-sql-sqlite
-BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(poppler-qt6)
 BuildRequires:  pkgconfig(qtermwidget6)
 BuildRequires:  pkgconfig(quazip1-qt6)
-BuildRequires:  pkgconfig(speex)
 BuildRequires:  pkgconfig(taglib) >= 1.6
 BuildRequires:  pkgconfig(toxcore)
 BuildRequires:  pkgconfig(xcb-renderutil)
@@ -1948,6 +1945,13 @@ rm -r src/plugins/azoth/share/azoth/iconsets/clients/default
 #setup permissions correctly to avoid false duplicates reported by rpmlint (bnc#784670)
 find src -name '*.png' -or -name '*.css' -or -name '*.gif' -exec chmod 0644 {} +
 
+%if 0%{?suse_version} < 1699
+# PATCH-FIX-UPSTREAM vs. "control reaches end of non-void function" error.
+sed -i '/unknown entry type/a \			__builtin_unreachable();' src/plugins/azoth/components/chat/chateventsadapter.cpp
+sed -i '173s/^[[:space:]]*\}[[:space:]]*();/__builtin_unreachable();\n\t\t\t&/' src/plugins/azoth/plugins/chathistory/chathistory.cpp
+sed -i '33s/^[[:space:]]*\}[[:space:]]*();/__builtin_unreachable();\n\t\t\t&/' src/plugins/summary/util.cpp
+%endif
+
 %build
 mkdir build && cd build
 
@@ -1976,7 +1980,7 @@ cmake ../src \
         -DSTRICT_LICENSING=True \
         -DWITH_DBUS_LOADERS=False \
         -DWITH_QWT=True \
-        -DENABLE_UTIL_TESTS=True \
+        -DENABLE_ALL_TESTS=True \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
                 -DENABLE_AGGREGATOR_BODYFETCH=False \
@@ -2003,7 +2007,6 @@ cmake ../src \
                 -DENABLE_AZOTH_LASTSEEN=True \
                 -DENABLE_AZOTH_MODNOK=True \
                 -DENABLE_AZOTH_MUCOMMANDS=True \
-                -DENABLE_AZOTH_MUCOMMANDS_TESTS=True \
                 -DENABLE_AZOTH_NATIVEEMOTICONS=True \
                 -DENABLE_AZOTH_OTROID=True \
                 -DENABLE_AZOTH_ROSENTHAL=True \
@@ -2046,7 +2049,6 @@ cmake ../src \
         -DENABLE_KOVROGRUZ=True \
         -DENABLE_KRIGSTASK=False \
         -DENABLE_LACKMAN=True \
-                -DTESTS_LACKMAN=True \
 %if 0%{?suse_version} >= 1699
         -DENABLE_LASTFMSCROBBLE=True \
 %else
@@ -2079,7 +2081,6 @@ cmake ../src \
                 -DENABLE_LMP_POTORCHU=False \
 %endif
                 -DENABLE_LMP_PPL=True \
-                -DENABLE_LMP_PPL_TESTS=True \
         -DENABLE_MELLONETRAY=True \
         -DENABLE_MONOCLE=True \
                 -DENABLE_MONOCLE_BOOP=True \
@@ -2125,7 +2126,6 @@ cmake ../src \
         -DENABLE_SB2=True \
         -DENABLE_SCROBLIBRE=True \
         -DENABLE_SECMAN=True \
-                -DTESTS_SECMAN=True \
         -DENABLE_SNAILS=False \
         -DENABLE_SYNCER=False \
         -DENABLE_TABSESSMANAGER=True \
@@ -2484,7 +2484,7 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %dir %{_datadir}/leechcraft/fenet
 %dir %{_datadir}/leechcraft/fenet/compositing
 %dir %{_datadir}/leechcraft/fenet/wms
-%{_datadir}/leechcraft/xsessions
+%{_datadir}/xsessions/*
 %{translations_dir}/*craft_fenet_*.qm
 %{_datadir}/leechcraft/fenet/compositing/*compton*
 %{_datadir}/leechcraft/fenet/wms/*kwin*
@@ -2719,8 +2719,8 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/netstoremanagersettings.xml
 %{translations_dir}/*craft_netstoremanager_??.qm
 %{translations_dir}/*craft_netstoremanager_??_??.qm
-# %dir %{_datadir}/leechcraft/netstoremanager
-# %dir %{_datadir}/leechcraft/netstoremanager/services
+# dir {_datadir}/leechcraft/netstoremanager
+# dir {_datadir}/leechcraft/netstoremanager/services
 
 %files networkmonitor
 %{translations_dir}/*craft_networkmonitor*.qm

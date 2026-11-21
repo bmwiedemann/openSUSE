@@ -1669,4 +1669,26 @@
   * Fixed many bugs and regressions in Django 6.1</comment>
     <requestid>1383712</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>4df35aa7bd6ccbf88c205389a2416891</srcmd5>
+    <version>6.1.3</version>
+    <time>1794317953</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.1.3
+  * CVE-2026-108147: Potential memory exhaustion in MultiPartParser
+    via base64-encoded file upload (bsc#1289340)
+  * CVE-2026-111211: Potential log injection via unescaped geometry
+    form values (bsc#1289344)
+  * CVE-2026-111362: Server-side request forgery via crs member of
+    GeoJSON geometries (bsc#1289345)
+  * CVE-2026-113593: Potential exposure of private data via empty
+    and missing Vary headers (bsc#1289348)
+  * CVE-2026-113733: Password hash disclosure to “view only” admin
+    users with custom user models (bsc#1289349)
+  * CVE-2026-114582: Server-side request forgery via SpatialReference
+    string input (bsc#1289350)
+  * Added compatibility for oracledb 26.0.0+
+  * Fixed some bugs and regressions in Django 6.1</comment>
+    <requestid>1396338</requestid>
+  </revision>
 </revisionlist>

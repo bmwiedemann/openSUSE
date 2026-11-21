@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 13 19:58:26 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- version update to 6.20
+  * New and rewritten pages: git-bisect-rebase.1, file_attr.2type,
+    proc_sys_fs_inotify.5, and sysfs.5 split into 17 individual
+    sys_*.5 pages (sys_block.5, sys_bus.5, sys_class.5,
+    sys_class_net.5, sys_dev.5, sys_devices.5, sys_firmware.5,
+    sys_fs.5, sys_fs_cgroup.5, sys_fs_smackfs.5, sys_hypervisor.5,
+    sys_kernel.5, sys_kernel_cgroup.5, sys_kernel_debug.5,
+    sys_kernel_mm.5, sys_module.5, sys_power.5)
+  * Newly documented interfaces: diffman-git(1) (--),
+    fallocate(2) (FALLOC_FL_WRITE_ZEROES),
+    landlock*(?) (LANDLOCK_ADD_RULE_QUIET)
+  * New and changed links: proc_pid_smaps_rollup.5
+    (proc_pid_smaps(5))
+  * Global changes: share/mk/ (improve portability without gcc(1),
+    support make(1) --no-silent), src/bin/ (add git-bisect-rebase)
+- Spec cleanup: remove deprecated Group tag
+
+-------------------------------------------------------------------
 Wed Aug 26 06:17:03 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 6.19

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Nov 03 22:00:04 UTC 2026 - jehuherrerap@hotmail.com
+
+- Bump to version 2.7.0:
+  * feat: Env presets
+  * Hide the runtime filter when there's no need for it
+  * Bump commits
+
+-------------------------------------------------------------------
+Wed Oct 21 02:00:30 UTC 2026 - jehuherrerap@hotmail.com
+
+- Bump to version 2.6.1:
+  * Fix for appimages
+  * Update commits and sha
+  * Bump version
+  * feat(ui): Add platform filter (#97)
+  * Dosbox support (#96)
+  * fix: Better GPU steering
+  * feat(ui): add RomM logo icon for sidebar navigation (#94)
+  * feat: GPU Picker
+  * Update shas and commits
+  * Bump version, update Readme
+  * feat: Global launch options (per runtime)
+  * feat: Make UMU NSENTER toggleable per game
+  * feat(ui): add GOG symbolic icon and rename Steam import label (#93)
+  * Update README
+  * Update shas and commits
+  * feat(launchers): Add support for wrappers and launches for Steam (#90)
+  * feat(ui): keep selected sidebar navigation items highlighted (#89)
+  * Translation files merge
+  * feat(ui): Add a stop button on top of the running game card
+  * l10n: add Brazilian Portuguese translation (#88)
+  * Update sha sums and commits
+  * fix: Fix the saving of the appconfig
+  * refactor: Consolidate the view mode button
+  * feat: Better welcome screen
+  * fix: Fix RomM client api to get the rom files
+  * Update commits and sha
+  * feat: Live logger (#84)
+  * feat: Add a setting to enable scrollbar on the grid
+  * fix: Hiding a game wont reset the model anymore
+  * fix: Default proton should always point to the one in settings
+  * fix: Refactor edit, playtime and last played
+  * Bump shas and commits
+  * feat: Move the default GOG cache to appdata
+  * fix: Fix romm platform select combobox text issue
+  * fix: When editing a hidden app, don't unhide it
+  * feat: Auto HDR - Games can toggle hdr when launching and closing.
+  * feat: Add last played date stamp and sort
+  * Update sha sums
+
+-------------------------------------------------------------------
 Sun Sep 13 22:15:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - For .spec:

@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        25.devel3.ca3b0768b
+Version:        25.devel475.275dd4727
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}

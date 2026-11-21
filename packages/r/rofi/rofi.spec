@@ -1,7 +1,7 @@
 #
 # spec file for package rofi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rofi
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        A window switcher, run dialog and dmenu replacement
 License:        MIT
@@ -25,6 +25,8 @@ Group:          System/GUI/Other
 URL:            https://github.com/davatorium/rofi
 Source:         https://github.com/davatorium/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Patch0:         xdg-terminal.patch
+# PATCH-FIX-UPSTREAM https://github.com/davatorium/rofi/pull/2359
+Patch1:         wayland-layer-configure-race.patch
 BuildRequires:  bison
 BuildRequires:  cairo-devel
 BuildRequires:  check-devel

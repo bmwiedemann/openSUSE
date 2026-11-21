@@ -2568,4 +2568,40 @@ Needs to go together with libsemanage change</comment>
     <comment>1</comment>
     <requestid>1386337</requestid>
   </revision>
+  <revision rev="183" vrev="1">
+    <srcmd5>be18ed1b08ac77d362770377c6f63c28</srcmd5>
+    <version>20261030</version>
+    <time>1793724735</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394394</requestid>
+  </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>ac33d09dadf9e0f1a346bf5f8ff2a1ad</srcmd5>
+    <version>20261116</version>
+    <time>1794863969</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20261116:
+  * Allow rshim load kernel modules
+  * Allow getty read nm-dispatcher console plugin's pid files
+  * Allow virtnwfilterd_t map packet_socket
+  * Allow iiosensorproxy create and use qipcrtr_socket
+  * Allow rndc to read some /proc/net/sys variables
+  * Label /dev/paes with crypt_device_t
+  * Allow sshd-session bind and connect to all tcp ports
+  * Allow tftpd the process setcap permission
+  * Allow pdns get attributes of filesystems with extended attributes
+  * Allow systemd hostnamed to access psi (bsc#1288617, bsc#1290482)
+  * file_contexts.subs_dist: map systemd-sysext/confext staging dirs onto /
+  * devices: label VFIO character device nodes
+  * Label HOME_DIR/.config/mozilla with mozilla_home_t
+  * Allow importd to read unlabeled (bsc#1286901)
+  * Allow systemd-importd to rw global pressure information (bsc#1286901)
+  * Allow importd to manage machined symlinks as well (bsc#1286901)
+  * Add 2 more generators for systemd
+  * Allow dbus-broker read systemd-nsresourced runtime socket file
+  * Allow systemd_pstore_t to create directories on systemd_pstore_var_lib_t
+  * Allow sdbootutil_t to manage /var/lib/sdbootutil (bsc#1281087)</comment>
+    <requestid>1397981</requestid>
+  </revision>
 </revisionlist>

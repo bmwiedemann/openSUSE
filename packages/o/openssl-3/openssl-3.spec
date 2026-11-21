@@ -230,6 +230,34 @@ Patch100:       openssl-CVE-2026-63075.patch
 Patch101:       openssl-CVE-2026-63076.patch
 # PATCH-FIX-UPSTREAM: CVE-2026-75803: AEAD Forgeries with Empty Ciphertext When Using EVP_Cipher() (bsc#1275837)
 Patch102:       openssl-CVE-2026-75803.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-88822: Uninitialised stack data in BIO_dgram_detect_peer_addr() (bsc#1289820)
+Patch103:       openssl-CVE-2026-88822.patch
+# PATCH-FIX-SUSE: CVE-2026-88822: Test for uninitialised stack data in BIO_dgram_detect_peer_addr() (bsc#1289820)
+Patch104:       openssl-CVE-2026-88822-test.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-88823: AES-GCM-SIV: no-op on zero-length AAD update and clear stale AAD on reuse (bsc#1289569)
+Patch105:       openssl-CVE-2026-88823.patch
+Patch106:       openssl-CVE-2026-88823-tests.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-35189: Excessive Memory Allocation in Relative CRLDP Processing (bsc#1280589)
+Patch107:       openssl-CVE-2026-35189.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-35191: QUIC Unvalidated Amplification Credit may be Over Accounted (bsc#1280590)
+Patch108:       openssl-CVE-2026-35191.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-54872: Timing Side-Channel in Scalar Multiplication for Non-NIST EC Curves (bsc#1280591)
+# PATCH-FIX-UPSTREAM: CVE-2026-77696: Timing Side-Channel in SM2 Signature Generation (bsc#1280598)
+Patch109:       openssl-CVE-2026-54872-CVE-2026-77696.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-54875: Non-Constant-Time SM2 Scalar Multiplication on ARM64 and RISC-V (bsc#1280592)
+Patch110:       openssl-CVE-2026-54875.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-72897: Out-of-Bounds Access After SSL_set_SSL_CTX() During a Handshake (bsc#1280594)
+Patch111:       openssl-CVE-2026-72897.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-75804: QUIC Connection-Level Flow Control is Not Enforced for Streams (bsc#1280595)
+Patch112:       openssl-CVE-2026-75804.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-75805: NULL Pointer Dereference in CMP Client Revocation Response Handling (bsc#1280596)
+Patch113:       openssl-CVE-2026-75805.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-75806: Unauthenticated and Undersized DTLS 1.2 AEAD Record Causes DoS (bsc#1280597)
+Patch114:       openssl-CVE-2026-75806.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-84782: DTLS Retransmits Handshake Messages From a Stale Buffer Offset (bsc#1280587)
+Patch115:       openssl-CVE-2026-84782.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-84784: QUIC: Unbounded RETIRE_CONNECTION_ID Backlog (bsc#1280599)
+Patch116:       openssl-CVE-2026-84784.patch
 
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540

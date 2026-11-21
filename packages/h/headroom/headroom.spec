@@ -20,20 +20,21 @@
 # the distribution primary interpreter.
 %define pythons %{primary_python}
 Name:           headroom
-Version:        0.41.0
+Version:        0.42.0
 Release:        0
 Summary:        Context optimization layer for LLM applications
-# Legal-Review-Notice: headroom-ai is Apache-2.0. The shipped artefact is
-# the maturin cdylib from crates/headroom-py (cargo tree --offline
-# -p headroom-py -e normal, 335 crates over 553 vendored). The only
-# copyleft licence in that graph is MPL-2.0 from option-ext 0.2.0 (via
-# hf-hub -> dirs -> dirs-sys). r-efi offers LGPL-2.1-or-later but is
-# UEFI-target-only and is not in the Linux graph. aws-lc-sys is vendored
-# with the workspace but is not linked into headroom-py. MPL-2.0 section
-# 3.2 is satisfied because vendor.tar.zst ships in the src.rpm.
+# Legal-Review-Notice: headroom-ai is Apache-2.0; the shipped artefact is
+# the maturin cdylib from crates/headroom-py.
+# - MPL-2.0: option-ext 0.2.0 (via hf-hub -> dirs -> dirs-sys); section 3.2
+#   satisfied — its sources ship in vendor.tar.zst.
+# - r-efi (LGPL-2.1-or-later): UEFI-target-only, absent from the Linux graph.
+# - aws-lc-sys: vendored with the workspace but not linked into headroom-py.
 License:        Apache-2.0 AND MPL-2.0
 URL:            https://github.com/headroomlabs-ai/headroom
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# vendor.tar.zst is cargo-vendor output minus dead prebuilt binaries (aws-lc
+# prebuilt-nasm and ring pregenerated COFF, winapi/windows import libs,
+# wit-bindgen wasm/cabi, libloading test DLLs); checksums repaired, lock intact.
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module click >= 8.3.3}
@@ -93,8 +94,8 @@ Requires:       %{primary_python}-fastapi >= 0.100.0
 Requires:       %{primary_python}-h2 >= 3.0
 Requires:       %{primary_python}-httpx >= 0.24.0
 Requires:       %{primary_python}-magika >= 0.6.0
-# Extra is mcp>=1.28.1,<2; Factory python-mcp is 1.28.1
-Requires:       %{primary_python}-mcp >= 1.28.1
+# Extra is mcp>=1.30.0,<2; CVE-2026-59951 fixed in 1.30.0
+Requires:       %{primary_python}-mcp >= 1.30.0
 Requires:       %{primary_python}-onnxruntime >= 1.24.0
 Requires:       %{primary_python}-openai >= 2.14.0
 Requires:       %{primary_python}-orjson >= 3.9.14

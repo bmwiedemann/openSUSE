@@ -1,6 +1,7 @@
 #
 # spec file for package screengrab
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           screengrab
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Qt tool for creating screenshots
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -27,7 +28,7 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        %{name}.keyring
 
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
@@ -36,7 +37,7 @@ BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.3.5
-BuildRequires:  cmake(Qt6Core) >= 6.6
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6GuiPrivate)

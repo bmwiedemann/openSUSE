@@ -1,8 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov  4 15:24:30 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.1.8:
+  * The CMake package reports the installed library flavors as
+      components "shared" and "static", e.g.
+      find_package(libaec CONFIG REQUIRED COMPONENTS static)
+  * After AEC_DATA_ERROR, further calls to aec_decode() on the same
+      stream keep returning AEC_DATA_ERROR
+  * Heap buffer overflow in SZ_BufftoBuffCompress with negative
+      parameters
+  * Heap buffer overflow when decoding resumed after AEC_DATA_ERROR.
+  * Uninitialized memory returned by aec_decode_range and
+      SZ_BufftoBuffDecompress for truncated input
+  * Out-of-bounds read in the decoder for fundamental sequences of 2^31
+      or more zero bits (boo#1289203; CVE-2026-120457)
+  * Corrupted split blocks decoded to garbage instead of returning
+      AEC_DATA_ERROR
+
+-------------------------------------------------------------------
 Tue May 19 12:57:53 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
 
 - Update to version 1.1.7:
-  * Fixed several security vulnerabilities discovered by libFuzzer and AI assistant 
+  * Fixed several security vulnerabilities discovered by libFuzzer and AI assistant
 
 -------------------------------------------------------------------
 Tue Feb 24 11:12:46 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>

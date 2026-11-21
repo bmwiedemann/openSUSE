@@ -259,4 +259,46 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     <comment></comment>
     <requestid>1357877</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>c79305128ccdd9a49d246d2b368c1bc8</srcmd5>
+    <version>2.8.5</version>
+    <time>1793727132</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.5
+  * Fixed a portability issue in unit tests. (#150).
+- Update to 2.8.4
+  * Fixed a heap buffer overflow in the MIDI stream parser that
+    occurred when the client submitted a fragmented SysEx message
+    with the first fragment exceeding the maximum supported size.
+    (#149).</comment>
+    <requestid>1394743</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>527dc901e00923c32d52f223227f7d8c</srcmd5>
+    <version>2.8.6</version>
+    <time>1794236870</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.6
+  * Fixed several inaccuracies in the audio renderer and improved
+    performance. The floating point renderer has an option to use
+    lookup tables to speedup computations of the math functions
+    once again, yet with a higher accuracy provided. This is
+    controlled via Cmake configuration property
+    libmt32emu_MATH_TYPE_FOR_FLOAT_RENDERER, which by default
+    enables the optimisation for the maximum performance having
+    sufficient CPU resources. 
+    Note, in most cases the audio output is no longer
+    bit-identical to one produced by previous versions, albeit
+    there must be no audible differences. (#148).</comment>
+    <requestid>1396296</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>ffd2b216f0f4712cdd053727d9fe8e03</srcmd5>
+    <version>2.8.6</version>
+    <time>1794932250</time>
+    <user>anag_factory</user>
+    <comment>- Restored cmake-files to cmake(MT32Emu) (it's needed for dosbox).
+- Switched to Qt6.</comment>
+    <requestid>1397631</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Sat Nov 14 09:47:40 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.4:
+  * build(deps): bump github.com/spf13/pflag from 1.0.10 to 1.1.0 by
+    @dependabot[bot] in #2878
+  * feat: let release dependencies set their Chart.yaml condition by
+    @Cayan in #2879
+  * fix: let a later --state-values-set assignment replace a value of
+    another type by @lbarrosby in #2880
+  * docs: list the env vars that disable insecure template functions
+    and hooks by @lbarrosby in #2881
+  * Still attempt upgrades on non-deployed releases by @JadeHayes in
+    #1043
+  * build(deps): bump docker/login-action from 4.7.0 to 4.8.0 by
+    @dependabot[bot] in #2882
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.13 to 1.33.15 by @dependabot[bot] in #2885
+  * build(deps): bump golang.org/x/sync from 0.24.0 to 0.25.0 by
+    @dependabot[bot] in #2884
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.114.6 to 1.114.9 by @dependabot[bot] in #2883
+  * docs: document trackFailOnError and helmStuckGrace by @lbarrosby
+    in #2886
+  * build(deps): bump github.com/zclconf/go-cty from 1.19.0 to 1.20.0
+    by @dependabot[bot] in #2891
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from 1.33.15
+    to 1.33.16 by @dependabot[bot] in #2890
+  * fix: reject out-of-range list indexes in --state-values-set by
+    @lbarrosby in #2887
+  * build(deps): bump github.com/helmfile/vals from 0.50.0 to 0.51.0
+    by @dependabot[bot] in #2893
+  * build(deps): bump github.com/gofrs/flock from 0.13.1 to 0.13.2
+    by @dependabot[bot] in #2894
+  * fix: default the version of release dependencies that omit it by
+    @Cayan in #2892
+  * build(deps): bump azure/setup-helm from 5.0.1 to 5.1.0 by
+    @dependabot[bot] in #2895
+  * fix: skip build chartification for dependencies and namespace
+    overrides by @ViktorBystrov72 in #2888
+
+-------------------------------------------------------------------
+Sat Nov  7 18:30:42 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.3:
+  * build(deps): bump github.com/go-test/deep from 1.1.1 to 1.1.2 by
+    @dependabot[bot] in #2835
+  * build(deps): bump github.com/gookit/color from 1.6.2 to 1.6.3 by
+    @dependabot[bot] in #2836
+  * fix: honor release-level skipSchemaValidation false by
+    @spicysharkco in #2837
+  * fix: honor release-level takeOwnership false over helmDefaults
+    by @spicysharkco in #2838
+  * fix: honor release-level syncReleaseLabels false by
+    @spicysharkco in #2839
+  * fix: honor environment kubeContext over helmDefaults.kubeContext
+    by @Cayan in #2841
+  * fix: honor release kubeVersion over the detected one in diff by
+    @spicysharkco in #2842
+  * fix(diff): stop leaking secretref+ values into diff output by
+    @sergioperezcheco in #2844
+  * fix: include all failed deletions in release summaries by
+    @spicysharkco in #2843
+  * build(deps): bump vals from v0.47.0 to v0.50.0 and chartify from
+    v0.29.0 to v0.30.0 by @yxxhero in #2840
+  * build(deps): bump gitpython from 3.1.62 to 3.2.1 in /docs by
+    @dependabot[bot] in #2854
+  * fix: keep backslashes in release set and setString values by
+    @spicysharkco in #2856
+  * build(deps): bump docker/login-action from 4.6.0 to 4.7.0 by
+    @dependabot[bot] in #2857
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.9 to 1.33.10 by @dependabot[bot] in #2860
+  * build(deps): bump github.com/hashicorp/go-getter/v2 from 2.2.5
+    to 2.2.6 by @dependabot[bot] in #2859
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.114.3 to 1.114.5 by @dependabot[bot] in #2858
+  * test: cover disableAutoDetectedKubeVersionForDiff precedence
+    in diff flags by @yxxhero in #2852
+  * fix: report failed !Desired() sync uninstalls as deletions and
+    lock exectest Deleted by @yxxhero in #2853
+  * fix: report malformed --state-values-set-string assignments by
+    @spicysharkco in #2855
+  * docs: list Helmfile for IntelliJ in integrations by @k3rnL in
+    #2862
+  * fix: correct typos in an error message, docs and comments by
+    @sarankumar1325 in #2861
+  * docs: fix dead Argo CD documentation links by
+    @sarankumar1325 in #2863
+  * fix: align state-values-set empty input and key validation by
+    @spicysharkco in #2864
+  * build(deps): bump tools in Dockerfiles by @jouve in #2865
+  * build(deps): bump go.yaml.in/yaml/v3 from 3.0.5 to 3.0.6 by
+    @dependabot[bot] in #2867
+  * fix: skip chart operation lock for local charts by
+    @aleksandr-inherent in #2871
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.114.5 to 1.114.6 by @dependabot[bot] in #2868
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.10 to 1.33.13 by @dependabot[bot] in #2872
+  * build(deps): bump go.yaml.in/yaml/v2 from 2.4.4 to 2.4.5 by
+    @dependabot[bot] in #2874
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5 to
+    4.1.6 by @dependabot[bot] in #2866
+  * fix: keep elements added to an existing array by
+    --state-values-set by @lbarrosby in #2873
+  * docs: add a Traditional Chinese (Taiwan) README by
+    @monarchsofchaos004-gif in #2876
+  * fix: return the default from get when a parent value is nil by
+    @lbarrosby in #2877
+
+-------------------------------------------------------------------
 Sat Oct 17 08:07:48 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.8.2:

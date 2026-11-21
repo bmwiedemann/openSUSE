@@ -17,7 +17,7 @@
 
 
 Name:           python-rebulk
-Version:        6.0.1
+Version:        6.0.2
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT

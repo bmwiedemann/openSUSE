@@ -17,7 +17,7 @@
 
 
 Name:           python-cmd2
-Version:        4.2.4
+Version:        4.4.1
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
@@ -39,13 +39,15 @@ Requires:       python-rich >= 15.0.0
 Requires:       python-rich-argparse >= 1.7.2
 BuildArch:      noarch
 # SECTION Test requirements
+BuildRequires:  %{python_module pyte}
 BuildRequires:  %{python_module prompt-toolkit >= 3.0.52}
 BuildRequires:  %{python_module pyperclip >= 1.8.2}
 BuildRequires:  %{python_module pytest >= 8.1.1}
 BuildRequires:  %{python_module pytest-mock >= 3.14.1}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module rich >= 15.0.0}
 BuildRequires:  %{python_module rich-argparse >= 1.7.2}
-BuildRequires:  vim
+BuildRequires:  procps
 # /SECTION
 %python_subpackages
 

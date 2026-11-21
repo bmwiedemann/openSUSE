@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 11 13:00:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.0:
+  * Security: "tilth diff" no longer lets a revision act as a
+    git option (#277): a source or log value starting with "-"
+    reached git diff/log as an option and could overwrite files,
+    even through the read-only MCP server; such values are now
+    refused
+  * Gitignore handling, opt-in (#238): TILTH_RESPECT_GITIGNORE=1
+    or --respect-gitignore honors .gitignore/.ignore/exclude
+    rules; a .tilthignore file is always honored
+  * New tilth-core library crate with one import entry per
+    module named and one entry per exported name
+  * Fixed C/C++ definitions, syntax-tree imports and stable
+    callers results; the tilth_files alias is removed
+  * Declare wit-bindgen's prebuilt wasm objects other-platform and
+    strip the wasm-only .a/.wasm the Linux build never uses
+- Run %check serially (upstream tests share process-global
+  env vars, so parallel runs fail flakily)
+
+-------------------------------------------------------------------
 Mon Oct 19 09:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.0 (skips 0.11.0, no separate update staged):

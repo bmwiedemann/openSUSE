@@ -56,4 +56,12 @@ fwupd-efi 1.7 for gnu-efi 4.0</comment>
     <comment></comment>
     <requestid>1318187</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0b0256575f18e3a51c8071758c538923</srcmd5>
+    <version>1.9</version>
+    <time>1794597142</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396653</requestid>
+  </revision>
 </revisionlist>

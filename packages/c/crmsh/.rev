@@ -3969,4 +3969,28 @@ and fixes bnc#880052</comment>
     <comment>1</comment>
     <requestid>1393074</requestid>
   </revision>
+  <revision rev="425" vrev="1">
+    <srcmd5>ea37983bb5f32ac0d6e2399f9ad7a84e</srcmd5>
+    <version>5.1.0+20261103.fb6b3998</version>
+    <time>1793725170</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394654</requestid>
+  </revision>
+  <revision rev="426" vrev="1">
+    <srcmd5>0bdafc3a8a763523b7af1091a7d1cdfc</srcmd5>
+    <version>5.1.0+20261117.fd431ad0</version>
+    <time>1794932459</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398112</requestid>
+  </revision>
+  <revision rev="427" vrev="1">
+    <srcmd5>5d19881c412e99ade1124329968750a0</srcmd5>
+    <version>5.1.0+20261119.3c9d86d6</version>
+    <time>1795103830</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398653</requestid>
+  </revision>
 </revisionlist>

@@ -208,4 +208,13 @@
   linking can sometimes open more than 1024 files (boo#1261761).</comment>
     <requestid>1373279</requestid>
   </revision>
+  <revision rev="18" vrev="10">
+    <srcmd5>b96f3e47870507b646e059c6adda79eb</srcmd5>
+    <version>21.1.8</version>
+    <time>1794317890</time>
+    <user>anag_factory</user>
+    <comment>- Build compiler-rt builtins for wasm32-wasip1 and ship them with
+  clang, so that it can link wasm32 binaries with a WASI sysroot.</comment>
+    <requestid>1396163</requestid>
+  </revision>
 </revisionlist>

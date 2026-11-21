@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov  4 20:29:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.13.0
+  * tcp: add tcp_conn_set_nodelay.
+  * sip: add sip_transp_udp_sock().
+  * mbuf/mbuf_read_str: optimize and fix null-terminated read.
+  * tmr,test: fix tmr_cancel and tmr_isrunning.
+  * tmr/tmr_timespec_get: fix tv_nsec max 999'999'999.
+  * tmr: fix and optimize timer list destructing, fixes timer
+    "running".
+  * sipsess: properly CRLF terminate RAck header.
+  * websock: close stale KEEPALIVE connections.
+  * sip: remove re_printf from transp/ws code.
+  * tls/openssl: fix OpenSSL 4.1 deprecated warnings.
+
+-------------------------------------------------------------------
 Wed Sep 30 18:01:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.12.0

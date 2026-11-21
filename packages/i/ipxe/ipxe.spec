@@ -24,7 +24,7 @@
 %endif
 
 Name:           ipxe
-Version:        2.0.0+git20260710.58ee55b3c
+Version:        2.0.0+git20260914.7cd92e01d
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
@@ -33,6 +33,9 @@ URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Patch0:         syslinux-mtools.patch
+# For bsc#1271200
+Patch1:         virtio-Fix-MSI-X-caps-control-register-offset-in-leg.patch
+Patch2:         virtio-Fix-virtio-net-PXE-boot-on-legacy-BIOS-VMs-wi.patch
 BuildRequires:  binutils-devel
 %ifnarch %{ix86} x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
@@ -89,6 +92,7 @@ UNDI formats. EFI is supported, too.
 %package qemu
 Summary:        PXE and EFI ROMs for QEMU network devices
 Group:          System/Emulators/PC
+BuildArch:      noarch
 Provides:       qemu-ipxe
 Obsoletes:      qemu-ipxe
 Provides:       ipxe-qemu-roms = %{version}-%{release}

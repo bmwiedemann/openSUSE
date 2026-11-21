@@ -7,4 +7,13 @@
     <comment>- Initial release of 2.9.0.</comment>
     <requestid>1348844</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8ab0b714183229f7743681d0cca2bc6c</srcmd5>
+    <version>2.9.0</version>
+    <time>1795103690</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-gitpython-3.2.patch:
+  * Support changes required by GitPython's new path validation.</comment>
+    <requestid>1398528</requestid>
+  </revision>
 </revisionlist>

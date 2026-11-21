@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:00:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add lal-swig-4_5.patch: compatibility with SWIG 4.5, which dropped
+  Python 2 support. This patch also fixes the issue with tests and
+  contains previous patch lal-swig-4_5-fragment.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 14:41:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add lal-swig-4_5-fragment.patch: define dummy fragment for
+  swiglal_new_copy_array to satisfy SWIG 4.5+ fragment dependency
+  in %typemaps_string_alloc.
+
+-------------------------------------------------------------------
 Mon Aug 24 06:44:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on python-py.

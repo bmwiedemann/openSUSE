@@ -1458,4 +1458,16 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
   silently downgraded strong to basic).</comment>
     <requestid>1381593</requestid>
   </revision>
+  <revision rev="197" vrev="21">
+    <srcmd5>67ef7a956d70eed4fd22bcf294c19307</srcmd5>
+    <version>2.24.33</version>
+    <time>1795022968</time>
+    <user>anag_factory</user>
+    <comment>- Rework automake-1.17.patch to no longer check for specific automake versions:
+  it's getting boring to run after them without actual need to fix anything.
+- Update version dependencies according to configure.ac.
+
+- avoid bashism in baselibs postscript (bsc#1195391)</comment>
+    <requestid>1398259</requestid>
+  </revision>
 </revisionlist>

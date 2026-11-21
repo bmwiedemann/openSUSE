@@ -24,7 +24,7 @@
 %bcond_without kde_python_bindings
 %bcond_without released
 Name:           akonadi
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later

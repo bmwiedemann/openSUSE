@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-fop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define bname fop
 Name:           xmlgraphics-fop
-Version:        2.10
+Version:        2.12
 Release:        0
 Summary:        Formatter for Printing XSLT Processed XML Files
 License:        Apache-2.0
@@ -46,7 +46,7 @@ Patch7:         reproducible.patch
 Patch8:         ioexception.patch
 Patch9:         java8-compatibility.patch
 BuildRequires:  ant >= 1.9.15
-BuildRequires:  apache-pdfbox >= 2.0.23
+BuildRequires:  apache-pdfbox >= 3.0.8
 BuildRequires:  bouncycastle
 BuildRequires:  bouncycastle-pkix
 BuildRequires:  bouncycastle-util
@@ -60,8 +60,8 @@ BuildRequires:  libxslt
 BuildRequires:  qdox >= 2.0
 BuildRequires:  unzip
 BuildRequires:  xml-commons-apis
-BuildRequires:  xmlgraphics-batik >= 1.18
-BuildRequires:  xmlgraphics-commons >= 2.10
+BuildRequires:  xmlgraphics-batik >= 1.20
+BuildRequires:  xmlgraphics-commons >= 2.12
 #!BuildIgnore:  saxon
 Requires:       java >= 1.8
 Requires:       xml-commons-apis
@@ -127,7 +127,7 @@ build-jar-repository -s fop/lib \
         bcutil \
         commons-io \
         commons-logging \
-        fontbox \
+        pdfbox \
         jakarta-servlet/jakarta.servlet-api \
         batik-all \
         xml-commons-apis \

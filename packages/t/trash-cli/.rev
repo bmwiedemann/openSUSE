@@ -14,4 +14,32 @@ It is useful for terminal users, because it prevents the accidental deletion of 
 Therefore it would be important to have the package available in the main repos.</comment>
     <requestid>1247940</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9c6436982dc6c6e8247287700fe05e17</srcmd5>
+    <version>0.26.9.29</version>
+    <time>1794318037</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.9.29.
+  * trash-put no longer leaves a copy of the trashed file in the trash
+    directory when a move across filesystem boundaries is blocked by an
+    error.
+  * Added support for file names that are not valid UTF-8.
+  * trash-restore now accepts absolute paths in trash directories that
+    are not volume trashes.
+  * Removed the &quot;Donate&quot; button.
+  * Deleted trashcli/put/same_volume_gate.py.
+- Reworked test coverage and tooling:
+  * Rewrote trash-restore tests (TrashedFiles, unsafe trash dirs) to run
+    through RestoreUser, converted them from unittest to pytest, and
+    added tests for trashinfo reading and volume-trashed files.
+  * Added IsSymLink and IsStickyDir to FakeFs, added the
+    TrashDirHasTrashInfo fixture, and merged RecordingLogger into
+    CaptureLogger.
+  * Improved type hints and enabled mypy for the tests.
+  * Updated dev setup: Docker setup for Python 2.7, editable dev install,
+    and version-pinned PyYAML dev requirements.
+  * Converted the release docs to Markdown.
+</comment>
+    <requestid>1396418</requestid>
+  </revision>
 </revisionlist>

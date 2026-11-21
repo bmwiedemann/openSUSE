@@ -1,6 +1,6 @@
 name:                tasty-quickcheck
 version:             0.11.1
-x-revision: 5
+x-revision: 7
 synopsis:            QuickCheck support for the Tasty test framework.
 description:         QuickCheck support for the Tasty test framework.
                      .
@@ -24,10 +24,10 @@ library
   exposed-modules:     Test.Tasty.QuickCheck
   other-extensions:    GeneralizedNewtypeDeriving, DeriveDataTypeable
   build-depends:       base >= 4.9 && < 5,
-                       tagged < 0.9,
+                       tagged < 0.10,
                        tasty >= 1.5.1 && < 1.6,
                        random < 1.4,
-                       QuickCheck >= 2.10 && < 2.19,
+                       QuickCheck >= 2.10 && < 2.20,
                        optparse-applicative < 0.20
 
   default-language:    Haskell2010

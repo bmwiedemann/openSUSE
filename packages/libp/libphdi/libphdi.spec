@@ -30,6 +30,7 @@ URL:            https://github.com/libyal/libphdi
 Source:         https://github.com/libyal/libphdi/releases/download/%version/%name-experimental-%version.tar.gz
 Source2:        https://github.com/libyal/libphdi/releases/download/%version/%name-experimental-%version.tar.gz.asc
 Source9:        %name.keyring
+Patch1:         0001-Changes-to-improve-resilience.patch
 BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler

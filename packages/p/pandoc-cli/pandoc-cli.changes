@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Nov 12 04:11:43 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.14.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sat Nov  7 12:45:05 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Require pandoc-data instead of ghc-pandoc at runtime so installing
+  the command-line program pulls in the required data files without
+  the Haskell libraries and their large dependency tree. [bsc#1261290]
+
+-------------------------------------------------------------------
+Mon Oct 26 20:46:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.13.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Oct  8 01:41:13 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.12.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Sat Aug 29 00:44:05 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.11.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed Aug 12 18:57:18 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.10.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Wed Jul 22 17:02:12 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-cli to version 3.10.1.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Jun  4 15:01:08 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-cli to version 3.10.

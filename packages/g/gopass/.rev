@@ -219,4 +219,15 @@
     <comment>- Update to 1.17.4:</comment>
     <requestid>1384031</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>09d13a18b0989229edfb0a367848f9f2</srcmd5>
+    <version>1.17.4</version>
+    <time>1794410999</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1396850 from darix
+
+- Update github.com/klauspost/compress to v1.20.4 (boo#1288613
+  CVE-2026-116591)</comment>
+    <requestid>1396851</requestid>
+  </revision>
 </revisionlist>

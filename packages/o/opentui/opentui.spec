@@ -22,7 +22,7 @@
 # Upstream's build.zig refuses to run on anything but this exact version, and
 # the Zig releases it brackets are not source compatible, so a range would be
 # a lie. When Factory moves on, this package has to be rebased, not relaxed.
-%global zig_version 0.16.0
+%global zig_version 0.17.0
 # The npm names for the platform the native library is built for. OpenTUI
 # resolves it as @opentui/core-<platform>-<arch>/libopentui.so, using Node's
 # names for both, not the RPM ones.
@@ -32,27 +32,38 @@
 %ifarch aarch64
 %global node_arch arm64
 %endif
+# Pinned by packages/native/src/vendor/ffmpeg/README.md; %%build repeats
+# that file's configure set for this host, and bundled() tracks both.
+%global ffmpeg_version 9.0.2
+%global zlib_version 1.3.2
 Name:           opentui
-Version:        0.8.0
+Version:        0.8.4
 Release:        0
 Summary:        Library for building terminal user interfaces
-# OpenTUI itself is MIT. miniaudio is vendored as a single header in
-# packages/native/src/vendor and is dual licensed, as is stb; uucode,
-# ghostty-vt, yoga and lcms2 are MIT; libwebp is BSD-3-Clause and wuffs is
-# Apache-2.0. All of them are compiled into libopentui.so.
-License:        Apache-2.0 AND BSD-3-Clause AND MIT AND (Unlicense OR MIT-0)
+# MIT upstream; everything below is compiled into libopentui.so: miniaudio
+# and stb (dual licensed), uucode, ghostty-vt, yoga, lcms2 (MIT), libwebp
+# (BSD-3-Clause), wuffs (Apache-2.0), FFmpeg (LGPL-2.1-or-later), zlib (Zlib).
+License:        Apache-2.0 AND BSD-3-Clause AND LGPL-2.1-or-later AND MIT AND (Unlicense OR MIT-0) AND Zlib
 URL:            https://opentui.com
-Source0:        https://github.com/anomalyco/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        README.SUSE-maint
-# The Zig sources moved to packages/native in 0.5.5 and build the library
-# for an explicit triple by default; -Dlibrary-target=native below keeps the
-# host libc and libstdc++, so pin the code generator back to the baseline.
+Source2:        https://ffmpeg.org/releases/ffmpeg-%{ffmpeg_version}.tar.xz
+Source3:        https://zlib.net/fossils/zlib-%{zlib_version}.tar.gz
+# PATCH-FIX-OPENSUSE opentui-baseline-cpu.patch -- pin the code generator back
+# to the baseline (a native triple detects the build CPU, wrong for distros).
 Patch0:         opentui-baseline-cpu.patch
-# Two X11 clipboard unit tests abort the test runner on aarch64 (see the
-# patch header); skipped there until upstream fixes them.
+# PATCH-FIX-OPENSUSE opentui-aarch64-skip-crashing-x11-tests.patch -- 2 X11
+# clipboard tests abort the runner on aarch64; skipped until upstream fixes.
 Patch1:         opentui-aarch64-skip-crashing-x11-tests.patch
+# PATCH-FIX-OPENSUSE opentui-aarch64-skip-flaky-text-work-test.patch -- aarch64-only skip of a page-size-sensitive test
+# The word-metadata arena bound below is page-size sensitive and trips on
+# aarch64 only (see the patch header); skipped there until it passes again.
+Patch2:         opentui-aarch64-skip-flaky-text-work-test.patch
 BuildRequires:  binutils
+BuildRequires:  gcc
 BuildRequires:  gzip
+BuildRequires:  make
+BuildRequires:  nasm
 BuildRequires:  python3-base
 # The grammar modules the highlighter ships: symlinked to the
 # tree-sitter-<lang>-wasm packages' files below, checked at build time.
@@ -60,7 +71,9 @@ BuildRequires:  tree-sitter-javascript-wasm
 BuildRequires:  tree-sitter-markdown-wasm
 BuildRequires:  tree-sitter-typescript-wasm
 BuildRequires:  tree-sitter-zig-wasm
+BuildRequires:  xz
 BuildRequires:  zig = %{zig_version}
+Provides:       bundled(ffmpeg) = %{ffmpeg_version}
 Provides:       bundled(ghostty-vt) = 1.3.2
 Provides:       bundled(lcms2) = 2.19.1
 Provides:       bundled(libwebp) = 1.6.0
@@ -69,6 +82,7 @@ Provides:       bundled(stb) = 2.18
 Provides:       bundled(uucode) = 0.2.0
 Provides:       bundled(wuffs) = 0.3
 Provides:       bundled(yoga) = 3.2.1
+Provides:       bundled(zlib) = %{zlib_version}
 # Upstream supports no other architecture: SUPPORTED_TARGETS in
 # packages/native/build.zig lists only x86_64 and aarch64.
 ExclusiveArch:  x86_64 aarch64
@@ -101,21 +115,109 @@ what you build against, and nothing installs it to run.
 %autosetup -p1 -n %{name}-%{version}
 
 %build
-# The Zig dependencies (yoga, uucode, ghostty) and the image C libraries
-# (lcms2, libwebp, stb, wuffs, miniaudio) are vendored in-tree under
-# packages/native/src/vendor; the archive unpacks to an ignored directory
-# the build then resolves over relative paths, so nothing is fetched.
+# Zig/image deps are vendored in-tree (resolved over relative paths, nothing
+# fetched). FFmpeg and zlib (video, new in 0.8.1) come as Source2/3 instead.
 export ZIG_GLOBAL_CACHE_DIR="$PWD/.zig-global-cache"
 export ZIG_LOCAL_CACHE_DIR="$PWD/.zig-local-cache"
 
 cd packages/native
 sh scripts/prepare-zig-deps.sh
+mkdir -p .ffmpeg-sources
+tar -xf "%{SOURCE2}" -C .ffmpeg-sources
+tar -xf "%{SOURCE3}" -C .ffmpeg-sources
+# Video (0.8.1+) statically links a minimal FFmpeg built below from
+# Source2/3 with upstream's configure set; -Drequire-video keeps a
+# missing prefix a loud error, not a silent video-less library.
+ffmpeg_build() {
+    # $1: prefix name, $2: zig cc triple, $3: configure --arch
+    # (one declaration per line: same-command locals cannot see each other)
+    local name="$1"
+    local triple="$2"
+    local arch="$3"
+    local root="$PWD"
+    local cache="$root/.cache/ffmpeg"
+    local prefix="$cache/prefix/$name"
+    local build="$cache/build/$name"
+    local tools="$cache/toolchains/$name"
+    local src="$root/.ffmpeg-sources/ffmpeg-%{ffmpeg_version}"
+    local zsrc="$root/.ffmpeg-sources/zlib-%{zlib_version}"
+    mkdir -p "$build" "$tools" "$prefix/include" "$prefix/lib"
+    printf '#!/bin/sh\nexec zig cc -target %s "$@"\n' "$triple" > "$tools/cc"
+    chmod 0755 "$tools/cc"
+    # zlib as hidden-visibility objects like the FFmpeg libs, so the gnu
+    # library and the musl test binary link the same pinned source.
+    mkdir -p "$build/zlib"
+    local zlib_objects=""
+    for c in adler32 compress crc32 deflate infback inffast inflate inftrees trees uncompr zutil; do
+        "$tools/cc" -O3 -fvisibility=hidden -fPIC -I"$zsrc" -c "$zsrc/$c.c" -o "$build/zlib/$c.o"
+        zlib_objects="$zlib_objects $build/zlib/$c.o"
+    done
+    zig ar rcs "$prefix/lib/libz.a" $zlib_objects
+    cp "$zsrc/zlib.h" "$zsrc/zconf.h" "$prefix/include/"
+    local nasm_exe=""
+    if [ "$arch" = x86_64 ]; then nasm_exe="--x86asmexe=%{_bindir}/nasm"; fi
+    ( cd "$build" \
+      && "$src/configure" --prefix="$prefix" \
+        --disable-everything --disable-autodetect \
+        --disable-programs --disable-doc --disable-debug --disable-network \
+        --disable-avdevice --disable-avfilter --disable-encoders --disable-muxers \
+        --disable-indevs --disable-outdevs --disable-hwaccels --disable-filters \
+        --disable-bzlib --disable-iconv --disable-lzma \
+        --enable-zlib --disable-gpl --disable-version3 --disable-nonfree \
+        --enable-static --disable-shared --enable-small \
+        --enable-demuxer=mov --enable-decoder=h264,aac --enable-parser=h264,aac \
+        --enable-protocol=file --enable-swscale --enable-swresample \
+        --enable-cross-compile "--cc=$tools/cc" "--ar=zig ar" "--ranlib=zig ranlib" \
+        --arch="$arch" --target-os=linux \
+        --extra-cflags="-Os -ffunction-sections -fdata-sections -fvisibility=hidden -I$prefix/include" \
+        --extra-ldflags="-L$prefix/lib" --extra-libs=-lz \
+        $nasm_exe --enable-pic --enable-pthreads \
+      && sed -i 's/#define HAVE_SYSCTL 1/#define HAVE_SYSCTL 0/' config.h \
+      && make "-j$(nproc)" \
+      && make install )
+    # What build.zig links is not the archives but their objects, listed
+    # relative to the prefix; the member names must match the object
+    # basenames exactly as multisets (generic C and x86 asm share names).
+    : > "$prefix/objects.txt"
+    for pair in "libavformat libavformat" "libavcodec libavcodec" "libswscale libswscale" "libswresample libswresample" "libavutil libavutil" "libz zlib"; do
+        set -- $pair
+        local tmp="$(mktemp -d)"
+        zig ar t "$prefix/lib/$1.a" | sort > "$tmp/members"
+        ( cd "$build/$2" && find . -name '*.o' | sed 's|^\./||' | sort ) > "$tmp/all"
+        # Only archive members link into the library; the tree also holds
+        # host tool objects (e.g. aarch64 ops_asmgen.o) that must not match.
+        : > "$tmp/paths"
+        while read -r o; do
+            if grep -qxF "${o##*/}" "$tmp/members"; then echo "$o" >> "$tmp/paths"; fi
+        done < "$tmp/all"
+        sed 's|.*/||' "$tmp/paths" | sort > "$tmp/names"
+        if [ "$(wc -l < "$tmp/members")" != "$(wc -l < "$tmp/paths")" ] \
+            || ! cmp -s "$tmp/members" "$tmp/names"; then
+            echo "ffmpeg $1 objects do not match its archive" >&2
+            exit 1
+        fi
+        while read -r o; do
+            mkdir -p "$prefix/objects/$1/$(dirname "$o")"
+            cp "$build/$2/$o" "$prefix/objects/$1/$o"
+            echo "objects/$1/$o" >> "$prefix/objects.txt"
+        done < "$tmp/paths"
+        rm -rf "$tmp"
+    done
+    printf '%s' "6-zig-%{zig_version}" > "$prefix/opentui-build"
+}
+case "$(uname -m)" in
+    x86_64) ffmpeg_build x86_64-linux x86_64-linux-gnu.2.17 x86_64
+            ffmpeg_build x86_64-linux-musl x86_64-linux-musl x86_64 ;;
+    aarch64) ffmpeg_build aarch64-linux aarch64-linux-gnu.2.17 aarch64
+             ffmpeg_build aarch64-linux-musl aarch64-linux-musl aarch64 ;;
+esac
 # -Dlibrary-target=native keeps the host's libc and libstdc++, which is what
 # a distribution build wants. What it must not keep is the host's CPU model -
 # see Patch0.
 zig build \
     -Dlibrary-target=native \
     -Doptimize=ReleaseFast \
+    -Drequire-video \
     --verbose
 
 %install
@@ -179,26 +281,20 @@ cat > %{buildroot}%{_libdir}/%{name}/%{native_pkg}/package.json <<'EOF'
 }
 EOF
 
-# The TypeScript, laid out so that a consumer can point at
-# %%{_libdir}/%%{name} and have @opentui/* resolve, or set
-# OTUI_ASSET_ROOT to it and have the native library resolve. None of these
-# packages declares a files field, so npm would ship the whole directory;
-# copy it wholesale and then drop what only serves upstream's own build. Note
-# that src/testing.ts and src/testing are exported API and stay, while
-# src/tests is the suite and goes.
+# TS laid out so @opentui/* resolve (OTUI_ASSET_ROOT: native lib); copy
+# wholesale, drop build-only dirs — src/testing(.ts) stays, src/tests goes.
 for pkg in core keymap solid; do
     cp -a packages/$pkg %{buildroot}%{_libdir}/%{name}/@opentui/
     ( cd %{buildroot}%{_libdir}/%{name}/@opentui/$pkg
       rm -rf src/tests src/benchmark src/specs tests examples \
               dev docs bench-before bench-after node_modules \
-              tsconfig.json tsconfig.build.json tsconfig.node-test.json
-      # scripts/ is mostly upstream's own build and release plumbing, but in
-      # solid it also holds five modules the exports map points at (plus
-      # solid-transform.ts, which the bun-plugin entry imports), so drop
+              tsconfig.json tsconfig.build.json tsconfig.node-test.json bunfig.toml
+      # scripts/ also holds five modules the exports map points at, so drop
       # the plumbing by name rather than the directory.
       rm -f scripts/build.ts scripts/publish.ts scripts/dist-test.ts \
             scripts/standalone-test.ts scripts/test.ts scripts/test-node.ts \
             scripts/test-node-hook.mjs scripts/test-packed-consumer.ts \
+            scripts/bun-test-preload.ts \
             scripts/bench-js-node.ts scripts/native-symbols.ts \
             scripts/native-symbols.test.ts scripts/package-native-symbols.ts \
             scripts/variants.ts scripts/reconciler-benchmark.ts \
@@ -210,10 +306,8 @@ for pkg in core keymap solid; do
       find . -name '*.test.ts' -delete
       find . -name '__snapshots__' -type d -prune -exec rm -rf {} +
       find . -name '.gitignore' -delete
-      # A couple of modules are exported API that also run themselves as a
-      # CLI under import.meta.main, so they carry a bun shebang. Nothing here
-      # is meant to be executed in place, and leaving the shebang on would
-      # have rpm demand an interpreter the distribution does not have yet.
+      # Exported modules with bun shebangs aren't meant to run in place;
+      # strip them so rpm wants no new interpreter.
       grep -rlZ '^#!%{_bindir}/env ' --include='*.ts' . \
           | xargs -0 -r sed -i '1{/^#!/d}'
       # workspace:* only means anything inside upstream's monorepo. These
@@ -222,20 +316,17 @@ for pkg in core keymap solid; do
       sed -i 's/"workspace:\*"/"%{version}"/g' package.json )
 done
 
-# The highlighter's grammar modules (tree-sitter-<lang>.wasm) are the
-# tree-sitter-<lang>-wasm packages' files, built from the grammar sources;
-# the copies in the tree become symlinks to them. The queries next to them
-# stay upstream's. Every module in the tree must have a packaged
-# counterpart, so a grammar upstream adds fails here until its package is
-# in BuildRequires and the devel Requires.
-assets=%{buildroot}%{_libdir}/%{name}/@opentui/core/src/lib/tree-sitter/assets
-for wasm in "$assets"/*/tree-sitter-*.wasm; do
-    sys=%{_datadir}/tree-sitter/wasm/$(basename "$wasm")
+# The tarball excludes upstream's prebuilt grammar .wasm (see _service);
+# %%install links the system tree-sitter-*-wasm modules to the exact
+# paths the runtime manifest (default-parsers.ts) names instead.
+tree=%{buildroot}%{_libdir}/%{name}/@opentui/core/src/lib/tree-sitter/assets
+for rel in $(grep -o '"wasm": "assets/[^"]*"' packages/core/src/lib/tree-sitter/default-parsers.ts | sed 's/.*"assets\///; s/"$//'); do
+    sys=%{_datadir}/tree-sitter/wasm/$(basename "$rel")
     if ! test -f "$sys"; then
-        echo "no packaged module for ${wasm#%{buildroot}}: add its tree-sitter-<lang>-wasm package" >&2
+        echo "no packaged module for src/lib/tree-sitter/$rel: add its tree-sitter-<lang>-wasm package" >&2
         exit 1
     fi
-    ln -sf "$sys" "$wasm"
+    ln -sf "$sys" "$tree/$rel"
 done
 
 # Nothing above may delete a file the packages advertise. Everything a
@@ -276,6 +367,7 @@ export ZIG_LOCAL_CACHE_DIR="$PWD/.zig-local-cache"
 mkdir -p /tmp/.X11-unix
 cd packages/native
 zig build test \
+    -Drequire-video \
     --summary all
 
 %files

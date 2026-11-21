@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:55:33 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to 35.0.3
+  * Update craft for the stable-35.0 branch
+    (gh#nextcloud/desktop#11219)
+  * Update the Brotli version in craftmaster
+    (gh#nextcloud/desktop#11225)
+  * Update the AppImage Docker image for stable-35.0
+    (gh#nextcloud/desktop#11222) 
+
+-------------------------------------------------------------------
+Tue Nov  3 15:29:32 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 35.0.2:
+  * Clear persisted UI errors on credential setup
+    (gh#nextcloud/desktop#11158)
+  * Revert: unique inode index
+    (gh#nextcloud/desktop#11182)
+
+-------------------------------------------------------------------
 Fri Oct 30 06:45:43 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 35.0.1:

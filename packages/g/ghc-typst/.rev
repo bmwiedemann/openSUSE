@@ -135,4 +135,20 @@
     <comment>version update</comment>
     <requestid>1358465</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4b13c657d9647d433eafa2f2828668c2</srcmd5>
+    <version>0.12</version>
+    <time>1793991031</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1395577</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ac4691c690088490084a74b3f4f06c2</srcmd5>
+    <version>0.12.1</version>
+    <time>1794932245</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1397779</requestid>
+  </revision>
 </revisionlist>

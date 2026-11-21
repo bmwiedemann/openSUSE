@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Nov 13 01:17:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1:
+  * Avoid eagerly initializing layout on import to reduce CPU and thread
+    overhead in spawned workers.
+  * Properly handle page-label prefixes containing '/', string escapes, or
+    UTF-16 text in get_label() and get_page_labels().
+  * Scale character bbox height in Page.get_texttrace() using Y scale
+    instead of X scale.
+  * Reduced startup time using lazy internal import of large modules.
+  * Use MuPDF-1.28.6.
+  * Merged pymupdf4llm and pymupdf_layout into core pymupdf.
+  * Fixed dehyphenation regression present since 1.27.1.
+  * Preserve glyph positioning in clean_contents(sanitize=True) to avoid
+    duplicating overprinted leading glyphs.
+  * Preserve radio button groups in insert_file(...).
+  * Preserve annotation positions and visibility when using
+    Page.remove_rotation() on 90 or 270 degree rotated pages.
+  * Fixed memory leak in extractBLOCKS (_as_blocks) by releasing text
+    object references.
+  * Improved Page.remove_rotation() performance on pages with thousands of
+    links.
+  * Fixed infinite loop in get_pixmap() and get_text() on certain PDFs.
+  * Emit a DeprecationWarning instead of printing to console when
+    importing fitz.
+  * Handle cyclic Widget /Parent references without failing with a cycle
+    in resources error.
+  * Preserve 'sh' (shading) operators in Page.clip_to_rect().
+  * Fixed stack-based buffer overflow in JM_set_annot_callout_line.
+    (CVE-2026-120752, bsc#1289443)
+  * Fixed pixmap export 'unmultiply' option so it takes effect.
+  * Report the correct start point in get_drawings() for subpaths
+    following an 're' operator with negative width/height.
+  * Fixed O(n^2) hang in get_pixmap() on tagged PDF pages with many MCIDs.
+  * Prevent Page.get_label() from raising IndexError when a page precedes
+    the first label definition.
+  * Remove text shown with the "'" operator after TL + Td in
+    apply_redactions().
+  * Handle widgets whose /Parent does not list them in /Kids during
+    insert_pdf() without raising ValueError.
+  * Fixed Page.add_widget() support for radio buttons.
+  * Added support for form field hierarchies, radio button groups, and
+    widget aliases.
+  * Fixed builds with swig-4.5.
+  * Fixed Path Traversal and Arbitrary File Write in PyMuPDF CLI Font
+    Extraction. (CVE-2026-82035, bsc#1280486)
+  * Fixed ignoring aspect ratio for square images.
+  * Fixed potential SEGV in pymupdf.Page.get_cdrawings() if a callback
+    raises an exception.
+  * Fixed compatibility and use with Python 3.15 (supported Python
+    versions: 3.11-3.15).
+- Drop CVE-2026-82035.patch as it is now included upstream.
+- Run the testsuite, rather than just checking we can import modules.
+
+-------------------------------------------------------------------
 Wed Sep 16 09:22:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.28.2

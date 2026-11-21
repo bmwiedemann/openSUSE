@@ -1,9 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 11 10:34:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.5828.0
+  * Add sqv fallthrough to binary data-integrity check in setupcli
+  * Allow IMDS recovery during EC2 live updates
+  * Bump golang.org/x/net from v0.60.0 to v0.62.0
+  * Fix symlink-following chmod in aws:downloadContent Git source
+  * Keep delete-char from erasing earlier session log lines
+  * Keep every command in processed session logs
+  * Retry MDS calls with the same request after timeouts and errors
+  * Stop resend scheduler on datachannel close to prevent orphan
+    session workers
+  * Treat InstanceAlreadyRegistered error code as already-registered
+    in EC2 registration
+  * Update the C toolchain to restore arm64 v8 compatibility
+
+-------------------------------------------------------------------
+Tue Nov  3 14:57:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.5708.0
+  * Send bucket-owner header on s3 http/https fallback
+  * Only write serial port messages when running in EC2
+  * Apply IMDS retry bound in fallback config path
+  * Harden input validation for Linux domain join parameters
+  * Add multicloud support enabling SSM Agent registration with GCP
+  * Add sqv fallthrough for setupcli when gpg is not installed
+- Add missing Bugzilla and CVE references for golang.org/x/net
+
+-------------------------------------------------------------------
 Wed Oct 28 14:48:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.5678.0
   * Bump golang.org/x/sys from v0.47.0 to v0.48.0
   * Bump golang.org/x/net from v0.57.0 to v0.60.0
+    (bsc#1288254, CVE-2026-78663) (bsc#1288255, CVE-2026-97032)
   * Upgrade Go version to 1.26.10
 - Add missing Bugzilla and CVE references for golang.org/x/crypto
 - Raise minimum Go version to 1.26.10 in BuildRequires

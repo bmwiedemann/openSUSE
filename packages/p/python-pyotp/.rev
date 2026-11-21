@@ -84,4 +84,30 @@
     <comment></comment>
     <requestid>1359920</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c99fd248a016e353b89989ef5720c61b</srcmd5>
+    <version>2.12.0</version>
+    <time>1795103817</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1397993 from mnhauke
+
+- Update to version 2.12.0
+    * Require 112-bit OTP secrets and update illustrative examples.
+    * Limit TOTP intervals to 120 seconds.
+    * Update recommendations for authentication best practices.
+    * Update required minimum Python version to 3.10 .
+  - Update to version 2.11.2
+    * Validate OTP configuration and URI parameters (#203).
+    * Harden OTP verification APIs and document replay prevention
+      (#202).
+  - Update to version 2.11.1
+    * Fix PyPI README markup and validate distributions before
+      release.
+  - Update to version 2.11.0
+    * Fix DST rollbacks and normalize TOTP timestamp inputs (#197).
+    * Respect initial_count=0 in HOTP.provisioning_uri() (#190).
+    * Implement verify_and_get_timecode, a method for TOTP that
+      verifies and returns the matching timecode (#191).</comment>
+    <requestid>1398644</requestid>
+  </revision>
 </revisionlist>

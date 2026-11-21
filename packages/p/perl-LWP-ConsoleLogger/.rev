@@ -61,4 +61,27 @@
         pretty-mode behavior.</comment>
     <requestid>1358509</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9c59ae36bb1bc5dec455eb1699e4b894</srcmd5>
+    <version>1.000003</version>
+    <time>1793990632</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.000003
+   see /usr/share/doc/packages/perl-LWP-ConsoleLogger/Changes
+  1.000003  2026-09-18 14:14:21Z
+      - Add HTTP::Tiny support. debug_ua() and
+        LWP::ConsoleLogger::Everywhere now log HTTP::Tiny requests and
+        responses alongside LWP::UserAgent and Mojo::UserAgent. Note the
+        HTTP::Tiny caveats documented in LWP::ConsoleLogger::Easy and
+        LWP::ConsoleLogger::Everywhere: redirect chains are collapsed to the
+        final response, mirror() bodies are not captured, and some
+        transport-layer headers are reconstructed on a best-effort basis
+        (GH#53)
+      - Lower the Term::Table prerequisite from 0.028 to 0.013. 0.013 is the
+        first release that supports the pad and allow_overflow constructor
+        options LWP::ConsoleLogger passes; the 0.028 pin was simply the
+        latest release when the dependency was added, not a real minimum
+        (GH#60) (Reported by: Petr Písař)</comment>
+    <requestid>1395149</requestid>
+  </revision>
 </revisionlist>

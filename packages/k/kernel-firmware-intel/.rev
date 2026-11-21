@@ -352,4 +352,18 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1381438</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>0d9beb77691a8874a64ef6d2a4f7f6f0</srcmd5>
+    <version>20261104</version>
+    <time>1793989974</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261104 (git commit 0cb5a7fb037e):
+  * Linux-firmware: Add Dell ISH firmware 582.7822.0 for Intel Nova Lake-H systems.
+  * intel-ipu6: Add firmware binary for IPU8
+  * intel-ipu6: Support IPU 7 and later as well
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * linux-firmware: Add ISH firmware files for Intel Nova Lake-H/S platforms</comment>
+    <requestid>1394984</requestid>
+  </revision>
 </revisionlist>

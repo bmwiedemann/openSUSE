@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:40:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.4001
+   see /usr/share/doc/packages/perl-Moose/Changes
+
+  2.4001   2026-10-01
+
+    [TESTS]
+
+    - adapted a test to changes in perl 5.45.4 regarding the line number
+      reported for particular errors (Richard Leach, #188)
+
+-------------------------------------------------------------------
 Sat Jul  5 05:32:52 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.4000

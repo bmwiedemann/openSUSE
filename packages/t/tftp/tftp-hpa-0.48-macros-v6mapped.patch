@@ -1,19 +1,18 @@
----
- tftpd/tftpd.c |   33 +++++++++++++++++++++++++++++----
- 1 file changed, 29 insertions(+), 4 deletions(-)
+# Expand the %H remap macro to IPv4 for IPv6-mapped clients (tftpd/tftpd.c).
+# Add is_v6_mapped(). In rewrite_macros(), convert an IPv6-mapped address
+# (::ffff:a.b.c.d) to its IPv4 form so %H expands to the dotted quad.
+# Kept from the 0.48 package.
 
-Index: tftp-hpa-5.3/tftpd/tftpd.c
-===================================================================
---- tftp-hpa-5.3.orig/tftpd/tftpd.c
-+++ tftp-hpa-5.3/tftpd/tftpd.c
-@@ -1349,6 +1349,21 @@ static void do_opt(const char *opt, cons
- 
- #ifdef WITH_REGEX
+diff --git a/tftpd/tftpd.c b/tftpd/tftpd.c
+index 6dcf14f..e44f834 100644
+@@ -1401,6 +1410,21 @@ static char hexchar(unsigned char c)
+     return c >= 10 ? (c + 'A' - 10) : c + '0';
+ }
  
 +#ifdef HAVE_IPV6
 +static inline int is_v6_mapped(const union sock_addr* pa)
 +{
-+    const char v6_mapped[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
++    const unsigned char v6_mapped[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 +                               0x00, 0x00, 0xFF, 0xFF };
 +
 +    if (from.sa.sa_family != AF_INET6)
@@ -25,13 +24,13 @@ Index: tftp-hpa-5.3/tftpd/tftpd.c
 +}
 +#endif
 +
- /*
-  * This is called by the remap engine when it encounters macros such
-  * as \i.  It should write the output in "output" if non-NULL, and
-@@ -1360,10 +1375,20 @@ static int rewrite_macros(char macro, ch
+ static size_t rewrite_macros(char macro, const char **output)
  {
-     char *p, tb[INET6_ADDRSTRLEN];
-     int l=0;
+ #ifdef INET6_ADDRSTRLEN
+@@ -1410,17 +1434,27 @@ static size_t rewrite_macros(char macro, const char **output)
+ #endif
+     const unsigned char *cp;
+     size_t bytes;
 +    const union sock_addr *pfrom = &from;
 +
 +#ifdef HAVE_IPV6
@@ -43,28 +42,28 @@ Index: tftp-hpa-5.3/tftpd/tftpd.c
 +    }
 +#endif
  
+     *output = obuf;
+ 
+-    switch (from.sa.sa_family) {
++    switch (pfrom->sa.sa_family) {
+     case AF_INET:
+-        cp = (const unsigned char *)&from.si.sin_addr;
++        cp = (const unsigned char *)&pfrom->si.sin_addr;
+         bytes = 4;
+         break;
+ #ifdef HAVE_IPV6
+     case AF_INET6:
+-        cp = (const unsigned char *)&from.s6.sin6_addr;
++        cp = (const unsigned char *)&pfrom->s6.sin6_addr;
+         bytes = 16;
+         break;
+ #endif
+@@ -1431,7 +1465,7 @@ static size_t rewrite_macros(char macro, const char **output)
      switch (macro) {
      case 'i':
--        p = (char *)inet_ntop(from.sa.sa_family, SOCKADDR_P(&from),
-+        p = (char *)inet_ntop(pfrom->sa.sa_family, SOCKADDR_P(pfrom),
-                               tb, INET6_ADDRSTRLEN);
-         if (output && p)
-             strcpy(output, p);
-@@ -1373,14 +1398,14 @@ static int rewrite_macros(char macro, ch
-             return strlen(p);
- 
-     case 'x':
--        if (from.sa.sa_family == AF_INET) {
-+        if (pfrom->sa.sa_family == AF_INET) {
-             if (output)
-                 sprintf(output, "%08lX",
--                    (unsigned long)ntohl(from.si.sin_addr.s_addr));
-+                    (unsigned long)ntohl(pfrom->si.sin_addr.s_addr));
-             l = 8;
- #ifdef HAVE_IPV6
-         } else {
--            unsigned char *c = (unsigned char *)SOCKADDR_P(&from);
-+            unsigned char *c = (unsigned char *)SOCKADDR_P(pfrom);
-             p = tb;
-             for (l = 0; l < 16; l++) {
-                 sprintf(p, "%02X", *c);
+     {
+-        const char *p = inet_ntop(from.sa.sa_family, SOCKADDR_P(&from),
++        const char *p = inet_ntop(pfrom->sa.sa_family, SOCKADDR_P(pfrom),
+                                   obuf, sizeof obuf);
+         return p ? strlen(p) : 0;
+     }

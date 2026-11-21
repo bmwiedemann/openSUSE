@@ -974,4 +974,38 @@
   * nfsd: model the ten genl commands added in Linux 7.2/7.3</comment>
     <requestid>1382757</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>d63c35258b2f84066758cab04b84c506</srcmd5>
+    <version>1.9+git.20261107</version>
+    <time>1794236837</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9+git.20261107 (1000 upstream commits):
+  * netlink/genl: per-command attribute tables drawn from each
+    handler's policy (ovs, tipc, ethtool, nfsd, nl80211,
+    wireguard, psp, netdev, sunrpc, lockd); ethtool LINKINFO_SET
+    and LINKMODES_SET grammars; drop ids removed upstream
+  * nfnl: per-command tables for nftables, ipset and ctnetlink;
+    typed tuple nests, hook devices, small handles
+  * bpf: LINK_CREATE multi arms the takers accept, kprobe_multi
+    syms from a kallsyms pool, uprobe_multi path/path_fd
+    conformance; landlock ABI 12 handling in the pool ruleset
+  * Harden re-call divergence checks to judge by what the kernel
+    was handed or ran (statmount, get_mempolicy, rt_sigpending,
+    recvmmsg, move_pages, io_submit and more)
+  * compat: compat twins for sendmsg/recvmsg and
+    sendmmsg/recvmmsg, compat iovec/msghdr at the ABI entry
+    width, sixth argument passed in a register
+  * check-static/uapi shims: verify enum shims against the kernel
+    headers including internal names; refuse heap inputs left in
+    a scrubbed arg slot; Makefile refuses a stale config.h
+  * Drop what upstream removed: DCCP and PF_LLC sockets,
+    IPV6_ADDRFORM, LOOP_CHANGE_FD, the NETLINK_XFRM emitter and
+    the socket-family grammar
+
+- Update to version 1.9+git.20261006:
+  * Drop KVM fuzzing support: kvm fd provider, kvm ioctls
+    (system, vcpu, vm), kvm object pool types, kvm header
+    detection and related stats/telemetry</comment>
+    <requestid>1396270</requestid>
+  </revision>
 </revisionlist>

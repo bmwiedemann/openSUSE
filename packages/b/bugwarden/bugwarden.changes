@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 12 11:12:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.1:
+  * Adopt rmcp 3.9.0 for RUSTSEC-2026-0462: it caps unbounded
+    Streamable HTTP client response buffering (16 MiB / 64 KiB);
+    toml rides along to 1.2.1.
+  * Name the anonymous landing and the API key placement in
+    identity preflight failures refused with code 410, instead of
+    blaming the endpoint or the login.
+- Re-vendor and re-strip the prebuilt Windows objects left in
+  ring and aws-lc-sys.
+
+-------------------------------------------------------------------
 Mon Nov  2 08:57:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.7.0:

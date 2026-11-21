@@ -17,7 +17,7 @@
 
 
 Name:           noise-suppression-for-voice
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        Noise suppression plugin based on Xiph's RNNoise
 License:        GPL-3.0-only

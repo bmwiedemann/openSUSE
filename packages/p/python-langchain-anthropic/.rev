@@ -217,4 +217,21 @@ Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
     <comment>Update to 1.7.7.</comment>
     <requestid>1393709</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dc10235b36a9524c7171882abd897857</srcmd5>
+    <version>1.7.9</version>
+    <time>1793817973</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-anthropic to 1.7.9</comment>
+    <requestid>1394851</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8203f8b3d665209fcfe2cbc7245071bb</srcmd5>
+    <version>1.7.10</version>
+    <time>1794090793</time>
+    <user>dimstar_suse</user>
+    <comment>Forward python-langchain-anthropic 1.7.10 to Factory
+- langchain-core floor &gt;= 1.7.5, refusal content blocks support</comment>
+    <requestid>1396003</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Router-Simple
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,29 +12,36 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Router-Simple
-Version:        0.17
-Release:        0
 %define cpan_name Router-Simple
-Summary:        simple HTTP router
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Router-Simple/
-Source:         http://www.cpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{version}.tar.gz
+Name:           perl-Router-Simple
+Version:        0.180.0
+Release:        0
+# 0.18 -> normalize -> 0.180.0
+%define cpan_version 0.18
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Simple HTTP router
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Class::Accessor::Lite) >= 0.05
-BuildRequires:  perl(Module::Build) >= 0.38
+BuildRequires:  perl(Class::Accessor::Lite) >= 0.50
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
 BuildRequires:  perl(Test::More) >= 0.98
 BuildRequires:  perl(parent)
-Requires:       perl(Class::Accessor::Lite) >= 0.05
+Requires:       perl(Class::Accessor::Lite) >= 0.50
 Requires:       perl(parent)
+Provides:       perl(Router::Simple) = %{version}
+Provides:       perl(Router::Simple::Declare)
+Provides:       perl(Router::Simple::Route)
+Provides:       perl(Router::Simple::SubMapper)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,21 +53,21 @@ Router::Simple can match against PSGI '$env' directly, which means it's
 easy to use with PSGI supporting web frameworks.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE minil.toml README.md
+%doc Changes README.md
+%license LICENSE
 
 %changelog

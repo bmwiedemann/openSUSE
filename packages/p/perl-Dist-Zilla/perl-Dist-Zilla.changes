@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 27 10:34:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.40.0 (6.040)
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+
+  6.040     2026-09-26 14:10:14-04:00 America/New_York
+          - let PPI documents have a filename for better error reporting (I hope)
+
+-------------------------------------------------------------------
 Tue Sep 15 10:09:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.39.0 (6.039)

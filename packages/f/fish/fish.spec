@@ -27,6 +27,7 @@ URL:            https://fishshell.com/
 Source:         https://github.com/fish-shell/fish-shell/releases/download/%{version}/fish-%{version}.tar.xz
 Source2:        vendor.tar.xz
 Source100:      fish.keyring
+Patch0:         fish-fix-cmake-4.5-install-code.patch
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  cargo
 BuildRequires:  cmake

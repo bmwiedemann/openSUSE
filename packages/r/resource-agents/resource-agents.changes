@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 12 15:28:38 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.18.0+git118.8806b1e9:
+  * gcp-pd-move: optimize agent (#2224) (bsc#1290101) 
+  * valkey: add valkey as an alias for the redis agent
+  * crypt: add allow_clone for non-shared encrypted devices
+  * LVM-activate: add basic access mode for local volume groups
+  * Merge pull request #2222 from Obihoernchen/filesystem-lustre-tgt
+  * podman-etcd: fall back to revision comparison when claim time isn't definitive
+  * podman-etcd: post-check force_new_cluster claims and yield on version skew
+  * podman-etcd: make force_new_cluster a claim timestamp
+  * podman-etcd: pre-check force_new_cluster holders before writing
+
+-------------------------------------------------------------------
 Thu Oct 01 15:34:26 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.18.0+git105.9ea1183: (bsc#1281122)

@@ -19,7 +19,7 @@
 %global pkg_name vty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        6.6
+Version:        6.7
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause

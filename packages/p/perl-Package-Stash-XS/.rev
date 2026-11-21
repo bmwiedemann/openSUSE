@@ -132,4 +132,17 @@
 </comment>
     <requestid>1278656</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>a71fdd1a90f1b115e022b9ebabaa9a89</srcmd5>
+    <version>0.320.0</version>
+    <time>1793725195</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.320.0 (0.32)
+   see /usr/share/doc/packages/perl-Package-Stash-XS/Changes
+  0.32      2026-10-05 20:06:40Z
+        - no runtime changes since 0.31-TRIAL
+  0.31      2026-09-22 22:59:10Z (TRIAL RELEASE)
+        - potential patch for perl issue #24845</comment>
+    <requestid>1394681</requestid>
+  </revision>
 </revisionlist>

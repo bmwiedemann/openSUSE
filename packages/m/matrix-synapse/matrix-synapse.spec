@@ -27,6 +27,8 @@
 # if we do not have the version yet for the locked version
 # add it as TODO
 %if %{with use_poetry_for_dependencies}
+%global automat_version               22.10.0
+%global joserfc_version               1.7.7
 %global certifi_version               2026.10.19
 %global beautifulsoup4_version        4.13.0
 %global Twisted_version               24.7.0
@@ -65,7 +67,7 @@
 %global packaging_version             24.0
 %global psycopg2_version              2.9.9
 %global pysaml2_version               7.5.0
-%global Authlib_version               1.6.12
+%global Authlib_version               1.9.1
 # TODO: 2.46.0
 %global sentry_sdk_version            2.39.0
 %global PyJWT_version                 2.6.0
@@ -75,10 +77,11 @@
 # TODO: 1.4.11
 %global txredisapi_version            1.4.12
 %global Pympler_version               1.0.1
-%global pydantic_version              2.7.1
+%global pydantic_version              2.14.1
+%global pydantic_core_version         2.50.1
 %global python_multipart_version      0.0.26
-# TODO: 0.30.0
-%global rpds_py_verison               0.27.1
+# TODO: 2026.9.1
+%global rpds_py_verison               2026.6.0
 ## indirect dependencies which need to be guarded for matrix-synapse to work
 # pysaml2
 %global defusedxml_version            0.7.1
@@ -111,16 +114,19 @@
 # via jaeger-client
 %global thrift_version                0.10
 # via jaeger-client
-%global tornado_version               6.0
+%global tornado_version               6.6
 %else
 # some version locks based on pyproject.toml
+%global automat_version               22.10.0
+%global joserfc_version               1.7.7
+%global rpds_py_verison               2026.9.1
 %global certifi_version               2026.10.19
 %global beautifulsoup4_version        4.13.0
 %global Jinja2_version                3.0
 %global Pillow_version                13.0.0
 %global PyYAML_version                5.3
-%global Twisted_version               21.2.0
-%global attrs_version                 21.1.1
+%global Twisted_version               23.8.0
+%global attrs_version                 22.1.0
 %global bcrypt_version                3.1.7
 %global bleach_version                1.4.3
 %global canonicaljson_version         2.0.0
@@ -150,7 +156,7 @@
 %global unpaddedbase64_version        2.1.0
 %global matrix_synapse_ldap3_version  0.2.1
 %global packaging_version             20.0
-%global psycopg2_version              2.8
+%global psycopg2_version              2.9.5
 %global pysaml2_version               4.5.0
 %global Authlib_version               1.6.11
 %global sentry_sdk_version            1.5.11
@@ -161,6 +167,7 @@
 %global txredisapi_version            1.4.12
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
+%global pydantic_core_version         2.50.1
 %global python_multipart_version      0.0.9
 ## indirect dependencies which need to be guarded for matrix-synapse to work
 # pysaml2
@@ -233,7 +240,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.164.1
+Version:        1.165.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
@@ -315,6 +322,8 @@ BuildRequires:  %{use_python}-idna >= %{idna_version}
 %requires_peq   %{use_python}-idna
 BuildRequires:  %{use_python}-ijson >= %{ijson_version}
 %requires_peq   %{use_python}-ijson
+BuildRequires:  %{use_python}-joserfc >= %{joserfc_version}
+%requires_peq   %{use_python}-joserfc
 BuildRequires:  %{use_python}-jsonschema >= %{jsonschema_version}
 %requires_peq   %{use_python}-jsonschema
 BuildRequires:  (%{use_python}-matrix_common >= %{matrix_common_version} with %{use_python}-matrix_common <  %{matrix_common_max_version})
@@ -363,6 +372,8 @@ BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= %{matrix_synapse_ldap3_ver
 %endif
 BuildRequires:  %{use_python}-packaging >= %{packaging_version}
 %requires_peq   %{use_python}-packaging
+BuildRequires:  %{use_python}-pydantic-core >= %{pydantic_core_version}
+%requires_peq   %{use_python}-pydantic-core
 BuildRequires:  %{use_python}-pydantic >= %{pydantic_version}
 %requires_peq   %{use_python}-pydantic
 BuildRequires:  %{use_python}-psycopg2 >= %{psycopg2_version}

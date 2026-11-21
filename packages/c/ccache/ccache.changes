@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:23:25 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.14.3
+  * Fix abort when stderr is closed
+  * Fix assembler .incbin directive detection with macro operands
+  * Fix MSVC response file backslash escaping for long commands
+  * Fix GCC PCH fallback behavior in depend mode
+  * Fix console colors and Unicode display on Windows
+  * Fix manifest header path matching with .\ on Windows
+  * Reduce memory footprint and buffer copying across cache and
+    hashing routines
+  * Test suite improvements: skip unsupported -march/-gz flags, fix
+    ThinLTO / CodeView handling, improve Windows test cleanup
+  * Documentation updates regarding remote storage effects on local
+    cache hard linking
+
+-------------------------------------------------------------------
 Sun Oct 18 18:55:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.14.2:

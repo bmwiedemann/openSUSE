@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Nov  1 06:48:11 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Require libdisplay-info < 0.4 (FFI crate only supports 0.3)
+
+-------------------------------------------------------------------
 Sat Apr 25 17:29:51 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
 
 - Update to version 26.04:

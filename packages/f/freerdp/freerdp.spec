@@ -42,7 +42,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.32.2
+Version:        3.33.1
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -94,6 +94,10 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(openssl)
 %{?_with_soxr:BuildRequires:  pkgconfig(soxr)}
 BuildRequires:  xmlto
+%if 0%{?suse_version} > 1500
+BuildRequires:  xorg-x11-server-Xvfb
+BuildRequires:  xvfb-run
+%endif
 %if 0%{?_with_sdl3}
 BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(sdl3-ttf)
@@ -266,7 +270,7 @@ Group:          System/Libraries
 This package contains the FreeRDP Server Proxy library files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 if [ -z "$SOURCE_DATE_EPOCH" ]; then
@@ -284,6 +288,10 @@ export CXX=g++-12
         -DCMAKE_EXE_LINKER_FLAGS="-pie" \
         -DCMAKE_SKIP_RPATH=TRUE \
         -DCMAKE_SKIP_INSTALL_RPATH=TRUE \
+%if 0%{?suse_version} > 1500
+        -DBUILD_TESTING=ON \
+        -DBUILD_TESTING_NO_H264=ON \
+%endif
         -DWITH_ALSA=ON \
         -DWITH_CAIRO=ON \
         -DWITH_CUPS=ON \
@@ -357,6 +365,7 @@ export CXX=g++-12
 %fdupes %{buildroot}%{_libdir}/cmake/
 
 %check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %ctest
 
 %ldconfig_scriptlets -n lib%{name}%{libfreerdp_package}

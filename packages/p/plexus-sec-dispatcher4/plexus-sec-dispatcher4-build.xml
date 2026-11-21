@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-sec-dispatcher"/>
-  <property name="project.version" value="4.2.0"/>
+  <property name="project.version" value="4.3.0"/>
   <property name="project.url" value="https://github.com/codehaus-plexus/plexus-sec-dispatcher"/>
   <property name="project.name" value="Plexus Security Dispatcher Component"/>
   <property name="project.organization.name" value="Sonatype, Inc."/>
@@ -61,33 +61,15 @@
 
   <target name="gen-src" description="Generate sources from mdo files">
     <mkdir dir="${build.mdoOutputDir}"/>
-    <macrodef name="modello-single-mode">
-      <attribute name="file"/>
-      <attribute name="mode"/>
-      <attribute name="version"/>
-      <sequential>
-        <exec executable="modello" failonerror="true">
-          <arg file="@{file}"/> <!-- model file -->
-          <arg value="@{mode}"/> <!-- output type -->
-          <arg file="${build.mdoOutputDir}"/> <!-- output directory -->
-          <arg value="@{version}"/> <!-- model version -->
-          <arg value="false"/> <!-- package with version -->
-          <arg value="8"/> <!-- javaSource -->
-        </exec>
-      </sequential>
-    </macrodef>
-    <macrodef name="modello">
-      <attribute name="file"/>
-      <attribute name="version" default="4.0.0"/>
-      <sequential>
-        <echo taskname="modello" message="Generating sources for @{file}"/>
-        <modello-single-mode file="@{file}" version="@{version}" mode="java"/>
-        <modello-single-mode file="@{file}" version="@{version}" mode="xsd"/>
-        <modello-single-mode file="@{file}" version="@{version}" mode="stax-reader"/>
-        <modello-single-mode file="@{file}" version="@{version}" mode="stax-writer"/>
-      </sequential>
-    </macrodef>
-    <modello file="${build.mdoDir}/settings-security.mdo"/>
+    <typedef resource="org/codehaus/modello/ant/antlib.xml" />
+
+    <modello version="4.0.0" outputDirectory="${build.mdoOutputDir}" javaSource="8">
+      <model file="${build.mdoDir}/settings-security.mdo"/>
+      <goal name="java"/>
+      <goal name="xsd"/>
+      <goal name="stax-reader"/>
+      <goal name="stax-writer"/>
+    </modello>
   </target>
 
   <!-- ====================================================================== -->

@@ -17,7 +17,7 @@
 
 
 Name:           ghq
-Version:        1.11.2
+Version:        1.12.0
 Release:        0
 Summary:        Remote repository management made easy
 License:        MIT
@@ -67,6 +67,7 @@ Fish command line completion support for %{name}.
 %autosetup -a 1 -p1
 
 %build
+export GOTOOLCHAIN=local
 export GOFLAGS="-buildmode=pie -trimpath -mod=vendor -modcacherw"
 go build -o bin/%{name} -ldflags="-X main.revision=%{version}"
 
@@ -77,6 +78,7 @@ install -Dm644 misc/zsh/_%{name} %{buildroot}%{_datadir}/zsh/site-functions/_%{n
 install -Dm644 misc/fish/%{name}.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 
 %check
+export GOTOOLCHAIN=local
 export GOFLAGS="-mod=vendor -modcacherw"
 git config --global user.name test
 git config --global user.email test@example.com

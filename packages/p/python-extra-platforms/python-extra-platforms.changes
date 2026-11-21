@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  5 14:23:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.0.1:
+  * Fix test_typing_is_not_imported failing on CPython 3.13.13 and
+    later 3.13 releases. Closes #745
+
+-------------------------------------------------------------------
 Sat Oct 31 12:46:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 14.0.0:

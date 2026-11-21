@@ -29,8 +29,8 @@ index 2f5007bd..ec56cc75 100644
  #include "../helpers/Logger.hpp"
 -#include "../helpers/Nix.hpp"
  
+ #include <cerrno>
  #include <cstdlib>
- #include <cstring>
 @@ -55,12 +54,7 @@ void CHyprlandInstance::runHyprlandThread(bool safeMode) {
          procctl(P_PID, getpid(), PROC_PDEATHSIG_CTL, &sig);
  #endif

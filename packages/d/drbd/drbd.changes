@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Mon Nov  9 08:20:47 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- drbd: fix build error against kernel v7.4
+  * add suse special patch
+    + 0001-drbd-drbd_nl-include-umh.h-for-call_usermodehelper.patch
+
 ------------------------------------------------------------------
 Fri Aug 14 08:12:21 UTC 2026 - Su Yue <glass.su@suse.com>
 

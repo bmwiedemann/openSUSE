@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-policykit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-policykit
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        PolicyKit authentication agent
 License:        LGPL-2.1-or-later
@@ -26,16 +26,16 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(lxqt)
-BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(PolkitQt6-1)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 BuildRequires:  pkgconfig(polkit-agent-1)
 Recommends:     %{name}-lang = %{version}-%{release}

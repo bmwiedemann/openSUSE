@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:19:29 UTC 2026 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to version 10.1.0 (bsc#1286192)
+  + upload images directly to an EBS snapshot with the EBS direct APIs, no helper instance, ssh or dd needed
+  + add new options --upload-workers, --upload-retries and --upload-timeout, invalid values fall back to the defaults
+  + add new option --write-zero-blocks to also write blocks of zeros
+  + add new options --verify-snapshot and --keep-snapshot-on-verify-failure to read back and check the snapshot
+  + require exactly one .raw or .raw.xz file in a tar archive
+  + use EBS direct for --use-root-swap, use the root device of the donor instance and set DeleteOnTermination on the new image
+  + map --backing-store to the volume type in root swap (ssd = gp3, mag = standard)
+  + clean up the snapshot and report correctly if an upload is aborted or a block fails for good
+  + deprecate and ignore the ssh options, --boot-kernel and --grub2, drop para-virtual support and reject --tpm-support without --boot-mode uefi
+  + drop the paramiko dependency and require boto3 >= 1.29.84
+
+-------------------------------------------------------------------
 Tue Mar 31 20:12:18 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 10.0.5 (jsc#PCT-1097)

@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Nov 17 07:45:22 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.8.0+git.1794489643.2e2ae4a:
+  * ver0.8.0: Dev: implement /cib/live/wizards/vmware menu
+  * ver0.7.25: Dev: implement /cib/live/wizards/cryptctl menu
+  * ver0.7.24: Dev: implement /cib/live/wizards/sbd menu
+  * ver0.7.23: Dev: implement /cib/live/wizards/nginx menu
+  * ver0.7.22: Dev: implement /cib/live/wizards/haproxy menu
+  * ver0.7.21: Dev: implement /cib/live/wizards/apache menu
+  * ver0.7.20: Dev: implement /cib/live/wizards/sap-simple-stack-plus menu
+  * ver0.7.19: Dev: implement /cib/live/wizards/sap-simple-stack menu
+  * ver0.7.18: Dev: implement /cib/live/wizards/sap-db menu
+  * ver0.7.17: Dev: implement /cib/live/wizards/sap-ci menu
+  * ver0.7.16: Dev: implement /cib/live/wizards/sap-as menu
+  * ver0.7.15: Dev: implement /cib/live/wizards/nfsserver-lvm-drbd menu
+  * ver0.7.14: Dev: implement /cib/live/wizards/nfsserver menu
+  * ver0.7.13: Dev: implement /cib/live/wizards/exportfs menu
+  * ver0.7.12: Dev: implement /cib/live/wizards/raid-lvm menu
+  * ver0.7.11: Dev: implement /cib/live/wizards/lvm-drbd menu
+  * ver0.7.10: Dev: implement /cib/live/wizards/gfs2 menu
+  * ver0.7.9: Dev: implement /cib/live/wizards/filesystem menu
+  * ver0.7.8: Dev: implement /cib/live/wizards/drbd menu
+  * ver0.7.7: Dev: implement /cib/live/wizards/oracle menu
+  * ver0.7.6: Dev: implement /cib/live/wizards/db2-hadr menu
+  * ver0.7.5: Dev: implement /cib/live/wizards/db2 menu
+  * ver0.7.4: Dev: implement /cib/live/wizards/database menu
+  * ver0.7.3: Dev: implement /cib/live/wizards/virtual-ip menu
+  * ver0.7.2: Dev: implement /cib/live/wizards/mailto (email) menu
+  * ver0.7.1: Dev: implement /cib/live/wizards/health (Verify health and configuration) 
+
+-------------------------------------------------------------------
+Fri Nov 13 12:09:10 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.7.0+git.1794052406.f1b2139:
+  * Dev: implement /cib/live/wizards (Wizards) menu
+
+-------------------------------------------------------------------
+Sat Nov  7 09:21:03 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.6.8+git.1794043145.c24a18d:
+  * Dev: implement /cib/live/orders/new menu (Add Constraint -> Order)
+  * ver0.6.7: Dev: implement /cib/live/colocations/<colocationID>/edit
+                   menu (edit colocation)
+
+-------------------------------------------------------------------
+Fri Nov  6 10:31:08 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.6.6+git.1793960618.9177347:
+  * Dev: implement /cib/live/locations/new menu (Add Constraint -> Location)
+
+-------------------------------------------------------------------
+Thu Nov  5 14:10:13 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.6.5+git.1793887507.c741c37:
+  * Dev: implement /cib/live/constraints/types menu (Add Constraint)
+  * ver0.6.4: Dev: implement /cib/live/alerts/new (Add Resource -> Alert) 
+  * ver0.6.3: Dev: implement /cib/live/tags (Add Resource -> Tag)
+  * ver0.6.2: Dev: implement /cib/live/groups/new (Add Resource -> Group)
+
+-------------------------------------------------------------------
+Tue Nov  3 07:35:14 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.6.1+git.1793691082.74381dc:
+  * Dev: implement /cib/live/primitives/new (Add Resource -> Primitive)
+
+-------------------------------------------------------------------
 Mon Nov  2 09:48:17 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
  
 - Version 0.6.0+git.1793612600.48f2e53:

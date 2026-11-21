@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov 11 19:49:21 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.3.3.
+  ## 0.3.3
+
+  Released 2026-11-11.
+
+    * Allow singleton TableBody as list of table bodies.
+
+      It's now possible to pass a bare TableBody value whenever a
+      list of TableBody elements is expected. This should simplify
+      the construction of table values.
+
+    * Allow rows to be given as simple lists of cells instead of
+      always having to use the `Row` constructor function.
+
+    * Fixed the failure method in `peekAttr`: peeking failures are
+      now kept within the *Peek* monad. Previously, this function
+      would raise Lua exceptions in certain cases. The change
+      un-breaks the use of this function within the *Peek* monad and
+      will result in better error messages in some cases.
+
+    * Raise upper bound for aeson, QuickCheck
+
+-------------------------------------------------------------------
 Fri Jan  9 08:07:58 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.3.2.1.

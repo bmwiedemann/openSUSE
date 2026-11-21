@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version e7eb98afc667913acc533ab910c608bee7d08f25
+%define git_version d5455717ead0affc6116809d8c6e71f95c63e8e1
 
 Name:           kernel-firmware-nvidia
-Version:        20260610
+Version:        20261014
 Release:        0
 Summary:        Kernel firmware files for Nvidia Tegra and graphics drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261019.tar.gz#/kernel-firmware-tools-20261019.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -111,6 +111,8 @@ Supplements:    modalias(of:N*T*Cnvidia%2Ctegra194-xusb)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra194-xusbC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-dc)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-dcC*)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-dsi)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-dsiC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-gr2d)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-gr2dC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra20-gr3d)
@@ -141,8 +143,12 @@ Supplements:    modalias(of:N*T*Cnvidia%2Ctegra234-vic)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra234-vicC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra234-xusb)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra234-xusbC*)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra264-vic)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra264-vicC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-dc)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-dcC*)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-dsi)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-dsiC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-gr2d)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-gr2dC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra30-gr3d)

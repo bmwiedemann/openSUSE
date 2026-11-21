@@ -30,12 +30,19 @@ Source1:        %{name}-preamble
 Patch0:         rtl88x2bu_nodate_time.patch
 # PATCH-FIX-OPENSUSE fix-backported-update_mgmt_frame_registrations.patch
 Patch1:         fix-backported-update_mgmt_frame_registrations.patch
+# PATCH-FIX-UPSTREAM rtl88x2bu-linux-7.3.patch -- cfg80211 passes the cookie by value since 7.3 -- https://github.com/cilynx/rtl88x2bu/pull/292
+Patch2:         rtl88x2bu-linux-7.3.patch
+# PATCH-FIX-OPENSUSE Leap 16.1 backports newer cfg80211 callback arguments
+Patch3:         rtl88x2bu-leap-16.1-cfg80211.patch
+# PATCH-FIX-OPENSUSE Avoid a collision with the PowerPC kernel helper
+Patch4:         rtl88x2bu-rename-get-ra.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  bc
 BuildRequires:  kernel-macros
 BuildRequires:  module-init-tools
 
-%{!?kernel_module_directory:%define kernel_module_directory /lib/modules}
+%{!?kernel_module_directory:%global kernel_module_directory /lib/modules}
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 
 %description
 Kernel driver for Realtek 88x2bu wifi cards
@@ -63,6 +70,11 @@ sed -i '/EXTRA_LDFLAGS += --strip-debug/d' Makefile
 %if 0%{?sle_version} == 150300
 %patch -P 1 -p0
 %endif
+%patch -P 2 -p0
+%if 0%{?suse_version} == 1610
+%patch -P 3 -p0
+%endif
+%patch -P 4 -p0
 
 set -- *
 mkdir source

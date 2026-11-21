@@ -17,14 +17,14 @@
 
 
 Name:           k3kcli
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Kubernetes in Kubernetes
 License:        Apache-2.0
 URL:            https://github.com/rancher/k3k
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  go1.26 >= 1.26.10
 
 %description
 A Kubernetes in Kubernetes tool, k3k provides a way to run multiple embedded

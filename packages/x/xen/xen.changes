@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 06:35:14 MST 2026 - carnold@suse.com
+
+- bsc#1288663 - VUL-0: CVE-2026-102703,CVE-2026-102704: xen:
+  arbitrary read/write via grant copy (XSA-523)
+  6ae9cd89-gnttab-complete-checking-in-gnttab_copy_buf_valid.patch
+  6ae9cd89-gnttab-move-only-local-domain-may-copy-by-frame-check.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 06:05:33 MDT 2026 - carnold@suse.com
 
 - bsc#1283315 - VUL-0: CVE-2026-79607: xen: Xenstore: Guests can

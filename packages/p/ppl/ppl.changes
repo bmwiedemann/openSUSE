@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:41:09 UTC 2026 - Roberto Bagnara <roberto.bagnara@gmail.com>
+
+- Set the PPL homepage to https://bugseng.com/ppl.
+  The old homepage address will be retired.
+- Update the source archive and detached signature URLs to their
+  current HTTPS locations on support.bugseng.com.
+
+-------------------------------------------------------------------
 Thu May  4 11:45:22 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Convert to real _multibuild package: the spec already handles

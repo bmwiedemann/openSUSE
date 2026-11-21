@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:56:49 UTC 2026 - Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
+
+- Update to version 1.1.1:
+  * Version bump to 1.1.1
+  * Typo
+  * Proofreading changes
+  * Small wording fixes in help texts
+  * Filled repositories view help with life
+  * Suggested wording fixes part 2
+  * Suggested wording fixes
+  * Fixed typos
+  * Help topics navigation
+  * Stubs for repos view help
+  * Consistent terminology
+  * Filled misc help with life
+  * Filled installation summary help with life
+  * Fixed typos
+  * Filled patterns help with life
+  * Filled pkg classification help with life
+  * F1 hotkey for help center
+  * Added author
+  * Use $MYRLYN_HELP environment variable as help base URL
+  * Filled search help with life
+  * Moved third-party repo updates help out to separate file
+  * Filled updates help with life
+  * Fixed typos
+  * Fixed typos
+  * Filled best practices help with life
+  * Typo
+  * Use master URL for help pages
+  * Fill permissions help with life
+  * Myrlyn logo
+  * Fill customization help with life
+  * First help topic stubs
+  * Help menu reorg
+  * Suppress useless xdg-open output
+  * Escape regexp special characters in "Starts With" search
+  * Don't overwrite an existing tail-log script
+  * Write tail-log script to log dir
+  * Suppress log message
+  * Factored out web browser related methods to separate namespace
+  * Imported new icons by @byDMA (#166)
+  * Recalculate number of updates after protect/un-protect all
+  * Added link
+  * icon permissions
+  * Added built-in pattern icons (Closes #166)
+  * Dynamic contributors list to avoid re-translation for each added name (#164)
+  * Larger initial "About" window size (#164)
+  * Call for translators on home page
+  * Typo
+  * Fix crash when adding a repo on a system without a base product
+  * Fix duplicate packages in the package classification filter
+  * Remove leading '[sudo] ' from askpass prompt
+  * Enable translations for myrlyn-askpass (#160)
+  * Fix memory leak of YQPkgObjList exclude rules
+  * Fix memory leak in PkgTaskList::filtered()
+  * Fix memory leak when switching main window pages
+  * Fix memory leak in the zypp history browser filter
+  * Fix no-op disconnect from the tab bar in YQPkgFilterTab
+  * Drop privileged groups + new help topics
+  * Enable dropping privileges so 'xdg-open' can be used to open an URL in the user's web browser
+  * Use user's XDG_RUNTIME_DIR, not root's
+  * Keep XDG_CONFIG_DIRS in env in myrlyn-sudo
+  * Keeping env XDG_CONFIG_HOME makes user's Myrlyn conf owned by root (bad)
+  * Added more env vars to keep to myrlyn-sudo
+  * Coding style
+  * Light theme text colors (#157)
+  * Coding style
+  * Text colors and version view margins (#157)
+  * Re-imported .spec and _service from OBS
+
+-------------------------------------------------------------------
 Wed Oct 21 12:37:20 UTC 2026 - Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
 
 - Update to version 1.1.0:

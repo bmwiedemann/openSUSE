@@ -7,4 +7,23 @@
     <comment>https://build.opensuse.org/request/show/842978</comment>
     <requestid>844072</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cccc8b81def5847adb293c75379ba18e</srcmd5>
+    <version>0.20.0</version>
+    <time>1793725198</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.20.0 (0.02)
+   see /usr/share/doc/packages/perl-Test-Metrics-Any/Changes
+  0.02    2026-09-30
+          [CHANGES]
+           * General style refresh
+              + Minimum perl version 5.20
+              + Use subroutine signatures (mostly)
+              + Minor Pod style updates
+              + Swap unit tests from `Test::More` to `Test2::V0`
+           * Defend unit tests against changes to perl's reporting of line
+             numbers in code involving multi-line anonymous subroutines
+             (Perl #24396)</comment>
+    <requestid>1394691</requestid>
+  </revision>
 </revisionlist>

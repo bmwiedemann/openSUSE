@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * tests with ASAN on FreeBSD are very slow
+  * C++: add #embed, __has_embed, contract_assert and indeterminate attribute
+  * used same skipOffsetId for identical keyword list
+  * skipOffsets cache now shares the same identifier for identical regexps
+  * Share QRegularExpression across all rule instances
+  * groups all the rules into a single container to eliminate the shared_ptr<Rule>
+  * rename HighlightingContextData to HighlightingData
+  * JSON5: add Unquoted Key and fix unicode regex
+  * JSON: fix unicode regex
+  * CSV: auto detect separator and merge all contexts to have only one theme configuration
+  * add optional counter with #pop in a context
+  * Drop no longer needed Qt < 6.10 operator""_sv polyfill
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

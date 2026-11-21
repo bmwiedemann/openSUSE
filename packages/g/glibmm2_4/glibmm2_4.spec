@@ -25,7 +25,7 @@ Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source0:        %{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
@@ -39,10 +39,10 @@ BuildRequires:  mm-common
 BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.61.2
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.49.7
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.49.7
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.61.2
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(sigc++-2.0) >= 2.9.1
 
 %description

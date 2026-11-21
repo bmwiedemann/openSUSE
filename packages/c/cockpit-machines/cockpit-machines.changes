@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:22:29 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 360
+  * 360
+    - CVE-2026-113495: RHSM authentication tokens are passed as command-line
+      arguments to background helper processes during image retrieval
+      operations (bsc#1286327)
+    - CVE-2026-113496: configured password is passed directly as a
+      command-line argument to an underlying system utility when saving VNC
+      console settings (bsc#1286328)
+    - Updated to PatternFly 6.7.0
+  * 359
+    - disks: Use FileChooser for inserting media (RHEL-211920)
+  * 358
+    - spec: Don't recommend qemu-char-spice after Fedora 45
+    - Dependency and translations updates
+  * 357
+    - CVE-2026-92768: Sensitive data exposure via command-line arguments
+      (bsc#1282356)
+    - CVE-2026-92747: Sensitive Data Exposure of guest credentials via JSON
+      argument in process list (bsc#1282355)
+    - CVE-2026-92745: Information Disclosure of RHSM Offline Token via Process
+      Arguments (bsc#1282354)
+  * 356
+    - Translation updates
+    - Stability improvements
+
+-------------------------------------------------------------------
 Wed Aug 12 10:56:12 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update to 355

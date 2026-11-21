@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        34.0.5
+Version:        35.0.3
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -62,12 +62,14 @@ Source5:        robots.txt
 Source10:       %{name}-cron
 Source11:       %{name}-cron.service
 Source12:       %{name}-cron.timer
+Source13:       %{name}.my.cnf
 Source99:       %{name}-rpmlintrc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  cron
 BuildRequires:  fdupes
+BuildRequires:  mariadb
 BuildRequires:  unzip
 #
 Requires:       cron
@@ -77,7 +79,7 @@ Requires:       libxml2 >= 2.7.0
 %else
 Requires:       libxml2-2 >= 2.7.0
 %endif
-Requires:       mariadb >= 10.6
+Requires:       mariadb >= 10.11
 Requires:       php-bz2
 Requires:       php-dom
 Requires:       php-gd
@@ -95,7 +97,7 @@ Requires:       php < 8.6.0
 Requires:       php >= 8.3.0
 Requires:       php-process
 Requires:       php-xml
-Recommends:     sqlite
+Recommends:     sqlite >= 3.24
 %endif
 #
 %if 0%{?suse_version}
@@ -111,7 +113,7 @@ Requires:       php-xmlwriter
 Requires:       php-zip
 Requires:       php-zlib
 Requires:       (php-opcache if php < 8.5.0)
-Recommends:     sqlite3
+Recommends:     sqlite3 >= 3.24
 %{?systemd_requires}
 %endif
 Recommends:     php-sysvsem
@@ -173,6 +175,7 @@ cp %{SOURCE5} .
 #rm -f 3rdparty/symfony/debug/Resources/ext/*.{c,h}
 
 %build
+# nothing to build
 
 %install
 # no server side java code contained, alarm is false
@@ -214,6 +217,9 @@ sed -i -e"s|@APACHE_USER@|%{apache_user}|g" %{buildroot}%{_unitdir}/%{name}-cron
 sed -i -e"s|@APACHE_MYSERVERROOT@|%{apache_myserverroot}|g" %{buildroot}%{_unitdir}/%{name}-cron.service
 mkdir -p %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}-cron
+
+# install changes for mariadb
+install -D -m0644 %{SOURCE13} %{buildroot}/%{_sysconfdir}/my.cnf.d/%{name}.my.cnf
 
 %pre
 %service_add_pre %{name}-cron.timer %{name}-cron.service
@@ -317,6 +323,7 @@ fi
 %exclude %{apache_myserverroot}/%{name}/README.SELinux
 %doc README README.SUSE README.SELinux
 %config(noreplace) %{_sysconfdir}/cron.d/%{name}
+%config(noreplace) %{_sysconfdir}/my.cnf.d/%{name}.my.cnf
 %{_sbindir}/rc%{name}-cron
 %{_unitdir}/%{name}-cron.service
 %{_unitdir}/%{name}-cron.timer

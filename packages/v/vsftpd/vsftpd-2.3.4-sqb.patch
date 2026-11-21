@@ -76,7 +76,7 @@ Index: vsftpd-2.0.7/ls.c
 +      if (end_sqb.found)
 +      {
 +        unsigned int cur_pos;
-+        char stch, ench;
++        unsigned char stch, ench;
 +        const char *p_brace;
 +
 +        str_split_char(&filter_remain_str, &temp_str, ']');
@@ -99,7 +99,7 @@ Index: vsftpd-2.0.7/ls.c
 +            cur_pos++;
 +          }
 +          // expand char[s]
-+          for (;stch <= ench && !str_isempty(&brace_list_str); stch++)
++          for (;stch <= ench && !str_isempty(&brace_list_str) && stch != 0; stch++)
 +          {
 +            str_empty(&new_filter_str);
 +            if (!matched)

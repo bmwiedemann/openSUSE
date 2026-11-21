@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:34:36 MST 2026 - carnold@suse.com
+
+- Update hivex to version 1.3.25
+  * lib/handle.c: Improve error message when block extends beyond page
+  * Fix miscellaneous spelling mistakes
+  * images/mklarge.c: Use EXIT_SUCCESS/EXIT_FAILURE
+  * mages/mklarge.c: Print usage if the incorrect number of args used
+  * Update FUZZING
+  * generator: Add hivex_open_memory
+  * Add AFL++ persistent mode fuzzer
+  * fuzzing: Copy the AFL buffer before test
+  * lib/value.c: Avoid out of bounds read in "db" record (CVE-2026-120740)
+  * fuzzing: Move testcases and sync dirs under fuzzing/
+  * lib/handle.c: Move pages loop increment to end of body
+  * lib/handle.c: Avoid OOB read with truncated page header
+  * lib/handle.c: Avoid OOB read truncated header while scanning
+  * tests: Set ./run from LOG_COMPILER instead of TESTS_ENVIRONMENT
+  * tests: Move test from lib/ to new tests/ subdirectory
+  * tests/test-just-header.c: Don't leak handle
+  * tests: Add 'make check-valgrind' target
+  * tests: Add a simple test of hivex_visit
+- Drop patch contained in new tarball
+  CVE-2026-120740-Avoid-out-of-bounds-read-in-db-record.patch
+
+-------------------------------------------------------------------
+Tue Nov  3 09:15:01 MST 2026 - carnold@suse.com
+
+- bsc#1289202 - VUL-0: CVE-2026-120740: hivex: Denial of Service
+  via out-of-bounds read in big-data block processing
+  CVE-2026-120740-Avoid-out-of-bounds-read-in-db-record.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
 
 - Remove 32bit architectures

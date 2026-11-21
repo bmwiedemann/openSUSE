@@ -1,7 +1,7 @@
 #
 # spec file for package xmag
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,23 @@
 
 
 Name:           xmag
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        Screen magnifier
 License:        X11
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xmag.desktop
 Source2:        xmag.png
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
+BuildRequires:  pkgconfig(xproto) >= 7.0.22
 BuildRequires:  pkgconfig(xt)
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
@@ -43,11 +45,11 @@ xmag displays a magnified snapshot of a portion of an X11 screen.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %suse_update_desktop_file -i -u xmag Utility Accessibility DesktopUtility
 install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xmag.png
 

@@ -17,11 +17,10 @@
 
 
 Name:           man-pages
-Version:        6.19
+Version:        6.20
 Release:        0
 Summary:        Linux Manual Pages
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
-Group:          Documentation/Man
 URL:            https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/
 #Git-Clone:	git://git.kernel.org/pub/scm/docs/man-pages/man-pages
 #Git-Web:	http://git.kernel.org/cgit/docs/man-pages/man-pages.git/

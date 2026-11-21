@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:04:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.5.0:
+  * Identity: Fix federation protocol create and set SDK args
+  * Fix grammar in some network code
+  * Add device enable/disable commands and status field
+  * vpnaas: Re-add encryption algorithms
+  * typing: Enable stricter checks
+  * volume: Fix volume attachments list query options handling
+  * tests: Drop testing for address scope shared attribute
+  * Rename and deprecate legacy options in accelerator commands
+  * Normalize additional server list columns
+  * volume: Add 'volume group add/remove volume' commands
+  * Add functional tests and Zuul job for accelerator commands
+  * Migrate accelerator commands from python-cyborgclient
+  * Add router option to floating IP create and set commands
+  * vpnaas: Remove deprecated sha1 and 3des algorithms
+  * Migrate 'endpoint group' commands to SDK
+  * image: add --store-preference to "image save"
+  * Update master for stable/2026.2
+  * Network: Add onboard_network_subnets
+  * bump minimum version of openstacksdk
+  * Network: Simplify ip_availability_details access
+  * volume: Replace server arg for volume attachment create
+  * Add a "cloud cache delete" command
+
+-------------------------------------------------------------------
 Mon Sep  7 09:13:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.3.0:

@@ -196,4 +196,13 @@ Built green on aarch64 and x86_64, both flavors.</comment>
     <comment>Update python-vllm to 0.32.0</comment>
     <requestid>1386032</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>359ddf16ee4f3235e84ad18cfab64e3a</srcmd5>
+    <version>0.33.0</version>
+    <time>1794236673</time>
+    <user>anag_factory</user>
+    <comment>Update python-vllm to 0.33.0: Muse Spark Open and new models, MXFP4/MXFP8 quantization.
+- Reasoning-parser defaults to none; Responses API item status.</comment>
+    <requestid>1396068</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  8 18:56:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.0:
+  * Drop support for EOL python 3.10
+  * Significant performance improvements
+  * Fix handling of Literal and Annotated for lazy imports
+
+-------------------------------------------------------------------
 Mon Oct 26 09:19:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.3:

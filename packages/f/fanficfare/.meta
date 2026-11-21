@@ -3,4 +3,5 @@
   <description>FanFicFare is the rename and move of the previous FanFictionDownLoader (AKA FFDL, AKA fanficdownloader) project.
 
 This program is available as a calibre plugin, a command-line interface, and a web service.</description>
+  <devel project="devel:languages:python" package="fanficfare"/>
 </package>

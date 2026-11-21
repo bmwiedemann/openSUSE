@@ -1,7 +1,7 @@
 #
 # spec file for package intel-one-mono-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           intel-one-mono-fonts
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        An expressive monospaced font family
 License:        OFL-1.1-RFN
-Group:          System/X11/Fonts
 URL:            https://github.com/intel/intel-one-mono
-Source:         %{url}/releases/download/V%{version}/ttf.zip#/%{name}-%{version}.zip
+Source:         %{url}/releases/download/V%{version}/intel-one-mono-ttf.zip#/%{name}-%{version}.zip
 Source100:      https://raw.githubusercontent.com/intel/intel-one-mono/V%{version}/README.md
+Source101:      https://raw.githubusercontent.com/intel/intel-one-mono/V%{version}/OFL.txt
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
-
 %reconfigure_fonts_prereq
 
 %description
@@ -42,12 +41,13 @@ coding errors. A panel of low-vision and legally blind developers
 provided feedback at each stage of design.
 
 %prep
-%autosetup -n ttf
+%autosetup -n intel-one-mono-ttf
 
 %build
 
 %install
-cp %{S:100} .
+cp %{SOURCE100} .
+cp %{SOURCE101} .
 mkdir -p %{buildroot}%{_ttfontsdir}
 install -m644 *.ttf %{buildroot}%{_ttfontsdir}
 

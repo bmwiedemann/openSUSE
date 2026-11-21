@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  9 23:06:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use modello-ant-task instead of ModelloCli
+
+-------------------------------------------------------------------
+Fri Nov  6 10:44:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 4.3.0
+  * New features and improvements
+    + Try to remove sensitive parts from memory more aggressively
+    + Add Git Credential Helper as master password source
+  * Documentation updates
+    + Stop pinning a version in the README snippet
+  * Maintenance
+    + Clean up declared dependencies
+  * Build
+    + Point the site URL at the published site so site:stage works
+    + Allow running the release drafter by hand
+  * Dependency updates
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 1.1.0 to
+      1.1.1
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+    + Bump version.slf4j from 2.0.18 to 2.0.20
+    + Bump org.codehaus.modello:modello-maven-plugin from 2.8.0 to
+      2.8.1
+    + Bump github/codeql-action from 4.37.7 to 4.37.8
+
+-------------------------------------------------------------------
 Thu Sep 24 23:39:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 4.2.0

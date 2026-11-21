@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  4 15:49:11 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Install usrmerge.attr non-executable, it is a fileattr definition
+  and not a script
+- Fix typo in the main package description
+- Build the build subpackage as noarch, its fileattr script and
+  bin/sbin dependency data are architecture-independent
+- Replace unbounded strcpy/stpcpy calls in usrmergecheck with
+  snprintf
+- Run spec-cleaner in full mode
+
+-------------------------------------------------------------------
 Thu Oct  7 11:57:22 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Fix logic for detecting conflicts with directories (boo#1191111)

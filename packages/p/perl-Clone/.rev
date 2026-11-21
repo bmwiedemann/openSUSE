@@ -300,4 +300,34 @@
    see /usr/share/doc/packages/perl-Clone/Changes</comment>
     <requestid>1345212</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>358f2cbef9f8e2f49214ddea7887905a</srcmd5>
+    <version>0.510.0</version>
+    <time>1793817814</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.510.0 (0.51)
+   see /usr/share/doc/packages/perl-Clone/Changes
+  0.51 2026-10-01 atoomic
+    - fix: clone deep hash and mixed array/hash structures past MAX_DEPTH
+      without C stack growth (GH #121, GH #146)
+    - fix: support cloning Perl 5.38+ class instances (SVt_PVOBJ)
+    - fix: count nesting depth, not call count, in rdepth
+    - fix: honour depth==0 when rdepth exceeds MAX_DEPTH on wide structures
+    - fix: preserve shared RV identity in rv_clone_iterative
+    - fix: guard rv_clone_iterative against scalar-ref cycles past MAX_DEPTH
+    - fix: share non-cloneable leaves in rv_clone_iterative
+    - fix: preserve blessings in iterative array chain walking (GH #121)
+    - fix: deep-copy leaf scalars past MAX_DEPTH instead of aliasing
+    - fix: release cloned mg_obj refcount after sv_magic (memory leak)
+    - fix: remove leaked Newxz buffer in magic mg_ptr cloning
+    - fix: use SAVEFREESV for exception-safe hseen/weakrefs cleanup
+    - fix: avoid shell in ps invocation for MacPorts / sandboxed macOS (GH #122)
+    - refactor: extract magic cloning to clone_magic() helper
+    - refactor: fix TRACEME debug infrastructure for 64-bit and MSVC
+    - chore: update ppport.h from 3.68 to 3.73
+    - test: add coverage for clone($ref, $depth), edge cases, class objects
+    - docs: fix duplicate Synopsis header and update LIMITATIONS section
+    - ci: add macOS, refresh Linux distro matrix, fix Windows build step</comment>
+    <requestid>1394683</requestid>
+  </revision>
 </revisionlist>

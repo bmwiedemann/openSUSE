@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 18 13:02:23 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Require tar for troubleshooting/recovery in basesystem 
+
+-------------------------------------------------------------------
+Fri Nov 13 10:48:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer require deprecated yast-logs by microos-base.
+
+-------------------------------------------------------------------
 Tue Sep  8 08:21:44 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Make account-utils the default

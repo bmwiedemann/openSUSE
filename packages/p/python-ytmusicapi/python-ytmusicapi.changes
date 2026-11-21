@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:11:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.4
+  * fix(search): match filtered shelf category through the locale catalog
+  * fix(playlists): find play button by key
+  * fix(browsing): read artist radioId from watchPlaylistEndpoint
+  * fix(playlists): fail fast on duplicate videoIds when duplicates=False
+  * fix(browsing): handle header-less promo carousel in get_artist
+
+-------------------------------------------------------------------
 Thu Sep 17 19:21:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.3:

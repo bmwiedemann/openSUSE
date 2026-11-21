@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:32:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:43:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+  * wallpapers/potd: fix context menu icons
+  * wallpapers/tiled: fix default directory
+  * applets/colorpicker: fix ColorCircle border
+  * applets/colorpicker: fix middle clicking on preview
+  * applets/mediaframe: use HoverHandler
+  * applets/timer: show seconds on the predefined timer config page
+  * applets/mediaframe: pass cached remote files as urls
+  * applets/timer: fix predefined timer keyboard navigation
+  * applets/timer: fix reordering predefined timers
+  * applets/timer: fix notification translation (kde#413374)
+  * applets/quicklaunch: fix keyboard moving of items between models
+  * applets/diskquota: fix hover highlighting
+  * applets/mediaframe: use new image for icon immediately
+  * applets/calculator: fix keyboard use on desktop
+  * Update apod provider to use new url
+
+-------------------------------------------------------------------
 Tue Oct 27 18:09:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

@@ -26,11 +26,10 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-mcp%{psuffix}
-Version:        1.28.1
+Version:        1.30.0
 Release:        0
 Summary:        Python implementation of the Model Context Protocol
 License:        MIT
-Group:          Development/Languages/Python
 # GitHub repo https://github.com/modelcontextprotocol/python-sdk
 URL:            https://modelcontextprotocol.io/introduction
 Source:         https://files.pythonhosted.org/packages/source/m/mcp/mcp-%{version}.tar.gz
@@ -42,17 +41,17 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 4.5
-Requires:       python-httpx >= 0.27
-Requires:       python-httpx-sse >= 0.4
 # From PyJWT[crypto]
 Requires:       python-cryptography >= 3.4.0
+Requires:       python-httpx >= 0.27.1
+Requires:       python-httpx-sse >= 0.4
 Requires:       python-jsonschema >= 4.20.0
-Requires:       python-pydantic >= 2.7.2
+Requires:       python-pydantic >= 2.11.0
 Requires:       python-pydantic-settings >= 2.5.2
 Requires:       python-python-multipart >= 0.0.9
 Requires:       python-sse-starlette >= 1.6.1
 Requires:       python-starlette >= 0.27
-Requires:       python-uvicorn >= 0.23.1
+Requires:       python-uvicorn >= 0.31.1
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyJWT}
@@ -79,10 +78,9 @@ for python.
 %package devel
 Summary:        Executables for %{name}
 BuildRequires:  alts
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends: python-uv
-Recommends: npm
+Requires:       alts
+Recommends:     npm
+Recommends:     python-uv
 Conflicts:      mmv
 
 %description devel
@@ -122,19 +120,18 @@ donttest+=" or test_build_metadata[with-path-param]"
 donttest+=" or test_client_session_version_negotiation_failure"
 # flaky tests on aarch64
 donttest+=" or test_streamablehttp_client_get_stream or test_streamablehttp_client_resumption"
-%pytest -k "not ($donttest or OAuth)"
+# flaky on Tumbleweed/s390x
+donttest+=" or test_streamable_http_multiple_reconnections"
+%pytest -n 1 -k "not ($donttest or OAuth)"
 # problems with unawaited coroutines
-%pytest -k "OAuth" --asyncio-mode=auto
+%pytest -n 1 -k "OAuth" --asyncio-mode=auto
 %endif
 
-%post devel
-%python_expand %python_install_alternative mcp
-
-%postun devel
-%python_expand %python_uninstall_alternative mcp
+%pre devel
+%python_libalternatives_reset_alternative mcp
 
 %if %{without test}
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.md
 %{python_sitelib}/mcp

@@ -18,7 +18,7 @@
 
 Name:           SVT-AV1
 %define lname libSvtAv1Enc4
-Version:        4.2.0
+Version:        4.3.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear

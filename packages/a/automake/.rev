@@ -592,4 +592,12 @@
     <comment>Remove patch: automake-suse-vendor.patch</comment>
     <requestid>1381111</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>948146b331911644993477585d8e5570</srcmd5>
+    <version>1.20</version>
+    <time>1795022966</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398092</requestid>
+  </revision>
 </revisionlist>

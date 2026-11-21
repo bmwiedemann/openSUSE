@@ -23,13 +23,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyflakes
-Version:        4.0.3
+Version:        4.1.0
 Release:        0
 Summary:        Passive checker of Python programs
 License:        MIT
 URL:            https://github.com/PyCQA/pyflakes
 Source:         https://files.pythonhosted.org/packages/source/p/pyflakes/pyflakes-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

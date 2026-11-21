@@ -604,4 +604,15 @@
   * Replace unmaintained winres with winresource #1896</comment>
     <requestid>1386130</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>c52590ee4fe5ad886c1bacbb955835ea</srcmd5>
+    <version>3.2.0</version>
+    <time>1794236880</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.0:
+  * Add an Activity field with a commits-per-month sparkline #1902
+  * Add --activity-months CLI argument to set the activity window #1905
+  * Add an Unreleased field with the commits since the last release #1903</comment>
+    <requestid>1396309</requestid>
+  </revision>
 </revisionlist>

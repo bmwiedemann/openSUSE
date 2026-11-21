@@ -1,7 +1,7 @@
 #
 # spec file for package SHERPA-MC
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,15 @@ License:        GPL-2.0-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://sherpa-team.gitlab.io/
 #Git-Clone:     https://gitlab.com/sherpa-team/sherpa.git
-Source:         https://www.hepforge.org/downloads/sherpa/%{name}-%{version}.tar.gz
+Source:         https://sherpa.hepforge.org/downloads/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM SHERPA-MC-no-return-in-non-void-function.patch badshah400@gmail.com -- Fix a non-void (bool) function that was not returning any data to return "true"
 Patch0:         SHERPA-MC-no-return-in-non-void-function.patch
 # PATCH-FIX-UPSTREAM SHERPA-MC-swig-noruntime.patch badshah400@gmail.com -- Drop `-noruntime` from swig command line
 Patch2:         SHERPA-MC-swig-noruntime.patch
 # PATCH-FIX-OPENSUSE SHERPA-MC-fix-rivet-libs-check.patch badshah400@gmail.com -- Fix configure check for rivet >= 4.0
 Patch3:         SHERPA-MC-fix-rivet-libs-check.patch
+# PATCH-FIX-UPSTREAM SHERPA-MC-swig-py3.patch -- replace obsolete PyString_* and PyInt_* with Python 3 C API in SWIG interfaces
+Patch4:         SHERPA-MC-swig-py3.patch
 BuildRequires:  HepMC-devel >= 3.0
 BuildRequires:  LHAPDF-devel
 BuildRequires:  fastjet-contrib-devel

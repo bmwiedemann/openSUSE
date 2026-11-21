@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  9 01:50:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- CVE-2026-119716: avoid code injection via bracketed paths (bsc#1289150)
+  * Add patch CVE-2026-119716.patch
+
+-------------------------------------------------------------------
 Wed Jun  4 08:52:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

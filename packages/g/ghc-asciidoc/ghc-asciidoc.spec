@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0.3
+Version:        0.1.1.1
 Release:        0
 Summary:        AsciiDoc parser
 License:        BSD-3-Clause
@@ -30,8 +30,6 @@ BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
-BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel

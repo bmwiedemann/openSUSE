@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Too many changes since 6.31.0, only listing bugfixes:
+  * kcoredirlister: keep an update job on the folder it updates (kde#507185)
+  * file_unix_copy: align copy_file_range calls on 8 MiB (kde#458001)
+  * PasteDialog: Disable OK button when filename is empty (kde#438519)
+  * copyjob: flush a removable device when the copy fails or is cancelled (kde#281270)
+  * Improve presentation of url in "Create New Folder" dialog (kde#527768)
+  * copyjob: stat a source folder that is cached only as a listing root (kde#527143)
+  * kfileitemactions: use the plural for several selected folders (kde#527485)
+  * filepreviewjob: remove the local copies of remote files that previews leave (kde#527064)
+  * kmountpoint: read a mount by its unique id with statmount() (kde#272361)
+  * FilePreviewJob: Override doKill and kill subjobs (kde#526997)
+  * trash: fix the crash when a full trash deletes a directory (kde#520794)
+  * Do not resolve the samba interfaces when listing usershares (kde#466195)
+  * Load samba usershares with asynchronous processes (kde#446923)
+  * kpasswdserver: stop waiting 24 days for the wallet to open (kde#526368)
+  * filewidgets/KUrlNavigatorMenu: close when drag operation leaves menu or button (kde#526048)
+  * KDirModel: show the modification time in local time (kde#525915)
+  * filewidgets/kurlnavigatorbutton: drop to UDS_TARGET_URL when protocol provides it (kde#440941)
+  * trash: implement the recycle-bin worker on Windows (kde#441218)
+  * BatchRenameJob: don't drop the tail of a name after a non-extension dot (kde#492660)
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

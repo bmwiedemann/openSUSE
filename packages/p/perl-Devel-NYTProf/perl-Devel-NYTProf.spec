@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-NYTProf
 Name:           perl-Devel-NYTProf
-Version:        6.150.0
+Version:        6.160.0
 Release:        0
-# 6.15 -> normalize -> 6.150.0
-%define cpan_version 6.15
+# 6.16 -> normalize -> 6.160.0
+%define cpan_version 6.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Powerful fast feature-rich Perl source code profiler
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.8.0
+%global opentui_version 0.8.4
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -47,9 +47,9 @@
 # -queries packages (grammar names as in the upstream descriptor list; the
 # c_sharp module lives in tree-sitter-c-sharp).
 %global opencode_system_grammars python rust go cpp csharp bash c java ruby php scala html json yaml haskell css julia lua ocaml clojure swift toml nix diff elixir fsharp r make vim xml agda
-# The pty helper (@opencode/pty 0.4.0, packages/process-daemon) is built
+# The pty helper (@opencode/pty 0.5.2, packages/process-daemon) is built
 # from source in %%build instead of shipping upstream's prebuilt binaries.
-%global opencode_pty_version 0.4.0
+%global opencode_pty_version 0.5.2
 # Ghostty revision the helper's build.rs pins (packages/process-daemon
 # ghostty-revision), and the zig that builds its libghostty-vt. Ghostty's
 # build.zig.zon sets minimum_zig_version 0.16.0, so this is an equality
@@ -65,30 +65,32 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.2.5
+Version:        2.3.0
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.2.5 from the declared license field
-# of all 346 packages in the vendor tarball (347 store entries: one entry
-# is the symlink farm, which is not a package; several names resolve at two
-# versions, same as before). The retraced keep list still names 349 entries:
-# the two @opencode/pty-linux-* entries it names are stripped from the
-# tarball after pruning (see below), so the tarball holds two fewer. No
-# copyleft, no proprietary packages. The SPDX
-# set is unchanged from 2.2.0 except for those two MIT entries leaving
-# (MIT 191, Apache-2.0 67,
-# ISC 65, BlueOak-1.0.0 9, rest as before). The pty helper embedded in the
-# payload is built from source in %%build (see "Native code" below), so its
-# own closure joins the binary too: the process-daemon 0.4.0 crate (MIT)
-# with 42 crates in its linux normal closure (3 proc-macro plugins plus
-# their syn/quote/unicode-ident inputs are build-time only), everything
-# linked into the helper MIT, Apache-2.0, ISC or BSD-2-Clause (memchr
-# under its MIT option), plus Ghostty libghostty-vt (MIT) with uucode
-# (MIT) and simdutf/highway (Apache-2.0) compiled in. No copyleft, no
-# proprietary code; the License tag already covers all of it.
+# Legal-Review-Notice: rederived for 2.3.0 from the declared license
+# field of all 346 vendor-tarball packages.
+# - 349 store entries (one is the symlink farm, not a package); several
+#   names resolve at two versions, same as before.
+# - Keep list names 349 entries; the two @opencode/pty-linux-* entries
+#   are stripped after pruning, so the tarball holds two fewer.
+# - SPDX set: MIT 190, Apache-2.0 66, ISC 65, BlueOak-1.0.0 9, rest as
+#   before (BSD-2-Clause 8, BSD-3-Clause 2, 0BSD/CC0/CC-BY singles).
+# - The two @opentui/core-linux-* 0.8.4 entries declare MIT AND
+#   LGPL-2.1-or-later (FFmpeg video support, built in its own package).
+# - Their prebuilt .so files are deleted from the tree; the runtime
+#   loads the opentui package's build, so no copyleft ships here.
+# - The pty helper is built from source in %%build: process-daemon
+#   0.5.0 (MIT) with 42 crates in its linux normal closure.
+# - Everything linked into the helper is MIT, Apache-2.0, ISC or
+#   BSD-2-Clause (memchr under its MIT option).
+# - Ghostty libghostty-vt (MIT) with uucode (MIT) and simdutf/highway
+#   (Apache-2.0) compiled in. No copyleft, no proprietary code.
+# - 3 proc-macro plugins plus their syn/quote/unicode-ident inputs are
+#   build-time only (memchr under its MIT option).
 # The two @opencode/pty-linux-{arm64,x64}-gnu prebuilt ELF
 # bin/opencode-pty files are stripped from the vendor tarball after
 # pruning (opencode_vendor, like the native .so files it already drops):
@@ -126,25 +128,9 @@ URL:            https://opencode.ai
 Source0:        %{name}-%{version}.tar.zst
 # The npm dependency tree. bun build --compile needs it on disk and there is
 # no way to build from a plain release tarball.
+# The vendor tarball carries no prebuilt binaries (native weight stripped
+# at tarball time; web-tree-sitter runtime compiled from Source30).
 Source1:        %{name}-vendor-%{version}.tar.zst
-# The 2.2.5 vendor closure carries one prebuilt file.
-# tree-sitter.wasm is the runtime grammar asset the web-tree-sitter
-# highlighter loads (reached through @opentui/core's parser worker, which
-# peer-depends on web-tree-sitter; %%check asserts it is embedded and loads
-# every system grammar through it). Kept for the same reason as the npm
-# file it is: building it needs emscripten, which the distribution does
-# not have. Embedded at build time, never executed at build time.
-# (A full strip of the web-tree-sitter entry was verified to break the
-# build: @opentui/core's runtime-assets import it, the retraced keep list
-# keeps it, and the TUI highlights through it. Deleting it wants an
-# emscripten build or a highlighter without it first.)
-# Source-Binary-Exception: opencode-vendor-2.2.5.tar.zst:node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/tree-sitter.wasm -- bootstrap: runtime grammar asset the highlighter loads, embedded at build time, never executed at build time
-# Everything else that used to be excepted is stripped at tarball time
-# instead: the @opencode/pty-linux-* ELFs (opencode_vendor drops the two
-# entries after pruning), the cargo vendor's Windows-only import libs and
-# wasm-only artifacts (stripped with .cargo-checksum.json repair per
-# crate), and Ghostty zig-pkg's test/ and examples/ dirs. No exception
-# lines for any of them remain.
 # The models.dev catalogue, which the build otherwise fetches at build time.
 Source2:        models.dev-api-%{version}.json
 Source3:        %{name}_vendor
@@ -153,7 +139,7 @@ Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
 # Header-only N-API wrapper @parcel/watcher's addon is compiled against.
 Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
-# The pty helper crate (packages/process-daemon from the 2.2.5 tree).
+# The pty helper crate (packages/process-daemon from the 2.3.0 tree).
 Source20:       %{name}-process-daemon-%{version}.tar.zst
 # Its locked cargo closure, from the cargo_vendor service (_service,
 # respect-lockfile) with the non-Linux weight stripped afterwards (see
@@ -168,9 +154,14 @@ Source21:       vendor.tar.zst
 # files open them at configure; see above). Regeneration recipe in
 # README.SUSE-maint "Native code".
 Source22:       ghostty-ab0b9da9.tar.zst
+# The tree-sitter 0.25.10 sources the from-source web-tree-sitter runtime
+# (tree-sitter.wasm plus the tree-sitter.js/.cjs bundles loading it) is
+# compiled from in %%build.
+Source30:       https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v0.25.10.tar.gz#/tree-sitter-0.25.10.tar.gz
 # Upstream's build script fails unless bun satisfies a caret range around the
-# version it pins. It pins 1.4.4 and Factory has 1.4.2, so without this the
-# check would fail the build; the patch warns instead, because both versions
+# version it pins. The tag and Factory agree on 1.4.4 for now, so the check
+# passes and the patch stays a guard for the next skew; without it a bun
+# move would fail the build. The patch warns instead, because both versions
 # float and the check is upstream's convenience rather than a real
 # incompatibility (the build is Bun.build() plus shell calls, and %%check
 # runs the resulting binary). See README.SUSE-maint.
@@ -199,6 +190,10 @@ BuildRequires:  bun
 # the file is inert without rustup), git for build.rs's Ghostty revision
 # asserts, and exactly the zig Ghostty's build.zig.zon asks for.
 BuildRequires:  cargo-packaging
+# The wasm runtime toolchain: the emcc flags below need emscripten 6
+# (its metadce drops env.__stack_pointer without EXPORT_ALL), verified
+# against 6.0.3.
+BuildRequires:  emscripten >= 6.0.3
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  nodejs26-devel
@@ -373,8 +368,8 @@ Provides:       bundled(tree-sitter-typescript) = %{ts_typescript_version}
 # tree-sitter-typescript-wasm package as the typescript one above.
 Provides:       bundled(tree-sitter-tsx) = %{ts_typescript_version}
 Provides:       bundled(tree-sitter-zig) = %{ts_zig_version}
-# The one module still taken from npm: web-tree-sitter's runtime needs
-# emscripten, which the distribution does not have. Used by the highlighter.
+# web-tree-sitter's TS bindings (bundled from npm) with the runtime built
+# from source in %%build (see above). Used by the highlighter.
 Provides:       bundled(web-tree-sitter) = 0.25.10
 # bun only supports these two.
 ExclusiveArch:  x86_64 aarch64
@@ -397,6 +392,9 @@ that turn each of them back on.
 # rpm honours one -a per %%autosetup, so the second tarball by hand.
 tar -xzf %{SOURCE11}
 cp -a %{SOURCE6} .
+# The tree-sitter sources the from-source web-tree-sitter runtime (see
+# %%build) is compiled from, next to this tree rather than in it.
+tar -xzf %{SOURCE30} -C %{_builddir}
 
 # Dependencies compiled into the executable whose licence asks for the text to
 # travel with it. The rest are covered by the tree's own LICENSE.
@@ -531,9 +529,6 @@ missing = sorted(set(langs) - set(done))
 assert not missing, "not in upstream parsers-config: " + " ".join(missing)
 open(p, "w").write("".join(out))
 EOF
-rm -f node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/lib/tree-sitter.wasm \
-      node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/lib/tree-sitter.wasm.map \
-      node_modules/.bun/web-tree-sitter@*/node_modules/web-tree-sitter/tree-sitter.wasm.map
 
 # The pty helper sources: the process-daemon crate (Source20), its locked
 # cargo vendor (Source21, cargo_vendor service output) overlaid into the
@@ -561,6 +556,34 @@ g++ %{optflags} -shared -fPIC -std=c++17 -DNAPI_DISABLE_CPP_EXCEPTIONS -DWATCHMA
 strip --strip-debug watcher.node
 install -pm 0644 watcher.node "$plat/watcher.node"
 
+# web-tree-sitter's runtime is built from source (tree-sitter 0.25.10,
+# Source30): emcc MAIN_MODULE with EXPORT_ALL for emscripten 6's metadce,
+# then bun bundles like upstream's script/build.js; glue and wasm agree.
+ROOT="$PWD"
+WTS="node_modules/.bun/web-tree-sitter@0.25.10/node_modules/web-tree-sitter"
+TSW="%{_builddir}/tree-sitter-0.25.10"
+export HOME="$PWD/.home" EM_CACHE="$PWD/.em-cache"
+mkdir -p "$HOME" "$EM_CACHE"
+EXP_FN=$(cat "$TSW"/lib/src/wasm/stdlib-symbols.txt "$TSW"/lib/binding_web/lib/exports.txt | tr -d '"' | sed 's/^/_/' | tr -d '\n' | sed 's/,$//')
+for es6 in 1 0; do
+    case $es6 in 1) ext=mjs;; *) ext=cjs;; esac
+    emcc -O3 --minify 0 -fno-exceptions -std=c11 -s WASM=1 -s MODULARIZE=1 \
+        -s INITIAL_MEMORY=33554432 -s ALLOW_MEMORY_GROWTH=1 -s SUPPORT_BIG_ENDIAN=1 \
+        -s MAIN_MODULE=2 -s EXPORT_ALL=1 -s FILESYSTEM=0 -s NODEJS_CATCH_EXIT=0 \
+        -s NODEJS_CATCH_REJECTION=0 -s "EXPORTED_FUNCTIONS=$EXP_FN" \
+        -s "EXPORTED_RUNTIME_METHODS=AsciiToString,stringToUTF8,UTF8ToString,lengthBytesUTF8,stringToUTF16,loadWebAssemblyModule,getValue,setValue" \
+        -D 'fprintf(...)=' -D NDEBUG= -D _POSIX_C_SOURCE=200112L -D _DEFAULT_SOURCE= -D _DARWIN_C_SOURCE= \
+        -I "$TSW"/lib/src -I "$TSW"/lib/include --js-library "$TSW"/lib/binding_web/lib/imports.js \
+        --pre-js "$TSW"/lib/binding_web/lib/prefix.js -s EXPORT_ES6=$es6 \
+        -o "$TSW"/lib/binding_web/lib/tree-sitter.$ext "$TSW"/lib/src/lib.c "$TSW"/lib/binding_web/lib/tree-sitter.c
+done
+(cd "$TSW/lib/binding_web" && bun build src/index.ts --target node --format esm --keep-names --external fs --external 'fs/promises' --outfile "$ROOT/$WTS/tree-sitter.js")
+# bun resolves ../lib/tree-sitter to .mjs either way, so hide it for the cjs bundle.
+mv "$TSW/lib/binding_web/lib/tree-sitter.mjs" "$TSW/lib/binding_web/lib/tree-sitter.mjs.bunhide"
+(cd "$TSW/lib/binding_web" && bun build src/index.ts --target node --format cjs --keep-names --external fs --external 'fs/promises' --outfile "$ROOT/$WTS/tree-sitter.cjs")
+mv "$TSW/lib/binding_web/lib/tree-sitter.mjs.bunhide" "$TSW/lib/binding_web/lib/tree-sitter.mjs"
+install -pm 0644 "$TSW/lib/binding_web/lib/tree-sitter.wasm" "$ROOT/$WTS/tree-sitter.wasm"
+
 # The highlighter's grammar modules, from the tree-sitter-<lang>-wasm
 # packages (bun embeds what sits in the asset directories). Every copy in
 # the tree gets them: a re-resolved tree can hold two @opentui+core entries
@@ -581,7 +604,7 @@ export HOME="$PWD/.home"
 export BUN_INSTALL_CACHE_DIR="$PWD/.bun-cache"
 mkdir -p "$HOME" "$BUN_INSTALL_CACHE_DIR"
 
-# The pty helper, built from source: process-daemon %{opencode_pty_version}
+# The pty helper, built from source: process-daemon 0.5.2
 # (MIT) with its locked cargo closure, statically linking Ghostty's
 # libghostty-vt (Ghostty ab0b9da9, MIT; uucode MIT and
 # simdutf/highway Apache-2.0 compiled in). GHOSTTY_SOURCE_DIR satisfies

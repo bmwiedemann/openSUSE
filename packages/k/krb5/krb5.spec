@@ -17,7 +17,7 @@
 
 
 Name:           krb5
-Version:        1.22.2
+Version:        1.22.3
 Release:        0
 Summary:        MIT Kerberos5 implementation
 License:        MIT
@@ -40,12 +40,7 @@ Patch6:         0006-krb5-1.12-api.patch
 Patch7:         0007-SELinux-integration.patch
 Patch8:         0008-krb5-1.9-debuginfo.patch
 Patch9:         0009-UsrEtc-support.patch
-Patch10:        0010-Fix-strchr-conformance-to-C23.patch
 Patch11:        0011-autoconf-2.73-compatibility.patch
-Patch12:        0012-Fix-two-NegoEx-parsing-vulnerabilities.patch
-Patch13:        0013-Prevent-read-overrun-in-libkdb_ldap.patch
-Patch14:        0014-cve-2026-107708.patch
-Patch15:        0015-cve-2026-107778.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel

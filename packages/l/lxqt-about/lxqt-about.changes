@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:00:46 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Updated to version 2.5.0:
+  * CMake maintenance.
+  * Workaround for local URLs in Qt 6.12.
+  * Updated translations and bumped the version.
+
+-------------------------------------------------------------------
 Mon Apr 20 23:28:25 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Updated to version 2.4.0:

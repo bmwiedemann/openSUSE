@@ -17,20 +17,21 @@
 
 
 %define skip_python2 1
-%define vname linux-app
+%define upstream_name linux-app
+%define pypack_name eduvpn
 Name:           eduvpn-client
-Version:        4.7.2
+Version:        4.7.3
 Release:        0
 Summary:        The eduVPN desktop client (CLI and GUI front-end)
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.eduvpn.org/
-Source0:        https://codeberg.org/eduVPN/linux-app/releases/download/%{version}/%{vname}-%{version}.tar.xz
-Source1:        https://codeberg.org/eduVPN/linux-app/releases/download/%{version}/%{vname}-%{version}.tar.xz.asc
+Source0:        https://codeberg.org/eduVPN/linux-app/releases/download/%{version}/%{upstream_name}-%{version}.tar.xz
+Source1:        https://codeberg.org/eduVPN/linux-app/releases/download/%{version}/%{upstream_name}-%{version}.tar.xz.asc
                 # https://app.eduvpn.org/linux/v4/deb/app+linux@eduvpn.org.asc and inside package dir 'keys'
 Source2:        %{name}.keyring
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module eduvpn-common >= 5.0.2 with %python-eduvpn-common < 6}
+BuildRequires:  %{python_module eduvpn-common >= 5.0.4 with %python-eduvpn-common < 6}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle}
@@ -62,7 +63,7 @@ traditional VPN clients.
 %package -n python-%{name}
 Summary:        Python3 API for eduVPN
 Requires:       NetworkManager-openvpn
-Requires:       (python-eduvpn-common >= 5.0.2 with python-eduvpn-common < 6)
+Requires:       (python-eduvpn-common >= 5.0.4 with python-eduvpn-common < 6)
 Requires:       python-gobject
 
 %description -n python-%{name}
@@ -81,7 +82,7 @@ to promote this VPN solution to international educational and research
 organizations.
 
 %prep
-%autosetup -n %{vname}-%{version}
+%autosetup -n %{upstream_name}-%{version}
 
 # Dir 'data' conflicts otherwise with Python subpackages
 mv eduvpn/data data
@@ -120,7 +121,13 @@ rsync -a data/share/ \
 %files %{python_files %{name}}
 %license LICENSE
 %doc CHANGES.md README.md
-%{python_sitelib}/eduvpn*
+%dir %{python_sitelib}/%{pypack_name}
+%dir %{python_sitelib}/%{pypack_name}/ui
+%{python_sitelib}/%{pypack_name}/*.py
+%pycache_only %{python_sitelib}/%{pypack_name}/__pycache__
+%{python_sitelib}/%{pypack_name}/ui/*.py
+%pycache_only %{python_sitelib}/%{pypack_name}/ui/__pycache__
+%{python_sitelib}/%{pypack_name}_client-%{version}.dist-info/
 
 %files -n letsconnect-client
 %license LICENSE

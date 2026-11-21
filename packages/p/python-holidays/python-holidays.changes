@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:22:33 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.109
+  * Add Euronext (including Athens) and Federal Reserve holidays
+  * Improve Eid al-Fitr calculation; Islamic range to 2100
+  * Add entity-specific options to country/financial helpers
+  * Update Austria, France, Netherlands, Poland school holidays
+  * Update India holidays: Kerala/Karnataka additions
+  * Update NSE/BSE, Qatar, Uzbekistan, Fiji, Albania dates
+  * Update South Korea election and Hong Kong date fixes
+  * Update XETR, XBOG: exclude weekend dates
+  * Update B3: add Christmas Eve, last business day
+  * Update Jamaica, Namibia, Martinique, Zimbabwe fixes
+  * Add Bahrain, Kosovo, Turkey language support
+  * Fix Finland Defence Forces Flag Day date
+  * Release notes: https://github.com/vacanza/holidays/releases/tag/v0.109
+- Updated to version 0.108
+  * Add SIFMA holidays
+  * Drop Python 3.10 support
+  * Fix HolidaySum repopulating existing years
+  * Validate HolidayBase attribute reassignments
+  * Make iCal exporter calendars subscription-safe
+  * Add l10n support for Eritrea, Ireland, Somalia
+  * Update Belgium school holidays
+  * Update Botswana, Kenya, Namibia, UAE holiday dates
+  * Update Thai calendar: fix incorrect intercalation years
+  * Fix mixed-script characters in holiday names
+  * Fix British spellings in en_US translations
+  * Fix some Marathi holiday name translations
+  * Keep Taiwan observed dates language-independent
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Sun Oct 25 16:32:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.107:

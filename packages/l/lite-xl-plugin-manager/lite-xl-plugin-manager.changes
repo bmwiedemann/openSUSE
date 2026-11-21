@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct 29 14:32:26 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.5.1:
+  * Fixed typos.
+  * Updated build process for MacOS, which was building in the wrong
+    architecutre for MacOS x64.
+  * Fixed issues with underlying packages that were broken due to issues with
+    their underlying build processes and the github CI runners.
+  * Added additional meson options to better mirror what's in build.sh.
+  * Bumped mbedtls version.
+
+-------------------------------------------------------------------
 Tue Oct 20 16:33:15 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.5.0:

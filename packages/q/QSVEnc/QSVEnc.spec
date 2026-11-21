@@ -18,7 +18,7 @@
 
 
 Name:           QSVEnc
-Version:        8.30+0
+Version:        8.38+0
 Release:        0
 Summary:        HW encoder (QSV) testing
 License:        MIT
@@ -26,6 +26,11 @@ URL:            https://github.com/rigaya/QSVEnc
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE QSVEnc-system-libs.patch -- System libvpl; skip bundled hdr10plus; VapourSynth V4-only
 Patch0:         QSVEnc-system-libs.patch
+## PATCH-FIX-OPENSUSE  QSVEnc-libplacebo-387.patch -- Fix build and loading with libplacebo API 387
+## FIXME Declined upstream since QSVEnc does not support the --vpp-libplacebo-* filters on Linux.
+## Patch is just a place holder and applied, but not used.
+Patch1:         https://github.com/rigaya/QSVEnc/pull/341.patch
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja
@@ -67,7 +72,7 @@ sed -i 's/\r//' ReleaseNotes.md;
   -Denable_vapoursynth=true \
   -Denable_libass=true \
   -Dlibass_static=false \
-  -Denable_libplacebo=true \
+  -Denable_libplacebo=false \
   -Dlibplacebo_static_link=false \
   -Denable_vulkan=true \
   -Denable_vmaf=enabled \

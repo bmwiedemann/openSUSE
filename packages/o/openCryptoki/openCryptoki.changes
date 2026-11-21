@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:17:22 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Fix for the following vulnerability (CVE assignment still pending):
+  * Soft token AES-CTR ignores the nonce and repeats keystream when
+    ulCounterBits < 128 (bsc#1290848, GHSA-79qh-5gjg-gmm8):
+    + openCryptoki-GHSA-79qh-5gjg-gmm8-commit-e987dd3.patch
+    + openCryptoki-GHSA-79qh-5gjg-gmm8-commit-04eabed.patch
+
+-------------------------------------------------------------------
+Wed Nov  4 14:19:05 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade openCryptoki to version 3.28 (jsc#PED-14609)
+  * EP11: Add support for CKM_IBM_ETH_DERIVE mechanism for Ethereum 2.0 key derivation.
+  * EP11: Fix Edwards/Montgomery mechanisms reporting (EP11 version dependent).
+  * CCA: Enable SHA3 mechanisms for Linux on x64/Power/AIX only if the respective access control points (ACPs) are set.
+  * ICSF: Introduce a FIPS-compliant token data store format.
+  * PKCSICSF: Fix token initialization in regards of the specified SO pin.
+  * PKCSICSF: Add support for changing the RACF password.
+  * COMMON: Remove dependency on liblber for BER encoding; refactor BER primitive encoding/decoding and public key encoding functions.
+  * TOOLS: Add an ICSF mock server that simulates ICSF for integration testing.
+- Bug fixes and security hardening (symlink-following protections, integer overflow prevention, memory cleansing, and input validation across all components).
+- Fixes for the following vulnerabilities (CVE assignment still pending):
+  * GHSA-9f33-5pv5-wfcf
+  * GHSA-fqmw-982p-9mcf
+  * GHSA-qwh5-2x7g-8cpr
+  * GHSA-2jpf-963x-hrx6
+  * GHSA-fq9w-q64j-7fvp 
+- Remove obsoleted patch for version 3.27
+  * ocki-3.27-remove-make-install-chgrp.patch
+- Add a new SUSE patch for version 3.28
+  * ocki-3.28-remove-make-install-chgrp.patch
+- Packaging and spec file improvements for 3.28 and Immutable OS:
+  * Remove non-existent configure option --enable-pkcscca_migrate and pass
+    --enable-pkcsep11_session / --disable-pkcsep11_session appropriately.
+  * Remove obsolete configure flag --enable-locks (transactional memory dropped).
+  * Drop obsolete BuildRequires: libitm1.
+  * Add BuildRequires: autoconf, autoconf-archive, automake (required for bootstrap.sh).
+  * Scope BuildRequires: libudev-devel to s390/s390x where netlink AP monitoring is supported.
+  * Clean up openCryptoki-devel Requires: drop internal token build dependencies
+    (openldap2-devel, trousers-devel, libica-devel) and ensure openCryptoki base dependency is set.
+  * Remove obsolete and unused SysV init script openCryptoki.pkcsslotd (Source1).
+  * Fix CRLF line terminators in misc/opencryptoki.pc.in with dos2unix.
+  * Ensure full Immutable OS compatibility: use %{_tmpfilesdir} consistently,
+    clean up buildroot runtime directories (/var/lock, /run), and preserve systemd drop-in.
+  * Update package summary and description to PKCS#11 v3.0 and modern crypto adapters.
+
+-------------------------------------------------------------------
 Mon Jul 13 07:05:04 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Ammended the .spec file (bsc#1268745)

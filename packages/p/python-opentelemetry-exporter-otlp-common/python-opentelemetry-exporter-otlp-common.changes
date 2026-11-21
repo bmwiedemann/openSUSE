@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:17:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.66b1: follow the opentelemetry-sdk 1.45.1
+  lockstep release, no functional changes in this package.
+
+-------------------------------------------------------------------
 Tue Sep 29 10:48:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - initial version 0.66b0

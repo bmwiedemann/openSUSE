@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.config
-Version:        10.7.0
+Version:        10.8.1
 Release:        0
 Summary:        OpenStack common configuration library
 License:        Apache-2.0
@@ -38,6 +38,7 @@ BuildRequires:  %{python_module stestr >= 2.1.0}
 BuildRequires:  %{python_module stevedore >= 5.6.0}
 BuildRequires:  %{python_module testscenarios >= 0.4}
 BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module typing-extensions >= 4.11.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 5.1
@@ -47,6 +48,7 @@ Requires:       python-pbr >= 6.1.1
 Requires:       python-requests >= 2.18.0
 Requires:       python-rfc3986 >= 1.2.0
 Requires:       python-stevedore >= 5.6.0
+Requires:       python-typing-extensions >= 4.11.0
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-oslo.config < %{version}

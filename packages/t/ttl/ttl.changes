@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Nov 15 12:21:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.26.0:
+  * Add --pcap packet capture export.
+  * Mark the destination reached on a Port Unreachable from the
+    target (#180).
+  * Fix probe accounting across stats reset, added targets and
+    replay events (#179).
+  * Bound per-hop responders, the live event log and PeeringDB
+    reads (#178).
+  * Require a sustained run before recording a route flap (#174).
+  * PMTUD DF cleanup, PMTUD tick lock, and UDP header-only ICMP
+    quotes (#176).
+  * Keep a valid RFC 5837 object when a malformed one claims its
+    role first (#175).
+  * Update quinn-udp to fix security audit failure (#183).
+
+-------------------------------------------------------------------
+Fri Nov 13 10:30:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.0:
+  * Fix -c shutdown accounting across targets and the final IPv6
+    round.
+  * chore(deps): bump the cargo-dependencies group across 1
+    directory with 4 updates.
+  * Drop internal issue references from comments and released notes.
+
+-------------------------------------------------------------------
 Fri Oct 23 18:51:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.24.1:

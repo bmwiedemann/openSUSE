@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct 25 16:18:41 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 26.11.0:
+  * Add Japanese Shinjitai conversion to Chinese conversion.
+  * Add tab context menu with external browser and tab management.
+  * Dim unchecked icons in dictionary bar for clearer toggle state.
+  * Make schedule-for-reindex effective for all dictionary formats.
+  * Prevent infinite loop on unpaired quotes in highlight keywords.
+  * Clear null-deref warnings in dict server handlers.
+  * Persist interface style selection on Linux.
+  * Handle Zip64 markers in resource zip archives.
+  * Enforce app color scheme in embedded web view.
+  * Never let async audio fetch silently swallow Anki note export.
+  * Index over-long headwords with word-boundary truncation.
+  * Fix jagged and dark rendering of dimmed dictionary bar icons.
+  * Update git repository URL in _service to https.
+
+-------------------------------------------------------------------
 Wed Jul 22 12:06:17 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Update license to GPL-3.0-only AND GPL-3.0-or-later

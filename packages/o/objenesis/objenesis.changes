@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Nov 19 11:53:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- update to upstream version 3.6
+  * Build on Java 26
+  * Fix a caching issue when objenesis is on a parent class loader
+    (CVE-2026-116486, GHSA-743r-26gf-97ff, bsc#1287836)
+  * Bump actions/checkout from 7.0.0 to 7.0.1
+  * Bump actions/github-script from 8 to 9
+  * Bump actions/setup-java from 5.5.0 to 5.6.0
+  * Bump byte-buddy from 1.18.10 to 1.18.11
+  * Bump central-publishing-maven-plugin from 0.10.0 to 0.11.0
+  * Bump license-maven-plugin from 4.6 to 5.1.1
+  * Bump maven-compiler-plugin from 3.14.1 to 3.15.0
+  * Bump maven-enforcer-plugin from 3.6.2 to 3.6.3
+  * Bump maven-jar-plugin from 3.5.0 to 3.5.1
+  * Bump maven-resources-plugin from 3.4.0 to 3.5.0
+  * Bump maven-shade-plugin from 3.6.1 to 3.6.2
+  * Bump maven-site-plugin from 3.21.0 to 3.22.0
+  * Bump maven-surefire-plugin from 3.5.5 to 3.5.6
+  * Bump modernizer-maven-plugin from 3.4.0 to 3.5.0
+  * Bump spotbugs-maven-plugin from 4.10.2.0 to 4.10.3.0
+- update to upstream version 3.5
+  * Prepare module-test for next development iteration
+  * Typo fix in tutorial.html
+  * Bump actions/checkout from 4.1.4 to 6.0.2
+  * Bump actions/github-script from 6 to 8
+  * Bump actions/setup-java from 4.2.1 to 5.2.0
+  * Bump byte-buddy from 1.14.14 to 1.18.3
+  * Bump exec-maven-plugin from 3.2.0 to 3.6.3
+  * Bump junit-bom from 5.10.2 to 5.13.4
+  * Bump license-maven-plugin from 4.3 to 4.6
+  * Bump maven-artifact-plugin from 3.5.1 to 3.6.1
+  * Bump maven-assembly-plugin from 3.7.1 to 3.8.0
+  * Bump maven-clean-plugin from 3.3.2 to 3.5.0
+  * Bump maven-compiler-plugin from 3.13.0 to 3.14.1
+  * Bump maven-deploy-plugin from 3.1.2 to 3.1.4
+  * Bump maven-enforcer-plugin from 3.4.1 to 3.6.2
+  * Bump maven-gpg-plugin from 3.2.4 to 3.2.8
+  * Bump maven-install-plugin from 3.1.2 to 3.1.4
+  * Bump maven-jar-plugin from 3.4.1 to 3.5.0
+  * Bump maven-javadoc-plugin from 3.6.3 to 3.12.0
+  * Bump maven-pmd-plugin from 3.22.0 to 3.28.0
+  * Bump maven-project-info-reports-plugin from 3.5.0 to 3.9.0
+  * Bump maven-release-plugin from 3.0.1 to 3.3.1
+  * Bump maven-remote-resources-plugin from 3.2.0 to 3.3.0
+  * Bump maven-resources-plugin from 3.3.1 to 3.4.0
+  * Bump maven-shade-plugin from 3.5.3 to 3.6.1
+  * Bump maven-site-plugin from 3.12.1 to 3.21.0
+  * Bump maven-source-plugin from 3.3.1 to 3.4.0
+  * Bump maven-surefire-plugin from 3.2.5 to 3.5.4
+  * Bump maven-war-plugin from 3.4.0 to 3.5.1
+  * Bump modernizer-maven-plugin from 2.8.0 to 3.2.0
+  * Bump nexus-staging-maven-plugin from 1.6.13 to 1.7.0
+  * Bump spotbugs-maven-plugin from 4.8.4.0 to 4.9.8.2
+  * Bump versions-maven-plugin from 2.16.2 to 2.20.1
+- update to upstream version 3.4
+  * Trivial Markdown fix.
+  * Set permissions for ci.yml
+  * Reference actions by commit SHA
+  * Bump actions/checkout from 3 to 4.1.4
+  * Bump actions/setup-java from 3.13.0 to 4.2.1
+  * Bump byte-buddy from 1.12.12 to 1.14.14
+  * Bump exec-maven-plugin from 3.1.0 to 3.2.0
+  * Bump jmh.version from 1.35 to 1.37
+  * Bump junit-jupiter from 5.9.2 to 5.10.2
+  * Bump junit5.version from 5.9.0 to 5.9.2
+  * Bump license-maven-plugin from 4.1 to 4.3
+  * Bump logback-classic from 1.2.11 to 1.4.6
+  * Bump maven-artifact-plugin from 3.4.1 to 3.5.1
+  * Bump maven-assembly-plugin from 3.4.2 to 3.7.1
+  * Bump maven-bundle-plugin from 5.1.7 to 5.1.9
+  * Bump maven-clean-plugin from 3.2.0 to 3.3.2
+  * Bump maven-compiler-plugin from 3.10.1 to 3.13.0
+  * Bump maven-deploy-plugin from 3.0.0 to 3.1.2
+  * Bump maven-enforcer-plugin from 3.1.0 to 3.4.1
+  * Bump maven-gpg-plugin from 3.0.1 to 3.2.4
+  * Bump maven-install-plugin from 3.0.1 to 3.1.2
+  * Bump maven-jar-plugin from 3.2.2 to 3.4.1
+  * Bump maven-javadoc-plugin from 3.4.0 to 3.6.3
+  * Bump maven-pmd-plugin from 3.17.0 to 3.22.0
+  * Bump maven-project-info-reports-plugin from 3.4.0 to 3.5.0
+  * Bump maven-release-plugin from 3.0.0-M6 to 3.0.1
+  * Bump maven-remote-resources-plugin from 3.0.0 to 3.2.0
+  * Bump maven-resources-plugin from 3.3.0 to 3.3.1
+  * Bump maven-shade-plugin from 3.3.0 to 3.5.3
+  * Bump maven-site-plugin from 3.12.0 to 3.12.1
+  * Bump maven-source-plugin from 3.2.1 to 3.3.1
+  * Bump maven-surefire-plugin from 3.0.0-M7 to 3.2.5
+  * Bump maven-war-plugin from 3.3.2 to 3.4.0
+  * Bump modernizer-maven-plugin from 2.4.0 to 2.8.0
+  * Bump spotbugs-maven-plugin from 4.7.1.1 to 4.8.4.0
+  * Bump versions-maven-plugin from 2.11.0 to 2.16.2
+  * Bump wagon-ssh-external from 3.5.2 to 3.5.3
+- Removed patch
+  * objenesis-javadoc.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Sep 24 13:53:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Use SOURCE_DATE_EPOCH for reproducible jar mtime
@@ -15,7 +113,6 @@ Tue Dec  5 09:54:15 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
   * org.objenesis:objenesis-test missing in Maven Central (#85)
   * added instructions for running Android TCK for Windows users (#84)
   * Copyright and Owner is missing in license (#83)
-
 - update to upstream version 3.2
   * Add Dependencies Manifest Entry (#81)
   * Objenesis can't be compiled on Android SDK < 26 (#79)

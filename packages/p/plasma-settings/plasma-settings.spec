@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           plasma-settings
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        Plasma Mobile Settings
 License:        GPL-3.0-or-later

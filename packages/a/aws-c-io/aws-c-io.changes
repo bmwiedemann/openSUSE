@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:12:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.1.2
+  * Fix epoll event loop delays tasks after device suspend
+    by @sfod in (#840)
+  * [s2n_tls] Fix const ALPN buffers by @laramiel in (#856)
+  * updating macos runner by @rakshil14-2 in (#859)
+  * Add a static default event loop group with a loop cap
+    by @azkrishpy in (#861)
+- from version 1.1.1
+  * Fix naming of the arguments by @DmitriyMusatkin in (#848)
+  * Make ubsan useful by @sfod in (#844)
+  * [Chore]: Removing max_retry check by @rakshil14-2 in (#850)
+  * chore: tester fix to notify with lock by @azkrishpy in (#853)
+  * Fix Server Channel Use After Free by @sbSteveK in (#854)
+  * Register cleanup callback on accepted socket instead of
+    listener by @sfod in (#855)
+  * [Feat]: Adding Adaptive retry strategy by @rakshil14-2 in (#849)
+  * Update API names to avoid conflict by @rakshil14-2 in (#857)
+- from version 1.1.0
+  * feat: keychain-less macOS identity mode by @azkrishpy in (#826)
+  * chore: Clarifying comment for SecIdentityCreate Api
+    by @rakshil14-2 in (#839)
+  * Updated s_do_read to handle NULL right slot by @xiazhvera in (#805)
+  * Fix and test for thread launch failure leading to shutdown
+    deadlock by @bretambrose in (#842)
+  * Socks5 Implementation by @bretambrose in (#832)
+  * Fix find s2n result in pre-installed s2n even when we build
+    s2n source together by @TingDaoK in (#845)
+- from version 1.0.0
+  * Clean up docs by @azkrishpy in (#821)
+  * chore(release): add governance files by @azkrishpy in (#828)
+- Add Provides and Obsoletes for previous shared library version
+- Drop aci_add-so-version.patch, fixed upstream
+- Pass installation path of aws-c-common cmake modules in CMAKE_PREFIX_PATH
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Tue Aug 25 17:09:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.7

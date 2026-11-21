@@ -25,7 +25,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           oxygen6-sounds
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        Oxygen sounds
 License:        LGPL-3.0-or-later AND CC-BY-3.0

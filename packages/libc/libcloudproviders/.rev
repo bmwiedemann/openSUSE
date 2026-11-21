@@ -135,4 +135,17 @@
   + Complete the documentation to fix the validation test.</comment>
     <requestid>1375041</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>421d4cabb974b1985611bce0c03fe14f</srcmd5>
+    <version>0.4.2</version>
+    <time>1794236561</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.2:
+  * Allow to use services installed on user side
+  * Prevent many possible crashes
+  * Plug several memory leaks
+  * Improve the D-Bus interface documentation
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1395905</requestid>
+  </revision>
 </revisionlist>

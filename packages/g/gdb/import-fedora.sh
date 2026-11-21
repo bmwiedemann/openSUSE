@@ -10,7 +10,8 @@ skip_patches=(
     # Dropped by fedora.
 
     # Already present.
-    gdb-fix-bg-execution-repeat.patch    
+    gdb-rhbz2403580-misplaced-symtabs.patch
+    gdb-rhbz2413405-gcore-unreadable-pages.patch
 )
 
 usage ()

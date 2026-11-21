@@ -51,7 +51,7 @@
 %define jsonc json-c-json-c-%vjsonc-20240915
 
 Name:           clamav
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only
@@ -188,6 +188,10 @@ viruses, malware and other malicious threats.
 
 %package -n %libclamunrar
 Summary:        ClamAV antivirus RAR support
+# Legal-Review-Notice: Unrar code is now in subpackage
+# Legal-Review-Notice: It is not dynamically linked,
+# Legal-Review-Notice: but is optional and uses a shim
+# Legal-Review-Notice: layer to separate from GPL-code.
 License:        NonFree
 Group:          System/Libraries
 

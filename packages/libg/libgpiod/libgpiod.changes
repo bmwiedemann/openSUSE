@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:39:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.1:
+  * Build system switched from autotools to meson and ninja
+  * New libgpiotools.so.1 shared library with high-level helpers
+    (e.g. line name lookup) previously internal to gpio-tools,
+    split into a new libgpiotools1 subpackage
+  * gpiomon can now display initial line states before waiting
+    for events
+  * New sphinx-based documentation for all components
+  * libgpiosim extended for newer gpio-sim kernel module features
+  * Core C library API version decoupled from project version
+  * Man pages for all tools are now generated at build time
+  * Bug fixes: allow modifying settings for existing offsets in
+    a full line-config, NUL-termination after strncpy() calls,
+    gpionotify watching lines on the wrong chip, trailing garbage
+    in period parsing, gpioset sleep period overflow, PyDict_Next()
+    crash in python bindings and simulator handling in tests
+  * 2.3.1 fixes several build configuration issues after the
+    meson conversion
+  * No soname changes: libgpiod.so.3, libgpiodcxx.so.2,
+    libgpiod-glib.so.1, libgpiodbus.so.1, libgpiosim.so.1 stay
+
+-------------------------------------------------------------------
 Tue Jun  2 11:27:29 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.2.4

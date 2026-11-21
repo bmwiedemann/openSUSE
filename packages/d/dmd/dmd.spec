@@ -16,27 +16,22 @@
 #
 
 
-%define sover	0_113
-%define bootstrap_with_gdmd 1
-%if %{bootstrap_with_gdmd}
+%define sover	0_114
+# 2.114 defines a global _d_allocmemory (root/rmem.d) that collides with gdc-10's
+# libgphobos at link time: Leap 15 bootstraps with the previous release instead.
 %if 0%{?suse_version} < 1550
-%global gdc_version 10
-%global gdc_suffix -%{gdc_version}
-%endif
-BuildRequires:  gdmd%{?gdc_suffix}
+%define bootstrap_with_gdmd 0
 %else
-BuildRequires:  dmd
-BuildRequires:  phobos-devel-static
+%define bootstrap_with_gdmd 1
 %endif
 Name:           dmd
-Version:        2.113.0
+Version:        2.114.0
 Release:        0
 Summary:        D Programming Language 2.0
 License:        BSL-1.0
-Group:          Development/Languages/Other
 URL:            https://dlang.org/
-Source:         https://github.com/D-Programming-Language/dmd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        https://github.com/D-Programming-Language/phobos/archive/v%{version}.tar.gz#/phobos-%{version}.tar.gz
+Source:         https://github.com/dlang/dmd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source2:        https://github.com/dlang/phobos/archive/v%{version}.tar.gz#/phobos-%{version}.tar.gz
 #https://raw.github.com/dlang/tools/master/rdmd.d
 Source3:        rdmd.d
 Source9:        dmd.conf
@@ -48,6 +43,12 @@ Recommends:     phobos-devel
 Recommends:     phobos-devel-static
 # Bootstrap is only possible with x86*
 ExclusiveArch:  %{ix86} x86_64
+%if %{bootstrap_with_gdmd}
+BuildRequires:  gdmd
+%else
+BuildRequires:  dmd
+BuildRequires:  phobos-devel-static
+%endif
 %ifarch i586
 #!BuildIgnore:  gcc-PIE
 %endif
@@ -61,7 +62,6 @@ type system.
 
 %package 	-n 	libphobos2-%{sover}
 Summary:        Standard library for the D language
-Group:          System/Libraries
 Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
 
@@ -73,7 +73,6 @@ dmd.
 
 %package 	-n 	phobos-devel
 Summary:        Development files for the D standard library
-Group:          Development/Libraries/Other
 Requires:       libphobos2-%{sover} = %{version}
 
 %description -n phobos-devel
@@ -83,7 +82,6 @@ This package contains the includes needed to compile programs against Phobos.
 
 %package 	-n 	phobos-devel-static
 Summary:        Development files for the D standard library
-Group:          Development/Libraries/Other
 Requires:       phobos-devel = %{version}
 
 %description -n phobos-devel-static
@@ -93,8 +91,7 @@ This package contains the static library for static linking. You don't need
 this, unless you link statically, which is highly discouraged.
 
 %prep
-%setup -q
-%setup -q -T -D -a 2
+%autosetup -a 2
 
 cd %{_builddir}
 ln -s dmd-%{version} dmd
@@ -110,7 +107,7 @@ export AUTO_BOOTSTRAP=0
 export ENABLE_RELEASE=1
 export PIC=1
 %if %{bootstrap_with_gdmd}
-export HOST_DMD=%{_bindir}/gdmd%{?gdc_suffix}
+export HOST_DMD=%{_bindir}/gdmd
 %else
 export HOST_DMD=%{_bindir}/dmd
 %endif

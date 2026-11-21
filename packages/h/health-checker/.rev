@@ -255,4 +255,17 @@
   * Remove dependencies on cloud-init [bsc#1244078] and for removed plugins</comment>
     <requestid>1346876</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>2aa1045f2f1922dacc1e074aa036b680</srcmd5>
+    <version>1.13+git20260414.bb3e4ad</version>
+    <time>1795103658</time>
+    <user>anag_factory</user>
+    <comment>- health-checker.conf: set kernel.panic instead of panic. sysctl.d
+  names settings by their path under /proc/sys, and /proc/sys/panic
+  does not exist, so the 5-second reboot after a kernel panic was
+  never applied; systemd-sysctl only logged &quot;Couldn't write '5' to
+  'panic'&quot; at every boot
+</comment>
+    <requestid>1398113</requestid>
+  </revision>
 </revisionlist>

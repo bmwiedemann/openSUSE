@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Nov  5 10:49:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch devel subpackage from update-alternatives to
+  libalternatives, drop obsolete Group: tag, sort Recommends,
+  and raise httpx/pydantic/uvicorn floors to upstream minimums.
+  Version 1.30.0 fixes boo#1285723 (CVE-2026-109527) and
+  boo#1285728 (CVE-2026-59951).
+
+-------------------------------------------------------------------
+Wed Nov 4 17:48:01 UTC 2026 - Jordi Massaguer Pla <jmassaguerpla@suse.com>
+
+- Update to 1.30.0:
+  - HTTP client redirects are only followed within the endpoint's
+    origin (#3448)
+  - Idle Streamable HTTP sessions now expire (#3426)
+  - The OAuth client checks the authorization server's issuer (#3431)
+  - Two new DeprecationWarnings (#3431, #3451)
+  - AuthSettings.validate_token_resource: only accept tokens your
+    TokenVerifier reports as issued for this server (#3451).
+  - issuer= on ClientCredentialsOAuthProvider and
+    PrivateKeyJWTOAuthProvider (#3431).
+  - session_idle_timeout= and max_sessions= on FastMCP (#3426).
+  - [v1.x] Resolve tool output-schema references within the schema
+    document only by @maxisbey in #3396
+  - [v1.x] Expire idle Streamable HTTP sessions by default and cap
+    concurrent sessions by @maxisbey in #3426
+  - [v1.x] Validate the authorization server metadata issuer on every
+    discovery path by @maxisbey in #3431
+  - [v1.x] Follow redirects only within the MCP endpoint's origin by
+    @maxisbey in #3448
+  - [v1.x] Add AuthSettings.validate_token_resource to check a bearer
+    token's resource by @maxisbey in #3451
+
+- Update to 1.29.1:
+  - [v1.x] Complete the FastMCP Settings model at import time by
+    @maxisbey in #3352
+  - [v1.x] Apply the request body limit to the SSE and OAuth endpoints
+    by @maxisbey in #3344
+  - [v1.x] Give recursive tool return types an object-rooted output
+    schema by @maxisbey in #3377
+
+- Update to 1.29.0:
+  - [v1.x] Route Context.report_progress() to the originating request
+    stream by @maxisbey in #2994
+  - [v1.x] docs: publish llms.txt and markdown renditions of the docs
+    by @maxisbey in #3029
+  - [v1.x] docs: pin mkdocs<2 by @maxisbey in #3074
+  - [v1.x] Add Streamable HTTP request body limits by @Kludex in #3101
+  - [v1.x] fix: reject trailing newline in tool-name validation by
+    @maxisbey in #3086
+  - [v1.x] ci: pick the docs toolchain per worktree in build-docs.sh
+    by @maxisbey in #3082
+  - [v1.x] Move the v1.x docs to /v1/ and mark v1.x as the maintenance
+    line by @maxisbey in #3177
+
+-------------------------------------------------------------------
+Thu Jul  7 13:39:42 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Omit flaky test and don't run tests in parallel.
+  This commit reduce the chances of failure by not running tests
+  in parallel.
+  Also omit test_streamable_http_multiple_reconnections because
+  it's flaky on Tumbleweed/s390x.
+
+-------------------------------------------------------------------
 Tue Jun 30 16:39:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.28.1:

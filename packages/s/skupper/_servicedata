@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/skupperproject/skupper</param>
-              <param name="changesrevision">3153d06e2cff668a7c9fbc751857591320dcee13</param></service></servicedata>
+              <param name="changesrevision">3153d06e2cff668a7c9fbc751857591320dcee13</param></service><service name="tar_scm">
+                <param name="url">https://github.com/skupperproject/skupper.git</param>
+              <param name="changesrevision">4bbac2f0169806afa3a6dace4df00742c8645301</param></service></servicedata>

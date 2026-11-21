@@ -1,8 +1,8 @@
 #
 # spec file for package postfixadmin
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2007-2025 Christian Boltz
+# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2007-2026 Christian Boltz
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+# The PostfixAdmin tarball is build for a specific (minimum) php version
+%define phpver php84
+%define minphp 8.4
 
 Name:           postfixadmin
-Version:        3.3.15
+Version:        4.0.7
 Release:        0
 URL:            http://postfixadmin.sourceforge.net/
-Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
+Source0:        https://github.com/postfixadmin/postfixadmin/releases/download/v%{version}/%{name}-v%{version}-%{phpver}.tar.gz
 Source1:        config.local.php
 Source2:        apache-postfixadmin.conf
 Source3:        postfixadmin-user.conf
@@ -34,7 +37,7 @@ BuildRequires:  sysuser-tools
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_ver}
 Requires:       php_database
 %else
-Requires:       php
+Requires:       php >= %{minphp}
 Requires:       php_any_db
 Recommends:     php-mysql
 %endif
@@ -129,16 +132,18 @@ Domains and Users that are stored in MySQL or PostgreSQL.
 This package holds the apache configuration.
 
 %prep
-%autosetup -p1 -n %{name}-%{name}-%{version}
+%autosetup -p1 -n %{name}-v%{version}-%{phpver}
 
 %build
 %sysusers_generate_pre %{SOURCE3} %{name} %{name}-user.conf
+test -x public/css/dark-theme.css && chmod -x public/css/dark-theme.css
+find vendor/shardj/zf1-future/ -type f -print0 | xargs -0 chmod -x
+rm vendor/shardj/zf1-future/{.gitattributes,.gitignore,.phpcs.dist.xml,.phpstan.dist.baseline.php,.phpstan.dist.neon,.rector.php,.travis.yml} vendor/shardj/zf1-future/bin/.gitignore vendor/smarty/smarty/changelog/.gitkeep
 
 %install
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 mkdir -p -m0755 %{buildroot}%{_sysconfdir}/%{name}
-#mkdir -p -m0755 %{buildroot}%{_datadir}/%{name}
 mkdir -p -m0755 %{buildroot}%{_localstatedir}/spool/vacation
 mkdir -p -m0755 %{buildroot}/%{_prefix}/lib/%{name}
 
@@ -151,7 +156,7 @@ mkdir -p -m0755 %{buildroot}/usr/share/%{name}/
 install -m 0644 *.php composer.* %{buildroot}/usr/share/%{name}/
 mv %{buildroot}/usr/share/%{name}/config.inc.php %{buildroot}/etc/%{name}/
 install -m 0644 %{S:1} %{buildroot}/etc/%{name}/config.local.php
-for d in configs languages lib model public scripts templates ; do # not copied here: ADDITIONS/ debian/ DOCUMENTS/ tests/ VIRTUAL_VACATION/
+for d in configs languages model public scripts templates vendor ; do # not copied here: ADDITIONS/ debian/ DOCUMENTS/ tests/ VIRTUAL_VACATION/
     cp -rp $d %{buildroot}/usr/share/%{name}/
 done
 
@@ -159,8 +164,8 @@ chmod 755 %{buildroot}/usr/share/%{name}/scripts/postfixadmin-cli
 install -d %{buildroot}/usr/bin
 ( cd %{buildroot}/usr/bin && ln -s /usr/share/%{name}/scripts/postfixadmin-cli . )
 
-install -d %{buildroot}%{_mandir}/man1
-install -m 0644 debian/manpage/postfixadmin-cli.1 %{buildroot}%{_mandir}/man1/
+#install -d %{buildroot}%{_mandir}/man1
+#install -m 0644 debian/manpage/postfixadmin-cli.1 %{buildroot}%{_mandir}/man1/
 
 install -d %{buildroot}/var/cache/%{name}/templates_c
 install -d %{buildroot}/var/cache/%{name}/sessions
@@ -171,13 +176,16 @@ install -d %{buildroot}/var/cache/%{name}/sessions
 ( cd %{buildroot}/usr/share/%{name} && ln -s /var/cache/%{name}/templates_c . )
 
 # remove files related to debian packaging (to avoid it's copied as %doc)
-rm -r ADDITIONS/squirrelmail-plugin/debian/
+# rm -r ADDITIONS/squirrelmail-plugin/debian/
 cp -rp ADDITIONS %{buildroot}%{_prefix}/lib//%{name}/
 chmod 755 %{buildroot}%{_prefix}/lib/%{name}/ADDITIONS/*.{pl,sh,py} %{buildroot}%{_prefix}/lib/%{name}/ADDITIONS/squirrelmail-plugin/locale/build.sh
 
 # install the apache config file
 mkdir -p %{buildroot}%{_sysconfdir}/apache2/conf.d
 install -m 0644 %{S:2} %{buildroot}/etc/apache2/conf.d/%{name}.conf
+
+sed -i '1 s,#!/usr/bin/env bash,#!/bin/bash,' %{buildroot}/usr/share/%{name}/scripts/postfixadmin-cli
+sed -i "1s@#!.*python.*@#!$(realpath /usr/bin/python3)@" %{buildroot}/usr/lib/postfixadmin/ADDITIONS/import_users_from_csv.py
 
 %pre -f %{name}.pre
 
@@ -201,7 +209,7 @@ fi
 %attr(640,root,www) %config(noreplace) %{_sysconfdir}/%{name}/config.local.php
 %doc DOCUMENTS/* *.TXT README.md VIRTUAL_VACATION
 /usr/bin/postfixadmin-cli
-%{_mandir}/man1/postfixadmin-cli.1%{ext_man}
+#%{_mandir}/man1/postfixadmin-cli.1%{ext_man}
 /usr/share/%{name}/
 %attr(770,root,%{apache_group}) %dir /var/cache/%{name}/
 %attr(770,root,%{apache_group}) %dir /var/cache/%{name}/templates_c/

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 11 18:10:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Condense spec comments
+- Run pkg/server's offline TestIntegrationErrorRecoveryMiddleware
+  in %check; skip only the tests needing live Slack/OpenAI
+
+-------------------------------------------------------------------
 Tue Aug  4 10:02:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 1.3.0)

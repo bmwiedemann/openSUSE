@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct 30 09:48:08 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Disable RWL cache (bsc#1288097)
+
+-------------------------------------------------------------------
 Thu Aug  6 14:16:58 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Achieve reproducible builds (boo#1274069)

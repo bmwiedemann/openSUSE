@@ -551,6 +551,7 @@ Summary:        Non-ABI stable API for the Qt 6 WaylandClient library
 Requires:       cmake(Qt6CorePrivate) = %{real_version}
 Requires:       cmake(Qt6GuiPrivate) = %{real_version}
 Requires:       cmake(Qt6WaylandClient) = %{real_version}
+Requires:       pkgconfig(wayland-client)
 
 %description -n qt6-waylandclient-private-devel
 This package provides private headers of libQt6WaylandClient that do not have

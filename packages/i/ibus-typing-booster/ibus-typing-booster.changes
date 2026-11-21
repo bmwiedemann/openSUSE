@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:41:04 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.31.5
+- Fix hidden candidate problem for vi-telex
+  (See: https://github.com/mike-fabian/m17n-db/issues/15#issuecomment-6821599541)
+- New test cases for Vietnamese (nguyenphivn <vietphi.dang@gmail.com>)
+
+-------------------------------------------------------------------
+Wed Nov 11 01:01:15 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.31.4
+- Small fixes for the Gtk4 port found by coderabbitai
+- Use create_popover and PopupManager in _create_and_show_keybindings_edit_popover()
+- Test Vietnamese m17n marks typed after the syllable in m17n-db 1.8.17
+  (by nguyenphivn <vietphi.dang@gmail.com>)
+- Adapt Vietnamese m17n tests to modern tone mark placement in m17n-db 1.8.17
+  (by nguyenphivn <vietphi.dang@gmail.com>)
+
+-------------------------------------------------------------------
+Sat Oct 31 08:11:22 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.31.3
+- Fix for Use IBus keymap: (missing comma in one element tuple ('ISO_Level3_Shift',))
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/929)
+
+-------------------------------------------------------------------
 Mon Oct 19 12:49:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop Source1 inscript2-20210820.tar.gz: releases.pagure.org no

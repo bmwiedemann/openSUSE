@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 12:01:16 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.96.1
+
+- Update to 2.96.1
+  * Disable content in with role="hide" in #819
+  * Removing prompt-characters from copied text in #830
+
+-------------------------------------------------------------------
 Tue Oct 13 07:35:07 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.96.0
 
 - Update to 2.96.0

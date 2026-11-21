@@ -1069,4 +1069,41 @@
     <comment>- Skip a test broken by redis 7.4.</comment>
     <requestid>1346515</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>a4c0f796fe7ac66e367c16643548af96</srcmd5>
+    <version>5.7.0</version>
+    <time>1795182431</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.7.0:
+  * Drop Python 3.9 support
+  * Update amqp requirement to &gt;= 5.4.2
+  * Update redis requirement to &gt;= 6.4.0, &lt; 9.0.0 and support redis-py 7.x/8.x
+  * Move packaging dependency to the Redis extras
+  * Add py.typed marker for PEP 561 compliance
+  * Use stdlib compression.zstd (PEP 784) when available
+  * Add PGMQ transport for PostgreSQL message queues
+  * Add support for fair queues and fanout via AWS SNS in SQS transport
+  * Support delay_seconds and clamp per-message delays in SQS
+  * Fix SQS transport deadlock, polling_interval in async loop, and
+    visibility_timeout coercion
+  * Release SQS prefetch slot on DeleteMessage failure, avoid backoff on
+    invalid receipt handles, and delete messages rejected without requeue
+  * Avoid KeyError in SQS when receive completes after basic_cancel
+  * Support Redis queue expiration (including binding tables) and
+    pipeline-based batch publishing
+  * Support callable passwords and Redis credential_provider token rotation
+  * Make Redis ack-emulation restore cadence configurable and add
+    sentinel_fanout_compat option
+  * Fix Redis KeyError/ValueError/timer-callback crashes on disconnect,
+    drop overdue/idle BRPOP connections, and pause BRPOP when QoS is full
+  * Close Sentinel node connections in _disconnect_pools and clean up
+    Redis consumer registrations after disconnect
+  * Keep unacked Redis messages when restore hits a connection error
+  * Fix RabbitMQ 4.x / 4.3.0 compatibility (global QoS on classic queues)
+  * Support prefixed native delayed delivery and strip existing delay
+    prefixes on retry
+  * Honor delivery_mode in Exchange.Message and preserve options in
+    Queue.from_dict</comment>
+    <requestid>1398854</requestid>
+  </revision>
 </revisionlist>

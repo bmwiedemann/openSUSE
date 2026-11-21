@@ -285,4 +285,14 @@ of Markdown.</comment>
   (bsc#1285724, CVE-2026-88753)</comment>
     <requestid>1385152</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>6238ac12e5f70805904e7c02ca45079a</srcmd5>
+    <version>2.5.5</version>
+    <time>1793817934</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-118694: Fix quadratic time for unclosed inline-link parentheses
+  (bsc#1288876)
+  * Add patch CVE-2026-118694-unclosed-inline-link-parentheses.patch</comment>
+    <requestid>1394815</requestid>
+  </revision>
 </revisionlist>

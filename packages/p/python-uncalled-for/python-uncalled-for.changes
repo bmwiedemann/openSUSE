@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:29:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.2:
+  * Hold functions weakly in the caches keyed by function so
+    resolved functions no longer stay alive for the life of the
+    process (new uncalled_for.caching FunctionCache, closes #21)
+
+-------------------------------------------------------------------
+Wed Nov 11 12:58:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.1:
+  * A CallArgument naming a parameter the outer function does not
+    declare now becomes a keyword-only parameter of the outer
+    signature instead of requiring the outer function to declare
+    an argument it never uses
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.0:
+  * Support Annotated dependencies for providing values
+  * Add a Provided default and resolve dependencies through
+    type aliases
+  * Support Python 3.11 through 3.15, drop Python 3.10
+
+-------------------------------------------------------------------
+Wed Nov  4 11:36:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.2:
+  * Restore the shared scope when dependency cleanup fails, so
+    a failing exit or cancellation no longer leaks a closed
+    scope into later calls
+  * Annotate contextmanager helpers as Generator instead of
+    Iterator (type-only, no runtime change)
+
+-------------------------------------------------------------------
 Sat Oct 10 06:28:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.1:

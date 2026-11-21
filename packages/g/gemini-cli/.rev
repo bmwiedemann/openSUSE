@@ -1198,4 +1198,115 @@
   * fix(cli): forward termination signals from bootstrap parent</comment>
     <requestid>1393221</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>eba13eef56c79ac285312b235c1013cc</srcmd5>
+    <version>0.67.0</version>
+    <time>1794236643</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.67.0:
+  * feat(cli): bridge the IDE companion into container sandboxes
+    over exec stdio
+  * fix(core): prevent duplicate agent loading when workspace is
+    home directory
+  * fix(ide): exclude IDE settings and GEMINI.md files from open
+    file con text
+  * fix(core): scope untrusted flag checks to external output and
+    remember approved flags
+  * fix(a2a-server): mount express.json() before A2A SDK route
+    registration
+  * fix(core): adhere to RFC 9110 token rules when splitting
+    custom headers
+  * fix(core): respect read-only files and hard links in atomic
+    writeTextFile
+  * fix(a2a-server,core): preserve extended token usage metadata
+    and align per-turn reporting
+  * fix(core): ensure all model turns with function calls receive
+    thought signatures
+  * fix(cli): handle termination signals and prevent tool
+    execution after cancellation in non-interactive mode
+  * fix(cli): preserve ${VAR} placeholders during deprecated
+    settings migration
+  * fix(cli): stop continuation stream processing and auto-nudge
+    after request cancellation
+  * fix(cli): correct Thai and Lao SARA AM display width
+  * fix(core): resolve relative file paths against active IDE
+    workspace root
+  * feat(cli): add models command and --list-models flag for
+    model discovery</comment>
+    <requestid>1396179</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>68929b1e601f7a5e1b32eb41bd0fa104</srcmd5>
+    <version>0.68.0</version>
+    <time>1794816456</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.68.0:
+  * docs(readme): clarify Gemini CLI scope, limitations, and tool
+    landscape
+  * fix(cli): bound inline history re-render after terminal width
+    changes
+  * fix(ui): handle surrogate pairs when truncating in
+    sanitizeForDisplay
+  * fix(core): make isWithinRoot case-insensitive on Windows
+  * fix(core): recognize dotted Gemini 3 models in
+    supportsMultimodalFunctionResponse
+  * feat(cli): add extension validation command and evaluation
+    tests
+  * fix(core): normalize leading slashes in file search query for
+    @ autocomplete
+  * fix(vscode-ide-companion): register all extension disposables
+    in context.subscriptions
+  * fix(core): list Auto in /model when dynamicModelConfiguration
+    is enabled and preview access is disabled
+  * fix(core,cli): fix instances of incorrect n escape behavior
+  * fix(core): use PowerShell CIM fallback for Windows IDE
+    process lookup
+  * fix(cli): surface 429 rate limit cool-down and countdown in
+    loading indicator
+  * fix(cli): anchor .git suffix removal to end of repo URL
+  * fix(ci,sdk): run SDK tests in PR CI and fix AgentLoopContext
+    mock in session.test.ts
+  * fix(core): prevent $-pattern corruption in LLM prompt
+    templates
+  * fix(cli): Fixes unexpected truncation and toggle behavior in
+    Expandab…</comment>
+    <requestid>1397389</requestid>
+  </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>51f31a33f71f23825c76db07a9e3cd52</srcmd5>
+    <version>0.69.0</version>
+    <time>1795103748</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.69.0:
+  * fix(core,cli): preserve literal `$` characters during
+    template placeholder replacement
+  * feat(cli): add /stats heatmap subcommand for daily token
+    usage
+  * fix(core): prevent __GCLI_EXPAND_TARGET__ env collision in
+    expandEnvVars
+  * fix(cli): serialize AnsiOutput to text content in ACP tool
+    call updates
+  * fix(core): fix Windows PowerShell substitution false
+    positives and policy handling
+  * fix(cli): preserve leading and trailing whitespace in @file
+    references
+  * fix(core): prevent thoughtSignature-only turns and preserve
+    multimodal tool responses
+  * fix(cli): wait for piped stdin EOF and avoid destroying
+    process.stdin
+  * fix(cli): preserve pending tool confirmation when escaping
+    editor selection
+  * feat(cli): support standalone theme.json configuration for
+    custom themes
+  * fix(cli): normalize error payloads in headless CLI formatting
+  * fix(core): require path-separator boundary in tildeifyPath
+  * fix(cli): validate model names and support direct arguments
+    in /model command
+  * fix(cli): handle file watcher errors and permit FSEvents in
+    macOS permissive sandbox
+  * fix(core): bound multi-part tool outputs and evict older
+    multimodal inlineData
+  * fix(vscode): eliminate barrel import bundle bloat and</comment>
+    <requestid>1398578</requestid>
+  </revision>
 </revisionlist>

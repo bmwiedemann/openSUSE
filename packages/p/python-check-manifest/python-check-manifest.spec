@@ -34,6 +34,7 @@ License:        MIT
 URL:            https://github.com/mgedmin/check-manifest
 Source:         https://files.pythonhosted.org/packages/source/c/check_manifest/check_manifest-%{version}.tar.gz
 Patch0:         use-current-interpreter.patch
+Patch1:         fix-ignore-list-equality.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -67,10 +68,8 @@ check-manifest is a tool for python developers to check for broken packages
 and missing files in MANIFEST.
 
 %prep
-%setup -q -n check_manifest-%{version}
-%if 0%{?suse_version} == 1500
-%patch -P 0 -p1
-%endif
+%autosetup -p1 -n check_manifest-%{version}
+
 sed -i '1{\,^#!%{_bindir}/env python,d}' check_manifest.py
 chmod -x check_manifest.py
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:02:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.4-rc1
+
+-------------------------------------------------------------------
+Wed Oct 14 14:48:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261014 (git commit d5455717ead0):
+  * nvidia: Update and add missing firmware files for Tegra SoCs
+
+-------------------------------------------------------------------
 Mon Jun 29 13:24:59 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.1 / 7.2-rc1

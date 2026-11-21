@@ -71,4 +71,23 @@
     <comment></comment>
     <requestid>1174477</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f37ae025963e408fd449552387b3f6d1</srcmd5>
+    <version>2.603.0</version>
+    <time>1793990631</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.603.0 (2.603)
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+  2.603     2026-09-21 11:24:06-04:00 America/New_York
+          - Just re-issued to correct the CVE identifier for the issue fixed in
+            2.602:  it is CVE-2026-93012.
+  2.602     2026-09-21 11:09:22-04:00 America/New_York
+          - SECURITY: the Sendmail transport built a shell command line on Win32,
+            so an envelope address containing shell metacharacters -- which can
+            come from the To, Cc, or From header of a message sent with
+            Email::Sender::Simple -- could execute arbitrary commands.  On Win32,
+            envelope addresses are now checked against a conservative pattern, and
+            anything else is now rejected with a permanent failure.</comment>
+    <requestid>1395148</requestid>
+  </revision>
 </revisionlist>

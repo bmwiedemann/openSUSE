@@ -201,4 +201,13 @@
 </comment>
     <requestid>1381373</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>76e9400cc9d8d5e004b99f6c88adebc8</srcmd5>
+    <version>1.12.1</version>
+    <time>1794838471</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-cssselect-1.6.0.patch:
+  * Support changes required by cssselect 1.6.0+.</comment>
+    <requestid>1397816</requestid>
+  </revision>
 </revisionlist>

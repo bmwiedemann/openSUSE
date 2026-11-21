@@ -9,6 +9,7 @@ btusb: usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*
 btusb: usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*
 btusb: usb:v044Ep3001d*dc*dsc*dp*ic*isc*ip*in*
 btusb: usb:v044Ep3002d*dc*dsc*dp*ic*isc*ip*in*
+btusb: usb:v0471p0215d*dc*dsc*dp*icFFiscFFipFFin*
 btusb: usb:v0489p*d*dc*dsc*dp*icFFisc01ip01in*
 btusb: usb:v04BFp030Ad*dc*dsc*dp*ic*isc*ip*in*
 btusb: usb:v04CAp*d*dc*dsc*dp*icFFisc01ip01in*

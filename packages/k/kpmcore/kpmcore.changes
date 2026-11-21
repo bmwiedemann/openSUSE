@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:40:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Partition length should not be cached in ResizeFileSystemJob because partition is expanded just before ::run(), and we need live data, not old cached data.
+  * Fix ResizeFileSystemJob to cache partition() properties that might change.
+  * Make sure queued move is using partition boundaries at creation time, not runtime. (kde#527047)
+
+-------------------------------------------------------------------
 Wed Oct  7 07:04:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

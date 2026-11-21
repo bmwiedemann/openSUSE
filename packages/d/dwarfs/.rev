@@ -354,4 +354,34 @@ Bug fixes
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1392335</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1b24fe1b55e9cfde8a8be835ac5e9d8d</srcmd5>
+    <version>0.15.10</version>
+    <time>1794828510</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.15.10
+Bug fixes
+  * Avoid integer underflow on problematic TTYs. Using mkdwarfs on
+    narrow terminals with &quot;live&quot; (unicode or ascii) progress output
+    would trigger an integer underflow and subsequently a huge
+    memory allocation.
+- Changes in 0.15.9:
+Bug fixes
+  * Always join I/O thread in filesystem_extractor, even when
+    archive_write_close() causes close() to throw. This caused some
+    of the tests to fail when building against libarchive-3.8.10
+    or later.
+  * While v0.15.8 fixed an issue where the total_hardlink_size was
+    computed incorrectly, it introduced an accidentally quadratic
+    complexity algorithm while doing so. This was only noticeable
+    with a large number of duplicate files, but it could cause a
+    significant slowdown when building or re-building metadata.
+  * Correctly update segmenter progress context for sparse holes.
+    Without --no-sparse-files, the segmenter progress context would
+    not count the size of sparse holes, which would cause the
+    progress to be reported incorrectly and finish below 100%.
+    This is purely a cosmetic issue with no functional impact,
+    but the fix was trivial.</comment>
+    <requestid>1397805</requestid>
+  </revision>
 </revisionlist>

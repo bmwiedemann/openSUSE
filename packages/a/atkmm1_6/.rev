@@ -112,4 +112,15 @@
     - Don't require the 'dot' command to build the documentation</comment>
     <requestid>1355920</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>c536d65d9b05656ccaa11c62b13b8d70</srcmd5>
+    <version>2.28.5</version>
+    <time>1793899169</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+
+- Update URL to new home.</comment>
+    <requestid>1394827</requestid>
+  </revision>
 </revisionlist>

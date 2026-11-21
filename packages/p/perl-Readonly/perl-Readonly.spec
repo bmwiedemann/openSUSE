@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Readonly
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-Readonly
-Version:        2.05
-Release:        0
 %define cpan_name Readonly
+Name:           perl-Readonly
+Version:        2.50.0
+Release:        0
+# 2.05 -> normalize -> 2.50.0
+%define cpan_version 2.05
+#Upstream: Artistic-2.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Facility for creating read-only scalars, arrays, hashes
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Readonly/
-Source0:        http://www.cpan.org/authors/id/S/SA/SANKO/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/S/SA/SANKO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build::Tiny) >= 0.035
+BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build::Tiny) >= 0.35
+Provides:       perl(Readonly) = %{version}
+Provides:       perl(Readonly::Array)
+Provides:       perl(Readonly::Hash)
+Provides:       perl(Readonly::Scalar)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Facility for creating read-only scalars, arrays, hashes
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL --installdirs=vendor
+perl Build.PL --installdirs=vendor
 ./Build build --flags=%{?_smp_mflags}
 
 %check
@@ -51,7 +59,7 @@ Facility for creating read-only scalars, arrays, hashes
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE minil.toml README.md
+%doc Changes README.md
+%license LICENSE
 
 %changelog

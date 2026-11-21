@@ -303,4 +303,16 @@ in order to avoid conflicts like boo#1192300</comment>
     <comment>1</comment>
     <requestid>1385940</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f7e8d1c8a54829f10be4439b1db266da</srcmd5>
+    <version>6.12.1</version>
+    <time>1794932168</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.12.1
+  * The QtQuickControls2 module was added to PyQt6.
+  * PYQT_PDF_VERSION and PYQT_PDF_VERSION_STR was added to the
+    QtPdf module.
+  * All .pyi stub files pass flake8-pyi tests.</comment>
+    <requestid>1397727</requestid>
+  </revision>
 </revisionlist>

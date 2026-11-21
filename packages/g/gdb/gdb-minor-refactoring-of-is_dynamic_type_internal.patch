@@ -1,7 +1,7 @@
-From 1768d8ae64457f0c209a598d215617ebd3329843 Mon Sep 17 00:00:00 2001
+From 3078f608feed4fb9f8fceaf9128b3fa7493d4308 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Tue, 10 Mar 2026 21:44:01 +0100
-Subject: [PATCH 6/8] [gdb] Minor refactoring of is_dynamic_type_internal
+Subject: [PATCH 58/58] [gdb] Minor refactoring of is_dynamic_type_internal
 
 Simplify is_dynamic_type_internal by:
 - factoring out type->field (i) for the TYPE_CODE_STRUCT/UNION case.
@@ -13,10 +13,10 @@ Approved-By: Tom Tromey <tom@tromey.com>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/gdb/gdbtypes.c b/gdb/gdbtypes.c
-index 0928e244467..e2e4b5f86bf 100644
+index 24e6d0bf8f5..d637333352c 100644
 --- a/gdb/gdbtypes.c
 +++ b/gdb/gdbtypes.c
-@@ -2106,21 +2106,21 @@ is_dynamic_type_internal (struct type *type, bool top_level)
+@@ -2107,21 +2107,21 @@ is_dynamic_type_internal (struct type *type, bool top_level)
      case TYPE_CODE_STRUCT:
      case TYPE_CODE_UNION:
        {
@@ -39,8 +39,8 @@ index 0928e244467..e2e4b5f86bf 100644
  	      return true;
  	    /* If the field is at a fixed offset, then it is not
  	       dynamic.  */
--	    if (type->field (i).loc_kind () != FIELD_LOC_KIND_DWARF_BLOCK)
-+	    if (f.loc_kind () != FIELD_LOC_KIND_DWARF_BLOCK)
+-	    if (!type->field (i).loc_is_dwarf_block ())
++	    if (!f.loc_is_dwarf_block ())
  	      continue;
  	    /* Do not consider C++ virtual base types to be dynamic
  	       due to the field's offset being dynamic; these are

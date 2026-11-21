@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1252331</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f9593afd0edab3f4aad3eb5fc7e7ef93</srcmd5>
+    <version>1.11.0</version>
+    <time>1794838494</time>
+    <user>anag_factory</user>
+    <comment>Update sndio to 1.11.0</comment>
+    <requestid>1397888</requestid>
+  </revision>
 </revisionlist>

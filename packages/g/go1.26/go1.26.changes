@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Nov 10 16:47:16 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.11 (released 2026-11-10) includes security fixes to cgo,
+  the go command, the compiler, the linker, and the net/http
+  package, as well as bug fixes to the assembler, the compiler, the
+  runtime, toolchain bootstrapping, and the crypto/fips140,
+  crypto/hkdf, crypto/rsa, crypto/tls, net, and net/http packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-97033 CVE-2026-97034 CVE-2026-97035 CVE-2026-97036 CVE-2026-97037 CVE-2026-97038 CVE-2026-97039 CVE-2026-97040 CVE-2026-97041 CVE-2026-97042 CVE-2026-97043 CVE-2026-97054
+  * go#82599 go#82577 boo#1289978 security: fix CVE-2026-97033 cmd/go: unexpected code execution via --sysroot, -target, -isysroot, -Wl,-syslibroot, and -x cgo flags
+  * go#82597 go#82576 boo#1289979 security: fix CVE-2026-97034 cmd/go: arbitrary command execution via GCC spec files in cgo linker search directories
+  * go#82595 go#82575 boo#1289980 security: fix CVE-2026-97035 cmd/go: unexpected code execution and arbitrary file write via Clang -gen-* and GCC -gnat* flags in cgo
+  * go#82593 go#82574 boo#1289981 security: fix CVE-2026-97036 cmd/go: arbitrary code execution during build on darwin via "-l to_library" in cgo
+  * go#82591 go#82573 boo#1289982 security: fix CVE-2026-97037 cmd/go: linker script injection via split -Wl, flags and Darwin or symbol linker flags in cgo
+  * go#82589 go#82572 boo#1289983 security: fix CVE-2026-97038 cmd/go: arbitrary code execution via crafted .syso files and cgo linker input files
+  * go#82587 go#82571 boo#1289984 security: fix CVE-2026-97039 cmd/go: flag sanitization bypass via "#cgo pkg-config:" directives
+  * go#82585 go#82570 boo#1289985 security: fix CVE-2026-97040 cmd/go, cmd/link: cgo directive injection via .syso files disguised as Go object files
+  * go#82583 go#82569 boo#1289986 security: fix CVE-2026-97041 cmd/compile, cmd/link: host linker flag injection via //go:cgo_* directives
+  * go#82581 go#82568 boo#1289987 security: fix CVE-2026-97042 cmd/cgo, cmd/compile, cmd/link: linker flag injection via cgo_import_dynamic and PE DLL names
+  * go#82579 go#82567 boo#1289988 security: fix CVE-2026-97043 cmd/go, cmd/compile: unexpected code execution via escaped quotes in //go:cgo_ldflag
+  * go#82564 go#82563 boo#1289989 security: fix CVE-2026-97054 net/http: HTTP/1 server crash due to MaxBytesReader header race
+  * go#81865 cmd/compile: branchelim optimization can eliminate result of store
+  * go#81869 cmd/compile: generic shift-by-constant canonicalization gives Const64 the wrong type
+  * go#81926 cmd/asm: amd64 assembler loops forever on a forward jump to a labelled PCALIGN when a branch needs widening
+  * go#81946 net/http: backport fix to protect against middleware changing server response body
+  * go#82022 net: Dialer.Dial{TCP,UDP,IP} incorrectly treats invalid addresses as ::
+  * go#82149 runtime: linux/mips time64 nanosecond layout causes busy waits and empty CPU profiles
+  * go#82333 cmd/dist: GOFIPS140 bootstrap from Go 1.26 fails
+  * go#82626 crypto/fips140: minor compliance improvements
+  * go#82642 cmd/compile: ICE on 386 when inlining nested bit rotations (Int64Lo not lowered)
+
+-------------------------------------------------------------------
 Tue Oct 20 01:26:11 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.10 (released 2026-10-19) includes security fixes to the

@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-amqp
-Version:        5.4.0
+Version:        5.4.2
 Release:        0
 Summary:        Low-level AMQP client for Python (fork of amqplib)
 License:        LGPL-2.1-or-later
 URL:            https://github.com/celery/py-amqp
 Source:         https://files.pythonhosted.org/packages/source/a/amqp/amqp-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
-BuildRequires:  %{python_module case >= 1.3.1}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 3.0}
 BuildRequires:  %{python_module setuptools}

@@ -68,7 +68,7 @@ BuildRequires:  pkgconfig(pangoft2) >= 1.32.6
 BuildRequires:  pkgconfig(poppler-glib) >= 0.16.0
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  libspng-devel >= 0.7
 BuildRequires:  pkgconfig(openslide) >= 3.4.0
 %else
@@ -156,7 +156,7 @@ Bash command line completion support for %{name}.
   -Dpdfium=disabled \
   -Dnifti=disabled \
   -Duhdr=disabled \
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} < 1699
   -Dspng=disabled \
   -Dopenslide=disabled \
 %endif

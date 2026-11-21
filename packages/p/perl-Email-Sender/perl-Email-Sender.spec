@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Email-Sender
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,50 +18,51 @@
 
 %define cpan_name Email-Sender
 Name:           perl-Email-Sender
-Version:        2.601.0
+Version:        2.603.0
 Release:        0
-# 2.601 -> normalize -> 2.601.0
-%define cpan_version 2.601
+# 2.603 -> normalize -> 2.603.0
+%define cpan_version 2.603
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Library for sending email
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny) >= 0.08
-BuildRequires:  perl(Email::Abstract) >= 3.006
+BuildRequires:  perl(Capture::Tiny) >= 0.80
+BuildRequires:  perl(Email::Abstract) >= 3.6
 BuildRequires:  perl(Email::Address::XS)
 BuildRequires:  perl(Email::Simple) >= 1.998
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(File::Path) >= 2.06
 BuildRequires:  perl(List::Util) >= 1.45
 BuildRequires:  perl(Module::Runtime)
-BuildRequires:  perl(Moo) >= 2.000000
+BuildRequires:  perl(Moo) >= 2.0
 BuildRequires:  perl(Moo::Role)
-BuildRequires:  perl(MooX::Types::MooseLike) >= 0.15
+BuildRequires:  perl(MooX::Types::MooseLike) >= 0.150
 BuildRequires:  perl(MooX::Types::MooseLike::Base)
 BuildRequires:  perl(Net::SMTP) >= 3.07
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Sub::Exporter::Util)
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Throwable::Error) >= 0.200003
+BuildRequires:  perl(Throwable::Error) >= 0.200.3
 BuildRequires:  perl(Try::Tiny)
-Requires:       perl(Email::Abstract) >= 3.006
+Requires:       perl(Email::Abstract) >= 3.6
 Requires:       perl(Email::Address::XS)
 Requires:       perl(Email::Simple) >= 1.998
 Requires:       perl(File::Path) >= 2.06
 Requires:       perl(List::Util) >= 1.45
 Requires:       perl(Module::Runtime)
-Requires:       perl(Moo) >= 2.000000
+Requires:       perl(Moo) >= 2.0
 Requires:       perl(Moo::Role)
-Requires:       perl(MooX::Types::MooseLike) >= 0.15
+Requires:       perl(MooX::Types::MooseLike) >= 0.150
 Requires:       perl(MooX::Types::MooseLike::Base)
 Requires:       perl(Net::SMTP) >= 3.07
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Exporter::Util)
-Requires:       perl(Throwable::Error) >= 0.200003
+Requires:       perl(Throwable::Error) >= 0.200.3
 Requires:       perl(Try::Tiny)
 Provides:       perl(Email::Sender) = %{version}
 Provides:       perl(Email::Sender::Failure) = %{version}
@@ -103,7 +104,7 @@ Documentation may be found in Email::Sender::Manual, and new users should
 start with Email::Sender::Manual::QuickStart.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:04:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.11:
+  * Features
+    - Adding resolute builder to trusted builders (#2739)
+    - test: only assert the last line of quiet-mode local build
+      output (#2730)
+    - fix: include CA certificates in the pack base image (#2609)
+  * Dependencies
+    - deps: bump the default lifecycle to 0.21.29 (#2723)
+    - chore: drop kaniko dependency (#2677)
+    - deps: bump klauspost/compress to v1.20.2 and Go to 1.26.11
+      (#2741)
+
+-------------------------------------------------------------------
 Fri Oct 23 15:57:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.10:

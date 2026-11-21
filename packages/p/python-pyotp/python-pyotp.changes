@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 16 19:05:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.0
+  * Require 112-bit OTP secrets and update illustrative examples.
+  * Limit TOTP intervals to 120 seconds.
+  * Update recommendations for authentication best practices.
+  * Update required minimum Python version to 3.10 .
+- Update to version 2.11.2
+  * Validate OTP configuration and URI parameters (#203).
+  * Harden OTP verification APIs and document replay prevention
+    (#202).
+- Update to version 2.11.1
+  * Fix PyPI README markup and validate distributions before
+    release.
+- Update to version 2.11.0
+  * Fix DST rollbacks and normalize TOTP timestamp inputs (#197).
+  * Respect initial_count=0 in HOTP.provisioning_uri() (#190).
+  * Implement verify_and_get_timecode, a method for TOTP that
+    verifies and returns the matching timecode (#191).
+
+-------------------------------------------------------------------
 Sun Jun 14 17:21:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.0

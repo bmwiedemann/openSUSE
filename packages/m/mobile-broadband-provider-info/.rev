@@ -295,4 +295,49 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343000</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>829b569f7d33f80b333d584f333f9ef6</srcmd5>
+    <version>20261111</version>
+    <time>1794816448</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261111:
+  * Add `gid1` element to identify MVNOs
+  * Add emergency number information for FI, IL, IR, NL, RU
+  * New providers:
+    + Ae: Webbing
+    + Be: Neibo
+    + Bo: Entel, Tido, Viva
+    + Br: Webbing
+    + Ca: Kodoo
+    + Fr: Webbing, Lebara
+    + Gb: iD Mobile
+    + Gi: Gibtelcom
+    + Hk: Webbing
+    + It: Webbing
+    + Nl: Simyo, Webbing
+    + No: Happybytes, Saga Mobil
+    + Pl: Webbing
+    + Tj: Beeline TJ, Megafon, Tcell, Babilon Mobile
+    + Us: Webbing
+  * Updated providers:
+    + At: Drei, Lycamobile
+    + Be: Telavox, Telenet
+    + Ca: Telus
+    + De: Congstar, WinSIM
+    + Fi: Telia
+    + Fr: Free, Lycamobile
+    + Il: Webbing
+    + It: CoopVoce
+    + Lt: Omnitel
+    + Nl: KPN NL, Webbing
+    + No: Ice, OneCall, MyCall, Telavox, Telia
+    + Ro: Vodafone
+    + Ru: Beeline
+    + Se: Telavox
+    + Us: US Mobile
+  * Removed providres:
+    + No: Altibox, Chess, Network Norway, Phonero, Ludo Mobil, TDC, Tele2,
+      Telipol, Ventelo</comment>
+    <requestid>1397133</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  5 06:10:35 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to 0.9.6
+  * Fix regression introduced in 0.9.5 which results in long load times
+    and possible intermittent crashes
+- Spec cleanup: require meson >= 1.1.0, as checked by meson.build
+
+-------------------------------------------------------------------
+Wed Nov  4 08:05:17 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to 0.9.5
+  * Enable basic filtering for Browse mode
+  * Use the Adwaita stylesheet by default, if enabled at compile time
+  * Show full font revision number in the Version label tooltip
+  * Fix disappearing labels in the Category list
+  * Make Copyright and Description fields selectable
+  * Fix click handling in the collection list with editable labels
+  * Fix character map not applying preview size correctly
+  * Fix searching by file path
+  * Fix segfault when there is an override but no schema
+  * Add file type filter for the bitmap extension to OpenType
+  * Update Unicode data to 18.0, vendor list and translations
+- Drop 0001-reproducible-build.patch and
+  0002-Fix-compilation-error-with-newer-Vala-versions.patch, fixed upstream
+- Spec cleanup: use pkgconfig(vapigen) for the Vala build dependency
+
+-------------------------------------------------------------------
 Mon Nov  2 10:00:00 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - Apply 0002-Fix-compilation-error-with-newer-Vala-versions.patch

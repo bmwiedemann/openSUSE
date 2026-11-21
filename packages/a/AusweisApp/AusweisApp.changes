@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 18 09:02:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.6.3
+    - Visual adjustments and optimizations to the graphical user interface.
+    - Optimization of individual accessibility features.
+    - Support for the arm64 architecture on Windows.
+    - RSA signatures using PKCS#1 v1.5 in TLS are still supported.
+
+-------------------------------------------------------------------
 Wed Oct 28 08:04:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release

@@ -31,13 +31,15 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{php_name}-%{pkg_name}
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        PHP bindings for the libssh2 library
 License:        PHP-3.01
 Group:          Productivity/Networking/Web/Servers
 URL:            https://pecl.php.net/package/%{pkg_name}
 Source:         https://pecl.php.net/get/%{pkg_name}-%{version}.tgz
+# PATCH-FIX-OPENSUSE - fix build with php7
+Patch0:         ssh2-php7.patch
 BuildRequires:  %{php_name}-devel
 BuildRequires:  libssh2-devel
 Provides:       php-%{pkg_name} = %{version}
@@ -49,6 +51,9 @@ This package provides PHP bindings for the libssh2 library
 
 %prep
 %setup -q -n %{pkg_name}-%{version}
+%if "%{flavor}" == "php7"
+%patch -P 0 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fvisibility=hidden"

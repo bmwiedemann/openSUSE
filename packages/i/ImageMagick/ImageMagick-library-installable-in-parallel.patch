@@ -1,8 +1,8 @@
-Index: ImageMagick-7.1.2-33/configure
+Index: ImageMagick-7.1.2-35/configure
 ===================================================================
---- ImageMagick-7.1.2-33.orig/configure
-+++ ImageMagick-7.1.2-33/configure
-@@ -37448,7 +37448,9 @@ fi
+--- ImageMagick-7.1.2-35.orig/configure
++++ ImageMagick-7.1.2-35/configure
+@@ -37230,7 +37230,9 @@ fi
  
  
  # Subdirectory to place architecture-dependent configuration files
@@ -11,5 +11,5 @@ Index: ImageMagick-7.1.2-33/configure
 +   CONFIGURE_RELATIVE_PATH="${PACKAGE_NAME}-${MAGICK_MAJOR_VERSION}"
 +fi
  
- printf "%s\n" "#define CONFIGURE_RELATIVE_PATH \"$CONFIGURE_RELATIVE_PATH\"" >>confdefs.h
+ printf '%s\n' "#define CONFIGURE_RELATIVE_PATH \"$CONFIGURE_RELATIVE_PATH\"" >>confdefs.h
  

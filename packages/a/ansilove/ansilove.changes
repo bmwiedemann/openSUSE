@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  2 15:41:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.3
+  * Document support for PabloDraw 24-bit ANSI sequences.
+  * Add an IceDraw test file and register it with CTest.
+  * Use a distinct output filename for the Retina test.
+  * Fix a memory leak in SAUCE handling.
+  * Fix SAUCE reading with respect to file size and EOF markers.
+
+-------------------------------------------------------------------
 Wed Jun 10 19:21:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.2

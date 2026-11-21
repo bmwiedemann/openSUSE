@@ -74,4 +74,22 @@
     <comment>- Skip a test that is broken upstream.</comment>
     <requestid>1332354</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3af975d327c0b85ce78716e00b265582</srcmd5>
+    <version>1.5.0</version>
+    <time>1794236636</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.0:
+  * Fix support for src/ layout even without ``setup.py``
+  * Fix incorrect path to _compiler.c for 'src' layout packages
+  * Look for setup.cfg in current directory, not srcdir
+  * TST: fixup skip condition on limited-api test
+  * TST: Replace macos-13 with macos-14
+  * MNT: drop deprecated License classifier, update related
+    metadata (PEP 639)
+  * Fix test with recent versions of pip/build
+  * Switch to two-phase module initialization
+  * Define COVERAGE_FILE to try and fix coverage reporting</comment>
+    <requestid>1396183</requestid>
+  </revision>
 </revisionlist>

@@ -114,4 +114,15 @@
     <comment>1</comment>
     <requestid>1379945</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>c9cb7d5f0c2dfde777bfe89fcffcb405</srcmd5>
+    <version>2.1.6</version>
+    <time>1794838490</time>
+    <user>anag_factory</user>
+    <comment>- Update fix_tests.patch to support latest urllib3, this fixes the
+  exception in FakeChunkedResponseBody:
+  TypeError: FakeChunkedResponseBody.readline() takes 1
+  positional argument but 2 were given</comment>
+    <requestid>1397882</requestid>
+  </revision>
 </revisionlist>

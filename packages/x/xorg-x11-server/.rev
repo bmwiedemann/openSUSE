@@ -4560,4 +4560,47 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * 0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch</comment>
     <requestid>1386791</requestid>
   </revision>
+  <revision rev="456" vrev="2">
+    <srcmd5>00d396f821186d6acc25b31e9401c9e3</srcmd5>
+    <version>21.1.25</version>
+    <time>1794410629</time>
+    <user>dimstar_suse</user>
+    <comment>- U_Revert-damage-Unlink-a-damage-from-the-list-it-was-a.patch
+  * reverts commit 0fb16f3d, which mistakenly broke driver ABI
+    (boo#1289271)
+
+- bsc1285086_CVE-2026-109091.patch
+  * X.Org Server EDID DS_RANGES Out-Of-Bounds Write
+    (bsc#1285086, CVE-2026-109091)
+- bsc1285087_CVE-2026-109092.patch
+  * X.Org Server XvShmPutImage Shared-Memory Bounds Overflow
+    (bsc#1285087, CVE-2026-109092)
+- bsc1285088_CVE-2026-109093.patch
+  * X.Org Server XTestFakeInput Valuator Stack Out-Of-Bounds Write
+    (bsc#1285088, CVE-2026-109093)
+- bsc1285089_CVE-2026-109094.patch
+  * X.Org Server XRes QueryResourceBytes Swap Path Size Overflow
+    (bsc#1285089, CVE-2026-109094)
+- bsc1285090_CVE-2026-109095.patch
+  * X.Org Server glamor Xv Image Size Integer Overflow
+    (bsc#1285090, CVE-2026-109095)
+- bsc1285091_CVE-2026-109096.patch
+  * X.Org Server XvPutImage Negative Image Size Length Bypass
+    (bsc#1285091, CVE-2026-109096
+- bsc1285093_CVE-2026-109903.patch
+  * X.Org Server XRes QueryClientIds Request Size Overflow
+    (bsc#1285093, CVE-2026-109903)
+- bsc1285094_CVE-2026-109904.patch
+  * X.Org Server XRes QueryClientIds Request Size Overflow
+    (bsc#1285094, CVE-2026-109904)</comment>
+    <requestid>1396534</requestid>
+  </revision>
+  <revision rev="457" vrev="3">
+    <srcmd5>4529325c5cacfa33118d62940f1bad16</srcmd5>
+    <version>21.1.25</version>
+    <time>1794932175</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397736</requestid>
+  </revision>
 </revisionlist>

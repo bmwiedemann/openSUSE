@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Mon Nov 16 03:50:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.16.3:
+  * Skip list_secrets call when case_sensitive=True
+  * GoogleSecretManagerSettingsSource: read project_id from previous sources
+  * fix: move SecretsManagerClient type import under TYPE_CHECKING
+  * Skip partial update merging for discriminated union fields
+  * Support using a table header as root when reading a TOML file
+  * Don't complain about missing table headers in a TOML file that isn't
+    there
+  * Address issues in toml table header implementation
+  * Prevent NestedSecretsSettingsSource from following symlinks outside
+    secrets_dir
+  * Add support for showing environment variable names in CLI help text
+  * Fix AliasPath on nested model fields not decoding env values
+  * Support case_sensitive in InitSettingsSource and config file sources
+  * Warn when using fields not fully resolved at instantiation
+  * Support Traversable for json/toml/yaml config file sources
+  * Apply case-insensitive field matching to optional nested models
+  * Add PYDANTIC_SETTINGS_DEBUG for debugging settings sources
+  * fix: parse enum names through nested annotations
+  * Fix dotenv extras being claimed by complex fields sharing a name
+    prefix
+  * Add debug logging for env_file and secret file resolution
+  * fix: coerce empty yaml_config_section to an empty mapping instead of
+    crashing
+  * fix: read secret files as UTF-8 instead of the locale encoding
+  * fix: treat Secret subclasses as non-complex fields
+  * fix: raise ValidationError for non-JSON env values on strict fields
+  * test: move function-local imports to the top of test modules
+  * lint: enable flake8-bugbear and fix the issues it found
+  * fix(types): include DotenvFiltering in __all__ in sources.types
+  * Add env_file_depth for parent directory env file lookup
+  * Add an AWS Systems Manager Parameter Store settings source
+  * fix: use self.cli_prefix instead of cli_prefix in CliSettingsSource
+    constructor
+  * fix: treat empty JSON config file as empty mapping instead of
+    crashing
+  * Expand ruff rule selection
+  * Enable ruff's flake8-return (RET) rules
+  * Add cached settings instances
+  * Add CliVariadicArg for named variadic CLI options
+  * Fix CliVariadicArg empty-value handling for named options
+  * fix: read JSON and YAML config as UTF-8, not the locale encoding
+  * Reach 100% test coverage
+  * fix: strip a case-normalized env_prefix from dotenv extras
+  * fix: slice the case-normalized prefix in dotenv match_prefix
+  * fix: address CVE-2026-28684 in python-dotenv dependency
+  * Verify NestedSecretsSettingsSource specific arguments
+  * Fix abstract Set annotations not being treated as complex
+  * Fix CLI append-action detection for collection subtypes
+  * Honor cli_exit_on_error=False in CliSubCommand parsers
+  * Preserve CliVariadicArg values in CliApp.serialize argparse/env
+    styles
+  * Avoid mutating field metadata when resolving type aliases
+  * fix: bare AliasPath complexity keyed off name length, not path length
+  * Preserve explicit None values in CLI serialization
+  * Make CliApp.serialize output parseable for enum and non-JSON values
+  * Preserve CliSubCommand alias case with case_sensitive=False
+  * Fix CliApp.serialize for models with CliUnknownArgs fields
+  * Fix empty JSON arrays in CLI list arguments
+  * Only skip partial updates for discriminated unions selecting another
+    type
+  * fix: handle bare typing.Dict in EnvSettingsSource.next_field
+  * Apply case-insensitive field matching to nested pydantic dataclasses
+  * Fix named union alias parsing in environment sources
+  * Drop support for Python 3.10
+  * Add support for Python 3.15
+  * Give each CliUnknownArgs field only its own parser leftovers
+  * Preserve empty containers in CLI serialization
+  * Honor env_parse_none_str for Azure Key Vault secrets
+  * Fix nested Azure Key Vault dash translation
+  * Support pydantic 2.14
+  * Read field names when validate_by_alias=False on pydantic 2.14
+  * Ignore aliases in every source when validate_by_alias=False
+  * Honor explicit empty TOML table header overrides
+  * Fix CLI parsing for named collection type aliases
+  * Fix JSON decoding for optional named union aliases
+  * Decode optional Annotated named union aliases
+  * Expand home paths when checking TOML table headers
+  * Fix config file and CLI values being ignored when alias differs from
+    validation_alias
+  * Honor env_parse_none_str for GCP Secret Manager
+  * Simplify alias resolution branch and test alias with
+    AliasChoices/AliasPath
+  * Keep case of non-option CLI args when case_sensitive=False
+  * Keep list of dicts CLI values as lists
+  * Keep fixed-length tuple CLI positionals single-valued
+  * Detect nested Field discriminators in default partial updates
+  * Resolve only the discriminator annotation of stdlib dataclass
+    defaults
+  * Decode nested dictionary values with complex union types
+  * Fix regressions from nested dict union value decoding
+  * Fix explicit nested secrets directory precedence
+  * Fix CliApp reconstruction of AliasPath inputs
+  * Fix JSON decoding of nested dictionary environment values
+  * Fix CliApp.serialize moving a parent unknown args into the
+    subcommand
+  * Load nested secrets reached through a second directory link
+  * Prevent SecretsSettingsSource from following symlinks outside
+    secrets_dir
+- Drop patch support-ruff-0.16.patch, no longer required.
+
+-------------------------------------------------------------------
 Tue Jul 28 00:47:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-ruff-0.16.patch:

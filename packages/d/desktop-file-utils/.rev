@@ -570,4 +570,24 @@
     <comment></comment>
     <requestid>1347294</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>88a605672df0ffa9c2fd0c362ac9c057</srcmd5>
+    <version>0.29</version>
+    <time>1795103605</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.29:
+  * Add support for --add-keywords and --remove-keywords
+  * Add --set-exec shortcut for setting the Exec key
+  * Require Exec key when DBusActivatable is unset (Balló
+    György).
+  * Validate the Keywords key (KlfJoat).
+  * Add Phosh to list of valid OnlyShowIn= environments (Sam
+    Day).
+  * Add new game categories (JakobDev).
+  * Add HealthFitness category (JakobDev).
+  * Implement the intent cache from the intent-apps spec
+  * Code cleanup and modernization (Sebastian Wick).
+  * Manpage fixes (fdo#76, fdo#77) (KlfJoat).</comment>
+    <requestid>1398234</requestid>
+  </revision>
 </revisionlist>

@@ -8613,4 +8613,41 @@
     <comment>1</comment>
     <requestid>1387002</requestid>
   </revision>
+  <revision rev="507" vrev="1">
+    <srcmd5>a9b7bad8852880f2392e4de8a8f72d72</srcmd5>
+    <version>159.0.1</version>
+    <time>1794816332</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 159.0.1
+  * https://www.firefox.com/en-US/firefox/159.0.1/releasenotes/
+    MFSA 2026-123 (bsc#1289546)
+  * CVE-2026-120572 (bmo#2079035)
+    Incorrect boundary conditions in the Layout: Block and Inline
+    component
+- Update MozillaFirefox.desktop
+- Mozilla Firefox 159.0
+  * https://www.firefox.com/en-US/firefox/159.0/releasenotes/
+  MFSA 2026-118 (bsc#1286955)
+  * CVE-2026-117860 (bmo#2046558)
+    Same-origin policy bypass in the DOM: Navigation component
+  * CVE-2026-117861 (bmo#2053240)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-117862 (bmo#2054644)
+    Privilege escalation due to incorrect boundary conditions in
+    the Networking component
+  * CVE-2026-117863 (bmo#2056783)
+    Information disclosure due to uninitialized memory in the
+    Audio/Video component
+  * CVE-2026-117864 (bmo#2058614)
+    Sandbox escape in the Form Manager component
+  * CVE-2026-117865 (bmo#2058653)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-117866 (bmo#2059011)
+    Privilege escalation due to use-after-free in the Graphics:
+    Canvas2D component
+  * CVE-2026-117867 (bmo#2059110)
+    Use-after-free in the Layout component
+  * CVE-2026-117868 (bmo#2059961)</comment>
+    <requestid>1397493</requestid>
+  </revision>
 </revisionlist>

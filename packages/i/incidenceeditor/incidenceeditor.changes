@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * incidencedialog.cpp - Don't prompt for a journal default calendar
+  * We need to compare to button as for other check
+  * QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)
+  * .kde-ci.yml - no longer require cppcheck-clean
+  * Fix LSAN failure in conflictresolvertest
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

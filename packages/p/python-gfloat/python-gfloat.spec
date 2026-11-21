@@ -17,25 +17,30 @@
 
 
 Name:           python-gfloat
-Version:        0.4
+Version:        0.5
 Release:        0
 Summary:        Generic floating point handling in Python
 License:        MIT
 URL:            https://github.com/graphcore-research/gfloat
 Source:         https://files.pythonhosted.org/packages/source/g/gfloat/gfloat-%{version}.tar.gz
 Patch1:         no-nbval.patch
-BuildRequires:  %{python_module ml-dtypes}
+# PATCH-FIX-UPSTREAM gh#graphcore-research#64
+Patch2:         fix-signed-zero-overflow.patch
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module more-itertools}
+BuildRequires:  %{python_module array-api-compat}
+BuildRequires:  %{python_module array-api-strict}
+BuildRequires:  %{python_module ml-dtypes}
 BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-array-api-compat
 Requires:       python-more-itertools
 Requires:       python-numpy
 BuildArch:      noarch
@@ -56,7 +61,7 @@ Generic floating point handling in Python
 
 %check
 # reduce dependencies
-rm -v test/test_jax.py test/test_microxcaling.py
+rm -v test/test_jax.py test/test_microxcaling.py test/test_torch.py
 %pytest
 
 %files %{python_files}

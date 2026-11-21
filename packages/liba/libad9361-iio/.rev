@@ -61,4 +61,12 @@ rpmlint reports 0 errors, 0 warnings, 0 badness (the previous build had
 one no-%check-section warning).</comment>
     <requestid>1373838</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6ce5598a775d6461a0381b430f705ee8</srcmd5>
+    <version>0.4.0+git20261023.7d8e7ca</version>
+    <time>1794236878</time>
+    <user>anag_factory</user>
+    <comment>Update to snapshot 0.4.0+git20261023.7d8e7ca; fixes invalid Source URL from declined sr#1395966.</comment>
+    <requestid>1396305</requestid>
+  </revision>
 </revisionlist>

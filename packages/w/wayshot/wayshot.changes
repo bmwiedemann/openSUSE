@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Sun Nov 08 02:23:40 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.7.1-wayshot:
+  * chore: since we have 1.7.0 on crate.io, so instead, we publish 1.7.1
+  * chore: bump libwaysip and publish wayshot
+  * chore: make workflow names can be understood better
+
+-------------------------------------------------------------------
+Mon Nov 02 23:13:55 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.6.0:
+  * chore: publish 1.6.0
+  * Merge pull request #423 from waycrate/docs/changelog-update
+  * docs: update changelog for 1.6.0 release
+  * Merge pull request #422 from waycrate/dependabot/cargo/clap_complete-4.6.8
+  * chore(deps): bump clap_complete from 4.6.7 to 4.6.8
+  * Merge pull request #421 from waycrate/dependabot/cargo/toml-1.1.4spec-1.1.0
+  * chore(deps): bump toml from 1.1.3+spec-1.1.0 to 1.1.4+spec-1.1.0
+
+-------------------------------------------------------------------
+Mon Oct 12 00:37:59 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 1.5.0:
+  * chore: also bump the version in Cargo.toml
+  * Merge pull request #370 from Gigas002/chore/changelog-1.5.0
+  * fix: fix typos job
+  * chore: update changelog for 1.5.0 release
+  * Merge pull request #302 from 0xsamalt/feat/color-format
+  * fix: cargo fmt and clippy fix
+  * feat: add color format option to --color flag
+  * Merge pull request #369 from Gigas002/fix/bad-geometry-fail
+  * fix: fix unexpected behavior on geometry cancelation
+  * Merge pull request #367 from Gigas002/fix/waymirror-security-issue
+  * fix: rm obsolete cargo lock
+  * Merge pull request #366 from Gigas002/fix/color-swap
+  * fix: fix color swap in libwayshot
+  * Merge pull request #365 from waycrate/dependabot/cargo/clap_complete-4.6.5
+  * chore(deps): bump clap_complete from 4.6.3 to 4.6.5
+  * chore: update dependencies
+  * Merge pull request #357 from Gigas002/feature/jxl-encoder
+  * fix: fix formatting in documents
+  * fix: cargo deny missed license
+  * fix: cargo fmt
+  * docs: rm libjxl from deps in docs
+  * fix: rm unneeded dependency on libjxl in CI
+  * fix: update nix flake
+  * fix: update deny.toml
+  * feature: migrate to rust-native jxl encoder
+  * Merge pull request #356 from waycrate/dependabot/cargo/clap-4.6.1
+  * chore(deps): bump clap from 4.6.0 to 4.6.1
+  * Merge pull request #355 from waycrate/dependabot/cargo/notify-rust-4.16.0
+  * chore(deps): bump notify-rust from 4.14.0 to 4.16.0
+  * Merge pull request #353 from waycrate/dependabot/github_actions/taiki-e/create-gh-release-action-1.11.0
+  * Merge pull request #354 from RustyCoderX/fix/mime-type-detection
+  * fix: explicit MIME type handling for clipboard instead of autodetect
+  * Merge pull request #352 from Gigas002/fix/doc-job
+  * chore(deps): bump taiki-e/create-gh-release-action from 1.10.0 to 1.11.0
+  * Merge branch 'fix/doc-job' of github.com:Gigas002/wayshot into fix/doc-job
+  * fix: install deps for --all-features in doc job
+  * Merge branch 'main' into fix/doc-job
+  * fix: make cargo doc pass without warns
+  * Merge pull request #351 from Gigas002/fix/ci-jobs-permissions
+  * fix: fix permissions issue in CI
+  * Merge pull request #350 from Gigas002/fix/resolver
+  * fix: use correct resolver version
+  * Merge pull request #349 from waycrate/dependabot/cargo/cargo-2cb957d483
+  * chore(deps): bump rand in the cargo group across 1 directory
+  * Merge pull request #348 from waycrate/dependabot/cargo/clap_complete-4.6.2
+  * chore(deps): bump clap_complete from 4.6.1 to 4.6.2
+  * Merge pull request #347 from waycrate/dependabot/cargo/clap_complete-4.6.1
+  * chore(deps): bump clap_complete from 4.6.0 to 4.6.1
+  * Merge pull request #346 from Gigas002/fix/changelog-update
+  * fix: suppress typo and change wording a bit
+  * fix: add unreleased section to changelog
+  * fix: update 1.4.5 - 1.4.6 changelog
+  * fix: update 1.4.4 - 1.4.5 changelod
+  * fix: update 1.4.3 - 1.4.4 changelog
+  * fix: update docs for 1.4.3 - 1.4.4 changelog
+  * fix: update 1.4.1 - 1.4.2 changelog entries
+  * fix: document 1.4.0 - 1.4.1 changes
+  * docs: document changes between 1.3.1 and 1.4.0
+  * Merge pull request #345 from Gigas002/fix/dependabot-bug
+  * fix: fix bug in dependabot scans
+  * Merge pull request #344 from waycrate/dependabot/cargo/wayland-egl-0.32.11
+  * Merge pull request #343 from waycrate/dependabot/cargo/notify-rust-4.13.1
+  * chore(deps): bump wayland-egl from 0.32.10 to 0.32.11
+  * chore(deps): bump notify-rust from 4.12.0 to 4.13.1
+  * Merge pull request #341 from waycrate/dependabot/cargo/wayland-protocols-wlr-0.3.12
+  * Merge pull request #340 from waycrate/dependabot/github_actions/taiki-e/create-gh-release-action-1.10.0
+  * chore(deps): bump wayland-protocols-wlr from 0.3.11 to 0.3.12
+  * chore(deps): bump taiki-e/create-gh-release-action from 1.9.3 to 1.10.0
+  * Merge pull request #335 from saghen/geometry-fg-bg
+  * Merge pull request #339 from saghen/fix-color-picker-feature
+  * Merge pull request #283 from Suryansh-Dey/open_location
+  * fix: require `selector` feature for `color_picker`
+  * docs: i am a silly dumb stupid person
+  * fix: add `libwaysip` dep for `color_picker` feature
+  * fix: suppress clippy unused warning for geometry_config
+  * feat: add geometry config options
+  * docs: `selector` feature adds `--geometry-foreground-color` and `--geometry-background-color`
+  * fix: update docs
+  * fix: rework notification config to take any action
+  * Updating docs for notification
+  * feat: Custom notification action and %placeholder support%
+  * open_location updated
+  * docs: for `--geometry-background-color` and `--geometry-foreground-color`
+  * feat: add `--geometry-foreground-color` and `--geometry-background-color` flags
+  * Merge pull request #336 from saghen/nix-flake-rework
+  * Merge pull request #338 from Gigas002/fix/fix-typo
+  * fix: fix typo to make CI job pass again
+  * feat: rework nix dev shell and package
+  * Merge pull request #333 from Gigas002/feature/slurp-like-geometry
+  * fix: update docs
+  * feature: implement 3rd party string geometry support
+  * Merge pull request #329 from Gigas002/fix/filter-algo-optimization
+  * fix: use simpler resizing algorithm
+  * Merge pull request #328 from HiFiveJazz/main
+  * fix: ensure frame synchronization after FrameState::Finished to prevent corrupted captures
+  * fix: do not always init drm when it is not needed (#326)
+  * Merge pull request #311 from Gigas002/fix/licensing-issues
+  * Merge pull request #324 from Gigas002/feature/formats-features
+  * Merge branch 'waycrate:main' into feature/formats-features
+  * Merge pull request #320 from Gigas002/feature/egl-feat
+  * fix: make clippy happy
+  * fix: update docs
+  * feature: separate formats other than png into features
+  * fix: use --no-default-features pattern for CI's minimal build
+  * fix: update docs
+  * fix: rm egl feature from wayshot cli
+  * Merge pull request #321 from Gigas002/fix/clippy-ci-job
+  * Merge pull request #323 from waycrate/dependabot/github_actions/rust-lang/crates-io-auth-action-1.0.4
+  * Merge pull request #322 from waycrate/dependabot/github_actions/codecov/codecov-action-6
+  * chore(deps): bump rust-lang/crates-io-auth-action from 1.0.3 to 1.0.4
+  * chore(deps): bump codecov/codecov-action from 5 to 6
+  * fix: fix minor clippy issue
+  * fix: add several features pattern clippy check for ci
+  * fix: format typos.yml
+  * fix: update docs
+  * fix: add egl feature in ci
+  * feature: add egl feature to cli crates
+  * refactor: decouple egl feature from libwayshot code
+  * Merge pull request #309 from Gigas002/feature/freeze-option
+  * Merge branch 'main' into feature/freeze-option
+  * Merge pull request #319 from Gigas002/feature/shell-completions
+  * fix: update docs
+  * feature: add shell completions generation
+  * Merge pull request #318 from Gigas002/feature/delay-option
+  * fix: update docs
+  * feature: add delay option
+  * Merge pull request #317 from waycrate/dependabot/cargo/toml-1.0.7spec-1.1.0
+  * chore(deps): bump toml from 1.0.6+spec-1.1.0 to 1.0.7+spec-1.1.0
+  * Merge pull request #316 from waycrate/dependabot/cargo/drm-0.15.0
+  * chore(deps): bump drm from 0.14.2 to 0.15.0
+  * Merge pull request #314 from waycrate/dependabot/cargo/jpegxl-rs-0.13.1libjxl-0.11.2
+  * chore(deps): bump jpegxl-rs
+  * Merge pull request #315 from Gigas002/refactor/ci-overhaul
+  * refactor: refactor CI by separating on several files
+  * Merge pull request #312 from waycrate/dependabot/cargo/tracing-subscriber-0.3.23
+  * chore(deps): bump tracing-subscriber from 0.3.22 to 0.3.23
+  * Merge pull request #313 from waycrate/dependabot/cargo/clap-4.6.0
+  * chore(deps): bump clap from 4.5.60 to 4.6.0
+  * feature: add deny ci job
+  * feature: add cargo deny config
+  * fix: relicense waymirror-egl and wayshot as GPL to comply with dependencies
+  * fix: license only libwayshot as BSD-2-Clause
+  * fix: rename LICENSE to LICENSE-BSD
+  * Merge pull request #310 from Gigas002/chore/bump-deps
+  * fix: change ci dep version
+  * chore: bump dependencies
+  * feature: add freeze option
+  * Merge pull request #306 from Gigas002/refactor/wayshot-cli-refactor
+  * chore: switch to main, not master
+  * chore: update CHANGELOG and bump version
+  * chore(deps): bump taiki-e/create-gh-release-action from 1.9.2 to 1.9.3 (#308)
+  * fix: shm formats can contains many (#307)
+  * chore: auto publish fix
+  * fix: add minor note about wl-copy when not using clipboard feature
+  * fix: add no-notifications alias to silent cli option
+  * fix: rerun cargo fmt
+  * refactor: move settings resolvement out of wayshot.rs
+  * docs: update docs
+  * feature: add selector feature
+  * feature: add avif and jxl features
+  * refactor: refactor utils.rs a bit
+  * refactor: minor cli simplification and documentation improvements
+  * refactor: move some minor bits here and there into screenshot.rs
+  * refactor: simplify cli-config options handling in a separate struct
+  * feature: add notifications feature
+  * refactor: separate notification from wayshot.rs into notification.rs
+  * feature: add logger feature
+  * refactor: move logger-related code into logger.rs
+
+-------------------------------------------------------------------
 Thu Mar 12 10:06:56 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 1.4.6+git21.g81d360733816e18b1219624976f4286f276a1ecc:

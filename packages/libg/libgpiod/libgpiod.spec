@@ -21,6 +21,7 @@
 %define libgpiodcxx_soversion 2
 %define libgpiodglib_soversion 1
 %define libgpiosim_soversion 1
+%define libgpiotools_soversion 1
 # Enable tests on openSUSE only - bsc#1243926
 %if 0%{?is_opensuse}
 %bcond_without libgpiod_tests
@@ -30,37 +31,33 @@
 # Enable python
 %bcond_without libgpiod_python
 Name:           libgpiod
-Version:        2.2.4
+Version:        2.3.1
 Release:        0
 Summary:        C library and tools for interacting with the linux GPIO character device
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/
 Source0:        https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git/snapshot/libgpiod-%{version}.tar.gz
 Source1:        gpiod-sysusers.conf
-BuildRequires:  autoconf >= 2.71
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  glib2-devel >= 2.80
+BuildRequires:  help2man
 BuildRequires:  libgudev-1_0-devel >= 230
-BuildRequires:  libkmod-devel
-BuildRequires:  libtool
-BuildRequires:  make
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  systemd
 %if %{with libgpiod_python}
-BuildRequires:  python3-devel >= 3.5
-BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-devel >= 3.10
 %endif
 %if %{with libgpiod_tests}
-BuildRequires:  Catch2-devel
-BuildRequires:  glib2-devel >= 2.50
+BuildRequires:  Catch2-devel >= 3.0
 BuildRequires:  kernel-devel >= 5.5
+BuildRequires:  libkmod-devel
+BuildRequires:  libmount-devel >= 2.33.1
 BuildRequires:  pkgconfig(libudev)
 %else
 BuildRequires:  kernel-devel >= 4.8
 %endif
-BuildRequires:  systemd
 
 %description
 The libgpiod library encapsulates the ioctl calls and data structures
@@ -69,7 +66,6 @@ GPIO sysfs interface in Linux 4.8.
 
 %package utils
 Summary:        Tools for interacting with the linux GPIO character device
-Group:          Development/Libraries/C and C++
 
 %description utils
 The libgpiod library encapsulates the ioctl calls and data structures
@@ -80,7 +76,6 @@ Command-line tools part.
 
 %package -n libgpiod%{libgpiod_soversion}
 Summary:        C library for interacting with the linux GPIO character device
-Group:          System/Libraries
 Conflicts:      libgpiod1
 
 %description -n libgpiod%{libgpiod_soversion}
@@ -92,7 +87,6 @@ C library part.
 
 %package -n libgpiodbus%{libgpiodbus_soversion}
 Summary:        DBus for libgpiod
-Group:          System/Libraries
 Conflicts:      libgpiod1
 
 %description -n libgpiodbus%{libgpiodbus_soversion}
@@ -104,7 +98,6 @@ DBus part.
 
 %package -n libgpiodcxx%{libgpiodcxx_soversion}
 Summary:        C++library for interacting with the linux GPIO character device
-Group:          System/Libraries
 Conflicts:      libgpiod1
 
 %description -n libgpiodcxx%{libgpiodcxx_soversion}
@@ -116,7 +109,6 @@ C++ library part.
 
 %package -n libgpiod-glib%{libgpiodglib_soversion}
 Summary:        GLib2 binding for libgpiod
-Group:          System/Libraries
 Conflicts:      libgpiod1
 
 %description -n libgpiod-glib%{libgpiodglib_soversion}
@@ -128,7 +120,6 @@ Glib2 binding part.
 
 %package -n libgpiosim%{libgpiosim_soversion}
 Summary:        C library for controlling the gpio-sim kernel module
-Group:          System/Libraries
 Conflicts:      libgpiod1
 
 %description -n libgpiosim%{libgpiosim_soversion}
@@ -138,12 +129,23 @@ GPIO sysfs interface in Linux 4.8.
 
 GPIO sim library part. (This aims at replacing the old gpio-mockup)
 
+%package -n libgpiotools%{libgpiotools_soversion}
+Summary:        High-level helpers for building programs using libgpiod
+
+%description -n libgpiotools%{libgpiotools_soversion}
+The libgpiod library encapsulates the ioctl calls and data structures
+of the GPIO character devices, the latter of which superseded the
+GPIO sysfs interface in Linux 4.8.
+
+High-level helpers part (e.g. line name lookup), previously only
+available internally to gpio-tools.
+
 %package devel
 Summary:        Devel files for libgpiod
-Group:          Development/Languages/C and C++
 Requires:       %{name} = %{version}
 Requires:       libgpiod%{libgpiod_soversion} = %{version}
 Requires:       libgpiodcxx%{libgpiodcxx_soversion} = %{version}
+Requires:       libgpiotools%{libgpiotools_soversion} = %{version}
 %if %{with libgpiod_tests}
 Requires:       libgpiosim%{libgpiosim_soversion} = %{version}
 %endif
@@ -158,7 +160,6 @@ Devel files part.
 %if %{with libgpiod_python}
 %package -n python3-gpiod
 Summary:        Python binding for libgpiod
-Group:          Development/Languages/Python
 Provides:       python-libgpiod
 Obsoletes:      python-libgpiod
 
@@ -179,35 +180,31 @@ DBus manager for interacting with GPIO character devices.
 
 %prep
 %autosetup -p1
-# python bindings build is set to use isolation. Remove this for distro build so it uses the
-# system installed dependencies instead of trying to use pip to install from the network
-sed -i 's/-m build/-m pip wheel --wheel-dir dist --no-build-isolation ./' bindings/python/Makefile*
-# Once the following commit is merged, replace the above line with the command below:
-# https://lore.kernel.org/linux-gpio/20250407181116.1070816-1-yselkowi@redhat.com/T/#u
-#sed -i 's/-m pip wheel/& --no-build-isolation/' bindings/python/Makefile*
 
 %build
-./autogen.sh
-%configure \
-  --enable-dbus \
-  --enable-systemd \
+%meson \
+  -Ddbus=enabled \
+  -Dsystemd=enabled \
+  -Dtools=enabled \
+  -Dbindings-cxx=enabled \
+  -Dbindings-glib=enabled \
+  -Dbindings-rust=disabled \
+  -Dintrospection=disabled \
+  -Dgpioset-interactive=disabled \
 %if %{with libgpiod_tests}
-  --enable-tests \
-%endif
-  --enable-tools=yes \
-%if %{with libgpiod_python}
-  --enable-bindings-python \
+  -Dtests=enabled \
 %else
-  --disable-bindings-python \
+  -Dtests=disabled \
 %endif
-  --enable-bindings-glib \
-  --enable-bindings-cxx \
-  --disable-bindings-rust \
-  --disable-static
-make %{?_smp_mflags}
+%if %{with libgpiod_python}
+  -Dbindings-python=enabled
+%else
+  -Dbindings-python=disabled
+%endif
+%meson_build
 
 %install
-%make_install
+%meson_install
 # Install sysusers file
 install -p -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/gpiod.conf
 # Fix udev rule location
@@ -215,21 +212,18 @@ install -p -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/gpiod.conf
 mkdir -p %{buildroot}/%{_udevrulesdir}/
 mv -f %{buildroot}/%{_libdir}/udev/rules.d/90-gpio.rules %{buildroot}/%{_udevrulesdir}/90-gpio.rules
 %endif
-# Remove libtool archives.
-find %{buildroot} -name '*.la' -delete
+# Remove libtool archives and static libraries.
+find %{buildroot} -type f -name "*.la" -delete -print
+find %{buildroot} -name '*.a' -delete
 
-%post -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
-%postun -n libgpiod%{libgpiod_soversion} -p /sbin/ldconfig
-%post -n libgpiodcxx%{libgpiodcxx_soversion} -p /sbin/ldconfig
-%postun -n libgpiodcxx%{libgpiodcxx_soversion} -p /sbin/ldconfig
-%post -n libgpiodbus%{libgpiodbus_soversion} -p /sbin/ldconfig
-%postun -n libgpiodbus%{libgpiodbus_soversion} -p /sbin/ldconfig
-%post -n libgpiod-glib%{libgpiodglib_soversion} -p /sbin/ldconfig
-%postun -n libgpiod-glib%{libgpiodglib_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgpiod%{libgpiod_soversion}
+%ldconfig_scriptlets -n libgpiodcxx%{libgpiodcxx_soversion}
+%ldconfig_scriptlets -n libgpiodbus%{libgpiodbus_soversion}
+%ldconfig_scriptlets -n libgpiod-glib%{libgpiodglib_soversion}
+%ldconfig_scriptlets -n libgpiotools%{libgpiotools_soversion}
 
 %if %{with libgpiod_tests}
-%post -n libgpiosim%{libgpiosim_soversion} -p /sbin/ldconfig
-%postun -n libgpiosim%{libgpiosim_soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgpiosim%{libgpiosim_soversion}
 %endif
 
 %pre manager
@@ -257,15 +251,21 @@ find %{buildroot} -name '*.la' -delete
 %{_bindir}/gpiomon
 %{_bindir}/gpionotify
 %{_bindir}/gpioset
-#%%{_mandir}/man*/gpio*
+%{_mandir}/man1/gpiodetect.1%{?ext_man}
+%{_mandir}/man1/gpioget.1%{?ext_man}
+%{_mandir}/man1/gpioinfo.1%{?ext_man}
+%{_mandir}/man1/gpiomon.1%{?ext_man}
+%{_mandir}/man1/gpionotify.1%{?ext_man}
+%{_mandir}/man1/gpioset.1%{?ext_man}
 
 %files -n libgpiod%{libgpiod_soversion}
 %{_libdir}/libgpiod.so.%{libgpiod_soversion}
 %{_libdir}/libgpiod.so.%{libgpiod_soversion}.*
 
 %files -n libgpiodbus%{libgpiodbus_soversion}
+# Upstream builds gpiodbus with both_libraries() and no version, so the
+# installed file is exactly the SONAME with no dotted version suffix.
 %{_libdir}/libgpiodbus.so.%{libgpiodbus_soversion}
-%{_libdir}/libgpiodbus.so.%{libgpiodbus_soversion}.*
 
 %files -n libgpiodcxx%{libgpiodcxx_soversion}
 %{_libdir}/libgpiodcxx.so.%{libgpiodcxx_soversion}
@@ -281,6 +281,10 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/libgpiosim.so.%{libgpiosim_soversion}.*
 %endif
 
+%files -n libgpiotools%{libgpiotools_soversion}
+%{_libdir}/libgpiotools.so.%{libgpiotools_soversion}
+%{_libdir}/libgpiotools.so.%{libgpiotools_soversion}.*
+
 %files devel
 %{_includedir}/*.h*
 %dir %{_includedir}/gpiod-glib/
@@ -290,12 +294,13 @@ find %{buildroot} -name '*.la' -delete
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/libgpiod.pc
 %{_libdir}/pkgconfig/libgpiodcxx.pc
+%{_libdir}/pkgconfig/libgpiotools.pc
 %{_libdir}/pkgconfig/gpiod-glib.pc
 
 %if %{with libgpiod_python}
 %files -n python3-gpiod
 %{python3_sitearch}/gpiod/
-%{python3_sitearch}/gpiod-*.dist-info
+%{python3_sitelib}/gpiod/
 %endif
 
 %files manager
@@ -303,6 +308,8 @@ find %{buildroot} -name '*.la' -delete
 %{_bindir}/gpiocli
 %config %{_sysconfdir}/dbus-1/system.d/io.gpiod1.conf
 %{_datadir}/dbus-1/interfaces/io.gpiod1.xml
+%{_mandir}/man1/gpio-manager.1%{?ext_man}
+%{_mandir}/man1/gpiocli*.1%{?ext_man}
 %{_unitdir}/gpio-manager.service
 
 %changelog

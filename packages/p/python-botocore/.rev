@@ -1534,4 +1534,20 @@
     <comment>1</comment>
     <requestid>1387166</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>82793a2d2c3f9c1e2bec2ee918e28cb2</srcmd5>
+    <version>1.43.125</version>
+    <time>1794236914</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396345</requestid>
+  </revision>
+  <revision rev="165" vrev="2">
+    <srcmd5>4e7663ae54d78f1d714eb61151115b19</srcmd5>
+    <version>1.43.125</version>
+    <time>1794591164</time>
+    <user>anag_factory</user>
+    <comment>- update upper bound of urllib3 to the upstream constraint</comment>
+    <requestid>1397200</requestid>
+  </revision>
 </revisionlist>

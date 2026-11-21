@@ -1,6 +1,8 @@
---- openjdk/jdk/src/share/classes/java/io/File.java	2024-10-07 14:14:13.587124931 +0200
-+++ openjdk/jdk/src/share/classes/java/io/File.java	2024-10-07 14:15:27.187669663 +0200
-@@ -1352,7 +1352,11 @@
+diff --git a/jdk/src/share/classes/java/io/File.java b/jdk/src/share/classes/java/io/File.java
+index 24fb1c92c2..6f53905937 100644
+--- a/jdk/src/share/classes/java/io/File.java
++++ b/jdk/src/share/classes/java/io/File.java
+@@ -1352,7 +1352,11 @@ public class File
          if (isInvalid()) {
              return false;
          }

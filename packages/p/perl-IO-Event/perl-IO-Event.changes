@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 12:03:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.814.0 (0.814)
+   see /usr/share/doc/packages/perl-IO-Event/Changes
+
+-------------------------------------------------------------------
 Wed Dec  7 20:57:12 UTC 2016 - chris@computersalat.de
 
 - disabled t/forked2.t cause failing on obs, but building local

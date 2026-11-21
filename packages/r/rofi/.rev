@@ -487,4 +487,47 @@
   * No IMDKIT support in wayland</comment>
     <requestid>1302274</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3ced7ae0849c59a75d06216c9a50f3e4</srcmd5>
+    <version>2.1.0</version>
+    <time>1794236848</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.0:
+  * GIO launch
+    This version tries to launch a desktop applications using glib's built-in
+    launching method. This should improve launching of applications and should
+    handle multiple methods transparently. #2275
+  * FZF-V2
+    Added an improved of version of the fzf sorting method. This should closer
+    match fzf's FuzzyMatchV2 scorer. The sorter is called fzf-v2.
+  * Wayland: click-to-exit
+    Click-to-exit is finally enabled in Wayland by default.  Due to the way it
+    is implemented, it has some side-effects in multi-monitor setup: rofi
+    windows will not spill into other screens but be cropped out.
+  * Wayland: improved wayland window mode
+    The window mode for wayland has improved to closer match the functionality
+    offered by the X11 version. It adds 'accept-custom', 'window-command' and
+    the 'close-on-delete' option.</comment>
+    <requestid>1396289</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b8df5b3d224edb0fdb9c3bcad0ccb8d6</srcmd5>
+    <version>2.1.1</version>
+    <time>1794410950</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.1:
+  * [nkutils] Update to latest version, to allow asan build
+  * [DMenu] Possible fix for rows always being shown. (#2352)
+  * [CI] Use distro check, not custom build
+  * [GIOLaunch] Make gio-launch and compile time option.</comment>
+    <requestid>1396739</requestid>
+  </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9272af4e84f66bfff0e8bdf42297621e</srcmd5>
+    <version>2.1.1</version>
+    <time>1794828606</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397852</requestid>
+  </revision>
 </revisionlist>

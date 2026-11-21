@@ -17,13 +17,13 @@
 
 
 Name:           python-autoray
-Version:        0.8.11
+Version:        0.11.0
 Release:        0
 Summary:        A lightweight python automatic-array library
 License:        Apache-2.0
 URL:            https://github.com/jcmgray/autoray
 Source:         https://files.pythonhosted.org/packages/source/a/autoray/autoray-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}

@@ -2,10 +2,10 @@
  tests/CMakeLists.txt |    1 +
  1 file changed, 1 insertion(+)
 
-Index: xrootd-5.7.0/tests/CMakeLists.txt
+Index: xrootd-5.9.9/tests/CMakeLists.txt
 ===================================================================
---- xrootd-5.7.0.orig/tests/CMakeLists.txt
-+++ xrootd-5.7.0/tests/CMakeLists.txt
+--- xrootd-5.9.9.orig/tests/CMakeLists.txt
++++ xrootd-5.9.9/tests/CMakeLists.txt
 @@ -2,6 +2,7 @@ if(NOT BUILD_TESTS)
    return()
  endif()
@@ -13,4 +13,4 @@ Index: xrootd-5.7.0/tests/CMakeLists.txt
 +find_package(GTest REQUIRED)
  include(GoogleTest)
  
- add_subdirectory(common)
+ add_subdirectory(unit)

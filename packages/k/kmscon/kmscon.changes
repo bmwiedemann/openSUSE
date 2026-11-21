@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:04:31 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 10.1.2:
+  * Prepare v10.1.2
+  * uterm: Align VT switching shortcut to fbcon.
+  * input: share the XKB state between all keyboard devices
+  * uterm: Add Alt+(Left/right) and logo+(left/right) support
+  * uterm: Handle VT 13-24
+  * font_freetype: fix heap corruption from per-font fontconfig setup
+  * mailmap: deduplicate contributors with multiple email addresses
+  * Prepare v10.1.1
+  * libseat: remove input open/close callback in case of error
+  * font_freetype: fallback to non-monospace fonts for uncovered languages
+  * vt_libseat: properly wait for configured VT to be activated
+  * vt_real: refactor and move some functions to vt_real.h
+  * monitor: set seat_name at creation
+  * seat: don't use VT_WAITACTIVE
+  * Prepare v10.1.0
+  * Specify the `Tc`, `setrgbb` and `setrgbf` terminfo capabilities
+  * terminal: always update the font for all display
+  * terminal: If the font fails to load, retry with font_size of 16
+  * fbdev: consume full-redraw requests after presenting a frame
+  * fbdev: activate a display created while the video device is awake
+  * psf: minor refactor
+  * font: draw the unicode blocks 0x2580-0x259f directly
+  * vt_libseat: wait for the current VT to be activated if --vt is set
+  * vt_libseat: retry device opens and handle disconnected state
+  * input: hang up devices on read errors instead of freeing them
+  * freetype: Request a half pixel less height
+  * freetype: Use W instead of M to calibrate the font width
+  * freetype: refactor request_size() and load_and_render()
+  * terminal: Ignore pointer events when in background.
+  * terminal: print both pts and tty in the issue
+  * debug: improve debug logs
+  * terminal: make sure kmscon_text_resize() is called for all renderer
+  * terminal: load font only when first display is ready
+  * tests/conf: Add tests for parsing mode and screen
+  * terminal: Replace rotate with screen parameter.
+  * video: Allow to specify a mode for a specific gpu/connector
+  * fbdev: fix don't close fbdev fd
+  * tests: use calloc() instead of malloc() + memset()
+  * src: use calloc() instead of malloc() + memset()
+  * video: use calloc() instead of malloc() + memset()
+  * shl: use calloc() instead of malloc() + memset()
+  * render: use calloc() instead of malloc() + memset()
+  * font: use calloc() instead of malloc() + memset()
+  * uterm: use calloc() instead of malloc() + memset()
+  * misc: use calloc() instead of malloc() + memset()
+  * drm_shared: Clear overlay planes, too
+  * tests: freetype, abort test if no fonts are installed
+  * text: use Left One Eighth Block for vertical bar cursor
+  * seat: handle VT HUP, and remove callback registering.
+  * seat: handle seat exiting in seat.c
+  * terminfo: add cursor shape change support to terminfo file
+  * main: restore the previous vt when --switchvt is used.
+  * conf: Parse all command line arguments
+  * seat: Fix failure to wake the video device
+  * drm_shared: don't close video fd
+  * bbulk: clear stale double_width flag on overflow cells
+  * input: don't free devices revoked on VT switch
+  * vt_libseat: acknowledge disable_seat
+  * vt_libseat: dispatch pending events when activating
+  * config: show freetype as the default font engine in --help
+  * drm3d: fix module registration error message
+  * psf: don't free the unicode table of fonts without one
+  * config: don't pass an empty argument to the default login
+  * drm2d: return error when second framebuffer allocation fails
+  * freetype: retain compatibility with older Fontconfig headers
+  * terminal: don't wait for display before opening the pty
+  * Install pam config into /usr/lib/pam.d/
+  * freetype: Fix memory leak when loading fallback font.
+  * freetype: filter out non-monospace fonts completely
+  * freetype: fix fallback font size.
+  * uterm: treat platform display controllers as primary GPUs
+  * terminal: call update_pointer_max_all() from terminal_update_size_notify()
+  * terminal: check directly if rows/cols have changed.
+  * video: Add pathname to the video device
+  * drm_shared: use the same display name as what is listed in /dev/dri/card0
+  * video: Fix use_original, and disable it by default
+  * conf: move conf_grab to where it belongs
+  * terminal: use auto_font_size to simplify auto font size handling
+  * seat: deactivate terminal and input, when going into background mode
+  * terminal: force screen redraw on seat switch
+  * drm_shared: Fix crash if a plane has no properties
+  * workflows: build with libseat enabled
+- Add patch to fix path to PAM directory:
+  * 0001-Drop-use-of-libdir-for-usr-lib-pam.d.patch
+
+-------------------------------------------------------------------
 Mon Oct 19 11:48:43 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Fix preceding changelog entry: libseat support got enabled again

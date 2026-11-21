@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pybase64
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        Fast Base64 encoding/decoding
 License:        BSD-2-Clause
@@ -88,7 +88,7 @@ decode functions and ships a command line tool.
 %pre
 %python_libalternatives_reset_alternative pybase64
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.rst
 %python_alternative %{_bindir}/pybase64

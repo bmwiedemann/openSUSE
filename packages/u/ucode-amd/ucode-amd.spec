@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261019.tar.gz#/kernel-firmware-tools-20261019.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       topicprovs
@@ -47,9 +47,9 @@ BuildArch:      noarch
 Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 # new style (after 3.12 kernel somewhen)
-Supplements:    modalias(cpu:type%%3Ax86*ven0002*)
+Supplements:    (modalias(cpu:type%%3Ax86*ven0002*) and kernel)
 # old style (before 3.16 kernel)
-Supplements:    modalias(x86cpu:vendor%%3A0002%%3Afamily%%3A*%%3Amodel%%3A*%%3Afeature%%3A*)
+Supplements:    (modalias(x86cpu:vendor%%3A0002%%3Afamily%%3A*%%3Amodel%%3A*%%3Afeature%%3A*) and kernel)
 
 %description
 This package contains kernel firmware files for Microcode updates for AMD CPUs.

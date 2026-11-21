@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define sonum 6
 %define rname kcalendarcore
@@ -29,11 +29,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcalendarcore
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later

@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Thu Nov 19 22:25:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- opennlp-maxent provide needed by languagetool
+
+-------------------------------------------------------------------
+Thu Nov 19 13:19:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.5.13
+  * Security fixes:
+    + ReDoS in coordinate name finder regex patterns
+      (CVE-2026-120404)
+    + Untrusted Java deserialization in SvmDoccatModel
+      (bsc#1270446, CVE-2026-43825, OPENNLP-1823)
+    + ReDoS / stack exhaustion in RegexNameFinderFactory built-in
+      EMAIL and URL patterns (bsc#1280293, CVE-2026-82617,
+      OPENNLP-1922)
+    + Arbitrary Class Instantiation via XML Feature Generator
+      Descriptor and Format Name (bsc#1272520, CVE-2026-63317,
+      OPENNLP-1890, OPENNLP-1891)
+  * Changes of version 2.5.13
+    + Thread safety: TokenizerME no longer changes the shared
+      WhitespaceTokenizer.INSTANCE, and MorfologikTagDictionary,
+      AbstractModel and AbstractClassPathModelFinder.findModels can
+      be shared between threads.
+    + Deep learning: SentenceVectorsDL runs on a GPU,
+      DocumentCategorizerDL computes a numerically stable softmax,
+      invalid document split options are rejected instead of looping
+      forever, and close() can be called more than once.
+    + Model downloads: DownloadUtil uses a local copy of the model
+      index when the model host cannot be reached and verifies cached
+      models against their SHA-512 checksum.
+    + Format readers and data: the AD readers no longer hang at end
+      of file or fail on the FlorestaVirgem corpus, the bundled
+      Spanish head rules match tags with escaped dots, and
+      MarkableFileInputStream and the Leipzig reader release their
+      file handles.
+    + BaseModel loads on Android, and StringUtil.toUpperCase maps
+      supplementary-plane letters.
+    + Release artifacts: the binary distribution LICENSE covers all
+      bundled third-party code.
+  * Summary of changes since 1.9.5:
+    + Changes of 2.5.x:
+      - Thread-safe implementations of key components (sentence
+        detector, tokenizer, POS-tagger, probabilistic ME classes)
+      - Classpath loading of pre-trained models (opennlp-models)
+      - Support for Roberta-based models
+      - Support for custom abbreviation dictionaries
+      - Verification of cached models against SHA-512 checksums
+      - Dropped Brat Annotator component to sandbox (removes Jackson
+        and Jersey dependencies)
+    + Changes of 2.4.0:
+      - New module to load pre-trained OpenNLP models from JARs on
+        the classpath
+    + Changes of 2.3.x:
+      - Raise minimum Java version to 17
+      - Split opennlp-dl into CPU and GPU variants
+      - Address memory issue with String interning in large
+        dictionaries (OPENNLP-421)
+      - Abbreviation dictionaries for multiple languages
+    + Changes of 2.2.0:
+      - Introduce SLF4J logging to replace System.out
+      - ONNX Runtime support for sentence-transformers
+    + Changes of 2.1.x:
+      - Optional GPU inference in ONNX Runtime configuration
+      - Unlimited text length in document classification with ONNX
+    + Changes of 2.0.0:
+      - Raise minimum Java requirement to Java 11
+      - Support model inference using ONNX Runtime (opennlp-dl)
+      - Download pre-trained models from within Apache OpenNLP
+      - Support for MASC corpus format
+- Removed patch:
+  * opennlp-CVE-2026-63317.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Fri Jul 24 14:34:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

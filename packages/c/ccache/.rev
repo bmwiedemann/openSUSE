@@ -1000,4 +1000,24 @@ Merged into the devel project as jirislaby/d-t-b-ccache PR #2.</comment>
   * Upgrade bundled BLAKE3 to 1.8.7</comment>
     <requestid>1386405</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>26bc90c438066b2d52bd65c139af5b91</srcmd5>
+    <version>4.14.3</version>
+    <time>1794317938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.14.3
+  * Fix abort when stderr is closed
+  * Fix assembler .incbin directive detection with macro operands
+  * Fix MSVC response file backslash escaping for long commands
+  * Fix GCC PCH fallback behavior in depend mode
+  * Fix console colors and Unicode display on Windows
+  * Fix manifest header path matching with .\ on Windows
+  * Reduce memory footprint and buffer copying across cache and
+    hashing routines
+  * Test suite improvements: skip unsupported -march/-gz flags, fix
+    ThinLTO / CodeView handling, improve Windows test cleanup
+  * Documentation updates regarding remote storage effects on local
+    cache hard linking</comment>
+    <requestid>1396269</requestid>
+  </revision>
 </revisionlist>

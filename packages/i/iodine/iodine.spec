@@ -17,13 +17,8 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 Name:           iodine
-Version:        0.8.0
+Version:        0.9.1
 Release:        0
 Summary:        IPv4-through-DNS tunnel server and client
 License:        ISC
@@ -34,26 +29,17 @@ Source2:        sysconfig.iodine
 Source3:        iodined.service
 Source4:        sysconfig.iodined
 Source5:        system-user-iodined.conf
-##PATCH-FIX-OPENSUSE iodine-fix-makefile-prefix.patch malcolmlewis@opensuse.org -- Modify default install prefix.
-Patch0:         iodine-fix-makefile-prefix.patch
-##PATCH-FIX-UPSTREAM 120.patch -- based on PR 120
-Patch1:         https://github.com/yarrick/iodine/pull/120.patch
-BuildRequires:  fdupes
-BuildRequires:  zlib-devel
-BuildRequires:  pkgconfig(libselinux)
-BuildRequires:  pkgconfig(systemd)
-# iodine still uses ifconfig
-Requires:       net-tools-deprecated
-Requires(pre):  %fillup_prereq
-%if 0%{?suse_version} >= 1500
-Requires(pre):  group(nobody)
-%endif
-%if 0%{?suse_version} >= 1550
+BuildRequires:  cmake
+BuildRequires:  meson
 BuildRequires:  sysuser-tools
+BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(libcap-ng)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(libsystemd)
+Requires(pre):  %fillup_prereq
+Requires(pre):  group(nobody)
 %sysusers_requires
-%else
-Requires(pre):  /usr/sbin/useradd
-%endif
+%systemd_requires
 
 %description
 This software lets one tunnel IPv4 data through a DNS server. This
@@ -64,30 +50,24 @@ firewalled, but DNS queries are allowed.
 %autosetup -p1
 
 %build
-make PREFIX="%{_prefix}"
+%meson
+%meson_build
 %sysusers_generate_pre %{SOURCE5} iodine system-user-iodined.conf
 
 %install
-make install PREFIX="%{buildroot}/%{_prefix}"
-# Install client files
+%meson_install
+## Install client files
 mkdir -p %{buildroot}%{_unitdir}
 install -m 0644 %{S:1} %{buildroot}%{_unitdir}/
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 0644 %{S:2} %{buildroot}%{_fillupdir}/
-# Install server files
+## Install server files
 install -m 0644 %{S:3} %{buildroot}%{_unitdir}/
 install -m 0644 %{S:4} %{buildroot}%{_fillupdir}/
-# Copy common man page to avoid warning
-pushd %{buildroot}%{_mandir}/man8/
-ln -s %{name}.8 %{name}d.8
-popd
 ## Remove as we install as %%doc
 rm -rf %{buildroot}%{_datadir}/doc/iodine
-# make chroot dir
+## Make chroot dir
 mkdir -p %{buildroot}/var/lib/iodined
-# make rc-link
-ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodine
-ln -sf /usr/sbin/service %{buildroot}%{_sbindir}/rciodined
 mkdir -p %{buildroot}%{_sysusersdir}
 install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 
@@ -113,8 +93,6 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 %{_sbindir}/%{name}d
 %{_fillupdir}/sysconfig.iodine
 %{_fillupdir}/sysconfig.iodined
-%{_sbindir}/rciodine
-%{_sbindir}/rciodined
 %{_unitdir}/iodine.service
 %{_unitdir}/iodined.service
 %{_sysusersdir}/system-user-iodined.conf

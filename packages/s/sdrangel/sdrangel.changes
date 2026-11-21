@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:49:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.2.0
+  * Overhaul digital speech: native DSDDemod replaces DSDcc and
+    mbelib with much better sensitivity and no false triggering;
+    adds P25 Phase 1 and 2, NXDN96 and M17 plus the new native
+    Angel61 mode for HF and VHF.
+  * Add DSEMod digital speech modulator for the same modes, so a
+    complete digital voice transceiver can be built, with AMBE
+    encoding and text, APRS and GPS position handling.
+  * Use mbevocoder instead of mbelib for improved voice quality.
+  * Fix DAB demodulator.
+
+-------------------------------------------------------------------
+Mon Nov  9 10:55:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.0
+  New plugins for aero communications
+  * Add ACARS demodulator channel plugin, decoding various digital
+    aero messages.
+  * Add Aircraft feature plugin, collating aircraft related data
+    from various sources.
+  Other changes
+  * Analog TV demodulator: add colour support.
+  * Record software identification in WAV files.
+  * Fix Coverity and static-analysis findings and compiler
+    warnings.
+  * Fix Flatpak build issue and update faad2 download URL.
+  * libSGP4 range rate API compatibility.
+  * Fix MCP tune_gain tool input schema.
+- Add pkgconfig(libacars-2) BuildRequires for the new ACARS
+  demodulator plugin and pkgconfig(libzstd) for the map plugin's
+  MSFS converter (upstream falls back to a network download
+  without it, which fails in offline builds).
+- Declare the new demodacars plugin's accidentally committed
+  Windows build objects as other-platform (the Linux build compiles
+  only the C sources).
+- Build the ThirdParty wasm blobs from source instead of
+  shipping upstream's prebuilts, and drop them from the tarball:
+  * wasm_splats_bg.wasm from CesiumGS/cesium-wasm-utils
+    (wasm-splats 0.1.0-alpha.2, Apache-2.0), built offline
+    with the pinned Rust 1.98 toolchain (wasm32 std compiled
+    from the matching rust-src) plus a wasm-bindgen CLI
+    built from the same vendored sources.
+  * zip-module.wasm from gildas-lormeau/zlib-streams
+    (BSD-3-Clause, zlib submodule at 5a82f71), built with
+    system emscripten (upstream make zip_module recipe).
+  * draco_decoder.wasm from google/draco 1.5.7 (Apache-2.0),
+    built with system emscripten (upstream Emscripten decoder
+    recipe); the fresh module's linkage names are adapted to
+    the older interface the shipped Cesium glue was generated
+    against (draco-relink.py; symbol-joined bindings, proven by
+    a decode smoke test with that glue). Backports the
+    upstream FindPython3 switch (draco-emscripten-python3.patch)
+    so the build configures with cmake>=4.
+  * basis_transcoder.wasm from BinomialLLC/basis_universal
+    1.15_final (Apache-2.0), built with system emscripten (upstream
+    webgl/transcoder recipe). The new module needs the new
+    emscripten runtime, so basis-splice.py swaps the fresh
+    factory into the vendored worker bundle (outer Cesium
+    logic untouched; restores the wasmBinaryFile contract),
+    proven by a worker end-to-end transcode test. Needs
+    basis-cxx17.patch (system emscripten embind requires
+    C++17; upstream pins C++11). All four
+    ThirdParty wasm now build from source.
+- Spec cleanup: drop Group tag, sort BuildRequires.
+
+-------------------------------------------------------------------
 Sun Oct 25 07:33:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.0.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 10 09:26:03 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on aarch64 with kernel 7.3+:
+  * iptables-fix-aarch64.patch
+
+-------------------------------------------------------------------
 Wed Mar  4 12:07:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.13

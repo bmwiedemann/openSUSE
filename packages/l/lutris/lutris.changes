@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 13:35:46 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Add fix-removed-attributes-in-gnomedesktop.patch to fix compatibility
+  with newer GNOME desktop environments that remove a previously
+  deprecated attribute (RRScreen) from GnomeDesktop.
+  (gh#lutris/lutris#6965) (gh#lutris/lutris#6828)
+
+-------------------------------------------------------------------
 Sun May 10 12:41:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix-webkit-typelib.patch: typelib-1_0-WebKit2-4_0 does not

@@ -304,4 +304,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1364867 from glaubitz)</comment>
     <requestid>1364932</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bd5bd6e40129ce11627164f31c5e0242</srcmd5>
+    <version>4.12.0</version>
+    <time>1794591400</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.12.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1397256 from glaubitz)</comment>
+    <requestid>1397325</requestid>
+  </revision>
 </revisionlist>

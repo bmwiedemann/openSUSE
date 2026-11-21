@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:06:17 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update fuse3.patch to handle fuse3's changed runtime defaults:
+  * disable FUSE_CAP_ATOMIC_O_TRUNC: open() doesn't handle O_TRUNC,
+    so overwriting an existing file left stale trailing data
+  * handle UTIME_NOW/UTIME_OMIT in utimens (touch set mtime to 1970)
+  * default to max_threads=64: libfuse >= 3.12 caps worker threads at
+    10 while reads block until the file is downloaded
+
+-------------------------------------------------------------------
 Tue Oct 20 12:59:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.0.27 (version bump only).

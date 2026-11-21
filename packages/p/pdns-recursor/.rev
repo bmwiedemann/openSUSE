@@ -861,4 +861,41 @@ https://doc.powerdns.com/recursor/changelog/4.4.html#change-4.4.3</comment>
   + Add boost-m4-39.patch</comment>
     <requestid>1318732</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>70ea90ce04660d20116875f0a1a46fec</srcmd5>
+    <version>5.4.8</version>
+    <time>1794428321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.8
+  * Security fixes:
+    + PowerDNS Advisory 2025-06:
+      CVE-2025-59023, bsc#1252650
+      CVE-2025-59024, bsc#1252651
+    + PowerDNS Advisory 2025-07:
+      CVE-2025-59029, bsc#1254881
+    + PowerDNS Advisory 2025-08:
+      CVE-2025-59030, bsc#1254877
+    + PowerDNS Advisory 2026-01:
+      CVE-2026-0398, bsc#1257957
+      CVE-2026-24027, bsc#1257956
+    + PowerDNS Advisory 2026-03:
+      CVE-2026-33256, bsc#1262557
+      CVE-2026-33257, bsc#1262536
+      CVE-2026-33258, bsc#1262558
+      CVE-2026-33259, bsc#1262559
+      CVE-2026-33260, bsc#1262537
+      CVE-2026-33261, bsc#1262560
+      CVE-2026-33262, bsc#1262561
+      CVE-2026-33600, bsc#1262563
+      CVE-2026-33601, bsc#1262562
+    + PowerDNS Advisory 2026-08:
+      CVE-2026-33612, bsc#1269208
+      CVE-2026-40012, bsc#1269212
+      CVE-2026-42005, bsc#1269201
+      CVE-2026-42387, bsc#1269213
+      CVE-2026-42388, bsc#1269214
+      CVE-2026-42389, bsc#1269215
+      CVE-2026-42390, bsc#1269216</comment>
+    <requestid>1396928</requestid>
+  </revision>
 </revisionlist>

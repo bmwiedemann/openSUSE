@@ -150,4 +150,13 @@
     <comment>Update to 0.16.0</comment>
     <requestid>1368908</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6afabe1cef518d070b4150a3d474c0e4</srcmd5>
+    <version>0.17.0</version>
+    <time>1794162099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.0
+  https://www.kaidan.im/2026/11/05/kaidan-0.17.0/</comment>
+    <requestid>1396082</requestid>
+  </revision>
 </revisionlist>

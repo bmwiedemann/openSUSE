@@ -23,7 +23,8 @@ Summary:        A remote desktop client for GNOME
 License:        GPL-3.0-or-later
 URL:            https://wiki.gnome.org/Apps/Connections
 Source:         %{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM glgo#GNOME/gnome-connections#212
+Patch0:         gnome-connections-desktop.patch
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 0.50.0

@@ -960,4 +960,15 @@
   * fix(fileperms): resolve constant file and directory permissions (#1766)</comment>
     <requestid>1393101</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>8f438db64e33f066df08fe45e0309628</srcmd5>
+    <version>2.30.0</version>
+    <time>1794932289</time>
+    <user>anag_factory</user>
+    <comment>- Add git-core build dependency used by upstream Makefile to add
+  git metadata to Go binary. Could be dropped in the future by
+  extracting Makefile commands to regular go build commands
+  directly in spec. (forwarded request 1397958 from jfkw)</comment>
+    <requestid>1397959</requestid>
+  </revision>
 </revisionlist>

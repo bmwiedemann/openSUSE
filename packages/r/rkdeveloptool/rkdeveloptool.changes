@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:07:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20250307 (git snapshot 304f073):
+  * Add new cs command to switch boot storage (eMMC, SD, SPINOR).
+  * udev rules: add RK3566 USB ID.
+  * Copy the chip string safely; fix mingw-w64 build.
+  * Replace sprintf with snprintf; add autogen.sh wrapper.
+- Spec cleanup: drop Group tag, reorder tags, use %{optflags} form,
+  add pkgconfig BuildRequires.
+
+-------------------------------------------------------------------
 Thu Oct 21 12:50:04 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Use LTO on platforms that do not use it by default to workaround a build error.

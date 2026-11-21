@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-bigscreen
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        Plasma shell for TVs
 License:        GPL-2.0-or-later
@@ -99,8 +99,8 @@ HTPCs and SBCs connected to TVs and projectors.
 
 # Can't use this yet, see
 # https://invent.kde.org/plasma/plasma-bigscreen/-/work_items?show=eyJpaWQiOiI1OSIsImZ1bGxfcGF0aCI6InBsYXNtYS9wbGFzbWEtYmlnc2NyZWVuIiwiaWQiOjUyNzM5fQ%3D%3D
-# mkdir -p %{buildroot}%{_udevrulesdir}
-# mv %{buildroot}%{_libdir}/udev/rules.d/40-uinput.rules %{buildroot}%{_udevrulesdir}/
+# mkdir -p %%{buildroot}%%{_udevrulesdir}
+# mv %%{buildroot}%%{_libdir}/udev/rules.d/40-uinput.rules %%{buildroot}%%{_udevrulesdir}/
 rm %{buildroot}%{_libdir}/udev/rules.d/40-uinput.rules
 
 %find_lang %{name} --all-name

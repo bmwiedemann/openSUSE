@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Fri Oct 30 10:32:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.29.7:
+  This is a security release. It fixes findings from Anthropic's
+  oss-scanner project and the Tailworm report. None are critical,
+  but some can cause denial of service in Headscale. We recommend
+  that all users upgrade to Headscale 0.29.7 and Tailscale v1.104.4
+  or newer as soon as possible, especially those using Tailscale
+  SSH.
+
+  Tailscale v1.104.4 fixes vulnerabilities in SSH forwarding, SSH
+  session handling and Serve. These fixes run in tailscaled on your
+  nodes; upgrading Headscale alone does not apply them.
+
+  See Tailscale's security bulletins and Tailscale SSH: Findings
+  and fixes.
+
+  To disable SSH agent and port forwarding on a node, set
+  TS_SSH_DISABLE_FORWARDING=1 in the tailscaled service environment
+  and restart the service. This setting applies to all Tailscale
+  SSH sessions on that node and is also available in older clients.
+  #3624
+
+  This release also fixes the issues that oss-scanner reported in
+  Headscale: ANT-2026-MLP8ZR5T, ANT-2026-LYVGXVSW,
+  ANT-2026-AWGRB7O1, ANT-2026-QMCAFJ1Q, ANT-2026-RQS7JAPP,
+  ANT-2026-5B6KE87K, ANT-2026-KFCFFM34, ANT-2026-K903ZEUA,
+  ANT-2026-NM50ZP4N, ANT-2026-ZC18AF82, ANT-2026-NWTIBB02,
+  ANT-2026-MX8FKG4K. #3603
+
+
+  - Metrics are no longer exposed to unregistered clients through
+    the Noise protocol. They remain available only on the
+    configured metrics listener; an empty metrics_listen_addr
+    disables that listener #3623
+  - Update the Tailscale dependency to v1.104.4, which bounds how
+    much of an unexpected DERP HTTP response is read #3577
+  - Keep pending registrations and OIDC logins at capacity instead
+    of evicting ones awaiting approval; new requests get a retry
+    response, and registered nodes keep capacity for SSH checks
+    #3586
+  - Cap stored pending registration data at 64 KiB, keeping tags
+    and expiry; oversized interactive registrations are rejected
+    #3586
+  - Check the OIDC login type before storing anything, accept each
+    OIDC callback only once, and free an SSH check's slot once the
+    client has read its result #3586
+  - Stop serving a route that is a single address inside the node
+    IP ranges, such as 100.64.0.11/32 or ::ffff:100.64.0.11/128,
+    because it names a node, not a subnet; the route stays approved
+    and listed, and wider routes are still served #3603
+  - Require a valid pre-auth key to re-register an expired tagged
+    node #3603
+  - Another user's key or login on a tagged machine now creates a
+    new device for that user instead of re-authenticating the
+    tagged node #3603
+  - Fix one node with a stored key expiry outside the years 0 to
+    9999 in UTC failing the map of every node that can see it; it
+    is now left out of its peers' maps and the startup check names
+    it with the fix command #3603
+  - Refuse a key expiry outside the years 0 to 9999 in UTC on
+    registration, on the OIDC token-expiry path and in headscale
+    nodes expire / POST /api/v1/node/{node_id}/expire (HTTP 400);
+    the latest accepted expiry no longer fails node listings on
+    PostgreSQL in a zone east of UTC #3603
+  - Keep the first 256 endpoints and 4096 announced routes from
+    client reports; oversized hostnames, requested tags or other
+    metadata return a registration error or HTTP 413 on map
+    updates. Zoned IPv6 endpoints are refused #3603
+  - At startup, trim stored hostnames, endpoints and routes to the
+    client-report limits and remove zoned endpoints. Hostinfo
+    exceeding its size or tag limit is dropped until the next valid
+    report #3603
+  - Pending interactive registrations and follow-up waits keep only
+    the hostname, OS and requested tags; other device details
+    arrive with the first map request. Reauthentication preserves
+    routes, services and endpoints #3603
+  - Fix web reauthentication dropping the discovery key, so peers
+    could not reach the device #3603
+  - A stalled request body, or a Noise tunnel with no open request,
+    is closed after 30 seconds #3603
+  - A registration follow-up from a machine other than the one that
+    started the registration is refused before it waits #3603
+  - Only the newest follow-up waits on a pending registration or
+    SSH check; older ones are answered at once #3603
+  - Fix registration locks staying in memory after the registration
+    ends #3603
+  - Fix concurrent deletes of one node freeing its addresses and
+    announcing its removal more than once #3603
+  - OIDC verifies an email against the document supplying it; an
+    email_verified flag without an address no longer verifies
+    another document's email #3603
+  - Fix release builds reporting their version with a +dirty suffix
+    #3584
+  - Fix SSH policy acceptEnv having no effect, so allowed
+    environment variables reach SSH sessions. Upgrade SSH
+    destination nodes to Tailscale v1.104.4 or newer before using
+    acceptEnv, because older clients can disclose forwarded values
+    #3569
+
+-------------------------------------------------------------------
+Sat Oct 24 14:04:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.29.6:
+  Minimum supported Tailscale client version: v1.80.0
+
+  - Security
+    - Build with Go 1.27.3 to reject certificate chains containing
+      the compromised eMudhra intermediate keys (CVE-2026-111943)
+      Go #82345
+    - Update and pin the normal and debug container bases to images
+      whose CA bundles no longer include emSign ECC Root CA - G3
+      #3579
+    - Update golang.org/x/net to v0.60.0, golang.org/x/text to
+      v0.42.0 and gRPC to v1.83.2 to address HTTP/2
+      denial-of-service and text-processing vulnerabilities (x/net,
+      x/text, gRPC)
+    - Custom builds must be rebuilt with Go 1.27.3 or newer to
+      receive the certificate-chain protection.
+  - Changes
+    - Speed up peer-map construction on large tailnets by finding
+      each node's matching rules once, instead of checking every
+      pair of nodes against every rule #3556
+    - Build the peer map once per policy write instead of twice,
+      and skip the rebuild when reloading an unchanged policy #3557
+    - Reduce work when broadcasting map updates by avoiding
+      repeated recipient filtering #3568
+    - Avoid INTERNAL_ERROR stream errors when a node logs out or is
+      deleted, or when Headscale shuts down; writes already in
+      progress have a short grace period to finish, while clients
+      that stop reading are still disconnected #3575
+    - Return database-open errors instead of risking a panic or
+      returning a partially initialized database handle #3496
+    - Update the Tailscale dependency to v1.102.0 for Go 1.27 JSON
+      compatibility in SSH check responses
+
+-------------------------------------------------------------------
+Tue Oct 13 15:00:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.29.5:
+  - Fix via exit-node steering being undone by an unrelated ACL or
+    grant rule that matches the viewer #3495
+  - Fix via grants not offering exit nodes and subnet routes to a
+    group that names an unknown user #3516
+  - Fix SSH check periods and app grants dropping a group that
+    names an unknown user #3516
+  - Fix policy tests and sshTests failing for a group that names an
+    unknown user #3516
+  - Fix an unknown user in nodeAttrs rejecting the policy #3516
+  - Fix every grant being fully resolved as if it had via when the
+    policy has no via grants, slowing map generation on large
+    tailnets #3538
+  - Fix a data race in via route resolution when the policy has
+    both via grants and ACLs #3515
+  - Fix packet filters under autogroup:self not updating after a
+    user is added or renamed #3501
+  - Fix a rejected policy leaving its packet filter active #3501
+  - Fix an exit node or subnet router not seeing its own approved
+    routes until it reconnected, so tailscale status did not show
+    it offering an exit node #3518
+  - Fix deleted nodes, and peers hidden by a policy change, staying
+    listed in the Tailscale Android app; removed peers are now sent
+    as their own incremental map update #3492 #3527
+  - Policy changes no longer resend DNS configuration to every
+    node, sparing clients a full netmap rebuild; a node gets its
+    DNS configuration when its own NextDNS nodeAttrs, tags or
+    hostname change, which also fixes NextDNS device metadata going
+    stale after a hostname change #3492
+  - Fix SSH access surviving the removal of its policy rules;
+    clients kept their last SSH rules, and a pending SSH check
+    could still be approved #3517
+  - Fix SSH check periods coming from the first check rule for a
+    node pair instead of the rule for the login user #3517
+  - Policy changes resend a node's SSH policy only when it changed,
+    sparing clients a full netmap rebuild #3517
+  - Fix SSH check accepting a repeated follow-up for an
+    already-decided session, even after a rejection #3526
+  - Fix an ephemeral node being deleted while online, when it
+    reconnected while its previous session was being marked offline
+    #3539
+  - Fix peers dropping traffic from a node that re-authenticates
+    after its key expired #3541
+  - Fix clients uploading logs to Tailscale Inc. while
+    logtail.enabled is false; clients also granted the
+    data-plane-audit-logs node attribute now go down until
+    tailscale up #3522
+  - Fix a node ping being lost when a full map update is queued at
+    the same time #3523
+
+-------------------------------------------------------------------
 Wed Sep 23 21:20:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.29.4:

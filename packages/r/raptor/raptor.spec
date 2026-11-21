@@ -1,7 +1,7 @@
 #
 # spec file for package raptor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ Patch2:         ubsan.patch
 Patch3:         raptor-libxml2-2.11-support.patch
 Patch4:         raptor-CVE-2024-57822.patch
 Patch5:         raptor-CVE-2024-57823.patch
+Patch6:         CVE-2025-71436.patch
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  libxslt-devel

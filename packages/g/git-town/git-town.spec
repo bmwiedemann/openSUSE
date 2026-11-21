@@ -17,7 +17,7 @@
 
 
 Name:           git-town
-Version:        24.1.0
+Version:        24.2.0
 Release:        0
 Summary:        Git branches made easy
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/git-town/git-town
 Source0:        %{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.1
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
 Requires:       git-core
 

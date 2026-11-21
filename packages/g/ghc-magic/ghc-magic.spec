@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1.2
+Version:        2.0.0
 Release:        0
 Summary:        Interface to C file/magic library
 License:        BSD-3-Clause
@@ -31,7 +31,15 @@ BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-deepseq-devel
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-os-string-devel
+BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmagic)
 ExcludeArch:    %{ix86}
@@ -40,8 +48,6 @@ BuildRequires:  ghc-HUnit-devel
 BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
-BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 %endif

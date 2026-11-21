@@ -220,4 +220,12 @@
     <comment>- Use zypp-* config packages when available, removed from Aeon.kiwi</comment>
     <requestid>1333280</requestid>
   </revision>
+  <revision rev="27" vrev="27">
+    <srcmd5>bc2e4284cb4c7e0ee329873cbb926835</srcmd5>
+    <version>5.0</version>
+    <time>1794410989</time>
+    <user>dimstar_suse</user>
+    <comment>Drop malcontent-control</comment>
+    <requestid>1396854</requestid>
+  </revision>
 </revisionlist>

@@ -23,10 +23,10 @@ not recommendable for distro inclusion.
  melder/melder.cpp            |    2 +-
  10 files changed, 31 insertions(+), 43 deletions(-)
 
-Index: praat.github.io-7.0.02/melder/NUMlinprog.cpp
+Index: praat.github.io-7.0.03/melder/NUMlinprog.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/melder/NUMlinprog.cpp
-+++ praat.github.io-7.0.02/melder/NUMlinprog.cpp
+--- praat.github.io-7.0.03.orig/melder/NUMlinprog.cpp
++++ praat.github.io-7.0.03/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -36,10 +36,10 @@ Index: praat.github.io-7.0.02/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat.github.io-7.0.02/melder/NUMspecfunc.cpp
+Index: praat.github.io-7.0.03/melder/NUMspecfunc.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/melder/NUMspecfunc.cpp
-+++ praat.github.io-7.0.02/melder/NUMspecfunc.cpp
+--- praat.github.io-7.0.03.orig/melder/NUMspecfunc.cpp
++++ praat.github.io-7.0.03/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -55,10 +55,10 @@ Index: praat.github.io-7.0.02/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat.github.io-7.0.02/melder/melder.cpp
+Index: praat.github.io-7.0.03/melder/melder.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/melder/melder.cpp
-+++ praat.github.io-7.0.02/melder/melder.cpp
+--- praat.github.io-7.0.03.orig/melder/melder.cpp
++++ praat.github.io-7.0.03/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -68,10 +68,10 @@ Index: praat.github.io-7.0.02/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat.github.io-7.0.02/dwsys/Makefile
+Index: praat.github.io-7.0.03/dwsys/Makefile
 ===================================================================
---- praat.github.io-7.0.02.orig/dwsys/Makefile
-+++ praat.github.io-7.0.02/dwsys/Makefile
+--- praat.github.io-7.0.03.orig/dwsys/Makefile
++++ praat.github.io-7.0.03/dwsys/Makefile
 @@ -1,7 +1,7 @@
  # makefile for library "dwsys".
  # David Weenink and Paul Boersma, 23 May 2026
@@ -88,10 +88,10 @@ Index: praat.github.io-7.0.02/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat.github.io-7.0.02/dwtools/Sound_extensions.cpp
+Index: praat.github.io-7.0.03/dwtools/Sound_extensions.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/dwtools/Sound_extensions.cpp
-+++ praat.github.io-7.0.02/dwtools/Sound_extensions.cpp
+--- praat.github.io-7.0.03.orig/dwtools/Sound_extensions.cpp
++++ praat.github.io-7.0.03/dwtools/Sound_extensions.cpp
 @@ -37,10 +37,10 @@
  #include "Manipulation.h"
  #include "NUMcomplex.h"
@@ -107,12 +107,12 @@ Index: praat.github.io-7.0.02/dwtools/Sound_extensions.cpp
  
  #include "enums_getText.h"
  #include "Sound_extensions_enums.h"
-Index: praat.github.io-7.0.02/dwtools/Makefile
+Index: praat.github.io-7.0.03/dwtools/Makefile
 ===================================================================
---- praat.github.io-7.0.02.orig/dwtools/Makefile
-+++ praat.github.io-7.0.02/dwtools/Makefile
+--- praat.github.io-7.0.03.orig/dwtools/Makefile
++++ praat.github.io-7.0.03/dwtools/Makefile
 @@ -2,8 +2,8 @@
- # David Weenink and Paul Boersma, 23 May 2026
+ # David Weenink and Paul Boersma, 7 October 2026
  
  CPPFLAGS += -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
 -	-I ../external/clapack -I ../external/vorbis -I ../external/opusfile -I ../external/portaudio -I ../external/espeak \
@@ -122,10 +122,10 @@ Index: praat.github.io-7.0.02/dwtools/Makefile
  
  OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
  	Categories.o CategoriesEditor.o \
-Index: praat.github.io-7.0.02/Makefile
+Index: praat.github.io-7.0.03/Makefile
 ===================================================================
---- praat.github.io-7.0.02.orig/Makefile
-+++ praat.github.io-7.0.02/Makefile
+--- praat.github.io-7.0.03.orig/Makefile
++++ praat.github.io-7.0.03/Makefile
 @@ -397,33 +397,27 @@ all: all-external all-self
  		dwsys/libdwsys.a sys/libsys.a melder/libmelder.a kar/libkar.a \
  		external/espeak/libespeak.a \
@@ -187,10 +187,10 @@ Index: praat.github.io-7.0.02/Makefile
  
  clean-self:
  	$(MAKE) -C kar clean
-Index: praat.github.io-7.0.02/melder/MelderReadText.cpp
+Index: praat.github.io-7.0.03/melder/MelderReadText.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/melder/MelderReadText.cpp
-+++ praat.github.io-7.0.02/melder/MelderReadText.cpp
+--- praat.github.io-7.0.03.orig/melder/MelderReadText.cpp
++++ praat.github.io-7.0.03/melder/MelderReadText.cpp
 @@ -18,7 +18,7 @@
  
  #include "melder.h"
@@ -200,10 +200,10 @@ Index: praat.github.io-7.0.02/melder/MelderReadText.cpp
  
  char32 MelderReadText_getChar (MelderReadText me) {
  	if (my string32) {
-Index: praat.github.io-7.0.02/melder/Makefile
+Index: praat.github.io-7.0.03/melder/Makefile
 ===================================================================
---- praat.github.io-7.0.02.orig/melder/Makefile
-+++ praat.github.io-7.0.02/melder/Makefile
+--- praat.github.io-7.0.03.orig/melder/Makefile
++++ praat.github.io-7.0.03/melder/Makefile
 @@ -1,7 +1,7 @@
  # Makefile of the library "melder"
  # Paul Boersma, 23 May 2026
@@ -213,10 +213,10 @@ Index: praat.github.io-7.0.02/melder/Makefile
  
  OBJECTS = melder.o complex.o melder_alloc.o melder_str32.o melder_colour.o \
  	melder_ftoa.o melder_console.o melder_atof.o melder_files.o \
-Index: praat.github.io-7.0.02/dwsys/NUM2.cpp
+Index: praat.github.io-7.0.03/dwsys/NUM2.cpp
 ===================================================================
---- praat.github.io-7.0.02.orig/dwsys/NUM2.cpp
-+++ praat.github.io-7.0.02/dwsys/NUM2.cpp
+--- praat.github.io-7.0.03.orig/dwsys/NUM2.cpp
++++ praat.github.io-7.0.03/dwsys/NUM2.cpp
 @@ -65,15 +65,15 @@
  #include "NUMmachar.h"
  #include "melder.h"

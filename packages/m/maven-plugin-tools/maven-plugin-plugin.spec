@@ -29,8 +29,8 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
 Source1:        %{base_name}-build.tar.xz
-Patch0:         0001-A-standalone-plugin-descriptor-generator.patch
-Patch1:         0002-Remove-dependency-on-jtidy.patch
+Patch0:         0001-Remove-dependency-on-jtidy.patch
+Patch1:         0002-A-standalone-plugin-descriptor-generator.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -45,6 +45,7 @@ BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-util
 BuildRequires:  objectweb-asm >= 9.9
 BuildRequires:  plexus-build-api0
+BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  sisu-inject
@@ -87,14 +88,19 @@ API documentation for %{name}.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    aopalliance \
     atinject \
     guava/guava \
+    guice/google-guice \
+    jakarta-inject \
     javaparser/javaparser-core \
     javaparser/javaparser-symbol-solver-core \
     jsoup/jsoup \
     maven/maven-artifact \
+    maven/maven-builder-support \
     maven/maven-core \
     maven/maven-model \
+    maven/maven-model-builder \
     maven/maven-plugin-api \
     maven/maven-repository-metadata \
     maven/maven-resolver-provider \
@@ -111,6 +117,8 @@ build-jar-repository -s lib \
     org.eclipse.sisu.plexus \
     plexus/archiver \
     plexus-classworlds \
+    plexus-containers/plexus-component-annotations \
+    plexus/interpolation \
     plexus/io \
     plexus/plexus-build-api0 \
     plexus/utils \
@@ -118,7 +126,8 @@ build-jar-repository -s lib \
     plexus-velocity/plexus-velocity \
     slf4j/api \
     slf4j/simple \
-    velocity-engine/velocity-engine-core
+    velocity-engine/velocity-engine-core \
+    xmvn
 
 %{mvn_file} :%{name} %{base_name}/%{name}
 %{mvn_package} :%{base_name} __noinstall

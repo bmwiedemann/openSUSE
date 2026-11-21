@@ -1,7 +1,7 @@
 cabal-version:   2.4
 name:            modern-uri
 version:         0.3.6.1
-x-revision: 5
+x-revision: 6
 license:         BSD-3-Clause
 license-file:    LICENSE.md
 maintainer:      Mark Karpov <markkarpov92@gmail.com>
@@ -52,7 +52,7 @@ library
         mtl >=2 && <3,
         profunctors >=5.2.1 && <6,
         reflection >=2 && <3,
-        tagged >=0.8 && <0.9,
+        tagged >=0.8 && <0.10,
         template-haskell >=2.10 && <2.25,
         text >=0.2 && <2.2
 

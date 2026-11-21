@@ -486,4 +486,16 @@
   * Updated translations</comment>
     <requestid>1348565</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>45e7072f0c846ea70c5147b8c2530e4d</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182275</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * The image name is put in the title-bar (the image path is already in
+    the status-bar).
+- Drop unused and obsolete BuildRequires
+  * pkgconfig(libmenu-cache)</comment>
+    <requestid>1398746</requestid>
+  </revision>
 </revisionlist>

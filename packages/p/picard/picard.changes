@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:19:06 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 3.0.5:
+  * Bugfixes
+    - PICARD-3511 - Saving embedded artwork fails when setting the
+      artwork for multiple selected files
+    - PICARD-3525 - Restore Defaults uses wrong values for plugins
+    - PICARD-3538 - Unable to change cover art provider order
+    - PICARD-3541 - Views stay suspended and the pending files
+      count never reaches zero when a file is removed while it is
+      still loading
+    - PICARD-3542 - "Automatically cluster all new files" can skip
+      clustering depending on which file finishes loading last
+    - PICARD-3543 - CD lookup reads a wrong drive name when the CD
+      lookup devices setting has spaces or empty items
+    - PICARD-3550 - After filtering the "Unmatched Files" entry
+      shows up for all loaded releases
+    - PICARD-3554 - Hovering over the closing % of a variable
+      shows an empty tooltip
+    - PICARD-3556 - CLI: command alias "plugin uninstall" not
+      working
+    - PICARD-3559 - Crash on logout error if option window was
+      closed
+  * Improvements
+    - PICARD-3553 - Allow setting PICARD_FORCE_FUSION=0 to opt-out
+      of using Qt's Fusion style
+
+-------------------------------------------------------------------
+Fri Nov  6 11:19:24 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 3.0.4:
+  * Bugfixes
+    - PICARD-3479 - Crash on macOS every time you switch app focus
+    - PICARD-3533 - Crash when closing options during plugin
+      refresh
+    - PICARD-3534 - Picard mistakenly treats .webp files as WAV
+    - PICARD-3537 - Track match indicator shows bad match on newly
+      ripped files
+- Require setuptools >= 77.0.1 as required by the build backend
+- Recommend python3-zstandard >= 0.25.0 and python3-shtab >= 1.7.0
+  which are optional dependencies used by plugins and picard-cli
+- Remove unused libofa-devel build requirement
+
+-------------------------------------------------------------------
 Fri Oct 30 10:17:55 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 3.0.3:

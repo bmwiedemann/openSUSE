@@ -1,4 +1,314 @@
 -------------------------------------------------------------------
+Wed Nov 18 16:53:42 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.51.0:
+  * Allow docking kitty windows to an edge of the OS window, below the tab bar,
+    with `launch --type=os-window-dock`. The dock is shown in every tab of the
+    OS window and can be resized by dragging its inner border or with the
+    `resize_window` action and `kitten @ resize-window`, see Docked windows
+    (#10854, #10857)
+  * Custom shaders: Add `screen-shake` shaders that shake a window on bell and
+    new events and uniforms for command start/finish and alternate screen
+    enter/exit (#10871)
+  * Allow running the programs in new windows via a wrapper command, such as to
+    open new windows inside the same container as the window they are opened
+    from, using a `launch_wrapper.py` file in the kitty config directory, see
+    Wrapping the programs run in new windows (#10858)
+  * Watchers: `on_close` now reports why the window was closed, a new
+    `on_cwd_change` event fires when the working directory changes and
+    `on_resize`/`on_focus_change` calls are no longer dropped when many windows
+    are created at once (#10828, #10853)
+  * Tab bar: Allow selecting and copying text drawn outside the tabs, for
+    example by a custom `tab_bar.py`, by dragging the mouse over it. Fix the
+    bell indicator not being shown for the active window when the OS window
+    is not focused and clicking the blank line below a tab in the vertical
+    tab bar not activating it (#10869, #10880, #10810)
+  * Sessions: Fix tabs and windows moved with `detach_tab`, `detach_window` or
+    drag and drop losing their session. `save_as_session` no longer opens saved
+    sessions in the wrong OS Window or tab or overwrites the session file with
+    an empty one, and its file name prompt now shows and completes relative to
+    the directory the session will be saved in (#10851, #10852, #10867)
+  * Security: Fix a program running in the terminal being able to hang kitty
+    by using edit-in-kitty to set a window logo that is a special file such
+    as `/dev/zero`, window logos and background images must now be regular files.
+    Fix the ssh kitten creating remote directories such as `~/.terminfo` world
+    writable (#10834)
+  * choose-files: Sanitize file names, archive member names, ebook metadata
+    and previewer output so they cannot inject escape codes into the terminal.
+    Fix hangs previewing special files and various preview caching bugs
+    (#10843, #10850)
+  * kittens: Fix a crash and changed colors when wrapping text that contains
+    extended SGR colors, such as the output of custom preview commands in
+    choose-files
+  * Fix the display sometimes not being updated, for example after changes
+    made from timers or mouse actions while the OS window is idle, or for newly
+    displayed images until something else causes a redraw (#10878, #10875)
+  * Fix the scrolled back view jumping, and images, the cursor and the
+    scrollbar getting out of sync with the text, when new output arrives
+    (#10841, #10847)
+  * Fix crashes and memory errors with multi-line characters from the text
+    sizing protocol being partially scrolled off screen or resized, and with
+    the VS15 variation selector after a soft wrapped wide emoji
+  * Fix `clear_terminal last_command`, jumping to the last visited prompt and
+    `show_last_visited_command_output` using the wrong lines in various
+    situations
+  * Treat the ConEmu OSC 9;9 escape code as a report of the current working
+    directory, like OSC 7, instead of showing it as a desktop notification. A
+    hard reset (`RIS`) now clears the alternate screen as well
+  * Fix glyphs that are slightly wider than their cell, such as the texture
+    healing alternates of the Monaspace and 0xProto fonts, being rendered
+    smaller than surrounding text and accents that hang to the left of wide
+    glyphs, such as polytonic Greek capitals, being cut off
+  * Fix an invalid value for `shell`, such as one with an unterminated quote,
+    causing errors when opening or saving windows, instead fall back to the
+    login shell and report the error (#10888)
+  * IME: Move cursor position within pre-edit text (#10807)
+  * Bash integration: Find system wide startup files by scanning the bash
+    executable instead of guessing their location (#10819)
+  * Fix minor issues in various kittens: Unicode input not finding some
+    characters such as the pound sign when searching by name, dnd failing to
+    start in a non-writable directory and ask selecting the wrong choice on
+    mouse click when the dialog does not fit in the window
+    (#10862, #10855, #10883)
+  * Pointer shapes: Fix animated pointers restarting unnecessarily and the
+    shape not updating on alternate screen switches (#10838)
+  * Remote control: Fix `set-colors` and `get-colors` handling of
+    `cursor_text_color` (#10832)
+  * Wayland: Allow using touchscreens with the client side window decorations.
+    Fix the decorations sometimes showing the wrong focus state and a hang
+    creating OS windows after an output is quickly plugged and unplugged
+    (#10859, #10873)
+  * X11: Report X errors instead of exiting, fixing exits when clipboard
+    requestors destroy their window early (#9248)
+  * macOS: Workaround for clicking notifications not focusing the correct OS
+    Window with multiple kitty instances (#10805)
+
+-------------------------------------------------------------------
+Tue Nov  3 15:13:51 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.50.0:
+  * Allow docking kitty windows to the edges of other windows or of the tab,
+    for status bars, file trees, etc. Create them with launch
+    --type=window-dock or launch --type=tab-dock, see Docked windows
+  * A new option restore_session_after_logout to save the state of every kitty
+    instance, including scrollback, when logging out, restarting or shutting
+    down and restore it the next time kitty starts. On macOS, the state is
+    encrypted with a key in the keychain. On Linux, it requires the Inhibit
+    desktop portal. See Restoring kitty after logging out (#1197, #10659)
+  * Allow using tabs like named workspaces: A new launch --focus-existing
+    option to focus an existing window or tab instead of creating a new one,
+    a new by-title value for launch --location to keep tabs in alphabetical
+    order and new options for kitten @ detach-window and the detach_window
+    action to send windows to a named tab, creating it if needed (#10627)
+  * Wayland: The client side window decorations used on compositors such as
+    GNOME now look like native GNOME decorations and follow the desktop
+    titlebar font, text scaling, button layout and titlebar click action
+    settings (#10766)
+  * Wayland: Support touchscreens. A tap is a click, a finger that moves
+    scrolls with momentum, and a finger held still before it moves selects
+    text (#5432, #10551)
+  * Custom shaders: New cursor-trail-railgun, cursor-trail-torpedo and
+    cursor-trail-pixiedust shaders that make particles fly off the cursor as
+    it moves, in the style of neovide. Shaders can now be controlled with key
+    presses via the new shader_event action (see Controlling shaders with key
+    presses), can be faded in and out, reversed and looped with new
+    animation_* pipeline directives and can define a pointer_map() function
+    so that clicks and selections land on the text shown under the mouse,
+    which the crt shader now uses, see Shaders that move content. Also fix
+    animations becoming jerky after kitty has been running for a few hours,
+    shaders specified by path not being found and various pipeline bugs
+    (#10587, #10667, #10693, #10595, #10694, #10639)
+  * Graphics protocol: Add two new indexed color image formats whose pixels
+    are indices into the terminal color palette, so that images change color
+    along with the color scheme, and allow clients to detect support for
+    individual protocol features, such as animation and Unicode placeholders,
+    via the new e query key, see Querying support for protocol features
+    (#9379, #10732)
+  * Support the Program Status Protocol (OSC 7501) that lets programs report
+    whether they are working, finished, failed or blocked waiting on the user.
+    Shown in the tab bar via a new tab.program_status field for
+    tab_title_template, see Reporting the status of a program
+  * Automatic color themes: When the system switches between light and dark,
+    keep colors set by programs running in a window, by the ssh kitten, by
+    launch --color or launch --copy-colors, and use the current theme colors
+    when a program restores its saved colors. launch --color colors now also
+    survive config reloads. The ssh kitten can use different color schemes for
+    remote hosts in dark and light mode via the new
+    kitten-ssh.color_scheme_dark, kitten-ssh.color_scheme_light and
+    kitten-ssh.color_scheme_no_preference options (#10724)
+  * Layouts: Align the borders of neighboring windows and keep the gaps
+    between them uniform, and add a new option collapse_window_margins to have
+    the margins of neighboring windows collapse into each other instead of
+    adding up (#10508)
+  * Window resizing: A new --strategy=edge mode to select and move a specific
+    internal divider in the Splits layout, and hold Alt with a resize letter
+    to take a fraction of the remaining resize steps, configurable with the
+    new --fraction option
+  * Scale the thickness of box drawing characters, cursors and the window
+    title bar border with the font size, so they no longer look too thin when
+    zoomed in or too thick when zoomed out. At the configured font_size
+    nothing changes (#10362)
+  * mouse_map can now map the scroll wheel, via the wheel_up, wheel_down,
+    wheel_left and wheel_right buttons, for example, to change the font size
+    with Ctrl+scroll
+  * A new option hyperlink_target_position to control where the URL shown by
+    show_hyperlink_targets is displayed, including as a browser style tooltip
+    next to the mouse cursor (#10770)
+  * Show the hand pointer and hover highlighting over links only when the
+    pressed modifiers match a configured mouse action for opening the link
+    with a single click, updating immediately when modifiers are pressed or
+    released
+  * quick-access-terminal kitten: New kitty +kitten quick_access_terminal
+    --if-running, kitty +kitten quick_access_terminal --listen-on and
+    kitty +kitten quick_access_terminal --hold options to run programs in an
+    already running quick access terminal, use a fixed remote control socket
+    and keep the terminal open after the program exits (#10603)
+  * Sessions: A new os_window_position keyword and a new --os-window-geometry
+    option for save_as_session to save the size, position and state of
+    OS Windows in session files. Also fix the OS Window size and
+    os_window_title in sessions sometimes being ignored (#10675)
+  * Command palette: Show action and kitten aliases at the top when the search
+    query is empty, so they can be used to pin frequently used actions (#10711)
+  * Vertical tab bars: When tab_title_max_length is set, size the tab bar to
+    fit the decorations of the current tab_bar_style, allowing much narrower
+    tab bars (#10680)
+  * Linux/BSD: Detect MIME types for open actions and kittens using the
+    shared-mime-info cache, matching the rest of the desktop, including files
+    without an extension, such as Makefile, and MIME type aliases (#3056)
+  * IME: Keep the candidate window anchored at the start of the pre-edit text
+    and at the cursor, so it no longer jumps around while composing text.
+    On macOS, commit in-progress IME or dictation text instead of discarding
+    it when the OS window loses focus (#10642, #10644)
+  * Shell integration: Make the kitty terminfo files available in commands
+    run via run0, similar to sudo (#10692)
+  * kitty --config=NONE now also skips the automatic color theme files,
+    open-actions.conf, launch-actions.conf, mime.types, paste-actions.py,
+    notifications.py and the custom window icon in the kitty config directory
+  * Processes kitty inserts to wrap the program it runs, such as
+    /usr/bin/login on macOS or the wrapper for launch --hold, are now skipped
+    when reporting the pid, working directory, command line and environment of
+    a window in kitten @ ls and when matching windows. Also fix launch
+    --cwd=root using the working directory of the foreground process instead
+    of the root process while the shell is running a command
+  * Nightly builds now show the date and hash of the commit they were built
+    from in the output of kitty --version and kitten --version
+  * Do not render between render frames to reduce flicker from programs that
+    draw with many small partial updates (#10749)
+  * Performance: Faster growing of the GPU sprite cache, particularly on
+    macOS, less CPU usage with a non-zero input_delay and no continuous
+    re-rendering when a selection is present and the window is scrolled
+    back (#10714)
+  * Remote control: Fix a crafted request being able to bypass password based
+    remote control authentication by masquerading as a cancellation of an
+    asynchronous request
+  * Remote control: Fix many commands, including action, send-key, set-colors,
+    set-background-opacity, set-font-size, ls, run and set-enabled-layouts,
+    ignoring options, reporting false success or silently misinterpreting
+    invalid input, particularly when used in remote_control mappings.
+    set-colors now parses color files the same way as kitty.conf. Also fix a
+    single unresponsive peer blocking all remote control communication and a
+    crash when using damaged images with set-window-logo or
+    set-background-image (#10672, #10632, #10688, #10690, #10715)
+  * Fix various terminal emulation bugs, including in origin mode cursor
+    position reports, erasing multicell characters, the CHT escape code and
+    copying text containing tabs, wide characters being drawn on the wrong
+    row after colliding with scaled text, emoji sequences being split into
+    multiple cells when wrapped, text typed into a new window before the
+    program is ready sometimes being garbled, as well as a heap buffer
+    overflow, an out of bounds write and a use-after-free when reloading
+    the config (#10609, #10729, #10632, #10682, #10767)
+  * Graphics protocol: Allow shared memory object names without a leading
+    slash again, for sandboxed macOS applications, and fix various bugs with
+    animation frames and Unicode placeholders (#10684, #10599, #10632)
+  * Fix various window and tab management bugs, with focus moving to the
+    wrong window on close, drag and drop onto title bars, visual window
+    selection, Grid layout placement, title bar padding and tab titles being
+    truncated too early. detach_tab now shows custom titles in the OS
+    Window chooser (#10640)
+  * Fix render jitter when scrolled back with a partial line and the client
+    is using the synchronised rendering escape code (#10794)
+  * Fix bold or italic Nerd Font icons sometimes being rendered using glyphs
+    from an unrelated font, the cursor trail not always being shown when
+    focus moves to a different window, watcher entries not being removed on
+    config reload and changing text marker colors at runtime, for example
+    with kitten @ set-colors or automatic theme switching, applying the
+    colors of each marker to the next one (#10591)
+  * ssh kitten: Preserve the permissions of copied directories, fix copying
+    files outside HOME whose paths share its prefix and files in HOME being
+    copied to an absolute path with --symlink-strategy=resolve when HOME is
+    a symlink, fix hanging when re-using a shared connection that has
+    silently died and fix colors 16-255 being set to white with themes that
+    do not define them (#10691, #10661, #10727, #10737)
+  * Desktop UI kitten: Fix D-Bus activation when kitten is installed in a
+    path containing spaces or quoting characters (#10784)
+  * Automatic color themes: Stop using cached colors and background images
+    after the corresponding theme file has been deleted and apply theme files
+    created after kitty was started when reloading the config (#10786)
+  * Themes kitten: Fix overwriting the Unicode input kitten’s recent entries
+    and input mode, and vice versa, by using separate caches (#10780)
+  * Remote file kitten: Preserve the local edited copy and show its recovery
+    path when the final upload fails, including when the SSH connection has
+    died (#10789)
+  * Transfer kitten: When receiving files, replace existing symbolic and hard
+    links at the destination instead of overwriting the files they point to,
+    and write to a temporary file that is renamed into place, so an
+    interrupted transfer no longer leaves a truncated file behind (#10713)
+  * Drag and drop kitten: Reject copying or moving a directory into itself
+    or one of its subdirectories, and moving a directory into a symlink that
+    points inside it, which would delete the moved files. When moving,
+    do not delete sources that were replaced during the drop, for example by
+    files merged through a symlink in the destination. Respect overwrite
+    confirmation for case and Unicode equivalent names on filesystems that
+    treat them as aliases, list the existing files that will be overwritten
+    under their actual names, including inside symlinked directories, and
+    fix dropping a directory over an existing file. No longer rename
+    remotely dropped files whose names differ only in case on case sensitive
+    filesystems (#10769, #10772)
+  * Drag and drop protocol: Fix base64 data with padding at the end being
+    rejected, as allowed by the protocol (#10777)
+  * Clipboard kitten: Fix only the last of several outputs that use the same
+    MIME type being saved, for example with kitten clipboard -g picture.png
+    picture.jpg, the data is now downloaded and decoded only once for all
+    such outputs. Reject duplicate output files, including ones that differ
+    only in case on case-insensitive filesystems or whose paths contain a
+    symlink followed by ... Fix a race when replacing an existing output
+    file, losing the original file if writing it fails and
+    kitten clipboard -g -m . formats.txt silently doing nothing. Also
+    preserve the permissions of and follow symlinks at existing output
+    files (#10738, #10744)
+  * Kittens: When saving files, such as themes, config files or clipboard
+    output, write to the target of a symlink even when the target does not
+    yet exist, instead of replacing the symlink with a regular file (#10740)
+  * Kittens: Fix laggy mouse selection and failures comparing remote
+    directories in the diff kitten, Unicode quotes not being removed from
+    around paths and URLs in the hints kitten, the order of styles with
+    negative or closely spaced fractional axis values in the choose-fonts
+    kitten, various bugs in the choose-files, quick-access-terminal and other
+    kittens and reject command-line options missing their required
+    value (#10634, #10641, #10676, #10687, #10730)
+  * Wayland: Fix a crash on compositors without cursor-shape support, kitty
+    being disconnected by GNOME when showing a long covered window, the
+    app_id being lost when hiding and showing windows, kitty --os-window-tag
+    not setting the window tag and various drag and drop bugs
+    (#10597, #10602, #10604, #10759, #10632)
+  * Linux: Fix momentum scrolling up or left, X11 wheel events from sources
+    without smooth scrolling being ignored and various desktop notification
+    bugs. Notifications now identify kitty’s desktop file, so desktops such
+    as KDE can group them (#10625, #10695, #10610, #10721)
+  * macOS: Fix padding rendering black after sleep, OS windows not staying
+    on all spaces, a duplicate path when dropping items from Apple Mail,
+    emoji from a monochrome emoji font such as Noto Emoji not using the
+    foreground color, a memory leak, reloading config causing Apple injected
+    shortcuts to not work and kitty freezing when opening a new window while
+    another entry in /dev is stuck
+    (#10708, #10581, #10628, #10673, #10741, #10757, #10793)
+  * zsh: Respect the user’s descriptions format style for completion group
+    headings, fixing literal %B markers appearing with fzf-tab, and fix a
+    “maximum nested function level reached” error at every prompt after
+    interrupting a command run at shell startup, for example via a session
+    file (#10748, #10768)
+
+-------------------------------------------------------------------
 Fri Oct 16 16:24:32 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Setting 'BuildRequires: shader-slang' & 'BuildRequires: shader-slang-devel'

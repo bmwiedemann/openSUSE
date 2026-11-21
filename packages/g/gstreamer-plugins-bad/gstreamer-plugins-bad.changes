@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:24:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Move firewire support (plugin) to extra sub-package, most users
+  no longer have firewire hardware.
+
+-------------------------------------------------------------------
+Fri Nov  6 21:52:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.9:
+  * amfcodec: fix rate_control(h265, av1) and gop_size (h265) properties
+  * analyticsoverlay: Remove Visualization classifier
+  * androidmedia: Fix drain deadlock when the srcpad loop stops
+  * asfmux: Fix header size calculation for non-BMP characters in string tags
+  * asfmux: Minor fixes
+  * asio: fix stopping asio element causing crashes
+  * codecparsers, videoparsers: Fix OOB accesses and undefined behaviour found
+    by fuzzing
+  * codecparsers: Fix undefined shift in nal_reader_get_ue
+  * codecparsers: h265: Do not overflow conformance window size
+  * codecparsers: h265: Free SEI payload when parsing fails
+  * codecparsers: h26x: Reject NALs with forbidden_zero_bit set
+  * codecparsers: vp9: Do not read past the end of the frame data
+  * cuda: Correctly save alpha and blend on property change
+  * cudaipc: Release Unix socket server resources on teardown
+  * d3d12h264enc: Various fixes and enhancement
+  * eagl and vulkan: Remove internal_view from the superview when finalizing
+  * faac: support faac >= 2.0 (faac_* API)
+  * festival: check read return value
+  * h26*parse: Reject malformed NALs with forbidden_zero_bit set
+  * h264 parsing : UB fixes
+  * h264decoder: Fix division by zero on bogus SPS dimensions
+  * h264parse: Don't finish a zero-sized frame when no start code follows
+  * h265parse: only extrapolate duration for vcl nal
+  * h265parse: Fix use of uninitialized HRD parameters
+  * h265parser: Handle oversized SEI payloads
+  * h266parser: Fix infinite loop parsing picture timing SEI
+  * h266parser: Fix out-of-bounds write when parsing DCI
+  * h266parser: Validate that rectangular slices fit into the tile grid
+  * hlsdemux: Validate PKCS7 padding before unpadding decrypted fragments
+  * ivfparse: Reject frame sizes that overflow the size check
+  * mpeg4videoparse: Clamp VOS length when no terminating start code
+  * mpegdemux: compare to segment position for sending gap updates
+  * mpegts: Various OOB reads and similar
+  * mpegts: Various fixes
+  * mxf: Fix metadata creation by using g_object_new, not
+    g_type_create_instance
+  *  mxfdemux: fix a typo and improve log
+  * mxfdemux: fix out-of-bounds read when looking up delta entry by delta_id
+  * qsv,d3d11,d3d12: Build fixes on latest msys2 environment
+  * rfbsrc: Various fixes
+  * tensordecoders: fix leaks in classifiertensordec
+  * tsdemux: Check AC-3 descriptor length before reading its fields
+  * unixfdsink: Fix race when starting and stopping quickly
+  * v4l2codecs: h264, h265: negotiate with the first picture
+  * v4l2codecs: vp9: Minimize memory allocation
+  * va: do not advertise unsupported formats in encoder caps
+  * va: {vp8,vp9,av1}enc: check the result of gst_va_encode_picture_new()
+  * vc1parser: Zero-initialize parsed structures
+  * video: fix undefined behaviour on empty unregistered user data meta
+  * videoconvertscale: Don't scale in the padding described by GstVideoMeta
+  * vmnc: Drop colour cursor on pixel format change and various other crash
+    fixes
+  * vmnc: Render the correct cursor part when clipped & don't produce invalid
+    RGB shift masks
+  * vulkan: fix memory leaks in decoders
+  * vulkanh265dec: pass sps_scaling_list_data_present_flag from the SPS
+  * wayland: output hotplug fixes
+  * wpe2: Fix mouse pointer buttons mismatch
+
+-------------------------------------------------------------------
 Sat Oct 17 15:44:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(webrtc-audio-coding-1) BuildRequires: Not needed

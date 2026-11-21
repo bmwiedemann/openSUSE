@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:13:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 17.14.0:
+  * Declare numpy as a test dependency.
+  * Skip pymupdf test dependency on Python 3.15
+  * Ignore missing numpy in mypy; it is only installed with
+    optional extras.
+  * Fix ruff SIM102 nested-if warnings.
+  * Upgrade to pikepdf 10.18 and use its typed getters.
+  * Fix RTL word order, spacing and glyph fonts in fpdf2
+    renderer.
+  * Select fonts for a word in runs when no single font covers
+    it.
+  * Find images in Form XObjects that omit the optional /Type.
+  * Keep colour operators in order when merging leftover state.
+  * Harden leftover state from stripped text objects.
+  * Strip invisible text more completely without losing text state.
+  * Measure a rising line's font size where its baseline is highest
+  * Let mypy pass without the rapidocr extra installed.
+  * Give RapidOCR lines x_size and x_descenders line metrics.
+  * Add a command to download RapidOCR models in advance.
+  * Judge RapidOCR page orientation with a page orientation model.
+  * Recommend uv for RapidOCR, and report failed model downloads
+    cleanly.
+  * Replace RapidOCR engine's internal tuples with frozen, slotted
+    dataclasses.
+  * Document the RapidOCR engine.
+  * Fit RapidOCR lines to their ink.
+  * Read RapidOCR tables by rows, and prose by columns.
+  * Give each worker thread its own RapidOCR engine.
+  * Add RapidOCR as an optional OCR engine.
+  * Add a rapidocr extra.
+  * Fix the generate_ocr() example in the plugin docs.
+  * Don't require Tesseract when another OCR engine is selected.
+  * Replace internal tuples and dicts with frozen, slotted
+    dataclasses.
+  * Only cap line font size when the box is far above the line
+    metrics.
+  * Run the assertions in test_tesseract_not_installed.
+  * Cover the line metrics cap fully.
+  * Cap fpdf2 line font size by the engine's line metrics.
+  * fix: preserve visible text when Tr changes within BT/ET.
+  * Avoid exhausting file descriptors in PDF/A validation
+    performance test.
+  * build(deps): bump certifi from 2026.7.22 to 2026.10.19
+  * build(deps): bump pillow from 12.3.0 to 13.0.0
+- Update to version 17.13.1:
+  * Walk PDF object graphs with pikepdf 10.17 instead of by hand.
+  * Keep the existing output file if the final write is
+    interrupted.
+  * Fix OCR text clipped by form /BBox on offset or rotated pages.
+
+-------------------------------------------------------------------
 Sat Oct 31 17:12:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Add libexempi-devel to BuildRequires to fix some tests

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:49:15 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Fix buffer overflow in print_hw_addr(), CVE-2026-18103
+  [bsc#1274246, dhcp-CVE-2026-18103.patch]
+
+-------------------------------------------------------------------
 Thu Jul  2 12:31:44 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update dhcrelay script and service.

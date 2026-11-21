@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:25:43 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.4.2
+Bugfixes:
+  * State files are now created with restricted permissions.
+    Previously, only the state directory was protected.
+  * ACME server responses with escaped URLs failed to parse.
+  * Some non-compliant ACME server responses with missing fields
+    failed to parse.
+  * Orders for pre-authorized identifiers that omit the
+    authorizations field failed to parse.
+  * The actual ACME server error was not logged correctly
+    if the response had no Replay-Nonce header.
+  * Order finalization errors were not logged correctly.
+- Add keyring and use source_validator in localonly mode
+
+-------------------------------------------------------------------
 Fri May  1 22:15:26 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.4.1

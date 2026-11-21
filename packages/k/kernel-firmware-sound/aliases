@@ -3,6 +3,7 @@ emi26: usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*
 snd_hda_codec_ca0132: hdaudio:v11020011r*a01*
 snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0100%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0101%3A*
+snd_hda_scodec_cs35l41_i2c: acpi*:CLSA0102%3A*
 snd_hda_scodec_cs35l41_i2c: acpi*:CSC3551%3A*
 snd_hda_scodec_cs35l41_spi: acpi*:CSC3551%3A*
 snd_hda_scodec_cs35l41_spi: spi:cs35l41-hda
@@ -58,10 +59,16 @@ snd_soc_avs: pci:v00008086d0000F0C8sv*sd*bc*sc*i*
 snd_soc_avs: pci:v00008086d0000F1C8sv*sd*bc*sc*i*
 snd_soc_catpt: acpi*:INT33C8%3A*
 snd_soc_catpt: acpi*:INT3438%3A*
+snd_soc_sc8280xp: of:N*T*Cayaneo%2Cpocket-s2-sndcard
+snd_soc_sc8280xp: of:N*T*Cayaneo%2Cpocket-s2-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Celiza-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Celiza-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Chawi-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Chawi-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Ckaanapali-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Ckaanapali-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cmaili-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Cmaili-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcm6490-idp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcm6490-idp-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcs615-sndcard
@@ -78,6 +85,8 @@ snd_soc_sc8280xp: of:N*T*Cqcom%2Csc8280xp-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csc8280xp-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8450-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8450-sndcardC*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8475-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8475-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8550-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8550-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Csm8650-sndcard
@@ -102,6 +111,8 @@ snd_soc_sm8250: of:N*T*Cqcom%2Cqrb4210-rb2-sndcard
 snd_soc_sm8250: of:N*T*Cqcom%2Cqrb4210-rb2-sndcardC*
 snd_soc_sm8250: of:N*T*Cqcom%2Cqrb5165-rb5-sndcard
 snd_soc_sm8250: of:N*T*Cqcom%2Cqrb5165-rb5-sndcardC*
+snd_soc_sm8250: of:N*T*Cqcom%2Csdm660-sndcard
+snd_soc_sm8250: of:N*T*Cqcom%2Csdm660-sndcardC*
 snd_soc_sm8250: of:N*T*Cqcom%2Csm8250-sndcard
 snd_soc_sm8250: of:N*T*Cqcom%2Csm8250-sndcardC*
 snd_soc_x1e80100: of:N*T*Cqcom%2Cglymur-sndcard

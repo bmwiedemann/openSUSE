@@ -16,13 +16,13 @@
 #
 
 
-%global sdb_rev    2.5.2
-%global sdb_soname 2_5_2
+%global sdb_rev    2.6.2
+%global sdb_soname 2_6_2
 %global zydis_rev  4.1.0
-%global qjs_rev 9d15fb60b67c45fd0de413bb49e48f8dacebac16
-%global tests_rev d6a4529fd6c8439a309abbcf00bb7a9efc9e8271
+%global qjs_rev b51e5278439b2fa0510fbb1f3b3dff9f0064d5d7
+%global tests_rev 297b778000bbfaf9bf4717cb95535c3b80d52e3e
 Name:           radare2
-Version:        6.2.2
+Version:        6.2.6
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
@@ -33,7 +33,8 @@ Source2:        https://github.com/quickjs-ng/quickjs/archive/%{qjs_rev}/quickjs
 Source3:        https://github.com/radareorg/radare2-testbins/archive/%{tests_rev}/radare2-testbins-%{tests_rev}.tar.gz
 Source4:        https://github.com/zyantific/zydis/releases/download/v%{zydis_rev}/zydis-amalgamated.tar.gz#/zydis-%{zydis_rev}.tar.gz
 Patch0:         pkgconfig.patch
-Patch1:         test-cc-default.patch
+Patch1:         meson-pcap.patch
+Patch2:         big-openssl-i586.patch
 BuildRequires:  chrpath
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -127,7 +128,9 @@ export PATH=$PWD/my-bin:$PATH
   -Duse_sys_zlib=true \
   -Duse_sys_lz4=true \
   -Duse_sys_xxhash=true \
+  -Duse_ssl=true \
   -Duse_sys_openssl=true \
+  -Duse_libuv=true \
   -Duse_webui=true \
   %{nil}
 %meson_build

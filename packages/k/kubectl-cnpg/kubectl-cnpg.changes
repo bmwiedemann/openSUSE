@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:57:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.2:
+  * Enhancements
+    - kubectl cnpg status no longer fails without the pods/exec
+      permission. It shows not permitted: requires the pods/exec
+      permission instead of the size and configuration sections.
+      (#11687)
+  * Security and Supply Chain
+    - Updated golang.org/x/net to v0.62.0, fixing GO-2026-6617,
+      GO-2026-6612, GO-2026-6611, GO-2026-6610, GO-2026-6603,
+      GO-2026-6860 and GO-2026-6866, and bumped the other
+      golang.org/x modules. (#11631, #11867)
+  * Fixes
+    - Fixed kubectl cnpg backup for volume snapshot backups: when
+      only one of --immediate-checkpoint and --wait-for-archive was
+      set, the other option used its default instead of the value
+      in .spec.backup.volumeSnapshot.onlineConfiguration. (#11733)
+  * Dependencies
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.3
+    - chore(deps): update dependency boto3 to v1.44.3
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.40.3
+    - chore(deps): update ghcr.io/cloudnative-pg/pgvector docker
+      tag to v0.8.7
+    - fix(deps): update all non-major go dependencies
+    - chore(deps): update container distroless digests
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.95.2
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to dbd325b
+    - chore(deps): update module github.com/goreleaser/goreleaser
+      to v2.20.1
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to b59ac4f
+    - chore(deps): update go toolchain directive to v1.27.4
+    - chore(deps): stop Renovate pinning the pvtr-publish-results
+      workflow (#11881)
+    - chore(deps): update dependency boto3 to v1.43.126
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to d3499a0
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.39.6
+    - fix(deps): update module go.yaml.in/yaml/v3 to v4
+    - chore(deps): update dependency rook/rook to v1.21.2
+    - chore(deps): bump golang.org/x/net to v0.62.0 (#11867)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 6d9eff1
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.95.1
+    - fix(deps): update all non-major go dependencies
+    - fix(deps): update all non-major go dependencies
+    - chore(deps): update dependency onsi/ginkgo to v2.34.0
+    - chore(deps): update gcr.io/distroless/static-debian13:nonroot
+      docker digest to 25ac8f0
+    - chore(deps): tidy tests module for go.yaml.in/yaml/v3 v3.0.6
+    - chore(deps): update
+      gcr.io/distroless/static-debian13:debug-nonroot docker digest
+      to 12c2026
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.39.3
+    - fix(deps): update module github.com/jackc/pgx/v5 to v5.12.0
+    - fix(deps): update module github.com/jackc/pgx/v5 to v5.12.0
+    - chore(deps): update dependency boto3 to v1.43.123
+    - fix(deps): update kubernetes patches to v0.37.2
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.22.0
+    - chore(deps): update dependency rook/rook to v1.21.1 (#11768)
+    - fix(deps): update module google.golang.org/grpc to v1.85.0
+      (#11772)
+    - chore(deps): update dependency cert-manager/cert-manager to
+      v1.21.3
+    - fix(deps): update kubernetes patches
+    - chore(deps): refresh pip-compile outputs
+    - chore(deps): update dependency boto3 to v1.43.119
+    - chore(deps): update dependency
+      kubernetes-csi/csi-driver-host-path to v1.19.0
+    - fix(deps): update all non-major go dependencies
+    - chore(deps): update container distroless digests
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.23.0 (#11709)
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.38.5
+    - chore(deps): update container distroless digests
+    - fix(deps): update module
+      github.com/cloudnative-pg/barman-cloud to v0.7.0 (#11711)
+    - chore(deps): update go toolchain directive to v1.27.3
+      (#11705)
+    - chore(deps): update dependency python to 3.15 (#11708)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.15.0 (#11707)
+    - chore(deps): update curlimages/curl docker tag to v8.23.0
+      (#11706)
+    - chore(deps): update dependency onsi/ginkgo to v2.33.1
+      (#11694)
+    - fix(deps): update module github.com/cloudnative-pg/machinery
+      to v0.6.1 (#11634)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.2 (#11599)
+    - fix(deps): update all non-major go dependencies (#11593)
+    - chore(deps): update ghcr.io/cloudnative-pg/pgbouncer docker
+      tag to v1.26.1 (#11704)
+    - chore(deps): update container distroless digests (#11700)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 5be877a (#11693)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.21.2
+      (#11697)
+    - chore(deps): update kubernetes csi (#11623)
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.38.1 (#11583)
+    - fix(deps): bump golang.org/x modules to fix govulncheck
+      findings (#11631)
+    - chore(deps): update go toolchain directive to v1.27.2
+      (#11633)
+    - chore(deps): update dependency rook/rook to v1.20.8 (#11589)
+    - fix(deps): update module github.com/onsi/gomega to v1.44.0
+      (#11586)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.14.0 (#11584)
+    - chore(deps): update dependency
+      redhat-openshift-ecosystem/openshift-preflight to v1.21.1
+      (#11580)
+    - chore(deps): update dependency
+      kubernetes-csi/external-resizer to v2.3.0 (#11585)
+    - fix(deps): update kubernetes patches (#11574)
+    - chore(deps): update backup test tools (#11569)
+    - chore(deps): update ghcr.io/cloudnative-pg/pgbouncer docker
+      tag to v1.26.0 (#11571)
+    - chore(deps): group workflow-requirements.txt bumps weekly
+      (#11577)
+    - chore(deps): update dependency boto3 to v1.43.103 (#11415)
+    - chore(deps): update dependency packaging to v26.3 (#11432)
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.37.4 (#11537)
+
+-------------------------------------------------------------------
 Thu Sep 24 05:04:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.30.1:

@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Wed Nov 18 16:29:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.31.9 ( boo#1290867 boo#1290868 boo#1290871
+  boo#1290872 boo#1290873 boo#1290874 boo#1290875 boo#1290876
+  boo#1290877 boo#1290878 )
+  - Security: a buffer overflow might occur in a worker process
+    when using the "try_files" and "alias" directives in certain
+    configurations (CVE-2026-125283). Thanks to Marc Luchian and
+    Liviu-Alexandru Bud.
+  - Security: a flow control window overflow in HTTP/2 might allow
+    an attacker to cause a segmentation fault in a worker process,
+    or might have potential other impact (CVE-2026-123007). Thanks
+    to Xint.io.
+  - Security: use-after-free might occur in a worker process when
+    using HTTP/2 if worker_connections were not enough
+    (CVE-2026-123633). Thanks to Albert of Vexera AI.
+  - Security: use-after-free might occur in a worker process when
+    using HTTP/3 if worker_connections were not enough
+    (CVE-2026-121810). Thanks to Xint.io.
+  - Security: use-after-free condition might occur if the
+    "resolver" directive was used and the same name was
+    simultaneously resolved in subrequests, allowing an attacker
+    who is able to trigger name resolution to cause segmentation
+    fault in a worker process, or might have potential other impact
+    (CVE-2026-123634). Thanks to Xint.io.
+  - Security: use-after-free might occur in a worker process in the
+    mail proxy server (CVE-2026-113425). Thanks to Xint.io and
+    Maxim Dounin.
+  - Security: in the stream module, an attacker who is able to
+    complete the SSL handshake synchronously might cause client SSL
+    certificates to be verified using the configuration of the
+    default server rather than the virtual server selected by SNI
+    (CVE-2026-120967). Thanks to CERT.PL.
+  - Security: a segmentation fault might occur in a worker process
+    when using PROXY protocol version 2 with dynamic SSL
+    certificate loading (CVE-2026-120993). Thanks to ruokeqx.
+  - Security: the ngx_stream_ssl_preread_module might interpret
+    malformed ClientHello messages differently than other TLS
+    implementations, which might result in bypassing security
+    restrictions (CVE-2026-123640). Thanks to Vivek Parikh of
+    BreachX Zero Day Labs.
+  - Security: worker processes might get caught in an endless loop
+    while reading the request body over SSL (CVE-2026-118899).
+    Thanks to Maxim Dounin.
+  - Change: now header lines without a colon are rejected. Thanks
+    to Maxim Dounin.
+  - Change: now a request is rejected if the chunked request body
+    contains too much framing overhead. Thanks to jskoetsier.
+  - Bugfix: a buffer overflow might occur in a worker process when
+    using a GeoIP database in the MMDB format containing invalid
+    coordinates. Thanks to Y.Horie.
+  - Bugfix: a request might hang if it was proxied while the
+    request body was being discarded. Thanks to Maxim Dounin.
+  - Bugfix: some values of the QPACK static table were decoded
+    incorrectly when using HTTP/3. Thanks to Nexory.
+  - Bugfix: when using HTTP/2, response trailers might delay data
+    of higher priority streams.
+  - Bugfix: the $cookie_... variables and the
+    ngx_http_userid_module handled the "Cookie" request header line
+    incorrectly if it contained a cookie without a name.
+  - Bugfix: non-cacheable variables in the "index" directive might
+    be evaluated incorrectly. Thanks to Maxim Dounin.
+  - Bugfix: OCSP responses for client certificates with uncommon
+    serial numbers might be cached incorrectly when using the
+    "ssl_ocsp_cache" directive. Thanks to Gyejin Lee of QED Audit.
+  - Bugfix: the control API did not respond to requests with a too
+    long request line. Thanks to Daewoo Choi.
+
+-------------------------------------------------------------------
 Wed Oct 21 16:37:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.31.8
@@ -24,7 +93,7 @@ Wed Oct 21 16:37:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed Oct 14 16:07:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.31.7
+- Update to 1.31.7 (bsc#1285732, CVE-2026-15176):
   - Security: a buffer overflow might occur in a worker process
     when using the "alias" directive if the request URI was changed
     by the "rewrite" directive and was then mapped to a file path
@@ -192,7 +261,7 @@ Wed Jul 15 18:28:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 -------------------------------------------------------------------
 Wed Jun 17 18:52:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Extend keyring file based on https://nginx.org/en/pgp_keys.html 
+- Extend keyring file based on https://nginx.org/en/pgp_keys.html
   https://github.com/nginx/nginx/issues/1477
 
 -------------------------------------------------------------------
@@ -681,7 +750,7 @@ Wed Jun 14 05:03:46 UTC 2023 - Илья Индиго <ilya@ilya.top>
   * Added "http2" directive, which enables HTTP/2 on a per-server basis.
   * Deprecated "http2" parameter of the "listen" directive.
   * Removed HTTP/2 server push support.
-  * Deprecated "ssl" directive is not supported anymore. 
+  * Deprecated "ssl" directive is not supported anymore.
 
 -------------------------------------------------------------------
 Tue May 23 21:44:57 UTC 2023 - Илья Индиго <ilya@ilya.top>
@@ -830,7 +899,7 @@ Fri Nov  5 21:24:19 UTC 2021 - Илья Индиго <ilya@ilya.top>
 -------------------------------------------------------------------
 Fri Nov  5 18:10:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- drop vim-plugin-nginx, now is provided directly by vim 
+- drop vim-plugin-nginx, now is provided directly by vim
 
 -------------------------------------------------------------------
 Fri Oct 15 14:23:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
@@ -1181,7 +1250,7 @@ Thu May 28 01:46:00 UTC 2020 - Илья Индиго <ilya@ilya.top>
 -------------------------------------------------------------------
 Thu May  7 16:15:48 UTC 2020 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
-- Do not arbitrarily limit the default listen backlog  
+- Do not arbitrarily limit the default listen backlog
  (NGX_LISTEN_BACKLOG) to 511, instead use -1 to choose the
  system's default (sysctl net.core.somaxconn)
 
@@ -1393,7 +1462,7 @@ Sat Mar 02 14:25:02 UTC 2019 - seanlew@openeuse.org
 
 - update to 1.15.9
   * Feature: variables support in the "ssl_certificate" directives
-  * Bugfix: the "proxy_upload_rate" and "proxy_download_rate" 
+  * Bugfix: the "proxy_upload_rate" and "proxy_download_rate"
     directives in the stream module worked incorrectly with UDP
 
 -------------------------------------------------------------------
@@ -1570,7 +1639,7 @@ Mon May  7 10:25:46 UTC 2018 - achernikov@suse.com
 
 - includes changes from 1.13.12
  * bugfix connections with gRPC backends might be closed unexpectedly
-   when returning a large response. 
+   when returning a large response.
 
 -------------------------------------------------------------------
 Tue Apr 10 07:40:27 UTC 2018 - astieger@suse.com
@@ -1600,7 +1669,7 @@ Tue Apr 10 07:40:27 UTC 2018 - astieger@suse.com
 Wed Mar 28 11:18:44 UTC 2018 - achernikov@suse.com
 
 - Recommend to use TLSv1.2 by default (boo#1086855)
-   
+
 -------------------------------------------------------------------
 Wed Feb 21 13:32:25 UTC 2018 - mrueckert@suse.de
 
@@ -1666,13 +1735,13 @@ Wed Feb 21 13:23:44 UTC 2018 - mrueckert@suse.de
 Wed Feb  7 15:43:27 UTC 2018 - achernikov@suse.com
 
 - Install /etc/nginx/conf.d directory for custom user configuration
-  files 
+  files
 
 -------------------------------------------------------------------
 Wed Feb  7 15:07:47 UTC 2018 - achernikov@suse.com
 
 - Install /etc/nginx/vhosts.d directory for default installation
-  to house custom virtual hosts configuration files 
+  to house custom virtual hosts configuration files
 
 -------------------------------------------------------------------
 Mon Dec 18 02:59:27 UTC 2017 - avindra@opensuse.org
@@ -1731,7 +1800,7 @@ Fri Oct  6 13:33:54 UTC 2017 - mrueckert@suse.de
 Thu Oct  5 12:49:37 UTC 2017 - achernikov@suse.com
 
 - Submit nginx to SLES to become a http server for RMT(Repository
-  mirroring tool) [fate#323994, bsc#1059685, boo#1057831] 
+  mirroring tool) [fate#323994, bsc#1059685, boo#1057831]
 
 -------------------------------------------------------------------
 Fri Sep 22 09:40:19 UTC 2017 - mrueckert@suse.de
@@ -2178,7 +2247,7 @@ Fri Aug  5 11:03:32 UTC 2016 - rodrigo.oshiro@emc.com
 - the following modules were added:
   headers-more-nginx-module
   nginx_upstream_check_module
-  
+
 - added patches:
   nginx-1.11.2-html.patch
   nginx-1.11.2-no_Werror.patch
@@ -2613,7 +2682,7 @@ Mon Aug 18 14:48:13 UTC 2014 - i@marguerite.su
 - update version 1.6.1 stable
   * Security: pipelined commands were not discarded after STARTTLS
     command in SMTP proxy (CVE-2014-3556)
-  * Bugfix: the $uri variable might contain garbage when returning 
+  * Bugfix: the $uri variable might contain garbage when returning
     errors with code 400
   * Bugfix: in the "none" parameter in the "smtp_auth" directive
 - drop nginx-1.0.4_default_config.patch
@@ -2629,7 +2698,7 @@ Mon Aug 18 14:43:55 UTC 2014 - i@marguerite.su
 -------------------------------------------------------------------
 Fri Jun  6 13:54:27 UTC 2014 - lars@linux-schulserver.de
 
-- use zip file downloaded from github directly, as requested by 
+- use zip file downloaded from github directly, as requested by
   Tomáš Chvátal
 
 -------------------------------------------------------------------
@@ -2728,7 +2797,7 @@ Wed Aug 14 08:09:51 UTC 2013 - lslezak@suse.cz
 -------------------------------------------------------------------
 Mon Jul 22 20:27:56 UTC 2013 - crrodriguez@opensuse.org
 
-- Fix PIE build and linkage, must use --with-ld-opt 
+- Fix PIE build and linkage, must use --with-ld-opt
 
 -------------------------------------------------------------------
 Mon Jul 22 19:56:44 UTC 2013 - crrodriguez@opensuse.org
@@ -2740,7 +2809,7 @@ Mon Jul 22 19:56:44 UTC 2013 - crrodriguez@opensuse.org
 
 - Enable the SPDY module on distributions that ship openssl >= 1.0.1
 - Build with full RELRO and PIE.
-- systemd unit: 
+- systemd unit:
 * remove syslog.target that no longer exists
 * set PrivateTmp to true
 * Make it a non-forking service.
@@ -2754,7 +2823,7 @@ Mon Jul  1 13:46:16 UTC 2013 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Jun 26 12:37:22 UTC 2013 - coolo@suse.com
 
-- since passenger 4.0 the nginx extensions does not build, so disable 
+- since passenger 4.0 the nginx extensions does not build, so disable
   it
 
 -------------------------------------------------------------------
@@ -2792,7 +2861,7 @@ Thu Mar 21 06:50:21 UTC 2013 - e.istomin@edss.ee
   *) Bugfix: a "100 Continue" response was issued with "413 Request Entity
   Too Large" responses.
   *) Bugfix: the "[crit] SSL_write() failed (SSL:)" error.
-  
+
 - added mp4 module (--with-http_mp4_module)
 
 -------------------------------------------------------------------
@@ -2808,19 +2877,19 @@ Mon Dec 17 10:32:12 UTC 2012 - suse@ammler.ch
      only in the "log_format" directive.
   *) Bugfix: cache manager and cache loader processes might not be able to
      start if more than 512 listen sockets were used.
-  *) Bugfix: in the ngx_http_dav_module. 
+  *) Bugfix: in the ngx_http_dav_module.
 
 -------------------------------------------------------------------
 Wed Dec  5 12:09:58 UTC 2012 - opensuse@dschung.de
 
-- add Provides: httpd and http_daemon, so a "Requires: httpd" 
-  or "Suggests: httpd" doesn't only resolve to apache2 
+- add Provides: httpd and http_daemon, so a "Requires: httpd"
+  or "Suggests: httpd" doesn't only resolve to apache2
 
 -------------------------------------------------------------------
 Wed Nov 21 18:07:33 UTC 2012 - suse@ammler.ch
 
 - revert permission for /var/log/nginx so reopen is possible (bnc#790726)
-  
+
 -------------------------------------------------------------------
 Wed Nov 14 14:47:52 UTC 2012 - suse@ammler.ch
 
@@ -2832,7 +2901,7 @@ Wed Nov 14 14:47:52 UTC 2012 - suse@ammler.ch
   *) Feature: resolver now randomly rotates addresses returned from cache.
   *) Feature: the "auto" parameter of the "worker_processes" directive.
   *) Bugfix: "cache file ... has md5 collision" alert.
-  *) Bugfix: OpenSSL 0.9.7 compatibility.  
+  *) Bugfix: OpenSSL 0.9.7 compatibility.
 
 -------------------------------------------------------------------
 Wed Oct 24 08:14:06 UTC 2012 - suse@ammler.ch
@@ -2869,7 +2938,7 @@ Thu Oct 11 14:53:37 UTC 2012 - suse@ammler.ch
     * Bugfix: of minor potential bugs.
        Thanks to Coverity.
 
-   - Changes with nginx 1.2.3                                     
+   - Changes with nginx 1.2.3
 
     * Feature: the Clang compiler support.
 
@@ -2892,7 +2961,7 @@ Thu Oct 11 14:53:37 UTC 2012 - suse@ammler.ch
 -------------------------------------------------------------------
 Sat Jul 21 02:41:34 UTC 2012 - crrodriguez@opensuse.org
 
-- Update to version 1,2,2 
+- Update to version 1,2,2
 - Enable only the epoll event model.
 
 -------------------------------------------------------------------
@@ -2919,7 +2988,7 @@ Mon Apr 16 08:42:51 UTC 2012 - schubi@suse.com
        potentially resulting in arbitrary code execution (CVE-2012-2089).
        Thanks to Matthew Daley.
 
-    * Bugfix: in the ngx_http_mp4_module. 
+    * Bugfix: in the ngx_http_mp4_module.
 
 -------------------------------------------------------------------
 Fri Mar 16 14:16:44 UTC 2012 - schubi@suse.com
@@ -3066,17 +3135,17 @@ Tue Mar 13 09:49:05 UTC 2012 - schubi@suse.com
 
     * Bugfix: nginx could not be built on AIX.
 
- 
+
 -------------------------------------------------------------------
 Fri Dec  2 14:48:35 UTC 2011 - schubi@suse.com
 
 - 1.0.10 includes a fix for:
-  Fixed VUL-0: CVE-2011-4315: nginx: heap overflow (bnc #731084) 
+  Fixed VUL-0: CVE-2011-4315: nginx: heap overflow (bnc #731084)
 
 -------------------------------------------------------------------
 Fri Nov 18 12:56:55 UTC 2011 - schubi@suse.com
 
-- Uppstream update to 1.0.10 
+- Uppstream update to 1.0.10
     Changes with nginx 1.0.10
 
     * Bugfix: a segmentation fault might occur in a worker process if
@@ -3153,7 +3222,7 @@ Fri Nov 18 12:56:55 UTC 2011 - schubi@suse.com
        --with-debug option.
 
 
-    Changes with nginx 1.0.7 
+    Changes with nginx 1.0.7
 
     * Change: now if total size of all ranges is greater than source
        response size, then nginx disables ranges and returns just the source
@@ -3201,7 +3270,7 @@ Fri Nov 18 12:56:55 UTC 2011 - schubi@suse.com
        backup servers were used in an upstream.
 
 
-    Changes with nginx 1.0.6              
+    Changes with nginx 1.0.6
 
     * Feature: cache loader run time decrease.
 
@@ -3239,32 +3308,32 @@ Fri Nov 18 12:56:55 UTC 2011 - schubi@suse.com
     * Bugfix: SSL did not work on QNX.
 
     * Bugfix: SSL modules could not be built by gcc 4.6 without
-       --with-debug option. 
+       --with-debug option.
 
 -------------------------------------------------------------------
 Mon Oct 24 11:59:37 UTC 2011 - schubi@suse.com
 
 - Reduce requirement of rubygem-rack to 1_1 cause 1_3 produces
-  errors. 
+  errors.
 
 -------------------------------------------------------------------
 Tue Aug 16 15:23:23 UTC 2011 - ammler@openttdcoop.org
 
 - upstream update 1.0.5
   * Change: now default SSL ciphers are "HIGH:!aNULL:!MD5".
-  * Feature: the "referer_hash_max_size" and "referer_hash_bucket_size" 
+  * Feature: the "referer_hash_max_size" and "referer_hash_bucket_size"
     directives.
   * Feature: $uid_reset variable.
-  * Bugfix: a segmentation fault might occur in a worker process, if a 
+  * Bugfix: a segmentation fault might occur in a worker process, if a
     caching was used.
-  * Bugfix: worker processes may got caught in an endless loop during 
-    reconfiguration, if a caching was used; the bug had appeared in 
+  * Bugfix: worker processes may got caught in an endless loop during
+    reconfiguration, if a caching was used; the bug had appeared in
     0.8.48.
   * Bugfix: "stalled cache updating" alert.
 - add logrotate
   * add reopen killsiganl -USR1 to init script
   * logrotate conf
-- Backport r4003: Configure: catch up with new Linux version numbering 
+- Backport r4003: Configure: catch up with new Linux version numbering
 
 -------------------------------------------------------------------
 Fri Jun 24 10:40:30 UTC 2011 - jreidinger@novell.com
@@ -3346,7 +3415,7 @@ Thu Apr 14 12:17:01 UTC 2011 - mrueckert@suse.de
 -------------------------------------------------------------------
 Thu Apr 14 10:59:36 UTC 2011 - mrueckert@suse.de
 
-- remove /srv/www/htdocs/index.html (bnc#670031).     
+- remove /srv/www/htdocs/index.html (bnc#670031).
 
 -------------------------------------------------------------------
 Thu Apr 14 10:34:52 UTC 2011 - mrueckert@suse.de

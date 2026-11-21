@@ -23,15 +23,14 @@
 %endif
 
 %define packagename czifile
-%global skip_python311 1
 Name:           python-czifile
-Version:        2026.6.12
+Version:        2026.10.14
 Release:        0
 Summary:        Read Carl Zeiss(r) Image (CZI) files
 License:        BSD-3-Clause
 URL:            https://www.lfd.uci.edu/~gohlke/
 Source:         https://github.com/cgohlke/czifile/archive/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
-BuildRequires:  %{python_module imagecodecs >= 2019.1.1}
+BuildRequires:  %{python_module imagecodecs >= 2026.8.16}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -41,7 +40,7 @@ BuildRequires:  %{python_module tifffile >= 2019.7.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-imagecodecs >= 2019.1.1
+Requires:       python-imagecodecs >= 2026.8.16
 Requires:       python-numpy >= 1.11.3
 Requires:       python-scipy >= 1.1
 Requires:       python-tifffile >= 2019.7.2

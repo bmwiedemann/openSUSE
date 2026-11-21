@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdf
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later

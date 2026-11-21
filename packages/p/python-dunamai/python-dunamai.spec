@@ -20,7 +20,7 @@
 %bcond_without  libalternatives
 %define         modname dunamai
 Name:           python-dunamai
-Version:        1.26.2
+Version:        1.26.4
 Release:        0
 Summary:        Dynamic version generation
 License:        MIT

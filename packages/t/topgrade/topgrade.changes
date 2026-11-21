@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov 09 13:22:31 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.16.0:
+  * chore: release v17.16.0 (#2481)
+  * fix(sdkman): source the init script instead of relying on .bashrc (#2482)
+  * fix(tailscale): don't update when installed via homebrew (#2504)
+  * chore(deps): update amannn/action-semantic-pull-request action to v6.1.2 (#2501)
+  * chore(deps): update github/codeql-action action to v4.39.3 (#2502)
+  * chore(deps): lock file maintenance (#2503)
+  * fix(tailscale): gate Tailscale step to Windows and macOS (#2500)
+  * feat(linux): add Omarchy support (#2494)
+  * feat(microsoft_store): add support for the `store` CLI (#2497)
+  * docs(pr template): explicitly request a wet run when the code is tested (#2495)
+  * feat(pre_sudo): run pre_sudo before self-update (#2492)
+  * fix(waydroid): skip when Waydroid is not initialized (#2484)
+  * ci(lint_pr): use pull_request instead of pull_request_target (#2490)
+  * feat(tailscale): pass --yes when assume_yes is set (#2489)
+  * style(stack): use Stack as step name (#2487)
+  * style(snap): output step name as Snap (#2486)
+  * style(winget): use official product spelling/case throughout (#2485)
+  * fix(claude-code): don't fail with EOF on long output (#2062)
+  * chore: release v17.15.0 (#2449)
+  * chore(deps): update self_update to v1 (#2477)
+  * fix(antigravity): skip the 2.0 app, add the ide extensions step (#2465)
+  * chore(deps): update release-plz/action action to v0.5.148 (#2462)
+  * chore(deps): lock file maintenance (#2472)
+  * fix(zed): query Zed's release endpoint to avoid GitHub rate limits (#2473)
+  * fix: exclude run0 from Toolbx privilege escalation (#2453)
+  * chore(renovate): switch to weekly schedule (#2470)
+  * fix(rubygems): skip --system update when gem is managed by Homebrew or macOS (#2468)
+  * fix(ollama): list models from the server, skip unknown pulls (#2464)
+  * feat(am): merge appman with am, and run am/appman reinstall (#2463)
+  * feat(step): add LucidLink (#2460)
+  * feat(step): add Tailscale (#2459)
+  * chore(deps): update release-plz/action action to v0.5.146 (#2457)
+  * chore(deps): lock file maintenance (#2458)
+  * fix(vscode): support new version format for vscode-insiders (#2455)
+  * chore(deps): update release-plz/action action to v0.5.145 (#2450)
+  * chore(deps): update github/codeql-action action to v4.39.1 (#2451)
+  * Revert "fix(opencode): check for plugin updates before updating" (#2448)
+
+-------------------------------------------------------------------
 Wed Oct 21 00:32:21 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.14.1:

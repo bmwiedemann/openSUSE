@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 24 13:15:18 UTC 2026 - Paul D. Martin <pmartin@pauldmartin.org>
+
+- Make OpenRGB-udev-rules installable without OpenRGB, for use with
+  the Flatpak version (the reason for the 2023 split): drop its
+  requirement on OpenRGB and move the sysusers pre-requirement from
+  OpenRGB to it, since its pre script creates the openrgb group
+
+-------------------------------------------------------------------
 Wed Aug 26 08:30:16 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - update to 1.0~rc3.1+git326

@@ -1953,4 +1953,12 @@ Add sb-manual-source-date-epoch.patch to make the manual
        line-breaking. (forwarded request 1394055 from glaubitz)</comment>
     <requestid>1394197</requestid>
   </revision>
+  <revision rev="138" vrev="2">
+    <srcmd5>f35b06e5a0a29b5717d386f785adcc5b</srcmd5>
+    <version>2.6.10</version>
+    <time>1794591454</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397371</requestid>
+  </revision>
 </revisionlist>

@@ -331,4 +331,21 @@
   * Do not report a shutdown SystemExit as the job's result</comment>
     <requestid>1392395</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3d0328aeff02b78992602037d5a4d751</srcmd5>
+    <version>4.3.2</version>
+    <time>1795182428</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.2:
+  * Fix flaky timeout and context availability in
+    test_on_ready_counter_is_synchronized
+  * Fix spawn when the main module is a script
+  * Allow a pool to start with zero processes
+  * Credit READY to the worker that ran the task
+  * Fix pool terminate() hang when a worker dies holding the outqueue lock
+  * Raise the task's exception from imap() iterators
+  * Reject non-positive chunksize in Pool.imap() and Pool.imap_unordered(),
+    including when Python runs with optimization enabled</comment>
+    <requestid>1398853</requestid>
+  </revision>
 </revisionlist>

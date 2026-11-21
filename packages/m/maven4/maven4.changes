@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov 12 17:33:10 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * jline-3.30.x.patch
+    + BuildRequire jline3 >= 4.1 instead
+
+-------------------------------------------------------------------
+Mon Nov  9 23:36:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use modello-ant-task instead of ModelloCli
+
+-------------------------------------------------------------------
 Thu Sep 24 23:11:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 4.0.0-rc-7

@@ -18,14 +18,14 @@
 
 # After Qt 6.12 release, QtWebEngine has a different version scheme that includes the Chromium base version
 # (https://www.qt.io/blog/qt-webengine-will-release-separate)
-%define tar_version 6.11.2
-%define short_version 6.11
+%define tar_version 6.140.0
+%define short_version 6.140
 #
-%define real_version 6.12.0
+%define real_version 6.140.0
 %define tar_name qtwebengine-everywhere-src
 %define tar_suffix %{nil}
 # QtWebengine supports building against the latest Qt LTS release
-%global lts_version 6.8.0
+%global lts_version 6.8.9
 #
 %global qt6_flavor @BUILD_FLAVOR@%{nil}
 %define no_flavor ("%qt6_flavor" == "")
@@ -42,23 +42,18 @@
 %endif
 #
 Name:           qt6-webengine%{?pkg_suffix}
-Version:        6.11.2
+Version:        6.140.0
 Release:        0
 Summary:        Web browser engine for Qt applications
 License:        GPL-2.0-only OR LGPL-3.0-only OR GPL-3.0-only
 URL:            https://www.qt.io
-Source0:        https://download.qt.io/official_releases/qt/%{short_version}/6.11.2%{tar_suffix}/submodules/%{tar_name}-%{tar_version}%{tar_suffix}.tar.xz
+Source0:        https://download.qt.io/official_releases/qtwebengine/%{short_version}/%{tar_version}%{tar_suffix}/src/%{tar_name}-%{tar_version}%{tar_suffix}.tar.xz
 Source99:       qt6-webengine-rpmlintrc
 # Patches 0-100 are upstream patches #
-Patch0:         Fix-renderer-crash-when-registering-ICU-encoding-names.patch
-Patch1:         enable-memory-barriers.patch
+Patch0:         CVE-2026-107080.patch
 # Patches 100-200 are openSUSE and/or non-upstream(able) patches #
 Patch100:       rtc-dont-use-h264.patch
 Patch101:       QtWebEngine_6.8_skip_xnnpack.patch
-BuildRequires:  python3
-BuildRequires:  python3-devel
-BuildRequires:  python3-html5lib
-BuildRequires:  python3-importlib-metadata
 BuildRequires:  Mesa-KHR-devel
 BuildRequires:  bison
 BuildRequires:  clang
@@ -76,12 +71,19 @@ BuildRequires:  memory-constraints
 BuildRequires:  nodejs-default
 BuildRequires:  pipewire-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust
-BuildRequires:  rust-bindgen
+BuildRequires:  python3
+BuildRequires:  python3-devel >= 3.8
+BuildRequires:  python3-html5lib
+BuildRequires:  python3-importlib-metadata
 BuildRequires:  qt6-core-private-devel >= %{lts_version}
 BuildRequires:  qt6-gui-private-devel >= %{lts_version}
 BuildRequires:  qt6-quick-private-devel >= %{lts_version}
 BuildRequires:  qt6-widgets-private-devel >= %{lts_version}
+# Leap 16 only provides rust 1.98.0
+%if 0%{?suse_version} > 1600
+BuildRequires:  rust >= 1.98.1
+BuildRequires:  rust-bindgen >= 0.72.1
+%endif
 BuildRequires:  snappy-devel
 BuildRequires:  cmake(Qt6Core) >= %{lts_version}
 BuildRequires:  cmake(Qt6Designer) >= %{lts_version}
@@ -119,7 +121,7 @@ BuildRequires:  pkgconfig(libavcodec) >= 60.31.102
 BuildRequires:  pkgconfig(libavformat) >= 60.16.100
 BuildRequires:  pkgconfig(libavutil) >= 58.29.100
 BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libopenjp2) >= 2.5.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse) >= 0.9.10
 BuildRequires:  pkgconfig(libtiff-4) >= 4.5.0
@@ -443,6 +445,7 @@ done
 %{_qt6_qmldir}/QtQuick/Pdf
 
 %files -n qt6-pdf-devel
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/Pdf/
 %{_qt6_cmakedir}/Qt6Pdf/
 %{_qt6_descriptionsdir}/Pdf.json
 %{_qt6_includedir}/QtPdf/
@@ -462,6 +465,7 @@ done
 %{_qt6_libdir}/libQt6PdfQuick.so.*
 
 %files -n qt6-pdfquick-devel
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/PdfQuick/
 %{_qt6_cmakedir}/Qt6PdfQuick/
 %{_qt6_descriptionsdir}/PdfQuick.json
 %{_qt6_includedir}/QtPdfQuick/
@@ -481,6 +485,7 @@ done
 %{_qt6_libdir}/libQt6PdfWidgets.so.*
 
 %files -n qt6-pdfwidgets-devel
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/PdfWidgets/
 %{_qt6_cmakedir}/Qt6PdfWidgets/
 %{_qt6_descriptionsdir}/PdfWidgets.json
 %{_qt6_includedir}/QtPdfWidgets/
@@ -501,6 +506,8 @@ done
 %{_qt6_libdir}/libQt6WebEngineCore.so.*
 
 %files -n qt6-webenginecore-devel
+%dir %{_qt6_cmakedir}/Qt6/ConfigVersionOverrides
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/WebEngineCore/
 %{_qt6_cmakedir}/Qt6/FindGPerf.cmake
 %{_qt6_cmakedir}/Qt6/FindGn.cmake
 %{_qt6_cmakedir}/Qt6/FindNinja.cmake
@@ -529,6 +536,7 @@ done
 %{_qt6_libdir}/libQt6WebEngineQuickDelegatesQml.so.*
 
 %files -n qt6-webenginequick-devel
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/WebEngineQuick/
 %{_qt6_cmakedir}/Qt6WebEngineQuick/
 %{_qt6_cmakedir}/Qt6WebEngineQuickDelegatesQml/
 %{_qt6_descriptionsdir}/WebEngineQuick.json
@@ -555,6 +563,7 @@ done
 %{_qt6_libdir}/libQt6WebEngineWidgets.so.*
 
 %files -n qt6-webenginewidgets-devel
+%{_qt6_cmakedir}/Qt6/ConfigVersionOverrides/WebEngineWidgets/
 %{_qt6_cmakedir}/Qt6WebEngineWidgets/
 %{_qt6_descriptionsdir}/WebEngineWidgets.json
 %{_qt6_includedir}/QtWebEngineWidgets/

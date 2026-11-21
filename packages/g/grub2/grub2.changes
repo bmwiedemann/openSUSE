@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov  9 11:29:08 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- CVE-2026-97876: Bypass of GRUB lockdown restriction in Secure Boot mode via
+  serial command MMIO base address (bsc#1284208)
+  * already fixed in GRUB 2.16 release
+- grub2.spec: Bump upstream SBAT generation to 7, to align with the SBAT level
+  future shim release may enforce
+  * 0001-configure.ac-bump-SBAT-for-September-2026-CVE.patch
+- grub2.spec: add check_sbat_generation to ensure built images report the same
+  SBAT generation as the RPM metadata
+
+-------------------------------------------------------------------
+Tue Oct 27 08:56:58 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- CVE-2026-109905: Fix integer underflow could lead to heap buffer overflow in
+  set_bli_loader_entries (bsc#1284765)
+  * 0001-blsuki-harden-LoaderEntries-size-checks-in-set_bli_l.patch
+  * 0002-blsuki-Refactor-set_bli_loader_entries-error-handlin.patch
+  * 0003-blsuki-clean-up-UTF-16-size-handling-in-LoaderEntrie.patch
+  * 0004-blsuki-Cleanup-indentation-without-code-change.patch
+- CVE-2026-109906: Fix UUID pointer length mismatch, Fix Use-After-Free in the
+  OOM error cleanup and return path (bsc#1284765)
+  * 0001-commands-crypttab-harden-cryptokey-update-path.patch
+- CVE-2026-109907: Fix allocation failure handling in insert_dir (bsc#1284765)
+  * 0001-linux-fix-insert_dir-OOM-error-return.patch
+- Add an assertion to the nvme driver to ensure the PRP list is allocated below
+  4G (bsc#1284765)
+  * 0001-nvme-guard-PRP-list-DMA-addresses-above-4-GiB.patch
+
+-------------------------------------------------------------------
 Thu Oct 22 06:27:52 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix out-of-bound memory write and uninitialized read in

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 08:53:12 UTC 2026 - Jiri Slaby <jslaby@suse.com>
+
+- Drop "python_module tree-sitter" BuildRequires from tests, it is
+  not needed there. The tests actually need tree-sitter which is
+  also present. The set of tests run with and without the
+  BuildRequire is the same. This eases the SLFO submission.
+
+-------------------------------------------------------------------
 Wed Sep  9 11:10:48 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Lower the requirements for Pygments -- I want to submit b4 to

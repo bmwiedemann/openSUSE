@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Tue Nov 10 16:50:31 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.14.2.
+  ## 0.14.2
+
+    * Move punctuation inside quotes wrapped in formatting (#48, Don Yin).
+
+    * Refactor `evalStyle` into separate phases, for readability.
+
+    * Update tests from upstream. There is one less expected failure.
+
+    * Update locales from upstream.
+
+    * Clean up code so we don't get warnings on GHC 9.14.
+
+-------------------------------------------------------------------
+Sun Oct 25 18:29:16 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update citeproc to version 0.14.1.1.
+  ## 0.14.1.1
+
+    * Group name-less cites only when the text before their dates matches
+      (#184, Daniel Gregg).
+
+    * Initialize given names in caseless romanesque scripts (#186,
+      Daniel Gregg).
+
+    * Do not initialize given names in non-romanesque scripts (#189,
+      Daniel Gregg).
+
+    * Render a literal date only where the date element shows the year
+      (#188, Daniel Gregg).
+
+    * Fix "et al.others" with et-al-use-last and a final "others" name
+      (Don Yin).
+
+    * A single number with digit grouping or a word takes the singular
+      label (#185, Daniel Gregg).
+
+    * Do not italicize text with no romanesque character (#190,
+      Daniel Gregg).
+
+    * Update stop words from canonical list upstream. This affects
+      title case.
+
+  ## 0.14.1
+
+    * Stop extracting particles from given and family names.
+      citeproc.js implemented a system by which particles would
+      be extracted automatically from given and family names (so
+      that users of Zotero wouldn't have to know about the various
+      types of particles). The test suite does this unless the
+      name is enclosed in straight quotes, in which case it is
+      considered literally. We don't want this feature, because it is
+      not part of the CSL spec, and the CSL JSON files exported from
+      Zotero don't put the quotes where they would be needed for this to
+      work. However, we still remove an outer pair of quotes, in case
+      there is legacy use of this feature.
+      See discussion at jgm/pandoc#11911 .
+
+    * Record how known failures fail, instead of just that they fail. A
+      test we don't yet pass now has an `.expected` file alongside its
+      `.txt` file, containing the output we currently produce. It counts
+      as an expected failure only if its output still matches that file
+      exactly, so a change in a known-bad result is no longer silently
+      tolerated. This replaces the flat list of expected failures in
+      test/Spec.hs, five entries of which had gone stale.
+
+    * Two new test-suite options: `--accept` (re)writes the `.expected` file of
+      every failing test and removes that of every test that now passes, and
+      `--verbose` reports warnings, passes, and expected failures with diffs,
+      which are otherwise suppressed.
+
+    * Add five new tests from upstream (all passing).
+
+  ## 0.14
+
+    * [API change] Replace unlawful Ord Term instance with `termMatches`.
+      The old instance violated the Ord laws. It was only used for term
+      matching in lookupTerm, so we now export a function `termMatches`
+      for that purpose.
+
+    * [API change] Add `isEmpty` to CiteprocOutput class.
+      This allows us to avoid rendering to Text just to check for
+      emptiness.
+
+    * Fix flip-flop state bugs in `cslJsonToJson`.
+
+    * Fix end-trimming bugs in the pandoc backend's `dropTextWhileEnd'`.
+
+    * Fix EDTF year 0000 (1 BC) rendering as an open date range.
+      EDTF uses astronomical year numbering, in which 0000 means 1 BC, but
+      the parser passed year 0 through unchanged, colliding with the internal
+      year-0 sentinel for the empty side of an open date range; a 1 BC date
+      therefore rendered as nothing.
+
+    * Fix `punctuationInsideQuotes` missing nested quoted content.
+
+    * Remove empty Str elemnets left behind by Pandoc inline trimming.
+
+    * Fix `showYearSuffix` overflow past "zz".
+
+    * Use locale-aware lowercasing in `initialize`.
+
+    * Make `removeDoubleSpaces` collapse all space runs.
+
+    * Add some benchmarks for disambiguation and collapsing.
+
+    * Make disambiguation re-render only affected citations.
+
+    * Avoid repeated traversals in citation grouping.
+
+    * Cache reference lang so we don't reparse it all the time.
+
+    * Simplify `endWithPunct`.
+
+    * Only apply `after-inverted-name` delimiter after actually inverted names.
+      Fixes `test/csl/name_DelimiterAfterInverted.txt`.
+
+    * Compare rendered names in subsequent-author-substitute.
+      Fixes `fullstyles_ChicagoAuthorDateSimple.txt`, `sort_ChicagoYearSuffix1.txt`,
+      and `sort_ChicagoYearSuffix2.txt`.
+
+    * Treat whitespace-only term definitions as empty.
+      Fixes `test/csl/label_EditorTranslator1.txt`.
+
+    * Suppress date variables rendered via `cs:substitute`.
+      Improves `test/csl/bugreports_LegislationCrash.txt`, which
+      however still is an expected failure because of a spurious
+      space in the expected output.
+
+    * Drop cites that render empty after collapsing.
+      Fixes `test/csl/collapse_AuthorCollapseNoDateSorted.txt`.
+
+    * Include non-dropping particle when grouping names for disambiguation.
+      Fixes `test/csl/disambiguate_PrimaryNameWithParticle.txt` and
+      `test/csl/disambiguate_PrimaryNameWithNonDroppingParticle.txt`.
+
+-------------------------------------------------------------------
 Mon Jun  1 09:03:38 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update citeproc to version 0.13.0.1.

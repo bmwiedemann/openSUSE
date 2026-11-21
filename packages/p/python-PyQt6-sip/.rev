@@ -191,4 +191,17 @@
 </comment>
     <requestid>1385949</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>168493410e1f24e7e1335df85feb17b5</srcmd5>
+    <version>13.13.1</version>
+    <time>1794932172</time>
+    <user>anag_factory</user>
+    <comment>- Update to ABI 13.13.1
+  * The generation of `.pyi` stub files has been improved so that
+    they pass the scrutiny of `flake8-pyi`.  Support has been added
+    for PEP 526 (Syntax for Variable Annotations) and PEP 673 (Self
+    Type)
+</comment>
+    <requestid>1397729</requestid>
+  </revision>
 </revisionlist>

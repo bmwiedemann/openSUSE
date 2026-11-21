@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  9 23:03:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use modello-ant-task instead of ModelloCli
+
+-------------------------------------------------------------------
 Tue Jun  3 08:25:56 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4

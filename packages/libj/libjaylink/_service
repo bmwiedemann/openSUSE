@@ -1,5 +1,5 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.zapb.de/libjaylink/libjaylink.git</param>
     <param name="filename">libjaylink</param>
@@ -9,12 +9,12 @@
     <param name="versionformat">0.2.0~git.%cd</param>
     <param name="revision">master</param>
     -->
-    <param name="revision">0.3.1</param>
+    <param name="revision">0.5.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*libjaylink-*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

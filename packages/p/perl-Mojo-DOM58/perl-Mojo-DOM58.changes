@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Oct 25 09:50:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.3.0 (3.003)
+   see /usr/share/doc/packages/perl-Mojo-DOM58/Changes
+
+  3.003     2026-10-24 23:26:07 EDT
+    - Fix whitespace handling in descendent combinator (from Mojolicious 9.44)
+    - Handle script tags spec compliant (from Mojolicious 9.44)
+    - Fix various comment parsing issues (from Mojolicious 9.44)
+    - Fix parsing of tag opener (from Mojolicious 9.44)
+    - Replace recursive CSS matcher with iterative approach (from Mojolicious 9.44)
+    - Fix spec compliance issue with attribute selectors (from Mojolicious 9.46)
+    - Fix security issue where the content of title and textarea elements was not
+      escaped during rendering, allowing escaped end tags to break out and turn
+      sanitized HTML into live markup (from Mojolicious 9.50)
+    - Fix bug where CDATA sections, processing instructions, and DOCTYPE declarations
+      did not end at the first ">" in HTML documents (from Mojolicious 9.51)
+    - Fix bug where the content of "<style>" and "<script>" elements in "<svg>" and
+      "<math>" blocks was not parsed as markup (from Mojolicious 9.51)
+    - Fix bug where end tags like "</style/>" did not end "<style>" and "<script>"
+      elements (from Mojolicious 9.51)
+    - Fix bug where raw text moved out of "<style>" and "<script>" elements, for
+      example with strip, was not escaped (from Mojolicious 9.51)
+    - Fix bug where any processing instruction containing "xml" would activate XML
+      mode (from Mojolicious 9.51)
+    - Replace invalid codepoints with replacement character and map the C1 control
+      range to windows-1252 in html_unescape, as required by the WHATWG HTML
+      standard (from Mojolicious 9.52)
+    - Improve at performance for selectors without combinators (from Mojolicious 9.53)
+    - Improve HTML/XML parsing performance matching attributes only once
+      (from Mojolicious 9.53)
+    - Fix bug where many unclosed comments, CDATA sections, processing instructions
+      or RCDATA elements could make parsing extremely slow (from Mojolicious 9.53)
+
+-------------------------------------------------------------------
 Tue May 20 05:35:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.2.0 (3.002)

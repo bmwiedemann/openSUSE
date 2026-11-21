@@ -238,4 +238,17 @@
     <comment>1</comment>
     <requestid>1381473</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ae245c2abcbbdd3ad639d29dc9d6412f</srcmd5>
+    <version>0.66b1</version>
+    <time>1793724862</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.66b1:
+  * This is a patch release on the previous 1.45.0/0.66b0
+    release, fixing the issue(s) below.
+  * No significant changes.
+
+    extract and inject (#5098)</comment>
+    <requestid>1394358</requestid>
+  </revision>
 </revisionlist>

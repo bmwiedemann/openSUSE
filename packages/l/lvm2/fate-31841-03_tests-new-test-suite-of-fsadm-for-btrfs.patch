@@ -35,11 +35,20 @@ add cleaning job ('wipefs -a') in reset_lvs().
 
 Signed-off-by: Heming Zhao <heming.zhao@suse.com>
 
+----------
+2026-11-06:
+LVM_BINARY is uselsess after commit upstream 2575c7d9079e
+("scripts: harden and modernize fsadm"). Remove it.
+
+Signed-off-by: Su Yue <glass.su@suse.com>
+
+----------
+
 ---
 diff -Nupr a/test/shell/fsadm-btrfs.sh b/test/shell/fsadm-btrfs.sh
 --- a/test/shell/fsadm-btrfs.sh	1970-01-01 08:00:00.000000000 +0800
 +++ b/test/shell/fsadm-btrfs.sh	2025-03-07 14:22:06.451458471 +0800
-@@ -0,0 +1,189 @@
+@@ -0,0 +1,187 @@
 +#!/usr/bin/env bash
 +
 +# Copyright (C) 2012 Red Hat, Inc. All rights reserved.
@@ -72,8 +81,6 @@ diff -Nupr a/test/shell/fsadm-btrfs.sh b/test/shell/fsadm-btrfs.sh
 +dev_vg_lv3="$DM_DEV_DIR/$vg_lv3"
 +mount_dir="mnt"
 +mount_space_dir="mnt space dir"
-+# for recursive call
-+export LVM_BINARY=$(which lvm)
 +
 +test ! -d "$mount_dir" && mkdir "$mount_dir"
 +test ! -d "$mount_space_dir" && mkdir "$mount_space_dir"

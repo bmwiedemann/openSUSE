@@ -495,4 +495,43 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00079</comment>
     <requestid>1381435</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6959196b56d8786fdd66dc9d97f9ba78</srcmd5>
+    <version>20261104</version>
+    <time>1793989968</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261104 (git commit 0cb5a7fb037e):
+  * linux-firmware: Update firmware file for Intel Scorpius2 core
+  * linux-firmware: Update firmware file for Intel Scorpius2 core
+
+- Update aliases from 7.4-rc1
+
+- Update to version 20261022 (git commit 412eb7861d40):
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00680
+
+- Update to version 20261012 (git commit b9df1a1aa45b):
+  * aic: Add AIC8800D80 Bluetooth and Wi-Fi firmware
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazaruHrpGfp core
+  * linux-firmware: Update firmware file for Intel BlazariGfp core
+  * linux-firmware: Update firmware file for Intel BlazarUFmPArl core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazariFmp core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel ScorpiusGfp core
+  * linux-firmware: Update firmware file for Intel Scorpius core</comment>
+    <requestid>1394981</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>e583a1010076371ba45f5d7c56616a35</srcmd5>
+    <version>20261109</version>
+    <time>1794816368</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261109 (git commit 69e51bb26f3f):
+  * Bluetooth: btusb: Add firmware for Qualcomm multi-subsystem QCC2072</comment>
+    <requestid>1396918</requestid>
+  </revision>
 </revisionlist>

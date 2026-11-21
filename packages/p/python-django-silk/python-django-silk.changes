@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:45:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.0:
+  * **Backwards incompatible:** `SILKY_IGNORE_PATHS` entries are
+    now matched against `request.path_info` instead of `request.path`.
+    For most deployments these are identical and nothing changes.
+    If silk runs behind a front-end web server that
+    sets a `SCRIPT_NAME` prefix, and you worked around #349 by
+    writing that prefix into your `SILKY_IGNORE_PATHS` entries
+  * Fix SILKY_IGNORE_PATHS matching when used with a SCRIPT_NAME
+    prefix
+  * Fix false-positive migration for Request.prof_file
+  * Fix PackageNotFoundError when determining __version__
+  * Add support for Django 6.1
+  * Drop support for EOL Django 4.2 and 5.1
+  * Fix grammar and typos in middleware comments
+  * Remove outdated compatibility logic for old versions of
+    python/django
+  * Remove outdated settings.DEFAULT_FILE_STORAGE
+
+-------------------------------------------------------------------
 Fri Aug 21 19:31:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.5.2:

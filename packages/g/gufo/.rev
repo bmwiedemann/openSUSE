@@ -44,4 +44,80 @@
   * audio: drop resident safetensors pages after the</comment>
     <requestid>1393918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f11ca27bc5438574ce3a3ade17152782</srcmd5>
+    <version>0.34.0</version>
+    <time>1794591183</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 0.34.0
+  * audio: BREAKING: decode EmbeddingGemma 2 audio in
+    Rust and drop libsndfile and soxr (#1118)
+  * cli: deprecate --draft-tokens, --min-draft-tokens
+    and --draft-policy (#1124)
+  * extensions: record source revision of external
+    extensions (#1162)
+  * h3: add FL2VA first- and last-frame keyframe
+    conditioning (#998)
+  * cache: drop disk-only metadata admission limits and
+    size validation by candidate (#934, #1121)
+  * ext: install sources containing file symlinks (#1151)
+  * qwen38-flash-next: recover stale MTP backoff after
+    batch observations (#912)
+  * serve: continue live frontier after re-tokenized
+    answers (#1154, #1158)
+  * serve: deprecate unused shared-byte cache metric (#1129)
+  * serve: do not charge prompt state for preallocated
+    session runners (#1164)
+  * serve: refuse prompts exceeding host prompt-state
+    budget (#1083)
+  * serve: return tool-call numbers as the model wrote
+    them (#1146)
+  * tools: cap JSON numbers at llama.cpp 16 digits (#1168)
+  * tools: match llama.cpp nested object defaults (#1128)
+  * core: reduce CPU overhead in sampling and n-gram
+    lookups (#1127)
+  * qwen38: reuse Q8 activations from batched HC mixing
+    (#958)
+  * qwen: fuse batched target FFN HC pair (#969)</comment>
+    <requestid>1397136</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>07f8cd9e3137324089358d5a47b42bfd</srcmd5>
+    <version>0.35.0</version>
+    <time>1795103781</time>
+    <user>anag_factory</user>
+    <comment>NOTE: this requires now the also submitted xrt package
+
+- Updated to version 0.35.0
+  * serve: BREAKING: parse multipart/form-data per RFC
+    7578 (#1176)
+  * npu: run EmbeddingGemma 2, Qwen3-ASR and Qwen3-TTS
+    on the XDNA NPU (--npu) (#1216)
+  * npu: run XDNA programs through XRT from core and
+    extensions (#1186)
+  * npu: load XRT from a module on first NPU use
+    on Linux (#1229)
+  * npu: cut host overhead of EmbeddingGemma 2 (#1225)
+  * model: download extension-provided model weights with
+    gufo model (#1203)
+  * ext: trim reasoning separator after a closed block
+    (#1210)
+  * qwen-image: true CFG, image-to-image and
+    multi-reference CFG edits in GPU memory (#1212)
+  * sched: require a text scheduling profile and drop
+    the legacy prefill budget (#1175)
+  * serve: add the A1111 (sdapi) image API (#1214)
+  * serve: do not split prefill passes without prefix
+    reuse (#1184)
+  * serve: make --max-pending 0 reject when all sessions
+    are busy (#1207)
+  * cache: count recovered manifest storage once and
+    coordinate RAM and disk retention (#1183, #1194)
+  * cache: reuse dependency metadata during recovery,
+    share transfer streams and sync disk checkpoints
+    concurrently (#1195, #1196, #1205)
+  * hip: match Clang 23 WMMA builtin signatures on
+    gfx1151 (#945)</comment>
+    <requestid>1398601</requestid>
+  </revision>
 </revisionlist>

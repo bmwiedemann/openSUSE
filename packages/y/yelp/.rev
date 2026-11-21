@@ -1040,4 +1040,20 @@
 	  startup if you used MANPATH instead of</comment>
     <requestid>1382690</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>f1104040135e1c202079d13ebe8285df</srcmd5>
+    <version>49.2+12</version>
+    <time>1793724752</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 49.2+12:
+  * main: Plug GApplication leak
+  * search-entry: Plug char leak
+  * settings: Plug gchar leaks
+  * yelp: Plug value leak and initialize correctly
+  * app: Free option context
+  * Chain-up constructed methods
+  * Updated translations.
+- Switch to meson BuildSystem.</comment>
+    <requestid>1394405</requestid>
+  </revision>
 </revisionlist>

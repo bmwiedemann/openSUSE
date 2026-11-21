@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:55:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update fix_tests.patch to support latest urllib3, this fixes the
+  exception in FakeChunkedResponseBody:
+
+  TypeError: FakeChunkedResponseBody.readline() takes 1
+  positional argument but 2 were given
+
+-------------------------------------------------------------------
 Tue Sep 22 09:31:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Convert to multibuild to avoid build cycle with python-pytest-pook

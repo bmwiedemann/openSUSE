@@ -625,4 +625,12 @@
     <comment>Fix build with commons-io &gt;= 2.19</comment>
     <requestid>1331685</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>39a29fa1298d0038ca2126584707bea2</srcmd5>
+    <version>2.12</version>
+    <time>1794816454</time>
+    <user>anag_factory</user>
+    <comment>2.12</comment>
+    <requestid>1397291</requestid>
+  </revision>
 </revisionlist>

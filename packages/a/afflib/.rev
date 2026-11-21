@@ -7,4 +7,12 @@
     <comment>affflib: Library and tools for working with the Advanced Forensics Format</comment>
     <requestid>1333149</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>10096c03ac784a1007c8a6555c9354a0</srcmd5>
+    <version>3.7.23</version>
+    <time>1793724891</time>
+    <user>anag_factory</user>
+    <comment>afflib 3.7.23 CVE-2026-119601 (boo#1289123) (forwarded request 1394519 from AndreasStieger)</comment>
+    <requestid>1394520</requestid>
+  </revision>
 </revisionlist>

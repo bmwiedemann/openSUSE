@@ -1,7 +1,7 @@
 #
 # spec file for package epson-inkjet-printer-escpr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           epson-inkjet-printer-escpr
-Version:        1.8.6
+Version:        1.8.10
 Release:        0
 Summary:        Epson ESC/P-R Inkjet Printer Driver
 License:        GPL-2.0-only
@@ -25,6 +25,8 @@ Group:          Hardware/Printing
 URL:            https://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
 # Example URL to download Source0: http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX&productName=B700
 Source0:        epson-inkjet-printer-escpr-%{version}-1.tar.gz
+BuildRequires:  automake
+BuildRequires:  libtool
 # This software is a filter program used with CUPS:
 Requires:       cups
 # SLE12 needs special BuildRequires.
@@ -40,9 +42,9 @@ Requires:       cups
 BuildRequires:  cups154
 BuildRequires:  cups154-devel
 %else
-# Anything what is not SLE12 (i.e. SLE11 and all openSUSE versions) have "normal" BuildRequires:
 BuildRequires:  cups
 BuildRequires:  cups-devel
+BuildRequires:  cups-filters
 %endif
 
 %description
@@ -64,6 +66,7 @@ installed package see the PPD files in this directory:
 %autosetup
 
 %build
+autoreconf -fi
 export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
 # Specify location of CUPS filter and ppd files explicitly.
 # Use the explicite value 'epson-inkjet-printer-escpr' and not the RPM macro 'name'
@@ -73,8 +76,8 @@ export CFLAGS="${CFLAGS} -Wno-implicit-function-declaration"
 #  version as 'epson-inkjet-printer-escpr-only4me') because the installed PPDs
 # must match exactly to the installed epson-escpr filter and the libescpr library:
 %configure \
-        --with-cupsfilterdir=%{_prefix}/lib/cups/filter \
-        --with-cupsppddir=%{_datadir}/cups/model/manufacturer-PPDs
+    --with-cupsfilterdir=%{_prefix}/lib/cups/filter \
+    --with-cupsppddir=%{_datadir}/cups/model/manufacturer-PPDs
 %make_build
 
 %install
@@ -103,35 +106,22 @@ set +x
 # enforcing compliance to the PPD specification:
 for p in *.ppd
 do echo -n "$p: "
-   grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|^\*cupsFilter:' $p | cupstestppd - || true
-   gzip -n9 $p
+grep -E -v '^\*UIConstraints:|^\*NonUIConstraints:|^\*cupsFilter:' $p | cupstestppd - || true
+gzip -n9 $p
 done
 # Switch back to the usual build log messages:
 set -x
 popd
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
-# The files sections list all mandatory files explicitly one by one.
-# In particular all executables are listed explicitly.
-# This avoids that the configure magic might silently
-# not build and install an executable when whatever condition
-# for configure's automated tests is not fulfilled in the build system.
-# When all mandatory files are explicitly listed,
-# the build fails intentionally if a mandatory file was not built
-# which ensures that already existing correctly built binary RPMs
-# are not overwritten by broken RPMs where mandatory files are missing.
+%license COPYING
+%doc %{_defaultdocdir}/%{name}/
 %{_libdir}/libescpr.*
-%dir %{_prefix}/lib/cups
-%dir %{_prefix}/lib/cups/filter
 %{_prefix}/lib/cups/filter/epson-escpr
 %{_prefix}/lib/cups/filter/epson-escpr-wrapper
-%dir %{_datadir}/cups
-%dir %{_datadir}/cups/model
 %dir %{_datadir}/cups/model/manufacturer-PPDs
 %{_datadir}/cups/model/manufacturer-PPDs/epson-inkjet-printer-escpr/
-%doc %{_defaultdocdir}/%{name}/
 
 %changelog

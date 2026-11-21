@@ -156,4 +156,20 @@
   See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
     <requestid>1310641</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>186a627e593a3d0da667db744733dd06</srcmd5>
+    <version>1.460.0</version>
+    <time>1793817824</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Exception-Class/Changes
+  1.46    2026-09-27
+  - If you use Exception::Class to create a class whose module file is already loaded, it no longer
+    overwrites the %INC entry for that module with the path to Exception/Class.pm. Typically, this
+    happens when you have a package that implements an exception with the same name as the package
+    itself. Implemented by Graham Knop (@haarg). PR #17.
+  - Similarly, if a package defines a $VERSION, this is no longer overwritten when the exception class
+    is defined with Exception::Class. Implemented by Graham Knop (@haarg). PR #18.</comment>
+    <requestid>1394692</requestid>
+  </revision>
 </revisionlist>

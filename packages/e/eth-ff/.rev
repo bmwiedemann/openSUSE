@@ -100,4 +100,12 @@
   - Support-both-old-and-new-version-OpenMP.patch</comment>
     <requestid>1377902</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>86c7b812301ba14a44d03333a740e680</srcmd5>
+    <version>12.1.0.0</version>
+    <time>1794591090</time>
+    <user>anag_factory</user>
+    <comment>- Silence libexpat deprecation errors</comment>
+    <requestid>1397036</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pivy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ License:        GPL-2.0-only AND ISC
 Group:          Development/Libraries/Python
 URL:            https://github.com/coin3d/pivy
 Source0:        https://github.com/coin3d/pivy/archive/%{version}.tar.gz#/pivy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-pivy-swig-py3.patch -- modernize PyInt_* to PyLong_* for Python 3.14+
+Patch0:         python-pivy-swig-py3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake

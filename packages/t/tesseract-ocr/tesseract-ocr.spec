@@ -55,8 +55,8 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 
 %package common
 Summary:        Tesseract Open Source OCR Engine Common files
-Requires:       (%{name} = %{version} or %{lname} = %{version})
 Requires:       tesseract-ocr-traineddata-provider
+Requires:       (%{name} = %{version} or %{lname} = %{version})
 Recommends:     tesseract-ocr-traineddata-eng
 BuildArch:      noarch
 

@@ -692,4 +692,12 @@
 - Migrate to xz compression and manual service run</comment>
     <requestid>1383879</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9794a44584eb62e2cf47cd4e09d94231</srcmd5>
+    <version>1.28.9</version>
+    <time>1794236731</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395971</requestid>
+  </revision>
 </revisionlist>

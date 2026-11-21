@@ -38,8 +38,8 @@
 %global featurever      21
 %global interimver      0
 %global updatever       13
-#global patchver        0
-%global buildver        9
+%global patchver        1
+%global buildver        2
 %global openjdk_repo    jdk21u
 %global openjdk_tag     jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}+%{buildver}
 %global openjdk_dir     %{openjdk_repo}-jdk-%{featurever}%{?updatever:.%{interimver}.%{updatever}}%{?patchver:.%{patchver}}-%{buildver}
@@ -74,8 +74,14 @@
 %endif
 %if %{debug}
 %global debugbuild slowdebug
+%global debug_symbols internal
 %else
 %global debugbuild release
+%global debug_symbols external
+%endif
+# SLE12 eu-unstrip (elfutils 0.158) cannot merge binutils 2.41 .debuginfo
+%if 0%{?suse_version} < 1500
+%global debug_symbols internal
 %endif
 %if %{bootcycle}
 %global imagesdir bootcycle-build/images
@@ -187,8 +193,6 @@ Patch302:       disable-doclint-by-default.patch
 Patch303:       java-40y.patch
 Patch304:       bsc-1221224.patch
 #
-Patch400:       JDK-8395142-21u.patch
-#
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -196,6 +200,7 @@ BuildRequires:  bc
 BuildRequires:  binutils
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype2-devel
@@ -431,8 +436,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 303 -p1
 %patch -P 304 -p1
 
-%patch -P 400 -p1
-
 # Extract systemtap tapsets
 
 %if %{with_systemtap}
@@ -498,8 +501,8 @@ bash ../configure \
 %endif
 %endif
     --disable-keep-packaged-modules \
+    --with-native-debug-symbols=%{debug_symbols} \
     --with-debug-level=%{debugbuild} \
-    --with-native-debug-symbols=internal \
     --enable-sysconf-nss \
     --with-zlib=system \
     --with-libjpeg=system \
@@ -523,9 +526,8 @@ bash ../configure \
     LOG=trace \
     %{imagestarget}
 
-# remove redundant *diz and *debuginfo files
+# remove redundant *diz files
 find %{imagesdir}/jdk -iname '*.diz' -exec rm {} \;
-find %{imagesdir}/jdk -iname '*.debuginfo' -exec rm {} \;
 
 popd >& /dev/null
 
@@ -536,19 +538,33 @@ if [ -f %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts ]; then
         rm %{buildoutputdir}/%{imagesdir}/jdk/lib/security/cacerts
 fi
 
+%if "%{debug_symbols}" == "external"
+# external symbols keep the jmods small; merge them back so that
+# find-debuginfo makes the usual -debuginfo/-debugsource packages
+find $JAVA_HOME -name '*.debuginfo' | while read d
+do
+  f=${d%.debuginfo}
+  if [ -f $f.so ] ; then f=$f.so ; fi
+  # eu-unstrip wants a fully stripped file
+  objcopy --strip-all --remove-section=.gnu_debuglink $f $f.stripped
+  eu-unstrip -o $f.full $f.stripped $d
+  cat $f.full > $f
+  rm $f.stripped $f.full $d
+done
+%endif
+
 # Check debug symbols are present and can identify code
-SERVER_JVM="$JAVA_HOME/lib/server/libjvm.so"
-if [ -f "$SERVER_JVM" ] ; then
-  nm -aCl "$SERVER_JVM" | grep javaCalls.cpp
-fi
-CLIENT_JVM="$JAVA_HOME/lib/client/libjvm.so"
-if [ -f "$CLIENT_JVM" ] ; then
-  nm -aCl "$CLIENT_JVM" | grep javaCalls.cpp
-fi
-ZERO_JVM="$JAVA_HOME/lib/zero/libjvm.so"
-if [ -f "$ZERO_JVM" ] ; then
-  nm -aCl "$ZERO_JVM" | grep javaCalls.cpp
-fi
+find $JAVA_HOME -name libjvm.so | grep -q .
+find $JAVA_HOME -name libjvm.so -print0 | while read -d $'\0' lib
+do
+  echo "Testing $lib for debug symbols"
+  test $(eu-readelf -S "$lib" | grep -E "\] \.debug_(info|abbrev)" | wc --lines) == 2
+  eu-readelf -s "$lib" | grep -E ' FILE +LOCAL +DEFAULT +ABS javaCalls\.(cpp|o)$'
+  if eu-readelf -S "$lib" | grep "\] .gnu_debuglink" | grep PROGBITS ; then
+    echo "bad .gnu_debuglink section."
+    false
+  fi
+done
 
 # Check unlimited policy has been used
 $JAVA_HOME/bin/javac -d . %{SOURCE14}

@@ -393,4 +393,28 @@
     <comment></comment>
     <requestid>1277148</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2ea0de01819a52ed4e0bad7174c6942e</srcmd5>
+    <version>2.6.2</version>
+    <time>1793899159</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394797</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>5617f9fa74ad427869ff1c08b67ef24a</srcmd5>
+    <version>2.6.3</version>
+    <time>1794597163</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.6.3</comment>
+    <requestid>1396939</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>ea1962780bf05f6ab4d425f1cfe9c586</srcmd5>
+    <version>2.6.3</version>
+    <time>1795182221</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398239</requestid>
+  </revision>
 </revisionlist>

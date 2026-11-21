@@ -69,7 +69,7 @@ processes, written in Rust and using GTK 4 and libadwaita for its GUI.
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/%{appid}*.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
-%exclude %{_datadir}/polkit-1/actions/%{appid}.policy
+%{_datadir}/polkit-1/actions/%{appid}.policy
 %{_libexecdir}/%{name}/
 
 %files lang -f %{name}.lang

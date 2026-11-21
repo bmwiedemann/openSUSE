@@ -1466,4 +1466,94 @@
   * tree-sitter-haskell-fix-heap-corruption-checksum.patch</comment>
     <requestid>1385156</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>3968f95b6961e968e005307ea46cbae5</srcmd5>
+    <version>0.51.1</version>
+    <time>1794236887</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.51.1:
+  * 0.51.1 bump version
+  * fix(cli): report skipped files and reason in --inspect entity (#3044)
+  * chore(deps): update rust crate tree-sitter-scala to v0.26.4 (#3054)
+  * fix(dynamic): only replace metavariable sigils with the expando char (#3052)
+  * fix(core): keep $ followed by a digit literal in fix templates (#3045)
+  * fix(deps): update rust-wasm-bindgen monorepo (#3046)
+  * Fix macOS universal2 wheel matching (#3050)
+  * chore(deps): update rust crate napi-derive to v3.7.0 (#3049)
+  * chore(deps): update rust crate napi to v3.16.1 (#3047)
+  * fix(scan): bind utilDirs utils for --inline-rules and --rules (#2943)
+  * fix(cli): percent-encode file paths in sarif uri (#3042)
+  * chore(deps): update dependency node to v26 (#3043)
+  * fix: fix web-tree-sitter 0.26 memory corruption
+  * Revert &quot;chore(deps): update dependency node to v26 (#3039)&quot;
+  * chore(deps): update dependency oxlint to v1.90.0 (#3036)
+  * chore(deps): update astral-sh/setup-uv action to v10.3.3 (#3040)
+  * chore(deps): update rust crate globset to v0.4.21 (#3037)
+  * chore(deps): update rust crate ignore to v0.4.34 (#3038)
+  * chore(deps): update dependency node to v26 (#3039)
+  * fix(sarif): set the log version to 2.1.0 (#3035)
+  * fix(cli): escape special characters in github format output (#3034)
+  * chore(deps): update dependency web-tree-sitter to ^0.26.0 || ^0.27.0 (#3019)
+  * chore(deps): update dependency dprint to v0.64.3 (#3029)
+  * chore(deps): update rust crate smallvec to v1.16.4 (#3030)
+  * chore(deps): update rust crate similar to v3.2.1 (#3031)
+  * chore(deps): update rust crate tree-sitter-md to v0.5.4 (#3032)
+  * fix: mark GlobalRules::insert crate pub only and unsafe
+  * fix(deps): update rust crate tree-sitter-dart to 0.3.0 (#3033)
+  * chore(deps): update dependency oxlint to v1.89.0 (#3018)</comment>
+    <requestid>1396312</requestid>
+  </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>5c9ebaf05cbcefb6cefc1bf526643d59</srcmd5>
+    <version>0.51.2</version>
+    <time>1794410957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.51.2:
+  * 0.51.2 bump version
+  * chore(deps): update rust crate tree-sitter-scala to v0.26.10 (#3085)
+  * feat(language): define feature-gated languages with macros (#3081)
+  * docs: fix dead wasm-pack installer link in the wasm crate README (#3084)
+  * chore(deps): update dependency oxlint to v1.93.0 (#3082)
+  * fix(config): do not split words at digits in convert transform (#3070)
+  * chore(deps): update dependency web-tree-sitter to v0.27.2 (#3075)
+  * chore(deps): update dependency node to v26 (#3069)
+  * chore(deps): update rust crate toml_edit to v0.25.19 (#3071)
+  * chore(deps): update rust crate tree-sitter-scala to v0.26.9 (#3072)
+  * chore(deps): update dependency oxlint to v1.92.0 (#3074)
+  * chore(deps): update rust crate smallvec to v1.16.5 (#3073)
+  * chore(deps): update rust crate tree-sitter to v0.27.2 (#3076)
+  * test(cli): verify npm packages on all platforms daily (#3068)
+  * feat(cli): distribute musl Linux binaries (#3067)
+  * Fail `ast-grep test` for unmatched IDs or when no tests run (#3065)
+  * chore(deps): update dependency @napi-rs/cli to v3.10.12 (#3057)
+  * chore(deps): update rust crate serde-saphyr to v2.1.1 (#3062)
+  * chore(deps): update rust crate toml_edit to v0.25.18 (#3063)
+  * fix(lsp): report columns in UTF-16 code units (#3060)
+  * chore(deps): update dependency oxlint to v1.91.0 (#3061)
+  * chore(deps): update dependency @ast-grep/napi to v0.51.1 (#3055)</comment>
+    <requestid>1396748</requestid>
+  </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>ddd78f85b996e588d0a19b8eca540502</srcmd5>
+    <version>0.51.3</version>
+    <time>1795023124</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.51.3:
+  * 0.51.3 bump version
+  * feat(cli): load built-in outline rules from project config (#2978)
+  * fix(cli): replace npm binaries atomically in postinstall (#3083)
+  * chore(deps): update rust crate inquire to v0.9.5 (#3097)
+  * chore(npm): require Node.js 20 or later
+  * fix(config): allow range rule with only one column on a single line (#3091)
+  * Revert &quot;chore(deps): update dependency node to v26 (#3069)&quot; (#3095)
+  * chore(deps): update dependency python to 3.15 (#2996)
+  * chore(deps): update rust crate tree-sitter-scala to v0.26.13 (#3086)
+  * chore(deps): update dependency @ast-grep/napi to v0.51.2 (#3089)
+  * chore(deps): update rust crate libloading to v0.9.1 (#3093)
+  * ci(pyo3): build Python 3.15 wheels on Linux and Windows (#3094)
+  * fix: bump pyo3 version
+  * chore(deps): update rust crate napi to v3.16.2 (#3087)
+  * chore(deps): update rust crate napi-derive to v3.7.1 (#3088)</comment>
+    <requestid>1398386</requestid>
+  </revision>
 </revisionlist>

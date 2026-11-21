@@ -1,3 +1,72 @@
+Libblockdev 3.6.0
+------------------
+
+New minor release of the libblockdev library with multiple fixes and new features. See below
+for details.
+
+**Notable changes**
+
+- CVE-2026-111581: NTFS and VFAT labels starting with a dash were interpreted as command-line options.
+- s390: Pervasive encryption support using zkey.
+- loop: _from_fd variants of existing functions operating on an already-open fd, avoiding races.
+
+**Full list of changes**
+
+Geert Geurts (1):
+
+- utils: Resolve symlinks with an absolute target in bd_utils_resolve_device
+
+Kou Wenqi (1):
+
+- btrfs: fix integer overflow in bd_btrfs_create_volume argument counter
+
+Ruslan Kossak (1):
+
+- tests: Fix race condition in test_set_bitmap_location
+
+Vojtech Trefny (34):
+
+- README: Update location for libblockdev docs on storaged.org
+- NEWS: Fix formatting
+- ci: Add GitHub action to check RST files
+- utils: Fail early when calling bd_utils_resolve_device with NULL
+- ci: Run csmock with both default and rawhide mock config
+- fs: Fix parsing tune.exfat output with variable whitespace
+- fs: Adjust to new mkfs.exfat behaviour in exfatprogs >= 1.4.0
+- utils: Fix typo libkmod log messages prefix
+- lvm: Add warning when user specifies invalid VDO index memory size
+- misc: Use ansible_facts instead of deprecated top-level fact variables
+- Fix a pylint disable comment
+- ci: Switch the compilation GH action to Ubuntu 26.04
+- ci: Use ubuntu-latest instead of ubuntu-24.04 in GH workflows
+- dm: Add bd_dm_get_thin_pool_stats for generic thin pools
+- loop: Add _from_fd variants for the remaining loop functions
+- loop: Remove useless access check when getting loop backing file
+- dm: Check dm_task_run return value in bd_dm_map_exists
+- crypto: Set libdevmapper logging in crypto plugin too
+- fs: Reject NTFS labels starting with a dash
+- fs: Prevent VFAT labels from being interpreted as options
+- fs: Tell resize.f2fs to stop asking questions
+- ci: Better test coverage with packit and testing farm
+- misc: Add exfatprogs to test dependencies on CentOS
+- tests: Move exfatprogs version check to the test class
+- misc: Allow vendor change when installing build dependencies
+- s390: Add support for pervasive encryption using zkey
+- s390: Add support for validating the PAES setup of a LUKS2 device
+- s390: Fix parsing of multi-line values in bd_s390_zkey_list
+- tests: Write s390 plugin to config_h when available
+- misc: Install s390utils on s390x
+- crypto: Add bd_crypto_luks_format_volume_key for formatting with a given
+  volume key
+- s390: Fix argument order for zkey-cryptsetup calls
+- s390: Use NULL for empty key description in BDS390ZkeyInfo
+- spec: Fix version in the changelog
+
+dependabot[bot] (1):
+
+- infra: bump actions/checkout from 6 to 7
+
+
 Libblockdev 3.5.0
 ------------------
 
@@ -15,14 +84,17 @@ for details.
 **Full list of changes**
 
 Michael Biebl (1):
+
 - Mark _get_linux_version() as static
 
 Tomas Bzatek (3):
+
 - nvme: Add bd_nvme_find_namespaces_for_ctrl()
 - nvme: Clarify argument doc strings for bd_nvme_find_ctrls_for_ns()
 - tests: Add tests for bd_nvme_find_namespaces_for_ctrl()
 
 Vojtech Trefny (188):
+
 - misc: Remove custom Vagrantfile
 - misc: Add some missing dependencies for pgi-docgen
 - fs: Log mount and unmount calls
@@ -71,8 +143,7 @@ Vojtech Trefny (188):
 - dm: Fix memory leak in bd_dm_map_exists
 - crypto: Fix memory leak in bd_crypto_luks_info
 - utils: Check if resolved path in bd_utils_resolve_device is device
-- dm: Fail fast when no name/node specified for
-  dm_node_from_name/dm_name_from_node
+- dm: Fail fast when no name/node specified for dm_node_from_name/dm_name_from_node
 - lvm-dbus: bd_lvm_vdo_pool_convert implementation
 - part: Check partition parsed partition type before setting it
 - part: Check whether partition exists before setting GPT attributes
@@ -83,7 +154,7 @@ Vojtech Trefny (188):
 - s390: Fix fgetc comparison to use character '1' instead of integer 1
 - lvm: Fix next_arg index in bd_lvm_vdo_pool_convert
 - utils: Fix NULL dereference in bd_utils_dbus_service_available
-- fs: Fix g_free(label) to g_free(*label) in get_uuid_label
+- fs: Fix g_free(label) to g_free(\*label) in get_uuid_label
 - core: Fix bd_ensure_init to check all plugins, not just the last
 - core: Restore stub on dlsym failure in generated plugin loaders
 - fs: Remove mnt_free_fs calls on table-owned fs pointers
@@ -214,6 +285,7 @@ Vojtech Trefny (188):
 - Fix gtk-doc warnings for docstrings and sections file
 
 dependabot[bot] (5):
+
 - infra: bump github/codeql-action from 3 to 4
 - infra: bump actions/upload-artifact from 4 to 5
 - infra: bump actions/checkout from 5 to 6
@@ -228,8 +300,7 @@ for details.
 
 **Notable changes**
 
-- bd_nvme_connect() now defaults to port 4420 or 8009 for discovery NQN respectively when
-the transport_svcid argument is not specified.
+- bd_nvme_connect() now defaults to port 4420 or 8009 for discovery NQN respectively when the transport_svcid argument is not specified.
 
 **Full list of changes**
 

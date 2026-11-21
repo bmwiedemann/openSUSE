@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        3.6.0
+Version:        3.7.1
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -90,6 +90,7 @@ adaptation issue of standard effects.
 %{_includedir}/frei0r.hpp
 %dir %{_includedir}/frei0r
 %{_includedir}/frei0r/blur.h
+%{_includedir}/frei0r/bundle.h
 %{_includedir}/frei0r/cairo.h
 %{_includedir}/frei0r/cfc.h
 %{_includedir}/frei0r/colorspace.h

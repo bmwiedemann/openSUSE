@@ -52,6 +52,10 @@ Patch6:         harden_e2scrub@.service.patch
 Patch7:         harden_e2scrub_all.service.patch
 Patch8:         harden_e2scrub_fail@.service.patch
 Patch9:         harden_e2scrub_reap.service.patch
+# PATCH-FIX-UPSTREAM Revert-libext2fs-fix-orphan-file-size-kernel-limit.patch -- 782f43e3
+Patch10:        Revert-libext2fs-fix-orphan-file-size-kernel-limit.patch
+# PATCH-FIX-UPSTREAM libext2fs-cap-orphan-file-size-at-kernel-limit.patch -- a9f482e5
+Patch11:        libext2fs-cap-orphan-file-size-at-kernel-limit.patch
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(blkid)
@@ -212,6 +216,8 @@ cp %{SOURCE2} .
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

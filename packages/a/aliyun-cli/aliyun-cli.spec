@@ -1,7 +1,7 @@
 #
 # spec file for package aliyun-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider        github
 %global provider_tld    com
 %global project         aliyun
@@ -23,17 +24,17 @@
 %global import_path     %{provider_prefix}
 
 Name:           aliyun-cli
-Version:        3.5.2
+Version:        3.5.3
 Release:        0
 License:        Apache-2.0
 Summary:        Alibaba Cloud CLI
 URL:            https://github.com/aliyun/aliyun-cli
 Source0:        %{name}-v%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.23
-# Building with -buildmode=pie is currently unsupported on armv7l, i586, riscv64 and s390x
-ExclusiveArch:  aarch64 ppc64le x86_64
+BuildRequires:  golang-packaging
+# Building with -buildmode=pie is currently unsupported on armv7l, i586 and s390x
+ExclusiveArch:  aarch64 ppc64le riscv64 x86_64
 
 %{go_nostrip}
 %{go_provides}

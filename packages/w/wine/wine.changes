@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Nov 14 09:08:13 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.22 release
+  - Locale data updated to Unicode CLDR 49.
+  - AVX support in x86 emulation on ARM64.
+  - Address space randomization.
+  - Improved glyph metrics in Tahoma font.
+  - DTD validation reimplemented in MSXML.
+  - Various bug fixes.
+- update staging to 11.22 release
+
+-------------------------------------------------------------------
+Sat Oct 31 14:37:49 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.21 release
+  - Better WoW64 OpenGL performance with `map_buffer_client_pointer` extension.
+  - Initial version of the Voice Capture DSP library.
+  - Improved support for user accounts.
+  - Various bug fixes.
+- update staging to 11.21 release
+
+-------------------------------------------------------------------
 Sat Oct 17 09:47:57 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.20 release

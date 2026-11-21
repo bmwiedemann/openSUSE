@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:01:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.2.1:
+  * Fix heterogeneous tuples and `NamedTuple`s with a member type
+    containing a quote in its `repr`, like `tuple[Literal["a"],
+    int]`, crashing structuring code generation with
+    `SyntaxError`; the index note is now embedded with `repr`.
+  * Fix {func}`transform_error <cattrs.transform_error>` listing
+    the extra keys of a `ForbiddenExtraKeysError` in set
+    iteration order, which made the message differ between runs;
+    the keys are now sorted, like the error's own `__str__`
+    already sorts them.
+  * Fix the `msgpack` and `cbor2` converters unstructuring naive
+    datetimes as local time, which made the serialized value
+    depend on the timezone of the machine doing the
+    unstructuring; naive datetimes are now assumed to be UTC,
+    matching what the structure hooks already read back.
+  * Fix `override(rename=...)` targets containing a quote (or
+    other characters not safe in a bare string literal) crashing
+    code generation with `SyntaxError`; the rename key is now
+    embedded with `repr`.
+  * Fix `Counter` keys not being unstructured with the key type's
+    own hook; the single-type-arg branch passed the whole type-
+    args tuple to the key hook lookup instead of the key type.
+  * Fix `create_default_dis_func
+    <cattrs.disambiguators.create_default_dis_func>` (aka
+    `create_uniq_field_dis_func`) failing to disambiguate valid
+    unions depending on the order of the member classes; unique
+    fields are now resolved iteratively to a fixpoint.
+  * Support more recursive types on 3.14+ with specialized
+    factories for `annotationlib.ForwardRef`.
+  * `Converter <cattrs.Converter>` now uses specialized hook
+    factories to generate hooks for tuples, increasing speed.
+  * Fix an `AttributeError` in `cattrs` internals that could be
+    triggered by using the `include_subclasses` strategy in a
+    `structure_hook_factory`
+  * Fix TypedDict codegen when keys contain single quotes.
+  * Add `CattrsError` exception type: all exceptions raised by
+    `cattrs` inherit from this.
+  * Literal and date-time validation raise this directly, instead
+    of `Exception`.
+  * Fix the `detailed_validation` parameter being passed under
+    the wrong name in {func}`namedtuple_dict_structure_factory
+    <cattrs.cols.namedtuple_dict_structure_factory>`, causing it
+    to be silently ignored.
+  * _cattrs_ is now autoformatted using Ruff.
+  * Support running the test suite without `cbor2` installed.
+  * The union passthrough strategy now supports PEP 695 type
+    aliases as union members.
+  * {meth}`BaseConverter.register_structure_hook_factory` and
+    {meth}`BaseConverter.register_unstructure_hook_factory` now
+    properly return the factory when used as decorators.
+  * The {mod}`msgspec <cattrs.preconf.msgspec>` preconf converter
+    now properly handles recursive classes on Python 3.14+.
+
+-------------------------------------------------------------------
 Mon Apr 13 05:03:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires/Suggests on tomli-w.

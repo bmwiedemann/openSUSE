@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:02:41 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.59.2
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.59.2
+- remove 0003-Install-presets-to-usr-share.patch (presets were
+  dropped)
+- renamed:
+  * 0004-disable-pedantic.patch -> 0003-disable-pedantic.patch
+  * 0005-third-party-use-libraries-from-system.patch ->
+    0004-third-party-use-libraries-from-system.patch
+  * 0006-rsutils-build-as-shared.patch ->
+    0005-rsutils-build-as-shared.patch
+  * 0007-cmake-use-libcurl-from-system.patch ->
+    0006-cmake-use-libcurl-from-system.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 06:14:15 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.59.1

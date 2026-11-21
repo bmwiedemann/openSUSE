@@ -19,13 +19,13 @@
 %define base_name lang3
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        3.20.0
+Version:        3.22.0
 Release:        0
 Summary:        Apache Commons Lang Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-lang/
-Source0:        https://dlcdn.apache.org/commons/lang/source/%{short_name}-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/commons/lang/source/%{short_name}-%{version}-src.tar.gz
 Source1:        build.xml
 Source2:        default.properties
 BuildRequires:  ant

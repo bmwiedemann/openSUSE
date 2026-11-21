@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 18 21:57:25 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Ship chkstat.8 man page as a symlink to permctl.8; the chkstat
+  compatibility symlink had no manual page of its own
+- Wrap the permissions-config description within the line length
+  limit
+- Remove Group tags and use pkgconfig() BuildRequires for the
+  libraries the build probes: libacl, libcap and tclap (spec-cleaner)
+- Keep the pkgconfig() BuildRequires in the main block and delimit
+  the test suite requirements with # SECTION markers, so the two
+  groups stay separate when spec-cleaner sorts the BuildRequires
+
+-------------------------------------------------------------------
 Thu Sep 17 15:46:07 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1699_20260917:

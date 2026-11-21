@@ -25,7 +25,7 @@ Release:        0
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            https://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source0:        https://download.gnome.org/sources/gtkmm/3.24/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler

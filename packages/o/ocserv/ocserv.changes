@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:39:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update ocserv.keyring based on the most recent published one.
+
+-------------------------------------------------------------------
+Mon Nov 16 13:19:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add ocserv-nettle4.patch: build against GNU Nettle 4 where
+  digest functions no longer take a digest size argument
+  (upstream MR !535, !553).
+- Drop obsolete ocserv-LZ4_compress_default.patch.
+
+-------------------------------------------------------------------
 Sat Mar 14 12:07:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.4.1:

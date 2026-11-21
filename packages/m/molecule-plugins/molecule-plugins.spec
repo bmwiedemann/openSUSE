@@ -37,7 +37,7 @@
 %endif
 
 Name:           molecule-plugins
-Version:        26.10.12
+Version:        26.11.0
 Release:        0
 Summary:        Collection of molecule plugins
 License:        MIT

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Nov 11 04:10:42 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.3.2.
+  ## 0.3.2
+
+    * Replace duplicate block specs in place (#180). When several
+      block specs have the same blockType,
+      `removeDuplicateBlockSpecs` still keeps the first, but now
+      puts it in the position of the last. So an extension that
+      overrides a default spec (e.g. `fancy_lists`' ListItem) takes
+      the default's slot, instead of moving ahead of other
+      extensions' specs and of the remaining default specs. This
+      makes task_lists work regardless of whether it is combined
+      before or after fancy_lists, and it fixes thematic breaks
+      like `* * *` being parsed as nested lists when fancy_lists is
+      enabled.
+
+    * delimsMatch: disallow match for 1-length delims when there is no
+      single-delim contsructor defined (e.g., with strikeout) (#181).
+
+    * Test: read test file as bytestring, then convert.
+
+    * Ensure that token stream always ends with a LineEnd (#179).
+      If the input does not end with a line ending, we still add
+      a LineEnd token at the end (with null text content).
+
+-------------------------------------------------------------------
+Thu Sep 24 19:39:29 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark to version 0.3.1.
+  ## 0.3.1
+
+    * Export `getPrecedingTokType` from Commonmark.Inlines [API change].
+      (Actually this was already in the 0.3.0.1 release; this release
+      just makes the version number change required by the PVP.)
+
+  ## 0.3.0.1
+
+    * Add test for cmark#383 case that motivated f47801c.
+
+    * Add pathological tests from commonmark.js to the test suite.
+      Ports the 31 pathological cases from commonmark.js's test/test.js
+      (sizes 1000 and 10000) as a tasty test group with a 5-second
+      per-test timeout, so nonlinear parsing behavior shows up as a
+      test failure.
+
+    * Fix `stackBottoms` lookup key in `processEm`, restoring linear
+      behavior. (Regression since f47801c.)
+
+    * Track bracket balance incrementally in `processBs`. Avoids quadratic
+      performance in pathological cases.
+
+    * Replace U+0000 with U+FFFD in tokenize, in accordance with the
+      commonmark spec.
+
+    * Html: don't merge adjacent text nodes in (<>); fixes quadratic rendering.
+
+    * Disallow ASCII control characters in link destinations, per the
+      commonmark spec.
+
+    * Speed up `escapeURI`.
+
+    * Prune `backtickSpans` state when no closer is found.  Avoids
+      quadratic performance in pathological cases.
+
+    * Autolink: implement GFM preceding-character restriction.
+
+-------------------------------------------------------------------
 Sun May 31 14:57:15 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update commonmark to version 0.3.

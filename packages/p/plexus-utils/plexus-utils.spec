@@ -17,7 +17,7 @@
 
 
 Name:           plexus-utils
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Plexus Common Utilities
 License:        Apache-1.1 AND Apache-2.0 AND xpp AND BSD-3-Clause AND LicenseRef-SUSE-Public-Domain

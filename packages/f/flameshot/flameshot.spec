@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        14.0.0
+Version:        15.0.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only

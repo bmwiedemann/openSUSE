@@ -58,4 +58,12 @@ missing runtime dependency fails the build.</comment>
     <comment>Update python-mistral-common to 1.13.0.</comment>
     <requestid>1393257</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4642bc2d48733a209470963770a2cf49</srcmd5>
+    <version>1.13.1</version>
+    <time>1793817975</time>
+    <user>anag_factory</user>
+    <comment>Update python-mistral-common to 1.13.1</comment>
+    <requestid>1394853</requestid>
+  </revision>
 </revisionlist>

@@ -151,4 +151,28 @@
     <comment>update to 0.5.5</comment>
     <requestid>1394147</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>37f5defb79fb4c304becc98745c1e5f0</srcmd5>
+    <version>0.5.7</version>
+    <time>1793724887</time>
+    <user>anag_factory</user>
+    <comment>update to 0.5.7</comment>
+    <requestid>1394518</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>097cc09da00f11c4fe42e426acf51da7</srcmd5>
+    <version>0.5.8</version>
+    <time>1793991576</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.5.8</comment>
+    <requestid>1395885</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d70766c5167ef4d5c2ecb383484c89b8</srcmd5>
+    <version>0.5.9</version>
+    <time>1795023167</time>
+    <user>anag_factory</user>
+    <comment>Update fresh-editor to version 0.5.9</comment>
+    <requestid>1398433</requestid>
+  </revision>
 </revisionlist>

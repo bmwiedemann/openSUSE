@@ -18,12 +18,6 @@
 
 
 
-%if 0%{?suse_version} || 0%{?fedora_version} >= 33
-%bcond_without cmake_macros
-%else
-%bcond_with    cmake_macros
-%endif
-
 %if 0%{?suse_version}
 %bcond_without keepassxc_cr_recovery
 %else
@@ -31,82 +25,80 @@
 %endif
 
 Name:           keepassxc
-Version:        2.7.12
+Version:        2.8.0
 Release:        0
-Summary:        Qt5-based Password Manager
+Summary:        Qt6-based Password Manager
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Productivity/Security
-URL:            https://www.keepassxc.org/
+URL:            https://keepassxc.org/
 Source0:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz
 Source1:        https://github.com/keepassxreboot/keepassxc/releases/download/%{version}/keepassxc-%{version}-src.tar.xz.sig
 Source2:        https://keepassxc.org/keepassxc_master_signing_key.asc#/%{name}.keyring
 Source3:        vendor.tar.zst
-#Source96:       _service
-#Source97:       _constraints
 Source98:       debian.tar.xz
 Source99:       keepassxc.dsc
-BuildRequires:  cmake >= 3.1.0
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version}
-BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libqt5-linguist-devel
-BuildRequires:  pkgconfig(minizip)
-BuildRequires:  rubygem(%{rb_default_ruby_abi}:asciidoctor)
-%else
-BuildRequires:  minizip-compat-devel
-BuildRequires:  qt5-linguist
-BuildRequires:  qt5-qtbase-private-devel
-BuildRequires:  rubygem(asciidoctor)
-%endif
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(bash-completion)
-BuildRequires:  pkgconfig(libargon2)
+BuildRequires:  readline-devel
+BuildRequires:  cmake(Qt6Concurrent) >= 6.2.4
+BuildRequires:  cmake(Qt6Core) >= 6.2.4
+BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6SvgWidgets)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  pkgconfig(libkeyutils)
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libqrencode)
 BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(minizip)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib) >= 1.2.0
-BuildRequires:  readline-devel
-%if (0%{?suse_version} >= 1600) || (0%{?sle_version} >= 150700 && 0%{?is_opensuse})
+%if 0%{?suse_version}
+BuildRequires:  rubygem(%{rb_default_ruby_abi}:asciidoctor)
+%else
+BuildRequires:  rubygem(asciidoctor)
+%endif
+# C++20 is required
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+%if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(botan-3)
 %else
-BuildRequires:  pkgconfig(botan-2) >= 2.11.0
+BuildRequires:  pkgconfig(botan-2) >= 2.19.1
 %endif
-%if 0%{?sle_version} >= 150700 && 0%{?is_opensuse}
-BuildRequires:  gcc12-c++
-%endif
-
 %if %{with keepassxc_cr_recovery}
-BuildRequires:  golang(API)
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 %endif
-
 Requires:       hicolor-icon-theme
-Requires(post): hicolor-icon-theme
-Requires(post): shared-mime-info
-Requires(postun): hicolor-icon-theme
-Requires(postun): shared-mime-info
+# Wayland Auto-Type and Quick Unlock go through D-Bus portals and polkit
+Recommends:     polkit
+Recommends:     xdg-desktop-portal
+%if 0%{?suse_version}
 Recommends:     %{name}-lang
+%endif
 # boo#1148406. Last version in factory 2.0.3-2.7
 Provides:       keepassx = 2.0.4
 Obsoletes:      keepassx < 2.0.4
 
-
 %description
-A password manager or safe which manages your passwords. Databases
-are locked with a master key/password or a key disk. The databases
-are encrypted using AES and Twofish.
+KeePassXC is a cross-platform community fork of KeePassX, a password manager
+that stores credentials in an encrypted database locked with a master
+password, key file or hardware key. It supports browser integration, passkeys,
+SSH agent, the Secret Service API, TOTP, and Auto-Type on both X11 and
+Wayland.
 
 %if 0%{?suse_version}
 %lang_package
@@ -116,112 +108,68 @@ are encrypted using AES and Twofish.
 %autosetup -p1
 
 %if %{with keepassxc_cr_recovery}
-pushd utils/keepassxc-cr-recovery
-tar xf %{SOURCE3}
-popd
+tar -C utils/keepassxc-cr-recovery -xf %{SOURCE3}
 %endif
 
 %build
-%if 0%{?sle_version} >= 150700 && 0%{?is_opensuse}
-export CC=gcc-12
-export CXX=g++-12
-%endif
-%cmake \
-  -DKEEPASSXC_BUILD_TYPE="Release" \
-  -DWITH_XC_UPDATECHECK=OFF        \
-  -DWITH_XC_ALL=ON
-
-%if %{with cmake_macros}
-%cmake_build
-%else
-%make_build
-%endif
-
 %if %{with keepassxc_cr_recovery}
-pushd ../utils/keepassxc-cr-recovery
+# build before %%cmake, which changes into the build directory on SUSE
+pushd utils/keepassxc-cr-recovery
 go build -buildmode=pie -mod=vendor
 popd
 %endif
 
-%install
-%if %{with cmake_macros}
-%cmake_install
-%else
-%make_install
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CC=gcc-13
+export CXX=g++-13
 %endif
+%cmake \
+  -DKEEPASSXC_BUILD_TYPE=Release \
+  -DKPXC_FEATURE_UPDATES=OFF
+%cmake_build
+
+%install
+%cmake_install
 
 %if %{with keepassxc_cr_recovery}
 install -D -m 0755 utils/keepassxc-cr-recovery/keepassxc-cr-recovery %{buildroot}%{_bindir}/keepassxc-cr-recovery
 %endif
 
-for i in $(find %{buildroot} -type f -name \*.svgz) ; do
-  j="${i%z}"
-  gunzip < $i > $j
-done
-%if 0%{?suse_version}
-%fdupes -s %{buildroot}/%{_prefix}
-%endif
+%fdupes %{buildroot}%{_prefix}
 
 %check
 # gh#keepassxreboot/keepassxc#667
 export LANG=en_US.UTF-8
-%if %{with cmake_macros}
+export QT_QPA_PLATFORM=offscreen
 %ctest --exclude-regex 'test(cli|gui)'
-%endif
-
-%if 0%{?suse_version}
-# on newer distros it is handled via file trigger
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-%else
-%post
-touch --no-create %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
-
-%postun
-update-desktop-database >/dev/null 2>/dev/null || :
-if [ $1 -eq 0 ] ; then
-    touch --no-create %{_datadir}/icons/hicolor >/dev/null 2>/dev/null
-    gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
-fi
-
-%posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
-%endif
 
 %files
 %license COPYING LICENSE*
 %doc CHANGELOG.md README.md
-%doc docs/*
 %if %{with keepassxc_cr_recovery}
 %{_bindir}/keepassxc-cr-recovery
 %endif
 %{_bindir}/%{name}
 %{_bindir}/%{name}-cli
 %{_bindir}/%{name}-proxy
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/docs/
-%{_datadir}/%{name}/icons/
-%{_datadir}/%{name}/wordlists/
+%{_datadir}/%{name}/
+%if 0%{?suse_version}
+%exclude %{_datadir}/%{name}/translations
+%endif
 %{_datadir}/applications/org.keepassxc.KeePassXC.desktop
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.keepassxc.KeePassXC.appdata.xml
 %{_datadir}/icons/hicolor/*/*/*%{name}*
 %{_datadir}/mime/packages/%{name}.xml
-%dir %{_libdir}/%{name}
-%{_libdir}/keepassxc/libkeepassxc-autotype-xcb.so
+%dir %{_datadir}/polkit-1
+%dir %{_datadir}/polkit-1/actions
+%{_datadir}/polkit-1/actions/org.keepassxc.KeePassXC.policy
 %{_mandir}/man1/%{name}.1*
 %{_mandir}/man1/%{name}-cli.1*
 
 %if 0%{?suse_version}
 %files lang
-%endif
 %{_datadir}/%{name}/translations
+%endif
 
 %changelog

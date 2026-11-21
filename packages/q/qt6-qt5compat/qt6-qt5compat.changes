@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov  3 17:58:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes (CVE-2026-100140, boo#1289130)
+  * CVE-2026-100140-qt5compat-6.12-0001.diff
+  * CVE-2026-100140-qt5compat-6.12-0002.diff
+  * CVE-2026-100140-qt5compat-6.12-0003.diff
+  * CVE-2026-100140-qt5compat-6.12-0004.diff
+
+-------------------------------------------------------------------
 Wed Sep 30 16:18:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

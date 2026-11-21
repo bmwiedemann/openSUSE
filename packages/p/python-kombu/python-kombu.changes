@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Nov 20 01:42:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.7.0:
+  * Drop Python 3.9 support
+  * Update amqp requirement to >= 5.4.2
+  * Update redis requirement to >= 6.4.0, < 9.0.0 and support redis-py 7.x/8.x
+  * Move packaging dependency to the Redis extras
+  * Add py.typed marker for PEP 561 compliance
+  * Use stdlib compression.zstd (PEP 784) when available
+  * Add PGMQ transport for PostgreSQL message queues
+  * Add support for fair queues and fanout via AWS SNS in SQS transport
+  * Support delay_seconds and clamp per-message delays in SQS
+  * Fix SQS transport deadlock, polling_interval in async loop, and
+    visibility_timeout coercion
+  * Release SQS prefetch slot on DeleteMessage failure, avoid backoff on
+    invalid receipt handles, and delete messages rejected without requeue
+  * Avoid KeyError in SQS when receive completes after basic_cancel
+  * Support Redis queue expiration (including binding tables) and
+    pipeline-based batch publishing
+  * Support callable passwords and Redis credential_provider token rotation
+  * Make Redis ack-emulation restore cadence configurable and add
+    sentinel_fanout_compat option
+  * Fix Redis KeyError/ValueError/timer-callback crashes on disconnect,
+    drop overdue/idle BRPOP connections, and pause BRPOP when QoS is full
+  * Close Sentinel node connections in _disconnect_pools and clean up
+    Redis consumer registrations after disconnect
+  * Keep unacked Redis messages when restore hits a connection error
+  * Fix RabbitMQ 4.x / 4.3.0 compatibility (global QoS on classic queues)
+  * Support prefixed native delayed delivery and strip existing delay
+    prefixes on retry
+  * Honor delivery_mode in Exchange.Message and preserve options in
+    Queue.from_dict
+  * Fix publish(retry=True) failing after reconnect with a named exchange
+  * Stop topic '*' wildcard from matching across dots and reject URLs with
+    dotted schemes
+  * Honor autoretry options on initial connect, cycle hosts before
+    errback, and cap channel retries at max_retries
+  * Ensure consumer recovers from broker connection restarts
+  * Add missing reprkwargs export to utils module
+  * Fix Logwrapped context manager protocol and ChannelPromise tracebacks
+  * Fix active_queues ordering, LRUCache overwrite eviction, token bucket
+    timestamps, and retry_over_time interval_max cap
+  * Raise ValueError in fileno() when given None and reject bool pool
+    limits
+  * Fix binary emergency state dumps and use logging instead of print
+  * Support memoryview and bytearray in YAML decoder
+  * Wake event loop when hub.call_soon() is called from another thread
+  * Close HTTP client with the hub and do not reuse after Hub.reset()
+  * Catch OSError in eventio and add gevent concurrent error to
+    connection errors
+  * Implement missing _delete() in filesystem.Channel, prevent path
+    traversals, match queue names exactly, and stop masking open errors
+  * Fix SQLAlchemy transport: BIGINT ids on MSSQL, count only pending
+    messages on purge, and raise on store/purge commit failures
+  * Scope queue/client caches to Connection/channel across SQS,
+    ZooKeeper, Azure Service Bus, Azure Storage Queues, and Kafka QoS
+  * Azure Service Bus: support dots in queue names, AutoLockRenewer,
+    gevent lock renewal, AMQP reconnect recovery, and renewal filtering
+  * GCP Pub/Sub: support exactly-once delivery, Duration as timedelta,
+    subscription updates, retry on publish, and emulator/tag fixes
+  * Handle missing Pyro4 in driver_version
+- Add patch use-mocked-gettempdir.patch:
+  * Do not fail tests if TMPDIR isn't cleaned.
+
+-------------------------------------------------------------------
 Tue Apr 14 03:54:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test broken by redis 7.4.

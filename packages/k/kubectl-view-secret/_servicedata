@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/elsesiy/kubectl-view-secret</param>
-              <param name="changesrevision">2e33057ad8e86bb12251fd363816491151c16818</param></service></servicedata>
+              <param name="changesrevision">2e33057ad8e86bb12251fd363816491151c16818</param></service><service name="tar_scm">
+                <param name="url">https://github.com/elsesiy/kubectl-view-secret.git</param>
+              <param name="changesrevision">3ca5d45233f382008389af09555b332843867c73</param></service></servicedata>

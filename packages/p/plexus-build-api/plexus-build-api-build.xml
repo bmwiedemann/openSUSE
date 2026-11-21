@@ -10,7 +10,7 @@
 
   <property name="project.artifactId" value="plexus-build-api"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="1.2.0"/>
+  <property name="project.version" value="1.4.0"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -50,6 +50,7 @@
     <javac destdir="${build.outputDir}"
            nowarn="false"
            debug="true"
+           encoding="utf-8"
            optimize="false"
            deprecation="true"
            release="${compiler.release}"
@@ -75,9 +76,9 @@
           depends="compile"
           description="Generate javax.inject.Name index">
     <sequential>
-	  <java classname="org.eclipse.sisu.space.SisuIndex"
-	        failonerror="true"
-			fork="true">
+      <java classname="org.eclipse.sisu.space.SisuIndex"
+            failonerror="true"
+            fork="true">
         <classpath>
           <path refid="build.classpath"/>
         </classpath>
@@ -86,7 +87,7 @@
       <move todir="${build.outputDir}/META-INF">
         <fileset dir="META-INF"/>
       </move>
-	</sequential>
+    </sequential>
   </target>
 
   <!-- ====================================================================== -->
@@ -129,6 +130,7 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
+        <attribute name="Automatic-Module-Name" value="org.codehaus.plexus.build"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>

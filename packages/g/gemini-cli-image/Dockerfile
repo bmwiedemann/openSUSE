@@ -27,7 +27,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install build diffutils gemini-cli git-core gzip hostname quilt rpm-build which zstd
+    zypper -n --installroot /target --gpg-auto-import-keys install build diffutils gemini-cli git-core gzip hostname npm python3 quilt rpm-build which zstd
 # sanity check that the version from the tag is equal to the version of gemini-cli that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' gemini-cli | \
@@ -67,7 +67,7 @@ LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
 # endlabelprefix
 LABEL io.artifacthub.package.readme-url="%SOURCEURL_WITH(README.md)%"
-LABEL run="podman run --rm --userns=keep-id:uid=499 -it -v \${HOME}/.gemini:/home/sandbox/.gemini:Z -v \$PWD:/home/sandbox/tmp:Z \${IMAGE}"
+LABEL run="podman run --rm --userns=keep-id:uid=499 -it -v \${HOME}/.agents:/home/sandbox/.agents:Z -v \${HOME}/.gemini:/home/sandbox/.gemini:Z -v \$PWD:/home/sandbox/tmp:Z \${IMAGE}"
 
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/group /etc/group

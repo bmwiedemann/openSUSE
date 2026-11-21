@@ -595,4 +595,30 @@
     tracing (#18433) (forwarded request 1386782 from glaubitz)</comment>
     <requestid>1386813</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>69595cd8d9c393fb65f2fc4115991d07</srcmd5>
+    <version>2.44.0</version>
+    <time>1794591405</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.44.0
+  * **google-api-core:** extend ErrorInfo dict accessors, centralize
+    status code extraction, and update StructuredLogFormatter (#18884)
+  * **gapic-generator:** default client_options.api_endpoint to transport
+    host for OpenTelemetry spans (#18869)
+  * **google-api-core:** make RetryError picklable and copyable (#18947)
+- from version 2.43.2
+  * **google-api-core:** align HTTP T3 and T4 OpenTelemetry span status
+    and attributes (#18868)
+  * **google-api-core:** align OpenTelemetry span names, kinds, and T3
+    endpoint attributes with spec (#18866)
+- from version 2.43.1
+  * **google-api-core:** remove packages_distributions scan and shorten
+    EOL warning window (#18872)
+- from version 2.43.0
+  * **api_core:** support DirectPath over Interconnect with TLS composite
+    credentials and ?force-xds (#18431)
+  * **observability:** suppress redundant gRPC auto-instrumentation
+    spans (#18592) (forwarded request 1397288 from glaubitz)</comment>
+    <requestid>1397331</requestid>
+  </revision>
 </revisionlist>

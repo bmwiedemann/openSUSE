@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Oct 29 19:07:52 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.6.7
+  * Fixes CVE-2026-104061 / boo#1289047
+  * Fixes CVE-2026-104062 / boo#1289046
+  * Fixes CVE-2026-104063 / boo#1289045
+  * Fixes CVE-2026-104064 / boo#1289044
+  * Fixes CVE-2026-104065 / boo#1289043
+  * Fixes CVE-2026-104066 / boo#1289042
+  * Fixes CVE-2026-104067 / boo#1289041
+  * [Text Frames / Story Editor] Superscript text: the text
+    outline is offset
+  * [Import / Export] Property changes do not affect the text
+    imported from .odt
+  * [Canvas] Rendering of drop shadows is slow (Fahad)
+  * [General] The application freezes when attempting to import
+    'custom shapes'
+  * [Undo/Redo] Deleting a non existent mark causes crash
+  * [General] Preview mode does not hide guides/margins when
+    editing a master page
+  * [General] The bleed area still shows in Preview mode in
+    Master Page editing mode
+  * [Typography] Text formatting (e.g. italic, bold) is not
+    inherited when resuming typing
+  * [General] Failure to build with poppler 26.07.0
+  * [Graphics / Image Frames] Crash with graphicsmagick exception
+  * [General] Failure to build with poppler 26.06.0
+  * [General] Failure to build with poppler 26.05.0
+  * [Fonts] Font "Helsinki" causes crash
+- Drop patches, merged upstream:
+  * 0001-Attempt-to-fix-failure-to-build-with-poppler-26_07.patch
+  * 14a287fc1db2a44abfe1743260554447b31b4adf.patch
+  * scribus_poppler_26_06_0.patch
+  * scribus_poppler_26_06_0_part2.patch
+  * scribus_poppler_26_06_0_part3.patch
+
+-------------------------------------------------------------------
 Fri Jul 10 11:52:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

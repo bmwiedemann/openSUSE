@@ -187,4 +187,12 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385415</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e2544518fcf492e3c41592ad4b4c40ad</srcmd5>
+    <version>51.0</version>
+    <time>1795103755</time>
+    <user>anag_factory</user>
+    <comment>- Add gnome-connections-desktop.patch: Fix desktop file translations.</comment>
+    <requestid>1398616</requestid>
+  </revision>
 </revisionlist>

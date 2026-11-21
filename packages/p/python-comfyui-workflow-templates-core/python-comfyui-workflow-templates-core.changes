@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.403 (manifest grows 707 to 710):
+  * Adds 3 entries, all owned by media-assets-02: Ideogram
+    v4.6 text-to-image, image edit and precise image edit
+  * Refreshes 15 search indexes; the 3 new template JSONs
+    and the Breeze TTS2 fix hash-match json 0.1.138 (index
+    hashes are rewritten when the json sdist is built and
+    match no published build)
+  * Raise the json floor to >= 0.1.138: the 3 new JSONs ship
+    only there
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+- The 3 new previews live in media-assets-02 past the packaged
+  0.1.9, so those entries stay preview-less until that
+  separately-maintained bundle updates; the floor is left
+  alone rather than made unresolvable
+
+-------------------------------------------------------------------
+Thu Nov 19 07:30:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.402 (manifest grows 701 to 707):
+  * Adds 6 entries, all owned by media-assets-02: two HeyGen
+    Avatar 6 (image and identity to video), three Kling 4
+    (image edit, text-to-image, long image) and Breeze TTS2
+    text-to-speech
+  * Refreshes 16 search indexes; the 6 new template JSONs
+    hash-match json 0.1.137 (index hashes are rewritten when
+    the json sdist is built and match no published build)
+  * Raise the json floor to >= 0.1.137: the 6 new JSONs ship
+    only there
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+- The 6 new previews live in media-assets-02 past the packaged
+  0.1.9, so those entries stay preview-less until that
+  separately-maintained bundle updates; the floor is left
+  alone rather than made unresolvable
+
+-------------------------------------------------------------------
+Mon Nov 16 20:33:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.401 (crosses 0.3.400, manifest grows 696 to 701):
+  * 0.3.400 adds 5 entries, all owned by media-assets-02:
+    three ByteDance Seedance 2.5 Flash (text/image/ref-to-video),
+    Wevisone VL image segmentation and RelayVSR x4 video upscale
+  * 0.3.401 refreshes 15 search indexes and the Bria background
+    removal template; the 5 new template JSONs and the Bria
+    refresh hash-match json 0.1.136 (index hashes are rewritten
+    when the json sdist is built and match no published build)
+  * Raise the json floor to >= 0.1.136: the Bria refresh ships
+    only there (the 5 new JSONs are already in 0.1.135)
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+- The 5 new previews live in media-assets-02 past the packaged
+  0.1.9, so those entries stay preview-less until that
+  separately-maintained bundle updates; the floor is left
+  alone rather than made unresolvable
+
+-------------------------------------------------------------------
+Sat Nov 14 07:45:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.398 (manifest grows 693 to 696):
+  * Adds the Google Gemini 4 Hydrogen template plus Hebrew
+    and Italian search indexes
+  * Refreshes all search indexes and two MOSS image templates
+  * Raise the json floor to >= 0.1.133: the new template JSON
+    and the he/it indexes ship only there
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+- The new preview needs media-assets-02 past the packaged
+  0.1.9, so that entry stays preview-less until that
+  separately-maintained bundle updates; the floor is left
+  alone rather than made unresolvable
+
+-------------------------------------------------------------------
+Wed Nov 11 13:01:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.397 (crosses 0.3.395 and 0.3.396, manifest
+  grows 680 to 693):
+  * 0.3.395 adds 8 entries: two ByteDance Seedream 5.5, two
+    MiniMax H3 image, MiniMax H3 Max lipsync, Pika music and
+    SFX, and the RelayVSR video upscale
+  * 0.3.396 refreshes the two MiniMax H3 image entries
+  * 0.3.397 adds 5 entries: three LTX video (reframe,
+    SDR-to-HDR, upscale) and two MiniMax H3 image API
+  * Requires json >= 0.1.132 for the 13 new entries' files
+
+-------------------------------------------------------------------
+Sat Nov  7 13:17:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.394 (crosses 0.3.393, manifest grows 668 to 680):
+  * 0.3.393 adds the Tencent HunyuanVideo 4 template
+  * 0.3.394 adds 12 entries, all owned by media-assets-02:
+    five Google Gemini Omni Flash 1.2, two OpenAI GPT Image
+    2.6 Flare, two OpenAI GPT Image 2.6 Sunburst, MiniMax H3
+    Max camera control, Pika H3 Flex text-to-video and Pruna
+    P video upscale; the retired BFL Flux video upscale
+    entry is dropped
+  * Raise the json floor to >= 0.1.129: all 13 new .json
+    files ship there with matching hashes (the Tencent one
+    already in 0.1.128)
+  * The 13 new previews need media-assets-02 past the
+    packaged 0.1.9, so those entries stay preview-less until
+    that separately-maintained bundle updates; the standing
+    13 index-hash mismatches are unchanged
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+
+-------------------------------------------------------------------
+Tue Nov  3 18:51:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.392 (manifest still lists 668 entries):
+  * 7 new entries, all owned by media-assets-02: 3D idol
+    image-to-gaussian-splat, two MiniMax H3 Max (recast and
+    reframe), Sonilo Music 1.5, Topaz image enhance Wonder 4,
+    and two P-H3 image (text-to-image and edit)
+  * Drop the 7 retired entries: three ByteDance Seedance 1.5
+    and four OpenAI image 1
+  * Refresh the Kling v3 video templates, the Seedream 5.0
+    Lite edit template and the localized index files
+  * Raise the json floor to >= 0.1.127: the 7 new .json
+    files ship only there
+  * The 7 new previews need media-assets-02 past the packaged
+    0.1.9, so those entries stay preview-less until that
+    separately-maintained bundle updates; the standing
+    13 index-hash mismatches are unchanged
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+
+-------------------------------------------------------------------
 Sat Oct 31 13:59:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.391 (660 to 668 manifest entries):

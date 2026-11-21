@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-autobahn
-Version:        26.7.1
+Version:        26.11.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
@@ -33,14 +33,15 @@ Source:         https://files.pythonhosted.org/packages/source/a/autobahn/autoba
 Patch0:         intrin-arch.patch
 # PATCH-FIX-OPENSUSE Do not ship flatc wrapper
 Patch1:         no-flatc-entrypoint.patch
+BuildRequires:  %{python_module Brotli >= 1.2.1}
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
 BuildRequires:  %{python_module Twisted >= 24.3.0}
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
 BuildRequires:  %{python_module attrs >= 20.3.0}
 BuildRequires:  %{python_module base58 >= 2.1.1}
-BuildRequires:  %{python_module cbor2 >= 5.2.0}
+BuildRequires:  %{python_module cbor2 >= 6.1.0}
 BuildRequires:  %{python_module cffi >= 2.0.0}
-BuildRequires:  %{python_module cryptography >= 3.4.6}
+BuildRequires:  %{python_module cryptography >= 50}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module ecdsa >= 0.19.1}
 BuildRequires:  %{python_module flatbuffers >= 22.12.6}
@@ -53,18 +54,19 @@ BuildRequires:  %{python_module pyOpenSSL >= 20.0.1}
 BuildRequires:  %{python_module pytest >= 2.8.6}
 BuildRequires:  %{python_module pytest-aiohttp}
 BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module python-snappy >= 0.7.3}
 BuildRequires:  %{python_module pytrie >= 0.4.0}
 BuildRequires:  %{python_module qrcode >= 7.3.1}
 BuildRequires:  %{python_module service_identity >= 18.1.0}
 BuildRequires:  %{python_module txaio >= 25.12.2}
 BuildRequires:  %{python_module ujson >= 4.0.2}
 BuildRequires:  %{python_module wsaccel >= 0.6.3}
-BuildRequires:  %{python_module zope.interface >= 5.2.0}
+BuildRequires:  %{python_module zope.interface >= 6.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cbor2 >= 5.2.0
+Requires:       python-cbor2 >= 6.1.0
 Requires:       python-cffi >= 2.0.0
-Requires:       python-cryptography >= 3.4.6
+Requires:       python-cryptography >= 50
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-msgpack >= 1.0.2
 Requires:       python-txaio >= 25.12.2
@@ -74,7 +76,7 @@ Requires:       python-flatbuffers >= 22.12.6
 # [twisted]
 Suggests:       python-Twisted >= 24.3.0
 Suggests:       python-attrs >= 20.3.0
-Suggests:       python-zope.interface >= 5.2.0
+Suggests:       python-zope.interface >= 6.2.0
 # [accelerate]
 Suggests:       python-wsaccel >= 0.6.3
 # [encryption]
@@ -98,9 +100,6 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 
 %prep
 %autosetup -p1 -n autobahn-%{version}
-
-# this test relies too much on rng that can behave randomly in obs
-rm src/autobahn/test/test_rng.py
 
 %build
 %if %{with nvx_support}
@@ -133,7 +132,8 @@ unset USE_ASYNCIO
 export USE_TWISTED=1
 %{python_expand # line continues
     pushd %{buildroot}%{$python_sitearch}
-    $python -m twisted.trial --no-recurse \
+    PYTHONPATH=%{buildroot}%{$python_sitearch} $python \
+        -m twisted.trial --no-recurse \
         autobahn.test \
         autobahn.twisted.test \
         autobahn.websocket.test \

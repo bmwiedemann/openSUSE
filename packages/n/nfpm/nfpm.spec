@@ -17,7 +17,7 @@
 
 
 Name:           nfpm
-Version:        2.48.0
+Version:        2.49.0
 Release:        0
 Summary:        Simple deb, rpm, apk and arch linux packager written in Go
 License:        MIT
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.4
+BuildRequires:  go1.27 >= 1.27.4
 BuildRequires:  zsh
 
 %description

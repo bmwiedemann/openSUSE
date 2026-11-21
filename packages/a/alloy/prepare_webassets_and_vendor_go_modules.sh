@@ -20,11 +20,6 @@ zypper -n install \
     patch \
     "${golang_package}" || exit 13
 
-echo "Installing nvm"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
-export NVM_DIR="$HOME/.nvm"
-source $NVM_DIR/nvm.sh
-
 version="$( awk '/^Version:/ {print $2;exit;}' "${package_name}.spec" )"
 
 echo "##########"
@@ -36,6 +31,13 @@ tar="$basename.tar.gz"
 working_directory="$(pwd)"
 tmpdir="$(mktemp -d -p /tmp)"
 cd "${tmpdir}" || exit 15
+
+echo "Installing nvm"
+curl -o install.sh https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh
+sha256sum -c "$working_directory/sha256sum.txt" || exit 17
+bash install.sh
+export NVM_DIR="$HOME/.nvm"
+source $NVM_DIR/nvm.sh
 
 echo "##########"
 echo "Extracting tar archive"

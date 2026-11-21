@@ -17,26 +17,26 @@
 
 
 Name:           python-django-silk
-Version:        5.5.2
+Version:        5.6.0
 Release:        0
 Summary:        Profiling for the Django Framework
 License:        MIT
 URL:            https://github.com/jazzband/django-silk
 Source:         https://files.pythonhosted.org/packages/source/d/django-silk/django_silk-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 4.2
+Requires:       python-Django >= 5.2
 Requires:       python-autopep8 >= 1.2.1
 Requires:       python-gprof2dot >= 2017.09.19
 Requires:       python-sqlparse >= 0.1.19
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 4.2}
+BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module autopep8 >= 1.2.1}
 BuildRequires:  %{python_module factory_boy >= 3.3}
 BuildRequires:  %{python_module freezegun}

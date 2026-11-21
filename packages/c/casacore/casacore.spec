@@ -60,7 +60,7 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.8.1
+Version:        3.8.2
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later

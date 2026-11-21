@@ -25,7 +25,7 @@
 %global force_gcc_version 14
 %endif
 Name:           openexr
-Version:        3.5.2
+Version:        3.5.4
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -177,17 +177,9 @@ echo "Imath_$sym { global: *N9Imath_$sym*; *N10Imath_$sym*; };" >"$sv"
 %check
 # bin tests download test data from internet
 EXCLUDE_REGEX='OpenEXR.bin'
-%ifarch %{arm}
-# https://github.com/AcademySoftwareFoundation/openexr/issues/2134#issuecomment-4230839820
-EXCLUDE_REGEX="$EXCLUDE_REGEX|testLargeDataWindowOffsets"
-%endif
 %ifarch ppc64le
 # bsc#1205885
 EXCLUDE_REGEX="$EXCLUDE_REGEX|testMultiTiledPartThreading"
-%endif
-%ifarch aarch64
-# https://github.com/AcademySoftwareFoundation/openexr/issues/1460
-EXCLUDE_REGEX="$EXCLUDE_REGEX|DWA[AB]Compression"
 %endif
 # test failure on LE: https://github.com/AcademySoftwareFoundation/openexr/issues/1460
 %ifnarch i586 ppc ppc64 s390 s390x

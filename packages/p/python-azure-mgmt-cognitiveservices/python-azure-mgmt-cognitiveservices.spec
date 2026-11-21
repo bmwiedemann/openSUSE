@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 15.0.0b4
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-cognitiveservices
-Version:        15.0.0~b4
+Version:        15.0.0
 Release:        0
 Summary:        Microsoft Azure Cognitive Services Management Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_cognitiveservices/azure_mgmt_cognitiveservices-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_cognitiveservices/azure_mgmt_cognitiveservices-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -57,7 +55,7 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.4, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure_mgmt_cognitiveservices-%{realversion}
+%setup -q -n azure_mgmt_cognitiveservices-%{version}
 
 %build
 %pyproject_wheel

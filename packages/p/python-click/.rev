@@ -472,4 +472,39 @@ Version 8.4.0:
     <comment>1</comment>
     <requestid>1379941</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>38faf270d9107980c06b7ea8e249c919</srcmd5>
+    <version>8.5.1</version>
+    <time>1794317897</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.5.1:
+  * Fix `copy.deepcopy()` and `pickle` on a `Parameter`, `Option`
+    or `Command`. {pr}`3805`
+  * A `KeyboardInterrupt` arriving while `Command.main()` reports
+    an abort or an error,
+  * Add {meth}`Option.get_help_spec`, which returns the option's
+    left help column even when the option is hidden.
+  * The `Positional arguments` help section lists every argument
+    of the command, not only the documented ones.
+  * {meth}`Argument.get_help_record` always returns a tuple. It
+    used to return `None` for an argument with no `help`.
+  * Document which types are inferred from `default`, and what an
+    unrecognized `type` callable does to a command-line value.
+  * `path_type` narrows the converted value's type for `convert`
+    and `prompt`.
+  * A command's short help no longer stops at an abbreviation
+    such as `vs.` or `e.g.` inside the first sentence. A period
+    ends the sentence only when it closes the text or the next word
+    does not start in lowercase.
+  * With `show_envvar=True`, an option's error message now prints
+    all variables of an `envvar` sequence instead of the `repr` of
+    the sequence.
+  * An empty `envvar`, such as `[]` or `&quot;&quot;`, shows the same help
+    and error message as no `envvar` when `show_envvar=True`. The
+    help screen used to show `[env var: ]`.
+  * Align command's deprecated help text to options and
+    arguments: do not translate the command's own help text,
+    only the `(DEPRECATED)` label.</comment>
+    <requestid>1396176</requestid>
+  </revision>
 </revisionlist>

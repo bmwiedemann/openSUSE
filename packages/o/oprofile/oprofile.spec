@@ -21,7 +21,6 @@ Version:        1.4.0
 Release:        0
 Summary:        System-Wide Profiler for Linux Systems
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Tools/Other
 URL:            http://oprofile.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/oprofile/oprofile-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
@@ -31,6 +30,8 @@ Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
 Patch3:         %{name}-binutils.patch
 Patch4:         %{name}-autoconf-fix-perf_events-detection.patch
+# PATCH-FIX-OPENSUSE oprofile-bfd-boolean.patch -- bfd_boolean/FALSE removed from binutils, use bool/false
+Patch5:         oprofile-bfd-boolean.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel
@@ -39,14 +40,14 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  java-devel
-BuildRequires:  libICE-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
-BuildRequires:  popt-devel
-BuildRequires:  zlib-devel
-Requires(pre):  pwdutils
+BuildRequires:  pkgconfig(ice)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(popt)
+BuildRequires:  pkgconfig(zlib)
+Requires(pre):  shadow
 %ifarch ppc ppc64 ppc64le
 BuildRequires:  libpfm-devel >= 4.3.0
 %endif
@@ -74,7 +75,6 @@ This is the package containing the userspace tools.
 
 %package devel
 Summary:        Development files for oprofile, a system-wide profiler for Linux
-Group:          Development/Libraries/C and C++
 Requires:       binutils-devel
 Requires:       libopagent1 = %{version}-%{release}
 
@@ -88,7 +88,6 @@ virtual machines.
 
 %package -n libopagent1
 Summary:        System-Wide Profiler for Linux Systems
-Group:          System/Libraries
 
 %description -n libopagent1
 OProfile is a system-wide profiler for Linux systems, capable of
@@ -121,8 +120,7 @@ getent passwd oprofile >/dev/null || \
 	-s /bin/false -c "Special user account to be used by OProfile" \
 	oprofile 2> /dev/null
 
-%post -n libopagent1 -p /sbin/ldconfig
-%postun -n libopagent1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopagent1
 
 %files
 %{_bindir}/ocount

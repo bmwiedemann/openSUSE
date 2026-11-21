@@ -19,9 +19,11 @@
 # ugly hack to prevent spec-cleaner from changing make -> make_build
 %global make make
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
-%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.40.1
-%global buildoutputdir openjdk.build/
+%global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64}
+%global openjdk_repo    jdk8u
+%global openjdk_tag     jdk8u%{updatever}-b%{buildver}
+%global openjdk_dir     %{openjdk_repo}-%{openjdk_tag}
+%global buildoutputdir  build
 %global headless_binaries java keytool orbd policytool rmid rmiregistry servertool tnameserv
 %global headless_binaries_comma %(echo %{headless_binaries} | sed 's#\ #,#g')
 %global devel_binaries javac appletviewer extcheck jar jarsigner javadoc javah javap jcmd jconsole jhat jinfo jmap jps jrunscript jsadebugd jstack jstat jstatd native2ascii rmic schemagen serialver wsgen wsimport xjc
@@ -43,7 +45,7 @@
 %global priority        1805
 %global featurever      8
 %global javaver         1.%{featurever}.0
-%global updatever       504
+%global updatever       514
 %global buildver        01
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
@@ -103,12 +105,6 @@
 %endif
 %ifarch ia64
 %global archinstall ia64
-%endif
-%ifarch s390
-%global archinstall s390
-%endif
-%ifarch s390x
-%global archinstall s390x
 %endif
 %ifarch %{arm}
 %global archinstall aarch32
@@ -178,15 +174,26 @@ Summary:        OpenJDK 8 Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND LicenseRef-SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
-Source0:        https://icedtea.classpath.org/download/source/icedtea-%{icedtea_version}.tar.xz
-Source1:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk-git.tar.xz
-Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32-git.tar.xz
-Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah-git.tar.xz
-# nss fips configuration file
+Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
+Source10:       systemtap-tapset.tar.xz
+Source11:       jconsole.desktop.in
+Source12:       policytool.desktop.in
+Source13:       nss.cfg.in
+Source14:       TestCryptoLevel.java
+Source15:       TestECDSA.java
 Source17:       nss.fips.cfg.in
+Source100:      config.guess
+Source101:      config.sub
+# nss fips configuration file
 # RPM/distribution specific patches
 # bsc#1211968
 Patch1:         bsc1211968.patch
+Patch201:       multiple-pkcs11-library-init.patch
+Patch203:       system-pcsclite.patch
+Patch204:       system-libs.patch
+Patch205:       improved-font-rendering.patch
+Patch206:       x11-hidpi.patch
+Patch207:       keytool-systemlineendings.patch
 # RHBZ 1015432
 Patch2:         1015432.patch
 # Restrict access to java-atk-wrapper classes
@@ -222,16 +229,14 @@ Patch28:        reproducible-classuse-order.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
-Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
-Patch1002:      icedtea-3.8.0-s390.patch
 # IcedTea-level reproducibility fixes - these patch the icedtea build itself,
 # so unlike the openjdk ones above they are applied in %%prep
-Patch1003:      reproducible-jvm-cfg-order.patch
-Patch1004:      reproducible-dist-id.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
 Patch3000:      tls13extensions.patch
 Patch4000:      riscv64-zero.patch
+Patch4001:      s390-size_t.patch
+Patch4002:      s390-min-max.patch
 Patch5001:      fips.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
@@ -437,164 +442,170 @@ itself is still being tuned to be working with accessibility features.
 There are known issues with accessibility on, so please do not install
 this package unless you really need to.
 
-%prep
-%setup -q -n icedtea-%{icedtea_version}
-
-%patch -P 1001 -p1
-%ifarch s390
-%patch -P 1002 -p1
+%global bootcycle 1
+%if %{bootcycle}
+%global imagesdir bootcycle-build/images
+%global imagestarget bootcycle-images docs
+%else
+%global imagesdir images
+%global imagestarget images docs
 %endif
 
-# Reproducibility fixes to the icedtea build itself. These must be applied
-# before %%build runs autogen.sh, which regenerates configure and Makefile.in.
-%patch -P 1003 -p1
-%patch -P 1004 -p1
+%prep
+%setup -q -n %{openjdk_dir}
+cp %{SOURCE100} %{SOURCE101} common/autoconf/build-aux/
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 12 -p1
+%if %{with zero}
+%patch -P 14 -p1
+%endif
+%patch -P 15 -p1
+%patch -P 20 -p1
+%patch -P 21 -p1
+%patch -P 22 -p1
+%patch -P 23 -p1
+%patch -P 24 -p1
+%patch -P 25 -p1
+%patch -P 26 -p1
+%patch -P 27 -p1
+%patch -P 28 -p1
+%ifarch ppc ppc64 ppc64le
+%patch -P 103 -p1
+%endif
+%patch -P 201 -p1
+%patch -P 203 -p1
+%patch -P 204 -p1
+%patch -P 205 -p1
+%patch -P 206 -p1
+%patch -P 207 -p1
+%patch -P 2001 -p1
+%patch -P 2002 -p1
+%patch -P 3000 -p1
+%ifarch riscv64
+%patch -P 4000 -p1
+%endif
+%patch -P 4001 -p1
+%patch -P 4002 -p1
+%patch -P 5001 -p1
+
+(cd common/autoconf && bash ./autogen.sh)
+
+# Extract systemtap tapsets
+%if %{with_systemtap}
+tar -x -I xz -f %{SOURCE10}
+for file in tapset/*.in; do
+    OUTPUT_FILE=`echo $file | sed -e s:\.in$::g`
+    sed -e s:@ABS_SERVER_LIBJVM_SO@:%{_jvmdir}/%{sdkdir}/jre/lib/%{archinstall}/server/libjvm.so:g $file > $file.1
+%ifarch %{ix86}
+    sed -e s:@ABS_CLIENT_LIBJVM_SO@:%{_jvmdir}/%{sdkdir}/jre/lib/%{archinstall}/client/libjvm.so:g $file.1 > $OUTPUT_FILE
+%else
+    sed -e '/@ABS_CLIENT_LIBJVM_SO@/d' $file.1 > $OUTPUT_FILE
+%endif
+    sed -i -e s:@ABS_JAVA_HOME_DIR@:%{_jvmdir}/%{sdkdir}:g $OUTPUT_FILE
+done
+%endif
+
+# Prepare desktop files
+for file in %{SOURCE11} %{SOURCE12} ; do
+    OUTPUT_FILE=`basename $file | sed -e s:\.in$::g`
+    sed -e s:@JAVA_HOME@:%{_jvmdir}/%{sdkdir}:g $file > $OUTPUT_FILE
+    sed -i -e s:@VERSION@:%{javaver}:g $OUTPUT_FILE
+done
+
+# Setup nss.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.cfg
+sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.cfg
 
 # Setup nss.fips.cfg
 sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE17} > nss.fips.cfg
 sed -i -e "s:@NSS_SECMOD@:sql\:%{_sysconfdir}/pki/nssdb:g" nss.fips.cfg
 
 %build
-%define _lto_cflags %{nil}
-export LANG=C
-
 # How many cpu's do we have?
 export NUM_PROC=`%{_bindir}/getconf _NPROCESSORS_ONLN 2> /dev/null || :`
 export NUM_PROC=${NUM_PROC:-1}
 
-CFLAGS=$(rpm -E '%{optflags}' | sed 's/-Wall\>//')
-CFLAGS="$CFLAGS -Wno-error"
-CXXFLAGS=${CFLAGS}
+EXTRA_CFLAGS="-Wno-error"; EXTRA_CPP_FLAGS="-Wno-error"
 %ifarch ppc64 ppc64le ppc
-CFLAGS="$CFLAGS -fno-strict-aliasing"
+EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
 %endif
 %if 0%{?suse_version} >= 1330
-CFLAGS="$CFLAGS -std=gnu99 -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
-CXXFLAGS="$CXXFLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
+  EXTRA_CFLAGS="$EXTRA_CFLAGS -std=gnu99 -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
+  EXTRA_CPP_FLAGS="$EXTRA_CPP_FLAGS -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse -fcommon"
 %endif
-export CFLAGS
-export CXXFLAGS
+%ifarch %{ix86}
+  EXTRA_CFLAGS="$EXTRA_CFLAGS -mstackrealign -mincoming-stack-boundary=2 -mpreferred-stack-boundary=4"
+%endif
 
+mkdir -p %{buildoutputdir}
+
+pushd %{buildoutputdir}
+
+bash ../configure \
 %if 0%{?with_gcc}
-export CPP=cpp-%{with_gcc}
-export CXX=g++-%{with_gcc}
-export CC=gcc-%{with_gcc}
-export NM=gcc-nm-%{with_gcc}
+  CC="gcc-%{with_gcc}" \
+  CXX="g++-%{with_gcc}" \
+  CPP="cpp-%{with_gcc}" \
+  NM="gcc-nm-%{with_gcc}" \
 %endif
-
-sh autogen.sh
-%configure \
-        --disable-downloading \
-        --with-tzdata-dir=%{_datadir}/javazi \
-        --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-0%{?suse_version}-%{_arch}" \
-        --disable-nss \
-        --enable-sysconf-nss \
-        --with-curves=all \
-%if %{with bootstrap}
-        --enable-bootstrap \
-%else
-        --disable-bootstrap \
-%endif
-%ifnarch %{arm} %{aarch64}
-        --with-parallel-jobs="${NUM_PROC}" \
-%endif
-%ifarch s390
-        --with-boot-jdk-jvmargs="-Xms256M -Xmx768M" \
-%endif
+  --with-milestone=fcs --with-update-version=%{updatever} \
+  --with-build-number=b%{buildver} \
+  --with-user-release-suffix="suse-0%{?suse_version}-%{_arch}" \
 %if %{with zero}
-        --enable-zero \
-        --disable-jfr \
+  --with-jvm-variants=zero --disable-jfr \
 %endif
+  --with-native-debug-symbols=internal --disable-zip-debug-info \
+  --enable-unlimited-crypto --with-stdc++lib=dynamic \
+  --with-zlib=system --with-giflib=system \
+  --with-libjpeg=system --with-libpng=system \
 %if %{with_system_lcms}
-        --enable-system-lcms \
+  --with-lcms=system \
 %else
-        --disable-system-lcms \
+  --with-lcms=bundled \
 %endif
 %if %{with_system_pcsc}
-        --enable-system-pcsc \
+  --enable-system-pcsc \
 %else
-        --disable-system-pcsc \
+  --disable-system-pcsc \
 %endif
 %if %{with_system_sctp}
-        --enable-system-sctp \
+  --enable-system-sctp \
 %else
-        --disable-system-sctp \
+  --disable-system-sctp \
 %endif
 %if %{with_system_kerberos}
-        --enable-system-kerberos \
+  --enable-system-kerberos \
 %else
-        --disable-system-kerberos \
+  --disable-system-kerberos \
 %endif
 %if %{with_improved_font_rendering}
-        --enable-improved-font-rendering \
+  --enable-improved-font-rendering \
 %else
-        --disable-improved-font-rendering \
+  --disable-improved-font-rendering \
 %endif
-%ifarch %{arm}
-        --with-hotspot-src-zip=%{SOURCE2} \
-%else
-%if %{without zero} && %{with_shenandoah}
-        --with-hotspot-src-zip=%{SOURCE3} \
-        --with-hotspot-build=shenandoah \
+%ifarch s390
+  --with-boot-jdk-jvmargs="-Xms256M -Xmx768M" \
 %endif
-%endif
-        --with-openjdk-src-zip=%{SOURCE1}
+  --with-extra-cflags="$EXTRA_CFLAGS" --with-extra-cxxflags="$EXTRA_CPP_FLAGS"
+make JOBS=$NUM_PROC LOG=trace DEBUG_BINARIES=true POST_STRIP_CMD="" \
+     WARNINGS_ARE_ERRORS="-Wno-error" %{imagestarget}
 
-# configure has captured CFLAGS/CXXFLAGS and passes them on as
-# --with-extra-cflags/--with-extra-cxxflags, so they must not stay in the
-# environment: hotspot's makefiles only ever do "CFLAGS +=" and compile C++
-# with "$(CXX) $(CXXFLAGS) $(CFLAGS)", so an inherited CFLAGS puts -std=gnu99
-# on every g++ command line ("valid for C/ObjC but not for C++").
-unset CFLAGS CXXFLAGS
+popd >& /dev/null
 
-%make patch %{?_smp_mflags}
+export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/j2sdk-image
+cp %{SOURCE14} %{SOURCE15} .
 
-patch -p0 -i %{PATCH1}
-patch -p0 -i %{PATCH2}
-patch -p0 -i %{PATCH3}
-patch -p0 -i %{PATCH12}
+$JAVA_HOME/bin/javac TestCryptoLevel.java TestECDSA.java
 
-%if %{with zero}
-patch -p0 -i %{PATCH14}
-%endif
+$JAVA_HOME/bin/java TestCryptoLevel
 
-patch -p0 -i %{PATCH15}
-
-patch -p0 -i %{PATCH20}
-patch -p0 -i %{PATCH21}
-patch -p0 -i %{PATCH22}
-patch -p1 -i %{PATCH23}
-patch -p1 -i %{PATCH24}
-patch -p1 -i %{PATCH25}
-patch -p1 -i %{PATCH26}
-patch -p1 -i %{PATCH27}
-patch -p1 -i %{PATCH28}
-
-%ifarch ppc ppc64 ppc64le
-# PPC fixes
-patch -p0 -i %{PATCH103}
-%endif
-
-patch -p0 -i %{PATCH2001}
-patch -p0 -i %{PATCH2002}
-
-patch -p0 -i %{PATCH3000}
-
-patch -p0 -i %{PATCH4000}
-
-patch -p0 -i %{PATCH5001}
-
-(cd openjdk/common/autoconf
- bash ./autogen.sh
-)
-
-%{make} %{?_smp_mflags}
-
-export JAVA_HOME=$(pwd)/%{buildoutputdir}images/j2sdk-image
+$JAVA_HOME/bin/java TestECDSA || true
 
 # cacerts are generated in runtime in openSUSE
-if [ -f %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts ]; then
-        rm -f %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts
+if [ -f %{buildoutputdir}/%{imagesdir}/j2sdk-image/jre/lib/security/cacerts ]; then
+        rm -f %{buildoutputdir}/%{imagesdir}/j2sdk-image/jre/lib/security/cacerts
 fi
 
 # Check debug symbols are present and can identify code
@@ -618,7 +629,18 @@ export STRIP_KEEP_SYMTAB=libjvm*
 # skip /usr/lib/rpm/brp-check-bytecode-version:
 export NO_BRP_CHECK_BYTECODE_VERSION=true
 
-pushd %{buildoutputdir}images/j2sdk-image
+%if %{with_systemtap}
+  # Install systemtap support files.
+  install -dm 755 %{buildroot}%{_jvmdir}/%{sdkdir}/tapset
+  cp -a tapset/*.stp %{buildroot}%{_jvmdir}/%{sdkdir}/tapset/
+  install -d -m 755 %{buildroot}%{tapsetdir}
+  pushd %{buildroot}%{tapsetdir}
+    RELATIVE=$(%{abs2rel} %{_jvmdir}/%{sdkdir}/tapset %{tapsetdir})
+    ln -sf $RELATIVE/*.stp .
+  popd
+%endif
+
+pushd %{buildoutputdir}/%{imagesdir}/j2sdk-image
 
   # Install main files.
   install -d -m 755 %{buildroot}%{_jvmdir}/%{sdkdir}
@@ -685,24 +707,10 @@ pushd %{buildoutputdir}images/j2sdk-image
   [ -f bin/java-rmi.cgi ] && mv bin/java-rmi.cgi sample/rmi
   cp -a sample %{buildroot}%{_jvmdir}/%{sdkdir}
 
-%if %{with_systemtap}
-  # Install systemtap support files.
-  cp -a tapset %{buildroot}%{_jvmdir}/%{sdkdir}
-  pushd %{buildroot}%{_jvmdir}/%{sdkdir}/tapset
-    for i in *.stp; do
-      mv $i $(basename $i .stp)-%{javaver}.stp
-    done
-  popd
-  install -d -m 755 %{buildroot}%{tapsetdir}
-  pushd %{buildroot}%{tapsetdir}
-    RELATIVE=$(%{abs2rel} %{_jvmdir}/%{sdkdir}/tapset %{tapsetdir})
-    ln -sf $RELATIVE/*.stp .
-  popd
-%endif
-
 popd
 
 # Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
+install -m 644 nss.cfg %{buildroot}%{_jvmdir}/%{jredir}/lib/security/
 install -m 644 nss.fips.cfg %{buildroot}%{_jvmdir}/%{jredir}/lib/security/
 
 # Install Javadoc documentation.
@@ -712,7 +720,7 @@ cp -a %{buildoutputdir}/docs %{buildroot}%{_javadocdir}/%{sdklnk}
 # Install icons and menu entries.
 for s in 16 24 32 48 ; do
   install -D -p -m 644 \
-    openjdk/jdk/src/solaris/classes/sun/awt/X11/java-icon${s}.png \
+    jdk/src/solaris/classes/sun/awt/X11/java-icon${s}.png \
     %{buildroot}%{_datadir}/icons/hicolor/${s}x${s}/apps/java-%{javaver}-openjdk.png
 done
 
@@ -1162,9 +1170,9 @@ fi
 %dir %{_libdir}/jvm-exports
 %dir %{_libdir}/jvm-private
 
-%doc %{buildoutputdir}images/j2sdk-image/jre/ASSEMBLY_EXCEPTION
-%license %{buildoutputdir}images/j2sdk-image/jre/LICENSE
-%doc %{buildoutputdir}images/j2sdk-image/jre/THIRD_PARTY_README
+%doc %{buildoutputdir}/%{imagesdir}/j2sdk-image/jre/ASSEMBLY_EXCEPTION
+%license %{buildoutputdir}/%{imagesdir}/j2sdk-image/jre/LICENSE
+%doc %{buildoutputdir}/%{imagesdir}/j2sdk-image/jre/THIRD_PARTY_README
 
 %dir %{_jvmdir}/%{sdkdir}
 %{_jvmdir}/%{jrelnk}

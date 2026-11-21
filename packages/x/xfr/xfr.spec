@@ -17,7 +17,7 @@
 
 
 Name:           xfr
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Network bandwidth testing tool with TUI
 License:        Apache-2.0 OR MIT
@@ -52,6 +52,15 @@ Features:
 %install
 %{cargo_install}
 install -D -m 0644 examples/config.toml %{buildroot}%{_sysconfdir}/xfr/config.toml
+install -D -m 0644 docs/xfr.1 %{buildroot}%{_mandir}/man1/xfr.1
+
+# generate and install completions
+./target/release/xfr --completions bash > xfr.bash
+./target/release/xfr --completions fish > xfr.fish
+./target/release/xfr --completions zsh  > xfr.zsh
+install -D -m 0644 xfr.bash %{buildroot}/%{_datadir}/bash-completion/completions/xfr.bash
+install -D -m 0644 xfr.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/xfr.fish
+install -D -m 0644 xfr.zsh %{buildroot}/%{_datadir}/zsh/site-functions/_xfr
 
 %check
 %{cargo_test}
@@ -62,5 +71,14 @@ install -D -m 0644 examples/config.toml %{buildroot}%{_sysconfdir}/xfr/config.to
 %{_bindir}/xfr
 %dir %{_sysconfdir}/xfr
 %config(noreplace) %{_sysconfdir}/xfr/config.toml
+%{_mandir}/man1/xfr.1%{?ext_man}
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/xfr.bash
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/xfr.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_xfr
 
 %changelog

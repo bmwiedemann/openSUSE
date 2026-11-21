@@ -12,13 +12,13 @@ Signed-off-by: Marcel Berger <marbe@gmx.de>
  3 files changed, 49 insertions(+)
  create mode 100644 src/ipa/simple/data/ov02e10.yaml
 
-Index: libcamera-0.7.2/src/ipa/libipa/camera_sensor_helper.cpp
+Index: libcamera-0.8.0/src/ipa/libipa/camera_sensor_helper.cpp
 ===================================================================
---- libcamera-0.7.2.orig/src/ipa/libipa/camera_sensor_helper.cpp
-+++ libcamera-0.7.2/src/ipa/libipa/camera_sensor_helper.cpp
-@@ -688,6 +688,24 @@ public:
+--- libcamera-0.8.0.orig/src/ipa/libipa/camera_sensor_helper.cpp
++++ libcamera-0.8.0/src/ipa/libipa/camera_sensor_helper.cpp
+@@ -748,6 +748,24 @@ public:
  };
- REGISTER_CAMERA_SENSOR_HELPER("ov08x40", CameraSensorHelperOv08x40)
+ REGISTER_CAMERA_SENSOR_HELPER("mira220", CameraSensorHelperMira220)
  
 +class CameraSensorHelperOv02e10 : public CameraSensorHelper
 +{
@@ -41,10 +41,10 @@ Index: libcamera-0.7.2/src/ipa/libipa/camera_sensor_helper.cpp
  class CameraSensorHelperOv2685 : public CameraSensorHelper
  {
  public:
-Index: libcamera-0.7.2/src/ipa/simple/data/ov02e10.yaml
+Index: libcamera-0.8.0/src/ipa/simple/data/ov02e10.yaml
 ===================================================================
 --- /dev/null
-+++ libcamera-0.7.2/src/ipa/simple/data/ov02e10.yaml
++++ libcamera-0.8.0/src/ipa/simple/data/ov02e10.yaml
 @@ -0,0 +1,19 @@
 +# SPDX-License-Identifier: CC0-1.0
 +%YAML 1.1
@@ -65,12 +65,12 @@ Index: libcamera-0.7.2/src/ipa/simple/data/ov02e10.yaml
 +  - Adjust:
 +  - Agc:
 +...
-Index: libcamera-0.7.2/src/libcamera/sensor/camera_sensor_properties.cpp
+Index: libcamera-0.8.0/src/libcamera/sensor/camera_sensor_properties.cpp
 ===================================================================
---- libcamera-0.7.2.orig/src/libcamera/sensor/camera_sensor_properties.cpp
-+++ libcamera-0.7.2/src/libcamera/sensor/camera_sensor_properties.cpp
-@@ -335,6 +335,18 @@ const CameraSensorProperties *CameraSens
- 				.hblankDelay = 3
+--- libcamera-0.8.0.orig/src/libcamera/sensor/camera_sensor_properties.cpp
++++ libcamera-0.8.0/src/libcamera/sensor/camera_sensor_properties.cpp
+@@ -403,6 +403,18 @@ const CameraSensorProperties *CameraSens
+ 				.hblankDelay = 1
  			},
  		} },
 +		{ "ov02e10", {

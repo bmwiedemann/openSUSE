@@ -1,7 +1,7 @@
 #
 # spec file for package longhornctl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           longhornctl
-Version:        1.10.0
+%global commit_hash 93bf24aeb81960d5eebd553a2ef6c990d22e3ddf
+Version:        1.13.0
 Release:        0
 Summary:        CLI for the Longhorn cloud native distributed block storage
 License:        Apache-2.0
 URL:            https://github.com/longhorn/cli
-Source:         %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
+Source:         https://github.com/longhorn/cli/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.zst
 BuildRequires:  go >= 1.22
+BuildRequires:  zstd
 
 %description
 longhornctl is a CLI (command-line interface) designed to simplify Longhorn
@@ -68,11 +70,9 @@ BuildArch:      noarch
 zsh command line completion support for %{name}.
 
 %prep
-%autosetup -p 1 -a 1
+%autosetup -p 1 -a 1 -n cli-%{version}
 
 %build
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
-
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
@@ -81,7 +81,7 @@ go build \
    -buildmode=pie \
    -ldflags=" \
    -X github.com/longhorn/cli/meta.Version=v%{version} \
-   -X github.com/longhorn/cli/meta.GitCommit=${COMMIT_HASH} \
+   -X github.com/longhorn/cli/meta.GitCommit=%commit_hash \
    -X github.com/longhorn/cli/meta.BuildDate=${BUILD_DATE}" \
    -o bin/%{name} ./cmd/remote/
 
@@ -103,6 +103,7 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh_completion.d/
 
 %check
 %{buildroot}/%{_bindir}/%{name} version | grep v%{version}
+go test ./...
 
 %files
 %doc README.md

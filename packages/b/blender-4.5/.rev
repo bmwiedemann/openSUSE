@@ -121,4 +121,20 @@
     <comment>1</comment>
     <requestid>1392691</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b15d3d18d76c412a73ecec20159f50a6</srcmd5>
+    <version>4.5.16</version>
+    <time>1794410965</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396830</requestid>
+  </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>ce14b2bf1b79685587f8be64a68dd732</srcmd5>
+    <version>4.5.16</version>
+    <time>1795182375</time>
+    <user>anag_factory</user>
+    <comment>- Add blender-4.5-cmake-4.5.patch to fix build with CMake 4.5</comment>
+    <requestid>1398806</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,13 @@
 
 %global pythons %{primary_python}
 Name:           python-openstackclient
-Version:        10.3.0
+Version:        10.5.0
 Release:        0
 Summary:        OpenStack Command-line Client
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-openstackclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python-openstackclient/python_openstackclient-%{version}.tar.gz
-BuildRequires:  %{python_module cinderclient >= 3.3.0}
 BuildRequires:  %{python_module cliff >= 4.13.0}
 BuildRequires:  %{python_module cryptography >= 2.7}
 BuildRequires:  %{python_module ddt >= 1.0.1}
@@ -33,7 +32,7 @@ BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module iso8601 >= 0.1.11}
 BuildRequires:  %{python_module keystoneclient >= 3.22.0}
 BuildRequires:  %{python_module manilaclient >= 6.0.0}
-BuildRequires:  %{python_module openstacksdk >= 4.19.0}
+BuildRequires:  %{python_module openstacksdk >= 4.21.0}
 BuildRequires:  %{python_module osc-lib >= 4.6.0}
 BuildRequires:  %{python_module oslotest}
 BuildRequires:  %{python_module osprofiler >= 1.4.0}
@@ -48,17 +47,14 @@ BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wrapt >= 1.7.0}
 BuildRequires:  openstack-macros
-Requires:       python-Babel
-Requires:       python-cinderclient >= 3.3.0
 Requires:       python-cliff >= 4.13.0
 Requires:       python-cryptography >= 2.7
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-keystoneclient >= 3.22.0
 Requires:       python-manilaclient >= 6.0.0
-Requires:       python-openstacksdk >= 4.19.0
+Requires:       python-openstacksdk >= 4.21.0
 Requires:       python-osc-lib >= 4.6.0
 Requires:       python-oslo.i18n >= 3.15.3
-Requires:       python-oslo.utils
 Requires:       python-requests >= 2.27.0
 Requires:       python-stevedore >= 2.0.1
 BuildArch:      noarch

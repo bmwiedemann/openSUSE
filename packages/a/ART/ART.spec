@@ -25,7 +25,7 @@
 %bcond_with    art_ctl
 %endif
 Name:           ART
-Version:        1.26.10
+Version:        1.26.11
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
 License:        GPL-3.0-or-later
@@ -36,9 +36,6 @@ Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{n
 # https://keys.openpgp.org/vks/v1/by-fingerprint/942FCFB1CBE1E38928A1A6BEA94D951156835A5D
 Source2:        %{name}.keyring
 Patch0:         fix-missing-lm.patch
-Patch1:         fix-LUT3D-nonSIMD-redeclaration.patch
-# PATCH-FIX-UPSTREAM fix-install-art-utils.patch gh#artraweditor/ART#543 -- install libart_utils.so
-Patch2:         fix-install-art-utils.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -122,6 +119,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %files
 %license %{_docdir}/%{name}/LICENSE.txt
 %{_bindir}/ART
+%{_bindir}/ART-dialogs
 %{_bindir}/ART-cli
 %{_libdir}/libart_engine.so
 %{_libdir}/libart_utils.so

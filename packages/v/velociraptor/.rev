@@ -239,4 +239,20 @@ causing crashes in libbpfgo.</comment>
     <comment>1</comment>
     <requestid>1382796</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>714ab5c163fdad9496ff7883ee830ef4</srcmd5>
+    <version>0.76.7.0.git145.b60ef1146</version>
+    <time>1794591409</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397334</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d134e0b47d6d56973144ceb3fe73c8b0</srcmd5>
+    <version>0.77.3.0.git141.b1612b50b</version>
+    <time>1795103907</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398720</requestid>
+  </revision>
 </revisionlist>

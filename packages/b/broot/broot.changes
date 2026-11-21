@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 13 15:02:16 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- v1.62.0
+  * fix nushell launcher rejected by upcoming nushell versions (reserved `--help` flag) - Fix #1230
+  * an invalid flag in a verb argument, eg `{file:space_separated}`, is now reported as a configuration error
+  * a flag in the `terminal_title` pattern, where flags have no effect, is now a configuration error
+  * an unknown argument in a verb, eg `{flie}`, is now reported as a configuration error
+  * an unknown argument in the `terminal_title` pattern is now a configuration error
+  * a `path-from-parent` or `path-from-directory` flag on an argument provided by broot, eg `{file:path-from-parent}`, is now a configuration error
+  * contradictory or repeated flags on a verb argument, eg `{file:space-separated,comma-separated}`, are now a configuration error
+  * a space between the flags of a verb argument no longer breaks the argument when the execution is given as a single string
+  * fix quotes in verb executions, broken since 1.56: quotes of an execution given as a single string were passed to the program, and items of an array with spaces weren't quoted when run through a shell
+  * in a command run through a shell, all inserted values are now escaped, not only paths (eg `{file-name}`), and an empty value is passed as an empty argument
+  * a `path-from-parent` argument now starts from the selection itself when it has no parent (the filesystem root), instead of being empty
+  * an invalid verb in the configuration now prevents broot from starting, with an error giving its file and definition
+  * errors displayed on exit are now highlighted
+  * a verb argument defined in the invocation, eg `{file}` in `invocation: "say {file}"`, now takes precedence over the standard argument with the same name
+  * tab completion of the argument of `:copy`, `:move`, or of verbs using `path-from-parent` or `path-from-directory`, now starts from the directory the command will use
+  * client-server features (`--listen`, `--send`, `--get-root`) now available on Windows - Fix #1206
+  * on Windows, a trailing `\` in a verb argument path is now kept after normalization
+  * the `mode` of a preview transformer is now applied when no preview mode is requested
+  * more nerdfont icons: hjson, Docker, README, envrc, LLVM, CMake, gdb, ghci, Cabal, fish, Nix, Just, ignore files, jsonc, jsonl
+
+- v1.61.0
+  * `:gf` now removes all git information, including the git status filter
+  * `:gs` now removes all git information when toggled off, and no longer changes the hidden files setting
+  * a content search opened in the preview now shows the matching lines instead of the diff of a modified file
+  * quiet exit instead of a panic when stdout is closed, eg `broot --help | head -1`
+  * fix special paths pruned below second level
+
+- v1.60.2
+  * fix some combinations being wrongly interpreted for input on some terminals (eg shift-r with kitty keyboard protocol enabled on ghostty/mac was interpreted as just a 'r')
+  * preview of CRLF (Windows style) text files no longer shows a replacement char at the end of every line - Fix #1216
+  * `:copy_line` no longer copies the end of line characters
+  * PSD images are no longer previewed
+  * content search no longer reports false matches in .bz2, .xz, .zst and .br files
+  * nerdfont icons for TOML and YAML files
+
+-------------------------------------------------------------------
 Fri Sep 11 07:29:39 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
 - v1.60.1

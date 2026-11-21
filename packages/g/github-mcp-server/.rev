@@ -247,4 +247,20 @@ Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
     <comment>Update github-mcp-server to 2.0.3.</comment>
     <requestid>1392928</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b982f172b2c2df9a73144d1b82cfeefd</srcmd5>
+    <version>2.1.0</version>
+    <time>1793991462</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 2.1.0: issue-artifact tools, fix PR merged state, drop Models triage.</comment>
+    <requestid>1395755</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5bec68f5d99814cdd9126fe1e29419eb</srcmd5>
+    <version>2.2.0</version>
+    <time>1795023021</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 2.2.0: Skills, agent automations, hide_secret, nil/overflow fixes.</comment>
+    <requestid>1398230</requestid>
+  </revision>
 </revisionlist>

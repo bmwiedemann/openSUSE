@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:48:46 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * Incremental search is supported by adding an optional stop button to
+    the status-bar.
+  * An option is added to Desktop Preferences for no wallpaper cache, such
+    that the original image quality can be used.
+  * CMake maintenance.
+  * Code cleanup and update.
+- Drop unused and obsolete BuildRequires
+  * pkgconfig(libmenu-cache)
+- Drop unused and obsolete Requires
+  * menu-cache
+
+-------------------------------------------------------------------
 Wed Aug 26 18:14:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.4.1:

@@ -20,7 +20,7 @@
 %define sover   2
 %define mver    2.4
 Name:           qmmp
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:01:59 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 11.13.2:
+  * Fixed data loss with min_tombstones_for_range_conversion and
+    external file ingestion, and with memtable-tier iterators
+    (11.13.1).
+  * Fixed blob direct write with concurrent flushes of one column
+    family failing with "Blob file #N already added" (11.13.2).
+  * Fixed a secondary instance with open_files_async getting stuck
+    after TryCatchUpWithPrimary() (11.13.2).
+  * With auto resume disabled, a retryable IO error during
+    compaction or flush is now a hard background error that stops
+    writes until DB::Resume() is called.
+  * MultiGet with async_io now falls back to synchronous reads
+    when io_uring setup or submission fails.
+  * Fixed SstFileManager trash accounting leaks.
+  * Added experimental track_options_file_number_in_manifest
+    option and ldb update_manifest --rebind_options_file.
+  * Added FileSystem::IsPreallocationSupported().
+- Drop rocksdb-8.0.0-reproducible.patch: it only patched the
+  Makefile, which the CMake build does not use; CMake already
+  takes the build date from SOURCE_DATE_EPOCH.
+- Declare the cmake >= 3.12 floor upstream requires.
+- Use pkgconfig(gflags_static) on SLE/Leap 15.
+
+-------------------------------------------------------------------
 Sat Oct 31 14:33:50 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 11.12:

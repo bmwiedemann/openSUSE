@@ -312,4 +312,46 @@
       - fix regression due to edge case bug introduced in 4.71 (GH #278, thanks to dddonovan)</comment>
     <requestid>1352985</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>17cac99e57d3bac5a0209135d3dfe04c</srcmd5>
+    <version>5.20.0</version>
+    <time>1793990010</time>
+    <user>anag_factory</user>
+    <comment>bsc#1289321, bsc#1289352, bsc#1289440, bsc#1289441, bsc#1289435,
+bsc#1289436, bsc#1289428, bsc#1289433, bsc#1289437, bsc#1289393,
+bsc#1289427, bsc#1289396, bsc#1289432, bsc#1289439, bsc#1289394,
+bsc#1289395, bsc#1289430, bsc#1289429, bsc#1289431, bsc#1289397
+
+- updated to 5.20.0 (5.02)
+   see /usr/share/doc/packages/perl-CGI/Changes
+  5.02 2026-11-03
+      [ RELEASE NOTES ]
+      - this is a security release fixing a large number of vulnerabilities,
+        several of them exploitable by any client against any script. all
+        users should upgrade
+      - to fix them some default behaviour has changed, see BREAKING CHANGES
+        below - most changes only affect malicious or malformed requests, but
+        please read them before upgrading. where a change could reasonably
+        affect a legitimate application an opt out or migration path is given
+      - the minimum *supported* perl version is now 5.10, however the dist
+        will still install for 5.8 (no guarantees about tests passing however)
+      [ SECURITY ]
+      - denial of service:
+        - CVE-2026-120631: CGI::Cookie-&gt;parse (and so CGI-&gt;cookie) used a
+          client supplied cookie expires value as a regex, so a Cookie header
+          could make it die or backtrack catastrophically
+          bsc#1289321
+        - CVE-2026-120632: a crafted multipart/related Content-Type header
+          caused cubic regex backtracking (~15s of CPU for an 8KB header, no
+          body needed) bsc#1289352
+        - CVE-2026-120650: request size, param and upload limits were missing
+          or unenforced: $POST_MAX defaulted to no limit, and was not enforced
+          at all for multipart bodies without a CONTENT_LENGTH (chunked
+          encoding), or for the boundary line of a multipart body without a
+          boundary=; PUTDATA/POSTDATA/PATCHDATA bodies were read into memory
+          in one go; and there was no limit on the number of params or
+          uploads in a request (a 40MB form body took 9s and 1.5GB of memory
+          to parse) - see the new $CGI::MAX_PARAMS and $CGI::MAX_UPLOADS</comment>
+    <requestid>1395028</requestid>
+  </revision>
 </revisionlist>

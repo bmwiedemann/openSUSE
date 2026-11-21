@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov  5 06:19:35 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch
+  to fix tests for kernel 7.4
+
+-------------------------------------------------------------------
+Tue Nov  3 06:52:05 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add to excludes
+  * connect.t: flaky on 16.1 + 7.3
+  * sqpoll-exec.t, thread-exit.t: flaky on 7.3
+
+-------------------------------------------------------------------
 Fri Aug 21 04:23:18 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - exclude more tests: they fail on 7.2 so far

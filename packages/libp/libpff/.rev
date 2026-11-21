@@ -148,4 +148,15 @@ Part of summer 2013 libyal refresh for opensuse 13.1</comment>
     <comment>- Update to release 20260926</comment>
     <requestid>1380945</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ad6589ca62b7f67ca147695e1d5f8a7a</srcmd5>
+    <version>20261030</version>
+    <time>1794236829</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20261030
+  * Fix a heap out-of-bounds read [CVE-2026-116736, boo#1288071],
+    an incorrect bounds check [CVE-2026-116735, boo#1288072] and
+    an integer underflow [CVE-2026-110598, boo#1285654].</comment>
+    <requestid>1396257</requestid>
+  </revision>
 </revisionlist>

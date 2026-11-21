@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:40:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove -O0 - this disables FORTIFY_SOURCE and must not enter
+  a SUSE distribution
+
+-------------------------------------------------------------------
+Fri Nov 13 14:08:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.1
+  * Fix a regression from 1.11.0 in that `LZ4_resetStreamHC()`
+    could write out of bounds at levels >= 10, on a state
+    containing garbage.
+  * Faster decompression on ppc64 (+12% to +24% on Silesia Corpus)
+  * `lz4 -l` compresses small files up to 10x faster
+  * lz4 `-h`/`-H`/`--help` now outputs to stdout
+  * lz4 `--list` reads standard input again (was broken 1.11.0)
+
+-------------------------------------------------------------------
+Wed Nov  4 17:00:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11
+  * Added multithreaded compression
+  * Speed improvements for small data, especially when using
+    dictionaries
+  * Fixes for corner cases scenarios
+
+-------------------------------------------------------------------
 Wed Aug 14 16:09:45 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Switch to cmake build system: Creates extra cmake modules for
@@ -79,7 +106,7 @@ Fri Oct 12 22:04:52 UTC 2018 - astieger@suse.com
   * fix corruption in v1.8.2 at level 9 for files > 64KB under
     rare conditions
   * Add new command --fast
-  * api: LZ4_decompress_safe_partial() now decodes exactly the 
+  * api: LZ4_decompress_safe_partial() now decodes exactly the
     number of bytes requested
 
 -------------------------------------------------------------------

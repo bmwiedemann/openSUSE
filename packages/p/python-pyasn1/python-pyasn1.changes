@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct 30 12:25:15 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to 0.6.5 (bsc#1288851, CVE-2026-119194)
+  * GHSA-mm57-4v3p-rchx: Decoded binary REAL mantissas in linear time
+  instead of repeatedly shifting a growing integer and slicing the
+  remaining bytes (thanks for reporting, manus-use, manus-pi, ucsurf,
+  adriank31)
+  * GHSA-2qm8-x737-gmw5: Reassembled constructed BIT STRING fragments
+    in linear time while preserving their decoded bit values, including
+    intermediate fragment padding (thanks for reporting, manus-use)
+  * GHSA-9m75-vc3g-4x39: Reassembled constructed OCTET STRING and
+    character-string fragments and indefinite-length ANY content in
+    linear time. Nested constructed OCTET STRING fragments now contribute
+    their decoded octets (thanks for reporting, alimony, manus-pi, adriank31)
+  * GHSA-fm9c-5rcf-2q5p: Bounded schemaless container type tracking
+    after two distinct tag sets to prevent quadratic CPU use from
+    colliding long tag IDs (thanks for reporting, droideck)
+
+-------------------------------------------------------------------
 Thu Jul 16 08:56:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.4 (fixes CVE-2026-59884 (bsc#1271464),

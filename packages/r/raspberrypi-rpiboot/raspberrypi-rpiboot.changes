@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:13:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20261002.115811.0:
+  * rpiboot gains -V/--version and looks up files in
+    device-specific folders first
+  * Recovery metadata goes to stdout by default on BCM2711 and
+    BCM2712; pass -j with a directory to write a JSON file instead
+  * Mass-storage gadget runs 64-bit by default on BCM2711 with
+    refreshed boot images; legacy 32-bit gadget is gone
+  * Compute Module 5 support across docs, examples and
+    secure-boot tooling
+  * Secure boot: program_pubkey sets revoke_devkey automatically,
+    new HSM wrapper scripts, fixed 2712 rpiboot loading
+  * Refreshed BCM2711/BCM2712 boot firmware, bootfiles and
+    rpi-eeprom sources in the tarball
+  * raspberrypi-rpiboot-20240926.102326.3.tar replaced by
+    raspberrypi-rpiboot-20261002.115811.0.tar
+- Drop obsolete Group tag from the spec file
+- Keep plain libusb-1_0-devel BuildRequires rather than the
+  pkgconfig form
+
+-------------------------------------------------------------------
 Fri Oct 25 14:57:26 UTC 2024 - Matthias Brugger <mbrugger@suse.com>
 
 - Use new version schema <YYYYMMDD>.<HHMMSS>

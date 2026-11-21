@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 16 12:42:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add "gnutls-CVE-2026-95184.patch" to fix a security issue:
+  Permitted directoryName name constraints were not enforced, so a
+  constrained CA could issue certificates for any subject DN, and
+  any excluded directoryName rejected all certificates.
+  [bsc#1284936, CVE-2026-95184]
+
+- Add "gnutls-CVE-2026-88648.patch" to fix a security issue:
+  Excluded (and permitted) msUPN and SRVName otherName name
+  constraints were never checked, so a constrained CA could issue
+  certificates for excluded names. The directoryName defects of this
+  CVE are fixed in CVE-2026-95184. [bsc#1284935, CVE-2026-88648]
+
+-------------------------------------------------------------------
 Tue Oct 20 15:40:00 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - FIPS: Perform RSA-PSS self-tests. (bsc#1286296)

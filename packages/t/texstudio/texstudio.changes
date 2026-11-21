@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:52:39 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to TeXstudio 4.9.9
+  * fix help/check latex installation
+  * allow setting line ending per script #4667
+  * fix find usages with multiple entries in one line #4672
+  * fix remove word/cmd/env (Alt+Del) removes the wrong
+    environment in some cases #4685
+  * fix compiling not rerunning #4686
+  * Support double backslash as a newline for additional
+    tabular-like environments #4687
+  * fix QuickBuild processes (windowed pdf-viewer) do not end
+    #4688
+  * fix QuickBuild button (windowed pdf-viewer) remains enabled
+    during an active Quick Build #4690
+  * remove latex-l2tabu.cwl
+  * disable file explorer updates when not visible #4700
+  * fix display of cached lines (typically disabled) #4699
+  * make the zoom level of the pdf-viewer manually customizable
+    #4697
+  * fix a crash with qt/osx #4706
+
+-------------------------------------------------------------------
 Sun Sep 13 14:00:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.9.8:

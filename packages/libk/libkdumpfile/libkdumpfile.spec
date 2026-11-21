@@ -46,6 +46,10 @@ Group:          Development/Languages/Python
 %endif
 URL:            https://codeberg.org/ptesarik/libkdumpfile
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM https://codeberg.org/ptesarik/libkdumpfile/pulls/92
+Patch0:         %{name}-binutils-2.46.patch
+Patch1:         %{name}-tests-Fix-xlat-linux-aarch64-64k.patch
+Patch2:         %{name}-aarch64-Fix-root-pgt-52-48.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  binutils-devel

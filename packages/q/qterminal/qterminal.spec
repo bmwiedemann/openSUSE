@@ -1,7 +1,7 @@
 #
 # spec file for package qterminal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qterminal
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        A Qt-based terminal emulator
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -26,7 +26,7 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -35,7 +35,7 @@ BuildRequires:  utempter-devel
 %endif
 
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6LinguistTools)

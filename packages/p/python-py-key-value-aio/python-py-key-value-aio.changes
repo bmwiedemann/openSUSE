@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:37:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.0:
+  * S3 and DynamoDB stores now use aiobotocore directly instead
+    of aioboto3
+  * Replace deprecated Redis SETEX writes, follow SCAN cursors
+    when enumerating keys, and fix Valkey/Memcached TTL handling
+  * Make lazy store setup safe across event loops; mark
+    AsyncKeyValue as runtime checkable for Python 3.15
+  * Preserve supplied caches and existing entries in local stores,
+    and routing, values and TTL contracts in wrappers/adapters
+  * Keep MultiDiskStore cache directories within the configured
+    base; export ManagedEntry
+
+-------------------------------------------------------------------
 Mon Sep 21 08:34:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.6:

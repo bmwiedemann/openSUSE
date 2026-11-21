@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Tue Oct 27 22:24:02 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Marke the QEMU rom subpackage noarch to deal with bsc#1288051 
+
+-------------------------------------------------------------------
+Fri Sep 18 08:15:19 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1271200. Patchs added:
+  * virtio-Fix-MSI-X-caps-control-register-offset-in-leg.patch
+  * virtio-Fix-virtio-net-PXE-boot-on-legacy-BIOS-VMs-wi.patch
+
+-------------------------------------------------------------------
+Fri Sep 18 07:33:50 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 2.0.0+git20260914.7cd92e01d:
+  * [tls] Handle TLS version 1.3 client Finished
+  * [tls] Do not schedule sending of unused records in TLS version 1.3
+  * [tls] Ignore TLS version 1.3 NewSessionTicket
+  * [tls] Handle TLS version 1.3 server Finished
+  * [tls] Transition to handshake traffic keys after receiving ServerHello
+  * [tls] Allow for scheduled traffic phase changes
+  * [tls] Allow for variable-length verification data
+  * [tls] Add support for binding via a CertificateVerify record
+  * [tls] Add support for parsing TLS version 1.3 Certificate record
+  * [tls] Handle inner plaintext for TLS version 1.3
+  * [tls] Allow support for newer TLS versions to be optimised out
+  * [tls] Discard received Change Cipher records under TLS version 1.3
+  * [tls] Exclude sequence number from authentication for TLS version 1.3
+  * [tls] Allow for sequential cipher initialisation vectors
+  * [tls] Limit to TLS version 1.2 in transmitted record headers
+  * [tls] Remove the concept of a pending cipher specification
+  * [tls] Add support for the key share extension
+  * [tls] Add ClientHello to transcript before selecting named group
+  * [tls] Handle TLS version 1.3 session ID echoing
+  * [tls] Use HKDF-based key schedule for TLS version 1.3 or later
+  * [crypto] Refuse to allow zero-length ServerKeyExchange parameters
+  * [crypto] Ensure TLS signable digests cover a shared secret
+  * [tls] Detect version downgrade attacks
+  * [tls] Add support for the supported versions extension
+  * [tls] Add definitions for TLS version 1.3 cipher suites
+  * [tls] Record named group rather than key exchange algorithm
+  * [crypto] Add AES acceleration using the Arm Cryptographic Extensions
+  * [crypto] Add support for AES-NI hardware acceleration
+  * [crypto] Align AES round keys within the AES context
+  * [crypto] Allow for AES hardware acceleration
+  * [librm] Enable the use of SSE instructions if supported by the CPU
+  * [librm] Preserve CR0 across virt_call()
+  * [librm] Preserve CR4 across virt_call() if FXSR is supported
+  * [librm] Skip runtime check for FXSR support in 64-bit builds
+  * [librm] Remove conditionalisation of the Tivoli VMM workaround
+  * [librm] Clarify layout of saved GDTR/IDTR
+  * [librm] Always disable paging when switching to protected mode
+  * [crypto] Treat high tag numbers as invalid
+  * [test] Add Project Wycheproof RSA-PSS signature verification tests
+  * [test] Add a build target for slow self-tests
+  * [test] Add Project Wycheproof ECDSA signature verification tests
+  * [crypto] Reject non-canonical ECDSA signature encodings
+  * [crypto] Reject indefinite and unrepresentable length encodings
+  * [crypto] Reject ASN.1 unsigned integers holding negative values
+  * [crypto] Reject non-canonical ECDSA signature data structures
+  * [test] Simplify class hierarchy for Project Wycheproof import tool
+  * [test] Derive comment labels from Project Wycheproof input files
+  * [test] Derive algorithm names from Project Wycheproof input files
+  * [test] Use a single shared class for Project Wycheproof test flags
+  * [test] Add Project Wycheproof RSA PKCS#1 signature verification tests
+  * [test] Add Project Wycheproof RSA PKCS#1 signature generation tests
+  * [test] Allow for invocation of individual Project Wycheproof tests
+  * [crypto] Reject non-canonical RSA inputs
+  * [crypto] Add OID-identified algorithms for RSA with SHA512/224 and SHA512/256
+  * [test] Add Project Wycheproof RSA PKCS#1 decryption tests
+  * [crypto] Add missing padding length check in RSA decryption
+  * [test] Allow for public-key algorithm tests with incomplete key pairs
+  * [test] Allow for per-group definition code in Project Wycheproof tests
+  * [test] Add schema and count validators in Project Wycheproof tests
+  * [test] Add Project Wycheproof AES-GCM tests
+  * [crypto] Reject zero-length IVs for GCM ciphers
+  * [test] Add ability to test for cipher key and IV failures
+  * [test] Add Project Wycheproof HKDF tests
+  * [test] Allow for HKDF tests without an expected PRK
+  * [test] Add Project Wycheproof HMAC tests
+  * [test] Allow for HMAC tests with partial expected output digest values
+  * [test] Reduce duplication in Project Wycheproof import tool
+  * [test] Add Project Wycheproof import tool and key exchange tests
+  * [tls] Reject a duplicate ServerHelloDone
+  * [crypto] Ensure that a closed channel is left with unusable ciphers
+  * [crypto] Guard against mutation of certificate chain during validation
+  * [tls] Add documentation to assist future code review
+  * [tls] Make certificate processing visibly safe at point of use
+  * [tls] Make certificate sending visibly safe at point of use
+  * [tls] Treat secure channel's cipher algorithm as definitive
+  * [tls] Ensure that ServerKeyExchange parsing method is always non-NULL
+  * [tls] Use null key exchange algorithm as default for DHE and ECDHE
+  * [tls] Ensure that broken cipher suites can never be selected
+  * [tls] Remove redundant cipher suite name components in debug messages
+  * [tls] Use null handshake digest algorithm for the null cipher suite
+  * [tls] Use null MAC digest algorithm for AEAD ciphers
+  * [tls] Guarantee that receive data buffer list is non-empty
+  * [tls] Use standalone secure channel and key schedule implementations
+  * [crypto] Add a standalone implementation of the TLS key schedules
+  * [crypto] Add a generic implementation of a secure channel
+  * [tls] Clean up session management
+  * [tls] Clarify purpose of stored key exchange algorithm
+  * [tls] Separate the concepts of key schedule and secure channel
+  * [tls] Unify handling of ServerKeyExchange and ClientKeyExchange
+  * [crypto] Avoid out-of-bounds read when using uninitialised AES context
+  * [arm] Add missing condition code clobbers to inline assembly
+  * [s390x] Add missing condition code clobbers to inline assembly
+  * [tls] Model classic RSA key transport as a key exchange algorithm
+  * [dns] Add redundant explicit check for CNAME validity
+  * [bitmap] Avoid potential integer overflow when calculating block count
+  * [ata] Use data-transfer buffers for data-in and data-out
+  * [crypto] Correct harmless arithmetic error in Weierstrass curve sizing
+  * [crypto] Add assertion on HKDF output length
+  * [crypto] Add redundant high-bit clamp to X25519 scalar multiple
+  * [crypto] Correct harmless arithmetic error in X25519 comments
+  * [test] Allow for key exchange tests without an expected public key
+  * [crypto] Add a null key exchange algorithm
+  * [build] Move various pointer assignments after their length checks
+  * [usb] Guard against invalid descriptor lengths in USB configurations
+  * [vmbus] Check for packets shorter than their own header length
+  * [ucode] Remove harmless read beyond end of malformed equivalence table
+  * [doc] Add agent-facing instructions
+  * [doc] Add security policy document
+  * [ci] Add a workflow to trigger synchronisation in forks
+  * [ci] Add a workflow to run in forks to synchronise from the upstream
+  * [settings] Fix limited out-of-bounds read in fetch_numeric_setting()
+  * [ipv4] Remove harmless but technically undefined left shift
+  * [doc] Document the threat model relevant to iPXE
+  * [fcoe] Add assorted length checks
+  * [efi] Avoid reading beyond end of command line
+  * [efi] Guard against invalid IpCnt values in the PXE IP address filter
+  * [efi] Treat invalid device path components as ending the path
+  * [efi] Fix check for well-formed device paths
+  * [elf] Avoid harmless integer overflows in image length checks
+  * [uhci] Fix descriptor count for zero-length stream transfers
+  * [velocity] Correct direction of endianness conversion
+  * [uhci] Add missing little-endian conversion
+  * [intelxl] Add missing little-endian conversions
+  * [build] Enable strict shift overflow warnings
+  * [build] Fix technically undefined left shifts in disreputable code
+  * [build] Fix technically undefined left shifts in reputable code
+  * [ipv4] Make the IPV4() macro available to non-test code
+  * [iphone] Fix debug printing of received log messages
+  * [xen] Fix failure path in hvm_ioremap()
+  * [xhci] Allow for residual byte counts exceeding 64kB
+  * [intelxl] Remove wasted space in ice_magic_mac[] array
+  * [pci] Allow dumping interrupt state for arbitrary MSI-X vector numbers
+  * [spi] Fix assertion expressions
+  * [doc] Add documentation of the composable error handling pattern
+  * [crypto] Remove harmless but technically undefined left shift
+  * [crypto] Avoid false positive warnings about mutating static state
+  * [crypto] Avoid false positive warnings about out-of-bounds access
+  * [crypto] Remove harmless but technically undefined right shift
+  * [srp] Avoid potential integer overflow in parsing response data
+  * [fcp] Avoid potential integer overflow in parsing response data
+  * [build] Mark ONC RPC protocol as forbidden for UEFI Secure Boot
+  * [build] Mark SCSI RDMA protocol as forbidden for UEFI Secure Boot
+  * [nbi] Avoid harmless integer overflows in image length checks
+  * [eoib] Ensure that transmit address vector cannot go out of scope
+  * [doc] Expand documentation for ssnprintf()
+  * [doc] Expand documentation for memory allocation
+  * [doc] Expand documentation for data transfer buffers
+  * [doc] Expand documentation for assert()
+  * [doc] Expand documentation for I/O buffer usage
+  * [crypto] Use consistent lengths when constructing OCSP URI strings
+  * [malloc] Correct unsigned overflow check for allocated size
+  * [malloc] Convert allocation assertions to runtime checks
+  * [malloc] Correct assertion that requested alignment is a power of two
+  * [iscsi] Reject SCSI PDUs received when no command is in progress
+  * [lacp] Fix stripping of trailing padding
+  * [crypto] Fix out-of-bounds memset() with invalid RSA modulus
+  * [dhcp] Fix potential read of byte following DHCP options block
+  * [png] Check for overflow when constructing raw data buffer length
+  * [doc] Provide overview of ASN.1 parsing helper functions
+  * [eapol] Fix stripping of trailing padding
+  * [eap] Verify header length for all EAP packet types
+  * [http] Avoid potentially comparing TCP header bytes against CRLF
+  * [dhcp] Reject underlength DHCP packets
+  * [bitmap] Allow bitmap_set() to report an error
+  * [ipv6] Use correct length when checking for truncated packets
+  * [libc] Allow out-of-range months in mktime()
+  * [crypto] Add confidentiality flag for cipher algorithms
+  * [malloc] Add zfree() to zero and then free a memory block
+  * [intelxl] Add support for Intel E610 and E835 adapters
+  * [mime] Fix the use of MIME images without an explicit encoding
+  * [test] Simplify the use of inline text for test images
+  * [dns] Pass a non-null peer socket address to xfer_open_socket()
+  * [xfer] Do not attempt to find an opener for a null URI scheme
+  * [tls] Parse ServerKeyExchange record immediately
+  * [image] Allow download progress messages to be silenced
+  * [dmesg] Add an in-memory ring buffer console
+  * [uri] Escape the "+" character within HTTP form parameters
+  * [settings] Add "--quiet" option to "show" command
+  * [uri] Add support for "data:" URIs
+  * [blob] Add an abstraction of an openable data blob
+  * [cloud] Add support for Alibaba Cloud IMDSv2
+  * [cloud] Add support for AWS IMDSv2
+  * [cmdline] Add "imgset" command
+  * [http] Allow issuing requests with an explicitly specified HTTP method
+  * [http] Show parameter headers in debug output
+  * [params] Avoid calling strcmp() with a NULL parameter list name
+  * [mime] Add support for MIME multipart images
+  * [test] Generalise archive extraction self-tests
+  * [libc] Add strcasestr()
+  * [hermon] Add missing write barrier after initiating reset
+
+-------------------------------------------------------------------
 Thu Sep  3 09:20:32 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64

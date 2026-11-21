@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:58:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.16:
+  * Require C++20 to build; shipped headers enforce cxx_std_20
+  * Enable Intel GPU (XPU) support and bump bundled DLPack to 1.4
+  * Torch addon fixes: invalidate the cache when the generator
+    changes and use DLPack v1 dtype mapping for allocation
+  * Make JSON numeric conversion independent of locale
+  * Array copy-on-write mutators and refcount ordering fixes
+  * Build fixes for MSVC x86 refcounting and Clang C++20
+    Optional constructors; small strings and bytes are now
+    constructed inline
+  * Enrich structural traversal errors through root type hooks
+  * Rework the Rust bindings around scoped structural views
+    and explicit dispatch contracts
+
+-------------------------------------------------------------------
 Fri Oct 30 08:12:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.15.post2:

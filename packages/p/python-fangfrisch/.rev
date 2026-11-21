@@ -29,4 +29,15 @@
     <comment></comment>
     <requestid>1274395</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ee179b11a4b245a4c6e60655c6ce05a</srcmd5>
+    <version>1.9.3</version>
+    <time>1794236681</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.3:
+  * Breaking change to the builtin &quot;URLhaus&quot; configuration. Users
+    now need to specify a personal authentication key. See
+    https://urlhaus.abuse.ch/ for details.</comment>
+    <requestid>1396199</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.0
+Version:        0.2.3.0
 Release:        0
 Summary:        Module-Lattice-based Key-Encapsulation Mechanism
 License:        BSD-3-Clause
@@ -46,6 +46,8 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filelock-devel
+BuildRequires:  ghc-filelock-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-tasty-devel

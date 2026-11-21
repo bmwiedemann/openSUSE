@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Thu Nov 05 14:21:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.58.0:
+  * Welcome to the v0.58.0 of Inspektor Gadget. These are the most
+    important changes:
+    - New trace_selinux and trace_rename gadgets — trace_selinux
+      traces SELinux AVC decisions, including security contexts,
+      decoded permissions, and optional kernel and user stacks.
+      trace_rename reports successful file renames, with optional
+      absolute paths and rename flags (#5852, #5875).
+    - OpenTelemetry metrics snapshot mode — an opt-in mode replaces
+      the previous gauge snapshot with each emitted array, removing
+      stale series for processes or other entities that no longer
+      exist while preserving updates for those still present
+      (#5765).
+    - IPv6 support in trace_sni — TLS server names can now be
+      extracted from IPv6 Client Hello packets (#5767).
+    - OpenTelemetry profiling improvements — the eBPF profiler fork
+      is rebased onto upstream, bringing parallel unwinder loading
+      and fixing stale stack correlation IDs. Gadgets must be
+      rebuilt to receive the correlation-ID fix. A new opt-in
+      --otel-profiles-sanitize-labels flag replaces dots with
+      underscores in sample attribute names for compatibility with
+      existing dashboards (#5775).
+    - Breaking changes — trace_fsslower now formats durations and
+      sizes in human-readable form. In JSON, delta_us is replaced
+      by numeric delta_raw in nanoseconds and formatted delta; size
+      becomes a formatted string, with the numeric value available
+      as size_raw. The --min parameter remains in microseconds
+      (#5850).
+  * Breaking Changes
+    - gadgets/trace_fsslower: use gadget_duration and gadget_bytes
+      in #5850
+  * General Improvements
+    - gadgets: add trace_selinux in #5852
+    - gadgets: Add trace_rename gadget in #5875
+    - gadgets/trace_sni: Add IPv6 support in #5767
+    - pkg/symbolizer/otel: rebase otel-ebpf-profiler fork onto
+      upstream main in #5775
+    - otel-metrics: Introduce snapshot mode in #5765
+  * Bug Fixes
+    - operators: wasm: Check return length in #5839
+    - gadgets: don't report a lost kernel stack when none was
+      collected in #5812
+    - container-collection: Check whether cachedContainers is not
+      nil. in #5849
+    - pkg/datasource: keep formatted columns at the position of
+      their source field in #5851
+    - btf: Add some checks about user provided data in #5855
+    - gadgets/advise_seccomp: Keep syscall index 64-bit in #5856
+    - gadget-service: Add check for audience in multi-tenacy setup.
+      in #5857
+    - cmd: daemon: Correct one-off TLS related check. in #5892
+    - wasm: Check handle map before accessing it. in #5907
+    - gadget-manifest: Return an error when no spec are found in
+      manifest. in #5908
+    - wasm: Do not reuse stack[0] as argument. in #5889
+    - oci: Check for platform optional field. in #5890
+    - operators: ebpf: Check field offset in #5911
+  * Documentation Improvements
+    - gadgets/tcpdump: Document snaplen for jumbo frames and fix
+      default value in #5821
+  * Testing and Continuous Integration
+    - testing: Mirror the label stripping to L4Endpoint.K8s.Labels
+      in #5843
+    - ci: Fix etsctl installation in #5844
+    - ci: test the gadgets on 7.2 and on the rebuilt ci-kernels
+      images in #5819
+    - replace sudo -E with portable ways to pass the environment in
+      #5792
+    - Makefile: Add ENABLE_DOCKER_ROOTLESS to set --user. in #5801
+    - gadgets: forward the AWS credentials to the tests in #5848
+    - Artifact Hub: Update gadgets version to v0.57.0 in #5840
+    - gadgetrunner: pull the gadget image before starting the test
+      workload in #5805
+    - ci: run jobs on ubuntu-22.04 in #5891
+  * Dependencies updates
+    - golang: Update to 1.26.9 in #5873
+    - Bump go to 1.26.10 in #5905
+    - go: bump github.com/dustin/go-humanize from 1.0.1 to 1.1.0 in
+      #5842
+    - go: bump github.com/secure-systems-lab/go-securesystemslib
+      from 0.11.0 to 0.11.1 in #5841
+    - go: bump github.com/stretchr/testify from 1.12.0 to 1.12.1 in
+      #5847
+    - go: bump github.com/gopacket/gopacket from 1.7.3 to 1.7.4 in
+      #5846
+    - go: bump github.com/sirupsen/logrus from 1.9.4 to 1.10.2 in
+      #5853
+    - go: bump github.com/gofrs/flock from 0.13.0 to 0.13.1 in
+      #5854
+    - go: bump google.golang.org/protobuf from
+      1.36.12-0.20260120151049-f2248ac996af to 1.36.12 in #5861
+    - go: bump github.com/sigstore/protobuf-specs from 0.5.1 to
+      0.5.2 in #5862
+    - go: bump the golang-x group across 2 directories with 2
+      updates in #5864
+    - go: bump github.com/moby/sys/user from 0.4.0 to 0.4.1 in
+      #5863
+    - go: bump the golang-x group across 2 directories with 3
+      updates in #5876
+    - go: bump the docker group across 1 directory with 2 updates
+      in #5877
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      in #5878
+    - go: bump github.com/sigstore/sigstore from 1.10.8 to 1.10.11
+      in #5879
+    - go: bump the golang-x group across 2 directories with 1
+      update in #5926
+
+-------------------------------------------------------------------
 Wed Oct  7 11:23:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix packaging of ig binary

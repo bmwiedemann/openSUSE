@@ -1770,4 +1770,12 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
     <comment>1</comment>
     <requestid>1378650</requestid>
   </revision>
+  <revision rev="181" vrev="2">
+    <srcmd5>7bbea3e76a443ad4e35d9cbbe72503bb</srcmd5>
+    <version>1699_20260917</version>
+    <time>1793817729</time>
+    <user>anag_factory</user>
+    <comment>Supersedes 1386384 - the changelog entry is cleaned up per the review comment: it now describes the final state of the submission only (chkstat.8 man page symlink, Group tags removed, pkgconfig() BuildRequires for libacl, libcap and tclap, test suite requirements delimited with # SECTION markers). Builds green on the server, source_validator clean. (forwarded request 1386493 from scarabeus_iv)</comment>
+    <requestid>1394665</requestid>
+  </revision>
 </revisionlist>

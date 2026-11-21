@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-mistral-common
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        Library of common utilities for Mistral AI
 License:        Apache-2.0
@@ -92,7 +92,7 @@ find . -name .DS_Store -delete
 %pre
 %python_libalternatives_reset_alternative mistral_common
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/mistral_common

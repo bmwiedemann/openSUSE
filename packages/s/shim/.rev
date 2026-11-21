@@ -1637,4 +1637,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Add Requires tags for checking the grub2 sbat generation at RPM level. (bsc#1278729)</comment>
     <requestid>1384274</requestid>
   </revision>
+  <revision rev="143" vrev="11">
+    <srcmd5>1e5794cbd24d44ca0b1b1a89a741931e</srcmd5>
+    <version>16.1</version>
+    <time>1794597141</time>
+    <user>anag_factory</user>
+    <comment>Replace FALLBACK and MOK_MANAGER filenames via EXTRA_DEFINES</comment>
+    <requestid>1396647</requestid>
+  </revision>
 </revisionlist>

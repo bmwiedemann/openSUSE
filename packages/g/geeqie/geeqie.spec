@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(ddjvuapi) >= 2.5.27
 BuildRequires:  pkgconfig(exiv2) >= 0.18
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66
 BuildRequires:  pkgconfig(gtk4) >= 4.18
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libavformat)
@@ -54,6 +55,7 @@ BuildRequires:  pkgconfig(libopenjp2) >= 2.3.0
 BuildRequires:  pkgconfig(libraw) >= 0.20
 BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libwebp) >= 0.6.1
+BuildRequires:  pkgconfig(libwebpdemux) >= 0.6.1
 BuildRequires:  pkgconfig(lua) >= 5.3
 BuildRequires:  pkgconfig(pango) >= 1.46
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
@@ -71,6 +73,7 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 %meson \
   -Dgq_helpdir=%{_docdir}/%{name} \
   -Dgq_htmldir=%{_docdir}/%{name} \
+  -Dhelp_pdf=disabled \
   %{nil}
 %meson_build
 

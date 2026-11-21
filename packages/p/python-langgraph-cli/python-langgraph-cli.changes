@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 12 19:38:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.43:
+  * deploy: advertise --agent-server-id and --agent-server-type;
+    keep --deployment-id/--deployment-type as hidden aliases.
+  * up: drop the discontinued local debugger image and
+    --debugger-port; add --studio-url/--api-url overrides with
+    --debugger-base-url kept as hidden alias.
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.42 (crosses 0.4.41):
+  * Add deploy metrics command.
+  * Remove outdated deploy private-beta notice.
+  * Bump filelock and langgraph-api dependencies.
+
+-------------------------------------------------------------------
 Mon Oct 26 19:30:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.40 (crosses 0.4.39):

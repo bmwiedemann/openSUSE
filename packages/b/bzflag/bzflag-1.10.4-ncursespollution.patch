@@ -1,7 +1,9 @@
---- bzflag-1.10.8.20041007/src/bzadmin/CursesUI.h
-+++ bzflag-1.10.8.20041007/src/bzadmin/CursesUI.h
-@@ -29,6 +29,8 @@
- #include "global.h"
+diff --git a/src/bzadmin/CursesUI.h b/src/bzadmin/CursesUI.h
+index d235a45..a8b675f 100644
+--- a/src/bzadmin/CursesUI.h
++++ b/src/bzadmin/CursesUI.h
+@@ -32,6 +32,8 @@
+ #include "CursesMenu.h"
  #include "UIMap.h"
  
 +#undef bool

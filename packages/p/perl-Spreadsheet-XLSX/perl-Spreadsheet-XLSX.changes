@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:46:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+
+  0.21  2026-11-15
+      - Decode XML entities and numeric character references once in worksheet
+        names before optional character conversion (RT #50705). Support lookup
+        by decoded names and report undefined name conversion results.
+      - Abort with a clear error when a string converter returns undef
+        (RT #84528), while continuing to accept empty converted strings.
+      - Decode predefined XML entities and numeric character references once
+        in shared and inline strings, including rich text and phonetic hints
+        (RT #93962). Decode before the optional converter, preserve literal
+        entity text and add the original workbook as a regression fixture.
+      - Resolve built-in number formats and apply row/column default styles
+        when a cell has no explicit style (RT #101636). Cell styles override
+        row styles, which override column defaults; preserve raw values.
+        Add regression tests for decimals, percentages and built-in dates.
+      - Resolve absolute and relative worksheet relationship targets and
+        normalize dot segments (RT #86667). Report missing targets with sheet
+        and relationship details; reject external targets and root traversal.
+        Preserve chartsheet placeholders and add regression tests.
+      - Replace legacy match and postmatch variables with local captures and
+        match lengths (RT #70879), without raising the minimum Perl version.
+      - Preserve token boundaries around escaped and quoted literals when
+        detecting date formats (RT #87746). Add the original workbook and
+        regression tests for date types, raw values and formatted output.
+      - Handle line breaks and other XML whitespace in Relationship tags
+        (RT #111087). Add regression tests for LF, CRLF and attribute order.
+      - Avoid uninitialized-value warnings for undefined shared-string cell
+        values during parsing and formatting (RT #114521). Preserve raw undef
+        values and add regression tests.
+      - Fix short and long weekday formatting and recognize standalone date
+        and AM/PM formats as date/time cells (RT #117007). Ignore quoted and
+        escaped literals during date-type detection; add regression tests.
+      - Support inlineStr cells (RT #117462, #83399), including rich text,
+        whitespace, empty strings, converters and separate phonetic metadata.
+        Share text extraction with shared strings; add regression tests.
+      - Fix AM/PM and A/P time formatting, including uppercase tokens, noon
+        and midnight (RT #119170). Preserve raw date/time values and types.
+      - Ignore the x15:workbookPr extension instead of rejecting it as a
+        prefixed data element. Add the original RT #119170 workbook as a test.
+      - Keep phonetic hints out of shared-string cell values (RT #122340).
+        Expose hints and their properties separately as RPh and PhoneticPr.
+      - Report obvious XML syntax errors and unsupported prefixed elements
+        with the XML member name; recommend Spreadsheet::ParseXLSX for prefixed
+        files (RT #124409). Document that XML is not fully validated.
+      - Include worksheet, XML member and invalid address in cell-reference
+        errors. No new XML parser dependency is required.
+      - Preserve custom number formats referenced by multiple cell styles
+        (RT #132420). Add regression tests for repeated format IDs.
+      - Move MaxCol initialization outside the row loop in the SYNOPSIS
+        example (RT #140481).
+      - Remove unused variables from ValFmt (RT #158167).
+      - Fix multiline cell values and value tags with attributes (GitHub PR #1).
+        Preserve whitespace and add regression tests.
+
+-------------------------------------------------------------------
 Fri Oct 30 11:29:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.200.0 (0.20)

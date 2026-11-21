@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  2 22:41:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.0
+  * Integration of improved framework in libipa to unify and
+    refactor much of the previous duplication between IPA modules.
+  * IPU3 and Mali-C55 now have additional algorithm support to
+    bring their capabilities in line with the RkISP1 IPA.
+  * The SoftISP is also updated to use the new framework, improving
+    Exposure and Gain Control and adding Lens Shading Correction in
+    the GPU ISP.
+
+-------------------------------------------------------------------
 Fri Jul 10 19:59:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.7.2

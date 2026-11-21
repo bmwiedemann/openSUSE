@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  1 21:35:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.9.1:
+  * Fix leaks and NULL check in process_int_dynamic_array()
+  * Avoid host-specific getname_flags output
+  * Handle short reads when reading BTF
+  * Avoid racing recursive builds of both libraries
+  * Reject non-text symbol arithmetic
+  * Add printable characters
+  * Parse %pB and %pa address specifiers
+  * Pretty print function parameters of enum-type
+  * utest: Fix type of args in test_btf_read
+  * utest: Read btf file in utest if mmap fails
+
+-------------------------------------------------------------------
 Tue Feb 10 12:59:02 UTC 2026 - Petr Pavlu <petr.pavlu@suse.com>
 
 - update to 1.9.0:

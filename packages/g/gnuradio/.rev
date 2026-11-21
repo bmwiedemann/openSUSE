@@ -705,4 +705,12 @@
     <comment>Forward hardware:sdr/gnuradio click-plugins dep drop (SR 1383139); upstream-removed dep, branch builds green.</comment>
     <requestid>1384320</requestid>
   </revision>
+  <revision rev="78" vrev="6">
+    <srcmd5>cc46a1352447a75d01c4632588f2ffa3</srcmd5>
+    <version>3.10.12.0</version>
+    <time>1794325102</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396538</requestid>
+  </revision>
 </revisionlist>

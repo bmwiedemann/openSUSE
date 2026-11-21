@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Nov  6 07:22:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to OpenJDK 8u512 build 09 with OpenJ9 0.63.0.1 virtual
+  machine
+- Including Oracle October 2026 CPU changes
+  * CVE-2026-83374 (bsc#1286472), CVE-2026-83376 (bsc#1286474),
+    CVE-2026-83380 (bsc#1286476), CVE-2026-83381 (bsc#1286477),
+    CVE-2026-83387 (bsc#1286478), CVE-2026-83395 (bsc#1286479),
+    CVE-2026-83400 (bsc#1286480), CVE-2026-87290 (bsc#1286484),
+    CVE-2026-87292 (bsc#1286486), CVE-2026-87293 (bsc#1286488),
+    CVE-2026-87294 (bsc#1286490), CVE-2026-87367 (bsc#1286943),
+    CVE-2026-91334 (bsc#1286493), CVE-2026-91335 (bsc#1286494),
+    CVE-2026-91373 (bsc#1286495), CVE-2026-91374 (bsc#1286496),
+    CVE-2026-91380 (bsc#1286500), CVE-2026-91381 (bsc#1286501),
+    CVE-2026-91395 (bsc#1286508), CVE-2026-91396 (bsc#1286510),
+    CVE-2026-91397 (bsc#1286513), CVE-2026-91398 (bsc#1286515),
+    CVE-2026-91400 (bsc#1286517), CVE-2026-91403 (bsc#1287264),
+    CVE-2026-91415 (bsc#1286537), CVE-2026-91417 (bsc#1286538),
+    CVE-2026-91418 (bsc#1286539), CVE-2026-91451 (bsc#1286542),
+    CVE-2026-91452 (bsc#1286544), CVE-2026-91453 (bsc#1286545),
+    CVE-2026-91461 (bsc#1286546), CVE-2026-91462 (bsc#1286547),
+    CVE-2026-91463 (bsc#1286549), CVE-2026-91464 (bsc#1286550),
+    CVE-2026-101516 (bsc#1286395), CVE-2026-114820 (bsc#1287962)
+  * OpenJ9 changes, see
+    https://www.eclipse.org/openj9/docs/version0.63/
+- Removed patches:
+  * omr-gcc16.patch
+  * openj9-gcc16.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Fri Aug 28 18:42:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to OpenJDK 8u504 build 01 with OpenJ9 0.61.0 virtual

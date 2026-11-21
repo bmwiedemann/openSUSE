@@ -95,7 +95,7 @@ This is pulled from https://github.com/ungoogled-software/ungoogled-chromium/pul
  }  // namespace web_package
 --- a/components/web_package/signed_web_bundles/integrity_block_parser.cc
 +++ b/components/web_package/signed_web_bundles/integrity_block_parser.cc
-@@ -4,17 +4,19 @@
+@@ -4,16 +4,19 @@
  
  #include "components/web_package/signed_web_bundles/integrity_block_parser.h"
  
@@ -112,7 +112,7 @@ This is pulled from https://github.com/ungoogled-software/ungoogled-chromium/pul
 +#include "base/strings/to_string.h"
  #include "base/types/expected.h"
  #include "base/types/expected_macros.h"
- #include "components/cbor/reader.h"
++#include "components/cbor/reader.h"
 +#include "components/cbor/writer.h"
 +#include "components/web_package/mojom/web_bundle_parser.mojom-forward.h"
  #include "components/web_package/mojom/web_bundle_parser.mojom.h"
@@ -564,7 +564,20 @@ This is pulled from https://github.com/ungoogled-software/ungoogled-chromium/pul
  }  // namespace web_package
 --- a/third_party/blink/renderer/platform/BUILD.gn
 +++ b/third_party/blink/renderer/platform/BUILD.gn
-@@ -186,6 +186,18 @@ group("make_platform_generated") {
+@@ -219,11 +219,10 @@
+     "//third_party/blink/renderer:non_test_config",
+   ]
+   public_deps = [
++    ":font_format_check",
+     ":platform_export",
+-    "fonts:font_format_bindings",
+     "fonts:ift_patcher_bindings",
+     "//base",
+-    "//build/rust/crubit",
+     "//skia",
+     "//third_party/blink/renderer/platform/wtf",
+   ]
+@@ -258,6 +257,18 @@
    ]
  }
  
@@ -575,32 +588,28 @@ This is pulled from https://github.com/ungoogled-software/ungoogled-chromium/pul
 +  cxx_bindings = [ crate_root ]
 +  deps = [
 +    "//third_party/rust/font_types/v0_12:lib",
-+    "//third_party/rust/read_fonts/v0_43:lib",
-+    "//third_party/rust/skrifa/v0_46:lib",
++    "//third_party/rust/read_fonts/v0_45:lib",
++    "//third_party/rust/skrifa/v0_48:lib",
 +  ]
 +}
 +
  rust_static_library("rustfft_ffi") {
    allow_unsafe = true  # Needed for FFI that underpins the `cxx` crate.
    crate_root = "audio/rustfft_ffi.rs"
-@@ -1807,7 +1807,6 @@
-     ":allow_discouraged_type",
-     ":blink_platform_public_deps",
-     ":platform_export",
--    "//build/rust/crubit",
-     "//components/language_detection/core",
-     "//gpu/command_buffer/client:raster_interface",
-     "//media/capture:capture_lib",
-@@ -1834,8 +1833,8 @@
-     "//ui/native_theme/features",
+@@ -2607,12 +2618,11 @@
    ]
-   deps = [
+ 
+   deps += [
 +    ":font_format_check",
-     ":rustfft_ffi",
+     ":bridge_ice_controller_tests",
+     ":font_rust_headers",
+     ":rustfft_ffi_unittests",
 -    "fonts:font_format_bindings",
      "fonts:ift_patcher_bindings",
-     "//base:base_static",
-     "//base/allocator:buildflags",
+-    "//build/rust/crubit",
+   ]
+ 
+   data_deps = [ ":blink_platform_unittests_data" ]
 --- a/third_party/blink/renderer/platform/fonts/BUILD.gn
 +++ b/third_party/blink/renderer/platform/fonts/BUILD.gn
 @@ -1,23 +1,3 @@
@@ -619,8 +628,8 @@ This is pulled from https://github.com/ungoogled-software/ungoogled-chromium/pul
 -  }
 -  deps = [
 -    "//third_party/rust/font_types/v0_12:lib",
--    "//third_party/rust/read_fonts/v0_43:lib",
--    "//third_party/rust/skrifa/v0_46:lib",
+-    "//third_party/rust/read_fonts/v0_45:lib",
+-    "//third_party/rust/skrifa/v0_48:lib",
 -  ]
 -}
 -

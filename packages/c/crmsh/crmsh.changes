@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:56:43 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261119.3c9d86d6:
+  * fix(sbd): drop timeout_io from the disk-based watchdog timeout formulas
+  * build(doc): migrate documentation build to Meson (#2194)
+
+-------------------------------------------------------------------
+Wed Nov 18 10:37:50 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261118.955f1167:
+  * fix(completers): avoid repeated completions (#2115)
+
+-------------------------------------------------------------------
+Wed Nov 18 07:29:37 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261118.a8166500:
+  * fix(completion): show option help in non-interactive mode
+
+-------------------------------------------------------------------
+Tue Nov 17 09:10:55 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261117.fd431ad0:
+  * feat(sbd): account for qdevice in disk-based watchdog timeout
+
+-------------------------------------------------------------------
+Fri Nov 13 10:22:44 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20261113.82f64beb:
+  * fix(resource): separate move and ban commands and improve error messages (bsc#1262141)
+  * docs(manpage): `crm resource ban` lists wrong option `force` (bsc#1262141)
+
+-------------------------------------------------------------------
+Fri Nov 13 07:43:34 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20261113.7611c55b:
+  * ci(codecov): update expected report count after funtional tests sharded
+
+-------------------------------------------------------------------
+Fri Nov 13 03:15:14 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261113.989f341c:
+  * fix(scripts): fix NFS primitive parsing in nfsserver-lvm-drbd
+
+-------------------------------------------------------------------
+Thu Nov 12 03:03:18 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261112.e4ee1d6f:
+  * ci(behave): shard long functional tests into parallel jobs
+
+-------------------------------------------------------------------
+Mon Nov 09 11:07:43 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261109.9baee770:
+  * fix(cluster): accept -F/--force after the sbd component in "cluster health"
+
+-------------------------------------------------------------------
+Thu Nov 05 07:08:37 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261105.c6979377:
+  * fix(utils): ask() should return True when --force
+  * feat(configure): indicate default answer 'no' and show auto-answer in non-interactive mode (#2219)
+
+-------------------------------------------------------------------
+Wed Nov 04 10:35:32 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261104.8dd055b6:
+  * feat(sbd): validate multipath configuration of SBD devices (jsc#PED-13836)
+
+-------------------------------------------------------------------
+Tue Nov 03 10:10:32 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261103.fb6b3998:
+  * test(behave): rename behave_agent.py to avoid duplicated names (#1936)
+
+-------------------------------------------------------------------
+Thu Oct 29 00:48:06 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20261028.cd5a01c0:
+  * fix(main): reset force option per iteration in input loop (#2212)
+
+-------------------------------------------------------------------
+Wed Oct 28 08:28:19 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261028.50e3ed36:
+  * refactor(main): consolidate in_repl setting into main_input_loop
+  * refactor(options): replace options.interactive with in_repl()
+  * refactor(main): remove redundant options.interactive setting in level navigation
+  * refactor(main): separate single-shot invocation and REPL loop
+
+-------------------------------------------------------------------
 Tue Oct 27 09:45:08 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20261027.e559ffa7:

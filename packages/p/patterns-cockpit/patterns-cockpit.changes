@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 31 09:37:31 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- No dependency changes.
+- Format with spec-cleaner 1.3.1: drop the Group tags, add SECTION labels for
+  the core and conditional Cockpit components, fix the copyright header, and
+  normalise the rpmlintrc Source0 macro form and arch macro bracketing.
+
+-------------------------------------------------------------------
 Mon Aug  3 09:43:42 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Added cockpit-bootloader
@@ -54,3 +62,4 @@ Tue Mar 04 10:43:35 UTC 2025 - Jiri Srain <jsrain@suse.com>
 Fri Feb 21 10:31:56 UTC 2025 - Frederic Crozat <fcrozat@suse.com>
 
 - Initial package
+

@@ -1,7 +1,7 @@
 #
 # spec file for package ShellCheck
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name ShellCheck
 %global pkgver %{pkg_name}-%{version}
-%bcond_with tests
+%bcond_without tests
 Name:           %{pkg_name}
 Version:        0.11.0
 Release:        0
@@ -111,6 +111,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver Diff '< 1.1' '< 3'
 
 %build
 %ghc_lib_build

@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:18:42 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add shim-Make.defaults-Support-overriding-preprocessor-define.patch
+
+  Append $(EXTRA_DEFINES) to CFLAGS. This provides a clean mechanism for
+  build scripts to pass extra preprocessor directives, such as tailoring
+  the debug directory path:
+
+    make EXTRA_DEFINES='-UDEBUGDIR -DDEBUGDIR=L"/usr/lib/debug/..."'
+
+  This patch is sent to upstream for reviewing.
+
+  Link: https://github.com/rhboot/shim/pull/837
+- Replace DEBUGDIR via EXTRA_DEFINES:
+  EXTRA_DEFINES='-UDEBUGDIR -DDEBUGDIR=L\"/usr/lib/debug/usr/share/efi/$(ARCH)/\"'
+- Add shim-Allow-overriding-FALLBACK-and-MOK_MANAGER-filen.patch
+  Guard the definitions of FALLBACK and MOK_MANAGER with #ifndef checks.
+  Fall back to the upstream default filenames when these macros are not
+  defined externally. This allows downstream build systems to override the
+  target binary filenames at compile time (e.g., via EXTRA_DEFINES) while
+  preserving existing default behavior.
+- Replace FALLBACK and MOK_MANAGER filenames via EXTRA_DEFINES:
+  EXTRA_DEFINES='-DFALLBACK=L\"fallback.efi\" -DMOK_MANAGER=L\"MokManager.efi\"'
+    - Use extra_defines[] to collect all EXTRA_DEFINES.
+- Add shim-Allow-overriding-debug-symbol-filenames-via-preproce.patch
+  Introduce SHIM_DEBUG_FILE and FB_DEBUG_FILE macros in shim.c and
+  fallback.c, respectively. Fall back to the default filenames when these
+  macros are not defined externally. This allows build systems to override
+  the debug symbol filenames at compile time (e.g., via EXTRA_DEFINES)
+  while preserving the default behavior.
+- Replace FB_DEBUG_FILE and SHIM_DEBUG_FILE filenames via EXTRA_DEFINES:
+  EXTRA_DEFINES='-DFB_DEBUG_FILE=L\"fallback.debug\" -DSHIM_DEBUG_FILE=L\"shim.debug\"'
+
+-------------------------------------------------------------------
+Wed Nov  4 05:44:03 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Replace remove_build_id.patch with shim-Makefile-normalize-DWARF-paths-to-fix-build-id-repro.patch
+
+  The root cause of build-id change is when building shim from different
+  directory paths (or renamed source trees), the generated ELF/PE binaries
+  produce differing --build-id values and SHA-1 checksums.
+
+  So I replace the remove_build_id.patch with
+  shim-Makefile-normalize-DWARF-paths-to-fix-build-id-repro.patch.
+  I have sent the patch to upstream:
+
+  Makefile: normalize DWARF paths to fix build-id reproducibility - #838#838
+  https://github.com/rhboot/shim/pull/838
+
+  Link: https://github.com/rhboot/shim/pull/838
+
+-------------------------------------------------------------------
+Wed Nov  4 05:09:46 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add more information for upstreamming shim-disable-export-vendor-dbx.patch
+
+  I have sent a patch for pushing the change in
+  shim-disable-export-vendor-dbx.patch with a build option to upstream.
+
+  Link: https://github.com/rhboot/shim/pull/779
+
+-------------------------------------------------------------------
+Fri Oct 30 16:44:02 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim.spec: Removed downstream shim-arch-independent-names.patch
+
+  For reducing downstream patches in SUSE shim, removed
+  shim-arch-independent-names.patch from shim.spec.
+
+  The shim-arch-independent-names.patch includes two parts:
+    - Renamed the names of fallback and MokManager for removing
+      architecture string:
+            - fb<EFI_ARCH>.efi to fallback.efi
+            - mm<EFI_ARCH>.efi to MokManager.efi
+    - Renamed the filename of symbol files for printing out message
+      of debug_hook:
+            - fb<EFI_ARCH>.efi.debug to fallback.efi.debug
+            - shim<EFI_ARCH>.efi.debug to shim.efi.debug
+
+  For the first part, the output *.efi filename can be set when
+  building fallback/MokManger by make command since long time ago.
+  So the code can be removed.
+
+  For the second part, I sent a patch to shim upstream to support
+  overriding preprocessor defines via EXTRA_DEFINES and FB_DEBUG_FILE
+  /SHIM_DEBUG_FILE. After the patch be merged, we can use EXTRA_DEFINES
+  to override the symbol filenames.
+
+  To avoid confusion, I removed symlinks for compatibility with
+  original debug filenames (shim.efi.debug and fallback.efi.debug)
+  because we can use EXTRA_DEFINES to override the filenames in
+  debug_hook in the future.
+
+  Link: https://github.com/rhboot/shim/pull/837
+
+-------------------------------------------------------------------
+Thu Oct 29 15:25:10 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim.spec: Removed downstream shim-change-debug-file-path.patch
+  For reducing downstream patches in SUSE shim, removed
+  shim-change-debug-file-path.patch from shim.spec.
+
+  The shim-change-debug-file-path.patch includes two parts:
+    - Modified DDEBUGDIR meets SUSE's directory rule:
+        DDEBUGDIR=/usr/lib/debug/usr/share/efi/$(ARCH)/
+    - Renamed the filename of symbol files for printing out message
+      of debug_hook:
+        - fallback.efi.debug -> fallback.debug
+        - shim.efi.debug -> shim.debug
+
+  For the first part, I sent a patch to shim upstream to support
+  overriding preprocessor defines via EXTRA_DEFINES. After the
+  patch be merged, we can use EXTRA_DEFINES to override DDEBUGDIR.
+
+  For the second part, I created symlinks for compatibility with
+  original shim debug filenames. e.g. Link shim.efi.debug to shim.debug
+
+  Link: https://github.com/rhboot/shim/pull/837
+
+-------------------------------------------------------------------
+Thu Oct 29 03:37:10 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim.spec: Add ENABLE_CODESIGN_EKU=1 when buliding MokManger
+  Add ENABLE_CODESIGN_EKU=1 when buliding MokManager to avoid
+  using the non-ENABLE_CODESIGN_EKU binaries in the subsequent
+  shim building process.
+
+-------------------------------------------------------------------
+Tue Oct 20 09:03:49 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim-install: separate the logic of grabbing OS_ID
+  When the GRUB_DISTRIBUTOR can be grab by /etc/default/grub. The
+  logic of grabbing OS_ID from os-release will be ignored.
+  For example: SL-Micro 6.1 has GRUB_DISTRIBUTOR="SL Micro" in
+  /etc/default/grub.
+  We always need OS_ID for subsequent processing logic. So this
+  patch separate the logic of grabbing OS_ID. (bsc#1285863#c14)
+
+-------------------------------------------------------------------
+Mon Oct 19 12:07:19 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim-install: refactory the logic of update_boot for fixing two issues
+  Refactory the logic of update_boot for updating EFI default boot path
+  in shim-install and fixed two issues:
+  - The fallback efi NOT be copied to the default efi boot path for SLE
+    (bsc#1285863)
+    - This issue causes by the a shim-install patch be merged to SLE shim:
+      661ad2944d2a ("shim-install: Do not update fallback on sl-micro when
+      the fallback is not in efi default boot path")
+  - The encrypted SL-Micro uses 'removable=yes' for TPM key unsealing. But
+    the original logic did NOT copy MokManager to EFI default boot path.
+    (bsc#1285863#c11)
+
+-------------------------------------------------------------------
 Tue Oct  6 04:45:34 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add Requires tags for checking the grub2 sbat generation at RPM

@@ -18,14 +18,14 @@
 
 %global pkg_name tls-session-manager
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        In-memory TLS session DB and session ticket
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-auto-update-devel
 BuildRequires:  ghc-auto-update-prof
@@ -47,6 +47,10 @@ BuildRequires:  ghc-serialise-prof
 BuildRequires:  ghc-tls-devel
 BuildRequires:  ghc-tls-prof
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
+%endif
 
 %description
 TLS session manager with limitation, automatic pruning, energy saving and
@@ -81,13 +85,15 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache

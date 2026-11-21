@@ -82,4 +82,14 @@
   * Fixed NotShowIn=LXQt handling in .desktop files</comment>
     <requestid>1348564</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>38b845a586d2f4c3354893caebbef9dc</srcmd5>
+    <version>4.5.0</version>
+    <time>1795182272</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.5.0:
+  * Files are opened in the URI format with DBus activated apps.
+  * Also, the code is cleaned up in various ways.</comment>
+    <requestid>1398745</requestid>
+  </revision>
 </revisionlist>

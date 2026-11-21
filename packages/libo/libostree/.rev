@@ -638,4 +638,19 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
   * static-delta: Avoid mapping BSPATCH output on FUSE</comment>
     <requestid>1394078</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>8dffc9504c4db533b3b48cf795d7fc60</srcmd5>
+    <version>2026.7</version>
+    <time>1794932209</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.7:
+  * Fix pull skips sign-verify-summary verification when the remote
+    serves no summary (boo#1290483)
+  * Unsigned static delta index lets a mirror trigger a g_assert
+    abort during pull (boo#1290484)
+  * Fix an important negative interaction with
+    systemd-gpt-auto-generator and /boot on systems without a
+    separate /boot and using DDI partition types</comment>
+    <requestid>1398127</requestid>
+  </revision>
 </revisionlist>

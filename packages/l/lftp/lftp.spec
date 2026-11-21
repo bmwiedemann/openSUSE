@@ -105,7 +105,15 @@ make %{?_smp_mflags}
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+# liblftp-jobs and liblftp-tasks are private libraries of lftp without public
+# headers, so the unversioned development symlinks are useless.
+rm %{buildroot}%{_libdir}/liblftp-jobs.so %{buildroot}%{_libdir}/liblftp-tasks.so
 %find_lang %{name}
+
+%check
+# The other tests (ftp-list, ftp-cls-l, http-get, lftp-https-get) need access
+# to public servers on the Internet, which isn't available in the build root.
+%make_build check TESTS="ftp-mlsd module1 lftp-queue-kill" || { cat tests/test-suite.log; exit 1; }
 
 %post -p /sbin/ldconfig
 
@@ -132,8 +140,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/lftp/%{version}/proto-ftp.so
 %{_libdir}/lftp/%{version}/proto-http.so
 %{_libdir}/lftp/%{version}/proto-sftp.so
-%{_libdir}/liblftp-*.so
-%{_libdir}/liblftp-*.so.*
+%{_libdir}/liblftp-jobs.so.*
+%{_libdir}/liblftp-tasks.so.*
 %{_mandir}/man1/lftp.1%{ext_man}
 %{_mandir}/man1/lftpget.1%{ext_man}
 %{_mandir}/man5/lftp.conf.5%{ext_man}

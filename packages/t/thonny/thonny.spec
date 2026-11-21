@@ -19,13 +19,14 @@
 
 %define pythons python3
 %define desktop_file_name thonny
-
 Name:           thonny
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Python IDE for beginners
 License:        MIT
 URL:            https://thonny.org/
+# Source-Binary-Exception: *packaging/windows/** -- other-platform: Windows UCRT redistributable DLLs used only by the Windows bundle, not by the Linux build
+# Source-Binary-Exception: *packaging/mac/** -- other-platform: macOS bundle template executable used only by macOS, not by the Linux build
 Source0:        https://github.com/thonny/%{name}/archive/v%{version}.tar.gz#/thonny-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -36,6 +37,7 @@ BuildRequires:  python3-astroid
 BuildRequires:  python3-asttokens
 BuildRequires:  python3-docutils
 BuildRequires:  python3-jedi
+BuildRequires:  python3-packaging
 BuildRequires:  python3-pip
 BuildRequires:  python3-pylint
 BuildRequires:  python3-pyserial
@@ -51,6 +53,7 @@ Requires:       python3-astroid
 Requires:       python3-asttokens
 Requires:       python3-docutils
 Requires:       python3-jedi
+Requires:       python3-packaging
 Requires:       python3-pylint
 Requires:       python3-pyserial
 Requires:       python3-setuptools
@@ -66,6 +69,7 @@ BuildArch:      noarch
 Thonny is a Python IDE meant for learning programming.
 
 %package        lang
+# FIXME: consider using %%lang_package macro
 Summary:        Translations for Thonny IDE
 Requires:       thonny = %{version}
 Requires:       python(abi) = %{python3_version}
@@ -98,7 +102,7 @@ for size in 16 22 32 48 64 128 192 256; do
   cp packaging/icons/thonny-${size}x${size}.png %{buildroot}%{_datadir}/icons/hicolor/${size}x${size}/apps/thonny.png
 done
 # find and mark locale files
-%python_find_lang thonny
+%{python_find_lang thonny}
 # fdupes
 %fdupes %{buildroot}%{python3_sitelib}
 

@@ -245,4 +245,30 @@
   versions; the pattern to detect versions was too strict.</comment>
     <requestid>1376607</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>334fc6b6b36d4479c3f7163758239dfa</srcmd5>
+    <version>1.4.4.6</version>
+    <time>1795103759</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4-6:
+  * Features: Add physical-layout setting to choose ISO/ANSI key geometry
+  * Fixes:
+    + Fix live color updates for Pressed/Active/Locked/Scanned states
+    + Osk_udev: hold the GIL in the udev monitor callback (fixes segfault with
+      Python 3.14)
+    + WaylandUtils: don't wipe other KWin rules on Plasma 6.8
+    + Fix OOB std::vector access
+    + Use running interpreter for settings dialog; add tray icon fallback
+  * Other:
+    + Add customizable theme colors
+    + Debian/changelog: correct 1.4.4-5 entry, backfill missing 1.4.4-4 entry
+    + OnboardIndicator: Fix instantiation of OnboardProxy
+    + Setup.py: fix get_pkg_version for versions like '51.beta'
+    + Updatechangelog.sh: warn before release_current() silently drops
+      classified entries
+    + Updatechangelog.sh: include README.md in version-bump commit
+  * Updated translations.
+- Drop 1ced23c0.patch: fixed upstream.</comment>
+    <requestid>1398618</requestid>
+  </revision>
 </revisionlist>

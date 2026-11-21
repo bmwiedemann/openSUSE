@@ -25,7 +25,7 @@ Release:        0
 Summary:        C++ Binding for the ATK library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source0:        https://download.gnome.org/sources/%{name}/%{base_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler

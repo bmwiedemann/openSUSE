@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:09:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.50.0 (4.05)
+   see /usr/share/doc/packages/perl-JSON-XS/Changes
+
+  4.05 Fri 13 Nov 2026 05:21:06 CET
+    - the incremental parser would not properly reset parsing offset
+      after removing a top-level number json number, causing memory
+      corruption. this is potentially a very serious vulnerability.
+      (reported by Albert Gierlach).
+      CVE-2026-129113 bsc#1290503
+    - the ignore initial whitespace optimisation in the incremental
+      parser could result in the parser reading beyond the end of string,
+      potentially leading to parsing errors or skipping json texts.
+    - FREEZE method calls could move the stack and cause a use-after-free.
+      requires allow_tags and a suitable FREEZE method to be exploited
+      (reported by Albert Gierlach).
+      CVE-2026-129115 bsc#1290505
+    - json_sv_grow would not allocate space for the trailing 0 byte.
+      possibly exploitable. (reported by Albert Gierlach).
+      CVE-2026-129114 bsc#1290504
+    - the incremental parser did not properly detect embedded NUL
+      characters as an error (reported by Peter Juhasz and his LLM).
+      CVE-2026-124536 bsc#1290499
+    - string and object decoding failures could leak a partially
+      constructed perl scalar (reported by Peter Juhasz).
+      CVE-2026-124539 bsc#1290500 CVE-2026-124541 bsc#1290502
+    - tag decoding ("(tag)value") ignored the recursion limit,
+      potentially causing stack overflow (reported by Peter Juhasz).
+      CVE-2026-124540 bsc#1290501
+
+-------------------------------------------------------------------
 Mon Sep  8 16:53:42 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - updated to 4.40.0 (4.04)

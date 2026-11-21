@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:38:27 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Version bump to 1.2.7
+  * An empty synonym field in a meaning line (a||b) no longer repeats the
+    rest of the line as every later synonym. This affected the hu_HU, pt_BR
+    and ru_RU thesauri
+  * A line too long for the read buffer is cut short instead of split into
+    extra lines
+  * An index with no entry count line is rejected instead of loading with
+    no entries
+  * Open the .idx and .dat files in binary mode, so the index offsets are
+    right on Windows
+  * A meaning whose strings could not be allocated returns a count of 0
+    with no synonyms and no definition
+  * A word longer than any index word returns no meanings
+  * Bound the index entry count by the size of the index file
+  * Check the allocations and the path conversion in the Windows long-path
+    open
+  * example: fix the argument and line handling, and accept CRLF word lists
+  * drop mythes-1.2.6-werror-sign-compare.patch (upstream commit 61597ef,
+    inside tag v1.2.7)
+
+-------------------------------------------------------------------
+Thu Nov  5 19:18:50 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Version bump to 1.2.6
+  * th_gen_idx.pl: add the -o option for the output path
+  * Windows long-path support via _wfopen
+  * Add the libFuzzer harness
+  * Harden the .idx/.dat parsers: guard the truncated records,
+    overflow check in the Lookup string sizing, clamp nmeanings at 8192
+  * Add mythes-1.2.6-werror-sign-compare.patch (upstream 61597ef):
+    the new guard in Lookup compares len with the int constant
+    MAX_WD_LEN, so the build passes with -Werror=sign-compare
+  * Mark COPYING as %license
+
+-------------------------------------------------------------------
 Tue Sep 13 12:49:41 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Version bump to 1.2.5

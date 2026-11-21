@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Nov 19 16:44:50 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.6.3:
+ * vm_queries: detect UEFI for non-pflash loaders and libvirt 9.0+ firmware
+ * vmc: add diff_xml command to compare the XML of two VMs
+ * vmc: show the actual IPv4/IPv6 addresses in vm_info
+ * vmc: add change_video command to set a VM's video model
+ * vmc: add show_vm_xml command to print a VM's libvirt XML
+ * server picker: 32 distinct colors and scrollable server lists
+ * vm_actions: write explicit video model 'none' instead of removing the element
+
+-------------------------------------------------------------------
+Wed Nov 18 11:40:03 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.6.2:
+ * allow to pass different uri to connect to libvirt server over CLI by @fcrozat in #165
+
+- version 3.6.1:
+ * Add --machine flag for scriptable JSON output by @fcrozat in #164
+
+- version 3.6.0:
+ * Add QEMU guest agent service with UI and command execution features
+
+-version 3.5.3:
+ * Add new VMC commands
+ * add serial console support for openSUSE/SLES (default for Secure VMs)
+ * default graphics to VNC
+
+-------------------------------------------------------------------
+Wed Nov  4 09:43:37 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.5.1:
+  * fix: stale VM card after remote delete (orphaned refresh worker)
+
+- version 3.5.0:
+  * Read UEFI firmware over SSH for remote hypervisors
+  * vmc: add config-driven single-VM deployment (vmc --config)
+
+- version 3.4.0:
+  * Fix VM refresh after rename and correct video model defaults
+  * Enhance CLI with volume deletion, graphics selection, and templates
+  * cleanup
+  * update translation
+
+- version 3.3.9:
+  * Fix Python 3.9 support and update version to 3.3.9
+  * fix issue shuting down VM (as guest agent check could
+    not be done with libvirt python api revert to acpi only)
+
+- version 3.3.6:
+  * Add pre-flight check for install binaries and cleanup code
+  * Refactor CSS consolidation and fix VM refresh issues
+  * Enhance QEMU guest agent support and fix event registration
+
+-------------------------------------------------------------------
 Mon Oct 19 08:29:37 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 3.3.4:

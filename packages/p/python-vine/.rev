@@ -77,4 +77,12 @@
   * Use setup_method() to work with Pytest 8.</comment>
     <requestid>1193590</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>13eef1a5ce292f3f18bbb4b4dda511e6</srcmd5>
+    <version>5.1.0</version>
+    <time>1795182439</time>
+    <user>anag_factory</user>
+    <comment>- Remove case from BuildRequires, it isn't needed.</comment>
+    <requestid>1398856</requestid>
+  </revision>
 </revisionlist>

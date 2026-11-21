@@ -1,7 +1,7 @@
 <services>
   <service name="cargo_vendor" mode="manual">
      <param name="url">https://github.com/waycrate/wayshot</param>
-     <param name="revision">main</param>
+     <param name="revision">a2c10049a325b51989536d784ea5d084f88e3238</param>
      <param name="compression">zst</param>
      <param name="update">true</param>
      <param name="versionrewriteregex">^v?(.*)</param>

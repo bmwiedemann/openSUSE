@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:51:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.9.
+  ## 3.2.9
+
+  * The writer thread of SingleLogger survives write errors such as
+    ENOSPC and EPIPE. The failed messages are dropped.
+
+-------------------------------------------------------------------
+Thu Oct  8 02:30:50 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.8.
+  ## 3.2.8
+
+  * Take another road under the Windows native I/O manager
+    [#222](https://github.com/kazu-yamamoto/logger/pull/222)
+
+-------------------------------------------------------------------
+Thu Aug  6 00:55:13 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update fast-logger to version 3.2.7.
+  ## 3.2.7
+
+  * Don't eat up an asynchronous exception.
+
+-------------------------------------------------------------------
 Mon Jun 23 03:08:24 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update fast-logger to version 3.2.6.

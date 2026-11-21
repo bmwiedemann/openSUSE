@@ -17,14 +17,14 @@
 
 
 Name:           plexus-compiler
-Version:        2.17.1
+Version:        2.18.1
 Release:        0
 Summary:        Compiler call initiators for Plexus
 License:        Apache-2.0 AND MIT
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/plexus-compiler
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
-Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
+Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
 Source100:      %{name}-build.tar.xz
 BuildRequires:  ant

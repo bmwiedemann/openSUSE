@@ -1,18 +1,8 @@
-Disable doclint by default
-
-OpenJDK 8 adds and enables doclint by default. This catches issues in
-javadoc comments. It is too strict, breaks javadoc compilation and, in
-general, breaks the build for old code known to build with previous
-versions of OpenJDK.
-
-See: http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html
-See: https://lists.fedoraproject.org/pipermail/java-devel/2014-February/005150.html
-
-Author: Andrew John Hughes <ahughes@redhat.com>
-Author: Emmanuel Bourg <ebourg@apache.org>
---- openjdk/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java
-+++ openjdk/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java
-@@ -811,10 +811,9 @@
+diff --git a/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java b/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java
+index 3db4597958..a59b56daaa 100644
+--- a/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java
++++ b/langtools/src/share/classes/com/sun/tools/javadoc/DocEnv.java
+@@ -812,10 +812,9 @@ public class DocEnv {
              doclintOpts.add(opt == null ? DocLint.XMSGS_OPTION : DocLint.XMSGS_CUSTOM_PREFIX + opt);
          }
  
@@ -26,9 +16,11 @@ Author: Emmanuel Bourg <ebourg@apache.org>
              return;
          }
  
---- openjdk/langtools/test/tools/javadoc/doclint/DocLintTest.java
-+++ openjdk/langtools/test/tools/javadoc/doclint/DocLintTest.java
-@@ -130,12 +130,12 @@
+diff --git a/langtools/test/tools/javadoc/doclint/DocLintTest.java b/langtools/test/tools/javadoc/doclint/DocLintTest.java
+index 346b457f29..3a1fd67d31 100644
+--- a/langtools/test/tools/javadoc/doclint/DocLintTest.java
++++ b/langtools/test/tools/javadoc/doclint/DocLintTest.java
+@@ -130,12 +130,12 @@ public class DocLintTest {
          };
  
          test(Collections.<String>emptyList(),
@@ -45,7 +37,7 @@ Author: Emmanuel Bourg <ebourg@apache.org>
  
          test(Arrays.asList("-Xdoclint:none"),
                  Main.Result.OK,
-@@ -158,8 +158,8 @@
+@@ -158,8 +158,8 @@ public class DocLintTest {
                  EnumSet.of(Message.DL_WRN12));
  
          test(Arrays.asList(rawDiags, "-private"),

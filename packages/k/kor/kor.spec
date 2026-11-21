@@ -17,7 +17,7 @@
 
 
 Name:           kor
-Version:        0.6.9
+Version:        0.7.0
 Release:        0
 Summary:        Tool to discover unused Kubernetes Resources
 License:        MIT
@@ -26,8 +26,8 @@ Source:         kor-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.8
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 Kor is a tool to discover unused Kubernetes resources. Currently, Kor can identify and list unused:

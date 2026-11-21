@@ -351,4 +351,13 @@ Add coreutils-systemd to BuildRequires for the `uptime` command needed for a tes
   * Exclude CTCP and formatting characters from URL regexp</comment>
     <requestid>1353882</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>af2f8025c5a7189101430b4da53836d0</srcmd5>
+    <version>2026.5.8</version>
+    <time>1795103697</time>
+    <user>anag_factory</user>
+    <comment>- Add patch increase-sedregex-spawn-timeout.patch:
+  * Give OBS workers more time for multiprocessing.spawn().</comment>
+    <requestid>1398547</requestid>
+  </revision>
 </revisionlist>

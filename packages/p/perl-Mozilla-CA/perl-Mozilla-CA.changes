@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov  7 14:05:26 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 11:34:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20261105.0.0 (20261105)
+   see /usr/share/doc/packages/perl-Mozilla-CA/Changes
+
+  20261105
+    - Include metadata with certificates in bundle file
+    - Update from Mozilla repository to 2026-11-05
+    - Removed certificates:
+      - emSign ECC Root CA - C3
+        sha256: bc4d809b15189d78db3e1d8cf4f9726a795da1643ca5f1358e1ddb0edc0d7eb3
+      - emSign Root CA - C1
+        sha256: 125609aa301da0a249b97a8239cb6a34216f44dcac9f3954b14292f2e8c8608f
+
+-------------------------------------------------------------------
 Fri Oct 23 14:03:50 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Update Mozilla-CA-20240730-Redirect-to-ca-certificates-bundle.patch

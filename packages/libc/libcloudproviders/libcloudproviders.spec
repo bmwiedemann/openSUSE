@@ -19,7 +19,7 @@
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           libcloudproviders
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        Library/Client to integrate cloud storage providers
 License:        LGPL-3.0-or-later
@@ -29,9 +29,9 @@ Source0:        %{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 1.9.0
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.51.2
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.51.2
-BuildRequires:  pkgconfig(glib-2.0) >= 2.51.2
+BuildRequires:  pkgconfig(gio-2.0) >= 2.64
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.64
+BuildRequires:  pkgconfig(glib-2.0) >= 2.64
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen)

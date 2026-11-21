@@ -21,21 +21,21 @@
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   4.0.0
-%define owt_ver   git20261023
-%define td_ver    git20261016
+%define owt_ver   git20261108
+%define td_ver    git20261109
 %define tlottie_ver 1.0.6
 %define wallet_engine_ver 0.0.7
 Name:           telegram-desktop
-Version:        7.3.4
+Version:        7.4.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
 Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar.gz#/ada-%{ada_ver}.tar.gz
-# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git submodule update --init --depth=1 && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git -c gc.autoDetach=false -c maintenance.autoDetach=false submodule update --init --depth=1 && rm -rf .??* && popd && mv "$n" "$d" && tar c --remove-files "$d" | xz -9e > "$f"
 Source2:        tg_owt-%{owt_ver}.tar.xz
-# n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv "$n" "$d" && tar c --remove-files "$d" | xz -9e > "$f"
 Source3:        td-%{td_ver}.tar.xz
 Source4:        https://github.com/dkaraush/tlottie/archive/refs/tags/v%{tlottie_ver}.tar.gz#/tlottie-%{tlottie_ver}.tar.gz
 Source5:        tlottie-cargo.toml
@@ -105,7 +105,6 @@ BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(qrcodegen)
 BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(vpx)
-BuildRequires:  pkgconfig(webrtc-audio-processing-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-keysyms)
@@ -123,7 +122,7 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       icu
 Requires:       kf6-kimageformats
 Requires:       xdg-desktop-portal
-Recommends:     WebKitGTK-4.1
+Recommends:     WebKitGTK-6.0
 ExclusiveArch:  x86_64 aarch64
 
 %description

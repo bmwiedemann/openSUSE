@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IO-Event
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,34 +12,43 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           perl-IO-Event
+
 %define cpan_name IO-Event
+Name:           perl-IO-Event
+Version:        0.814.0
+Release:        0
+# 0.814 -> normalize -> 0.814.0
+%define cpan_version 0.814
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Tied Filehandles for Nonblocking IO with Object Callbacks
-Version:        0.813
-Release:        1
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/IO-Event/
-#Source:         http://www.cpan.org/authors/id/M/MU/MUIR/modules/IO-Event-%{version}.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(AnyEvent)
 BuildRequires:  perl(Event)
-BuildRequires:  perl(Test::Simple)
-BuildRequires:  perl(diagnostics)
-#
-BuildRequires:  perl(IO::Handle)
-BuildRequires:  perl(List::MoreUtils)
-BuildRequires:  perl(Time::HiRes)
-Requires:       perl(IO::Handle)
-Requires:       perl(List::MoreUtils)
-Requires:       perl(Time::HiRes)
+BuildRequires:  perl(List::SomeUtils)
+BuildRequires:  perl(Test::More) >= 0.98
+BuildRequires:  perl(parent)
+Requires:       perl(List::SomeUtils)
+Requires:       perl(parent)
+Provides:       perl(IO::Event) = %{version}
+Provides:       perl(IO::Event::AnyEvent) = %{version}
+Provides:       perl(IO::Event::Callback) = %{version}
+Provides:       perl(IO::Event::Emulate) = %{version}
+Provides:       perl(IO::Event::Event) = %{version}
+Provides:       perl(IO::Event::INET::Callback)
+Provides:       perl(IO::Event::Socket::UNIX)
+Provides:       perl(IO::Event::UNIX::Callback)
+%undefine       __perllib_provides
+Recommends:     perl(AnyEvent)
+Recommends:     perl(EV)
+Recommends:     perl(Event)
 %{perl_requires}
 
 %description
@@ -48,7 +57,7 @@ IO. The design goal is to provide a system that just does the right thing
 w/o the user needing to think about it much.
 
 All APIs are kept as simple as possible yet at the same time, all
-functionality is accesible if needed. Simple things are easy. Hard things
+functionality is accessible if needed. Simple things are easy. Hard things
 are possible.
 
 Most of the time file handling syntax will work fine: '<$filehandle>' and
@@ -59,33 +68,28 @@ throttle). It provides automatic line-at-a-time input.
 
 After initial setup, call 'IO::Event::loop()'.
 
-IO::Event was originally written to use the Event manpage. IO::Event still
-defaults to using the Event manpage but it can now use the AnyEvent manpage
-or its own event loop.
+IO::Event was originally written to use Event. IO::Event still defaults to
+using Event but it can now use AnyEvent or its own event loop.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-### t/forked2.t is failing on newer Dists, but builts fine locally
-## so I just disable this test
-rm -f t/forked2.t
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
 %perl_process_packlist
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files -f %{name}.files
-%defattr(644,root,root,755)
 %doc Changes README
+%license LICENSE
 
 %changelog

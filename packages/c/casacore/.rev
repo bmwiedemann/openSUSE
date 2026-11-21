@@ -117,4 +117,12 @@
 * Add new BuildRequires: libboost_filesystem-devel, libboost_test-devel, and libdeflate-devel.</comment>
     <requestid>1379311</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cb5ad8cf43cbf6676ebba935c442ad4b</srcmd5>
+    <version>3.8.2</version>
+    <time>1795182578</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398933</requestid>
+  </revision>
 </revisionlist>

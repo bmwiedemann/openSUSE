@@ -464,4 +464,28 @@
     <comment>- Update to release 22.1.10</comment>
     <requestid>1393761</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>fe65019aaa7e0d07726da73257bb256f</srcmd5>
+    <version>22.2.0</version>
+    <time>1793990035</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 22.2</comment>
+    <requestid>1395070</requestid>
+  </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>fac39da6fcaaf154c732610a7e1c9525</srcmd5>
+    <version>22.2.2</version>
+    <time>1794816382</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 22.2.2</comment>
+    <requestid>1397364</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>213eefe3e82a7a90939d40d313fa67cb</srcmd5>
+    <version>22.2.4</version>
+    <time>1795103615</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 22.2.4</comment>
+    <requestid>1398684</requestid>
+  </revision>
 </revisionlist>

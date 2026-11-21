@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov 15 20:20:00 UTC 2026 - Dirk Mueller <dmueller@suse.com>
+
+- add redland-stack-overflow-fix.patch
+- add redland-raptor-stringbuffer-copy.patch:
+  * Fix rdf_hash_test failure: raptor's stringbuffer copy API
+    expects the full destination buffer size and rejects
+    exact-length buffers, making librdf_hash_to_string() return an
+    empty string.
+
+-------------------------------------------------------------------
 Thu Oct 31 16:07:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Remove the requires_ge against librasqal1: it's been 15 years
@@ -22,7 +32,7 @@ Fri Feb 23 11:45:29 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Fri Aug 18 11:54:56 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Fix tests against latest raptor by cleaning up parser in each iteration.
-  * Added patch redland-fix-tests.patch  
+  * Added patch redland-fix-tests.patch
 
 -------------------------------------------------------------------
 Fri Mar  1 14:56:41 UTC 2019 - Reinhard Max <max@suse.com>
@@ -64,7 +74,7 @@ Wed Jan  2 17:55:06 UTC 2013 - hrvoje.senjan@gmail.com
 Wed May  9 13:43:42 UTC 2012 - darin@darins.net
 
 - removed unnecessary postgresl-devel package and it's .la
-- removed libpq5 require 
+- removed libpq5 require
 
 -------------------------------------------------------------------
 Tue May  8 16:23:51 UTC 2012 - darin@darins.net
@@ -77,18 +87,18 @@ Wed Dec 21 12:51:02 UTC 2011 - tittiatcoke@gmail.com
 
 - Update to 1.0.15
   Issues Fixed:
-     0000461: librdf error - query language vsparql already 
+     0000461: librdf error - query language vsparql already
               registered
-     0000468: xlc on AIX configure tests for both 
+     0000468: xlc on AIX configure tests for both
               HAVE_BDB_OPEN_7_ARGS and HAVE_BDB_OPEN_6_ARGS pass
-     0000475: Freeing a counted_string returned by redland on a 
+     0000475: Freeing a counted_string returned by redland on a
               modern Windows system crashes
-     0000478: Object returned from librdf_stream_get_object must 
+     0000478: Object returned from librdf_stream_get_object must
               be copied, but may not copiable
-     0000483: Documentation of 
-              librdf_parser_get_namespaces_seen_count return is 
+     0000483: Documentation of
+              librdf_parser_get_namespaces_seen_count return is
               incorrect
-     0000485: No rule to make target `-lltdl', needed by 
+     0000485: No rule to make target `-lltdl', needed by
               `librdf.la'. Stop.
 
 -------------------------------------------------------------------
@@ -105,7 +115,7 @@ Wed Nov 16 08:11:50 UTC 2011 - tittiatcoke@gmail.com
 -------------------------------------------------------------------
 Mon Nov 14 21:39:58 UTC 2011 - crrodriguez@opensuse.org
 
-- open all file descriptors with O_CLOEXEC to avoid 
+- open all file descriptors with O_CLOEXEC to avoid
   races and leaks.
 
 -------------------------------------------------------------------
@@ -114,20 +124,20 @@ Mon Sep 19 11:29:36 UTC 2011 - tittiatcoke@gmail.com
 - update to 1.0.14
   * Fixed Issues: [1]#0000419, [2]#0000404, [3]#0000325, [4]#0000447,
     [5]#0000432, [6]#0000418 and [7]#0000375
-  * librdf_node_write() is defined to now always write N-Triples 
+  * librdf_node_write() is defined to now always write N-Triples
     format
-  * Added librdf_query_language_get_description() to return the full 
-    description of of the query language  
-  * Removed Raptor V1 support code as librdf no longer supports 
+  * Added librdf_query_language_get_description() to return the full
+    description of of the query language
+  * Removed Raptor V1 support code as librdf no longer supports
     Raptor V1
-- Created a separate package for the redland-bindings as this no 
+- Created a separate package for the redland-bindings as this no
   longer compiles without redland installed
 
 -------------------------------------------------------------------
 Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
-    
+
 - added 32bit compatibility libraries
- 
+
 -------------------------------------------------------------------
 Tue Feb 15 16:47:42 UTC 2011 - davejplater@gmail.com
 
@@ -191,7 +201,7 @@ Tue Jan 13 10:52:47 CET 2009 - coolo@suse.de
 -------------------------------------------------------------------
 Fri Jul 25 00:23:50 CEST 2008 - dmueller@suse.de
 
-- update to 1.0.8 
+- update to 1.0.8
   * add in memory index trees
   * fix mysql connect hang
 
@@ -218,7 +228,7 @@ Sun Apr  6 03:21:57 CEST 2008 - crrodriguez@suse.de
     * 0000234: autogen.sh $dir quoting
     * 0000235: $(EXEEXT) in tests
     * 0000236: EOL issues when building svn version on cygwin
-- disable static libraries 
+- disable static libraries
 - remove "la" file
 - cleanup -devel package dependencies again
 
@@ -245,7 +255,7 @@ Wed May  9 19:32:45 CEST 2007 - wstephenson@suse.de
   * Added a new transactions API for graph changes, implemented for
     MySQL
   * Added a new query results formatter class
-  * Many other bug fixes addressing Issues #0000175, #0000173, 
+  * Many other bug fixes addressing Issues #0000175, #0000173,
     #0000159, #0000153, #0000150 and #0000038
 
 -------------------------------------------------------------------
@@ -268,9 +278,9 @@ Wed May  2 17:07:43 CEST 2007 - wstephenson@suse.de
   * Many fixes and improvements to the SQLite storage
   * Export some more functions to the SWIG binding
   * Many minor improvements
-  * Many other bug fixes addressing Issues #0000092, #0000103, 
-    #0000105, #0000107, #0000114, #0000116, #0000125, #0000130, 
-    #0000132, #0000136 and #0000139.  
+  * Many other bug fixes addressing Issues #0000092, #0000103,
+    #0000105, #0000107, #0000114, #0000116, #0000125, #0000130,
+    #0000132, #0000136 and #0000139.
 
 -------------------------------------------------------------------
 Thu Jul 13 2006 - mrueckert@suse.de

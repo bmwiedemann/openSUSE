@@ -19,7 +19,7 @@
 %define python_subpackage_only 1
 %define sover %(echo %{version} | sed 's@\\([0-9]*\\)\\.\\([0-9]*\\)\\..*@\\1_\\2@')
 Name:           z3
-Version:        5.3.3
+Version:        5.4.1
 Release:        0
 Summary:        Theorem prover from Microsoft Research
 License:        MIT

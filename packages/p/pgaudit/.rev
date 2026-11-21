@@ -115,4 +115,14 @@
     <comment>- Disable pg13 and drop pgaudit-1.5.3.tar.gz.</comment>
     <requestid>1351162</requestid>
   </revision>
+  <revision rev="10" vrev="10">
+    <srcmd5>ee28d849d8a5d1e58e6ef6bd4ddf4bc9</srcmd5>
+    <version>unknown</version>
+    <time>1795182367</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1398800 from darix
+
+- Update to 18.1</comment>
+    <requestid>1398801</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  9 23:50:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use modello-ant-task instead of ModelloCli
+
+-------------------------------------------------------------------
 Mon May 11 13:10:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - The new commons-compress needs commons-lang3

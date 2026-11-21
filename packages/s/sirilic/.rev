@@ -40,4 +40,16 @@
 </comment>
     <requestid>1200848</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1a5bbd946b97ddc1ac2d205ee2bd39df</srcmd5>
+    <version>2.0.10</version>
+    <time>1794591150</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.10:
+  * SiriLic is now a Siril Python plugin (rewrite); no longer a standalone wxPython app
+  * Package now installs into %{_datadir}/siril/scripts/sirilic
+  * Require siril &gt;= 1.4 and python3-tk; drop wxPython/setuptools
+</comment>
+    <requestid>1397107</requestid>
+  </revision>
 </revisionlist>

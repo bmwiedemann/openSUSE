@@ -69,4 +69,18 @@
 </comment>
     <requestid>1377998</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3d17aa355d2d5433481e5088713c68e4</srcmd5>
+    <version>4.0.3</version>
+    <time>1794317993</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1396377 from badshah400
+
+* Update to version 4.0.3.
+* Drop patches either committed upstream or fixed otherwise: wannier90-arm64-disable-failing-test.patch, wannier90-disable-failing-test.patch.
+* Add BuildRequires: python3-pytest and python3-PyYAML now needed for running regression tests.
+* Drop memory constraints during build: tests are not as memory intensive any more; also drop _constraints file.
+* Update shlib package name for openmpi flavours in keeping with upstream change (drop &quot;_mpi&quot; suffix).</comment>
+    <requestid>1396382</requestid>
+  </revision>
 </revisionlist>

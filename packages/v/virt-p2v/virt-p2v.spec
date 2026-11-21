@@ -1,7 +1,7 @@
 #
 # spec file for package virt-p2v
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ ExclusiveArch:  x86_64
 Source0:        https://download.libguestfs.org/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://download.libguestfs.org/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        virt-p2v.keyring
+# PATCH-FIX-OPENSUSE replace/discard obsolete packages
+Patch0:         dependencies.patch
 
 # Basic build requirements.
 BuildRequires:  gcc

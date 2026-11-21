@@ -319,4 +319,12 @@ expertise with the git command line.</comment>
     <comment>Update to 0.66.2 (forwarded request 1386214 from ecsos)</comment>
     <requestid>1386277</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0d2d2e1376a0abe2bab0a79346543015</srcmd5>
+    <version>0.66.3</version>
+    <time>1794318021</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.66.3 (forwarded request 1396308 from ecsos)</comment>
+    <requestid>1396403</requestid>
+  </revision>
 </revisionlist>

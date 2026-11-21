@@ -241,4 +241,91 @@
   * See https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.19.0</comment>
     <requestid>1356299</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>96719e1f3c441c30c234b1f00086959c</srcmd5>
+    <version>0.25.0</version>
+    <time>1794236856</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396286</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>40528c3817c46c56301831d9f77d4686</srcmd5>
+    <version>0.26.0</version>
+    <time>1794318241</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.0:
+  Added:
+  * Qweights=flat (openhtj2k_encoder::set_qfactor_weights(1)) turns off the
+    visual weights of the Qfactor path, for scientific or other non-visual
+    data. Every subband weight is 1 at every Qfactor, so the steps are
+    MSE-optimal, as the guideline's are from Qfactor=97 up; without the MCT
+    every component is independent data with unit colour gain. The Qfactor
+    still sets the reference step, so a Qfactor gives larger files and smaller
+    errors: on an 8-bit RGB image, 28-54% more bits and 2.6-3.8 dB more PSNR at
+    Qfactor=30 to 90. The default, Qweights=visual, is unchanged.
+    estimate_qfactor --weights flat recovers the Qfactor of such files.
+  Changed:
+  * Qfactor on sub-sampled (4:2:0 or 4:2:2) colour input follows version 2.0 of
+    the JPEG Qfactor guideline, &quot;Controlling JPEG 2000 image quality using a
+    single parameter (Qfactor)&quot; (ISO/IEC JTC 1/SC 29/WG 1 N101553). Its chroma
+    weights include the gain of upsampling the component for display, 2 for
+    4:2:0 and 1.4142 for 4:2:2, on every subband including LL; the encoder used
+    the version 1.0 weights, which leave it out. Below Qfactor=97 the chroma
+    steps of such files are finer by up to 2 (4:2:0) or 1.4142 (4:2:2) times,
+    so the files are larger: a 1024x1024 4:2:0 test image grows by 41% at
+    Qfactor=30, 23% at 75 and 9% at 90. Output for gray, gray + alpha and 4:4:4
+    colour input, and all output without Qfactor, is byte-identical. The
+    experimental analytic weighting (Qcsf=mannos|daly) applies the same gain to
+    sub-sampled components. estimate_qfactor follows the new weights, so on a
+    sub-sampled file written by 0.25.0 or earlier it finds the Qfactor from the
+    luminance component only and reports a mismatch on the chroma components.
+  Fixed:
+  * On the single-tile reuse path (invoke_line_based_stream_reuse() and
+    invoke_line_based_direct() after enable_single_tile_reuse(true)), a frame
+    whose headers differed from the previous frame's could decode with the</comment>
+    <requestid>1396475</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>119557a579e1dacba6fa0b89d0ea8e19</srcmd5>
+    <version>0.27.0</version>
+    <time>1794410955</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.0:
+  Added:
+  * openhtj2k_decoder::is_truncated(): after a decode, whether the codestream
+    lacked data of the image, which then holds only the data there was. It is
+    true when the codestream ends before its EOC marker (a truncated file or
+    download), when a tile has no data, or when a packet or a code-block's data
+    runs past the bytes there are. Image libraries can use it to tell a partial
+    image from a whole one.
+  Fixed:
+  * A codestream cut short now decodes from the data it holds, wherever the cut
+    falls after the marker code of its first SOT marker segment, and one
+    warning reports it (&quot;codestream ends before its EOC marker&quot;).
+  * A code-block length that runs over a tile-part boundary (a malformed
+    codestream) drops that code-block's data in the packet and decodes the
+    rest, with the &quot;malformed input&quot; warning as before; its bytes used to be
+    decoded in part, which failed the decode.</comment>
+    <requestid>1396742</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ae558864e33b9cf50aa112dfcc6ba150</srcmd5>
+    <version>0.28.1</version>
+    <time>1795023123</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.1:
+  * Fixes the multi-threaded WebAssembly builds, which since 0.25.0 decoded
+    every frame after the first on one thread: the RTP demo, the WebTransport
+    viewer and the JPIP demos ran at about half speed. The README and the
+    documentation are reorganised by audience.
+
+- Update to 0.28.0:
+  * Adds the precision-scaled Qfactor for samples of more than 8 bits
+    (Qscale=bits, openhtj2k_encoder::set_qfactor_scale(1)): a Qfactor removes
+    the same fraction of the precision at every bit depth, so 10- to 16-bit
+    data can be coded at the fidelity that the JPEG Qfactor guideline's scale
+    leaves between Qfactor=99 and 100. It is opt-in.</comment>
+    <requestid>1398381</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,690 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:56:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.2:
+  ktop v0.7.2 introduces the multi-page terminal UI navigation
+  architecture, adding a theme-aware top-level tab bar (ui.TabBar)
+  with drill-down breadcrumbs, a declarative page registry
+  (application.PageDescriptor and application.PageSession),
+  isolated per-page navigation stacks
+  (application.NavigationStack), keyboard page-switching shortcuts
+  (1–9, [ and ]), and startup page configuration via --page and
+  ui.default_page in ~/.ktop/config.yaml.
+  Top-level pages maintain independent focus positions and
+  drill-down histories across tab transitions while sharing cluster
+  header namespace filtering, modal overlays, and Kubernetes
+  informer lifecycles.
+  * Top-Level Tab Bar & Breadcrumb Navigation (ui)
+    - Theme-Aware Tab Bar and Right-Aligned Drill-Down Breadcrumbs
+      - Problem / Context: ktop previously rendered a single
+        unindexed page container without visible top-level tab
+        indicators or hierarchical location trails when navigating
+        across nested Node, Pod, and Container detail views.
+      - Implementation Details: Added ui.TabBar and ui.TabItem in
+        ui/tab_bar.go backed by a 1-row borderless tview.Table
+        mounted directly beneath the cluster header in
+        application/app_ui.go (removing the unmounted legacy
+        page-button footer table and updating panel height
+        calculations in views/overview/main_panel.go). Added
+        application.FormatBreadcrumb in application/navigation.go
+        to render active drill-down paths (<Page> › node/<name> ›
+        pod/<ns>/<pod> › logs/<container>).
+      - APIs / Signatures:
+
+        tb := ui.NewTabBar()
+        tb.SetTabs([]ui.TabItem{
+            {ID: "overview", Title: "Overview", Key: '1'},
+        })
+        tb.SetActive(0)
+        tb.SetBreadcrumb("Overview › node/worker-1 › pod/default/api-0")
+
+      - Impact & Behavioral Notes: Active tabs render with
+        Palette.HeaderFg on Palette.HeaderBg (and tcell.AttrReverse
+        | tcell.AttrBold with tcell.ColorDefault in monochrome and
+        $NO_COLOR environments); inactive tabs and breadcrumbs
+        render with Palette.CanvasFg on Palette.CanvasBg.
+        Root-level pages omit redundant breadcrumb text and display
+        trail segments only when drilled into detail views. Updated
+        ui.OverviewContext, ui.PageContext (ui/footer_context.go),
+        and ui.HelpModal (ui/help_modal.go) to display dynamic
+        [1-N] page and [ / ] shortcuts.
+  * Multi-Page Registry, Per-Page Navigation Stacks & Input Routing
+    (application, k8s, views)
+    - Declarative Page Registry and Isolated Per-Page Sessions
+      - Problem / Context: Focus management, Tab/Shift+Tab panel
+        cycling, ESC back-navigation, modal focus restoration, and
+        active detail lookups in application/app_ctrl.go previously
+        indexed app.pages[0] directly and shared a single
+        NavigationStack rooted at PageOverview.
+      - Implementation Details: Added application.PageDescriptor
+        and application.PageSession in application/page_registry.go
+        (RegisterPage, PageCount, ActivePageIndex, ActivePageID,
+        FindPageIndex, SetInitialPage, SwitchToPageIndex,
+        SwitchToPage, NextPage, PrevPage) and
+        application.NewNavigationStackWithRoot in
+        application/navigation.go. Refactored
+        application/app_ctrl.go to resolve focus, EscapablePanel
+        state, HelpModal context, and ESC unwind transitions
+        against the active PageSession, added
+        Application.SetDetailResetCallback and
+        Application.AddNamespaceFilterListener, added
+        DetailPanel.IsFilterEditing in views/container/detail.go,
+        and guarded Controller.Start in k8s/client_controller.go
+        for idempotent informer startup across multiple registered
+        pages.
+      - APIs / Signatures:
+
+        app.RegisterPage(application.PageDescriptor{
+            ID:         "overview",
+            Title:      "Overview",
+            Key:        '1',
+            RootType:   application.PageOverview,
+            Panel:      overviewPage,
+            ChildNames: []string{"summary", "nodes", "pods"},
+        })
+
+      - Impact & Behavioral Notes: Pressing 1–9 switches directly
+        to the corresponding registered page, and [ / ] cycles to
+        the previous or next page with wrap-around. Switching away
+        from a page preserves both its focused panel index and any
+        open detail stack (Node Detail, Pod Detail, Container
+        Logs), restoring them when switching back. When any filter
+        input is active (cluster header namespace filter, table /
+        filter, or container log filter), digit and bracket keys
+        pass directly into the text input without triggering page
+        switches.
+  * CLI & Configuration (cmd, config, application/tui)
+    - Startup Page Flag (--page) and Persistent Default
+      (ui.default_page)
+      - Problem / Context: Operators had no CLI flag or
+        configuration key to select or validate the initial
+        top-level page at startup.
+      - Implementation Details: Added --page in cmd/ktop.go,
+        InitialPage on tui.Options in application/tui/app.go, and
+        UIConfig.DefaultPage (ui.default_page), config.ValidPages,
+        and config.NormalizePage in config/config.go.
+      - APIs / Signatures:
+
+        # Launch ktop on a specific top-level page
+        ktop --page=overview
+
+        # ~/.ktop/config.yaml
+        ui:
+          theme: auto
+          color_mode: auto
+          default_page: overview
+
+      - Impact & Behavioral Notes: --page defaults to overview and
+        overrides ui.default_page in ~/.ktop/config.yaml for the
+        current session. Unrecognized --page or ui.default_page
+        values fail fast prior to cluster connection with exit code
+        2 (ExitInvalidFlags).
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI invocations, kubectl ktop plugin usage,
+      --noui JSON/JSONL schemas, and ~/.ktop/config.yaml files.
+      Existing configurations without ui.default_page default
+      automatically to overview.
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required.
+
+
+-------------------------------------------------------------------
+Mon Nov 16 05:48:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.1:
+  ktop v0.7.1 introduces scriptable non-interactive (--noui)
+  execution for CI/CD gates, cron jobs, and telemetry pipelines,
+  incorporates OOMKilled and CrashLoopBackOff container states into
+  the composite 0–100 cluster health score alongside window-level
+  health_score_stats, and defines structured operational exit codes
+  (0–5) and log sink routing (--log).
+  Passing --noui bypasses terminal UI allocation, synchronizes
+  Kubernetes informers and initial Prometheus scrape cycles, and
+  writes indented single-document JSON (-o json) or line-delimited
+  streaming snapshots (-o jsonl) to stdout while keeping readiness
+  diagnostics on stderr (or suppressed with --quiet) and structured
+  logs in ~/.ktop/ktop.log.
+  * Non-Interactive (--noui) Collection & Output Pipeline
+    - Headless Application Runner and Synchronous Snapshot
+      Collector
+      - Problem / Context: ktop previously required an interactive
+        TTY (tview/tcell) to observe cluster state and metrics,
+        preventing automated scripts, CI deployment gates, and
+        headless jobs from capturing structured cluster snapshots.
+      - Implementation Details: Added package application/headless
+        (headless.NewRunner, headless.App, headless.Options in
+        application/headless/app.go) implementing
+        application.Runner without terminal screen dependencies,
+        backed by collector.Collector and
+        collector.K8sSnapshotProvider (collector/collector.go,
+        collector/k8s_provider.go). Added synchronous informer
+        startup (Controller.StartInformers in
+        k8s/client_controller.go), exported
+        Controller.BuildClusterSummary (k8s/summary_controller.go),
+        and added scrape-cycle synchronization
+        (Controller.WaitForCycles in prom/controller.go and
+        PromMetricsSource.WaitForWarmup in
+        metrics/prom/prom_source.go) so Prometheus counter rates
+        warm up across two completed scrape cycles before sampling.
+      - Impact & Behavioral Notes: Single-shot runs (-d 0s,
+        default) wait for core informer cache sync and metrics
+        warmup, emit one collector.Aggregate document (metadata,
+        cluster, summary, health_score_stats, nodes, pods), and
+        exit. Timed runs (-d > 0) sample every -i (--interval,
+        default 5s), include the ordered samples slice in -o json,
+        and handle SIGINT/SIGTERM cleanly by flushing all samples
+        collected prior to cancellation. When
+        --prometheus-scrape-interval is not explicitly set in
+        --noui mode, single-shot runs tune the internal scrape
+        cadence to 1500ms (or -i when smaller) so rate metrics warm
+        up promptly.
+    - JSON and Streaming JSONL Output Formatters
+      - Problem / Context: Automation consumers need both complete
+        end-of-window reports for post-deployment assertions and
+        real-time line-delimited streams for continuous pipelines.
+      - Implementation Details: Added package output
+        (output.Formatter, output.NewFormatter,
+        output.JSONFormatter, output.JSONLFormatter in
+        output/formatter.go, output/json.go, output/jsonl.go).
+        JSONFormatter encodes a single indented collector.Aggregate
+        document upon completion, while JSONLFormatter encodes one
+        minified snapshot.Snapshot line per interval tick with HTML
+        escaping disabled and immediate buffer flushing.
+      - Impact & Behavioral Notes: stdout receives strictly valid
+        JSON or JSONL with canonical numeric units (millis for CPU,
+        bytes for memory and storage, and 0.0–100.0 percentages for
+        PSI stall and CFS throttling).
+  * Cluster Health Score & Window Aggregations
+    - OOMKilled and CrashLoopBackOff Detection and HealthScoreStats
+      - Problem / Context: Pods in Running or Pending phase with
+        containers restarting due to OOMKilled or CrashLoopBackOff
+        were not reflected in the cluster summary's pod-failure
+        health score deduction, and multi-sample runs lacked
+        window-level health score summaries.
+      - Implementation Details: Added CrashLoopPods
+        (json:"crashloop_pods") to model.ClusterSummary
+        (views/model/summary_model.go) and snapshot.SummaryData
+        (internal/snapshot/snapshot.go,
+        internal/snapshot/builder.go). Updated
+        Controller.BuildClusterSummary (k8s/summary_controller.go)
+        to inspect both InitContainerStatuses and ContainerStatuses
+        for OOMKilled (State.Terminated and
+        LastTerminationState.Terminated) and CrashLoopBackOff
+        (State.Waiting), and updated model.CalculateHealthScore to
+        apply the -15 pod-health deduction when FailedPods > 0 ||
+        OOMKillCount > 0 || CrashLoopPods > 0. Added
+        collector.HealthScoreStats (min, max, avg, latest) to
+        collector.Aggregate.
+      - APIs / Signatures:
+
+        # Capture a single JSON snapshot
+        ktop --noui | jq .
+
+        # Gate a CI pipeline on point-in-time health_score or OOM/crashloop counts
+        ktop --noui --quiet | jq -e '.summary.health_score >= 80 and .summary.oom_kill_count == 0 and .summary.crashloop_pods == 0'
+
+        # Gate on sustained window statistics over a 30s soak period
+        ktop --noui -d 30s -i 5s --quiet | jq -e '.health_score_stats.min >= 70 and .health_score_stats.avg >= 85'
+
+        # Stream minified JSONL snapshots every 5s
+        ktop --noui -d 5m -i 5s -o jsonl --quiet
+
+      - Impact & Behavioral Notes: Both the interactive TUI Cluster
+        Summary header and --noui JSON/JSONL snapshots reflect
+        OOMKilled and CrashLoopBackOff containers in health_score,
+        while downstream scripts express custom pass/fail
+        thresholds against summary.health_score and
+        health_score_stats.
+  * CLI Flags, Logging Isolation & Operational Exit Codes
+    - Headless Flags, --log Destination Control, and Exit Codes 0–5
+      - Problem / Context: Automated callers need deterministic
+        process exit codes to separate invalid flags from cluster
+        connectivity, missing metrics backends, and readiness
+        timeouts, as well as explicit control over stderr progress
+        output and structured log destinations.
+      - Implementation Details: Added --noui, -d/--duration,
+        -i/--interval, -o/--output, --quiet, and --log (file or
+        stderr) in cmd/ktop.go (NewKtopCmd), along with
+        logging.Validate (internal/logging/logger.go). Added
+        cmd/exitcode.go defining ExitOK (0), ExitGeneralError (1),
+        ExitInvalidFlags (2), ExitK8sConnectError (3),
+        ExitMetricsUnavailable (4), and ExitCollectionTimeout (5),
+        mapped via cmd.ExitError, cmd.WrapExitError, and
+        cmd.ExitCode in main.go.
+      - Impact & Behavioral Notes: Invalid CLI flags, negative
+        --duration, non-positive --interval, unsupported --output
+        formats, or unknown --log destinations fail before cluster
+        connection with exit code 2. API connection or RBAC
+        preflight failures return 3; unavailable explicitly
+        requested metrics sources (--metrics-source=prometheus or
+        --metrics-source=metrics-server) return 4; informer sync or
+        warmup timeouts (--request-timeout) return 5.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing interactive ktop CLI invocations, kubectl ktop
+      plugin usage, kubeconfig setups, and ~/.ktop/config.yaml
+      files. Running ktop without --noui launches the interactive
+      terminal UI unchanged.
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required. Note that CLI flag
+      validation errors now exit with status code 2
+      (ExitInvalidFlags) rather than 1, and clusters with active
+      OOMKilled or CrashLoopBackOff containers now include the -15
+      deduction in health_score.
+- Update to version 0.7.0:
+  ktop v0.7.0 introduces an adaptive terminal theme engine with
+  automatic background luminance and color-depth detection,
+  refactors cluster state delivery around an immutable Snapshot
+  pipeline and application.Runner boundary, and aligns Prometheus
+  CPU rate and history calculations across overview and detail
+  views.
+  Operators can run ktop across dark, light, 16-color ANSI, and
+  $NO_COLOR / monochrome terminals without manual configuration, or
+  set explicit --theme and --color-mode preferences on the command
+  line and in ~/.ktop/config.yaml. Under the hood, overview tables
+  and drill-down detail views render from lock-free point-in-time
+  Snapshot projections, while the Prometheus metrics pipeline
+  preserves upstream cAdvisor sample timestamps and series
+  semantics to eliminate rate drift and transient 0m CPU drops.
+  * Adaptive Terminal Themes & UI Styling
+    - Semantic Palette Engine and Built-in Themes
+      - Problem / Context: UI widgets, tables, sparklines,
+        saturation gauges, and modal dialogs previously relied on
+        hardcoded colors tuned only for dark TrueColor terminals,
+        causing low-contrast text on light backgrounds,
+        inconsistent highlights on 16-color profiles, and residual
+        color escapes in monochrome sessions.
+      - Implementation Details: Added package ui/theme
+        (ui/theme/palette.go, ui/theme/builtins.go,
+        ui/theme/format.go) defining a 33-token semantic Palette
+        (CanvasBg, HeaderBg, RowSelectedBg, StatusOK..StatusError,
+        GaugeLow..GaugeHigh, SparklineNormal,
+        ToastInfoBg..ToastErrorBg, etc.) with four built-in themes:
+        DarkPalette, LightPalette, ANSIPalette, and
+        MonochromePalette. Migrated overview panels,
+        node/pod/container detail panels, sparklines, bargraphs,
+        filter inputs, help/column modals, and *ui.ToastModal
+        notifications (ui/toast.go) to resolve colors dynamically
+        from the active palette while maintaining WCAG AA contrast
+        (>= 4.5:1).
+      - Impact & Behavioral Notes: Tables, headers, summary
+        bargraphs, resource gauges, and interactive toast modals
+        (Retry / Quit actions and severity borders) render legibly
+        across all four built-in palettes. When monochrome (or
+        --color-mode=none) is active, ktop emits zero ANSI color
+        sequences and distinguishes focus, headers, selection, and
+        error states using AttrBold, AttrUnderline, AttrReverse,
+        and ! prefixes (ui.ErrorMarkup).
+    - Automatic Terminal Background Detection and 4-Tier Color
+      Quantization
+      - Problem / Context: Terminal emulators vary in background
+        luminance and color capability across local consoles, tmux,
+        SSH sessions, TERM=dumb, and $NO_COLOR environments.
+      - Implementation Details: Implemented theme.Resolve
+        (ui/theme/detect.go) with deterministic auto-detection
+        precedence: explicit theme override -> $NO_COLOR or
+        TERM=dumb (monochrome) -> $COLORFGBG background index
+        parsing (ParseCOLORFGBG) -> non-blocking 50ms OSC 11
+        background query (ProbeTerminalLightBg /
+        ParseOSC11Luminance using ITU-R BT.709 relative luminance)
+        -> dark default. Implemented ResolveColor
+        (ui/theme/palette.go) to quantize 24-bit RGB palette tokens
+        to the 6x6x6 xterm-256 cube and 24-step grayscale ramp
+        (ColorMode256), nearest 16-color ANSI (ColorMode16), or
+        tcell.ColorDefault (ColorModeNone).
+      - Impact & Behavioral Notes: --theme=auto selects an
+        appropriate light, dark, or monochrome theme at startup
+        without blocking non-interactive streams or character
+        devices that do not support read deadlines, and
+        automatically maps palette tokens to the terminal's
+        supported color tier.
+  * CLI & Persistent Configuration
+    - --theme and --color-mode Flags and ~/.ktop/config.yaml Persistence
+      - Problem / Context: Users needed session-scoped CLI
+        overrides and persistent user defaults for theme selection
+        and terminal color-depth degradation.
+      - Implementation Details: Added --theme and --color-mode
+        flags in cmd/ktop.go (NewKtopCmd), validated by
+        config.NormalizeTheme and config.NormalizeColorMode
+        (config/config.go). Extended config.UIConfig (ui.theme,
+        ui.color_mode) in ~/.ktop/config.yaml with auto defaults.
+      - APIs / Signatures:
+
+        # Automatic background and color-depth detection (default)
+        ktop
+
+        # Force light or monochrome theme
+        ktop --theme=light
+        ktop --theme=monochrome
+
+        # Override terminal color depth for SSH or multiplexer sessions
+        ktop --theme=dark --color-mode=256
+
+        # ~/.ktop/config.yaml
+        ui:
+          theme: auto
+          color_mode: auto
+
+      - Impact & Behavioral Notes: Preferences configured under
+        ui.theme and ui.color_mode in ~/.ktop/config.yaml apply
+        automatically at startup; --theme and --color-mode
+        command-line flags override saved settings for the current
+        session without mutating the config file. Unrecognized
+        values exit immediately with a validation error listing
+        accepted options.
+  * Core Architecture & Data Pipeline
+    - Immutable Snapshot Model and Lock-Free SnapshotBuilder
+      - Problem / Context: Overview panels and resource detail
+        pages previously assembled view state separately from
+        mutable Kubernetes models, pointer-based resource.Quantity
+        fields, and live metrics lookups during draw cycles.
+      - Implementation Details: Added package internal/snapshot
+        (internal/snapshot/snapshot.go,
+        internal/snapshot/builder.go) defining value-type Snapshot,
+        ClusterInfo, SummaryData, NodeData, PodData, ContainerData,
+        and PSIData structs with deep-copy Clone() and indexed
+        accessors (NodeByName, PodByKey, PodsOnNode). Implemented
+        snapshot.Builder.Build for lock-free in-memory joins of
+        cached controller models and batch pod/container metrics,
+        alongside NodeDetailProjection, PodDetailProjection, and
+        ContainerUsageFromSnapshot. Updated overview
+        (views/overview) and detail panels (views/node, views/pod,
+        views/container) to render from Snapshot values and
+        projections.
+      - Impact & Behavioral Notes: Overview tables and detail pages
+        render from a unified point-in-time state representation
+        without performing network I/O or holding locks on the UI
+        draw goroutine.
+    - application.Runner Interface and application/tui Lifecycle
+      Package
+      - Problem / Context: Startup orchestration in cmd/ktop.go
+        directly coupled CLI flag parsing to tview page
+        construction, RBAC preflight checks, and terminal screen
+        initialization.
+      - Implementation Details: Defined the application.Runner
+        interface (Run(ctx context.Context) error, Stop() error in
+        application/app.go) and extracted interactive TUI
+        initialization into application/tui (tui.NewRunner,
+        tui.App, tui.Options in application/tui/app.go),
+        encapsulating theme resolution, overview layout, initial
+        column sorting, k8sC.AssertCoreAuthz(ctx), and minimum
+        terminal height checks.
+      - Impact & Behavioral Notes: Cleanly separates
+        command/configuration wiring from TUI execution while
+        preserving existing preflight authorization diagnostics and
+        exit behavior.
+  * Prometheus Metrics & Resource Reporting
+    - Upstream Timestamp Anchoring, Node CPU Series Selection, and
+      Fallback Alignment
+      - Problem / Context: Under Prometheus scraping, node CPU
+        metrics could disagree between Cluster Summary, the Nodes
+        table, and the Node Detail view when cAdvisor housekeeping
+        intervals exceeded the query window (causing transient 0m
+        drops), when local scrape timing jitter skewed counter rate
+        denominators, or when root cgroup (id="/") metrics exposed
+        both cpu="total" and per-core cpu="0".. series.
+        Additionally, valid 0m / 0Mi usage was treated as missing
+        usage data, causing views to fall back to displaying
+        requested resources instead of 0.0% used.
+      - Implementation Details:
+        - Updated KubernetesScraper (prom/scraper.go) and
+          InMemoryStore (prom/storage.go) to record explicit
+          upstream sample timestamps
+          (MetricSample.UpstreamTimestamp), skip unchanged cached
+          cAdvisor samples, and anchor stored sample timestamps
+          using exact upstream elapsed deltas.
+        - Added selectNodeCPUSeries and querySeriesForRate
+          (metrics/prom/prom_source.go) to filter root node CPU
+          series (id="/") to cpu="total" (or unlabelled aggregates)
+          when present, and fall back to a 3m lookback
+          (maxSeriesSampleAgeMs = 90s) when dynamic cAdvisor
+          housekeeping exceeds the 40s rate window.
+        - Updated GetNodeHistory and GetPodHistory
+          (seriesCounterMilliRates, aggregateSeriesHistory in
+          metrics/prom/prom_source.go) to convert cumulative
+          container_cpu_usage_seconds_total counters into
+          per-interval millicore rates and carry forward
+          multi-series values across staggered timestamps.
+        - Added explicit HasUsageCPU and HasUsageMemory booleans
+          across SummaryData, NodeData, ClusterSummary, and view
+          renderers (views/overview/node_panel.go,
+          views/overview/summary_panel.go, views/node/detail.go).
+      - Impact & Behavioral Notes: Cluster Summary, Nodes table
+        rows, Node/Pod Detail panels, and CPU history sparklines
+        report consistent millicore usage rates and utilization
+        percentages, and distinguish genuine idle usage (0m / 0.0%
+        used) from unavailable metrics fallback (requested).
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing CLI invocations, kubeconfig setups, and
+      ~/.ktop/config.yaml files. Existing config.yaml files without
+      ui.theme or ui.color_mode default to auto.
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required. Users running on light
+      terminals or $NO_COLOR environments will automatically
+      receive matching palettes under the default --theme=auto
+      setting; users who prefer the classic dark palette regardless
+      of terminal background can set --theme=dark or configure
+      ui.theme: dark in ~/.ktop/config.yaml.
+
+-------------------------------------------------------------------
+Sun Nov 15 10:02:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.2:
+  This release adds container-level CFS CPU throttling visibility
+  and an at-a-glance Cluster Health Score percentage in the
+  overview header.
+  * Features
+    - CFS CPU Throttling (#167):
+      - Added container_cpu_cfs_throttled_seconds_total,
+        container_cpu_cfs_throttled_periods_total, and
+        container_cpu_cfs_periods_total to the Prometheus metric
+        allowlist.
+      - Computed per-container and pod-level CFS CPU throttling
+        percentages (preferring throttled/total period ratios with
+        a throttled-seconds rate fallback).
+      - Added a sortable THROTTLE column (key h) to the Overview
+        Pods table (toggleable via the C column selector and
+        persisted in ~/.ktop/config.yaml) and the Pod Detail
+        Containers table, plus a CFS: indicator in the Pod Detail
+        Info header.
+    - Cluster Health Score (#170):
+      - Added a composite 0–100 cluster health score calculated
+        from node readiness, failed/OOM pods, PSI saturation stalls
+        (>20%), node pressure conditions, and metrics availability.
+      - Rendered color-coded Health: <score>% in the Cluster
+        Summary header (green ≥90%, yellow ≥70%, orange ≥50%, red
+        <50%).
+
+-------------------------------------------------------------------
+Sat Nov 07 16:33:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.1:
+  ktop v0.6.1 delivers UI ergonomics, subpage polish, and expanded
+  multi-OS distribution. This release adds interactive column
+  sorting and filtering to the Pod Detail Containers table,
+  surfaces live Pressure Stall Information (PSI) metrics directly
+  within Node and Pod detail headers, introduces an interactive
+  keyboard shortcut overlay modal (? or F1), enables direct
+  clipboard copying for selected resource names (y), adds CLI flags
+  for initial table sorting (--sort-nodes, --sort-pods), and
+  packages native Windows binary builds and zip archives in
+  automated releases.
+  * Pod Detail Containers Table Sorting & Filtering (#165)
+    - Interactive Sorting: Added interactive column sorting to the
+      Containers table in the Pod Detail page with hotkey bindings:
+      c (CPU), m (Memory), n (Name), i (Image), s (Status), and r
+      (Restarts).
+    - Persistent Direction: Preserves active sort column and
+      direction across periodic metric refresh cycles.
+    - Filter Support: Integrated slash (/) filtering to quickly
+      search and filter container names within pods.
+  * Detail Views PSI Resource Stall Indicators (#168)
+    - Info Header PSI Metrics: Integrated live Pressure Stall
+      Information (PSI) metrics (CPU, MEM, IO) directly into the
+      condensed Info header box on both Node Detail and Pod Detail
+      pages.
+    - Color Thresholds: Displays stall percentages styled by
+      severity: green (<2%), yellow (2–10%), orange (10–25%), and
+      red (≥25%).
+    - Kernel Guardrail: Renders PSI: ⚠ N/A when running against
+      nodes with Linux kernels older than 4.20 where PSI is
+      unsupported.
+    - Vertical Space Conservation: Retains a single compact
+      sparkline row (CPU, MEM, Net, Disk), preserving terminal
+      space for the Containers and Pods tables.
+  * Keyboard Shortcut Help Overlay Modal (#169)
+    - Contextual Help Modal: Added an interactive keyboard shortcut
+      overlay modal triggered via ? or F1 from any page.
+    - Categorized Reference: Groups all available keybindings into
+      categorized sections: General Navigation, Table Controls,
+      Column Customization, Detail Views, and Log Viewer.
+    - Isolated Event Handling: Modal cleanly dismisses on Esc,
+      Enter, or q, restoring the previous page state and table
+      focus without triggering application exit.
+  * Clipboard Copy for Selected Resource Names (#171)
+    - Resource Yank Key: Added y shortcut key to copy the currently
+      selected node, pod, or container name to the system
+      clipboard.
+    - Visual Feedback: Displays temporary confirmation in the
+      footer upon successful copy.
+  * Initial Table Sorting CLI Arguments (#174)
+    - CLI Startup Flags: Introduced --sort-nodes and --sort-pods
+      CLI flags to specify initial sort columns on startup (e.g.,
+      ktop --sort-nodes=cpu --sort-pods=memory).
+    - Input Validation: Validates user-specified sort keys against
+      recognized column identifiers with helpful error diagnostics
+      on invalid arguments.
+  * Native Windows Binary Builds & Zip Archives (#166)
+    - Windows Cross-Compilation: Configured GoReleaser to produce
+      native Windows binaries (windows/amd64, windows/arm64) for
+      both standalone ktop.exe and kubectl-ktop.exe plugin
+      executables.
+    - Zip Packaging: Configured .zip archive formats for Windows
+      distribution alongside existing .tar.gz archives for Linux
+      and macOS.
+  * Documentation & Configuration Reference (#173)
+    - Guide Updates: Updated README.md, docs/guide.md, docs/cli.md,
+      and docs/psi.md documenting new CLI flags, keyboard
+      shortcuts, PSI stall indicators, and multi-OS installation
+      workflows.
+
+-------------------------------------------------------------------
+Fri Nov 06 08:04:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.0:
+  ktop v0.6.0 introduces Kubernetes Pressure Stall Information
+  (PSI) resource contention metrics, a dedicated user session
+  directory with rotated logging (~/.ktop/), dynamic in-app table
+  column selection and configuration persistence
+  (~/.ktop/config.yaml), interactive column sorting and filtering
+  across subpages, major Prometheus scraper and metric store
+  performance optimizations, codebase modernization, and toolchain
+  upgrade to Go 1.27.
+  * PSI (Pressure Stall Information) Metrics
+    - Resource Contention Signals: Integrated cAdvisor/kubelet PSI
+      metrics (container_pressure_cpu_waiting_seconds_total,
+      container_pressure_memory_waiting_seconds_total,
+      container_pressure_io_waiting_seconds_total) across node and
+      pod workloads.
+    - Overview STALL Column: Added a STALL column to Nodes and Pods
+      overview tables rendering the dominant waiting stall
+      percentage (CPU, Memory, or I/O) over the scrape window.
+    - Cluster Summary Stall Gauge: Added cluster-level PSI stall
+      metrics to the Cluster Summary header.
+    - Version Guardrails: Added runtime version checks that surface
+      ⚠ PSI beta in the cluster header when Kubernetes is <1.36 and
+      prefix STALL values with ⚠ 0% when node kernels are <4.20.
+  * User Session Directory & Rotated Logging (~/.ktop/)
+    - Session Directory: Introduced automatic creation of ~/.ktop/
+      (mode 0700) for user-specific data, relocatable via the
+      $KTOP_DIR environment variable.
+    - Rotated Structured Logging: Integrated log/slog and
+      lumberjack.v2 writing to ~/.ktop/ktop.log (mode 0600) with
+      automatic 10MB rotation, retaining the last 3 sessions
+      without interfering with the terminal display.
+    - CLI Logging Flags: Added --log-level (debug, info, warn,
+      error) and --log-format (text, json) flags.
+    - Graceful Degradation: Application continues running cleanly
+      if directory or file creation fails due to restrictive
+      filesystem permissions.
+  * Dynamic Column Configuration & Persistence
+    (~/.ktop/config.yaml)
+    - Interactive Column Selector Modal: Added interactive column
+      selection dialog triggered via the = hotkey on focused
+      overview tables, supporting Space toggle, Enter apply, and
+      Esc cancel.
+    - Active Default Columns: Enforced compact default column
+      layouts for Nodes (NAME, STATUS, RST, PODS, DISK, CPU, MEM)
+      and Pods (NAMESPACE, POD, READY, STATUS, RST, AGE, CPU,
+      MEMORY), preventing horizontal table sprawling on standard
+      terminals unless explicitly requested with
+      --show-all-columns.
+    - Configuration Schema: Introduced ~/.ktop/config.yaml
+      supporting table column customizations with resolved defaults
+      for metrics collection and logging.
+    - Automatic Persistence: Column selections passed via CLI flags
+      (--node-columns, --pod-columns) or modified via the
+      interactive modal automatically persist to
+      ~/.ktop/config.yaml.
+    - Modal Event Isolation: Isolated modal input capture so
+      dismissing the column dialog with Esc restores table focus
+      without triggering application-level exit.
+  * Subpage Navigation, Sorting & UI Consolidation
+    - Shared Table Controller: Extracted reusable
+      ui.TableController encapsulating sort toggling, shortcut key
+      binding, slash / filter lifecycle, and scroll titles.
+    - Node Detail Pods Sorting & Filtering: Enabled interactive
+      column sorting (c CPU, m MEM, n NAMESPACE, p POD, s STATUS, r
+      RESTARTS, d READY, a AGE) and / slash filtering on the Node
+      Detail Pods table.
+    - Header Shortcut Collision Fix: Renamed Node Detail Pods
+      second column from NAME to POD, matching the Overview page
+      and fixing the hotkey collision on 'N' with NAMESPACE.
+    - Format Consolidation: Unified detail formatting utilities
+      (FormatCPU, FormatMemory, FormatDuration, FormatEventAge,
+      Truncate, AdaptiveRateMax, CycleFocus) into ui/format.go.
+  * Performance & Scraper Optimizations
+    - Scraper Loop Deduplication: Eliminated duplicate background
+      scrape goroutines in KubernetesScraper, halving proxy scrape
+      traffic to node kubelets and cAdvisor endpoints.
+    - O(S) Pod Metrics Aggregation: Rewrote GetAllPodMetrics from
+      an O ( N ns × N pods × N series ) Cartesian scan into a
+      single-pass O ( S ) aggregation grouped by (namespace, pod,
+      container).
+    - Node Metric Query Deduplication: Reused existing node metrics
+      during overview and summary refresh cycles to avoid duplicate
+      queries.
+    - Pod-to-Node Indexing: Pre-indexed pods by Spec.NodeName in O
+      ( P ) when constructing node models.
+    - Sparkline Memory Leak Fix: Added automatic eviction of
+      deleted pods and nodes from memory sparkline maps.
+    - InitContainer Metric Correctness: Corrected CPU request
+      accounting in GetPodContainerSummary for pods configured with
+      init containers.
+    - Informer Resilience & RBAC Fallback: Replaced background
+      informer sync panics with graceful error recovery, supporting
+      namespace-scoped RBAC clusters.
+    - TUI Concurrency Deadlock Fix: Switched refresh queue delivery
+      to non-blocking sends and debounced filter inputs to
+      eliminate UI freezes.
+  * Codebase Simplification & Toolchain Modernization
+    - Dead Code Removal: Removed unused views/pod/logs.go and
+      deprecated metrics informer/lister infrastructure in k8s/.
+    - Direct Metric Summation: Eliminated redundant
+      v1beta1.PodMetrics round-trip conversion in
+      MainPanel.refreshPods.
+    - Go 1.27 Toolchain: Upgraded module toolchain to Go 1.27
+      across go.mod, Dockerfile, and GitHub Actions workflows.
+    - Standard Library Idioms: Modernized codebase to use
+      slices.Sort, slices.Contains, slices.Clone, and standardized
+      error wrapping with %w.
+    - Multi-OS CI Matrix: Expanded GitHub Actions CI test suite to
+      validate builds and tests across Linux, macOS, and Windows
+      (windows-latest).
+
+-------------------------------------------------------------------
 Tue Jan 13 13:17:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.3:

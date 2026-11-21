@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 15 14:30:32 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Build and run the upstream unit tests: configure with --enable-tests
+  and add a %check section running make check. Build-require check-devel
+  and libcmocka-devel for the unit-test framework. Drop the paintertest
+  helper that --enable-tests installs.
+
+-------------------------------------------------------------------
 Tue Jul 21 08:35:50 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Update to version 0.10.6.1:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Too many changes since 6.31.0, only listing bugfixes:
+  * DDS: add DX10 BC4/BC5/BC7 support (kde#524495)
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

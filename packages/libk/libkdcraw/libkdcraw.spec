@@ -23,7 +23,7 @@
 
 %bcond_without released
 Name:           libkdcraw
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GPL-3.0-or-later

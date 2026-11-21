@@ -10,9 +10,9 @@
 
   <property name="project.groupId" value="org.apache.maven.reporting"/>
   <property name="project.artifactId" value="maven-reporting-api"/>
-  <property name="project.version" value="4.0.0"/>
+  <property name="project.version" value="4.1.0"/>
 
-  <property name="spec.version" value="4.0"/>
+  <property name="spec.version" value="4.1"/>
 
   <property name="project.organization.name" value="The Apache Software Foundation"/>
   <property name="project.name" value="Apache Maven Reporting API"/>

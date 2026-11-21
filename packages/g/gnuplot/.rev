@@ -1456,4 +1456,29 @@ runtime rather than failing to build, and Factory ships libgd 2.3.3,
 so a BuildRequires floor would only make the package unresolvable.</comment>
     <requestid>1379308</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>25ee01ac6518e96be6aa18f9edc086ed</srcmd5>
+    <version>6.0.6</version>
+    <time>1794324576</time>
+    <user>anag_factory</user>
+    <comment>- Update to gnuplot 6.0.6
+  * NEW Honour environmental variable SOURCE_DATE_EPOCH for timestampd
+        - Allows reproducible builds of documentation and demo output
+  * NEW Allow replacement of any single line in a data block
+  * FIX rendering of missing character glyphs in cairo terminals
+  * FIX Systematic handling of integer and floating point overflow (sf#gnuplot#2883)
+        using compiler builtins if possible
+  * FIX &quot;unset nonlinear x&quot; is valid whether or not x is nonlinear (sf#gnuplot#2887)
+         This bug prevented all mousing of multiplots if any panel
+         contained linked or nonlinear axes.
+  * FIX prevent segfault on plotting an empty data block (sf#gnuplot#2882)
+  * FIX &quot;local array A&quot; at depth 0 is no different from &quot;array A&quot; (sf#gnuplot#2885)
+  * FIX misleading error messages for &quot;set contourfill defined&quot; (sf#gnuplot#2886)
+  * FIX mf (metafont) terminal: configuration error (sf#gnuplot#2888)
+  * FIX wxt terminal under wayland needs an explicit Refresh() (sf#gnuplot#2890)
+  * FIX &quot;if&quot; filter may require scanning an input field not in &quot;using&quot; (sf#gnuplot#2895)
+- Remove unneeded dependency on zziplib
+- Add explicit dependency on Qt6Widgets, libwebp, libwebpmux and zlib</comment>
+    <requestid>1396317</requestid>
+  </revision>
 </revisionlist>

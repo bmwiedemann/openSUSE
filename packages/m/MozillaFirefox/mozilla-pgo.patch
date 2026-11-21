@@ -5,11 +5,10 @@
 diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo.configure
 --- a/build/moz.configure/lto-pgo.configure
 +++ b/build/moz.configure/lto-pgo.configure
-@@ -98,22 +98,26 @@ def pgo_profile_path(path, pgo_use, prof
+@@ -96,20 +96,24 @@ def pgo_profile_path(path, pgo_use, prof
+     if not os.path.isabs(path[0]):
+         die("Argument to --with-pgo-profile-path must be an absolute path.")
      return path[0]
- 
- 
- set_config("PGO_PROFILE_PATH", pgo_profile_path)
  
  
  @depends(
@@ -32,7 +31,6 @@ diff --git a/build/moz.configure/lto-pgo.configure b/build/moz.configure/lto-pgo
          return None
  
      topobjdir = build_env.topobjdir
- 
 @@ -147,17 +151,17 @@ def pgo_flags(
      target_is_windows,
      pgo_temporal,

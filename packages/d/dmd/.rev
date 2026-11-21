@@ -451,4 +451,20 @@ Improved the spec file (forwarded request 542681 from worldcitizen)</comment>
     <comment>1</comment>
     <requestid>1373264</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>e064e8d966f23317a4a982859f7e5047</srcmd5>
+    <version>2.113.1</version>
+    <time>1793725149</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394638</requestid>
+  </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>32cc1c2750b4eec28fd4887f1b0f897a</srcmd5>
+    <version>2.114.0</version>
+    <time>1793991554</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395880</requestid>
+  </revision>
 </revisionlist>

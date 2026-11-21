@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov 14 11:01:25 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- Use the system libcurl, pugixml and libsodium instead of the
+  bundled copies, which drops three vendored source archives and
+  follows the distribution updates
+- Add 0002-use-system-curl.patch, 0003-use-system-pugixml.patch and
+  0004-use-system-libsodium.patch
+
+-------------------------------------------------------------------
+Sat Nov 14 06:36:02 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- Update to 4.14.4:
+  * VNote 4 is a rewrite on Qt 6 with a WebEngine based editor and
+    a native Typst editor
+  * Qt 6.9 or newer is required
+- Switch upstream to https://github.com/vnotex/vnote
+- Bundle vtextedit, QHotkey, vxcore, qwindowkit and m3, and vendor
+  the Rust crates of the Typst backend
+- Provide the sources upstream fetches at configure time from the
+  package instead of downloading them
+- Drop 0001-fix-build-with-cmake-4.patch, fixed upstream
+- Add 0001-QtKeychain-include-dir.patch to find keychain.h
+- Build only where Rust 1.99 or newer is available
+
+-------------------------------------------------------------------
 Sun Jun 28 21:40:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.20.1. Check the installed changes.md file for the

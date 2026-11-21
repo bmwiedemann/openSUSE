@@ -15,4 +15,12 @@
     <comment>Update codenomad to 1.0.1, all native code from source</comment>
     <requestid>1394317</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>fd6813541b6206138818391b5ad23130</srcmd5>
+    <version>1.1.0</version>
+    <time>1795182570</time>
+    <user>anag_factory</user>
+    <comment>Update codenomad to 1.1.0: design agent with Images, memory and Missions, Tauri 2.12, 6 undici CVE fixes.</comment>
+    <requestid>1398934</requestid>
+  </revision>
 </revisionlist>

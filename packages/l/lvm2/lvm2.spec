@@ -21,11 +21,11 @@
 %define libname_event libdevmapper-event1_03
 %define _udevdir %(pkg-config --variable=udevdir udev)
 %define cmdlib liblvm2cmd2_03
-%define lvm2_version              2.03.43
+%define lvm2_version              2.03.44
 # For device_mapper_version, it's package version, see bsc#1199074.
 # Also note there is another dm version on below "sed -ie ... VERSION_DM".
-%define upstream_device_mapper_version  1.02.217
-%define device_mapper_version           %{lvm2_version}_1.02.217
+%define upstream_device_mapper_version  1.02.218
+%define device_mapper_version           %{lvm2_version}_1.02.218
 %define thin_provisioning_version 0.7.0
 %if 0%{?suse_version} >= 1600 && ! 0%{?is_opensuse}
   %define _supportsanlock 0
@@ -33,12 +33,10 @@
   %define _supportsanlock 1
 %endif
 %define dlm_version     4.0.9
-# from lvm2 version 2.03, suse obsoleted clvm, cmirrord, liblvm2app & liblvm2cmd.
+# from lvm2 version 2.03, suse obsoleted clvm and cmirrord.
 # so the obseletes version is 2.03
 %define lvm2_clvm_version 2.03
 %define lvm2_cmirrord_version 2.03
-%define liblvm2app2_2_version 2.03
-%define liblvm2cmd2_02_version 2.03
 
 %if 0%{_supportsanlock} == 1
   %define sanlock_version 3.3.0
@@ -75,18 +73,17 @@ Source2:        lvm2-rpmlintrc
 Source42:       https://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 # Upstream patches
-Patch0001:      bug-1288220_pvscan-preserve-preferred-device-name-when-importing.patch
-
+# Patch0001:    N/A
 # SUSE patches: 1000+ for LVM
 # Never upstream
-Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
-Patch1003:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
-Patch1004:      bug-998893_make_pvscan_service_after_multipathd.patch
-Patch1005:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
-Patch1006:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
-Patch1007:      fate-31841-02_man-add-support-for-btrfs.patch
-Patch1008:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
-Patch1009:      bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
+Patch1001:      fate-309425_display-dm-name-for-lv-name.patch
+Patch1002:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
+Patch1003:      bug-998893_make_pvscan_service_after_multipathd.patch
+Patch1004:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+Patch1005:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
+Patch1006:      fate-31841-02_man-add-support-for-btrfs.patch
+Patch1007:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+Patch1008:      bug-1228854_lvm2-monitor-service-start-after-system-fully-booted.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-rules.patch
 # SUSE patches 3000+ for test code
@@ -146,7 +143,7 @@ Volume Manager.
 %prep
 %setup -q -n LVM2.%{version}
 
-%patch -P 0001 -p1
+%patch -P 1001 -p1
 %patch -P 1002 -p1
 %patch -P 1003 -p1
 %patch -P 1004 -p1
@@ -154,7 +151,6 @@ Volume Manager.
 %patch -P 1006 -p1
 %patch -P 1007 -p1
 %patch -P 1008 -p1
-%patch -P 1009 -p1
 %patch -P 2001 -p1
 %patch -P 3001 -p1
 
@@ -310,6 +306,9 @@ sed -ie "s/%{upstream_device_mapper_version}/1.03.01/g" VERSION_DM
     make install_systemd_units DESTDIR=%{buildroot}
     make install_systemd_generators DESTDIR=%{buildroot}
     make install_tmpfiles_configuration DESTDIR=%{buildroot}
+    # lvm-dumpconfig.8 is an alias page of lvm-config.8 with identical
+    # content; ship it as a symlink instead of a second copy
+    ln -sf lvm-config.8 %{buildroot}%{_mandir}/man8/lvm-dumpconfig.8
     # Install configuration file
     install -m 644 %{SOURCE1} "%{buildroot}/%{_sysconfdir}/lvm/"
     # Install testsuite
@@ -775,8 +774,6 @@ LVM commands use lvmlockd to coordinate access to shared storage.
 %package -n %{cmdlib}
 Summary:        LVM2 command line library
 Conflicts:      %{name} < %{version}
-Obsoletes:      liblvm2app2_2 <= %{liblvm2app2_2_version}
-Obsoletes:      liblvm2cmd2_02 <= %{liblvm2cmd2_02_version}
 
 %description -n %{cmdlib}
 The lvm2 command line library allows building programs that manage

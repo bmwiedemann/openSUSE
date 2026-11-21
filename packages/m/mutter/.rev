@@ -2553,4 +2553,13 @@ New stable rel</comment>
     <comment>Push GNOME 51.1</comment>
     <requestid>1385454</requestid>
   </revision>
+  <revision rev="274" vrev="2">
+    <srcmd5>ef605d1b79b462896e8cdf2fda62e55f</srcmd5>
+    <version>51.1</version>
+    <time>1794816452</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch to fix boo#1289464 on aarch64:
+  *  mutter-fix-aarch64.patch</comment>
+    <requestid>1397283</requestid>
+  </revision>
 </revisionlist>

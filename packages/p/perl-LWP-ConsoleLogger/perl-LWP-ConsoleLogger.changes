@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:33:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.000003
+   see /usr/share/doc/packages/perl-LWP-ConsoleLogger/Changes
+
+  1.000003  2026-09-18 14:14:21Z
+      - Add HTTP::Tiny support. debug_ua() and
+        LWP::ConsoleLogger::Everywhere now log HTTP::Tiny requests and
+        responses alongside LWP::UserAgent and Mojo::UserAgent. Note the
+        HTTP::Tiny caveats documented in LWP::ConsoleLogger::Easy and
+        LWP::ConsoleLogger::Everywhere: redirect chains are collapsed to the
+        final response, mirror() bodies are not captured, and some
+        transport-layer headers are reconstructed on a best-effort basis
+        (GH#53)
+      - Lower the Term::Table prerequisite from 0.028 to 0.013. 0.013 is the
+        first release that supports the pad and allow_overflow constructor
+        options LWP::ConsoleLogger passes; the 0.028 pin was simply the
+        latest release when the dependency was added, not a real minimum
+        (GH#60) (Reported by: Petr Písař)
+
+-------------------------------------------------------------------
 Wed May 13 10:46:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.000002

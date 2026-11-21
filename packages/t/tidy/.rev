@@ -238,4 +238,18 @@ SPDX format (the license corresponds to the W3C Software License) (forwarded req
     <comment></comment>
     <requestid>1265526</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>5682324e9552ae2e33240f4824bba091</srcmd5>
+    <version>5.8.0</version>
+    <time>1795182219</time>
+    <user>anag_factory</user>
+    <comment>- add license
+- remove -O0
+
+- remove static libraries
+- added directory to filelist
+- removed bogus self-provides
+- update to: tidy version 020428</comment>
+    <requestid>1398215</requestid>
+  </revision>
 </revisionlist>

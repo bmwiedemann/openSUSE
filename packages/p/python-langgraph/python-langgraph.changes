@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:28:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.23:
+  * Give Send-dispatched tool calls the same state as an edge,
+    so Pydantic and dataclass graphs no longer hand tools
+    a plain dict of channel values
+  * Avoid warning races in dynamic schema creation across threads
+  * Raise python-langgraph-prebuilt floor to >= 1.1.3 per upstream
+
+-------------------------------------------------------------------
+Sat Nov 14 07:43:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.22:
+  * Stream a child graph running on its own thread to a caller
+    streaming with subgraphs=True again, as before 1.2.19
+  * Skip message conversion in add_messages for plain messages
+  * Filter pending writes to the given tasks before reading
+    their statuses
+  * Match update keys against a set on wide states
+  * Check only failed futures for the runner stop condition
+  * Find untracked and delta channels once per run
+  * Spec-cleaner: use %{python_files} macro form
+
+-------------------------------------------------------------------
+Thu Nov 12 19:36:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.21:
+  * Read state/history of an undeclared subgraph namespace
+    with the parent graph instead of raising; updates still raise
+  * Match whole namespace segments in get_subgraphs() so
+    similarly named nodes resolve to the right subgraph
+  * Clarify in UnknownInterruptError docs that each interrupt()
+    call has its own id
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.20:
+  * Give each interrupt() in a task its own id.
+  * Add a strict resume mode that refuses stale interrupt answers.
+  * Point the multiple-interrupts error at the current docs.
+
+-------------------------------------------------------------------
 Sat Oct 31 13:48:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.19:

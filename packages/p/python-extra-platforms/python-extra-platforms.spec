@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        14.0.0
+Version:        14.0.1
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
@@ -78,8 +78,6 @@ rm -f tests/test_platform_data.py
 rm -f tests/test_sphinx_crossrefs.py
 
 IGNORED_CHECKS="test_pyproject_classifiers"
-# https://github.com/kdeldycke/extra-platforms/issues/745
-IGNORED_CHECKS="${IGNORED_CHECKS} or test_typing_is_not_imported"
 %pytest -k "not (${IGNORED_CHECKS})"
 
 %if %{with libalternatives}

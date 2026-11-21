@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Nov 10 16:58:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- typo fixes in changes and spec file
+
+-------------------------------------------------------------------
+Wed Nov  4 10:29:50 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- U_Revert-damage-Unlink-a-damage-from-the-list-it-was-a.patch
+  * reverts commit 0fb16f3d, which mistakenly broke driver ABI
+    (boo#1289271)
+
+-------------------------------------------------------------------
+Wed Oct 21 12:51:33 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1285086_CVE-2026-109091.patch
+  * X.Org Server EDID DS_RANGES Out-Of-Bounds Write
+    (bsc#1285086, CVE-2026-109091)
+- bsc1285087_CVE-2026-109092.patch
+  * X.Org Server XvShmPutImage Shared-Memory Bounds Overflow
+    (bsc#1285087, CVE-2026-109092)
+- bsc1285088_CVE-2026-109093.patch
+  * X.Org Server XTestFakeInput Valuator Stack Out-Of-Bounds Write
+    (bsc#1285088, CVE-2026-109093)
+- bsc1285089_CVE-2026-109094.patch
+  * X.Org Server XRes QueryResourceBytes Swap Path Size Overflow
+    (bsc#1285089, CVE-2026-109094)
+- bsc1285090_CVE-2026-109095.patch
+  * X.Org Server glamor Xv Image Size Integer Overflow
+    (bsc#1285090, CVE-2026-109095)
+- bsc1285091_CVE-2026-109096.patch
+  * X.Org Server XvPutImage Negative Image Size Length Bypass
+    (bsc#1285091, CVE-2026-109096)
+- bsc1285093_CVE-2026-109903.patch
+  * X.Org Server XvQueryImageAttributes Negative Size Reply
+    (bsc#1285093, CVE-2026-109903)
+- bsc1285094_CVE-2026-109904.patch
+  * X.Org Server XRes QueryClientIds Request Size Overflow
+    (bsc#1285094, CVE-2026-109904)
+
+-------------------------------------------------------------------
 Wed Oct 21 11:50:04 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.25
@@ -247,7 +287,7 @@ Fri Jun  6 10:44:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
   * Data leak in XFIXES Extension 6 (XFixesSetClientDisconnectMode)
     (CVE-2025-49177, bsc#1244085)
 - U_CVE-2025-49178-os-Account-for-bytes-to-ignore-when-sharing-input-bu.patch
-  * Unprocessed client request via bytes to ignore 
+  * Unprocessed client request via bytes to ignore
     (CVE-2025-49178, bsc#1244087)
 - U_CVE-2025-49179-record-Check-for-overflow-in-RecordSanityCheckRegist.patch
   * Integer overflow in X Record extension
@@ -313,7 +353,7 @@ Sat Jan  4 18:58:07 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Sat Jan  4 18:37:29 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
-- properly comment out also "PatchXX:" lines; since 
+- properly comment out also "PatchXX:" lines; since
   'osc service runall source_validator' failed with latest change
 
 -------------------------------------------------------------------
@@ -344,11 +384,11 @@ Sun Dec  8 19:01:08 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Wed Dec  4 12:41:37 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- no longer apply and remove 
+- no longer apply and remove
   u_xfree86-activate-GPU-screens-on-autobind.patch since it's
   no longer needed and might be harmful even ... (tested
   successfully on Thinkpad P16 with Intel/NVIDIA hybrid graphics)
-- remove no longer applied and no longer needed patch 
+- remove no longer applied and no longer needed patch
   n_xserver-optimus-autoconfig-hack.patch (feature implemented
   upstream)
 
@@ -357,7 +397,7 @@ Tue Oct 29 19:08:32 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - 21.1.14 covers also
   * CVE-2024-31080 (bsc#1222309)
-  * CVE-2024-31081 (bsc#1222310) 
+  * CVE-2024-31081 (bsc#1222310)
   * CVE-2024-31082 (bsc#1222311)
   * CVE-2024-31083 (bsc#1222312)
 
@@ -405,7 +445,7 @@ Wed Jun 12 09:08:15 UTC 2024 - Daniel Garcia <daniel.garcia@suse.com>
 Wed Apr 10 13:20:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_render-Avoid-possible-double-free-in-ProcRenderAddGl.patch
-  * fixes regression for security fix for CVE-2024-31083 (bsc#1222312, 
+  * fixes regression for security fix for CVE-2024-31083 (bsc#1222312,
     boo#1222442, gitlab xserver issue #1659)
 
 -------------------------------------------------------------------
@@ -489,7 +529,7 @@ Fri Feb  9 20:09:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Mon Jan 29 13:03:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
-- no longer (build-)require obsolete Xprint/XprintUtil 
+- no longer (build-)require obsolete Xprint/XprintUtil
 
 -------------------------------------------------------------------
 Tue Jan 16 13:41:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
@@ -513,8 +553,8 @@ Tue Jan 16 13:41:43 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 Sat Jan  6 20:01:20 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_miCloseScreen_check_for_null_pScreen_dev_private.patch
-  * miCloseScreen check for null pScreen dev private (bsc#1218176); 
-    another regression introduced by 
+  * miCloseScreen check for null pScreen dev private (bsc#1218176);
+    another regression introduced by
     U_bsc1216261-0002-fb-properly-wrap-unwrap-CloseScreen.patch
 
 -------------------------------------------------------------------
@@ -531,7 +571,7 @@ Sat Jan  6 15:12:29 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 Mon Dec  4 18:49:47 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_bsc1217765-Xi-allocate-enough-XkbActions-for-our-buttons.patch
-  * Out-of-bounds memory write in XKB button actions (CVE-2023-6377, 
+  * Out-of-bounds memory write in XKB button actions (CVE-2023-6377,
     ZDI-CAN-22412, ZDI-CAN-22413, bsc#1217765)
 - U_bsc1217766-randr-avoid-integer-truncation-in-length-check-of-Pr.patch
   * Out-of-bounds memory read in RRChangeOutputProperty and
@@ -572,7 +612,7 @@ Tue Feb  7 14:35:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version xorg-server-21.1.7:
   * This release contains the fix for CVE-2023-0494 in today's security
-    advisory: 
+    advisory:
     https://lists.x.org/archives/xorg-announce/2023-February/003320.html
     It also fixes a second possible OOB access during EnqueueEvent and a
     crasher caused by ResourceClientBits not correctly honouring the
@@ -584,13 +624,13 @@ Tue Feb  7 14:35:33 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 Wed Feb  1 10:18:32 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_Xi-fix-potential-use-after-free-in-DeepCopyPointerCl.patch
-  * DeepCopyPointerClasses use-after-free (CVE-2023-0494, 
+  * DeepCopyPointerClasses use-after-free (CVE-2023-0494,
     ZDI-CAN-19596, bsc#1207783)
 
 -------------------------------------------------------------------
 Wed Jan 25 16:02:23 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
-- rename u_xorg-server-oob-read-enqueue-event.patch to 
+- rename u_xorg-server-oob-read-enqueue-event.patch to
   U_xorg-server-oob-read-enqueue-event.patch since it's already
   upstream
 
@@ -636,7 +676,7 @@ Sat Dec 17 17:40:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
   U_0005-Xext-free-the-screen-saver-resource-when-replacing-i.patch
   U_0006-Xext-free-the-XvRTVideoNotify-when-turning-off-from-.patch
   U_0001-Xtest-disallow-GenericEvents-in-XTestSwapFakeInput.patch
-  
+
 -------------------------------------------------------------------
 Tue Dec  6 14:26:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
@@ -701,7 +741,7 @@ Mon Nov  7 11:43:29 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Wed Nov  2 15:37:07 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- removed N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch 
+- removed N_Disable-HW-Cursor-for-cirrus-and-mgag200-kernel-modules.patch
   * meanwhile cirrus and mgag200 Kernel drivers have been rewritten
     multiple times and no longer have (broken) hardware cursor
 
@@ -722,7 +762,7 @@ Wed Oct 19 11:06:46 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 -------------------------------------------------------------------
 Wed Jul 13 14:02:51 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- rename u_sync-pci-ids-with-Mesa-22.0.0.patch to 
+- rename u_sync-pci-ids-with-Mesa-22.0.0.patch to
   u_sync-pci-ids-with-Mesa.patch (currently synced with Mesa 22.1.3)
 
 -------------------------------------------------------------------
@@ -753,13 +793,13 @@ Wed Jul  6 12:21:11 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
     (CVE-2022-2320, ZDI-CAN-16070, bsc#1194181)
 - U_boo1194179-001-xkb-rename-xkb_h-to-xkb-procs_h.patch,
   U_boo1194179-002-xkb-add-request-length-validation-for-XkbSetGeometry.patch
-  * Out-Of-Bounds Access in _CheckSetSections() 
+  * Out-Of-Bounds Access in _CheckSetSections()
     (CVE-2022-2319, ZDI-CAN-16062, bsc#1194179)
 
 -------------------------------------------------------------------
 Tue May 10 13:04:38 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add n_raise_default_clients.patch 
+- add n_raise_default_clients.patch
 
 -------------------------------------------------------------------
 Wed Mar 30 12:36:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
@@ -783,28 +823,28 @@ Tue Feb 22 18:24:20 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Sat Feb 12 11:12:33 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_xephyr-Don-t-check-for-SeatId-anymore.patch
-  * fix mouse/keyboard focus in Xephyr (boo#1194658, 
+  * fix mouse/keyboard focus in Xephyr (boo#1194658,
     github issue#1289)
 
 -------------------------------------------------------------------
 Thu Feb 10 20:26:44 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- fix bashisms in pre_checkins.sh (bsc#1195391) 
+- fix bashisms in pre_checkins.sh (bsc#1195391)
 
 -------------------------------------------------------------------
 Mon Jan  3 21:03:34 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
-- u_xfree86-activate-GPU-screens-on-autobind.patch 
+- u_xfree86-activate-GPU-screens-on-autobind.patch
   * Part of the original patch by Dave Airlie has landed
     078277e4d92f05a90c4715d61b89b9d9d38d68ea, this contains the
-    remainder of what was in SUSE before Xorg 21.1. 
+    remainder of what was in SUSE before Xorg 21.1.
     (github issue#1254, boo#1192751)
 
 -------------------------------------------------------------------
 Mon Jan  3 18:29:59 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.3
-  * This release fixes several regressions since 1.20.x and 21.1.1 
+  * This release fixes several regressions since 1.20.x and 21.1.1
     + glx/dri: Filter out fbconfigs that don't have a supported pixmap format
     + xf86/logind: Fix compilation error when built without logind/platform bus
     + xf86/logind: fix missing call to vtenter if the platform device is not paused
@@ -849,7 +889,7 @@ Tue Dec 14 20:21:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 Tue Dec 14 15:31:41 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - U_rendercompositeglyphs.patch
-  * X.Org Server SProcRenderCompositeGlyphs Out-Of-Bounds Access 
+  * X.Org Server SProcRenderCompositeGlyphs Out-Of-Bounds Access
     Privilege Escalation Vulnerability [CVE-2021-4008, ZDI-CAN-14192]
     (boo#1193030)
 

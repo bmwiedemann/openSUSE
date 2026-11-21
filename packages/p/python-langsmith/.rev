@@ -539,4 +539,28 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.14.16.</comment>
     <requestid>1394128</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>4b77232011c84bbf89ae4d4203eeab1f</srcmd5>
+    <version>0.14.17</version>
+    <time>1793991532</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.14.17: SDK api_key_env profile, evaluator tables, uuid-utils 1.0 compat.</comment>
+    <requestid>1395856</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e53b9ef2ffcf903f20c6f8858454e15e</srcmd5>
+    <version>0.15.0</version>
+    <time>1795023169</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.15.0</comment>
+    <requestid>1398474</requestid>
+  </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>c6044432b8a1075c8710a677b683a46f</srcmd5>
+    <version>0.15.1</version>
+    <time>1795182494</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.15.1: annotation queues, sandbox volumes, selective evaluate upload, thread stats.</comment>
+    <requestid>1398896</requestid>
+  </revision>
 </revisionlist>

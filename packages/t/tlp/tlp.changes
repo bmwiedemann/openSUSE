@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:59:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.11.0:
+  * Configuration: rename parameter suffixes _AC to _PRF
+    (performance), _BAT to _BAL (balanced), while _SAV is
+    retained; old suffixes translated automatically at runtime.
+  * Configuration: add _SAV parameters to audio, disks,
+    filesystem, memory, PCIe, and radio devices.
+  * Processor: PLATFORM_PROFILE_ON_PRF/BAL/SAV accepts
+    space-separated lists of profiles; prefers
+    balanced-performance over performance, adds cool/quiet for
+    power-saver.
+  * Radio devices: extend device switching to cover all profiles
+    uniformly; USB_EXCLUDE_WWAN based on interface class/driver.
+  * USB: exclude serial port devices from autosuspend by
+    default; drop BlackBerry and Windows Phone detection.
+  * Profiles: tlp-pd daemonizes on startup, handles reload via
+    SIGHUP/systemctl, and provides SysVinit script.
+  * Battery Care: work around Lenovo charge_types kernel read
+    error by rewriting after suspend/hibernate.
+  * Disks: skip SATA links locked by firmware; prevent hotplug
+    applying to ATA disks.
+  * Drop deprecated RESTORE_DEVICE_STATE_ON_STARTUP and
+    RADEON_DPM_STATE_ON_AC/BAT/SAV.
+
+-------------------------------------------------------------------
 Tue Sep 01 01:07:43 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to version 1.10.2:

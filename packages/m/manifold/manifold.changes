@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 13 06:10:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.5
+  - Fix a Python abort when a vec/mat argument has the wrong type
+    (#1928) by @zmerlynn in #1930
+  - Check Python binding inputs and `MeshGL::Merge` indices (#1931)
+    by @zmerlynn in #1934
+  - Reject out-of-range arguments that crashed the library (#1933)
+    by @zmerlynn in #1936. A negative `set_properties` count now
+    returns `InvalidConstruction` instead of raising in Python.
+  - Don't leave a halfedge pair uninitialized when the count is odd
+    by @bramcohen in #1885
+  - Python: don't export the statically linked manifold and TBB
+    symbols (#1925) by @BiNeurale in #1926
+  - Python 3.15 wheels, from cibuildwheel 4.x (#1862, #1937)
+  - Backported to 3.5.x in #1932, #1939 and #1943.
+
+-------------------------------------------------------------------
 Fri Sep 25 11:30:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.5.4

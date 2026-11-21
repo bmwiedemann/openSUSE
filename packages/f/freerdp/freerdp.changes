@@ -1,4 +1,277 @@
 -------------------------------------------------------------------
+Sun Nov 15 14:30:32 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Run the upstream unit tests: pass -DBUILD_TESTING=ON to CMake so
+  that %ctest executes the FreeRDP test suite instead of zero tests,
+  and point LD_LIBRARY_PATH at the installed build libraries because
+  RPATH is disabled. Skip the H.264 test, which needs an encoder
+  implementation that is not available in the build environment.
+  Build-require xvfb-run and xorg-x11-server-Xvfb so that the X11
+  monitor test also runs.
+
+-------------------------------------------------------------------
+Wed Nov 11 21:22:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.33.1:
+  * Bugfix and papercut release:
+    + Improved shadow server:
+      - Faster encoding by avoiding unchanged areas
+      - Back pressure from client: if it can not keep up with in flight frames
+        reduce quality and do not send new frames
+      - Windows backend improvements
+      - Mac os backend improvements
+    + Hashless certificate support (Ed25519, Ed448, ML-DSA, SLH-DSA)
+    + Apple videotoolbox h264 encoder/decoder support
+    + Various RAILS fixes (x11 and sdl)
+  * CVE:
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x863-43r4-f7c2
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m33m-4qxh-hq76
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-52rf-pppx-qm55
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3664-pr8r-3254
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-rp99-f9qv-c446
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-23fv-6wrf-5hfq
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f6v9-vx5q-vjpf
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m6hp-4798-x78x
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-9c9j-2r7q-5gx2
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-ch3p-5r9r-w86p
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-76c4-7552-ffhv
+    + [channels,cliprdr] send empty format list
+    + [server,shadow] ignore the alpha byte when comparing X11 captures
+    + [client, ios] Add text clipboard, several fixes for ios clients.
+    + [client,x11] cliprdr: do not re-request TARGETS after the owner refused
+      them
+    + [shadow,win] inclusive monitor bounds, no copy past the screen
+    + [core,update] accept a bitmap wider than its rectangle
+    + [server,shadow] Win DXGI capture: survive ACCESS_DENIED during mode
+      transitions and secure desktop
+    + [server,shadow] rdpsnd: a format list per client, no samples before a
+      format is agreed
+    + [client,x11] keep RemoteApp windows created hidden unmapped until shown
+    + [winpr,input] map the Apple right Control key to VK_RCONTROL
+    + [shadow] server side dirty tile skipping for the GFX/RFX path
+    + [primitives,yuv] NEON RGBToYUV420_8u_P3AC4R and RGBToAVC444YUV/v2
+    + [codec,h264] Media Foundation H.264 encoder
+    + [channels,rdpsnd] server: no zero padding after an Opus packet
+    + [shadow,win] freerdp-shadow-service: the shadow server on the console
+      session
+    + [shadow,mac] a ScreenCaptureKit backend for the macOS shadow server
+    + [codec,av1] faster AV1 encoding for the shadow server
+    + [client,sdl] map the menu and Japanese keys
+    + [locale] fix keyboard layout ids
+    + [client,x11] drop unreachable connect error block
+    + [shadow,win] send the sound the computer plays
+    + [client,server] add missing [[nodiscard]]
+    + [channels,rdpsnd] skip playback when decoder produces no PCM data
+    + Warn fixes
+    + [winpr,clipboard] fix big-endian BMP test
+    + [server,shadow] clear errno before reading the /monitors index
+    + Coverity fixes
+    + [winpr,timezone] detect the browser time zone on Emscripten
+    + [client,sdl] setBordered: no SDL_SyncWindow on every window event
+    + [server,shadow] improve keyboard injection diagnostics
+    + [client,sdl] rail: leave the windows lock before re-locking calls
+    + [core,test] fix log message arguments
+    + [ci,abi] disable WITH_DSP_FFMPEG
+    + [ci,macos] fix script argument parser
+    + [ci,abi] disable WITH_FFMPEG
+    + [ci,abi] disable rdpecam
+    + [channels,rdpsnd] reset the device on disconnect under the play lock
+    + Oss scanner
+    + [core,input] drop input during deactivate/reactivate
+    + [channels,cliprdr] do not filter empty format lists
+    + [winpr,thread] at least 8 MiB of stack for a default-size thread
+    + [core,fastpath] release the input stream when dropping input
+    + [core,transport] answer KTLS BIO_CTRL queries
+    + [client,android] keep core startup and sessions usable in API 24
+      embedding apps
+    + [core,tcp] don't reverse resolve the address in connect error log
+    + [winpr,wlog] pass WINPR_HAVE_JOURNALD_H as a private definition
+    + [core,activation] implement full TS_BITMAPCACHE_PERSISTENT_LIST_PDU
+    + [core] Fix handling of inconsistent gateway settings
+    + [server,shadow] AVC420 for 10.x capability sets
+    + [server,shadow] keep the listener and frame pipeline alive with
+      unresponsive clients
+    + [primitives,yuv] fast RGBToI444_8u: generic, SSE4.1, AVX2, NEON
+    + [client,x11] implement xf_UnmapWindowForSurface
+    + [winpr,timezone] map renamed IANA zones to their other spelling
+    + [winpr,timezone] keep all parts of the zone name from a zoneinfo path
+    + [codec,video,apple] add VideoToolbox camera encoding
+    + [server,shadow] track desktop resolution changes during capture
+    + Warn cleanup
+    + [codec,rfx,progressive] fix inverted tile range checks
+    + [crypto,tls] leave the BIO retry flag to the thread that set it
+    + [shadow,mac] follow the client's Caps Lock
+    + [shadow,mac] send the Mac's cursor shapes to the clients
+    + [codec,h264] encode a changed region as well as a whole frame (AVC444v2
+      colours, AVC420 bits)
+    + [client,sdl] send the display scale in the core data
+    + Oss scanner
+    + [client,common] map rdp file keyboardhook to GrabKeyboard
+    + [shadow,win] DXGI: pause the capture on a desktop this process may not
+      see
+    + [client,Wayland] Serialize smart-sizing geometry queries with buffer
+      submission
+    + [channels,rdpsnd] publish the wire audio format for the web page
+    + [channels,rdpsnd,mac] catch AVAudioEngine exceptions in play
+    + Oss scanner
+    + [winpr,sspi] try the domain as realm before an enterprise principal
+    + [client,x11] forward modifier keys grabbed
+    + [shadow,mac] the surface follows display changes
+    + [channels,rdpear] derive the AP-REQ authenticator PDU number from the
+      request
+    + Sdl-freerdp: fix HiDPI cursor size and hotspot on Windows
+    + [channels,rdpgfx] count bytes and frames in the client stats
+    + [client,sdl] upload all dirty rects before drawing them scaled
+    + [server,shadow] end the connection properly on a failed logon
+    + [winpr,input] fix Korean keyboard (type 8) Hangul/Hanja and numpad
+      mapping
+    + [codec,h264] set keyframe interval
+    + Oss scanner
+    + [server,shadow] mcevent: a dropped round must not end the next one
+    + [client,android] repeat held keys in the keyboard accessibility service
+    + [codec,rfx] preserve trailing zero coefficients in RLGR encoder
+    + [winpr,gcc] check -Werrpr=unguarded-availability-new
+    + [client,x11] rail: leave override-redirect windows to the server
+    + [client,sdl3] fix closing the client during auto reconnect
+    + [client,sdl] say why SDL_Init failed, /list:monitor exit code
+    + [client,sdl] set the app_id of RemoteApp windows from the RAIL
+      application ID
+    + [client,sdl] skip a display without a size
+    + Papercuts2
+    + [client,sdl] rail: allow the screen saver in RemoteApp
+    + [core] keep a signal stop during auto reconnect
+    + [client,common] clipboard: no file paths without a FUSE mount
+    + [server,shadow] GFX flow control: at most 8 frames in flight
+    + [client,android] let physical keyboards use the Android layout
+    + [client,X11] add /floatbar:position:[left|center|right]
+    + [core] reject inconsistent MCS and Demand Active lengths
+    + [winpr,path] winpr_RemoveDirectory_RecursiveA: remove what is inside
+    + Warn clean
+    + [crypto,tls] accept certificates signed without a hash (Ed25519, ML-DSA)
+    + [client] fix FREERDP_CLIENT_KBD_MOD use
+    + [client,sdl3] fix cancel in the reconnect dialog
+    + [crypto,test] disable ed448 test if OpenSSL < 3.5
+    + [client,common] Give each clipboard context its own FUSE mount
+    + [server,shadow] -sec-nla and -sec-ext manpage update
+    + [core,settings] prevent RemoteApplicationMode and SpanMonitors
+    + [client,sdl] don't re-offer the browser clipboard the server replaced
+- Drop 0000-client-sdl-fix-version-guard.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Nov  8 09:33:16 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
+
+- Fix build with SDL 3.4.20 with
+  0000-client-sdl-fix-version-guard.patch
+
+-------------------------------------------------------------------
+Tue Nov  3 09:36:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.33.0:
+  * What is new:
+    + Webassembly support, now can run from within your browser
+    + Improved SDL client RAILS
+    + Experimental UDP support for direct (without gateway) RDP connections
+    + Unicode keyboard input pipe now supported by all clients (on systems that
+      support mkfifo unix style pipes)
+    + Experimental windows shadow server support. It is back from the dead!
+    + Mac OS file clipboard support without FUSE (all clients)
+    + Initial support for translation of messages The influx of pull requests
+      and feedback for bugs/regressions/... was huge, so we will do a patch
+      release with all the papercuts and bug still in the backlog soon.
+  * CVE:
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-hhfh-fvm7-7w65
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pq35-c472-69w2
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-v7hr-xh82-79p7
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-9r9q-9r7p-4mr6
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-76c4-7552-ffhv
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-j5pq-cm28-qm6v
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-2hm9-2h5q-x525
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-hj6g-r86h-wrcg
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-fw6x-h8gw-778w
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q8p6-8mmj-j4ph
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-r664-f94r-rgg6
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4g67-jhpc-q5xp
+    + Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-8m87-jj8p-2fqc
+    + [core,nla] report NTLM rejected
+    + [codec,av1] fix colours of decoded YUV444 frames
+    + [core,peer] skip disconnect sequence when MCS not established
+    + [client,sdl] send one wheel axis per event
+    + Rail: initialize client status before deferred RemoteApp execution
+    + Fix stale signature pointer in v1 cert writer
+    + [client,sdl] strip the terminating \0 from text for local applications
+    + [codec,dsp] only create an Opus coder for Opus formats
+    + [client,x11] Send Backspace and Delete as scancodes in Unicode mode
+    + [codec,channels] guard new Android MediaCodec/AAudio APIs behind their
+      introduced-in level
+    + Must have feature: pretend that a movie or gstreamer pipeline is your
+      camera
+    + [channels,rdpdr] add 64-bit, file information and volume drive APIs to
+      the server
+    + [codec,h264] add Apple VideoToolbox decoder
+    + [client,sdl] resend the window layout to a new display channel
+    + [channels,rdpsnd] allow some slack before dropping samples as overrun
+    + [channels,rdpsnd,winmm] keep a little audio queued ahead
+    + Kerberos realm prompter fixes
+    + [client,sdl] log a failed display layout as such
+    + [channels,rdpsnd,pulse] default target latency, and silence in front when
+      playback restarts
+    + [winpr,clipboard] fix HTML synthesizer destination format checks
+    + [client,x11] add deferred alt forwarding option to prevent alt keys from
+      being prematurely sent to remote
+    + [client,x11] keep keyboard mappings across MappingNotify reloads
+    + [core,connection] Send client messages stateless
+    + [core,connection] go on after the server Monitor Layout PDU
+    + [common,settings] add canary for freerdp_device_free
+    + [core,gateway] clear completed RDG header state
+    + [core,multitransport] client side UDP multitransport
+    + [core,settings] keep desktop and device scale factors apart
+    + [core,proxy] fix length of HTTP basic auth string
+    + [codec,av1] decode with WebCodecs in Emscripten builds
+    + [client,x11|sdl] wait the resize delay after DisplayControlCaps
+    + [core,proxy] allow ignoring proxy servers
+    + [core,gateway] unify rts_syntax_id_new/free
+    + [channels,rdpsnd] add a Web Audio backend for Emscripten builds
+    + [client,sdl] test the system configuration in TestSDLPrefs
+    + [channels,rdpsnd] relink when the JavaScript library changes
+    + [client,common] sso-mib: decode req_cnf as base64url
+    + [codec,h264] decode with WebCodecs in Emscripten builds
+    + [core,connection] detect a broker redirect
+    + [core,connection] leave the active state before disconnecting
+    + [client,sdl] pass the activating click to RemoteApp windows
+    + [channels,audin] add a Web Audio microphone backend for Emscripten builds
+    + [client,sdl] no connection dialog window in Emscripten builds
+    + [winpr,sync] yield to the browser through a MessageChannel
+    + [client,sdl] browser clipboard for Emscripten builds
+    + [winpr,utils] abort PNG write on size wrap or realloc failure
+    + [client,sdl] RemoteApp fixes and cleanups
+    + [client,sdl] Emscripten: a page may split the canvas into monitors
+    + [client,sdl] stop server output only when every monitor window is hidden
+    + [client,sdl] add Windows support for RemoteApp
+    + [client,common] stop auto-reconnect when a reconnect attempt is rejected
+    + [client,sdl] fix RemoteApp popups dragged
+    + [core,fastpath] discard input events before activation
+    + [client,common] fill in the touch contact count
+    + [client,sdl] RemoteApp window position, size and minimize fixes
+    + [shadow,win] follow encoder preferred fps in capture loop
+    + [codec,video] add android mediacodec support
+    + [client,sdl] rail: keep popups whose SDL parent goes away; do not
+      disconnect on orders for unknown windows
+    + [client,x11] do not send cliprdr data on a torn down channel
+    + [client,sdl] send keys as unicode with /kbd:unicode
+    + [codec,h264] harden emscripten NAL parser
+    + [client,sdl3] register the signal cleanup handler again
+    + [client,sdl] send the physical monitor size in millimetres
+    + [client,sdl] rail: never activate WS_EX_NOACTIVATE windows
+    + [core,rdstls] add more failure logging
+    + [core,listener] listen on a Unix socket on Windows too
+    + [channels,rdpear] add workaround for older windows versions
+    + Fix the reference-count imbalance in printer_android_new_printer() in…
+    + [channels,rdpsnd] client: drop a wave that does not decode, keep playing
+    + [channels,cliprdr] tolerate a malformed FAIL response
+    + [codec,h264] VideoToolbox H.264 encoder
+    + [client,sdl] move queued items out before pop()
+
+-------------------------------------------------------------------
 Mon Oct 19 11:38:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.32.2:

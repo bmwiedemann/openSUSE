@@ -1,7 +1,7 @@
 #
 # spec file for package fortio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           fortio
-Version:        1.76.0
+Version:        1.77.0
 Release:        0
 Summary:        Load testing library, command line tool, advanced echo server and web UI
 License:        Apache-2.0
 URL:            https://github.com/fortio/fortio
 Source:         fortio-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.26
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Fortio (Φορτίο) started as, and is, Istio's load testing tool and now graduated to be its own project.

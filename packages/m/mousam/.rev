@@ -31,4 +31,70 @@
     <comment>Bump version</comment>
     <requestid>1350974</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8f0f53a4087a4ccb8b00afab2d628a48</srcmd5>
+    <version>3.0.0</version>
+    <time>1795103757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.0:
+  * Highlights:
+    + Weather overview: a one-line summary of the coming hours, such as when
+      rain starts, under the current conditions. It can be turned off in
+      Preferences.
+    + Overview notifications: the overview arrives as a desktop notification
+      while the window is minimized or in compact mode. It replaces the old
+      notification on every refresh.
+    + Run in background: new option to keep Mousam running when its window is
+      closed.
+    + Icons: choose between the default and Material weather icons.
+  * Design:
+    + Redesigned top section, gauges, bars and air quality graph.
+    + The sunrise card draws the sun's path through the day and shows the moon
+      phase and twilight.
+    + The weekly forecast shows temperature ranges, the chance of rain as drops
+      and snow as snowflakes. The tomorrow list shows how heavy the rain will
+      be.
+    + Air quality details open in a dialog, with the main pollutant and health
+      advice.
+    + Preferences regrouped into a dialog. The About dialog shows release notes
+      and troubleshooting info.
+  * Locations and compact mode:
+    + Saved locations show their current weather and local time. You can
+      reorder them by drag or with Alt+Up and Alt+Down.
+    + Faster city search that no longer freezes the window, with a Retry button
+      when it fails.
+    + Compact mode spells out its details, can be left with Esc and offers
+      Retry after an error.
+  * Fixes:
+    + Pressure is now sea-level pressure, so high places no longer always read
+      &quot;Low&quot;.
+    + Fixed 100% CPU use and memory growth on refresh.
+    + Fixed hourly tiles cut off by the scrollbar.
+    + Fixed old units showing right after switching between metric and
+      imperial.
+    + Feat(ui-forecast): remove bottom margin on forecast GtkBox
+    + Added pt_PT translation
+    + Fix Wind/Precipitation and Weekly tabs silently failing due to
+      weak_connect() GC bug
+    + Update pt_BR.po
+    + Enhance UI and refactor architecture for improved performance
+    + Improve rain icon contrast
+    + Update POT and PO files
+    + Fixes and translations in Spanish strings
+    + Portuguese (Portugal) translation update
+    + Fix: fix and complete Spanish (es_ES) translations
+    + Feat/add catalan translations
+    + Fix: round pressure in compact mode
+    + Fix: refresh saved locations without PreferencesGroup.get_row
+    + Improve Czech translation
+    + Enhance UI, refactor architecture, and improve data handling
+    + Fix compact mode layout, hourly clipping, fix 100% CPU and memory growth
+      on refresh, redesign the Cairo-drawn cards and several UI bugs
+    + Feat: Smart Weather Overview, redesigned cards and forecast, plus
+      stability fixes
+    + Weather overview notifications, new preferences, better forecast and
+      cards, GNOME 51
+  * Updated translations.</comment>
+    <requestid>1398617</requestid>
+  </revision>
 </revisionlist>

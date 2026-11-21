@@ -989,4 +989,14 @@
   * certbot and its acme library now require cryptography&gt;=47.0.0</comment>
     <requestid>1376371</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>fb3a88f0acfa016f7bc32242f2d14c5f</srcmd5>
+    <version>5.10.0</version>
+    <time>1795103874</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.10.0
+  * Rejects invalid ARI suggested renewal windows whose end time
+    is not after their start time.</comment>
+    <requestid>1398693</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Nov 14 17:50:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.4.0
+  * New features and improvements
+    + Make BuildContext.getValue generic
+  * Bug Fixes
+    + Give DefaultProgress a single scope annotation
+  * Maintenance
+    + Declare the Maven artifacts the code uses
+    + Keep SLF4J on 1.7.x in Dependabot
+  * Build
+    + Run unit tests and cover the components
+    + Allow running the release drafter by hand
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump org.eclipse.sisu:org.eclipse.sisu.plexus from 1.1.0 to
+      1.1.2
+    + Bump org.apache.maven:maven-core from 3.9.16 to 3.10.0
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+- Changes of version 1.3.0
+  * New features and improvements
+    + Delegate getValue/setValue in DefaultBuildContext to legacy
+      build API
+    + Create dedicated Messages API
+    + Remove obsolete TODO comments from BuildContext interface
+    + Add a Progress API
+    + Fix Artifact id returned instead of project version
+    + Add support for sending mojo execution events
+    + Use EventSpy to handle execution of events
+    + Add a connect API for inter-process-communication between
+      maven and IDE
+    + Establish an automatic module name
+  * Documentation updates
+    + Describe the artifact in the POM
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Bump plexus-utils to 4.1.0
+    + Bump org.codehaus.plexus:plexus from 13 to 26
+    + Bump release-drafter/release-drafter from 5 to 7.7.0
+    + Bump org.eclipse.sisu:org.eclipse.sisu.plexus from 0.9.0.M2 to
+      1.1.0
+    + Bump org.apache.maven:maven-core from 3.9.9 to 3.9.16
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.0 to 4.0.3
+    + Bump maven-surefire-plugin from 3.1.0 to 3.1.2
+
+-------------------------------------------------------------------
 Tue Oct  7 11:46:20 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix wrong url
@@ -21,7 +68,7 @@ Wed May  1 11:49:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + Use a CachingOutputStream when using the build context
     + Reuse plexus-pom action for CI
     + Add README and LICENSE
-    + Remove ThreadBuildContext (#51) @laeubi
+    + Remove ThreadBuildContext
   * Bug Fixes
     + Store Objects in the DefaultContext in a map
     + Let the DefaultBuildContext delegate to the legacy build-api

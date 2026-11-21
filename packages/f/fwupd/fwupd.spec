@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.9
+Version:        2.1.10
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -349,7 +349,6 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.freedesktop.fwupd.metainfo.xml
 %{_datadir}/icons/hicolor/*
-%{_prefix}/lib/systemd/system-shutdown/fwupd.shutdown
 %dir %{_libdir}/fwupd-*
 %{_libdir}/fwupd-*/libfu_plugin_modem_manager.so
 %{_libdir}/fwupd-*/libfwupdengine.so

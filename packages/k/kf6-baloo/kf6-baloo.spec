@@ -16,14 +16,14 @@
 #
 
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define rname baloo
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-baloo
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -33,8 +33,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-service-do-not-start-too-early.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel
 BuildRequires:  lmdb-devel
@@ -142,13 +140,13 @@ package contains aditional command line utilities. Development files.
 %ldconfig_scriptlets -n libKF6BalooEngine6
 
 %post file
-%{systemd_user_post kde-baloo.service}
+%{systemd_user_post kde-baloo.service kde-baloo-idle-monitor.service}
 
 %preun file
-%{systemd_user_preun kde-baloo.service}
+%{systemd_user_preun kde-baloo.service kde-baloo-idle-monitor.service}
 
 %postun file
-%{systemd_user_postun kde-baloo.service}
+%{systemd_user_postun kde-baloo.service kde-baloo-idle-monitor.service}
 
 %files -n libKF6Baloo6
 %license LICENSES/*
@@ -165,7 +163,11 @@ package contains aditional command line utilities. Development files.
 %{_kf6_debugdir}/baloo.renamecategories
 %{_kf6_libexecdir}/baloo_file
 %{_kf6_libexecdir}/baloo_file_extractor
+%{_kf6_libexecdir}/baloo_idle_monitor
+%{_kf6_sharedir}/dbus-1/services/org.kde.baloo.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.baloo_idle_monitor.service
 %{_userunitdir}/kde-baloo.service
+%{_userunitdir}/kde-baloo-idle-monitor.service
 
 %files kioslaves
 %{_kf6_plugindir}/kf6/kded/baloosearchmodule.so

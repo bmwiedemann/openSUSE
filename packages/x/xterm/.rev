@@ -2054,4 +2054,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     screen's process (Debian #243598). (forwarded request 1382864 from dirkmueller)</comment>
     <requestid>1382992</requestid>
   </revision>
+  <revision rev="156" vrev="1">
+    <srcmd5>13ed42fb180afcde378050aa040a357b</srcmd5>
+    <version>412</version>
+    <time>1793724737</time>
+    <user>anag_factory</user>
+    <comment>Update xterm to 412 (regex-selection, screen-clear, DECRQM fixes; Unicode 18.0.0; spec cleanup). (forwarded request 1394322 from pluskalm)</comment>
+    <requestid>1394395</requestid>
+  </revision>
 </revisionlist>

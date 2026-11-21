@@ -17,7 +17,7 @@
 
 
 %define pgmajor 16
-%define pgminor 15
+%define pgminor 16
 
 ### CUT HERE ###
 %define pgname postgresql%pgmajor
@@ -35,10 +35,15 @@
 %define pgextensiondir %pgdatadir/extension
 %define pgcontribdir %pgdatadir/contrib
 %define pgmandir %_mandir
+%if 0%{?prerelease:1}
+%define pgversion  %{pgmajor}~%{prerelease}
+%define tarversion %{pgmajor}%{prerelease}
+%else
 %define pgversion %{pgmajor}.%{pgminor}
-%define tarversion %{pgversion}%{?prerelease}
+%define tarversion %{pgversion}
+%endif
 
-%if %pgmajor == 18 || ( %pgmajor == 17 && 0%{?sle_version} == 120200 )
+%if %pgmajor == 19 || ( %pgmajor == 17 && 0%{?sle_version} == 120200 )
 # We still build the libs for PG 17 on SLE-12-SP2, because
 # newer PG versions will only be released for SP5.
 %define buildlibs 1
@@ -73,7 +78,7 @@ Name:           %pgname
 %bcond_without alts
 Requires:       pg_alts
 %else
-%define         packaging_level 18
+%define         packaging_level 19
 %bcond_with alts
 %define install_alternatives /usr/share/postgresql/install-alternatives %pgmajor
 %endif
@@ -438,8 +443,8 @@ Requires(postun): postgresql-llvmjit-devel-noarch >= %packaging_level
 Requires:       %_bindir/clang
 Requires:       %_bindir/llc
 %else
-Requires:       clang%{?postgresql_llvm_version}-devel
-Requires:       llvm%{?postgresql_llvm_version}-devel
+Requires:       clang%{?postgresql_llvm_version}
+Requires:       llvm%{?postgresql_llvm_version}
 %endif
 %endif
 
@@ -727,12 +732,15 @@ genlists ()
     # usage: genlists packagename basenames
     PKG=$1
     shift
+    # Keep find-lang.sh from adding a %defattr with mode 644
+    echo "%defattr(-,root,root)" >> $PKG.files
     for f in $@
     do
         BIN=%_bindir/$f
         PGBIN=%pgbindir/$f
         MAN=%pgmandir/man1/$f.1*
 
+        %find_lang $f-$VLANG $PKG.files ||:
         # Package only binaries that exist in this version
         test -e %buildroot$PGBIN || continue
 
@@ -749,7 +757,6 @@ genlists ()
         echo "$BIN" >> $PKG.files
         test -e %buildroot$MAN &&
             echo "%doc $MAN" >> $PKG.files
-        %find_lang $f-$VLANG $PKG.files ||:
     done
 }
 %if !%mini
@@ -809,6 +816,10 @@ genlists contrib \
         pgbench \
 	vacuumlo \
 	pg_test_timing
+
+genlists test \
+	postgresql-regress
+
 for pl in plperl plpython pltcl; do
     %find_lang $pl-$VLANG $pl.lang
 done
@@ -947,7 +958,7 @@ fi
 %ghost /etc/alternatives/postgresql
 %endif
 
-%files test
+%files test -f test.files
 %defattr(-,root,root,-)
 %pgtestdir
 
@@ -985,6 +996,10 @@ fi
 %pglibdir/*_and_*.so
 %pglibdir/euc2004_sjis2004.so
 %pglibdir/libpqwalreceiver.so
+%if %pgmajor >= 19
+%pglibdir/cyrillic.so
+%pglibdir/pgrepack.so
+%endif
 %pgextensiondir/plpgsql*
 
 %if %{with llvm}

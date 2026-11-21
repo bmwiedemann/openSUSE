@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:11:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.45.1:
+  * Make AnyValue and AttributeValue explicit type aliases.
+  * Fix quadratic-time parsing of the tracestate header and
+    discard headers longer than 8192 characters.
+  * CVE-2026-114603: denial of service via unbounded whitespace
+    matching in TraceState.from_header (boo#1287483)
+
+-------------------------------------------------------------------
 Sat Sep 26 14:12:17 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.45.0

@@ -1,7 +1,7 @@
 #
 # spec file for package mfgtools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           mfgtools
-Version:        1.5.201
+Version:        1.5.243
 Release:        0
 Summary:        Freescale/NXP I.MX Chip image deploy tools
 License:        BSD-3-Clause
-Group:          System/Management
 URL:            https://github.com/NXPmicro/mfgtools
 Source0:        %{name}-uuu_%{version}.tar.gz
-Patch0:         mfgtools-gcc13.patch
-Patch1:         mfgtools-gcc15.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
@@ -33,7 +30,7 @@ BuildRequires:  libopenssl-devel
 BuildRequires:  libusb-1_0-devel
 BuildRequires:  libzip-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  tinyxml2-devel
 BuildRequires:  zlib-devel
 

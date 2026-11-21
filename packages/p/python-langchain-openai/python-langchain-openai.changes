@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:44:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.0:
+  * Add OpenAIClassifier for the GA Decisions API
+  * Refresh OpenAI model profile data
+  * Drop Python 3.10 support, minimum is now Python 3.11
+- Raise the langchain-core requirement to 1.8.0, as upstream does
+
+-------------------------------------------------------------------
+Sat Nov  7 12:43:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.4:
+  * Standardize model refusal content blocks
+  * Refresh OpenAI model profile data
+- Raise the langchain-core requirement to 1.7.5, as upstream does
+- Spec cleanup: use the bare files-macro form
+
+-------------------------------------------------------------------
 Tue Oct 27 06:31:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.3:

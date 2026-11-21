@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Sun Nov  1 21:47:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.23.7:
+  * CVE-2026-XXXXX (GHSA-xwcv-cp39-m2w4) Out-of-bounds read in
+    the OpenH264 decoder plugin. An AVC SPS that libheif's coded-
+    size check could not parse was skipped and still passed to
+    OpenH264, which accepts cropping offsets whose sum wraps
+    around and returns plane pointers far outside of its frame
+    buffer. An SPS that cannot be parsed is now an error, also in
+    subset SPS NAL units. The VVC SPS check had the same pattern
+    and fails closed as well. Introduced with the coded-size
+    check of v1.23.5. (high)
+  * CVE-2026-XXXXX (GHSA-jx54-6rm6-2cgj) The AV1 coded-size check
+    of v1.23.5 could be bypassed with libaom through an OBU
+    without a size field. libheif stopped scanning at that OBU,
+    while libaom continued and decoded a later, larger sequence
+    header and frame. The last OBU of a sample is now given an
+    explicit size before the data is scanned and decoded, so that
+    both see the same framing. (high)
+  * CVE-2026-XXXXX (GHSA-fpr5-xpfr-vcq3) The AV1 coded-size check
+    of v1.23.5 could be bypassed with libaom.
+    `num_ticks_per_picture_minus_1` was read with a UVLC reader
+    that stops after 20 leading zero bits, although AV1 allows
+    31, and the error was ignored. The sequence header was then
+    skipped, or scanned from the middle of the code where it
+    could yield a small decoy size, and libaom allocated the
+    real, much larger frame. The AV1 UVLC reader now follows the
+    AV1 specification, and a sequence header that cannot be
+    scanned completely is rejected. (high)
+  * CVE-2026-XXXXX (GHSA-35mc-3887-rr37) Heap use-after-free when
+    grid tiles are decoded in parallel. Several derived tiles
+    (`iovl`, `iden` or `grid`) can share one coded input image.
+    Their bit-depth queries read the decoder data of that input
+    while another tile thread replaced it during decoding. A
+    crafted file could crash the application or corrupt the heap
+    with default options. The bit-depth queries now lock the
+    decode mutex of the queried item. Only v1.23.6 is affected.
+    (high)
+  * CVE-2026-XXXXX (GHSA-hpg4-g2gc-pq42) Heap buffer overflow
+    when padding an image to a size that is larger in one
+    dimension and smaller in the other.
+    `heif_image_extend_padding_to_size()` could be reached with
+    such a size by re-encoding a sequence whose frames have
+    different sizes with the x265 or x264 sequence encoder.
+    Padding now refuses a size below the image or any of its
+    planes, checks all planes before changing them, and the
+    sequence encoders refuse a frame whose size differs from the
+    first frame. (high)
+  * CVE-2026-XXXXX (GHSA-9rpf-2x22-78m9)
+    `heif_context_encode_thumbnail()` returned success without
+    setting the output handle when the image already fits into
+    the bounding box. Callers that released the handle, among
+    them `heif-enc -t` and the C++ wrapper, freed an
+    uninitialized or stale pointer (use-after-free, double free).
+    The handle is now set to NULL in that case, as the API
+    documentation says. (high)
+  * CVE-2026-XXXXX (GHSA-48p4-gj45-w9v6) CPU exhaustion through
+    derived images that decode a large image again and again and
+    use only a few pixels of it, for example a grid of 1x1 tiles
+    that are each a `clap` crop of an 8192x8192 overlay. A 2.6 kB
+    file took 26 seconds to decode. Each decode now has a pixel
+    budget of twice the size of the distinct images it uses (at
+    least 2048x2048, at most `max_image_size_pixels`), single-
+    tile decodes get their share of it, an exceeded security
+    limit in a grid tile is an error also without strict
+    decoding, and grid tiles outside of the image are not
+    decoded. (high)
+  * CVE-2026-XXXXX (GHSA-2g6j-vhr6-6wrj) CPU exhaustion through
+    many coded pictures in one image item or sequence sample. The
+    decoder decoded all of them, although only one image is
+    returned: a 16 kB file with 1000 hidden HEVC pictures of
+    4096x4096 took 14 seconds. More than eight coded pictures per
+    decode are now refused. HEVC, AVC and VVC count picture
+    starts, AV1 counts frame OBUs, and AVC data with embedded
+    start codes is refused. (high)
+  * CVE-2026-XXXXX (GHSA-7qm8-hj35-269r) CPU exhaustion through
+    repeated transformations. An item could carry many
+    associations of the same `irot`, `imir` or `clap` property,
+    and `iden` chains multiplied them: a 28 kB file took 73
+    seconds to decode. An item may now have at most one
+    association of each of these properties, as HEIF requires,
+    and at most 32 transformations are applied along a decode
+    path. (high)
+  * CVE-2026-XXXXX (GHSA-hhg3-fxg7-3gxw) CPU exhaustion while
+    opening a file whose images have many `colr` associations.
+    Reading the file regenerated and compared a colour profile
+    property for every association. Reading and encoding now
+    store colour profiles separately, so that opening a file does
+    not create properties. (high)
+  * CVE-2026-XXXXX (GHSA-73j7-gvm9-x8q6) CPU exhaustion in
+    sequence decoding through samples that produce no output, for
+    example when an edit list repeats a sample that the decoder
+    does not display. One call of
+    `heif_track_decode_next_image()` could run for minutes, also
+    with `ignore_sequence_editlist`. The number of samples that
+    are decoded without returning frames is now limited per
+    codec, and `ignore_sequence_editlist` stops after the
+    original samples. (high)
+  * CVE-2026-XXXXX (GHSA-74mj-m37q-h3q9) Quadratic CPU time when
+    opening a file with a `moov` box. The `stsc` entry of every
+    chunk was looked up by a linear scan, so a file with many
+    chunks and `stsc` entries took seconds to minutes to open,
+    also when the application only reads the still image. The
+    lookup is now a binary search, and an `stsc` table whose
+    `first_chunk` values decrease is refused. (high)
+  * CVE-2026-XXXXX (GHSA-rcqc-842v-m26h) Deadlock when decoding a
+    grid image with parallel tile decoding and non-strict
+    decoding. A tile that was skipped because it is not valid
+    left an empty entry in the job queue, which was dispatched as
+    a decode of item ID 0 and could deadlock with the other tile
+    threads. Skipped tiles no longer create decode jobs. (high)
+  * CVE-2026-XXXXX (GHSA-pfcm-ffqg-84hx) CPU exhaustion through
+    cyclic Exif IFD pointers in the `heifio` helper of `heif-
+    dec`, `heif-thumbnailer` and `heif-enc`. The tag search
+    followed IFD pointers in loops. The traversal is now bounded
+    by the size of the Exif data. Applications that use only the
+    library, and the gdk-pixbuf loader, are not affected. (high)
+  * CVE-2026-XXXXX (GHSA-gff5-3vgr-p8h2) The gdk-pixbuf loader
+    ignored the error of `heif_image_scale_image()` and used an
+    uninitialized image pointer, which gdk-pixbuf later released.
+    A small valid file made the scaling fail when an application
+    loaded it with a fixed width or height and kept the aspect
+    ratio (a 1x65536 AVIF loaded at a width of 3840 requests a
+    2.9 TB image), which crashed the application. The loader now
+    checks the result and refuses output sizes above
+    `max_image_size_pixels`. (medium)
+  * (GHSA-r9cg-w542-g7hj) `heif-dec -S` and `heif-info` printed
+    and released an uninitialized URI pointer when a `urim`
+    sample entry has no `uri ` box. Depending on the build, they
+    crashed, or read and freed the URI of a previous track a
+    second time. The library is not affected. (low)
+  * All of these issues were found by Anthropic's OSS Scanner.
+    Thanks also to @iPlayForSG and @SounLabs, who reported
+    GHSA-74mj-m37q-h3q9 independently.
+  * `heif_image_scale_image()` and
+    `heif_track_get_urim_sample_entry_uri_of_first_cluster()` set
+    their output pointer to NULL on error, so that a caller that
+    misses the error check does not use an uninitialized pointer
+  * A JPEG stream whose SOF marker cannot be parsed is refused
+    instead of being passed to the decoder without a size check
+  * The libde265 plugin refuses NAL units of 2 GB or more.
+    libde265 takes the size as `int`, and versions 1.1.0 to 1.1.2
+    did not reject the negative value
+  * Reading sample auxiliary information with a constant size
+    from `saiz` is bounded by the sample count of the `saiz` box,
+    as it already was for variable sizes
+  * The chroma bit depth query of a grid image whose first tile
+    is missing returns -1 instead of dereferencing a null pointer
+  * heif-enc: the WebVMT parser was rewritten without
+    `std::regex`, whose recursion overflowed the stack for long
+    sync data (about 30,000 characters). Timestamps are checked
+    as the WebVMT specification defines them (minutes and seconds
+    up to 59, three fraction digits, hours that fit the 32-bit
+    millisecond counter), invalid hex and base64 data and
+    payloads that are not JSON are reported, and a missing file
+    or a file without WEBVMT signature is an error
+  * heif-enc: the PNG loader read past the end of the row for
+    16-bit grayscale images with alpha
+
+-------------------------------------------------------------------
 Wed Oct 14 20:15:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - description typo fixes

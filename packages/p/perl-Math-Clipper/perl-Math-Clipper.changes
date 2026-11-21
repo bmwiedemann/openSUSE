@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  9 11:55:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.300.0 (1.30)
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+
+  1.30 Thursday October 10 21:41:00 2026
+
+    - Update dependency on ExtUtils::Typemaps::Default to address potential
+      issue with CVE-2026-107373. This distribution seems unaffected, but
+      better safe than sorry.
+
+-------------------------------------------------------------------
 Sat May 18 05:21:07 UTC 2019 - Stephan Kulow <coolo@suse.com>
 
 - updated to 1.29

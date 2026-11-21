@@ -19,7 +19,7 @@
 %global pkg_name tasty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        Modern and extensible testing framework
 License:        MIT
@@ -39,6 +39,8 @@ BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tagged-prof
+BuildRequires:  ghc-terminal-size-devel
+BuildRequires:  ghc-terminal-size-prof
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel

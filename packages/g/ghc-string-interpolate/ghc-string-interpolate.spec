@@ -20,22 +20,19 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.4.0
+Version:        1.0.0.0
 Release:        0
 Summary:        Haskell string/text/bytestring interpolation that just works
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/7.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-haskell-src-exts-devel
-BuildRequires:  ghc-haskell-src-exts-prof
-BuildRequires:  ghc-haskell-src-meta-devel
-BuildRequires:  ghc-haskell-src-meta-prof
+BuildRequires:  ghc-ghc-hs-meta-devel
+BuildRequires:  ghc-ghc-hs-meta-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-split-prof
@@ -101,7 +98,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

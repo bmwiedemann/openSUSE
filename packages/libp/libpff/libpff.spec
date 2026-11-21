@@ -18,7 +18,7 @@
 
 Name:           libpff
 %define lname	libpff1
-Version:        20260926
+Version:        20261030
 Release:        0
 Summary:        Library and tools to access Microsoft PFF/OFF/PST/OST/PAB files
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later

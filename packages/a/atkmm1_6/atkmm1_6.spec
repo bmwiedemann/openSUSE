@@ -24,7 +24,7 @@ Release:        0
 Summary:        C++ Binding for the ATK library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            http://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source:         https://download.gnome.org/sources/atkmm/2.28/%{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE atkmm1_6-remove-unnecessary-executable-flag-from-file.patch bsc#1209094 bsc#1209139 qzhao@suse.com -- cancel executable permission for file /usr/share/doc/packages/libatkmm-1_6-1/NEWS
 Patch0:         atkmm1_6-remove-unnecessary-executable-flag-from-file.patch
@@ -36,7 +36,7 @@ BuildRequires:  graphviz
 BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(atk) >= 1.12.0
+BuildRequires:  pkgconfig(atk) >= 2.12.0
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.46.2
 
 %description

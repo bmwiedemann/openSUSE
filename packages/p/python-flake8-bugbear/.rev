@@ -289,4 +289,41 @@
     next release of flake8</comment>
     <requestid>1344053</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>11779890817764cc939f8e42904e9b39</srcmd5>
+    <version>26.10.27</version>
+    <time>1794236696</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.10.27:
+  * ~~~~~~~~
+  * B007: don't flag a loop variable that is read by a function
+    or lambda defined
+  * in the same scope as the loop
+  * B049: New check for ``@abstractmethod`` listed before
+    ``@property``,
+  * ``@classmethod`` or ``@staticmethod`` (or a property
+    ``.setter``/``.getter``/
+  * ``.deleter``). It must be the innermost decorator, otherwise
+    the class definition
+  * raises ``AttributeError``
+  * B906: don't flag ``visit_`` methods of libcst visitors
+    (classes inheriting
+  * from ``libcst``), which have no ``generic_visit``
+  * B045: detect reuse of an enclosing loop's control variable in
+    a nested loop
+  * in the same scope (#360).
+  * B046: New check for ``dict.fromkeys()`` called with a mutable
+    value, which is
+  * shared by every key
+  * B005: say in the message that only strings with repeated
+    characters are
+  * reported, since ``.strip(&quot;abc&quot;)`` style character sets are
+    fine
+  * B047: New check for ``except`` handlers that can never run
+    because an earlier
+  * handler already catches a builtin parent exception
+  * B044: also report asserts on other always-true values, such
+    as a message</comment>
+    <requestid>1396211</requestid>
+  </revision>
 </revisionlist>

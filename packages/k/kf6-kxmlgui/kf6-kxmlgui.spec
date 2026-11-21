@@ -16,7 +16,7 @@
 #
 
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define rname kxmlgui
 
@@ -28,11 +28,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kxmlgui
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Framework for managing menu and toolbar actions
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later

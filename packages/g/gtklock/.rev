@@ -64,4 +64,13 @@
   * Fix use-after-free when the focused monitor is removed #158</comment>
     <requestid>1393590</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9736e721a94a793e16aa3357ccfc43a5</srcmd5>
+    <version>5.0.1</version>
+    <time>1794591329</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.1:
+  * Add Japanese translation</comment>
+    <requestid>1397273</requestid>
+  </revision>
 </revisionlist>

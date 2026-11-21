@@ -515,4 +515,17 @@
     <comment></comment>
     <requestid>1294553</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>1cb1f44d115c650b332fdd9a4191c46b</srcmd5>
+    <version>2.4001</version>
+    <time>1793725197</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.4001
+   see /usr/share/doc/packages/perl-Moose/Changes
+  2.4001   2026-10-01
+    [TESTS]
+    - adapted a test to changes in perl 5.45.4 regarding the line number
+      reported for particular errors (Richard Leach, #188)</comment>
+    <requestid>1394686</requestid>
+  </revision>
 </revisionlist>

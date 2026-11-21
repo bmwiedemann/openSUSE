@@ -48,7 +48,6 @@ Provides:       pattern-visible()
 Requires:       pattern() = cinnamon_basis
 
 Requires:       pattern() = x11
-Recommends:     pattern() = x11_yast
 Recommends:     pattern() = office
 
 Provides:       patterns-openSUSE-cinnamon = %{version}
@@ -159,10 +158,6 @@ Recommends:     gnome-online-accounts
 Recommends:     gnome-keyring
 Recommends:     gnome-keyring-pam
 Recommends:     shared-mime-info
-
-# yast
-Recommends:     libyui-qt-pkg
-Recommends:     yast2-control-center-qt
 
 # cinnamon have special support for qt applications
 Recommends:     qt5ct

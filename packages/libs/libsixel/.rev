@@ -24,4 +24,12 @@
   (bsc#1248454, CVE-2025-9300)</comment>
     <requestid>1302932</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>0a7b38b59ea3a734e019651eea6ebfb3</srcmd5>
+    <version>1.10.5</version>
+    <time>1793817853</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394752</requestid>
+  </revision>
 </revisionlist>

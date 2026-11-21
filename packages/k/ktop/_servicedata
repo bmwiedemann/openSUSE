@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/vladimirvivien/ktop</param>
-              <param name="changesrevision">741794d89c63c4e9898e31d14799317ee4aa7cfb</param></service></servicedata>
+              <param name="changesrevision">741794d89c63c4e9898e31d14799317ee4aa7cfb</param></service><service name="tar_scm">
+                <param name="url">https://github.com/vladimirvivien/ktop.git</param>
+              <param name="changesrevision">085120eb13edfc922e6b06c06529f972b811e6c7</param></service></servicedata>

@@ -107,6 +107,8 @@ Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
 # PATCH-FEATURE-SLE NetworkManager-initrd-generator-ip-hcn.patch PED-14534 sckang@suse.com -- handle "ip=hcn" option in nm-initrd-generator, it generates an empty connection
 Patch16:        NetworkManager-initrd-generator-ip-hcn.patch
+# PATCH-FIX-UPSTREAM NetworkManager-restrict-dhcp-cleanup-to-ovs.patch bsc#1284486, glfd#NetworkManager/NetworkManager!2579 sckang@suse.com --  device: Restrict DHCP cleanup in DEACTIVATING to OVS devices
+Patch17:        NetworkManager-restrict-dhcp-cleanup-to-ovs.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -340,6 +342,7 @@ This package is intended to be installed by default for server deployments.
 %if 0%{?sle_version} && 0%{?sle_version} > 160000
 %patch -P 16 -p1
 %endif
+%patch -P 17 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:

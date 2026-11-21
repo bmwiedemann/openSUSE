@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-build-api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-build-api
-Version:        1.2.0
+Version:        1.4.0
 Release:        0
 Summary:        Plexus Build API
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-lib
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-utils
@@ -55,14 +56,16 @@ cp -p %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-model-builder \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/utils \
     plexus/plexus-build-api0 \
     slf4j/api
-%{ant} \
-  jar javadoc
+ant jar javadoc
 
 %install
 # jar

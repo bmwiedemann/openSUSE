@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 19:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Re-vendor with zip 9.0.0 -> 9.0.5 (boo#1287915,
+  CVE-2026-115905): fixed zip line, plus its lockstep lzma-rust2,
+  constant_time_eq and zstd knock-ons. No upstream version change.
+
+-------------------------------------------------------------------
+Wed Nov  4 14:18:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Strip Windows-only prebuilt objects from the vendor archive
+  (aws-lc-sys MSVC objects and ring pregenerated Windows objects,
+  43 files with their checksum entries): Linux builds both
+  crates from C and elf-format sources.
+- Pass the cargo build and test arguments after a double dash
+  (byte-identical expansion; keeps spec-cleaner no-diff).
+
+-------------------------------------------------------------------
 Sat Oct 31 14:11:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.166.0:

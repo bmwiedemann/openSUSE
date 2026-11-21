@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs-packages
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -55,24 +55,22 @@ Provides:       xemacs:%{_datadir}/xemacs/xemacs-packages/etc/auctex/style/amsar
 Obsoletes:      Mule-UCS-xemacs
 Obsoletes:      apel-xemacs <= 10.7
 Obsoletes:      mule-ucs-xemacs
-Version:        20130822
+Version:        20250605
 Release:        0
 Requires:       /usr/bin/env
 #
 # HG version >= 1.9.3
 #   hg --version
-#   hg clone https://bitbucket.org/xemacs/xemacs-packages packages
-#   cd packages/
+#   hg clone https://foss.heptapod.net/xemacs/xemacs-packages
+#   cd xemacs-packages/
 # Check for last version
 #   head -n 1 ChangeLog
-#   hg archive -S -p packages -X '.hg*' -X '.cvs*' -t tbz2 ../xemacs-sumo-<version>.tar.bz
+#   hg archive -S -p xemacs-packages-<version> -X '.hg*' -X '.cvs*' -t tbz2 ../xemacs-packages-<version>.tar.bz2
 #
 Source1:        xe-list.el
 Source3:        texi2utf8
 Source0:        %{name}-%{version}.tar.bz2
 Source20:       xemacs-packages-rpmlintrc
-# PATCH-FIX-OPENSUSE xemacs-packages-expand-kw.diff ailin.nemui@gmail.com -- expand CVS keywords which does not happen in hg (can be removed when new packages get releases from hg)
-Patch1:         xemacs-packages-expand-kw.diff
 Patch2:         xemacs-packages.patch
 # keep in sync with the similar patch to the app-defaults in the main xemacs package:
 Patch3:         app-defaults.patch
@@ -85,8 +83,6 @@ Source15:       packages-cvs-sumo-2002-09-19-comint.nopatch
 Patch17:        packages-cvs-sumo-2004-02-02-awk.patch
 Patch18:        dinbrief.patch
 Patch19:        disable-skk.patch
-Patch24:        texi-coding.patch
-Patch28:        texi.patch
 Patch32:        bugzilla-183805-missing-autoload-cookies.patch
 Patch34:        mode-local.patch
 Patch35:        xemacs-packages-20130822-tramp.patch
@@ -151,7 +147,6 @@ Authors:
 
 %prep
 %setup -q
-%patch -P 1   -p1 -b .keywords
 find -name '*.pl' -o -name file-newer | \
   xargs -r sed -ri '1 {s@(^#[[:blank:]]*\!)(.*/perl5?)@\1/usr/bin/perl@p}'
 chmod -R u+rw,g+r,o+r .
@@ -166,13 +161,11 @@ chmod -R u+rw,g+r,o+r .
 %patch -P 17  -p1 -b .awk
 %patch -P 18  -p1 -b .dinbrief
 %patch -P 19  -p1 -b .disable-skk
-%patch -P 24  -p1 -b .texi-coding
-%patch -P 28  -p1 -b .texi-patch
 %patch -P 32  -p1 -b .cookie
 %patch -P 34  -p1 -b .mode-local
 # PATCH-FIX-SUSE boo#857207 -- xemacs tramp ssh completion returns "Wrong type argument: symbolp, ..."
 %patch -P 35  -p1 -b .tramp
-%patch -P 36 -p1
+%patch -P 36  -p1 -b .repro
 rm -vf xemacs-packages/tramp/texi/tramp.texi.tramp
 chmod 755 %{S:3}
 %{S:3}
@@ -503,6 +496,9 @@ cat xe-list-el-without-elc xe-list-elc-without-el xe-list-elc-with-el \
 %{_datadir}/xemacs/xemacs-packages/etc/ecb/*
 %dir %{_datadir}/xemacs/xemacs-packages/etc/ediff/
 %{_datadir}/xemacs/xemacs-packages/etc/ediff/*
+%dir %{_datadir}/xemacs/xemacs-packages/etc/edit-utils/
+%dir %{_datadir}/xemacs/xemacs-packages/etc/edit-utils/register-toolbar/
+%{_datadir}/xemacs/xemacs-packages/etc/edit-utils/register-toolbar/*
 %{_datadir}/xemacs/xemacs-packages/etc/edt-user.doc
 %{_datadir}/xemacs/xemacs-packages/etc/emerge.txt
 %{_datadir}/xemacs/xemacs-packages/etc/enriched.doc

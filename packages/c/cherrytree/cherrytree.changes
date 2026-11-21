@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Nov 09 05:43:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.3:
+  * fixed command injection with custom link actions (CVE-2026-118692)
+  * fixed arbitrary local file read via crafted embedded-file name
+    (CVE-2026-118693)
+  * reject symlinked multifile node directories + prevent cleanup from following
+    symlinks
+  * reject empty tables during XML parsing so malformed XML cannot reach table
+    construction or clipboard indexing
+  * on node name header, show node icon and aux icons on the left rather than on
+    the right, just after last visited nodes buttons
+  * improved image download on HTML paste from browser
+  * fixed crash when destroying anchored widgets
+  * build with libxml++5 on windows/msys2, ubuntu 26.04+, flatpak
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Refresh patch with quilt.
+
+-------------------------------------------------------------------
 Thu Sep 17 09:36:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.7.2:
@@ -57,7 +77,7 @@ Wed Jan 14 06:55:35 UTC 2026 - gumsley_6@hotmail.com
   * fixed msys2_prepare_standalone.sh
   * fixed title of dialog to search/replace in multiple nodes
     (#2770)
-  * added action to copy to clipboard the current document 
+  * added action to copy to clipboard the current document
     filepath (#2764)
   * updated it.po (Vincenzo)
   * implemented memory of the latest patterns searched
@@ -175,7 +195,7 @@ Fri Feb 28 10:20:06 UTC 2025 - gumsley_6@hotmail.com
 - Update to version 1.3.0+0:
   + fixed table export to csv with empty cells (#2028)
   + pt_BR 100%
-  + multifile storage, option of static embedded file path, fix 
+  + multifile storage, option of static embedded file path, fix
     insert in new node that was never saved (#2354)
   + remove use of libcpputest-dev (#2645)
   + es 100%
@@ -563,7 +583,7 @@ Sat Jul 22 03:59:59 UTC 2023 - gumsley_6@hotmail.com
     (select line, #1363).
   + Column edit (selection with Ctrl+Alt held down) added
     clipboard support (#2232).
-  + Remember last selected custom icon in node properties same as 
+  + Remember last selected custom icon in node properties same as
     last selected colour (#2185).
   + Implemented import nodes from indented list (#1551, #2258).
   + Added support for executing java code in code nodes and
@@ -837,11 +857,11 @@ Tue Feb 01 12:41:47 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.45+10:
   * added language Arabic
-  * fixed time created/modified filter on searches for node name and tags 
+  * fixed time created/modified filter on searches for node name and tags
   * just ninja build debug print
   * added strip trailing spaces action to rich text right click menu
-  * minor improvement to previous commit 
-  * fixed copy fromm codebox and pasting to rich text unwanted additional characters 
+  * minor improvement to previous commit
+  * fixed copy fromm codebox and pasting to rich text unwanted additional characters
 
 -------------------------------------------------------------------
 Fri Oct 22 10:06:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
@@ -1225,7 +1245,7 @@ Mon Dec 21 13:36:22 UTC 2020 - malcolmlewis@opensuse.org
   * When (re)generating TOC do not remove anchors created from the
     user, (gh#giuspen/cherrytree#1382).
   * Translation updates.
-  
+
 -------------------------------------------------------------------
 Wed Dec 09 14:24:52 UTC 2020 - malcolmlewis@opensuse.org
 
@@ -1580,7 +1600,7 @@ Sat Sep  2 03:28:20 UTC 2017 - luc14n0@linuxmail.org
     - The problem with importing from keynote.
   + Left arrow key press with focus on an already collapsed
     tree node, now moves the selection to the node parent.
-  + Added right click menus cut & copy as plain text to the 
+  + Added right click menus cut & copy as plain text to the
     automatic syntax highlighting nodes.
 
 -------------------------------------------------------------------
@@ -1624,22 +1644,22 @@ Wed Jan 25 23:56:23 UTC 2017 - zaitor@opensuse.org
 Fri Jul 15 12:06:40 UTC 2016 - luke.nukem.jones@gmail.com
 
 - Update to version 0.37.2:
-  + fixed problems introduced with configurability of the bulleted 
+  + fixed problems introduced with configurability of the bulleted
     lists chars.
-  + fixed problem with search in selected node and subnodes and 
+  + fixed problem with search in selected node and subnodes and
     progressbar.
-  + the latest applied formatting is now remembered between 
+  + the latest applied formatting is now remembered between
     sessions.
-  + the Ctrl+Space shortcut now allows to enter and exit the 
+  + the Ctrl+Space shortcut now allows to enter and exit the
     codeboxes.
   + updated translations.
 - Changes from version 0.37.1:
-  + bugfix: import of text documents bad decoding (added new 
+  + bugfix: import of text documents bad decoding (added new
     dependency python-chardet).
   + bugfix: copy/paste of table row not working.
-  + the chars used for the multi level bulleted lists are 
+  + the chars used for the multi level bulleted lists are
     configurable editing config.cfg (editor/chars_listbul).
-  + the chars used for the toc are configurable editing 
+  + the chars used for the toc are configurable editing
     config.cfg (editor/chars_toc).
   + updated translations.
 
@@ -2327,11 +2347,11 @@ Tue Apr 26 18:42:00 UTC 2011 - badshah400@gmail.com
   + added some customizable properties to the codeboxes
   + added fullscreen mode
   + implemented the cut/copy/paste of a table row
-  + tables: keyboard navigation across cells, rows, etc. 
+  + tables: keyboard navigation across cells, rows, etc.
   + now multiple instances are allowed and handled
   + added the opportunity to sort the whole tree
   + improvements to the find utility while searching patterns in a
-    table/codebox 
+    table/codebox
 
 -------------------------------------------------------------------
 Tue Mar 15 10:48:10 CET 2011 - badshah400@gmail.com
@@ -2407,7 +2427,7 @@ Wed Dec 29 14:02:14 CET 2010 - badshah400@gmail.com
 
 - Update to version 0.18.1:
   + Bug fixes and memory usage improvements
-  + Update copyright year to 2011  
+  + Update copyright year to 2011
 - Changes from version 0.18:
   + Documents edited with 0.18 cannot be opened with earlier
     cherrytree versions

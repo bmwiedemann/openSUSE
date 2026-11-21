@@ -150,4 +150,13 @@
 </comment>
     <requestid>1385952</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5069f9de9087b32f4126882e724dfee9</srcmd5>
+    <version>6.12.1</version>
+    <time>1794932259</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.12.1
+  * .pyi` type stub files now pass flake8-pyi.</comment>
+    <requestid>1397737</requestid>
+  </revision>
 </revisionlist>

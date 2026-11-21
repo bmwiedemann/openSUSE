@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Nov 18 14:38:12 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix several security bugs
+  * 0001-CVE-2026-129829-rsyslog-imuxsock-system-timestamp-ou.patch
+    (bsc#1290100)
+  * 0002-CVE-2026-129831-rsyslog-imuxsock-PRI-digit-accumulat.patch
+    (bsc#1290099)
+  * 0003-CVE-2026-129830-rsyslog-imuxsock-TAG-parser-out-of-b.patch
+    (bsc#1290098)
+  * 0004-CVE-2026-129832-rsyslog-local-denial-of-service-vuln.patch
+    (bsc#1290529)
+  * 0005-CVE-2026-129833-rsyslog-mmanon-embedded-IPv4-in-IPv6.patch
+    (bsc#1290530)
+  * 0006-CVE-2026-129836-rsyslog-imdtls-incomplete-handshake-.patch
+    cumulative patch for:
+    (CVE-2026-129834 bsc#1290531 CVE-2026-129835 bsc#1290532 bsc#1290533)
+  * 0007-CVE-2026-129838-rsyslog-imuxsock-trusted-property-at.patch
+    (bsc#1290535)
+  * 0008-CVE-2026-129839-rsyslog-template-JSON-escaping-defec.patch
+    (bsc#1290536)
+  * 0009-CVE-2026-129837-rsyslog-weekday-formatting-crash-bsc.patch
+    (bsc#1290534)
+
+- VUL-0: rsyslog: RainerScript replace() length wrap (bsc#1285036)
+  * add 0001-rainerscript-bound-replace-and-wrap-results.patch 
+- - fix RainerScript replace() heap buffer overflow (bsc#1275926)
+  * add 0001-rainerscript-align-replace-sizing-rewind.patch
+
+remove: 
+  * 0001-imdtls-reject-clients-that-fail-peer-verification.patch 
+    (replaced by 0006-CVE-2026-129836-rsyslog-imdtls-incomplete-handshake-.patch)
+  * 0001-fix-RainerScript-replace-heap-buffer-overflow.patch
+    (replaced by 0001-rainerscript-align-replace-sizing-rewind.patch)
+
+-------------------------------------------------------------------
+Thu Nov 12 10:15:55 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- VUL-0: CVE-2026-93404: rsyslog: omclickhouse SQL injection (bsc#1289824)
+  * add 0001-fix-CVE-2026-93404-rsyslog-omclickhouse-SQL-injectio.patch 
+
+-------------------------------------------------------------------
 Wed Oct 21 07:03:57 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix postgresql dependency for devel package (bsc#1286162)

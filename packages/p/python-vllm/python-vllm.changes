@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:41:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.33.0:
+  * New models: Reflection Beam-1, Recursive Flint, Muse Spark
+    Open, Step-5, AliceAI, Kolibri 1, Clef-Flash; Granite MoE
+    as DSpark target
+  * Quantization: Humming runs MXFP4 experts as block FP8 on
+    Hopper; Quark MXFP8 routed experts; online re-quantization
+    for NVFP4 MoE
+  * Frontend: --reasoning-parser none as default, truthful
+    finish_reason and Responses item status, Beam reasoning
+    and tool parsers, text-only OpenAI Decisions API MVP,
+    --enable-x/--disable-x boolean CLI flags
+  * Security: bound decoded and downloaded media per
+    request; reject local verifier references in
+    Speculators metadata
+  * Pooling: offline fixed-length late chunking; torch
+    2.14, transformers < 5.21, Pillow >= 13 floor upstream
+  * Bug fixes: GLM tool-argument re-parse per chunk,
+    MoRI-IO WRITE-mode requests stranded in
+    WAITING_FOR_REMOTE_KVS, EXAONE-4.5 image inputs,
+    split top-p masking for huge logits
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Keep carrying fix-CVE-2026-105922.patch and
+  vllm-thinking-budget-scan-cursor.patch, rebased: neither
+  CVE-2026-105922 nor CVE-2026-92365 is fixed upstream
+  in 0.33.0
+- Dependency floors follow upstream: Pillow>=13.0.0,
+  aiohttp>=3.14.4, new python-orjson>=3.11.6,
+  python-certifi>=2026.10.19 and python-multidict>=6.9.1
+  requirements
+- Add typing_extensions and filelock to BuildRequires: setup.py
+  imports torch at module top, which needs typing_extensions,
+  and torch.utils.cpp_extension needs filelock (fixes build
+  root without transitively-present deps)
+
+-------------------------------------------------------------------
 Sun Oct 18 17:29:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.32.0:

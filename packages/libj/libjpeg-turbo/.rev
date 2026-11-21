@@ -1289,4 +1289,41 @@ Adds an explicit provides line, so that &quot;zypper in jpegtran&quot; will work
   instead</comment>
     <requestid>1375155</requestid>
   </revision>
+  <revision rev="79" vrev="86">
+    <srcmd5>302dd524c6df3c9bc5d5c1a805451f29</srcmd5>
+    <version>unknown</version>
+    <time>1793724798</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.1:
+  * Fixed a regression that broke Unix builds where
+    position-independent code was disabled for static
+    libraries. Workaround: set
+    CMAKE_POSITION_INDEPENDENT_CODE or use a toolchain that
+    enables PIC automatically.
+  * Sped up RGB-to-baseline JPEG compression by 10-17% with
+    the accurate integer DCT algorithm on RISC-V Vector
+    (RVV) hardware, using strided segment load and
+    multiply-accumulate intrinsics.
+  * Hid symbols of the in-tree zlib and libspng
+    implementations and renamed the zlib symbols, so static
+    TurboJPEG API users do not expose or call them by
+    accident.
+  * Fixed an integer overflow and buffer overrun in
+    tj3LoadImage12() and tj3LoadImage16() when a 32-bit
+    build loads a packed-pixel image with more than 2^31
+    components.
+  * Fixed a division by zero (CVE-2026-75466) when loading
+    a non-grayscale indexed-color PNG image with
+    TJPF_UNKNOWN pixel format.
+  * Fixed wrong chrominance from tj3DecompressToYUV*() for
+    4:2:0, 4:1:0 and 2:4 images with the fast IDCT and 1/2
+    scaling.
+  * Fixed a buffer overrun and segfault when partially
+    decompressing a crafted 4:2:0 image with merged
+    upsampling, SIMD disabled and a crop that leaves 1-2
+    samples per component plane.
+  * Hardened the libjpeg API against 12-bit full-color
+    decompression with one-pass quantization and RGB565 (forwarded request 1394359 from dirkmueller)</comment>
+    <requestid>1394434</requestid>
+  </revision>
 </revisionlist>

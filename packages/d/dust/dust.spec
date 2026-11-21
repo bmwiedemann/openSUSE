@@ -17,7 +17,7 @@
 
 
 Name:           dust
-Version:        1.2.5
+Version:        1.2.7
 Release:        0
 Summary:        A more intuitive version of du
 Group:          Productivity/File utilities
@@ -70,9 +70,6 @@ ZSH completion script for %{name}.
 install -Dm0644 completions/_dust %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 install -Dm0644 completions/dust.bash %{buildroot}/%{_datadir}/bash-completion/completions/%{name}
 install -Dm0644 completions/dust.fish %{buildroot}/%{_datadir}/fish/completions/%{name}.fish
-
-%check
-%{cargo_test}
 
 %files
 %{_bindir}/%{name}

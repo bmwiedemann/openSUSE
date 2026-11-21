@@ -1,4 +1,585 @@
 -------------------------------------------------------------------
+Fri Nov 13 16:40:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.22.0
+  * New features:
+    + LANG-1790: Add optional FIFO ordering for TimedSemaphore
+      blocking acquisitions
+  * Fixed Bugs:
+    + Include 0x7E (~) in RandomStringUtils nextGraph and nextPrint
+    + Default unbounded WildcardType upper bound to Object in
+      TypeUtils
+    + Take FastDatePrinter era names from the locale's calendar
+    + LANG-1655: Preserve Korean text in stripAccents
+    + LANG-1835: Ignore synthetic methods in AnnotationUtils
+    + LANG-1836: Make TypeUtils.containsTypeVariables and
+      unrollVariables honour the owner type of a ParameterizedType
+    + Recurse into nested annotation arrays in AnnotationUtils
+      .hashCode
+    + [javadoc] Correct CharUtils default-value conversion
+      descriptions
+    + Preserve enclosing context and member names in ClassUtils
+      .getShortClassName(Class)
+    + Keep RandomUtils's randomDouble() and randomFloat() below the
+      exclusive upper bound
+    + Use standalone month names for month-only patterns in
+      FastDatePrinter
+    + Fix TypeUtils.isAssignable rejecting Class<X> to Class<?>
+      assignments
+    + LANG-1837: Prevent null returns from lazily initialized string
+      caches
+    + Escape CharSequence values in ToStringStyle.JSON_STYLE
+    + LANG-796: Clarify DateUtils calendar arithmetic and daylight
+      saving time behavior
+    + Treat an unmatched quote as closed in ExtendedMessageFormat
+    + Prevent StringUtils padding from splitting surrogate pairs
+    + LANG-441: DateUtils Javadoc does not fully define round()
+      behavior
+    + LANG-1838: Fix resource paths for unnamed packages
+    + Keep EventCountCircuitBreaker event count from wrapping on int
+      overflow
+    + Reject varargs candidates with too few arguments in
+      MemberUtils
+    + LANG-1323: Align built type hashes with JDK reflection
+    + Keep array encoding intact in ClassUtils.getAbbreviatedName
+    + Reject leading whitespace in NumberUtils.createNumber
+    + Keep StrSubstitutor from treating a value's trailing $ as an
+      escape
+    + Fix FastDateParser normalization of out-of-range ISO
+      day-of-week values
+    + [javadoc] Correct StringUtils example methods and overloads
+    + Stop ExceptionUtils.removeCommonFrames at the first differing
+      frame
+    + Use StackTraceElement objects to build compact root cause
+      stack traces, avoiding text parsing and preventing exception
+      message text from being mistaken for stack frames
+    + Restrict LocaleUtils.toLocale to ASCII language, country, and
+      numeric area codes; previously accepted non-ASCII codes now
+      cause IllegalArgumentException
+    + Deprecate ExceptionUtils.removeCommonFrames(), which is now
+      used only by tests. Root-cause stack trace generation compares
+      StackTraceElement objects directly
+    + Keep DateUtils.ceiling and round inside a DST overlap hour
+    + Keep RandomStringUtils.random rejection cap from failing valid
+      ranges
+    + [javadoc] Correct hexadecimal output examples in Conversion
+    + Fix Conversion hex method Javadoc
+    + Make FastDatePrinter time-zone tests deterministic
+    + LANG-1839: Fix recursive toString traversal cleanup
+    + LANG-1341: Javadoc: Clarify superclass equality in
+      EqualsBuilder
+    + LANG-1423: Javadoc: Include wrapping operations in StringUtils
+      overview
+    + LANG-980: Use enum constants for duration format units in
+      DurationFormatUtils
+    + LANG-1198: Javadoc: Clarify stripEnd character-set semantics
+    + Keep FastDateFormat able to parse the '+hh:mm' offsets its own
+      'Z' patterns format
+    + Pad BMP code points to four hex digits in UnicodeEscaper
+      .toUtf16Escape
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 105 to 107
+
+-------------------------------------------------------------------
+Fri Nov 13 16:07:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 3.21.0
+  * New features:
+    + Add JavaVersion.JAVA_27
+    + Add SystemUtils.IS_JAVA_27
+    + JavaVersion.get(String) now support Java 26, 27 and 28
+    + LANG-1810: Deprecate ArrayUtils.SOFT_MAX_ARRAY_LENGTH in favor
+      of SAFE_MAX_ARRAY_LENGTH #1559
+    + Add long support to BitField
+    + Add ArrayUtils.getDimensions(Object)
+    + LANG-1707: Add ArrayUtils.concat() methods for concatenating
+      multiple arrays
+    + Add FailableConsumer.accept(FailableConsumer, T)
+    + Add AutoCloseables
+    + LANG-1711: Make object accessibility optional with
+      AbstractReflection.AbstractBuilder.setForceAccessible(boolean)
+    + Add ArrayFill.clear(char[])
+    + Add DurationUtils.toMillisLong(Duration)
+    + Add Instants.toEpochMillis(Instant)
+    + Add StringUtils.trimAsciiControl(String)
+    + Add Instants.toMillisSince(Instant)
+    + Add CharUtils isHex(int), isAsciiNumeric(int), isOctal(int)
+    + Add and use Instants.toInstant(Instant[, Instant])
+    + LANG-1833: Handle ParsePosition index beyond source string
+      length cleanly
+    + Add ClassUtils.getClassStrict(ClassLoader, String, boolean)
+    + Add ClassUtils.getClassStrict(String)
+    + Fix TypeUtils.isAssignable() for wildcards with multiple upper
+      bounds
+    + Add JavaVersion.JAVA_28
+    + Add SystemUtils.IS_JAVA_28
+  * Fixed Bugs:
+    + Stop ExtendedMessageFormat seekNonWs reading past the pattern
+      end
+    + Fix spelling and grammar in StringUtils
+    + Add ConversionTest assertions to increase coverage
+    + Use Class<?> instead of Class<? extends Object> in MethodUtils
+    + ClassUtils now throws IllegalArgumentException if a class name
+      represents an array with more dimensions than the JVM
+      supports, 255:
+      getClass(ClassLoader, String, boolean),
+      ClassUtils.getClass(ClassLoader, String),
+      ClassUtils.getClass(String, boolean),
+      ClassUtils.getClass(String),
+    + ClassUtils now throws IllegalArgumentException if a class name
+      length is greater than 65,535:
+      getClass(ClassLoader, String, boolean),
+      ClassUtils.getClass(ClassLoader, String),
+      ClassUtils.getClass(String, boolean),
+      ClassUtils.getClass(String),
+    + Fix console compiler warning: TypeUtils.java:[361,33]
+      non-varargs call of varargs method with inexact argument type
+      for last parameter
+    + Fix console compiler warning:
+      ReflectionDiffBuilderTest.java:[172,52] non-varargs call of
+      varargs method with inexact argument type for last parameter
+    + Fix Apache RAT plugin console warnings
+    + LANG-1793: Fix Javadoc description in
+      CharUtils.isAsciiAlphanumeric()
+    + LANG-1794: Fix Javadoc for RandomUtils.secure(), it
+      incorrectly mentions securerandom.strongAlgorithms
+    + Fix NullPointerException in
+      ReflectionDiffBuilder.getExcludeFieldNames() when instance
+      created with ReflectionDiffBuilder.ReflectionDiffBuilder(T,
+      T, ToStringStyle)
+    + Fail-fast for a null DiffBuilder in ReflectionDiffBuilder
+      .ReflectionDiffBuilder(DiffBuilder, String[]) instead of
+      getting a NullPointerException in ReflectionDiffBuilder
+      instance methods
+    + Fix NumberUtilsTest#testMaxDouble() and testMaxFloat()
+    + LANG-1797: Fix Javadoc for IEEE754rUtils.max(float...) and
+      IEEE754rUtils.max(double...)
+    + LANG-1798: Fix StringUtilsSubstringTest
+      .testCountMatches_char() to call the correct method
+    + LANG-1799: Make private static variables final in
+      RandomStringUtils
+    + Speed up StringUtils.getDigits(String)
+    + Remove redundant length check in StringUtils
+      .isBlank(CharSequence)
+    + LANG-1800: Incorrect grammar and unclear wording in
+      RandomStringUtils#random method
+    + LANG-1802: Fix collision in CharRange.hashCode()
+    + Fix race condition in Fraction.hashCode()
+    + Fix race condition in Range.hashCode()
+    + Document safer deserialization option in Javadoc for
+      SerializationUtils
+    + LANG-1729: NumberUtils.isParsable(String) returns true for
+      full width Unicode digits for inputs with a decimal point
+    + LANG-1803: Fix incorrect method invocation in
+      ObjectUtilsTest and Javadoc reference in RandomStringUtils
+    + LANG-1695: Allow trailing decimal point in NumberUtils
+      .isParsable(String)
+    + LANG-1804: Fix CharSet#getInstance returns null instead of
+      EMPTY when input setStrs is null
+    + Speedup CharSequenceUtils.toCharArray(CharSequence) for
+      StringBuilder input: 160-205% improvement (2-3x faster),
+      see CharSequenceUtilsBenchmark
+    + Speedup CharSequenceUtils.toCharArray(CharSequence) for
+      StringBuffer input: 300-4,250% improvement (4-44x faster),
+      see CharSequenceUtilsBenchmark
+    + Speedup CharSequenceUtils.toCharArray(CharSequence) for
+      String input: ~1-2% improvement (essentially identical)
+    + Streamline StringUtils.truncate(String, int, int)
+    + Fix Javadoc comma spacing
+    + LANG-1807: Make private static variables final in RandomUtils
+    + LANG-1448: Javadoc: Normalize some varargs examples
+    + LANG-1805: Speedup StringUtils.join(AllPrimitiveTypes[], char,
+      int, int), see StringUtilsJoinBenchmark. Also better
+      StringBuilder allocation
+    + LANG-1749: TypeUtils.isAssignable returns a wrong result for
+      ParameterizedType when raw class is "Class"
+    + LANG-1700: Improve handling of parameterized types and
+      variable unrolling
+    + LANG-1811: ArrayUtils.shuffle() throws NullPointerException
+      for null array input
+    + [javadoc] Fix incorrect exception type in CharUtils Javadoc
+      examples
+    + LANG-1806: [javadoc] Fix incorrect class names in RegExUtils
+      Javadoc examples
+    + NumberUtils.isParsable("1.f") should return true
+    + Simplify literal assignments in ArrayFillTest
+    + Make ArrayUtils methods implementation consistent with other
+      overloads
+    + Fix handling of null marker in StringUtils.abbreviate(String,
+      String, int, int)
+    + Better exception messages from FastDateParser.parse(String)
+    + Simplify NumberUtils.isParsable(String)
+    + RandomStringUtils.random() methods may not return when asked
+      to generate only letters or only numbers while provided with a
+      range that contains neither
+    + Fix Javadoc parameter comments in StringUtils.truncate()
+      methods
+    + Improve test coverage for TypeUtils.isAssignable()
+    + Improve branch coverage for Processor (isAarch64, isRISCV);
+      add ProcessorTest
+    + Fix ClassNotFoundException message in
+      ClassUtils.getClass(String)
+    + Fix Javadoc in DoubleRange.of(Double, Double) to reflect
+      actual exception type thrown
+    + LANG-1452: RecursiveToStringStyle and
+      MultilineRecursiveToStringStyle shouldn't recurse into a
+      java.math.BigDecimal
+    + LANG-1814: ArrayUtils.subarray(..) may overflow index
+      arithmetic and violate contract for extreme index values
+    + LANG-1816: ArrayUtils contains/indexOf/indexesOf with
+      tolerance fail to match NaN values
+    + Fix StringIndexOutOfBoundsException message in StrBuilder
+      .append(char[], int, int)
+    + LANG-1818: Fix ClassUtils.getShortClassName(Class) to
+      correctly handle $ in valid class names
+    + ThreadUtils.sleepQuietly(Duration) now restores the current
+      thread's interrupt flag when catching InterruptedException
+    + LANG-1817: UncheckedFutureImpl clears thread interrupt status
+      when wrapping InterruptedException
+    + Fix StringUtils.abbreviate(String, String, int) contract
+      violations
+    + Add test coverage for negative-day adjustment in
+      DurationFormatUtils
+    + [Javadoc] Add usage examples to CharSet.contains(char)
+    + CharSet now maintains iteration order
+    + LANG-771: DateUtils.ceiling does not behave correctly for
+      dates on the boundaries
+    + LANG-1819: [LANG-] Javadoc ArrayUtils.removeAll() null input
+      behavior
+    + LANG-1813: ArrayUtils#hashCode() Javadoc incorrectly states
+      ?null returns zero? (actual result is 629)
+    + Deprecate Validate.Validate()
+    + LANG-1820: [javadoc] Fix ObjectUtils.anyNull(Object) for empty
+      arrays
+    + Fix StopWatch's stopInstant match stopTimeNanos when split is
+      called
+    + Fix NullPointerException in StopWatch.getStopTime()
+    + Add "ppc64le" to ArchUtils. See https://bugs.gentoo.org/972590
+    + LANG-1821: NumberUtils.isCreatable(String) should match
+      NumberUtils.createNumber(String), exactly
+    + NumberUtils.isCreatable fails for hexadecimal numbers with
+      long type qualifier
+    + NumberUtils.createNumber() performance: Short-circuit check
+      based on pre-derived candidate Double
+    + LANG-1823: LocaleUtils.toLocale cannot parse valid JDK Locale
+      string containing '#'
+    + LANG-879: LocaleUtils test fails with new Locale
+      "ja_JP_JP_#u-ca-japanese" of JDK7
+    + Fix typo in SystemProperties.JDK_XML_ENTITY_REPLACEMENT_LIMIT
+    + Recompute Range cached hash codes on deserialization while
+      retaining endpoint and comparator validation
+    + Harden Fraction.readObject() to reject bad cached hash code
+    + NumberUtils.createNumber(String): Float shortcut can bypass
+      exact decimal parsing
+    + StringUtils.joins() for primitive types can throw OOME before
+      index check
+    + Annotation lookup in MethodUtils.getAnnotation(Method, Class,
+      boolean, boolean) matches unrelated overloads via
+      assignable-parameter resolution
+    + RandomStringUtils.random(...): A custom chars array throws
+      IllegalArgumentException because validation loops treat the
+      loop index as a char code point instead of an index into the
+      chars array
+    + RandomStringUtils.random(...): Can hang when the specified
+      [start, end) range contains ONLY rejected code points
+      (UNASSIGNED, PRIVATE_USE, SURROGATE). The loop increments
+      count and retries indefinitely
+    + TimedSemaphore.shutdown() must wake threads blocked in
+      acquire()
+    + NaN bypass in primitive double range validators
+    + LANG-1826: StringUtils.repeat(String, [String,] int) now
+      throws IllegalArgumentException instead of
+      NegativeArraySizeException
+    + LANG-1825: EqualsBuilder.reflectionAppend ttries to set
+      visibility on excluded fields
+    + ToStringStyle.appendDetail(StringBuffer,String,Collection)
+      bypass cycle registry
+    + ToStringStyle.appendDetail(StringBuffer,String,Map) bypass
+      cycle registry
+    + WordUtils.wrap() zero-width wrapOn regex match causes infinite
+      loop
+    + HashCodeBuilder.append(Object) StackOverflowError on
+      mutually-referential objects
+    + AtomicSafeInitializer.get() busy-spin without yield burns CPU
+      during slow initialization
+    + StrBuilder.readFrom(Readable) exposes stale internal buffer to
+      Readable parameter
+    + EqualsBuilder.reflectionEquals() array branch missing cycle
+      guard causes stack overflow on self-referential Object arrays
+    + WordUtils.wrap() leaves separator characters in the output
+      when the wrapOn regex match is longer than one character
+    + StringUtils.indexOfAny(CharSequence, int, char...) should not
+      throw for a bad index
+    + StrBuilder.deleteImpl(int, int, int) doesn't clear its unused
+      bytes
+    + LocaleUtils.parseLocale(String) operator precedence bug allows
+      invalid language with numeric country
+    + DurationUtils.toMillisInt() throws ArithmeticException on long
+      overflows before clamping
+    + FastDatePrinter WeekYear rule calls Calendar.getWeekYear() may
+      throw UnsupportedOperationException
+    + DateUtils.parseDateWithLeniency() doesn't reset its time zone
+    + FormattableUtils.append re-parses literal output as format
+      string
+    + ClassUtils.getShortClassName(String) can throw
+      NoClassDefFoundError on malformed inner classes
+    + TimeZones.GMT is a mutable public static final field
+    + CompareToBuilder lacks cycle guard on Object[] recursion
+    + ClassUtils.toCleanName(String) resolves malformed array
+      suffixes
+    + StrBuilder.setLength(int) shrink-branch leaves residual chars
+      in buffer tail
+    + StrBuilder.replaceImpl() shrink-branch leaves residual chars
+      in buffer tail
+    + NumericEntityUnescaper.translate() throws
+      IllegalArgumentException for values out of range
+    + FastTimeZone.getGmtTimeZone() Javadoc promises null on
+      no-match; regex always matches
+    + Range.readObject() does not null-check comparator, minimum, or
+      maximum
+    + Make the StopWatch more reliable for tracking nanos, adjust
+      suspend test
+    + LANG-1801: RandomStringUtils.random() does not strictly
+      validate start and end
+    + Fix CharSequenceUtils.lastIndexOf for supplementary code
+      points
+    + Range.readObject() does not re-assert the comparator/ordering
+      invariant
+    + Fraction.readObject() does not re-assert denominator != 0
+    + FastDateParser.readObject(ObjectInputStream) now validates
+      the same
+    + Fix StringUtils.indexOfAny() matching an unpaired trailing
+      high surrogate
+    + Fix LookupTranslator code point consumption for supplementary
+      keys
+    + Re-assert CharRange start <= end invariant in readObject
+    + FluentBitSet.readObject(ObjectInputStream) should validate
+      constructor invariants
+    + EventListenerSupport.readObject(ObjectInputStream) should
+      validate constructor invariants
+    + Correct JavaDoc in Strings.java concerning case-sensitivity
+    + Fix case-insensitive Strings.replace() dropping
+      length-changing matches
+    + Fix int overflow in StringUtils.midString() and StrBuilder
+      .midString() length handling
+    + Throw IllegalArgumentException for trailing whitespace in
+      ExtendedMessageFormat argument index
+    + Reject doubled leading sign in NumberUtils.createBigInteger
+    + Fix RandomStringUtils.random() false rejection of letters and
+      digits
+    + Fix substringAfter(Last) for supplementary code points
+    + Strip L suffix for oversized hex literals in createNumber
+    + Fix spurious overflow in Fraction.add/subtract for coprime
+      denominators
+    + Drop trailing empty token from splitByWholeSeparator
+    + Fix indexOfDifference splitting a surrogate pair
+    + Fix int mask sign extension in BitField long methods
+    + Account for duplicate values in ObjectUtils.median()
+    + Fix silent int overflow in Fraction.getFraction(double)
+    + Find NaN in ArrayUtils.lastIndexOf for double and float arrays
+    + Reject sign characters in UnicodeUnescaper hex values
+    + Keep abbreviate and truncate off surrogate pair boundaries
+    + Keep initials from splitting a supplementary code point
+    + Fix int overflow in DurationFormatUtils.formatPeriod
+    + Fix CsvUnescaper bounds error on a single quote field
+    + LANG-1824: Fix Strings.replace overflow on large replacements
+    + Classify supplementary code points in StringUtils is*
+      predicates
+    + Emit surrogate pair for supplementary code points in
+      UnicodeEscaper
+    + Fix MethodUtils.getMatchingMethod false ambiguity on boxed
+      arguments
+    + Fold supplementary code points in
+      CharSequenceUtils.regionMatches
+    + Fix WordUtils.containsAllWords missing words across line
+      breaks
+    + Handle supplementary code points in WordUtils case methods
+    + Fix StringUtils.getDigits dropping supplementary digits
+    + Keep StrBuilder.reverse from splitting surrogate pairs
+    + Fix NumberUtils min/max varargs dropping the sign of zero
+    + Handle supplementary code points in
+      StringUtils.splitByCharacterType()
+    + LANG-1828: Fix OOM in StringUtils.leftPad/rightPad when size
+      is Integer.MIN_VALUE
+    + Fix Strings.CI.indexOf() returning out-of-range index for
+      empty search
+    + LANG-1827: Support escaped single quotes ('') in
+      DurationFormatUtils format patterns
+    + Keep DurationFormatUtils.lexx() from merging repeated fields
+      split by a literal
+    + Reject hex letters in NumericEntityUnescaper decimal scan
+    + Keep FastDateParser numeric parse from throwing on int
+      overflow
+    + Keep FastDateParser.parse error message intact for Japanese
+      imperial locale
+    + Keep ExtendedMessageFormat from rejecting a quoted format
+      style
+    + Match String case folding in StrBuilder.equalsIgnoreCase
+    + Fix FieldUtils.getField false ambiguity on inherited interface
+      field
+    + Skip Chuvash locale parser tests on Java 27
+    + Fix ArrayUtils.reverse range underflow on Integer.MIN_VALUE
+      end
+    + Fix sign extension in BitField.getValue for top-bit fields
+    + Fix int overflow in FluentBitSet.setInclusive at
+      Integer.MAX_VALUE
+    + Add messages when throwing NullPointerException
+    + [Javadoc] Fix Failable class comment to clarify comparison of
+      lambda versions
+    + LANG-1829: Add tests for DateUtils.truncatedCompareTo and
+      truncatedEquals
+    + LANG-1830: Avoid repeated regex compilation in ClassUtils
+      .toCleanName()
+    + Add missing test for ObjectUtils.isEmpty(Object) and
+      wait(Object, Duration)
+    + Fix negative week year formatting in FastDatePrinter
+    + Keep abbreviateMiddle off surrogate pair boundaries
+    + LANG-1815: Fix AnnotationUtils.equals for package-private
+      annotations
+    + Fix two Javadoc errors in StringUtils
+    + Reject non-ASCII hex characters in Conversion.hexDigitToInt
+    + Fix the overflow bound direction in
+      Instants.toMillisSince(Instant)
+    + Fix spurious overflow in Fraction.multiplyBy for unreduced
+      operands
+    + Fix low surrogate false match in StringUtils
+      containsAny/containsNone/indexOfAny
+    + Keep StringUtils.chop from splitting a trailing surrogate
+      pair
+    + Keep StringUtils stripStart and stripEnd off surrogate pair
+      boundaries
+    + Fix the month/day example in DurationFormatUtils.formatPeriod
+      Javadoc
+    + Fix typos in Javadoc and example comments
+    + Fix CharRange.contains(CharRange) for negated argument ranges
+    + Fix SpotBugs USO_UNSAFE_METHOD_SYNCHRONIZATION in CharSet
+    + Keep StopWatch.formatSplitTime from clamping splits to int
+      millis
+    + Keep StringUtils left, right, mid, and overlay off surrogate
+      pair boundaries
+    + Align ReflectionDiffBuilder with AbstractReflection and add
+      cycle detection to prevent StackOverflowError on cyclic object
+      graphs
+    + Fix DurationFormatUtils.formatPeriod() calculation when
+      pattern omits 'M'
+    + FastDateParser parses 'Y' (week year) as plain calendar year;
+      asymmetric with FastDatePrinter and with SimpleDateFormat;
+      boundary dates shift by a full year, silently
+    + UnicodeUnescaper.unescapeJava/EcmaScript/Json: malformed \u
+      sequences throw undeclared IllegalArgumentException, AND
+      non-ASCII digit spellings of \u escapes are silently accepted;
+      both arms of one missing ASCII-hex prescan
+    + StringUtils.replaceEachRepeatedly derives its recursion budget
+      from the input itself; the documented StackOverflowError
+      protection fails on large tables, and expanding rules amplify
+      text 64x even at the default TTL
+    + EventUtils.EventBindingInvocationHandler.invoke() dispatches
+      Object.hashCode/equals/toString into the bound business method
+      (empty-eventTypes default), or returns null -> NPE from hash
+      collections (non-empty)
+    + LocaleUtils static caches no longer grows on invalid input to
+      LocaleUtils.countriesByLanguage(String)
+    + LocaleUtils static caches no longer grows on invalid input to
+      LocaleUtils.countriesByLanguage(String)
+    + ExtendedMessageFormat.applyPattern() is quadratic: full
+      pattern.toCharArray() per token
+    + WordUtils.wrap(wrapLongWords=false, the 2-arg default) copies
+      the entire remaining string every iteration.
+    + FastDateParser.parse throws undeclared
+      IllegalArgumentException, NullPointerException, and
+      IllegalStateException on crafted date strings
+    + Memoizer: default caches the first failure forever, has no
+      size bound or eviction, and runs the user computation inside
+      the ConcurrentHashMap bin lock (blocking unrelated keys,
+      deadlocking reentrant use)
+    + StringEscapeUtils.escapeEcmaScript() misses
+      backtick/template-literal (`, ${) and inline-script
+      parser-state sequences (<!--, <script) - claim 'Deals
+      correctly with quotes' is falsified by ES6
+    + StrSubstitutor (deprecated) recursive expansion has a cycle
+      check but no fan-out, depth, or size bound
+    + DurationFormatUtils.formatPeriod walks the calendar one year
+      per iteration, Long.MAX_VALUE endMillis forces ~292 million
+      Calendar round trips on one thread
+    + JavaVersion.get() throws NumberFormatException where javadoc
+      promises null
+    + Match Javadoc to code in SystemProperties.getProperty() and
+      SystemUtils.getEnvironmentVariable() and update inline
+      comments
+    + Fix LockingVisitors Javadoc to match code
+    + DoubleRange/Range accept NaN endpoints, silently producing a
+      half-unbounded range, contains()/fit() fail open for every
+      value above the minimum
+    + BitField long-mask fields silently mis-answer int/short/byte
+      accessors: shifts masked mod 32, and sign extension makes
+      above-bit-31 flags read as set on any negative holder
+    + ClassUtils.getClass() name normalization (whitespace stripping
+      + dot-to-dollar rewriting) defeats host-side class-name string
+      checks
+    + Fraction.getFraction(String) throws undeclared
+      ArithmeticException on crafted numeric strings
+      ('9999999999.5', '1/0', mixed-number overflow)
+    + StringEscapeUtils.escapeHtml4/3 apostrophe gap: single-quoted
+      and unquoted HTML attribute contexts are trivially breakable,
+      and the javadoc discloses the gap only as an HTML4
+      entity-legality footnote
+    + ArrayUtils.addAll/insert length arithmetic overflows
+      (undeclared NegativeArraySizeException) while sibling concat
+      is overflow-checked
+    + FormattableUtils.append pads right-justified output with
+      insert(0) per char; O(width^2); '%500000s' costs ~1.25e11 char
+      moves
+    + Attacker-controlled exception message forges frames in
+      getRootCauseStackTrace output AND suppresses all real frames,
+      beyond cosmetic log spoofing
+    + StrBuilder.indexOf materializes the whole builder as a String
+      per call; deleteAll/replaceAll multiply it into ~750 GB churn
+      on a 1 MB builder
+    + ThresholdCircuitBreaker accepts negative increments and
+      overflows its accumulator, silently keeping the breaker closed
+    + ExceptionUtils.getThrowableList() cycle check is O(n^2) over
+      deep cause chains; all chain-walking consumers inherit it
+    + Reflection builders' cycle registry unregisters per-visit:
+      cycle-SAFE but DAG-exponential, a 40-level reference diamond
+      drives ~2^40 traversals and unbounded output
+    + FastDateFormat static caches grow without bound per distinct
+      pattern/zone/locale, untrusted patterns pin several KB each,
+      forever
+    + Fix Fraction.add and subtract for operands not in lowest terms
+    + Fix MethodUtils.invokeMethod on instances of non-public
+      classes
+    + Fraction.add and subtract return the reduced form when an
+      operand is zero
+    + Return null for out-of-range offset in FastTimeZone
+      .getGmtTimeZone
+    + Fix TypeUtils.toString() recursion and bound handling on
+      recursive generic types
+    + LANG-1834: Fix Fraction reduction for Integer.MIN_VALUE
+    + Defensively clone the TimeZone in FastDatePrinter and
+      FastDateParser
+    + Defensively clone time zones used as FastDateFormat cache keys
+      to prevent caller mutations from returning formatters with
+      stale time zone rules
+    + Fix ConstructorUtils.getMatchingAccessibleConstructor on
+      non-public classes
+    + Fix NumberUtils.createNumber() and isCreatable() for positive
+      Long literals with explicit '+' sign
+    + Fix StrBuilder.lastIndexOf(String) start index for an empty
+      search
+    + Fix int overflow in Conversion count and position bounds
+      guards
+    + Preserve serialization compatibility with 3.20.0 for Range,
+      IntegerRange, LongRange, and DoubleRange by retaining Range
+      serialVersionUID 1L
+      Streams written by 3.21.0 RC1 with UID 2L require reading with
+      RC1 and exporting endpoint and comparator values before
+      rebuilding ranges with this release
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 92 to 105
+    + [test] Bump org.apache.commons:commons-text from 1.14.0 to
+      1.15.0
+
+-------------------------------------------------------------------
 Mon May 11 14:09:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 3.20.0
@@ -116,7 +697,7 @@ Mon May 11 14:01:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       SystemProperties.JAVA_AWT_FONTS
     + Deprecate obsolete system property constant
       SystemProperties.JAVA_AWT_GRAPHICSENV
-    + Deprecate obsolete system property constant
+    + Deprecate obsolete system property const.ant
       SystemProperties.JAVA_AWT_HEADLESS
     + Deprecate obsolete system property constant
       SystemProperties.JAVA_AWT_PRINTERJOB
@@ -381,7 +962,7 @@ Tue Apr  1 07:10:28 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
     * Add CalendarUtils.toOffsetDateTime(Calendar).
     * Add CalendarUtils.toOffsetDateTime().
   * Fixed Bugs:
-    * LANG-1760: Using RandomStringUtils.insecure() still leads to
+        + LANG-1760: Using RandomStringUtils.insecure() still leads to
       using the secure() random.
     * Deprecate static RandomUtils.next*() methods in favor or
       .secure() and .insecure() versions.

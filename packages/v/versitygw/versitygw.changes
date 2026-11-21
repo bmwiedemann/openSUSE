@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Sat Nov 07 16:34:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  * Merge pull request #2606 from
+    fabiomarinetti/feat/azure-blob-iam
+  * fix: list object versions after the key and version id markers
+  * feat: add on-demand bucket size calculation to the WebUI
+    explorer
+  * chore(deps): bump github/codeql-action
+  * chore(deps): bump the dev-dependencies group with 3 updates
+  * chore: group dependabot action updates to one pr
+  * feat: add opt-in ListBuckets visibility scope
+  * fix: rebuild the IPA HTTP request on every retry
+  * perf(posix): skip fallocate on bucket directories that reject
+    it
+  * test: break up REST PutObject tests
+  * feat: store azure bucket settings in an optional meta container
+  * fix: enforce the CORS rules limit and header wildcard rules in
+    PutBucketCors
+  * test: UploadPart/UploadPartCopy combo, better multipart
+    checksum testing
+  * fix: send the 200's object headers with 304 Not Modified
+  * fix: return 409 Conflict when suspending versioning on an
+    Object Lock bucket
+  * fix: check scoutfs glacier offline state after GetObject
+    preconditions
+  * fix: return 412 instead of 304 for failed copy-source
+    preconditions
+  * chore(deps): bump the dev-dependencies group with 27 updates
+  * test: multipart util code cleanup, some test rewrites
+  * fix: treat ENOENT from the unlink as success in posix
+    DeleteObject
+  * test: add pipefail
+  * fix: resolve shellcheck 0.11 SC2328 and SC2218 errors in test
+    scripts
+  * fix: map ENOTDIR and ESTALE from posix GetObject open to
+    NoSuchKey
+  * fix: invalidate IAM cache entries on account create and update
+  * feat: add gateway-side cache for the standalone IAM backend
+  * fix: preserve ChecksumReader metadata when Content-MD5 wraps
+    aws-chunked bodies
+  * fix: return NoSuchKey when object vanishes before posix
+    version-id read
+  * fix: omit unset Status and MFADelete in s3 backend
+    GetBucketVersioning
+  * fix: stop the s3 server when ShutDown lands before fasthttp's
+    Serve starts
+  * feat: let embedders run the standalone IAM service with their
+    own Storer
+  * fix: skip listed entries whose directory is gone in posix
+    ListObjects(V2)
+  * fix: treat a vanished prefix directory as empty in quickWalk
+  * fix: remove sidecar metadata of completed, aborted and failed
+    multipart uploads
+  * feat: add restore archived objects to webui
+  * fix: make Vault IAM access key lookups independent of user
+    count
+  * fix: route virtual-hosted-style requests by the host SigV4
+    signs
+  * chore(deps): bump the dev-dependencies group with 26 updates
+  * fix: compare ListBuckets test results in bucket name order
+  * fix: put the DeleteObjects response in the S3 namespace
+  * fix: reject negative chunk sizes and fix header offset in
+    signed chunk reader
+  * fix: remaining posix races between object uploads and parent
+    directory removals
+  * chore(deps): bump github/codeql-action from 4.39.0 to 4.39.1
+  * fix: report the delete marker in HeadObject of a deleted object
+    (#2560)
+  * fix: compare If-Modified-Since and If-Unmodified-Since in
+    seconds
+  * fix: report IAM store failures as server errors instead of
+    `InvalidAccessKeyId`
+  * fix: integration test timeouts in the https stages of
+    runtests.sh
+  * fix: don't send an empty versionId in s3 backend object tagging
+    calls
+
+-------------------------------------------------------------------
 Thu Oct 29 05:37:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.0:

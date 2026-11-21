@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:51:08 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add sbcl-x86-64-logcount-register.patch from upstream: on CPUs
+  without POPCNT (e.g. qemu64 or pre-Nehalem) LOGCOUNT passed its
+  argument to the assembly routine in the wrong register since 2.6.8,
+  which crashed SBCL on bignums and returned wrong counts for fixnums,
+  breaking the compiler in 2.6.10 (lp#2173766)
+
+-------------------------------------------------------------------
 Sat Oct 31 09:26:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.6.10

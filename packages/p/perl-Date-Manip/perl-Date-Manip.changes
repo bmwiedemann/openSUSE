@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:14:20 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.0.0 (7.00)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+
+  7.00  expected 2026-09-01
+    -  Not a major release
+           This is NOT a major release change. It is simply a bump of one
+           minor version from 6.99. There are no current plans for another
+           major release.
+
+    -  CPAN email contact removed
+           As of April, CPAN no longer forwards emails, so the old cpan.org
+           email address is no longer a supported contact method and has been
+           removed.
+           Reported in GitHub #53
+
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2026c).
+
+-------------------------------------------------------------------
 Mon Aug  3 20:31:08 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Add patches CVE-2026-60074-r1.patch, CVE-2026-60075-r1.patch

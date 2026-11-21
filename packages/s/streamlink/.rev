@@ -351,4 +351,16 @@
     <comment>Update streamlink to 8.6.2 (forwarded request 1385610 from pluskalm)</comment>
     <requestid>1385713</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>7d8e00f6f1da1ad55b33a0128446e738</srcmd5>
+    <version>8.6.3</version>
+    <time>1794591342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.6.3:
+  + Fixed: --retry-streams and --retry-max in external/continuous HTTP output
+    mode when re-fetching
+  + Tests: fixed race-conditions in HLS tests
+- remove link to keyserver (forwarded request 1397293 from rrahl0)</comment>
+    <requestid>1397294</requestid>
+  </revision>
 </revisionlist>

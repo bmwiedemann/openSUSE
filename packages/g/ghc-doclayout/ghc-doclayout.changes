@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:43:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update doclayout to version 0.6.
+  ## 0.6
+
+    * Fix `nowrap` to descend into nested Doc structures.
+      Previously nowrap only replaced top-level breaking spaces, so spaces
+      inside Styled, Linked, Prefixed, and BeforeNonBlank remained
+      breakable, e.g. nowrap (bold ("aa" <> space <> "bb")) still wrapped.
+
+    * Remove deprecated `unfoldD` [API change].
+      It has been deprecated since 0.5 and is no longer used internally.
+
+    * Make `flatten` linear in the size of the Doc (formerly it was quadratic
+      for left-nested Concats).
+
+    * Fix `chop`: preserve attributes, keep combining marks with base, fill left.
+      Previously `chop` (used for lines exceeding a block's width) lost ANSI
+      styling in text, folded right-to-left (sometimes orphaning
+      combining marks at the start of the next line), and under-filled the
+      first chopped line instead of the last (e.g., `lblock 3 "abcdefg"`
+      gave `"a/nbcd/nefg"` rather than `"abc/ndef/ng"`).
+
+    * Fix `offset`/`minOffset`/`updateColumn` for mid-line Prefixed.
+      `getOffset` restarted the column at 0 for Prefixed content and
+      unconditionally added the prefix width, but the renderer only emits
+      the prefix at the start of a line: mid-line, prefixed content simply
+      continues at the current column.
+
+    * Various small performance improvements and cleanups.
+
+    * Update EastAsianWidth.txt to Unicode 17.0.
+
+    * Make `update.hs` a cabal script and fix it for recent EastAsianWidths.
+
+    * Update sources with latest EastAsianWidths.
+
+    * Remove stack.yaml.
+
+-------------------------------------------------------------------
 Wed Jun  3 07:15:04 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update doclayout to version 0.5.0.3.

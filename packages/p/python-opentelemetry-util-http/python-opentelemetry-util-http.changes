@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 22:03:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.66b1:
+  * This is a patch release on the previous 1.45.0/0.66b0
+    release, fixing the issue(s) below.
+  * No significant changes.
+
+-------------------------------------------------------------------
 Tue Sep 29 10:37:19 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.66b0
@@ -106,7 +114,7 @@ Tue Sep 29 10:37:19 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * opentelemetry-instrumentation-asyncpg: honor instrumentation
     suppression (#5087)
   * opentelemetry-propagator-ot-trace: cap ot-baggage-* entries on
-    extract and inject (#5098) 
+    extract and inject (#5098)
 
 -------------------------------------------------------------------
 Tue Jul  7 19:06:45 UTC 2026 - Dirk Müller <dmueller@suse.com>

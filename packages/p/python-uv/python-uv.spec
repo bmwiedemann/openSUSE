@@ -36,13 +36,13 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=1 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.13.6
+Version:        0.13.9
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
-# statically links the vendored Rust dependencies. Re-derived on the 0.13.6
+# statically links the vendored Rust dependencies. Re-derived on the 0.13.9
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
-# tree (502 unique name-version nodes); the copyleft licences in the linked graph are:
+#  - 479 unique crates, same name set as 0.13.8 modulo version bumps; the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
 #    (the last via shellexpand -> dirs -> dirs-sys),
 #  - priority-queue, which is "LGPL-3.0-or-later OR MPL-2.0" - we elect
@@ -53,21 +53,31 @@ Summary:        A Python package installer and resolver, written in Rust
 # not in this binary's graph at all. quinn is absent from the linked
 # graph entirely (dropped upstream) and roxmltree enters only through
 # the dev-only uv-dev crate, so neither is linked into uv.
-# Everything else is permissive, BSD-3-Clause included: subtle,
-# encoding_rs, aws-lc-sys and the zstd bindings. The second zstd chain
-# through uv-python's direct dependency is now zstd 0.13.3 (MIT) and
-# zstd-safe 7.3.0 (BSD-3-Clause), alongside zstd 0.14.3 /
-# zstd-safe 8.2.0 / zstd-sys 2.1.2. MPL-2.0 section 3.2 is satisfied
-# because the complete vendor.tar.zst ships in the src.rpm.
+#  - everything else is permissive, BSD-3-Clause included: subtle,
+#    encoding_rs and aws-lc-sys.
+#  - uv-python's zstd chain is zstd 0.13.5 / zstd-safe 7.4.1 (both
+#    BSD-3-Clause), alongside zstd 0.14.4 / zstd-safe 8.3.0 / zstd-sys 2.1.3.
+#  - MPL-2.0 section 3.2 is satisfied: the complete vendor.tar.zst ships
+#    in the src.rpm.
 License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/astral-sh/uv
 Source0:        https://github.com/astral-sh/uv/archive/refs/tags/%{version}.tar.gz#/%{origname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# Upstream raised its MSRV to 1.97 in 0.12.22 (crates/uv/rust-version,
+# Source-Binary-Exception: python-uv-*.tar.gz:uv-*/crates/uv-trampoline-builder/trampolines/*.exe -- other-platform: Windows launcher executables, embedded only when building for Windows
+# Source-Binary-Exception: vendor.tar.zst:vendor/windows_*/lib/* -- other-platform: Windows import libraries; no windows_* crate is compiled for a Linux target
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/*.o -- other-platform: Windows nasm objects ring links only for Windows x86 and x86_64
+# Source-Binary-Exception: vendor.tar.zst:vendor/aws-lc-sys-*/builder/prebuilt-nasm/*.obj -- other-platform: Windows x86_64 objects for builds without nasm
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: wasm32 relocatable object psm uses only on wasm32 targets
+# Source-Binary-Exception: vendor.tar.zst:vendor/astral-tokio-tar-*/tests/archives/* -- test-data: deliberately truncated tar fixtures the tar reader tests only parse
+# Source-Binary-Exception: vendor.tar.zst:vendor/astral_async_zip-*/src/tests/* -- test-data: deliberately malformed zip vectors the zip reader unit tests only parse
+# Source-Binary-Exception: vendor.tar.zst:vendor/astral_async_zip-*/tests/* -- test-data: sample zip inputs the zip integration tests only read
+# Source-Binary-Exception: vendor.tar.zst:vendor/async-compression-*/tests/* -- test-data: zstd-compressed rust sources the codec tests only decode
+# Upstream raised its MSRV to 1.98 in 0.13.9 (crates/uv/rust-version,
 # inherited from the workspace Cargo.toml). Factory ships 1.98.1.
-BuildRequires:  cargo >= 1.97
+BuildRequires:  cargo >= 1.98
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
+BuildRequires:  memory-constraints
 BuildRequires:  zstd
 %if %{with test}
 # A stock build chroot has no /etc/ssl/certs at all, and reqwest's
@@ -76,7 +86,7 @@ BuildRequires:  zstd
 # constructor error, not a network one, so it took out 38 tests across
 # uv-auth, uv-client and uv-test that never touch the network.
 BuildRequires:  ca-certificates-mozilla
-ExcludeArch:    %ix86 %{arm32} ppc s390
+ExcludeArch:    %{ix86} %{arm32} ppc s390
 %endif
 # The test flavour only builds and runs the Rust test suite. It needs no
 # Python at all, so it skips the singlespec machinery entirely - running
@@ -160,6 +170,11 @@ sed -i '/lto = "fat"/d' Cargo.toml
 
 %build
 %if %{without test}
+# Big-workspace OOM guard: one rustc can peak ~7 GB while -j follows
+# cores, not RAM, so cap the job count by available memory. Stays inside
+# this branch on purpose: as the last command of the test flavour's empty
+# %build it would fail the section under bash -e when no limiting kicks in.
+%limit_build -m 2000
 export CARGO_AUDITABLE="auditable"
 export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1

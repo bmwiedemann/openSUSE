@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * doc: Fix import name for kquickcontrolsaddons
+  * draganddrop: Mark enabled properties as explicit overrides
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

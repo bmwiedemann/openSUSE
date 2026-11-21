@@ -18,7 +18,7 @@
 
 
 Name:           nvtop
-Version:        3.3.2
+Version:        3.4.0+103
 Release:        0
 Summary:        A (h)top like task monitor for NVIDIA and AMD GPUs
 License:        GPL-3.0-or-later
@@ -53,7 +53,7 @@ way.
 
 %files
 %license LICENSE
-%doc README.markdown
+%doc README.md
 %{_bindir}/nvtop
 %{_datadir}/applications/nvtop.desktop
 %{_datadir}/icons/hicolor/scalable/apps/nvtop.svg

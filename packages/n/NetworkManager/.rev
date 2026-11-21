@@ -2664,4 +2664,14 @@ New stable release</comment>
     - Fix DNS server port number not forwarded to systemd-resolved</comment>
     <requestid>1381857</requestid>
   </revision>
+  <revision rev="297" vrev="2">
+    <srcmd5>5409d99137e29821f7c222303d49c884</srcmd5>
+    <version>1.58.1</version>
+    <time>1794816452</time>
+    <user>anag_factory</user>
+    <comment>- Add NetworkManager-restrict-dhcp-cleanup-to-ovs.patch:
+  device: Restrict DHCP cleanup in DEACTIVATING to OVS devices
+  (bsc#1284486, glfd#NetworkManager/NetworkManager!2579).</comment>
+    <requestid>1397276</requestid>
+  </revision>
 </revisionlist>

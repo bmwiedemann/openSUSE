@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 13 04:07:56 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.46.7:
+  * feat: add proper permissions check for macOS
+  * feat: add permissions check for macOS
+
+-------------------------------------------------------------------
+Thu Nov 12 16:13:23 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.46.5:
+  * chore(lint): ignore customapps & extensions
+  * chore: lint extensions & custom apps
+  * feat: remove `musixmatch` integration & add `lrc.red`
+  * feat(css-map): add a lot of missing 1.3.0-1.3.9 classes (#4060)
+  * fix(restart/macos): wait for spotify to close
+  * fix(css-map): add missing intel Spotify 1.3.5 class names (#4057)
+  * fix(webpack): skip framer-motion proxy (#4055)
+  * fix(context-menu): restore extension items in now-playing menus
+  * fix(webpack): preserve legacy menu rendering for custom apps
+
+-------------------------------------------------------------------
 Mon Oct 26 06:56:51 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.46.4:

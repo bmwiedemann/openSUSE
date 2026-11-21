@@ -2,5 +2,5 @@
   <title></title>
   <description></description>
   <scmsync></scmsync>
-  <devel project="devel:tools:ide:vscode" package="binaryen"/>
+  <devel project="devel:tools:building" package="binaryen"/>
 </package>

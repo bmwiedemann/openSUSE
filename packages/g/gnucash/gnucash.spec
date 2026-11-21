@@ -45,6 +45,8 @@ Source1:        %{name}-rpmlintrc
 Patch0:         gnucash-boost-1.89.patch
 # PATCH-FIX-UPSTREAM gh#Gnucash/gnucash/pull/2271 - Missing s for builds on s390x
 Patch1:         fix-BigEndian-s390x.patch
+# PATCH-FIX-UPSTREAM gnucash-swig-py3.patch -- replace obsolete PyInt_* with PyLong_* in Python SWIG interface
+Patch2:         gnucash-swig-py3.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen

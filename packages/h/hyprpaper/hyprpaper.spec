@@ -17,7 +17,7 @@
 
 
 Name:           hyprpaper
-Version:        0.8.4
+Version:        0.8.5
 Release:        0
 Summary:        Wayland wallpaper utility with IPC controls
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(aquamarine)
-BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(hyprgraphics)
 BuildRequires:  pkgconfig(hyprland-protocols)
 BuildRequires:  pkgconfig(hyprlang) >= 0.2.0

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 14 23:05:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Create macros.opentimelineio which contains the library soversion
+  Dependent packages can use '%requires_eq libopentimelineio%{_otio_sonum}'
+  to require the library they're linking to (boo#1290457)
+
+-------------------------------------------------------------------
+Fri Nov 13 19:15:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop obsolete version checks
+
+-------------------------------------------------------------------
+Tue Nov 10 22:07:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.18.1
+  - This release fixes an issue with python wheels on linux.
+
+-------------------------------------------------------------------
 Thu Nov  6 23:52:10 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.18.0

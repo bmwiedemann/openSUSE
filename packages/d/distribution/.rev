@@ -369,4 +369,42 @@
     streaming decoder panic</comment>
     <requestid>1393458</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>d3ceb48bef191efc408a2648aefd8831</srcmd5>
+    <version>3.1.2</version>
+    <time>1794236658</time>
+    <user>anag_factory</user>
+    <comment>  * bsc#1287474, CVE-2026-97032: golang.org/x/net/http2: HTTP/2</comment>
+    <requestid>1396191</requestid>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>bd63162e9c07a46605d274b5ffb0c8f8</srcmd5>
+    <version>3.1.2</version>
+    <time>1794410742</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288318, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+    multiple security issues in github.com/go-jose/go-jose before 4.1.6</comment>
+    <requestid>1396551</requestid>
+  </revision>
+  <revision rev="27" vrev="7">
+    <srcmd5>886daae0403faa80277f08b8717a5379</srcmd5>
+    <version>3.1.2</version>
+    <time>1794828509</time>
+    <user>anag_factory</user>
+    <comment>- rebuild with go 1.26 (bsc#1259718)
+
+- rebuild with more recent go go1.24 (bsc#1244471)</comment>
+    <requestid>1397799</requestid>
+  </revision>
+  <revision rev="28" vrev="8">
+    <srcmd5>9b41bc42112804b48981b7ef7b38b937</srcmd5>
+    <version>3.1.2</version>
+    <time>1795103744</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1290728, CVE-2026-128085: Denial of Service via attribute
+    truncation bypass using Unicode replacement characters</comment>
+    <requestid>1398591</requestid>
+  </revision>
 </revisionlist>

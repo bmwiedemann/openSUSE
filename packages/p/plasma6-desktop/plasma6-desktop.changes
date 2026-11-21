@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:32:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:43:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+  * applets/kicker: don't override cursorShape in HoverBlock (kde#528282)
+  * applets/kickoff: scroll to correct position
+  * Positioner: Conditionally skip saving positions after listing completes
+  * containments/panel: don't hang when the layout spacing is 0 (kde#528228)
+  * applets/showdesktop: manually restore focus for minimized windows (kde#450137)
+  * FolderModel: Respect the file:// protocol
+  * sddm-theme: restore Qt Virtual Keyboard fallback on X11 (kde#527138)
+  * applets/pager: don't Show Desktop when scrolling pager (kde#471241)
+  * kcms/touchscreen: Set textRole for device selection
+  * containments/desktop: handle drag image for very fast drags better (kde#527529)
+  * containments/desktop: open menu at currentItem onMenuPressed (kde#526282)
+  * containments/desktop: Show the Create Folder shortcut in the New menu (kde#473045)
+  * applets/kicker: keep currentindex when scrolling list
+  * containments/desktop: don't reset press position onModelReset (kde#526073)
+  * Do not show login interface when receiving empty messages (kde#527262)
+  * Desktop Containment: Give desktop focus on click (kde#434090)
+  * containments/desktop: Don't offer manual sorting for Folder View widgets (kde#513880)
+  * applets/pager: Let window icons grow with their window outlines (kde#518625)
+  * Positioner: Remove invalid or nonexistant files (kde#469445)
+  * applets/window-list: Elide long titles instead of growing without limit (kde#456148)
+  * containments/desktop: Let Folder View widgets shrink to a single cell (kde#515561)
+- Add 0001-Revert-sddm-theme-restore-Qt-Virtual-Keyboard-fallba.patch
+
+-------------------------------------------------------------------
 Tue Oct 27 18:10:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

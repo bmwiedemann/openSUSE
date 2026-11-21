@@ -34,19 +34,19 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       32
-%global patchver        1
-%global buildver        1
+%global updatever       33
+%global patchver        0
+%global buildver        10
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk%{featurever}/archive
-%global root_revision   8ebd14870a582e07adccb2dc12a0dc8944251b23
-%global root_branch     v0.61.0-release
+%global root_revision   d756ded107f71d06974754401f95686b02fb20d2
+%global root_branch     v0.63.0-release
 %global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
-%global omr_revision    ebd02d9129dc06fa67a6f885f99a3926aa869154
-%global omr_branch      v0.61.0-release
+%global omr_revision    c2a3a9ae0f8f70ab32e489e453114f37136aa67e
+%global omr_branch      v0.63.0-release
 %global openj9_repository https://github.com/eclipse-openj9/openj9/archive
-%global openj9_revision a1daf225f5cb0ccfb5d7309014701570435a94c4
-%global openj9_branch   v0.61.0-release
-%global openj9_tag      openj9-0.61.0
+%global openj9_revision 2578b5aeb27ad6966f66bb970dc4f16d8af6ccda
+%global openj9_branch   v0.63.0-release
+%global openj9_tag      openj9-0.63.0.1
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -116,9 +116,6 @@ Patch3:         openssl-OSSL_LIB_CTX.patch
 Patch4:         openj9-openssl.patch
 # Fix: implicit-pointer-decl
 Patch5:         implicit-pointer-decl.patch
-# Fixes for build with gcc 16
-Patch6:         omr-gcc16.patch
-Patch7:         openj9-gcc16.patch
 #
 Patch10:        system-pcsclite.patch
 #
@@ -191,7 +188,6 @@ Requires:       fontconfig
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
-Requires(post): file
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -249,7 +245,8 @@ Supported architectures are ppc64le, s390x and x86_64
 Summary:        OpenJDK %{featurever} Runtime Environment with Eclipse OpenJ9
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
-Requires(post): java-ca-certificates
+Requires(posttrans): file
+Requires(posttrans): java-ca-certificates
 Obsoletes:      %{name}-accessibility
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -376,8 +373,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
 
 %if %{with_system_pcsc}
 %patch -P 10 -p1
@@ -425,7 +420,7 @@ export CMAKE_POLICY_VERSION_MINIMUM=3.5
 export ARCH_DATA_MODEL=64
 
 EXTRA_CFLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu99 -fno-delete-null-pointer-checks -fno-lifetime-dse"
-EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse"
+EXTRA_CPP_FLAGS="-Wno-error -Wno-maybe-uninitialized -fno-delete-null-pointer-checks -fno-lifetime-dse"
 
 %ifarch ppc64le
 EXTRA_CFLAGS="$EXTRA_CFLAGS -fno-strict-aliasing"
@@ -708,7 +703,7 @@ export JAVA_HOME=%{_jvmdir}/%{jrelnk}
 
 # check if the java-cacerts is a valid keystore (bnc#781690)
 if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
 %if 0%{?suse_version} <= 1310
     # workaround for bnc#847952 - pre 13.1 keyring.jar attempts to load invalid keystore and fail on it
     rm -f "%{javacacerts}"
@@ -724,7 +719,7 @@ fi
 # if cacerts does exists, neither does not contain/point to a
 # valid keystore (bnc#781690) ...
 if [ X"`%{_bindir}/file --mime-type -b -L %{cacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     # bnc#727223
     rm -f %{cacerts}
     ln -s %{javacacerts} %{cacerts}
@@ -1041,7 +1036,6 @@ fi
 %{_jvmdir}/%{sdkdir}/include/jvmticmlr.h
 %{_jvmdir}/%{sdkdir}/include/jvmti.h
 %{_jvmdir}/%{sdkdir}/lib/ct.sym
-%{_jvmdir}/%{sdkdir}/lib/libattach.so
 %{_jvmdir}/%{sdkdir}/include/linux/jawt_md.h
 %{_jvmdir}/%{sdkdir}/include/linux/jni_md.h
 

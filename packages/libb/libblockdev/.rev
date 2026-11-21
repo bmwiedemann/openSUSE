@@ -261,4 +261,22 @@
     <comment></comment>
     <requestid>1349699</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>1a321a2a2c8e819543fdaded41da0502</srcmd5>
+    <version>3.5.0</version>
+    <time>1793990048</time>
+    <user>anag_factory</user>
+    <comment>- Add libblockdev-CVE-2026-111581.patch:
+  CVE-2026-111581: argument injection in NTFS/VFAT label-setting helpers via
+  udisks2 SetLabel() D-Bus method (bsc#1286323)</comment>
+    <requestid>1395135</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>aa1728d466b857b01b995c4ce4b2741f</srcmd5>
+    <version>3.6.0</version>
+    <time>1794816376</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397076</requestid>
+  </revision>
 </revisionlist>

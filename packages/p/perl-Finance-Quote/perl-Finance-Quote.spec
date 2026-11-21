@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.710.0
+Version:        1.720.0
 Release:        0
-# 1.71 -> normalize -> 1.710.0
-%define cpan_version 1.71
+# 1.72 -> normalize -> 1.720.0
+%define cpan_version 1.72
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -147,6 +147,7 @@ Provides:       perl(Finance::Quote::GoogleWeb) = %{version}
 Provides:       perl(Finance::Quote::IndiaMutual) = %{version}
 Provides:       perl(Finance::Quote::MarketWatch) = %{version}
 Provides:       perl(Finance::Quote::MorningstarJP) = %{version}
+Provides:       perl(Finance::Quote::NPSNAV) = %{version}
 Provides:       perl(Finance::Quote::NSEIndia) = %{version}
 Provides:       perl(Finance::Quote::NZX) = %{version}
 Provides:       perl(Finance::Quote::OnVista) = %{version}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:32:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1289838_CVE-2026-109920_FreeType-always-initialise-strike_index.patch
+  * FreeType backend uninitialised strike_index out-of-bounds read
+    (CVE-2026-109920, bsc#1289838)
+
+-------------------------------------------------------------------
+Thu Nov  5 13:21:15 UTC 2026 - Stefan Dirsch <sndirsch@suse.de>
+
+- bsc1289304_CVE-2026-109909_bufio-pcf-reject-negative-skip-count-in-BufFileRawSk.patch
+  * PCF Font Parsing Negative Skip Out-Of-Bounds Read (CVE-2026-109909,
+    bsc#1289304)
+
+-------------------------------------------------------------------
 Tue Jul 28 11:43:09 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1272660_CVE-2026-59679_0001-fserve-validate-num_chars-against-encoding-array-siz.patch

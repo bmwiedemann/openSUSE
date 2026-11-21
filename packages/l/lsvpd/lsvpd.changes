@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 13 19:58:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.7.18:
+  * Report FRU number for Spyre cards.
+  * Update Nvidia adapter descriptions for Fractal and Onion Creek
+    cards.
+- Drop upstreamed patches:
+  * lsvpd-Add-FRU-number-for-Spyre-cards.patch
+  * lsvpd-Fix-description-for-Nvidia-specific-Adapters.patch
+- Modernize spec file with spec-cleaner.
+
+-------------------------------------------------------------------
 Mon Feb  9 10:31:01 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix description for Nvidia specific Adapters (jsc#PED-14550)

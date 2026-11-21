@@ -242,11 +242,22 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
+Patch1285086:   bsc1285086_CVE-2026-109091.patch
+Patch1285087:   bsc1285087_CVE-2026-109092.patch
+Patch1285088:   bsc1285088_CVE-2026-109093.patch
+Patch1285089:   bsc1285089_CVE-2026-109094.patch
+Patch1285090:   bsc1285090_CVE-2026-109095.patch
+Patch1285091:   bsc1285091_CVE-2026-109096.patch
+Patch1285093:   bsc1285093_CVE-2026-109903.patch
+Patch1285094:   bsc1285094_CVE-2026-109904.patch
+
+Patch1289271:   U_Revert-damage-Unlink-a-damage-from-the-list-it-was-a.patch
+
 %description
 This package contains the X.Org Server.
 
 %package extra
-Summary:        Additional Xservers Xephyr, Xnest)
+Summary:        Additional Xservers (Xephyr, Xnest)
 Group:          System/X11/Servers/XF86_4
 Requires:       Mesa
 Requires:       xkbcomp
@@ -394,6 +405,17 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1960 -p1
 
 %patch -P 1218176 -p1
+
+%patch -P 1285086 -p1
+%patch -P 1285087 -p1
+%patch -P 1285088 -p1
+%patch -P 1285089 -p1
+%patch -P 1285090 -p1
+%patch -P 1285091 -p1
+%patch -P 1285093 -p1
+%patch -P 1285094 -p1
+
+%patch -P 1289271 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

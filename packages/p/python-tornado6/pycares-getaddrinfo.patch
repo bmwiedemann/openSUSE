@@ -1,14 +1,14 @@
-Index: tornado-6.5.5/tornado/platform/caresresolver.py
+Index: tornado-6.6/tornado/platform/caresresolver.py
 ===================================================================
---- tornado-6.5.5.orig/tornado/platform/caresresolver.py
-+++ tornado-6.5.5/tornado/platform/caresresolver.py
-@@ -66,10 +66,10 @@ class CaresResolver(Resolver):
+--- tornado-6.6.orig/tornado/platform/caresresolver.py
++++ tornado-6.6/tornado/platform/caresresolver.py
+@@ -65,10 +65,10 @@ class CaresResolver(Resolver):
          if is_valid_ip(host):
              addresses = [host]
          else:
 -            # gethostbyname doesn't take callback as a kwarg
 +            # getaddrinfo doesn't take callback as a kwarg
-             fut = Future()  # type: Future[Tuple[Any, Any]]
+             fut: Future[tuple[Any, Any]] = Future()
 -            self.channel.gethostbyname(
 -                host, family, lambda result, error: fut.set_result((result, error))
 +            self.channel.getaddrinfo(
@@ -16,7 +16,7 @@ Index: tornado-6.5.5/tornado/platform/caresresolver.py
              )
              result, error = yield fut
              if error:
-@@ -77,7 +77,7 @@ class CaresResolver(Resolver):
+@@ -76,7 +76,7 @@ class CaresResolver(Resolver):
                      "C-Ares returned error %s: %s while resolving %s"
                      % (error, pycares.errno.strerror(error), host)
                  )

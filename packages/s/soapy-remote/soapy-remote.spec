@@ -20,7 +20,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-remote
 Name:           soapy-remote
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Remote device support for Soapy SDR
 License:        BSL-1.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:16:09 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Used std::pair instead of QPair, and did some cleanup.
+
+-------------------------------------------------------------------
 Mon Apr 20 22:11:12 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

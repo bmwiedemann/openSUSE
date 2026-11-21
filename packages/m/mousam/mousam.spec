@@ -17,7 +17,7 @@
 
 
 Name:           mousam
-Version:        2.0.2
+Version:        3.0.0
 Release:        0
 Summary:        A lightweight weather app
 License:        GPL-3.0-or-later
@@ -64,10 +64,11 @@ Mousam is a lightweight weather app. It has the following features:
 %doc README.md
 %{_bindir}/mousam
 %{_datadir}/%{name}/
-%{_datadir}/appdata/*appdata.xml
+%{_datadir}/metainfo/io.github.amit9838.mousam.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
-%{_datadir}/icons/hicolor/scalable/mousam_icons/
+%{_datadir}/icons/hicolor/scalable/default_icons/
+%{_datadir}/icons/hicolor/scalable/material_icons/
 %{_datadir}/icons/hicolor/*/apps/*.svg
 
 %files lang -f %{name}.lang

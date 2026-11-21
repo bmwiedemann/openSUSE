@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:56:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update ech-config to version 0.0.2.
+  ## 0.0.2
+
+  * Refuse trailing data and ignore ECHConfigs of unknown versions.
+    [#621](https://github.com/haskell-tls/hs-tls/pull/621)
+
+-------------------------------------------------------------------
 Sun Mar  8 12:38:46 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update ech-config to version 0.0.1 revision 1.

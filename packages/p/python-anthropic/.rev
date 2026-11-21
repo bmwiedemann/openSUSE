@@ -340,4 +340,60 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 2.3.0.</comment>
     <requestid>1392561</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>7be5855949704be517f0560238077837</srcmd5>
+    <version>2.4.0</version>
+    <time>1793817970</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.4.0</comment>
+    <requestid>1394849</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>60f8f175b0fe8a2d30070fc90846b11d</srcmd5>
+    <version>2.6.0</version>
+    <time>1794090791</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.6.0 (skipped 2.5.0)</comment>
+    <requestid>1395996</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3ebe1d4aa8bd23e218ce877ab7017da3</srcmd5>
+    <version>2.7.0</version>
+    <time>1794324600</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.7.0</comment>
+    <requestid>1396523</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>89e71e593326e6a93924b8cb70060085</srcmd5>
+    <version>2.8.0</version>
+    <time>1794411037</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.8.0</comment>
+    <requestid>1396900</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>02529f0062ae0ba0dcfd29d32b3b3816</srcmd5>
+    <version>2.9.0</version>
+    <time>1794932313</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.9.0: RBAC reads, bundle tag updates, Windows credential fix, hardened file and grep tools, session fixes.</comment>
+    <requestid>1398004</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>22a6a0f23f0a7b2a0dd4f9419f2bb8e3</srcmd5>
+    <version>2.10.0</version>
+    <time>1795103772</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.10.0: billing_policy beta, error-model rename, webhook events.</comment>
+    <requestid>1398609</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>93cf14ed7262a173a1b293d73e6f9c1e</srcmd5>
+    <version>2.11.0</version>
+    <time>1795182488</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.11.0: Admin API managed settings, SigV4 space-encoding fix, cached schema perf.</comment>
+    <requestid>1398890</requestid>
+  </revision>
 </revisionlist>

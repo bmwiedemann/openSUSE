@@ -1,5 +1,12 @@
 -------------------------------------------------------------------
-Tue May 19 00:36:07 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+Fri Nov 13 07:27:59 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Fix Qt 6.12 MOC metatype completeness errors for Hyprland IPC QObject properties.
+- Keep PCH disabled for this build.
+- Add fix-qt612-hyprland-moc-metatypes.patch
+
+-------------------------------------------------------------------
+Tue May 19 00:36:07 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Updated to git master version (noctalia-qs will probably not be maintained anymore so updated to git master version to have crash patches, etc.)
 - Changed 'tar' and 'recompress' services mode to buildtime

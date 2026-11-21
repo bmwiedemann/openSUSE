@@ -1,7 +1,8 @@
 #
 # spec file for package libmrss
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +17,21 @@
 #
 
 
-%define lname	libmrss0
+%define sover 0
 Name:           libmrss
-Version:        0.19.3
+Version:        0.19.4
 Release:        0
 Summary:        RSS Parsing Library
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
-URL:            http://www.autistici.org/bakunin/codes.php
-# Download from commit cc2f489ba698a2227065731b714905ab56b1de1a since 0.19.3 has not officially been tagged.
-Source:         libmrss-%{version}.tar.xz
+URL:            https://github.com/bakulf/libmrss/
+Source:         https://github.com/bakulf/libmrss/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch1:         libmrss-curl_compat.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  curl-devel
-BuildRequires:  libnxml-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(nxml)
 
 %description
 libmRSS is a C library for parsing, writing, and creating RSS (Rich Site
@@ -42,22 +39,20 @@ Summary, Really Simple Syndication, and RDF Site Summary) and ATOM files or
 streams. The formats supported are: RSS 0.91, RSS 0.92, RSS 1.0, RSS 2.0, ATOM
 0.3, and ATOM 1.0.
 
-%package -n %{lname}
+%package -n %{name}%{sover}
 Summary:        RSS Parsing Library
-Group:          System/Libraries
 
-%description -n %{lname}
+%description -n %{name}%{sover}
 libmRSS is a C library for parsing, writing, and creating RSS (Rich Site
 Summary, Really Simple Syndication, and RDF Site Summary) and ATOM files or
 streams. The formats supported are: RSS 0.91, RSS 0.92, RSS 1.0, RSS 2.0, ATOM
 0.3, and ATOM 1.0.
 
+This package contains the shared library.
+
 %package devel
 Summary:        Headers and development package for libmrss
-Group:          Development/Libraries/C and C++
-Requires:       %{lname} = %{version}
-Requires:       curl-devel
-Requires:       libnxml-devel
+Requires:       %{name}%{sover} = %{version}
 
 %description devel
 libmRSS is a C library for parsing, writing, and creating RSS (Rich Site
@@ -67,27 +62,29 @@ streams. The formats supported are: RSS 0.91, RSS 0.92, RSS 1.0, RSS 2.0, ATOM
 
 %prep
 %autosetup -p1
+touch NEWS
 
 %build
-./autogen.sh
+autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post   -n %{lname} -p /sbin/ldconfig
-%postun -n %{lname} -p /sbin/ldconfig
+%check
+%make_build test
 
-%files -n %{lname}
-%defattr(-,root,root)
-%{_libdir}/libmrss.so.*
+%ldconfig_scriptlets -n %{name}%{sover}
+
+%files -n %{name}%{sover}
 %license COPYING
 %doc AUTHORS README ChangeLog
+%{_libdir}/libmrss.so.%{sover}{,.*}
 
 %files devel
-%defattr(-,root,root)
+%license COPYING
 %{_libdir}/pkgconfig/mrss.pc
 %{_libdir}/libmrss.so
 %{_includedir}/mrss.h

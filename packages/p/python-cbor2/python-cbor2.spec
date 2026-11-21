@@ -23,19 +23,23 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-cbor2
-Version:        5.9.0
+Version:        6.2.0.post2
 Release:        0
 Summary:        Pure Python CBOR (de)serializer with extensive tag support
 License:        MIT
 URL:            https://github.com/agronholm/cbor2
-Source:         https://files.pythonhosted.org/packages/source/c/cbor2/cbor2-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
+Source0:        https://files.pythonhosted.org/packages/source/c/cbor2/cbor2-%{version}.tar.gz
+Source1:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module setuptools_scm >= 6.4}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with libalternatives}
@@ -52,12 +56,10 @@ Pure Python CBOR (de)serializer with extensive tag support
 
 %prep
 %autosetup -p1 -n cbor2-%{version}
-# Remove test dependency on pytest-cov
-sed -i 's/--cov//' pyproject.toml
+tar -xf %{SOURCE1} --strip-components=1
 
 %build
 export LANG=en_US.UTF8
-export CBOR2_BUILD_C_EXTENSION=1
 %pyproject_wheel
 
 %install
@@ -83,8 +85,7 @@ export LANG=en_US.UTF8
 %doc README.rst
 %license LICENSE.txt
 %python_alternative %{_bindir}/cbor2
-%{python_sitearch}/*.so
 %{python_sitearch}/cbor2
-%{python_sitearch}/cbor2*-info
+%{python_sitearch}/cbor2-%{version}.dist-info
 
 %changelog

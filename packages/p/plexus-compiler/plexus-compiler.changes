@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Nov 15 15:07:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.18.1
+  * Bug Fixes
+    + Pass -proc option to ECJ without explicit annotation
+      processors
+  * Build
+    + Declare GITHUB_TOKEN permissions in workflows
+    + Quote distribution key in matrix-exclude
+  * Dependency updates
+    + Bump plexus-utils to 4.2.0 and plexus-xml to 3.1.1
+    + Bump org.codehaus.plexus:plexus from 27 to 28
+    + Bump eclipse.sisu.version from 1.1.1 to 1.1.2
+    + Bump org.apache.commons:commons-lang3 from 3.21.0 to 3.22.0
+
+-------------------------------------------------------------------
+Fri Nov  6 13:21:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.18.0
+  * Removed
+    + Bump Error Prone to 2.50.0, requires Java 21
+  * New features and improvements
+    + Accept the 1.x spelling for the javac release version
+  * Documentation updates
+    + Drop the Source Xref menu item
+  * Maintenance
+    + Use JUnit 5 in the AspectJ compiler IT
+    + Remove redundant javaVersion property
+    + Drop the Source Xref menu item
+    + Derive test expectations from the JDK feature version
+  * Build
+    + Allow running the release drafter by hand
+    + Keep Dependabot off plexus-xml 4.x and SLF4J 2.x
+  * Dependency updates
+    + Bump com.google.guava:guava from 33.7.1-jre to 33.8.0-jre
+    + Bump eclipse.sisu.version from 1.1.0 to 1.1.1
+    + Bump org.apache.commons:commons-lang3 from 3.20.0 to 3.21.0
+    + Bump Error Prone to 2.50.0, requires Java 21
+
+-------------------------------------------------------------------
 Mon Sep 28 12:49:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.17.1

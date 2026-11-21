@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:57:06 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update dns to version 4.2.1.
+  ## 4.2.1
+
+  - Security: decoding a domain name could consume a lot of CPU time and
+    memory with a crafted message (very long names or many compression
+    pointers). Now names longer than 255 octets and names that follow
+    more than 127 compression pointers are rejected.
+  - Security: an undecodable UDP reply (possibly spoofed) aborted the
+    lookup. Now it is dropped and the resolver keeps waiting.
+  - The TTL of negative cache entries is now capped by `maximumTTL`.
+  - Mailboxes are no longer stored in the domain name cache of the decoder.
+
+-------------------------------------------------------------------
 Fri Jun 30 02:18:10 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add dns at version 4.2.0.

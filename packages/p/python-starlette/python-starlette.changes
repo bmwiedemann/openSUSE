@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Oct 25 22:14:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10.0:
+  * Starlette 1.10.0 parses URL-encoded forms with less memory
+    and CPU, no longer drops the last field when a stream ends
+    early, and lets you compare `FormData` that holds several
+    uploads under one key.
+- update to 1.9.0:
+  * This release streams `TestClient` response bodies, so
+    `client.stream()` returns before the application finishes. It
+    also escapes path delimiters when building URLs, matches host
+    names case-insensitively, and keeps every existing `Vary`
+    header.
+- update to 1.8.0:
+  * This release adds HTTP 103 Early Hints, preserves response
+    trailers through `GZipMiddleware`, and stops `FileResponse`
+    transfers when clients disconnect. Starlette now requires
+    Python 3.11.
+
+-------------------------------------------------------------------
 Fri Oct  9 03:44:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.7.0:

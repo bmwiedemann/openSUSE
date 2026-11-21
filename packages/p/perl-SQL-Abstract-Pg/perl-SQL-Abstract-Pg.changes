@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 09:53:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-SQL-Abstract-Pg/Changes
+
+  1.01  2026-10-25
+    - Added support for bulk inserts. (array of hashes)
+
+-------------------------------------------------------------------
 Thu Feb  6 22:28:35 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

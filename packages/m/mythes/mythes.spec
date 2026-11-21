@@ -1,7 +1,7 @@
 #
 # spec file for package mythes
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libmythes-1_2-0
 Name:           mythes
-Version:        1.2.5
+Version:        1.2.7
 Release:        0
 Summary:        A simple thesaurus for Libreoffice
 License:        BSD-2-Clause AND MIT
@@ -57,7 +57,7 @@ information on part of speech, meanings, and synonyms.
 This package contains the %{name} development files.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -76,7 +76,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc COPYING README* AUTHORS
+%license COPYING
+%doc README* AUTHORS
 %{_libdir}/*.so.*
 
 %files devel

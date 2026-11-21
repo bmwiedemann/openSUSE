@@ -9,3 +9,4 @@ addFilter('htaccess-file');
 addFilter('devel-file-in-non-devel-package');
 addFilter('hidden-file-or-dir');
 addFilter('non-etc-or-var-file-marked-as-conffile');
+addFilter('dir-or-file-outside-snapshot');

@@ -6802,4 +6802,28 @@ v3: with gn dependency</comment>
     <comment>Chromium 156.0.8078.79 (boo#1288840)</comment>
     <requestid>1393781</requestid>
   </revision>
+  <revision rev="559" vrev="1">
+    <srcmd5>1451a304bfe847bd97c86496a32f23a6</srcmd5>
+    <version>157.0.8103.38</version>
+    <time>1793817905</time>
+    <user>anag_factory</user>
+    <comment>Chromium 157 (157.0.8103.38) promoted to stable (boo#1289268)</comment>
+    <requestid>1394800</requestid>
+  </revision>
+  <revision rev="560" vrev="1">
+    <srcmd5>f47359ba77e076c329dd8a2f063e7dae</srcmd5>
+    <version>157.0.8103.50</version>
+    <time>1794318129</time>
+    <user>anag_factory</user>
+    <comment>Chromium 157.0.8103.50 (boo#1289814)</comment>
+    <requestid>1396451</requestid>
+  </revision>
+  <revision rev="561" vrev="1">
+    <srcmd5>11886e8e86a9a1e484e1781abc5282e5</srcmd5>
+    <version>157.0.8103.78</version>
+    <time>1794816456</time>
+    <user>anag_factory</user>
+    <comment>Chromium 157.0.8103.78 (boo#1290110)</comment>
+    <requestid>1397011</requestid>
+  </revision>
 </revisionlist>

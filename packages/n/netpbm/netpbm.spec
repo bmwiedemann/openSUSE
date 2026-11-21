@@ -23,7 +23,7 @@
 %define libmin  116
 %define libver  %{libmaj}.%{libmin}
 Name:           netpbm
-Version:        11.16.1
+Version:        11.16.5
 Release:        0
 Summary:        A Graphics Conversion Package
 License:        BSD-3-Clause AND GPL-2.0-or-later AND IJG AND MIT AND LicenseRef-SUSE-Public-Domain

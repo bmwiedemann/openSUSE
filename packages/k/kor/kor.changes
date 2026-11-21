@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 12 05:33:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.0:
+  * fix(secrets): treat CSI nodePublishSecretRef as a secret
+    reference (#645)
+  * fix: migrate formatter to tablewriter v1 without changing table
+    output (#644)
+  * feat: add skip namespace validation option for RBAC filters
+    (#572)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.37.1 to
+    0.37.2 (#642)
+  * perf(kor): parallelize unused resource discovery in all and
+    multi paths (#634)
+  * chore(deps): bump github.com/prometheus/client_golang (#637)
+  * Update Docker Pulls badge URL (#631)
+  * fix: Add tests to enhance coverage (#623)
+  * chore(deps): bump k8s.io/apiextensions-apiserver from 0.37.0 to
+    0.37.1 (#628)
+  * Bump go version to 1.26.8 (#622)
+  * chore(deps): bump github.com/prometheus/client_model from 0.6.2
+    to 0.6.3 (#621)
+
+-------------------------------------------------------------------
 Sat Sep 19 09:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.9:

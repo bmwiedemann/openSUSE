@@ -613,4 +613,41 @@
     <comment>1</comment>
     <requestid>1372557</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>3525cbe51dfa28d42645a16823177e43</srcmd5>
+    <version>5.7.0</version>
+    <time>1795182434</time>
+    <user>anag_factory</user>
+    <comment>- Update 5.7.0:
+  * Drop Python 3.9 support (minimum Python 3.10) and fix Python 3.14+
+    PEP 649 TYPE_CHECKING annotations and head_from_fun __wrapped__
+  * Update core requirements: kombu &gt;= 5.7.0, billiard &gt;= 4.3.2, and
+    click-repl &gt;= 0.4.0
+  * Support pymemcache, add Google Cloud PubSub extra, remove redis
+    version pins, and update brotli/pymongo/eventlet&gt;=0.37.0 compat
+  * Make worker_concurrency cgroup-aware via --concurrency=auto
+  * Allow worker_pool_start_method='spawn' with AsynPool and detect
+    spawned pool children in process_initializer
+  * Add task_retry_on_worker_lost to limit requeues after worker loss
+  * Fix --detach stalling in containers with high fdmax
+  * Decouple acks_on_failure and acks_on_timeout, and finish half-read
+    child results on prefork shutdown
+  * Fix AsynPool AttributeError on missing _sentinel_poll, skip exited
+    children in _help_stuff_finish, and fix PEP 479 StopIteration
+  * Fix free worker stalling after reconnect (AsynPool.flush) and warm
+    shutdown not cancelling prefetched tasks in thread pool
+  * Fix autoscale and disable-prefetch for green pools, and reset
+    autoscale keepalive for immediate tasks
+  * Fix worker reconnect after Redis failover, synloop hub.reset() and
+    deferred acks, and bound open sockets before teardown
+  * Fix Consumer.on_close() wiping in-flight reservations, skip
+    prefetch reduction under per-consumer QoS, and preserve op order
+  * Fix Queues.deselect() leaking routing-only queues, support queue
+    aliases, and restore consume_from on add_consumer
+  * Fix pidbox consumer cleanup, RabbitMQ 4.3.0 compat, and cancel only
+    per-connection timers on broker reconnect
+  * Enable heartbeat on event dispatcher, synchronize shutdown with
+    publishing, and fix event/timer leaks after reconnect</comment>
+    <requestid>1398855</requestid>
+  </revision>
 </revisionlist>

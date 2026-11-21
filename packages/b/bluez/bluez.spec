@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.87
+Version:        5.88
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -56,8 +56,6 @@ Patch2:         bluez-sdp-unix-path.patch
 Patch3:         bluez-no-cups-devel-buildreq.patch
 # workaround for broken tests (reported upstream but not yet fixed)
 Patch4:         bluez-disable-broken-tests.diff
-Patch5:         fix-crash-on-UUID-discovery.patch
-Patch6:         a2dp-fix-loading-of-remote-SEP-from-cache.patch
 # disable tests for bypass boo#1078285
 Patch12:        disable_some_obex_tests.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
@@ -65,9 +63,7 @@ Patch12:        disable_some_obex_tests.patch
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688 bsc#995059 bsc#1094902
 Patch201:       0001-rpi3-bcm43xx-The-UART-speed-must-be-reset-after-the-firmw.patch
 # mesh-cfgtest only compiles with gcc8 or newer, Leap 15 has gcc7.5.0 as default
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc8
-%endif
+
 BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  libtool
@@ -235,10 +231,6 @@ sed -i '/^#AutoEnable=false/aAutoEnable=true' src/main.conf
 %{?python3_fix_shebang_path:%python3_fix_shebang_path test/*}
 
 %build
-%if 0%{?suse_version} < 1550
-echo 0%{?suse_version}
-export CC=gcc-8
-%endif
 # header file has "#ifndef FIRMWARE_DIR...#define FIRMWARE_DIR /etc/firmare"
 # instead of patching, just supply FIRMWARE_DIR on compiler's command line
 export CPPFLAGS="$CPPFLAGS -DFIRMWARE_DIR='\"%{_firmwaredir}\"'"
@@ -286,9 +278,10 @@ install -m 644 %{SOURCE10} %{buildroot}%{_prefix}/lib/tmpfiles.d/bluez.conf
 ## same as in fedora...
 # "make install" fails to install gatttool, used with Bluetooth Low Energy
 # boo#970628
-%if %{with bluez_deprecated}
-install -m0755 attrib/gatttool %{buildroot}%{_bindir}
-%endif
+# seems not to build for 5.88 anymore
+##%%if %{with bluez_deprecated}
+##%install -m0755 attrib/gatttool %{buildroot}%{_bindir}
+##%%endif
 
 ## install btgatt-client for -test package, see
 ## https://www.spinics.net/lists/linux-bluetooth/msg63258.html
@@ -367,8 +360,7 @@ done
 # systemd-tmpfiles create directory and file
 %tmpfiles_create bluez.conf
 
-%post -n libbluetooth3 -p /sbin/ldconfig
-%postun -n libbluetooth3 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libbluetooth3
 
 %pre obexd
 %systemd_user_pre obex.service
@@ -422,6 +414,7 @@ done
 %{_mandir}/man1/bluetoothctl-admin.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-advertise.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-assistant.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-cs.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-endpoint.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-gatt.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-hci.1%{?ext_man}
@@ -466,7 +459,6 @@ done
 
 %if %{with bluez_deprecated}
 %files deprecated
-%{_bindir}/gatttool
 %{_bindir}/hcitool
 %{_bindir}/rfcomm
 %{_bindir}/sdptool

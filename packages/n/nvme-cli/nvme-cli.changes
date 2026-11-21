@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 10 20:16:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2:
+  * nvme-discoverd is now built by default and replaces the legacy
+    autoconnect: discovery controllers stay connected
+    (--persistent=auto) and the host reacts to discovery AENs;
+    mDNS discovery is optional.
+  * Stricter command line: long options need two dashes and their
+    full name, numbers are parsed strictly and every command
+    checks its operand.
+  * Register commands reworked: show-regs, get-reg and set-reg use
+    the specification register names with one JSON shape.
+  * Security hardening: fix a root command injection in the WDC
+    and SanDisk plugins, path traversal, format string and many
+    out-of-bounds reads found by fuzzing; vendor plugins use
+    libarchive instead of spawning external tar/zip/dmesg.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Packaging: ship nvme-discoverd.service instead of the legacy
+  autoconnect units; new BuildRequires on libarchive and
+  libsystemd, upstream's minimum versions for json-c and openssl;
+  man pages ship pre-generated, doc tools dropped; mDNS discovery
+  only where libsystemd is at least 258; spec-cleaner.
+- Skip the test suite on ppc64le, where the new sandbox-util
+  tests fail with no upstream fix; it runs on all other arches.
+
+-------------------------------------------------------------------
 Fri Sep 18 11:31:09 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 3.1:

@@ -84,4 +84,20 @@
           5cac74e680c50cf4d75eecbed479a987452c7ea0</comment>
     <requestid>1376322</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7a8335207f2eeaf86df8b7bd559a0cd5</srcmd5>
+    <version>2.225</version>
+    <time>1793725187</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.225
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+    2.225 9 October 2026
+        * update to version 2,225
+          Fri Oct 9 14:43:07 2026 +0100
+          c7cca3aeab35d81a03605c7fb0f6994f1fb377d7
+        * Update email address
+          Fri Oct 9 14:09:44 2026 +0100
+          62e72ffbb6126cad72c53868e6c47fb8d2d133bd</comment>
+    <requestid>1394676</requestid>
+  </revision>
 </revisionlist>

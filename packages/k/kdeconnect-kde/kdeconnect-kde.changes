@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Fix kdeconnectd deadlock by not holding the lock during the loopback requestConversation D-Bus call (kde#525025)
+  * sendnotifications: Fix crash when the D-Bus listener thread stops (kde#527975)
+  * Replace the random art URL with a hash of the song metadata
+  * Fix mpriscontrol crash on Windows when a media session goes away
+  * Fix crash in Windows mpris when handling playback info events
+  * sendnotifications: Fix crash on Windows
+  * Fix empty requestNowPlaying replies on Windows
+  * Fix null pointer dereference in Windows mpris
+  * Sanitize paths in more plugins
+  * Fix handle leaks in terminateProcess
+  * Handle WinRT events in the Qt thread
+  * Do not send packets from COM threads
+  * Fix heap overflow in setDefaultAudioPlaybackDevice
+  * Fix registering more than one callback and never releasing them
+  * Reject packets without type
+  * Skip bad packets in BluetoothLink like we do in LanLink
+  * Reduce redundant dbus signals if the pair state didn't change (CVE-2026-111426, boo#1289334)
+  * Fix reorder warning
+  * Hide connection info when not connected
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

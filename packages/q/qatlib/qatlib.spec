@@ -17,7 +17,7 @@
 
 
 Name:           qatlib
-Version:        26.02.0
+Version:        26.08.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-Clause

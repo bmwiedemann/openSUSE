@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  7 11:51:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update wai to version 3.2.5.
+  ## 3.2.5
+
+  * Add a `requestSendEarlyHints :: [Header] -> IO ()` field to `Request` for sending `103 Early Hints` responses. [#1085](https://github.com/yesodweb/wai/pull/1085)
+
+-------------------------------------------------------------------
 Sun Dec 10 10:13:43 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update wai to version 3.2.4.

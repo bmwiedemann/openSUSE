@@ -28,7 +28,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
-Patch0:         0002-Remove-dependency-on-jtidy.patch
+Patch0:         0001-Remove-dependency-on-jtidy.patch
+Patch1:         0002-A-standalone-plugin-descriptor-generator.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  unzip
@@ -68,6 +69,7 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{base_name}-%{file_ver}
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin :sisu-maven-plugin

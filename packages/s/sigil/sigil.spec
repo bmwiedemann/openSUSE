@@ -16,11 +16,11 @@
 #
 
 
-%define sigil_doc_version 20250912
+%define sigil_doc_version 2026.11.01
 %define pythons python313
 
 Name:           sigil
-Version:        2.8.1
+Version:        2.8.6
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only

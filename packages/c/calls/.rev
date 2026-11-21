@@ -190,4 +190,12 @@ Pushing GNOME 45.rc packages</comment>
   * Updated translations.</comment>
     <requestid>1386703</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>65c9f1dff31fa0317a9be955b69d53dd</srcmd5>
+    <version>51.1</version>
+    <time>1795182710</time>
+    <user>anag_factory</user>
+    <comment>- Add calls-desktop.patch: Fix desktop file translation.</comment>
+    <requestid>1398946</requestid>
+  </revision>
 </revisionlist>

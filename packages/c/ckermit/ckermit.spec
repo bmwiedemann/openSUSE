@@ -17,20 +17,15 @@
 
 
 Name:           ckermit
-Version:        9.0.302
+Version:        11.0.514
 Release:        0
 Summary:        A Combined Serial and Network Communication Software Package
 License:        BSD-3-Clause
-Group:          Hardware/Modem
-URL:            https://www.kermitproject.org/
-Source0:        ftp://ftp.kermitproject.org/kermit/archives/cku302.tar.gz
+URL:            https://www.openkermit.org/
+Source0:        https://github.com/OpenKermit/ckermit/archive/refs/tags/v%{version}.tar.gz
 Source1:        ckermit-tmp.conf
-Patch0:         decl-definition-conflict.patch
-# PATCH-FIX-UPSTREAM time_and_file_failure.patch
-Patch1:         time_and_file_failure.patch
-Patch2:         gcc14.patch
-Patch3:         default-transfer-mode.patch
-Patch4:         remote-security.patch
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  ncurses-devel
 Provides:       kermit
 
@@ -42,7 +37,6 @@ character-set translation, and automation of communication tasks.
 
 %package doc
 Summary:        Documentation for CKermit
-Group:          Documentation/Howto
 %if !0%{?sles_version}
 BuildArch:      noarch
 %endif
@@ -51,10 +45,10 @@ BuildArch:      noarch
 This package contains the documentation and manual pages for ckermit.
 
 %prep
-%autosetup -p1 -c
+%autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -std=gnu89 -DLOCK_DIR=\\\\\\\\\\\\\\\"/run/lock/uucp\\\\\\\\\\\\\\\""
+export CFLAGS="%{optflags} -DLOCK_DIR=\\\\\\\\\\\\\\\"/run/lock/uucp\\\\\\\\\\\\\\\""
 %make_build KFLAGS="$CFLAGS" linux
 
 %install
@@ -74,6 +68,6 @@ install -pD -m644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/ckermit.conf
 %{_tmpfilesdir}/ckermit.conf
 
 %files doc
-%doc *.txt
+%doc android.txt doc/
 
 %changelog

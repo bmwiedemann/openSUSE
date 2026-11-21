@@ -1,4 +1,536 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:13:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.21:
+  * fix: update vulnerable image dependencies and Go toolchain
+    (#4840)
+  * fix(mcpserver): anchor workspace reads to root (#4863)
+  * refactor: share max file size parsing with locationresolver
+    (#4864)
+  * feat(watch): add a file watcher and a debounced, sequential
+    scan scheduler (#4865)
+  * fix(diff): preserve true base and head statuses for
+    incomparable findings (#4867)
+  * fix: align ControlInput example with snake_case keys (#4844)
+  * fix(rules): count a create through resourceNames [""] in two
+    RBAC rules (#4831)
+  * fix(scan): reject image-only SBOM formats upfront on posture
+    scans (#4856)
+  * fix(cmd/patch): clarify digest-pinned image error and validate
+    whitespace flags (#4852)
+  * fix(printer): return an error when CSV or JSON has no posture
+    report (#4862)
+  * fix(resultshandling): guard against nil dereference in score,
+    result, and output writers (#4858)
+  * chore(examples): remove unused Prometheus v1 output mock
+    (#4845)
+  * test(locationresolver): cover FIFO with a live writer (#4850)
+  * docs(ci): correct JUnit support for image scans (#4847)
+  * fix(httphandler): don't let an unparsable
+    KS_ENABLE_HOST_SCANNER disable host sensor auto-detection
+    (#4848)
+  * feat(scan): support user-authored ValidatingAdmissionPolicy
+    YAML in --custom-rules (#4838)
+  * fix(anonymizer): hide RBAC binding subject and role references
+    (#4841)
+  * fix(gitlab): type image-scan identifiers by their advisory, not
+    always as CVE (#4843)
+  * refactor(cautils): expose GetMaxFileSize and share size limit
+    parsing with fixhandler (#4849)
+  * fix(core): prevent nil pointer dereference in Diff, Download,
+    Patch, and List (#4853)
+  * fix(opaprocessor): redact the related objects a rule attaches
+    to its result (#4857)
+  * feat(core): reuse released policy store across scans (#4805)
+  * fix(cel): match "<resource>/*" admission rules against the
+    object itself (#4830)
+  * fix(k8scveindex): bound local CVE feed file reads and reject
+    non-regular files (CWE-400) (#4824)
+  * fix(fixhandler): normalize a padded base path before storing it
+    (#4822)
+  * fix(opaprocessor): skip a control whose rule errors instead of
+    failing the whole scan (#4832)
+  * fix(fixhandler): bound manifest reads and reject non-regular
+    files in applyFileChanges and readManifest (CWE-400) (#4819)
+  * fix(core): bound manifest and controls input reads in scan
+    validation and incremental cache (CWE-400) (#4827)
+  * fix(networkpolicy): rate open-ended namespace selectors as
+    any-namespace (#4829)
+  * fix(printer): don't label file scans with the ambient kube
+    context (#4821)
+  * fix(mcpserver): confine report_path, base_path and diff reports
+    to --workspace (#4826)
+  * fix(locationresolver): bound YAML manifest decoding and
+    validate regular files in NewPathLocationResolver (CWE-400)
+    (#4820)
+  * fix(anonymizer): anonymize RBAC relatedObjects to prevent ID
+    leaks (#4793)
+  * feat(kustomize): attribute each rendered resource to the file
+    Kustomize read it from (#4797)
+  * fix(mcpserver): include Deployment revision exposure (#4763)
+  * fix(anonymizer): preserve empty evidence path resource IDs
+    (#4788)
+  * fix(opaprocessor): evaluate C-0302 against the whole cluster
+    when streaming (#4812)
+  * fix(fix): validate empty and whitespace output flags (#4795)
+    (#4796)
+  * feat(policy): write policy test results as a JUnit XML report
+    (#4814)
+  * fix(reportcrypto): restore typed resource envelopes in
+    DecryptReport (#4810)
+  * test(cautils): use valid JSON framework in SkipsOversized
+    scaninfo test (#4809)
+  * fix(kustomize): restrict scanned file loads to their root
+    (#4804)
+  * fix(cautils): fail the scan with the cause when the scanned
+    Helm chart cannot be loaded (#4792)
+  * fix(opaprocessor): redact secrets in container args, probe
+    headers and annotations (#4783)
+  * fix(rules): match RBAC subjects that carry neither namespace
+    nor apiGroup (#4800)
+  * feat(printer): mark delete and review paths that do not resolve
+    as unresolved under -E (#4794)
+  * fix(rules): match create and patch on a common resourceName and
+    across roles (#4806)
+  * fix(opa): restrict control Rego capabilities (#4803)
+  * fix(cautils): keep large integers exact in the YAML 1.1
+    fallback (#4807)
+  * fix(fix): load the --verify controls config before any write
+    and print every verdict (#4791)
+  * fix(exposure): guard nil index with undetermined exposure in
+    ServiceExposure and safe receiver methods (#4780)
+  * fix(diff): preserve bare Windows drive output paths (#4787)
+  * fix(scan): prevent nil pointer panic on --dry-run and reject
+    fleet dry runs (#4648) (#4649)
+  * test(cautils): fill typed Terraform coverage gaps (#4786)
+  * fix(anonymizer): keep each resource's identity through
+    transactional anonymization (#4771)
+  * fix(diff): validate output flag and prevent silent fallback to
+    stdout (#4781)
+  * feat(policy): select the cases policy test runs with --run
+    (#4778)
+  * test(cautils): pin KUBESCAPE_MAX_FILE_SIZE in oversized file
+    tests (#4779)
+  * fix(policytest): bound and validate test case file reads
+    (CWE-400) (#4769)
+  * fix(cautils): bound and validate ignore file reads in
+    LoadIgnoreFilePatterns (CWE-400) (#4768)
+  * test(cautils): add unit tests for typed Terraform resource
+    conversion (#4757)
+  * fix(cautils): stop scanning raw templates of Helm charts that
+    fail to render (#4770)
+  * fix(cautils): re-read an invalid file-scan manifest the way
+    kubectl does (YAML 1.1) (#4758)
+  * fix(rules): don't count a create narrowed by resourceNames as a
+    create (#4762)
+  * feat(fix): add --verify to check each fixed control with a
+    rescan (#4765)
+  * docs(fleet): add --format json to the examples (#4760)
+  * feat(printer): print a kubectl command for each evidence path
+    on clus… (#4754)
+  * feat(fix): export remediation changes as a unified diff with
+    --output patch  (#4753)
+  * fix(fixhandler): bound and validate manifest file reads in
+    GetFileString (CWE-400) (#4748)
+  * fix(cautils): bound and validate Helm template file reads
+    (CWE-400) (#4746)
+  * fix(score): bump opa-utils to v0.0.318 to keep scoring past an
+    unscorable framework (#4750)
+  * fix: collect ownerless pods with hash labels (#4752)
+  * perf(scan): shallow clone remote git repositories by default
+    (#4577)
+  * fix(anonymizer): hide skipped manifest paths (#4734)
+  * fix(cautils): bound and validate artifact file reads in
+    setUseArtifactsFrom (CWE-400) (#4740)
+  * fix(scan): check selector-resolved image paths alongside
+    literal paths (#4743)
+  * fix(cautils): bound and validate Kustomization file reads
+    (CWE-400) (#4742)
+  * test: align report tests with empty-results handling and
+    isolate services.json (#4749)
+  * feat(watch): compare local manifest scans by stable resource
+    identity (#4709)
+  * fix(anonymizer): hide and encrypt the exception audit (#4733)
+  * fix(exceptions): match merged exception scopes like the
+    processor does (#4728)
+  * fix(mcpserver): keep a JSON manifest JSON in apply_remediation
+    (#4732)
+  * fix(scan): retain literal manifest paths and reattach
+    ScanImageContext docstring (#4736)
+  * fix(diff): accept a scan report that has no results (#4730)
+  * fix(vapreconcile): remove Cluster prefix fallback and catalog
+    ecosystem cluster-scoped kinds (#4726)
+  * fix(image): validate output safety upfront before pulling or
+    scanning images (#4706)
+  * feat(mcpserver): add verify_remediation tool for local IaC
+    (#4707)
+  * fix(vapreconcile): honor binding resource rules in coverage
+    (#4724)
+  * fix(cautils): bound and validate Terraform file reads to
+    prevent DoS (CWE-400) (#4705)
+  * fix(mcpserver): report finite bind and escalate grants in
+    analyze_rbac_escalation_paths (#4718)
+  * fix(printer): include exception audit and namespace summaries
+    in YAML output (#4719)
+  * fix(rules): bound and validate custom rule file reads to
+    prevent DoS (CWE-400) (#4714)
+  * fix(prometheus): emit one resource series per RBAC subject in
+    cluster scans (#4721)
+  * fix(rbacgraph): model bind combined with an update of an
+    existing binding (#4716)
+  * fix(sarif): give each image run its own category when there are
+    several (#4723)
+  * Test/evidence rule shapes (#4710)
+  * fix(scan): stop a passing --dry-run from writing and gating an
+    empty report (#4234)
+  * fix(helm): resolve chart dependencies against values before
+    rendering (#4703)
+  * fix(patch): use secure temporary file for intermediate scan
+    report (#4645) (#4647)
+  * docs(fleet): soften the report format stability note (#4700)
+  * ci: bump github.com/quay/claircore from 1.6.1 to 1.6.2 (#4683)
+  * fix(image): bound and validate exception file reads to prevent
+    DoS (CWE-400) (#4681)
+  * ci: bump github.com/prometheus/common from 0.70.1 to 0.73.1
+    (#4685)
+  * ci: bump cloud.google.com/go/containeranalysis from 0.19.0 to
+    0.21.1 (#4682)
+  * ci: bump github.com/armosec/armoapi-go from 0.0.760 to 0.0.774
+    (#4684)
+  * test(networkpolicy): cover safePort int32 bounds (#4697)
+  * test(networkpolicy): cover combined selector mismatch (#4699)
+  * ci: bump github/codeql-action/upload-sarif from 4.39.1 to
+    4.39.3 (#4687)
+  * ci: bump helm/kind-action from 1.15.1 to 1.15.2 (#4691)
+  * ci: bump mikepenz/action-junit-report from 6.6.2 to 6.7.1
+    (#4688)
+  * test(scancontract): cover minimum version equality (#4695)
+  * test(scancontract): cover timeout boundary validation (#4692)
+  * ci: bump docker/login-action from 4.7.0 to 4.8.0 (#4689)
+  * ci: bump github.com/Azure/azure-sdk-for-go/sdk/azcore (#4686)
+  * test(predict): refactor predict command argument validation
+    into table-driven subtests (#4701)
+  * fix(networkpolicy,vulnexposure): guard nil index with
+    default-allow reachability and ingress exposure (#4663)
+  * fix(mcpserver): reject a subresource passed inside resource
+    (#4656)
+  * perf(opaprocessor): early cleanup of raw resource payloads
+    during streaming evaluation (#4665)
+  * docs: add an evidence contract guide for rule authors (#4654)
+  * fix(rules): treat list and watch on secrets as reading them
+    (#4666)
+  * fix(predict): enforce Cobra argument bounds on kubescape
+    predict root command (#4667)
+  * fix(networkpolicy,exposure): read resources in ID order, not
+    map order (#4658)
+  * docs(opaprocessor): update evaluation flow (#4671)
+  * test(docs): cover OpenAPI documentation handlers (#4674)
+  * test(prometheus): cover the fixable CVE gauge for image scans
+    (#4679)
+  * fix(prometheus): label resource metrics with their source file
+    so copies stay distinct (#4678)
+  * test(telemetry): cover collector lifecycle and concurrency
+    (#4622)
+  * fix(mcpserver): match Services that select one StatefulSet Pod
+    by its identity labels (#4662)
+  * fix(vap): validate output flag and prevent silent fallback to
+    stdout (#4664)
+  * fix(rules): scope impersonation grants made through
+    RoleBindings (#4675)
+  * fix(exposure): exclude redirect-only HTTP backends (#4677)
+  * fix(fix): accept 'yes' in Kustomize overwrite confirmation
+    prompt (#4650) (#4651)
+  * fix(getter): bound and validate policy file reads to prevent
+    DoS (CWE-400) (#4669)
+  * fix(mcpserver): keep envFrom ConfigMap exposure when an
+    optional env ref may not resolve (#4660)
+  * fix(rbacgraph): require binding paths for role rewrite grants
+    (#4653)
+  * fix(policy): propagate policy test output errors (#4646)
+  * fix(printer): show redacted instead of the scan's XXXXXX
+    placeholder in evidence (#4670)
+  * test(k8scveindex): guard embedded feed freshness (#4621)
+  * fix(helmprovenance): resolve values paths in with blocks
+    (#4582)
+  * fix(vapreconcile): do not over-credit binding coverage for
+    namespaced resources lacking metadata.namespace (#4642)
+  * fix(cli): remove backticks that replace the value placeholder
+    in flag help (#4631)
+  * fix(fixhandler): guard autofix against stale manifests (#4625)
+  * fix(scan): prevent scan output from overwriting input
+    manifests, baselines, and configuration files (#4606)
+  * fix(cel): skip a validation whose variable does not compile,
+    like any other compile error (#4643)
+  * fix(config): bound file reads and reject non-regular inputs in
+    scancontract and fleetconfig loaders (#4628) (#4630)
+  * fix(mapreconcile): skip resources the apiserver exempts from
+    all policies (#4637)
+  * fix(mapreconcile): never match an objectSelector on a CONNECT
+    request (#4635)
+  * fix(exposure): don't report externalIPs on headless or
+    ExternalName Services (#4633)
+  * feat(fleet): add json schema for the fleet report (#4624)
+  * fix(rules): report get on pods/exec in
+    weak-namespace-pod-rce-v1 (#4638)
+  * fix(networkpolicy): ignore fully excluded ipBlocks in ingress
+    exposure (#4640)
+  * feat(printer): show current values for delete paths in
+    --show-evidence (#4623)
+  * test(reportcrypto): add unit tests for report key lifecycle,
+    nil receiver safety, and environment decryption (#4626) (#4627)
+  * fix(decrypt): bound and validate report file reads to prevent
+    DoS (CWE-400) (#4620)
+  * fix(pss): bound and validate workload manifest reads to prevent
+    DoS (CWE-400) (#4618)
+
+-------------------------------------------------------------------
+Fri Nov 06 13:48:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.20:
+  * fix(exceptions): emit ExceptionMatched events only when allowed
+    to (#4616)
+  * fix(cautils): apply positive LARGE_CLUSTER_SIZE fallback to
+    streaming auto-enable check (#4613)
+  * fix(vap): bound downloaded CEL policy response body to prevent
+    DoS (CWE-400) (#4615)
+  * fix(diff): prevent diff output from overwriting input reports
+    and validate arguments (#4604)
+  * fix(version,update): check nil kubescape interface and empty
+    format validation (#4587)
+  * fix(scan): reject null entries in contract string lists (#4598)
+  * fix(policy): treat nil and empty response lists as equal in
+    policy test (#4612)
+  * fix(rules): match RBAC subresource grants the way the
+    authorizer does (#4610)
+  * fix(rules): stop reporting cluster-scoped grants made through
+    RoleBindings (#4611)
+  * fix(resourcehandler): bound HTTP response body in httpGet to
+    prevent DoS (CWE-400) (#4594)
+  * fix(imagescan): preserve source selectors in registry fallback
+    (#4600)
+  * fix(config): enforce Cobra argument bounds on config set
+    command (#4590)
+  * fix(fixhandler): bound and validate report file reads to
+    prevent DoS (CWE-400) (#4592)
+  * fix(scan): reject Helm and file-path flags on image scans
+    (#4588)
+  * fix(scan): reject namespace and resource kind filter flags on
+    workload scan (#4602)
+  * fix(scan): prevent contract validation from overwriting input
+    (#4596)
+  * fix(scan): prepare local inputs and validate stdin for root and
+    security view scans (#4584)
+
+-------------------------------------------------------------------
+Thu Nov 05 18:33:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.19 (.18 was not released):
+  * chore(security): declare secret-scanning tooling in
+    security-insights.yml (#4581)
+  * fix(opaprocessor): harden incremental cache correctness (#4580)
+  * fix(rbac): require an authorized username for group
+    impersonation (#4578)
+  * fix(mcpserver): collect complete vulnerability payloads for
+    exposure analysis (#4579)
+  * fix: prevent resource loss across multiple scan input roots
+    (#4575)
+  * fix: clean up exceptions temp files on rejected REST scans
+    (#4574)
+  * feat(mcpserver): enforce workspace boundary containment for
+    local IaC scans (#4558)
+  * fix(download): reject extraneous positional arguments and
+    enhance tests (#4547)
+  * ci: bump mikepenz/action-junit-report from 6.6.1 to 6.6.2
+    (#4569)
+  * fix(scan): reject conflicting --file-path flag with positional
+    paths in framework and control scans (#4571)
+  * ci: bump k8s.io/pod-security-admission (#4564)
+  * ci: bump sigs.k8s.io/controller-runtime from 0.24.0 to 0.25.2
+    (#4566)
+  * fix(fix): honor command output writer in cluster fixes and add
+    nil-safety check (#4570)
+  * ci: bump
+    go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp
+    (#4568)
+  * ci: bump github.com/schollz/progressbar/v3 from 3.13.0 to
+    3.19.1 (#4567)
+  * ci: bump github.com/kubescape/regolibrary/v2 from 2.0.38 to
+    2.0.39 (#4565)
+  * ci: bump sigs.k8s.io/kustomize/kyaml from 0.21.2 to 0.21.3
+    (#4363)
+  * feat(httphandler): require service-account tokens, authorize
+    with RBAC (#4546)
+  * refactor(pathcontainment): extract canonical workspace
+    containment engine and symlink validation (#4533)
+  * feat(printer): add KEV and EPSS to SARIF, JUnit and Prometheus
+    image output (#4520)
+  * fix(diff): honor command output writer and propagate
+    destination writer (#4556)
+  * fix(scan): route fleet scan summary output through configurable
+    writer (#4554)
+  * fix(download): reject extraneous positional arguments across
+    policy targets (#4555)
+  * fix(patch): standardize positional argument validation with
+    cobra.NoArgs (#4553)
+  * fix(scan): validate --control-timeout against --scan-timeout
+    and reject posture control flags on image scan (#4563)
+  * fix(helm): include install-only resources in chart scans
+    (#4559)
+  * ci: bump github.com/open-policy-agent/opa from 1.19.0 to 1.22.0
+    (#4527)
+  * fix(scan): reject namespace, kind, label, incremental, and
+    dry-run flags on image scans (#4551)
+  * feat(componentvulns): assess node kernels against distro
+    advisories (#4552)
+  * fix(operator): reject unexpected arguments in operator scan
+    commands (#4561)
+  * feat(fix): colorize expected patch preview, resource labels,
+    and unfi… (#4519)
+  * fix(scan): require --baseline for baseline flags and validate
+    granularity upfront (#4549)
+  * feat(operator-scan): trigger through OperatorCommand CRs
+    (#4545)
+  * ci(security-insights): add OSPS Baseline scanner (#4094)
+    (#4544)
+  * fix(scan): validate and normalize output format in
+    validate-contract (#4542)
+  * ci: publish OSPS Baseline results to grc.store (#4094) (#4543)
+  * docs: clarify private vulnerability reporting for CRA readiness
+    (#4227)
+  * fix(prerequisites): reject extraneous positional arguments and
+    enhance command tests (#4537)
+  * fix(scan): reject coverage, degraded-config, controls-config,
+    and baseline-granularity flags on image scans (#4539)
+  * fix(predict): honor command output writer and normalize format
+    in predict pss (#4535)
+  * fix(list): normalize policy target aliases, singular forms, and
+    case-insensitivity (#4540)
+  * fix(prerequisites): reject unexpected positional arguments
+    (#4536)
+  * fix(kustomize): enforce output safety, atomic publication,
+    namespace matching, and value parity (#4412)
+  * fix(policy): don't overwrite existing files in policy init
+    without --… (#4502)
+  * feat(policy): read control inputs from a case's data.json in
+    policy test (#4531)
+  * fix(list): honor command output writer and reject unexpected
+    arguments (#4529)
+  * Remove unused cliinterfaces package (#4530)
+  * test(getter): add unit tests for control identifier matching
+    (#4493)
+  * fix(vap): normalize and validate output format in list-policies
+    (#4485)
+  * feat(imagescan): add --fail-on-kev and --epss-threshold risk
+    gates (#4453)
+  * fix(imagescan): invalidate ECR sessions during teardown (#4513)
+  * fix(fix): reject --output-post-renderer without
+    --output-kustomize (#4504)
+  * fix(scan): keep the source of a single JSON or Terraform file
+    (#4515)
+  * test(getter): add unit tests for default control inputs (#4495)
+  * ci: bump actions/upload-artifact from 7.0.1 to 7.0.2 (#4526)
+  * fix(vap): honor command output writer, reject unexpected
+    arguments, and validate non-negative timeout (#4483)
+  * test(fix): add tests for control-selection flags (#4481)
+    (#4484)
+  * feat(rules): add modify-admission-webhooks-v1 (#4509)
+  * fix(imagescan): report missing GitLab vulnerability connections
+    (#4512)
+  * fix(policy): report the flagged field of scaffolded rules in
+    deletePaths (#4505)
+  * fix(config): honor command output writer and reject unexpected
+    arguments (#4517)
+  * ci: bump the kubernetes group with 4 updates (#4522)
+  * fix(version): reject extraneous arguments and normalize output
+    format (#4486)
+  * fix: propagate labels and annotations in scan_resource_slice
+    (#4497)
+  * ci: bump github.com/mark3labs/mcp-go from 1.0.0 to 1.4.0
+    (#4523)
+  * fix(policy): read JSON fixture inputs in policy test (#4506)
+  * test(cautils): add unit tests for scan-contract provenance
+    helpers (#4491)
+  * docs(fleet): measure fleet scans of 1, 5 and 10 clusters [LFX
+    2026] (#4487)
+  * test(anonymizer): cover mapping transformer (#4508)
+  * fix(scan): reject baseline and compliance threshold flags on
+    image scans (#4499)
+  * ci: bump revanite-io/osps-baseline-action from 1.5.3 to 1.5.4
+    (#4525)
+  * ci: bump github.com/gabriel-vasile/mimetype from 1.4.13 to
+    1.4.16 (#4524)
+  * fix: isolate exception and control input caches by source
+    (#4489)
+  * fix(scan): normalize output formats and allow case-insensitive
+    formats (#4521)
+  * fix(policy): don't print usage when policy test or init fails
+    (#4507)
+  * fix(imagescan): reject missing Quay security reports (#4511)
+  * docs(cli-reference): document missing scan, fix, patch, list
+    and vap … (#4385)
+  * feat(vap): colorize list-policies table headers, control IDs,
+    and parameter badges (#4476)
+  * feat(cli): highlight version badges, commit hashes, and update
+    notices (#4473)
+  * test: cover skipped workload ordering (#4480)
+  * test: cover vulnerability fix availability combinations (#4478)
+  * fix(predict): locate local PSS findings in their manifest files
+    in SARIF (#4465)
+  * test: cover vulnerability severity sort order (#4459)
+  * feat(componentvulns): expose cluster component vulnerabilities
+    as external resources (#4466)
+  * Fix typos in swagger descriptions, comments and GCP example
+    script (#4462)
+  * test: cover deterministic finding ordering (#4461)
+  * fix: apply image scan severity filters (#4455)
+  * test: cover negligible vulnerability severity filtering (#4457)
+  * fix(diff): normalize and validate output format and severity
+    threshold (#4463)
+  * fix(update): honor command output writer, normalize format, and
+    reject extraneous arguments (#4471)
+  * fix(imagescan): keep Azure scan sessions consistent (#4445)
+  * fix(imagescan): protect GCP clients while scans are active
+    (#4447)
+  * fix: try all matching image pull secret credentials (#4452)
+  * docs: fix dead links in README, MCP server, getting started and
+    Krew docs (#4469)
+  * fix(config): trim whitespace around keys in config view and
+    delete (#4474)
+  * feat(opa): add cosign.verify_keyless for keyless-signed images
+    in C-0236 (#4449)
+  * fix(mcpserver): validate arguments, port range, and transport
+    early (#4468)
+  * fix(mapreconcile): honor definite exclusions before unknown
+    labels (#4446)
+  * fix(scan): validate --view flag and reject for image scans
+    (#4442)
+  * test(fleet): end to end fleet scans against fake clusters
+    (#4451)
+  * feat(config): colorize config validate overall status and
+    diagnostic checks (#4437)
+  * test(scancache): cover version key part boundaries (#4428)
+  * fix(predict): protect PSS input manifests from report
+    overwrites (#4448)
+  * fix(pss): match local workloads by API group as well as kind
+    (#4433)
+  * fix(update): report up-to-date releases and "dev" builds
+    correctly (#4434)
+  * fix(imagescan): protect GCP sessions during active scans
+    (#4444)
+  * fix(scan): stop a timed out scan during setup (#4431)
+  * fix(scan): reject posture control and rule flags on image scans
+    (#4440)
+  * fix(printer): normalize Windows paths in CI outputs (#4439)
+  * fix(download): validate and trim identifier whitespace (#4432)
+  * fix(imagescan): keep Azure scans on one authenticated session
+    (#4443)
+  * feat(config): add cyan keys, white values, and yellow secret
+    masks to config view (#4406)
+  * fix(scan): preserve inline YAML document starts (#4414)
+  * ci: run the OSPS Baseline scan on push to master and weekly
+    (#4425)
+
+-------------------------------------------------------------------
 Thu Oct 29 05:57:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.17:

@@ -25,7 +25,7 @@
 %define so_version 30
 %bcond_without zopfli
 Name:           qpdf
-Version:        12.4.1
+Version:        12.4.2
 Release:        0
 Summary:        Command-line tools and library for transforming PDF files
 License:        Apache-2.0

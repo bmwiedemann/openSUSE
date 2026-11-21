@@ -37,7 +37,7 @@ BuildRequires:  jsch-agent-proxy-connector-factory
 BuildRequires:  jsch-agent-proxy-jsch
 BuildRequires:  jsoup
 BuildRequires:  plexus-interactivity-api
-BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-metadata-generator-ant
 BuildRequires:  plexus-utils
 BuildRequires:  slf4j
 BuildRequires:  unzip

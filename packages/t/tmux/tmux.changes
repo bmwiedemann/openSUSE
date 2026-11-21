@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 17 08:10:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- typo fixes
+
+-------------------------------------------------------------------
 Sun Oct 11 15:08:47 UTC 2026 - martin@schuerrer.org
 
 - Update to version 3.8:
@@ -301,14 +306,14 @@ Fri Feb 16 20:31:59 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Tue May  2 15:37:28 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- add ncurses.patch for compactibility with new ncurses 
+- add ncurses.patch for compactibility with new ncurses
   fixes boo#1210552
 
 -------------------------------------------------------------------
 Fri Mar 10 10:44:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - disable utf8proc (following upstreams not use it by default
-  on non-macOS) 
+  on non-macOS)
 
 -------------------------------------------------------------------
 Mon Jan 23 16:17:36 UTC 2023 - pgajdos@suse.com
@@ -322,7 +327,7 @@ Mon Jan 23 16:17:36 UTC 2023 - pgajdos@suse.com
 Mon Jul 25 22:24:54 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - switch to screen-256color as default terminal to fix incompatibility
-  with yast2-ruby-testsuite 
+  with yast2-ruby-testsuite
 
 -------------------------------------------------------------------
 Fri Jul  8 06:52:13 UTC 2022 - llyyr <llyyr.public@gmail.com>
@@ -465,7 +470,7 @@ Sat Jun 26 08:40:36 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Sat May  8 08:48:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- refresh tmux-socket-path.patch: 
+- refresh tmux-socket-path.patch:
   restore ability to overwrite socket path using $TMUX_TMPDIR (bsc#1185572)
 
 -------------------------------------------------------------------

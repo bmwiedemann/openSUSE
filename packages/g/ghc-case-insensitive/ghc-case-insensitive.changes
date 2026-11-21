@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov  5 20:14:56 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update case-insensitive to version 1.2.2.0.
+  1.2.2.0
+
+  * Drop support for old GHC versions (support GHC 9.2+, MHS)
+  * Add `Lift` instance to `CI`
+  * Add `FoldCase` instance for `ShortByteString`
+  * Tighten dependency bounds.
+
+-------------------------------------------------------------------
 Thu Mar 30 17:06:08 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

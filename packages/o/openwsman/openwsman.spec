@@ -164,6 +164,8 @@ Patch2:         openwsman-gcc15.patch
 Patch3:         0001-update-to-handle-rdoc-3.4.patch
 Patch4:         fix-rdoc-call.diff
 Patch5:         openwsman-rdoc-no-binary-require.patch
+# PATCH-FIX-UPSTREAM openwsman-swig-py3.patch -- replace obsolete PyString_* with PyUnicode_* in Python bindings
+Patch6:         openwsman-swig-py3.patch
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 %define pamfile %{S:21}
 %else
@@ -401,6 +403,7 @@ It can be used to send shell commands to remote Windows hosts.
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 echo "SUSE Version" 0%{?suse_version}

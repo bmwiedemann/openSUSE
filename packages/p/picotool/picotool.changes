@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct 23 17:06:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.1
+  * New bdev command for reading and writing embedded block
+    devices (FatFS and LittleFS): ls, cp, cat, rm, mkdir, format
+  * New uf2 combine command to merge multiple UF2 files
+  * encrypt: support self-decrypting binaries; now requires an IV
+    salt file in addition to the AES key file
+  * otp dump can write BIN files and convert OTP JSON to BIN
+  * seal on ELF squashes sparse no_flash binaries (--no-squash
+    disables it); seal and encrypt can pin XIP SRAM
+  * reboot and forced commands support the BOOTSEL activity LED
+  * otp get prints the 16-bit ECC value by default (--raw for the
+    full 24-bit raw value)
+  * -h/--help anywhere on the command line shows help text
+  * Bug fixes: info on non-partition-capable devices, seal ELF
+    squashing, uf2 convert model guessing, pin function display
+    and otp permissions handling on RP2350
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * Refresh pico-sdk bundle to 2.3.1
+  * install-firmware-to-libdir.patch: install device firmware ELF
+    blobs to libdir instead of datadir (arch-dependent files do not
+    belong in usr-share); the tool searches that dir at runtime
+- Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Tue Mar 11 09:04:24 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix cmake installation path on 64-bit architectures

@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-apache-tvm-ffi
-Version:        0.1.15.post2
+Version:        0.1.16
 Release:        0
 Summary:        Minimal FFI runtime and ABI for machine learning systems
 License:        Apache-2.0
@@ -44,6 +44,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  ninja >= 1.11
 BuildRequires:  python-rpm-macros
 Requires:       python-typing_extensions >= 4.13
+# Upstream 0.1.16 needs 16-byte custom-allocator headers (64-bit only),
+# so 32-bit builds fail: no i586.
+ExcludeArch:    %{ix86}
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

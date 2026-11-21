@@ -76,4 +76,41 @@
   * fix: rename --kube-config to --kubeconfig</comment>
     <requestid>1307920</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c03359c02ad1b1f3f96e212374cfa276</srcmd5>
+    <version>1.13.0</version>
+    <time>1795103836</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.13.0:
+  * feat(preflight): support Elemental3-based SLES systems
+  * fix(enable-spdk): check for iommu support
+    (longhorn/longhorn#12076)
+  * fix(mocks): mock PackageManager
+  * fix: change longhorn-preflight command to longhorn-local
+  * fix: recognize OpenCloudOS as a yum-based distribution
+  * docs: clarify --spdk-options are KEY=VALUE setup.sh env
+    vars
+  * fix: pass --spdk-options to setup.sh as environment
+    variables
+  * fix(platform): detect sle-micro 6.2 transactional systems
+    via variant id
+  * fix(platform): enhance platform detection for transactional
+    suse
+  * fix: linux-modules-package is not required for Ubuntu 26.04+
+  * feat: add --tolerations flag to longhornctl to allow
+    daemonset pods to run on tainted nodes
+  * feat(volume): cli on-demand snapshot checksum for volume
+  * fix: fix validation errors
+  * docs(readme): fix typo
+  * fix: fix isCommandAvailableOnHost
+  * refactor: rename isCommandAvailable to
+    isCommandAvailableOnHost and update references
+  * feat: enhance package manager detection for unsupported OS
+    and add tests
+  * docs: update docs
+  * feat: load ublk_drv module if supported by the kernel
+  * fix: update base image in Dockerfile
+  * chore(dockerfile): update BCI base image</comment>
+    <requestid>1398677</requestid>
+  </revision>
 </revisionlist>

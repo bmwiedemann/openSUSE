@@ -12,6 +12,7 @@ Sun Jun 28 03:46:03 UTC 2026 - llyyr <llyyr@yukari.in>
   * Avoid SSE instructions if compiler baseline already includes AVX
 - Remove d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch: included in
   upstream release
+- fixes CVE-2026-61627 [bsc#1289001]
 
 -------------------------------------------------------------------
 Sun May  3 13:37:51 UTC 2026 - llyyr <llyyr@yukari.in>

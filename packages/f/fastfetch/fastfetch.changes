@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Nov 07 19:47:36 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.71.0:
+  Features:
+    * Added a spin logo type (--logo-type spin), which animates
+      the built-in logo or a text file as a 3D slab that rotates.
+    * Optimised display detection on GNOME and Cinnamon Wayland
+      sessions.
+  Bugfixes:
+    * Don't detect mise and atuin as shells.
+      (gh#fastfetch-cli/fastfetch#2686)
+    * Rejected an empty separator.string in the JSON config with
+      an error message. (gh#fastfetch-cli/fastfetch#2689)
+    * Fixed fastfetch blocking forever when the terminal answered
+      a terminal query only partially, for example with just one
+      of the two OSC 10/11 color replies.
+    * Fixed a $ ending a logo line or the logo itself being parsed
+      as the start of a color code instead of a plain dollar sign.
+      (gh#fastfetch-cli/fastfetch#2666)
+    * Fixed AMD GPU name detection in amdgpu.ids when PCI device
+      ID or revision ID has leading zeros.
+    * Improved uptime detection on SunOS via kstat.
+      (gh#fastfetch-cli/fastfetch#2674)
+    * Fixed substring formatting returning the remaining string
+      when a negative end index is before the start of the string.
+    * Fixed a skipped {?} / {/} conditional in a format string
+      ending at the {?} / {/} of a conditional nested in it.
+    * Fixed numbers in format strings that don't fit in 32 bits
+      wrapping around to a valid argument index, constant index,
+      substring index or length, e.g. {4294967297} being read
+      as {1}, and a signed integer overflow for {1:-2147483648}.
+    * Fixed substring formatting printing the placeholder as is,
+      instead of nothing, when the start index is outside of the
+      string and an end index is given.
+    * Fixed the CPU micro-architecture level (march) being
+      under-reported on Windows on ARM when IsProcessorFeaturePresent
+      does not expose a feature the CPU implements.
+      - It is now decoded from the AArch64 ID registers in the
+        registry, matching the Linux detection.
+  Logos:
+    * Added Tiny Core Linux (gh#fastfetch-cli/fastfetch#2655)
+    * Added ArmadaOS (gh#fastfetch-cli/fastfetch#2649)
+    * Added AstrOS (gh#fastfetch-cli/fastfetch#2582)
+    * Added openSUSE Leap Micro (gh#fastfetch-cli/fastfetch#2703)
+
+
+-------------------------------------------------------------------
 Wed Oct 14 13:53:35 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.70.0:

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:13:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.14:
+  * Fix update() mutating its positional argument
+  * setdefault() now keeps attributes in sync, including nested
+    mappings
+  * Subclasses of list, tuple and dict are no longer
+    auto-converted
+- Drop CHANGES from %doc: no longer shipped in the sdist
+- Switch to the setuptools_scm-based build (upstream dropped
+  setup.py); pin the tagged version via
+  SETUPTOOLS_SCM_PRETEND_VERSION
+
+-------------------------------------------------------------------
 Fri Aug 21 18:34:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-easydict 1.13: access dict values as

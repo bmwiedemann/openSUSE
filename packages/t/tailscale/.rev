@@ -720,4 +720,13 @@
     security bulletin TS-2026-013. (forwarded request 1392020 from darix)</comment>
     <requestid>1392044</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>cf42c99b4093f9f8664199abfbef9f27</srcmd5>
+    <version>1.104.7</version>
+    <time>1794820267</time>
+    <user>anag_factory</user>
+    <comment>- Drop ProtectHome from tailscaled.service, it is breaking
+  tailscale SSH. (forwarded request 1397801 from fcrozat)</comment>
+    <requestid>1397812</requestid>
+  </revision>
 </revisionlist>

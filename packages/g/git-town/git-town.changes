@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:46:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 24.2.0:
+  * New Features
+    - git town sync now detects shipped changes more intelligently.
+      When a branch got shipped at the remote, and all its changes
+      are in the parent, it deletes it without syncing first
+      (#6309).
+  * Bug Fixes
+    - git town sync no longer force-pushes twice (#6305).
+    - git town sync now behaves correctly when you manually
+      prepended a parent branch (#6304).
+    - git town sync now respects the push-branches setting when
+      removing the commits of a shipped ancestor (#6310).
+    - git town sync now rebases correctly when the parent branch
+      was shipped at the remote (#6306).
+    - git town sync no longer rebases on an outdated tracking
+      branch when the tip of origin/<branch> is found in the reflog
+      of the local branch (#6305).
+
+-------------------------------------------------------------------
+Fri Nov 06 13:48:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 24.1.1:
+  * Bug Fixes
+    - set-parent: allow selecting a parent that is checked out in
+      another worktree (#6298).
+
+-------------------------------------------------------------------
 Mon Sep 28 04:45:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 24.1.0:

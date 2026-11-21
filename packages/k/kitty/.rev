@@ -1018,4 +1018,78 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1392118</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>b1e717aad1006255487b169a9e23becf</srcmd5>
+    <version>0.50.0</version>
+    <time>1793817848</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.50.0:
+  * Allow docking kitty windows to the edges of other windows or of the tab,
+    for status bars, file trees, etc. Create them with launch
+    --type=window-dock or launch --type=tab-dock, see Docked windows
+  * A new option restore_session_after_logout to save the state of every kitty
+    instance, including scrollback, when logging out, restarting or shutting
+    down and restore it the next time kitty starts. On macOS, the state is
+    encrypted with a key in the keychain. On Linux, it requires the Inhibit
+    desktop portal. See Restoring kitty after logging out (#1197, #10659)
+  * Allow using tabs like named workspaces: A new launch --focus-existing
+    option to focus an existing window or tab instead of creating a new one,
+    a new by-title value for launch --location to keep tabs in alphabetical
+    order and new options for kitten @ detach-window and the detach_window
+    action to send windows to a named tab, creating it if needed (#10627)
+  * Wayland: The client side window decorations used on compositors such as
+    GNOME now look like native GNOME decorations and follow the desktop
+    titlebar font, text scaling, button layout and titlebar click action
+    settings (#10766)
+  * Wayland: Support touchscreens. A tap is a click, a finger that moves
+    scrolls with momentum, and a finger held still before it moves selects
+    text (#5432, #10551)
+  * Custom shaders: New cursor-trail-railgun, cursor-trail-torpedo and
+    cursor-trail-pixiedust shaders that make particles fly off the cursor as
+    it moves, in the style of neovide. Shaders can now be controlled with key
+    presses via the new shader_event action (see Controlling shaders with key
+    presses), can be faded in and out, reversed and looped with new
+    animation_* pipeline directives and can define a pointer_map() function
+    so that clicks and selections land on the text shown under the mouse,
+    which the crt shader now uses, see Shaders that move content. Also fix
+    animations becoming jerky after kitty has been running for a few hours,</comment>
+    <requestid>1394746</requestid>
+  </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6b95ff7d632e5467a913c5476d1cae37</srcmd5>
+    <version>0.51.0</version>
+    <time>1795182399</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.51.0:
+  * Allow docking kitty windows to an edge of the OS window, below the tab bar,
+    with `launch --type=os-window-dock`. The dock is shown in every tab of the
+    OS window and can be resized by dragging its inner border or with the
+    `resize_window` action and `kitten @ resize-window`, see Docked windows
+    (#10854, #10857)
+  * Custom shaders: Add `screen-shake` shaders that shake a window on bell and
+    new events and uniforms for command start/finish and alternate screen
+    enter/exit (#10871)
+  * Allow running the programs in new windows via a wrapper command, such as to
+    open new windows inside the same container as the window they are opened
+    from, using a `launch_wrapper.py` file in the kitty config directory, see
+    Wrapping the programs run in new windows (#10858)
+  * Watchers: `on_close` now reports why the window was closed, a new
+    `on_cwd_change` event fires when the working directory changes and
+    `on_resize`/`on_focus_change` calls are no longer dropped when many windows
+    are created at once (#10828, #10853)
+  * Tab bar: Allow selecting and copying text drawn outside the tabs, for
+    example by a custom `tab_bar.py`, by dragging the mouse over it. Fix the
+    bell indicator not being shown for the active window when the OS window
+    is not focused and clicking the blank line below a tab in the vertical
+    tab bar not activating it (#10869, #10880, #10810)
+  * Sessions: Fix tabs and windows moved with `detach_tab`, `detach_window` or
+    drag and drop losing their session. `save_as_session` no longer opens saved
+    sessions in the wrong OS Window or tab or overwrites the session file with
+    an empty one, and its file name prompt now shows and completes relative to
+    the directory the session will be saved in (#10851, #10852, #10867)
+  * Security: Fix a program running in the terminal being able to hang kitty
+    by using edit-in-kitty to set a window logo that is a special file such
+    as `/dev/zero`, window logos and background images must now be regular files.</comment>
+    <requestid>1398838</requestid>
+  </revision>
 </revisionlist>

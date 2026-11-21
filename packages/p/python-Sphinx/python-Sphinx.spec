@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Sphinx%{psuffix}
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -46,33 +46,29 @@ Source3:        requests.inv
 Source4:        readthedocs.inv
 Source5:        update-intersphinx.sh
 Source99:       python-Sphinx.keyring
-# PATCH-FIX-UPSTREAM fix tests with Pygments 2.21.0 gh#sphinx-doc/sphinx#14611
-Patch0:         tests.patch
-# PATCH-FIX-UPSTREAM Fix failure in test_cfunction with new Python snapshots: "asctime([time_tuple])" != "asctime([tuple])" gh#sphinx-doc/sphinx#14683
-Patch1:         cpython-autodoc.patch
-BuildRequires:  %{python_module base >= 3.12}
+BuildRequires:  %{python_module base >= 3.13}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # workaround for suboptimal CentOS-7 project config
 #!BuildIgnore:  texinfo
-Requires:       python-Babel >= 1.3
-Requires:       python-Jinja2 >= 2.3
-Requires:       python-Pygments >= 2.14
-Requires:       python-alabaster >= 0.7
+Requires:       python-Babel >= 2.18
+Requires:       python-Jinja2 >= 3.1
+Requires:       python-Pygments >= 2.19
+Requires:       python-alabaster >= 1.0
 Requires:       python-defusedxml >= 0.7.1
 Requires:       python-docutils >= 0.21
 Requires:       python-imagesize
 Requires:       python-packaging
-Requires:       python-requests >= 2.5.0
+Requires:       python-requests >= 2.32.5
 Requires:       python-roman-numerals
-Requires:       python-snowballstemmer >= 1.1
+Requires:       python-snowballstemmer >= 3.0.1
 Requires:       python-sphinxcontrib-applehelp
 Requires:       python-sphinxcontrib-devhelp
-Requires:       python-sphinxcontrib-htmlhelp >= 2.0.0
+Requires:       python-sphinxcontrib-htmlhelp >= 2.0.6
 Requires:       python-sphinxcontrib-jsmath
-Requires:       python-sphinxcontrib-qthelp >= 1.0.2
+Requires:       python-sphinxcontrib-qthelp >= 1.0.6
 Requires:       python-sphinxcontrib-serializinghtml >= 1.1.9
 Recommends:     python-SQLAlchemy >= 0.9
 Recommends:     python-Sphinx-doc-man

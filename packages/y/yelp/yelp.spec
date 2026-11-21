@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        49.2
+Version:        49.2+12
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
@@ -25,28 +25,11 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Yelp
 Source0:        %{name}-%{version}.tar.xz
 
-BuildRequires:  AppStream
+BuildSystem:    meson
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
-BuildRequires:  itstool >= 1.2.0
-BuildRequires:  libtool
+BuildRequires:  itstool
 BuildRequires:  meson
-BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.67.4
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.16.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(liblzma) >= 4.9
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.5
-BuildRequires:  pkgconfig(libxslt) >= 1.1.4
-BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(webkitgtk-6.0)
-BuildRequires:  pkgconfig(webkitgtk-web-process-extension-6.0)
-BuildRequires:  pkgconfig(yelp-xsl) >= 42.3
 # data/dtd/catalog references dtds from oasis-open.org, which we provide on docbook_4 package (bnc#770067)
 Requires:       docbook_4
 # We need the stylesheets from yelp-xsl
@@ -84,16 +67,10 @@ This package provides Yelp's development files.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson \
-	%{nil}
-%meson_build
-
-%install
-%meson_install
+%install -a
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_prefix}

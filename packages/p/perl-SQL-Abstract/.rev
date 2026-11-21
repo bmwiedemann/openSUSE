@@ -154,4 +154,69 @@
     <comment></comment>
     <requestid>867235</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>107d9a4627a9b4548a3636cb1cbf29b0</srcmd5>
+    <version>2.000002</version>
+    <time>1793991547</time>
+    <user>anag_factory</user>
+    <comment>bsc#1289543, bsc#1289544
+
+- updated to 2.000002
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+  2.000002 - 2026-11-05
+    - SECURITY, CVE-2026-121265: array_datatypes is on by default, so an
+      arrayref as a column value in insert() or update() (and values())
+      is one bind value. Before, it was literal SQL and its first element
+      went into the SQL text: a JSON array or a repeated form field like
+      { name =&gt; [ &quot;x, is_admin = 1&quot; ] } gave
+      UPDATE t SET name = x, is_admin = 1. Literal SQL is
+      \[ $sql, @bind ]; array_datatypes =&gt; 0 restores the old behaviour.
+      Incompatible for code that used a plain arrayref as literal SQL.
+    - SECURITY, CVE-2026-121007: the where / having / set values of a
+      nested statement ({ -select =&gt; ... }, { -update =&gt; ... } ...) in a
+      select list, ORDER BY, GROUP BY, RETURNING, FROM (-as) or JOIN (to)
+      became identifiers and went into the SQL text instead of @bind -
+      without quote_char unescaped, so { id =&gt; &quot;1 OR 1=1&quot; } ended up as
+      WHERE id = 1 OR 1=1. They are bind values again. The same goes for
+      the rows of a { -values =&gt; ... } in FROM.
+      bsc#1289543
+    - SECURITY, CVE-2026-121008: the html profile of SQL::Abstract::Tree
+      HTML-escapes the SQL text and the filled in bind values (new
+      html_escape option); before, a bind value like &lt;script&gt; went into
+      the page as-is
+    - SECURITY, CVE-2026-121009: injection_guard also checks the name of
+      an explicit { -func =&gt; [ $name, ... ] }, as documented; it only
+      checked the { -name =&gt; ... } shorthand before
+      bsc#1289544
+    - quote_char without name_sep: a dotted name like a.b renders as
+      &quot;a&quot;.&quot;b&quot; (name_sep defaults to &quot;.&quot;); before it came out as &quot;a&quot;&quot;b&quot;,
+      which is the single identifier a&quot;b. An empty name_sep keeps a.b</comment>
+    <requestid>1395877</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5688ffb7dec0cbb15e57c3e5e0b0d36d</srcmd5>
+    <version>2.000003</version>
+    <time>1794162152</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.000003
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+  2.000003 - 2026-11-06
+    - SECURITY, CVE-2026-121265: generate() (and so AUTOLOAD with
+      allow_autoload) also treats an arrayref in its hashref or arrayref
+      as one bind value. 2.000002 fixed only insert(), update() and
+      values(): generate('update t', { name =&gt; [ &quot;(SELECT ...)&quot; ] })
+      still gave UPDATE T SET name = (SELECT ...). \[ $sql, @bind ] is
+      literal SQL in generate() too; array_datatypes =&gt; 0 restores the
+      old behaviour.
+    - every module has a $VERSION, the same as SQL::Abstract</comment>
+    <requestid>1396149</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bbe185916562168b54e8d52e8aebb496</srcmd5>
+    <version>2.000003</version>
+    <time>1795023032</time>
+    <user>anag_factory</user>
+    <comment>Add bsc reference: bsc#1289745</comment>
+    <requestid>1398268</requestid>
+  </revision>
 </revisionlist>

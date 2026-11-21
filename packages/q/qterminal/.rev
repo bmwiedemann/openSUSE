@@ -337,4 +337,20 @@
   * Updated translations</comment>
     <requestid>1348589</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>ac12fa22cde194bc89b92567774494b7</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182338</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Added OSC-8 hyperlink settings to properties.
+  * Enabled QTermWidget's new background image modes (filling, corners and
+    tiles).
+  * Implemented visual bell and added an option for it.
+  * Added a feature for maximizing the current sub-terminal.
+  * Optionally notify the user when the output stops in a minimized window
+    (&quot;silence notification&quot;).
+  * Enhanced inter-process communication.</comment>
+    <requestid>1398768</requestid>
+  </revision>
 </revisionlist>

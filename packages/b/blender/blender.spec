@@ -18,7 +18,7 @@
 
 
 Name:           blender
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        Package to pull in the latest blender for you
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ Requires:       (blender-4.5-lang if blender-4.5)
 Requires:       (blender-5.0-lang if blender-5.0)
 Requires:       (blender-5.1-lang if blender-5.1)
 Requires:       (blender-5.2-lang if blender-5.2)
+Requires:       (blender-5.3-lang if blender-5.3)
 Provides:       blender-wrapper-lang = %{version}-%{release}
 
 %description lang
@@ -54,6 +55,7 @@ Requires:       (blender-4.5-demo if blender-4.5)
 Requires:       (blender-5.0-demo if blender-5.0)
 Requires:       (blender-5.1-demo if blender-5.1)
 Requires:       (blender-5.2-demo if blender-5.2)
+Requires:       (blender-5.3-demo if blender-5.3)
 Provides:       blender-wrapper-demo = %{version}-%{release}
 
 %description demo

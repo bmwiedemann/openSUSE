@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:54:44 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 11.16.5:
+  * Fix "color index exceeds colormap size" failure introduced
+    in Release 11.16.04
+  * build: restore ability to use external JBIG library instead of
+    built-in one.  Broken in Netpbm 11.16.00 (September 2026).
+  * rasttopnm: fix arbitrary memory access when colormapped image
+    contains a color index not in the color map.    Always broken
+    (predecessors to rasttopnm and pnmtorast were in primordial
+    Netpbm in 1989).
+- fixes CVE-2026-112276 [bsc#1286094]
+
+-------------------------------------------------------------------
+Wed Nov 11 07:45:27 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 11.16.3:
+  * pnmtorast: fix incorrect output whenever image ends with a lone
+    128 sample.  Always broken (predecessors to pnmtorast were in
+    primordial Netpbm in 1989)
+  * pnmtorast: fix memory corruption with bit depth 1 images not a
+    multiple of 8 columns wide.  Always broken (predecessors to
+    rasttopnm and pnmtorast were in primordial Netpbm in 1989).
+  * rasttopnm: fix memory corruption with invalid byte encoded input
+    file in which raster is the wrong size.  Always broken
+    (predecessors to rasttopnm and pnmtorast were in primordial
+    Netpbm in 1989).
+  * rasttopnm, pnmtorast: fix incorrect output and arbitrary memory
+    access with ridiculously large images.  Always broken
+    (predecessors to rasttopnm and pnmtorast were in primordial
+    Netpbm in 1989).
+  * pktopbm: fix bug: always fails with invalid packet length
+    message.  Broken in Netpbm 11.04 (September 2023).
+  * pktopbm: fix memory corruption with characters > 3200 columns.
+    Always broken (pktopbm was in primordial Netpbm ca 1991).
+  * pktopbm: fix infinite loop or memory corruption with truncated
+    input file or I/O error.  Always broken (pktopbm was in
+    primordial Netpbm ca 1991).
+  * xwdtopnm: fix arbitrary memory access with invalid XWD input.
+    Always broken (xwdtopnm ancestors were in primordial Netpbm in
+    1988).
+  * ilbmtoppm: fix arbitrary memory access when issuing error
+    message.  Broken in Netpbm 10.83 (June 2018).
+  * pjtoppm: fix arbitrary memory access with invalid input that uses
+    mode 1 compression but a plane has an odd number of bytes.
+    Always broken (pjtoppm was in primordial Netpbm in 1991).
+  * pjtoppm: fix crash when input image has absent rowplanes other
+    than Plane 0.  Always broken (pjtoppm was in primordial Netpbm
+    in 1991).
+  * pjtoppm: fix crash when input image has zero-length rowplane.
+    Always broken (pjtoppm was in primordial Netpbm in 1991).
+  * picttoppm: fix arbitrary memory access with invalid input that
+    contains undefined color indices.  Always broken (picttoppm was
+    in primordial Netpbm in 1989).
+  * spctoppm: fix arbitrary memory access with invalid input that
+    contains too much raster data.  Always broken (spctoppm was
+    in primordial Netpbm in 1989).
+  * ddbugtopbm: add various checks of invalid input; fix arbitrary
+    memory access with invalid input.  Always broken (ddbugtopbm
+    was new in Netpbm 20.18 (September 2003).
+  * ximtoppm: fix arbitrary memory access with invalid input.
+    Always broken (ximtoppm was in primordial Netpbm, ca 1989).
+  * ximtoppm: fix arbitrary memory access with invalid input.
+    Always broken (ximtoppm was in primordial Netpbm, ca 1989).
+  * ximtoppm: fix arbitrary memory access with ridiculously large
+    image.  Always broken (ximtoppm was in primordial Netpbm in
+    1989).
+  * gouldtoppm: fix divide-by-zero crash when head contains invalid
+    value for bits per pixel.  Always broken (gouldtoppm was in
+    primordial Netpbm in 198).
+- fixes CVE-2026-112275 [bsc#1286093]
+
+-------------------------------------------------------------------
 Sun Oct 18 06:02:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 11.16.1:
@@ -20,6 +93,13 @@ Sun Oct 18 06:02:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 - Spec cleanup: drop Group tags, pkgconfig BuildRequires, %make_build.
 - Disable pnmhisteq.test on all arches: upstream broke Test 4
   in 11.15 (trailing whitespace after line continuations).
+- fixes CVE-2026-120431 [bsc#1289288]
+        CVE-2026-120432 [bsc#1289290]
+        CVE-2026-120433 [bsc#1289291]
+        CVE-2026-120434 [bsc#1289293]
+        CVE-2026-120435 [bsc#1289294]
+        CVE-2026-120436 [bsc#1289296]
+        CVE-2026-120437 [bsc#1289297]
 
 -------------------------------------------------------------------
 Fri Jun  5 09:25:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

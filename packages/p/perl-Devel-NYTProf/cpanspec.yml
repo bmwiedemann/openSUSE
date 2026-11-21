@@ -18,3 +18,5 @@
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+# The file is just called 'Changes' without the .pod suffix
+changesformat: pod

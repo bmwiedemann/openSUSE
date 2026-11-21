@@ -6952,4 +6952,36 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * U_nir-load_libclc-add-llvm-23-libclc-paths.patch</comment>
     <requestid>1385476</requestid>
   </revision>
+  <revision rev="592" vrev="1">
+    <srcmd5>0d3a90382bd57a35003cdf48cbc018d2</srcmd5>
+    <version>26.2.6</version>
+    <time>1794410628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.2.6 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.6</comment>
+    <requestid>1396529</requestid>
+  </revision>
+  <revision rev="593" vrev="1">
+    <srcmd5>c3b2ede3f0cd94d996fb258bcc325f83</srcmd5>
+    <version>26.2.7</version>
+    <time>1794932166</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.2.7 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.7
+- supersedes the following patches:
+  * U_nir-load_libclc-add-llvm-23-libclc-paths.patch
+  * U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
+  * U_nir-load_libclc-turn-sys_path-into-an-array.patch
+  * llvm23.patch</comment>
+    <requestid>1397642</requestid>
+  </revision>
+  <revision rev="594" vrev="2">
+    <srcmd5>0f1a3b1f6b8ed350a928dd3d54e56e25</srcmd5>
+    <version>26.2.7</version>
+    <time>1794953456</time>
+    <user>dimstar_suse</user>
+    <comment>- restore baselibs.conf; contents got lost with previous change for
+  unkonwn reasons (boo#1290770)</comment>
+    <requestid>1398269</requestid>
+  </revision>
 </revisionlist>

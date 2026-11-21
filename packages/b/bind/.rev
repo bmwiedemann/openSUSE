@@ -2918,4 +2918,17 @@ New Features
   * Make named-checkconf fail on invalid command-line arguments.</comment>
     <requestid>1387069</requestid>
   </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>8ae2eea94a04d8369630c7ca3369239d</srcmd5>
+    <version>9.20.30</version>
+    <time>1794816446</time>
+    <user>anag_factory</user>
+    <comment>- Stop auto-refreshing named.root via the download_files Source
+  URL: its daily/weekly &quot;last update&quot; and &quot;related version of root
+  zone&quot; metadata lines triggered constant enforceupstream failures
+  even though the actual root hints were unchanged. named.root is
+  now a plain committed source, refreshed on demand via a
+  manual-mode download_url service instead.</comment>
+    <requestid>1397110</requestid>
+  </revision>
 </revisionlist>

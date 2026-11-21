@@ -17,7 +17,7 @@
 
 
 Name:           picard
-Version:        3.0.3
+Version:        3.0.5
 Release:        0
 Summary:        The Next Generation MusicBrainz Tagger
 License:        GPL-2.0-or-later
@@ -27,11 +27,10 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libofa-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel >= 3.10
 BuildRequires:  python3-pip
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools >= 77.0.1
 BuildRequires:  python3-wheel
 BuildRequires:  update-desktop-files
 Requires:       python3-Markdown >= 3.2
@@ -44,6 +43,8 @@ Requires:       python3-mutagen >= 1.45
 Requires:       python3-pygit2 >= 1.19
 Requires:       python3-tomlkit >= 0.12.4
 Recommends:     chromaprint-fpcalc
+Recommends:     python3-shtab >= 1.7.0
+Recommends:     python3-zstandard >= 0.25.0
 # SECTION test
 # pygit2 initializes TLS cert locations at import (via picard.tagger);
 # the build root ships no CA bundle, so provide one for %check

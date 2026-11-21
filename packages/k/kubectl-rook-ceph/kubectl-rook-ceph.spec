@@ -19,18 +19,52 @@
 %define executable_name kubectl-rook_ceph
 
 Name:           kubectl-rook-ceph
-Version:        0.9.6
+Version:        0.10.0
 Release:        0
 Summary:        Management and troubleshooting tools for the Rook Ceph storage provider
 License:        Apache-2.0
 URL:            https://github.com/rook/kubectl-rook-ceph
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  go1.26 >= 1.26.10
+# shell completions
+BuildRequires:  bash-completion
+BuildRequires:  fish
+BuildRequires:  zsh
 
 %description
 Provide common management and troubleshooting tools for the Rook Ceph storage
 provider as a kubectl plugin.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
+
+%package -n %{name}-fish-completion
+Summary:        Fish Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description -n %{name}-fish-completion
+Fish command line completion support for %{name}.
+
+%package -n %{name}-zsh-completion
+Summary:        Zsh Completion for %{name}
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description -n %{name}-zsh-completion
+zsh command line completion support for %{name}.
 
 %prep
 %autosetup -a 1 -p 1
@@ -41,13 +75,21 @@ go build \
    -buildmode=pie \
    -o bin/%{executable_name} cmd/main.go
 
-# completions cannot be created currently,
-# if no valid kubeconfig is existing
-# https://github.com/rook/kubectl-rook-ceph/issues/353
-
 %install
 # Install the binary.
 install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
+
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+%{buildroot}/%{_bindir}/%{executable_name} completion bash > %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
+
+# create the fish completion file
+mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
+%{buildroot}/%{_bindir}/%{executable_name} completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+
+# create the zsh completion file
+mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
+%{buildroot}/%{_bindir}/%{executable_name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %check
 %{buildroot}/%{_bindir}/%{executable_name} --help
@@ -56,5 +98,14 @@ install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_n
 %doc README.md
 %license LICENSE
 %{_bindir}/%{executable_name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{executable_name}
+
+%files -n %{name}-fish-completion
+%{_datarootdir}/fish/vendor_completions.d/%{executable_name}.fish
+
+%files -n %{name}-zsh-completion
+%{_datarootdir}/zsh/site-functions/_%{executable_name}
 
 %changelog

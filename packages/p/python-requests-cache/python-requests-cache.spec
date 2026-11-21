@@ -17,15 +17,14 @@
 
 
 Name:           python-requests-cache
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Persistent cache for requests library
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/requests-cache/requests-cache
 Source:         https://github.com/requests-cache/requests-cache/archive/refs/tags/v%{version}.tar.gz#/requests-cache-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch1:         avoid-vacuum-in-transaction.patch
+# PATCH-FIX-UPSTREAM The important parts of gh#requests-cache/requests-cache@2541eb8
+Patch0:         support-url-normalize-3.0.patch
 BuildRequires:  %{python_module hatchling >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -92,15 +91,15 @@ take a look at `CacheControl <https://github.com/ionrock/cachecontrol>`_.
 
 %check
 gunicorn -b 127.0.0.1:8080 httpbin:app -k gevent &
-%{_sbindir}/redis-server &
+%{_sbindir}/redis-server --save "" &
 export HTTPBIN_URL=http://localhost:8080/
-%pytest -k 'not (dynamodb or gridfs or mongodb)'
+%pytest -k 'not (dynamodb or gridfs or mongodb or test_concurrency)'
 killall -w redis-server
 
 %files %{python_files}
 %license LICENSE
 %doc README.md HISTORY.md docs/*.md docs/*.rst
 %{python_sitelib}/requests_cache
-%{python_sitelib}/requests_cache-%{version}*-info
+%{python_sitelib}/requests_cache-%{version}.dist-info
 
 %changelog

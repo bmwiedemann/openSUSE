@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.8.1
+Version:        0.3.10.0
 Release:        0
 Summary:        Numbers represented using scientific notation
 License:        BSD-3-Clause
@@ -52,16 +52,12 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
-BuildRequires:  ghc-smallcheck-devel
-BuildRequires:  ghc-smallcheck-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
-BuildRequires:  ghc-tasty-smallcheck-devel
-BuildRequires:  ghc-tasty-smallcheck-prof
 %endif
 
 %description

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct 28 09:59:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0002-A-standalone-plugin-descriptor-generator.patch
+    + sync StandaloneDescriptorGenerator with upstream PR #1189:
+      effective model via maven-model-builder, Sisu container,
+      parent POMs resolved through XMvn workspace reader
+- Add xmvn to build classpath; run bootstrap only once in build.xml
+
+-------------------------------------------------------------------
+Sun Sep 20 13:05:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patches:
+  * 0002-Remove-dependency-on-jtidy.patch
+    -> 0001-Remove-dependency-on-jtidy.patch
+    + rediff
+  * 0001-A-standalone-plugin-descriptor-generator.patch
+    -> 0002-A-standalone-plugin-descriptor-generator.patch
+    + rediff and avoid injecting into private fields by reflection
+
+-------------------------------------------------------------------
 Wed Sep  9 18:04:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.0.0-beta-3

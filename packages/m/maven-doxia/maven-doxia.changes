@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  9 19:23:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use modello-ant-task instead of ModelloCli
+
+-------------------------------------------------------------------
 Mon Oct 19 05:38:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.2.0

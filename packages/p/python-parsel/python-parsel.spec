@@ -24,6 +24,8 @@ Summary:        Library to extract data from HTML and XML using XPath and CSS se
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/parsel
 Source:         https://files.pythonhosted.org/packages/source/p/parsel/parsel-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support cssselect 1.6.0+
+Patch0:         support-cssselect-1.6.0.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling >= 1.27}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Thu Nov  5 00:48:39 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.2.0.post2:
+  * MAJOR REWRITE: The Python and C implementations of the encoder and
+    decoder were replaced with a single, Rust-based implementation in the
+    interest of maintainability. Highlights include improved memory safety
+    (100% safe-mode Rust), complete elimination of reference leaks, support
+    for free-threading and subinterpreters, substantially improved
+    performance, improved decoder error handling where any non-base
+    exception gets wrapped in a CBORDecodeError, and iterative rather than
+    recursive decoding so container nesting depth is limited only by
+    available memory rather than the C stack size.
+  * BACKWARD INCOMPATIBLE: Changed the signature of the tag_hook decoder
+    callables to accept (CBORTag, immutable) as arguments instead of
+    (CBORDecoder, CBORTag).
+  * BACKWARD INCOMPATIBLE: Changed the signature of the object_hook decoder
+    callables to accept (Mapping[Any, Any], bool) instead of (CBORDecoder,
+    dict[Any, Any]).
+  * BACKWARD INCOMPATIBLE: Removed the break_marker singleton as no longer
+    necessary.
+  * BACKWARD INCOMPATIBLE: Removed the CBORDecodeValueError exception,
+    instead chaining ValueError or TypeError to a CBORDecodeError.
+  * BACKWARD INCOMPATIBLE: Changed the decoding of semantic tag 261 to yield
+    an IPv4Interface or IPv6Interface if the address contains host bits.
+  * BACKWARD INCOMPATIBLE: Removed the individual decoding functions from
+    the API as they were mistakenly called directly by users.
+  * BACKWARD INCOMPATIBLE: Changed the encoding of IP addresses to use the
+    semantic tags 52 and 54 instead of the deprecated 260 and 261.
+  * BACKWARD INCOMPATIBLE: Dropped the deprecated cbor2.decoder and
+    cbor2.encoder modules; everything in the API is now importable directly
+    from cbor2.
+  * BACKWARD INCOMPATIBLE: Renamed the cbor2.FrozenDict class to frozendict
+    (not available on Python 3.15 where the built-in frozendict class must
+    be used instead).
+  * Dropped support for Python 3.9.
+  * Added the semantic_decoders decoder option to add or override decoders
+    for specific semantic tags.
+  * Added the immutable decoder flag to always use immutable containers
+    where possible when decoding a CBOR stream.
+  * Added the allow_indefinite decoder option to optionally disallow
+    indefinite-length strings and containers.
+  * Added the allow_duplicate_keys parameter to CBORDecoder, load() and
+    loads() (default: True) to raise a CBORDecodeError upon encountering a
+    duplicate key within the same map.
+  * Added support for decoding from any object supporting the buffer API
+    (e.g. memoryview or bytearray) in addition to bytes.
+  * Added the strict_hashable_types parameter to CBORDecoder, load() and
+    loads() which restricts map keys and set elements to text strings and
+    byte strings in order to prevent denial-of-service attacks via hash
+    collisions (GHSA-p6xp-9h6j-r278).
+  * Documented decoding concatenated CBOR objects with EOF checks between
+    objects.
+  * Built Pyodide (pyemscripten) wheels for Python 3.14.
+  * Fixed the decoder not rejecting invalid two-byte simple value sequences
+    (0xF800 - 0xF81F).
+  * Fixed an error in the mutability logic during decoding, leading to
+    values being decoded as immutable in unexpected places.
+  * Fixed compatibility issues with 32-bit systems.
+  * Fixed cbor2.load() returning corrupted data for payloads exceeding 4096
+    bytes.
+  * Fixed cbor2.load() crash caused by incorrect handling of internal read
+    buffer extension during stream deserialization.
+  * Fixed incorrect tracking of string references for definite-length text
+    strings of length greater than 65536.
+  * Fixed the decoder registering 6-byte strings in the string reference
+    namespace at indices 65536-4294967295 where the encoder does not,
+    desynchronising the namespace.
+  * Fixed the IPv4/IPv6 network decoders (tags 52 and 54) silently
+    truncating an address byte string that is longer than the address size
+    instead of rejecting it as malformed.
+  * Fixed frozendict deriving its hash from its keys and its values as two
+    independent sets, which caused hash collisions and quadratic-time
+    decoding for payloads keyed by such maps.
+  * Fixed the encoder not registering bytearray values in the string
+    reference namespace, which desynchronised the namespace.
+  * Fixed the decoder silently accepting an indefinite-length map whose
+    break marker arrives after a key with no value.
+  * Fixed the decoder accepting a non-byte-string payload for a positive or
+    negative bignum (tags 2 and 3).
+  * Fixed CBORSimpleValue hashing inconsistently with the integer it
+    compares equal to.
+  * Fixed canonical encoding with value sharing enabled emitting shared
+    references to container keys that were never written to the stream.
+  * Fixed shared references (tag 29) to a map or an unhandled tag resolving
+    to the raw dict or CBORTag instead of the value returned by object_hook
+    or tag_hook.
+  * Fixed the encoder not giving a nested stringref namespace (tag 256) its
+    own index space.
+  * Fixed the decoder returning its internal break marker as a value when a
+    break stop code appeared where a data item was expected.
+  * Fixed a PanicException when trying to decode an epoch-form date (tag
+    100) with a payload near i32::MAX.
+  * Fixed the decoder accepting a string-form datetime (tag 0) without a
+    UTC offset and returning a naive datetime instead of rejecting it.
+  * Fixed a reused CBOREncoder no longer flushing its output or resetting
+    its shared container and string reference tracking after an encode()
+    call raised an exception.
+  * Fixed CBOREncoder.encode_to_bytes() sharing the string reference
+    namespace of the enclosing encode operation when called from a default
+    hook.
+  * Fixed the encoder writing the repr() of a bytes regular expression
+    pattern (tag 35) instead of the pattern itself.
+  * Fixed shared references (tag 29) allowing the decoder to construct
+    object graphs nested deeper than max_depth, which could crash the
+    interpreter with a segmentation fault when hashed
+    (GHSA-55vx-2phh-7grr).
+  * Fixed missing conversion of date values (tags 100 and 1004) to JSON as
+    ISO formatted strings.
+  * Fixed a PanicException on Python 3.10 when decoding a string-form
+    datetime (tag 0) whose fractional seconds part contains a multi-byte
+    Unicode numeric character.
+  * Fixed the decoder accepting a set (tag 258) whose payload is not an
+    array.
+  * Fixed the decoder accepting a non-integer exponent or mantissa in a
+    decimal fraction (tag 4) or a bigfloat (tag 5).
+
+-------------------------------------------------------------------
 Tue Mar 24 11:58:11 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.9.0 (CVE-2026-26209, bsc#1260367)

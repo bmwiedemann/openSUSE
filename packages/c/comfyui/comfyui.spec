@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.43.0
+Version:        0.44.0
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -70,13 +70,13 @@ Requires:       %{primary_python}-comfy-aimdo >= 0.6.0
 # comfy_kitchen.int8_attention_is_available() at module import, so the
 # kitchen floor must provide it; track upstream's pin (0.2.40).
 Requires:       %{primary_python}-comfy-kitchen >= 0.2.40
-Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.15
+Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.16
 # Security floor: 1.50.6 carries the XSS fixes GHSA-2gr5-vw2p-2hcf,
 # GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Upstream requires
-# 1.55.18, which is above it, so the floor tracks upstream now; do not
+# 1.57.6, which is above it, so the floor tracks upstream now; do not
 # lower it below either.
-Requires:       %{primary_python}-comfyui-frontend-package >= 1.57.4
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.97
+Requires:       %{primary_python}-comfyui-frontend-package >= 1.57.6
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.101
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0

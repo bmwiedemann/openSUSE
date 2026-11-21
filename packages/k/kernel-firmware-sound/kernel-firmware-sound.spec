@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 9b858e5bb58d7bf1fc4d8818cb9100aed6d46f6a
+%define git_version 69e51bb26f3fa3e118dd770f1962a93bed690dc1
 
 Name:           kernel-firmware-sound
-Version:        20260926
+Version:        20261109
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261111.tar.gz#/kernel-firmware-tools-20261111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -53,6 +53,7 @@ Supplements:    modalias(acpi*:80860F28%3A*)
 Supplements:    modalias(acpi*:808622A8%3A*)
 Supplements:    modalias(acpi*:CLSA0100%3A*)
 Supplements:    modalias(acpi*:CLSA0101%3A*)
+Supplements:    modalias(acpi*:CLSA0102%3A*)
 Supplements:    modalias(acpi*:CSC0000%3A*)
 Supplements:    modalias(acpi*:CSC0004%3A*)
 Supplements:    modalias(acpi*:CSC0010%3A*)
@@ -70,6 +71,8 @@ Supplements:    modalias(acpi*:TXNW2770%3A*)
 Supplements:    modalias(acpi*:TXNW2781%3A*)
 Supplements:    modalias(acpi*:TXNW5825%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
+Supplements:    modalias(of:N*T*Cayaneo%2Cpocket-s2-sndcard)
+Supplements:    modalias(of:N*T*Cayaneo%2Cpocket-s2-sndcardC*)
 Supplements:    modalias(of:N*T*Cfairphone%2Cfp4-sndcard)
 Supplements:    modalias(of:N*T*Cfairphone%2Cfp4-sndcardC*)
 Supplements:    modalias(of:N*T*Cfairphone%2Cfp5-sndcard)
@@ -84,8 +87,12 @@ Supplements:    modalias(of:N*T*Cqcom%2Celiza-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Celiza-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Chawi-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Chawi-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmaili-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cmaili-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs615-sndcard)
@@ -106,10 +113,14 @@ Supplements:    modalias(of:N*T*Cqcom%2Cqrb5165-rb5-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqrb5165-rb5-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csc8280xp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csc8280xp-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csdm660-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Csdm660-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8250-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8250-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8450-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8450-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8475-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8475-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8550-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8550-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-sndcard)

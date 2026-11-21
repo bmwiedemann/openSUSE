@@ -373,4 +373,14 @@
   * Fix bad version in :deps alias</comment>
     <requestid>1376113</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>109439d9fb4bfd5b98d1914b9e9de4dc</srcmd5>
+    <version>1.12.7</version>
+    <time>1795103764</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.7:
+  * CLJ-2993 - AFunction can be used to craft a serialized object that runs
+    x arbitrary code on deserialization (GHSA-x4c4-68gp-vrhc)</comment>
+    <requestid>1398597</requestid>
+  </revision>
 </revisionlist>

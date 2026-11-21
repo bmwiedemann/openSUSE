@@ -699,4 +699,22 @@
   * Other small changes.</comment>
     <requestid>1373875</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>2a4a63195e4febc39fc7d3f79cb08da9</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182333</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Incremental search is supported by adding an optional stop button to
+    the status-bar.
+  * An option is added to Desktop Preferences for no wallpaper cache, such
+    that the original image quality can be used.
+  * CMake maintenance.
+  * Code cleanup and update.
+- Drop unused and obsolete BuildRequires
+  * pkgconfig(libmenu-cache)
+- Drop unused and obsolete Requires
+  * menu-cache</comment>
+    <requestid>1398766</requestid>
+  </revision>
 </revisionlist>

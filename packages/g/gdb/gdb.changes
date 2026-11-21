@@ -1,4 +1,451 @@
 -------------------------------------------------------------------
+Mon Nov  2 09:50:11 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (testsuite):
+  * gdb-testsuite-fix-timeout-in-gdb.threads-vfork-multi.patch
+  * gdb-testsuite-handle-help-timeout-in-gdb.python-pyth.patch
+  * gdb-testsuite-fix-fail-in-gdb.server-multi-ui-errors.patch
+
+-------------------------------------------------------------------
+Sun Nov  1 10:41:50 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (testsuite):
+  * gdb-testsuite-fix-timeout-in-gdb.base-async-shell.ex.patch
+  * gdb-testsuite-fix-timeout-in-gdb.base-foll-fork-sysc.patch
+
+-------------------------------------------------------------------
+Fri Oct 30 09:18:23 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Add a libipt-<v> -> processor-trace-<v> symlink to make quilt
+  setup work.
+
+-------------------------------------------------------------------
+Fri Oct 30 08:30:11 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Mention changes in GDB 17:
+  * Debugging Linux programs that use x86-64 or x86-64 with 32-bit
+    pointer size (X32) Shadow Stacks are now supported.
+  * Support for the shadow stack pointer register on x86-64 or
+    x86-64 with 32-bit pointer size (X32) GNU/Linux.
+  * Debug Adapter Protocol changes:
+    * GDB now supports the "completions" request.
+    * The attach request now accepts the coreFile parameter.
+  * "set style" commands now support numeric format for basic
+    colors from 0 to 255 and #RRGGBB format for TrueColor.
+  * New built-in convenience variable $_colorsupport provides
+    a comma-separated list of color space names supported by the
+    terminal.  Each color space name is one of monochrome,
+    ansi_8color, aixterm_16color, xterm_256color or rgb_24bit.  It
+    is handy for conditionally using styling colors based on
+    terminal features.
+  * Linux checkpoint code has been updated to work with multiple
+    inferiors.
+  * The gcore and gdb-add-index scripts now have a -v or --version
+    option, which prints the version number, and then exits.  As
+    well as a -h or --help option, which prints each option and a
+    brief description.
+  * On systems that support linker namespaces, the output of the
+    command "info sharedlibraries" may add one more column, NS,
+    which identifies the namespace into which the library was
+    loaded, if more than one namespace is active.
+  * New built-in convenience variables $_linker_namespace_count and
+    $_linker_namespace.  These show the number of active linker
+    namespaces, and the namespace to which the current location
+    belongs.  In systems that don't support linker namespaces,
+    or if the inferior hasn't started yet, these always return the
+    integer 0.
+  * Add record full support for rv64gc architectures.
+  * Debugging Linux programs that use AArch64 Guarded Control
+    Stacks is now supported.
+  * GDB now adds all type symbols to the .gdb_index section.  The
+    index version number has not increased as a consequence of this
+    change.  This fixes an issue where GDB could fail to find a
+    type when relying on the index.  Any existing indexes should be
+    regenerated.
+  * New commands:
+    * maintenance check psymtabs
+      Renamed from maintenance check-psymtabs
+    * maintenance check symtabs
+      Renamed from maintenance check-symtabs
+    * maintenance canonicalize
+      Show the canonical form of a C++ name.
+    * set riscv numeric-register-names on|off
+      show riscv numeric-register-names
+      Controls whether GDB refers to RISC-V registers by their
+      numeric names (e.g. 'x1') or their ABI names (e.g. 'ra').
+      Defaults to 'off', matching the old behaviour (ABI names).
+    * set style emoji on|off|auto
+      show style emoji
+      Controls whether GDB can display emoji.  The default is
+      "auto", which means emoji will be displayed in some
+      situations when the host charset is UTF-8.
+    * set style warning-prefix STRING
+      set style error-prefix STRING
+      These commands control the prefix that is printed before
+      warnings and errors, respectively.  This functionality is
+      intended for use with emoji display, and so the prefixes are
+      only displayed if emoji styling is enabled.
+    * info linker-namespaces
+    * info linker-namespaces [[N]]
+      Print information about the given linker namespace
+      (identified as N), or about all the namespaces if no argument
+      is given.
+  * Changed commands:
+    * info sharedlibrary
+      On Linux and FreeBSD, the addresses shown in the output of
+      this command are now for the full memory range allocated to
+      the shared library.
+    * info threads [-gid] [-stopped] [-running] [ID]...
+      If no threads match the given ID(s) or filter options, GDB
+      now prints "No threads matched." without printing the
+      provided arguments.  The newly added '-stopped' option makes
+      GDB list the stopped threads only.  Similarly, '-running'
+      makes GDB list the running threads only.  If both options are
+      given together, both stopped and running threads are listed.
+      These new flags can be useful to get a reduced list when
+      there is a large number of threads.
+  * GDB-internal Thread Local Storage (TLS) support:
+    * Linux targets for the x86_64, aarch64, ppc64, s390x, and
+      riscv architectures now have GDB-internal support for TLS
+      address lookup in addition to that traditionally provided by
+      the libthread_db library.  This internal support works for
+      programs linked against either the GLIBC or MUSL C libraries.
+      For programs linked against MUSL, this new internal support
+      provides new debug functionality, allowing access to TLS
+      variables, due to the fact that MUSL does not implement the
+      libthread_db library.  Internal TLS support is also useful in
+      cross-debugging situations, debugging statically linked
+      binaries, and debugging programs linked against GLIBC 2.33
+      and earlier, but which are not linked against libpthread.
+    * The command 'maint set force-internal-tls-address-lookup on'
+      may be used to force the internal TLS lookup mechanisms to be
+      used.  Otherwise, TLS lookup via libthread_db will still be
+      preferred, when available.
+  * Python API:
+    * GDB no longer supports Python versions less than 3.4.
+    * New class gdb.Color for dealing with colors.
+    * New constant gdb.PARAM_COLOR represents the color type of a
+      gdb.Parameter.value.  Parameter's value is a gdb.Color
+      instance.
+    * The memory_source argument (the second argument) has been
+      removed from gdb.disassembler.builtin_disassemble.  This
+      argument was never used by GDB, and was added by mistake.
+      The unused argument was never documented in the GDB manual,
+      so users should not have been using it.
+    * gdb.execute has an additional 'styling' argument.  When True,
+      then output will be styled.  The default for this argument is
+      True when output is going to standard output, and False when
+      output is going to a string.
+    * Setting the documentation string (__doc__) of a gdb.Parameter
+      sub-class to the empty string, means GDB will only display
+      the set_doc or show_doc strings in the set/show help output.
+    * New gdb.ParameterPrefix class.  This can be used to create
+      'set' and 'show' gdb.Command prefixes, suitable for use with
+      new gdb.Parameters.
+    * Prefix commands (gdb.Command sub-classes) that don't have an
+      invoke method will now behave like builtin prefix commands
+      when invoked without a sub-command name.  This means printing
+      the help text for all sub-commands, unless the prefix command
+      is a 'show' command, in which case the value of all
+      sub-commands is printed.
+    * New gdb.warning() function that takes a string and prints it
+      as a warning, with GDB's standard 'warning' prefix.
+    * New attribute gdb.Value.is_unavailable, this checks for
+      unavailability like gdb.Value.is_optimized_out checks for
+      optimized out values.
+    * New gdb.Corefile class which represents a loaded core file.
+      This has an attribute Corefile.filename, the file name of the
+      loaded core file, and a method Corefile.is_valid(), which
+      returns False when a Corefile object becomes invalid (e.g.
+      when the core file is unloaded).  There is also
+      Corefile.mapped_files() which returns a list of
+      CorefileMappedFile objects, representing files that were
+      mapped into the core file when it was created.
+    * New gdb.CorefileMappedFile type representing a file that was
+      mapped when the core file was created.  Has read-only
+      attributes filename (string), build_id (string),
+      is_main_executable (boolean), and regions (list of
+      CorefileMappedFileRegion objects).
+    * New gdb.CorefileMappedFileRegion type, which represents a
+      mapped region of a file (see gdb.CorefileMappedFile above).
+      Has read-only attributes start, end, and file_offset.
+    * New Inferior.corefile attribute.  This read only attribute
+      contains the gdb.Corefile object if a core file is loaded
+      into the inferior, otherwise, this contains None.
+    * New event registry gdb.events.corefile_changed, which emits a
+      CorefileChangedEvent whenever the core file associated with
+      an inferior changes.  The event has an 'inferior' attribute
+      which is the gdb.Inferior in which the core file has changed.
+  * Guile API:
+    * New type <gdb:color> for dealing with colors.
+    * New constant PARAM_COLOR represents the color type of a value
+      of a <gdb:parameter> object.  Parameter's value is a
+      <gdb:color> instance.
+    * Eliding the #:doc string from make-parameter now means that
+      GDB will use a default documentation string.  Setting #:doc
+      to the empty string for make-parameter means GDB will only
+      display the #:set_doc or #:show_doc strings in the set/show
+      help output.
+    * Prefix commands (using make-command) that don't have a
+      #:invoke property will now behave like builtin prefix
+      commands when invoked without a sub-command name.  This means
+      printing the help text for all sub-commands, unless the
+      prefix command is a 'show' command, in which case the value
+      of all sub-commands is printed.
+  * New remote packets:
+    * binary-upload in qSupported reply
+      If the stub sends back 'binary-upload+' in its qSupported
+      reply, then GDB will, where possible, make use of the 'x'
+      packet.  If the stub doesn't report this feature as
+      supported, then GDB will not use the 'x' packet.
+    * vFile:lstat
+      Return information about files on the remote system.  Like
+      vFile:stat but if the filename is a symbolic link, return
+      information about the link itself, not the file the link
+      refers to.
+  * Changed remote packets:
+    * qXfer:threads:read
+      The XML that is sent as a response can now include an
+      "id_str" attribute for a thread element.  The attribute
+      indicates what GDB should print as the target ID of the
+      thread, for example in the "info threads" command or when
+      switching to the thread.
+    * vFile:stat
+      Previously, gdbserver incorrectly implemented this packet
+      using lstat rather than stat.  This has now been corrected.
+      The documentation has also been clarified.
+  * MI changes:
+    * The =library-unloaded event now includes the 'ranges' field,
+      which has the same meaning as for the =library-loaded event.
+    * The =library-unloaded event now includes the 'still-in-use'
+      field.  This field is 'true' when a library is unloaded
+      (removed from the inferior's list of loaded libraries), but
+      the mapping within the inferior's address space is retained,
+      as the library was mapped multiple times, and the same
+      mapping was being reused.  In all other cases, this field
+      will have the value 'false'.
+  * Support for stabs debugging format and the a.out/dbx object
+    format is deprecated, and will be removed in GDB 18.
+
+-------------------------------------------------------------------
+Thu Oct 29 18:43:13 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (testsuite):
+  * gdb-testsuite-fix-fail-in-gdb.tui-tui-mode-switch.ex.patch
+  * gdb-testsuite-fix-race-in-gdb.threads-leader-exit.ex.patch
+  * gdb-testsuite-fix-timeout-in-gdb.mi-mi-dprintf-modif.patch
+
+-------------------------------------------------------------------
+Wed Oct 28 14:12:11 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR33505 kfail.
+  * Handle rename from gdb.base/set-solib-absolute-prefix.exp to
+    gdb.arch/x86-set-solib-absolute-prefix.exp kfail.
+  * Add PR33866 kfail.
+  * Add PR34182 kfail.
+  * Add PR31806 kfail.
+  * Add PR22381 kfail.
+
+-------------------------------------------------------------------
+Wed Oct 28 14:05:39 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (testsuite)
+  * gdb-testsuite-handle-csi-1034-l-h.patch
+  * gdb-testsuite-fix-_selftest_setup-on-ppc64le-linux.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 13:29:36 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (testsuite)
+  * gdb-testsuite-tcl-9.0-fix-error-no-such-variable-ter.patch
+  * gdb-testsuite-tcl-9.0-namespace-fixes.patch
+  * gdb-testsuite-tcl-9.0-fix-error-no-such-variable-dwa.patch
+  * gdb-testsuite-update-c-tests-for-volatile-changes-in.patch
+  * gdb-testsuite-fix-gdb.base-infcall-nested-structs.c-.patch
+  * gdb-testsuite-tcl-9.0-fix-error-invalid-character-in.patch
+  * gdb-testsuite-tcl-9.0-fix-clipping-by-format-x.patch
+  * gdb-testsuite-fix-gdb.dap-corefile.exp-with-tcl-9.0.patch
+  * gdb-testsuite-fix-race-condition-in-gdb.replay-missi.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 13:23:05 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Apply gcc-objc dependency workaround also for 16.0.
+
+-------------------------------------------------------------------
+Tue Oct 27 06:51:22 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-local.sh:
+  * Drop SLE-12.
+
+-------------------------------------------------------------------
+Thu Oct  8 08:56:45 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added (update to fedora rawhide @ c959388):
+  * gdb-backport-corefile-use-after-free-fix.patch
+  * gdb-backport-dap-core-file-support.patch
+  * gdb-backport-ifunc-lookup-fix.patch
+  * gdb-backport-libiberty-sync.patch
+  * gdb-backport-s390x-return-crash.patch
+  * gdb-fileio-test-fixes.patch
+  * gdb-fix-testsuite-newer-tcl.patch
+  * gdb-index-generation-fixes.patch
+  * gdb-rhbz2366461-bad-solib-entry-addr.patch
+  * gdb-rhbz2366461-missing-thread.patch
+  * gdb-rhbz2424325-c++20-implicit-lambda-capture.patch
+  * gdb-rhbz2424325-c23-const-build-warnings.patch
+  * gdb-rhbz2424325-c23-more-const-fixes.patch
+  * gdb-rhbz2467251-computed-location-synthetic-pointers.patch
+  * gdb-tcl9-utf8-encoding-fix.patch
+- Patches updated (update to fedora rawhide @ c959388):
+  * gdb-rpm-suggestion-script.patch
+- Maintenance script import-fedora.sh:
+  * Drop skipping of gdb-fix-bg-execution-repeat.patch, present in
+    17.1.
+  * Skip already present patches:
+    * gdb-rhbz2403580-misplaced-symtabs.patch
+    * gdb-rhbz2413405-gcore-unreadable-pages.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 08:37:37 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa.sh:
+  * Add PR34344 kfail.
+
+-------------------------------------------------------------------
+Thu Oct  8 08:31:28 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-aarch64-fix-inferior-function-call-if-gcs-is-pre.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 07:30:09 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Patches added:
+  * gdb-testsuite-use-strict-regexp-in-gdb.python-py-rbr.patch
+
+-------------------------------------------------------------------
+Thu Oct  8 06:42:36 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Update to 17.2.
+- Use .xz instead of bz2 tarball
+- Patches dropped:
+  * gdb-testsuite-record-less-in-gdb.reverse-time-revers.patch
+  * gdb-doc-fix-gdb.unwinder-docs.patch
+  * gdb-doc-fix-qisaddresstagged-anchor.patch
+  * gdb-testsuite-fix-timeouts-in-gdb.threads-step-over-.patch
+  * gdb-testsuite-handle-unordered-dict-in-gdb.python-py.patch
+  * gdb-testsuite-check-gnatmake-version-in-gdb.ada-scal.patch
+  * fix-gdb.base-finish-pretty.exp-on-s390x.patch
+  * fix-gdb.base-readnever.exp-on-s390x.patch
+  * add-dwarf_expr_piece.op.patch
+  * add-gdbarch_dwarf2_reg_piece_offset-hook.patch
+  * fix-gdb.base-store.exp-on-s390x.patch
+  * fix-gdb.ada-o2_float_param.exp-on-s390x-linux.patch
+  * gdb-testsuite-fix-gdb.base-branch-to-self.exp-on-arm.patch
+  * gdb-tdep-fix-gdb.cp-non-trivial-retval.exp-on-riscv6.patch
+  * gdb-testsuite-fix-gdb.cp-non-trivial-retval.exp-on-a.patch
+  * gdb-testsuite-fix-gdb.rust-completion.exp-timeout-on.patch
+  * gdb-testsuite-require-supports_process_record-in-gdb.patch
+  * gdb-testsuite-fix-gdb.base-list-dot-nodebug.exp-on-o.patch
+  * gdb-testsuite-use-nostdlib-in-gdb.base-list-dot-node.patch
+  * gdb-testsuite-fix-gdb.ada-big_packed_array.exp-on-s3.patch
+  * gdb-testsuite-fix-gdb.ada-convvar_comp.exp-on-s390x-.patch
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-m32-for-amd.patch
+  * gdb-testsuite-fix-gdb.base-step-over-syscall.exp-with-glibc-2-41.patch
+  * gdb-testsuite-fix-gdb.threads-access-mem-running-thr.patch
+  * gdb-guile-use-scm_debug_typing_strictness-0.patch
+  * gdb-testsuite-fix-gdb.dwarf2-implptr.exp-regression.patch
+  * gdb-symtab-fix-gdb.base-fission-macro.exp-with-unix-.patch
+  * gdb-testsuite-fix-gdb.threads-clone-attach-detach.ex.patch
+  * gdb-doc-fix-standard-replies-xref.patch
+  * gdb-testsuite-use-c-flag-in-c-test-cases.patch
+  * gdb-tui-enable-work-around-libncurses-segfault.patch
+  * gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.patch
+  * gdb-testsuite-fix-another-timeout-in-gdb.base-bg-exe.1.patch
+  * gdb-testsuite-fix-timeout-in-gdb.threads-inf-thr-cou.patch
+  * gdb-tdep-fix-gdb.ada-finish-var-size.exp-on-ppc64le-.patch
+  * gdb-testsuite-make-gdb.reverse-time-reverse.exp-more.patch
+  * gdb-testsuite-fix-gdb.reverse-time-reverse.exp-timeo.patch
+  * gdb-testsuite-handle-asm-frame-in-gdb.python-py-miss.patch
+  * gdb-testsuite-fix-gdb.base-ptype.exp-with-gcc-15.patch
+  * gdb-testsuite-fix-gdb.python-py-objfile.exp-with-gcc.patch
+  * gdb-ada-fix-gdb.ada-overloads.exp-on-s390x.patch
+  * gdb-testsuite-fix-gdb.ada-scalar_storage.exp-on-s390.patch
+  * gdb-testsuite-fix-gdb.base-bp-permanent.exp-with-gcc.patch
+  * gdb-testsuite-don-t-run-to-main-in-gdb.cp-cplusfuncs.patch
+  * gdb-testsuite-fix-timeout-in-gdb.multi-attach-while-.patch
+  * gdb-fix-assertion-failure-due-to-null-frame.patch
+  * check-gnatmake-version-in-gnat_version_compare.patch
+  * gdb-fix-handling-of-aborted-inferior-call.patch
+  * gdb-testsuite-fix-possible-tcl-errors-in-gdb.threads.patch
+  * gdb-testsuite-fix-xfail-in-gdb.ada-array_of_variant..patch
+  * gdb-testsuite-fix-gdb.mi-mi-sym-info.exp.patch
+  * gdb-symtab-cache-dw2_get_file_names-result-for-dummy.patch
+  * avoid-crash-with-length.patch
+  * change-return-value-of-_bfd_mmap_temporary.patch
+  * correct-bounds-check-when-working-around-gas-dwarf-5.patch
+  * fix-crash-in-f-typeprint.c.patch
+  * gdb-testsuite-rust-fix-for-empty-array.patch
+  * have-gdb.threadexitedevent-inherit-from-gdb.threadev.patch
+  * gdb-c-fix-hang-on-whatis-std-string-npos.patch
+  * gdb-python-reimplement-gdb.interrupt-race-fix.patch
+  * gdb-symtab-fix-slow-symbol-lookup-with-dwz.patch
+- Patches updated:
+  * fix-rhbz2403580-misplaced-symtabs-due-to-dwz.patch
+  * gdb-cli-add-ignore-errors-command.patch
+  * gdb-enable-ptype-o-for-some-dynamic-types.patch
+  * gdb-fix-gdb.base-inline-frame-cycle-unwind.exp-for-s.patch
+  * gdb-gcore-bash.patch
+  * gdb-linux-consider-ptrace_scope-when-building-attach.patch
+  * gdb-minor-refactoring-of-is_dynamic_type_internal.patch
+  * gdb-symtab-recurse-into-c-dw_tag_subprogram-dies-for.patch
+  * gdb-testsuite-ada-pie.patch
+  * gdb-testsuite-fix-another-timeout-in-gdb.mi-mi-multi.patch
+  * gdb-testsuite-use-expect_build_id_in_core_file-a-bit.patch
+  * gdb-tui-don-t-enter-tui-if-debuginfod-enabled-ask.patch
+  * gdb-tui-reduce-scope-of-debuginfod-query-crash-worka.patch
+- Maintenance script qa-local.sh:
+  * Fix qa-local.sh 3.
+
+-------------------------------------------------------------------
+Tue Sep 15 14:18:45 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- patch added [CVE-2026-13732, bsc#1277757]:
+  * gdb-stabs-fix-out-of-bounds-write-in-read_member_fun.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 13:59:03 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Fix regression in python version for openSUSE Leap 15.6 by
+  removing modern_python usage.
+
+-------------------------------------------------------------------
+Wed Jul 22 08:05:49 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Work around build problems related to gcc-objc dependency for
+  gdb:testsuite on 16.1 and SLFO.
+
+-------------------------------------------------------------------
+Tue Jul 21 14:12:35 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Work around error reporting SUSE-Public-Domain as
+  invalid license.
+
+-------------------------------------------------------------------
+Tue Jul 21 10:10:01 UTC 2026 - Tom de Vries <tdevries@suse.com>
+
+- Maintenance script qa-local.sh:
+  * handle 16.1.
+
+-------------------------------------------------------------------
+Fri Jun 19 20:16:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Modernize use of Python macros, use %{modern_python} and
+  %{primary_python}, respectively.
+
+-------------------------------------------------------------------
 Tue Apr 21 08:49:04 UTC 2026 - Tom de Vries <tdevries@suse.com>
 
 - Reduce scope of debuginfo query workaround.  No longer require

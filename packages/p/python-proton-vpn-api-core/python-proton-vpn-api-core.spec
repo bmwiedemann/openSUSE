@@ -35,7 +35,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 # sentry-sdk is not mandatory and only available in TW
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 BuildRequires:  %{python_module sentry-sdk}
 %endif
 BuildRequires:  %{python_module wheel}
@@ -52,7 +52,7 @@ Requires:       python-gobject
 Requires:       python-pycairo
 Requires:       python-proton-vpn-local-agent
 # sentry-sdk is not mandatory and only available in TW
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 Requires:       python-sentry-sdk
 %endif
 Conflicts:      proton-vpn < 4.8.2

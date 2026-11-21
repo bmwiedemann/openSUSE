@@ -2824,4 +2824,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1387241</requestid>
   </revision>
+  <revision rev="281" vrev="4">
+    <srcmd5>e6e48681fc68c3deafaa4d30948d29ef</srcmd5>
+    <version>3.11.7</version>
+    <time>1793899156</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394788</requestid>
+  </revision>
 </revisionlist>

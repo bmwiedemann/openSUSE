@@ -427,4 +427,15 @@
   * Updated translations</comment>
     <requestid>1348571</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>efcbffed386c03980718a7317a191d41</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182293</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Replaced deprecated layershell codes.
+  * CMake maintenance.
+  * Used literal operators for Qt string types.</comment>
+    <requestid>1398753</requestid>
+  </revision>
 </revisionlist>

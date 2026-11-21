@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:44:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.290.0 (0.29)
+   see /usr/share/doc/packages/perl-B-Utils/Changes
+
+  0.29      2026-11-10 22:02:10Z
+     - adjust tests to handle a change in perl 5.45.5 (see perl issue
+       #24827) (PR #3, Richard Leach)
+
+-------------------------------------------------------------------
+Thu Nov  5 15:12:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.280.0 (0.28)
+   see /usr/share/doc/packages/perl-B-Utils/Changes
+
+  0.28  2026-10-19
+     - update ppport.h to the latest version, and keep it updated
+     - adjust tests to handle a change in perl 5.45.4 (see perl issue
+       #24845) (PR #2, Richard Leach)
+
+-------------------------------------------------------------------
 Wed Jun 11 18:57:33 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 11 17:42:21 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hledger-interest to version 2.0.0.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Thu Apr  9 08:20:07 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hledger-interest to version 1.6.7 revision 5.

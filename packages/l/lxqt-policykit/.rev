@@ -322,4 +322,14 @@
   * Updated translations and bumped the version</comment>
     <requestid>1348574</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>47a9154cb603c1587335f04749f31432</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182302</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Prevented duplicate failure popups and made the info handling smarter.
+  * Also did some CMake maintenance.</comment>
+    <requestid>1398756</requestid>
+  </revision>
 </revisionlist>

@@ -118,7 +118,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.12.15
+Version:        3.12.16
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -217,6 +217,8 @@ Patch73:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch80:        bsc1263083-http-cookies-atob-utf8.patch
+# PATCH-FIX-OPENSUSE: Accept socket resets in the TLS 1.3 client-cert test
+Patch81:        test_ssl_tls13_connection_reset.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -436,39 +438,41 @@ other applications.
 %prep
 %autosetup -p1 -n %{tarname}
 
-# Fix devhelp doc build gh#python/cpython#120150
-echo "master_doc = 'contents'" >> Doc/conf.py
+if test -z "$QUILT_COMMAND" ; then
+    # Fix devhelp doc build gh#python/cpython#120150
+    echo "master_doc = 'contents'" >> Doc/conf.py
 
-# drop Autoconf version requirement
-sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
+    # drop Autoconf version requirement
+    sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
 
-%if %{primary_interpreter}
-# fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
-for dir in Lib Tools; do
+    %if %{primary_interpreter}
+    # fix shebangs - convert /usr/local/bin/python and /usr/bin/env/python to /usr/bin/python3
+    for dir in Lib Tools; do
     # find *.py, filter to files that contain bad shebangs
     # break up "/""usr" like this to prevent replacing with %%{_prefix}
     find $dir -name '*.py' -type f -print0 \
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
         | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
-done
-%else
-# For non-primary Python, just don't bother (bsc#1193179) and remove all
-# those shebangs
-for dir in Lib Tools; do
+    done
+    %else
+    # For non-primary Python, just don't bother (bsc#1193179) and remove all
+    # those shebangs
+    for dir in Lib Tools; do
     find $dir -name '*.py' -type f -exec sed -i '1{/^#!.*python/ d}' '{}' \;
-done
-# We shortened the file Lib/pdb.py so we have to move the test breakpoint location
-sed -i -e '/Breakpoint 3 at ...pdb.py:97/s/97/96/' Lib/test/test_pdb.py
-%endif
+    done
+    # We shortened the file Lib/pdb.py so we have to move the test breakpoint location
+    sed -i -e '/Breakpoint 3 at ...pdb.py:97/s/97/96/' Lib/test/test_pdb.py
+    %endif
 
-# Cannot remove it because of gh#python/cpython#92875
-# rm -r Modules/expat
+    # Cannot remove it because of gh#python/cpython#92875
+    # rm -r Modules/expat
 
-# drop duplicate README from site-packages
-rm Lib/site-packages/README.txt
+    # drop duplicate README from site-packages
+    rm Lib/site-packages/README.txt
 
-# Add vendored bluez-devel files
-tar xvf %{SOURCE21}
+    # Add vendored bluez-devel files
+    tar xvf %{SOURCE21}
+fi
 
 %build
 %if %{with doc}

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  3 08:27:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.190.0 (0.19)
+   see /usr/share/doc/packages/perl-ExtUtils-XSpp/Changes
+
+  0.19  Thu Jul  2 21:47:07 CEST 2026
+          - Tentative fix for ExtUtils::ParseXS in blead.
+
+-------------------------------------------------------------------
 Sun Jun  8 11:09:26 UTC 2014 - coolo@suse.com
 
 - updated to 0.18

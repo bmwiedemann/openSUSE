@@ -5,9 +5,14 @@
       <param name="url">https://github.com/martinrotter/rssguard.git</param>
       <param name="scm">git</param>
       <param name="exclude">.git</param>
+      <!-- Two NSIS files carry trailing bytes past their format extent, so
+        they cannot be declared other-platform (see spec): strip them, the
+        Linux build never uses them. -->
+      <param name="exclude">resources/scripts/nsis/Bin/zlib1.dll</param>
+      <param name="exclude">resources/scripts/nsis/NSIS.exe</param>
       <param name="versionformat">@PARENT_TAG@</param>
       <param name="versionrewrite-pattern">v(.*)</param>
-      <param name="revision">5.2.5</param>
+      <param name="revision">5.3.0</param>
       <param name="changesgenerate">enable</param>
    </service>
 

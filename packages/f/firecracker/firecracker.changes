@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 12 05:33:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.0:
+  * Added
+    - #6393: Added support for Nitro Sandboxes. Firecracker can now
+      launch and manage isolated VMs that the Nitro Hypervisor
+      carves out of the parent EC2 instance, as an alternative to
+      KVM. Firecracker drives the Nitro Enclaves driver
+      (/dev/nitro_enclaves) instead of /dev/kvm, and keeps its
+      existing API, jailer and virtio device model. A sandbox is
+      configured with the new PUT /enclave API, in confidential or
+      direct mode. See the Nitro Sandboxes documentation.
+      https://github.com/firecracker-microvm/firecracker/blob/firecracker-v1.18/docs/nitro-sandboxes/README.md
+
+-------------------------------------------------------------------
 Sun Sep 20 07:46:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.17.0:

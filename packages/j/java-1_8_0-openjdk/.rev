@@ -946,4 +946,20 @@
     <comment>bsc#1280690 and bsc#1241704</comment>
     <requestid>1378781</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>45778e6481c44f5cd90257e85e206470</srcmd5>
+    <version>1.8.0.512</version>
+    <time>1794324590</time>
+    <user>anag_factory</user>
+    <comment>Octobre 2026 CPU fixes</comment>
+    <requestid>1396506</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>bff2b66af45af069ea6820dd5e67a532</srcmd5>
+    <version>1.8.0.514</version>
+    <time>1795023129</time>
+    <user>anag_factory</user>
+    <comment>November 2026 CSPU fixes</comment>
+    <requestid>1398394</requestid>
+  </revision>
 </revisionlist>

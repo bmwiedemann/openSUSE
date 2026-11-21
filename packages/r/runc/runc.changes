@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 15 19:13:28 UTC 2026 - Ricardo Branco <rbranco@suse.com>
+
+- Update to 1.5.3 Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.5.3>.
+
+-------------------------------------------------------------------
 Sun Sep 13 14:50:24 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - Require libpathrs >= 0.2.6 to resolve panic errors in the failure path of

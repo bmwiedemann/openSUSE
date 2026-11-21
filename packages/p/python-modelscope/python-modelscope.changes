@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:13:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.40.3:
+  * Require python-modelscope-hub >= 0.7.0
+  * New modelscope.utils.file_utils.get_hub_cache_root();
+    modelscope.hub.cache_manager re-exports get_cache_root and
+    resolve_cached_snapshot
+  * Offline model_file_download with local_files_only no longer
+    resolves the default revision over the network
+  * ms clear-cache lists targets before deleting and uses the
+    hub's scoped cache APIs with validated removal
+  * modelscope.hub.snapshot_download exports InvalidParameter
+    again
+
+-------------------------------------------------------------------
 Fri Oct  9 13:23:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.40.2:

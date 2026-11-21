@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:27:34 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-Statistics-CaseResampling/Changes
+
+  0.18  Sun Oct 11 10:00:00 2026
+    - Fix wild stack pointer deallocation (SIGABRT free() invalid pointer)
+      when passing empty arrays to resampling/statistical functions (SCR-01).
+    - Prevent use-after-free and double-free under ithreads by adding CLONE
+      and CLONE_SKIP handlers for the PRNG state (SCR-02).
+    - Fix out-of-bounds indexing in first_quartile and third_quartile for
+      small samples (SCR-03).
+    - Clamp confidence limit indices to valid sample bounds on extreme
+      confidence levels (SCR-04).
+    - Validate resample run counts (runs >= 1 && runs <= 100000000) (SCR-05).
+    - Fix memory leak on invalid kth selection in select_kth (SCR-06).
+    - Guard sample and population standard deviation calculations against
+      division by zero on small sample sizes (SCR-07).
+    - Use Perl memory allocator (Newx/Safefree) consistently in
+      median_absolute_deviation (SCR-08).
+    - Harden U32ArrayPtr buffer allocation and size validation (SCR-09).
+    - Add comprehensive regression test suite in t/03_security.t.
+    - Update author contact details to cpan@steffen-mueller.net.
+
+-------------------------------------------------------------------
 Wed Oct  8 14:37:35 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.170.0 (0.17)

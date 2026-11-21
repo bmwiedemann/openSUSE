@@ -20,7 +20,7 @@
 %define qt6_version 6.5.0
 
 Name:           tellico
-Version:        4.3
+Version:        4.3.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
@@ -89,6 +89,11 @@ sed -i 's#env perl$#perl#' src/config/*-update.pl
 sed -i 's#env python$#python3#' src/fetch/scripts/*.py
 
 %build
+# Breaks on Leap 16.0 with kf6-kdoctools 6.16 and succeeds on 16.1 with 6.25
+%if %{pkg_vcmp kf6-kdoctools < 6.25}
+rm -r po/ar/docs
+%endif
+
 %cmake_kf6 -DENABLE_WEBCAM:BOOL=TRUE
 
 %kf6_build

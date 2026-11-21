@@ -1,7 +1,7 @@
 #
 # spec file for package inih
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Matthias Bach <marix@marix.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           inih
-Version:        62
+Version:        63
 Release:        0
 Summary:        Simple .INI file parser in C, good for embedded systems
 License:        BSD-3-Clause

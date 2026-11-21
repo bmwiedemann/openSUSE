@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 12 19:37:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.0:
+  * New Sandbox.fork(): derive count server-side copies in one
+    call, each succeeding or failing independently (server
+    snapshot)
+  * New Sandbox.is_running() matching E2B API, and
+    get_exposed_port_endpoint() for template-declared exposed ports
+  * files.read() gains format text/bytes/stream for binary-safe
+    reads
+  * create_snapshot() gains fs-only mode; delete_snapshot()
+    accepts a name and reports whether anything was deleted
+  * list_v2() follows v2 pagination; Template.build() gains
+    backend and user; new Volume.create_with_private_data()
+  * Per-call request timeouts with long-route budgets
+    (pause/resume, snapshot, fork); SnapshotInfo.mode;
+    pausing/unknown sandbox states
+- No new runtime dependencies; requires-python stays >= 3.9
+
+-------------------------------------------------------------------
 Thu Oct 15 04:48:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7.3:

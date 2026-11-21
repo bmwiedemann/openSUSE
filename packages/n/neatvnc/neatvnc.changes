@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:45:06 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.4:
+  * enc: h264: ffmpeg: Import buffers via single object
+  * pixels: Allow all modifiers on AMD
+  * enc: h264: v4l2m2m: Use poll() instead of map to wait
+  * stream: ws: http: Add bounds checks for fields
+  * server: Validate client requested bpp
+  * enc: h264: ffmpeg: Release queued frames on destroy
+  * enc: h264: ffmpeg: Pass on empty packets
+  * enc: h264: Handle encoder creation failure
+  * enc: tight: Fail on JPEG too big for tile buffer
+  * enc: tight: Fall back to basic if JPEG fails
+
+-------------------------------------------------------------------
 Thu Oct  8 12:25:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 5b190f0.patch: backport from master: Use nettle & hogweed version 4;

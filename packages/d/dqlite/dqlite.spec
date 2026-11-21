@@ -19,7 +19,7 @@
 
 %define lname libdqlite0
 Name:           dqlite
-Version:        1.18.6
+Version:        1.18.7
 Release:        0
 Summary:        Distributed SQLite
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
@@ -48,7 +48,7 @@ SQL database engine with high-availability and automatic failover.
 
 dqlite extends SQLite with a network protocol that can connect
 together various instances of an application and have them act as a
-highly-availablity cluster.
+high-availablity cluster.
 
 %package devel
 Summary:        Development files for the distributed SQLite

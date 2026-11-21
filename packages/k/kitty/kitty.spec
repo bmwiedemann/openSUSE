@@ -19,7 +19,7 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.49.2
+Version:        0.51.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-or-later
@@ -181,7 +181,7 @@ setup.py \
 
 %files
 %license LICENSE
-%doc CHANGELOG.rst README.asciidoc
+%doc README.asciidoc
 %{_bindir}/%{name}
 %{_bindir}/kitten
 %{_libdir}/%{name}
@@ -196,12 +196,12 @@ setup.py \
 
 %files terminfo
 %license LICENSE
-%doc CHANGELOG.rst README.asciidoc
+%doc README.asciidoc
 %{_datadir}/terminfo/x/xterm-%{name}
 
 %files shell-integration
 %license LICENSE
-%doc CHANGELOG.rst README.asciidoc
+%doc README.asciidoc
 %{_libdir}/%{name}/shell-integration
 
 %changelog

@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Nov 12 23:25:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.2.0:
+  * Add a OneLogin OpenID Connect backend with S256 PKCE enabled by default.
+  * Pass changed user field names from the default details pipeline to a
+    storage hook.
+  * Preserve native framework response types across strategies, backends,
+    authentication actions, and decorated partial pipeline steps.
+  * Route reused Discourse callbacks and missing nonces through configured
+    authentication error handling instead of raising unhandled errors.
+  * Expand type annotations across strategy, backend, and session helpers.
+  * Bind SAML responses to the initiating browser session and ignore legacy
+    RelayState session IDs to prevent login CSRF. (CVE-2026-126775,
+    bsc#1290115)
+  * Add Casdoor OpenID Connect backend with PKCE enabled by default.
+  * Keep authentication backends immutably bound to the strategy instance
+    they were created with.
+  * Fix strategy response typing for partial pipeline steps.
+  * Treat rejected Bitbucket refresh tokens as dead grants.
+  * Drop support for Python 3.9 and add support for Python 3.14.
+  * Add Weblate OpenID Connect backend with Hosted Weblate defaults,
+    configurable issuer, and PKCE support.
+  * Add a strategy-aware backend get_title() method for sign-in labels.
+  * Add backends for the WLCG IAM testing site, Ping Identity OIDC, uffd
+    OAuth2, Clever, Twitter OAuth2, and e-infra.cz.
+  * Replace python-jose with PyJWT.
+  * Bind OpenID Connect nonces to the initiating browser session and OAuth2
+    state to reject foreign auth codes. (CVE-2026-115910, bsc#1288018)
+  * Require session-bound signed transaction values on OpenID callbacks and
+    reject unsolicited assertions.
+  * Reject EVE Online sign-ins when a character's owner hash changes to
+    prevent transferred characters from reusing local accounts.
+  * Enforce SOCIAL_AUTH_SLACK_TEAM against the workspace ID returned by
+    Slack before login.
+  * Scope Mailchimp sign-in identities to both the account and authorizing
+    login, requiring mailchimp_identity as ID_KEY.
+  * Require a configured client ID (SOCIAL_AUTH_GOOGLE_ONETAP_KEY) before
+    validating Google One Tap ID tokens.
+  * Reject Telegram callback fields containing a line feed before checking
+    their signature, preventing UID spoofing.
+  * Require the initiating session on Discourse callbacks to prevent login
+    CSRF and unauthorized account linking.
+  * Use single-use, session-bound, expiring OAuth2 states with per-request
+    PKCE verifiers.
+  * Reject missing provider user identifiers before string conversion so
+    they are not matched as the shared UID "None".
+  * Use documented stable user identifiers for HubSpot, Monzo, WLCG, Asana,
+    and Dropbox.
+  * Fail closed in MineID and the legacy Upwork OAuth1 backend when profile
+    responses do not expose an immutable account identifier.
+  * Add configurable external group extraction, login allow lists, and
+    optional local group sync for major OIDC, OAuth2, and SAML backends.
+  * Add human-readable title and optional icon metadata for authentication
+    backends.
+  * Add VK ID OAuth2 backend (vk-id) with mandatory S256 PKCE and
+    device-bound refresh tokens.
+  * Support an explicit AUTHORITY_URL and opt-in PKCE through USE_PKCE in
+    Azure AD backends, and expose a logout_url() helper in Azure AD B2C.
+  * Add reusable BaseAuth.ASSOCIATION_ONLY capability for user-bound
+    connections, shared by Drip, Last.fm, Mixcloud, and Twilio Connect.
+  * Scope pipeline request parameters.
+  * Update the Coinbase backend to use current OAuth endpoints, scopes, API
+    versioning, and token revocation parameters.
+  * Raise AuthForbidden on provider HTTP 403 responses and wrap JWT
+    verification failures in authentication exceptions.
+  * Remove retired backends: Docker Hub, Microsoft Live Connect, Evernote
+    Sandbox, PixelPin, Behance, and NGP VAN ActionID OpenID.
+  * Expire OpenID Connect nonces after 30 minutes by default and stop
+    storing unused nonces in LinkedIn OpenID Connect.
+  * Use constant-time comparisons for backend signatures, hashes, and CSRF
+    tokens, and raise authentication errors on malformed signatures.
+  * Reuse Facebook Limited Login validated claims only during a saved
+    partial pipeline resume.
+  * Reject Google OAuth2, Google OpenID Connect, and Google One Tap
+    responses that do not explicitly confirm email verification.
+  * Expire email validation codes after seven days by default, configurable
+    via SOCIAL_AUTH_EMAIL_VALIDATION_EXPIRED_THRESHOLD.
+  * Bind accounts to stable provider identifiers across affected backends
+    and migrate historical identifiers via indexed (provider, id_key, uid).
+  * Correlate SAML responses with AuthnRequest using the signed
+    SubjectConfirmationData InResponseTo attribute when needed.
+  * Bind partial pipelines to authentication or disconnect and preserve
+    validated ID token claims across OpenID Connect partial pipelines.
+  * Run name normalization in the shared authentication pipeline via
+    social_core.pipeline.social_auth.social_names.
+  * Add structured metadata to authentication exceptions and stop inferring
+    cancellation from HTTP 400 or token expiry from HTTP 401.
+
+-------------------------------------------------------------------
 Mon Oct 19 12:12:08 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 5.2.0:

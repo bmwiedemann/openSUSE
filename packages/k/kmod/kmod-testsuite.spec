@@ -1,7 +1,7 @@
 #
 # spec file for package kmod-testsuite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@
 
 Name:           kmod-testsuite
 %define lname	libkmod2
-Version:        34.2
+Version:        34.3
 Release:        0
 Summary:        Testsuite of the kmod package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
-
 #Git-Web:	http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 #Git-Clone:	git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod
 Source:         https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.xz
@@ -42,12 +41,10 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         Revert-build-check-for-__xstat-declarations.patch
 Patch8:         riscv-hwprobe.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kernel-default-devel
 BuildRequires:  libopenssl-devel >= 1.1.0
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  scdoc
 BuildRequires:  xz
@@ -69,38 +66,29 @@ runs its testsuite. It has been split off the kmod package to avoid a
 buildloop with the kernel.
 
 %prep
-%setup -q -n kmod-%version
-%autopatch -p1
+%autosetup -p1 -n kmod-%version
 
 %build
 rm -f m4/gtk-doc.m4 libkmod/docs/gtk-doc.make # dangling symlinks
 touch m4/gtk-doc.m4 libkmod/docs/gtk-doc.make
-GTKDOCIZE=/bin/true autoreconf -fi
-export LDFLAGS="-Wl,-z,relro,-z,now"
-# The extra --includedir gives us the possibility to detect dependent
-# packages which fail to properly use pkgconfig.
-%configure \
-	--with-xz \
-	--with-zlib \
-	--with-openssl \
-%if 0%{?use_zstd}
-	--with-zstd \
+%set_build_flags
+export LDFLAGS="$LDFLAGS -Wl,-z,relro,-z,now"
+%meson \
+%if !0%{?use_zstd}
+	-Dzstd=disabled \
 %endif
-	--includedir="%_includedir/kmod" \
-	--with-rootlibdir="%_libdir" \
-%if 0%{?suse_version} > 1500
-	--with-module-directory="%_prefix/lib/modules" \
-%endif
-	--bindir="%_bindir"
-%make_build KDIR="%kdir"
+	-Dmoduledir="%_prefix/lib/modules" -Dbuild-tests=true
+
+export KDIR="%kdir"
+%meson_build
 
 %install
-# empty
 
 %check
 result=0
-make check V=1 KDIR="%kdir" || result=$?
-find . -name test-suite.log | xargs cat
+export KDIR="%kdir"
+%meson_test || result=$?
+find . -name test-suite.log -exec cat "{}" "+"
 exit $result
 
 %changelog

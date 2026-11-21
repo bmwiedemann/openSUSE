@@ -116,4 +116,16 @@
 - Version 0.8.6</comment>
     <requestid>1387196</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>afd92dacb483e8b7a3523ad9dc581ee1</srcmd5>
+    <version>0.8.11</version>
+    <time>1794236902</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.11:
+  * Add haptic support for Motorola Edge 30 (motorola,dubai)
+  * Manpage improvements
+
+  + Create users via systemd-sysusers</comment>
+    <requestid>1396333</requestid>
+  </revision>
 </revisionlist>

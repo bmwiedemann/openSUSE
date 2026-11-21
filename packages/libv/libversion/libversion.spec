@@ -1,7 +1,7 @@
 #
 # spec file for package libversion
 #
-# Copyright (c) Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sover 1
 Name:           libversion
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Version string comparison library
 License:        MIT
 URL:            https://github.com/repology/libversion
 Source:         https://github.com/repology/libversion/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.12
+BuildRequires:  cmake >= 3.28.3
 BuildRequires:  pkgconfig
 
 %description
@@ -75,8 +75,7 @@ find %{buildroot} -type f -name "*.a" -print -delete
 
 %files -n %{name}%{sover}
 %license COPYING
-%{_libdir}/libversion.so.%{sover}
-%{_libdir}/libversion.so.%{sover}.*
+%{_libdir}/libversion.so.%{sover}{,.*}
 
 %files devel
 %license COPYING

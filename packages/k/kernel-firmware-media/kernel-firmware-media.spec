@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 9b858e5bb58d7bf1fc4d8818cb9100aed6d46f6a
+%define git_version bda6eccc3a8f52e00696cf733b6e4f042d56655c
 
 Name:           kernel-firmware-media
-Version:        20260926
+Version:        20261031
 Release:        0
 Summary:        Kernel firmware files for various Video4Linux drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261019.tar.gz#/kernel-firmware-tools-20261019.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases

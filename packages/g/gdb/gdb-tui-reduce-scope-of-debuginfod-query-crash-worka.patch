@@ -1,8 +1,7 @@
-From 56eebf7c018ddbb104cb59c53f1fa0aa34861981 Mon Sep 17 00:00:00 2001
+From d527b48005204f94c024eab468e200372a92a5cd Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Wed, 1 Apr 2026 15:48:48 +0200
-Subject: [PATCH 2/2] [gdb/tui] Reduce scope of debuginfod query crash
- workaround
+Date: Sat, 24 Oct 2026 01:06:44 +0200
+Subject: [PATCH] [gdb/tui] Reduce scope of debuginfod query crash workaround
 
 ---
  gdb/testsuite/gdb.tui/query.exp | 12 +++++++++---
@@ -37,11 +36,11 @@ index bc1a55a1b96..eb0bee49aec 100644
      # Check that prompt is responsive.
      gdb_assert { [Term::command "print 1"] } "responsive prompt"
 diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
-index 5dabb9967ae..ff1610225ec 100644
+index 3e3a657a670..16fde04022c 100644
 --- a/gdb/tui/tui.c
 +++ b/gdb/tui/tui.c
-@@ -128,7 +128,7 @@ tui_rl_switch_mode (int notused1, int notused2)
- 	{
+@@ -141,7 +141,7 @@ tui_rl_switch_mode (int notused1, int notused2)
+ 
  	  /* If tui_enable throws, we'll re-prep below.  */
  	  rl_deprep_terminal ();
 -	  tui_enable ();
@@ -49,7 +48,7 @@ index 5dabb9967ae..ff1610225ec 100644
  	}
      }
    catch (const gdb_exception_forced_quit &ex)
-@@ -386,14 +386,15 @@ gdb_getenv_term (void)
+@@ -399,7 +399,7 @@ gdb_getenv_term (void)
     the gdb output, configures the readline to work in tui mode.
     When in curses mode, it does nothing.  */
  void
@@ -58,8 +57,9 @@ index 5dabb9967ae..ff1610225ec 100644
  {
    TUI_SCOPED_DEBUG_ENTER_EXIT;
  
-   if (tui_active)
-     return;
+@@ -408,7 +408,8 @@ tui_enable (void)
+ 
+   tui_batch_rendering defer;
  
 -  if (debuginfod_enabled_ask_p ()
 +  if (!queries_allowed
@@ -68,7 +68,7 @@ index 5dabb9967ae..ff1610225ec 100644
      error (_("Please set debuginfod enabled to on or off before enabling TUI"));
  
 diff --git a/gdb/tui/tui.h b/gdb/tui/tui.h
-index 319bd2e5b4d..a6f8b0ae2aa 100644
+index 3a9d955c457..ec94a2e3889 100644
 --- a/gdb/tui/tui.h
 +++ b/gdb/tui/tui.h
 @@ -70,7 +70,7 @@ extern bool tui_get_command_dimension (unsigned int *width,
@@ -80,6 +80,8 @@ index 319bd2e5b4d..a6f8b0ae2aa 100644
  
  /* Leave the tui mode.  */
  extern void tui_disable (void);
+
+base-commit: cf48d0a8cde57042d4529abd6cebaaef09bdacae
 -- 
 2.51.0
 

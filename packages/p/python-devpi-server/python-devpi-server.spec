@@ -26,7 +26,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-devpi-server
-Version:        6.20.3
+Version:        6.21.0
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT

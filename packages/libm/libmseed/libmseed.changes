@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:11:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.6.0:
+  * Add msr3_parse_next() to step through records in a buffer
+  * Skip non-miniSEED data in mstl3_readbuffer() when
+    MSF_SKIPNOTDATA is set
+
+-------------------------------------------------------------------
 Thu Aug  6 21:51:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.5.4:

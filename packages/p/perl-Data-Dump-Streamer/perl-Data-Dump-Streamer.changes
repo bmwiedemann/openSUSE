@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:47:27 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.2.0 (3.002)
+   see /usr/share/doc/packages/perl-Data-Dump-Streamer/Changes
+
+  3.002 - 2026-11-11
+
+  Fix compilation on Cygwin by declaring private XSUBs with XS_INTERNAL.
+  Remove compiler warnings in the XS helpers and add Cygwin CI coverage.
+  Support Perl 5.12 and newer, with CI coverage for 5.12, 5.14 and 5.16.
+
+-------------------------------------------------------------------
+Wed Nov 11 12:44:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.1.0 (3.001)
+   see /usr/share/doc/packages/perl-Data-Dump-Streamer/Changes
+
+  3.001 - 2026-11-10
+
+  Perltidy source to my preferred format. Fixed issues serializing
+  the global stash. Added test to detect if serializing the global
+  stash breaks anything.
+  Fix version assignments so PAUSE can index the distribution.
+
+  3.00 - 2026-11-10
+
+  Rewrite the dumping engine in C/XS, with AI assistance, for improved speed,
+  correctness and compatibility with Perl's refcounted stack. Improve Unicode
+  and regexp handling, and add experimental support for XPerl class objects.
+  CVE-2026-126673 bsc#1290113
+
+  Require Perl 5.18 or newer and a C compiler. Replace Module::Build with
+  ExtUtils::MakeMaker.
+
+  There is no pure-Perl version. Please don't upgrade if you need pure-Perl
+  support.
+
+-------------------------------------------------------------------
 Mon Jun 23 20:47:16 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

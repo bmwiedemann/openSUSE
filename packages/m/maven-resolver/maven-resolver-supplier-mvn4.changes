@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Nov  9 04:40:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.25
+  * New features and improvements
+    + Implement retries in the Jetty transporter
+    + Add CycleAwareDependencyGraphDumper to visualize cycles
+    + Make jcl-over-slf4j an optional dependency of transport-apache
+    + Log retries in ApacheTransporter
+    + Introduce transporter agnostic redirect handling
+    + Support String properties being converted to Enums in a case
+      insensitive
+    + Fix #1269: Report a clear message when resolving an artifact
+      with no version
+    + feat: use hard links for artifact installation by default
+    + GH-2196: Avoid warning for same-session repository
+      fall-through
+    + Fix prefix filter verification for denied artifact paths
+    + MRESOLVER-1736: Re-enable expect-continue on JDK 17.0.17+
+    + GH-1857: Include all repository failures in artifact messages
+    + Allow symlinked local path prefix directories
+    + GH-13383: Match implicit ports in Apache auth cache
+  * Bug Fixes
+    + respect updatePolicy=never on composite metadata checks
+    + fix: SmartExecutor may miss to finish the jobs
+    + Fix Windows path with drive letter lost in
+      RepositoryUriUtils.basedir()
+    + Fix several origin tracking bugs in enhanced LRM
+    + Fix testPut_StartCancelled regression introduced by #2206
+    + prefix files parsing bug
+    + Fix BF skipper handling of version-range candidates
+    + catch only expected IO failures
+    + Fix #2204: Windows AccessDeniedException on install when IDE
+      holds jar open
+    + GH-2156: Skip filters for disabled repository policies
+    + PathConflictResolver uses BFS to guarantee correct depth
+      ordering for shared DependencyNode instances
+  * Documentation updates
+    + Move the common misconceptions page to maven.apache.org
+    + Document the missing support of configurable retries in URL
+      and Jetty
+    + Render "@see" tags for configuration elements
+    + Fix javadoc warnings in maven-resolver-api
+    + Fix #2173: Remove false deprecation from Path constructor
+    + Fix minor documentation issues in release-highlights page
+    + Add page that summarize 2.0.x features
+  * Maintenance
+    + Synchronize ATR configuration
+    + Fix #2257: declare commons-logging directly in
+      maven-resolver-tools
+    + Assert existsButNotADirectory actually throws
+    + Clean up declared dependencies
+    + Remove compiler properties the parent chain already sets
+    + Declare the Maven artifacts the code uses
+    + Point ciManagement at GitHub Actions
+    + Fix flaky JettyTransporterTest progress events on macOS
+    + Use push for PR Automation and add PR Check
+  * Dependency updates
+    + deps: just drop extra management, Redisson is Java 11+
+    + bump ch.qos.logback:logback-classic from 1.5.32 to 1.6.6
+    + bump com.fasterxml.jackson:jackson-bom from 2.21.7 to 2.22.4
+    + bump com.redis:testcontainers-redis from 3.0.0 to 3.0.1
+    + Upgrade Netty and Jackson to fix security advisories
+    + bump dev.sigstore:sigstore-java from 2.3.0 to 2.4.0
+    + Upgrade brotli4j to 1.24.0
+    + bump com.google.code.gson:gson from 2.14.0 to 2.15.0
+    + bump com.squareup.okhttp3:okhttp-bom from 5.5.0 to 5.5.1
+    + bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.26.2 to 0.26.5
+    + bump com.redis:testcontainers-redis from 2.2.4 to 3.0.0
+    + bump commons-codec:commons-codec from 1.22.1 to 1.23.0
+    + bump org.eclipse.jetty:jetty-bom from 12.1.13 to 12.1.14
+    + bump com.google.guava:guava from 33.7.1-jre to 33.7.2-jre
+    + bump maven3Version from 3.9.16 to 3.10.0
+    + bump org.apache.commons:commons-lang3 from 3.20.0 to 3.21.0
+    + bump version.slf4j from 2.0.19 to 2.0.20
+    + bump org.mockito:mockito-core from 5.23.0 to 5.24.0
+
+-------------------------------------------------------------------
 Thu Oct  1 11:04:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0.24
@@ -6,7 +84,7 @@ Thu Oct  1 11:04:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + Fix PathConflictResolver OOM on dense dependency graphs
   * Bug Fixes
     + Fix flaky IpcClientForkedTest on Windows
-    + fix: synchronize IPC stream access
+    + synchronize IPC stream access
     + fix: propagate fatal errors from Jetty request content
     + Use structured logging in the IPC server
     + MRESOLVER-2142: Increase HTTP3 port allocation retries

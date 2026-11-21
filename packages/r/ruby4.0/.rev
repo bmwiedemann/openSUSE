@@ -357,4 +357,12 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
   their symlinks dangled.</comment>
     <requestid>1393474</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3b5586ebe4b3fd2b00b047068e9d951e</srcmd5>
+    <version>4.0.10</version>
+    <time>1795112176</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.10</comment>
+    <requestid>1398530</requestid>
+  </revision>
 </revisionlist>

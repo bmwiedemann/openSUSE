@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Nov 14 14:59:18 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.5.2
+
+- Update to 1.5.2
+  * Fixed vulnerabilities:
+    - Fixed a crash parsing invalid RSA private keys and reduced
+      maximum allowed modulus size
+- Changes from 1.5.1
+  * New features:
+    - Added channel_flags allowing to request hgue channel windows
+      even in case of multiplexed transports
+  * Bugfixes and minor changes:
+    - Improved state tracking in the the socket interface representing
+      opened channels
+- Changes from 1.5.0
+  * New features:
+    - Added support for pin@openssh.com extension
+    - Added sftp_client::initial_rtt() as estimate of initial channel
+      rtt
+  * Bugfixes and minor changes:
+    - Improved logging when processing File Attributes with malformed
+      extended attributes
+
+-------------------------------------------------------------------
 Fri Aug 21 08:37:39 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.4.0
 
 - Update to 1.4.0

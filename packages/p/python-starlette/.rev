@@ -563,4 +563,12 @@ https://build.opensuse.org/request/show/1126958
   * Handle standalone If-None-Match: * in StaticFiles</comment>
     <requestid>1383628</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b26ba2fd466426da6e8c17ce8000f067</srcmd5>
+    <version>1.10.0</version>
+    <time>1793724725</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394385</requestid>
+  </revision>
 </revisionlist>

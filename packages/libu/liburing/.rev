@@ -325,4 +325,17 @@
 - keyring updated</comment>
     <requestid>1372682</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>f7013d59efe0c18c2cf06e9565ea0dcf</srcmd5>
+    <version>2.15</version>
+    <time>1793990038</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch
+  to fix tests for kernel 7.4
+
+- add to excludes
+  * connect.t: flaky on 16.1 + 7.3
+  * sqpoll-exec.t, thread-exit.t: flaky on 7.3</comment>
+    <requestid>1395083</requestid>
+  </revision>
 </revisionlist>

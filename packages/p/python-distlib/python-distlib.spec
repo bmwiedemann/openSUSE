@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-distlib
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Distribution utilities
 License:        Python-2.0

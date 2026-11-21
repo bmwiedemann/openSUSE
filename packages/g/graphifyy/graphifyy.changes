@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Mon Nov 16 20:33:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.111:
+  * 0.9.108: C#, Java and SQL extractor fixes; path prefers
+    real files over import hubs; serve reload no longer blocks
+    requests; AST schema 45
+  * 0.9.109: C# encoding and interface fixes; case/underscore
+    twins get distinct ids in Kotlin, Swift, Dart and C++;
+    LLM cancel and fragment retry; AST schema 46
+  * 0.9.110: Python aliased imports, Go _test.go fold, JS closure
+    fix; Oracle PACKAGE and T-SQL writes recovered; nested types
+    owner-qualified; new section command; AST schema 47
+  * 0.9.111: minimum Python is now 3.11 (was 3.10); lockfile
+    moves to patched Pillow 13.0.0 in optional svg/all extras
+    only, no core behaviour change
+  * Many more fixes; see upstream release notes for full list
+
+-------------------------------------------------------------------
+Thu Nov 12 19:36:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.107:
+  * C++: anchor folded parameterless member definition_file
+    to the source root
+  * LLM: timed-out slice marked partial so it is re-queued
+    next run, sibling results kept
+  * PHP: route path scan stops at the closure argument
+  * IDs: split same-kind declarations differing only by
+    underscores or case into separate nodes
+  * JS/PHP: namespace member calls only when target is
+    callable
+  * Perf: read path skips extractor imports; worker pool
+    sized by uncached work
+  * Cloud: OSS surfaces point at free-plan signup; post-build
+    nudge TTY-only on builds 1, 5 and 20
+  * AST cache schema bumped to 44
+
+-------------------------------------------------------------------
+Wed Nov 11 12:58:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.106:
+  * Install: cap requires-python below 3.15 so fresh uv/pip
+    installs pick an interpreter with tree-sitter wheels
+  * C++: fold proven forward declarations into their definition,
+    resolve calls through scoped aliases and inherited members,
+    keep out-of-line template members with their owner
+  * Python: count a dotted subscript annotation value once so no
+    false generic_arg edge replaces the real type edge
+  * JS/TS: resolve calls through namespace imports, whole-module
+    require and import-require; fail closed on unknown modules
+  * Query: walk BFS levels in fixed order for stable output; add
+    --no-doc-demotion for docs-first corpora
+  * Manifest: keep Maven package and dependency nodes with
+    prefixed, single-quoted or spaced xmlns declarations
+  * Merge-graphs reports unified external nodes; diagnostics and
+    HTML hyperedge fixes; resolution indexing speeds up large
+    collision-heavy corpora with identical output
+  * AST cache schema bumped to 43; affected Python and C++
+    extractions re-run
+
+-------------------------------------------------------------------
+Mon Nov  9 18:12:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.105:
+  * Watch: ignored directories (node_modules, .git, build output)
+    pruned from the Linux watch tree, avoiding wasted inotify
+    watches and ENOSPC on large projects
+  * Extractors: C++ member calls routed through class fields in
+    other headers resolve; C# extension-method calls bind to
+    their declaration; destructured CommonJS barrel requires
+    resolve to the real declaration
+  * Markdown: uppercase namespace spans and Type::member() kept
+    as symbol mentions; bare free-function mentions scoped to
+    the cited file
+  * Query: schema/namespace-qualified labels match on their tail;
+    graphify path refuses unknown endpoints; affected seeds
+    nested members transitively
+  * Build/cache: hyperedges kept whole across incremental
+    updates; degraded cache entries re-dispatched instead of
+    replayed; the to_json shrink guard no longer counts
+    replaced sources as lost
+  * LLM: custom provider extra_headers forwarded (Authorization
+    dropped); truncated splittable documents bisected and
+    retried
+  * Deps: pypdf floor raised to 6.21.4 in the pdf/all extras
+    (not packaged, no spec change)
+  * AST cache schema bumped to 42
+
+-------------------------------------------------------------------
+Sun Nov  8 08:51:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.104:
+  * Security: the /graphify runbook no longer substitutes the
+    scan path into Python code; generated blocks read the scan
+    root from a trusted sidecar, so a quote or $(...) in a
+    directory name cannot run as code
+  * Solidity: receiver-typed and using-A-for-T calls resolve;
+    _/case-only name twins get separate node ids
+  * C#: constructors become own nodes with overload linking;
+    accessor and expression-body calls credited correctly
+  * Query: a lone same-label match is kept as seed; subfolder
+    graphs no longer flagged as legacy builds
+  * Watch: read-only events out of the inotify mask; missing
+    graph.json and resolution-input changes trigger rebuilds
+  * Cache: long-path spellings out of cache identity; keys stay
+    root-relative; concurrent adds no longer clobber
+  * YAML: CloudFormation intrinsic tags parse without eval
+  * Extract: ambiguous-import placeholder ids independent of
+    checkout path; provider add validates prices
+  * AST cache schema bumped to 40
+
+-------------------------------------------------------------------
+Fri Nov  6 07:50:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.103:
+  * Extractors: C# #if blanking, Solidity library-call links,
+    YAML merge precedence, Markdown namespace spans, Python
+    builtin-call scoping
+  * Resolution: top-level _main attribution without type
+    misattribution
+  * Performance: watch reconcile resolves AST ownership once
+    per file with identical output
+  * Install: Pi skill to .pi/skills with symmetric uninstall;
+    thread-safe ambient scan root
+  * AST cache schema bumped to 39
+
+-------------------------------------------------------------------
+Wed Nov  4 11:36:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.102:
+  * Go: same-file member calls via receiver type, cross-package
+    pkg.T receivers via file imports, interface dispatch to
+    implicit implementers
+  * Rust: module-qualified calls resolve cross-file; calls in
+    expression-macro arguments are linked
+  * C++: receiver typing from params/fields, split-header owner
+    binding, type-alias exact spelling
+  * Python/JS-TS/Kotlin/Solidity: singleton member calls, default
+    exports, require extends and ../ imports resolve
+  * Query: source nodes rank above tests/docs; graphify query
+    reads query_budget/query_depth from .graphifyrc, new --depth
+  * graphify update re-extracts only changed files with identical
+    output; contended incremental requests are recorded
+  * Build/cache: ghost/dedup folds no longer counted as drops;
+    case-preserving cache keys; AST cache schema bumped to 37
+  * Hooks: content-unchanged files not re-flagged stale; strict
+    orientation gate for Grep; install runbook and uninstall fixes
+  * No dependency changes (pyproject diff is the version alone),
+    so BuildRequires are untouched
+
+-------------------------------------------------------------------
+Tue Nov  3 18:30:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.101:
+  * C++: member calls bind by receiver type from parameters
+    and fields; out-of-line definitions attach to the unique
+    owner in their include set; lambdas no longer mint
+    spurious global calls
+  * Rust: module-qualified calls resolve inside the caller's
+    crate; calls inside expression-macro arguments are linked
+  * Python/Go: bare method calls no longer self-bind;
+    namespace-package imports and Go indirect calls resolve
+  * Build/cache: write guard, dedup folds, case-sensitive
+    cache keys, code-only rebuilds and slice caching fixed
+  * AST cache schema bumped to 36; warm caches re-run the
+    affected extractions
+  * No dependency changes (pyproject diff is the version
+    alone), so BuildRequires are untouched
+
+-------------------------------------------------------------------
 Sun Nov  1 14:38:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.100 (stays on the 0.9.x track):

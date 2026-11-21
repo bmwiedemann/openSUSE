@@ -429,4 +429,27 @@
   - Rebuilt all locale data with the data from CLDR 48.2.0</comment>
     <requestid>1376316</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>11e38dc8d49340fead8af65b952d2329</srcmd5>
+    <version>1.470000</version>
+    <time>1793990083</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.47
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+  1.47     2026-10-29
+  - Rebuilt all locale data with the data from CLDR 49.0.0.
+  - CLDR 49 no longer ships data for locales that are below its &quot;Basic&quot; coverage level. This removes
+    199 locale codes, including aa, ab, an, co, cu, and all of their regional variants. Some languages
+    only lost some of their locales. For example, bal and bal-Arab are gone, but bal-Latn is still
+    available. Loading any of the removed locales will now fail.
+  - Added the ady (Adyghe) and kbd (Kabardian) locales, along with their regional variants.
+  - Added a new `$locale-&gt;day_of_month_format_abbreviated` method. This returns 31 strings for ordinal
+    days of the month, like &quot;1st&quot;, &quot;2nd&quot;, and &quot;3rd&quot;. CLDR 49 added this data, along with a new `ddd`
+    pattern that uses it. This is currently only available for a small number of languages, including
+    English and French. For other locales, the days are just the numbers 1 to 31.
+  - Some locales, including en and fr, now have available formats that use the new `ddd` pattern, like
+    `yMMMMddd`. DateTime 1.67 and older don't know about `ddd` and format it as a zero-padded day,
+    like &quot;09&quot;. You need a newer DateTime to get ordinal days like &quot;9th&quot;.</comment>
+    <requestid>1395152</requestid>
+  </revision>
 </revisionlist>

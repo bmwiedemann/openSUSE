@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  9 18:12:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.9:
+  * Add Gemma 4 tool-call support with the <|"|> string delimiter
+    and re-enable the gemma_4 builtin structural tag
+  * Add opt-in JIT grammar compilation and Lark syntax in
+    structural tag grammar formats; add opt-in token_markers to
+    get_model_structural_tag
+  * Bound DeepSeek V4.1 auto tool calls to stop after the calls
+    block and accept a stop token completing the grammar
+  * Fix JSON Schema handling: keep builtin formats in valid JSON
+    strings, preserve shortest numbers, resolve refs through
+    array indices, preserve separators and avoid cache-key
+    collisions
+  * Improve bounded-string and counted-repetition token-mask
+    performance; match ECMAScript whitespace classes, keep
+    jump-forward to whole UTF-8 characters and compile large
+    regex repetitions with caching
+  * Many more fixes; see upstream's release notes for the full
+    list
+
+-------------------------------------------------------------------
 Fri Oct  2 05:45:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.8:

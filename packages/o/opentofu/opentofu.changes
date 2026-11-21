@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 06 08:06:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.9:
+  * BUG FIXES:
+    - Fix local backend state persistence bug when the first apply
+      crashes. (#4811)
+
+-------------------------------------------------------------------
+Thu Nov 05 14:14:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.8 (release .3 to .7 were not released):
+  * BUG FIXES:
+    - The -v short option now again works as an alias for the
+      version command and --version option, fixing an unintended
+      regression in v1.13.0. (#4769)
+    - Fixed panic when provided invalid state encryption
+      configuration. (#4783)
+
+-------------------------------------------------------------------
 Fri Oct 23 15:57:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.2:

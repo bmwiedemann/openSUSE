@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Moose
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Moose
 Name:           perl-Moose
-Version:        2.4000
+Version:        2.4001
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -26,6 +26,7 @@ Summary:        Postmodern object system for Perl 5
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Meta::Check) >= 0.11

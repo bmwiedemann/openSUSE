@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Oct 23 14:10:30 UTC 2026 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to released version 2.1.0
+
+  - Feature: Add UID as hoover text above the header in the detail
+    view of the document list
+  - Feature: Store document types as XML files, incl. migration
+  - Fix: Correct switch isInvoice plus other flags
+  - Show flags as checkboxes in the doc type edit dialog
+  - Feature: Add time of supply to invoices
+  - Feature: Add document state "deleted"
+  - Feature: Allow to delete non final documents
+  - Feature: Add a list of all availabe document template variables
+    to the document and to the Help menu in-app
+  - Fix: Fixed many typos
+  - Fix: More XRechnung improvements
+  - Feature: Add a list of all supported template variables in the 
+    document template
+  - Improvement: Use an Sqlite based index for the file based docs
+  - Fix: PDF overlay on all pages works again
+  - Fix: Taxmarker on the document
+  - Fix: Mark address source (addressbook or manual) correctly
+  - More complete example document kraftdoc.xml
+  - Tons of minor fixes and improvements
+
+-------------------------------------------------------------------
+Sun Oct 11 11:33:08 UTC 2026 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to 2.1.0rc2 
+
+-------------------------------------------------------------------
+Sat Oct 10 16:01:42 UTC 2026 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to 2.1.0rc1 - changelog comes with final release 
+
+-------------------------------------------------------------------
 Thu Aug  6 10:33:33 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Use kf6 build macro

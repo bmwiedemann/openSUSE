@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov  6 14:14:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to guava 33.8.0
+  * Changes
+    + collect: Enhanced HashBiMap and LinkedHashMultimap.ValueSet
+      to defend against hash flooding (CVE-2026-118042, bsc#1289621)
+    + collect: Accidentally changed a few methods in
+      ForwardingMap.StandardValues to be final. No Google-internal
+      or GitHub-public code appears to be affected, but we will fix
+      this in the next release.
+    + net: Added MediaType.APPLICATION_GZIP (application/gzip) to be
+      used in preference to GZIP (application/x-gzip).
+    + primitives: Added Doubles.MIN_POSITIVE_VALUE and
+      Floats.MIN_POSITIVE_VALUE as more clearly named aliases for
+      Double.MIN_VALUE and Float.MIN_VALUE.
+    + testlib: Added AbstractClassInitializationTest.
+
+-------------------------------------------------------------------
 Tue Oct 13 08:56:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Adapt the generated OSGi data to reality

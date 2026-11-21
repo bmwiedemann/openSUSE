@@ -20,7 +20,7 @@
 %define api_ver 1
 
 Name:           libspelling
-Version:        0.4.10
+Version:        0.4.11
 Release:        0
 Summary:        A spellcheck library for GTK 4
 License:        LGPL-2.1-or-later
@@ -35,7 +35,7 @@ BuildRequires:  pkgconfig(gi-docgen)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.15.5
-BuildRequires:  pkgconfig(gtksourceview-5)
+BuildRequires:  pkgconfig(gtksourceview-5) >= 5.10.0
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(vapigen)
 # For tests

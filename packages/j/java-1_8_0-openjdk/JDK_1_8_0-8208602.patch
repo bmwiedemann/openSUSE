@@ -1,15 +1,7 @@
-
-# HG changeset patch
-# User weijun
-# Date 1533101708 -28800
-# Node ID 9d92ff04a29c12a5d47f2ca4e772f7716bfdb8ff
-# Parent  b6e0bfe4a6ec5d8d9d9476c05627dfb47f2263e1
-8208602: Cannot read PEM X.509 cert if there is whitespace after the header or footer
-Reviewed-by: xuelei
-
-diff -r b6e0bfe4a6ec -r 9d92ff04a29c src/java.base/share/classes/sun/security/provider/X509Factory.java
---- openjdk/jdk/src/share/classes/sun/security/provider/X509Factory.java	Wed Aug 01 01:40:44 2018 -0400
-+++ openjdk/jdk/src/share/classes/sun/security/provider/X509Factory.java	Wed Aug 01 13:35:08 2018 +0800
+diff --git a/jdk/src/share/classes/sun/security/provider/X509Factory.java b/jdk/src/share/classes/sun/security/provider/X509Factory.java
+index e0deae26cc..beb4efab40 100644
+--- a/jdk/src/share/classes/sun/security/provider/X509Factory.java
++++ b/jdk/src/share/classes/sun/security/provider/X509Factory.java
 @@ -1,5 +1,5 @@
  /*
 - * Copyright (c) 1998, 2014, Oracle and/or its affiliates. All rights reserved.
@@ -17,7 +9,7 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c src/java.base/share/classes/sun/security/pr
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -635,7 +635,8 @@
+@@ -634,7 +634,8 @@ public class X509Factory extends CertificateFactorySpi {
                  if (next != '\r') footer.append((char)next);
              }
  
@@ -27,9 +19,10 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c src/java.base/share/classes/sun/security/pr
  
              return Pem.decode(new String(data, 0, pos));
          }
-diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/BadPem.java
---- openjdk/jdk/test/sun/security/provider/X509Factory/BadPem.java	Wed Aug 01 01:40:44 2018 -0400
-+++ openjdk/jdk/test/sun/security/provider/X509Factory/BadPem.java	Wed Aug 01 13:35:08 2018 +0800
+diff --git a/jdk/test/sun/security/provider/X509Factory/BadPem.java b/jdk/test/sun/security/provider/X509Factory/BadPem.java
+index 9147ab8ce9..e800b6ac56 100644
+--- a/jdk/test/sun/security/provider/X509Factory/BadPem.java
++++ b/jdk/test/sun/security/provider/X509Factory/BadPem.java
 @@ -1,5 +1,5 @@
  /*
 - * Copyright (c) 2015, Oracle and/or its affiliates. All rights reserved.
@@ -37,7 +30,7 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/
   * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
   *
   * This code is free software; you can redistribute it and/or modify it
-@@ -23,14 +23,13 @@
+@@ -23,13 +23,12 @@
  
  /*
   * @test
@@ -53,8 +46,7 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/
  import java.io.PrintStream;
  import java.security.KeyStore;
  import java.security.cert.CertificateException;
- import java.util.Arrays;
-@@ -49,10 +48,12 @@
+@@ -48,10 +47,12 @@ public class BadPem {
          String pass = "passphrase";
          String alias = "dummy";
  
@@ -67,7 +59,7 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/
          ByteArrayOutputStream bout = new ByteArrayOutputStream();
          PrintStream pout = new PrintStream(bout);
          byte[] CRLF = new byte[] {'\r', '\n'};
-@@ -64,14 +65,20 @@
+@@ -63,14 +64,20 @@ public class BadPem {
          }
          pout.println(X509Factory.END_CERT);
  
@@ -90,4 +82,3 @@ diff -r b6e0bfe4a6ec -r 9d92ff04a29c test/jdk/sun/security/provider/X509Factory/
      }
  }
  
-

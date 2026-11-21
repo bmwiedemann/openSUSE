@@ -1,7 +1,7 @@
 #
 # spec file for package libsixel
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,10 @@ Source:         https://github.com/libsixel/libsixel/archive/v%{version}.tar.gz#
 Patch0:         meson.patch
 # CVE-2025-9300
 Patch1:         0001-Fix-a-heap-buffer-overflow-problem-reported-by-err2z.patch
+Patch2:         CVE-2026-33023.patch
+Patch3:         CVE-2026-44638.patch
+Patch4:         CVE-2026-44637.patch
+Patch5:         CVE-2026-44636.patch
 BuildRequires:  bash
 BuildRequires:  meson
 BuildRequires:  pkgconfig

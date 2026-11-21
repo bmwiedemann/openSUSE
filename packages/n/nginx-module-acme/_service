@@ -1,5 +1,6 @@
 <services>
   <service name="download_files" mode="manual" />
+  <service name="source_validator" mode="localonly" />
   <service name="cargo_vendor" mode="manual">
     <param name="srctar">*.tar.gz</param>
     <param name="compression">zst</param>

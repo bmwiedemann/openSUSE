@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 05 15:04:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.6:
+  * INS-3142: Fix CVE-2026-111943 for polaris (#1265)
+  * Update dependency vuepress-plugin-check-md to v0.0.3 (#1264)
+  * Pin dependencies (#1263)
+  * Update alpine Docker tag to v3.24.3 (#1262)
+  * Update module sigs.k8s.io/controller-runtime to v0.25.2 (#1250)
+  * Bump postcss-selector-parser from 6.1.1 to 6.1.4 in /docs
+    (#1249)
+  * Bump brace-expansion from 1.1.18 to 1.1.21 in /docs (#1248)
+  * Update all non-major dependencies to v0.37.1 (#1247)
+  * Update alpine Docker tag to v3.24.2 (#1246)
+  * Update module sigs.k8s.io/controller-runtime to v0.25.1 (#1245)
+
+-------------------------------------------------------------------
 Sat Sep 19 06:16:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.2.5:

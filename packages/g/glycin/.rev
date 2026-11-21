@@ -378,4 +378,28 @@
   + Changed: svg: Don't limit the size of elements in the SVG</comment>
     <requestid>1393561</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>640b91e443785e9ddcd853628e8f82e6</srcmd5>
+    <version>2.2.6</version>
+    <time>1793899172</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.6:
+  * This release contains the following new component versions
+    + libglycin 2.2.6
+    + libglycin-gtk4 2.2.6
+  * Fixed: meson: Fix build configuration failing if either libglycin or
+    libglycin-gtk4 option being enabled.
+- Stop passing libglycin=true to meson setup in glycin-loaders.spec.inc
+  following upstream changes yet again.</comment>
+    <requestid>1394830</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>ed5614baf0c72f957b54b7cea515cea8</srcmd5>
+    <version>2.2.6</version>
+    <time>1795103611</time>
+    <user>anag_factory</user>
+    <comment>- Fix version requirements for libjxl BuildRequires: there seems to be no
+  indication left that &lt; 0.13 would be enforced.</comment>
+    <requestid>1398347</requestid>
+  </revision>
 </revisionlist>

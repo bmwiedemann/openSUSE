@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Nov 10 05:21:49 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.117.0:
+  + Breaking changes:
+    * ps lists every process and reports the same columns on every 
+      platform.
+    * group-by --to-table keeps original key types.
+    * Retrieve multiple cell paths with get ...$paths.
+    * Pass column names directly to update cells.
+    * Assigning $env.config.keybindings and $env.config.menus 
+      replaces the list.
+    * Stricter input and argument checks for save, %(...) 
+      and plugin call_decl.
+    * Other breaking changes.
+  + Additions:
+    * Work directly with records using the new record commands.
+    * detect type recognizes human-readable durations.
+    * Name reusable types with type.
+    * Custom types in type signatures.
+    * Catch undeclared flags with extern --strict.
+    * Structured data from external commands.
+    * Generate external command definitions and completions.
+    * Smaller table output and ANSI optimization with ansi opt.
+    * Custom converters and commands work in more indirect calls.
+    * Read and write dotenv files with automatic environment 
+      conversion.
+    * Use first and last in constant expressions.
+    * Filter datetimes with older-than and newer-than.
+    * Live status line and interruptible math reductions.
+    * Other additions.
+  + Performance:
+    * Faster parsing and improved parser diagnostics.
+    * Faster startup and reliable prompt updates.
+    * Other performance improvements.
+  + Deprecations:
+    * Deprecated commands, flags, and compatibility support removed.
+  + Other changes:
+    * Clearer, correctly aligned `char --list` output.
+    * `dc-glob` follows `nu-glob's` rules in every command, 
+       with `{a,b}` added.
+    * Additional changes.
+  + Bug fixes:
+    * Rest patterns anywhere in `match` lists.
+    * Helix mode: h/l in menus, match commands under m and more 
+      text objects.
+    * Correct cell-path containment checks.
+    * `math log` rejects invalid bases and NaN input.
+    * More reliable variance and standard deviation for large 
+      numbers.
+    * Expanded tables no longer hang when nested tables are too 
+      wide.
+    * `join` errors when a table has no rows with the join column.
+    * IPv6 zone IDs in HTTP commands.
+    * `tui` errors when a closure has no table, tree or select 
+      to follow.
+    * Fixed crashes from infinite closure recursion.
+    * Column names after logical operators in row conditions.
+    * `each` reports the closure's error instead of "Eval block 
+      failed with pipeline input".
+    * `metadata <expr>` and `stor insert/update` record flags now 
+      ignore pipeline input instead of erroring.
+    * `oneof` literals prefer matching types over strings.
+    * Report missing closure blocks instead of panicking.
+    * Fixes for numeric string conversion and extreme durations.
+    * Fixed plugin input reads remaining blocked after response 
+      completion or output drop.
+    * Updated handling of Nushell-managed environment variables.
+    * `detect type` preserves whitespace-padded strings.
+    * `try` drains a piped stderr before collecting an external.
+    * `to md` preserves row order with differing columns.
+    * Fixes for external-command output in `try` and `o>` pipelines.
+    * SQLite errors are no longer silently ignored.
+    * Reject command and alias names that Nushell reads as values.
+    * JSON parsing accepts a leading UTF-8 byte order mark.
+    * Flags now work with dynamic builtin calls.
+    * Breaking changes to flag handling in dynamic builtin calls.
+    * Math reducers now aggregate table columns.
+    * Math reducers now reject table columns containing lists.
+    * `table --collapse` keeps rows aligned and respects `--width`.
+    * Invalid keybindings and menus are rejected on assignment.
+    * More date formats and more reliable datetime parsing.
+    * Other fixes.
+  - For a full list of changes with detailed descriptions, see:
+    * https://www.nushell.sh/blog/2026-11-09-nushell_v0_117_0.html
+
+-------------------------------------------------------------------
 Sun Oct  4 16:38:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.116.1:

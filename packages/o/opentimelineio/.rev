@@ -26,4 +26,27 @@
     <comment>Update to 0.18.0</comment>
     <requestid>1316568</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21763ac1566c67566bd666f0d435d5a7</srcmd5>
+    <version>0.18.1</version>
+    <time>1794411002</time>
+    <user>dimstar_suse</user>
+    <comment>JFYI https://github.com/AcademySoftwareFoundation/OpenTimelineIO/issues/2098
+
+we wanted to enable OTIO support in blender but there is no release for this yet.
+not sure if you want to pull in a git snapshot or not (forwarded request 1396619 from darix)</comment>
+    <requestid>1396866</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7b7bf96dedb2be9137bced922cead39c</srcmd5>
+    <version>0.18.1</version>
+    <time>1794816520</time>
+    <user>anag_factory</user>
+    <comment>- Create macros.opentimelineio which contains the library soversion
+  Dependent packages can use '%requires_eq libopentimelineio%{_otio_sonum}'
+  to require the library they're linking to (boo#1290457)
+
+- Drop obsolete version checks</comment>
+    <requestid>1397636</requestid>
+  </revision>
 </revisionlist>

@@ -33,7 +33,7 @@
 %endif
 
 Name:           azure-cli%{?psuffix}
-Version:        2.91.0
+Version:        2.92.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -76,16 +76,15 @@ Requires:       %{pythons}-azure-mgmt-batchai >= 7.0.0b1
 Requires:       %{pythons}-azure-mgmt-billing >= 6.0.0
 Requires:       %{pythons}-azure-mgmt-botservice >= 2.0.0b3
 Requires:       %{pythons}-azure-mgmt-cdn >= 12.0.0
-Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 15.0.0~b4
+Requires:       %{pythons}-azure-mgmt-cognitiveservices >= 15.0.0~b6
 Requires:       %{pythons}-azure-mgmt-compute >= 34.1.0
 Requires:       %{pythons}-azure-mgmt-containerinstance >= 10.2.0~b1
 Requires:       %{pythons}-azure-mgmt-containerregistry >= 15.1.0~b3
 Requires:       %{pythons}-azure-mgmt-containerregistrytasks >= 1.0.0~b1
-Requires:       %{pythons}-azure-mgmt-containerservice >= 41.6.0
+Requires:       %{pythons}-azure-mgmt-containerservice >= 41.8.0
 Requires:       %{pythons}-azure-mgmt-cosmosdb >= 10.0.0
 Requires:       %{pythons}-azure-mgmt-datalake-store >= 1.1.0~b1
 Requires:       %{pythons}-azure-mgmt-datamigration >= 10.0.0
-Requires:       %{pythons}-azure-mgmt-devtestlabs >= 2.2
 Requires:       %{pythons}-azure-mgmt-domainregistration >= 1.0.0~b1
 Requires:       %{pythons}-azure-mgmt-eventgrid >= 10.2.0
 Requires:       %{pythons}-azure-mgmt-eventhub >= 12.0.0~b1
@@ -106,7 +105,7 @@ Requires:       %{pythons}-azure-mgmt-msi >= 7.1.0
 Requires:       %{pythons}-azure-mgmt-mysqlflexibleservers >= 1.1.0~b3
 Requires:       %{pythons}-azure-mgmt-netapp >= 10.1.0
 Requires:       %{pythons}-azure-mgmt-policyinsights >= 1.1.0b4
-Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 3.0.0~b2
+Requires:       %{pythons}-azure-mgmt-postgresqlflexibleservers >= 3.0.0~b3
 Requires:       %{pythons}-azure-mgmt-privatedns >= 1.0.0
 Requires:       %{pythons}-azure-mgmt-rdbms >= 10.2.0b17
 Requires:       %{pythons}-azure-mgmt-recoveryservices >= 4.2.0
@@ -142,7 +141,7 @@ Requires:       %{pythons}-azure-storage-queue >= 12.16.0~b1
 Requires:       %{pythons}-azure-synapse-accesscontrol >= 0.5.0
 Requires:       %{pythons}-azure-synapse-artifacts >= 0.22.0
 Requires:       %{pythons}-azure-synapse-managedprivateendpoints >= 0.4.0
-Requires:       %{pythons}-azure-synapse-spark >= 0.2.0
+Requires:       %{pythons}-azure-synapse-spark >= 0.7.0
 Requires:       %{pythons}-chardet >= 5.2.0
 Requires:       %{pythons}-colorama >= 0.4.4
 Requires:       %{pythons}-distro
@@ -151,7 +150,6 @@ Requires:       %{pythons}-jsondiff >= 2.0.0
 Requires:       %{pythons}-packaging >= 20.9
 Requires:       %{pythons}-paramiko >= 2.0.8
 Requires:       %{pythons}-pycomposefile >= 0.0.34
-Requires:       %{pythons}-pygments >= 2.4
 Requires:       %{pythons}-scp >= 0.13.2
 Requires:       %{pythons}-semver >= 3.0
 Requires:       %{pythons}-six >= 1.10.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:06:05 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.4.8:
+  * Nix: remove pcre dep
+  * layer: request ondemand focus if available
+  * Fix: updated notification app name
+  * Add libc++ <20 fallback for floating-point scale value validation
+  * Feat: support matching and copying 141 W3C standard color names
+  * Fix hyprpicker not attaching a buffer to Jay
+  * core: migrate to ext-icc for screencopy
+  * chore: clang-format
+  * Fix character sizing
+  * Fix: make standard color names more readable
+
+-------------------------------------------------------------------
 Thu Jul 16 09:13:13 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to version 0.4.7:

@@ -141,4 +141,12 @@
 - Drop pangomm1_4-docs-without-timestamp.patch: Fixed upstream.</comment>
     <requestid>1361956</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4f30f94c190eb4ab91a31ef6d5458957</srcmd5>
+    <version>2.46.5</version>
+    <time>1793899176</time>
+    <user>anag_factory</user>
+    <comment>- Update URL to new home.</comment>
+    <requestid>1394835</requestid>
+  </revision>
 </revisionlist>

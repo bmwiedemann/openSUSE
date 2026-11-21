@@ -36,7 +36,6 @@ BuildRequires:  %{python_module requests-mock}
 BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module warlock >= 1.2.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros

@@ -1,4 +1,309 @@
 -------------------------------------------------------------------
+Thu Nov 12 22:26:47 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix the apache_mmn provides (boo#1289278, bsc#1286911). The macro
+  scanned the whole source tarball, and since 2.4.69 it also matched
+  a line in test/pytest_suite/tests/t/apache/test_mmn.py, generating
+  apache_mmn_201202110 instead of apache_mmn_20120211. This made
+  modules requiring apache_mmn_20120211, such as apache2-mod_php8,
+  uninstallable. Only parse include/ap_mmn.h, stop at the first
+  match, and fail the build in the prep section if the provides does
+  not match the sources.
+
+-------------------------------------------------------------------
+Wed Nov 11 16:10:09 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.4.71
+  *) SECURITY: CVE-2026-119618: mod_http2: heap corruption and RCE in
+     assign_headers (cve.mitre.org) [bsc#1290166]
+     Concurrent Execution using Shared Resource with Improper
+     Synchronization vulnerability in Apache HTTP Server's mod_http2
+     in assign_headers() can lead to RCE.
+     This issue affects Apache HTTP Server: from 2.4.55 through
+     2.4.70.
+  *) SECURITY: CVE-2026-109163: mod_vhost_alias 1 byte stack buffer
+     overwrite (after CVE-2026-63292) (cve.mitre.org) [bsc#1290169]
+     Stack-based buffer overflow vulnerability in Apache HTTP
+     Server's mod_vhost_alias (afterÂ CVE-2026-63292)
+     This issue affects Apache HTTP Server: 2.4.69 and 2.4.70.
+  *) SECURITY: CVE-2026-106023: mod_md NULL pointer dereference leads
+     to child process crash (cve.mitre.org) [bsc#1290167]
+     NULL pointer dereference vulnerability in Apache HTTP Server's
+     mod_md during HTTP request processing.
+     This issue affects Apache HTTP Server: from 2.4.30 through
+     2.4.70.
+  *) mod_md: MDHttpProxy and MDCACertificateFile can now be set per MDomain.
+     New directive MDHttpProxyCACertificateFile sets the CA certificates
+     used to verify an HTTPS proxy.
+  *) mod_deflate: Read the gzip extra-field (FEXTRA) length as unsigned so a
+     length byte with the high bit set is no longer sign-extended, fixing
+     inflation of gzip streams that carry an extra field.
+  *) mod_remoteip: Apply RemoteIP{Trusted,Internal}ProxyList to the virtual host
+     they are configured in, and merge the proxy entries of the main server
+     and of the virtual host, logging a warning when both have some.
+     PR 70207.  
+  *) mod_dav: Fix handling of invalid or overflowing "Timeout:"
+     request headers, which could silently grant a lock with an
+     already-expired timeout instead of the RFC 4918 maximum.
+     PR 65788 
+  *) mod_http2: Correctly handle the asterisk-form of OPTIONS requests
+     instead of rejecting them as malformed.  PR 70195.
+  *) mod_http2: Fix duplicate logging of header limit violations.
+  *) mod_http2: Fix a crash creating an HTTP/2 session with
+     "H2PushDiarySize 0" and debug logging enabled.  
+  *) mod_dav_lock: Fix dav_generic_load_lock_record() reading the   
+     indirect-lock key length with the wrong width, which could read
+     back a wrong length on big-endian platforms. PR 70299
+  *) mod_remoteip: Log a connection closed before a complete PROXY protocol
+     header was received at info level rather than as an error.  PR 63893.
+
+-------------------------------------------------------------------
+Fri Nov  6 15:05:54 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.4.70
+  *) mod_authnz_ldap: Fix crashes in 2.4.69 reported on Windows.
+     PR 70261.
+  *) mod_cgid: Increase limits for number and length of
+     environment variables, URI and arguments.  PR 70270.
+  *) mod_substitute: Fix an integer overflow that can happen in very special
+     setups. PR 66034
+  *) mod_cache: Do not store a response whose "Vary: *" was set via
+     "Header always". PR 70289
+  *) mod_dav_lock: Fix a heap buffer overflow in dav_size_indirect(), which
+     under-reserved space for the stored key length field, written as
+     apr_size_t but sized as int. PR 70298
+
+-------------------------------------------------------------------
+Fri Nov  6 11:43:16 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix severe CPU usage / performance drop with OpenSSL 3.5, caused by
+  mod_ssl reseeding the OpenSSL PRNG on every new TLS connection
+  (bsc#1282733, bsc#1246913):
+  * With OpenSSL 1.1.1 and later, mod_ssl and ab no longer seed the
+    OpenSSL PRNG themselves; the SSLRandomSeed directive is ignored
+    and only logs a deprecation warning.
+  * Comment out the SSLRandomSeed directives in the default
+    ssl-global.conf.
+- Add patch file:
+  * apache2-mod_ssl-SSLRandomSeed-noop-openssl-1.1.1.patch
+
+-------------------------------------------------------------------
+Sat Oct 24 13:16:34 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- upstream switched from svn to git for the testing framework
+  + apache-test-remove-broken-cgi-test.patch
+
+-------------------------------------------------------------------
+Thu Oct  1 18:21:08 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 2.4.69
+  *) SECURITY: CVE-2026-93546: mod_dav_fs namespace overflow
+     (cve.mitre.org) [bsc#1284053]
+     Integer overflow in mod_dav_fs in Apache HTTP Server through
+     2.4.68 allows an authenticated WebDAV client with write access
+     to crash worker processes and persistently corrupt a directory's
+     property database via PROPPATCH requests declaring many XML
+     namespaces.
+  *) SECURITY: CVE-2026-79768: mod_userdir information disclosure
+     (cve.mitre.org) [bsc#1284054]
+     Path equivalence: '/./' (single dot directory) vulnerability in
+     Apache HTTP Server's mod_userdir module when configured
+     withÂ absolute non-wildcard UserDir directive (the 2nd form
+     inÂ https://httpd.apache.org/docs/2.4/mod/mod_userdir.html#userdir)
+  *) SECURITY: CVE-2026-73637: mod_auth_digest DoS attack
+     (cve.mitre.org) [bsc#1284055]
+     Use after free in mod_auth_digest in Apache Software Foundation
+     Apache HTTP Server before 2.4.69 on all platforms allows an
+     unauthenticated remote client to cause authentication state
+     corruption via concurrent Digest authentication requests when
+     AuthDigestNcCheck is enabled or AuthDigestNonceLifetime is set
+     to 0.
+  *) SECURITY: CVE-2026-73636: mod_auth_digest one-time-nonce replay
+     attack (cve.mitre.org) [bsc#1284056]
+     Authentication bypass by capture-replay in mod_auth_digest in
+     Apache Software Foundation Apache HTTP Server 2.4.x on all
+     platforms allows a man-in-the-middle (MITM) attacker to replay
+     captured digest authentication credentials via crafted requests
+     that trigger garbage collection of the client's shared memory
+     entry when AuthDigestNonceLifetime is set to 0.
+  *) SECURITY: CVE-2026-63718: mod_proxy_uwsgi Transfer-Encoding
+     response smuggling (cve.mitre.org) [bsc#1284057]
+     Inconsistent Interpretation of HTTP Requests ('HTTP
+     Request/Response Smuggling') response smuggling vulnerability in
+     Apache HTTP Server via mod_proxy_uwsgi and a crafted uwsgi
+     response with Transfer-Encoding.
+  *) SECURITY: CVE-2026-63686: mod_xml2enc crash on charset
+     conversion failure (cve.mitre.org) [bsc#1284058]
+     A NULL pointer dereference in mod_xml2enc in Apache Software
+     Foundation Apache HTTP Server before 2.4.69 on all platforms
+     allows an untrusted backend server to cause a denial of service
+     via a proxied response with a charset whose conversion partially
+     succeeds then fails.
+  *) SECURITY: CVE-2026-63292: mod_vhost_alias stack overflow
+     (cve.mitre.org) [bsc#1284061]
+     Stack-based buffer overflow in mod_vhost_alias in Apache
+     Software Foundation Apache HTTP Server through 2.4.68 on all
+     platforms allows a remote client to cause a denial of service or
+     potentially execute arbitrary code via an HTTP request with a
+     Host header exceeding 8192 bytes when VirtualDocumentRoot uses a
+     hostname format specifier and LimitRequestFieldSize is raised
+     above the default.
+  *) SECURITY: CVE-2026-63045: mod_proxy_ftp PASV address handling
+     (cve.mitre.org) [bsc#1284060]
+     Improper validation of FTP PASV reply address in mod_proxy_ftp
+     in Apache Software Foundation Apache HTTP Server through 2.4.68
+     on all platforms allows, in forward proxy configurations, an
+     untrusted FTP server to cause the proxy to open a data
+     connection to an arbitrary third-party host via a crafted PASV
+     response.
+  *) SECURITY: CVE-2026-59797: mod_ssl SSLRequire allows .htaccess
+     ap_expr file-function (cve.mitre.org) [bsc#1284059]
+     Improper Privilege Management vulnerability in Apache HTTP
+     Server's mod_ssl via SSLRequire and file-related expressions.
+  *) SECURITY: CVE-2026-59685: Out-of-Bounds Write in
+     ap_directory_walk() Canonical-Name Rewrite on
+     CASE_BLIND_FILESYSTEM (cve.mitre.org) [bsc#1284052]
+     Out-of-bounds Write vulnerability in Apache HTTP Server on
+     Windows while processing paths with 8.3 names that may grow when
+     expanded.
+  *) SECURITY: CVE-2026-58415: mod_dav_fs property database read
+     access (cve.mitre.org) [bsc#1284051]
+     Internal state files accessible to external parties in
+     mod_dav_fs in Apache Software Foundation Apache HTTP Server
+     before 2.4.69 on all platforms allows a remote client to read
+     WebDAV dead properties of resources it cannot author via a GET
+     request for the .DAV state directory
+  *) SECURITY: CVE-2026-57941: mod_http2 use-after-free / wild write
+     via shared session->bbtmp re-entrancy (cve.mitre.org)
+     [bsc#1284050]
+     Use After Free vulnerability in Apache HTTP Server's
+     mod_http2Â via shared session->bbtmp re-entrancy
+  *) SECURITY: CVE-2026-56449: mod_proxy_html: crash in dump_content
+     (cve.mitre.org)
+     Out-of-bounds Write vulnerability in Apache HTTP Server's
+     mod_proxy_html with crafted HTTP response bodies.
+  *) SECURITY: CVE-2026-56154: mod_rewrite use-after-free via
+     %{LA-U:HTTP:...} (cve.mitre.org) [bsc#1284049]
+     Use After Free vulnerability in Apache HTTP Server's mod_rewrite
+     when using lookahead (%{LA-U:HTTP:...})
+  *) SECURITY: CVE-2026-56153: mod_charset_lite: Heap overflow in
+     finish_partial_char (cve.mitre.org) [bsc#1284048]
+     Out-of-bounds Write vulnerability in Apache HTTP Server's
+     mod_charset_lite.
+  *) SECURITY: CVE-2026-48005: mod_auth_digest reauthentication
+     attack (cve.mitre.org) [bsc#1284047]
+     Missing authentication checks in mod_auth_digest in Apache
+     Software Foundation Apache HTTP Server before 2.4.69 on all
+     platforms allows an unauthenticated remote client to cause a
+     denial of service (forced re-authentication) via forged
+     Authorization headers when Digest authentication is enabled with
+     AuthDigestNcCheck .
+  *) SECURITY: CVE-2026-47360: mod_session: Session cookie not
+     removed during internal redirect (cve.mitre.org) [bsc#1284046]
+     Exposure of Sensitive Information to an Unauthorized Actor
+     vulnerability in Apache HTTP Server's mod_session_cookie module.
+     When SessionCookieRemove changes across internal redirects, the
+     session cookie may still be passed to a backend server.
+  *) SECURITY: CVE-2026-46729: mod_heartmonitor denial of service
+     (cve.mitre.org) [bsc#1284045]
+     NULL Pointer Dereference vulnerability in Apache HTTP Servers
+     mod_heartmonitor over unicast listener.
+  *) SECURITY: CVE-2026-42528: mod_dav shared lock overflow
+     (cve.mitre.org) [bsc#1284044]
+     A memory calculation bug in mod_dav in Apache httpd 2.4.67 and
+     earlier allows an attacker with permission to create WebDAV
+     locks to crash server child processes.
+  *) SECURITY: CVE-2026-42356: limited RCE for some internal
+     redirects to non-CGI files in CGI directories (cve.mitre.org)
+     [bsc#1284043]
+     Deployment of wrong handler vulnerability in Apache HTTP Server
+     allows the target of some internal redirects from CGI programs
+     to also be treated as CGI and executed. The target must already
+     be in a directory enabled for CGI and have no other extension
+     understood by mod_mime.
+  *) Fix the tar icon in the documentation so that its background is
+     transparent.  PR 70238.
+  *) mod_ssl: Fix OpenSSL compatibility macros for X509_get0_notBefore,
+     X509_get0_notAfter, and X509_get0_serialNumber with OpenSSL < 1.1.
+     PR 70205.
+  *) mod_cgid, mod_ssl, mod_md: Various hardening fixes.
+  *) mod_md: MDServerStatus is now disabled by default.
+  *) mod_auth_digest: Fix compatibility with expression-based AuthName.
+     PR 59039.
+  *) mod_auth_digest.c: Drop RFC 2069 support; rewrite shared memory
+     handling and client nonce handling; "authdigest-opaque" mutex is
+     now longer needed.
+  *) mod_lbmethod_heartbeat: Use safe integer parsing with range
+     validation, replacing atoi().
+  *) core: Reject control characters in the reason phrase of interim
+     responses.  Only accept space as status-code separator.
+  *) mod_substitute: Fix SubstituteMaxLineLength to reject values too
+     large for the K/M/G suffix.
+  *) mod_substitute: Fix crash or misbehaviour when loading a Substitute
+     directive with a missing closing delimiter.
+  *) mod_dir: Fix a crash in fixup_dir for a request not mapped to any type. 
+     PR68527.
+  *) mod_http2: Do not drop an in-flight response when a client sends a
+     graceful GOAWAY (error code 0) while streams it opened are still
+     being processed. The session now drains open streams instead of
+     tearing down immediately, which async MPMs hit far more than event.
+     Fixes a silently dropped response; RFC 9113 compliant.
+  *) mod_md: OpenSSL 4 compatibility.
+  *) pytest_suite: Port of the old PERL test framework to Python
+     and pytest. Now included in the source tree under ./test
+
+-------------------------------------------------------------------
+Fri Jun 26 16:16:39 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- update to 2.4.68
+  Security fixes (all affecting 2.4.x through 2.4.67 unless noted):
+  *) CVE-2026-49975: mod_http2 denial of service via memory
+     allocation with excessive size value (2.4.17-2.4.67)
+  *) CVE-2026-48913: mod_http2 use-after-free when file handles are
+     already exhausted (2.4.55-2.4.67)
+  *) CVE-2026-44186: mod_proxy_ftp infinite loop via an
+     attacker-controlled backend FTP server
+  *) CVE-2026-44185: mod_ssl stack buffer over-read in OCSP
+     send_request via an attacker-controlled OCSP server
+  *) CVE-2026-44119: escalation of privilege through expressions in
+     .htaccess allowing local authors to read files as the httpd
+     user
+  *) CVE-2026-43951: out-of-bounds read in merge_response_headers
+     with mod_headers and mod_mime and multiple response languages
+  *) CVE-2026-42536: mod_xml2enc heap-based buffer overflow with
+     untrusted content
+  *) CVE-2026-42535: mod_dav_fs path handling allows a WebDAV author
+     to manipulate trusted DAV property databases, crashing child
+     processes
+  *) CVE-2026-34356: ProxyPassReverseCookieMap heap-based buffer
+     overflow via malicious backend servers
+  *) CVE-2026-34355: mod_proxy_html buffer overflow exploitable by
+     an untrusted backend
+  *) CVE-2026-29170: mod_proxy_ftp XSS in HTML directory listing
+     generation
+  *) CVE-2026-29167: mod_ldap per-directory use-after-free
+  Non-security changes:
+  *) mod_ssl, ab: add support for OpenSSL 4.0
+  *) mod_ssl: add SerialNumber as a recognised attribute type for
+     SSL distinguished name variables
+  *) mod_ssl: set auth type to "ClientCert" when client certificate
+     authentication has been performed
+  *) mod_http2: update to 2.0.42; fix excessive file descriptor use
+     for non-TLS frontend connections when sending files
+  *) mod_http2: update to 2.0.41; fix cookie header accounting
+     against LimitRequestFields
+  *) mod_http2: update to 2.0.40; fix error handling on upload
+     requests when the server runs out of file handles
+  *) mod_include: do not print any if/elsif/else content when a
+     conditional evaluation returns an error
+  *) mod_dav_fs: return 404 for DELETE if deletion fails because the
+     resource no longer exists
+  *) mod_proxy_balancer: include nonce in XML output
+  *) mod_proxy_hcheck: honour worker timeout settings
+  *) mod_unixd: CoreDumpDirectory requires enabling tracing on
+     FreeBSD 11+
+
+-------------------------------------------------------------------
 Thu May  7 11:01:24 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove last remnants of update-alternatives.

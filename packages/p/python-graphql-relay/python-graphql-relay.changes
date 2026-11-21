@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 01:11:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-graphql-core-3.3.patch:
+  * Support changed error message from graphql-core 3.3+.
+- Drop unneeded {Build,}Requires on python-promise.
+
+-------------------------------------------------------------------
 Tue May 27 14:27:34 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

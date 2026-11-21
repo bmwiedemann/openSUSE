@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:33:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.202.611.50 (3.20261105)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+
+  3.20261105 2026-11-06 Australia/Melbourne
+    ** Thanks to Giovanni <g.bechis@snb.it> for these changes:
+    - RFC 7208 says there MUST be a limit of no more than 10 MX records
+      looked up and checked; throw a permerror when the limit is exceeded
+      instead of silently truncating the list
+    - RFC 7208 says implementations SHOULD limit "void lookups" to two;
+      enable the corresponding regression tests
+    - Ensure every module's $VERSION is set by Dist::Zilla at release time,
+      and manage the version number in README the same way
+    - Security: escape untrusted text in the Received-SPF header to
+      prevent header field injection:
+      - escape parentheses and backslashes in the explanation comment,
+        so text from a malformed SPF record or the sender identity can
+        no longer close the comment early and inject forged fields such
+        as client-ip=
+      - escape control characters (e.g. CR/LF) in the envelope-from and
+        helo fields
+    - Fix macro expansion stopping at the first line break in a macro
+      string, leaving later macros unexpanded
+    - Security: authority_explanation now escapes control and non-ASCII
+      characters in the explanation string (exp= TXT record) published in
+      DNS, and document that the result text() may contain untrusted data
+    - Remove the check for includes of the same domain through CNAME
+      aliases. Including a domain and a CNAME alias of it is legal in
+      RFC 7208, but the check tried to throw a hard fail for it. With
+      a real resolver it read an unpopulated Net::DNS internal field and
+      so in practice did nothing, but where it did take effect (e.g.
+      with Net::DNS::Resolver::Programmable) it could wrongly fail
+      authorized senders, and it used CNAME targets from DNS as
+      unescaped regular expressions, which could make process() die.
+      It also made an extra CNAME lookup per include that was not
+      counted towards the RFC 7208 DNS lookup and void lookup limits.
+      The test suite's resolver now follows CNAMEs, which is what the
+      RFC 7208 cname-aliasing test case needed
+    - Security: an exception thrown by the DNS resolver, including
+      Net::DNS refusing to compose a query for an invalid domain name,
+      made the SPF result none, i.e. no policy, rather than temperror.
+      As invalid names can come from macros expanded with the sender's
+      local part or HELO name, a sender could turn a domain's -all
+      policy into none. Invalid domain names (empty label, label longer
+      than 63 bytes, or name longer than 253 bytes, counted the way
+      Net::DNS does, i.e. in bytes of UTF-8 and reading escapes such as
+      "\.") are now treated as non-existent without querying the
+      resolver, per RFC 7208, and other resolver exceptions result in
+      temperror
+    - Check the IP address version in the ip6 mechanism using the public
+      NetAddr::IP API, rather than enumerating the request's address via
+      an overloaded array dereference and reading an internal field,
+      which died if the request's IP address was a large network
+    - Allow Mail::SPF::Server->process() to evaluate a proposed SPF record
+      passed in via a new 'record' option, instead of querying DNS for the
+      authority domain's record, so a not-yet-published record can be tested
+      against real DNS state
+    - Prefer SPF1 over SPF2 (Sender ID, which is deprecated) when a record
+      could be parsed as either
+    - When a domain publishes both "v=spf1" and "spf2.0" records, always
+      select the "v=spf1" record. Previously the record was chosen by the
+      order of the records in the DNS answer, so the result could vary
+      between queries, although the documentation and RFC 4406 said
+      "spf2.0" records were preferred. Sender ID is historic (RFC 6686),
+      so "v=spf1" is now deliberately preferred
+    - Security: a "p" macro in an explanation string (exp= TXT record)
+      made a PTR look-up and up to 10 A/AAAA look-ups for every
+      occurrence, not limited by the RFC 7208 DNS look-up limits, so a
+      sender could make a single SPF check send thousands of DNS
+      queries. The "p" macro value is now looked up at most once per SPF
+      check and authority domain. Also, exceeding the void look-up limit
+      while expanding the explanation made authority_explanation() die;
+      it now falls back to the default explanation
+    - Reject a network (e.g. '10.0.0.0/8') as a request's ip_address
+      with an EInvalidOptionValue exception. NetAddr::IP accepted it,
+      which made no sense for SPF and changed the meaning of the
+      mechanisms' address checks
+    - Ignore an explanation string (exp= TXT record) that contains
+      anything other than printable ASCII characters and spaces, as
+      RFC 7208 requires, and use the default explanation instead.
+      Control characters were already escaped, but an MTA using the
+      explanation in an SMTP reply would still have sent the escaped
+      text of a malicious explanation
+    - Return none without querying DNS when the identity's domain is
+      empty (e.g. "MAIL FROM:<a@>", which queried the root zone) or a
+      single-label name (e.g. "HELO mailhost", which the resolver may
+      expand with its search list and so query the receiver's internal
+      domains), as RFC 7208 requires
+    - Security: spfd now escapes control characters in the values of
+      its response, so text from DNS or the client cannot add lines to
+      the response, and in its debug output
+    - Security: fix spfd's privilege dropping with --set-user and
+      --set-group. An unknown user or group name was not reported (due to
+      an operator precedence bug) and could leave spfd running as root,
+      the invoking user's supplementary groups (e.g. root's) were kept,
+      and --set-user without --set-group kept group ID 0. spfd now dies on
+      unknown names, drops the supplementary groups when started as root,
+      and changes to the user's primary group if no group is given
+    - Security: limit spfd to 64 concurrent connections, 60 seconds per
+      connection, and 32 request lines of at most 1024 bytes, so a local
+      client can no longer exhaust the process table or memory with idle,
+      slow or overlong requests. A request still being processed after 60
+      seconds (e.g. because DNS servers are unreachable) gets a temperror
+      result. spfd now also logs non-Mail::SPF errors
+      for a request, and no longer runs the child's code in the listening
+      process if fork() fails
+    - Security: spfd now creates its UNIX socket accessible to its owner
+      only until --socket-user, --socket-group and --socket-perms have
+      been applied, so other users can't connect to it in the meantime.
+      Fix --socket-group being ignored unless --socket-user was also
+      given (a typo compared the socket path instead of the group), and
+      die with a clear message if the listening socket can't be created
+    - Security: spfquery now opens the --file argument in explicit read
+      mode. A file name ending in "|" was run as a shell command, and one
+      starting with ">" truncated the file
+
+-------------------------------------------------------------------
 Wed Apr  1 06:58:16 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.202.603.310 (3.20260331)

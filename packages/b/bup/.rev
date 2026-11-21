@@ -91,4 +91,29 @@
     <comment></comment>
     <requestid>1370565</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ee33d99e54d14484c9fdbc07bcbbf052</srcmd5>
+    <version>0.34</version>
+    <time>1794816469</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.34:
+  * Raise minimum Python version to 3.8 and require sqlite3 module
+  * Add `bup get --repair`, `--rewrite`, and `-S/--source-url`
+    options plus `bup validate-refs` to detect and fix missing
+    metadata or contents
+  * Add `bup.split.files`, `bup.split.trees`, `bup.repo.id`, and
+    `bup.server.deduplicate-writes` configuration options
+  * Restrict `bup on` to documented subcommands and disallow
+    remote write operations for read-only commands
+  * Prefer XDG cache location (`~/.cache/bup/remote/`) for client
+    index cache when `$BUP_DIR/index-cache` does not exist
+  * Fix `bup init -r` to initialize only the remote repository and
+    support `bup init DIRECTORY`
+  * Fix interactive subcommand hangs and `bup rm` on saves missing
+    root metadata
+- Spec cleanup:
+  * Remove Group tag and modernize `%check` macro usage
+</comment>
+    <requestid>1397490</requestid>
+  </revision>
 </revisionlist>

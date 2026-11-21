@@ -19,13 +19,12 @@
 # Easy switching on/off of systemd integration
 %define with_systemd 1
 Name:           gnome-packagekit
-Version:        43.0
+Version:        43.0+77
 Release:        0
 Summary:        Applications for the PackageKit API
 License:        GPL-2.0-or-later
-Group:          System/GUI/GNOME
-URL:            http://packagekit.org/
-Source0:        https://download.gnome.org/sources/gnome-packagekit/43/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gnome-packagekit
+Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FEATURE-OPENSUSE -- Only show gnome-packagekit in gnome.
 Patch1:         gnome-packagekit-OnlyShowIn.patch
@@ -68,7 +67,6 @@ removing packages on your system.
 
 %package extras
 Summary:        Extra applications for the PackageKit API
-Group:          System/GUI/GNOME
 Requires:       %{name} = %{version}
 
 %description extras
@@ -77,7 +75,18 @@ There are several utilities designed for installing, updating and
 removing packages on your system.
 
 This package contains tools that provide functionality also provided by
-YaST Software Management.
+gnome-software and others.
+
+%package repos
+Summary:        Repository settings for %{name}
+Requires:       %{name} = %{version}
+
+%description repos
+GNOME PackageKit provides session applications for the PackageKit API.
+There are several utilities designed for installing, updating and
+removing packages on your system.
+
+This package contains an application to change active repositories.
 
 %lang_package
 
@@ -95,22 +104,23 @@ YaST Software Management.
 %files
 %license COPYING
 %doc AUTHORS
-%{_bindir}/gpk-prefs
 %{_bindir}/gpk-update-viewer
 %dir %{_datadir}/GConf
 %dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/org.gnome.packagekit.gschema.migrate
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.PackageUpdater.metainfo.xml
-%{_datadir}/applications/gpk-prefs.desktop
 %{_datadir}/applications/org.gnome.PackageUpdater.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.packagekit.gschema.xml
 %dir %{_datadir}/gnome-packagekit
 %{_datadir}/gnome-packagekit/icons/
 %{_datadir}/icons/hicolor/*/apps/gpk-*.*
 %{_datadir}/icons/hicolor/*/mimetypes/application-*.*
-%{_mandir}/man1/gpk-prefs.1%{?ext_man}
 %{_mandir}/man1/gpk-update-viewer.1%{?ext_man}
+
+%files repos
+%{_bindir}/gpk-prefs
+%{_mandir}/man1/gpk-prefs.1%{?ext_man}
+%{_datadir}/applications/gpk-prefs.desktop
 
 %files lang -f %{name}.lang
 

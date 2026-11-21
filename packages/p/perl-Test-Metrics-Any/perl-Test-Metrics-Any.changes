@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:41:52 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.20.0 (0.02)
+   see /usr/share/doc/packages/perl-Test-Metrics-Any/Changes
+
+  0.02    2026-09-30
+          [CHANGES]
+           * General style refresh
+              + Minimum perl version 5.20
+              + Use subroutine signatures (mostly)
+              + Minor Pod style updates
+              + Swap unit tests from `Test::More` to `Test2::V0`
+           * Defend unit tests against changes to perl's reporting of line
+             numbers in code involving multi-line anonymous subroutines
+             (Perl #24396)
+
+-------------------------------------------------------------------
 Fri Oct 16 08:59:37 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Created

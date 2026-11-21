@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Nov 16 05:38:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.65.0:
+  * fix(renovate): Move duplicate checkouts with the main checkout
+    (#2752)
+  * feat(git-checkout): stash and restore sparse checkouts for the
+    -source package (#2739)
+  * fix(lint): make forbidigo reject fmt.Print* and remove the
+    calls it missed (#2748)
+  * fix(pipelines): don't fail split cleanup on symlinked
+    directories (#2746)
+  * fix(pipelines): remove directories the split pipelines empty
+    (#2744)
+
+-------------------------------------------------------------------
+Mon Nov 09 05:52:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.64.1:
+  * fix(qemu): link melange clang configs into $HOME when it
+    differs
+  * build(deps): bump the gomod group across 1 directory with 2
+    updates (#2734)
+  * docs: update the apk version selection link for the move to
+    www.chainguard.dev/docs (#2729)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:45:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.64.0:
+  * pipelines/meson: configure with --buildtype=plain by default
+    (#2731)
+  * build(deps): bump chainguard.dev/license (#2726)
+  * refactor(license): use the shared chainguard.dev/license module
+    (#2662)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2722)
+  * build(deps): bump the actions group across 1 directory with 3
+    updates (#2723)
+  * feat(build): add --strict-sources-from-cache for git-checkout
+    (#2719)
+
+-------------------------------------------------------------------
 Tue Oct 27 06:31:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.63.2:

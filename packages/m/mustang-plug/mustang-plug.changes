@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:36:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.0:
+  * Port to Qt6 and C++20
+  * Support GCC 14 and 15, Clang 19 and 20 toolchains
+  * Fix possible crash on amp models with less than 100 presets
+  * Mustang v1/v2 improvements, FX loop controls and more v2 amp models
+  * Many more fixes and improvements; see upstream release notes
+- Drop 0001-Improve-udev-rules-add-uaccess-support.patch and
+  add_missing_cstdint.patch: fixed upstream
+- Rebase 0001-Build-helper-libraries-as-OBJECT-libraries.patch
+- Drop mustang-plug.svg source, the icon is shipped upstream now
+- Adjust install section to the upstream layout (cmake config location,
+  fixed desktop file, no custom udev/desktop paths)
+
+-------------------------------------------------------------------
 Tue Apr  4 09:06:02 UTC 2023 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with GCC 13, add add_missing_cstdint.patch

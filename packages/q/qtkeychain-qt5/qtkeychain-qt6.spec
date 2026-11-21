@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt6
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Platform-independent Qt API for storing passwords securely
 License:        BSD-2-Clause
@@ -29,7 +29,7 @@ BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Test)
-BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
 %description
 QtKeychain is a Qt API to store passwords and other secret data securely.

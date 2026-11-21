@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:32:57 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add git-core build dependency used by upstream Makefile to add
+  git metadata to Go binary. Could be dropped in the future by
+  extracting Makefile commands to regular go build commands
+  directly in spec.
+
+-------------------------------------------------------------------
 Tue Oct 27 13:28:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.30.0 (bsc#1287590, CVE-2026-97032):

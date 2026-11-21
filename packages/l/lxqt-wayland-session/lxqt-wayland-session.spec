@@ -1,6 +1,7 @@
 #
 # spec file for package lxqt-wayland-session
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
 #
@@ -26,7 +27,7 @@
 %endif
 
 Name:           lxqt-wayland-session
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Files needed for the LXQt Wayland Session
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-4.0
@@ -50,7 +51,7 @@ Patch5:         0006-configuration-changes-for-default-river-session.patch
 ## PATCH-CONFIGURATION-openSUSE 0007-configuration-changes-for-default-sway-session.patch
 Patch6:         0007-configuration-changes-for-default-sway-session.patch
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -60,7 +61,7 @@ BuildRequires:  xdg-user-dirs
 
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(lxqt) >= 2.1.0
+BuildRequires:  cmake(lxqt) >= 2.5.0
 BuildRequires:  cmake(lxqt2-build-tools)
 
 
@@ -215,6 +216,7 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %{_bindir}/lxqt-qdbus
 %{_datadir}/lxqt/wayland/firstrun/autostart
 %{_datadir}/wayland-sessions/lxqt-wayland.desktop
+%{_mandir}/man?/lxqt-qdbus.?%{?ext_man}
 %{_mandir}/man?/%{name}.?%{?ext_man}
 %{_mandir}/man?/startlxqtwayland.?%{?ext_man}
 
@@ -225,6 +227,7 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %if %{with hyprland_session}
 %files -n lxqt-hyprland-session
 %license LICENSE.BSD
+%{_datadir}/lxqt/wayland/firstrun/hypr.lua
 %{_datadir}/lxqt/wayland/lxqt-hyprland.lua
 %endif
 
@@ -254,6 +257,7 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %files -n lxqt-niri-session
 %license COPYING
 %dir %{_datadir}/lxqt/wayland/niri
+%{_datadir}/lxqt/wayland/firstrun/niri.kdl
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl.full
 %{_datadir}/lxqt/wayland/niri/*.kdl
@@ -266,10 +270,12 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 
 %files -n lxqt-sway-session
 %license LICENSE.MIT
+%{_datadir}/lxqt/wayland/firstrun/sway.config
 %{_datadir}/lxqt/wayland/lxqt-sway.config
 
 %files -n lxqt-wayfire-session
 %license LICENSE.MIT
+%{_datadir}/lxqt/wayland/firstrun/wayfire.ini
 %{_datadir}/lxqt/wayland/lxqt-wayfire.ini
 
 %changelog

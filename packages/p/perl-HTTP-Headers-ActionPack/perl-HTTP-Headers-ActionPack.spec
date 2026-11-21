@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Headers-ActionPack
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,23 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-HTTP-Headers-ActionPack
-Version:        0.09
-Release:        0
 %define cpan_name HTTP-Headers-ActionPack
+Name:           perl-HTTP-Headers-ActionPack
+Version:        0.100.0
+Release:        0
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP Action, Adventure and Excitement
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/HTTP-Headers-ActionPack/
-Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RR/RRWO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(HTTP::Date)
@@ -37,8 +38,9 @@ BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Response)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Sub::Exporter)
-BuildRequires:  perl(Test::Fatal) >= 0.0003
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::More) >= 0.96
+BuildRequires:  perl(Test::Timer)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Time::Piece)
 BuildRequires:  perl(URI::Escape)
@@ -50,6 +52,28 @@ Requires:       perl(Sub::Exporter)
 Requires:       perl(Time::Piece)
 Requires:       perl(URI::Escape)
 Requires:       perl(parent)
+Provides:       perl(HTTP::Headers::ActionPack) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::AcceptCharset) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::AcceptLanguage) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::AuthenticationInfo) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Authorization) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Authorization::Basic) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Authorization::Digest) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::ContentNegotiation) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Core::Base) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Core::BaseAuthHeader) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Core::BaseHeaderList) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Core::BaseHeaderType) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Core::BaseHeaderWithParams) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::DateHeader) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::LinkHeader) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::LinkList) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::MediaType) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::MediaTypeList) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::PriorityList) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::Util) = %{version}
+Provides:       perl(HTTP::Headers::ActionPack::WWWAuthenticate) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  perl(Plack)
@@ -68,14 +92,14 @@ other classes in this module. It contains a number of convenience methods
 to help make common cases easy to write.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -83,7 +107,7 @@ to help make common cases easy to write.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%license LICENSE
 
 %changelog

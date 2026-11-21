@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        6.1.3
+Version:        6.2.0
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -67,16 +67,13 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 # Cannot use python3dist() names yet...
 BuildRequires:  python3-lxml
+BuildRequires:  /usr/bin/python3
 BuildRequires:  w3m
 BuildRequires:  xsltproc
 # XXX libsolv never sees the rpmlib provides fulfilled
 Requires:       (compat-usrmerge-tools or rpmlib(X-CheckUnifiedSystemdir))
-Requires:       /usr/bin/bc
 Requires:       dracut-transactional-update = %{version}-%{release}
 Requires:       logrotate
-Requires:       lsof
-# psmisc is needed because of fuser
-Requires:       psmisc
 Requires:       tukit = %{version}-%{release}
 Requires:       zypper
 Requires:       (transactional-update-up-as-default if (distribution-release without (product-update() = dup)))

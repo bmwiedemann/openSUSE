@@ -141,4 +141,28 @@
     * CVE-2026-77050.patch</comment>
     <requestid>1383274</requestid>
   </revision>
+  <revision rev="10" vrev="7">
+    <srcmd5>c8f283511087f4d5a7b9fa680f4f247d</srcmd5>
+    <version>4.2.30</version>
+    <time>1794242727</time>
+    <user>anag_factory</user>
+    <comment>- Add security patches:
+  * CVE-2026-108147: Potential memory exhaustion in MultiPartParser
+    via base64-encoded file upload (bsc#1289340)
+    * CVE-2026-108147.patch
+  * CVE-2026-111211: Potential log injection via unescaped geometry
+    form values (bsc#1289344)
+    * CVE-2026-111211.patch
+  * CVE-2026-111362: Server-side request forgery via crs member of
+    GeoJSON geometries (bsc#1289345)
+    * CVE-2026-111362.patch
+  * CVE-2026-113593: Potential exposure of private data via empty
+    and missing Vary headers (bsc#1289348)
+    * CVE-2026-113593.patch
+  * CVE-2026-114582: Server-side request forgery via SpatialReference
+    string input (bsc#1289350)
+    * CVE-2026-114582.patch
+</comment>
+    <requestid>1396353</requestid>
+  </revision>
 </revisionlist>

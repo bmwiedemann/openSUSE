@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Nov  8 18:59:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.4:
+  * Fixed: Hyphenated tags in the `describe` field in
+    `.git_archival.json` were not parsed correctly
+    when the repository was exactly on a tagged commit.
+  * Fixed: `Version.bump()` ignored the `increment` when a stage
+    had no revision.
+
+-------------------------------------------------------------------
 Fri Aug  7 18:52:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.26.2:

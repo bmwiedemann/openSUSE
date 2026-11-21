@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:59:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.1.12:
+  * chore(deps): retire Dependabot and apply pending major Go bumps
+    (#475)
+  * chore(deps): update go deps (#462)
+  * chore(deps): update go deps (#455)
+  * fix(deps): update module github.com/google/go-github/v85 to v91
+    (#457)
+  * chore(deps): update module github.com/stretchr/testify to
+    v1.12.1 (#452)
+  * chore(deps): bump github.com/stretchr/testify in the go-deps
+    group (#450)
+
+-------------------------------------------------------------------
 Fri Aug 14 05:24:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.1.11:

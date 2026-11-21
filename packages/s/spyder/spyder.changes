@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:02:17 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update more requirements
+
+-------------------------------------------------------------------
+Fri Nov 13 13:08:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 6.1.8:
+  * Fix tabs to spaces conversion in the Editor.
+  * Make drag and drop of files to the Variable Explorer work when it's empty.
+- Changes from version 6.1.7:
+  * New features: Increase threshold to warn users when an array or dataframe
+    is too big to be viewed in the Variable Explorer. The new limit is 50
+    million elements.
+  * Important fixes:
+    + Fix formatting and linting with Ruff.
+    + Fix warning to tell users that an array or dataframe is too big to be
+      handled by the Variable Explorer.
+    + Fix syntax highlighting of non-Python files in the Editor.
+    + Fix crash at startup when the in-app appeal page can't be read from disk.
+    + Make right-clicking on Files and Projects select the file where it's
+      done.
+- Changes from version 6.1.6:
+  * New features:
+    + Add support for Jedi 0.20.0
+    + Add support for python-lsp-server 1.15.0
+  * Important fixes:
+    + Prevent Spyder to steal focus from other applications at startup.
+    + Prevent duplicate key sequences when changing shortcuts in Preferences.
+    + Fix syntax highlighting of match and case builtins.
+    + Fix docstring generation for nested functions.
+
+-------------------------------------------------------------------
 Thu Oct  1 05:37:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove atomicwrites from Requires, add markdown-it-py.

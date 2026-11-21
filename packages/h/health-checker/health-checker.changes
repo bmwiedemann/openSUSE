@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 16:30:11 UTC 2026 - Paul D. Martin <pmartin@pauldmartin.org>
+
+
+- health-checker.conf: set kernel.panic instead of panic. sysctl.d
+  names settings by their path under /proc/sys, and /proc/sys/panic
+  does not exist, so the 5-second reboot after a kernel panic was
+  never applied; systemd-sysctl only logged "Couldn't write '5' to
+  'panic'" at every boot
+
+-------------------------------------------------------------------
 Tue Apr 14 10:53:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.13+git20260414.bb3e4ad:

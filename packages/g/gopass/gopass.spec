@@ -122,6 +122,7 @@ This package provides a symlink to make this a drop in replacement for password-
 Summary:        Freedesktop secret service support for gopass
 Requires:       %{name} = %{version}
 BuildArch:      noarch
+Provides:       dbus(org.freedesktop.secrets)
 
 %description secret-service
 Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.

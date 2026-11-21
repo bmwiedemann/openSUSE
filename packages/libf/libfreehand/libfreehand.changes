@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Nov 4 17:58:00 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Update to 0.1.4
+  * Memory safety fixes (0.1.3 and 0.1.4)
+- Remove icu-build-fix.patch, the fix is in upstream commit af3197f
+- Mark COPYING as %license in the tools subpackage, remove the COPYING
+  copy from the devel doc dir
+- Add libfreehand-0.1.4-doxygen-cfg.patch: remove 14 obsolete tags, fix
+  the PAPER_TYPE value, and add the inc directory to INPUT in
+  docs/doxygen/doxygen.cfg for doxygen 1.18
+- List the fh2raw, fh2svg, and fh2text binaries explicitly in the tools
+  subpackage instead of a bindir glob
+- Require pkgconfig(icu-uc) instead of pkgconfig(icu-i18n), matching the
+  icu-uc module checked by configure
+- Drop the redundant --disable-werror configure flag, the upstream default
+  is no since 0.1.4
+
+-------------------------------------------------------------------
 Wed Nov 13 19:12:07 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
 - add icu-build-fix.patch: fix build with icu 65.1. 

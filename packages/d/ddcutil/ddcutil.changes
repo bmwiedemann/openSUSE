@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:43:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix i586 %check failure in test_string_util: fail str_to_long()
+  on strtol ERANGE overflow instead of clamping to LONG_MAX/MIN,
+  which made str_to_int() wrongly succeed for out-of-range input
+  on ILP32 (ddcutil-strtol-erange.patch).
+
+-------------------------------------------------------------------
+Tue Oct 20 19:11:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.2 (3.0.0 and 3.0.1 had severe
+  reliability and performance issues, skip them):
+  * Reworked display connect/disconnect handling for
+    performance and reliability; Plasma users should update
+  * 3.0.1: reverted to serial i2c examination (parallel checks
+    crashed AMD Navi / Plasma wouldn't start)
+  * 3.0.2: dropped the single multi-message EDID ioctl (severe
+    slowdowns without EDID, possible amdgpu crash); built-in
+    Valve Index HMD ignore list
+  * The i2c GROUP udev rule now ships commented out per
+    upstream packaging-policy note (boo#1277442)
+  * No SONAME change (libddcutil.so.5)
+  * Align BuildRequires floors with configure.ac: glib-2.0 >= 2.40,
+    jansson >= 2.0, libdrm >= 2.4.67, libusb-1.0 >= 1.0.15
+- Drop Group: tags
+
+-------------------------------------------------------------------
 Mon May 11 14:53:54 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.2.7:

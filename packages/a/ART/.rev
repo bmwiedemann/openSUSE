@@ -472,4 +472,44 @@
     <comment>1</comment>
     <requestid>1386269</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>c0ed931404f27cf63ef78748bea1d0c9</srcmd5>
+    <version>1.26.11</version>
+    <time>1794428288</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.26.11:
+  * Add configurable keyboard shortcuts and an editor in Preferences,
+    including bindings for tool sliders and mask controls.
+  * Add ART-cli raw preprocessing to DNG for Bayer and X-Trans
+    images, with options for original black and white levels.
+  * Fix Fujifilm embedded lens vignetting and distortion correction,
+    including support for additional correction table sizes.
+  * Improve thumbnail loading and browser responsiveness; select the
+    next thumbnail after deletion and avoid reprocessing when returning
+    to the editor.
+  * Save changed sidecars in the background and avoid rewriting
+    unchanged files; save editor parameters before user commands.
+  * Improve preview responsiveness by abandoning outdated detail crop
+    updates and add controls for GUI update delays.
+  * Add up to three spatial guides for CTL scripts and an option to
+    preserve detail; support additional SpektraFilm Rust LUTs and an
+    option to disable external CLUT disk caching.
+  * Add ARTlist.txt support for ordering LUTs and CTL scripts, and
+    selecting and ordering user commands and custom image handlers.
+  * Speed up cropped CLI processing, LUT interpolation, monitor color
+    conversion, capture sharpening and Exif vignetting correction.
+  * Read Sony lens correction tables with Exiv2, falling back to
+    exiftool; update camera matrices and white balance presets.
+  * Fix batch queue state restoration after an error, directory reloads,
+    mask shortcuts and stale editor markers in the file browser.
+  * Add ART-dialogs for user commands, CLI help and unknown option
+    handling, and improve folder icons and selected row visibility.
+  * Update translations and fix builds with older libtiff and on
+    non-SIMD systems.
+- Refresh fix-missing-lm.patch.
+- Drop fix-LUT3D-nonSIMD-redeclaration.patch and
+  fix-install-art-utils.patch, fixed upstream.
+</comment>
+    <requestid>1396902</requestid>
+  </revision>
 </revisionlist>

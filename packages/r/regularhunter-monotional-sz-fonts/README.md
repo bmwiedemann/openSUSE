@@ -2,7 +2,7 @@
 
 # Monotional
 
-### Version 2.10
+### Version 3.0
 
 https://github.com/regularhunter/monotional-font
 
@@ -35,6 +35,11 @@ Bitstream Vera Sans Mono).
 
 See the [latest release](https://github.com/regularhunter/monotional-font/releases) 
 for more information.
+
+**v3.0**
+
+* Full Vietnamese support thanks to [Dinh Quoc Han](https://github.com/dinhquochan)
+* Add OTF version for low dpi displays on Windows
 
 **v2.10**
 
@@ -167,6 +172,9 @@ registered trademarks of their respective owners.
 To Jim Lyles and Bitstream for the Bitstream Vera family of fonts.
 
 To André Berg for Meslo and inspiring some of the changes in Monotional.
+
+To [Dinh Quoc Han](https://github.com/dinhquochan) for complete Vietnamese 
+support.
 
 To [bentodvictor](https://github.com/bentodvictor) for the Nerd Font 
 patched versions of Monotional.

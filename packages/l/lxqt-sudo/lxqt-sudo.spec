@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-sudo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-sudo
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        GUI frontend for sudo
 License:        LGPL-2.1-only
@@ -26,15 +26,15 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 
 BuildRequires:  cmake(KF6WindowSystem) >= 6.0.0
-BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(lxqt) >= 2.1.0
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
-BuildRequires:  cmake(Qt6LinguistTools) >= 6.6
-BuildRequires:  cmake(Qt6Widgets) >= 6.6
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.10.0
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.10.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 Requires:       sudo
 

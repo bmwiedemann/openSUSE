@@ -16,17 +16,17 @@
 #
 
 Name: cockpit-packages
-Version: 5
+Version: 6
 Release: 0%{?dist}
 Summary: A cockpit module for (un)installing packages
 License: LGPL-2.1-or-later
 
 Source:         %{name}-%{version}.tar.xz
 Source10:       package-lock.json
-Source11:       node_modules.spec.inc
+#!CreateArchive
+Source11:       node_modules.tar.gz
 Patch10:        load-css-overrides.patch
 Patch11:        esbuild-ppc64.patch
-%include %_sourcedir/node_modules.spec.inc
 BuildArch: noarch
 %if ! 0%{?suse_version}
 ExclusiveArch: %{nodejs_arches} noarch
@@ -46,7 +46,7 @@ BuildRequires: gettext
 BuildRequires: libappstream-glib-devel
 %endif
 BuildRequires: local-npm-registry
-BuildRequires: cockpit-devel >= 337
+BuildRequires: cockpit-devel >= 370
 
 Requires: cockpit-bridge
 Requires: PackageKit
@@ -60,7 +60,7 @@ A cockpit module for (un)installing packages
 %patch -P 11 -p1
 rm -rf node_modules
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
+local-npm-registry %{_sourcedir}/node_modules install --include=dev --ignore-scripts
 
 %build
 mkdir -p pkg

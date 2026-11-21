@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Tue Nov 17 11:16:42 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.35.0
+  * serve: BREAKING: parse multipart/form-data per RFC
+    7578 (#1176)
+  * npu: run EmbeddingGemma 2, Qwen3-ASR and Qwen3-TTS
+    on the XDNA NPU (--npu) (#1216)
+  * npu: run XDNA programs through XRT from core and
+    extensions (#1186)
+  * npu: load XRT from a module on first NPU use
+    on Linux (#1229)
+  * npu: cut host overhead of EmbeddingGemma 2 (#1225)
+  * model: download extension-provided model weights with
+    gufo model (#1203)
+  * ext: trim reasoning separator after a closed block
+    (#1210)
+  * qwen-image: true CFG, image-to-image and
+    multi-reference CFG edits in GPU memory (#1212)
+  * sched: require a text scheduling profile and drop
+    the legacy prefill budget (#1175)
+  * serve: add the A1111 (sdapi) image API (#1214)
+  * serve: do not split prefill passes without prefix
+    reuse (#1184)
+  * serve: make --max-pending 0 reject when all sessions
+    are busy (#1207)
+  * cache: count recovered manifest storage once and
+    coordinate RAM and disk retention (#1183, #1194)
+  * cache: reuse dependency metadata during recovery,
+    share transfer streams and sync disk checkpoints
+    concurrently (#1195, #1196, #1205)
+  * hip: match Clang 23 WMMA builtin signatures on
+    gfx1151 (#945)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.35.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Nov 12 07:45:17 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.34.0
+  * audio: BREAKING: decode EmbeddingGemma 2 audio in
+    Rust and drop libsndfile and soxr (#1118)
+  * cli: deprecate --draft-tokens, --min-draft-tokens
+    and --draft-policy (#1124)
+  * extensions: record source revision of external
+    extensions (#1162)
+  * h3: add FL2VA first- and last-frame keyframe
+    conditioning (#998)
+  * cache: drop disk-only metadata admission limits and
+    size validation by candidate (#934, #1121)
+  * ext: install sources containing file symlinks (#1151)
+  * qwen38-flash-next: recover stale MTP backoff after
+    batch observations (#912)
+  * serve: continue live frontier after re-tokenized
+    answers (#1154, #1158)
+  * serve: deprecate unused shared-byte cache metric (#1129)
+  * serve: do not charge prompt state for preallocated
+    session runners (#1164)
+  * serve: refuse prompts exceeding host prompt-state
+    budget (#1083)
+  * serve: return tool-call numbers as the model wrote
+    them (#1146)
+  * tools: cap JSON numbers at llama.cpp 16 digits (#1168)
+  * tools: match llama.cpp nested object defaults (#1128)
+  * core: reduce CPU overhead in sampling and n-gram
+    lookups (#1127)
+  * qwen38: reuse Q8 activations from batched HC mixing
+    (#958)
+  * qwen: fuse batched target FFN HC pair (#969)
+  * serve: parse WebSocket frames and base64 in Rust (#1149)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.34.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Tue Nov 10 07:52:51 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.33.0
+  * ext: add image provider startup options and request
+    capability validation (#1050)
+  * ext: let component caches set their transfer stream
+    count (#1108)
+  * cache: keep snapshot copies inside one host
+    registration (#1117)
+  * cache: let optional copies displace conversations
+    unused for one record turnover (#1104)
+  * ds4: keep DSpark greedy output equal to plain
+    decoding (#1105)
+  * qwen38-flash-next: measure the decode shared-expert
+    overlap before using it (#1107)
+  * ds4: faster DeepSeek V4 Flash decode from two HC
+    kernel changes (#1106)
+  * audio: decode WAV with one Rust decoder for serve,
+    Qwen3-ASR and Qwen3-TTS (#1110)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.33.0
+- Updated to version 0.32.0
+  * split prompt passes by layers so other sessions keep
+    decoding across ds4, ext, qwen27b and qwen38-flash-next
+    (#1039, #1042, #1079, #1080)
+  * ext: add optional text hidden-state encoding to text
+    runners (#1073)
+  * ext: deliver declared provider options to text runners
+    and commands (#1046)
+  * ext: experiment with extensions built as loadable
+    modules (#1077)
+  * ext: let text providers declare their speculation
+    defaults (#1047)
+  * ext: let text runners see the whole prompt end during
+    prefill (#1069)
+  * ext: open GGUF tensors core cannot size for providers
+    that accept them (#966)
+  * serve: add llama-server's /tokenize (#1082)
+  * server: deprecate --prefill-chunk now that prompts
+    beside decoders are split by layers (#1095)
+  * json: accept annotation keywords and general type
+    unions in strict tool schemas (#1052, #1059)
+  * sampling: end a reasoning budget when the constraint
+    grammar leaves reasoning (#1064)
+  * serve: refuse a RAM cache the host cannot hold with the
+    remedies instead of bad_alloc (#1063)
+  * ds4: build the Q8 to F16 weight cache in one pass so
+    output never depends on free memory (#1045)
+  * ds4: faster DeepSeek V4 Flash decode at long context
+    (#1062)
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Fri Nov  6 10:30:52 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.31.0
+  * cache: add window-row components for sliding-window
+    attention (#1010)
+  * ext: add public link targets for extension
+    executables (#1032)
+  * ext: keep indivisible prompt spans whole across
+    prefill stops and checkpoints (#1011)
+  * ext: let text providers declare their reasoning
+    delimiters (#1008)
+  * ext: let text providers register native tool
+    dialects (#1013)
+  * ext: let text providers supply sampling defaults
+    and restore them in prompt and chat (#1009)
+  * gguf: open tensorless split shards that end without
+    data padding (#1021)
+  * ext: make the component cache the only continuation
+    contract (#1026)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.31.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Nov  5 07:43:57 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.30.0
+  * cache: migrate DeepSeek V4 Flash to the component
+    cache (#1003)
+  * cache: remove the legacy continuation cache (#1014)
+  * ext: add a public link target for the component
+    cache (#1006)
+  * json: keep tool argument schemas beside arrays
+    without items (#1012)
+  * qwen38-flash-next: end capacity-limited prefill
+    steps on the selection block (#1016)
+  * qwen38-flash-next: capture prompt checkpoints
+    inside prefill passes without splitting them (#963)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.30.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Nov  4 17:59:13 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.29.0
+  * core: open IQ2_XS, IQ2_S, IQ3_XXS, IQ1_S and IQ1_M
+    tensors and dequantize every GGML block format (#930)
+  * image: support Qwen Image 2.1 Turbo generation and
+    editing (#784)
+  * embedding: select the EmbeddingGemma 2 video frame
+    budget per request (#888)
+  * extensions: add source extension infrastructure and
+    separate model execution (#911)
+  * extensions: migrate speech, audio, image, and video
+    models to extensions (#931)
+  * extensions: publish public API surface (#922)
+  * extensions: add realtime speech, speak and decision
+    contracts (#942)
+  * qwen38-flash-next: read Q8_0 PLE n-gram tables (#884)
+  * qwen38-flash-next: scale YaRN with the context a
+    session holds (#905)
+  * serve: drop API-key auth, accept model aliases in
+    every modality, answer GET / with health (#957)
+  * serve: report completion_tokens_details.reasoning_tokens
+    on chat completions (#915)
+  * tts: declare voice and reference conditioning
+    capabilities independently of Qwen variants (#984)
+  * cache: align Flash-Next prefill and keep disk readahead
+    progressing (#877)
+  * ds4: default the served context to the GGUF native
+    length (#946)
+  * ds4: keep caller text out of DeepSeek control tokens (#691)
+  * qwen38-flash-next: restore serving concurrency (#953)
+  * qwen38-flash-next: keep cached requests alive without
+    snapshot device headroom and return to 4,096-row
+    prefill passes (#954)
+  * serve: ignore unknown request fields on embeddings,
+    audio, image and video routes (#968)
+  * serve: mark realtime responses active before
+    announcing them (#999)
+  * tts: use provider output sample rates in streaming
+    metadata and metrics (#983)
+  * ds4: faster DeepSeek V4 Flash decode, top-p sampling
+    and unaligned resumed prefill (#897)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.29.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Mon Nov  2 07:35:39 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.28.1
+  * qwen38-flash-next: prefill rows independent of pass route (#875)
+  * qwen38-flash-next: end MTP chain at first unconfident draft (#882)
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.28.1
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Fri Oct 30 14:30:24 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 0.28.0

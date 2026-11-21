@@ -48,9 +48,11 @@ BuildRequires:  rrdtool-devel
 BuildRequires:  systemd-rpm-macros
 %if 0%{?suse_version} >= 1600
 BuildRequires:  perl-Test-Cmd
+%ifnarch %arm32 %ix86 %s390
 # qemu does not support PR_SET_PTRACER
 %if !0%{?qemu_user_space_build}
 BuildRequires:  valgrind
+%endif
 %endif
 %endif
 Requires:       modutils

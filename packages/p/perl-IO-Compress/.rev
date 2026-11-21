@@ -188,4 +188,32 @@
         8ed0a2ab1a9ce4e9048b2d90dc857ae3cbca0119</comment>
     <requestid>1376887</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>73c3dfea75e4414f8d4845cb87196fbd</srcmd5>
+    <version>2.225.0</version>
+    <time>1794090796</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.225.0 (2.225)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+    2.225 9 October 2026
+      * update to version 2,225
+        Fri Oct 9 15:32:13 2026 +0100
+        ad11c5d0913e697572987e9c1bfc49b59743dee3
+      * Update email address
+        Fri Oct 9 14:12:19 2026 +0100
+        08b77153277feaee4aa8f29778470b97983e19ca
+      * Fix inefficient and unbounded code for reading gzip Name &amp; Comment fields #86
+        Fri Oct 9 13:58:14 2026 +0100
+        cdc16a0607c97c457d49fcf23d9f28a049dc05de
+      * add newStreamHook #84
+        Fri Oct 9 11:49:22 2026 +0100
+        d283b082186ec57fb11bd693f7ccca762d567c96
+      * Fix typo
+        Fri Sep 4 00:08:27 2026 +0100
+        f6755650cc4ac1e2e34502ee5db1f9c855215976
+      * Fix typo in Changes file
+        Fri Aug 28 12:32:14 2026 +0100
+        bd72147253d077e10157c4696e9d11b135762a4e</comment>
+    <requestid>1396022</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 19:53:15 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- add transmission-2246.patch: allow transmission to lock its
+  lockfile (boo#1289007)
+
+-------------------------------------------------------------------
 Tue Oct 20 10:44:04 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Pass the distribution build flags to the plain make builds of the

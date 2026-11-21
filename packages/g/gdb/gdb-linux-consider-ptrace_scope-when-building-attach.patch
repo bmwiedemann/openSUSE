@@ -1,8 +1,8 @@
-From 8ccd5d75d4241e795624dde7622be0d0aa0b4845 Mon Sep 17 00:00:00 2001
+From 9f4424941a50b31f47e2f111fe61abb7c4058967 Mon Sep 17 00:00:00 2001
 From: Andrew Burgess <aburgess@redhat.com>
 Date: Wed, 10 Sep 2025 14:54:21 +0100
-Subject: [PATCH] gdb/linux: consider ptrace_scope when building attach error
- message
+Subject: [PATCH 55/55] gdb/linux: consider ptrace_scope when building attach
+ error message
 
 On GNU/Linux, if an attach fails, then we end up calling
 linux_ptrace_attach_fail_reason, which returns a string describing why
@@ -69,13 +69,13 @@ Reviewed-By: Guinevere Larsen <guinevere@redhat.com>
  1 file changed, 41 insertions(+)
 
 diff --git a/gdb/nat/linux-ptrace.c b/gdb/nat/linux-ptrace.c
-index f90183b63ec..1f72936992e 100644
+index f73058be2eb..7df85c1c87f 100644
 --- a/gdb/nat/linux-ptrace.c
 +++ b/gdb/nat/linux-ptrace.c
-@@ -23,12 +23,46 @@
- #include <sys/procfs.h>
+@@ -24,12 +24,46 @@
  #endif
  #include "gdbsupport/eintr.h"
+ #include "gdbsupport/signals-state-save-restore.h"
 +#include "gdbsupport/gdb_file.h"
  
  /* Stores the ptrace options supported by the running kernel.
@@ -119,7 +119,7 @@ index f90183b63ec..1f72936992e 100644
  /* Find all possible reasons we could fail to attach PID and return these
     as a string.  An empty string is returned if we didn't find any reason.  */
  
-@@ -43,6 +77,13 @@ linux_ptrace_attach_fail_reason (pid_t pid)
+@@ -44,6 +78,13 @@ linux_ptrace_attach_fail_reason (pid_t pid)
  		    _("process %d is already traced by process %d"),
  		    (int) pid, (int) tracerpid);
  
@@ -133,8 +133,6 @@ index f90183b63ec..1f72936992e 100644
    if (linux_proc_pid_is_zombie_nowarn (pid))
      string_appendf (result,
  		    _("process %d is a zombie - the process has already "
-
-base-commit: 56eebf7c018ddbb104cb59c53f1fa0aa34861981
 -- 
 2.51.0
 

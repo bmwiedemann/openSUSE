@@ -519,4 +519,15 @@ It is a dependency of the spyder python graphical environment, besides by a usef
   * Update handling of TypedDict(...) for python 3.13 changes</comment>
     <requestid>1392674</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5df2ce53aeb5372ef57126c7ebef4ee4</srcmd5>
+    <version>4.1.0</version>
+    <time>1794317892</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * Drop support for EOL python 3.10
+  * Significant performance improvements
+  * Fix handling of Literal and Annotated for lazy imports</comment>
+    <requestid>1396168</requestid>
+  </revision>
 </revisionlist>

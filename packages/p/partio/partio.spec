@@ -27,6 +27,8 @@ Summary:        Library for reading/writing/manipulating common animation partic
 License:        BSD-3-Clause
 URL:            https://github.com/wdas/%{name}
 Source:         https://github.com/wdas/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM partio-swig-py3.patch -- modernize SWIG interface to Python 3
+Patch0:         partio-swig-py3.patch
 BuildRequires:  %{pyver}-devel
 BuildRequires:  cmake >= 3.15
 BuildRequires:  doxygen

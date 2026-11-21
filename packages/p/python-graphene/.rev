@@ -134,4 +134,13 @@
 - Remove patch support-pytest-8.patch, included upstream.</comment>
     <requestid>1223493</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>16d5a78a2ee7c8281099a4f8a6bae9ee</srcmd5>
+    <version>3.4.3</version>
+    <time>1794932429</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-graphql-core-3.3.patch:
+  * Support changes required by graphql-core 3.3.</comment>
+    <requestid>1398027</requestid>
+  </revision>
 </revisionlist>

@@ -27,4 +27,12 @@ Green on x86_64 and aarch64 across Tumbleweed, Slowroll and Leap
     <comment>Update tilth to 0.12.0</comment>
     <requestid>1386211</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c1ac36e83072f5e142f5a2ce726d2876</srcmd5>
+    <version>0.13.0</version>
+    <time>1794411034</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.13.0</comment>
+    <requestid>1396896</requestid>
+  </revision>
 </revisionlist>

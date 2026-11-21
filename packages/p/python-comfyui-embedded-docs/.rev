@@ -92,4 +92,20 @@ counts exactly 1018 node directories, and no file ships executable.</comment>
     <comment>Update python-comfyui-embedded-docs to 0.5.15.</comment>
     <requestid>1392933</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>33d20672fe37cc62eacb88ae5b04c242</srcmd5>
+    <version>0.5.16</version>
+    <time>1793818005</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-embedded-docs to 0.5.16</comment>
+    <requestid>1394857</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>be5fcf27c178998caffe064e526b3590</srcmd5>
+    <version>0.5.17</version>
+    <time>1794816529</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-embedded-docs to 0.5.17: new node docs, Seedance deprecations, translation refresh.</comment>
+    <requestid>1397671</requestid>
+  </revision>
 </revisionlist>

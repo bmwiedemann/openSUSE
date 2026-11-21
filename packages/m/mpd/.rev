@@ -971,4 +971,13 @@
   * supported Zeroconf with systemd socket activation</comment>
     <requestid>1374717</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>13597ccdce4291d5e95cbdd2213c23d7</srcmd5>
+    <version>0.24.19</version>
+    <time>1794816552</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 0.24.19
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.19/NEWS</comment>
+    <requestid>1397475</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov  6 07:15:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.1
+  Build
+  * require dnspython 2.9.2, drop direct cryptography.
+  Bug Fixes
+  * escape reverse DNS names in hop lines.
+  * escape text from the whois service.
+  * don't report every DoH connect failure as refused.
+  * stop loading whois.cache from the working directory.
+  * send the server name on encrypted transports.
+  * escape server-supplied text and handle non-UTF-8 NSID.
+
+-------------------------------------------------------------------
 Sat Oct 17 09:16:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix requirements

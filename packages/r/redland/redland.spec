@@ -1,7 +1,7 @@
 #
 # spec file for package redland
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,27 @@
 #
 
 
-%bcond_with perl
-
-Name:           redland
 %define lname	librdf0
+%bcond_with perl
+Name:           redland
 Version:        1.0.17
 Release:        0
 Summary:        Libraries that provide support for the Resource Description Framework (RDF)
 License:        Apache-2.0 AND LGPL-2.1-or-later
 Group:          System/Libraries
-URL:            http://www.librdf.org
-
-Source0:        http://download.librdf.org/source/%{name}-%{version}.tar.gz
+URL:            https://www.librdf.org
+Source0:        https://download.librdf.org/source/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-%if 0%{?suse_version} >= 1210
-# PATCH-MISSING-TAG -- See http://wiki.opensuse.org/openSUSE:Packaging_Patches_guidelines
 Patch1:         redland-ocloexec.patch
-%endif
 Patch2:         redland-db6.diff
 Patch3:         redland-postgresql.patch
 Patch4:         redland-fix-tests.patch
+Patch5:         redland-stack-overflow-fix.patch
+Patch6:         redland-raptor-stringbuffer-copy.patch
 BuildRequires:  autoconf
 BuildRequires:  db-devel
 BuildRequires:  librasqal-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  sqlite-devel
 
@@ -54,19 +51,19 @@ developers to start with.
 %package -n libredland-devel
 Summary:        Development package for programs that use Redland
 Group:          Development/Libraries/C and C++
-Requires:       %lname = %version
+Requires:       %{lname} = %{version}
 
 %description -n libredland-devel
 Files needed to develop with the Redland RDF library.
 
-%package -n %lname
+%package -n %{lname}
 Summary:        Libraries that provide support for the Resource Description Framework (RDF)
 Group:          System/Libraries
 # Added for 13.1 time
-Obsoletes:      libredland0 < %version-%release
-Provides:       libredland0 = %version-%release
+Obsoletes:      libredland0 < %{version}-%{release}
+Provides:       libredland0 = %{version}-%{release}
 
-%description -n %lname
+%description -n %{lname}
 Redland is a library that provides a high-level interface for RDF
 (Resource Description Framework) implemented in an object-based API. It
 is modular and supports different RDF parsers, serializers, storage and
@@ -85,19 +82,7 @@ including contexts.
 
 %prep
 
-%setup -q
-%if 0%{?suse_version} >= 1210
-%patch -P 1 -p1
-%endif
-%patch -P 3
-#
-# If multiple libdb-X.Y.so are installed, redland's logic in configure.ac picks
-# the library by the numbers it knows (and it may not know future versions!),
-# but will use any available headers. This can lead to it choosing some random
-# libdb-X.Y.so that does not match up with the headers, for linking.
-#
-%patch -P 2 -p1
-%patch -P 4 -p1
+%autosetup -p1
 
 %build
 autoconf
@@ -111,53 +96,45 @@ autoconf
   --disable-static \
   --with-html-dir=%{_docdir}/%{name}-devel/ \
   --includedir=%{_includedir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR="%buildroot" docdir=%{_docdir}/%{name}-devel/
-rm -f %{buildroot}%{_libdir}/librdf*.la
-rm -f %{buildroot}%{_libdir}/redland/librdf_storage_postgresql.la
+make install DESTDIR=%{buildroot} docdir=%{_docdir}/%{name}-devel/
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
 %if 0%{?suse_version} > 1030
 export MALLOC_CHECK_=2
-make check
+%make_build check
 unset MALLOC_CHECK_
 %endif
 
-%post -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{lname}
 
-%postun -n %lname -p /sbin/ldconfig
-
-%files -n %lname
-%defattr(-, root, root)
+%files -n %{lname}
 %{_libdir}/librdf.so.*
 
 %files -n libredland-devel
-%defattr(-, root, root)
 %{_bindir}/redland-config
 %{_libdir}/librdf.so
 %{_libdir}/pkgconfig/redland.pc
 %dir %{_libdir}/redland
-%{_libdir}/redland/librdf_storage_sqlite.la
 %dir %{_datadir}/%{name}/
 %{_datadir}/%{name}/Redland.i
 %{_includedir}/%{name}/
-%{_mandir}/man1/redland-config.1*
-%{_mandir}/man3/redland.3*
+%{_mandir}/man1/redland-config.1%{?ext_man}
+%{_mandir}/man3/redland.3%{?ext_man}
 %doc %{_docdir}/%{name}-devel/
 
 %files -n redland-storage-postgresql
-%defattr(-, root, root)
 %{_libdir}/redland/librdf_storage_postgresql.so
 
 %files
-%defattr(-, root, root)
 %{_bindir}/rdfproc
 %{_bindir}/redland-db-upgrade
 %{_libdir}/redland/librdf_storage_sqlite.so
-%{_mandir}/man1/redland-db-upgrade.1*
-%{_mandir}/man1/rdfproc.1*
+%{_mandir}/man1/redland-db-upgrade.1%{?ext_man}
+%{_mandir}/man1/rdfproc.1%{?ext_man}
 %license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
 %doc AUTHORS ChangeLog NEWS README NOTICE
 

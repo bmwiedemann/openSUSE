@@ -48,6 +48,7 @@ Patch0007:  0001-compat-test-for-pfn_t.patch
 Patch1001:  bsc-1025089_fix-resync-finished-with-syncs-have-bits-set.patch
 Patch1002:  bsc-1271076-drbd-consider-resync-after-peer-forced-Primary-from-.patch
 Patch1003:  suse-coccinelle.patch
+Patch1004:  0001-drbd-drbd_nl-include-umh.h-for-call_usermodehelper.patch
 
 ########################
 

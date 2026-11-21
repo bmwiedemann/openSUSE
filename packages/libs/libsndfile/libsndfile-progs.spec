@@ -32,6 +32,7 @@ Patch3:         libsndfile-CVE-2025-56226.patch
 Patch4:         sndfile-convert-CVE-2025-56226.patch
 Patch10:        libsndfile-CVE-2022-33065-2.patch
 Patch11:        libsndfile-CVE-2026-88386.patch
+Patch13:        libsndfile-CVE-2026-109828.patch
 # not merged yet to the upstream
 Patch5:         libsndfile-CVE-2025-52194.patch
 Patch6:         libsndfile-CVE-2026-37555.patch

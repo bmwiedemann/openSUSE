@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Too many changes since 6.31.0, only listing bugfixes:
+  * [baloosearch] Add option to list supported properties for a query (kde#334552)
+  * [baloosearch] Add option to list supported values for type option (kde#364078)
+- Drop patch:
+  * 0001-service-do-not-start-too-early.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 18:12:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix occasional crashes on login:

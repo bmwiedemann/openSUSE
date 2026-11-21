@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:02:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass --without-plutosdr: urh does not support the libiio 1.0 C API.
+
+-------------------------------------------------------------------
+Tue Nov 17 14:40:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Switch from python3-Cython0 to python3-Cython: NumPy 2.x headers
+  require Cython 3.0+ and urh 2.10.0 supports Cython 3.
+
+-------------------------------------------------------------------
 Wed Dec 17 19:20:45 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.10.0

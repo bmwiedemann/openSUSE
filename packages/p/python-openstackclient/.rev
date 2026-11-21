@@ -824,4 +824,34 @@ update to version 3.1.0
   * tests: Move assert helpers to utils.TestCommand</comment>
     <requestid>1376138</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>a382d37066bb254392e3b98795cb1df9</srcmd5>
+    <version>10.5.0</version>
+    <time>1795023001</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.5.0:
+  * Identity: Fix federation protocol create and set SDK args
+  * Fix grammar in some network code
+  * Add device enable/disable commands and status field
+  * vpnaas: Re-add encryption algorithms
+  * typing: Enable stricter checks
+  * volume: Fix volume attachments list query options handling
+  * tests: Drop testing for address scope shared attribute
+  * Rename and deprecate legacy options in accelerator commands
+  * Normalize additional server list columns
+  * volume: Add 'volume group add/remove volume' commands
+  * Add functional tests and Zuul job for accelerator commands
+  * Migrate accelerator commands from python-cyborgclient
+  * Add router option to floating IP create and set commands
+  * vpnaas: Remove deprecated sha1 and 3des algorithms
+  * Migrate 'endpoint group' commands to SDK
+  * image: add --store-preference to &quot;image save&quot;
+  * Update master for stable/2026.2
+  * Network: Add onboard_network_subnets
+  * bump minimum version of openstacksdk
+  * Network: Simplify ip_availability_details access
+  * volume: Replace server arg for volume attachment create
+  * Add a &quot;cloud cache delete&quot; command</comment>
+    <requestid>1398186</requestid>
+  </revision>
 </revisionlist>

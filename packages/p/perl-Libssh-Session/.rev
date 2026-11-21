@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1183469</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>50f0730b829d1eecc484c744280075a6</srcmd5>
+    <version>1.200.0</version>
+    <time>1793725192</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.200.0 (1.2)
+   see /usr/share/doc/packages/perl-Libssh-Session/Changes</comment>
+    <requestid>1394679</requestid>
+  </revision>
 </revisionlist>

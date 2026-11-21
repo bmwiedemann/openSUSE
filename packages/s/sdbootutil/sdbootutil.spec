@@ -55,7 +55,7 @@ fi									\
 %{nil}
 
 Name:           sdbootutil
-Version:        1+git20261026.4e266f0
+Version:        1+git20261111.77a75dc
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -229,6 +229,7 @@ install -D -m 755 module-setup.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50
 install -D -m 755 measure-pcr-generator.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-generator.sh
 install -D -m 755 measure-pcr-validator.sh %{buildroot}%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-validator.sh
 install -D -m 644 measure-pcr-validator.service %{buildroot}/%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-validator.service
+install -D -m 644 measure-pcr-pcrextend.conf %{buildroot}/%{_prefix}/lib/dracut/modules.d/50measure-pcr/measure-pcr-pcrextend.conf
 
 # tmpfiles
 install -Dpm 0644 %{name}.conf %{buildroot}%{_tmpfilesdir}/%{name}.conf

@@ -1,7 +1,7 @@
 #
 # spec file for package innotop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           innotop
-Version:        1.15.2
+Version:        1.16.0
 Release:        0
 Summary:        A MySQL and InnoDB monitor program
 License:        GPL-2.0-only
-Group:          Productivity/Databases/Tools
 URL:            https://github.com/innotop/innotop/
 Source0:        https://github.com/innotop/innotop/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  perl(DBD::mysql)

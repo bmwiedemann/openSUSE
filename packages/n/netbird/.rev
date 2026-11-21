@@ -623,4 +623,43 @@
     <comment>1</comment>
     <requestid>1393650</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>12a5525bdc0c4902238a24e83c69c536</srcmd5>
+    <version>0.83.1</version>
+    <time>1794820272</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1397794 from holden
+
+Update to 0.83.1 and reenable building netbird-ui
+- Refresh service-install-change.patch
+- Comment out skip-ui.patch from series for now
+  * It may prove untenable to maintain the new netbird wails GUI
+    over time, so I want to keep things in place to fall back easily
+    if needed, while still leaving the build in a somewhat sane and
+    obvious state.
+- New failing test disabled--incompatible with OBS:
+  * TestDaemonConnectError_KeepsServiceHintOtherwise
+- Renamed GUI package from netbird-applet to netbird-ui to align
+  with upstream--makes sense to do it now that we're reenabling with
+  the new full-featured UI
+  * Also keep netbird-applet package obsoleted just in case, since
+    it will conflict with netbird-ui (binary in both cases is named
+    netbird-ui)--netbird-applet has already been &quot;obsoleted&quot; since
+    v0.76.1, when the new UI initially had to be disabled due to
+    build failures
+
+- Update to 0.83.1:
+  * 499a86f [client] Fall back during user lookup on windows (#8591)
+- Update to 0.83.0:
+  Maintainer comment:
+  - Lots of formatting and links to new documentation in this
+    version. Highly recommend visiting the upstream release notes
+    for details: 
+    * https://github.com/netbirdio/netbird/releases/tag/v0.83.0
+  ⚠️ Breaking changes: profile ownership and daemon access
+    control
+  - Each profile now has an owner, and local users can control only
+    their own profiles as the daemon has a new IPC authorization</comment>
+    <requestid>1397803</requestid>
+  </revision>
 </revisionlist>

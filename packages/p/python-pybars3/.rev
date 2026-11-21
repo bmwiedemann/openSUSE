@@ -26,4 +26,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282606</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>fd684351c83d8f0f29befbe9b5a5a523</srcmd5>
+    <version>0.9.7</version>
+    <time>1794236704</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-119716: avoid code injection via bracketed paths (bsc#1289150)
+  * Add patch CVE-2026-119716.patch</comment>
+    <requestid>1396213</requestid>
+  </revision>
 </revisionlist>

@@ -33,4 +33,16 @@
   * Updated handbook and translations. (forwarded request 1384479 from Kieltux)</comment>
     <requestid>1384856</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>63c14be64e0aba35f67c6ffc9f0c8370</srcmd5>
+    <version>4.0.8</version>
+    <time>1794162104</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.8
+  * Fix the ability to edit and save the IP address and the
+    workgroup/domain for custom settings
+  * Do not allow mounting of shares named '.' and when the mount
+    point is a symlink (kde#528097)</comment>
+    <requestid>1396085</requestid>
+  </revision>
 </revisionlist>

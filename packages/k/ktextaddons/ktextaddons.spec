@@ -19,6 +19,8 @@
 %define kf6_version 6.20.0
 %define qt6_version 6.8.0
 
+%define ktextaddons_soversion %(echo "%{version}" | sed -e "s/\\./_/g")
+
 %bcond_without released
 Name:           ktextaddons
 Version:        2.2.0
@@ -26,12 +28,14 @@ Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz
 %if %{with released}
 Source1:        https://download.kde.org/stable/ktextaddons/%{name}-%{version}.tar.xz.sig
 # https://invent.kde.org/sysadmin/release-keyring/-/blob/master/keys/mlaurent@key1.asc?ref_type=heads
 Source2:        ktextaddons.keyring
 %endif
+# PATCH-FIX-OPENSUSE / PATCH-FIX-UPSTREAM
+Patch0:         0001-Bump-soversion-for-each-release.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Remove-default-destructor-which-allows-to-use.patch
 BuildRequires:  fdupes
@@ -62,20 +66,23 @@ text to speech and translations.
 
 %lang_package
 
-%package -n libKF6TextAddons1
+%package -n libKF6TextAddons%{ktextaddons_soversion}
 Summary:        Text addons libraries
 Requires:       (ktextaddons = %{version} if kmail)
 Recommends:     ktextaddons = %{version}
+# The patch to update soname was added after 2.2.0 release
+Provides:       libKF6TextAddons1 = 2.2.0
+Obsoletes:      libKF6TextAddons1 <= 2.2.0
 # translation package was renamed
 Obsoletes:      ktextaddons-lang < %{version}
 
-%description -n libKF6TextAddons1
+%description -n libKF6TextAddons%{ktextaddons_soversion}
 KTextAddons provides libraries to work with texts, such as grammar checks,
 text to speech and translations.
 
 %package devel
 Summary:        Development files for ktextaddons, a library for handling texts
-Requires:       libKF6TextAddons1 = %{version}
+Requires:       libKF6TextAddons%{ktextaddons_soversion} = %{version}
 Requires:       cmake(KF6ColorScheme) >= %{kf6_version}
 Requires:       cmake(KF6Config) >= %{kf6_version}
 Requires:       cmake(KF6CoreAddons) >= %{kf6_version}
@@ -107,10 +114,13 @@ This package provides development files to use ktextaddons in other applications
 
 %fdupes %{buildroot}
 
+# E: env-script-interpreter
+sed -i 's#env python3#python3#' %{buildroot}%{_kf6_bindir}/*.py
+
 %find_lang %{name} --all-name
 
 %ldconfig_scriptlets
-%ldconfig_scriptlets -n libKF6TextAddons1
+%ldconfig_scriptlets -n libKF6TextAddons%{ktextaddons_soversion}
 
 %files
 %{_kf6_bindir}/whisper_helper.py
@@ -141,7 +151,7 @@ This package provides development files to use ktextaddons in other applications
 
 %files lang -f %{name}.lang
 
-%files -n libKF6TextAddons1
+%files -n libKF6TextAddons%{ktextaddons_soversion}
 %license LICENSES/*
 %{_kf6_libdir}/libKF6TextAddonsWidgets.so.*
 %{_kf6_libdir}/libKF6TextAutoCorrectionCore.so.*

@@ -36,7 +36,7 @@
 %endif
 
 Name:           pdns-recursor
-Version:        5.2.5
+Version:        5.4.8
 Release:        0
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -94,8 +94,8 @@ Provides:       bundled(yahttp)
 
 #
 URL:            https://www.powerdns.com/
-Source:         https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2
-Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.bz2.sig
+Source:         https://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz
+Source10:       https://downloads.powerdns.com/releases/%{name}-%{version}.tar.xz.sig
 # on https://docs.powerdns.com/recursor/security.html but 404 right now, emailed them
 Source11:       %{name}.keyring
 Source1:        pdns-recursor.init
@@ -105,8 +105,8 @@ Source3:        vendor.tar.zst
 Source99:       series
 Patch1:         boost_context.patch
 Patch2:         cargo_build_fix.patch
-# PATCH-FIX-OPENSUSE - use version 58 of boost.m4
-Patch3:         boost-m4-39.patch
+# PATCH-FIX-UPSTREAM bsc#1272421 CVE-2026-52684 https://github.com/PowerDNS/pdns/pull/17748
+Patch3:         CVE-2026-52684.patch
 #
 Summary:        Modern, advanced and high performance recursing/non authoritative nameserver
 License:        GPL-2.0-or-later
@@ -122,15 +122,11 @@ Authors:
     http://www.powerdns.com
 
 %prep
-%autosetup -p1
-pushd settings/rust
-tar --zstd -xf %{SOURCE3}
-popd
+%autosetup -p1 -a3
 
 %build
 export CXX=g++%{?compiler_ver}
 autoreconf -fi
-ln effective_tld_names.dat effective_tld_list.dat
 %configure                           \
   --enable-reproducible              \
   --disable-silent-rules             \
@@ -143,7 +139,6 @@ ln effective_tld_names.dat effective_tld_list.dat
   --with-socketdir=%{_rundir}        \
   --with-service-user=pdns           \
   --with-service-group=pdns
-cd settings; /usr/bin/python3 generate.py
 make %{?_smp_mflags}
 
 %install

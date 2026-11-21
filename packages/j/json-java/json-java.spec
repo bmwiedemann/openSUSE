@@ -1,7 +1,7 @@
 #
-# spec file for package jmulticard
+# spec file for package json-java
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           json-java
-Version:        20240303
+Version:        20260814
 Release:        0
 Summary:        JSON in Java
 License:        JSON
@@ -42,7 +42,7 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q
-%pom_remove_plugin :nexus-staging-maven-plugin
+%pom_remove_plugin :central-publishing-maven-plugin
 %pom_remove_plugin :maven-source-plugin
 %pom_remove_plugin :maven-javadoc-plugin
 
@@ -51,7 +51,6 @@ This package contains the API documentation for %{name}.
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
     -Dmaven.compiler.release=8 \
 %endif
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
     -Dsource=8
 
 %install

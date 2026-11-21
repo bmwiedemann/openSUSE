@@ -1,7 +1,7 @@
 #
 # spec file for package libcerf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Christoph Junghans <junghans@votca.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +18,17 @@
 
 
 Name:           libcerf
-Version:        2.4
+Version:        3.7
 Release:        0
 Summary:        A library that complex error functions
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://jugit.fz-juelich.de/mlz/libcerf
-Source0:        https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v%{version}/%{name}-v%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix_return.patch fix return value in one function
-Patch1:         fix_return.patch
+Source0:        https://jugit.fz-juelich.de/mlz/libcerf/-/archive/v%{version}/cerf-v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 %description
@@ -36,11 +36,11 @@ libcerf is a self-contained numeric library that provides an efficient and
 accurate implementation of complex error functions, along with Dawson,
 Faddeeva, and Voigt functions.
 
-%package -n libcerf2
+%package -n libcerf3
 Summary:        A library that provides complex error functions
 Group:          Development/Libraries/C and C++
 
-%description -n libcerf2
+%description -n libcerf3
 libcerf is a self-contained numeric library that provides an efficient and
 accurate implementation of complex error functions, along with Dawson,
 Faddeeva, and Voigt functions.
@@ -48,7 +48,7 @@ Faddeeva, and Voigt functions.
 %package devel
 Summary:        Development headers and libraries for libcerf
 Group:          Development/Libraries/C and C++
-Requires:       libcerf2 = %{version}-%{release}
+Requires:       libcerf3 = %{version}-%{release}
 
 %description devel
 libcerf is a self-contained numeric library that provides an efficient and
@@ -58,13 +58,13 @@ Faddeeva, and Voigt functions.
 This package contains development headers and libraries for libcerf
 
 %prep
-%autosetup -p0 -n %{name}-v%{version}
-# Force cmake to use the paths passed at configure time
-sed -i -e 's|lib/pkgconfig/|%{_lib}/pkgconfig/|' CMakeLists.txt
-sed -i -e 's|DESTINATION lib|DESTINATION %{_lib}|' lib/CMakeLists.txt
-sed -i -e 's|${prefix}/lib|@LIB_INSTALL_DIR@|' libcerf.pc.in
+%autosetup -p0 -n cerf-v%{version}
 
 %build
+%if %{__isa_bits} == 32
+export CFLAGS="%{optflags} -ffloat-store"
+export CXXFLAGS="%{optflags} -ffloat-store"
+%endif
 %cmake -DCMAKE_SKIP_RPATH=OFF -DPORTABLE=ON
 %cmake_build
 
@@ -74,21 +74,24 @@ mkdir -p %{buildroot}%{_docdir}/%{name}
 if [ -d %{buildroot}%{_datadir}/doc/cerf ]; then
     mv %{buildroot}%{_datadir}/doc/cerf/* %{buildroot}%{_docdir}/%{name}
 fi
+install CHANGELOG %{buildroot}%{_docdir}/%{name}
 %fdupes %{buildroot}%{_prefix}
 
-%post -n libcerf2 -p /sbin/ldconfig
-%postun -n libcerf2 -p /sbin/ldconfig
+%post -n libcerf3 -p /sbin/ldconfig
+%postun -n libcerf3 -p /sbin/ldconfig
 
 %check
 %ctest
 
-%files -n libcerf2
+%files -n libcerf3
 %license LICENSE
 %{_libdir}/libcerf.so.*
+%{_libdir}/libcerfcpp.so.*
 
 %files devel
 %{_includedir}/*.h
 %{_libdir}/libcerf.so
+%{_libdir}/libcerfcpp.so
 %{_libdir}/pkgconfig/libcerf.pc
 %{_mandir}/man3/*
 %{_docdir}/%{name}

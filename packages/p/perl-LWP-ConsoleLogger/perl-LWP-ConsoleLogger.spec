@@ -18,7 +18,7 @@
 
 %define cpan_name LWP-ConsoleLogger
 Name:           perl-LWP-ConsoleLogger
-Version:        1.000002
+Version:        1.000003
 Release:        0
 License:        Artistic-2.0
 Summary:        LWP tracing and debugging
@@ -43,6 +43,8 @@ BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Response)
+BuildRequires:  perl(HTTP::Tiny)
+BuildRequires:  perl(Hash::Util::FieldHash)
 BuildRequires:  perl(IPC::Run3)
 BuildRequires:  perl(JSON::MaybeXS) >= 1.3.5
 BuildRequires:  perl(LWP::UserAgent)
@@ -55,21 +57,25 @@ BuildRequires:  perl(Moo)
 BuildRequires:  perl(MooX::StrictConstructor)
 BuildRequires:  perl(Parse::MIME)
 BuildRequires:  perl(Path::Tiny)
+BuildRequires:  perl(Plack)
 BuildRequires:  perl(Plack::Handler::HTTP::Server::Simple)
+BuildRequires:  perl(Plack::Loader)
 BuildRequires:  perl(Plack::Test)
 BuildRequires:  perl(Plack::Test::Agent)
 BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(String::Trim)
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Term::Size::Any)
-BuildRequires:  perl(Term::Table) >= 0.028
+BuildRequires:  perl(Term::Table) >= 0.013
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::LWP::UserAgent)
 BuildRequires:  perl(Test::Needs)
+BuildRequires:  perl(Test::TCP)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(Types::Common::Numeric)
 BuildRequires:  perl(Types::Standard)
+BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::QueryParam)
 BuildRequires:  perl(URI::file)
 BuildRequires:  perl(Unicode::GCString)
@@ -81,8 +87,10 @@ Requires:       perl(DateTime)
 Requires:       perl(HTML::Restrict)
 Requires:       perl(HTTP::Body)
 Requires:       perl(HTTP::CookieMonster)
+Requires:       perl(HTTP::Headers)
 Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Response)
+Requires:       perl(Hash::Util::FieldHash)
 Requires:       perl(JSON::MaybeXS) >= 1.3.5
 Requires:       perl(List::AllUtils)
 Requires:       perl(Log::Dispatch) >= 2.560
@@ -95,10 +103,11 @@ Requires:       perl(Ref::Util)
 Requires:       perl(String::Trim)
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Term::Size::Any)
-Requires:       perl(Term::Table) >= 0.028
+Requires:       perl(Term::Table) >= 0.013
 Requires:       perl(Try::Tiny)
 Requires:       perl(Types::Common::Numeric)
 Requires:       perl(Types::Standard)
+Requires:       perl(URI)
 Requires:       perl(URI::QueryParam)
 Recommends:     perl(HTML::FormatText::Lynx) >= 23
 Recommends:     perl(Unicode::GCString)

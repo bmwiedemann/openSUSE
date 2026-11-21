@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:03:31 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Added intel-opencl-level-zero-1.35.patch
+  Fix Compability with level zero 1.35
+
+-------------------------------------------------------------------
+Tue Nov  3 19:30:20 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 26.40.40196.8
+  * No changelog was made available
+- Build against libopencl-clang22_1 and libigc-devel >= 2.42.6
+
+-------------------------------------------------------------------
 Fri Jul 31 20:32:30 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 26.27.39122.11

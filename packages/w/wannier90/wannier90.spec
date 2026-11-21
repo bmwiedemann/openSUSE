@@ -31,9 +31,6 @@
 %endif
 
 %if "%{flavor}" == "openmpi5"
-%if 0%{?suse_version} < 1550
-ExclusiveArch:  do_not_build
-%endif
 %global mpi_flavor openmpi
 %define mpi_vers 5
 %endif
@@ -61,9 +58,9 @@ ExclusiveArch:  do_not_build
 %endif
 # /SECTION MPI DEFINITIONS
 
-%define libname lib%{pname}_4%{?with_mpi:_mpi%{my_suffix}}
+%define libname lib%{pname}_4%{?my_suffix}
 Name:           %{pname}%{?my_suffix}
-Version:        4.0.2
+Version:        4.0.3
 Release:        0
 Summary:        A library for generating maximally-localized Wannier functions
 License:        LGPL-2.1-or-later
@@ -71,18 +68,15 @@ URL:            http://www.wannier.org/
 Source:         https://github.com/wannier-developers/wannier90/archive/refs/tags/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM wannier90-pkgconfig-paths.patch badshah400@gmail.com -- Fix paths in pkgconfig variables
 Patch0:         wannier90-pkgconfig-paths.patch
-# PATCH-FIX-UPSTREAM wannier90-disable-failing-test.patch badshah400@gmail.com -- Disable a failing test that causes build failures specific to rpmbuild env
-Patch1:         wannier90-disable-failing-test.patch
 # PATCH-FIX-UPSTREAM gh#wannier-developers/wannier90#371 badshah400@gmail.com -- Ignore rank mismatch issues when building openmpi flavours with gfortran, as recommended in upstream bug report
 Patch2:         wannier90-fix-parallel-compilation.patch
-# PATCH-FIX-UPSTREAM wannier90-arm64-disable-failing-test.patch gh#wannier-developers/wannier90#678 badshah400@gmail.com -- Disable a test that fails due to minor tolerance issues on arm64
-Patch3:         wannier90-arm64-disable-failing-test.patch
 BuildRequires:  blas-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
-BuildRequires:  memory-constraints
+BuildRequires:  python3-PyYAML
+BuildRequires:  python3-pytest
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
 %if 0%{?suse_version} >= 1550 && "%{mpi_flavor}" == "openmpi"
@@ -120,9 +114,6 @@ This package provides files needed for developing against wannier90.
 %prep
 %autosetup -N -n %{pname}-%{version}
 %autopatch -p1 -M 2
-%ifarch %arm64
-%patch -P 3 -p1
-%endif
 
 %build
 %if %{with mpi}
@@ -143,16 +134,11 @@ source %{my_bindir}/mpivars.sh
 
 # Tests are wrecked on i586; don't even bother
 %ifnarch %ix86
-# Tests deadlock on openmpi5
-%if 0%{?mpi_vers} != 5
 %check
 %if %{with mpi}
 source %{my_bindir}/mpivars.sh
 %endif
-# Some tests are very memory intensive
-%limit_build -m 6000
 %ctest
-%endif
 %endif
 #
 
@@ -160,7 +146,7 @@ source %{my_bindir}/mpivars.sh
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %{my_bindir}/*
 
 %files -n %{libname}

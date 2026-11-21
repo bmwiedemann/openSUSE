@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:38:36 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * Silenced layershell's warning by updating its code.
+  * CMake maintenance.
+
+-------------------------------------------------------------------
 Tue Apr 21 01:05:48 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

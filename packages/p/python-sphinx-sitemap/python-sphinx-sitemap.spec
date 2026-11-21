@@ -23,6 +23,8 @@ Summary:        Sitemap generator for Sphinx
 License:        MIT
 URL:            https://github.com/jdillard/sphinx-sitemap
 Source:         https://github.com/jdillard/sphinx-sitemap/archive/refs/tags/v%{version}.tar.gz#/sphinx_sitemap-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#jdillard/sphinx-sitemap#127
+Patch0:         support-gitpython-3.2.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

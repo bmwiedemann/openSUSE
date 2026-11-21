@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Tue Nov 10 12:44:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.23.0
+  * New features
+    + Add and use PhoneticEngine.Builder and deprecate old
+      constructors
+    + Add BeiderMorseEncoder.Builder and deprecate old constructor
+    + Add PhoneticEngine.Builder.setMaxInputLength(int)
+    + Add Base45 support
+    + Add URLCodec.decodeUrl(BitSet, byte[]) to decode with a custom
+      safe set
+  * Fixed Bugs
+    + GitIdentifiers orders tree entries by unsigned UTF-8 bytes, as
+      Git does, instead of UTF-16 code units
+    + Optimize PhoneticEngine.encode(String, LanguageSet) for speed
+    + RFC1522Codec.decodeText(String) now throws a DecoderException
+      instead of a StringIndexOutOfBoundsException when a separator
+      is missing
+    + Optimize Base58.convertFromBase58(byte[], Context) for speed
+      and temporary object allocation
+    + Allocate a single MessageDigest and use it in
+      Sha2Crypt.sha2Crypt(byte[], String, String, int, String)
+    + Javadoc improvements
+    + Throw IOException instead of IllegalArgumentException in
+      BaseNCodecOutputStream and BaseNCodecOutputStream IO methods
+    + Throw DecoderException instead of IllegalArgumentException in
+      RFC1522Codec.decodeText(String)
+    + Fix Blake3 KDF example and clarify finalization semantics
+      (CVE-2026-119078, bsc#1289854)
+    + Base32 and Base64 STRICT decoding now require the encoder's
+      canonical alphabet, padding, and line separators, and validate
+      streams through EOF. Use LENIENT to retain permissive decoding
+    + Limit Base58 decoding to 8192 encoded bytes by default,
+      checking cumulative stream input before buffering. Use
+      Base58.Builder.setMaxDecodeLength(int) for larger trusted
+      input. Encoding defaults to a configurable 8192-byte binary
+      input limit through Base58.Builder.setMaxEncodeLength(int)
+    + Grow Base58 accumulation buffers geometrically within the
+      configured input limits and validate actual accumulated length
+    + Implement Base58 encoded-length calculation and explicitly
+      reject unsupported line chunking
+    + Close the underlying BaseNCodecOutputStream output even when
+      final conversion or flushing fails, preserving suppressed
+      close exceptions
+    + Reject invalid GitIdentifiers tree entry names and
+      file/directory name conflicts to prevent ambiguous tree
+      serialization and colliding identifiers (CVE-2026-124077,
+      bsc#1289853)
+    + Hex decoding now accepts only ASCII hexadecimal characters
+      (0-9, A-F, a-f). Previously accepted non-ASCII Unicode digits
+      and fullwidth letters now cause DecoderException, including
+      when supplied as UTF-8 bytes or ByteBuffers
+    + Restrict Hex decoding to ASCII hexadecimal characters
+    + Validate BinaryCodec input while preserving leading-bit
+      truncation
+    + Reject oversized Beider-Morse input before language guessing
+    + QuotedPrintableCodec decoding now preserves hard CRLF line
+      breaks and, leniently, unpaired CR and LF bytes instead of
+      discarding them. Soft line breaks require the full =CRLF
+      sequence; previously accepted =CR without LF now throws
+      DecoderException. This affects both constructor modes and
+      QCodec, which shares the decoder
+    + Bound Sha2Crypt rounds from caller-supplied salts
+    + Bound Sha2Crypt password length to prevent quadratic CPU DoS
+    + Make the @param names in BaseNCodec match the parameters they
+      document
+    + CODEC-345: Restore URLCodec.encodeUrl(BitSet, byte[]) support
+      for custom safe sets containing percent and plus, and document
+      the decoding limitations
+    + CODEC-245: Reject malformed Sha2Crypt salt syntax
+  * Changes
+    + Bump org.apache.commons:commons-parent from 103 to 105
+    + [test] Bump org.apache.commons:commons-lang3 from 3.20.0 to
+      3.21.0
+
+-------------------------------------------------------------------
 Wed May  6 07:06:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 1.22.0

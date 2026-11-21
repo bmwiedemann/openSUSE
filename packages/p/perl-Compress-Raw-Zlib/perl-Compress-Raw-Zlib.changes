@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 10 13:29:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.226
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+    2.226 9 November 2026
+      * Update to version 2.226
+        Mon Nov 9 14:08:24 2026 +0000
+        eb7e8368c819ab7730780d2a41c7ff60025ccdcd
+      * zlib-ng-2.3.3: add support
+        Mon Nov 9 11:48:45 2026 +0000
+        66b64149a3bc64f3be3d844e78c7d0e47a4cfa80
+      * zlib 1.4: fix typo in workflow
+        Mon Nov 9 11:48:45 2026 +0000
+        f2923c2f12f5de19e645b9d913a166e253e4c46e
+      * cmake build error #45
+        Mon Nov 9 11:48:45 2026 +0000
+        f37c9339b140dbf069da56e8ef4fc673c86e8c72
+      * zlib 1.4: Update README to reference zlib 1.4
+        Mon Nov 9 11:48:38 2026 +0000
+        2756e7e4067ea6e41cb28cd70b53a20347eed3ad
+      * zlib 1.4: Add "Perl_crz" prefix to "z_errmsg". Fixes #32
+        Fri Nov 6 16:03:36 2026 +0000
+        082c74051bbdb3e5c766a8e4f03eb8003adf5e36
+      * zlib 1.4: Add "Perl_crz_" prefix  to exported symbols
+        Fri Nov 6 16:02:28 2026 +0000
+        429850de006de99960a0bf625ae57824052e208a
+      * zlib-1.4: Test workflows with upstream zlib 1.4
+        Fri Nov 6 15:45:14 2026 +0000
+        a22eb83404ab09b05245cac999a99fe6a6dc66fc
+      * zlib 1.4.4:  Add a few casts to allow zlib sources to build with C++
+        Fri Nov 6 15:42:20 2026 +0000
+        557974ac99dc3088c05e3f69c0d278c9eeeecb84
+      * Refresh zlib-src directory with unmodified zlib-1.4 files
+        Fri Nov 6 15:32:34 2026 +0000
+        0b7422fe4dc9a8f2bb77f65ae13c3282d39a7317
+
+-------------------------------------------------------------------
+Sat Oct 10 11:13:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.225
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+
+-------------------------------------------------------------------
 Fri Aug 28 17:30:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.224

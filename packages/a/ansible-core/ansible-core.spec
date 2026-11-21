@@ -16,7 +16,7 @@
 #
 
 
-%define ansible_core_major_minor_version 2.21
+%define ansible_core_major_minor_version 2.22
 
 %{?sle15_python_module_pythons}
 %if 0%{?suse_version} < 1550
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core
-Version:        2.21.5
+Version:        2.22.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -52,8 +52,6 @@ Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/an
 Source1:        ansible_core-%{version}.tar.gz.sha256
 # CVE-2026-16493 (bsc#1272369)
 Patch0:         ansible-core-CVE-2026-16493.patch
-# CVE-2026-89091 (bsc#1284847)
-Patch1:         ansible-core-CVE-2026-89091.patch
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base
@@ -65,7 +63,7 @@ Conflicts:      ansible-core < %{ansible_core_major_minor_version}
 Conflicts:      ansible-core > %{ansible_core_major_minor_version}
 
 # https://github.com/ansible/ansible/blob/stable-2.18/pyproject.toml#L6
-BuildRequires:  %{ansible_python}-base >= 3.12
+BuildRequires:  %{ansible_python}-base >= 3.13
 BuildRequires:  %{ansible_python}-pip
 BuildRequires:  %{ansible_python}-setuptools
 BuildRequires:  %{ansible_python}-wheel
@@ -76,7 +74,7 @@ BuildRequires:  %{ansible_python}-cryptography
 BuildRequires:  %{ansible_python}-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 2.0.0)
+BuildRequires:  (%{ansible_python}-resolvelib >= 0.8.0 with %{ansible_python}-resolvelib < 2.0.0)
 # SECTION test requirements
 BuildRequires:  %{ansible_python}-botocore
 BuildRequires:  %{ansible_python}-curses
@@ -97,7 +95,7 @@ Requires:       %{ansible_python}-PyYAML >= 5.1
 Requires:       %{ansible_python}-cryptography
 Requires:       %{ansible_python}-packaging
 Requires:       %{ansible_python}-rpm
-Requires:       (%{ansible_python}-resolvelib >= 0.5.3 with %{ansible_python}-resolvelib < 2.0.0)
+Requires:       (%{ansible_python}-resolvelib >= 0.8.0 with %{ansible_python}-resolvelib < 2.0.0)
 
 # ansible-documentation is a separate package since 2.15.3
 Recommends:     ansible-documentation

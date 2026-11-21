@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:23:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add cura-engine-find-stb_image_h.patch: check for stb/stb_image.h
+  instead of removed stb_image_resize.h in FindStb.cmake.
+
+-------------------------------------------------------------------
 Wed Nov 27 05:47:22 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with latest GCC, add

@@ -40,4 +40,14 @@
 </comment>
     <requestid>1280668</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3c907d5a3392352098f5cf40759b40d0</srcmd5>
+    <version>3.2.0</version>
+    <time>1794838467</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-graphql-core-3.3.patch:
+  * Support changed error message from graphql-core 3.3+.
+- Drop unneeded {Build,}Requires on python-promise.</comment>
+    <requestid>1397814</requestid>
+  </revision>
 </revisionlist>

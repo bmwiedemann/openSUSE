@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 10 13:33:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.41.0 (1.041)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.041     2026-11-10 03:00:31Z
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/7de0e6a06031ede80028583dd45d0cd41105ae5b...245a45abc90190c0bff04d97e6d2b541b4bb9f12
+            This is the last data update before switching to the "unify" branch
+            in JSON-Schema-Test-Suite, which reorganizes the tests in a new
+            format.
+
+-------------------------------------------------------------------
+Sun Oct 11 11:28:28 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.40.0 (1.040)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.040     2026-10-11 01:06:25Z
+          - adjust tests to handle a change in perl 5.45.4 (see perl issue
+            #24845) (PR #26, Richard Leach)
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/f6fd52a0a95472e079cbfc6ef7f089702b80e045...7de0e6a06031ede80028583dd45d0cd41105ae5b
+
+-------------------------------------------------------------------
 Thu Sep 10 09:48:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.39.0 (1.039)

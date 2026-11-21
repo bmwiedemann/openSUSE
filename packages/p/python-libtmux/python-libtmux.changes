@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 04:48:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-tmux-3.8.patch:
+  * Support changes required by tmux 3.8.
+
+-------------------------------------------------------------------
 Mon Jul 13 05:03:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.62.0:

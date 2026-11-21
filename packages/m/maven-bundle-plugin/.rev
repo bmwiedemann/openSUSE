@@ -47,4 +47,12 @@
     <comment>6.2.0</comment>
     <requestid>1377326</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4f5f352cc3ebccb9cbd64b3d0a492f9d</srcmd5>
+    <version>6.2.0</version>
+    <time>1793899214</time>
+    <user>anag_factory</user>
+    <comment>Sanitize dependencies</comment>
+    <requestid>1395039</requestid>
+  </revision>
 </revisionlist>

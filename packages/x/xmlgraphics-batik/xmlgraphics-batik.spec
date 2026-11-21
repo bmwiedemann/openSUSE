@@ -1,7 +1,7 @@
 #
 # spec file for package xmlgraphics-batik
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2008, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,13 +21,13 @@
 %define _buildshell /bin/bash
 %global classpath xmlgraphics-batik:rhino:xml-commons-apis:xml-commons-apis-ext:xmlgraphics-commons
 Name:           xmlgraphics-batik
-Version:        1.18
+Version:        1.20
 Release:        0
 Summary:        Scalable Vector Graphics for Java
 License:        Apache-2.0
 Group:          Productivity/Graphics/Vector Editors
 URL:            https://xml.apache.org/batik/
-Source0:        http://archive.apache.org/dist/xmlgraphics/batik/source/batik-src-%{version}.tar.gz
+Source0:        https://archive.apache.org/dist/xmlgraphics/batik/source/batik-src-%{version}.tar.gz
 Source1:        batik-build.tar.xz
 Source7:        %{name}.security.policy
 Patch0:         %{name}-nolinksinjavadoc.patch

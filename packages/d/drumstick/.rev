@@ -271,4 +271,12 @@
 - Update BuildRequires fluidsynth, version &gt;= 2.5 is needed (forwarded request 1377465 from Kieltux)</comment>
     <requestid>1377501</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b25483f8f01c982e253c0a9c2f71f5e0</srcmd5>
+    <version>2.11.2</version>
+    <time>1793991360</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395646</requestid>
+  </revision>
 </revisionlist>

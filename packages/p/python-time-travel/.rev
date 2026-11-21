@@ -41,4 +41,15 @@
   * Use importlib.metadata, rather than pkg_resources.</comment>
     <requestid>1380281</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>d972c14b0dba4cc4de5de7cdda86b850</srcmd5>
+    <version>1.1.2</version>
+    <time>1793725069</time>
+    <user>anag_factory</user>
+    <comment>- Update no-more-pkg-resources.patch:
+  * Fall back to pkg_resources on Python &lt; 3.8, fixing the
+    build on openSUSE Leap 15.7 (python3.6, which has no
+    importlib.metadata module)</comment>
+    <requestid>1394612</requestid>
+  </revision>
 </revisionlist>

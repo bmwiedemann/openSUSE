@@ -19,7 +19,7 @@
 %define         _name nvim-gtk
 %define         appid com.github.Lyude.neovim-gtk
 Name:           neovim-gtk
-Version:        1.0.1+285
+Version:        1.0.1+286
 Release:        0
 Summary:        GTK UI for Neovim
 License:        GPL-3.0-only
@@ -43,14 +43,14 @@ support.
 %autosetup -a1
 
 %build
-%{cargo_build}
+%cargo_build
 
 %install
 install -Dm0755 ./target/release/%{_name} %{buildroot}%{_bindir}/%{_name}
 %make_build DESTDIR=%{buildroot} PREFIX=%{_prefix} install-resources
 
 %check
-%{cargo_test}
+%cargo_test
 
 %files
 %license LICENSE

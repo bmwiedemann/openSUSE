@@ -20,7 +20,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.59.1
+Version:        2.59.2
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -32,11 +32,10 @@ Source2:        libdeflate-1.25.tar.xz
 # see https://github.com/IntelRealSense/librealsense/pull/14125
 Patch0:         0001-cmake-add-support-to-build-shared-libraries.patch
 Patch1:         0002-cmake-Use-the-same-version-for-all-libraries-that-ca.patch
-Patch2:         0003-Install-presets-to-usr-share.patch
-Patch3:         0004-disable-pedantic.patch
-Patch4:         0005-third-party-use-libraries-from-system.patch
-Patch5:         0006-rsutils-build-as-shared.patch
-Patch6:         0007-cmake-use-libcurl-from-system.patch
+Patch2:         0003-disable-pedantic.patch
+Patch3:         0004-third-party-use-libraries-from-system.patch
+Patch4:         0005-rsutils-build-as-shared.patch
+Patch5:         0006-cmake-use-libcurl-from-system.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -117,9 +116,6 @@ install -m 644 -t %{buildroot}/%{_udevrulesdir} config/99-realsense-libusb.rules
 %files
 %doc readme.md CONTRIBUTING.md code-of-conduct.md NOTICE.md Security.md
 %{_bindir}/realsense-viewer
-%dir %{_datadir}/librealsense2/
-%dir %{_datadir}/librealsense2/presets/
-%{_datadir}/librealsense2/presets/*.preset
 %{_udevrulesdir}/99-realsense-libusb.rules
 
 %files -n %{name}%{libver}

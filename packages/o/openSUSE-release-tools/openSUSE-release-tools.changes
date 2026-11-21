@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 03 09:56:06 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20261103.4d61b3c3:
+  * ttm: fix logic bugs in set_openqa_group_id
+  * ttm: throw an exeption if the openQA configuration is incomplete
+  * ttm: deprecate openqa_group setting
+  * ttm: use openqa_group_id for group lookup if it is set
+  * ttm: add job group lookup by id
+
+-------------------------------------------------------------------
+Thu Oct 29 18:51:14 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20261029.2ea606f7:
+  * gocd: monitors: SUSE.Repo.Monitor: exclude in-development projects
+  * gocd: rabbit-repoid: allow excluding projects
+  * obsrsync: allow specifying openQA configuration from env variables
+  * packaging: ensure we exclude obsrsync.py from the main package
+  * osrt-obsrsync: add packaging and example configuration files for obsrysnc
+  * obsrsync_trigger: add initial obsrsync trigger script that doesn't need RepoMonitor
+
+-------------------------------------------------------------------
+Thu Oct 29 17:28:32 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20261029.c705c4f0:
+  * Add also configuration for Package Hub 16.0
+  * Add Package Hub 16.1 for testing
+  * CI: update docker composer command
+  * Setup bot for Leap 16.1
+
+-------------------------------------------------------------------
 Mon Oct 12 10:58:08 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20261012.83f7e5fa:

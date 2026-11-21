@@ -37,4 +37,18 @@
     <comment>1</comment>
     <requestid>296046</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c4e7de88d4019f6f3fc9df08c5f4eff</srcmd5>
+    <version>0.180.0</version>
+    <time>1794090799</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-Router-Simple/Changes
+  0.18 2026-11-05T09:46:23Z
+      - Anchor route regexps at the end of the string with \z instead of $,
+        so that a path, method or host with a trailing newline no longer
+        matches. (polamjag)
+      - Require perl 5.10.</comment>
+    <requestid>1396026</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Nov 03 16:40:17 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.29.3~0:
+  * dist(rustup-init/sh): update commit shasum in help string
+  * docs(changelog): update for v1.29.3 release
+  * Support file locking on Solaris
+  * dist: bump version to `1.29.3`
+  * chore(deps): bump trivially compatible deps
+  * Update platforms to 4.2.0
+  * chore(deps/windows): bump `windows-*` to v0.100
+  * Update chacha20 in release
+
+-------------------------------------------------------------------
+Wed Oct 28 18:14:03 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.29.2~0:
+  * docs(CHANGELOG): fix typo
+  * ci(linux): fix build images for loong64
+  * Update release metadata in rustup-init.sh
+  * Update static root for Fastly
+  * Update changelog for 1.29.2
+  * fix(deps): update rust crate rustls-webpki to 0.103.16
+  * fix(deps): update rust crate webpki-root-certs to 1.0.10
+  * dist: bump `rustup` version to v1.29.2
+
+-------------------------------------------------------------------
+Wed Sep 23 02:51:23 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1282217 - CVE-2026-93599,CVE-2026-93602,CVE-2026-93601,CVE-2026-93600 - rustls-webpki multiple issues
+
+-------------------------------------------------------------------
 Sat Sep 05 02:34:46 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.29.1~0:

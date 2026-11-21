@@ -68,4 +68,16 @@
     malicious format string</comment>
     <requestid>1376890</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2bb7f547d5ea6eba22b6af5e12eca196</srcmd5>
+    <version>1.0.2</version>
+    <time>1793725185</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.0.2 (v1.0.2)
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+  ## [1.0.2] - 2026-10-11
+  ### Fixed
+  * Remove cpan.org email address</comment>
+    <requestid>1394675</requestid>
+  </revision>
 </revisionlist>

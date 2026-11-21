@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * Fix documentation markup
+  * Fix documentation comment location
+  * Clean forward and includes
+  * KSDCMapping: unmap the shared memory segment only once
+  * CMake config file: ensure ECM's Inotify find module w/ static builds
+  * Fix documentation sentence
+  * kformat: skip secsTo() for a date three or more days from today
+  * kformat: count the relative day in the time zone of the date
+  * autotests: wait for a later timestamp instead of a new second
+  * kdirwatch: tell apart two changes made within one second
+  * Add new methods for formatting QDateTimes
+  * KDirWatch: use wide Windows stat calls for Unicode paths
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

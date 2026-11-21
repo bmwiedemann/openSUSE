@@ -453,4 +453,16 @@ update to version 4.9.0
 </comment>
     <requestid>1376277</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d5b565facdf8b291db115249e872d7f7</srcmd5>
+    <version>13.0.2</version>
+    <time>1795022999</time>
+    <user>anag_factory</user>
+    <comment>- update to 13.0.2:
+  * Fix service-token presence bypass of access_rules and token
+    bind
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.2
+  * Update .gitreview for stable/2026.2</comment>
+    <requestid>1398172</requestid>
+  </revision>
 </revisionlist>

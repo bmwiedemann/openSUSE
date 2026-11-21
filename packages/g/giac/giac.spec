@@ -1,7 +1,7 @@
 #
 # spec file for package giac
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://xcas.univ-grenoble-alpes.fr/
 Source:         https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac-%version.tar.gz
 #Source:        https://www-fourier.univ-grenoble-alpes.fr/~parisse/giac/giac_stable.tgz
 #NEWS:          https://www-fourier.univ-grenoble-alpes.fr/~parisse/install_en.html § What's New
+# PATCH-FIX-UPSTREAM giac-ambiguous-bitset.patch -- qualify std::bitset to resolve ambiguity with pari's bitset()
+Patch0:         giac-ambiguous-bitset.patch
 BuildRequires:  bison
 BuildRequires:  blas-devel
 BuildRequires:  byacc

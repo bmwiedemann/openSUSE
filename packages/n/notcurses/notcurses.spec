@@ -47,6 +47,7 @@ BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  qrcodegen-devel
 BuildRequires:  pkgconfig(libavcodec) >= 57.0
+BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat) >= 57.0
 BuildRequires:  pkgconfig(libavutil) >= 56.0
 BuildRequires:  pkgconfig(libdeflate)

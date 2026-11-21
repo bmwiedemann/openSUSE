@@ -16,9 +16,9 @@
 #
 
 
-%define libver  5_2_5
+%define libver  5_3_0
 Name:           rssguard
-Version:        5.2.5
+Version:        5.3.0
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 # Legal-Review-Notice: the shipped binaries bundle third-party code; every
@@ -42,6 +42,10 @@ URL:            https://github.com/martinrotter/rssguard
 #Source0:        https://github.com/martinrotter/rssguard/archive/%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
+# Windows-only installer and toolchain binaries shipped by upstream under
+# resources/scripts (NSIS, ICU, redist, 7za, clang-format, vulkan, libmpv):
+# every in-tree use is WIN32-gated, the Linux build never enters them.
+# Source-Binary-Exception: */resources/scripts/* -- other-platform: Windows PE/COFF binaries for upstream's NSIS installer and WIN32-only library copies; the Linux build uses system mpv/ICU and never reads them.
 # PATCH-FIX-OPENSUSE rssguard-add_library_version.patch aloisio@gmx.com -- Rename
 # the CMake library target to rssguard-${APP_VERSION} so the shared library is
 # installed as librssguard-%%{version}.so. Deliberate downstream-only carry: it
@@ -55,9 +59,12 @@ Patch1:         rssguard-go.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  golang(API) >= 1.26
+# The GUI/image unit tests need a real font for metrics and rendering,
+# and the buildroot ships none (all four 5.3.0 test failures without it)
+BuildRequires:  google-noto-sans-fonts
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  golang(API) >= 1.25
 # The QSQLITE driver plugin, needed by the test_databasequeries unit test
 BuildRequires:  qt6-sql-sqlite
 BuildRequires:  cmake(Qt6Concurrent)

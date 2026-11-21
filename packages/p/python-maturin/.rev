@@ -1623,4 +1623,41 @@
     enum</comment>
     <requestid>1375982</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>257d7d870cb608a40987b1c7dcf37fda</srcmd5>
+    <version>1.16.0</version>
+    <time>1793724776</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.16.0
+  * Update version mapping for GraalPy 3.13
+    gh#PyO3/maturin#3297
+  * properly normalize / validate abiflags and include in
+    environment signature
+    gh#PyO3/maturin#3299
+  * Fix MinGW stable ABI library names in generated PyO3 config
+    gh#PyO3/maturin#3298
+  * fix: lossy-decode external command output in interpreter
+    discovery
+    gh#PyO3/maturin#3302
+  * build(deps): update rustls for RUSTSEC-2026-0285
+    gh#PyO3/maturin#3308
+  * Include SOABI_PLATFORM in Python 3.15 stable ABI extension
+    filenames
+    gh#PyO3/maturin#3305
+  * Sort compressed tag sets
+    gh#PyO3/maturin#3315
+  * Update manylinux/musllinux policies to the latest main
+    gh#PyO3/maturin#3322
+  * docs: recommend declaring the Rust MSRV
+    gh#PyO3/maturin#3317
+  * Emit a WASI platform tag for non-bin extension wheels
+    gh#PyO3/maturin#3321
+  * Don't include the cargo target directory or cache directories
+    in wheels built from sdists
+    gh#PyO3/maturin#3320
+  * fix: avoid global uv fallback in pixi environments
+    gh#PyO3/maturin#3306
+  * Fix the cargo-deny advisories that fail Lint</comment>
+    <requestid>1394499</requestid>
+  </revision>
 </revisionlist>

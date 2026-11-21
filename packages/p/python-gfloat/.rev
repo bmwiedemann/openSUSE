@@ -17,4 +17,18 @@
 Fixed invalid URL</comment>
     <requestid>1355477</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b0b5d3f21d6374f6a0c5405b996b0ee</srcmd5>
+    <version>0.5</version>
+    <time>1795182408</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5:
+  * Use array-api for cross-framework compatibility
+  * Fix rounding issue for large bfloat16s
+  * Replace microxscaling with torchao
+  * Update IEEE P3109 implementation to Interim Report v3
+- Add patch fix-signed-zero-overflow.patch:
+  * Fix binary64 signed-zero overflow in encode_ndarray</comment>
+    <requestid>1398849</requestid>
+  </revision>
 </revisionlist>

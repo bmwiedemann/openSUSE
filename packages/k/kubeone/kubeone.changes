@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:14:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.15.0:
+  * Urgent and BREAKING Upgrade Notes
+    (No, really, you MUST read this before you upgrade)
+    - Support for Kubernetes 1.34 has been removed. KubeOne v1.15
+      supports Kubernetes versions 1.35, 1.36, and 1.37. Before
+      upgrading KubeOne, ensure your clusters are running
+      Kubernetes v1.35 or newer. (#4249)
+    - kubeone apply and kubeone local no longer create the PKI
+      backup <cluster-name>.tar.gz by default. The archive contains
+      sensitive credentials (e.g. the cluster CA key) and is now
+      only created when --backup <path> is set explicitly. (#4304)
+    - unattended-upgrades addon: the Flatcar Linux Update Operator
+      is now deployed only if the cluster has at least one Flatcar
+      Linux node (control plane, static workers, dynamic workers or
+      MachineDeployments in the cluster). On existing clusters
+      without Flatcar nodes, the next kubeone apply prunes the
+      reboot-coordinator namespace and its workloads, but the
+      cluster-scoped flatcar-linux-update-agent and
+      flatcar-linux-update-operator ClusterRoles and
+      ClusterRoleBindings are not removed automatically and can be
+      deleted manually. (#4264)
+    - KubeVirt: the csi-kubevirt addon now deploys the KubeVirt CSI
+      Driver operator. The next kubeone apply on an existing
+      KubeVirt cluster replaces the kube-system node plugin with
+      the operator's DaemonSet. StorageClasses and
+      VolumeSnapshotClasses are now configured via
+      cloudProvider.kubevirt.storageClasses and
+      cloudProvider.kubevirt.volumeSnapshotClasses. (#4307)
+    - Addons are now applied with server-side apply instead of
+      kubectl apply. KubeOne takes over ownership of fields
+      previously set by client-side apply, and prunes objects of
+      the applied kinds that were removed from an addon. Changes
+      made to addon-managed fields outside of KubeOne will be
+      overwritten on the next apply. (#4272)
+  * API Change
+    - Add clusterNetwork.clusterDNS to override the DNS servers
+      that kubelets configure for pods on all nodes. It can't be
+      combined with features.nodeLocalDNS.deploy. (#4251)
+    - Add structured AuthenticationConfiguration support via
+      features.authenticationConfiguration (kube-apiserver
+      --authentication-config). It is mutually exclusive with
+      features.openidConnect. (#4267)
+    - Add journald.systemMaxUse to configure journald's
+      SystemMaxUse on all nodes (default 5G). (#4278)
+  * Feature
+    - Add support for Kubernetes v1.37 (#4249)
+    - Managed control plane: add the AWS control-plane provider
+      (#4204)
+    - Managed control plane: add the Azure control-plane provider
+      (#4185)
+    - Managed control plane: add support for DigitalOcean (#4262)
+    - Managed control plane: add support for GCP (#4269)
+    - Add a --destroy-control-plane flag to kubeone reset to
+      destroy control plane machines at the cloud provider instead
+      of resetting them (#4210)
+    - Add a --destroy-control-plane-load-balancer flag to kubeone
+      reset (#4215)
+    - Add kubeone addons apply command to install, update and
+      remove user addons and helm releases without running a full
+      kubeone apply. The --name flag limits it to specific addons
+      or helm releases. (#4263)
+    - kubeone addons list shows the source (embedded, overridden,
+      custom) of each addon (#4305)
+    - Add --provider flag to kubeone config images list and kubeone
+      mirror-images to include CCM/CSI images only for the given
+      cloud provider(s) (#4112)
+    - Added support for an addonParams section in the credentials
+      file, allowing addon secret parameters (e.g. the built-in
+      backups-restic addon's resticPassword) to be provided via
+      credentials.yaml instead of the KubeOneCluster manifest
+      (#4206)
+    - Parametrize schedule and flags in the backups-restic addon
+      (#4207)
+    - Added support for deploying OpenStack clusters with
+      dual-stack networking (#4259)
+    - Static worker upgrade retries now retry only the failed
+      worker instead of repeating upgrades on workers that already
+      succeeded (#4192)
+    - The Hubble certgen job of the cni-cilium addon now fails when
+      the Cilium CA (kube-system/cilium-ca) would expire before the
+      newly issued certificates, instead of succeeding until the CA
+      has expired. Rotate the CA when the hubble-generate-certs job
+      fails. (#4232)
+    - Async dashboard loading (#4165)
+  * Bug or Regression
+    - Fix worker nodes provisioned by operating-system-manager
+      getting a non-existent DNS server (10.10.10.10) when
+      NodeLocalDNS is disabled, including clusters using Cilium
+      Local Redirect Policy. With Cilium Local Redirect Policy,
+      kubelets now use the node-local DNS address with CoreDNS as
+      fallback. The CoreDNS IP is now computed from the IPv6
+      service subnet on IPv6-primary clusters. (#4251)
+    - Fix the Cilium Local Redirect Policy (#4189)
+    - Add lease permissions for Cilium and enable l2announcements
+      in helm values (#4257)
+    - Fix Cilium tlsinterception-secrets Roles/RoleBindings being
+      deployed to kube-system instead of cilium-secrets (#4276)
+    - Fixed a bug where upgrading a vSphere cluster from an older
+      KubeOne version left behind a stale
+      validation.csi.vsphere.vmware.com
+      ValidatingWebhookConfiguration, blocking StorageClass changes
+      and all new dynamic volume provisioning/PVC deletion (#4195)
+    - Migrate stale VolumeGroupSnapshot CRDs (#4299)
+    - Fix provisioning with cloud provider none failing on CSI
+      webhook certificate generation when no CSI addon is deployed
+      (#4234)
+    - Fix the ccm-hetzner addon PodDisruptionBudget selector so it
+      matches the hcloud-cloud-controller-manager pods (#4280)
+    - Fix PodDisruptionBudget selectors that match no pods in
+      addons (#4281)
+    - Fix KubeVirt CSI reconcile and add missing RBAC to the
+      KubeVirt CCM. The KubeVirt StorageClass bus now defaults to
+      scsi. (#4309)
+    - Add subnet ID retrieval for OpenStack load balancer members
+      (#4242)
+    - Fix KubeOne retrying PodDisruptionBudget-blocked pod
+      evictions without a delay during node drain (#4181)
+    - Errors updating the kubeadm-config, kubelet-config or
+      kube-proxy ConfigMaps are no longer ignored (#4308)
+    - Fix overridePath handling in
+      ContainerRuntimeConfig.MachineControllerFlags (#4174)
+    - Update Helm dry run strategy on release upgrade (#4168)
+    - Fix OCI registry auth for helm charts and digest-pinned image
+      retagging (#4221)
+      - Fixed OCI Helm chart authentication so HelmRelease.Auth
+        credentials are correctly passed to private OCI registries.
+      - Fixed mirror-images failing to retag digest-pinned images
+        by preserving the source digest instead of incorrectly
+        using it as a tag.
+    - Update flatcar-linux-update-operator to v0.10.0 to fix the
+      update agent crashing on Flatcar >= 4757 due to quoted
+      /etc/os-release values (#4229)
+  * Documentation
+    - Fix generated apidocs links to upstream objects to always be
+      up to date (#4266)
+
+-------------------------------------------------------------------
 Fri Oct 09 05:03:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.4:

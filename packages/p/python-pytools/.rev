@@ -278,4 +278,13 @@ Note: depends on python-siphash24 (new package), submitted to Factory
 in parallel; please stage together.</comment>
     <requestid>1360004</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>87e7d07cd41caf3bbe52b0c8f56bacfa</srcmd5>
+    <version>2026.1.1</version>
+    <time>1794838475</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-new-platformdirs.patch:
+  * platformdirs now rejects relative directories</comment>
+    <requestid>1397821</requestid>
+  </revision>
 </revisionlist>

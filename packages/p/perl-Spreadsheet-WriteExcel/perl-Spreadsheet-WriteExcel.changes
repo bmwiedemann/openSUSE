@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov  7 14:18:58 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Normalize CPAN version
+
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Thu Oct  5 08:57:29 UTC 2023 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Cleanup of spec with spec-cleaner so we can add it to Factory

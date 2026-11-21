@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 09:33:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.2.5:
+  * Reject IPv4 fragments whose total length is shorter than the
+    header. A short ip_len wrapped the fragment length and
+    reassembly wrote past a heap buffer (GHSA-4rgx-gv78-gv3w)
+  * Ignore a negative Content-Length in both SIP parsers so it is
+    not used as a buffer length. This covers the default dialog
+    parser and -m.
+
+-------------------------------------------------------------------
 Sun Aug 23 08:02:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.2.4:

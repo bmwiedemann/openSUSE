@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-devel-vulkan
 #
-# Copyright (c) 2022 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,19 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_with betatest
-
 Name:           patterns-devel-vulkan
-Version:        20221115
+Version:        20261030
 Release:        0
 Summary:        Patterns for Installation (Vulkan devel)
 License:        MIT
-Group:          Metapackages
-Url:            https://github.com/openSUSE/patterns
+URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
 BuildRequires:  patterns-rpm-macros
-
 
 %description
 This is an internal package that is used to create the patterns as part
@@ -41,30 +38,40 @@ This particular package contains the Vulkan development pattern.
 %package devel_vulkan
 %pattern_development
 Summary:        Vulkan Development
-Group:          Metapackages
 Provides:       pattern() = devel_vulkan
 Provides:       pattern-icon() = pattern-vulkan-devel
 Provides:       pattern-order() = 3500
 Provides:       pattern-visible()
-
+# SECTION C++ development pattern
+Recommends:     pattern() = devel_C_C++
+# /SECTION
+# SECTION Vulkan SDK
 Recommends:     shaderc
-Recommends:     vulkan-devel 
-Recommends:     vulkan-tools 
-Recommends:     vulkan-validationlayers 
-Suggests:       gcc-c++
-Suggests:       glm-devel
-Suggests:       libglfw-devel
-Suggests:       libvulkan_intel 
-Suggests:       libvulkan_radeon
-Suggests:       libXi-devel
-Suggests:       libXxf86vm-devel
+Recommends:     vulkan-devel
+Recommends:     vulkan-tools
+Recommends:     vulkan-validationlayers
+# /SECTION
+# SECTION Example and windowing dependencies
+Recommends:     glfw-devel
+Recommends:     glm-devel
+Recommends:     libXi-devel
+Recommends:     libXxf86vm-devel
+# /SECTION
+# SECTION Vulkan drivers (ICDs)
+Recommends:     libvulkan_intel
+Recommends:     libvulkan_lvp
+Recommends:     libvulkan_radeon
+# /SECTION
+# SECTION Debugging tools
+Recommends:     renderdoc
+# /SECTION
 
 %description devel_vulkan
 Tools and libraries for software development using Vulkan.
 
 %files devel_vulkan
-%dir /usr/share/doc/packages/patterns
-/usr/share/doc/packages/patterns/devel_vulkan.txt
+%dir %{_docdir}/patterns
+%{_docdir}/patterns/devel_vulkan.txt
 
 ################################################################################
 
@@ -73,7 +80,7 @@ Tools and libraries for software development using Vulkan.
 %build
 
 %install
-mkdir -p %buildroot/%_defaultdocdir/patterns/
-echo 'This file marks the pattern devel_vulkan to be installed.' > %buildroot/%_defaultdocdir/patterns/devel_vulkan.txt
+mkdir -p %{buildroot}/%{_defaultdocdir}/patterns/
+echo 'This file marks the pattern devel_vulkan to be installed.' > %{buildroot}/%{_defaultdocdir}/patterns/devel_vulkan.txt
 
 %changelog

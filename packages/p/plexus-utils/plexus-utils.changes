@@ -1,7 +1,54 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:22:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.2.0
+  * Highlights
+    + Deleting a tree no longer deletes outside it. FileUtils
+      .forceDeleteOnExit followed symbolic links to directories, so
+      a link inside the tree got every file under its target deleted
+      when the JVM exited. deleteDirectory could empty a link's
+      target when the link itself could not be removed. Both now
+      remove only the link.
+    + Child processes can read the console. When CommandLineUtils
+      .executeCommandLine gets System.in as the process input, it
+      now polls it instead of blocking in read(), so the call
+      returns once the process exits rather than hanging on an idle
+      terminal.
+    + translateCommandline splits at tabs and line breaks. Outside
+      quotes, \t, \n and \r now separate arguments like a space
+      does. Input that held one of these characters unquoted now
+      yields more arguments; quoted text is unchanged.
+    + Clearer FileUtils failures. forceDelete uses Files
+      .deleteIfExists, so it also removes dangling symbolic links
+      and skips the Windows retry delay for files that are already
+      gone. copyDirectoryStructure and cleanDirectoryOnExit report
+      an unreadable directory as an IOException naming it, instead
+      of a NullPointerException.
+  * New features and improvements
+    + Poll System.in for stdin in CommandLineUtils
+      .executeCommandLine
+  * Bug Fixes
+    + Do not follow symlinks in forceDeleteOnExit and
+      deleteDirectory
+    + Split translateCommandline at tabs and line breaks
+    + Use Files.deleteIfExists in FileUtils.forceDelete
+    + Report an unlistable directory as IOException instead of
+      NullPointerException
+  * Documentation updates
+    + Drop the Source Xref menu item
+    + Stop pinning a version in the README snippet
+    + Advertise 4.1.0 in the README
+  * Build
+    + Allow running the release drafter by hand
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump plexus-xml to 3.1.1 and keep Dependabot on 3.x
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+
+-------------------------------------------------------------------
 Fri Sep 11 05:46:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Upgrade to upsteam version 4.1.0
+- Upgrade to upstream version 4.1.0
   * Breaking changes
     + Do not exclude ".gitignore" and ".cvsignore" by default
   * Maintenance

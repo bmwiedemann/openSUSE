@@ -2878,4 +2878,28 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>1393877</requestid>
   </revision>
+  <revision rev="361" vrev="1">
+    <srcmd5>f7d06be082c244831b2e5a3d8b298316</srcmd5>
+    <version>4.5.368</version>
+    <time>1793899664</time>
+    <user>anag_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1394755</requestid>
+  </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>a0e5fafa3718c47ae72d19c03fa54d72</srcmd5>
+    <version>4.5.369</version>
+    <time>1794317926</time>
+    <user>anag_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1396250</requestid>
+  </revision>
+  <revision rev="363" vrev="1">
+    <srcmd5>7d93c5e03f900dda8173e3d0f9a8db54</srcmd5>
+    <version>4.5.370</version>
+    <time>1794816354</time>
+    <user>anag_factory</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>1397505</requestid>
+  </revision>
 </revisionlist>

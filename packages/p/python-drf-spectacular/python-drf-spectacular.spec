@@ -26,6 +26,8 @@ URL:            https://github.com/tfranzel/drf-spectacular
 Source:         https://files.pythonhosted.org/packages/source/d/drf-spectacular/drf_spectacular-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Silence new errors from django-oauth-toolkit 3.4+
 Patch0:         support-django-oauth-toolkit-3.4.patch
+# PATCH-FIX-OPENSUSE Support djangorestframework 3.18 changes
+Patch1:         support-djangorestframework-3.18.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

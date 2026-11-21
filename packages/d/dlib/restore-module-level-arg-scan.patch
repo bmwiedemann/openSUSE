@@ -1,8 +1,8 @@
-Index: dlib-20.0.1/setup.py
+Index: dlib-20.1/setup.py
 ===================================================================
---- dlib-20.0.1.orig/setup.py
-+++ dlib-20.0.1/setup.py
-@@ -90,6 +90,14 @@ def get_extra_cmake_options():
+--- dlib-20.1.orig/setup.py
++++ dlib-20.1/setup.py
+@@ -91,6 +91,14 @@ def get_extra_cmake_options():
      return _cmake_extra_options, _clean_build_folder
  
  

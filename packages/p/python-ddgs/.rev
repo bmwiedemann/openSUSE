@@ -69,4 +69,17 @@
     https://github.com/deedy5/ddgs/compare/v9.14.4...v9.15.0</comment>
     <requestid>1372194</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>016921fc8936357f8fd2ab2529b196ca</srcmd5>
+    <version>9.16.1</version>
+    <time>1794236642</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.16.1:
+  * fix(engines): add one iteration to extract results from
+    pending futures
+- update to 9.16.0:
+  * fix(engines): update and enable Google
+  * fix(engines): update DuckDuckgo</comment>
+    <requestid>1396186</requestid>
+  </revision>
 </revisionlist>

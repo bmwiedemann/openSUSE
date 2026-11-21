@@ -1,6 +1,7 @@
 #
 # spec file for package intel-opencl
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,27 +24,29 @@
 %endif
 
 Name:           intel-opencl
-Version:        26.27.39122.11
+Version:        26.40.40196.8
 Release:        1%{?dist}
 Summary:        Intel Graphics Compute Runtime for OpenCL
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/compute-runtime
 Source0:        https://github.com/intel/compute-runtime/archive/%{version}/compute-runtime-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM intel-opencl-level-zero-1.35.patch cabelo@opensuse.org -- Fix Compability with level zero 1.35
+Patch0:         intel-opencl-level-zero-1.35.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 %if %{with level_zero}
-BuildRequires:  level-zero-devel >= 1.28.6
+BuildRequires:  level-zero-devel >= 1.34.0
 %endif
-BuildRequires:  libigc-devel
+BuildRequires:  libigc-devel >= 2.42.6
 BuildRequires:  libigdgmm-devel >= 22.10.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(igc-opencl)
 BuildRequires:  pkgconfig(libva)
-Requires:       libigc2 >= 2.34.4
-Requires:       libigdfcl2 >= 2.34.4
-Requires:       libopencl-clang17 >= 2.34.4
+Requires:       libigc2 >= 2.42.6
+Requires:       libigdfcl2 >= 2.42.6
+Requires:       libopencl-clang22_1 >= 2.42.6
 Recommends:     libOpenCL1
 ExclusiveArch:  x86_64
 

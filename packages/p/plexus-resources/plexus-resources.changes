@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov  6 13:07:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.4.1
+  * Bug Fixes
+    + Read jar resources without the JVM jar: cache
+  * Documentation updates
+    + Drop the Source Xref menu item
+    + Stop pinning a version in the README snippet
+  * Maintenance
+    + Keep plexus-xml on 3.x in Dependabot
+    + Drop the Source Xref menu item
+    + Draft the version the labels imply, not always a patch
+  * Build
+    + Allow running the release drafter by hand
+    + Keep Dependabot off Mockito 5
+    + Point the SCM URLs at HTTPS
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+    + Keep plexus-xml on 3.x in Dependabot
+
+-------------------------------------------------------------------
 Mon Sep 28 13:16:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 1.4.0

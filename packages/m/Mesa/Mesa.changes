@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 17 22:00:37 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- restore baselibs.conf; contents got lost with previous change for
+  unkonwn reasons (boo#1290770)
+
+-------------------------------------------------------------------
+Fri Nov 13 06:18:05 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.2.7 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.7
+- supersedes the following patches:
+  * U_nir-load_libclc-add-llvm-23-libclc-paths.patch
+  * U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
+  * U_nir-load_libclc-turn-sys_path-into-an-array.patch
+  * llvm23.patch
+
+-------------------------------------------------------------------
+Thu Oct 29 16:15:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 26.2.6 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.6
+
+-------------------------------------------------------------------
 Sat Oct 17 11:56:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Mesa-libRusticlOpenCL: no longer require libclc(llvmN); see

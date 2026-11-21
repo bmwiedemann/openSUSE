@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:32:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.2:
+  * Fix table iteration releasing entries the plugin never took:
+    iteration entries are no longer marked owned, matching the
+    Rust SDK and libs behaviour; adds table_test coverage
+
+-------------------------------------------------------------------
 Thu Aug 20 18:51:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.1:

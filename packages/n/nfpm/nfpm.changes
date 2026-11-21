@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 13 06:03:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.49.0:
+  * Security
+    - GHSA-cfgx-mprf-xh64: Reserved metadata name collision leads
+      to supply chain attack with root code execution and package
+      identity spoofing
+    - GHSA-839m-5qhj-w4rm: Incorrect escaping in SRPM spec results
+      in Arbitrary Code Execution
+  * New Features
+    - 62f72a6: feat(msix): default publisher from the signing
+      certificate or vendor (#1135)
+    - edf3552: feat(rpm): add script_requires to require script
+      interpreters (#1151)
+    - c953fe3: feat: add msi support (#1097)
+  * Bug fixes
+    - ff7e8cd: fix(apk): Use the configured mtime for install
+      scripts (#1169)
+    - 1dc3fcc: fix(ci): allow unsigned RPM acceptance fixtures
+      (#1175)
+    - d2d7180: fix(ci): create generated update PRs with app token
+      (#1176)
+  * Other work
+    - 3871eb3: docs: update Go and Hextra (#1172)
+    - 92ea769: docs: update cmd docs (#1177)
+    - chore: update Go to 1.27.4 (#1179)
+
+-------------------------------------------------------------------
 Tue Oct 13 04:31:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.48.0:

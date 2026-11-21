@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  2 09:33:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.3
+  * fixed issue with multiple ID3v2 tags in the mpeg plugin.
+  * improved simple user interface:
+    + fixed system colors;
+    + fixed row spacing;
+    + added feature to disable alternate row colors.
+
+-------------------------------------------------------------------
 Thu Sep  3 07:50:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.2

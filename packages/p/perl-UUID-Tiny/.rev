@@ -7,4 +7,13 @@
     <comment>perl-UUID-Tiny is a dependency for https://build.opensuse.org/package/show/Publishing/LaTeXML , which I would like to also submit to Factory.</comment>
     <requestid>988384</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fd25cbd300d30f6494075ae17f4bc4cd</srcmd5>
+    <version>1.40.0</version>
+    <time>1794090739</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1395947</requestid>
+  </revision>
 </revisionlist>

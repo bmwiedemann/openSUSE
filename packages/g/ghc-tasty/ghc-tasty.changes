@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct 20 23:13:54 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.5.5.
+  Version 1.5.5
+  --------------
+
+  _2025-10-30_
+
+  * Revert making `-j` to entail `+RTS -N` automatically, restoring
+    the behaviour from `tasty-1.5.3` and earlier
+    ([#485](https://github.com/UnkindPartition/tasty/pull/485)).
+  * Ensure that disabling `--ansi-tricks` disables
+    terminal width detection via ANSI tricks and disables
+    attempts to hide / show the cursor
+    ([#477](https://github.com/UnkindPartition/tasty/pull/477),
+     [#481](https://github.com/UnkindPartition/tasty/pull/481)).
+
+-------------------------------------------------------------------
+Mon Sep 28 20:19:07 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tasty to version 1.5.4 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Mar 25 20:04:10 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tasty to version 1.5.4.

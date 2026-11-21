@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:05:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.19.1
+  * Fixed crash with `z=ffgen(23^3,'z);hyperellcharpoly(t^3+z*t+4)`
+  * Fixed SIGFPE with `localbitprec(53);lfun(ellinit([1,2]),100)`
+  * `rnfisabelian` could return wrong result for complex fields
+  * `x==0` was incorrect for t_COMPLEX x (defined as |x| == 0)
+  * `logint(t_REAL, 2, &z);` left z uninitialized
+  * `matdet(qfbredsl2(Qfb(2,-1,2^10000))[2])` erroneously output -1
+  * `e.tate` was inaccurate at p=2
+  * `polrootsreal(P, [a,b])` was inaccurate for large (a-b)
+  * Fixed crash with `setrand(2); hyperellisisom(x^5+x+1, x^5+x+1)`
+  * `ellrank(E)` could erroneously fail at low accuracy
+  * Fixed crash with `ffgen(5^3,'b); hyperellcharpoly(x^5+4*x+b^2)`
+  * `ellpointtoz(E/Qp, P)` accuracy issues were fixed
+  * Fix division by 0 for `qfminimize([-5,0,-2;0,-1,0;-2,0,1])`
+
+-------------------------------------------------------------------
 Tue Sep 29 09:05:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.19.0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:10:49 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Guard the restorecon call in unbound-keygen.service with a
+  test -x check so it no longer fails the service on systems
+  without policycoreutils/restorecon installed (boo#1289481,
+  boo#1290250)
+
+-------------------------------------------------------------------
 Thu Oct 22 10:36:10 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.26.2:

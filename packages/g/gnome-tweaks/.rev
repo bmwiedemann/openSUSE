@@ -216,4 +216,13 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342965</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>1a103a9d9b99461a6ce36d6e332eae82</srcmd5>
+    <version>49.0</version>
+    <time>1795103609</time>
+    <user>anag_factory</user>
+    <comment>- Add gnome-tweaks-pt-desktop.patch: Fix desktop file translation (pt). Error
+  detected and reported by desktop-file-utils 0.29.</comment>
+    <requestid>1398346</requestid>
+  </revision>
 </revisionlist>

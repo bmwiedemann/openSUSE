@@ -2312,4 +2312,41 @@ Fixes build with Perl-IO-socket-SSL 2.073, as currently staged in :E (forwarded 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1353166</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>ce2fd4b55942562dd30f660658b0b165</srcmd5>
+    <version>2.4.71</version>
+    <time>1794597171</time>
+    <user>anag_factory</user>
+    <comment>- Fix the apache_mmn provides (boo#1289278, bsc#1286911). The macro
+  scanned the whole source tarball, and since 2.4.69 it also matched
+  a line in test/pytest_suite/tests/t/apache/test_mmn.py, generating
+  apache_mmn_201202110 instead of apache_mmn_20120211. This made
+  modules requiring apache_mmn_20120211, such as apache2-mod_php8,
+  uninstallable. Only parse include/ap_mmn.h, stop at the first
+  match, and fail the build in the prep section if the provides does
+  not match the sources.
+
+- update to 2.4.71
+  *) SECURITY: CVE-2026-119618: mod_http2: heap corruption and RCE in
+     assign_headers (cve.mitre.org) [bsc#1290166]
+     Concurrent Execution using Shared Resource with Improper
+     Synchronization vulnerability in Apache HTTP Server's mod_http2
+     in assign_headers() can lead to RCE.
+     This issue affects Apache HTTP Server: from 2.4.55 through
+     2.4.70.
+  *) SECURITY: CVE-2026-109163: mod_vhost_alias 1 byte stack buffer
+     overwrite (after CVE-2026-63292) (cve.mitre.org) [bsc#1290169]
+     Stack-based buffer overflow vulnerability in Apache HTTP
+     Server's mod_vhost_alias (afterÂ CVE-2026-63292)
+     This issue affects Apache HTTP Server: 2.4.69 and 2.4.70.
+  *) SECURITY: CVE-2026-106023: mod_md NULL pointer dereference leads
+     to child process crash (cve.mitre.org) [bsc#1290167]
+     NULL pointer dereference vulnerability in Apache HTTP Server's
+     mod_md during HTTP request processing.
+     This issue affects Apache HTTP Server: from 2.4.30 through
+     2.4.70.
+  *) mod_md: MDHttpProxy and MDCACertificateFile can now be set per MDomain.
+     New directive MDHttpProxyCACertificateFile sets the CA certificates</comment>
+    <requestid>1397333</requestid>
+  </revision>
 </revisionlist>

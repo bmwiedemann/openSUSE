@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Nov 16 05:38:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.32:
+  * build(deps): bump golang.org/x/oauth2 from 0.37.0 to 0.38.0
+    (#2139)
+  * build(deps): bump golang.org/x/text from 0.43.0 to 0.44.0
+    (#2137)
+  * build(deps): bump github.com/anchore/syft from 1.57.0 to 1.57.1
+    (#2136)
+  * build(deps): bump the chainguard group across 1 directory with
+    3 updates (#2131)
+  * build(deps): bump golang.org/x/sync from 0.24.0 to 0.25.0
+    (#2128)
+  * build(deps): bump github.com/anchore/syft from 1.56.0 to 1.57.0
+    (#2127)
+
+-------------------------------------------------------------------
+Mon Nov 09 05:51:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.31:
+  * build(deps): bump github.com/anchore/syft from 1.55.0 to 1.56.0
+    (#2123)
+  * build(deps): bump github.com/anchore/stereoscope from 0.3.4 to
+    0.4.0 (#2120)
+  * build(deps): bump github.com/anchore/syft from 1.54.1 to 1.55.0
+    (#2106)
+  * build(deps): bump the chainguard group across 1 directory with
+    2 updates (#2101)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.16.2 to 2.17.0
+    (#2107)
+  * build(deps): bump cloud.google.com/go/storage from 1.68.0 to
+    1.70.0 (#2112)
+  * build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5 to
+    4.1.6 (#2113)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:46:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.30:
+  * build(deps): bump github.com/github/go-spdx/v2 from 2.7.1 to
+    2.8.0 (#2111)
+
+-------------------------------------------------------------------
 Mon Oct 19 04:53:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.29:

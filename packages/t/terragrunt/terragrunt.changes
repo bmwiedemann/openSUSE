@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Fri Nov 13 06:06:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.2:
+  Large update with lots of features, please check the release
+  notes for descriptions and examples
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.2.2
+  * Features
+    - feat: add terraform.no_dot_terragrunt_cache to run units
+      without .terragrunt-cache in #7093
+    - feat: Adding catalog tool to the mcp command in #7234
+    - feat: Adding scaffold tool to the mcp command in #7253
+    - feat: Adding docs capability to the mcp command in #7256
+    - feat: Adding variables block in #7238
+    - feat: Adding fmt tool to the mcp command in #7239
+  * Bug Fixes
+    - fix: Adding size as another fast change indicator in #7193
+    - fix: Adding racy mtime check in #7195
+    - fix: Fixing flag env vars in #7217
+    - fix: Adding remote state encryption fallback in #7223
+    - fix(provider-cache): stop permission errors on shared temp
+      dir in #7233
+    - fix(telemetry): make otel-logs export reliable in #7219
+    - fix: Fixing stacks reading tracking for values in #7226
+    - fix: Fixing scaffold output directory relativization in #7247
+    - fix: Preventing S3 backend bootstrap crash on missing
+      encryption or table description in #7203
+    - fix(catalog): keep clone directory inside its temp dir in
+      #7262
+    - fix: Fixing support for the sshkey parameter while using CAS
+      in #7265
+    - fix: Fixing telemetry root span attributes in #7250
+    - fix: Sharing GitHub API lookups across the docs build in
+      #7273
+    - fix: Rejecting a null or missing exclude if during discovery
+      in #7283
+    - fix: Fixing partial parse consistency in #7278
+    - fix(stacks): rewrite update_source_with_cas in OCI and HTTP
+      archive stacks in #7272
+    - fix: root file check, proxy links and git ceiling in #7271
+    - fix: Plumb through --filter for render in #7293
+  * Performance
+    - perf: Make relationship discovery linear in unit count in
+      #7201
+    - perf: Memoize symlink resolution in discovery in #7005
+    - perf: Setting up rewrite implementation of the config package
+      in #7045
+    - perf: Deferring dependency output resolution in the config
+      rewrite in #7049
+    - perf: Only construct stack funcs for stack dependencies in
+      #7202
+    - perf: Pre-allocate slices with known lengths in #7266
+    - perf: Config rewrite parse store in #7188
+    - perf: Plumbing down parse store in #7282
+    - perf: Reading run configs through the parse store in #7292
+  * Documentation
+    - docs: clean up released version gates for v1.2.1 in #7200
+    - docs: Adding suggestion for version-specific docs in #7215
+    - docs: fix Terragrunt GitHub Discussions link on support page
+      in #7216
+    - docs: Capturing more env vars for flags in #7218
+    - docs: Fixing short SHAs in install script in #7227
+    - docs: Moving HCL blocks, attributes, and functions to
+      data-driven pages in #7237
+    - docs: Fixing llms-full.txt generation in #7242
+    - docs: Cleaning up function docs display in #7246
+    - docs: Redirecting old HCL subsection anchors to their new
+      pages in #7249
+    - docs: Fixing broken markdown route build in #7255
+    - docs: Moving more HCL attribute to data files in #7268
+    - docs: Splitting the HCL overview into units and stacks pages
+      in #7274
+    - docs: Moving stack configuration blocks to data files in
+      #7285
+    - docs: Moving terraform and remote_state HCL block docs to
+      their own pages in #7288
+    - docs: updating changelog category order in #7301
+    - docs: Addressing some changelog gaps for v1.2.2 in #7302
+  * Tests
+    - test: raise coverage in spinner, controls, git, worktrees and
+      hcl format in #7224
+  * Chores
+    - chore(deps): bump jdx/mise-action from 5.1.2 to 5.2.2 in
+      #7210
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.4 to
+      4.1.6 in #7212
+    - chore(deps): bump docker/setup-docker-action from 5.5.0 to
+      5.6.0 in #7209
+    - chore(deps): bump aws-sdk-go-v2, bubbletea, google api,
+      goldmark, x/net in #7222
+    - chore: Fix-up from no_dot_terragrunt_cache vs rewrite package
+      in #7232
+    - chore(deps): bump jdx/mise-action from 5.2.2 to 5.2.4 in
+      #7243
+    - chore(deps): bump the go-dependencies group across 1
+      directory with 2 updates in #7244
+    - chore(deps): bump DavidAnson/markdownlint-cli2-action in
+      #7245
+    - chore: Bumping docs deps in #7236
+    - chore: Automating OpenTofu/Terraform pin bumps in #7231
+    - chore: Adding golines formatter usage in golangci-lint in
+      #7251
+    - chore: Update live stacks example commit in #7258
+    - chore: Bump OpenTofu to v1.13.2 in #7259
+    - chore: Bump Terraform to v1.17.1 in #7260
+    - chore: Redacting credentials from addresses without a scheme
+      in #7261
+    - chore: Fixing main lint after variables block merge in #7269
+    - chore: Replacing venvtest.New with venv.MemVenv in #7276
+    - chore: Adding the pkg/venv package in #7277
+    - chore: Adding a vfs overlay FS in #7280
+    - chore: Adding godoc lint in #7281
+    - chore: Adding config rewrite CI leg in #7284
+    - chore: Bumping some JS deps for the docs in #7286
+    - chore: Bumping to Go v1.27.4 in #7287
+    - chore: long running tasks reporting update in #7077
+  * Other Changes
+    - tip: Adding inputs-read-not-tracked tip in #7263
+    - strict: Adding the cas-source-inside-stack strict control in
+      #7290
+
+-------------------------------------------------------------------
 Thu Oct 29 07:12:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.1:

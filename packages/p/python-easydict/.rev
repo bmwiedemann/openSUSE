@@ -8,4 +8,12 @@
 Changes: Initial package of python-easydict 1.13: access dict values as attributes (works recursively)</comment>
     <requestid>1372972</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>999f1a9af421a4c90c9794fe6a1cddcb</srcmd5>
+    <version>1.14</version>
+    <time>1794318016</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.14</comment>
+    <requestid>1396397</requestid>
+  </revision>
 </revisionlist>

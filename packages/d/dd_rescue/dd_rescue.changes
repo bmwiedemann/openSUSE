@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:48:06 CET 2026 - kurt@garloff.de
+
+- Update to dd_rescue-1.99.25:
+  * Another edge testcase (unaligned with hardbs = softbs). 
+  * Fix for this edge case.
+  * Improve buffer allocation to ensure alignment to cache line or
+    page size (for direct IO) even when plugins want space in front
+    of buffer (slack_pre).
+  * Increase frequency of status updates when using larger default
+    softbs with direct IO.
+  * More conservative (better) initial duration estimates.
+  * Add test case from Thomas Deutschmann, where odd offsets would
+    result on not getting progress updates.
+  * Fix by reducing granularity of offset checks.
+- Drop dd_rescue-ssp-strong.patch, as we no longer have a special
+  make rule that would override the flags. 
+
+-------------------------------------------------------------------
 Sun Oct 18 10:59:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.99.24:

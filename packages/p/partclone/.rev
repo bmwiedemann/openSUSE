@@ -325,4 +325,20 @@ verified to resolve via osc buildinfo on i586, x86_64, Leap 16.0 and 16.1.</comm
     <comment>Update to 0.3.52.</comment>
     <requestid>1393850</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a896185526ba2ad2da3e9a82c3ea5a6f</srcmd5>
+    <version>0.3.53</version>
+    <time>1794411022</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.53</comment>
+    <requestid>1396885</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>76027b07277f10b08d4e67f3f1f93fca</srcmd5>
+    <version>0.3.54</version>
+    <time>1794816527</time>
+    <user>anag_factory</user>
+    <comment>Update partclone to 0.3.54: ZFS log spacemap off-by-one fix (#325).</comment>
+    <requestid>1397669</requestid>
+  </revision>
 </revisionlist>

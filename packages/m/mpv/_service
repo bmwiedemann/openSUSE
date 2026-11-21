@@ -8,13 +8,13 @@
     <param name="url">https://github.com/mpv-player/mpv.git</param>
     <param name="scm">git</param>
     <param name="filename">mpv</param>
-    <param name="revision">master</param>
-    <param name="match-tag">v*</param>
-    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="revision">v0.42.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="changesgenerate">enable</param>
+    <param name="changesgenerate">disable</param>
     <param name="exclude">*.swift</param>
     <param name="exclude">osdep/android/*</param>
+    <param name="exclude">osdep/mac/*</param>
     <param name="exclude">osdep/macos/*</param>
     <param name="exclude">osdep/win32/*</param>
     <param name="exclude">TOOLS/osxbundle/*</param>

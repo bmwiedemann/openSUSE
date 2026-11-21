@@ -29,4 +29,14 @@
   * chore(flake): update flake.lock</comment>
     <requestid>1354456</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b0cd4ef862bc7d813357b0edab46515d</srcmd5>
+    <version>0.0.12</version>
+    <time>1794591327</time>
+    <user>anag_factory</user>
+    <comment>- Fix Qt 6.12 MOC metatype completeness errors for Hyprland IPC QObject properties.
+- Keep PCH disabled for this build.
+- Add fix-qt612-hyprland-moc-metatypes.patch</comment>
+    <requestid>1397266</requestid>
+  </revision>
 </revisionlist>

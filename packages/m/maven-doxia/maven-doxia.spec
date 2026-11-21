@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jetbrains-annotations
-BuildRequires:  modello
+BuildRequires:  modello-ant-task
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject

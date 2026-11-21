@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Nov  7 22:47:59 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- On SLE 16, require filelock >= 3.18.0, the version SLE 16 ships,
+  so ansible-lint installs there: upstream raised the floor to
+  3.20.3 for CVE-2025-68146 and CVE-2026-22701, and the SLE 16
+  filelock carries both fixes. Tumbleweed keeps the upstream
+  minimum, and the SLE 16 build fails if upstream changes it.
+
+-------------------------------------------------------------------
+Thu Nov  5 18:46:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.11.0:
+  * fix: pin Python to 3.13 to avoid Ansible compatibility issues
+    with… in #5224
+  * Amazon Linux 2027 is in Preview in #5208
+  * fix: resolve collection playbooks with extensions in #5191
+  * fix: preserve explicit YAML tags like !!python/name during
+    --fix in #5202
+  * fix: do not color stderr output when stderr is redirected in
+    #5203
+  * Combine cache exclusion, YAML formatting, and event-query fixes
+    in #5228
+  * perf: avoid deepcopy in '_sanitize_task' in #5207
+  * fix(security): update dependencies to resolve Dependabot alerts
+    in #5230
+
+-------------------------------------------------------------------
+Mon Oct 26 13:39:37 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- On SLE 16, require black >= 25.1.0 and cryptography >= 44.0.0,
+  the versions SLE 16.1 ships, so ansible-lint installs there:
+  ansible-lint does not import cryptography (upstream raised the
+  floor for CVE fixes, which SUSE backports) and the jinja rule
+  works with black 25.1. Tumbleweed keeps the upstream minimums.
+  The SLE 16 build fails if upstream changes these minimums, so
+  they get reviewed.
+
+-------------------------------------------------------------------
 Wed Oct 14 04:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.10.1:

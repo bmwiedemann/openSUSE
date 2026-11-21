@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  6 17:03:29 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update Diff to version 2.0.1.
+  # 2.0.0
+
+    - Remove `groupBy'` from `Data.Algorithm.DiffContext` exports (#26).
+      Use `Data.List.GroupBy.groupBy` from `groupBy` package instead.
+    - Optimize `Data.Algorithm.Diff` functions (#25, #30, #37).
+      ~2.4x and ~8.5x `getDiff` improvement on benchmarks.
+
+-------------------------------------------------------------------
+Fri Sep  4 15:04:43 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update Diff to version 2.0.0.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Fri Nov 15 17:54:12 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update Diff to version 1.0.2.

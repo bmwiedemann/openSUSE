@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 21 15:23:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst-symbols to version 0.3.
+  ## 0.3
+
+  * Updated to 0.15 symbols.
+
+  * [API change] Changed `mathShorthands` so that the second item in
+    the pair is a unicode character rather than a symbol name.
+    (The symbol name is no longer available from the site.)
+
+-------------------------------------------------------------------
 Mon Jun  1 11:40:00 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update typst-symbols to version 0.2.

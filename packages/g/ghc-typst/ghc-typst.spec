@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10
+Version:        0.12.1
 Release:        0
 Summary:        Parsing and evaluating typst syntax
 License:        BSD-3-Clause
@@ -41,6 +41,8 @@ BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-erf-devel
+BuildRequires:  ghc-erf-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
@@ -68,8 +70,8 @@ BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
 BuildRequires:  ghc-xml-conduit-devel
 BuildRequires:  ghc-xml-conduit-prof
-BuildRequires:  ghc-yaml-devel
-BuildRequires:  ghc-yaml-prof
+BuildRequires:  ghc-yamlet-devel
+BuildRequires:  ghc-yamlet-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-pretty-show-devel
@@ -82,7 +84,7 @@ BuildRequires:  ghc-tasty-prof
 
 %description
 A library for parsing and evaluating typst syntax. Typst (<https://typst.app>)
-is a document layout and formatting language. This library targets typst 0.13
+is a document layout and formatting language. This library targets typst 0.15
 and currently offers only partial support.
 
 %package devel

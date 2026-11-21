@@ -500,4 +500,20 @@
   * Decode AMQP field-table type 's' as signed 16-bit (#469)</comment>
     <requestid>1380793</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>64690cc6bf66e24bb3495592fb05cb60</srcmd5>
+    <version>5.4.2</version>
+    <time>1795182425</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.4.2:
+  * Fix publisher confirm state after channel revive
+  * Fix non-UTF-8 field-table keys
+  * Always return the consumer tag from basic_consume
+  * Forget no_ack consumers cancelled by the broker
+  * Send the content header for empty bodies on the slow write path
+  * Flush pending bits around timestamp and byte array fields
+  * Fix signedness of byte fields in AMQP tables
+  * Decode AMQP field-table types 'b' and 'B' with the right signedness</comment>
+    <requestid>1398852</requestid>
+  </revision>
 </revisionlist>

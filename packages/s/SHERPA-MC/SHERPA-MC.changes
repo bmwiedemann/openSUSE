@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:34:29 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update Source URL
+
+-------------------------------------------------------------------
+Mon Nov 16 14:55:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add SHERPA-MC-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_*, PyInt_*) with Python 3 C API in AddOns/Python/*.i.
+
+-------------------------------------------------------------------
 Sun Nov 16 18:18:24 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.2.16:

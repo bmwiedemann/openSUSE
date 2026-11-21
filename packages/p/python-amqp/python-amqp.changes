@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 01:08:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.4.2:
+  * Fix publisher confirm state after channel revive
+  * Fix non-UTF-8 field-table keys
+  * Always return the consumer tag from basic_consume
+  * Forget no_ack consumers cancelled by the broker
+  * Send the content header for empty bodies on the slow write path
+  * Flush pending bits around timestamp and byte array fields
+  * Fix signedness of byte fields in AMQP tables
+  * Decode AMQP field-table types 'b' and 'B' with the right signedness
+
+-------------------------------------------------------------------
 Sat Sep 26 12:44:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0:

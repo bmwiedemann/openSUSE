@@ -16,11 +16,11 @@
 #
 
 
-%define skia_version m145-0.92.0
+%define skia_version m156.5
 %define wuffs_commit e3f919ccfe3ef542cfc983a82146070258fb57f8
 
 Name:           neovide
-Version:        0.16.2
+Version:        0.17.2
 Release:        0
 Summary:        Simple Neovim GUI
 License:        MIT
@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        https://github.com/rust-skia/skia/archive/%{skia_version}/skia-%{skia_version}.tar.gz
 Source3:        https://github.com/google/wuffs-mirror-release-c/archive/%{wuffs_commit}/wuffs-%{wuffs_commit}.tar.gz
+# Link with system freetype
+Patch1:         disable-embed-freetype.patch
 BuildRequires:  cargo >= 1.79
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
@@ -45,13 +47,7 @@ BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-# clang++ needs gcc15 c++ headers to compile skia on Leap 15.6
-BuildRequires:  gcc15-c++
-%endif
 Requires:       neovim >= 0.10.0
-
-ExclusiveArch:  x86_64 aarch64
 
 %description
 No Nonsense Neovim Client in Rust
@@ -60,6 +56,7 @@ No Nonsense Neovim Client in Rust
 %setup -q -a 1 -a 2 -a 3
 mkdir -p skia-%{skia_version}/third_party/externals/
 mv wuffs-mirror-release-c-%{wuffs_commit} skia-%{skia_version}/third_party/externals/wuffs
+%patch -P 1 -p1
 
 %build
 export SKIA_SOURCE_DIR=%{_builddir}/%{name}-%{version}/skia-%{skia_version}

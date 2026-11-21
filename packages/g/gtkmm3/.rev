@@ -488,4 +488,12 @@
     - Fix build with build-deprecated-api=false.</comment>
     <requestid>1361056</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>0957620c2710412153d89041c7a8f40b</srcmd5>
+    <version>3.24.11</version>
+    <time>1793899173</time>
+    <user>anag_factory</user>
+    <comment>- Update URL to new home.</comment>
+    <requestid>1394833</requestid>
+  </revision>
 </revisionlist>

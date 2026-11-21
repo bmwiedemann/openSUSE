@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:16:56 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.10.0
+  * Fixes a bug where certbot would sometimes incorrectly pass
+    failed SANs as successfully renewed SANs to renewal hooks.
+  * The account to deactivate is selected before Certbot asks for
+    irreversible deactivation confirmation.
+  * Fixes a race condition in the webroot plugin.
+
+-------------------------------------------------------------------
 Tue Sep  8 13:05:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.8.0

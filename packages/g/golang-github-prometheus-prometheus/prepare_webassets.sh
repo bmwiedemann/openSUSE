@@ -43,7 +43,6 @@ cpio -id < "${working_directory}/${obscpio}" || exit 21
 cd "${basename}" || exit 23
 
 echo "##########"
-patch -p1 -i "${working_directory}/0003-Fix-CVE-2026-93753.patch"
 cd web/ui/ || exit 25
 rm -rf node_modules || exit 27
 pnpm install --frozen-lockfile

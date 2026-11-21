@@ -1,7 +1,7 @@
 #
 # spec file for package python-awx-cli
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,18 +25,24 @@ License:        Apache-2.0
 URL:            https://github.com/ansible/awx/tree/devel/awxkit
 Source:         awx-%{version}.tar.gz
 Source1:        LICENSE.md
+# PATCH-FIX-UPSTREAM awxkit-drop-distutils-pkg_resources.patch gh#ansible/awx#15441 gh#ansible/awx#16208
+Patch0:         awxkit-drop-distutils-pkg_resources.patch
+# PATCH-FIX-UPSTREAM awxkit-argparse-python313.patch gh#ansible/awx#15692
+Patch1:         awxkit-argparse-python313.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 # SECTION
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module websocket-client}
 # SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+Requires:       python-packaging
 Requires:       python-requests
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -48,7 +54,7 @@ BuildArch:      noarch
 CLI to manage the AWX Ansible web platform
 
 %prep
-%autosetup -n awx-%{version}
+%autosetup -p1 -n awx-%{version}
 cp %{SOURCE1} .
 echo %{version} > VERSION
 
@@ -60,6 +66,10 @@ echo %{version} > VERSION
 %python_clone -a %{buildroot}%{_bindir}/akit
 %python_clone -a %{buildroot}%{_bindir}/awx
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# the CLI must start: no distutils / pkg_resources, argparse on python >= 3.12.8
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c 'import awxkit.awx, awxkit.cli.options; from awxkit.cli import run; run(argv=["awx", "--version"])'
 
 %post
 %python_install_alternative akit

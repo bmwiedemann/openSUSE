@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-textfsm
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Python module for parsing semi-structured text into python tables
 License:        Apache-2.0
@@ -53,6 +53,7 @@ sed -i -e '/^#!\//, 1d' textfsm/*.py
 %python_expand rm -f %{buildroot}%{_bindir}/textfsm
 # or the testdata
 %python_expand rm -r %{buildroot}%{$python_sitelib}/testdata
+%python_expand rm -r %{buildroot}%{$python_sitelib}/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

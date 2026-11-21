@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 12 15:15:28 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.9.0:
+  * Fix crash when starting a screencast.
+  * Fix screenshot action not prompting for permission.
+
+-------------------------------------------------------------------
 Thu Oct 29 20:14:31 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 0.8.5:

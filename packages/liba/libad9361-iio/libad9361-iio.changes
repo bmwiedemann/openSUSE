@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:04:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix Source URL: fetch the 20261023 snapshot by its commit
+  hash via the download_files service (no such tag upstream).
+
+-------------------------------------------------------------------
+Fri Nov  6 19:29:28 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to git snapshot 20261023
+  * builds with libiio >= 1.0.0
+- Patch libad9361-iio-link-libm.patch removed (applied upstream)
+
+-------------------------------------------------------------------
 Wed Aug 26 14:41:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 0.4.0:

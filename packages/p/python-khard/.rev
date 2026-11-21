@@ -85,4 +85,12 @@
   * deps: remove dependency on sphinx_autodoc_typehints extension</comment>
     <requestid>1382329</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>ec1ba75cf506bf57d4e31725cb778bd8</srcmd5>
+    <version>0.22.0</version>
+    <time>1794838474</time>
+    <user>anag_factory</user>
+    <comment>- Remove stale setuptools_scm metadata.</comment>
+    <requestid>1397819</requestid>
+  </revision>
 </revisionlist>

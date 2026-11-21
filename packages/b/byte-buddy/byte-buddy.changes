@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 10:52:08 UTC 2026 - Thomas Florio <thomas.florio@suse.com>
+
+- Package the standard Byte Buddy artifacts (Java 8 baseline) instead
+  of the -jdk5 variant, as the RPM targets Java 8 and newer
+
+-------------------------------------------------------------------
 Mon Apr 20 06:40:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to v1.18.8

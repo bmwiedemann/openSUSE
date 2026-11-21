@@ -1012,4 +1012,32 @@ all changed Requires/Buildrequires seem to be available
   * Maintain doc8 options in pyproject.toml</comment>
     <requestid>1375237</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>79eec0f7e1c8035063d207d7dc7a4669</srcmd5>
+    <version>10.8.1</version>
+    <time>1795023009</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.8.1:
+  * Revert &quot;typing: Loosen types for Opt.type&quot;
+  * reno: Update master for unmaintained/2025.1
+  * ruff: Enable RUF rules
+  * typing: Loosen types for Opt.type
+  * trivial: Move attribute docs inline
+  * typing: Misc typing improvements
+  * typing: Make Opt generic
+  * typing: Make ConfigType generic
+  * trivial: Reindent docstrings
+  * Fix wrong return type in comments
+  * Fix missing dependency on pbr
+  * Make docs more reproducible
+  * Simplify coverage command options
+  * Do not generate bytecode in tests
+  * Install coverage only when needed
+  * Use pyproject.toml to maintain coverage options
+  * Declare Python 3.15 support
+  * Fix mypy errors caused by testscenarios 0.7.0
+  * Update master for stable/2026.2
+  * trivial: Remove errant space from deprecation warning</comment>
+    <requestid>1398212</requestid>
+  </revision>
 </revisionlist>

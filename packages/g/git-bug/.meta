@@ -17,5 +17,5 @@
     GraphQL API
   * bridges to other bug trackers: use bridges to import and export to
     other trackers.</description>
-  <devel project="devel:tools:scm" package="git-bug"/>
+  <url>https://github.com/MichaelMure/git-bug</url>
 </package>

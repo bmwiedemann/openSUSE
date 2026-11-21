@@ -1,7 +1,7 @@
 #
 # spec file for package sso-mib
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,14 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global soversion 0
 
 Name:           sso-mib
-Version:        0.10.1
+Version:        0.11.0
 Release:        1%{?dist}
 Summary:        Tools and library for Single-Sign-On with CA for Entra via Himmelblau
 
-License:        LGPL-2.1-only AND GPL-2.0-only AND MIT
+License:        GPL-2.0-only AND LGPL-2.1-only AND MIT
 URL:            https://github.com/siemens/sso-mib
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 
@@ -33,6 +34,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libjwt)
+BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(uuid)
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 # Needed for the unit tests
@@ -89,6 +91,16 @@ for authentication and Single-Sign-On from the Himmelblau stack.
 This package contains a git send-email credential helper to authenticate SMTP
 on O365.
 
+%package -n libsso-mib-sasl-xoauth2
+Summary:        SASL plugin for SSO with Entra via Himmelblau
+License:        LGPL-2.1-only
+
+%description -n libsso-mib-sasl-xoauth2
+Applications can link with this library to get Entra Conditional Access tokens
+for authentication and Single-Sign-On from the Himmelblau stack.
+
+This package contains the SASL plugin shared library.
+
 %prep
 %autosetup
 
@@ -127,5 +139,11 @@ on O365.
 %license LICENSES/MIT.txt
 %{_bindir}/sso-mib-gch-smtp-o365
 %{_mandir}/man1/sso-mib-gch-smtp-o365.1*
+
+%files -n libsso-mib-sasl-xoauth2
+%license LICENSES/MIT.txt
+%dir %{_libdir}/sasl2
+%{_libdir}/sasl2/libsso-mib-sasl-xoauth2.so
+%{_mandir}/man7/sso-mib-sasl-xoauth2.7*
 
 %changelog

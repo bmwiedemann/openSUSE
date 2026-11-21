@@ -1,7 +1,6 @@
 #
 # spec file for package paraview
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+%define qt_ver 6
+%else
+%define qt_ver 5
+%endif
+
 %define major_ver 6
-%define minor_ver 1
+%define minor_ver 2
 %define short_ver %{major_ver}.%{minor_ver}
 %define shlib libparaview%{major_ver}_%{minor_ver}
 
@@ -53,6 +58,7 @@ BuildRequires:  graphviz
 BuildRequires:  hdf5-devel
 BuildRequires:  libboost_graph-devel
 BuildRequires:  libboost_headers-devel
+BuildRequires:  libxslt-tools
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} <= 1500
@@ -64,20 +70,25 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-Twisted
 BuildRequires:  python3-devel
 BuildRequires:  python3-matplotlib
-BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-qt%{qt_ver}-devel
 BuildRequires:  readline-devel
 BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  wget
 BuildRequires:  cmake(vtk) >= 9.5.0
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Core)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Gui)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Help)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Network)
+BuildRequires:  pkgconfig(Qt%{qt_ver}PrintSupport)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Widgets)
+%if %{qt_ver} == 5
 BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+%else
+BuildRequires:  pkgconfig(Qt6Core5Compat)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+%endif
+BuildRequires:  pkgconfig(Qt%{qt_ver}Xml)
 BuildRequires:  pkgconfig(eigen3) >= 2.91.0
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2)
@@ -88,6 +99,7 @@ BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(theora)
@@ -136,7 +148,7 @@ Requires:       python3
 Requires:       python3-Twisted
 Requires:       python3-matplotlib
 Requires:       python3-numpy
-Requires:       python3-qt5
+Requires:       python3-qt%{qt_ver}
 
 %package devel-static
 Summary:        Static libraries for Paraview, needed to building plugins
@@ -215,8 +227,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{python3_sitearch}
 PYTHONDONTWRITEBYTECODE=1 python3 -c "from paraview.simple import *"
 
-%post -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 
 %files
 %license %{_datadir}/licenses/ParaView/
@@ -246,6 +257,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 -c "from paraview.simple import *"
 %{_libdir}/*.so
 %{_libdir}/cmake/paraview-%{short_ver}/
 %{_bindir}/smTest*
+%{_bindir}/vtk*
 %{_includedir}/%{name}*
 
 %files devel-static

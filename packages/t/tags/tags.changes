@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 16 16:46:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.6:
+  * Updated translations
+  * Performance improvements
+  * UX improvements
+
+-------------------------------------------------------------------
 Sat Oct 10 07:57:32 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add desktop-file-utils BuildRequires: validate desktop file

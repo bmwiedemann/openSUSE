@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:07:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.430.0 (1.43)
+   see /usr/share/doc/packages/perl-Set-Object/Changes.pod
+
+  1.43, 2025-09-08
+    - pinact run -u
+    - improve make release
+    - minor XS cleanup for -Wunused-variable
+
+-------------------------------------------------------------------
 Mon Apr 14 21:37:15 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

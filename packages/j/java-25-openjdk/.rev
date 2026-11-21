@@ -103,4 +103,20 @@
     <comment>Octobre 2026 CPU fixes</comment>
     <requestid>1393600</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dbc80205c922e31110718a260fbb5cc9</srcmd5>
+    <version>25.0.5.1</version>
+    <time>1795023060</time>
+    <user>anag_factory</user>
+    <comment>November 2026 CSPU fixes</comment>
+    <requestid>1398332</requestid>
+  </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4bca87e7993610c2d6fe8105ddf31ea2</srcmd5>
+    <version>25.0.5.1</version>
+    <time>1795182236</time>
+    <user>anag_factory</user>
+    <comment>A proper fix for debug symbols/jmod size</comment>
+    <requestid>1398545</requestid>
+  </revision>
 </revisionlist>

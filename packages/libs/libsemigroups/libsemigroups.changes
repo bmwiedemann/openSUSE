@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:10:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.2
+  * Make Eigen allocation independent of compiler flags
+
+-------------------------------------------------------------------
 Tue May 19 05:04:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.6.1

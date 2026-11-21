@@ -1,4 +1,206 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:07:18 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000003
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  2.000003 - 2026-11-06
+    - SECURITY, CVE-2026-121265: generate() (and so AUTOLOAD with
+      allow_autoload) also treats an arrayref in its hashref or arrayref
+      as one bind value. 2.000002 fixed only insert(), update() and
+      values(): generate('update t', { name => [ "(SELECT ...)" ] })
+      still gave UPDATE T SET name = (SELECT ...). \[ $sql, @bind ] is
+      literal SQL in generate() too; array_datatypes => 0 restores the
+      old behaviour. bsc#1289745
+    - every module has a $VERSION, the same as SQL::Abstract
+
+-------------------------------------------------------------------
+Fri Nov  6 11:35:49 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.000002
+   see /usr/share/doc/packages/perl-SQL-Abstract/Changes
+
+  2.000002 - 2026-11-05
+    - SECURITY, CVE-2026-121265: array_datatypes is on by default, so an
+      arrayref as a column value in insert() or update() (and values())
+      is one bind value. Before, it was literal SQL and its first element
+      went into the SQL text: a JSON array or a repeated form field like
+      { name => [ "x, is_admin = 1" ] } gave
+      UPDATE t SET name = x, is_admin = 1. Literal SQL is
+      \[ $sql, @bind ]; array_datatypes => 0 restores the old behaviour.
+      Incompatible for code that used a plain arrayref as literal SQL.
+    - SECURITY, CVE-2026-121007: the where / having / set values of a
+      nested statement ({ -select => ... }, { -update => ... } ...) in a
+      select list, ORDER BY, GROUP BY, RETURNING, FROM (-as) or JOIN (to)
+      became identifiers and went into the SQL text instead of @bind -
+      without quote_char unescaped, so { id => "1 OR 1=1" } ended up as
+      WHERE id = 1 OR 1=1. They are bind values again. The same goes for
+      the rows of a { -values => ... } in FROM.
+      bsc#1289543
+    - SECURITY, CVE-2026-121008: the html profile of SQL::Abstract::Tree
+      HTML-escapes the SQL text and the filled in bind values (new
+      html_escape option); before, a bind value like <script> went into
+      the page as-is
+    - SECURITY, CVE-2026-121009: injection_guard also checks the name of
+      an explicit { -func => [ $name, ... ] }, as documented; it only
+      checked the { -name => ... } shorthand before
+      bsc#1289544
+    - quote_char without name_sep: a dotted name like a.b renders as
+      "a"."b" (name_sep defaults to "."); before it came out as "a""b",
+      which is the single identifier a"b. An empty name_sep keeps a.b
+      as the single identifier "a.b".
+    - SQL::Abstract::Parts->format keeps every part of the statement when
+      it folds it across lines: a folded AND / OR list starts each
+      continuation line with its operator, a folded comma list keeps the
+      comma before its last item, a folded group keeps its closing
+      bracket, and a part longer than max_width gets a line of its own;
+      the folded text ends without a newline, like a statement that fits
+      on one line
+    - t/01generate.t: the infinite recursion watchdog gives each case 30
+      seconds instead of 1 and always switches its alarm off again; on
+      slow smokers a leftover alarm killed the whole test with
+      "Terminating on signal SIGALRM(14)" (seen on Win32)
+    - Docs: SQL::Abstract::Plugin::BangOverrides has an abstract and a
+      SYNOPSIS section
+    - SQL::Abstract::Tree: the indentmap understands "and", "or" and ","
+      to put AND / OR conditions and the items of a clause list (select
+      list, ORDER BY, GROUP BY, SET ...) on lines of their own; off in all
+      profiles unless asked for (idea from Ryan P. Kelly's format-sql branch)
+    - ORDER BY: { -asc => $col, -nulls => "first" } (or -desc, or "last")
+      renders $col ASC NULLS FIRST; the -nulls key applies to every column
+      of its -asc / -desc hash (idea and tests from ilmari)
+    - SQL::Abstract::Tree: an operator followed by a parenthesised
+      expression in a list (trunc(a - (b + c), 2)) no longer gets a comma
+      inserted in front of it, and a backslash-escaped question mark
+      operator for DBD::Pg (\?, \?|, \?&, \?-| ...) is kept as one operator
+      instead of being split up as a placeholder (tests by ilmari)
+    - New README.md (for the repository) and LICENSE file; the LICENSE is
+      now part of the repository and shipped as-is in the tarball
+    - New SECURITY.md: how to report security issues privately, which
+      versions get fixes and what counts as a security issue (RT#167662)
+    - Docs: new "SQL::Abstract, DBIx::Class and DBIO" section - DBIx::Class
+      uses SQL::Abstract::Classic since 0.082842 and no longer this module,
+      DBIO (a DBIx::Class fork) builds on SQL::Abstract 2.x and
+      SQL::Abstract::Tree; the "SQL::Abstract developers" link now points
+      at our own SUPPORT section instead of DBIx::Class, and SEE ALSO
+      lists DBIO and SQL::Abstract::Classic
+    - Docs: new "CAVEAT: untrusted input in ORDER BY" section - order by
+      columns are identifiers, not bind values, so map user input onto an
+      allow-list (and set quote_char) instead of passing it through
+      (RT#117059)
+    - SQL::Abstract::Tree: an empty placeholder_surround (or one with only
+      a left part) fills in placeholders without "Use of uninitialized
+      value $left / $right" warnings (RT#117234)
+    - Docs: the literal SQL examples no longer use the deprecated
+      operator-inside-the-literal style: -ident for column comparisons,
+      { "=" => \[ ... ] }, { -in => \[ $sub_stmt, @sub_bind ] } and
+      { ">" => \[ "ALL (...)", ... ] } for subqueries (with the real bind
+      order); the special_ops and unary_ops sections show how the defined
+      operator is used, and unary_ops handlers are documented to return
+      ($sql, @bind) (RT#127116, KES)
+    - Docs: where() is documented as where($where, $order) like select(), with
+      hashref and arrayref examples; the WHERE CLAUSES introduction and the
+      logic option say how the @where array examples are passed (\@where),
+      and the "pending%" OR example has balanced parenthesis and the real
+      bind order (RT#127117, KES)
+    - An undef element in an -in / -not_in list no longer dies with the
+      "!!!AUDIT YOUR CODE AND DATA!!!" exception; it now renders the
+      logically correct SQL that exception promised:
+      ( col IN (...) OR col IS NULL ) and
+      ( col NOT IN (...) AND col IS NOT NULL ) (RT#127356)
+    - SQL::Abstract::Tree: quoted strings and identifiers ('...', "...",
+      `...`) are no longer split up at the commas, parenthesis, whitespace
+      or keywords inside them. A Postgres range literal such as '(]' no
+      longer dies with "missing closing ')'", and 'a,b' is no longer
+      reformatted as 'a, b' (RT#132994, RT#105625)
+    - SQL::Abstract::Tree: an unknown operator followed by a function call
+      (foo <@ tstzrange(...)) next to an AND/OR is kept as one operand
+      instead of getting an AND/OR inserted after the operator
+    - New constructor option array_as_in: renders col => [ 1, 2, 3 ] as
+      col IN ( ?, ?, ? ) instead of a chain of OR-ed equalities (much
+      faster on MySQL for long lists); undef elements become an extra
+      OR col IS NULL. Off by default, and only applied where the meaning
+      is identical (RT#156818)
+    - Docs/metadata: now maintained by Torsten Raudssus; support moved from
+      the DBIx::Class mailing list to IRC #dbio on irc.perl.org (also in
+      META x_IRC); dropped the dead git.shadowcat.co.uk repository links in
+      favour of GitHub; updated Nathan Wiger's contact address; META author
+      is now the maintainer; added a COPYRIGHT section
+    - t/05in_between.t: the subclass test packages no longer use the
+      `package NAME { ... }` syntax (perl 5.14+) or `use mro`/`use parent`,
+      so the test suite compiles and passes on perl 5.8 - 5.12 again
+    - SQL::Abstract::Parts: drop the leftover `use Module::Runtime`. It was
+      never called, and Module::Runtime stopped being a prerequisite in
+      2.000001, so on a system without it installed loading Parts.pm (and
+      hence the whole render path that builds Parts objects) died at compile
+      time
+    - SQL::Abstract::Tree: pad_keyword() no longer emits "Use of
+      uninitialized value" warnings when a caller supplies an indentmap
+      without a newline (it now guards newline the way _unparse already
+      does)
+    - SQL::Abstract::Tree: a (NOT) BETWEEN now parses both of its bounds
+      into a single AND grouped under the BETWEEN node
+      (BETWEEN[val, AND[low, high]]) instead of letting the upper bound
+      leak out as a sibling in the enclosing expression. The re-parse that
+      was meant to do this never fired, because it compared an arrayref
+      node against the string '-LITERAL'. Emitted SQL text round-trips
+      unchanged; only the parsed tree (parse()) is affected.
+    - select() now dies when given more than the four positional arguments
+      (source, fields, where, order) instead of rendering garbage SQL from a
+      flat clause list that was meant to be a hashref (RT#148271, Ovid)
+    - ExtraClauses: -join accepts the dashed spellings -as / -on / -using /
+      -type / -to / -from like the surrounding from_list does, and dies on
+      an unknown key instead of silently dropping it (RT#148271, Ovid)
+    - SQL::Abstract::Tree: recognise Oracle's MINUS as an expression start
+      keyword, like EXCEPT (RT#134245, DAMI)
+    - SQL::Abstract::Tree: anchor the unrollable-operator regex so that ON
+      no longer matches inside function names such as GROUP_CONCAT or
+      CONCAT_WS and strips their parenthesis on unparse/format
+      (RT#105563, RT#117234)
+    - An undef element in a -row (and so in -values and the ExtraClauses
+      insert rowvalues clause) is now a NULL bind instead of being silently
+      dropped, which lost placeholders and bind values in bulk inserts
+      (RT#137357)
+    - Add regression coverage confirming an empty arrayref given to -and /
+      -or in a where clause emits no SQL and no trailing AND/OR (correct
+      since the v2 engine; locks it against regressions) (RT#126990, GH#15,
+      fabzzap)
+    - Document that the bundled DBIx::Class::* helper modules require
+      DBIx::Class at runtime (intentionally not a prereq, to avoid a
+      dependency cycle)
+    - Document the limits of the default injection_guard and the safe
+      handling of untrusted input (bind values, quote_char) (RT#117059)
+    - generate() in scalar context now interpolates each placeholder
+      exactly once, so a bind value that contains a '?' no longer
+      swallows the following bind values
+    - Reword the "removed in 2.0" deprecation warnings to "a future
+      version", since those code paths still ship in the 2.x line
+    - Do not warn when a plain hashref is passed as a bind value to
+      insert() - this is how Postgres json/jsonb columns are supplied
+      (GH#18, RT#120676, kraih)
+    - Speed up the top-level special-op check with a single precompiled
+      regex instead of a List::Util::first scan (GH#21, larryl)
+    - Fix ExtraClauses POD NAME/synopsis to the real package name and
+      the documented plugin('+ExtraClauses') usage
+    - Correct the 'pending%' bind value in the -like POD example
+      (GH#24, lucas1)
+    - SQL::Abstract::Tree: preserve a real 0 / '0' bind value in
+      fill_in_placeholder() instead of blanking it (was `|| ''`)
+      (RT#125760)
+    - Add DBIx::Class::SQLMaker::Role::SQLA2Passthrough to Makefile.PL
+      no_index so the proof-of-concept role is not indexed under
+      SQL-Abstract on CPAN
+    - Refactor subclass method override grandfathering system
+    - Remove old SQLA::More compat code (will restore a better set later)
+    - Fix for empty 'order by' to ->select (dakkar)
+    - Remove vestigial possibly-special-op name conversion, which stopped
+      special_ops regexes matching op names containing underscores (RT#143837)
+    - Fixes for _where_field_IN/BETWEEN overrides (jjatria)
+    - Correctly handle literal passed to insert from/values key
+    - Make puke() and belch() methods, ala the SQLA::Classic change
+    - Syntax error fixes for 5.8 from ilmari
+
+-------------------------------------------------------------------
 Sun Jan 24 03:08:49 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.000001

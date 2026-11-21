@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 05:34:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-repl to version 0.1.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jan 18 17:28:03 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-repl to version 0.1.2.

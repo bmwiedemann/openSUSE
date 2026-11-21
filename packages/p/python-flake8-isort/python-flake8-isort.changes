@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  8 23:01:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0:
+  * update supported python versions (3.11 to 3.15) @gforcada
+  * improve CI speed by using `uvx` and `prek` @gforcada
+  * tighten GHA with `zizmor` @gforcada
+
+-------------------------------------------------------------------
 Mon Feb 16 17:36:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0.0:

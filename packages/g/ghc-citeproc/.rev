@@ -264,4 +264,20 @@
     <comment>version update</comment>
     <requestid>1358339</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>73766e486963fdc0a9a4b4050ac67b97</srcmd5>
+    <version>0.14.1.1</version>
+    <time>1793990903</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1395514</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ff98f14c0f7cba18f39d73de8f5ee233</srcmd5>
+    <version>0.14.2</version>
+    <time>1794932219</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1397765</requestid>
+  </revision>
 </revisionlist>

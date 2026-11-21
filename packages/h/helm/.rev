@@ -1457,4 +1457,38 @@ changes the CVE reference from the (what was previously the helm bug and is now 
     HTTP/2 server memory exhaustion due to Trailer headers):</comment>
     <requestid>1393460</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>4e1deb4b229b39b6e01b730b6203925d</srcmd5>
+    <version>4.3.2</version>
+    <time>1794828502</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1288347, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+    github.com/go-jose/go-jose/v4: multiple security issues in
+    github.com/go-jose/go-jose before 4.1.6
+
+- update to 4.3.2:
+  * fix(deps): bump golang.org/x/net to v0.62.0 (#32876) 8346aaa
+  * chore(deps): bump github.com/distribution/distribution/v3
+    (#32698) 8c92fca
+  * fix(deps): bump github.com/klauspost/compress to v1.20.3
+    (#32878) 214f6f6
+  * chore(deps): bump the k8s-io group across 1 directory with 7
+    updates 90d48fc
+  * fix(registry): always return a transport Helm can configure
+    (#32684) 961bddf
+  * docs(cmd): correct list --max and HELM_COLOR help text (#32807)
+    ddb8be7</comment>
+    <requestid>1397788</requestid>
+  </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>6b828fc5e1cab9d8d0ec694e76ebe897</srcmd5>
+    <version>4.3.2</version>
+    <time>1795103741</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1290718, CVE-2026-128085: Denial of Service via attribute
+    truncation bypass using Unicode replacement characters</comment>
+    <requestid>1398590</requestid>
+  </revision>
 </revisionlist>

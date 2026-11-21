@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:56:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-110715: bundled mujs Array.prototype.sort heap
+  out-of-bounds read/write via inflated array length (boo#1285755)
+  The shipped thirdparty/mujs snapshot is verbatim upstream mujs
+  1.3.10, which already carries the fix; correct the stale
+  bundled(mujs) = 1.3.8 Provides to 1.3.10.
+
+-------------------------------------------------------------------
+Sat Nov  7 19:15:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Revert Source0 to the pristine upstream tarball (drop the
+  pruned repack and its script); keep the double-free fix.
+  The reintroduced Android/Kotlin gradle-wrapper classes and
+  Windows fuzzer exports are excepted as other-platform prebuilts.
+
+-------------------------------------------------------------------
+Sat Nov  7 18:30:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Repack Source0 with mupdf-prune-tarball.sh: drop the unused
+  thirdparty/zxing-cpp tree and the Windows-only lcms2 fuzzers.exp
+  (prebuilt binaries no Linux build uses); no source changes.
+- Add mupdf-709768-double-free.patch (upstream Bug 709768,
+  boo#1285930, CVE-2026-112036): NULL the char list pointer
+  after freeing so a crafted signature object cannot double-free
+  it.
+
+-------------------------------------------------------------------
 Thu Oct 29 10:16:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.6:

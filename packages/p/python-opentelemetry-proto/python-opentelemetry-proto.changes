@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:13:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.45.1: lockstep release with
+  opentelemetry-api 1.45.1, no functional changes in this
+  package.
+
+-------------------------------------------------------------------
 Tue Sep 29 09:00:20 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.45.0

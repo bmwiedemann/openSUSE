@@ -249,4 +249,41 @@
   * Support changes required by ruff 0.16.</comment>
     <requestid>1368261</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ed4a12bf49c27dad8e66edf230b084bf</srcmd5>
+    <version>2.16.3</version>
+    <time>1794838474</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16.3:
+  * Skip list_secrets call when case_sensitive=True
+  * GoogleSecretManagerSettingsSource: read project_id from previous sources
+  * fix: move SecretsManagerClient type import under TYPE_CHECKING
+  * Skip partial update merging for discriminated union fields
+  * Support using a table header as root when reading a TOML file
+  * Don't complain about missing table headers in a TOML file that isn't
+    there
+  * Address issues in toml table header implementation
+  * Prevent NestedSecretsSettingsSource from following symlinks outside
+    secrets_dir
+  * Add support for showing environment variable names in CLI help text
+  * Fix AliasPath on nested model fields not decoding env values
+  * Support case_sensitive in InitSettingsSource and config file sources
+  * Warn when using fields not fully resolved at instantiation
+  * Support Traversable for json/toml/yaml config file sources
+  * Apply case-insensitive field matching to optional nested models
+  * Add PYDANTIC_SETTINGS_DEBUG for debugging settings sources
+  * fix: parse enum names through nested annotations
+  * Fix dotenv extras being claimed by complex fields sharing a name
+    prefix
+  * Add debug logging for env_file and secret file resolution
+  * fix: coerce empty yaml_config_section to an empty mapping instead of
+    crashing
+  * fix: read secret files as UTF-8 instead of the locale encoding
+  * fix: treat Secret subclasses as non-complex fields
+  * fix: raise ValidationError for non-JSON env values on strict fields
+  * test: move function-local imports to the top of test modules
+  * lint: enable flake8-bugbear and fix the issues it found
+  * fix(types): include DotenvFiltering in __all__ in sources.types</comment>
+    <requestid>1397820</requestid>
+  </revision>
 </revisionlist>

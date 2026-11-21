@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov  3 16:51:29 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Switch the build system from autotools to meson (upstream default
+  since 0.5.0): use %meson/%meson_build/%meson_install, drop
+  autoconf/automake/libtool BuildRequires, keep the manual udev
+  rules install (meson does not install them)
+- devel: version the libjaylink0 Requires with the release
+- Run spec-cleaner in full mode
+- Install the udev rules with the standard %{_udevrulesdir} macro
+  instead of a custom udevdir definition
+- Drop the stale spec-cleaner comment above the BuildRequires
+
+-------------------------------------------------------------------
+Fri Oct 23 16:34:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.0:
+  * License changed to LGPL-2.1-or-later
+  * Meson build system support (now the upstream default)
+  * Add virtual COM (VCOM) port capability
+  * Add nickname support for USB devices
+  * Support for additional USB product IDs
+  * udev rules carry the uaccess tag now (renamed to
+    60-libjaylink.rules upstream)
+- Encode the upstream libusb >= 1.0.16 minimum in BuildRequires
+- Run the tar_scm service manually (mode manual, was disabled)
+
+-------------------------------------------------------------------
 Wed Feb  8 15:11:45 UTC 2023 - Torsten Gruner <simmphonie@opensuse.org>
 
 - Update to version 0.3.1
@@ -92,3 +119,4 @@ Sun Nov 29 16:03:33 UTC 2015 - afaerber@suse.de
 Sun Oct 25 02:02:04 UTC 2015 - afaerber@suse.de
 
 - Initial
+

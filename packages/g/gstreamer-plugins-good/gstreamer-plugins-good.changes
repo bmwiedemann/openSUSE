@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Nov  6 20:44:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.9:
+  * adaptivedemux2: Ensure period stream access is protected by the right
+    mutexes everywhere / Fix recursive scheduler lock double unlocks on stream
+    preparation interruption
+  * adaptivedemux2: Restrict URI schemes in the download helper
+  * flvdemux: Don't report EOS on AVC/audio sequence end
+  * hlsdemux: Validate PKCS7 padding before unpadding decrypted fragments
+  * imagefreeze: keep the caps across a flush
+  * level: Add 24bits support
+  * mpegaudioparse: Avoid OOB read when looking for Xing header
+  * qml6glsrc: Qt6GLWindow destructor abort due to active render thread
+    callback
+  * qml6glsrc: fix possible race with Qt6GLWindow::onSceneGraphInvalidated
+  * qtdemux: Harden CENC parsing against crafted sample_count
+  * qtdemux: fix seek beyond the end of file in push mode
+  * rtph264depay: Fix out of bounds read in MTAP16/MTAP24 depayloading
+  * rtph264depay: rtph265depay: Various delayed header extension tracking fixes
+  * rtpsession: fix source use-after-free on DoS protection
+  * rtpvrawdepay: Validate caps before using them
+  * rtsp: unset response even on error path
+  * rtspsrc: Reuse non-compliant URL fallback across tracks
+  * scaletempo: drop empty buffer instead of outputting 0-sized with no GAP
+  * v4l2: fix non-constant initializer in colorspace_variants
+  * v4l2bufferpool: deactivate other pool on start failure
+  * v4l2bufferpool: fix buffer leak on streamon failure
+  * v4l2dec: fix POLLERR from dec loop
+  * v4l2object: accept any colorimetry on coded OUTPUT caps
+  * v4l2object: providing aligned size when propose allocation
+  * v4l2videodec: Don't cancel pending source change when draining
+  * v4l2videodec: fix codec_data leak
+  * v4l2videodec: race condition between drain and source change
+  * v4l2h265dec fails negotiation with H.265 stream using colorimetry=2:3:0:1
+  * vpxdec: Implement no-op drain callback
+
+-------------------------------------------------------------------
 Fri Oct  9 07:40:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.8:

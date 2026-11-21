@@ -987,4 +987,32 @@ outside of Factory
   (bsc#1268639)</comment>
     <requestid>1375321</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>039c348919b05b92088565fa98c2a5c6</srcmd5>
+    <version>370</version>
+    <time>1793899188</time>
+    <user>anag_factory</user>
+    <comment>- Update to 370
+  * 366
+    - Networkmanager: Don't activate new network connections by default
+    - Networkmanager: Navigate to details page after creation
+    - Translations and dependency updates
+  * 367
+    - Translation updates
+  * 368
+    - Limit concurrent connections bsc#1281994/CVE-2026-91149
+    - Harden cockpit-ws against trailing slash bsc#1281989/CVE-2026-91147
+    - Sanitize URLs from PackageKit CVE-2026-91148
+    - Interactive file chooser for SSH keys
+    - Bug fixes and translation updates
+    - Resolves RHEL-263070, RHEL-262891, RHEL-253609 for rhel-10.4
+    - Resolves RHEL-263066 for rhel-9.10
+  * 369
+    - Translations and dependency updates
+  * 370
+    - systemd: Make chrony sources drop-in world-readable (RHEL-253609)
+    - storaged: Recognize TPM2 key slots (RHEL-167807)
+    - storaged: Support UTF-8 encoding for mount points</comment>
+    <requestid>1394884</requestid>
+  </revision>
 </revisionlist>

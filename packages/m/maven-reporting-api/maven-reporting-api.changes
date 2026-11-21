@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Oct 28 06:14:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.1.0
+  * Deprecated
+    + Move the multi-page generate method into MavenReport
+  * New features and improvements
+    + Move the multi-page generate method into MavenReport
+  * Documentation updates
+    + Refresh the README and Javadoc, and add contributor, security
+      and agent guides
+    + Fix download links
+  * Maintenance
+    + Use push for PR Automation and add PR Check
+    + Add project metadata for ATR
+    + Simplify _extends in release-drafter.yml
+    + Let Dependabot update GitHub Actions
+    + Update site descriptor to 2.0
+    + Add tag-template to release-drafter.yml, fix _extends pth
+    + feat: enable prevent branch protection rules
+    + Enable Github Issue
+    + MSHARED-1325: Refresh download page
+  * Build
+    + Verify with Maven 4 too
+  * Dependency updates
+    + Bump org.apache.maven.doxia:doxia-sink-api from 2.0.0 to 2.2.0
+    + Bump org.apache.maven.shared:maven-shared-components from 43
+      to 50
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+
+-------------------------------------------------------------------
 Thu Oct  3 22:04:11 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.0.0

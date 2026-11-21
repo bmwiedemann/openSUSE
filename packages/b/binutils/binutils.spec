@@ -743,6 +743,7 @@ fi;
 
 %files -f binutils.lang
 %defattr(-,root,root)
+%license COPYING COPYING3 COPYING.LIB COPYING3.LIB
 %if 0%{!?cross:1}
 %{_docdir}/%{name}
 %{_prefix}/%{HOST}/bin/*

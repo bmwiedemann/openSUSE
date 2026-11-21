@@ -140,4 +140,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6ff1d698be6e9ac5c930ead4b2fc6185</srcmd5>
+    <version>1.0.0</version>
+    <time>1794090810</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.0.0 (1.00)
+   see /usr/share/doc/packages/perl-FreezeThaw/Changes
+  Version 1.00
+  	Would fail in presence of multiple references to the same CODE or GLOB reference.</comment>
+    <requestid>1396034</requestid>
+  </revision>
 </revisionlist>

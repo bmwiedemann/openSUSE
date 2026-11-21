@@ -1035,4 +1035,15 @@ Tue Jan  20 02:29:11 UTC 2021 - Syds Bearda &lt;sydsb@opensuse.org&gt;
     <comment>1</comment>
     <requestid>1376536</requestid>
   </revision>
+  <revision rev="112" vrev="112">
+    <srcmd5>27f3c0514ff191060f2f2634d15cd8d4</srcmd5>
+    <version>5.0</version>
+    <time>1795182225</time>
+    <user>anag_factory</user>
+    <comment>
+- Require tar for troubleshooting/recovery in basesystem 
+
+- No longer require deprecated yast-logs by microos-base.</comment>
+    <requestid>1398414</requestid>
+  </revision>
 </revisionlist>

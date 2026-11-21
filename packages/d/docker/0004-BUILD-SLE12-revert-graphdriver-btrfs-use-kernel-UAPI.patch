@@ -1,4 +1,4 @@
-From c012c8bf7ba29dd00b010cd45636ba902dfe0b4e Mon Sep 17 00:00:00 2001
+From 38ac2ccccfeed91cd296349845210fa4d2de5cd1 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Mon, 22 May 2023 15:44:54 +1000
 Subject: [PATCH 4/5] BUILD: SLE12: revert "graphdriver/btrfs: use kernel UAPI
@@ -18,7 +18,7 @@ Signed-off-by: rcmadhankumar <madhankumar.chellamuthu@suse.com>
  1 file changed, 4 insertions(+), 9 deletions(-)
 
 diff --git a/daemon/graphdriver/btrfs/btrfs.go b/daemon/graphdriver/btrfs/btrfs.go
-index 35cf7d1104..fff51e3794 100644
+index 71f73feb8d..2195de1586 100644
 --- a/daemon/graphdriver/btrfs/btrfs.go
 +++ b/daemon/graphdriver/btrfs/btrfs.go
 @@ -4,17 +4,12 @@

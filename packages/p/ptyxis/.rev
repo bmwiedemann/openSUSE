@@ -214,4 +214,20 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345417</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d4fb1490fb2dc4c8cecaf90a749df8d4</srcmd5>
+    <version>50.1+35</version>
+    <time>1794591178</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1+35:
+  * palette:
+    + Make Catppuccin support light/dark modes and follow system theme
+    + Preserve user overrides in fast lookup
+    + Avoid eager parsing and reload bursts
+  * util: preserve configured shell path matching
+  * podman: remove parser progress output
+  * process: reduce foreground polling overhead
+  * Updated translations.</comment>
+    <requestid>1397134</requestid>
+  </revision>
 </revisionlist>

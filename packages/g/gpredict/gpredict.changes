@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:22:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7:
+  * Fix rotator position fields never updating after Engage
+  * Fix incorrect mean motion read from TLE line 2
+  * Fix rotator controller dropping queued target commands
+  * Fix out-of-bounds read and NULL dereference when loading
+    transponder data
+  * Fix crash when closing one of several map views
+  * Fix radio control deadlock on rigctld connection errors
+  * Fix broken native language support
+  * Prevent opening the same module twice
+  * Allow configuring default frequencies per radio
+  * Add IQ capture commands for gqrx on AOS and LOS
+  * Increase radio and rotator timer limits to 30 seconds
+  * Reject TLEs whose epoch field contains a letter
+  * Update French and Danish translations
+
+-------------------------------------------------------------------
 Wed Aug 26 14:34:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.6:

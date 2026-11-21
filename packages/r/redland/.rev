@@ -278,4 +278,39 @@
     <comment></comment>
     <requestid>1220068</requestid>
   </revision>
+  <revision rev="38" vrev="7">
+    <srcmd5>4e1c2b8058f6a19697802cd8120534b6</srcmd5>
+    <version>1.0.17</version>
+    <time>1794932182</time>
+    <user>anag_factory</user>
+    <comment>- add redland-stack-overflow-fix.patch
+- add redland-raptor-stringbuffer-copy.patch:
+  * Fix rdf_hash_test failure: raptor's stringbuffer copy API
+    expects the full destination buffer size and rejects
+    exact-length buffers, making librdf_hash_to_string() return an
+    empty string.
+
+  * Added patch redland-fix-tests.patch
+- removed libpq5 require
+     0000461: librdf error - query language vsparql already
+     0000468: xlc on AIX configure tests for both
+     0000475: Freeing a counted_string returned by redland on a
+     0000478: Object returned from librdf_stream_get_object must
+     0000483: Documentation of
+              librdf_parser_get_namespaces_seen_count return is
+     0000485: No rule to make target `-lltdl', needed by
+- open all file descriptors with O_CLOEXEC to avoid
+  * librdf_node_write() is defined to now always write N-Triples
+  * Added librdf_query_language_get_description() to return the full
+    description of of the query language
+  * Removed Raptor V1 support code as librdf no longer supports
+- Created a separate package for the redland-bindings as this no
+- update to 1.0.8
+- disable static libraries
+  * Many other bug fixes addressing Issues #0000175, #0000173,
+  * Many other bug fixes addressing Issues #0000092, #0000103,
+    #0000105, #0000107, #0000114, #0000116, #0000125, #0000130,
+    #0000132, #0000136 and #0000139.</comment>
+    <requestid>1397795</requestid>
+  </revision>
 </revisionlist>

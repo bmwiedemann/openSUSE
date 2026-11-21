@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  9 03:21:29 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
+
+- version update to 26.08.0
+  * Added support for QAT Gen6 devices. Supported key features: Dictionary compression, Z-Standard algorithm and KPT
+  * Introduced the environment variable QAT_MAX_2M_HPG_PER_PROCESS to enable 2MB hugepages
+  * Introduced EPOLL coalesce timer support across all QATlib-supported devices.
+  * Added sla_mgr script for device management related to rate-limiting feature
+  * Aligned with CPA API v5.09
+  * Bug Fixes (See Resolved section in README.md)
+
+
+-------------------------------------------------------------------
 Fri May 15 16:49:10 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
 
 - version update to 26.02.0

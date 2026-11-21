@@ -79,4 +79,20 @@
     <comment>2.17.1</comment>
     <requestid>1381213</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc7a448e2a5deb3bce44626cc852def9</srcmd5>
+    <version>2.18.0</version>
+    <time>1793991530</time>
+    <user>anag_factory</user>
+    <comment>2.18.0</comment>
+    <requestid>1395850</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d47ac13d459058f151cd3e94e3aff5d4</srcmd5>
+    <version>2.18.1</version>
+    <time>1794828497</time>
+    <user>anag_factory</user>
+    <comment>2.18.1Java:packages/plexus-compiler</comment>
+    <requestid>1397746</requestid>
+  </revision>
 </revisionlist>

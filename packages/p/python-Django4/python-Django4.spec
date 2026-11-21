@@ -96,6 +96,16 @@ Patch24:        CVE-2026-84429.patch
 Patch25:        CVE-2026-87890.patch
 # PATCH-FIX-UPSTREAM CVE-2026-87975.patch bsc#1284471
 Patch26:        CVE-2026-87975.patch
+# PATCH-FIX-UPSTREAM CVE-2026-108147.patch bsc#1289340
+Patch27:        CVE-2026-108147.patch
+# PATCH-FIX-UPSTREAM CVE-2026-111211.patch bsc#1289344
+Patch28:        CVE-2026-111211.patch
+# PATCH-FIX-UPSTREAM CVE-2026-111362.patch bsc#1289345
+Patch29:        CVE-2026-111362.patch
+# PATCH-FIX-UPSTREAM CVE-2026-113593.patch bsc#1289348
+Patch30:        CVE-2026-113593.patch
+# PATCH-FIX-UPSTREAM CVE-2026-114582.patch bsc#1289350
+Patch31:        CVE-2026-114582.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}

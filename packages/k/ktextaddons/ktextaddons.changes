@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov  4 09:17:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add patch to prevent runtime breakages:
+  * 0001-Bump-soversion-for-each-release.patch
+
+-------------------------------------------------------------------
 Wed Oct 14 09:04:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix ABI break:

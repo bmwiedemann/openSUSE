@@ -143,4 +143,12 @@
     <comment>libmseed 3.5.4 (forwarded request 1370135 from AndreasStieger)</comment>
     <requestid>1370136</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0ba2b85a30a136bfd7825b33db47f57a</srcmd5>
+    <version>3.6.0</version>
+    <time>1795182387</time>
+    <user>anag_factory</user>
+    <comment>libmseed 3.6.0 (forwarded request 1398809 from AndreasStieger)</comment>
+    <requestid>1398810</requestid>
+  </revision>
 </revisionlist>

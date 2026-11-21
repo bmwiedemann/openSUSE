@@ -1,7 +1,7 @@
 #
 # spec file for package objenesis
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2009, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %global major 3
-%global minor 3
+%global minor 6
 %global micro 0
 %global fullversion %{major}.%{minor}.%{micro}
 %global specversion %{major}.%{minor}
@@ -35,8 +35,8 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://objenesis.org/
 Source0:        https://github.com/easymock/%{name}/archive/refs/tags/%{version}.tar.gz
-Patch0:         objenesis-javadoc.patch
-BuildRequires:  fdupes
+Source1:        %{name}-build.tar.xz
+BuildRequires:  fdupes ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
@@ -70,90 +70,31 @@ BuildArch:      noarch
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-
-# Enable generation of pom.properties (rhbz#1017850)
-%pom_xpath_remove pom:addMavenDescriptor
+%setup -q -a1
 
 %build
-mkdir -p main/build/classes
-javac -d main/build/classes -source 8 -target 8 -encoding utf-8 \
-  $(find main/src/main/java -name *.java | xargs)
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --create --file=%{name}-%{version}.jar -C main/build/classes .
-
-touch manifest.txt
-echo "Automatic-Module-Name: org.objenesis" >> manifest.txt
-echo "Bundle-Description: A library for instantiating Java objects" >> manifest.txt
-echo "Bundle-License: http://www.apache.org/licenses/LICENSE-2.0.txt" >> manifest.txt
-echo "Bundle-Name: Objenesis" >> manifest.txt
-echo "Bundle-SymbolicName: org.objenesis" >> manifest.txt
-echo "Bundle-Version: %{fullversion}" >> manifest.txt
-echo "Export-Package: org.objenesis;uses:=\"org.objenesis.instantiator,org.objenesis.strategy\";version=\"%{fullversion}\",\
-org.objenesis.instantiator.android;uses:=\"org.objenesis.instantiator,\
-org.objenesis.instantiator.annotations\";version=\"%{fullversion}\",\
-org.objenesis.instantiator.basic;uses:=\"org.objenesis.instantiator,org.objenesis.instantiator.annotations\";version=\"%{fullversion}\",\
-org.objenesis.instantiator;version=\"%{fullversion}\",\
-org.objenesis.instantiator.gcj;uses:=\"org.objenesis.instantiator,org.objenesis.instantiator.annotations\";version=\"%{fullversion}\",\
-org.objenesis.instantiator.util;uses:=\"sun.misc\";version=\"%{fullversion}\",org.objenesis.instantiator.annotations;version=\"%{fullversion}\",org.objenesis.instantiator.perc;uses:=\"org.objenesis.instantiator,org.objenesis.instantiator.annotations\";version=\"%{fullversion}\",\
-org.objenesis.instantiator.sun;uses:=\"org.objenesis.instantiator,\
-org.objenesis.instantiator.annotations\";version=\"%{fullversion}\",\
-org.objenesis.strategy;uses:=\"org.objenesis.instantiator\";version=\"%{fullversion}\"" | sed 's/.\{71\}/&\n /g' >> manifest.txt
-echo "Import-Package: sun.misc;resolution:=optional,\
-COM.newmonics.PercClassloader;resolution:=optional,\
-sun.reflect;resolution:=optional" | sed 's/.\{71\}/&\n /g' >> manifest.txt
-echo "Require-Capability: osgi.ee;filter:=\"(&(osgi.ee=JavaSE)(version=1.6))\"" >> manifest.txt
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --update --file=%{name}-%{version}.jar --manifest=manifest.txt
-
-mkdir -p tck/build/classes
-javac -d tck/build/classes -source 8 -target 8 -encoding utf-8 \
-  -cp %{name}-%{version}.jar \
-  $(find tck/src/main/java -name *.java | xargs)
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --create --file=%{name}-tck-%{version}.jar -C tck/build/classes .
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --update --file=%{name}-tck-%{version}.jar -C tck/src/main/resources .
-jar \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --update --file=%{name}-tck-%{version}.jar --main-class=org.objenesis.tck.Main
-
-mkdir -p build/apidoc
-javadoc -d build/apidoc -source 8 -encoding utf-8 -notimestamp \
-  $(find main/src/main/java -name *.java && \
-    find tck/src/main/java -name *.java | xargs)
+ant package javadoc
 
 %install
-# jars
-install -dm 755 %{buildroot}%{_javadir}/%{name}
-install -m 0644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
-install -m 0644 %{name}-tck-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-tck.jar
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -pm 0644 main/target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -pm 0644 exotic/target/%{name}-exotic-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-exotic.jar
+install -pm 0644 tck/target/%{name}-tck-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-tck.jar
 
 # poms
 install -dm 755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} main/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
+%{mvn_install_pom} exotic/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-exotic.pom
 %{mvn_install_pom} tck/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-tck.pom
 %add_maven_depmap %{name}/%{name}.pom %{name}/%{name}.jar
+%add_maven_depmap %{name}/%{name}-exotic.pom %{name}/%{name}-exotic.jar
 %add_maven_depmap %{name}/%{name}-tck.pom %{name}/%{name}-tck.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
-cp -aL build/apidoc/* %{buildroot}%{_javadocdir}/%{name}
+cp -aL main/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}
+cp -aL exotic/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-exotic
+cp -aL tck/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-tck
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles

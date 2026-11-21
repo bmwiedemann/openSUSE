@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 10 17:20:50 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.2
+  Bug Fixes:
+  * Collect patterns, rules and keys of nested rebulks at any
+    depth
+  * Keep distinct rule instances of the same class
+  Documentation:
+  * Add project badges to the README and docs home
+  * Trim the README and point to the documentation site
+
+-------------------------------------------------------------------
 Thu Jul  9 18:47:09 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.0.1

@@ -398,4 +398,18 @@
     <comment></comment>
     <requestid>1269106</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>81388d57865c9abea909858b6a36e93a</srcmd5>
+    <version>3.12</version>
+    <time>1794932156</time>
+    <user>anag_factory</user>
+    <comment>- add CVE-2026-53910.patch:
+  bsc#1273068 (CVE-2026-53910) heap-based buffer overflow due to
+  signed integer overflows in line‑mapping calculations
+
+  * diff accepts two new options --color and --palette to generate
+- fix stack limit autoconf check
+- diffutils does not need help2man.</comment>
+    <requestid>1397576</requestid>
+  </revision>
 </revisionlist>

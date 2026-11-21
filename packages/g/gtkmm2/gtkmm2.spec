@@ -23,7 +23,7 @@ Release:        0
 Summary:        C++ Interface for GTK2 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source:         http://download.gnome.org/sources/gtkmm/2.24/%{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

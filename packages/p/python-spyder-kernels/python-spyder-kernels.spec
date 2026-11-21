@@ -21,7 +21,7 @@
 # https://github.com/spyder-ide/spyder-kernels/issues/583
 %global skip_python314 1
 Name:           python-spyder-kernels
-Version:        3.1.4
+Version:        3.1.7
 Release:        0
 Summary:        Jupyter kernels for Spyder's console
 License:        MIT

@@ -34,7 +34,7 @@
 %bcond_with gcc11
 %endif
 Name:           rsync
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later

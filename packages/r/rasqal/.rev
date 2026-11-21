@@ -244,4 +244,25 @@
     <comment></comment>
     <requestid>1255757</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>cbace908e251100320dfe34a78ce0cc0</srcmd5>
+    <version>0.9.33</version>
+    <time>1794932185</time>
+    <user>anag_factory</user>
+    <comment>- spec cleanups
+
+  + Other fixes and improvements
+- remove libmhash buildrequires, which development was
+- Remove the specific -32bit compilation for 64bit systems. This
+  as that rasqal depends on mhash for which there is no -32bit
+  *  Added full support for SPARQL 1.1 draft STRBEFORE, STRAFTER
+  * Add internal Mersenne Twister PRNG or choose others via
+  * The query result formats now all use the W3C Format URIs as
+  * Improved configure check for for ceil(), floor() and round()
+    to prevent GCC optimizing the test away and getting the wrong
+  * Fixed issues: [1]#0000127, [2]#0000423, [3]#0000434, [4]#0000454
+   * Many updates for supporting W3C SPARQL Proposed Recommendation.
+- remove unneeded static libraries and libtool archives.</comment>
+    <requestid>1397798</requestid>
+  </revision>
 </revisionlist>

@@ -86,7 +86,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.76.7.0.git145.b60ef1146
+Version:        0.77.3.0.git141.b1612b50b
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -116,19 +116,20 @@ Source13:       package-lock.json
 Patch1:         vendor-build-fixes-for-SLE12.patch
 Patch2:         sdjournal-build-fix-for-SLE12.patch
 Patch3:         velociraptor-reproducible-timestamp.diff
+Patch4:         0001-include-add-128-bit-integer-types-to-linux-types.h.patch
 BuildRequires:  fileb0x
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  pkgconfig(libsystemd)
 %endif
 %if "%{_vendor}" == "debbuild"
-BuildRequires:  golang >= 2:1.25~0
+BuildRequires:  golang >= 2:1.26~0
 BuildRequires:  libsystemd-dev
 BuildRequires:  pkg-config
 %endif
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.25
+BuildRequires:  golang >= 1.26
 BuildRequires:  python3
 BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(libsystemd)
@@ -263,7 +264,7 @@ This package provides a shared system user for all velociraptor components
 
 %prep
 %setup -q -a 1 -a 2 -n %{projname}-%{VERSION}
-%autopatch -p1
+%autopatch -p1 -M 3
 
 # Set the version to something more specific than <next-tag>-dev
 sed -ie "s/\([[:space:]]VERSION *= \).*/\1 \"%{VERSION}\"/" constants/constants.go
@@ -278,6 +279,11 @@ fi
 
 cp vmlinux.h-%{vmlinux_h_version}/vmlinux-${arch}.h \
    third_party/libbpfgo/output/vmlinux.h
+
+%if %{?suse_version} == 1699 && "%{_arch}" == "aarch64"
+%patch -P 4 -p1
+%endif
+
 %endif
 
 # These just clutter the GUI and we don't have Windows clients
@@ -316,7 +322,7 @@ LLVM_STRIP=llvm-strip
 
 CLANG=clang
 
-PATH=$PATH:/usr/sbin GOEXPERIMENT=nojsonv2 make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CLANG STRIP=$LLVM_STRIP
+PATH=$PATH:/usr/sbin make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CLANG STRIP=$LLVM_STRIP
 
 %install
 install -D -d -m 0750 %buildroot/%{_sysconfdir}/velociraptor

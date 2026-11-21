@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 09:11:27 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Build compiler-rt builtins for wasm32-wasip1 and ship them with
+  clang, so that it can link wasm32 binaries with a WASI sysroot.
+
+-------------------------------------------------------------------
 Sun Aug 23 13:52:04 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove soft limit on open files. Depending on the number of jobs,

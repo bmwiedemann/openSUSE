@@ -102,7 +102,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.2.1+git9713
+Version:        16.2.1+git9901
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')

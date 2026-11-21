@@ -65,4 +65,41 @@
     <comment>  https://github.com/advisories/GHSA-434x-w66g-qw3r (bsc#1271392,</comment>
     <requestid>1366205</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4aaca6606419533700775517a2221193</srcmd5>
+    <version>0.3.6</version>
+    <time>1794591122</time>
+    <user>anag_factory</user>
+    <comment>- Vendor dependencies from upstream Cargo.lock (cargo_vendor
+  update=false); a full cargo update breaks the nl-wireguard build
+- Update to version 0.3.6 (bsc#1274503, CVE-2026-25541):
+  * Bump softprops/action-gh-release from 3.0.3 to 3.0.4
+  * Bump log from 0.4.34 to 0.4.35
+  * Bump rust-toolchain from 1.98 to 1.99
+  * Bump Swatinem/rust-cache from 2.9.2 to 2.9.3
+  * Extract container builds in separate job
+  * Pin rust toolchain
+  * Update release pipeline
+  * Add caching and smoke tests for image builds in the build workflow
+  * Add Dockerfile image bumps to dependabot config
+  * Use multi-stage build for CI
+  * cargo upgrade
+  * Fix linter issues
+  * cargo update
+  * Bump version to 0.3.6
+  * Match MAC addresses only for MAC-identified interfaces (#255)
+  * Bump nmstate from 2.2.60 to 2.2.62 (#246)
+  * Bump actions/checkout from 7.0.0 to 7.0.1 (#248)
+  * Bump softprops/action-gh-release from 3.0.1 to 3.0.3 (#250)
+  * Bump anyhow from 1.0.103 to 1.0.104 (#245)
+  * Bump serde from 1.0.228 to 1.0.229 (#247)
+  * Bump docker/setup-buildx-action from 4.2.0 to 4.4.1 (#252)
+  * Bump docker/setup-qemu-action from 4.2.0 to 4.4.0 (#253)
+  * Fix linter errors (#254)
+  * Bump docker/setup-qemu-action from 4.1.0 to 4.2.0 (#241)
+  * Bump docker/setup-buildx-action from 4.1.0 to 4.2.0 (#242)
+  * Bump env_logger from 0.11.10 to 0.11.11 (#239)
+  * Bump anyhow from 1.0.102 to 1.0.103 (#240)</comment>
+    <requestid>1397114</requestid>
+  </revision>
 </revisionlist>

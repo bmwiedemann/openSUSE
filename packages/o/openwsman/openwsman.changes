@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:23:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add openwsman-swig-py3.patch: replace obsolete PyString_AsString
+  with PyUnicode_AsUTF8 in bindings/python/helpers.h for Python 3.
+
+-------------------------------------------------------------------
 Thu Jul 16 12:06:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Avoid requiring the /usr/bin/rdoc binary wrapper in bindings/ruby/rdoc

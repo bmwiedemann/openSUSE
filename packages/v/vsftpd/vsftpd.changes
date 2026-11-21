@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:43:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add vsftpd-CVE-2026-119567.patch: make cmds_allowed and cmds_denied
+  apply to the RFC 775 aliases XMKD, XRMD, XPWD, XCWD and XCUP as
+  well. Previously authenticated users could run denied commands by
+  issuing their X-prefixed alias, e.g. XRMD instead of RMD.
+  [CVE-2026-119567, bsc#1288995]
+
+-------------------------------------------------------------------
+Tue Nov 10 11:33:17 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add vsftpd-no-stderr-on-control-connection.patch: session processes
+  no longer have the client connection on stderr. Diagnostics printed
+  by library code, such as "yp_bind_client_create_v3: RPC: Unable to
+  send" from NIS lookups, were sent to FTP clients verbatim. They now
+  go to the listener's stderr (the journal under systemd) or
+  /dev/null instead. [bsc#1184651]
+
+- vsftpd@.service: set StandardError=journal so that such messages are
+  logged when vsftpd is socket-activated.
+
+-------------------------------------------------------------------
+Mon Nov  9 15:39:43 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add vsftpd-CVE-2026-119568.patch: bind TLS sessions resumed on
+  the data channel to the session of the corresponding control
+  connection. Previously require_ssl_reuse accepted any resumed
+  session ticket, allowing an attacker sharing the victim's source
+  IP to hijack FTPS data connections. [CVE-2026-119568, bsc#1288996]
+
+-------------------------------------------------------------------
+Fri Nov  6 14:30:08 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vsftpd-2.3.4-sqb.patch to use unsigned character range
+  bounds and stop expansion when the counter wraps to zero,
+  preventing a denial of service in LIST pattern matching.
+  [CVE-2025-14242, bsc#1256700]
+
+-------------------------------------------------------------------
 Tue Sep 29 08:39:09 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Drop obsolete -fstack-protector from CFLAGS (predates distro

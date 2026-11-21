@@ -24,6 +24,8 @@ Summary:        A collection of tools for Python
 License:        MIT
 URL:            https://pypi.python.org/pypi/pytools
 Source0:        https://files.pythonhosted.org/packages/source/p/pytools/pytools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#inducer/pytools#364
+Patch0:         support-new-platformdirs.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -32,7 +34,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module siphash24 >= 1.6}
 BuildRequires:  %{python_module sqlite3}
 BuildRequires:  %{python_module typing_extensions >= 4.5}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-platformdirs >= 2.2
@@ -57,7 +58,7 @@ nonetheless, here's what's on offer:
 * A lexer, pytools.lex.
 
 %prep
-%setup -q -n pytools-%{version}
+%autosetup -p1 -n pytools-%{version}
 
 %build
 %pyproject_wheel
@@ -73,6 +74,6 @@ nonetheless, here's what's on offer:
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/pytools
-%{python_sitelib}/pytools-%{version}*-info
+%{python_sitelib}/pytools-%{version}.dist-info
 
 %changelog

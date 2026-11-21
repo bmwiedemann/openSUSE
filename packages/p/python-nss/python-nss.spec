@@ -1,7 +1,7 @@
 #
 # spec file for package python-nss
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,7 +75,7 @@ HTML Documentation and examples for %name.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
-PYTHONPATH=%{buildroot}%{python_sitearch} python3 -m sphinx doc/sphinx/source build/sphinx/html
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m sphinx doc/sphinx/source build/sphinx/html}
 rm -rf build/sphinx/html/.buildinfo build/sphinx/html/.doctrees
 
 %check

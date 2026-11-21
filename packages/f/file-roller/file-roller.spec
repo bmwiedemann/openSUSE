@@ -17,7 +17,7 @@
 
 
 Name:           file-roller
-Version:        44.7
+Version:        44.8
 Release:        0
 Summary:        An Archive Manager for GNOME
 License:        GPL-2.0-or-later
@@ -42,13 +42,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gthread-2.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.8.1
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.14.0
-BuildRequires:  pkgconfig(libadwaita-1)
-BuildRequires:  pkgconfig(libarchive) >= 3.0.0
-BuildRequires:  pkgconfig(libnautilus-extension-4)
-BuildRequires:  pkgconfig(libportal)
-BuildRequires:  pkgconfig(libportal-gtk4)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.2
+BuildRequires:  pkgconfig(libarchive) >= 3.1.900a
+BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.beta
+BuildRequires:  pkgconfig(libportal) >= 0.7
+BuildRequires:  pkgconfig(libportal-gtk4) >= 0.7
 # Formats that we likely want to support by default
 Recommends:     bzip2
 Recommends:     7zip

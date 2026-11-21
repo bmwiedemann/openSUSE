@@ -514,4 +514,17 @@
 </comment>
     <requestid>1381456</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>07fc3d6407924757963019c45e739cf2</srcmd5>
+    <version>1.45.1</version>
+    <time>1793724785</time>
+    <user>anag_factory</user>
+    <comment>missing last change: %{python_module opentelemetry-test-utils = 0.66b1}
+- Update to 1.45.1:
+  * Fix thread leak in resource initialization for long
+    running resource detectors.
+  * Require opentelemetry-semantic-conventions 0.66b1.
+</comment>
+    <requestid>1394630</requestid>
+  </revision>
 </revisionlist>

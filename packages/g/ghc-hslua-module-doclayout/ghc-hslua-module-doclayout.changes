@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 27 16:29:58 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-module-doclayout to version 1.2.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jan 12 21:47:47 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hslua-module-doclayout to version 1.2.1.1.

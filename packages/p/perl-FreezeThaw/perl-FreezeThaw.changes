@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Oct 23 10:05:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.0 (1.00)
+   see /usr/share/doc/packages/perl-FreezeThaw/Changes
+
+
+  Version 1.00
+  	Would fail in presence of multiple references to the same CODE or GLOB reference.
+
+-------------------------------------------------------------------
 Tue Nov 30 19:20:16 UTC 2010 - coolo@novell.com
 
 - switch to perl_requires macro

@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Tue Nov 10 07:40:35 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.16
+  * Add Ripple Preview, a 65B dense model built for agentic coding
+  * ollama launch claude always routes Claude Code to the
+    selected model
+  * ollama launch explains when a cloud model has been retired
+  * /v1/responses respects truncation and no longer silently
+    truncates by default
+  * /v1/models returns an empty list instead of null when no
+    models are installed
+  * Updated llama.cpp
+  * Release notes: https://github.com/ollama/ollama/releases/tag/v0.40.16
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Fri Nov  6 11:27:12 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.15
+  * Add Xiaomi MiMo mimo-v2.6, a 9B model for code and agents
+  * Add AutoTrust decision models in 9b, 35b, and 27b-vl sizes
+    that return choices, yes/no probabilities, and ratings
+  * ollama launch supports Kimi Code CLI, migrates kimi-cli setups
+  * ollama launch fills in Pi's model list automatically
+  * Recurrent and vision GGUF models can serve concurrent requests
+  * Qwen3 and Qwen3.5 models support long-context (YaRN) scaling
+  * Running ollama with no arguments opens the welcome launcher
+  * Release notes: https://github.com/ollama/ollama/releases/tag/v0.40.15
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Nov  4 07:56:23 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.14
+  * ollama launch claude applies model output token limit
+  * cloud models no longer hit the 128k default cap
+  * /api/chat decodes compressed cloud web search responses
+  * OpenAI endpoints keep packaged sampler defaults
+  * omitted temperature/top_p now use model values
+  * /v1/responses preserves readable input content
+  * preserves prior assistant refusals in input
+  * ollama launch codex verifies ChatGPT routing
+  * reports a clear error when routing is unavailable
+  * Release notes: https://github.com/ollama/ollama/releases/tag/v0.40.14
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct 29 07:37:19 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.13
+  * LFM3 models run on Linux
+  * lfm3-audio/lfm3-omni support text-to-speech
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Oct 28 08:11:33 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.12
+  * Keep more detail in small images for Gemma 4
+  * Support OpenCode v2 in ollama launch
+  * Fix Kimi CLI tool-only assistant turns
+  * Update llama.cpp
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Sun Oct 25 08:58:39 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.40.11
+  * Generate speech on macOS
+  * ollama run plays text or replies aloud
+  * /v1/audio/speech can stream audio
+  * Add d3 decision models from vLLM Semantic Router
+  * d3 classifies, answers yes/no, or scores options
+  * d3 available in 2B, 4B, 9B, and 27B sizes
+  * SynapShift first contributed in PR #19173
+- Updated to version 0.40.10
+  * Add NVIDIA Nemotron 3.5 Bolt E4B
+  * Gemma 4-based vision-language model
+  * Fast local conversations, image understanding, tool use
+  * Supports a 128K-token context window
+  * Includes DFlash draft for speculative decoding
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Fri Oct 23 07:38:51 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 0.40.9

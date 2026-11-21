@@ -195,7 +195,7 @@ kfail=(
 
     # Fails for i586.  Appearantly, glibc for i586 doesn't use vdso to do
     # syscalls.  Fedora test-case.
-    "FAIL: gdb.base/set-solib-absolute-prefix.exp: backtrace with __kernel_vsyscall"
+    "FAIL: gdb.arch/x86-set-solib-absolute-prefix.exp: backtrace with __kernel_vsyscall"
 
     # https://sourceware.org/bugzilla/show_bug.cgi?id=28504
     "FAIL: gdb.arch/i386-sse.exp: check contents of data\[2\]"
@@ -329,6 +329,29 @@ kfail=(
     # https://sourceware.org/bugzilla/show_bug.cgi?id=32893
     "FAIL: gdb.multi/attach-no-multi-process.exp: target_non_stop=off: info threads \(timeout\)"
 
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=34344
+    "FAIL: gdb.rust/unsized2.exp: print unsized_struct"
+    "FAIL: gdb.rust/unsized2.exp: print *reference"
+    "FAIL: gdb.rust/unsized2.exp: print nested_unsized_struct"
+    "FAIL: gdb.rust/unsized2.exp: print beta"
+    "FAIL: gdb.rust/unsized2.exp: print unsized_struct.rest\[1\]"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=33505
+    "FAIL: gdb.base/corefile-shmem-zero-id.exp: check smaps: single fixup line found"
+    "FAIL: gdb.base/corefile-shmem-zero-id.exp: check smaps: single shared memory mapping found"
+    "FAIL: gdb.base/corefile-shmem-zero-id.exp: save core file: saw LD_PRELOAD message from library"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=33866
+    "FAIL: gdb.replay/missing-thread.exp:"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=34182
+    "FAIL: gdb.base/gcore-memory-usage.exp: 64 Mb: gdb did not use too much memory"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=31806
+    "FAIL: gdb.debuginfod/crc_mismatch.exp: local_debuginfod: debuginfod running, info downloaded, no CRC mismatch"
+
+    # https://sourceware.org/bugzilla/show_bug.cgi?id=22381
+    "FAIL: gdb.base/tls-nothreads.exp"
 ) # kfail
 
 kfail_sle12=(

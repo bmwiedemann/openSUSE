@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:46:19 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.50.0:
+- Added
+  * Options::max_depth and DEFAULT_MAX_DEPTH to configure the maximum
+    nesting depth when parsing.
+  * The path attribute on textPath (SVG 2).
+- Changed
+  * The bounding box methods of Node, Group and Path now return an Option,
+    which is None for nodes without a bounding box, such as empty groups.
+    resvg_get_node_bbox and resvg_get_node_stroke_bbox of the C API return
+    false for such nodes, --query-all skips them, and --query-bbox fails
+    for an SVG without content.
+  * The underline, overline and line_through fields of layout::Span are now
+    boxed.
+  * Bounding boxes of paths and groups are now calculated on first access
+    instead of while parsing.
+  * Fonts are now loaded, resolved and prepared for shaping once per tree
+    instead of once per text, and fonts with shared data are no longer
+    copied.
+  * Lower memory usage of the parsed tree and lower peak memory usage while
+    parsing.
+  * Faster parsing of documents with many IDs.
+  * harfrust updated to 0.15 and skrifa to 0.49.
+  * svgtypes is now developed in the resvg repository.
+- Fixed
+  * flood-color="currentColor" on feFlood and feDropShadow no longer
+    resolves to black.
+  * color="currentColor" now inherits the parent's color instead of
+    resolving to black.
+  * Filter primitive subregions with primitiveUnits="objectBoundingBox" are
+    now resolved against the element's bounding box, and unspecified values
+    default to the filter region.
+  * feDisplacementMap no longer applies scale twice, and now reads the
+    displacement map with non-premultiplied colors.
+  * CSS in a style element is no longer cut off at the first XML comment or
+    processing instruction, and a type attribute that is empty or text/css
+    in any letter case is now accepted.
+  * Recursive references through clip paths, masks, patterns, markers and
+    feImage, including indirect ones via nested elements and inherited
+    properties, are now detected and rejected.
+  * usvg no longer hangs on an xlink:href chain that loops without
+    including its first element.
+  * Placement of sbix bitmap glyphs.
+  * Patterns with fractional tile sizes no longer drift out of position or
+    show seams between tiles.
+  * An empty group no longer extends the bounding box of its parent group.
+
+-------------------------------------------------------------------
+Mon Oct 26 12:01:47 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 0.49.0
+- Added
+  * --query-bbox CLI option to query the drawing bounding box without
+rasterizing it.
+  * mix-blend-mode: plus-lighte.
+  * feComposite operator="lighter.
+  * Prebuilt aarch64 release binaries for Linux and Windows.
+- Changed
+  * usvg::BlendMode and usvg::filter::CompositeOperator have new
+    PlusLighter and Lighter variants.
+  * Group::layer_bounding_box of a group without filters is now clipped by
+    its clip path, so clipped groups allocate smaller layers. This also
+    affects the sizes reported by --query-all and used by --export-id.
+- Fixed
+  * dominant-baseline is now correctly inherited by nested <tspan>
+    elements, so a nested span stays on the same baseline as its siblings.
+  * Panics and incorrect clipping when a filter region is smaller than its
+    input.
+  * Incorrect transform order on the outermost svg element with a viewBox.
+  * Relative positioning of right-to-left text with dx and dy, including
+    text on a path and text decorations.
+  * text-anchor now uses the actual extent of a text chunk, which dx and
+    textLength can change.
+  * Filters inside rotated or skewed groups are now applied in the user
+    space of the group. This fixes the clipping to filter regions and
+    subregions, as well as the direction of offsets, blurs, turbulence and
+    tiles, and the rendering of feImage.
+  * gradientTransform and patternTransform are now inherited via href.
+  * The bounding box of an <image> with preserveAspectRatio="… slice" is
+    now its viewport, so objectBoundingBox clip paths, masks and filters on
+    it are resolved correctly.
+  * Markers are now clipped to their viewport instead of their viewBox when
+    the aspect ratios differ.
+  * Object bounding box gradients inside masks, patterns and feImage
+    filters used by more than one element are now resolved correctly,
+    instead of being rendered as a flat fill or not at all.
+  * feMorphology kernels are now symmetric and fractional radii are rounded
+    to the nearest pixel.
+  * Font fallback log messages now always name the correct fallback font
+    family.
+  * The resvg CLI no longer rounds fractional image sizes before scaling,
+    and rounds the output size up instead of to the nearest integer.
+  * The C API header was missing RESVG_ERROR_SVGZ_UNSUPPORTED, so all
+    following error codes were off by one.
+  * cargo-c now installs ResvgQt.h alongside resvg.h.
+
+-------------------------------------------------------------------
 Fri Aug  7 07:32:23 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
 
 - Update to version 0.48.1

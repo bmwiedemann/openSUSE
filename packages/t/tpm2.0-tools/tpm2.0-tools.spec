@@ -17,50 +17,31 @@
 
 
 %define _lto_cflags %{nil}
-%ifarch %{ix86} x86_64 aarch64 %{arm} ppc64le
-# Disable the tests for now in all architectures
-%bcond_with  test
-%else
-# ppc ppc64 s390x: some code (tpm2_command_header_from_bytes) depend
-# on the endianness of the architecture:
+# Tests are disabled for now.  On big-endian architectures (ppc ppc64
+# s390x) some code (tpm2_command_header_from_bytes) depends on the
+# endianness of the architecture:
 #   gh#tpm2-software/tpm2-tools#3055
 #   gh#tpm2-software/tpm2-tools#3060
 #   gh#tpm2-software/tpm2-tools#3061
 %bcond_with     test
-%endif
 Name:           tpm2.0-tools
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        Trusted Platform Module (TPM) 2.0 administration tools
 License:        BSD-3-Clause
 Group:          Productivity/Security
-URL:            https://github.com/tpm2-software/tpm2-tools/releases
+URL:            https://github.com/tpm2-software/tpm2-tools
 Source0:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-tools/releases/download/%{version}/tpm2-tools-%{version}.tar.gz.asc
-# git show william-roberts-pub javier-martinez-pub joshua-lock-pub idesai-pub > tpm2-tools.keyring
+# Release signing key of Andreas Fuchs (D533275B0123D0A679F51FF48F4F9A45D7FFEE74)
 # The key can be accessed by "curl https://github.com/UNAME.gpg"
 Source2:        tpm2-tools.keyring
-BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  libtool
-BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
-BuildRequires:  tpm2.0-abrmd-devel
 BuildRequires:  pkgconfig(efivar)
 Suggests:       tpm2.0-abrmd
-# Pandoc is used for generating the man pages, but since 3.0.4 prebuilt man
-# pages are shipped with the distribution tarball and we don't need to generate
-# them any more. Pandoc is only available on openSUSE (not 32-bit x86) and not
-# in Ring 1 (no haskell), so can't be used as build dependency here.
-%if 0
-%if 0%{?is_opensuse}
-%ifnarch %{ix86}
-BuildRequires:  pandoc
-%endif
-%endif
-%endif
 %if %{with test}
 # requirements for unit test suite (configure --enable-unit)
 BuildRequires:  dbus-1-daemon
@@ -99,7 +80,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %check
 # Do the tests sequentially to kill all tpm_server instances
 # https://github.com/tpm2-software/tpm2-tools/issues/3042
-%make_build check
+make check
 %endif
 
 %files

@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible-core-2.19
-Version:        2.19.14
+Version:        2.19.15
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
@@ -52,8 +52,6 @@ Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/an
 Source1:        ansible_core-%{version}.tar.gz.sha256
 # CVE-2026-16493 (bsc#1272369)
 Patch0:         ansible-core-CVE-2026-16493.patch
-# CVE-2026-89091 (bsc#1284847)
-Patch1:         ansible-core-CVE-2026-89091.patch
 BuildArch:      noarch
 
 Provides:       ansible-core = %{version}

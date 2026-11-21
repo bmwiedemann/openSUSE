@@ -599,4 +599,15 @@
   * Address Python 3.13 issue</comment>
     <requestid>1376132</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>8b6c4a8ba473c2128b2c111812af4f77</srcmd5>
+    <version>8.3.2</version>
+    <time>1795023006</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.2:
+  * Fix the ``deprecated`` version names
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.2
+  * Update .gitreview for stable/2026.2</comment>
+    <requestid>1398205</requestid>
+  </revision>
 </revisionlist>

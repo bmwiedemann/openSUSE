@@ -56,6 +56,7 @@ BuildRequires:  scons >= 3.0.2
 BuildRequires:  pkgconfig(dbus-1) >= 1.0
 Requires:       libffado%{sover} = %{version}
 Recommends:     ffado-mixer = %{version}
+Supplements:    modalias(pci:v*d*sv*sd*bc0Csc00i10*)
 %endif
 %if "%{flavor}" == "mixer"
 BuildRequires:  doxygen

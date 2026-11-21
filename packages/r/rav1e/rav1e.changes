@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov  3 02:49:17 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add rav1e-Make-object-order-deterministic.patch: Make object
+  order deterministic (bsc#1289073, gh#medek/nasm-rs#47)
+
+-------------------------------------------------------------------
 Thu Jun 11 16:24:07 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update cargo dependencies (bsc#1249016 CVE-2025-58160).

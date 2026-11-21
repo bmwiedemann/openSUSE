@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Oct 19 17:45:51 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update base16 to version 2.0.
+  ## 2.0
+
+  This major release removes two public functions. See
+  [MIGRATION-2.0.md](MIGRATION-2.0.md) for migration examples.
+
+  - Replace `isBase16` and `isValidBase16` with `parseBase16` in all six
+    ByteString and Text modules. Parsing checks even length and the mixed-case
+    hexadecimal alphabet, then preserves the original encoded representation.
+    For a Boolean check a la `isBase16`, just use `isRight` . For `parseBase16`, odd-length alphabet-only inputs
+    previously accepted by `isValidBase16` are now rejected.
+  - Add an optional manual `simd` flag, which is off by default, using the bundled `cbits`
+    which give runtime-detected x86-64 AVX2/SSSE3 encoding and decoding.
+    Unsupported targets and inputs under the simd threshold use the scalar fallbacks;
+    lenient decoding remains scalar.
+  - Accelerate ShortByteString/ShortText encoding and checked/typed decoding with
+    direct byte-array SIMD bindings, without pinning or copying through strict
+    ByteString. Short parsers now validate through the short decoder.
+  - Preserve scalar decoding errors and input-relative offsets with SIMD.
+  - Fix lazy typed decoding when hex pairs cross chunk boundaries. Lazy checked
+    decoding now materializes the complete input for consistent total-length
+    checks and global error offsets. Lazy parsing retains the original chunks.
+  - Fix [#32](https://github.com/emilypi/Base16/issues/32): lenient Text decoding
+    no longer throws on malformed UTF-8. Valid UTF-8 is preserved; invalid bytes
+    fall back to their Latin-1 characters. Apply the same policy to lazy Text
+    and ShortText, avoiding invalid UTF-8 inside the short-text result.
+  - Require GHC 9.6 or later, support GHC 9.6 through 9.14, refresh CI, and retire
+    the old i386 32 bit support.
+  - Guard encoded output size calculations against integer overflow.
+
+-------------------------------------------------------------------
 Thu Jan  1 19:21:41 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Add base16 at version 1.0 revision 4.

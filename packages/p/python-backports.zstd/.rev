@@ -50,4 +50,15 @@
     <comment>1</comment>
     <requestid>1377344</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ef51d5da336a6c047b256b00361ddf7</srcmd5>
+    <version>1.8.0</version>
+    <time>1795182222</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0 (CVE-2026-82049):
+  * Update code with CPython 3.14.8 version
+
+- update to 1.7.0 (CVE-2026-11940):</comment>
+    <requestid>1398241</requestid>
+  </revision>
 </revisionlist>

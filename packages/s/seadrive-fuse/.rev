@@ -137,4 +137,18 @@
     <comment>Update to 3.0.27</comment>
     <requestid>1386507</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d8061ca88da094dfca7ce2676a7131c2</srcmd5>
+    <version>3.0.27</version>
+    <time>1793899230</time>
+    <user>anag_factory</user>
+    <comment>- Update fuse3.patch to handle fuse3's changed runtime defaults:
+  * disable FUSE_CAP_ATOMIC_O_TRUNC: open() doesn't handle O_TRUNC,
+    so overwriting an existing file left stale trailing data
+  * handle UTIME_NOW/UTIME_OMIT in utimens (touch set mtime to 1970)
+  * default to max_threads=64: libfuse &gt;= 3.12 caps worker threads at
+    10 while reads block until the file is downloaded
+</comment>
+    <requestid>1395089</requestid>
+  </revision>
 </revisionlist>

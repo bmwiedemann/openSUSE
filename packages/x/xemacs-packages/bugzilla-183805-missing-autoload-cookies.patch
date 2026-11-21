@@ -1,7 +1,7 @@
 diff -ru packages.orig/xemacs-packages/build/build.el packages/xemacs-packages/build/build.el
 --- packages/xemacs-packages/build/build.el	2003-10-13 17:52:13.000000000 +0200
 +++ packages/xemacs-packages/build/build.el	2006-06-30 21:53:30.000000000 +0200
-@@ -922,6 +922,7 @@
+@@ -924,6 +924,7 @@
  		   (match-string 2 (cdr result))) tags)))
        (reverse tags))))
  

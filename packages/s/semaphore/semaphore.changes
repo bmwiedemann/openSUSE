@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Thu Nov 12 05:30:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20.23:
+  https://github.com/semaphoreui/semaphore/releases/tag/v2.20.23
+  * Semaphore UI one-click deployment on Cloudzy in #4148
+  * Persist per-user language selection in user options in #4149
+  * fix/delete user error in #4147
+  * fix(ui): prevent Enter in CLI args dialog from submitting
+    parent form in #4092
+  * fix: add missing env tag for SEMAPHORE_RUNNER_EXECUTOR in #4154
+  * Sem 212 git clone retry in #4140
+  * fix(config): add backward-compatible top-level secrets_path
+    fallback in #4133
+  * fix(tasks): preserve output from short shell commands in #4159
+  * chore(deps): update dependency core-js to v3.50.0 in #4143
+  * chore(deps): update dependency nanoid to v6.0.1 in #4119
+  * chore(deps): update dependency dayjs to v1.11.23 in #4177
+  * chore(deps): update dependency axios to v1.20.0 in #4187
+  * docs: sync engineering documentation with recent config and
+    feature changes in #4179
+  * chore(deps): update dependency cron-parser to v5.10.0 in #4189
+  * feat(TaskDetails, TaskLogView): link to schedule or integration
+    details and handle deleted origins in #4183
+  * feat(git): parallelize submodule fetches with git --jobs flag
+    in #4172
+  * docs: add RepoCloud as a deployment option in #4170
+  * feat(tasks): support and test Ansible forks concurrency in
+    #4166
+  * fix/jwt for docker executor in #4194
+  * feat(runner): add check interval configuration for job polling
+    in #4175
+  * refactor(api): function parseInt returns bool instead of error
+    in #4195
+  * Feat: add delay node in #4145
+  * fix(web): remove trailing spaces that break the build in #4200
+  * docs: workflows guide, runner poll interval, Ansible forks in
+    #4199
+  * add repository-relative template working directory in #4181
+  * fix(tasks): isolate checkouts in #4198
+  * fix(deps): update module github.com/go-jose/go-jose/v4 to
+    v4.1.5 in #4201
+  * fix(deps): update module github.com/coreos/go-oidc/v3 to
+    v3.21.0 - autoclosed in #4202
+  * Fix Dredd test server startup and port conflicts in #4206
+  * feat(api): allow template_name when creating project tasks via
+    API in #4128
+  * test(runners): add integration test suite for local, docker,
+    and k8s executor modes in #4208
+  * feat(config): support SEMAPHORE_TLS_HTTP_REDIRECT_PORT pointer
+    env var in #4167
+  * feat(ui): add YAML format support for Extra Variables in
+    Variable Groups in #4158
+  * feat(ansible): add support for galaxy role and collection
+    arguments i… in #4160
+  * chore(deps-dev): bump svgo from 2.8.3 to 2.8.4 in /web in #4217
+  * fix(deps): update module github.com/stretchr/testify to v1.12.1
+    in #4205
+  * fix(deps): update module github.com/sirupsen/logrus to v1.10.2
+    in #4204
+  * feat(templates): hide Dry Run and Diff checkboxes per template
+    in #4152
+  * chore(deps): update dependency openai to v7.13.0 in #4121
+  * fix(deps): update module golang.org/x/crypto to v0.57.0 -
+    autoclosed in #4218
+  * fix(deps): update dependency js-yaml to v5 in #4221
+  * fix(deps): update module modernc.org/sqlite to v1.58.0 in #4220
+  * fix(deps): update module golang.org/x/oauth2 to v0.37.0 in
+    #4219
+  * feat(runners): add server-side debug diagnostics in #4222
+  * fix(runner): authenticate unregister requests in #4214
+  * chore(deps): update dependency openai to v7.14.0 in #4224
+  * feat(integration): initialize Params map if nil in
+    GetTaskDefinition in #4089
+  * feat(auth): session duration in #4227
+  * chore(deps): update dependency openai to v7.15.0 in #4226
+  * feat: suppress error notifications per template in #4232
+  * chore(deps): update dependency cron-parser to v5.10.1 in #4237
+  * Adding username to task logging in #4239
+  * chore(deps): update dependency js-yaml to v5.4.2 in #4238
+  * docs: template alert suppression and server log debugging in
+    #4241
+  * Gracefully stop and clean up local task process groups in #4228
+  * fix(deps): update module modernc.org/sqlite to v1.59.0 in #4242
+  * chore(deps): update dependency openai to v7.18.0 in #4245
+  * chore(deps): update dependency prettier to v3.9.8 in #4244
+  * chore(deps): update dependency dotenv to v18 in #4248
+  * chore(deps): update dependency openai to v7.20.0 in #4252
+  * feat/gen ssh key in #3656
+  * chore(tests): replace os.Setenv with t.Setenv in #4271
+  * fix(ui): make schedule timezone alert dismissible in #4267
+  * chore(deps): update dependency dotenv to v18.0.3 in #4273
+  * feat(integrations): add HMAC-SHA512 webhook auth method in
+    #4270
+  * fix(ui): exclude log timestamps from text selection in #4266
+  * fix(git): forward proxy environment vars and support auth
+    encoding in bare metal installations in #4197
+  * feat(host-config): map ssh hosts and git URLs to project
+    credentials in #4251
+  * Feat/refactor workflows in #4287
+  * feat(audit): add the security audit log in #4291
+  * feat(git): enhance galaxyGitEnv for private repository
+    authentication and add tests in #4156
+  * feat(audit): record resource and secret events in #4296
+  * feat(audit): record task and runner events in #4300
+  * feat(workflows): add environment variables about current
+    workflow run in #4302
+  * feat(audit): add the audit.splunk_hec configuration section in
+    #4309
+  * feat(audit): delete audit events older than a retention period
+    in #4313
+  * fix(template): offer the files of the selected app in the file
+    picker in #4298
+  * chore(deps): update dependency dotenv to v18.0.7 in #4283
+  * chore(deps-dev): bump compression from 1.8.1 to 1.8.2 in /web
+    in #4331
+  * chore(deps-dev): bump joi from 17.13.4 to 17.13.8 in /web in
+    #4330
+  * feat(audit): add the audit log screen in #4325
+  * feat/workflow artifacts in #4334
+  * feat(repository): share one checkout between the templates of a
+    monorepo in #4326
+  * Fix concurrent static inventory cleanup in #4335
+  * fix(tasks): use unsafe only for Jinja2 in #4339
+  * feat/git shallow clone in #4340
+  * docs: add Pethost as a deployment option in #4342
+  * feat(roles): give every role an ID in #4341
+  * feat(roles): let members hold several roles in #4343
+  * feat(roles): read roles from group mappings in #4347
+  * Feat/wf survey vars in #4346
+  * Feat/features from ex in #4348
+  * fix(dredd): skip the global role lists without a plan in #4352
+  * feat/wf integrations 2 in #4350
+  * fix(projects): no project form without permission in #4353
+  * Git branch from Integration in #4354
+  * fix(docker): replace passlib with libpass in the server image
+    in #4322
+  * feat/redis sentinel in #4360
+  * feat(config): port can be number in #4367
+  * Fix private module authentication in Pro beta image builds in
+    #4370
+  * Feat/string secret in #4369
+  * fix(backup): restore a project whole and ask about shared roles
+    in #4362
+  * feat(pro): add proxy to subscription validation in #4381
+  * Feat/client cli in #4383
+  * feat(roles): add workflow verbs and role grants on workflows in
+    #4378
+  * feat(roles): add the read permission in #4379
+  * feat(ldap): apply group mappings at LDAP sign-in in #4395
+  * test(vaults): regression test for cross-project vault
+    reparenting (GH… in #4415
+  * sec(users): verify the current password on PUT /users/{id}
+    (GHSA-3gg5-457g-m9cg) in #4418
+  * test(repositories): regression test for cross-project
+    repository creation (GHSA-q9cq-8j9q-r93m) in #4421
+
+-------------------------------------------------------------------
+Tue Nov 10 06:16:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.21:
+  * Bugfixes
+    - A user can change their own password through PUT
+      /api/users/{user_id} without proving knowledge of the current
+      one
+      https://github.com/semaphoreui/semaphore/security/advisories/GHSA-3gg5-457g-m9cg
+- Update to version 2.19.20 (.19 was not released):
+  * Bugfixes
+    - Manager can move another Semaphore UI project's template
+      vault binding by ID
+      https://github.com/semaphoreui/semaphore/security/advisories/GHSA-ffp6-w57q-758q
+    - fix: validate survey variables
+
+-------------------------------------------------------------------
+Wed Nov 04 10:14:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.18:
+  * SEMAPHORE_SESSION_INACTIVITY_HOURS — How long a login session
+    may stay unused, in hours, before it is rejected and expired.
+
+-------------------------------------------------------------------
 Tue Oct 20 11:25:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.17:

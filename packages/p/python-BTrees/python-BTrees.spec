@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-BTrees
-Version:        6.4
+Version:        6.5
 Release:        0
 Summary:        Persistent B-tree object containers for Python
 License:        ZPL-2.1
@@ -67,9 +67,8 @@ This package contains the files needed for binding the %{name} C module.
 
 %install
 %pyproject_install
-%{python_expand rm %{buildroot}%{$python_sitearch}/BTrees/*.c
-  %fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand rm %{buildroot}%{$python_sitearch}/BTrees/*.c
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # the failing tests would require this step which setup.py test did:

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Nov 20 01:56:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update 5.7.0:
+  * Drop Python 3.9 support (minimum Python 3.10) and fix Python 3.14+
+    PEP 649 TYPE_CHECKING annotations and head_from_fun __wrapped__
+  * Update core requirements: kombu >= 5.7.0, billiard >= 4.3.2, and
+    click-repl >= 0.4.0
+  * Support pymemcache, add Google Cloud PubSub extra, remove redis
+    version pins, and update brotli/pymongo/eventlet>=0.37.0 compat
+  * Make worker_concurrency cgroup-aware via --concurrency=auto
+  * Allow worker_pool_start_method='spawn' with AsynPool and detect
+    spawned pool children in process_initializer
+  * Add task_retry_on_worker_lost to limit requeues after worker loss
+  * Fix --detach stalling in containers with high fdmax
+  * Decouple acks_on_failure and acks_on_timeout, and finish half-read
+    child results on prefork shutdown
+  * Fix AsynPool AttributeError on missing _sentinel_poll, skip exited
+    children in _help_stuff_finish, and fix PEP 479 StopIteration
+  * Fix free worker stalling after reconnect (AsynPool.flush) and warm
+    shutdown not cancelling prefetched tasks in thread pool
+  * Fix autoscale and disable-prefetch for green pools, and reset
+    autoscale keepalive for immediate tasks
+  * Fix worker reconnect after Redis failover, synloop hub.reset() and
+    deferred acks, and bound open sockets before teardown
+  * Fix Consumer.on_close() wiping in-flight reservations, skip
+    prefetch reduction under per-consumer QoS, and preserve op order
+  * Fix Queues.deselect() leaking routing-only queues, support queue
+    aliases, and restore consume_from on add_consumer
+  * Fix pidbox consumer cleanup, RabbitMQ 4.3.0 compat, and cancel only
+    per-connection timers on broker reconnect
+  * Enable heartbeat on event dispatcher, synchronize shutdown with
+    publishing, and fix event/timer leaks after reconnect
+  * Fix request time limits, send task failure on hard timeout, and
+    add runtime in task_success signal
+  * Add task_repr_maxlevels setting and pydantic=True model support
+  * Build chains in a single pass instead of folding with |, and fix
+    exponential/O(K^2) message bloat in chains of chords and groups
+  * Fix chord error handling when body is a chain, propagate chained
+    failures, fail chords on header failure or refused unlock retry
+  * Forward chord body routing options to chord_unlock, apply
+    countdown/eta to chord header, and scope link/link_error to body
+  * Fix Task.replace() with tuple chains, run replaced callbacks once,
+    and restore GroupResult fan-out in chain.as_tuple()
+  * Fix eager chain/group issues: stop on Ignore/Reject, fire link once,
+    keep off backend, and forward nested args
+  * Fix Signature.clone() kwargs sharing, linked signature deepcopy,
+    merge options in map/starmap, and stamped header revocation
+  * Honor per-task serializer/options in send_task(), preserve
+    ignore_result overrides, and warn on colliding task names
+  * Raise clear error when @shared_task is applied twice and stop gating
+    publishing signals on cached receiver lists
+  * Tell apart signal receivers bound to different instances
+  * Add opt-in remote control (inspect ping) support and
+    celery_beat_task header to celery beat
+  * Keep beat running on schedule entry failure, reject impossible
+    crontab dates, and fix Beat scheduler shutdown cleanup
+  * Fix beat heap delay/sleep bugs, crontab persistence/DST rounding,
+    remaining_delta slots, and solar schedule DST/horizon sign
+  * Fix Service.__reduce__ arg order and raise ImproperlyConfigured
+    when ephem is missing for solar schedules
+  * Add AsyncResult.exists(), ResultSet.add() after ready, and
+    backends.by_url() class support
+  * Keep the first SUCCESS in database, MongoDB, and Cassandra
+    backends, and don't overwrite with FAILURE/WORKER_LOST
+  * Fix DatabaseBackend: honor result_serializer, apply retry policy to
+    all DB ops, filter NullPool args, and add date_done index
+  * DatabaseBackend: store task children/stamps, add SessionManager
+    engine_callback, and fix timezone/health/onupdate issues
+  * Redis backend: add result_chord_expires and result_failure_expires,
+    count chord headers once, and fix claim cleanup ownership
+  * Redis backend: support SSL URLs and DriverInfo, fix pub/sub lock/
+    unsubscribe/reconnect, and clean up leaked _pending_messages
+  * Fix RPC backend reconnection, result_extended, and state polling
+  * Fix cache/AzureBlockBlob/CosmosDB/ArangoDB/Couchbase/Elasticsearch/
+    GCS backends: idempotent forget(), chord expiry, and fork safety
+  * Respect result_compression and decode_responses, honor timeout=0 in
+    wait_for/join/get_many, and track all waiting AsyncResults
+  * Fix celery multi node names with dashes, -c:1,2 index lists,
+    workdir ~ expansion, and EPERM in stopwait liveness check
+  * Fix preload options on control/unsupported commands and friendly CLI
+    status errors
+  * Fix Django worker recursion, DjangoTask selection, and scope Django
+    fixup signal handlers to its own app
+  * Bound State._tasks_to_resolve, cache extension entry-points, and
+    fix BufferMap, LimitedSet, ChainMap, ConfigurationView, and regen
+  * Replace remaining datetime.utcnow() and codecs.open() calls, fix
+    DST gaps/LocalTimezone.fromutc, and mask URLs/credentials
+- Drop patch tests.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Aug 19 14:44:30 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Add tests.patch to fix testsuite (boo#1275668)

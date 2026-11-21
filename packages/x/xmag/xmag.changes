@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 15 04:55:31 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.9
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- switch to meson
+
+-------------------------------------------------------------------
 Sun Oct 13 18:22:09 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.8

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Nov  8 17:58:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Drop support for Python 3.10, add support for 3.15
+  * Backward-incompatible: Relation (for :has()) now takes
+    and exposes a list of (combinator, selector) pairs as
+    arguments, replacing combinator and subselector
+  * Backward-incompatible: the
+    GenericTranslator.xpath_relation_*_combinator() methods
+    now take only the XPath expression of the :has()
+    argument and return an XPath condition string
+  * :has() supports any relative selector list, e.g.
+    :has(> a.important, + p b)
+  * :not() supports complex selector arguments, e.g.
+    :not(a.important[rel] > b)
+  * Add i and s attribute selector flags, e.g.
+    [href^="HTTP" i], for case-insensitive/sensitive matching
+  * *|element and [*|attrib] match any namespace, including
+    none; [|attrib] added for matching no namespace
+  * Element.namespace and Attrib.namespace are "*" for the
+    namespace wildcard
+  * Align :enabled and :disabled with the HTML Living
+    Standard:
+    - input with no type or type="hidden" can now be
+      :enabled and :disabled
+    - links (a, area, link with href) are no longer
+      :enabled
+    - form controls inside the first legend of a disabled
+      fieldset are no longer :disabled
+    - option inside a disabled optgroup is now :disabled
+    - command is no longer :enabled or :disabled, keygen
+      is no longer :enabled
+  * Replace null and surrogate code points (raw or escaped)
+    with U+FFFD, as the CSS specification requires
+  * Descendant combinator now translates to a descendant::
+    step (e f -> e/descendant::f), faster in lxml
+  * Class selectors and ~= now start with a plain
+    contains() check, faster in lxml
+  * Document non-standard ID selectors like #37signals
+
+-------------------------------------------------------------------
 Thu Aug 20 09:07:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.0:

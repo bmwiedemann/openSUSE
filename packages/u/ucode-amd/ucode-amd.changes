@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:05:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Fix supplements to add dependency on kernel (bsc#1249138)
+
+-------------------------------------------------------------------
 Sun Sep 27 08:18:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260926 (git commit 9b858e5bb58d):

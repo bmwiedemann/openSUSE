@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Error
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define cpan_name Error
 Name:           perl-Error
-Version:        0.170.300
+Version:        0.170.310
 Release:        0
-# 0.17030 -> normalize -> 0.170.300
-%define cpan_version 0.17030
+# 0.17031 -> normalize -> 0.170.310
+%define cpan_version 0.17031
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Error/exception handling in an OO-ish way
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.28
+BuildRequires:  perl(Module::Build) >= 0.280
 BuildRequires:  perl(Test::More) >= 0.88
 Provides:       perl(Error) = %{version}
 Provides:       perl(Error::Simple) = %{version}
@@ -49,7 +50,7 @@ Errors in the class 'Error' should not be thrown directly, but the user
 should throw errors from a sub-class of 'Error'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor

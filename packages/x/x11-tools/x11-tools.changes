@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 26 11:32:11 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop the Provides/Obsoletes pairs for 3ddiag and xf86tools.
+  Both were renamed away in the SuSE 9 era; nothing in Factory
+  references either name and no supported upgrade path reaches
+  this package from a release that shipped them, so the
+  unversioned pairs were inert (self-obsoletion warnings).
+- Drop the obsolete Group tag.
+- Remove fillup definition as it is 9 years now
+
+-------------------------------------------------------------------
 Thu Sep  1 14:33:56 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - nvidia-pre-install

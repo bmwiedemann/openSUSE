@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov  1 20:25:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.10.1:
+  * Fix a long Jupyter notebook assignment magic (for example `x
+    = !ls -la`) being wrapped in parentheses, which IPython can no
+    longer run; such cells are now left unchanged
+  * Keep repeated lines outside the selected `--line-ranges`
+    unchanged
+  * Fix `--line-ranges` formatting lines that follow a statement
+    when formatting joins or re-indents that statement
+  * Fix `--line-ranges` crashing with an internal error when an
+    unselected statement has a `# fmt: skip` comment on the last
+    line before a closing bracket
+  * Prevent moving an encoding declaration (for example `# -*-
+    coding: latin-1 -*-`) onto the first two lines of a file
+  * Fix adding an extra trailing blank line inside a multi-line
+    module docstring when its last line is near the line length limit
+
+-------------------------------------------------------------------
 Wed Jun 17 09:55:41 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 26.5.1:
@@ -130,7 +149,7 @@ Tue Feb  3 03:42:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 26.1.0:
   * Highlights
-    + Introduces the 2026 stable style 
+    + Introduces the 2026 stable style
     + Black no longer supports running with Python 3.9
     + This release alo bumps pathspec to v1 and fixes inconsistencies with
       Git's .gitignore logic (bsc#1257517)

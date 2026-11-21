@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Metrics-Any
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
-Name:           perl-Test-Metrics-Any
-Version:        0.01
-Release:        0
 %define cpan_name Test-Metrics-Any
-Summary:        Assert that code produces metrics via L<Metrics::Any>
+Name:           perl-Test-Metrics-Any
+Version:        0.20.0
+Release:        0
+# 0.02 -> normalize -> 0.20.0
+%define cpan_version 0.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Assert that code produces metrics via Metrics::Any
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Metrics::Any::Adapter)
 BuildRequires:  perl(Metrics::Any::Adapter::Test)
-BuildRequires:  perl(Module::Build) >= 0.400400
-BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(Module::Build) >= 0.400.400
+BuildRequires:  perl(Test2::V0)
 Requires:       perl(Metrics::Any::Adapter)
 Requires:       perl(Metrics::Any::Adapter::Test)
+Provides:       perl(Test::Metrics::Any) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -45,21 +48,20 @@ Loading this module automatically sets the Metrics::Any::Adapter type to
 'Test'.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

@@ -115,4 +115,12 @@
     CVE-2026-68767 [boo#1276255], CVE-2026-68766 [boo#1276254]</comment>
     <requestid>1385721</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4318184a8b631c6f50290f30cbbfb345</srcmd5>
+    <version>8.0.0</version>
+    <time>1793817906</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.0.0</comment>
+    <requestid>1394806</requestid>
+  </revision>
 </revisionlist>

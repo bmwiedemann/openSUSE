@@ -230,7 +230,10 @@ Patch56:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch63:        bsc1263083-http-cookies-atob-utf8.patch
-### END OF PATCHES                                                              
+# PATCH-FIX-UPSTREAM CVE-2026-115557-distrust-emudhra-ca-keys.patch bsc#1287357 Matej Cepl <mcepl@suse.com>
+# Distrust compromised eMudhra intermediate CA keys
+Patch64:        CVE-2026-115557-distrust-emudhra-ca-keys.patch
+### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
@@ -549,6 +552,9 @@ sed -E -i -e "s/^(\s*_SETUPTOOLS_VERSION\s+=\s+)\"[0-9.]+\"/\1\"${STVER}\"/" \
 
 # Don't fail on warnings when building documentation
 sed -i -e '/^SPHINXERRORHANDLING/s/-W//' Doc/Makefile
+
+# Prepare testing zip archive from the patched version (`base64` is part of coreutils)
+base64 -d Lib/test/distrusted.zip.b64 >Lib/test/distrusted.zip
 
 %build
 %if %{with doc}

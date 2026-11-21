@@ -17,10 +17,10 @@
 
 
 # automatically adjusted by the Makefile
-%define KUBERNETES_STABLE_VERSION v1.36.5
+%define KUBERNETES_STABLE_VERSION v1.37.2
 
 Name:           kubeone
-Version:        1.14.4
+Version:        1.15.0
 Release:        0
 Summary:        CLI for the kubeone cluster automation
 License:        Apache-2.0
@@ -31,7 +31,7 @@ Source11:       PACKAGING_README.md
 Source22:       Makefile
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.1
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
 
 %description

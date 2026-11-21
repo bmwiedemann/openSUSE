@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:53:35 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * The image name is put in the title-bar (the image path is already in
+    the status-bar).
+- Drop unused and obsolete BuildRequires
+  * pkgconfig(libmenu-cache)
+
+-------------------------------------------------------------------
 Tue Apr 21 00:20:58 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

@@ -90,6 +90,15 @@ Wed Aug 12 13:52:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     (CVE-2026-75147, bsc#1276413)
   * avcodec/tdsc: remove double stride adjustment
     (CVE-2026-18393, bsc#1277377)
+- CVE-2026-96611: avformat/mov: reject out of range ispe dimensions, avoid
+  overflow summing HEIF tile dimensions
+  (bsc#1282608)
+- CVE-2026-52295: avformat: Fix various extradata padding issues
+  (bsc#1278274)
+- CVE-2026-52297: avformat: Fix various extradata padding issues
+  (bsc#1280753)
+- CVE-2026-52296: avcodec/wmaenc: Fix missing padding in extradata
+  (bsc#1280752)
 
 -------------------------------------------------------------------
 Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
@@ -107,19 +116,21 @@ Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     (CVE-2026-58049, bsc#1269550)
   * avformat/spdifenc: bound DTS core_size against the packet size in the HD path.
     (CVE-2026-64833, bsc#1272755)
-  * avformat/rtpdec_asf: reject ASF objects smaller than their header
+  * avformat/rtpdec_asf: reject ASF objects smaller than their header.
     (CVE-2026-64834, bsc#1272757)
   * avcodec/tdsc: unref the reference frame before reallocating on size change.
     (CVE-2026-65703, bsc#Bug 1272759)
-  * avformat/ty: don't let the Series2 AC3 trim underflow the packet size
+  * avformat/ty: don't let the Series2 AC3 trim underflow the packet size.
     (CVE-2026-65704, bsc# 1272760)
-  * avfilter/vf_floodfill: remove unneeded variables
+  * avfilter/vf_floodfill: remove unneeded variables.
     (CVE-2026-65705,  bsc#1272761)
   * avfilter/vf_swaprect: size the temp row buffer for the widest plane.
     (CVE-2026-65706, bsc#1272762)
+  * avfilter/vf_hqdn3d: reject unsupported frame parameter changes.
+    (CVE-2026-66036, bsc#1272763)
   * avfilter/vf_hqdn3d: support dynamic frame sizes.
     (CVE-2026-66036, bsc#1272763)
-  * avformat/iamf_parse: check count_label against the available bytes
+  * avformat/iamf_parse: check count_label against the available bytes.
     (CVE-2026-66037, bsc#1272764)
 
 -------------------------------------------------------------------
@@ -186,6 +197,26 @@ Mon Mar 16 22:36:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.1
   * EXIF metadata parsing support
+- CVE-2026-38349: swscale/output: Fix integer overflow in alpha in
+  yuv2rgba64_1_c_template().
+  (bsc#1277369)
+- CVE-2026-38348: swscale/utils: Check *Inc.
+  (bsc#1277368)
+- CVE-2026-38346: swscale/output: Fixes integer overflow in yuv2planeX_8_c.
+  (bsc#1277375)
+- CVE-2026-38344: swscale/utils: initialize chroma when luma switched to
+  cascade.
+  (bsc#1277309)
+- CVE-2026-90815: avfilter/vf_convolution: Handle corner cases with small
+  frames.
+  (bsc#1280754)
+- CVE-2026-90815: avfilter/vf_convolution: Use avpriv_mirror.
+  (bsc#1280754)
+- CVE-2026-38345: libswscale/utils: prevent division by zero for chroma
+  width 8.
+  (bsc#1277376)
+- CVE-2026-90816: avformat: remove HLS protocol.
+  (bsc#1280755)
 
 -------------------------------------------------------------------
 Tue Jan 27 00:01:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
@@ -236,3 +267,12 @@ Sun Aug 24 07:09:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
     (CVE-2025-9951, bsc#1249393)
   * aacenc_tns: clamp filter direction energy measurement
     (CVE-2025-1594, bsc#1237561)
+- CVE-2026-38350: swscale/output: Fix all bilinear integer overflows.
+  (bsc#1277370)
+- CVE-2026-38347: swscale/alphablend: don't overread alpha plane on subsampled
+  odd size.
+  (bsc#1277373)
+- CVE-2023-6602: avformat/hls: Be more picky on extensions.
+  (bsc#1220546)
+- CVE-2023-6604: avformat/hls: Be more picky on extensions.
+  (bsc#1220549)

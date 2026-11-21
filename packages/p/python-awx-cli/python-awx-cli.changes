@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 13 21:14:35 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add awxkit-drop-distutils-pkg_resources.patch from upstream
+  (gh#ansible/awx#15441, gh#ansible/awx#16208): the awx CLI failed
+  to start on Python 3.12+ (no distutils) and with setuptools that
+  no longer ships pkg_resources
+- Add awxkit-argparse-python313.patch from upstream
+  (gh#ansible/awx#15692): every awx command failed with a TypeError
+  in HelpfulArgumentParser on Python 3.12.8+ / 3.13.1+
+- Add Requires: python-packaging and an import check
+
+-------------------------------------------------------------------
 Wed Jul  3 16:24:42 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 24.6.1:

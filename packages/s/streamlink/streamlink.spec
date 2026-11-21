@@ -18,14 +18,14 @@
 
 %define         pythons %{primary_python}
 Name:           streamlink
-Version:        8.6.2
+Version:        8.6.3
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        Apache-2.0 AND BSD-2-Clause
 URL:            https://streamlink.github.io
 Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/streamlink-%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/streamlink-%{version}.tar.gz.asc
-Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xcdac41b9122470faf357a9d344448a298d5c3618#/streamlink.keyring
+Source2:        streamlink.keyring
 # Thanks to Debian for providing these patches
 Patch0:         remove-check-for-update.patch
 Patch1:         lower-pytest-requirement.patch

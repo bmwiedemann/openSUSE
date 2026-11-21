@@ -17,14 +17,14 @@
 
 
 Name:           ktop
-Version:        0.5.3
+Version:        0.7.2
 Release:        0
 Summary:        A top-like tool for your Kubernetes clusters
 License:        Apache-2.0
 URL:            https://github.com/vladimirvivien/ktop
 Source:         ktop-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.27
 
 %description
 A top-like tool for your Kubernetes cluster.
@@ -45,6 +45,10 @@ go build \
 %install
 # Install the binary.
 install -D -m 0755 %{name} %{buildroot}/%{_bindir}/%{name}
+
+%check
+# make sure the binary is a proper executable
+%{buildroot}/%{_bindir}/%{name} --help
 
 %files
 %doc README.md

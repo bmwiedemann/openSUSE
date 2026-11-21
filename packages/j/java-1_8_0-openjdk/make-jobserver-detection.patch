@@ -1,7 +1,7 @@
-Index: openjdk/make/MakeHelpers.gmk
-===================================================================
---- openjdk/make/MakeHelpers.gmk.orig
-+++ openjdk/make/MakeHelpers.gmk
+diff --git a/make/MakeHelpers.gmk b/make/MakeHelpers.gmk
+index c999535555..6efb364566 100644
+--- a/make/MakeHelpers.gmk
++++ b/make/MakeHelpers.gmk
 @@ -145,7 +145,7 @@ endef
  
  # Hook to be called as the very first thing when running a normal build

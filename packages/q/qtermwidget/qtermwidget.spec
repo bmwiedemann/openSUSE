@@ -1,7 +1,7 @@
 #
 # spec file for package qtermwidget
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define  qt_ver 6
 %define  sover  2
 Name:           qtermwidget
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        The terminal widget for QTerminal
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -28,14 +28,14 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 %if 0%{?suse_version} < 1600
 BuildRequires:  utempter-devel
 %endif
 BuildRequires:  utf8proc-devel
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 %description
 QTermWidget is an open-source project originally based on the KDE4 Konsole

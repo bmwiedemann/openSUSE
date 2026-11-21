@@ -55,4 +55,25 @@
       the wsl_systemd pattern is installed, so it works 'out-of-the-box'</comment>
     <requestid>1163142</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4804723f94444549b37e94dfc94e6d55</srcmd5>
+    <version>20261030</version>
+    <time>1794090731</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * &quot;Attention, &quot;README.md&quot; is not mentioned in spec files as source or patch.&quot;
+
+- Adding a systemd-detect-virt check for &quot;wsl&quot; so if the patterns-wsl packages
+  are installed in non-WSL environments they don't do anything.
+
+- Specify pattern-order() for wsl_base, wsl_systemd and wsl_gui
+
+- Update to version 20240327
+  * Adjusting %{_tmpfilesdir}/wslg.conf to be provided by a new package
+    named patterns-wsl-tmpfiles which is required by patterns-wsl-systemd
+    - WSL uses '/etc/zypp/zypp.conf:solver.onlyRequires = true' by default</comment>
+    <requestid>1395915</requestid>
+  </revision>
 </revisionlist>

@@ -113,7 +113,7 @@ packagesets:
    - acpica # reason: dvd:patterns-base-console
    - adaptec-firmware # reason: dvd:patterns-media-rest_cd_core
    - adobe-sourcecodepro-fonts # reason: dvd:openSUSE-release
-   - adobe-sourcesans3-fonts # reason: dvd:patterns-kde-kde
+   - adobe-sourcesans3-fonts # reason: dvd:patterns-media-rest_cd_core
    - adobe-sourcesanspro-fonts # reason: dvd:patterns-fonts-fonts
    - adobe-sourceserifpro-fonts # reason: dvd:patterns-fonts-fonts
    - adwaita-fonts # reason: dvd:openSUSE-release
@@ -209,7 +209,7 @@ packagesets:
    - bcm20702a1-firmware # reason: dvd:bcm20702a1-firmware
    - bcm43xx-firmware # reason: dvd:bcm43xx-firmware
    - bind # reason: dvd:bind
-   - bind-utils # reason: dvd:patterns-base-console
+   - bind-utils # reason: dvd:patterns-kde-kde
    - binutils # reason: dvd:patterns-base-console
    - blinken # reason: dvd:patterns-kde-kde_edutainment
    - blinken-lang # reason: dvd:patterns-kde-kde_edutainment
@@ -272,7 +272,7 @@ packagesets:
    - cepces-certmonger # reason: dvd:patterns-server-file_server
    - cepces-selinux # reason: common_locks:expansion
    - certmonger # reason: dvd:patterns-server-file_server
-   - checkmedia # reason: dvd:patterns-kde-kde
+   - checkmedia # reason: dvd:patterns-media-rest_cd_core
    - checkpolicy # reason: dvd:patterns-base-selinux
    - chrony # reason: dvd:patterns-gnome-gnome
    - chrony-pool-openSUSE # reason: dvd:patterns-gnome-gnome
@@ -588,8 +588,6 @@ packagesets:
    - gnome-online-accounts-lang # reason: dvd:patterns-gnome-gnome
    - gnome-packagekit # reason: dvd:patterns-gnome-gnome
    - gnome-packagekit-lang # reason: dvd:patterns-gnome-gnome
-   - gnome-photos # reason: dvd:patterns-gnome-gnome
-   - gnome-photos-lang # reason: dvd:patterns-gnome-gnome
    - gnome-remote-desktop # reason: dvd:patterns-gnome-gnome
    - gnome-remote-desktop-lang # reason: dvd:patterns-gnome-gnome
    - gnome-session # reason: dvd:patterns-gnome-gnome
@@ -603,7 +601,6 @@ packagesets:
    - gnome-shell-search-provider-gnome-calculator # reason: dvd:patterns-gnome-gnome
    - gnome-shell-search-provider-gnome-characters # reason: dvd:patterns-gnome-gnome
    - gnome-shell-search-provider-gnome-clocks # reason: dvd:patterns-gnome-gnome
-   - gnome-shell-search-provider-gnome-photos # reason: dvd:patterns-gnome-gnome
    - gnome-shell-search-provider-gnome-weather # reason: dvd:patterns-gnome-gnome
    - gnome-shell-search-provider-nautilus # reason: dvd:patterns-gnome-gnome
    - gnome-shell-search-provider-seahorse # reason: dvd:patterns-gnome-gnome
@@ -635,7 +632,7 @@ packagesets:
    - google-noto-sans-fonts # reason: dvd:patterns-kde-kde
    - google-noto-sans-symbols-fonts # reason: dvd:patterns-fonts-fonts
    - google-noto-sans-symbols2-fonts # reason: dvd:patterns-fonts-fonts
-   - google-opensans-fonts # reason: dvd:patterns-kde-kde
+   - google-opensans-fonts # reason: dvd:patterns-media-rest_cd_core
    - google-poppins-fonts # reason: dvd:patterns-media-rest_cd_core
    - google-roboto-fonts # reason: dvd:patterns-fonts-fonts
    - gpg2 # reason: dvd:openSUSE-release
@@ -799,7 +796,7 @@ packagesets:
    - inkscape-extensions-gimp # reason: common_locks:expansion
    - intel-vaapi-driver # reason: dvd:patterns-media-rest_cd_core
    - intlfonts-euro-bitmap-fonts # reason: dvd:patterns-fonts-fonts
-   - inxi # reason: dvd:patterns-media-rest_cd_core
+   - inxi # reason: dvd:patterns-kde-kde
    - ipa-ex-gothic-fonts # reason: dvd:openSUSE-release
    - ipa-ex-mincho-fonts # reason: dvd:openSUSE-release
    - ipa-gothic-fonts # reason: dvd:openSUSE-release
@@ -1331,7 +1328,7 @@ packagesets:
    - libKF6Syndication6 # reason: dvd:patterns-kde-kde
    - libKF6SyntaxHighlighting6 # reason: dvd:patterns-kde-kde
    - libKF6SyntaxHighlighting6-lang # reason: dvd:patterns-kde-kde
-   - libKF6TextAddons1 # reason: dvd:patterns-kde-kde
+   - libKF6TextAddons2_2_0 # reason: dvd:patterns-kde-kde
    - libKF6TextEditor6 # reason: dvd:patterns-kde-kde
    - libKF6TextTemplate6 # reason: dvd:patterns-kde-kde
    - libKF6TextWidgets6 # reason: dvd:patterns-kde-kde
@@ -1689,7 +1686,7 @@ packagesets:
    - libavahi-common3-32bit # reason: dvd:patterns-media-rest_dvd
    - libavahi-core7 # reason: dvd:patterns-kde-kde
    - libavahi-glib1 # reason: dvd:grub2
-   - libavc1394-0 # reason: dvd:openSUSE-release
+   - libavc1394-0 # reason: dvd:patterns-kde-kde
    - libavcodec62 # reason: dvd:openSUSE-release
    - libavfilter11 # reason: dvd:openSUSE-release
    - libavformat62 # reason: dvd:openSUSE-release
@@ -1723,6 +1720,7 @@ packagesets:
    - libblogger2 # reason: dvd:patterns-kde-kde
    - libbluetooth3 # reason: dvd:openSUSE-release
    - libbluray4 # reason: dvd:openSUSE-release
+   - libbnxt_re1 # reason: dvd:patterns-media-rest_dvd
    - libboost_filesystem1_92_0 # reason: dvd:openSUSE-release
    - libboost_filesystem1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_iostreams1_92_0 # reason: dvd:openSUSE-release
@@ -1760,8 +1758,8 @@ packagesets:
    - libcairomm-1_16-1 # reason: dvd:patterns-gnome-gnome
    - libcamd3 # reason: dvd:patterns-gnome-gnome
    - libcamel-1_2-68 # reason: dvd:patterns-gnome-gnome
-   - libcamera-base0_7 # reason: dvd:openSUSE-release
-   - libcamera0_7 # reason: dvd:openSUSE-release
+   - libcamera-base0_8 # reason: dvd:openSUSE-release
+   - libcamera0_8 # reason: dvd:openSUSE-release
    - libcanberra-gtk-module-common # reason: dvd:patterns-gnome-gnome
    - libcanberra-gtk0 # reason: dvd:patterns-gnome-gnome
    - libcanberra-gtk2-module # reason: dvd:patterns-gnome-gnome
@@ -1814,7 +1812,6 @@ packagesets:
    - libcom_err2 # reason: dvd:openSUSE-release
    - libcom_err2-32bit # reason: dvd:patterns-media-rest_dvd
    - libcomposefs1 # reason: dvd:patterns-kde-kde
-   - libconfig++15 # reason: dvd:openSUSE-release
    - libcpupower1 # reason: dvd:patterns-base-console
    - libcrack2 # reason: dvd:openSUSE-release
    - libcrack2-32bit # reason: dvd:patterns-media-rest_dvd
@@ -1840,8 +1837,6 @@ packagesets:
    - libdaemon0 # reason: dvd:patterns-kde-kde
    - libdatrie1 # reason: dvd:openSUSE-release
    - libdav1d7 # reason: dvd:openSUSE-release
-   - libdazzle-1_0-0 # reason: dvd:patterns-gnome-gnome
-   - libdazzle-lang # reason: dvd:patterns-gnome-gnome
    - libdb-4_8 # reason: dvd:openSUSE-release
    - libdb-4_8-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libdbus-1-3 # reason: dvd:openSUSE-release
@@ -1850,7 +1845,7 @@ packagesets:
    - libdbusmenu-glib4 # reason: dvd:openSUSE-release
    - libdbusmenu-gtk3-4 # reason: dvd:openSUSE-release
    - libdbusmenu-qt5-2 # reason: dvd:patterns-kde-kde
-   - libdc1394-26 # reason: dvd:patterns-gnome-gnome
+   - libdc1394-26 # reason: dvd:patterns-kde-kde
    - libdca0 # reason: dvd:patterns-gnome-gnome
    - libdconf1 # reason: dvd:openSUSE-release
    - libddcutil5 # reason: dvd:patterns-kde-kde
@@ -1936,7 +1931,6 @@ packagesets:
    - libfdisk1 # reason: dvd:openSUSE-release
    - libfdk-aac2 # reason: dvd:openSUSE-release
    - libfdt1 # reason: dvd:patterns-media-rest_dvd
-   - libffado2 # reason: dvd:openSUSE-release
    - libffi8 # reason: dvd:openSUSE-release
    - libffi8-32bit # reason: dvd:patterns-media-rest_dvd
    - libffmpegthumbnailer4 # reason: dvd:patterns-xfce-xfce
@@ -1963,7 +1957,7 @@ packagesets:
    - libfreetype6 # reason: dvd:openSUSE-release
    - libfreshclam4 # reason: dvd:patterns-server-mail_server
    - libfribidi0 # reason: dvd:openSUSE-release
-   - libfstrm0 # reason: dvd:patterns-base-console
+   - libfstrm0 # reason: dvd:patterns-kde-kde
    - libfuse2 # reason: dvd:patterns-base-console
    - libfuse3-4 # reason: dvd:openSUSE-release
    - libfwupd3 # reason: dvd:patterns-kde-kde
@@ -2020,7 +2014,7 @@ packagesets:
    - libgjs0 # reason: dvd:patterns-gnome-gnome
    - libglib-2_0-0 # reason: dvd:openSUSE-release
    - libglib-2_0-0-32bit # reason: dvd:patterns-media-rest_dvd
-   - libglibmm-2_4-1 # reason: dvd:openSUSE-release
+   - libglibmm-2_4-1 # reason: dvd:patterns-media-rest_cd_core
    - libglibmm-2_68-1 # reason: dvd:patterns-gnome-gnome
    - libglslang16 # reason: dvd:openSUSE-release
    - libglvnd # reason: dvd:openSUSE-release
@@ -2185,7 +2179,6 @@ packagesets:
    - libidn2-0 # reason: dvd:openSUSE-release
    - libidn2-0-32bit # reason: dvd:patterns-media-rest_dvd
    - libidn2-lang # reason: dvd:openSUSE-release
-   - libiec61883-0 # reason: dvd:openSUSE-release
    - libimagequant0_4 # reason: dvd:inkscape
    - libimobiledevice-1_0-6 # reason: dvd:patterns-kde-kde
    - libimobiledevice-glue-1_0-0 # reason: dvd:patterns-kde-kde
@@ -2208,7 +2201,7 @@ packagesets:
    - libjavascriptcoregtk-4_1-0 # reason: dvd:patterns-gnome-gnome
    - libjavascriptcoregtk-6_0-1 # reason: dvd:patterns-gnome-gnome
    - libjbig2 # reason: dvd:openSUSE-release
-   - libjemalloc2 # reason: dvd:patterns-base-console
+   - libjemalloc2 # reason: dvd:patterns-kde-kde
    - libjitterentropy3 # reason: dvd:openSUSE-release
    - libjitterentropy3-32bit # reason: dvd:patterns-media-rest_dvd
    - libjpeg-turbo # reason: dvd:patterns-kde-kde
@@ -2218,15 +2211,15 @@ packagesets:
    - libjson-c5 # reason: dvd:openSUSE-release
    - libjson-glib-1_0-0 # reason: dvd:openSUSE-release
    - libjte2 # reason: dvd:patterns-gnome-gnome
-   - libjxl0_12 # reason: dvd:openSUSE-release
-   - libjxl0_12-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libjxl0_13 # reason: dvd:openSUSE-release
+   - libjxl0_13-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libkColorPicker-Qt6-0 # reason: dvd:patterns-kde-kde
    - libkImageAnnotator-Qt6-0 # reason: dvd:patterns-kde-kde
    - libkaccounts6-2 # reason: dvd:patterns-kde-kde
    - libkate1 # reason: dvd:patterns-gnome-gnome
    - libkbdfile1 # reason: dvd:openSUSE-release
-   - libkcddb-qt6 # reason: dvd:patterns-kde-kde
-   - libkcddb-qt6-lang # reason: dvd:patterns-kde-kde
+   - libkcddb # reason: dvd:patterns-kde-kde
+   - libkcddb-lang # reason: dvd:patterns-kde-kde
    - libkdcraw-qt6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6 # reason: dvd:patterns-kde-kde
    - libkdecorations3-6-lang # reason: dvd:patterns-kde-kde
@@ -2284,7 +2277,7 @@ packagesets:
    - libldap-data # reason: dvd:openSUSE-release
    - libldap2 # reason: dvd:openSUSE-release
    - libldap2-32bit # reason: dvd:patterns-media-rest_dvd
-   - libldapcpp0 # reason: dvd:patterns-kde-kde
+   - libldapcpp0 # reason: dvd:patterns-yast-yast2_install_wf
    - libldb2 # reason: dvd:patterns-gnome-gnome
    - libldb2-32bit # reason: dvd:patterns-media-rest_dvd
    - libldns3 # reason: dvd:patterns-media-rest_dvd
@@ -2330,13 +2323,13 @@ packagesets:
    - libmariadbd19 # reason: dvd:amarok
    - libmarkdown3 # reason: dvd:patterns-kde-kde
    - libmatroska7 # reason: dvd:patterns-kde-kde
-   - libmaxminddb0 # reason: dvd:patterns-base-console
+   - libmaxminddb0 # reason: dvd:patterns-kde-kde
    - libmbim # reason: dvd:patterns-gnome-gnome
    - libmbim-glib4 # reason: dvd:patterns-gnome-gnome
    - libmd0 # reason: dvd:patterns-base-console
    - libmd4c0 # reason: dvd:openSUSE-release
    - libmediaart-2_0-0 # reason: dvd:patterns-gnome-gnome
-   - libmediacheck7 # reason: dvd:patterns-kde-kde
+   - libmediacheck7 # reason: dvd:patterns-media-rest_cd_core
    - libmediainfo0 # reason: dvd:patterns-gnome-gnome
    - libmetalink3 # reason: dvd:patterns-base-console
    - libmicrodns1 # reason: dvd:patterns-gnome-gnome
@@ -2443,7 +2436,7 @@ packagesets:
    - libopeniscsiusr0 # reason: dvd:patterns-media-rest_cd_core
    - libopenjp2-7 # reason: dvd:openSUSE-release
    - libopenjp2-7-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libopenjph0_32 # reason: dvd:patterns-gnome-gnome
+   - libopenjph0_33 # reason: dvd:patterns-gnome-gnome
    - libopenmpt0 # reason: dvd:openSUSE-release
    - libopenobex2 # reason: dvd:patterns-xfce-xfce
    - libopenraw9 # reason: dvd:patterns-xfce-xfce
@@ -2512,8 +2505,6 @@ packagesets:
    - libply-splash-core5 # reason: dvd:patterns-base-console
    - libply-splash-graphics5 # reason: dvd:patterns-base-console
    - libply5 # reason: dvd:patterns-base-console
-   - libpmem1 # reason: dvd:patterns-media-rest_dvd
-   - libpmemobj1 # reason: dvd:patterns-media-rest_dvd
    - libpng16-16 # reason: dvd:openSUSE-release
    - libpng16-16-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libpolkit-agent-1-0 # reason: dvd:openSUSE-release
@@ -2523,7 +2514,7 @@ packagesets:
    - libpoppler-cpp3 # reason: dvd:patterns-gnome-gnome
    - libpoppler-glib8 # reason: dvd:patterns-gnome-gnome
    - libpoppler-qt6-3 # reason: dvd:patterns-kde-kde
-   - libpoppler165 # reason: dvd:openSUSE-release
+   - libpoppler166 # reason: dvd:openSUSE-release
    - libpopt0 # reason: dvd:openSUSE-release
    - libpopt0-32bit # reason: dvd:patterns-media-rest_dvd
    - libportal-gtk3-1 # reason: dvd:patterns-gnome-gnome
@@ -2578,7 +2569,7 @@ packagesets:
    - libraptor2-0 # reason: dvd:openSUSE-release
    - librasqal3 # reason: dvd:openSUSE-release
    - librav1e0_8 # reason: dvd:openSUSE-release
-   - libraw1394-11 # reason: dvd:openSUSE-release
+   - libraw1394-11 # reason: dvd:patterns-kde-kde
    - libraw25 # reason: dvd:patterns-gnome-gnome
    - librbd1 # reason: dvd:patterns-media-rest_dvd
    - librdf0 # reason: dvd:openSUSE-release
@@ -2654,10 +2645,10 @@ packagesets:
    - libshout3 # reason: dvd:patterns-kde-kde
    - libshumate-1_0-1 # reason: dvd:patterns-gnome-gnome
    - libshumate-lang # reason: dvd:patterns-gnome-gnome
-   - libsigc-2_0-0 # reason: dvd:openSUSE-release
+   - libsigc-2_0-0 # reason: dvd:patterns-gnome-gnome
    - libsigc-3_0-0 # reason: dvd:patterns-gnome-gnome
    - libsignon-qt6-1 # reason: dvd:patterns-kde-kde
-   - libsimdutf37 # reason: dvd:patterns-gnome-gnome
+   - libsimdutf38 # reason: dvd:patterns-gnome-gnome
    - libslang2 # reason: dvd:patterns-kde-kde
    - libslirp0 # reason: dvd:patterns-media-rest_dvd
    - libslp1 # reason: dvd:patterns-yast-yast2_install_wf
@@ -2680,7 +2671,7 @@ packagesets:
    - libsoup2-lang # reason: dvd:patterns-media-rest_dvd
    - libsource-highlight4 # reason: dvd:patterns-kde-kde
    - libsoxr0 # reason: dvd:openSUSE-release
-   - libspandsp3 # reason: dvd:openSUSE-release
+   - libspandsp4 # reason: dvd:openSUSE-release
    - libspeech-provider-1_0 # reason: dvd:patterns-gnome-gnome
    - libspeechd2 # reason: dvd:patterns-gnome-gnome
    - libspeechd_module0 # reason: dvd:patterns-gnome-gnome
@@ -2714,9 +2705,9 @@ packagesets:
    - libstdc++6-pp-32bit # reason: dvd:patterns-media-rest_dvd
    - libstemmer1d # reason: dvd:patterns-gnome-gnome
    - libstoken1 # reason: dvd:patterns-gnome-gnome
-   - libstorage-ng-lang # reason: dvd:patterns-kde-kde
-   - libstorage-ng-ruby # reason: dvd:patterns-kde-kde
-   - libstorage-ng1 # reason: dvd:patterns-kde-kde
+   - libstorage-ng-lang # reason: dvd:patterns-media-rest_cd_core
+   - libstorage-ng-ruby # reason: dvd:patterns-media-rest_cd_core
+   - libstorage-ng1 # reason: dvd:patterns-media-rest_cd_core
    - libsubid6 # reason: dvd:patterns-gnome-gnome
    - libsuitesparseconfig7 # reason: dvd:patterns-gnome-gnome
    - libsunpinyin3 # reason: dvd:openSUSE-release
@@ -2799,7 +2790,7 @@ packagesets:
    - libusdm0 # reason: dvd:patterns-media-rest_dvd
    - libutf8_range-36_2_0 # reason: dvd:patterns-gnome-gnome
    - libuuid1 # reason: dvd:openSUSE-release
-   - libuv1 # reason: dvd:patterns-base-console
+   - libuv1 # reason: dvd:patterns-kde-kde
    - libv4l # reason: dvd:patterns-gnome-gnome
    - libv4l1-0 # reason: dvd:patterns-gnome-gnome
    - libv4l2-0 # reason: dvd:patterns-gnome-gnome
@@ -2820,6 +2811,7 @@ packagesets:
    - libvirt-daemon-config-network # reason: dvd:patterns-media-rest_dvd
    - libvirt-daemon-driver-network # reason: dvd:patterns-media-rest_dvd
    - libvirt-daemon-driver-nodedev # reason: dvd:patterns-media-rest_dvd
+   - libvirt-daemon-driver-nwfilter # reason: dvd:patterns-media-rest_dvd
    - libvirt-daemon-driver-qemu # reason: dvd:patterns-media-rest_dvd
    - libvirt-daemon-driver-secret # reason: dvd:patterns-media-rest_dvd
    - libvirt-daemon-driver-storage # reason: dvd:patterns-media-rest_dvd
@@ -2930,7 +2922,6 @@ packagesets:
    - libxkbfile1 # reason: dvd:patterns-gnome-gnome
    - libxkbregistry0 # reason: dvd:patterns-gnome-gnome
    - libxklavier16 # reason: dvd:patterns-media-rest_cd_core
-   - libxml++-3_0-1 # reason: dvd:openSUSE-release
    - libxml2-16 # reason: dvd:openSUSE-release
    - libxml2-tools # reason: dvd:grub2-snapper-plugin
    - libxmlb2 # reason: dvd:patterns-gnome-gnome
@@ -2948,7 +2939,7 @@ packagesets:
    - libyaml-0-2 # reason: dvd:openSUSE-release
    - libyaml-cpp0_9 # reason: dvd:patterns-gnome-gnome
    - libyelp-1-0 # reason: dvd:patterns-media-rest_dvd
-   - libyui-ncurses-pkg16 # reason: dvd:patterns-kde-kde
+   - libyui-ncurses-pkg16 # reason: dvd:patterns-base-console
    - libyui-ncurses16 # reason: dvd:patterns-gnome-gnome_yast
    - libyui-qt-graph16 # reason: dvd:patterns-gnome-gnome_yast
    - libyui-qt-pkg16 # reason: dvd:patterns-gnome-gnome_yast
@@ -3003,7 +2994,7 @@ packagesets:
    - lrzip # reason: dvd:patterns-kde-kde
    - lsb-release # reason: dvd:patterns-media-rest_cd_core
    - lsof # reason: dvd:patterns-gnome-gnome
-   - lsscsi # reason: dvd:patterns-kde-kde
+   - lsscsi # reason: dvd:patterns-base-console
    - luit # reason: dvd:patterns-media-rest_cd_core
    - lunar-calendar # reason: dvd:patterns-gnome-gnome
    - lunar-calendar-gtk3-module # reason: dvd:patterns-gnome-gnome
@@ -3063,6 +3054,7 @@ packagesets:
    - mlterm-sdl2 # reason: dvd:openSUSE-release
    - mobile-broadband-provider-info # reason: dvd:patterns-gnome-gnome
    - mokutil # reason: dvd:mokutil
+   - mokutil-bash-completion # reason: common_locks:expansion
    - monapo-fonts # reason: dvd:openSUSE-release
    - mosh # reason: dvd:patterns-base-console
    - mousepad # reason: dvd:patterns-xfce-xfce
@@ -3203,8 +3195,8 @@ packagesets:
    - parley-lang # reason: dvd:patterns-kde-kde_edutainment
    - parole # reason: dvd:patterns-xfce-xfce
    - parole-lang # reason: dvd:patterns-xfce-xfce
-   - parted # reason: dvd:patterns-kde-kde
-   - parted-lang # reason: dvd:patterns-kde-kde
+   - parted # reason: dvd:patterns-base-console
+   - parted-lang # reason: dvd:patterns-base-console
    - passt # reason: dvd:patterns-media-rest_dvd
    - passt-apparmor # reason: dvd:patterns-media-rest_dvd
    - passt-selinux # reason: common_locks:expansion
@@ -3290,17 +3282,17 @@ packagesets:
    - perl-Clone # reason: dvd:patterns-gnome-gnome
    - perl-Convert-ASN1 # reason: dvd:patterns-server-mail_server
    - perl-Convert-BinHex # reason: dvd:patterns-server-mail_server
-   - perl-Cpanel-JSON-XS # reason: dvd:patterns-media-rest_cd_core
+   - perl-Cpanel-JSON-XS # reason: dvd:patterns-kde-kde
    - perl-Crypt-OpenSSL-Bignum # reason: dvd:patterns-server-mail_server
    - perl-Crypt-OpenSSL-RSA # reason: dvd:patterns-server-mail_server
    - perl-Crypt-OpenSSL-Random # reason: dvd:patterns-server-mail_server
-   - perl-Crypt-SmbHash # reason: dvd:patterns-kde-kde
+   - perl-Crypt-SmbHash # reason: dvd:patterns-yast-yast2_server
    - perl-Crypt-URandom # reason: dvd:patterns-server-mail_server
    - perl-CryptX # reason: dvd:patterns-server-mail_server
    - perl-DB_File # reason: dvd:patterns-server-mail_server
    - perl-Digest-HMAC # reason: dvd:patterns-server-mail_server
-   - perl-Digest-MD4 # reason: dvd:patterns-kde-kde
-   - perl-Digest-SHA1 # reason: dvd:patterns-kde-kde
+   - perl-Digest-MD4 # reason: dvd:patterns-yast-yast2_server
+   - perl-Digest-SHA1 # reason: dvd:patterns-server-mail_server
    - perl-Email-Address-XS # reason: dvd:patterns-server-mail_server
    - perl-Encode-Detect # reason: dvd:patterns-server-mail_server
    - perl-Encode-Locale # reason: dvd:patterns-gnome-gnome
@@ -3348,7 +3340,7 @@ packagesets:
    - perl-Net-Server # reason: dvd:patterns-server-mail_server
    - perl-NetAddr-IP # reason: dvd:patterns-server-mail_server
    - perl-Params-Util # reason: dvd:patterns-gnome-gnome
-   - perl-Parse-RecDescent # reason: dvd:patterns-kde-kde
+   - perl-Parse-RecDescent # reason: dvd:patterns-yast-yast2_install_wf
    - perl-Socket6 # reason: dvd:patterns-server-mail_server
    - perl-TimeDate # reason: dvd:patterns-gnome-gnome
    - perl-Try-Tiny # reason: dvd:patterns-gnome-gnome
@@ -3357,13 +3349,13 @@ packagesets:
    - perl-Unix-Syslog # reason: dvd:patterns-server-mail_server
    - perl-WWW-RobotRules # reason: dvd:patterns-gnome-gnome
    - perl-X11-Protocol # reason: dvd:patterns-gnome-gnome
-   - perl-X500-DN # reason: dvd:patterns-kde-kde
-   - perl-XML-Dumper # reason: dvd:patterns-media-rest_cd_core
-   - perl-XML-LibXML # reason: dvd:patterns-kde-kde
-   - perl-XML-NamespaceSupport # reason: dvd:patterns-kde-kde
+   - perl-X500-DN # reason: dvd:patterns-yast-yast2_install_wf
+   - perl-XML-Dumper # reason: dvd:patterns-kde-kde
+   - perl-XML-LibXML # reason: dvd:patterns-yast-yast2_server
+   - perl-XML-NamespaceSupport # reason: dvd:patterns-yast-yast2_server
    - perl-XML-Parser # reason: dvd:patterns-gnome-gnome
-   - perl-XML-SAX # reason: dvd:patterns-kde-kde
-   - perl-XML-SAX-Base # reason: dvd:patterns-kde-kde
+   - perl-XML-SAX # reason: dvd:patterns-yast-yast2_server
+   - perl-XML-SAX-Base # reason: dvd:patterns-yast-yast2_server
    - perl-XML-Twig # reason: dvd:patterns-gnome-gnome
    - perl-XML-Writer # reason: dvd:patterns-media-rest_cd_core
    - perl-base # reason: dvd:openSUSE-release
@@ -3461,11 +3453,11 @@ packagesets:
    - plymouth-dracut # reason: dvd:patterns-base-console
    - plymouth-lang # reason: dvd:patterns-base-console
    - plymouth-plugin-label # reason: dvd:patterns-base-console
+   - plymouth-plugin-label-ft # reason: dvd:patterns-base-console
    - plymouth-plugin-two-step # reason: dvd:patterns-base-console
    - plymouth-scripts # reason: dvd:patterns-base-console
    - plymouth-theme-bgrt # reason: dvd:patterns-base-console
    - plymouth-theme-spinner # reason: dvd:patterns-base-console
-   - pmdk # reason: dvd:patterns-media-rest_dvd
    - pngquant # reason: dvd:patterns-kde-kde
    - policycoreutils # reason: dvd:patterns-base-selinux
    - policycoreutils-lang # reason: dvd:patterns-base-selinux
@@ -3522,8 +3514,8 @@ packagesets:
    - python3-smbios-utils # reason: dvd:patterns-media-rest_cd_core
    - python3-talloc # reason: dvd:patterns-gnome-gnome
    - python3-talloc-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - python3-tdb # reason: dvd:patterns-kde-kde
-   - python3-tevent # reason: dvd:patterns-kde-kde
+   - python3-tdb # reason: dvd:patterns-server-file_server
+   - python3-tevent # reason: dvd:patterns-server-file_server
    - python313 # reason: dvd:openSUSE-release
    - python313-Automat # reason: dvd:salt-master
    - python313-Babel # reason: dvd:salt-master
@@ -3744,18 +3736,18 @@ packagesets:
    - rtkit # reason: dvd:openSUSE-release
    - ruby # reason: dvd:patterns-gnome-gnome_yast
    - ruby-common # reason: dvd:patterns-gnome-gnome_yast
-   - ruby-solv # reason: dvd:patterns-kde-kde
+   - ruby-solv # reason: dvd:patterns-media-rest_cd_core
    - ruby4.0 # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-abstract_method # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-cfa # reason: dvd:patterns-gnome-gnome_yast
-   - ruby4.0-rubygem-cfa_grub2 # reason: dvd:patterns-kde-kde
-   - ruby4.0-rubygem-cgi # reason: dvd:patterns-kde-kde
+   - ruby4.0-rubygem-cfa_grub2 # reason: dvd:patterns-media-rest_cd_core
+   - ruby4.0-rubygem-cgi # reason: dvd:patterns-media-rest_cd_core
    - ruby4.0-rubygem-cheetah # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-fast_gettext # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-gem2rpm # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-nokogiri # reason: dvd:patterns-gnome-gnome_yast
    - ruby4.0-rubygem-ruby-augeas # reason: dvd:patterns-gnome-gnome_yast
-   - ruby4.0-rubygem-ruby-dbus # reason: dvd:patterns-kde-kde
+   - ruby4.0-rubygem-ruby-dbus # reason: dvd:patterns-media-rest_cd_core
    - ruby4.0-rubygem-simpleidn # reason: dvd:patterns-gnome-gnome_yast
    - salt # reason: dvd:salt-master
    - salt-master # reason: dvd:salt-master
@@ -3774,7 +3766,7 @@ packagesets:
    - samba-libs # reason: dvd:patterns-gnome-gnome
    - samba-libs-32bit # reason: dvd:patterns-media-rest_dvd
    - samba-libs-python3 # reason: dvd:patterns-gnome-gnome
-   - samba-python3 # reason: dvd:patterns-kde-kde
+   - samba-python3 # reason: dvd:patterns-server-file_server
    - samba-winbind # reason: dvd:patterns-server-file_server
    - samba-winbind-libs # reason: dvd:patterns-server-file_server
    - samba-winbind-libs-32bit # reason: dvd:patterns-media-rest_dvd
@@ -3892,7 +3884,7 @@ packagesets:
    - swtpm-selinux # reason: common_locks:expansion
    - sysconfig # reason: dvd:patterns-gnome-gnome
    - sysconfig-netconfig # reason: dvd:wicked
-   - syslinux # reason: dvd:patterns-kde-kde
+   - syslinux # reason: dvd:patterns-media-rest_cd_core
    - syslog-service # reason: dvd:rsyslog
    - system-config-printer # reason: dvd:patterns-xfce-xfce
    - system-config-printer-applet # reason: dvd:patterns-xfce-xfce
@@ -4009,7 +4001,7 @@ packagesets:
    - transmission-gtk # reason: dvd:patterns-xfce-xfce
    - transmission-gtk-lang # reason: dvd:patterns-xfce-xfce
    - trash_kcm # reason: dvd:patterns-kde-kde
-   - tree # reason: dvd:patterns-media-rest_cd_core
+   - tree # reason: dvd:patterns-kde-kde
    - tumbler # reason: dvd:patterns-xfce-xfce
    - tumbler-folder-thumbnailer # reason: dvd:patterns-xfce-xfce
    - tumbler-lang # reason: dvd:patterns-xfce-xfce
@@ -4134,7 +4126,7 @@ packagesets:
    - usb_modeswitch # reason: dvd:patterns-gnome-gnome
    - usb_modeswitch-data # reason: dvd:patterns-gnome-gnome
    - usbmuxd # reason: dvd:patterns-kde-kde
-   - usbutils # reason: dvd:patterns-base-console
+   - usbutils # reason: dvd:patterns-kde-kde
    - util-linux # reason: dvd:openSUSE-release
    - util-linux-lang # reason: dvd:openSUSE-release
    - util-linux-systemd # reason: dvd:openSUSE-release
@@ -4161,8 +4153,8 @@ packagesets:
    - vte-lang # reason: dvd:patterns-gnome-gnome
    - vulkan-tools # reason: dvd:patterns-kde-kde
    - w3m # reason: dvd:patterns-base-console
-   - wacomtablet-kcm6 # reason: dvd:patterns-media-rest_dvd
-   - wacomtablet-kcm6-lang # reason: dvd:patterns-media-rest_dvd
+   - wacomtablet-kcm6 # reason: dvd:patterns-kde-kde
+   - wacomtablet-kcm6-lang # reason: dvd:patterns-kde-kde
    - wallpaper-branding-openSUSE # reason: dvd:patterns-gnome-gnome
    - wayland-utils # reason: dvd:patterns-kde-kde
    - wb-cifs-idmap-plugin # reason: dvd:patterns-gnome-gnome
@@ -4212,11 +4204,11 @@ packagesets:
    - xdmbgrd # reason: dvd:patterns-kde-kde
    - xdpyinfo # reason: dvd:patterns-kde-kde
    - xen-libs # reason: dvd:kdump
-   - xf86-input-evdev # reason: dvd:patterns-media-rest_cd_core
-   - xf86-input-joystick # reason: dvd:patterns-media-rest_cd_core
-   - xf86-input-libinput # reason: dvd:patterns-media-rest_cd_core
+   - xf86-input-evdev # reason: dvd:patterns-kde-kde
+   - xf86-input-joystick # reason: dvd:patterns-kde-kde
+   - xf86-input-libinput # reason: dvd:patterns-kde-kde
    - xf86-input-vmmouse # reason: dvd:patterns-media-rest_cd_core
-   - xf86-input-wacom # reason: dvd:patterns-media-rest_cd_core
+   - xf86-input-wacom # reason: dvd:patterns-kde-kde
    - xf86-video-ark # reason: dvd:patterns-media-rest_cd_core
    - xf86-video-ati # reason: dvd:patterns-media-rest_cd_core
    - xf86-video-chips # reason: dvd:patterns-media-rest_cd_core
@@ -4236,7 +4228,7 @@ packagesets:
    - xf86-video-sisusb # reason: dvd:patterns-media-rest_cd_core
    - xf86-video-tdfx # reason: dvd:patterns-media-rest_cd_core
    - xf86-video-v4l # reason: dvd:patterns-media-rest_cd_core
-   - xf86-video-vesa # reason: dvd:patterns-media-rest_cd_core
+   - xf86-video-vesa # reason: dvd:patterns-kde-kde
    - xf86-video-vmware # reason: dvd:patterns-media-rest_cd_core
    - xf86-video-voodoo # reason: dvd:patterns-media-rest_cd_core
    - xfce4-appfinder # reason: dvd:patterns-xfce-xfce
@@ -4346,18 +4338,18 @@ packagesets:
    - xmodmap # reason: dvd:patterns-kde-kde
    - xorg-x11-Xvnc # reason: dvd:patterns-media-rest_cd_core
    - xorg-x11-Xvnc-module # reason: dvd:patterns-media-rest_cd_core
-   - xorg-x11-driver-video # reason: dvd:patterns-media-rest_cd_core
+   - xorg-x11-driver-video # reason: dvd:patterns-kde-kde
    - xorg-x11-essentials # reason: dvd:patterns-media-rest_cd_core
    - xorg-x11-fonts # reason: dvd:patterns-fonts-fonts
    - xorg-x11-fonts-core # reason: dvd:patterns-gnome-gnome
    - xorg-x11-fonts-legacy # reason: dvd:patterns-fonts-fonts
    - xorg-x11-libX11-ccache # reason: dvd:patterns-media-rest_cd_core
-   - xorg-x11-server # reason: dvd:patterns-media-rest_cd_core
-   - xorg-x11-server-Xvfb # reason: dvd:patterns-media-rest_cd_core
+   - xorg-x11-server # reason: dvd:patterns-kde-kde
+   - xorg-x11-server-Xvfb # reason: dvd:patterns-kde-kde
    - xorg-x11-server-extra # reason: dvd:patterns-media-rest_cd_core
    - xorriso # reason: dvd:patterns-base-console
    - xprop # reason: dvd:patterns-gnome-gnome
-   - xrandr # reason: dvd:patterns-media-rest_cd_core
+   - xrandr # reason: dvd:patterns-kde-kde
    - xrdb # reason: dvd:patterns-kde-kde
    - xscreensaver # reason: dvd:patterns-base-basic_desktop
    - xscreensaver-data # reason: dvd:patterns-base-basic_desktop
@@ -4380,13 +4372,13 @@ packagesets:
    - yast2-alternatives # reason: dvd:patterns-yast-yast2_basis
    - yast2-auth-client # reason: dvd:patterns-yast-yast2_server
    - yast2-auth-server # reason: dvd:patterns-yast-yast2_server
-   - yast2-bootloader # reason: dvd:patterns-kde-kde
+   - yast2-bootloader # reason: dvd:patterns-media-rest_cd_core
    - yast2-configuration-management # reason: dvd:yast2-firstboot
    - yast2-control-center # reason: dvd:patterns-gnome-gnome_yast
    - yast2-control-center-qt # reason: dvd:patterns-gnome-gnome_yast
    - yast2-core # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-country # reason: dvd:patterns-kde-kde
-   - yast2-country-data # reason: dvd:patterns-kde-kde
+   - yast2-country # reason: dvd:patterns-media-rest_cd_core
+   - yast2-country-data # reason: dvd:patterns-media-rest_cd_core
    - yast2-firewall # reason: dvd:patterns-yast-yast2_basis
    - yast2-firstboot # reason: dvd:yast2-firstboot
    - yast2-hardware-detection # reason: dvd:patterns-gnome-gnome_yast
@@ -4396,33 +4388,33 @@ packagesets:
    - yast2-isns # reason: dvd:patterns-media-rest_dvd
    - yast2-journal # reason: dvd:patterns-yast-yast2_server
    - yast2-kdump # reason: dvd:patterns-media-rest_dvd
-   - yast2-ldap # reason: dvd:patterns-kde-kde
+   - yast2-ldap # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-logs # reason: dvd:patterns-gnome-gnome_yast
    - yast2-metapackage-handler # reason: dvd:patterns-yast-yast2_basis
-   - yast2-network # reason: dvd:patterns-kde-kde
+   - yast2-network # reason: dvd:patterns-media-rest_cd_core
    - yast2-nfs-client # reason: dvd:patterns-yast-yast2_server
    - yast2-nfs-common # reason: dvd:patterns-yast-yast2_server
    - yast2-ntp-client # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-online-update # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-online-update-frontend # reason: dvd:patterns-yast-yast2_install_wf
-   - yast2-packager # reason: dvd:patterns-kde-kde
-   - yast2-pam # reason: dvd:patterns-kde-kde
+   - yast2-packager # reason: dvd:patterns-media-rest_cd_core
+   - yast2-pam # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-perl-bindings # reason: dvd:patterns-gnome-gnome_yast
    - yast2-pkg-bindings # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-proxy # reason: dvd:patterns-kde-kde
-   - yast2-python3-bindings # reason: dvd:patterns-kde-kde
-   - yast2-qt-branding-openSUSE # reason: dvd:patterns-kde-kde
+   - yast2-proxy # reason: dvd:patterns-media-rest_cd_core
+   - yast2-python3-bindings # reason: dvd:patterns-yast-yast2_server
+   - yast2-qt-branding-openSUSE # reason: dvd:patterns-media-rest_cd_core
    - yast2-ruby-bindings # reason: dvd:patterns-gnome-gnome_yast
-   - yast2-samba-client # reason: dvd:patterns-kde-kde
-   - yast2-samba-server # reason: dvd:patterns-kde-kde
+   - yast2-samba-client # reason: dvd:patterns-yast-yast2_server
+   - yast2-samba-server # reason: dvd:patterns-yast-yast2_server
    - yast2-scanner # reason: dvd:patterns-yast-yast2_desktop
    - yast2-schema # reason: dvd:autoyast2
-   - yast2-security # reason: dvd:patterns-kde-kde
+   - yast2-security # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-services-manager # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-slp # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-slp-server # reason: dvd:patterns-media-rest_dvd
    - yast2-snapper # reason: dvd:patterns-media-rest_cd_core
-   - yast2-storage-ng # reason: dvd:patterns-kde-kde
+   - yast2-storage-ng # reason: dvd:patterns-media-rest_cd_core
    - yast2-sudo # reason: dvd:patterns-yast-yast2_server
    - yast2-sysconfig # reason: dvd:patterns-yast-yast2_server
    - yast2-tftp-server # reason: dvd:patterns-yast-yast2_server
@@ -4473,7 +4465,7 @@ packagesets:
    - yast2-trans-sk # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-sl # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-sr # reason: dvd:patterns-media-rest_dvd
-   - yast2-trans-stats # reason: dvd:patterns-kde-kde
+   - yast2-trans-stats # reason: dvd:patterns-media-rest_cd_core
    - yast2-trans-sv # reason: dvd:patterns-media-rest_cd_core
    - yast2-trans-ta # reason: dvd:patterns-media-rest_dvd
    - yast2-trans-th # reason: dvd:patterns-media-rest_dvd
@@ -4485,14 +4477,14 @@ packagesets:
    - yast2-trans-zh_CN # reason: dvd:patterns-gnome-gnome_yast
    - yast2-trans-zh_TW # reason: dvd:patterns-gnome-gnome_yast
    - yast2-trans-zu # reason: dvd:patterns-media-rest_dvd
-   - yast2-transfer # reason: dvd:patterns-kde-kde
+   - yast2-transfer # reason: dvd:patterns-media-rest_cd_core
    - yast2-tune # reason: dvd:patterns-yast-yast2_server
    - yast2-update # reason: dvd:patterns-yast-yast2_install_wf
-   - yast2-users # reason: dvd:patterns-kde-kde
+   - yast2-users # reason: dvd:patterns-yast-yast2_install_wf
    - yast2-vm # reason: dvd:patterns-yast-yast2_basis
    - yast2-vpn # reason: dvd:patterns-yast-yast2_server
    - yast2-x11 # reason: dvd:patterns-media-rest_cd_core
-   - yast2-xml # reason: dvd:patterns-kde-kde
+   - yast2-xml # reason: dvd:patterns-media-rest_cd_core
    - yast2-ycp-ui-bindings # reason: dvd:patterns-gnome-gnome_yast
    - yelp # reason: dvd:patterns-media-rest_dvd
    - yelp-lang # reason: dvd:patterns-media-rest_dvd
@@ -4568,7 +4560,6 @@ packagesets:
    - bash # reason: opensuse_microos:MicroOS-release
    - bash-completion # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bash-sh # reason: opensuse_microos:MicroOS-release
-   - bc # reason: opensuse_microos:patterns-microos-base-zypper
    - bcache-tools # reason: opensuse_microos:patterns-microos-onlyDVD
    - blog # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bluedevil6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5332,8 +5323,8 @@ packagesets:
    - libcaca0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcairo-gobject2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcairo2 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libcamera-base0_7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libcamera0_7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libcamera-base0_8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libcamera0_8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcanberra0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libcap-ng0 # reason: opensuse_microos:patterns-base-hardware
    - libcap2 # reason: opensuse_microos:MicroOS-release
@@ -5346,7 +5337,6 @@ packagesets:
    - libcolord2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libcom_err2 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libcomposefs1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libconfig++15 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libconfig15 # reason: opensuse_microos:patterns-base-hardware
    - libcontainers-common # reason: opensuse_microos:patterns-containers-runtime_podman
    - libcontainers-default-policy # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -5414,7 +5404,6 @@ packagesets:
    - libfaad2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libfdisk1 # reason: opensuse_microos:patterns-base-hardware
    - libfdk-aac2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libffado2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libffi8 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libfftw3-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libfido2-1 # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -5445,7 +5434,6 @@ packagesets:
    - libgirepository-1_0-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libgirepository-2_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libglib-2_0-0 # reason: opensuse_microos:patterns-base-hardware
-   - libglibmm-2_4-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglslang16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglvnd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libglycin-2-0 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -5491,7 +5479,6 @@ packagesets:
    - libicu78-ledata # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libidn12 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libidn2-0 # reason: opensuse_microos:patterns-containers-runtime_podman
-   - libiec61883-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libimaevm5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libimobiledevice-1_0-6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libimobiledevice-glue-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5509,7 +5496,7 @@ packagesets:
    - libjq1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libjson-c5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libjson-glib-1_0-0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
-   - libjxl0_12 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libjxl0_13 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libkaccounts6-2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkate1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libkbdfile1 # reason: opensuse_microos:patterns-base-hardware
@@ -5609,7 +5596,7 @@ packagesets:
    - libopenh264-8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopeniscsiusr0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libopenjp2-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libopenjph0_32 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libopenjph0_33 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenmpt0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenssl3 # reason: opensuse_microos:patterns-base-hardware
    - libopus0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5645,7 +5632,7 @@ packagesets:
    - libpolkit-qt6-1-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-cpp3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-qt6-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpoppler165 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libpoppler166 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpopt0 # reason: opensuse_microos:patterns-base-hardware
    - libppd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libppd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5713,7 +5700,7 @@ packagesets:
    - libsord-0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsoup-3_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsoxr0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libspandsp3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libspandsp4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libspeechd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libspeex1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libspeexdsp1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5745,8 +5732,8 @@ packagesets:
    - libtheoradec2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtheoraenc2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtiff6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libtirpc-netconfig # reason: opensuse_microos:patterns-microos-base-zypper
-   - libtirpc3 # reason: opensuse_microos:patterns-microos-base-zypper
+   - libtirpc-netconfig # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libtirpc3 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libtomcrypt1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libtommath1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libts0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5836,7 +5823,6 @@ packagesets:
    - libxkbcommon0 # reason: opensuse_microos:patterns-base-hardware
    - libxkbfile1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxkbregistry0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxml++-3_0-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxml2-16 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libxml2-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxmlb2 # reason: opensuse_microos:patterns-microos-base-packagekit
@@ -5868,7 +5854,6 @@ packagesets:
    - live-langset-data # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - login_defs # reason: opensuse_microos:patterns-containers-runtime_podman
    - logrotate # reason: opensuse_microos:patterns-containers-runtime_podman
-   - lsof # reason: opensuse_microos:patterns-microos-base-zypper
    - lvm2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - makedumpfile # reason: opensuse_microos:patterns-containers-runtime_podman
    - man-online # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -5992,7 +5977,6 @@ packagesets:
    - power-profiles-daemon # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - powerdevil6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - procps # reason: opensuse_microos:patterns-containers-runtime_podman
-   - psmisc # reason: opensuse_microos:patterns-microos-base-zypper
    - pulseaudio-utils # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - python3-audit # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - python3-createrepo_c # reason: opensuse_microos_desktop:expansion
@@ -6272,7 +6256,6 @@ packagesets:
    - xterm-resize # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xwayland # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xz # reason: opensuse_microos:patterns-base-hardware
-   - yast2-logs # reason: opensuse_microos:patterns-containers-runtime_podman
    - zstd # reason: opensuse_microos:patterns-base-hardware
    - zypp-boot-plugin # reason: opensuse_microos:patterns-microos-base-zypper
    - zypp-excludedocs # reason: opensuse_microos:patterns-microos-base-zypper
@@ -6416,7 +6399,6 @@ packagesets:
    - bash # reason: opensuse_kalpa:Kalpa-release
    - bash-completion # reason: opensuse_kalpa:patterns-kalpa-base
    - bash-sh # reason: opensuse_kalpa:Kalpa-release
-   - bc # reason: opensuse_kalpa:patterns-kalpa-base
    - biosdevname # reason: opensuse_kalpa:patterns-kalpa-base
    - blog # reason: opensuse_kalpa:patterns-kalpa-base
    - bluedevil6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7098,8 +7080,8 @@ packagesets:
    - libcaca0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcairo-gobject2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcairo2 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libcamera-base0_7 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libcamera0_7 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libcamera-base0_8 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libcamera0_8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcanberra0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcap-ng0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcap2 # reason: opensuse_kalpa:Kalpa-release
@@ -7112,7 +7094,6 @@ packagesets:
    - libcolord2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcom_err2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcomposefs1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libconfig++15 # reason: opensuse_kalpa:patterns-kalpa-base
    - libconfig15 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcontainers-common # reason: opensuse_kalpa:patterns-kalpa-base
    - libcontainers-default-policy # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7175,7 +7156,6 @@ packagesets:
    - libfakekey0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfdisk1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfdk-aac2 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libffado2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libffi8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfftw3-3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfido2-1 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7206,7 +7186,6 @@ packagesets:
    - libgirepository-1_0-1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libgirepository-2_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libglib-2_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libglibmm-2_4-1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libglslang16 # reason: opensuse_kalpa:patterns-kalpa-base
    - libglvnd # reason: opensuse_kalpa:patterns-kalpa-base
    - libglycin-2-0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7254,7 +7233,6 @@ packagesets:
    - libicu78-ledata # reason: opensuse_kalpa:patterns-kalpa-base
    - libidn12 # reason: opensuse_kalpa:patterns-kalpa-base
    - libidn2-0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libiec61883-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libimobiledevice-1_0-6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libimobiledevice-glue-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libinih0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7268,7 +7246,7 @@ packagesets:
    - libjpeg8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjson-c5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libjson-glib-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libjxl0_12 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libjxl0_13 # reason: opensuse_kalpa:patterns-kalpa-base
    - libkaccounts6-2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libkate1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libkbdfile1 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7359,7 +7337,7 @@ packagesets:
    - libopencore-amrwb0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenh264-8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenjp2-7 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libopenjph0_32 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libopenjph0_33 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenmpt0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenssl3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopus0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7396,7 +7374,7 @@ packagesets:
    - libpoppler-cpp3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpoppler-glib8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpoppler-qt6-3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libpoppler165 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libpoppler166 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpopt0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libppd # reason: opensuse_kalpa:patterns-kalpa-base
    - libppd2 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7456,7 +7434,7 @@ packagesets:
    - libsord-0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsoup-3_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsoxr0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libspandsp3 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libspandsp4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libspeechd2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libspeex1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libspeexdsp1 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7581,7 +7559,6 @@ packagesets:
    - libxkbcommon0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxkbfile1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxkbregistry0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libxml++-3_0-1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxml2-16 # reason: opensuse_kalpa:patterns-kalpa-base
    - libxml2-tools # reason: opensuse_kalpa:patterns-kalpa-base
    - libxmlb2 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7608,7 +7585,6 @@ packagesets:
    - libzypp # reason: opensuse_kalpa:patterns-kalpa-base
    - login_defs # reason: opensuse_kalpa:patterns-kalpa-base
    - logrotate # reason: opensuse_kalpa:patterns-kalpa-base
-   - lsof # reason: opensuse_kalpa:patterns-kalpa-base
    - lvm2 # reason: opensuse_kalpa:patterns-kalpa-base
    - makedumpfile # reason: opensuse_kalpa:patterns-kalpa-base
    - man-online # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7703,7 +7679,6 @@ packagesets:
    - powerdevil6 # reason: opensuse_kalpa:patterns-kalpa-base
    - printer-driver-brlaser # reason: opensuse_kalpa:patterns-kalpa-base
    - procps # reason: opensuse_kalpa:patterns-kalpa-base
-   - psmisc # reason: opensuse_kalpa:patterns-kalpa-base
    - pulseaudio-utils # reason: opensuse_kalpa:patterns-kalpa-base
    - python3-audit # reason: opensuse_kalpa:patterns-kalpa-base
    - python3-cupshelpers # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7912,6 +7887,8 @@ packagesets:
    - xkeyboard-config # reason: opensuse_kalpa:patterns-kalpa-base
    - xmessage # reason: opensuse_kalpa:patterns-kalpa-base
    - xmlcharent # reason: opensuse_kalpa:patterns-kalpa-base
+   - xorg-x11-server # reason: opensuse_kalpa:patterns-kalpa-base
+   - xorg-x11-server-Xvfb # reason: opensuse_kalpa:patterns-kalpa-base
    - xprop # reason: opensuse_kalpa:patterns-kalpa-base
    - xrdb # reason: opensuse_kalpa:patterns-kalpa-base
    - xset # reason: opensuse_kalpa:patterns-kalpa-base

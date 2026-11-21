@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Nov 11 04:11:20 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.8.
+  ## 0.2.8
+
+    * Footnotes: don't add footnote list twice.
+      If footnoteSpec was included more than once in a SyntaxSpec
+      (e.g. `gfmExtensions <> footnoteSpec`, or `-x gfm -x footnotes`
+      on the command line), the addFootnoteList final parser ran more
+      than once, re-rendering every note and emitting a second
+      footnotes section.  We now record in `counters` that the list has
+      been added and make subsequent runs no-ops.
+
+    * Replace duplicate block specs in place (#180). When several
+      block specs have the same blockType,
+      removeDuplicateBlockSpecs still keeps the first, but now puts
+      it in the position of the last. So an extension that
+      overrides a default spec (e.g. fancy_lists' ListItem) takes
+      the default's slot, instead of moving ahead of other
+      extensions' specs and of the remaining default specs. This
+      makes task_lists work regardless of whether it is combined
+      before or after fancy_lists, and it fixes thematic breaks
+      like `* * *` being parsed as nested lists when fancy_lists is
+      enabled.
+
+    * `delimsMatch`: disallow match for 1-length delims when there is
+      no single-delim contsructor defined (e.g., with strikeout) (#181).
+
+    * Math: respect TeX percent comments (Erik Demaine).
+
+-------------------------------------------------------------------
+Thu Sep 24 19:39:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.7.3.
+  ## 0.2.7.3
+
+    * Depend on commonmark 0.3.1, for the `getPrecedingTokType` export.
+
+  ## 0.2.7.2
+
+    * Footnotes: memoize note rendering and detect reference cycles.
+
+    * TaskList: re-sync forked list finalizers with the core versions.
+      Task lists now get the same tight/loose classification as
+      identically shaped plain lists.
+
+    * FancyList: require whole word to be a valid roman numeral.
+      Previously "vv. item" parsed as a roman list with start="5".
+
+    * Math: allow an unbraced `$` inside display math.
+
+    * Use `renderChildren` in definition list and footnote constructors.
+      Both called blockConstructor directly on child nodes, bypassing
+      renderChildren, so child blocks lost their attributes and source ranges.
+
+    * Autolink: implement GFM preceding-character restriction.
+      GFM recognizes extended www/url autolinks only when preceded by the
+      beginning of a line, whitespace, or one of `(`, `*`, `_`, `~`, `[`.
+
+    * Autolink: fix ']' guard to test bracket counter, not paren counter.
+
+-------------------------------------------------------------------
+Tue Jul 21 08:15:44 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-extensions to version 0.2.7.1.
+  ## 0.2.7.1
+
+    * Task list extension: andle empty task list items correctly (#174,
+      Chirag Dhamange). Prevent subsequent sibling task list items
+      from being parsed as nested children.
+
+-------------------------------------------------------------------
 Sun May 31 14:57:48 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-extensions to version 0.2.7.

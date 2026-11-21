@@ -258,6 +258,9 @@ Wed Jun 17 18:20:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
     avcodec/magicyuv: reject slice_height misaligned with chroma vshift
     (CVE-2026-8461, bsc#1269490)
+- CVE-2026-96611: avformat/mov: reject out of range ispe dimensions, avoid
+  overflow summing HEIF tile dimensions.
+  (bsc#1282608)
 
 -------------------------------------------------------------------
 Fri May 15 00:10:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
@@ -289,6 +292,12 @@ Sat May  9 09:36:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2026-38350, bsc#1277370)
   * swscale/output: Fix integer overflow with lum/chr/alpha filter.
     (CVE-2026-38350, bsc#1277370)
+- CVE-2026-52295: avformat: Fix various extradata padding issues.
+  (bsc#1278274)
+- CVE-2026-52297: avformat: Fix various extradata padding issues.
+  (bsc#1280753)
+- CVE-2026-52296: avcodec/wmaenc: Fix missing padding in extradata.
+  (bsc#1280752)
 
 -------------------------------------------------------------------
 Thu Apr 30 19:22:32 UTC 2026 - Mia Herkt <mia@0x0.st>
@@ -322,6 +331,16 @@ Mon Mar 16 22:36:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.1
   * EXIF metadata parsing support
+- CVE-2026-38344: swscale/utils: initialize chroma when luma switched to
+  cascade.
+  (bsc#1277309)
+- CVE-2026-90815: avfilter/vf_convolution: Handle corner cases with small
+  frames.
+  (bsc#1280754)
+- CVE-2026-90815: avfilter/vf_convolution: Use avpriv_mirror.
+  (bsc#1280754)
+- CVE-2026-90816: avformat: remove HLS protocol.
+  (bsc#1280755)
 
 -------------------------------------------------------------------
 Tue Jan 27 00:01:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>

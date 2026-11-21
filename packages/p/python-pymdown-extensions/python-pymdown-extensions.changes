@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:09:38 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 13.1:
+  * NEW: Snippets: Respect the Retry-After header when a URL
+    responds with a 429. The server's requested delay is used
+    instead of our backoff, and the snippet fails right away
+    if it is longer than the longest we would wait ourselves
+    (backoff_factor times max_retries).
+  * NEW: Snippets: Split snippet processing into steps
+    that an extension can override (parse_snippet_target,
+    select_snippet_lines, and process_snippet_lines) to add
+    notation or change included content, and add get_syntax_mask
+    to find which lines are snippet notation so they can be left
+    alone. (#3040)
+  * FIX: Fix an issue where only our test environment required
+    Python Markdown 3.10.3. Installs must require this.
+  * FIX: Snippets: Fix quadratic time complexity when parsing
+    very long runs of ; or - in content, and very long snippet
+    paths with line ranges.
+  * FIX: Quotes, Details (legacy), Tabbed (legacy), FancyLists,
+    Blocks, and Snippets: Gracefully stop short of the recursion
+    limit when content is nested too deeply, instead of raising
+    a RecursionError. This includes content nested inside of a
+    document structure that is already deep, such as a quote or
+    tab inside of many nested lists. Content past the limit is
+    no longer specially processed (Snippets skips includes past
+    the limit, as it does for cyclic includes).
+- additional changes from version 13.0:
+  * BREAK: Arithmatex: Generic mode is now the default mode
+    as the old MathJax script approach has not been supported in
+    MathJax for a long time now. We still provide script approach
+    and have updated configuration to get it properly working in
+    recent MathJax versions.
+  * BREAK: Arithmatex: Non-generic mode now escapes content in
+    script to prevent closing </script> from causing unintended
+    behavior. Guidance on configuration for non-generic mode has
+    been updated in the documentation.
+  * NEW: Require at least Python Markdown 3.10.3 for performance
+    improvements.
+  * NEW: Drop Python 3.10 and require Python >= 3.11.5 as
+    possessive quantifiers are broken on lower versions.
+  * NEW: MagicLink: Bare http://, https://, and www. links now
+    follow GFM's extended autolink rules for what is considered
+    the end of a link (trailing punctuation, entities, unbalanced
+    ) and ]) and what a link can follow. Links no longer start
+    after arbitrary punctuation (quotes are still allowed),
+    and http://host style links with a short host are allowed.
+    * FIX: Critic: Fix quadratic (and cubic for substitutions)
+    time complexity when parsing a large number of unclosed
+    CriticMarkup openers by replacing the regular expression with
+    a linear time scanner.
+  * FIX: PathConverter, B64: Handle elements with unquoted
+    attributes.
+  * FIX: Arithmatex: Fix generic mode output when tex_inline_wrap
+    or tex_block_wrap contain braces.
+  * FIX: InlineHilite: Fix regression related to unmatched
+    opening and closing.
+  * FIX: FancyLists: Keep i and I in alphabetical lists after
+    a blank line.
+  * FIX: BracketSpan: Fix unwanted colon attributes with
+    {:...} syntax.
+  * FIX: Snippets: Fix escaped section markers starting or
+    ending a section before its start.
+  * FIX: StripHTML: Fix crash when strip_comments is disabled.
+  * FIX: Quotes: Fix callouts in indented blockquotes.
+  * FIX: Details, Admonitions, SaneHeaders: Improve performance
+    of header patterns.
+  * FIX: Blocks.HTML: Improve performance of HTML patterns.
+  * FIX: MagicLink: Fix URLs with balanced parentheses or
+    brackets losing their closing character.
+  * FIX: MagicLink: Improve performance of link and email
+    patterns by removing excessive backtracking.
+  * FIX: ProgressBar: Fix crash on malformed 100 percent values
+    like [=100,0%].
+  * FIX: BracketSpan: Fix text being dropped or misplaced when
+    an unpaired [ precedes a span that is returned from the cache,
+    e.g. [[]{#a}[b[]{#c}.
+  * FIX: BetterEm, Tilde, Caret, Mark: Apply the CommonMark
+    "rule of 3" so an ambiguous closing delimiter can skip
+    an incompatible opener and pair with an earlier one,
+    e.g. __[A](u){target="_blank"}__: x.
+  * FIX: BetterEm, Tilde, Caret, Mark: Better handling of
+    Python Markdown placeholders when when evaluating CommonMark
+    punctuation rules.
+  * FIX: Blocks.Caption: Fix crash when a numbered caption is
+    nested inside a figure not created by the caption block.
+  * FIX: BetterEm, Tilde, Caret, Mark: Fix text being dropped
+    when a stray delimiter that cannot open or close appears
+    between delimiter pairs parsed together, e.g. ***l* * **e**.
+  * FIX: BetterEm, Tilde, Caret, Mark: Fix text being dropped
+    or misplaced when unused delimiters inside a parsed span
+    were reprocessed against delimiter pairs found later in the
+    same text.
+  * FIX: Tilde, Caret: Fix a crash when a subscript or superscript
+    with no space allowed starts inside emphasis, e.g. *a ~b~*
+    with delete disabled.
+  * FIX: BetterEm, Tilde, Caret, Mark: Unusable delimiters
+    dropped by another delimiter's region no longer leave stale
+    space tracking that can reject valid pairs later.
+  * FIX: Blocks.Caption: Fix crash when a numbered caption is
+    nested inside a figure not created by the caption block.
+- increase minimum python version to 3.11.5
+- increase minimum Markdown version to 3.10.3
+
+-------------------------------------------------------------------
 Tue Oct 20 17:59:26 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 12.3:

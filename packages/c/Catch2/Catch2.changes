@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:58:34 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.16.1:
+  * Fixed optimizations being disabled after including
+    benchmarking headers under MSVC. (gh#catchorg/Catch2#3212)
+  * Fixed Console reporter replacing \0xFFs in user-provided
+    strings.
+  * Added missing <cassert> include to catch_generators_range.hpp.
+    (gh#catchorg/Catch2#3205)
+  * Workaround for GCC's quadratic scaling for release builds with
+    number of test cases.
+  * Changed how decomposer operators are defined for better
+    compilation times.
+  * Changed how decomposer handles stringification for smaller
+    binary sizes.
+  * Improved compilation costs of multiple assertions in one test
+    cases for release builds.
+  * Optimized initial test registration at process start.
+  * Optimized test selection and filtering.
+  * Optimized filtering tests by test name.
+  * catch_discover_tests registers individual tests with --order
+    decl for faster startup.
+  * CMakeConfig:: family of tests use the main build's toolchain
+    file. (gh#catchorg/Catch2#3202)
+  * Deprecated throwing exceptions from the reporter interface
+    functions.
+
+-------------------------------------------------------------------
 Sun Sep 20 18:37:50 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.16.0:

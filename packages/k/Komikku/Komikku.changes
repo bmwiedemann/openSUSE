@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:52:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.4.0:
+  * [Card] Fixed Pull-to-Update
+  * [Servers] Added Niadd (DE/ES/FR/IT/pt_BR/RU)
+  * [Servers] MangaHub (EN): Update
+  * [Servers] MangaWorld (IT): Update
+  * [Servers] Rawkuma (JA): Disabled
+  * Updated translations.
+
+-------------------------------------------------------------------
+Mon Nov  9 15:09:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.3.0:
+  * [Reader] RTL/LTR/Vertical pager: Added double page view
+  * [Servers] BDplus (FR): Update
+  * [Servers] JManga (JA): Update
+  * [Servers] Kavita: Fixed wrong volume listing
+  * [Servers] LanorTrad (FR): Update
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 28 08:46:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 51.2.1:

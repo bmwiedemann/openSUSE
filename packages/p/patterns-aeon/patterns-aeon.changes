@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 11 11:02:15 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Remove malcontent-control (no longer in GNOME) 
+
+-------------------------------------------------------------------
 Mon Feb 16 08:45:48 UTC 2026 - Richard Brown <rbrown@suse.com>
 
 - Use zypp-* config packages when available, removed from Aeon.kiwi 

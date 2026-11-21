@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycdio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/pycdio/
 Source:         https://files.pythonhosted.org/packages/source/p/pycdio/pycdio-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-pycdio-swig-python3.patch -- define PyString_FromString as PyUnicode_FromString for Python 3
+Patch0:         python-pycdio-swig-python3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +44,7 @@ Python programs wishing to be oblivious of the OS- and device-dependent
 properties of a CD-ROM can use this library.
 
 %prep
-%setup -q -n pycdio-%{version}
+%autosetup -p1 -n pycdio-%{version}
 
 %build
 export CFLAGS="%{optflags}"

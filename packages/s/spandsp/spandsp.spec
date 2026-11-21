@@ -1,7 +1,7 @@
 #
 # spec file for package spandsp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           spandsp
-%define lname	libspandsp3
-Version:        3.0.0+g57
+%define lname	libspandsp4
+Version:        3.1.1
 Release:        0
 Summary:        A DSP library for Telephony and SoftFAX
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/freeswitch/spandsp
-%define rev 4712339d6132c54d8624b7d76dddbb36c67df712
-Source:         https://github.com/freeswitch/spandsp/archive/%rev.tar.gz
+Source:         https://github.com/freeswitch/spandsp/archive/refs/tags/v%version.tar.gz
 Source2:        baselibs.conf
 Patch1:         no-sse.diff
 Patch2:         spandsp-raise-traintime-tolerance.diff
@@ -38,9 +37,9 @@ BuildRequires:  libxslt
 BuildRequires:  pkg-config
 %define tests 0
 %if 0%{?tests}
+BuildRequires:  c++_compiler
 BuildRequires:  fftw3-devel
 BuildRequires:  fltk-devel
-BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig(audiofile)
 BuildRequires:  pkgconfig(libxml-2.0)
@@ -89,33 +88,31 @@ BuildArch:      noarch
 This package contains documentation for the libspandsp API.
 
 %prep
-%autosetup -p1 -n spandsp-%rev
+%autosetup -p1
 # The cpuid calls in the source code only apply to a test program.
 # The library itself is (was) statically enabling -msse during configure, which
 # is now removed.
 
 %build
 autoreconf -fiv
-%configure \
-	--disable-static \
-	--enable-doc
+%configure --disable-static --enable-doc
 %make_build
 
-%check
 %if 0%{?tests}
+%check
 %make_build check
 %endif
 
 %install
 %make_install
-mkdir -p "%buildroot%_docdir/%name"
-cp -a NEWS README DueDiligence ChangeLog doc/api/html \
-	"%buildroot/%_docdir/%name"
-rm -f "%buildroot/%_libdir"/*.la
-ln -s ../spandsp.h "%buildroot/%_includedir/spandsp/spandsp.h"
+b="%buildroot"
+mkdir -pv "$b%_docdir/%name"
+cp -av NEWS README DueDiligence ChangeLog doc/api/html \
+	"$b/%_docdir/%name"
+rm -fv "$b/%_libdir"/*.la
+ln -sv ../spandsp.h "$b/%_includedir/spandsp/spandsp.h"
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files devel
 %license COPYING
@@ -124,7 +121,7 @@ ln -s ../spandsp.h "%buildroot/%_includedir/spandsp/spandsp.h"
 %_libdir/pkgconfig/*.pc
 
 %files -n %lname
-%_libdir/lib%name.so.3*
+%_libdir/lib%name.so.*
 
 %files doc
 %_docdir/%name/

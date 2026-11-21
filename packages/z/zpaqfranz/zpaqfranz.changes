@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:29:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.21:
+  * New -json machine-readable output (one JSON object per
+    line) with progress and exit code; pakka -json lists
+    versions the same way; x -listfrom takes the names to
+    extract from a file
+  * New version command (-v/--version) printing the build,
+    the bundled components and the runtime environment
+  * x now filters by date and size (-datefrom/-dateto,
+    -mindate/-maxdate, -minsize/-maxsize) like l does
+  * -ifexist accepts a file, not only a folder; new -timer
+    sets how long -pause waits, also in the elevated window
+  * Fixed a crash in x and t with many threads on old
+    compilers, and wrong exit codes of pakka and update
+  * Fixed long relative names on Windows left out silently;
+    -wim skips unchanged blocks of NTFS drive images
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec file cleanup: use the braced set_build_flags macro
+
+-------------------------------------------------------------------
+Thu Nov 12 19:37:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.20:
+  * A full disk during `a` no longer ruins the archive: it is put
+    back as it was before the run instead of keeping a half-written
+    version that poisons every later backup
+  * The archive being written is never added to itself when it sits
+    inside the backed-up folder
+  * Empty file/folder arguments are refused instead of resolving to
+    the disk root, and many commands now return a real error exit
+    code instead of 0 on failure
+  * Fixed crashes (e.g. `s` with no folder, `-until -1`,
+    `-ramsize 0`) and hangs of ls/tui/gui/pause with no console
+  * Fixed `xc` with big blocks silently restoring short disks when
+    RAM runs out, and wrong post-2038 dates on Linux/BSD/macOS
+  * testbackup is now as strict as `t`; new `-thunderbird` mail
+    backup (Windows); new -DBUILD_FEDORA/-DNOAES/-DNOFRANZEN/
+    -DNOEMAIL/-DNOUPDATE packager switches
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Drop Ferguson-Twofish from the License tag: upstream removed the
+  Twofish implementation from the source in 65.20
+
+-------------------------------------------------------------------
+Mon Nov  9 18:13:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.19:
+  * Extraction on Linux, BSD and macOS now handles permissions
+    like tar does: umask applies, no setuid/setgid/sticky bits
+    for non-root users; -sameperms restores the old behaviour
+  * d no longer deletes the original file when it is the same
+    file as the one kept (symlink or bind mount), and works on
+    multiple folders at once
+  * a -verify/-collision with a wrong CRC-32 is now an error
+    (exit code 2) instead of ending with "all OK"
+  * -stdin -longpath no longer stores the stream as a folder
+  * l -attr now prints a header line
+  * Hardened self-update check (pinned signature certificate,
+    HTTPS on Windows) and safer replacement of the running exe
+
+-------------------------------------------------------------------
+Sun Nov  8 08:51:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.18:
+  * Named compression levels -lean/-fast/-normal/-good/
+    -better/-ultra/-max; -fast is now the -m80 level, archive
+    history moves to -lfast (off with -nolfast)
+  * Franzen encryption is built in (franzsodium, from
+    Monocypher 4.0.2): same file format, no external
+    libsodium needed (-libsodium/-sodiumcheck for comparison)
+  * -franzen with an empty password is now an error instead
+    of silently writing a clear archive; same for an archive
+    name that is a folder and for two levels at once
+  * Memory report shows the peak plus the OS peak; new work
+    proxmox audit; -tar -not "X/*" keeps the folder empty
+  * Bug fixes for pp hangs, attributes, RAM count and ESXi
+    Franzen; l -all marks changed files with # for every hash
+  * Packagers: notice and bundled() provides now also cover
+    the Monocypher 4.0.2 code (BSD-2-Clause elected)
+  * Many more fixes and improvements; see upstream's
+    release notes for the full list
+
+-------------------------------------------------------------------
+Mon Nov  2 13:26:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.17:
+  * New proxvzdump/proxvzrestore: Proxmox guests straight from
+    vzdump into the archive, restore via qmrestore/pct restore;
+    -proxmox deduplicates repeat runs down to KB
+  * zfsproxbackup/zfsproxrestore rewritten with new syntax: disks
+    read from snapshots on ZFS, LVM-thin and btrfs; old archives
+    still restore
+  * mysqldump rewritten, mysqlrestore new: exit code 0 only when
+    every dump is whole
+  * zfs commands reviewed: one archive per dataset, -ttl for
+    zfspurge, zfslist and zfssize
+  * New r -paranoid: read copied data back from the media during
+    the copy
+  * -m8 no longer stores incompressible blocks larger; -m 5 and
+    -t 2 take the space; bad command lines exit 2
+  * Many bug fixes
+
+-------------------------------------------------------------------
 Sat Oct 31 13:46:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.16:

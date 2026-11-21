@@ -48,6 +48,8 @@ Patch2:         lal-disable-erroneous-test.patch
 Patch3:         lal-gcc16.patch
 # PATCH-FIX-UPSTREAM lal-ptr-const-qualifier.patch badshah400@gmail.com -- Add const qualifier to pointer returned by strchr to prevent 'discarded-qualifiers' error
 Patch4:         lal-ptr-const-qualifier.patch
+# PATCH-FIX-UPSTREAM lal-swig-4_5.patch -- compatibility with SWIG 4.5 (Python 2 support removed)
+Patch5:         lal-swig-4_5.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -152,6 +154,7 @@ This package provides the octave module for lal.
 %patch -P2 -p1
 %patch -P3 -p1
 %patch -P4 -p1
+%patch -P5 -p1
 
 %build
 autoreconf -fvi

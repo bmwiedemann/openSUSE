@@ -103,4 +103,12 @@
     <comment>- Add missing requirements, bsc#1260991 (forwarded request 1343616 from dgarcia)</comment>
     <requestid>1344097</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>b31cb42bbd0de8d648e8c3359f97a1bd</srcmd5>
+    <version>4.16.0</version>
+    <time>1794410996</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396844</requestid>
+  </revision>
 </revisionlist>

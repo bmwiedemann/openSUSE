@@ -120,7 +120,6 @@ Manual pages for the libcurl C API.
 
 %package        fish-completion
 Summary:        Fish completion for curl
-Group:          System/Shells
 Requires:       fish
 Supplements:    (curl and fish)
 BuildArch:      noarch
@@ -130,7 +129,6 @@ Fish command line completion support for %name.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %name
-Group:          System/Shells
 Requires:       zsh
 Supplements:    (curl and zsh)
 BuildArch:      noarch
@@ -139,7 +137,8 @@ BuildArch:      noarch
 ZSH command line completion support for %name.
 
 %package -n     wcurl
-Summary:        simple wrapper around curl to easily download files
+Summary:        Simple wrapper around curl to easily download files
+BuildArch:      noarch
 Requires:       curl >= %{version}
 Obsoletes:      wcurl >= 2025
 

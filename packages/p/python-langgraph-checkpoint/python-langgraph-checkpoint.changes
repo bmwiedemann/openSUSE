@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:45:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.3.2:
+  * InMemoryStore search stops collecting at the requested page
+  * Dedupe repeated read ops in a batched store request
+
+-------------------------------------------------------------------
 Tue Oct 27 06:30:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.3.1:

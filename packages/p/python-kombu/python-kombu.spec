@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kombu
-Version:        5.6.2
+Version:        5.7.0
 Release:        0
 Summary:        AMQP Messaging Framework for Python
 License:        BSD-3-Clause
@@ -27,12 +27,15 @@ Source:         https://files.pythonhosted.org/packages/source/k/kombu/kombu-%{v
 # PATCH-FIX-OPENSUSE Use Pyro4 compatibility for now, upstream should switch
 # for 5.3
 Patch0:         support-pyro-5.patch
+# PATCH-FIX-UPSTREAM gh#celery/kombu#2865
+Patch1:         use-mocked-gettempdir.patch
 BuildRequires:  %{python_module Brotli >= 1.0.9}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module Pyro5}
 BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module amqp >= 5.1.1}
+BuildRequires:  %{python_module amqp >= 5.4.2}
 BuildRequires:  %{python_module azure-identity >= 1.12.0}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module boto3 >= 1.26.143}
 BuildRequires:  %{python_module google-cloud-monitoring}
 BuildRequires:  %{python_module google-cloud-pubsub}
@@ -41,18 +44,17 @@ BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pre-commit}
 BuildRequires:  %{python_module pycurl >= 7.43.0.5}
+BuildRequires:  %{python_module pytest-freezer}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module redis >= 4.5.2}
+BuildRequires:  %{python_module redis >= 6.4.0}
 BuildRequires:  %{python_module setuptools >= 47}
-BuildRequires:  %{python_module vine}
+BuildRequires:  %{python_module vine >= 5.1.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
-Requires:       python-amqp >= 5.1.1
-Requires:       python-packaging
-Requires:       python-tzdata
-Requires:       python-vine
+Requires:       python-amqp >= 5.4.2
+Requires:       python-vine >= 5.1.0
 Recommends:     python-Brotli >= 1.0.9
 Recommends:     python-PyYAML >= 3.10
 BuildArch:      noarch
@@ -85,9 +87,7 @@ rm t/unit/transport/test_azureservicebus.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_global_keyprefix_transaction doesn't support new redis yet https://github.com/celery/kombu/pull/2132
-# test_connparams_health_check_interval_supported broken with redis 7.4
-%pytest -k "not (test_global_keyprefix_transaction or test_connparams_health_check_interval_supported)"
+%pytest
 
 %files %{python_files}
 %license LICENSE

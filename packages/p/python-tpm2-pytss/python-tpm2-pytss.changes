@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 19 04:14:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * Restore environment when exiting FAPIConfig
+  * Fix ESAPI.hierarchy_control support for PLATFORM_NV hierarchy
+  * Fix FAPI callback buffer lifetimes (fixes free-threaded Python issues)
+  * Fix ECC seed length calculation in __ecc_secret_to_seed
+  * Fix memory leak in FAPI
+  * Use block size instead of key size for symmetric encryption IV
+  * Add a context manager for ESYS handles that flushes the handle at exit
+  * Add SVN, ACT, and other missing constants
+  * Add the ESAPI command certify_x509
+  * Add the ESAPI command act_set_timeout
+  * Add copy dunder for cryptography private keys
+  * Add the ESAPI command trsess_get_attributes
+  * Add signature scheme structures
+  * Add marshal/unmarshal structures for TPM2_HANDLE
+  * Add command_parser module to decode TPM 2.0 command/response streams
+  * Support passing prehashed data to TPMT_SIGNATURE.verify_signature
+  * Add marshal/unmarshal methods to union types (requiring a selector)
+  * Add equal dunder to struct types for comparing instances
+  * Add support for Python 3.14
+  * Make the symmetric argument to start_auth_session optional
+  * Accept None for the pcr_digest argument in policy_pcr
+  * Support looking up EK templates by other names (e.g. L-1 or H-2)
+  * Make the validation ticket for sign optional (defaults to NULL ticket)
+  * Reorder ESAPI.policy_signed, policy_ticket, and policy_authorize
+    arguments to make trailing parameters optional
+  * Drop asn1crypto and use cryptography's ASN.1 serializer/deserializer
+  * Remove support for the tools encoder/decoder
+  * Drop support for Python 3.9
+- Ship the README in built packages.
+- Drop service and servicedata, we're using GitHub sources.
+- Always run the testsuite.
+- Drop patch use-c99-for-preproccessing.patch, merged upstream.
+- Add patch use-after-free-nvpublic.patch:
+  * Copy a callback into CFFI-controlled memory, so we don't outlive it.
+
+-------------------------------------------------------------------
 Thu Aug  7 15:57:42 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Refresh the source tarball.

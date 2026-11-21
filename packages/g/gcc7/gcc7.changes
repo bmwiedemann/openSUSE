@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 09:58:02 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-cve-2026-114690.patch to fix buffer overrun in __gnu_parallel
+  search [bsc#1288775] (CVE-2026-114690)
+- Add gcc7-cve-2026-114691.patch to fix overflow in std::vector<bool>
+  constructors [bsc#1288774] (CVE-2026-114691)
+
+-------------------------------------------------------------------
 Wed Sep 30 06:38:23 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc7-pr113258.patch to fix possible integer overflow with

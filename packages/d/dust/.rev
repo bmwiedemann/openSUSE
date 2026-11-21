@@ -193,4 +193,34 @@
   * docs: add Fedora official installation instruction</comment>
     <requestid>1372219</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>7a9230fb5f86d67bbaf2ffa1b83ffdab</srcmd5>
+    <version>1.2.7</version>
+    <time>1794236867</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.7:
+  * ci: try fix risc64 build
+  * fix(config): handle ambiguous local midnight
+  * fix: show a size that rounds up to 10 without a decimal place
+  * version: increment version
+  * deps: cargo update
+  * feat: support ignore-directory and invert-filter in config file
+  * maybe fix windows build
+  * fix windows
+  * perf(walk): cache per-dir stat to eliminate duplicate syscall
+  * perf(walk): skip per-file statx in --filecount mode
+  * perf(walk): trim filter-path overhead and skip ignore_file when off
+  * docs: add link to a live browser demo
+  * ci: release a Windows ARM64 GNU-family artifact
+  * fix: reject partial min-size matches like 1.5M
+  * fix: exit quietly on broken pipe instead of panicking
+  * version: increment version
+
+- Update to version 1.2.6:
+  * perf(walk): swap FxHash for inode dedup HashSet
+  * perf(walk): flatten recursion via rayon::scope, drop -S stack-size knob
+  * Update clap_mangen build dependency from 0.2 to 0.3
+  * Update sysinfo dependency to version 0.39</comment>
+    <requestid>1396292</requestid>
+  </revision>
 </revisionlist>

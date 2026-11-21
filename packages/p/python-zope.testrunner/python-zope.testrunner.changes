@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 18 01:11:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Don't use python -m zope.testrunnner to run the testsuite.
+
+-------------------------------------------------------------------
 Mon Aug 31 21:56:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3:

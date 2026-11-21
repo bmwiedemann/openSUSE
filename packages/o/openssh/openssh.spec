@@ -58,7 +58,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        10.6p1
+Version:        10.6p2
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT

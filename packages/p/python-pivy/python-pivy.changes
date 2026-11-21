@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:40:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-pivy-swig-py3.patch: modernize PyInt_* to PyLong_*
+  in SWIG interface files for Python 3.14+ compatibility.
+
+-------------------------------------------------------------------
 Sat Jan 18 07:19:33 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 0.6.9:

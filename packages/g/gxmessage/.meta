@@ -4,5 +4,6 @@
 command-line, from a file, or from stdin. The window can include a row of
 user-defined buttons, each of which causes the program to exit with a different
 return code.</description>
+  <devel project="X11:Utilities" package="gxmessage"/>
   <url>https://www.gnu.org/software/gxmessage/</url>
 </package>

@@ -16,16 +16,17 @@
 #
 
 
-%global llvm_ref llvmorg-17.0.6
-%global opencl_clang_ref 059ad9df
-%global spirv_llvm_translator_ref 6798e157
+%global llvm_ref llvmorg-22.1.8
+%global opencl_clang_ref b953eceebb0abc6ea954a14545420e3f97540a77
+%global spirv_llvm_translator_ref 0e67244861402a51b071414d7cb231a052b1ce03
 %global vc_intrinsics_ref v0.25.0
 
-%global llvm_version 17.0.6
-%global llvm_major %gsub %{llvm_version} %{quote:%..+} %{quote: }
+%global llvm_version 22.1.8
+%global llvm_major 22
+%global opencl_clang_sover 22_1
 
 Name:           intel-graphics-compiler
-Version:        2.38.2
+Version:        2.42.6
 Release:        0%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -36,10 +37,8 @@ Source1:        https://github.com/intel/opencl-clang/archive/%{opencl_clang_ref
 Source2:        https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/%{spirv_llvm_translator_ref}/spirv-llvm-translator.tar.gz
 Source3:        https://github.com/llvm/llvm-project/archive/%{llvm_ref}/llvm-project.tar.gz
 Source4:        https://github.com/intel/vc-intrinsics/archive/%{vc_intrinsics_ref}/vc-intrinsics.tar.gz
-Patch0:         0001-Replace-ciso646-with-version.patch
+Patch0:         0001-Remove-rpath.patch
 Patch1:         0003-Empty-check-before-vector-use.patch
-Patch2:         0001-Remove-rpath.patch
-Patch3:         https://github.com/intel/intel-graphics-compiler/pull/418.patch#/reproducible.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  flex
@@ -107,13 +106,13 @@ Summary:        Headers for the Intel Graphics Frontend Compiler library
 Requires:       libigdfcl2 = %{version}-%{release}
 
 %description -n libigdfcl-devel
-This package contains development files for libigdfcl.
+This package contains development files and headers for libigdfcl.
 
-%package -n libopencl-clang%{llvm_major}
+%package -n libopencl-clang%{opencl_clang_sover}
 Summary:        A wrapper library around clang
 Group:          System/Libraries
 
-%description -n libopencl-clang%{llvm_major}
+%description -n libopencl-clang%{opencl_clang_sover}
 A wrapper library around clang.
 
 %prep
@@ -121,7 +120,6 @@ mkdir llvm-project
 tar -xzf %{_sourcedir}/llvm-project.tar.gz -C llvm-project --strip-components=1
 pushd llvm-project
 %patch -P 0 -p1
-%patch -P 2 -p1
 popd
 
 mkdir vc-intrinsics
@@ -133,11 +131,20 @@ tar -xzf %{_sourcedir}/opencl-clang.tar.gz -C opencl-clang --strip-components=1
 tar -xzf %{_sourcedir}/spirv-llvm-translator.tar.gz -C llvm-spirv --strip-components=1
 popd
 
+# opencl-clang includes patches for clang that are needed for OpenCL 3.1
+# support. Since llvm-project is unpacked from a tarball and lacks a .git directory,
+# opencl-clang's cmake script skips applying them. Apply clang patches here explicitly.
+# (The LLVM patch in opencl-clang is already included in IGC's external/llvm/releases).
+pushd llvm-project
+for p in llvm/projects/opencl-clang/patches/clang/*.patch; do
+    [ -f "$p" ] && patch -p1 < "$p"
+done
+popd
+
 mkdir igc
 tar -xzf %{_sourcedir}/v%{version}.tar.gz -C igc --strip-components=1
 pushd igc
 %patch -P 1 -p1
-%patch -P3 -p1
 popd
 
 %build
@@ -177,9 +184,10 @@ rm -fv %{buildroot}%{_bindir}/GenX_IR \
     %{buildroot}%{_bindir}/lld \
     %{buildroot}%{_includedir}/opencl-c.h \
     %{buildroot}%{_includedir}/opencl-c-base.h \
+    %{buildroot}%{_includedir}/igc/ocl_igc_interface/.clang-format \
     %{buildroot}%{_prefix}/lib/debug \
     %{buildroot}%{_prefix}/lib/NewPMPlugin*
-chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.%{llvm_major}
+chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.*
 
 %post -n libigc2 -p /sbin/ldconfig
 %postun -n libigc2 -p /sbin/ldconfig
@@ -187,8 +195,8 @@ chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.%{llvm_major}
 %postun -n libiga64-2 -p /sbin/ldconfig
 %post -n libigdfcl2 -p /sbin/ldconfig
 %postun -n libigdfcl2 -p /sbin/ldconfig
-%post -n libopencl-clang%{llvm_major} -p /sbin/ldconfig
-%postun -n libopencl-clang%{llvm_major} -p /sbin/ldconfig
+%post -n libopencl-clang%{opencl_clang_sover} -p /sbin/ldconfig
+%postun -n libopencl-clang%{opencl_clang_sover} -p /sbin/ldconfig
 
 %files -n iga
 %{_bindir}/iga64
@@ -217,7 +225,7 @@ chmod +x %{buildroot}%{_libdir}/libopencl-clang.so.%{llvm_major}
 %{_includedir}/visa
 %{_libdir}/pkgconfig/igc-opencl.pc
 
-%files -n libopencl-clang%{llvm_major}
-%{_libdir}/libopencl-clang.so.%{llvm_major}
+%files -n libopencl-clang%{opencl_clang_sover}
+%{_libdir}/libopencl-clang.so.*
 
 %changelog

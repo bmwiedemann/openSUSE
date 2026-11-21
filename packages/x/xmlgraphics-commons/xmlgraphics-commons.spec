@@ -18,7 +18,7 @@
 
 
 Name:           xmlgraphics-commons
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        XML Graphics Commons
 License:        Apache-2.0
@@ -29,7 +29,6 @@ Patch0:         xmlgraphics-commons-build_xml.patch
 Patch1:         xmlgraphics-commons-jdk10.patch
 Patch2:         ioexception.patch
 BuildRequires:  ant >= 1.6.5
-BuildRequires:  commons-io >= 1.1
 BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -60,7 +59,7 @@ Javadoc for package %{name}.
 find . -name "*.jar" -delete
 
 %build
-build-jar-repository -s lib commons-io commons-logging
+build-jar-repository -s lib commons-logging
 ant -Ddev=true -Djavac.source=1.8 -Djavac.target=1.8 package javadocs
 
 %install

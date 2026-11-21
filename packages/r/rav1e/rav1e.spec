@@ -35,6 +35,8 @@ Source98:       README.suse-maint
 Source99:       baselibs.conf
 #
 Patch0:         rav1e-cargo-no-git-default.patch
+# PATCH-FIX-UPSTREAM rav1e-Make-object-order-deterministic.patch bsc#1289073 gh#medek/nasm-rs#47 xwang@suse.com -- Make object order deterministic
+Patch1:         rav1e-Make-object-order-deterministic.patch
 #
 BuildRequires:  cargo-c > 0.9.26
 BuildRequires:  cargo-packaging

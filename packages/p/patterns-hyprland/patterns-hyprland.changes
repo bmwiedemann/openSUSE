@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Oct 31 09:37:31 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Set Version to 20261031.
+- Drop the five hyprland_extra plugin Recommends that are not packaged in
+  Factory (hyprland-plugin-hyprexpo, hyprland-plugin-hyprscrolling, hyprland-
+  plugin-hyprtrails, hyprland-plugin-hyprwinwrap, hyprland-plugin-xtra-
+  dispatchers); hyprland-plugins only builds four plugins.
+- Drop the hyprland-branding-openSUSE Recommends: no such package in Factory.
+- Replace swaybar with waybar as the main pattern bar (swaybar needs Sway IPC
+  for workspaces; waybar is the Hyprland-native bar).
+- Add hyprlock, hypridle and hyprpolkitagent Recommends: Hyprland-native lock,
+  idle and authentication agent for a complete session; add wl-clipboard
+  Recommends to helper utilities.
+- Drop the now-redundant waybar Recommends from hyprland_extra (the main pattern
+  recommends it).
+- Drop the dead Supplements line from hyprland_extra: it supplemented (hyprland
+  and hyprland_extra), so the conjunction could never fire; pattern-extends,
+  Requires and pattern-visible are untouched, so selecting hyprland_extra still
+  pulls hyprland.
+- Reword the hyprland_extra Summary and description from add-ons to extras.
+- Add a no-binary rpmlintrc filter at error level, shipped as a new Source0
+  file.
+- Format with spec-cleaner 1.3.1: drop the Group tags, fix the copyright header,
+  add SECTION labels, remove the duplicated licence header block, and fold near-
+  duplicate SECTION headers into their markers.
+
+-------------------------------------------------------------------
 Sat Mar 28 15:01:07 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add MozillaFirefox to _extra
@@ -28,3 +55,4 @@ Thu Jan 29 16:04:34 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 Thu Jan 29 14:44:22 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Initial version of pattern-hyprland
+

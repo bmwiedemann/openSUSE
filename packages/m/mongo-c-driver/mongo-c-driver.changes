@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:04:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.8
+  libbson
+  * Fix possible truncation in BSON binary vector on 32-bit builds.
+    CVE-2026-120954
+  libmongoc
+  * Fix abort when parsing a cursor namespace without a dot separator.
+  * Fix possible abort in mongoc_gridfs_bucket_download_to_stream on
+    invalid file metadata. CVE-2026-120955
+  * Fix handling of embedded NUL bytes in namespaces. CVE-2026-120956
+  * Fix a missing bounds check when reading GridFS files.
+    CVE-2026-120684
+  * Fix a memory leak when an OP_COMPRESSED reply fails to parse.
+    CVE-2026-120678
+  * Report writeConcernError consistently, as mandated by the CRUD
+    spec.
+
+-------------------------------------------------------------------
 Sun Nov  1 18:14:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.7

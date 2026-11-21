@@ -880,4 +880,41 @@
   * Validate MUC selfping interval and timeout range (#2179)</comment>
     <requestid>1385033</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9662cb0a0b99b3a4a6aed122a08e577a</srcmd5>
+    <version>0.20.0</version>
+    <time>1795103815</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.20.0:
+  Features:
+  * Acknowledge new messages on tray alert click (#2238)
+  * Add /form clear to unset form fields (#2242)
+  * Add /plugins enable and disable (#2248)
+  * Add avatar_get_path to locate cached avatars (#2238)
+  * Add desktop file (#2249)
+  * Add option to automatically update avatars (#2238)
+  * Add priority-ordered plugin execution pipeline (#2248)
+  * Add scalable application icon and use it for notifications (#2238)
+  * Add tab autocompletion for /plugins uninstall (#2248)
+  * Complete all URLs across all window types (#2255, #2212)
+  * Configure Lua package path for local plugin modules (#2248)
+  * Decouple account readiness from component discovery (#2251)
+  * Decouple plugin installation from loading (#2248)
+  * Display contact avatar in desktop notification (#2238)
+  * Don't reopen log file when changing log level (#2240)
+  * Establish contact sessions lazily on demand (#2259)
+  * Fetch bundles for new PEP devices in blind trust mode (#2259)
+  * Implement Blind Trust Before Verification for blind trust mode (#2259)
+  * Implement Lua plugin engine (#2248)
+  * Load local history immediately when opening chat windows with MAM (#2243)
+  * Modernize vCard editing using forms (#2242)
+  * Redesign Lua API into idiomatic namespaces (#2248)
+  * Replace GTK tray icon with StatusNotifierItem over D-Bus (#2236)
+  * Replace libnotify with dbus desktop notifications (#2237)
+  * Show current settings when /log is called without arguments (#2240)
+  * Support global plugin search path (#2248)
+  * Support joining room with nick in JID (#2257)
+  * Surface Lua hook execution errors in UI console (#2248)</comment>
+    <requestid>1398683</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 18 10:18:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Apply orthanc-dcmtk-3.7.1.patch to /usr/src/orthanc in
+  orthanc-source package as well, fixing builds of downstream
+  plugins (orthanc-stl, orthanc-wsi).
+
+-------------------------------------------------------------------
+Mon Nov 16 12:49:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add orthanc-dcmtk-3.7.1.patch: search for dicom.dic in dcmtk-3.7.1
+  and dcmtk-3.7.2 directories.
+
+-------------------------------------------------------------------
 Mon Sep 21 13:02:04 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - check on SLE15 added for gcc13

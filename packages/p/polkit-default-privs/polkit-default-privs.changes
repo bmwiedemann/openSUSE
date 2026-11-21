@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:44:17 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1550+20261111.e9efe0a:
+  * profiles: add owly action (bsc#1288451)
+  * profiles: whitelist GNOME/resources kill pkexec action (bsc#1287627)
+
+-------------------------------------------------------------------
+Fri Oct 30 15:11:55 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20261030.04c49cd:
+  * profiles: add keepassxc self-auth action (bsc#1286643)
+
+-------------------------------------------------------------------
+Thu Oct 22 14:45:41 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1550+20261022.94b1369:
+  * profiles: added new systemd actions (bsc#1282497)
+
+-------------------------------------------------------------------
 Fri Oct 16 09:08:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 1550+20261016.b8e1631:

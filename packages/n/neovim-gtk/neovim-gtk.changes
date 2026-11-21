@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:38:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1+286 (git snapshot):
+  * README: document Neovim installation step for openSUSE
+  * Refresh vendored cargo dependencies
+
+-------------------------------------------------------------------
 Thu Oct  1 18:04:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.1+285 (git snapshot):

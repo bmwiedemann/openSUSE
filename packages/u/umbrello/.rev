@@ -1892,4 +1892,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383610</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>87e3104056d4dff9fd3bb4c92fc06d7b</srcmd5>
+    <version>26.08.3</version>
+    <time>1793990614</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395411</requestid>
+  </revision>
 </revisionlist>

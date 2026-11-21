@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Nov 16 20:34:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.3.0:
+  * Security fixes:
+    - CVE-2026-93843: resource leak in TLS 1.3 transform
+      setup
+    - CVE-2026-115491: memory leak on TLS 1.3 session ticket
+      without compatible PSK mode (DoS)
+    - CVE-2026-93831: TLS 1.2 resumption accepted TLS 1.3
+      tickets with all-zero master secret, allowing client
+      impersonation
+    - CVE-2026-116375: TLS 1.3 second ClientHello after HRR
+      could change SNI and bypass client-auth
+    - CVE-2026-115490: TLS client could complete TLS 1.3
+      handshake without secret keying material
+    - CVE-2026-116462: CRL name matching did not fully
+      normalize names
+    - CVE-2026-90469: remotely exploitable buffer overflow
+      in ECJPAKE serialization
+    - CVE-2026-90475: CRL append allocation failure could
+      invalidate trusted revocation state
+    - CVE-2026-93776: client-auth bypass via cross-SNI
+      session resumption
+    - CVE-2026-93844: use-after-free in TLS 1.2 clients on
+      renegotiation with variable buffer length
+    - CVE-2026-90471: accepted certificates using curves
+      disallowed by configured policy
+    - CVE-2026-93777: accepted CertificateVerify algorithms
+      outside configured sig_algs
+    - CVE-2026-115488: potential memory disclosure during
+      TLS 1.2 renegotiation on buffer resize
+    - CVE-2026-90470: URI SAN incorrectly matched against
+      DNS wildcards
+    - CVE-2026-115489: mbedtls_x509_dn_gets() could return
+      non-null-terminated output
+    - CVE-2026-50582: unbounded iteration count in
+      PKCS5/PKCS12
+    - CVE-2026-115493: Spectre-PHT bypass of hardware AES
+      and GCM
+    - CVE-2026-93833: Spectre-PHT side channel in cipher
+      module
+    - CVE-2026-93835: Spectre-PHT side channel in ECDSA
+    - CVE-2026-93845: secret-dependent branches in p256-m
+      P-256 arithmetic
+    - CVE-2026-93842: Spectre-PHT side channel in PSA ECC
+      operations
+    - CVE-2026-115492: AES timing side channel through
+      flash reads to ROM table
+  * Features:
+    - Add MBEDTLS_CONFIG_BASE_FILE, MBEDTLS_CONFIG_NAME,
+      MBEDTLS_CONFIG_SET and MBEDTLS_CONFIG_UNSET CMake
+      options for config customization
+    - Re-add mbedtls_x509_oid_get_md_alg() and
+      mbedtls_x509_get_sig_alg() to public API
+    - New session resumption context helpers
+      mbedtls_ssl_set_hs_session_cache_context() and
+      mbedtls_ssl_set_hs_session_ticket_context()
+  * Bugfixes:
+    - Reject oversized TLS 1.2 session IDs and ALPN
+      lengths when loading serialized contexts
+    - Accept basicConstraints with only pathLenConstraint
+      and empty AuthorityKeyIdentifier sequences
+    - Harden parsing of truncated ClientHello,
+      CertificateRequest and odd-length signature lists
+    - Fix cmake with ENABLE_PROGRAMS=OFF
+    - Many more fixes and improvements; see upstream's
+      release notes for the full list
+  * Packaging:
+    - TLS SONAME bump 23 -> 24: rename libmbedtls23 to
+      libmbedtls24 and update baselibs.conf
+    - Bundled TF-PSA-Crypto upgraded from 1.2.0 to 1.3.0
+
+-------------------------------------------------------------------
 Wed Jul  8 07:46:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.2.0:

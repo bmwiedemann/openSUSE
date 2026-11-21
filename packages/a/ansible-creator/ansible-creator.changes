@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov  5 18:53:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.11.0:
+  * fix: check every needed job in the scaffolded all_green gate in
+    #651
+  * fix(tests): split large test files to satisfy pylint C0302
+    (AAP-88893) in #663
+  * chore(deps): bump virtualenv from 21.7.13 to 21.14.9 in #664
+  * fix(security): update dependencies [SECURITY] in #662
+  * chore(deps): bump black from 26.5.1 to 26.10.1 in #665
+  * chore(deps): bump cairosvg from 2.9.0 to 2.9.1 in #659
+  * chore(deps): bump certifi from 2026.7.22 to 2026.10.18 in #661
+  * chore(deps): bump virtualenv from 21.14.9 to 21.14.13 in #666
+  * fix: lint for pylint 4.1.x and pydoclint 0.11.x (unblocks
+    Renovate) in #668
+  * fix(security): update dependencies [SECURITY] in #667
+  * chore(deps): update all dependencies pep621 in #656
+  * fix(security): resolve Dependabot alerts in uv.lock in #673
+
+-------------------------------------------------------------------
+Sat Oct 31 22:55:00 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to 26.10.0 (from 26.8.0):
+  * init: new decision_environment project type (#636)
+  * Role README examples name the generated role (#652)
+
+-------------------------------------------------------------------
 Wed Sep  9 05:12:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update to version 26.8.0 (from 26.3.3):

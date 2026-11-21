@@ -15,17 +15,6 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# Copyright (c) 2025 SUSE LLC and constributors
-# Copyright (c) Peter Linnell and 2010 SUSE LINUX Products GmbH, Nuernberg, Germany.
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
 
 
 %bcond_without podofo
@@ -39,7 +28,7 @@
 %endif
 
 Name:           scribus
-Version:        1.6.6
+Version:        1.6.7
 Release:        0
 Summary:        Page Layout and Desktop Publishing (DTP)
 License:        GPL-2.0-or-later
@@ -51,14 +40,6 @@ Source2:        scribus.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
-# PATCH-FIX-UPSTREAM 14a287fc1db2a44abfe1743260554447b31b4adf.patch -- Fix failure to build with poppler 26.05.0
-Patch1:         14a287fc1db2a44abfe1743260554447b31b4adf.patch
-# PATCH-FIX-UPSTREAM poppler 26.06.0 compat
-Patch2:         scribus_poppler_26_06_0.patch
-Patch3:         scribus_poppler_26_06_0_part2.patch
-Patch4:         scribus_poppler_26_06_0_part3.patch
-# PATCH-FIX-UPSTREAM -- poppler 26.07 compat
-Patch5:         0001-Attempt-to-fix-failure-to-build-with-poppler-26_07.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

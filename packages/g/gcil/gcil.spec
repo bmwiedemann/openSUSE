@@ -17,7 +17,7 @@
 
 
 Name:           gcil
-Version:        13.2.0
+Version:        13.3.0
 Release:        0
 Summary:        Launch .gitlab-ci.yml jobs locally
 License:        Apache-2.0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:51:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move documentation from library package (where it violates SLPP) to the -data
+  package.
+
+-------------------------------------------------------------------
 Wed Sep 30 16:43:55 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to configure.ac.

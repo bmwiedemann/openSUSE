@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 13:47:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.16
+  * qsolve/groebner code: More detailed warnings for PROJECT
+    vs. PROJECT.mat.
+  * Fix out of bounds vector access in circuits.
+
+-------------------------------------------------------------------
 Thu Mar  5 13:02:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.15

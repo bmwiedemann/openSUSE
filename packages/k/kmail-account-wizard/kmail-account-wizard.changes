@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:40:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * ManualConfigurationPage: Use binding and onActivated signal
+  * kolab resource was removed
+  * Fix socket types for pop3 resource creation
+  * Validate e-mail address on first screen
+  * Hide previous action in the last screen It duplicates the created resource after hitting next again
+  * PersonalDataPage: Use trigger function instead of signal
+  * SetupManager: emit signal when name or email change
+  * Add some tests for setting the incoming port/security
+  * accountconfiguration: Call setIncomingSecurityProtocol
+  * Fix port range
+  * Fix mem leak
+  * Fix default IMAP port
+  * Cleanup transports before createResource account configuration auto test
+  * Fix value in shouldHaveDefaultValues account configuration auto test
+  * Do not enable server side subscription by default
+  * ManualConfigurationPage: Fix enum values
+
+-------------------------------------------------------------------
 Wed Oct  7 07:03:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

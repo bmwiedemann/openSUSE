@@ -18,8 +18,10 @@
 
 %define sover 0
 %define libname libad9361
+# Snapshot of upstream master (2026-10-23), no tag since v0.4.0
+%define snapshot 7d8e7cadd07636cafb7a87d6bcdcc4dd4fcca9b3
 Name:           libad9361-iio
-Version:        0.4.0
+Version:        0.4.0+git20261023.7d8e7ca
 Release:        0
 Summary:        Library for AD9361
 # Legal-Review-Notice: LICENSE and COPYING.txt both carry the LGPL-2.1 text and
@@ -28,15 +30,14 @@ Summary:        Library for AD9361
 # LGPL-2.1-or-later. The GPL-3.0-only tag used before 0.4.0 was incorrect.
 License:        LGPL-2.1-or-later
 URL:            https://github.com/analogdevicesinc/libad9361-iio
-Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/analogdevicesinc/libad9361-iio/archive/%{snapshot}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         %{name}-lib-dir.patch
-Patch1:         %{name}-link-libm.patch
 BuildRequires:  cmake >= 3.5.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 # Upstream still targets the libiio 0.x API, libiio >= 1.0 is not supported yet
-BuildRequires:  pkgconfig(libiio)
+BuildRequires:  pkgconfig(libiio) > 0.90
 
 %description
 This is a simple library used for userspace, which manages multi-chip sync, on
@@ -65,7 +66,7 @@ BuildArch:      noarch
 Documentation for libad9361-iio library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-%{snapshot}
 
 %build
 %cmake

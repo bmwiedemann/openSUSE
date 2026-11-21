@@ -155,4 +155,12 @@ workaround was added, because the fix belongs in the test helper.</comment>
     <comment>Update to 0.7.0</comment>
     <requestid>1394424</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>509106a7214eef652e857df4368cfa24</srcmd5>
+    <version>0.7.1</version>
+    <time>1794591131</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.7.1: rmcp 3.9.0 for RUSTSEC-2026-0462, named 410 preflight failures, re-vendored.</comment>
+    <requestid>1397083</requestid>
+  </revision>
 </revisionlist>

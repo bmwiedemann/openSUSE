@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov  8 11:48:35 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add big-openssl-i586.patch: fix 64-bit integer conversions and
+  bitwise operations with OpenSSL on 32-bit systems.
+
+-------------------------------------------------------------------
+Sun Nov  8 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 6.2.6 (including 6.2.4):
+  * Improve function and type analysis, calling conventions, DWARF,
+    and ARM, MIPS, V850 and other architecture support
+  * Improve binary parsing, disassembly, debugging and performance
+  * Fix memory safety issues and bound analysis of malformed inputs
+  * Update bundled SDB, QuickJS and test fixtures
+- Drop test-cc-default.patch: fixed upstream.
+- Add meson-pcap.patch: build and register the PCAP plugin with
+  Meson.
+- Enable TLS and big-number support using system OpenSSL.
+- Enable the libuv server integration.
+
+-------------------------------------------------------------------
 Sun Sep 13 12:03:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.2.2:
@@ -68,6 +89,11 @@ Fri Jun 26 13:36:50 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
   vulnerability in the gdbr_pids_list() function within the GDB
   client core that allows remote attackers to cause a denial of
   service or potentially execute arbitrary code
+- CVE-2026-14757 (boo#1270445): integer overflow in
+  core_anal_bytes; upstream affected through 6.1.6, fixed in 6.1.8
+- CVE-2026-14758 (boo#1270447): integer overflow in the hexpairs
+  parser; upstream affected through 6.1.6, fixed in 6.1.8 by
+  84e773986e7e5bb30453a9384f498ec0ccc9d0a9
 - Drop CVE-2026-8695.patch: upstreamed in 6.1.6
 
 -------------------------------------------------------------------

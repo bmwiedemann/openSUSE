@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * Export the QML plugin target for static builds
+  * Make KI18nLocaleDataQmlPlugin linkable in static builds of dependants
+  * Use std::setlocale instead of setlocale
+  * KF6I18nQml: place headers in separate include dir KI18nQml, not KI18n
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

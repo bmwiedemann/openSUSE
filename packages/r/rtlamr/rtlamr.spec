@@ -18,7 +18,7 @@
 
 
 Name:           rtlamr
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        SDR receiver for Itron ERT compatible smart meters
 # Legal-Review-Notice: aggregate licence of the statically linked binary.

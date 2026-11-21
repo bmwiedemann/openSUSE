@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:14:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.2:
+  * New checks: shlib-policy-wrong-library-version (E),
+    deprecated-rc-symlink (W), missing-sysusers-provider (W),
+    changelog-not-in-sequence (E), no-%changelog-section (E),
+    no-copyright-comment (W) and patch-not-defined (W)
+  * SystemdInstallCheck delegates install findings to preset
+    policy; FilesCheck folds fillup-usage-discouraged into
+    sysconfig-fillup-usage and resolves manpage .so targets
+    against Required packages
+  * BinariesCheck precision fixes (unit-binary daemon arm,
+    stack-guard quieting, undefined-symbol system fallback);
+    TagsCheck spelling-error vocabulary widened and new
+    devel-dependency/self-obsoletion exemptions
+  * SpecCheck flags suse_version 1320 as obsolete;
+    python-egg-info-distutils-style downgraded to Warning
+  * Refresh vendored distro configs and upstream whitelist
+    stanzas; bump zip to 9.4.1, flate2 to 1.1.11, toml to 1.2.1
+
+-------------------------------------------------------------------
+Thu Nov  5 16:21:54 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Version the rpmlint-mini Provides (2.10.0+git20261020.513f17e8)
+
+-------------------------------------------------------------------
+Wed Nov  4 18:00:11 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Use appstream-glib package dependency instead of the %{_bindir}/appstream-util file dependency
+
+-------------------------------------------------------------------
+Tue Nov  3 18:35:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.1:
+  * New defect-pattern check class reporting legacy crypto (MD5,
+    DES, RC4), weak PRNG, unbounded string copy/format, shell
+    execution and legacy network API calls in binaries
+  * New checks: corrupt/truncated Java class headers, bidi controls
+    in source archives, fillup-template without fillup call,
+    optflags-not-applied hardening absence, VCS metadata and
+    git-lfs pointers in source archives
+  * SpecCheck flags subpackages without files, unescaped macros in
+    comments and unfailable %check commands; TagsCheck enforces
+    epoch-tag and reports file-declared licences missing from the
+    License tag
+  * Refresh vendored distro configs to upstream 2026-11-01 and SPDX
+    IDs to 8791eda; bump zip to 9.2.0 (ZipArchive blow-up on
+    crafted archives), zstd 0.14.3/zstd-safe 8.2.0/zstd-sys 2.1.2
+    (RUSTSEC-2026-0391/0398/0403/0410), base64 0.23.1,
+    fancy-regex 0.20.0
+  * Many precision fixes cutting false positives across Files,
+    Binaries, Tags, Post, Spec and Systemd checks
+- Require /usr/bin/appstream-util instead of appstream-glib
+  (only the binary is consumed, as a subprocess) and capitalize
+  the rpmlint-compat summary: silences two rpmlint errors the
+  current linter reports on the unchanged lines
+
+-------------------------------------------------------------------
 Sun Oct 25 20:38:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.0:
@@ -265,3 +323,4 @@ Thu Oct  9 12:00:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Add Requires: dash for bin-sh-syntax-error check
 - Restore package after branch project wipe (home:scarabeus_iv:branches:openSUSE:Factory)
+

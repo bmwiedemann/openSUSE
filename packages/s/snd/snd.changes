@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Nov  7 10:53:40 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 26.8:
+  * Changes for big-endian machines
+  * 32-bit gmp support
+  * Checked: sbcl-2.6.9
+- Modernize spec file:
+  * Drop obsolete Group tag
+  * Update Source0 URL to https
+  * Switch to pkgconfig() BuildRequires
+  * Use %autosetup
+
+-------------------------------------------------------------------
 Sun Jun 28 18:53:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.4:

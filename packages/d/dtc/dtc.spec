@@ -18,7 +18,7 @@
 
 %define         sover 1
 Name:           dtc
-Version:        1.7.2
+Version:        1.8.1
 Release:        0
 Summary:        Device-tree compiler
 License:        GPL-2.0-or-later
@@ -28,13 +28,11 @@ Source1:        https://mirrors.edge.kernel.org/pub/software/utils/dtc/dtc-%{ver
 Source20:       baselibs.conf
 # From http://gibson.dropbear.id.au/
 Source21:       dtc.keyring
-# PATCH-FIX-UPSTREAM - https://github.com/dgibson/dtc/commit/ce1d858
-Patch1:         ce1d858.patch
-# PATCH-FIX-UPSTREAM - https://github.com/dgibson/dtc/commit/9a1c801a1a3c102bf95c5339c9e985b26b823a21
-Patch2:         https://github.com/dgibson/dtc/commit/9a1c801a1a3c102bf95c5339c9e985b26b823a21.patch
+Patch1:         fix-32bitbuild.patch
 BuildRequires:  bison
 BuildRequires:  flex
-BuildRequires:  libyaml-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(yaml-0.1)
 
 %description
 PowerPC kernels are moving towards requiring a small Open

@@ -7,4 +7,16 @@
     <comment>Required by perl-Plack-Middleware-Session </comment>
     <requestid>1294778</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ecf625268ea60de8902f1c583d0f421</srcmd5>
+    <version>0.8.0</version>
+    <time>1794162144</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.8.0 (0.008)
+   see /usr/share/doc/packages/perl-Crypt-SysRandom/Changes
+  0.008     2026-11-06 17:02:33+01:00 Europe/Brussels
+            - Add random_hex, random_base64, random_base64url and
+            random_uuid functions</comment>
+    <requestid>1396141</requestid>
+  </revision>
 </revisionlist>

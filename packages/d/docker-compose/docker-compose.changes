@@ -1,4 +1,328 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:56:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.8.0:
+  * What's Changed
+    - Scheduled jobs are now supported. A job is a one-shot unit of
+      work declared in the top-level jobs: element of your Compose
+      file, run on demand or on a schedule.
+      Scheduling needs Docker Engine 29.10 or later with the jobs
+      extension enabled (it is off by default: dockerd
+      --extension-enable org.mobyproject.jobs.v0). Manual jobs keep
+      working on any engine, and projects that declare no jobs are
+      unaffected.
+
+        services:
+          db:
+            image: postgres
+        jobs:
+          backup:
+            image: backup-tool
+            depends_on: [db]
+            triggers:
+              schedule:
+                - cron: "0 3 * * *"
+
+      docker compose up (or create) registers the scheduled jobs
+      with the engine, which fires them on its own clock; docker
+      compose down removes them. On an engine without jobs support,
+      up refuses a project with scheduled jobs before creating
+      anything.
+      docker compose run backup triggers a job right away: its
+      dependencies start first, its logs are streamed and its exit
+      code is returned. On an engine without jobs support, it runs
+      as a one-off service with a warning, as before.
+  * Improvements
+    - Jobs
+      - Jobs: add support for one-shot and scheduled jobs in #14155
+
+-------------------------------------------------------------------
+Wed Nov 18 05:46:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.2:
+  * Improvements
+    - Feat(up): stream the logs while --wait waits for the services
+      in #14454
+  * Fixes
+    - Fix(oci): tell a null "manifests" from a list, and report a
+      host failure as such in #14491
+    - Fix(config): skip pure resource provider services in config
+      --images in #14332
+    - Fix(down): keep volumes other services use on down -v with
+      services in #14449
+    - Fix(scale): reject empty service name in --scale flag in
+      #14481
+    - Fix: surface a provider-backed service's scale over its
+      control channel in #14298
+    - Fix(dry-run): skip lifecycle hooks instead of failing on exec
+      attach in #14504
+    - Fix(progress): stop inverting success in EventProcessor.Done
+      in #14503
+    - Fix: COMPOSE_REMOVE_ORPHANS resolves identically for every
+      command carrying the flag in #14139
+    - Fix(up): recreate a stopped container whose network was
+      removed in #14519
+    - Fix(pre_start): name the hook when its container cannot start
+      in #14520
+  * Internal
+    - Chore: address the review notes left in #14469
+    - Fix(relay): build the relay image like the compose binary in
+      #14497
+    - Refactor(compose): move publish and transform to
+      internal/publish in #14409
+    - Refactor(compose): move the plan types to internal/planning
+      in #14408
+    - Refactor(compose): move the image build to internal/build in
+      #14411
+    - Refactor(compose): move the develop.watch loop to
+      internal/devwatch in #14412
+    - Refactor(e2e): move the e2e framework and tests out of pkg/
+      to internal/e2e in #14404
+    - Docs(agents): add an architecture map of the non-guessable
+      facts in #14134
+    - Refactor(publish): pin the backend wiring, share the digest
+      resolver in #14501
+    - Api: document the zero values, validate the recreate policy,
+      type the not-running error in #14417
+  * Dependencies
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.39.1 to 4.39.3 in #14492
+    - Build(deps): bump github.com/spf13/pflag from 1.0.10 to 1.1.0
+      in #14470
+    - Build(deps): bump softprops/action-gh-release from 3.0.3 to
+      3.0.4 in #14495
+    - Build(deps): bump the docker-actions group with 2 updates in
+      #14494
+    - Build(deps): bump golang.org/x/sync from 0.24.0 to 0.25.0 in
+      #14484
+    - Revert "build(deps): bump github.com/spf13/pflag from 1.0.10
+      to 1.1.0" in #14496
+    - Build(deps): bump peter-evans/create-pull-request from 8.1.1
+      to 8.1.2 in #14500
+    - Chore(deps): github.com/DefangLabs/secret-detector v1.1.0 in
+      #14512
+    - Build(deps): bump github.com/moby/moby/client from 0.6.2 to
+      0.6.3 in #14509
+    - Build(deps): bump golang.org/x/sys from 0.49.0 to 0.50.0 in
+      #14510
+    - Build(deps): bump github.com/docker/cli to v29.10.0 in #14514
+    - Build(deps): bump compose-go to v2.17.0 in #14518
+
+-------------------------------------------------------------------
+Thu Nov 12 05:33:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.1:
+  * Fixes
+    - fix(oci): verify the manifests fetched against their digest,
+      and take only complete cache entries in #14490
+    - fix(oci): keep the cache of extracted projects consistent on
+      interruption and concurrent access in #14462
+    - fix(git): check a commit out aside, and keep the cache of
+      remote resources in a directory for each kind in #14475
+    - fix(compose): report network and volume progress once, on
+      their own row in #14467
+    - fix(config): warn about ignored uid/gid/mode at creation, not
+      at load in #14299
+    - fix(down): preserve images outside selected services in
+      #14458
+    - fix(events): treat io.EOF as a normal end of a bounded stream
+      in #14444
+  * Internal
+    - refactor(compose): move logs and attach to internal/logstream
+      in #14407
+    - refactor(compose): move images and image pruning to
+      internal/images in #14406
+    - refactor(compose): move the dependency graph to
+      internal/depgraph in #14410
+    - test(compose): lock the behaviors of the start path now
+      carried in #14403
+    - test(e2e): migrate the first legacy icmd tests to scenarios
+      in #14414
+    - Fix monitor test fixture type in #14455
+    - ci: install the e2e engine with docker/setup-docker-action in
+      #14456
+  * Bumps
+    - Update to go1.27.4 in #14489
+    - update Go to 1.27 in #14486
+    - update to golangci-lint v2.15.0 (compatible with go1.27) in
+      #14487
+    - build(deps): bump go.yaml.in/yaml/v4 to v4.0.0 in #14468
+    - build(deps): bump google.golang.org/grpc from 1.84.0 to
+      1.85.0 in #14445
+    - build(deps): bump github.com/docker/cli from
+      29.9.2+incompatible to 29.9.3+incompatible in #14451
+
+-------------------------------------------------------------------
+Wed Nov 04 09:56:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.0:
+  * Improvements
+    - Execution plan
+      - Feat: detached up runs on a single plan in #14290
+      - Feat(up): interactive up runs on a single plan in #14305
+      - Feat: scale and watch rebuild use the unified plan in
+        #14291
+      - Feat: compose start builds a start-only plan in #14296
+    - Commands
+      - Feat(run): --no-recreate reuses existing dependencies as-is
+        in #14144
+      - Feat(push): add --ignore-missing to skip images not
+        available locally in #14341
+      - Feat(push): deprecate --ignore-push-failures in favor of
+        --ignore-missing in #14354
+      - Feat(stats): add --all-projects and --aggregate flags in
+        #14337
+      - Feat(network): let a service opt out of its name as a
+        network alias in #14342
+      - Pass --parallel limit to bake as --jobs in #14352
+  * Other
+    - Feat: support the umask service attribute in #14367
+    - Use the Docker Desktop Hub session for Docker Hub registry
+      credentials in #14295
+  * Fixes
+    - Fix(bridge): reject --dry-run on bridge commands in #14307
+    - Fix(up): don't report a cancelled or expired wait on an
+      optional dependency as skipped in #14309
+    - Fix(logs): relay each line of a restarted container exactly
+      once in #14314
+    - Fix(bake): grant permissions for configured build inputs in
+      #14325
+    - Fix(watch): skip sync+exec triggers on bind-mounted paths in
+      #14328
+    - Fix: pre_start hooks receive the service env_file and
+      environment in #14293
+    - Fix: keep the image pull of compose run inside the run
+      progress block in #14294
+    - Fix: do not execute providers and models in dry-run mode in
+      #14334
+    - Fix(build): read bake's stderr to the end before waiting for
+      it in #14335
+    - Fix(executor): a wait node holds no --parallel slot while it
+      polls in #14303
+    - Fix(pre_start): capture a hook's output by opening its log
+      stream once started in #14353
+    - Fix(run): keep a recreated dependency's anonymous volumes in
+      #14358
+    - Fix(watch): ignore .git at any depth inside the watched path
+      in #14363
+    - Fix(executor): report the services a failed start interrupts
+      in #14376
+    - Fix(monitor): subscribe to events since before the initial
+      listing in #14304
+    - Fix(compose): skip the lowered-environment allocation in
+      envResolverWithCase in #14390
+    - Fix(projectloader): unescape service names in unsupported
+      attribute warnings in #14380
+    - Fix(down): keep a volume the project does not own on down -v
+      in #14374
+    - Fix(start): give a started use_api_socket service its config
+      file in #14393
+    - Fix(up): honor -t when an attached up stops the application
+      in #14395
+    - Fix(up): check a depends_on condition before the first poll
+      tick in #14385
+    - Fix(watch): recognize bind-mounted paths starting with two
+      dots in #14425
+    - Fix(use_api_socket): harden the credentials handed to the
+      service in #14402
+  * Internal
+    - Executor: run start-phase operations (epic #14081, lot 1) in
+      #14274
+    - Api: DownOptions.Images becomes a typed ImagePruneMode,
+      validated upfront in #14149
+    - Api: reject incompatible Up options with a typed error in
+      #14306
+    - Refactor: split create() into preparePlan + execute in #14289
+    - Refactor(executor): let a caller drive the create and start
+      phases itself in #14302
+    - Refactor(api): split Compose into focused interfaces in
+      #14322
+    - Refactor(compose): move mutable package-level state into
+      composeService in #14323
+    - Refactor(up): inject the navigation menu instead of importing
+      cmd/formatter in #14324
+    - Refactor: extract inspect and projectloader from pkg/compose
+      into internal packages in #14331
+    - Refactor: move the provider relay and plugin execution to
+      internal/relay and internal/provider in #14333
+    - Refactor(executor): hand the hook-log listener to runStart
+      only in #14392
+    - Refactor: move exec, cp, export and commit to
+      internal/containerops in #14397
+    - Refactor: move the config-hash helpers to internal/confighash
+      in #14405
+    - Refactor: add internal/concurrency for the bounded errgroup
+      helpers in #14422
+    - Refactor: remove the helpers duplicated across pkg/compose
+      and the internal packages in #14424
+    - Docs(compose): drop the comments that still describe the
+      deleted imperative start path in #14398
+    - Docs(compose): correct what the startMx comment says about
+      #12846 in #14399
+    - Refactor(compose): drop the timeout parameter of
+      waitDependencies in #14400
+    - Refactor(compose): move the dependency wait helpers to their
+      own file in #14401
+    - Ci: run unit tests with -race, pin test tooling, add a ci-ok
+      aggregate check in #14321
+    - Go.mod: keep go patch version at lowest possible in #14347
+    - Build(lint): bump golangci-lint to v2.15.0 and fix its new
+      findings in #14418
+    - Test(e2e): lock the behavior of the foreground up in #14300
+    - Test(formatter): keep escape sequences out of the go test
+      output in #14351
+    - Docs: remove broken CONTRIBUTING.md link in #14251
+  * Dependencies
+    - Build(deps): golang.org/x/net v0.60.0 (security) in #14316
+    - Chore(deps): bump github.com/containerd/containerd/v2 v2.4.2
+      (security) in #14339
+    - Update to go1.26.9 (security) in #14315
+    - Update to go1.26.10 (security) in #14366
+    - Build(deps): bump github.com/mattn/go-shellwords from 1.0.15
+      to 1.0.16 in #14320
+    - Build(deps): bump github.com/docker/cli from
+      29.8.2+incompatible to 29.9.0+incompatible in #14319
+    - Build(deps): bump github.com/moby/moby/client from 0.6.1 to
+      0.6.2 in #14318
+    - Build(deps): bump github.com/docker/secrets-engine/x from
+      0.8.2 to 0.8.3 in #14301
+    - Build(deps): bump secrets-engine client to v0.2.0 in #14327
+    - Build(deps): bump secrets-engine/client to v0.2.2 in #14361
+    - Build(deps): bump github.com/Microsoft/go-winio from
+      0.6.3-0.20251027160822-ad3df93bed29 to 0.6.3 in #14330
+    - Build(deps): bump golang.org/x/sync from 0.23.0 to 0.24.0 in
+      #14329
+    - Build(deps): bump github.com/mattn/go-runewidth from 0.0.30
+      to 0.0.31 in #14348
+    - Build(deps): bump github.com/docker/cli from
+      29.9.0+incompatible to 29.9.1+incompatible in #14349
+    - Build(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2
+      in #14343
+    - Build(deps): bump actions/download-artifact from 8.0.1 to
+      8.0.2 in #14344
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.38.2 to 4.38.3 in #14350
+    - Build(deps): bump golang.org/x/sys from 0.48.0 to 0.49.0 in
+      #14338
+    - Build(deps): bump ossf/scorecard-action from 2.4.4 to 2.5.0
+      in #14360
+    - Build(deps): bump docker/bake-action from 7.4.0 to 7.5.0 in
+      the docker-actions group in #14371
+    - Build(deps): bump github.com/docker/cli from
+      29.9.1+incompatible to 29.9.2+incompatible in #14369
+    - Build(deps): bump github.com/Microsoft/go-winio from 0.6.3 to
+      0.6.4 in #14368
+    - Build(deps): bump the docker-actions group with 2 updates in
+      #14389
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.38.3 to 4.39.0 in #14377
+    - Build(deps): bump
+      docker/github-builder/.github/workflows/bake.yml from 1.18.0
+      to 1.18.1 in the docker-actions group in #14415
+    - Build(deps): bump github/codeql-action/upload-sarif from
+      4.39.0 to 4.39.1 in #14416
+
+-------------------------------------------------------------------
 Fri Oct 23 10:58:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.6.1:

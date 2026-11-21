@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-panel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-panel
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
 Summary:        LXQt desktop panel
 License:        LGPL-2.1-or-later
@@ -33,7 +33,7 @@ Patch1:         0002-panel-conf-branding.patch
 #https://github.com/lxqt/lxqt-panel/pull/2161
 Patch2:         0003-use-wlroots-backend-with-unknown-compositors.patch
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -41,26 +41,25 @@ BuildRequires:  git-core
 BuildRequires:  libsensors4-devel
 BuildRequires:  pkgconfig
 
-BuildRequires:  cmake(dbusmenu-lxqt)
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
-BuildRequires:  cmake(lxqt) >= 2.1.0
-BuildRequires:  cmake(lxqt-globalkeys-ui)
-BuildRequires:  cmake(lxqt2-build-tools)
-BuildRequires:  cmake(lxqt-menu-data) >= 2.1.0
 BuildRequires:  cmake(Qt6Concurrent)
 BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6GuiPrivate) >= 6.3.5
+BuildRequires:  cmake(Qt6GuiPrivate) >= 6.10.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(Qt6WaylandClientPrivate)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  cmake(dbusmenu-lxqt)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt-globalkeys-ui)
+BuildRequires:  cmake(lxqt-menu-data) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(sysstat-qt6)
 
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(libmenu-cache)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libstatgrab)
 BuildRequires:  pkgconfig(x11)
@@ -72,14 +71,12 @@ BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
-BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbcommon-x11)
 BuildRequires:  pkgconfig(xtst)
 
 Requires:       %{name}-branding = %{version}-%{release}
 Requires:       lxqt-menu-data
-Requires:       menu-cache
 Recommends:     %{name}-lang = %{version}-%{release}
 
 %description
@@ -152,6 +149,7 @@ desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}.desktop
 %dir %{_datadir}/lxqt
 %dir %{_datadir}/lxqt/translations
 %dir %{_datadir}/lxqt/translations/%{name}
+%dir %{_datadir}/lxqt/translations/%{name}/backlight
 %dir %{_datadir}/lxqt/translations/%{name}/colorpicker
 %dir %{_datadir}/lxqt/translations/%{name}/cpuload
 %dir %{_datadir}/lxqt/translations/%{name}/customcommand

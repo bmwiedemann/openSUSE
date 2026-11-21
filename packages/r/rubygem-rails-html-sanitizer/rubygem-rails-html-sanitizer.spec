@@ -16,19 +16,25 @@
 #
 
 
+#
+# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
+# All sections marked as MANUAL, license headers, summaries and descriptions
+# can be maintained in that file. Please consult this file before editing any
+# of those fields
+#
+
 Name:           rubygem-rails-html-sanitizer
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 %define mod_name rails-html-sanitizer
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  %{ruby >= 2.7.0}
+BuildRequires:  %{ruby >= 3.2.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/rails/rails-html-sanitizer
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-# This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 Source1:        gem2rpm.yml
-Summary:        This gem is responsible to sanitize HTML fragments in Rails
+Summary:        HTML sanitization to Rails applications (part of Rails)
 License:        MIT
 
 %description

@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Fri Nov 13 07:41:40 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 1.4.44:
+  * Implement AAD authentication for RDP !2715 *@gentoo90*
+  * [REM-3499] Fix bug with pre and post connect commands !2733
+    *@myheroyuki*
+  * [REM-3130] avoid unwanted connections (sending statistics even
+    when the 'Disable anonymous statistics' option is chosen) !2705
+    *@CalmarBen*
+  * [REM-3485] Remove extra tooltip message from security preferences
+    !2722 *@myheroyuki*
+  * [REM-3497] improve floating toolbar delay !2735 *@myheroyuki*
+  * Add Kerberos config Snap Layout !2736 *@craig.rylance*
+  * Add support for webauthn/FIDO2 passthrough !2737 *@bluca*
+  * Support Azure Viartual Desktop (RDPW) !2734 *@gentoo90*
+  * move FreeRDP call into ifdef !2739 *@myheroyuki*
+  * [REM-3430] Allow connecting to all connections within a subgroup
+    !2679 *@myheroyuki*
+  * [REM-3472] Allow editing a connection's setting while within the
+    connection window !2714 *@myheroyuki*
+  * [REM-3462] Strip edit texts when pasted from clipboard !2708
+    *@CalmarBen*
+  * [REM-3474] Remove any spaces from server field when saving a
+    connection profile !2718 *@myheroyuki*
+  * RDP: take username and domain for AAD login from remmina file
+    !2740 *@gentoo90*
+  * [REM-3471] Add credential menu option to toolbar !2720
+    *@myheroyuki*
+  * [REM-3271] remmina status icon on some desktop environments !2695
+    *@CalmarBen*
+  * rdp: add optional sso-mib identity broker support for Azure AD
+    !2738 *@bluca*
+  * Toggle viewonly mode icon when using keyboard shortcut !2743
+    *@rafarsa6363*
+  * Fix segfault when exporting ssh tunnel settings !2744
+    *@rafarsa6363*
+  * Fix SSH terminal relay buffer reads !2747 *@EL_File4138*
+  * fix compiler warnings !2751 *@CalmarBen*
+  * [ui] floating bar pin button state !2752 *@CalmarBen*
+  * rdp: fix RDPDR_DEVICE creation !2756 *@akallabeth*
+  * rdp: fix SIGSEGV when XOpenDisplay returns NULL on Wayland !2757
+    *@ironmikechw*
+  * Guard a stale widget dereference !2759 *@IFixWhenIHaveTime*
+  * [REM-3447] resolve race condition when closing ssh tunnels !2758
+    *@myheroyuki*
+  * Follow the system light/dark theme !2764 *@vinceecniv*
+  * Check for existence of all VNC X509 auth files before trying
+    connection !2765 *@rafarsa6363*
+  * Add file chooser options in Advanced tab for VNC X509 auth !2767
+    *@rafarsa6363*
+  * Fix rdp smartcard pin authentication failure !2771 *@quanchobi*
+  * [REM-3289] Populate ssh tunnel from existing ssh profile !2772
+    *@myheroyuki*
+  * [REM-3511] desktop icon not visible in snap installation !2753
+    *@CalmarBen*
+  * Rdp: fix two clipboard buffer leaks !2776 *@ElCruncharino*
+  * Rdp: pad redraw area by 1px on HiDPI displays to fix stale
+    artifacts !2778 *@ElCruncharino*
+  * Fix issue with ctrl-c not always stopping Remmina !2779
+    *@myheroyuki*
+  * Fix scalemode DYNRES being forced when it is not available. Fixes
+    keep aspect... !2766 *@Skylark13*
+  * [REM-3565] Add option to invert mouse scrolling !2780
+    *@myheroyuki*
+  * feat: [RDP] Refactor multimonitor implementation for Wayland
+    !2741 *@CalmarBen*
+  * feat: Multimonitoring on SPICE !2742 *@CalmarBen*
+  * [REM-3568] Fix: avahi discovery is not updating applet menu !2783
+    *@CalmarBen*
+  * rdp: allocate FreeRDP 3 smartcard devices via add_device_channel
+    !2787 *@thelonghop*
+  * RDP: use the redirectsmartcards key when importing and exporting
+    .rdp files !2788 *@christian.price.2*
+  * Flatpak: pass WITH_FREERDP3 to cmake in flatpak-build.sh !2789
+    *@christian.price.2*
+  * [REM-3567] Memory grows unboundedly across connect/disconnect
+    cycles (glibc arena proliferation) !2782 *@CalmarBen*
+  * Flatpak: update pcsc-lite to 2.4.1 and drop the protocol patch
+    !2790 *@christian.price.2*
+  * Flatpak: update FreeRDP to 3.31.1 and build uriparser !2791
+    *@christian.price.2*
+  * Restore remote desktop focus after closing authentication panels
+    !2794 *@ryandunton*
+  * RDP: Fix trailing space error when parsing !2798 *@aokblast*
+  * [REM-3423] add option to detach tabs in Wayland sessions !2775
+    *@myheroyuki*
+  * snap: use FreeRDP 3.31.1 !2792 *@CalmarBen*
+  * Fix races during SSH shell exit cleanup !2804 *@Cris70*
+  * Fix “viewonly” button disabling !2802 *@Startrex*
+  * [REM-3592] Add layout splitting to ssh connections !2805
+    *@myheroyuki*
+  * [REM-3533] Fix keyboard ungrab on background disconnect !2806
+    *@myheroyuki*
+  * [REM-3475] Fix crash on reconnecting ssh sessions !2807
+    *@myheroyuki*
+  * RDP: Name registered clipboard image formats in client format
+    list !2809 *@hoangv.pham0803*
+  * Avoid secret lookups and needless profile scans when listing and
+    deleting profiles !2810 *@draggeta*
+  * Rdp: send and receive files through the clipboard !2777
+    *@ElCruncharino*
+  * [REM-3603] Add per-profile data storage for www plugin !2812
+    *@myheroyuki*
+  * Fix SSH/SFTP tools connecting to the gateway instead of the
+    destination !2814 *@Cris70*
+  * [REM-3616] Track RDP cursor state !2813 *@myheroyuki*
+  * [REM-3617] Fix crash after resume from suspend !2815
+    *@myheroyuki*
+  * add more details to the status bar !2816 *@myheroyuki*
+  * Refactor SSH shell channel/fd bookkeeping from global shared
+    state to per-shell owned state for thread-safe multi-session
+    operation !2795 *@dragonbay*
+  * [REM-3624] Close SSH tunnels before freeing protocol widget priv
+    !2820 *@kaaposc*
+  * Fix two multi monitor fullscreen regressions (#3628, #3629) !2819
+    *@dsbert*
+  * Fix broken behavior when leaving fullscreen mode via keyboard
+    shortcut !2821 *@myheroyuki*
+  * Update snap to use core26 as the base. Also fix bug found when
+    running the snap install !2823 *@myheroyuki*
+  * Update docker files for Ubuntu 26 !2824 *@myheroyuki*
+
+-------------------------------------------------------------------
 Mon May  4 15:51:24 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Link against FreeRDP 3 again on Leap 16. This matches the

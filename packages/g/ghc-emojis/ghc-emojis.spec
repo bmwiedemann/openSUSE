@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Conversion between emoji characters and their names
 License:        BSD-3-Clause

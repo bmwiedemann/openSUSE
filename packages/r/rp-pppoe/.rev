@@ -278,4 +278,13 @@
     <comment>- Fixed status script pppoe-status and systemd unit file.</comment>
     <requestid>1238098</requestid>
   </revision>
+  <revision rev="34" vrev="5">
+    <srcmd5>7742f3ffa5955398f07073822dbb8dbe</srcmd5>
+    <version>4.0</version>
+    <time>1794816385</time>
+    <user>anag_factory</user>
+    <comment>- Changed pppoe-status to fix pppoe-status script and long restart.
+- Changed shebangs to #!/usr/bin/sh or #!/usr/bin/bash fo all scripts.</comment>
+    <requestid>1397470</requestid>
+  </revision>
 </revisionlist>

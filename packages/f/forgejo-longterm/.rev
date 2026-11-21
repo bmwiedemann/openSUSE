@@ -254,4 +254,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1384773</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d2aefdcad920c83aa8905c30018d42d9</srcmd5>
+    <version>15.0.11</version>
+    <time>1794591355</time>
+    <user>anag_factory</user>
+    <comment>Update to 15.0.11 (forwarded request 1393132 from computersalat)</comment>
+    <requestid>1397308</requestid>
+  </revision>
 </revisionlist>

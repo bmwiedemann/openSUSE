@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:20:01 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- When stripping WhiteoutPrefix, make sure the result is a proper basename
+  CVE-2026-79699, bsc#1280698
+  + 0001-CVE-2026-79699-archive-When-stripping-WhiteoutPrefix.patch
+- Don't panic on empty ciphertext
+  CVE-2026-116585, bsc#1288278
+  + 0002-CVE-2026-116585-cipher-cbc_hmac-don-t-panic-on-empty.patch
+- limit stack depth
+  CVE-2026-116586, bsc#1288278
+  + 0003-CVE-2026-116586-json-limit-stack-depth.patch
+- bound RSA modulus size and reject private keys in JWK/EPK headers
+  CVE-2026-116587, bsc#1288278
+  + 0004-CVE-2026-116587-jwk-bound-RSA-modulus-size-and-rejec.patch
+
+-------------------------------------------------------------------
 Mon Aug 17 15:24:06 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.24.0:

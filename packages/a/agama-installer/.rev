@@ -802,4 +802,26 @@
  - Use license.txt for English in license.opensuse</comment>
     <requestid>1387138</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>1d57ddadc1a1486096b4a5406059f86d</srcmd5>
+    <version>unknown</version>
+    <time>1793700922</time>
+    <user>dimstar_suse</user>
+    <comment>Disable screensaver in Agama installer</comment>
+  </revision>
+  <revision rev="45" vrev="11">
+    <srcmd5>43f6284cf3dec9b81f1ee8a65e1d6694</srcmd5>
+    <version>25.0.0</version>
+    <time>1793706674</time>
+    <user>dimstar_suse</user>
+    <comment>osc copypac from project:openSUSE:Factory package:agama-installer revision:43, using expand</comment>
+  </revision>
+  <revision rev="46" vrev="12">
+    <srcmd5>8fc010c30976b685c54aaa6b7b522829</srcmd5>
+    <version>25.0.0</version>
+    <time>1793899718</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1395000</requestid>
+  </revision>
 </revisionlist>

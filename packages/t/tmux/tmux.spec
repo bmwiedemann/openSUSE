@@ -26,7 +26,7 @@ Group:          System/Console
 URL:            https://tmux.github.io/
 Source0:        https://github.com/tmux/tmux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        bash_completion_tmux.sh
-# PATCH-FIX-OPENSUSE crrodriguez@opensuse.org -- Use /run/tmux instead of /tmp as the default socket path, this add some robustness against accidental deletion via systemd-tmpfiles-clean, tmpwatch, or similar
+# PATCH-FIX-OPENSUSE crrodriguez@opensuse.org -- Use /run/tmux instead of /tmp as the default socket path, this adds some robustness against accidental deletion via systemd-tmpfiles-clean, tmpwatch, or similar
 Patch0:         tmux-socket-path.patch
 BuildRequires:  bison
 BuildRequires:  pkgconfig
@@ -46,7 +46,7 @@ background, then later reattached. tmux is intended to be a modern,
 BSD-licensed alternative to programs such as GNU screen.
 
 tmux uses a client-server model. The server holds multiple sessions and each
-window is a independent entity which may be freely linked to multiple sessions,
+window is an independent entity which may be freely linked to multiple sessions,
 moved between sessions and otherwise manipulated. Each session may be attached
 to (display and accept keyboard input from) multiple clients.
 

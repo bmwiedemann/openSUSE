@@ -7,4 +7,12 @@
     <comment>Re-add molecule-plugins, the driver plugins for molecule (already in Factory). Version 26.10.12 builds on Tumbleweed again and ships the driver playbooks.</comment>
     <requestid>1393234</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f0ec87fcf0a75c2cedede3c8aac9fbf6</srcmd5>
+    <version>26.11.0</version>
+    <time>1794828488</time>
+    <user>anag_factory</user>
+    <comment>Update to 26.11.0</comment>
+    <requestid>1397679</requestid>
+  </revision>
 </revisionlist>

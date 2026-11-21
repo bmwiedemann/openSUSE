@@ -395,4 +395,26 @@ so there is no usability hurdle for existing mutt users.
     <comment></comment>
     <requestid>1348335</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a9b121b260fd622803792e68324fed80</srcmd5>
+    <version>20260616</version>
+    <time>1795023119</time>
+    <user>anag_factory</user>
+    <comment>- update to 20260616:
+Security:
+- bcache: sanitize mailbox names that escape the cache dir
+- auth_gss: fix out-of-bounds read of GSS security token
+Flull release notes:
+* https://github.com/neomutt/neomutt/releases/tag/20260616
+- update to 20260504:
+Security:
+- Fix GSSAPI buffer underflow on short unwrapped tokens
+- Reject percent-encoded NUL bytes in URL decoding
+- Skip CN fallback when SAN dNSName entries exist (RFC6125)
+- Cap POP3 UIDL responses to prevent OOM from a malicious server
+- Harden POP host URL copy
+Full release notes:
+* https://github.com/neomutt/neomutt/releases/tag/20260504</comment>
+    <requestid>1398374</requestid>
+  </revision>
 </revisionlist>

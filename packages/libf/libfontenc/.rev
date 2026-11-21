@@ -140,4 +140,14 @@
 - switch to meson</comment>
     <requestid>1331901</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f3bf6a603afe48edd240bbae6b5d05ab</srcmd5>
+    <version>1.1.9</version>
+    <time>1795103617</time>
+    <user>anag_factory</user>
+    <comment>- bsc1289302_CVE-2026-109908_encparse-fix-heap-out-of-bounds-write-in-setCode.patch
+  * X.Org libfontenc File Parsing Validation Failure (bsc#1289302,
+    CVE-2026-109908)</comment>
+    <requestid>1398278</requestid>
+  </revision>
 </revisionlist>

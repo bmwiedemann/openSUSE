@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:32:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 18.1
+  - Bug Fixes:
+    - Copy the lists saved for a deferred audit entry into the
+      stack item's context.
+    - Only audit a statement's own permission check.
+    - Do not audit permission checks that are not enforcing.
+    - Report rows affected by COPY when pgaudit.log_rows is
+      enabled.
+    - Locate pgaudit.control relative to the Makefile.
+    - Fix use-after-free reading object name/type after event
+      trigger.
+    - Do not log inserted or updated columns against the SELECT
+      grant.
+    - Add exception for fetch statement to stack check.
+    - Fix memory leak when logging functions and query parameters.
+  - Improvements:
+    - Document that audit logging is best-effort and not
+      transactional.
+- Update to 17.2 / 16.2 / 1.7.2 / 1.6.4
+  - Bug Fixes:
+    - Copy the lists saved for a deferred audit entry into the
+      stack item's context.
+    - Only audit a statement's own permission check.
+    - Do not audit permission checks that are not enforcing.
+    - Report rows affected by COPY when pgaudit.log_rows is
+      enabled.
+    - Locate pgaudit.control relative to the Makefile.
+    - Fix use-after-free reading object name/type after event
+      trigger.
+    - Do not log inserted or updated columns against the SELECT
+      grant.
+    - Add exception for fetch statement to stack check.
+    - Fix memory leak when logging functions and query parameters.
+    - Error when required hooks are skipped.
+  - Improvements:
+    - Document that audit logging is best-effort and not
+      transactional.
+    - Disable logging in parallel workers.
+
+-------------------------------------------------------------------
+Tue Nov 17 11:57:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19.0
+  - Bug Fixes:
+    - Copy the lists saved for a deferred audit entry into the
+      stack item's context.
+    - Only audit a statement's own permission check.
+    - Do not audit permission checks that are not enforcing.
+    - Report rows affected by COPY when pgaudit.log_rows is
+      enabled.
+    - Locate pgaudit.control relative to the Makefile.
+    - Fix use-after-free reading object name/type after event
+      trigger.
+    - Do not log inserted or updated columns against the SELECT
+      grant.
+    - Add exception for fetch statement to stack check.
+    - Fix memory leak when logging functions and query parameters.
+  - Features:
+    - PostgreSQL 19 support.
+  - Improvements:
+    - Skip executor hooks when SELECT/DML auditing is not enabled.
+    - Document that audit logging is best-effort and not
+      transactional.
+    - Count statement rows with es_total_processed instead of the
+      ExecutorRun() hook.
+
+-------------------------------------------------------------------
+Tue Oct 27 16:04:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19~rc1
+  - Bug Fixes:
+    - Copy the lists saved for a deferred audit entry into the
+      stack item's context.
+    - Only audit a statement's own permission check.
+    - Do not audit permission checks that are not enforcing.
+    - Report rows affected by COPY when pgaudit.log_rows is
+      enabled.
+    - Locate pgaudit.control relative to the Makefile.
+    - Fix use-after-free reading object name/type after event
+      trigger.
+    - Do not log inserted or updated columns against the SELECT
+      grant.
+    - Add exception for fetch statement to stack check.
+    - Fix memory leak when logging functions and query parameters.
+  - Features:
+    - PostgreSQL 19 support.
+  - Improvements:
+    - Skip executor hooks when SELECT/DML auditing is not enabled.
+    - Document that audit logging is best-effort and not
+      transactional.
+    - Count statement rows with es_total_processed instead of the
+      ExecutorRun() hook.
+
+-------------------------------------------------------------------
+Sat Sep 26 15:26:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19~beta4
+  - Bug Fixes:
+    - Do not audit permission checks that are not enforcing.
+    - Report rows affected by COPY when pgaudit.log_rows is
+      enabled.
+    - Locate pgaudit.control relative to the Makefile.
+    - Fix use-after-free reading object name/type after event
+      trigger.
+    - Do not log inserted or updated columns against the SELECT
+      grant.
+    - Add exception for fetch statement to stack check.
+    - Fix memory leak when logging functions and query parameters.
+  - Feastures:
+    - PostgreSQL 19 support (with property graph auditing).
+  - Improvements:
+    - Skip executor hooks when SELECT/DML auditing is not enabled.
+    - Document that audit logging is best-effort and not
+      transactional.
+    - Count statement rows with es_total_processed instead of the
+      ExecutorRun() hook.
+
+-------------------------------------------------------------------
+Thu Jun 25 09:54:44 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add pg19 support:
+  https://github.com/pgaudit/pgaudit/releases/tag/19beta1
+
+-------------------------------------------------------------------
 Wed May  6 09:25:41 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable pg13 and drop pgaudit-1.5.3.tar.gz.

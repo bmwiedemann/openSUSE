@@ -1,8 +1,68 @@
 -------------------------------------------------------------------
+Tue Nov 17 11:52:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Synchronize with SLFO:Main.
+  * Rebase "openssl-CVE-2026-35191.patch" and "openssl-CVE-2026-84782.patch"
+    to openssl 3.5.3 (context lines only). [CVE-2026-35191, CVE-2026-84782,
+    bsc#1280590, bsc#1280587]
+  * Rebase "openssl-CVE-2026-54872-CVE-2026-77696.patch" to openssl 3.5.3:
+    place the new "mont == NULL" check after the existing "dA == NULL" check,
+    as upstream does, and drop a duplicated nonce-pinning block.
+    [CVE-2026-54872, CVE-2026-77696, bsc#1280591, bsc#1280598]
+  * Rebase "openssl-CVE-2026-84784.patch" to openssl 3.5.3 and include
+    upstream commit 5b754c414119, which fixes an out-of-bounds read in the
+    new test. [CVE-2026-84784, bsc#1280599]
+  * Drop "openssl-speed-Increase-MAX_SIG_NUM-and-fix-its-usage-in-loopargs_t-fields.patch".
+    The patch is obsolete because openssl 3.5.1 already contains the upstream
+    fix. [bsc#1268489]
+
+-------------------------------------------------------------------
+Tue Nov 17 09:55:03 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add "openssl-CVE-2026-88823.patch" and "openssl-CVE-2026-88823-tests.patch"
+  to fix CVE-2026-88823: AES-GCM-SIV treated a zero-length AAD update as a
+  reset, discarding previously supplied AAD, and kept stale AAD when the
+  context was reused for a new message. [CVE-2026-88823, bsc#1289569]
+
+-------------------------------------------------------------------
+Tue Nov 17 09:29:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add "openssl-CVE-2026-88822.patch" to fix CVE-2026-88822: Avoid
+  returning uninitialised stack data in BIO_dgram_detect_peer_addr()
+  during QUIC peer address detection. [CVE-2026-88822, bsc#1289820]
+
+- Add "openssl-CVE-2026-88822-test.patch" with a regression test for
+  CVE-2026-88822. Upstream's test relies on SSL_get_peer_addr(), which
+  OpenSSL 3.5 lacks, so this test checks BIO_dgram_detect_peer_addr()
+  directly instead. [CVE-2026-88822, bsc#1289820]
+
+-------------------------------------------------------------------
 Thu Oct 15 17:06:42 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Build with enable-sslkeylog to support the SSLKEYLOGFILE
   environment variable usage. (jsc#PED-17079)
+
+-------------------------------------------------------------------
+Fri Sep 25 11:10:19 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fixes:
+  * CVE-2026-35189: Excessive Memory Allocation in Relative CRLDP Processing (bsc#1280589)
+  * CVE-2026-35191: QUIC Unvalidated Amplification Credit may be Over Accounted (bsc#1280590)
+  * CVE-2026-54872: Timing Side-Channel in Scalar Multiplication for Non-NIST EC Curves (bsc#1280591)
+  * CVE-2026-77696: Timing Side-Channel in SM2 Signature Generation (bsc#1280598)
+  * CVE-2026-54875: Non-Constant-Time SM2 Scalar Multiplication on ARM64 and RISC-V (bsc#1280592)
+  * CVE-2026-72897: Out-of-Bounds Access After SSL_set_SSL_CTX() During a Handshake (bsc#1280594)
+  * CVE-2026-75804: QUIC Connection-Level Flow Control is Not Enforced for Streams (bsc#1280595)
+  * CVE-2026-75805: NULL Pointer Dereference in CMP Client Revocation Response Handling (bsc#1280596)
+  * CVE-2026-75806: Unauthenticated and Undersized DTLS 1.2 AEAD Record Causes DoS (bsc#1280597)
+  * CVE-2026-84782: DTLS Retransmits Handshake Messages From a Stale Buffer Offset (bsc#1280587)
+  * CVE-2026-84784: QUIC: Unbounded RETIRE_CONNECTION_ID Backlog (bsc#1280599)
+  * Add patches:
+    - openssl-CVE-2026-35189.patch openssl-CVE-2026-35191.patch
+    - openssl-CVE-2026-54872-CVE-2026-77696.patch openssl-CVE-2026-54875.patch
+    - openssl-CVE-2026-72897.patch openssl-CVE-2026-75804.patch
+    - openssl-CVE-2026-75805.patch openssl-CVE-2026-75806.patch
+    - openssl-CVE-2026-84782.patch openssl-CVE-2026-84784.patch
 
 -------------------------------------------------------------------
 Mon Aug 24 10:15:53 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
@@ -47,6 +107,13 @@ Mon Jul 20 22:24:10 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
   * "HollowByte" DoS via attacker-controlled memory allocation.
   * Grow the init_buf incrementally as we receive data.
   * Add openssl-HollowByte.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 13:09:12 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
+
+- Increase the maximum number of signature algorithms (bsc#1268489)
+  * Add patch:
+    openssl-speed-Increase-MAX_SIG_NUM-and-fix-its-usage-in-loopargs_t-fields.patch
 
 -------------------------------------------------------------------
 Mon Jun  8 13:21:41 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
@@ -902,7 +969,7 @@ Thu Oct 17 12:21:14 UTC 2024 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Thu Sep 19 08:05:52 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
-- Security fix: [bsc#1230698, CVE-2024-41996] 
+- Security fix: [bsc#1230698, CVE-2024-41996]
   * Validating the order of the public keys in the Diffie-Hellman
     Key Agreement Protocol, when an approved safe prime is used.
   * Added openssl-CVE-2024-41996.patch

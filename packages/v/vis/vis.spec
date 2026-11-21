@@ -1,7 +1,7 @@
 #
 # spec file for package vis
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,65 +16,81 @@
 #
 
 
-%define test_version 0.5
+%if 0%{?suse_version} > 1600
+%define flavor lua54
+%else
+%define flavor lua53
+%endif
 Name:           vis
-Version:        0.9
+Version:        0.9+git.1793606990.d89b6c27
 Release:        0
 Summary:        An editor combining the strengths of both vi(m) and sam
 License:        ISC
-Group:          Productivity/Text/Editors
-URL:            https://sr.ht/~martanne/vis/
-Source0:        https://git.sr.ht/~martanne/vis/archive/v%{version}.tar.gz
-Source1:        https://git.sr.ht/~martanne/vis-test/archive/v%{test_version}.tar.gz
-# PATCH-FIX-UPSTREAM vis-test-builtin_strncpy-bounds.patch mcepl@suse.com
-# patch from https://git.sr.ht/~martanne/vis-test/commit/efafa3c17826
-Patch0:         vis-test-builtin_strncpy-bounds.patch
-BuildRequires:  libselinux-devel
-BuildRequires:  libtermkey-devel
-BuildRequires:  lua-devel
-BuildRequires:  lua-lpeg
-BuildRequires:  ncurses-devel
-BuildRequires:  tar
-BuildRequires:  tre-devel
-Requires:       lua
-Suggests:       par_text
-ExclusiveArch:  x86_64 %{ix86}
+URL:            https://sr.ht/~martanne/vis
+Source:         %{name}-%{version}.tar.zst
+BuildRequires:  %{flavor}-devel
+BuildRequires:  %{flavor}-lpeg
+BuildRequires:  %{flavor}-penlight
+BuildRequires:  doxygen
+BuildRequires:  mandoc
+BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-breathe
+BuildRequires:  python3-sphinx_rtd_theme
+BuildRequires:  vim-small
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(ncurses)
+BuildRequires:  pkgconfig(termkey)
+BuildRequires:  pkgconfig(tre)
+Requires:       %{flavor}
+Requires:       %{flavor}-lpeg
+Suggests:       %{flavor}-editorconfig-core-lua
 Suggests:       par_text
 
 %description
-Vis aims to be a modern, legacy free, simple yet efficient editor combining the strengths of both vi(m) and sam.
+Vis aims to be a modern, legacy free, simple yet efficient editor
+combining the strengths of both vi(m) and sam.
 
-It extends vi's modal editing with built-in support for multiple cursors/selections and combines it with sam's structural regular expression based command language.
+It extends vi's modal editing with built-in support for multiple
+cursors/selections and combines it with sam's structural regular
+expression based command language.
 
 %prep
-%setup -q -n %{name}-v%{version}
-
-tar -xC test/ --strip-components 1 -f %{SOURCE1}
-
-%patch -p1 -P 0
+%autosetup
 
 %build
 export CFLAGS="%{optflags} -fcommon"
 %configure
 %make_build debug
 
+%if 0%{?suse_version} > 1550
+# Race conditions due to recursive make invocations (can’t track shared
+# dependencies properly), hence -j1. Passing the -j option to sphinx-build
+# (via SPHINXOPTS) may be more reliable, but is considered experimental.
+%make_build -j1 -C doc singlehtml epub
+cp doc/build/sphinx/singlehtml/{index,VisEditor}.html
+%make_build -j1 man
+%endif
+
 %install
 %make_install
+rm -r %{buildroot}%{_datadir}/doc/vis
 
 %check
-# According to the debian/rules:
-# The vim tests harness is not solid, let's skip them for the moment.
-# Upstream mentioned the possibility of phasing them out entirely.
-%make_build -C test/core
-# No busted yet make -C test/lua
-%make_build -C test/vis
+# Only one test at a time because there seem to be file system race conditions
+# in Vim (which the test suite runs to compare behavior).
+%make_build -j1 test
 
 %files
 %{_bindir}/vis*
 %{_datadir}/vis
-%{_mandir}/man1/*
-%dir %{_datadir}/doc/vis
-%{_datadir}/doc/vis/LICENSE
-%{_datadir}/doc/vis/README.md
+%{_mandir}/man1/vis*.1%{?ext_man}
+%license LICENSE
+%doc README.md
+%if 0%{?suse_version} > 1550
+%doc doc/build/sphinx/epub/VisEditor.epub
+%doc doc/build/sphinx/singlehtml/VisEditor.html
+%endif
 
 %changelog

@@ -18,10 +18,10 @@
 
 %define cpan_name Spreadsheet-XLSX
 Name:           perl-Spreadsheet-XLSX
-Version:        0.200.0
+Version:        0.210.0
 Release:        0
-# 0.20 -> normalize -> 0.200.0
-%define cpan_version 0.20
+# 0.21 -> normalize -> 0.210.0
+%define cpan_version 0.21
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for reading MS Excel 2007 files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -44,23 +44,6 @@ Provides:       perl(Spreadsheet::XLSX::Utility2007) = %{version}
 %{perl_requires}
 
 %description
-ZIP input is limited to 10,000 entries, 64 MiB per uncompressed member, and
-256 MiB of total declared uncompressed data, including unused members.
-Members used by the parser are decompressed incrementally and their actual
-sizes are checked against the limits and ZIP metadata. Exceeding a limit or
-encountering inconsistent sizes raises an exception.
-
-Applications needing different limits can scope them to a parsing
-operation:
-
-    local $Spreadsheet::XLSX::MAX_MEMBER_SIZE = 128 * 1024 * 1024;
-    local $Spreadsheet::XLSX::MAX_TOTAL_SIZE = 512 * 1024 * 1024;
-    local $Spreadsheet::XLSX::MAX_MEMBERS = 20000;
-    my $excel = Spreadsheet::XLSX->new($filename);
-
-These limits bound uncompressed input, not the total memory used by parsed
-cells and XML processing.
-
 This module is a (quick and dirty) emulation of Spreadsheet::ParseExcel for
 Excel 2007 (.xlsx) file format. It supports styles and many of Excel's
 quirks, but not all. It populates the classes from Spreadsheet::ParseExcel

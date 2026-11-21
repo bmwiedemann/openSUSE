@@ -221,4 +221,41 @@
     <comment></comment>
     <requestid>1342387</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>cb1c604fd52a685ee924e4bd9109c165</srcmd5>
+    <version>6.2.0.post2</version>
+    <time>1793899225</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.0.post2:
+  * MAJOR REWRITE: The Python and C implementations of the encoder and
+    decoder were replaced with a single, Rust-based implementation in the
+    interest of maintainability. Highlights include improved memory safety
+    (100% safe-mode Rust), complete elimination of reference leaks, support
+    for free-threading and subinterpreters, substantially improved
+    performance, improved decoder error handling where any non-base
+    exception gets wrapped in a CBORDecodeError, and iterative rather than
+    recursive decoding so container nesting depth is limited only by
+    available memory rather than the C stack size.
+  * BACKWARD INCOMPATIBLE: Changed the signature of the tag_hook decoder
+    callables to accept (CBORTag, immutable) as arguments instead of
+    (CBORDecoder, CBORTag).
+  * BACKWARD INCOMPATIBLE: Changed the signature of the object_hook decoder
+    callables to accept (Mapping[Any, Any], bool) instead of (CBORDecoder,
+    dict[Any, Any]).
+  * BACKWARD INCOMPATIBLE: Removed the break_marker singleton as no longer
+    necessary.
+  * BACKWARD INCOMPATIBLE: Removed the CBORDecodeValueError exception,
+    instead chaining ValueError or TypeError to a CBORDecodeError.
+  * BACKWARD INCOMPATIBLE: Changed the decoding of semantic tag 261 to yield
+    an IPv4Interface or IPv6Interface if the address contains host bits.
+  * BACKWARD INCOMPATIBLE: Removed the individual decoding functions from
+    the API as they were mistakenly called directly by users.
+  * BACKWARD INCOMPATIBLE: Changed the encoding of IP addresses to use the
+    semantic tags 52 and 54 instead of the deprecated 260 and 261.
+  * BACKWARD INCOMPATIBLE: Dropped the deprecated cbor2.decoder and
+    cbor2.encoder modules; everything in the API is now importable directly
+    from cbor2.
+  * BACKWARD INCOMPATIBLE: Renamed the cbor2.FrozenDict class to frozendict</comment>
+    <requestid>1395067</requestid>
+  </revision>
 </revisionlist>

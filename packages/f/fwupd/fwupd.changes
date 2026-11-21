@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:05:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.10:
+  * This release fixes the following bugs:
+    + Bound netlink string reads by the attribute length
+    + Check the INFO_UF2.TXT contents were read correctly
+    + Do not allow modified XML files to spoof metadata trust
+    + Do not auto-start Bluez when setting up the backend
+    + Do not fall back to the BIOS setting when the plugin undid the attribute
+    + Do not leak a byte array when duplicating an SREC record
+    + Do not leak the Aver HID CX3 chunk array
+    + Fix a client crash when the server returns with an empty HTTP body
+    + Fix an inverted Jabra GNP empty buffer check
+    + Format Redfish IPv6 addresses with 16 bit groups
+    + Only inhibit on BootOrder lock when fwupd-efi is needed
+    + Only show supported entries in MOTD
+    + Read the ACPI table OEM revision as little endian
+    + Read the FDT BIOS version from the firmware-versions node
+    + Read the firmware version from the TI TPS6598x payload
+    + Read the Intel CVS status struct size when checking the status
+    + Remove the now-unused shutdown delayed activation
+    + Restore the Intel GSC PCI power policy after updating
+    + Send the correct size for each TPM upgrade data chunk
+    + Set the BNR DP error when the factory data strings are missing
+    + Set the error when no Jabra HID interface is found
+    + Set the error when the Huddly USB device returns a failure
+    + Use the correct icon name for a CPU processor
+    + Validate the Lenovo accessory opcode when parsing HID reports
+  * This release adds support for the following hardware: Synaptics 96F1
+    touchpad
+
+-------------------------------------------------------------------
 Mon Oct 26 13:29:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.9:

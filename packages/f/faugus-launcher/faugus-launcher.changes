@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Tue Nov 03 21:24:55 UTC 2026 - jehuherrerap@hotmail.com
+
+- Bump to version 2.5.7:
+  * Translation updates
+  * lock gamepad navigation by window focus instead of running games
+  * Fix sleep inhibitor not being released on game exit
+  * Show suggestion menu in the SteamGridDB asset picker
+  * Use the game's custom GAMEID for the shortcut's StartupWMClass
+  * Add from_git option to build packages from the current branch
+  * Fix taskbar grouping and pinned shortcuts by giving each game a unique window class
+  * Fix retained memory after asset downloads and dialogs
+  * Update gamecontrollerdb.txt
+  * Skip SteamGridDB asset fetch on title focus-out when editing a game
+- For version 2.5.6:
+  * Keep running theme until restart when changing color scheme or accent
+  * Fix context menu activating an item on right-click release
+  * Fix memory leaks on dialog close
+  * Load GTK on demand in the runner
+  * Run the splash and donate windows in separate processes to free memory
+  * Fix launch argument env var detection for shortcuts and file runs
+  * Detect title, icon and cover from executable when adding a game
+  * Improved Discord RPC game detection
+  * Add Discord RPC support
+  * Update CI actions and packaging versions
+  * Update AppStream metadata and README screenshots
+  * Fix Lossless Scaling environment variable check
+  * Prevent backups from overwriting existing archives
+  * Fix shortcut desktop quoting and launch arguments
+  * Update metainfo screenshot commit refs
+  * Updated screenshots
+  * Move launch fields into the Tools page
+- For version 2.5.5:
+  * Update metainfo screenshot commit refs
+  * Updated screenshots
+  * Allow dragging launch arguments into Presets
+  * Bundle psutil in the AppImage
+  * Hide the mouse cursor while using the gamepad
+  * Revert "Use GL renderer by default"
+  * Use GL renderer by default
+  * Set minimum width on Duplicate and URL dialogs
+  * Load all images with the same HiDPI pipeline
+  * Tune carrousel mouse scrolling
+  * Fixed cover placeholder for older GTK versions
+  * Updated shortcut window
+  * Add gamepad shortcuts to Launch Arguments lists
+  * Reorganize AddGame widgets into tabs and a settings combobox
+  * Tune AddGame window layout
+  * Rework Launch Settings lists
+  * Remove Protonfix
+  * Hide runtime grid when not being used
+  * Suppress GDK frame timings warning
+  * Anchor context menu to the card
+  * Fetch AddGame assets only once per title on focus out
+  * Fix startup crash with old libmanette when a gamepad is connected
+  * Delay banner and overview update until the card settles
+- For version 2.5.4:
+  * Fix blurry covers on HiDPI screens
+- For version 2.5.3
+  * Revert "Added revision to release-packages workflow"
+  * Added revision to release-packages workflow
+- For version 2.5.2:
+  * Update metainfo screenshot commit refs
+  * Updated settings screenshot
+  * Revert "Bundle Python, GTK4 and libadwaita in the AppImage"
+  * Fix post-launch script being killed by FAUGUSID cleanup
+  * Pass absolute Proton path to umu
+  * Revert "Fix Proton not found when XDG_DATA_HOME is set"
+  * Fix Proton not found when XDG_DATA_HOME is set
+  * Reduce carrousel zoom updates to lower CPU usage
+  * Prevent scrolling more than one game at once
+  * Sync banner, overview and game
+  * Smoother carrousel animation
+  * Lower RAM after scrolling and speed up cover and banner loading
+  * Truncate long game titles in list mode
+  * Bundle Python, GTK4 and libadwaita in the AppImage
+  * Update translation template (faugus-launcher.pot)
+  * Load full logs progressively
+  * Load languages in background + Load banner in a separated thread
+  * More performance improvements + fixed memory leak in AddGame
+  * Removed GTK Entry styling
+  * Keep Proton runners read-only when extracting
+  * Improved performance + refactoring
+  * Load images on demand
+  * Fade transitions only for carrousel
+  * Set animation to 30 steps
+  * Changed carrousel zoom animation
+  * Apply shadow and fill fade for carrousel and covers
+  * Changed zoom animation
+  * Scrolling performance adjustments
+  * Smooth scrolling + scrolling fixes
+  * Hidden panels now properly push games
+  * Added some tooltips for Settings menu options
+  * Removed auto-hide tooltip
+  * Fixed app freezing when turning off gamepad
+  * Added auto-hide option
+  * Sort overview categories
+  * Update gamecontrollerdb.txt
+  * Code refactoring
+  * Added gamecontrollerdb workflow
+  * Fixed app being restarted twice after backup restoration
+  * Fixed Adwaita theme being applied live
+  * Don't set accent color/color scheme to default when changing theme
+  * Fixed live lines/columns changing + asterisks
+  * Update settings without restart
+  * Live update widget color and color picker sensitivity
+  * Update metainfo screenshot commit refs
+  * Updated screenshots
+  * Changed downloading string back
+  * More performance improvements
+  * Splash window progress bar and strings
+  * Fix Proton Wineland extraction
+  * Performance improvements
+- For Version 2.5.1:
+  * Removed UMU-Proton support
+  * Removed Proton-EM support
+  * Improved combobox display
+  * Don't zoom out game after being unfocused
+  * Fix Steam shortcut not being detected
+  * Fixed running games management on Flatpak
+
+-------------------------------------------------------------------
+Tue Nov  3 04:50:52 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix macro priority declaration to ensure the correct runtime
+  version value for dependency resolution. 
+
+-------------------------------------------------------------------
+Sun Oct 18 06:14:05 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to version 2.5.0.1:
+  * New backup system: back up specific games, prefixes,
+    shortcuts and Proton versions, with cancel support and
+    a disk-space check
+  * New overview panel with game name, playtime and last played
+    for Grid, Covers and Carousel modes, with position,
+    orientation, row/column count and color options
+  * Games now use the default Proton unless a per-game Proton
+    is selected; Proton Manager also handles "Latest" runners
+  * Added GPU selector for launching games on a specific GPU,
+    replacing the Discrete GPU option
+  * Added interface navigation sounds with custom samples
+    and volume control
+  * Reworked Prevent Sleep via logind fallback
+  * Keep a shared prefix when a launcher installation fails
+  * "Run file in the prefix" now honors the prefix's
+    environment variables
+  * Fixed launcher installation with the new default Proton
+    system, icons not fetched from SteamGridDB, wrong hidden
+    game sizes, banner duplication, tray working directory,
+    zombie processes and gamepad navigation issues
+  * Updated translations
+- Drop python-dbus runtime dependency, no longer used upstream.
+  D-Bus is now accessed via GObject introspection
+- Spec cleanup: drop duplicate psutil Requires
+
+-------------------------------------------------------------------
 Sun Sep 13 22:08:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.3.0:

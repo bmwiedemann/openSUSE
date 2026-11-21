@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 02:36:22 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- CVE-2026-95622: cbm: don't assert handling unsupported encodings
+  (8-bit and reserved) (bsc#1282843)
+  * ModemManager-CVE-2026-95622.patch
+
+-------------------------------------------------------------------
 Wed Sep 30 18:51:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update version dependencies according to meson.build.

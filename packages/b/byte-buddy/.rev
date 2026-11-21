@@ -183,4 +183,12 @@
     <comment>1.18.8</comment>
     <requestid>1348119</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>09d2c1d50a1dedee55bf1e62914f4ab8</srcmd5>
+    <version>1.18.8</version>
+    <time>1793725115</time>
+    <user>anag_factory</user>
+    <comment>Package the standard Byte Buddy artifacts</comment>
+    <requestid>1394615</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xplr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           xplr
-Version:        1.0.1
+Version:        1.1.2
 Release:        0
 Summary:        TUI file explorer
-License:        MIT
-Group:          Productivity/File utilities
+# Legal-Review-Notice: Upstream xplr is MIT; vendored direct dependency snailquote is GPL-3.0-only.
+License:        GPL-3.0-only AND MIT
 URL:            https://github.com/sayanarijit/xplr
 Source0:        https://github.com/sayanarijit/xplr/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -62,6 +62,9 @@ for i in 128 16 32 64; do
 done
 
 install -Dm644 "%{_builddir}/%{name}-%{version}/assets/icon/%{name}.svg" -t "%{buildroot}/%{_datadir}/icons/hicolor/scalable/apps"
+
+%check
+%{cargo_test} --all-features
 
 %files
 %license LICENSE

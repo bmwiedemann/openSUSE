@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git
 Source0:        trace-cmd-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM trace-cmd-swig-py3.patch -- define PyInt_Check as PyLong_Check on Python 3
+Patch0:         trace-cmd-swig-py3.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  libtraceevent-devel

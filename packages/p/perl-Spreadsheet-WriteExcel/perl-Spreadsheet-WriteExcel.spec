@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-WriteExcel
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,63 +18,82 @@
 
 %define cpan_name Spreadsheet-WriteExcel
 Name:           perl-Spreadsheet-WriteExcel
-Version:        2.40
+Version:        2.400.0
 Release:        0
-Summary:        This Module can be Used to Create Excel Binary Files
+# 2.40 -> normalize -> 2.400.0
+%define cpan_version 2.40
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-URL:            https://search.cpan.org/dist/Spreadsheet-WriteExcel/
-Source:         http://search.cpan.org/CPAN/authors/id/J/JM/JMCNAMARA/%{cpan_name}-%{version}.tar.gz
+Summary:        Write to a cross platform Excel binary file
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/J/JM/JMCNAMARA/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(OLE::Storage_Lite)
+BuildRequires:  perl(OLE::Storage_Lite) >= 0.190
 BuildRequires:  perl(Parse::RecDescent)
+Requires:       perl(OLE::Storage_Lite) >= 0.190
 Requires:       perl(Parse::RecDescent)
+Provides:       perl(Spreadsheet::WriteExcel) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::BIFFwriter) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Big) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Area) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Bar) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Column) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::External) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Line) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Pie) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Scatter) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Chart::Stock) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Examples) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Format) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Formula) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::OLEwriter) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Properties) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Utility) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Workbook) = %{version}
+Provides:       perl(Spreadsheet::WriteExcel::Worksheet) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
-The Spreadsheet::WriteExcel module can be used to create a cross-
-platform Excel binary file. Multiple worksheets can be added to a
-workbook and formatting can be applied to cells. Text, numbers,
-formulas, hyperlinks, and images can be written to the cells.
+The Spreadsheet::WriteExcel Perl module can be used to create a
+cross-platform Excel binary file. Multiple worksheets can be added to a
+workbook and formatting can be applied to cells. Text, numbers, formulas,
+hyperlinks, images and charts can be written to the cells.
 
-The Excel file produced by this module is compatible with Excel 5, 95,
-97, 2000, and 2002.
+The file produced by this module is compatible with Excel 97, 2000, 2002,
+2003 and 2007.
 
-The module will work on the majority of Windows, UNIX, and Macintosh
-platforms. Generated files are also compatible with Gnumeric and
-OpenOffice.org, the Linux/UNIX spreadsheet applications. The generated
-files are not compatible with MS Access.
+The module will work on the majority of Windows, UNIX and Mac platforms.
+Generated files are also compatible with the Linux/UNIX spreadsheet
+applications Gnumeric and OpenOffice.org.
+
+This module cannot be used to write to an existing Excel file (See
+MODIFYING AND REWRITING EXCEL FILES).
+
+*Note: This module is in maintenance only mode* and in future will only be
+updated with bug fixes. The newer, more feature rich and API compatible
+Excel::Writer::XLSX module is recommended instead. See, Migrating to
+Excel::Writer::XLSX.
 
 %prep
-%setup -q -n Spreadsheet-WriteExcel-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Makefile.PL
+perl Makefile.PL INSTALLDIRS=vendor
 %make_build
 
 %check
-%ifnarch %{arm}
-%make_build test
-%endif
+make test
 
 %install
-%if 0%{?suse_version}
 %perl_make_install
 %perl_process_packlist
-%else
-make DESTDIR=%{buildroot} install_vendor
-find %{buildroot}%{_prefix} -type f -name perllocal.pod |xargs -i rm -f {}
-find %{buildroot}%{_prefix} -type d -depth -exec rmdir {} \; 2>/dev/null
-%endif
+%perl_gen_filelist
 
-%files
-%{_mandir}/man?/*
-%{perl_vendorarch}/auto/Spreadsheet
-%{perl_vendorlib}/Spreadsheet
-%{_bindir}/chartex
-%doc Changes MANIFEST README examples
-%if 0%{?suse_version}
-%endif
+%files -f %{name}.files
+%doc Changes docs examples README
 
 %changelog

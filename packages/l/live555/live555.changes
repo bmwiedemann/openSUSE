@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  9 04:50:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2026.11.08:
+  * In "MultiFramedRTPSource" (for handling RTP reception), handle the case
+    where a malformed RTP special header could cause no data to get delivered,
+    and get us into an infinite loop. We now reject (the rest of) the packet in
+    this case.
+- Changes from version 2026.11.05:
+  * Updated the 'authentication' fix that we made in version 2026.09.23: We no
+    longer "reset()" the "Authenticator" if we get a "303" (REDIRECT) response,
+    because the new server might still want to do Digest authentication (with
+    the same username+password as the original server).
+    Instead, once we receive a request for Digest authentication, we no longer
+    allow Basic authentication (for this "RTSPClient") - either for the same
+    server, or for any server that we get redirected to.
+
+-------------------------------------------------------------------
 Fri Oct 30 07:31:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2026.10.29:

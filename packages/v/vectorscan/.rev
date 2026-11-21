@@ -96,4 +96,18 @@
   * Fix clang 15,16 compilation errors on all platforms, refactor</comment>
     <requestid>1325234</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>bc6d29ad2103f7f2d88365d498d3c2d1</srcmd5>
+    <version>5.4.13</version>
+    <time>1794591102</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.4.14:
+  * 5lx: fix(cmake): determine the fat runtime output object
+    without rev
+  * Eliah Rusin: fix(cmake): reject libc++ 22 or later with
+    Boost.ICL older than 1.92
+  * Julien Cegarra: fix(unit): read rebar data files in binary
+    mode (#417)</comment>
+    <requestid>1397046</requestid>
+  </revision>
 </revisionlist>

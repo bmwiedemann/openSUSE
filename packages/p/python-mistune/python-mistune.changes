@@ -2,6 +2,11 @@
 Mon Oct 26 11:01:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.0:
+  * Solves CVE-2026-115350 (bsc#1287177), CVE-2026-115351 (bsc#1287175),
+    CVE-2026-115348 (bsc#1287190), CVE-2026-115347 (bsc#1287189),
+    CVE-2026-115353 (bsc#1287181), CVE-2026-115352 (bsc#1287178),
+    CVE-2026-115349 (bsc#1287174), CVE-2026-121437 (bsc#1289342),
+    CVE-2026-121438 (bsc#1289341)
   * Add Python 3.15 support and include it in the CI test matrix.
   * Require Python 3.10 or later.
   * Parse inline links with an opening-bracket stack and replace

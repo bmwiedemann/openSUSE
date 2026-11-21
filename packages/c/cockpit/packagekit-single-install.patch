@@ -20,18 +20,18 @@ tens of seconds when there are thousands of packages.
  2 files changed, 220 insertions(+), 25 deletions(-)
 
 diff --git a/pkg/packagekit/updates.jsx b/pkg/packagekit/updates.jsx
-index 898ff7c1f..90d77c51c 100644
+index 774a422..80598a4 100644
 --- a/pkg/packagekit/updates.jsx
 +++ b/pkg/packagekit/updates.jsx
-@@ -67,6 +67,7 @@ import { read_os_release } from "os-release.js";
+@@ -63,6 +63,7 @@ import { read_os_release } from "os-release.js";
  import callTracerScript from './callTracer.py';
  
  import "./updates.scss";
 +import { Checkbox } from '@patternfly/react-core';
  import { Truncate } from '@patternfly/react-core/dist/esm/components/Truncate/index.js';
- import { Severity } from '_internal/packagemanager-abstract';
+ import { Severity, TransactionExitStatus, UpdateProgressType, UpdateError } from '_internal/packagemanager-abstract';
  import { getPackageManager } from 'packagemanager';
-@@ -82,6 +83,7 @@ const UPDATES = {
+@@ -79,6 +80,7 @@ const UPDATES = {
      ALL: 0,
      SECURITY: 1,
      KPATCHES: 2,
@@ -39,8 +39,8 @@ index 898ff7c1f..90d77c51c 100644
  };
  
  function init() {
-@@ -106,6 +108,201 @@ function init() {
-     PK_STATUS_LOG_STRINGS[PK.Enum.STATUS_SIGCHECK] = _("Verified");
+@@ -103,6 +105,201 @@ function init() {
+     STATUS_LOG_STRINGS[UpdateProgressType.SIGCHECK] = _("Verified");
  }
  
 +/** @import { UpdateDetail } from "_internal/packagemanager-abstract" */
@@ -241,7 +241,7 @@ index 898ff7c1f..90d77c51c 100644
  function deduplicate(list) {
      return [...new Set(list)].sort();
  }
-@@ -368,6 +565,7 @@ function updateItem(remarkable, info, pkgNames, key) {
+@@ -370,6 +567,7 @@ function updateItem(info, pkgNames, key) {
              { title: <TableText wrapModifier="truncate">{info.version}</TableText>, props: { className: "version" } },
              { title: <TableText wrapModifier="nowrap">{type}</TableText>, props: { className: "type" } },
              { title: descriptionFirstLine, props: { className: "changelog" } },
@@ -249,15 +249,15 @@ index 898ff7c1f..90d77c51c 100644
          ],
          props: {
              key,
-@@ -417,6 +615,7 @@ const UpdatesList = ({ updates }) => {
+@@ -418,6 +616,7 @@ const UpdatesList = ({ updates }) => {
                      { title: _("Version"), props: { width: 15 } },
                      { title: _("Severity"), props: { width: 15 } },
                      { title: _("Details"), props: { width: 30 } },
 +                    { title: _("Select update") },
                  ]}
-                 rows={combined_updates.map(update => updateItem(remarkable, update, packageNames[update.id].sort((a, b) => a.name > b.name), update.id))} />
+                 rows={combined_updates.map(update => updateItem(update, packageNames[update.id].sort((a, b) => a.name > b.name), update.id))} />
      );
-@@ -904,25 +1103,12 @@ class CardsPage extends React.Component {
+@@ -778,25 +977,12 @@ class CardsPage extends React.Component {
                  id: "available-updates",
                  title: _("Available updates"),
                  actions: (<div className="pk-updates--header--actions">
@@ -286,8 +286,8 @@ index 898ff7c1f..90d77c51c 100644
                  </div>),
                  containsList: true,
                  body: <UpdatesList updates={this.props.updates} />
-@@ -1284,13 +1470,19 @@ class OsUpdates extends React.Component {
-                 });
+@@ -1142,13 +1328,19 @@ class OsUpdates extends React.Component {
+         }
      }
  
 -    applyUpdates(type) {
@@ -305,9 +305,9 @@ index 898ff7c1f..90d77c51c 100644
 +            updates = calculateSelected(updates, selected);
 +        }
  
-         PK.transaction()
-                 .then(transactionPath => {
-@@ -1316,6 +1508,8 @@ class OsUpdates extends React.Component {
+         this.setState({ state: "applying", applyTransactionProps: {}, applyActions: [] });
+ 
+@@ -1168,6 +1360,8 @@ class OsUpdates extends React.Component {
          let applySecurity;
          let applyKpatches;
          let applyAll;
@@ -316,7 +316,7 @@ index 898ff7c1f..90d77c51c 100644
  
          /* On unregistered RHEL systems we need some heuristics: If the "main" OS repos (which provide coreutils) require
           * a subscription, then point this out and don't show available updates, even if there are some auxiliary
-@@ -1368,12 +1562,8 @@ class OsUpdates extends React.Component {
+@@ -1220,12 +1414,8 @@ class OsUpdates extends React.Component {
              const num_kpatches = count_kpatch_updates(this.state.updates);
              const highest_severity = find_highest_severity(this.state.updates);
  
@@ -331,7 +331,7 @@ index 898ff7c1f..90d77c51c 100644
  
              if (num_security_updates > 0 && num_updates > num_security_updates) {
                  applySecurity = (
-@@ -1414,6 +1604,8 @@ class OsUpdates extends React.Component {
+@@ -1266,6 +1456,8 @@ class OsUpdates extends React.Component {
                              <CardsPage handleRefresh={this.handleRefresh}
                                         applySecurity={applySecurity}
                                         applyAll={applyAll}
@@ -340,7 +340,7 @@ index 898ff7c1f..90d77c51c 100644
                                         applyKpatches={applyKpatches}
                                         highestSeverity={highest_severity}
                                         onValueChanged={this.onValueChanged}
-@@ -1611,5 +1803,9 @@ document.addEventListener("DOMContentLoaded", async () => {
+@@ -1462,5 +1654,9 @@ document.addEventListener("DOMContentLoaded", async () => {
      }
  
      const root = createRoot(document.getElementById('app'));

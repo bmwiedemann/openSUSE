@@ -76,4 +76,13 @@
   * Bumped the version and dependencies</comment>
     <requestid>1348592</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f02506c0cd991d0eed198b50fab3c786</srcmd5>
+    <version>4.5.0</version>
+    <time>1795182342</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.5.0:
+  * Do not choose the format of URLs sent to XdgDesktop::startDetached().</comment>
+    <requestid>1398770</requestid>
+  </revision>
 </revisionlist>

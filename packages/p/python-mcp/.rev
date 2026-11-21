@@ -107,4 +107,12 @@ Mon Feb  2 11:47:16 UTC 2026 - Egbert Eich &lt;eich@suse.com&gt;
       - See #2828 for full details.</comment>
     <requestid>1362732</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>13198aedffcc538d68b3eb2384089a68</srcmd5>
+    <version>1.30.0</version>
+    <time>1793990863</time>
+    <user>anag_factory</user>
+    <comment>Forward python-mcp 1.30.0 to Factory</comment>
+    <requestid>1395489</requestid>
+  </revision>
 </revisionlist>

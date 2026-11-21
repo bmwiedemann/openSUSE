@@ -720,6 +720,15 @@ Patch232:       repair-git-state-comment-formatting-788.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/785
 # PATCH-FIX_UPSTREAM: https://github.com/salt-extensions/saltext-dockermod/commit/7934f3d93b49882cf7465e4ee4272d54b3d4418d
 Patch233:       fix-docker-tests-785.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/791
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/70655
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/6ef6346378c834063e6806e18c58abd70397c8e4
+Patch234:       stabilize-testsuite-791.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/780
+# PATCH-FIX_UPSTREAM: https://github.com/salt-extensions/saltext-openscap/pull/9
+Patch235:       support-the-oscap-options-that-select-rules-and-cont.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/792
+Patch236:       fix-asyncio_loop-attributeerror-in-syncwrapper-on-py.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

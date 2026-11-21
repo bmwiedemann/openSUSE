@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:58:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- spec file fixes (drop obsolete package, summary typo, remove
+  erratic mkdir to a directory outside buildroot)
+
+-------------------------------------------------------------------
+Mon Nov 16 20:14:52 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Require the PIE configuration for selected GCC versions.
+- Move SONAME links to their runtime library packages.
+
+-------------------------------------------------------------------
+Mon Nov 16 19:40:38 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Enable the RPC backend with TCP and RDMA support.
+- Add libggml-rpc and ggml-rpc-server subpackages.
+- Require matching libraries from the development packages and
+  expand the llama.cpp development package description.
+- Use GCC 15 for Leap 15.7 builds.
+- Use GCC 16 for Leap 16 builds on all architectures.
+
+-------------------------------------------------------------------
+Mon Nov 16 12:36:54 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 1.0.0:
+  * Remove deprecated public APIs, promote the NextN speculative
+    API to llama.h, and remove the defrag threshold option.
+  * Add FP8 KV caches, configurable CPU sharing for the MoE expert
+    cache, and external PLE shards.
+  * Add Kimi-K3.1-Pro, Ripple and xing4_0 text models, drama-3 TTS,
+    and MageVL-Cowork and Kimi-K3.1 vision support.
+  * Add Gemma 4 streaming audio input and share compute buffers
+    between multimodal subcontexts.
+  * Harden server handling of CORS, DNS rebinding and private URLs;
+    require opt-in for unauthenticated tools and private media
+    URLs.
+  * Add the /v1/audio/speech endpoint and cancel MCP tool calls
+    when clients disconnect or requests time out.
+  * Update the web UI to build b12359, with chat groups, a markdown
+    editor and improved mobile layouts.
+  * Update ggml to 1.0.0 with FP8 support, API cleanup and backend
+    performance improvements.
+- Update library package names for the new major SONAME.
+- Correct CMake minimum versions and declare Python 3 and OpenCL
+  build dependencies for the backends that need them.
+
+-------------------------------------------------------------------
+Sun Nov 08 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.9.0:
+  * Update ggml to 0.29.0 and add FP8 E4M3 quantization.
+  * Add Clover, Limite, Metis-1.6 and Mistral Large 4 models.
+  * Improve multi-sequence inference, audio support and Gemma 4
+    prefill performance.
+  * Update the server web UI to build b12110.
+
+-------------------------------------------------------------------
+Mon Nov 02 20:19:38 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Obsolete the discontinued libllava package with libmtmd0.
+- Keep dynamically loaded ggml backends matched to the core
+  libraries.
+- Recommend HIP and OpenVINO for AMD and Intel graphics devices,
+  respectively, instead of recommending them on every system.
+
+-------------------------------------------------------------------
 Wed Oct 28 15:10:53 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - CVE-2026-118375: Fix stack buffer overflow in the RPC RDMA
@@ -42,8 +108,10 @@ Sat Oct 17 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
   * Add MoE expert GPU cache (--moe-cache-mib) with multi-GPU
     cache sharing.
   * Add new model support: K2 Horizon, Prism Bonsai 2,
-    EmbeddingGemma-2, LiquidAI d1/d1-omni, and vLLM decision models.
-  * Refactor server chat layer around common_chat_session and change
+    EmbeddingGemma-2, LiquidAI d1/d1-omni, and vLLM decision
+    models.
+  * Refactor server chat layer around common_chat_session and
+    change
     default listening port to 9931.
   * Web UI gains full models manager; include b11669 Web UI asset.
   * Update bundled GGML library to version 0.27.0.
@@ -51,6 +119,12 @@ Sat Oct 17 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 -------------------------------------------------------------------
 Tue Oct 06 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
+- CVE-2026-116829: Fix integer overflow in GGUF tensor element
+  counts that could lead to out-of-bounds access (bsc#1288068).
+  * Fixed upstream in version 0.6.0.
+- CVE-2026-116840: Fix integer overflow when padding GGUF tensor
+  sizes, which could lead to out-of-bounds reads.
+  * Fixed upstream in version 0.6.0.
 - Update to version 0.6.0
   * Add the extended batch API, GLM-5.3-Flash and Clef models, and
     Qwen4Exp MTP speculative decoding.
@@ -489,6 +563,9 @@ Fri Apr 17 05:58:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
 -------------------------------------------------------------------
 Mon Mar  2 22:29:33 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
+- CVE-2026-33298: Fix integer overflow in GGUF tensor parsing that
+  could cause a heap buffer overflow (bsc#1260368).
+  * Fixed upstream in b7824.
 - Update to version 8189:
   * CUDA: CDNA3 MFMA support for FA MMA kernel, improved CUDA graph
     capture, dequantization optimizations, and grid.y cap fix in

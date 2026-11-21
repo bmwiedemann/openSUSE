@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  9 12:22:43 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix asyncio_loop AttributeError in SyncWrapper on Python 3.6
+- Support oscap options that select rules and content in xccdf_eval
+
+- Added:
+  * fix-asyncio_loop-attributeerror-in-syncwrapper-on-py.patch
+  * support-the-oscap-options-that-select-rules-and-cont.patch
+
+-------------------------------------------------------------------
+Tue Nov  3 12:33:53 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Stabilize testsuite
+
+- Added:
+  * stabilize-testsuite-791.patch
+
+-------------------------------------------------------------------
 Tue Oct 27 10:19:53 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Ignore network status when comparing docker networks

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Fix extracting arrival times for overnight Lufthansa flights
+  * Fix flight to train conversion in generic pkpass extraction
+  * Extract Lufthansa pkpass boarding passes for Deutsche Bahn
+  * lufthansa extractor: Allow a space before the slash
+  * Add extractor script for easyTable
+  * Consider literal prefixes at the start of an address line optional
+  * Extract Finnair PDF boarding passes in mobile layout
+  * Fix extracting LTG Link pkpasses using string-based date/time values
+  * fix ltglink PDF extractor for non-reservations
+
+-------------------------------------------------------------------
 Wed Oct  7 07:03:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

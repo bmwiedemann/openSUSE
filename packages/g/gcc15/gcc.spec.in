@@ -395,6 +395,10 @@ Patch21:	gcc15-pr120424.patch
 Patch22:	gcc15-Wtime_t-conversion.patch
 Patch23:	gcc15-pr127656.patch
 Patch24:	gcc15-pr125953.patch
+Patch25:	gcc15-pr124370.patch
+Patch26:	gcc15-pr127666.patch
+Patch27:	gcc15-cve-2026-114690.patch
+Patch28:	gcc15-cve-2026-114691.patch
 # A set of patches from the RH srpm
 Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -1403,6 +1407,7 @@ ln -s newlib-4.5.0.20241231/newlib .
 %patch -p1 -P 20
 %endif
 %patch -p1 -P 21 -P 22 -P 23 -P 24
+%patch -p1 -P 25 -P 26 -P 27 -P 28
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

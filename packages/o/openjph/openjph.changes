@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:40:07 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- Update to 0.33.0: [bsc#1285773]
+  * Fix ends of the encoding LUT of LUT-style NLTs #376
+  * Fix comment on ft_min and ft_max in nlt_rec #378
+  * Group CodeQL GitHub Actions bumps in Dependabot #385
+  * Bump github/codeql-action/autobuild from 4.38.0 to 4.38.1 #382
+  * Bump github/codeql-action/init from 4.38.0 to 4.38.1 #381
+  * Bump github/codeql-action/analyze from 4.38.0 to 4.38.1 #380
+  * Bump the codeql group with 2 updates #386
+  * Issues/0377 implement nonuniformly sampled inverse lut #379
+  * Fix heap buffer overflow in OpenJPH NLT marker parsing #384
+  * Fix null-pointer dereference in DFS-index lookup #383
+  * Bump the codeql group with 3 updates #387
+  * Bump uraimo/run-on-arch-action from 3.2.0 to 3.2.1 #394
+  * Bump msys2/setup-msys2 from 2.32.0 to 2.33.0 #393
+  * Work around MSVC x86 internal compiler error in the AVX2 encoder #395
+  * Revert "Bump msys2/setup-msys2 from 2.32.0 to 2.33.0" #400
+  * A bug fix and a small change to NLT4 #392
+  * Add quantization weighting #398
+  * This fixes an issue for older version of glibc 2.34. #399
+  * Bump actions/upload-artifact from 7.0.1 to 7.0.2 #402
+  * Bump the codeql group with 3 updates #403
+  * Don't use SSE2 into SSE code (fix build buid for i686) #404
+  * replace << with *2 #405
+  * Fixes issues/bugs #412
+  * Bump the codeql group with 3 updates #411
+  * Bump the codeql group with 3 updates #414
+  * Accept uppercase .PGM/.PPM input in ojph_compress #407
+  * Fix uninitialized reads in NLT marker parsing #413
+  * Fixes CVE-2026-111151 #415
+
+-------------------------------------------------------------------
 Fri Sep 18 06:46:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.32.0:

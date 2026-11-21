@@ -30,6 +30,7 @@ Patch2:         languagetool-hunspell.patch
 Patch3:         languagetool-4.8-lucene-8.patch
 Patch4:         languagetool-test-resource.patch
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 17
 BuildRequires:  maven-local
 BuildRequires:  xmvn-subst
 BuildRequires:  mvn(ch.qos.logback:logback-classic)

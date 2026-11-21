@@ -1,4 +1,258 @@
 -------------------------------------------------------------------
+Wed Nov 18 07:59:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk8u514-b01 (November 2026 CSPU)
+  * Fixes
+    + JDK-8394492: Update FreeType to 2.15.0
+    + JDK-8384495: Update Libpng to 1.6.58 8393195: Update Libpng
+      to 1.6.59
+    + JDK-8393456, CVE-2026-114940, bsc#1290782: Improve TLS client
+      connections
+    + JDK-8391595, CVE-2026-114944, bsc#1290786: [REDO] Enhance JMX
+      Connections
+    + JDK-8389830, CVE-2026-114943, bsc#1290784: Enhance JFR Events
+    + JDK-8389989, CVE-2026-114946, bsc#1290788: Enhance loop
+      handling
+    + JDK-8387162, CVE-2026-114939, bsc#1290781: Enhance Kerberos
+      tickets
+    + JDK-8316771: Krb5.java has not defined messages for all error
+      codes
+    + JDK-8274205: Handle KDC_ERR_SVC_UNAVAILABLE error code from
+      KDC
+    + JDK-8396902: Bump update version for OpenJDK: 8u514
+- Added patches:
+  * s390-size_t.patch
+    + Fix log2_intptr(size_t) overload ambiguity on 31-bit s390
+  * s390-min-max.patch
+    + Fix MAX/MIN template usage on 31-bit s390 where
+      size_t != uintx
+
+-------------------------------------------------------------------
+Mon Nov  9 15:04:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk8u512-b09 (October 2026 CPU)
+  * Security fixes
+    + JDK-8383530: Enhance Javadoc Searching
+    + JDK-8383679, CVE-2026-87294, bsc#1286490: Enhance Certificate
+      Name Checks
+    + JDK-8383439, CVE-2026-83395, bsc#1286479: Enhance HTTP Client
+      Response Handling
+    + JDK-8386783: WebRowSet empty elements read value of previous
+      element
+    + JDK-8383301, CVE-2026-83387, bsc#1286478: Enhance WebRowSets
+    + JDK-8380715, CVE-2026-83374, bsc#1286472: Enhance PKCS5
+      padding
+    + JDK-8384654, CVE-2026-87367, bsc#1286943: Enhance Template
+      Handling
+    + JDK-8383699, CVE-2026-87290, bsc#1286484: Enhance XPath
+      Expressions
+    + JDK-8383047, CVE-2026-83380, bsc#1286476: Enhance LDAP logins
+    + JDK-8384021, CVE-2026-101516, bsc#1286395: Enhance Certificate
+      Constraint Checking
+    + JDK-8387152, CVE-2026-91462, bsc#1286547: Enhance krb5 tokens
+    + JDK-8387238, CVE-2026-91464, bsc#1286550: Enhance Kerberos
+      validation
+    + JDK-8386013: Enhance EventListenerList
+    + JDK-8382407: Enhance LDAP Lookups
+    + JDK-8386535, CVE-2026-91453, bsc#1286545: Improve HTTP headers
+    + JDK-8385476, CVE-2026-91400, bsc#1286517: Enhance MIDI file
+      handling
+    + JDK-8386923, CVE-2026-91461, bsc#1286546: Enhance TLS
+      Extensions
+    + JDK-8387217, CVE-2026-91463, bsc#1286549: Enhance krb5 client
+    + JDK-8386515, CVE-2026-91451, bsc#1286542: Enhance HTTP server
+      parsing
+    + JDK-8373677: Clear text HttpServer connection could fail fast
+      if receiving SSL ClientHello
+    + JDK-8383756, CVE-2026-87292, bsc#1286486: Enhance Network
+      Clients
+    + JDK-8383956, CVE-2026-87293, bsc#1286488: Enhance RMI
+      connections
+    + JDK-8383281: Enhance MD5 Digesting
+    + JDK-8384664, CVE-2026-91335, bsc#1286494: Enhance Image
+      Handling
+    + JDK-8384746, CVE-2026-91380, bsc#1286500: Enhance Preferences
+    + JDK-8384781, CVE-2026-91381, bsc#1286501: Enhance Font
+      Rendering
+    + JDK-8386552, CVE-2026-91418, bsc#1286539: Enhance GIF loading
+    + JDK-8270915: GIFImageReader disregards ignoreMetadata flag
+      which causes memory exhaustion
+    + JDK-8386525, CVE-2026-91452, bsc#1286544: Enhance HTTP Server
+      Handler
+    + JDK-8386187, CVE-2026-91415, bsc#1286537: Enhance font
+      rendering
+    + JDK-8386175, CVE-2026-91417, bsc#1286538: Enhance CORBA
+    + JDK-8385260, CVE-2026-91398, bsc#1286515: Enhance SOCKS5
+      support
+    + JDK-8385249, CVE-2026-91397, bsc#1286513: Enhance diagnostic
+      sessions
+    + JDK-8385229, CVE-2026-91396, bsc#1286510: Improve Pack200
+      handling
+    + JDK-8385219, CVE-2026-91395, bsc#1286508: Enhance Pack200
+      unpacking
+    + JDK-8384930, CVE-2026-91374, bsc#1286496: Enhance jstatd
+    + JDK-8384771, CVE-2026-91373, bsc#1286495: Enhance TLS
+      handshakes
+    + JDK-8384455: Enhance DataFlavor
+    + JDK-8384445, CVE-2026-91334, bsc#1286493: Enhance JPEG loading
+    + JDK-8384031, CVE-2026-83400, bsc#1286480: Enhance XML
+      Processing
+    + JDK-8383076, CVE-2026-83381, bsc#1286477: Enhance SASL
+      Authentication
+    + JDK-8382178, CVE-2026-83376, bsc#1286474: Enhance TLS
+      certificate handling
+    + JDK-8395142, CVE-2026-91403, bsc#1287264: CA Enhancements
+    + JDK-8395690, CVE-2026-114820, bsc#1287962: CA certificate
+      improvements
+  * Other fixes
+    + JDK-8394265: [21u] Add explicit zone offset test for
+      America/Rainy_River
+    + JDK-8393848: Align the JDK with Microsoft's new timezone
+      name for Manitoba
+    + JDK-8392538: Align the JDK with Microsoft's new timezone
+      names for British Columbia/Alberta
+    + JDK-8396048: (tz) Update to tzdata2026f
+    + JDK-8393337: (tz) Update Timezone Data to 2026e
+    + JDK-8393344: Cherry-pick metazone changes from CLDR to support
+      tzdata2026e for JDK update releases
+    + JDK-8392377: (tz) Update Timezone Data to 2026d
+    + JDK-8392519: Cherry-pick metazone changes from CLDR for
+      tzdata2026d, for JDK update release
+    + JDK-8377992: (zipfs) Align ZipFileSystem END header validation
+      with the ZipFile implementation
+    + JDK-8341625: Improve ZipFile validation of the END header
+    + JDK-8304013: Add a fast, non-manual alternative to
+      test/jdk/java/util/zip/ZipFile/TestTooManyEntries
+    + JDK-8377983: (zipfs) ZipFileSystem.initCEN needlessly reads
+      END header
+    + JDK-8316391: (zipfs) ZipFileSystem.readFullyAt does not
+      tolerate short reads
+    + JDK-8255380: (zipfs) ZipFileSystem::readExtra can fail if
+      zipinfo-time is not set to false
+    + JDK-8272746: ZipFile can't open big file
+      (NegativeArraySizeException)
+    + JDK-8392072: Follow-on fix for Improve certification checking
+    + JDK-8391256: TestZoneTextPrinterParser.java assertion fails
+      with expected: <Mountain Standard Time> but was: <Mountain
+      Daylight Time>
+    + JDK-8388214: (tz) Update Timezone Data to 2026c
+    + JDK-8325680: Uninitialised memory in deleteGSSCB of
+      GSSLibStub.c:179 8194630: GSS: Uninitialized
+      cb->initiator_address when using channel binding with native
+      kerberos
+    + JDK-8390380: Cherry-pick metazone changes from CLDR to support
+      tzdata2026c for JDK update releases
+    + JDK-8390388: Cherry-pick tz attributes from newer CLDR data
+      for jdk25u and earlier
+    + JDK-8381379: Support std/dstOffset attributes in CLDR's
+      metazone definitions
+    + JDK-8387123: Remove LuxTrust Global Root CA
+    + JDK-8250839: Improve test template SSLEngineTemplate with
+      SSLContextTemplate
+    + JDK-8349988: Change cgroup version detection logic to not
+      depend on /proc/cgroups 8347811: Container detection code for
+      cgroups v2 should use cgroup.controllers 8354878: File Leak in
+      CgroupSubsystemFactory::determine_type of
+      cgroupSubsystem_linux.cpp:300 8347129: cpuset cgroups
+      controller is required for no good reason
+    + JDK-8259662: Don't wrap SocketExceptions into SSLExceptions
+      in SSLSocketImpl
+    + JDK-8345149: [8u]
+      javax/sound/midi/Soundbanks/GetSoundBankSecurityException/
+      /GetSoundBankSecurityException.java fails with
+      FileSystemException
+    + JDK-8186464: ZipFile cannot read some InfoZip ZIP64 zip files
+    + JDK-8384902: Update GIFlib to 6.1.3
+    + JDK-8388811: [8u] VS2010 build broken by JDK-8374058
+    + JDK-8388142: [8u] Path to PreferredKey.java exclusion is wrong
+    + JDK-8369032: Add test to ensure serialized ICC_Profile stores
+      only necessary optional data
+    + JDK-8385390: Update FreeType to 2.14.3
+    + JDK-8378823: AIX build fails after zlib updated by JDK-8378631
+    + JDK-8252250: isnanf is obsolete
+    + JDK-8303215: Make thread stacks not use huge pages
+    + JDK-8313083: Print 'rss' and 'cache' as part of the
+      container information
+    + JDK-8298730: Refactor subsystem_file_line_contents and add
+      docs and tests
+    + JDK-8386275: Bump update version of OpenJDK: 8u512
+    + JDK-8239798: SSLSocket closes socket both socket endpoints on
+      a SocketTimeoutException
+    + JDK-8347000: Bug in com/sun/net/httpserver/bugs/B6361557.java
+      test
+    + JDK-8395369: Adjust aix VirtualMachineImpl.c to latest changes
+      on Linux
+    + JDK-8267617: Certificate's IP x509 NameConstraints raises
+      ArrayIndexOutOfBoundsException
+    + JDK-8282201: Consider removal of expiry check in
+      VerifyCACerts.java test
+    + JDK-8300167: Add validation of the raster's layout before
+      using in native
+    + JDK-8298240: Replace the usage of ImageLayoutException by the
+      CMMException
+    + JDK-8264666: Change implementation of safeAdd/safeMult in the
+      LCMSImageLayout class
+    + JDK-8290368: Introduce LDAP and RMI protocol-specific object
+      factory filters to JNDI implementation
+    + JDK-8240226: DeflateIn_InflateOut.java test incorrectly
+      assumes size of compressed file
+    + JDK-8204539: improve error messages in matchJavaTZ [windows]
+- Migrate build from icedtea framework to the openjdk/jdk8u upstream
+  repository
+- Added patches:
+  * improved-font-rendering.patch
+    + port icedtea font rendering improvements
+  * keytool-systemlineendings.patch
+    + use system line endings in keytool
+  * multiple-pkcs11-library-init.patch
+    + allow multiple initialization of PKCS#11 libraries
+  * system-libs.patch
+    + allow building against system libraries
+  * system-pcsclite.patch
+    + allow building against system pcsc-lite
+  * x11-hidpi.patch
+    + add HiDPI support on X11
+- Removed patches:
+  * Upgrade-to-tzdata2026c.patch
+    + integrated upstream
+  * icedtea-3.8.0-s390.patch
+  * java-1_8_0-openjdk-suse-desktop-files.patch
+  * reproducible-dist-id.patch
+  * reproducible-jvm-cfg-order.patch
+    + not needed after migration from icedtea framework
+- Modified patches:
+  * 1015432.patch
+  * JDK_1_8_0-8208602.patch
+  * adlc-parser.patch
+  * bsc1211968.patch
+  * disable-doclint-by-default.patch
+  * fips.patch
+  * java-40y.patch
+  * java-atk-wrapper-security.patch
+  * make-jobserver-detection.patch
+  * ppc-zero-hotspot.patch
+  * reproducible-classuse-order.patch
+  * reproducible-copyright-year.patch
+  * reproducible-directory-mtime.patch
+  * reproducible-generated-source-dates.patch
+  * reproducible-generated-timestamps.patch
+  * reproducible-javadoc-timestamp.patch
+  * reproducible-properties.patch
+  * reproducible-zip-extra-fields.patch
+  * riscv64-zero.patch
+  * tls13extensions.patch
+  * zero-javadoc-verbose.patch
+    + rediff on top of direct openjdk 8u tree
+
+-------------------------------------------------------------------
+Sat Sep 19 19:04:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * Upgrade-to-tzdata2026c.patch
+    + port OpenJDK 8 to timezone data 2026c
+      (bsc#1275035, bsc#1280281)
+
+-------------------------------------------------------------------
 Fri Sep 18 07:44:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Build with all elliptical curves enabled.

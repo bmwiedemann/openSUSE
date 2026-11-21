@@ -20,7 +20,7 @@
 %define libblockdev_version 3.4
 
 Name:           udisks2
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -55,9 +55,9 @@ BuildRequires:  lvm2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(blkid) >= 2.17.0
-BuildRequires:  pkgconfig(blockdev) >= 2.19
+BuildRequires:  pkgconfig(blockdev) >= 3.6
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.50
-BuildRequires:  pkgconfig(glib-2.0) >= 2.50
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gudev-1.0) >= 165
 BuildRequires:  pkgconfig(libatasmart) >= 0.17
@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(mount) >= 2.30
 BuildRequires:  pkgconfig(polkit-agent-1) >= 0.102
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.102
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(udev)
+BuildRequires:  pkgconfig(udev) >= 257
 BuildRequires:  pkgconfig(uuid)
 
 Requires:       libudisks2-%{soversion} = %{version}

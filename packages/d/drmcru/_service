@@ -4,10 +4,11 @@
 		<param name="scm">git</param>
 		<param name="submodules">enable</param>
 		<param name="filename">drmcru</param>
-		<param name="revision">v0.1.5</param>
+		<param name="revision">v0.1.6</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">v([\.\d]+)</param>
 		<param name="versionrewrite-replacement">\1</param>
+		<param name="changesgenerate">enable</param>
 	</service>
 
 	<service name="set_version" mode="manual"/>
@@ -17,8 +18,8 @@
 	</service>
 
 	<service name="cargo_vendor" mode="manual">
-		<param name="src">drmcru-0.1.5.tar.xz</param>
-		<param name="revision">v0.1.5</param>
+		<param name="src">drmcru-0.1.6.tar.xz</param>
+		<param name="revision">v0.1.6</param>
 		<param name="compression">zst</param>
 		<param name="tag">drmcru</param>
 		<param name="update">true</param>

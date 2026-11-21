@@ -20,7 +20,7 @@
 %define rbrelease $(echo %{release} | sed 's/\.[0-9][0-9]*$//' )
 
 %if ! %{defined _fillupdir}
-  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+  %define _fillupdir %{_datadir}/fillup-templates
 %endif
 
 Name:           s390-tools
@@ -103,67 +103,64 @@ Patch910:       s390-tools-ALP-zdev-live.patch
 ###
 
 BuildRequires:  curl-devel
-BuildRequires:  dracut
-BuildRequires:  fuse3-devel
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
 BuildRequires:  glib2-devel
-BuildRequires:  glibc-devel-static
-BuildRequires:  libcryptsetup-devel >= 2.8.2
-BuildRequires:  libjson-c-devel
-BuildRequires:  libnl3-devel
-BuildRequires:  libnvme-devel
-BuildRequires:  libudev-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  mdevctl
-BuildRequires:  ncurses-devel
-BuildRequires:  net-snmp-devel
-BuildRequires:  openssl-devel >= 1.1.1l
-BuildRequires:  pesign-obs-integration
-BuildRequires:  systemd-devel
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  sysuser-tools
-BuildRequires:  tcpd-devel
 BuildRequires:  zlib-devel
-BuildRequires:  zlib-devel-static
-%{?sysusers_requires}
-### s390x
-%ifarch s390x
-BuildRequires:  kernel-zfcpdump
-BuildRequires:  perl-Bootloader >= 0.4.15
-BuildRequires:  qclib-devel-static
-%endif
-### Cargo
+### Cargo / Rust (common for s390x and x86_64)
 BuildRequires:  rust  >= 1.85.0
 BuildRequires:  cargo >= 1.85.0
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  llvm-devel
 BuildRequires:  openssl
+BuildRequires:  openssl-devel >= 1.1.1l
+### s390x BuildRequires
+%ifarch s390x
+BuildRequires:  dracut
+BuildRequires:  fuse3-devel
+BuildRequires:  glibc-devel-static
+BuildRequires:  kernel-zfcpdump
+BuildRequires:  libcryptsetup-devel >= 2.8.2
+BuildRequires:  libjson-c-devel
+BuildRequires:  libnl3-devel
+BuildRequires:  libnvme-devel
+BuildRequires:  libudev-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  ncurses-devel
+BuildRequires:  net-snmp-devel
+BuildRequires:  perl-Bootloader >= 0.4.15
+BuildRequires:  pesign-obs-integration
+BuildRequires:  qclib-devel-static
+BuildRequires:  systemd-devel
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
+BuildRequires:  tcpd-devel
+BuildRequires:  zlib-devel-static
+%{?sysusers_requires}
+%endif
 ###
 # Don't build with pie to avoid problems with zipl
 #!BuildIgnore:  gcc-PIE
 Requires:       coreutils
-Requires:       iproute2
-Requires:       makedumpfile
-Requires:       procps
 Requires:       util-linux
 %ifarch s390x
-BuildRequires:  libica-devel-static
 Requires:       gawk
+Requires:       iproute2
+Requires:       makedumpfile
 Requires:       perl-base
+Requires:       procps
 Requires:       rsync
 Requires:       s390-tools-genprotimg-data
 Requires:       tar
 Requires:       (%{name}-chreipl-fcp-mpath if multipath-tools)
+Requires(post): %fillup_prereq
+Requires(post): permissions
+Provides:       s390utils:/sbin/dasdfmt
 Provides:       group(cpacfstats)
 Provides:       group(ts-shell)
 Provides:       group(zkeyadm)
-%endif
-Requires(post): %fillup_prereq
-Requires(post): permissions
-Requires(pre):  shadow
 Recommends:     blktrace
 Recommends:     cryptsetup
 Recommends:     e2fsprogs
@@ -171,8 +168,11 @@ Recommends:     lsscsi
 Recommends:     mdevctl
 Recommends:     multipath-tools
 Recommends:     net-tools-deprecated
+Recommends:     parted
 Recommends:     sg3_utils
-Provides:       s390utils:/sbin/dasdfmt
+Suggests:       python3-yq
+Suggests:       qemu-tools
+%endif
 %ifarch x86_64
 Recommends:     s390-tools-genprotimg-data
 %endif
@@ -196,11 +196,11 @@ pvsecret   - manage secrets for IBM Secure Execution guests.
 
 Note: There is an auxiliary data package - s390-tools-genprotimg-data.
 
+%ifarch s390x
 %package -n osasnmpd
 Summary:        OSA-Express SNMP subagent
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
-Requires:       perl
 Recommends:     snmpd
 
 %description -n osasnmpd
@@ -300,7 +300,6 @@ Requires:       %{name} = %{version}
 Requires:       dracut
 Requires:       multipath-tools
 Requires:       udev
-Requires(post): udev
 
 %description chreipl-fcp-mpath
 The chreipl-fcp-mpath toolset monitors udev events about paths to the
@@ -322,14 +321,17 @@ in the realm of IBM Secure Execution on a trusted environment,
 such as the laptop of an admin by limiting the build targets
 depending on the defined or detected host architecture.
 This package provides auxiliary data used by pvimg(genprotimg).
-
-### *** s390x ************************************************************************* ###
-%ifarch s390x
+%endif
 
 %prep
 %autosetup -p1 -a200
 
+%ifarch s390x
 cp -vi %{SOURCE22} CAUTION
+%endif
+
+### *** s390x ************************************************************************* ###
+%ifarch s390x
 
 %build
 
@@ -466,7 +468,7 @@ mkdir -p %{buildroot}%{_libexecdir}/net-snmp/agents
 cat <<EOT > %{buildroot}%{_libexecdir}/net-snmp/agents/osasnmpd
 #!/bin/sh
 PIDFILE=/run/osasnmpd.pid
-function cleanup
+cleanup()
 {
         rm -f \$PIDFILE
         kill \`cat %{_localstatedir}/run/osasnmpd.real.pid\`
@@ -482,11 +484,11 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 
 %pre -f s390-tools.pre
 # Consolidated service addition
-%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_add_pre appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service
 
 %post
 # Consolidated service addition
-%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_add_post appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service
 
 # Apply tmpfiles setup for /var/log permissions
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
@@ -497,9 +499,6 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 %{fillup_only -n hsnc}
 %{fillup_only -n mon_fsstatd}
 %{fillup_only -n mon_procd}
-%{fillup_only -n mon_statd}
-%{fillup_only -n opticsmon}
-%{fillup_only -n zpcimon}
 %{fillup_only -n virtsetup}
 %{fillup_only -n xpram}
 
@@ -511,17 +510,14 @@ export BRP_PESIGN_FILES='/lib/s390-tools/stage3.bin'
 %post -n libekmfweb1 -p /sbin/ldconfig
 %post -n libkmipclient1 -p /sbin/ldconfig
 
-%post chreipl-fcp-mpath
-%udev_rules_update
-
 %preun
-%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_del_preun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service
 
 %preun -n osasnmpd
 %{stop_on_removal osasnmpd}
 
 %postun
-%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service opticsmon.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service sel-ebc-boot-mount.service sel-ebc-override-crypttab.service sel-ebc-paes-enforce.service sel-ebc-pvebc.service
+%service_del_postun appldata.service cio_ignore.service cpacfstatsd.service cpi.service cpuplugd.service dumpconf.service hsnc.service mon_fsstatd.service mon_procd.service zpcimon.service virtsetup.service vmlogrdr.service xpram.service
 
 if [ ! -x /boot/zipl ]; then
 	echo "Attention: After uninstalling this package, you will NOT be able to IPL from DASD anymore!"
@@ -687,7 +683,6 @@ fi
 %files genprotimg-data
 /lib/s390-tools/stage3.bin
 %dir %{_datadir}/s390-tools/pvimg
-%dir %{_datadir}/s390-tools/netboot
 %{_datadir}/s390-tools/pvimg/stage3a.bin
 %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 
@@ -695,9 +690,6 @@ fi
 
 ### *** !s390x (x86_64) *************************************************************** ###
 %else
-
-%prep
-%autosetup -p1 -a200
 
 %build
 export OPT_FLAGS="%{optflags}"
@@ -729,7 +721,10 @@ export KERNELIMAGE_MAKEFLAGS="%{?_smp_mflags}"
 # --- Shell Completions ---
 # Using wildcards prevents the need to manually list every new completion file
 %{_datadir}/bash-completion/completions/*
-%{_datadir}/zsh/site-functions/*
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_*
 
 # --- Man Pages ---
 %{_mandir}/man1/*

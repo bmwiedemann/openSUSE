@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Fri Nov 13 15:14:42 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Update to version 0.77.3.0.git141.b1612b50b:
+  * github: update workflows
+  * Update golang dependencies to fix CVEs
+    Fixes CVE-2026-1229 (bsc#1265479)
+    Fixes CVE-2026-116585 (bsc#1288275)
+    Fixes CVE-2026-116586 (bsc#1288275)
+    Fixes CVE-2026-116587 (bsc#1288275)
+    Fixes CVE-2026-63209 (bsc#1283534)
+    Fixes CVE-2026-56855 (bsc#1278454)
+    Fixes CVE-2026-78662 (bsc#1278454)
+    Fixes CVE-2026-78659 (bsc#1286965)
+    Fixes CVE-2026-78660 (bsc#1287025)
+    Fixes CVE-2026-78661 (bsc#1289362)
+    Fixes CVE-2026-78663 (bsc#1287094)
+    Fixes CVE-2026-78669 (bsc#1285191)
+    Fixes CVE-2026-78669 (bsc#1285318)
+    Fixes CVE-2026-97032 (bsc#1287198)
+    Fixes CVE-2026-97045 (bsc#1289406)
+  * Update dompurify, markdown-it and qs npms
+    Fixes CVE-2026-116802 (bsc#1288110)
+    Fixes CVE-2026-116803 (bsc#1288110)
+    Fixes CVE-2026-116804 (bsc#1288110)
+    Fixes CVE-2026-111758 (bsc#1286587)
+    Fixes CVE-2026-110816 (bsc#1285705)
+  * Update fast-uri and follow-redirects npms
+    Fixes CVE-2026-110095 (bsc#1286298)
+    Fixes CVE-2026-110180 (bsc#1286298)
+    Fixes CVE-2026-110306 (bsc#1286298)
+    Fixes CVE-2026-110725 (bsc#1286298)
+    Fixes CVE-2026-111755 (bsc#1286289)
+    Fixes CVE-2026-111756 (bsc#1286879)
+    Fixes CVE-2026-116689 (bsc#1288798)
+  * Rebase onto upstream velociraptor v0.77.3 and update libbpfgo
+    https://github.com/Velocidex/velociraptor/releases/tag/v0.77.3
+    Fixes CVE-2026-15371 (bsc#1275488)
+    Fixes CVE-2026-19072 (bsc#1282634)
+    Fixes CVE-2026-19200 (bsc#1276269)
+    Fixes CVE-2026-19584 (bsc#1279940)
+    Fixes CVE-2026-77798 (bsc#1282731)
+    Fixes CVE-2026-19583 (bsc#1279939)
+    Fixes CVE-2026-78411 (bsc#1284331)
+    Fixes CVE-2026-78412 (bsc#1284330)
+    Fixes CVE-2026-77797 (bsc#1282730)
+    Fixes CVE-2026-56854 (bsc#1278454)
+    Fixes CVE-2026-84303 (bsc#1279307)
+    Fixes CVE-2026-84304 (bsc#1279076)
+    Fixes CVE-2026-84445 (bsc#1278748)
+    Fixes CVE-2026-101898 (bsc#1283244)
+    Fixes CVE-2026-101900 (bsc#1283244)
+    Fixes CVE-2026-101901 (bsc#1283244)
+    Fixes CVE-2026-101902 (bsc#1283244)
+    Fixes CVE-2026-101904 (bsc#1283244)
+    Fixes CVE-2026-101906 (bsc#1283244)
+    Fixes CVE-2026-101908 (bsc#1283244)
+    Fixes CVE-2026-101909 (bsc#1283244)
+    Fixes CVE-2026-42264 (bsc#1264798)
+    Fixes CVE-2026-44486 (bsc#1269956)
+    Fixes CVE-2026-44487 (bsc#1269958)
+    Fixes CVE-2026-44488 (bsc#1269960)
+    Fixes CVE-2026-44492 (bsc#1269975)
+    Fixes CVE-2026-44494 (bsc#1269977)
+    Fixes CVE-2026-44495 (bsc#1269978)
+    Fixes CVE-2026-44496 (bsc#1269980)
+    Fixes CVE-2026-67312 (bsc#1273559)
+    Fixes CVE-2026-67313 (bsc#1273617)
+    Fixes CVE-2026-67315 (bsc#1273638)
+    Fixes CVE-2026-67316 (bsc#1273643)
+    Fixes CVE-2026-67317 (bsc#1273667)
+    Fixes CVE-2026-67318 (bsc#1273699)
+    Fixes CVE-2026-67319 (bsc#1273702)
+    Fixes CVE-2026-67321 (bsc#1273728)
+    Fixes CVE-2026-102276 (bsc#1283191)
+    Fixes CVE-2026-102277 (bsc#1283372)
+    Fixes CVE-2026-102278 (bsc#1283401)
+    Fixes CVE-2026-73088 (bsc#1275352)
+    Fixes CVE-2026-73089 (bsc#1275426)
+    Fixes CVE-2026-49458 (bsc#1271592)
+    Fixes CVE-2026-49459 (bsc#1271587)
+    Fixes CVE-2026-49978 (bsc#1271588)
+    Fixes CVE-2026-65898 (bsc#1273396)
+    Fixes CVE-2026-65899 (bsc#1273396)
+    Fixes CVE-2026-65900 (bsc#1273396)
+    Fixes CVE-2026-65901 (bsc#1273396)
+    Fixes CVE-2026-65902 (bsc#1273396)
+    Fixes CVE-2026-66010 (bsc#1273396)
+    Fixes CVE-2026-85737 (bsc#1289864)
+    Fixes CVE-2026-17495 (bsc#1280772)
+    Fixes CVE-2026-82417 (bsc#1278354)
+    Fixes CVE-2026-82562 (bsc#1278366)
+    Fixes CVE-2026-8723 (bsc#1285835)
+    Fixes CVE-2026-13149 (bsc#1269912)
+    Fixed CVE-2026-47423 (bsc#1271591)
+    Fixed CVE-2026-18635 (bsc#1275253)
+    Fixes CVE-2026-75838 (bsc#1277281)
+    Fixes CVE-2026-109345 (bsc#1285101)
+    Fixes CVE-2026-116591 (bsc#1288415)
+
+-------------------------------------------------------------------
+Thu Nov 12 14:24:41 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Add 0001-include-add-128-bit-integer-types-to-linux-types.h.patch
+  * Fix libbpf build on Tumbleweed/aarch64
+    Temp fix until libbpfgo includes fixed libbpf
+
+-------------------------------------------------------------------
 Tue Sep 22 09:57:15 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
 
 - Spec: fix build with go1.27 by not using json/v2.
@@ -89,13 +196,12 @@ Fri Jun 05 13:12:24 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
     Fixes CVE-2026-46595 (bsc#1266059)
     Fixes CVE-2026-39835 (bsc#1266059)
     Fixes CVE-2026-39821 (bsc#1266489)
-    Fixes CVE-2026-33487
     Fixes CVE-2026-25680 (bsc#1267056)
     Fixes CVE-2026-42502 (bsc#1267056)
     Fixes CVE-2026-27136 (bsc#1267056)
     Fixes CVE-2026-25681 (bsc#1267056)
     Fixes CVE-2026-42506 (bsc#1267056)
-    Fixes CVE-2026-33487 (bsc#1267056)
+    Fixes CVE-2026-33487 (bsc#1285987)
   * Update npm packages
     Fixes CVE-2025-27152 (bsc#1239305)
     Fixes CVE-2026-25128 (bsc#1257518)

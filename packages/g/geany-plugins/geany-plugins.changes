@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 18:26:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Replace pkgconfig(enchant) with pkgconfig(enchant-2) BuildRequires: The
+  correct one meson checks for.
+
+-------------------------------------------------------------------
 Thu Nov 13 12:08:35 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop lua plugin, it only supports lua51, and that is going away
@@ -150,7 +156,7 @@ Tue Oct 27 13:07:55 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
   * ProjectOrganizer: Re-read base path when updating project
   * Vimmode: Don't use word navigation from Scintilla
   * Vimmode: Make o/O respect auto indentation
-- Remove deprecated geany-plugins-Make-libgit2-compatible.patch 
+- Remove deprecated geany-plugins-Make-libgit2-compatible.patch
 
 -------------------------------------------------------------------
 Thu Apr 16 23:11:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -574,8 +580,8 @@ Tue Jan 12 00:34:48 UTC 2016 - badshah400@gmail.com
 
 - Geany was switched to build against gtk3, so also switch
   this -plugins package to gtk3 too:
-  + Disable the following plugins because they do not build 
-    against gtk3: Debugger, DevHelp, GeanyDoc, GeanyGenDoc, 
+  + Disable the following plugins because they do not build
+    against gtk3: Debugger, DevHelp, GeanyDoc, GeanyGenDoc,
     GeanyLaTeX, GeanyMacro, GeanyNumberedBookmarks, GeanyPrj,
     Geanypy, Markdown, MultiTerm, Scope, WebHelper.
   + Update BuildRequires:
@@ -649,7 +655,7 @@ Sun Jul 26 22:14:15 UTC 2015 - trcs@gmx.com
     - Add an "external directory" feature
     - Add find tag by name
     - Add ignored file patterns
-    - Performance improvements in tag generation using updated Geany 
+    - Performance improvements in tag generation using updated Geany
       API
   + MultiTerm:
     - Fix build with recent Vala versions
@@ -662,7 +668,7 @@ Sun Jul 26 22:14:15 UTC 2015 - trcs@gmx.com
     - Fix building on GNU/Hurd (PR #146)
   + Spellcheck:
     - Don't check code of scripting languages embedded in HTML
-    - Add option to perform a spell check on document open (closes 
+    - Add option to perform a spell check on document open (closes
       SF #137)
   + Tableconvert:
     - Improve handling of non-LF line ends

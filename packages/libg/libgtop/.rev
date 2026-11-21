@@ -477,4 +477,14 @@
     <comment>- Add missing %verify(not mode) (boo#1263098).</comment>
     <requestid>1356901</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>23111a4cbc0efbb1d5078157121165ba</srcmd5>
+    <version>2.41.4</version>
+    <time>1795103653</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.41.4:
+  * Ensure null termination on buffer
+  * Skip colon when parsing smaps values</comment>
+    <requestid>1398481</requestid>
+  </revision>
 </revisionlist>

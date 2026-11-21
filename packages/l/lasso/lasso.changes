@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 17 09:07:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update the Source URL to match what is advertised on the website.
+
+-------------------------------------------------------------------
+Mon Nov 16 12:41:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop redundant ./autogen.sh invocation in %build: the release
+  tarball already contains a configured autotools suite.
+
+-------------------------------------------------------------------
 Tue Sep  9 12:08:10 UTC 2025 - pgajdos@suse.com
 
 - version update to 2.9.0

@@ -3,9 +3,9 @@
   <service name="obs_scm" mode="manual">
     <param name="filename">goldendict-ng</param>
     <param name="scm">git</param>
-    <param name="url">git@github.com:xiaoyifang/goldendict-ng.git</param>
-    <param name="version">26.5.0</param>
-    <param name="revision">v26.5.0-Release.c5e2abc1</param>
+    <param name="url">https://github.com/xiaoyifang/goldendict-ng.git</param>
+    <param name="version">26.11.0</param>
+    <param name="revision">v26.11.0</param>
     <param name="exclude">winlibs/*</param>
     <param name="submodules">disable</param>
   </service>

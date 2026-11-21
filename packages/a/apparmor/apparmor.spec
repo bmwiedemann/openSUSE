@@ -95,6 +95,9 @@ Patch13:        wg-quick.diff
 # profile fixes for dovecot 2.4, boo#1265453
 Patch14:        dovecot.diff
 
+# transmission: allow locking lockfile (submitted upstream https://gitlab.com/apparmor/apparmor-profiles/-/merge_requests/80 / https://gitlab.com/apparmor/apparmor/-/merge_requests/2246 for 5.0)
+Patch15:        transmission-2246.patch
+
 PreReq:         sed
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
@@ -367,6 +370,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 11 -p1
 %patch -P 13 -p1
 %patch -P 14 -p1
+%patch -P 15 -p1
 
 %build
 export SUSE_ASNEEDED=0

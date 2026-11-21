@@ -23,4 +23,30 @@
     <comment>Update rpmcrab to 0.4.0.</comment>
     <requestid>1392611</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>645e48536e75d982be4f6eb0a4e3fb50</srcmd5>
+    <version>0.4.1</version>
+    <time>1793818071</time>
+    <user>anag_factory</user>
+    <comment>Forward rpmcrab 0.4.1 to Factory</comment>
+    <requestid>1394930</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>dc80212b29da9375381ff1cd9820f668</srcmd5>
+    <version>0.4.1</version>
+    <time>1793990857</time>
+    <user>anag_factory</user>
+    <comment>- Version the rpmlint-mini Provides (2.10.0+git20261020.513f17e8)
+
+- Use appstream-glib package dependency instead of the %{_bindir}/appstream-util file dependency</comment>
+    <requestid>1395484</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0c16fb920596097030a9f154d8be0159</srcmd5>
+    <version>0.4.2</version>
+    <time>1794591138</time>
+    <user>anag_factory</user>
+    <comment>Update rpmcrab to 0.4.2: seven new checks, preset-delegated systemd findings, precision fixes, vendored refresh.</comment>
+    <requestid>1397101</requestid>
+  </revision>
 </revisionlist>

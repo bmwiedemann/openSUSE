@@ -23,4 +23,12 @@
     <comment>sipgrep 2.2.4 boo#1276212</comment>
     <requestid>1373247</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c0241a9bbfadacdc004e9576cb0ae99a</srcmd5>
+    <version>2.2.5</version>
+    <time>1794816486</time>
+    <user>anag_factory</user>
+    <comment>sipgrep 2.2.5 (forwarded request 1397550 from AndreasStieger)</comment>
+    <requestid>1397551</requestid>
+  </revision>
 </revisionlist>

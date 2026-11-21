@@ -21,7 +21,7 @@ Name:           orthanc-authorization
 Summary:        Authorisation plugin for Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        0.12.0
+Version:        0.12.1
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancAuthorization-%{version}.tar.gz
@@ -32,7 +32,11 @@ Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/e2f
 Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/boost_1_86_0_bcpdigest-1.12.5.tar.gz
 
 BuildRequires:  cmake
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -64,7 +68,10 @@ mkdir -p ThirdPartyDownloads
 cp %{S:1} %{S:2} %{S:3} %{S:4} %{S:5} ThirdPartyDownloads/.
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \

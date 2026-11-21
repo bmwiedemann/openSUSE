@@ -29,6 +29,7 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libfontenc/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch0:         bsc1289302_CVE-2026-109908_encparse-fix-heap-out-of-bounds-write-in-setCode.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  meson
@@ -70,7 +71,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

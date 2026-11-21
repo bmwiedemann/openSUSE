@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:07:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 9.4.0:
+  * Base64: find '=' while decoding when garbage is accepted
+  * Base64: faster scalar encoding and decoding
+  * Haswell, westmere: cheaper surrogate range test in count_utf16
+  * Base64: let the C++23 span overloads take any byte-like type
+  * Validate_utf16: use the whole register on 256-bit targets
+  * Fix misleading comments about safety margins and store widths
+  * Lasx: fix comments on the 2-byte UTF-8 to UTF-16 fast path
+  * Icelake: keep converted output in convert_utf8_to_latin1_with_errors
+  * Lasx: fix simd8<bool>::any() returning all() semantics
+  * Base64: do not write past the output in the arm64/lsx/lasx tail
+  * Remove redundant defaulted default constructors
+  * README: document ABI compatibility constraints
+  * README: list Microsoft products among simdutf users
+  * README: list more projects that use simdutf
+  * Cmake: allow building the benchmarks without the tests
+  * Loongarch: enable LASX runtime dispatch with LLVM, keep LSX helpers out of
+    the LASX target
+  * Arm64: check all encodings in one pass in detect_encodings
+  * Name the Latin1 encoding in to_string
+  * Icelake: stop checking failed encodings in detect_encodings
+  * Base64: make base64_to_binary_safe with accept_garbage independent of
+    buffer size
+  * Base64: count trailing whitespace as read when the SIMD loop consumes all
+    input (TC39)
+  * Generic: one-pass detect_encodings for haswell, westmere, lsx and lasx
+- Update lib_ver to 38.0.0 and so_ver to 38: follow upstream
+  changes.
+
+-------------------------------------------------------------------
 Wed Oct 28 08:40:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 9.3.3:

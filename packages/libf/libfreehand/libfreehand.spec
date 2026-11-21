@@ -1,7 +1,7 @@
 #
 # spec file for package libfreehand
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %define libname libfreehand-0_1-1
 Name:           libfreehand
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 Summary:        Library for import of FreeHand drawings
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
-Url:            http://www.freedesktop.org/wiki/Software/libfreehand
+URL:            http://www.freedesktop.org/wiki/Software/libfreehand
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM icu-build-fix.patch: fix build with icu 65.1.
-Patch0:         icu-build-fix.patch
+
+Patch0:         %{name}-%{version}-doxygen-cfg.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gperf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
-BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(librevenge-0.0)
 BuildRequires:  pkgconfig(zlib)
@@ -88,7 +88,6 @@ This package contains tools to work with Adobe/Macromedia drawings.
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure \
 	--disable-silent-rules \
-	--disable-werror \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}-devel/html
 make %{?_smp_mflags}
@@ -98,7 +97,7 @@ make %{?_smp_mflags}
 
 find %{buildroot} -type f -name "*.la" -delete -print
 
-cp -p AUTHORS COPYING ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
+cp -p AUTHORS ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
 
 %fdupes -s %{buildroot}
 
@@ -122,7 +121,10 @@ make %{?_smp_mflags} check
 %doc %{_docdir}/%{name}-devel/html/
 
 %files tools
-%doc AUTHORS COPYING ChangeLog
-%{_bindir}/*
+%license COPYING
+%doc AUTHORS ChangeLog
+%{_bindir}/fh2raw
+%{_bindir}/fh2svg
+%{_bindir}/fh2text
 
 %changelog

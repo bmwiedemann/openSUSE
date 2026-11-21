@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 07:54:49 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add kernel-7.4.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 08:53:40 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Fix kmp build against kernel-longterm 6.18.55+, where
+  drm_fb_helper_restore_fbdev_mode_unlocked() was changed
+    adding kernel-longterm_6-18-55.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 20:42:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.22

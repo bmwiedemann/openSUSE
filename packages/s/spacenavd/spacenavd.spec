@@ -68,6 +68,7 @@ any program that was written for the 3Dconnexion driver.
 %build
 %configure
 make %{?_smp_mflags} opt="%{optflags}"
+sed -i -e "s#/usr/local/bin#%{_sbindir}#" contrib/systemd/%{name}.service
 
 %install
 install -D -m 755 %{name} %{buildroot}%{_sbindir}/%{name}

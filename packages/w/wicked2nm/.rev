@@ -142,4 +142,16 @@
   * Fix team_lacp_ethtool test by setting lacp active explicitly</comment>
     <requestid>1371202</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6feb93c50ca04d014d037aa06d460674</srcmd5>
+    <version>1.5.3</version>
+    <time>1795182260</time>
+    <user>anag_factory</user>
+    <comment>- Update v1.5.3
+  * Add test for &quot;en0 + en1 -&gt; bond0 -&gt; br0 -&gt; br0.2002&quot;
+  * Cargo update
+  * Fix ip6.addr_gen_mode handling, default is EUI64
+    [bsc#1279546]</comment>
+    <requestid>1398924</requestid>
+  </revision>
 </revisionlist>

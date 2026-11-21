@@ -34,6 +34,8 @@ License:        GPL-2.0-only OR GPL-3.0-or-later OR LGPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
 Source99:       qt6-websockets-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         CVE-2026-114366.patch
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Core) = %{real_version}
 BuildRequires:  cmake(Qt6CorePrivate) = %{real_version}

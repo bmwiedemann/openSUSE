@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-recv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.1
+Version:        0.1.3
 Release:        0
 Summary:        Efficient network recv
 License:        BSD-3-Clause
@@ -34,6 +34,8 @@ BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-stm-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel

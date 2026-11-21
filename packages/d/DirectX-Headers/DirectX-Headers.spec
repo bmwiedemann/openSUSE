@@ -22,7 +22,7 @@
 %endif
 
 Name:           DirectX-Headers
-Version:        1.619.5
+Version:        1.620.2
 Release:        0
 Summary:        DirectX Headers for Mesa
 License:        MIT
@@ -41,7 +41,7 @@ Additionally, this package hosts several helpers for using these headers.
 Make sure that you visit the DirectX Landing Page for more resources for DirectX developers.
 
 %prep
-%autosetup
+%autosetup -p 1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

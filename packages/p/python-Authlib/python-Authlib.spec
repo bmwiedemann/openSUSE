@@ -29,7 +29,7 @@
 %define modname authlib
 %{?sle15_python_module_pythons}
 Name:           python-Authlib%{psuffix}
-Version:        1.9.1
+Version:        1.9.5
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
@@ -108,7 +108,7 @@ $python -mpytest tests/django
 %endif
 
 %if !%{with test}
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %{python_sitelib}/%{modname}

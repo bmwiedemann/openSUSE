@@ -4,14 +4,14 @@ Date: Mon, 18 Jul 2022 18:23:37 +0200
 Subject: [PATCH] Build helper libraries as OBJECT libraries
 
 ---
- cmake/Template.cmake      |  2 +-
+ cmake/Template.cmake      | 2 +-
  src/com/CMakeLists.txt    | 10 +++++-----
  src/ui/CMakeLists.txt     |  3 ++-
- test/mocks/CMakeLists.txt |  4 ++--
+ test/mocks/CMakeLists.txt | 4 ++--
  4 files changed, 10 insertions(+), 9 deletions(-)
 
 diff --git a/cmake/Template.cmake b/cmake/Template.cmake
-index e7cfc25..6d04608 100644
+index e9c078b..4e40e8d 100644
 --- a/cmake/Template.cmake
 +++ b/cmake/Template.cmake
 @@ -8,4 +8,4 @@ configure_file(${TEMPLATE_DIR}/Version.cpp.in
@@ -21,10 +21,10 @@ index e7cfc25..6d04608 100644
 -add_library(plug-version ${GENERATED_DIR}/Version.cpp)
 +add_library(plug-version OBJECT ${GENERATED_DIR}/Version.cpp)
 diff --git a/src/com/CMakeLists.txt b/src/com/CMakeLists.txt
-index 54e7b1e..1ea814b 100644
+index c0d17a3..2932c21 100644
 --- a/src/com/CMakeLists.txt
 +++ b/src/com/CMakeLists.txt
-@@ -1,17 +1,17 @@
+@@ -1,19 +1,19 @@
  
 -add_library(plug-mustang Mustang.cpp PacketSerializer.cpp Packet.cpp)
 -add_library(plug-communication
@@ -40,6 +40,7 @@ index 54e7b1e..1ea814b 100644
      UsbException.cpp
      UsbDevice.cpp
      )
+ target_link_libraries(plug-communication-usb PRIVATE libusb-1.0::libusb-1.0)
  
 -add_library(plug-libusb LibUsbCompat.cpp)
 +add_library(plug-libusb OBJECT LibUsbCompat.cpp)
@@ -47,8 +48,9 @@ index 54e7b1e..1ea814b 100644
  
 -add_library(plug-updater MustangUpdater.cpp)
 +add_library(plug-updater OBJECT MustangUpdater.cpp)
+ target_link_libraries(plug-updater PRIVATE libusb-1.0::libusb-1.0)
 diff --git a/src/ui/CMakeLists.txt b/src/ui/CMakeLists.txt
-index 5baab0c..1680247 100644
+index f72662c..1fcf462 100644
 --- a/src/ui/CMakeLists.txt
 +++ b/src/ui/CMakeLists.txt
 @@ -2,7 +2,8 @@ set(CMAKE_AUTOMOC ON)
@@ -76,6 +78,3 @@ index fd87c49..d7877d7 100644
  target_link_libraries(UsbDeviceMock PRIVATE TestLibs)
  
  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
--- 
-2.37.0
-

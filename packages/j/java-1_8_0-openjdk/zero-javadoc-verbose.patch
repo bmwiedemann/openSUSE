@@ -1,6 +1,8 @@
---- openjdk/make/Javadoc.gmk
-+++ openjdk/make/Javadoc.gmk
-@@ -260,7 +260,6 @@ $(call CopyrightLine,$(COPYRIGHT_URL),$(
+diff --git a/make/Javadoc.gmk b/make/Javadoc.gmk
+index f65465c31f..5bf388140c 100644
+--- a/make/Javadoc.gmk
++++ b/make/Javadoc.gmk
+@@ -270,7 +270,6 @@ Also see the <a target="_blank" href="http://www.oracle.com/technetwork/java/red
  # Common javadoc options used by all
  COMMON_JAVADOCFLAGS = \
      -XDignore.symbol.file=true \

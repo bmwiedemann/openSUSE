@@ -1,7 +1,7 @@
 #
 # spec file for package python-lz4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,9 @@ export CFLAGS="%{optflags}"
 %check
 # lz4.stream is not compiled by default: https://github.com/python-lz4/python-lz4/issues/240
 ignoretest="--ignore tests/stream"
-%pytest_arch $ignoretest
+# lz4 1.11 broke a lot of tests, there is a PR upstream but it does not fix it https://github.com/python-lz4/python-lz4/issues/352 https://github.com/python-lz4/python-lz4/pull/354
+donttest="(test_block_0 and (mode22 or mode23 or mode24 or mode25 or mode26 or mode27 or mode28 or mode29) and (dictionary2 or (data2 or data4 or data5)))"
+%pytest_arch $ignoretest -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

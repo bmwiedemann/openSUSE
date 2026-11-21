@@ -1,9 +1,11 @@
+diff --git a/plexus-java/src/main/java9/module-info.java b/plexus-java/src/main/java9/module-info.java
+index 1a68b2a..c8c1229 100644
 --- a/plexus-java/src/main/java9/module-info.java
 +++ b/plexus-java/src/main/java9/module-info.java
-@@ -19,6 +19,7 @@
+@@ -18,6 +18,7 @@
+  */
  module org.codehaus.plexus.languages.java {
      requires com.github.javaparser.core;
-     requires org.objectweb.asm;
 +    requires java.inject;
  
      exports org.codehaus.plexus.languages.java.jpms;

@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-wlr
-Version:        0.8.5
+Version:        0.9.0
 Release:        0
 Summary:        An xdg-desktop-portal backend for wlroots
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  scdoc >= 1.9.7
 BuildRequires:  pkgconfig(gbm) >= 21.3
 BuildRequires:  pkgconfig(inih)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.109
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.62
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.64
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
@@ -60,7 +60,7 @@ install -D -pv -m644 contrib/wlroots-portals.conf %{buildroot}%{_datadir}/xdg-de
 
 %files
 %license LICENSE
-%doc README.md CONTRIBUTING.md
+%doc README.md
 %{_libexecdir}/%{name}
 %{_userunitdir}/%{name}.service
 %{_datadir}/dbus-1/services/org.freedesktop.impl.portal.desktop.wlr.service

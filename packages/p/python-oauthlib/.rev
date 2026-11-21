@@ -386,4 +386,15 @@
     <comment>1</comment>
     <requestid>1381890</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1e5e28c2748e819e2fd9da114dcd842d</srcmd5>
+    <version>4.0.1</version>
+    <time>1794317911</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.1:
+   * CVE-2026-49272: Breaking: The device code flow token endpoint did
+    not validate the device_code parameter, allowing a request with a known
+    client_id and a bogus device_code to obtain a bearer token. (bsc#1288518)</comment>
+    <requestid>1396215</requestid>
+  </revision>
 </revisionlist>

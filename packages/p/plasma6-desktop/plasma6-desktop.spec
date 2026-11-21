@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-desktop
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-only
@@ -42,7 +42,8 @@ Source2:        plasma.keyring
 # PATCH-FIX-OPENSUSE
 Patch100:       0001-Apply-branding-to-default-favorites.patch
 # PATCH-FIX-OPENSUSE
-Patch101:       0001-Revert-sddm-theme-drop-vkb-wrapper-use-KWinVirtualKe.patch
+Patch101:       0001-Revert-sddm-theme-restore-Qt-Virtual-Keyboard-fallba.patch
+Patch102:       0001-Revert-sddm-theme-drop-vkb-wrapper-use-KWinVirtualKe.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Due to KWinDBusInterface not having a cmake version config file, we need to BR kwin6-devel instead

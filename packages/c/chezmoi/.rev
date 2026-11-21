@@ -1327,4 +1327,24 @@
 </comment>
     <requestid>1393443</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>e8065c7a4bb82121c041add1bac16b34</srcmd5>
+    <version>2.74.0</version>
+    <time>1793991581</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395894</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>35ba0bfa9005e32da983dd75fbec6e26</srcmd5>
+    <version>2.74.1</version>
+    <time>1795182391</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.74.1:
+  - Fixes
+    * fix: Make chezmoi init --apply really run chezmoi apply
+    * fix: Ensure config template data is reloaded in chezmoi init --apply
+</comment>
+    <requestid>1398835</requestid>
+  </revision>
 </revisionlist>

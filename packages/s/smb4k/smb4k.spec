@@ -16,11 +16,11 @@
 #
 
 
-%define kf6_version 6.0.0
-%define qt6_version 6.6.2
+%define kf6_version 6.28.0
+%define qt6_version 6.9.0
 
 Name:           smb4k
-Version:        4.0.7
+Version:        4.0.8
 Release:        0
 Summary:        Network Neighborhood Browser and Samba Share Mounting Utility
 License:        GPL-2.0-or-later
@@ -30,8 +30,8 @@ BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(KDSoap-qt6)
-BuildRequires:  cmake(KDSoapWSDiscoveryClient) >= 0.3.0
+BuildRequires:  cmake(KDSoap-qt6) >= 2.0.0
+BuildRequires:  cmake(KDSoapWSDiscoveryClient) >= 0.4.0
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}

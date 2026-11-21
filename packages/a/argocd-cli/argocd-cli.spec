@@ -19,7 +19,7 @@
 %define executable_name argocd
 
 Name:           argocd-cli
-Version:        3.5.6
+Version:        3.6.2
 Release:        0
 Summary:        CLI for the ArgoCD declarative continuous deployment tool
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/argoproj/argo-cd
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
-BuildRequires:  go1.26 >= 1.26.10
+BuildRequires:  go1.27 >= 1.27.3
 BuildRequires:  zsh
 
 %description

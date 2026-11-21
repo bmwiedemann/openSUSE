@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:40:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Fix shape of class widgets with templates not matching the actual geometry (kde#527922)
+  * Fix bug not been able to bring synchronous self message to front (kde#527712)
+  * Fix incorrect display of the arrow head for synchronous self messages
+  * Use UML-standard-compliant XMI identifiers in test files (kde#502519)
+  * For synchronous self messages, the call arrow should remain at the top (kde#525933)
+  * Fix 'Cannot resize nested method call in sequence diagrams' (kde#525933)
+  * The properties dialog for a note no longer closes when you click 'Apply' (kde#526973)
+  * Fix an issue where the notes widget rejected changes to the content (kde#526671)
+
+-------------------------------------------------------------------
 Wed Oct  7 07:06:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

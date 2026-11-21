@@ -1,7 +1,7 @@
 #
 # spec file for package libusbmuxd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define libname libusbmuxd-2_0-7
 Name:           libusbmuxd
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        A client library to multiplex connections from and to iOS devices
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://github.com/libimobiledevice/libusbmuxd
 Source:         https://github.com/libimobiledevice/libusbmuxd/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf

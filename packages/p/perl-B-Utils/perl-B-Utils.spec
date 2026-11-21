@@ -1,7 +1,7 @@
 #
 # spec file for package perl-B-Utils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name B-Utils
 Name:           perl-B-Utils
-Version:        0.270.0
+Version:        0.290.0
 Release:        0
-# 0.27 -> normalize -> 0.270.0
-%define cpan_version 0.27
+# 0.29 -> normalize -> 0.290.0
+%define cpan_version 0.29
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Helper functions for op tree manipulation
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        perl-B-Utils-rpmlintrc
 Source2:        cpanspec.yml
+Source100:      README.md
 Patch0:         parent-impl.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros

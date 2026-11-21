@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-sip6
-Version:        6.17.1
+Version:        6.17.3
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        BSD-2-Clause

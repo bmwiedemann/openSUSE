@@ -1,7 +1,7 @@
 #
 # spec file for package rasqal
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,8 +24,8 @@ Release:        0
 Summary:        RDF Parser Toolkit for Redland
 License:        Apache-2.0+ OR GPL-2.0-or-later OR LGPL-2.1-or-later
 Group:          Productivity/Other
-URL:            http://librdf.org/%{name}/
-Source0:        http://download.librdf.org/source/%{name}-%{version}.tar.gz
+URL:            https://www.librdf.org/%{name}/
+Source0:        https://download.librdf.org/source/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
 Patch0:         rasqal-0.9.33-pcre2.patch
 BuildRequires:  autoconf
@@ -97,16 +97,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n lib%{name}%{sonum}
 
 %files -n lib%{name}%{sonum}
-%license COPYING COPYING.LIB
-%doc AUTHORS ChangeLog
-%license LICENSE.html LICENSE.txt
-%doc LICENSE-2.0.txt
-%doc NEWS NEWS.html NOTICE README README.html RELEASE.html
+%license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
+%doc ChangeLog NEWS NOTICE README
 %{_libdir}/lib%{name}.so.%{sonum}*
 %{_mandir}/man1/%{name}-config.1%{?ext_man}
 
 %files -n lib%{name}-devel
-%license COPYING COPYING.LIB
 %{_bindir}/%{name}-config
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
@@ -114,11 +110,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man3/lib%{name}.3%{?ext_man}
 
 %files -n lib%{name}-devel-doc
-%license COPYING COPYING.LIB
+%license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
 %{_docdir}/lib%{name}-devel/
 
 %files
-%license COPYING COPYING.LIB
+%license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
 %{_bindir}/roqet
 %{_mandir}/man1/roqet.1%{?ext_man}
 

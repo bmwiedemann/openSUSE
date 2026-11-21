@@ -126,7 +126,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.22.0_06
+Version:        4.22.0_08
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -173,6 +173,8 @@ Patch9:         6abbdd30-amd-Fix-inverted-condition-in-zenbleed_use_chickenbit.p
 Patch10:        6abbe079-pv-map-each-vCPUs-root-page-table-in-its-per-domain-area.patch
 Patch11:        6abbe20c-gnttab-address-fallout-from-XSA-501.patch
 Patch12:        6abbe28e-vmx-Rework-#DB-intercept-logic-to-fix-VMEntry-failure-with-BTF.patch
+Patch13:        6ae9cd89-gnttab-complete-checking-in-gnttab_copy_buf_valid.patch
+Patch14:        6ae9cd89-gnttab-move-only-local-domain-may-copy-by-frame-check.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch

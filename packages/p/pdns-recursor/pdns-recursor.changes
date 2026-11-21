@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Oct 23 08:30:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 5.4.8
+  * Security fixes:
+    + PowerDNS Advisory 2025-06:
+      CVE-2025-59023, bsc#1252650
+      CVE-2025-59024, bsc#1252651
+    + PowerDNS Advisory 2025-07:
+      CVE-2025-59029, bsc#1254881
+    + PowerDNS Advisory 2025-08:
+      CVE-2025-59030, bsc#1254877
+    + PowerDNS Advisory 2026-01:
+      CVE-2026-0398, bsc#1257957
+      CVE-2026-24027, bsc#1257956
+    + PowerDNS Advisory 2026-03:
+      CVE-2026-33256, bsc#1262557
+      CVE-2026-33257, bsc#1262536
+      CVE-2026-33258, bsc#1262558
+      CVE-2026-33259, bsc#1262559
+      CVE-2026-33260, bsc#1262537
+      CVE-2026-33261, bsc#1262560
+      CVE-2026-33262, bsc#1262561
+      CVE-2026-33600, bsc#1262563
+      CVE-2026-33601, bsc#1262562
+    + PowerDNS Advisory 2026-08:
+      CVE-2026-33612, bsc#1269208
+      CVE-2026-40012, bsc#1269212
+      CVE-2026-42005, bsc#1269201
+      CVE-2026-42387, bsc#1269213
+      CVE-2026-42388, bsc#1269214
+      CVE-2026-42389, bsc#1269215
+      CVE-2026-42390, bsc#1269216
+      CVE-2026-52690, bsc#1269211
+    + PowerDNS Advisory 2026-10:
+      CVE-2026-52686, bsc#1272395
+      CVE-2026-52688, bsc#1272396
+    + PowerDNS Advisory 2026-11:
+      CVE-2026-52682
+    + PowerDNS Advisory 2026-12:
+      CVE-2026-73205, bsc#1286603
+      CVE-2026-73206, bsc#1286604
+      CVE-2026-85555, bsc#1286605
+      CVE-2026-85556, bsc#1286606
+      CVE-2026-85557, bsc#1286607
+      CVE-2026-85558, bsc#1286608
+      CVE-2026-85559, bsc#1286609
+  * Full changelogs:
+    https://doc.powerdns.com/recursor/changelog/5.3.html
+    https://doc.powerdns.com/recursor/changelog/5.4.html
+- Upstream tarball is now xz compressed
+- Rust code moved from settings/rust to rec-rust-lib/rust; the
+  settings code generator now runs from make, and
+  effective_tld_names.dat is no longer shipped
+- Regenerate vendor.tar.zst; adapt _service to current
+  obs-service-cargo (src is the tarball, custom-root)
+- Added patch:
+  * CVE-2026-52684.patch (bsc#1272421)
+    + backport of upstream PR#17748: do not refresh NS records in
+      refresh-almost-expired; not in 5.4.8
+- Modified patch:
+  * cargo_build_fix.patch
+    + rediff for the rec-rust-lib/rust location
+    + build cargo C/C++ glue with -fno-lto: rustc cannot index
+      slim LTO objects in librecrust.a, cxxbridge symbols end up
+      undefined at link time
+- Removed patch:
+  * boost-m4-39.patch
+    + integrated upstream
+
+-------------------------------------------------------------------
 Sun Oct 26 14:54:39 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Boost.System is headers only since 1.69 and stub library removed in

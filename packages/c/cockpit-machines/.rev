@@ -451,4 +451,35 @@ outside of Factory
   * Translations and dependency updates</comment>
     <requestid>1374320</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>6cc06642ee1784daa759fea95dc6b04e</srcmd5>
+    <version>360</version>
+    <time>1795023118</time>
+    <user>anag_factory</user>
+    <comment>- Update to 360
+  * 360
+    - CVE-2026-113495: RHSM authentication tokens are passed as command-line
+      arguments to background helper processes during image retrieval
+      operations (bsc#1286327)
+    - CVE-2026-113496: configured password is passed directly as a
+      command-line argument to an underlying system utility when saving VNC
+      console settings (bsc#1286328)
+    - Updated to PatternFly 6.7.0
+  * 359
+    - disks: Use FileChooser for inserting media (RHEL-211920)
+  * 358
+    - spec: Don't recommend qemu-char-spice after Fedora 45
+    - Dependency and translations updates
+  * 357
+    - CVE-2026-92768: Sensitive data exposure via command-line arguments
+      (bsc#1282356)
+    - CVE-2026-92747: Sensitive Data Exposure of guest credentials via JSON
+      argument in process list (bsc#1282355)
+    - CVE-2026-92745: Information Disclosure of RHSM Offline Token via Process
+      Arguments (bsc#1282354)
+  * 356
+    - Translation updates
+    - Stability improvements</comment>
+    <requestid>1398368</requestid>
+  </revision>
 </revisionlist>

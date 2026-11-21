@@ -5,9 +5,9 @@
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <disk>
+      <memory>
         <size unit="G">16</size>
-      </disk>
+      </memory>
     </hardware>
   </overwrite>
 </constraints>

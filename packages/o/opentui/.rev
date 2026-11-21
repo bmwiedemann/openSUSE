@@ -93,4 +93,20 @@ opentui = 0.5.14 exactly.</comment>
     <comment>Update opentui to 0.8.0 (opencode 2.2.4 runtime requirement).</comment>
     <requestid>1393959</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fbef6d1d52a818dab1b06b4bdb0c44de</srcmd5>
+    <version>0.8.3</version>
+    <time>1794090849</time>
+    <user>dimstar_suse</user>
+    <comment>Forward opentui 0.8.3 to Factory (video support, Zig 0.17.0, service tarball). Branch green on Factory x86_64+aarch64.</comment>
+    <requestid>1396050</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8a2321b9d8f7440c3df6237e2dc6a9c3</srcmd5>
+    <version>0.8.4</version>
+    <time>1795022983</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.8.4 (restores deleted devel package; unblocks opencode 2.3.0 which pins 0.8.4 exactly)</comment>
+    <requestid>1397590</requestid>
+  </revision>
 </revisionlist>

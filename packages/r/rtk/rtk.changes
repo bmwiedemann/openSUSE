@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:56:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.0:
+  * git: fold ls-tree path listings by directory
+  * read: tab-separated line numbers, raw-byte fallback for
+    non-UTF-8 input, partial reads booked as the shown span
+  * cargo: keep nextest timeouts and retried failures
+  * pipeline: swap commands rtk has no filter for, keeping
+    excluded commands and the agent permission check intact
+  * hook: honour opt-outs in quoted scripts behind uv run, skip
+    proxy autostart on occupied loopback ports
+  * init: install the OpenCode plugin independently of agent
+    setup, exit code 2 when the codex uninstall guard refuses
+  * ruff: route flag-first implicit check invocations to check;
+    ls output held to what ls prints; non-JSON Go test reports
+    preserved; SQLFluff file shortcuts routed through lint
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored dependencies (254 crates); licence tag
+  unchanged (second Zlib foldhash copy and MIT crossterm 0.29
+  already covered)
+- rtk-unbundle-sqlite.patch and rtk-no-deny-warnings.patch
+  still apply unchanged (upstream still bundles sqlite and
+  denies warnings)
+- Cap the test threads at 8: the tests in one binary share a
+  single recall DB, which drops hints under 64-way parallelism
+
+-------------------------------------------------------------------
 Tue Oct 27 18:39:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.0:

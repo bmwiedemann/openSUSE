@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:40:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.820.0 (4.82)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.82 2026-11-16 (rurban)
+        - Security fixes, reported by Albert Gierlach (rivit):
+          * encode: JSON_TYPE_BOOL of a reference to a scalar other than 0 or 1
+            crashed (NULL stash) instead of croaking.
+          * encode: JSON_TYPE_FLOAT with allow_bignum and an integer value
+            overflowed the buffer by the appended ".0".
+          * encode: convert_blessed no longer expands Math::BigFloat objects
+            with a huge exponent into digits (memory exhaustion).
+          * decode: free the partial string on errors (leak of ~16KB per
+            document with strings > 16KB).
+          * decode: free enclosing arrays and hashes when a filter_json_object
+            or filter_json_single_key_object callback dies (leak).
+          * decode: -9223372036854775808 negated IV_MIN (undefined behaviour).
+          * incr_parse: a NUL byte between values is now an error and no longer
+            stalls the parser while the buffer grows forever.
+          * incr_parse: keep incr_pos consistent when the downgrade fails with
+            wide characters, and never underflow it when the incremental scanner
+            and the decoder disagree (allow_barekey). Fixes out-of-bounds
+            writes in incr_parse after incr_skip.
+        - t/10_pc_keysort fix for perls older then 5.20, introduced with 4.81 (GH #262 eserte)
+  4.81 2026-11-09 (rurban)
+        - Fix memory leak when croak is called while encoding a tied hash
+          in canonical mode (PR #261, Nikolay Shaplov, ISP RAS)
+
+-------------------------------------------------------------------
 Thu Oct 15 09:56:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.800.0 (4.80)

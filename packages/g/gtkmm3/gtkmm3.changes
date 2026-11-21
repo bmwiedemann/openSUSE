@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  3 06:36:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Fri Jun 12 07:21:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.11:
@@ -1234,8 +1239,8 @@ Thu Sep 27 21:33:00 UTC 2012 - dimstar@opensuse.org
     - PrintJob: Added get/set_page_ranges().
     - Settings: Added the enable_primary_paste property.
     - Widget: Add has_visible_focus().
-    - Window: Add set_startup_id(), is_active(), 
-      has_toplevel_focus(), set_default_geometry(), 
+    - Window: Add set_startup_id(), is_active(),
+      has_toplevel_focus(), set_default_geometry(),
       resize_to_geometry(), has_group().
       Add the focus-visible and attached-to properties.
   + Build:

@@ -18,39 +18,26 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.57.0
+Version:        1.60.1
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
-# Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
-# statically links its vendored Rust dependencies, so the tag below covers the
-# whole linked set. Derived on this vendoring with
-# "cargo tree --offline -p goose-cli -e normal --no-default-features
-#  --features %%{goose_features}" over the vendored tree
-# (1097 crates vendored, 482 third-party crates in the linked graph plus the
-# nine goose workspace crates -- the code-mode and
-# local-inference branches, and with them v8/candle/llama-cpp, are not built,
-# and neither is the cuda branch, so the cudaforge git dependency is unused),
-# then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
-# Where a crate offers a choice the Apache-2.0 branch is elected, and MIT where
-# Apache-2.0 is not on offer; both are already named, so no "OR" expression in
-# the graph adds an identifier (the seven crates offering Unlicense or MIT
-# elect MIT, adler2 elects Apache-2.0 over 0BSD, ryu elects Apache-2.0 over
-# BSL-1.0, and the "Apache-2.0 WITH LLVM-exception" branch of
-# blake3/linux-raw-sys/rustix is not the one taken). The remaining entries are
-# crates with no choice
-# to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
-# MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the ICU crates and
-# unicode-ident (which names "(MIT OR Apache-2.0) AND Unicode-3.0"),
-# CDLA-Permissive-2.0 from webpki-roots, ISC from rustls-webpki,
-# simple_asn1, untrusted and the aws-lc pair (and from ring, "Apache-2.0 AND
-# ISC"),
-# BSD-3-Clause from ten crates -- subtle/brotli/encoding_rs/matchit,
-# alloc-no-stdlib, alloc-stdlib, the three zstd crates and aws-lc-sys, whose
-# multi-licence expression requires it (brotli-decompressor offers it in the
-# legacy "BSD-3-Clause/MIT" dual form, where the MIT branch is elected),
-# Zlib from foldhash
-# and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 114 crates that elect it.
+# Legal-Review-Notice: the tag below covers the whole linked set (the shipped
+# binary statically links its vendored Rust dependencies), derived as:
+# - "cargo tree --offline -p goose-cli -e normal --no-default-features
+#   --features %%{goose_features}" over the vendored tree (1103 crates vendored).
+# - Linked: 459 third-party crates plus the nine goose workspace crates (the
+#   code-mode, local-inference and cuda branches are not built).
+# - The cudaforge git dependency is unused (only the cuda branch needs it).
+# - Elections: Apache-2.0 where offered else MIT; no other "OR" adds an id:
+#   Unlicense/MIT x7 to MIT, adler2/ryu to Apache-2.0, LLVM-exception untaken.
+# - LGPL-3.0-or-later from ansi_colours (via bat); MPL-2.0 from option-ext;
+#   Unicode-3.0 from the ICU crates, unicode-ident and friends.
+# - CDLA-Permissive-2.0 from webpki-roots; ISC from rustls-webpki, untrusted,
+#   the aws-lc pair and ring ("Apache-2.0 AND ISC").
+# - BSD-3-Clause from ten: subtle, brotli, encoding_rs, matchit, the alloc pair,
+#   the zstd trio and aws-lc-sys (brotli-decompressor elects MIT instead).
+# - Zlib from foldhash and zlib-rs; MIT-0 from borrow-or-share; bzip2-1.0.6
+#   from libbz2-rs-sys; MIT from the 101 MIT-only crates.
 # Upstream removed Nostr session sharing in this release (the goose/nostr
 # feature and session/nostr_share.rs are gone), so the bitcoin_hashes/secp256k1
 # crates that carried the previous CC0-1.0 entry left the linked graph with it.
@@ -79,7 +66,13 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-crates.tar.zst
 # cargo_vendor runs with filter=true, so crates no Linux target uses are
 # emptied at vendor time (the winapi-*/windows_* import libs and wit-bindgen's
-# wasm-only objects are gone from the tarball). What is left is test fixtures
+# wasm-only objects are gone from the tarball). Two Windows-only object sets
+# inside Linux-used crates are stripped at repack instead (43 files, with
+# their .cargo-checksum.json entries): aws-lc-sys builder/prebuilt-nasm
+# (26 MSVC objects, used only by use_prebuilt_nasm(), which is
+# windows-x86_64-only) and ring pregenerated *-nasm.o/*-win32n.o (17, used
+# only when build.rs picks a use_nasm() target, i.e. Windows; Linux builds
+# from the pregenerated C and elf-format sources). What is left is test fixtures
 # under tests/ dirs, named below. Neither crate is in the linked binary's
 # cargo tree except async-compression, and only its test corpus touches it.
 # Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's #![cfg(windows)] tests/windows.rs
@@ -91,9 +84,9 @@ BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-# upstream declares rust-version = "1.94.1" in the workspace manifest and cargo
+# upstream declares rust-version = "1.95.0" in the workspace manifest and cargo
 # refuses to build below it
-BuildRequires:  rust >= 1.94.1
+BuildRequires:  rust >= 1.95.0
 # libdbus-sys (via keyring -> dbus-secret-service) probes for it; the floor is
 # the one its build script passes to pkg-config
 BuildRequires:  pkgconfig(dbus-1) >= 1.6
@@ -159,7 +152,7 @@ rm -rf bin
 %limit_build -m 2000
 # named bins rather than --bins: 1.48.0 added mcp_conformance_driver, a CI-only
 # harness we neither ship nor want to compile
-%{cargo_build} -p goose-cli --bin goose --bin generate_manpages --no-default-features --features %{goose_features}
+%cargo_build -- -p goose-cli --bin goose --bin generate_manpages --no-default-features --features %{goose_features}
 
 %install
 install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}

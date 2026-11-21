@@ -88,4 +88,37 @@ going forward in lxqt where they make sense to drop</comment>
   * Updated Translations</comment>
     <requestid>1348590</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e2b3f5c7afc1efe4f040f3a374d0e1e0</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182340</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Supported Shift+click for selecting a range.
+  * Added an option to look in a custom directory for keyboard layouts.
+  * Added more background image modes (filling, corners and tiles) and
+    introduced pixmap cache.
+  * Communicate that a failed process ended, by warning the user and
+    allowing to save the history.
+  * Added OSC-8 hyperlink support.
+  * Added 'man' scheme to the allowed hyperlink protocols.
+  * Implemented CSI;18t (size request) and OSC 10/11/12 (color
+    query/setting).
+  * Parsed VT100 ECMA-48 Control Strings DCS, APC, PM and SOS.
+  * Fixed drawing of double width/height lines.
+  * Fixed issues in the selection extending that would go beyond the
+    visible screen.
+  * Fixed the cursor drawing routine (to prevent artifacts on moving the
+    cursor in Vim).
+  * Account for double-width characters on cursor updates.
+  * Applied the filters to the unbound image (to fix a problem in
+    copying/opening URLs on resizing the window).
+  * Exposed pty device path via QTermWidget.
+  * Inactivate \033[201~ when bracketing text (to fix bracketed paste
+    vulnerability).
+  * Fixed the default keytab and added a &quot;modern&quot; one.
+  * Ensured that the image doesn't contain a \0-only row.
+  * Cleanup and other small fixes.</comment>
+    <requestid>1398769</requestid>
+  </revision>
 </revisionlist>

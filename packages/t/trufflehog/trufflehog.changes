@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:03:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.9:
+  * Update module golang.org/x/net to v0.62.0 [SECURITY] (#5492)
+  * Update module github.com/go-jose/go-jose/v4 to v4.1.6 [SECURITY] (#5490)
+  * Add SOURCE_TYPE_GENERIC source type (#5553)
+  * Report Datadog resources as unbounded instead of permission-less bindings (#5539)
+  * Fix GitHub GraphQL comment scan retries and paging (#5548)
+  * Clean up Syslog source logging for per-source debug (#5538)
+  * Update module pault.ag/go/debian to v0.21.3 (#5546)
+  * Update module golang.org/x/crypto to v0.59.0 [SECURITY] (#5544)
+  * feat(detectors): add Serval API key detector (#5528)
+  * Clean up Elasticsearch source logging for per-source debug (#5521)
+  * Clean up Hugging Face source logging for per-source debug (#5523)
+  * Clean up CircleCI and Travis CI logging, share API log hooks (#5524)
+  * Update github-actions (#5533)
+  * fix(sqlserver): use driver's default port in pre-dial check (#5527)
+  * Time detector_execution_duration per detector run (#5526)
+  * Clean up Jenkins source logging for per-source debug (#5520)
+  * Update module github.com/gabriel-vasile/mimetype to v1.4.16 (#5479)
+  * Update github.com/trufflesecurity/ldap-verify digest to 0f42b08 (#5503)
+  * Update module github.com/ulikunitz/xz to v0.5.17 (#5504)
+  * Update module go.mongodb.org/mongo-driver to v1.17.10 (#5505)
+  * Update github-actions (#5478)
+  * Fix Git diff scans at shallow clone boundaries (#5360)
+  * Use shared logtest helpers in source debug logging tests (#5519)
+  * Clean up GCS source logging for per-source debug (#5509)
+  * Clean up Postman source logging for per-source debug (#5510)
+  * Add Interrupt and UserActionable errors (#5491)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:51:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.8:
+  * Verify BoxOauth credentials only when Box issues a token for a subject (#5498)
+  * Clean up GitLab source logging for per-source debug (#5485)
+  * Update module github.com/mattn/go-isatty to v0.0.24 (#5366)
+  * Update module github.com/jlaffaye/ftp to v0.2.4 (#5365)
+  * Update module github.com/go-git/go-git/v5 to v5.19.3 (#5480)
+  * Cap 7z LZMA and LZMA2 dictionary sizes and keep scanning past refused entries (#5483)
+  * Recover from detector panics in the verification overlap worker (#5495)
+  * Close Couchbase clusters after verification and honor the context (#5489)
+  * Add source fields to Init logs in single-source CLI commands (#5466)
+  * Clean up Docker source logging for per-source debug (#5494)
+  * feat(detectors): add Composio API key detector (#5322)
+  * Clean up GitHub source logging for per-source debug (#5457)
+  * Clean up S3 source logging for per-source debug (#5481)
+  * add SecretParts to custom detectors (#5470)
+  * Skip GitHub comment errors when issues or PRs are off (#5467)
+
+-------------------------------------------------------------------
 Thu Oct 29 05:49:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.99.7:

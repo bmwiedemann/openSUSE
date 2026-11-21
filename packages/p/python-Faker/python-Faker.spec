@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Faker
-Version:        40.36.0
+Version:        40.44.0
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT
@@ -32,6 +32,7 @@ Source:         https://files.pythonhosted.org/packages/source/f/faker/faker-%{v
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.0.1}
+BuildRequires:  %{python_module python-stdnum >= 1.20}
 BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module validators >= 0.13.0}
 BuildRequires:  %{python_module wheel}
@@ -40,6 +41,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-tzdata
 Obsoletes:      python3-fake-factory < %{version}-%{release}
 Provides:       python3-fake-factory = %{version}-%{release}
+BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -47,7 +49,6 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description

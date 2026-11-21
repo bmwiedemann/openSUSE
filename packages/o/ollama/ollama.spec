@@ -23,9 +23,9 @@
 %global jobs 4
 %endif
 
-%global llama_cpp_version b11803
-%global mlx_version bebd6422f8db88d56e6220520a35bcd146f823f8
-%global mlx_c_version a341b4925024b88b2c593468f16e12f5e17315da
+%global llama_cpp_version b12111
+%global mlx_version 54a70511f4ea151378d03b657a4fdd823386ea38
+%global mlx_c_version 57731b00e8bed710e0750e7356da9f18f8eb3e20
 
 %{bcond_with cuda}
 %if 0%{?suse_version} >= 1610
@@ -82,7 +82,7 @@ ExclusiveArch:  SKIP_IT
 %define cuda_version %{cuda_version_major}-%{cuda_version_minor}
 
 Name:           ollama
-Version:        0.40.9
+Version:        0.40.16
 Release:        0
 Summary:        Tool for running AI models on-premise
 License:        MIT

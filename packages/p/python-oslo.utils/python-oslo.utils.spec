@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.utils
-Version:        10.2.0
+Version:        10.3.0
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
@@ -26,18 +26,19 @@ URL:            https://docs.openstack.org/oslo.utils
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_utils/oslo_utils-%{version}.tar.gz
 Patch0:         0001-Refactor-TimeFixture-to-use-unittest.mock.patch
 BuildRequires:  %{python_module Babel}
+BuildRequires:  %{python_module cryptography >= 43.0.3}
 BuildRequires:  %{python_module ddt}
-BuildRequires:  %{python_module debtcollector >= 1.2.0}
 BuildRequires:  %{python_module eventlet}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module iso8601 >= 0.1.11}
 BuildRequires:  %{python_module netaddr >= 0.10.0}
 BuildRequires:  %{python_module oslo.i18n >= 3.15.3}
 BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module pbr >= 6.1.0}
+BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
-BuildRequires:  %{python_module pyparsing >= 2.1.0}
+BuildRequires:  %{python_module pyparsing >= 3.0.0}
 BuildRequires:  %{python_module stestr}
 BuildRequires:  %{python_module testscenarios}
 BuildRequires:  %{python_module testtools}
@@ -45,12 +46,12 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 BuildRequires:  qemu-img
 Requires:       python-PyYAML
-Requires:       python-debtcollector >= 3.0.0
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-netaddr >= 0.10.0
 Requires:       python-oslo.i18n >= 3.15.3
+Requires:       python-packaging >= 20.4
 Requires:       python-psutil
-Requires:       python-pyparsing >= 2.1.0
+Requires:       python-pyparsing >= 3.0.0
 Requires:       python-tzdata
 BuildArch:      noarch
 %if "python%{python_nodots_ver}" == "%{primary_python}"

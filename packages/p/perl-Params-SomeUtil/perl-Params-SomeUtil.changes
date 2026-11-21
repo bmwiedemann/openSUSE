@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 10:04:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.120.0 (1.12)
+   see /usr/share/doc/packages/perl-Params-SomeUtil/Changes
+
+  1.12 Wed 23 Sep 2026
+    - Honor PUREPERL_ONLY=1 as passed by cpanm and other cpan clients.
+      (gh#11, gh#12).
+
+-------------------------------------------------------------------
 Thu Sep 10 15:17:58 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 1.110.0 (1.11)

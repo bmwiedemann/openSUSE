@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 14 19:04:55 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to 1.20
+  * Licensing: Automake is now licensed under GPLv3+
+  * New configure option --enable-jobserver lets compilers and linkers
+    inherit GNU make's pipe jobserver, for example for GCC's
+    -flto=jobserver.  Dry-run, question, and touch modes still do not
+    run these commands.
+  * New option delete-on-error.  It emits the .DELETE_ON_ERROR special
+    target in the generated Makefile.in, instructing GNU make to delete
+    the target when its recipe fails after having modified it.  A failed
+    rule like `foo.h: gen.sh; ./gen.sh > $@' then no longer leaves a
+    truncated result that later runs of make treat as up to date.
+  * New target print-distfiles lists the files that "make dist" would
+    distribute. 
+
+-------------------------------------------------------------------
 Tue Sep 15 10:00:47 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Remove patch: automake-suse-vendor.patch

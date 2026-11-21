@@ -14,4 +14,33 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5be93b247614694318fe3b7a3283f132</srcmd5>
+    <version>1.70.0</version>
+    <time>1793725196</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.70.0 (1.07)
+   see /usr/share/doc/packages/perl-ExtUtils-Typemaps-Default/Changes
+  1.07   Fri Oct  9 CET 2026
+    - Address CVE-2026-107794:
+      Fix integer underflow in ExtUtils::Typemaps::STL::List on empty lists.
+      Calling av_extend(av, len-1) when len == 0 underflowed the unsigned
+      integer and attempted to allocate a 32GiB array.
+    - Fix missing index increment in std::list&lt;char*&gt; OUTPUT typemaps.
+  1.06   Thu Oct  8 CET 2026
+    - Address CVE-2026-107373:
+      Using &quot;std::string( SvPV_nolen( $arg ), SvCUR( $arg ) );&quot;
+      adds a potential security issue since in C++ the evaluation of argument
+      order depends on the compiler.  If the SV is not stringified (for
+      example, if it's an IV, NV or a reference) then this can abort or segfault.
+      The fix applied is to split into multiple statements:
+       STRLEN len;
+       const char *pv = SvPV($arg, len);
+       $var = std::string(pv, len);
+      If you depend on this module, please update your minimum version
+      requirement to 1.06.
+    - Do not depend on dev release version of ExtUtils::Typemaps anymore.
+    - Updated author contact info.</comment>
+    <requestid>1394682</requestid>
+  </revision>
 </revisionlist>

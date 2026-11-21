@@ -4,9 +4,11 @@ Do not scan more characters we actual have.
  docs/doc2tex.c |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- docs/doc2tex.c
-+++ docs/doc2tex.c	2024-06-03 07:11:02.870049141 +0000
-@@ -553,8 +553,9 @@ puttex( char *str, FILE *file)
+Index: docs/doc2tex.c
+===================================================================
+--- docs/doc2tex.c.orig
++++ docs/doc2tex.c
+@@ -555,8 +555,9 @@ puttex( char *str, FILE *file)
                  (void) fputs("}", file);
  		inquote = FALSE;
  	    } else {

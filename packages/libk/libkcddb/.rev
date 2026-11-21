@@ -975,4 +975,12 @@
     <comment>- Drop the Qt 5 flavor</comment>
     <requestid>1394283</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>b85a90829034563901a8ac9031e62416</srcmd5>
+    <version>26.08.3</version>
+    <time>1793989899</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395360</requestid>
+  </revision>
 </revisionlist>

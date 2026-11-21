@@ -160,4 +160,37 @@ uses w3lib.html, whose API is unchanged.
 </comment>
     <requestid>1381937</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a0d6bf6c92c570e223532d061bb1717a</srcmd5>
+    <version>2.6.0</version>
+    <time>1794838479</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on python-frostwork.
+
+- Update to 2.6.0:
+  * Dropped Python 3.10 and PyPy support; requires Python &gt;= 3.11
+  * New dependency on frostwork &gt;= 0.2.2 for encoding detection
+    and HTML base URL and meta refresh scanning
+  * html_to_unicode now detects the encoding the way Firefox does
+    and reports UTF-8 as utf-8; added html_encoding helper
+  * Encoding labels follow the Encoding Standard: UTF-32 no longer
+    supported, utf-16 is little-endian, gb2312 and gbk resolve
+    to gbk
+  * get_base_url and get_meta_refresh find URLs the way browsers
+    do and resolve them per WHATWG URL; ignore unparsable and
+    data: and javascript: base URLs
+  * safe_url_string parses URLs the way browsers do: slash
+    handling, percent-decoded hosts, numeric hosts as IPv4,
+    opaque non-special hosts, dot-segment resolution, empty
+    path serialized as /
+  * Deprecate safe_download_url
+  * resolve_encoding no longer resolves non-text and escape
+    codecs; parse_data_uri uses forgiving base64; is_url accepts
+    uppercase schemes and requires ://
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec: require python-frostwork &gt;= 0.2.2, needed by the new
+  frostwork integration</comment>
+    <requestid>1397811</requestid>
+  </revision>
 </revisionlist>

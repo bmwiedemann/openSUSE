@@ -37,6 +37,8 @@ Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
 Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
 Patch11:        remove-senceless-log.patch
 Patch12:        cyrus-sasl-digestmd5-quote-overflow.patch
+Patch13:        0013-Add-Channel-Binding-support-for-GSSAPI-GSS-SPNEGO.patch
+Patch14:        0014-Add-support-for-setting-max-ssf-0-to-GSS-SPNEGO.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libsasl2-3
 BuildRequires:  db-devel
@@ -175,6 +177,8 @@ fi
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

@@ -21,7 +21,7 @@
 # You MUST checkout the app in your live system and play with it before submitting an update.
 %bcond_with     test
 Name:           spyder
-Version:        6.1.5
+Version:        6.1.8
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -53,7 +53,6 @@ Requires:       python3-diff-match-patch >= 20181111
 Requires:       python3-importlib-metadata >= 4.6.0
 Requires:       python3-intervaltree >= 3.0.2
 Requires:       python3-ipython_pygments_lexers >= 1.0
-Requires:       python3-jedi >= 0.17.2
 Requires:       python3-jellyfish >= 0.7
 Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-keyring >= 17.0.0
@@ -79,13 +78,14 @@ Requires:       (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 Requires:       (python3-QtAwesome >= 1.4.1 with python3-QtAwesome < 1.5)
 Requires:       (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
 Requires:       (python3-ipython >= 8.15 with python3-ipython < 10)
+Requires:       (python3-jedi >= 0.17.2 with python3-jedi < 0.21.0)
 Requires:       (python3-parso >= 0.7.0 with python3-parso < 0.9.0)
 Requires:       (python3-pylint >= 3.1 with python3-pylint < 5)
 Requires:       (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 Requires:       (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
-Requires:       (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.15)
+Requires:       (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.16)
 Requires:       (python3-qtconsole >= 5.7.2 with python3-qtconsole < 5.8.0)
-Requires:       (python3-spyder-kernels >= 3.1.4 with python3-spyder-kernels < 3.2)
+Requires:       (python3-spyder-kernels >= 3.1.6 with python3-spyder-kernels < 3.2)
 Requires:       (python3-superqt >= 0.6.2 with python3-superqt < 1)
 Recommends:     fzf >= 0.42
 Recommends:     git-core
@@ -158,7 +158,6 @@ BuildRequires:  python3-diff-match-patch >= 20181111
 BuildRequires:  python3-importlib-metadata >= 4.6.0
 BuildRequires:  python3-intervaltree >= 3.0.2
 BuildRequires:  python3-ipython_pygments_lexers >= 1.0
-BuildRequires:  python3-jedi >= 0.17.2
 BuildRequires:  python3-jellyfish >= 0.7
 BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-keyring >= 17.0.0
@@ -183,13 +182,14 @@ BuildRequires:  (python3-QDarkStyle >= 3.2.0 with python3-QDarkStyle < 3.3.0)
 BuildRequires:  (python3-QtAwesome >= 1.4.1 with python3-QtAwesome < 1.5)
 BuildRequires:  (python3-asyncssh >= 2.14 with python3-asyncssh < 3)
 BuildRequires:  (python3-ipython >= 8.15 with python3-ipython < 10)
+BuildRequires:  (python3-jedi >= 0.17.2 with python3-jedi < 0.21.0)
 BuildRequires:  (python3-parso >= 0.7.0 with python3-parso < 0.9.0)
 BuildRequires:  (python3-pylint >= 3.1 with python3-pylint < 5)
 BuildRequires:  (python3-python-lsp-black >= 2.0.0 with python3-python-lsp-black < 3)
 BuildRequires:  (python3-python-lsp-ruff >= 2.3.0 with python3-python-lsp-ruff < 3)
-BuildRequires:  (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.15)
+BuildRequires:  (python3-python-lsp-server-all >= 1.14.0 with python3-python-lsp-server-all < 1.16)
 BuildRequires:  (python3-qtconsole >= 5.7.2 with python3-qtconsole < 5.8.0)
-BuildRequires:  (python3-spyder-kernels >= 3.1.4 with python3-spyder-kernels < 3.2)
+BuildRequires:  (python3-spyder-kernels >= 3.1.6 with python3-spyder-kernels < 3.2)
 BuildRequires:  (python3-superqt >= 0.6.2 with python3-superqt < 1)
 # /SECTION
 

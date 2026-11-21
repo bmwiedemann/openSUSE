@@ -56,7 +56,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later AND GPL-3.0-or-later AND MIT AND CC-BY-SA-3.0 AND BSD-3-Clause
 URL:            https://cockpit-project.org/
 
-Version:        365
+Version:        370
 Release:        0
 Source0:        cockpit-%{version}.tar.gz
 Source2:        cockpit-rpmlintrc
@@ -66,8 +66,8 @@ Source5:        check_cockpit_users
 Source10:       update_version.sh
 Source99:       README.packaging
 Source98:       package-lock.json
-Source97:       node_modules.spec.inc
-%include        %{_sourcedir}/node_modules.spec.inc
+#!CreateArchive
+Source96:       node_modules.tar.gz
 Patch1:         0001-selinux-allow-login-to-read-motd-file.patch
 Patch2:         suse_docs.patch
 Patch3:         suse-microos-branding.patch
@@ -290,7 +290,7 @@ BuildRequires:  python3-pytest-timeout
 cp %SOURCE4 tools/cockpit.pam
 
 #
-local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
+local-npm-registry %{_sourcedir}/node_modules install --include=dev --ignore-scripts
 echo "{}" > package-lock.json
 
 %build
@@ -514,7 +514,7 @@ cp -a pkg/lib %{buildroot}%{_datadir}/cockpit/devel
 
 %if 0%{?suse_version} >= 1600
 install -D -m 755 %SOURCE5 %{buildroot}%{_libexecdir}/
-%endif 
+%endif
 
 # -------------------------------------------------------------------------------
 # Sub-packages
@@ -865,7 +865,8 @@ Recommends: NetworkManager-team
 BuildArch: noarch
 
 %description networkmanager
-The Cockpit component for managing networking.  This package uses NetworkManager.
+The Cockpit component for managing networking.  This package uses
+NetworkManager.
 
 %files networkmanager -f networkmanager.list
 %license LICENSES/LGPL-2.1.txt

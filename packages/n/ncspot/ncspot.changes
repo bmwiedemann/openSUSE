@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 10 12:34:47 UTC 2026 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to version 1.5.1:
+  * Fix playback stopping after reconnecting or when Spotify
+    closes the connection.
+  * Improve startup responsiveness by loading user information
+    and Browse categories in the background.
+  * Reload playlists that failed to load and avoid endless
+    retries for failed playlist or podcast pages.
+  * Preserve cached playlists and saved podcasts after failed
+    loads.
+  * Fix playback of empty playlists, albums and podcasts.
+  * Reload albums with missing tracks when played.
+  * Windows: Fix display of wide characters (Japanese, Chinese
+    and Korean) when switching views.
+
+-------------------------------------------------------------------
 Mon Oct 12 20:37:47 UTC 2026 - lorenzholzbauer@ikmail.com
 
 - Update to version 1.5.0:

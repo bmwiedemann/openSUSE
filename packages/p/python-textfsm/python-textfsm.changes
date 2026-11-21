@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 10 17:23:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  * fix: check exact header names when adding columns.
+  * fix: preserve data when parsing headerless CSV.
+  * fix: isolate headers in derived tables.
+  * fix: stop CSV header scanning at end of input.
+  * Raise TextFSMTemplateError for a Value line with no regex.
+  * Handle whitespace-only cells when formatting text tables.
+
+-------------------------------------------------------------------
 Thu Jun 11 01:45:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop no longer required {Build,}Requires on six.

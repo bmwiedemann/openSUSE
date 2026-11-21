@@ -176,4 +176,14 @@
   * Fix various memory safety issues.</comment>
     <requestid>1393728</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>abe0b7043e8bcdf58f8f6a1d4dbd251b</srcmd5>
+    <version>0.9.0</version>
+    <time>1794591167</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.0:
+  * Fix crash when starting a screencast.
+  * Fix screenshot action not prompting for permission.</comment>
+    <requestid>1397125</requestid>
+  </revision>
 </revisionlist>

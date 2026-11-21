@@ -21,7 +21,7 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.11.0
+Version:        6.12.1
 Release:        0
 Summary:        Python bindings for the Qt Graphs library
 License:        GPL-3.0-only

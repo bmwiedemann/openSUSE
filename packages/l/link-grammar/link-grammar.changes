@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov  4 07:40:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.13.2:
+  * Fix compilation error in previous release
+- Changes from version 5.13.1:
+  * Fix CC passing in Makefile.am
+  * link_grammar.i: Use PyLong_* instead of PyInt_*
+  * node.js dependencies update
+  * Fix compiler warnings about `const char*`
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Tue Sep 29 11:11:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.13.0:

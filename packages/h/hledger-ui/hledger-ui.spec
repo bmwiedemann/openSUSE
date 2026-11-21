@@ -19,13 +19,13 @@
 %global pkg_name hledger-ui
 %global pkgver %{pkg_name}-%{version}
 Name:           %{pkg_name}
-Version:        1.52.1
+Version:        1.52.4
 Release:        0
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/2.cabal#/%{name}.cabal
+Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/1.cabal#/%{name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel

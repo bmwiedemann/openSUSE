@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cattrs
-Version:        26.1.0
+Version:        26.2.1
 Release:        0
 Summary:        Composable complex class support for attrs and dataclasses
 License:        MIT
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module cbor2 >= 5.4.6}
 BuildRequires:  %{python_module hypothesis >= 6.135.26}
 BuildRequires:  %{python_module immutables >= 0.21}
 BuildRequires:  %{python_module msgpack >= 1.0.5}
-BuildRequires:  %{python_module msgspec >= 0.19.0}
+BuildRequires:  %{python_module msgspec >= 0.21.1}
 BuildRequires:  %{python_module orjson >= 3.11.3}
 BuildRequires:  %{python_module pymongo >= 4.4.0}
 BuildRequires:  %{python_module pytest >= 8.4.1}
@@ -80,7 +80,7 @@ Composable complex class support for attrs and dataclasses.
 %pytest
 
 %files %{python_files}
-%doc README.md HISTORY.md CONTRIBUTING.md
+%doc README.md HISTORY.md
 %license LICENSE
 %{python_sitelib}/cattr
 %{python_sitelib}/cattrs

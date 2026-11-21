@@ -759,4 +759,24 @@
 - Skip python314 for now: gh#spyder-ide/spyder-kernels#583</comment>
     <requestid>1355399</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>5c486b9d8389536bd9247bd8f7d9daab</srcmd5>
+    <version>3.1.7</version>
+    <time>1794816537</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.1.7
+  * PR 611 - PR: Fix setting traceback syntax highlighting for
+    IPython 9.18+, by @ccordoba12
+- Version 3.1.6
+  * PR 604 - PR: Prevent error when running
+    test_dask_multiprocessing, by @ccordoba12
+  * PR 601 - PR: Replace _merge method by merge one when merging
+    Jupyter configs, by @ccordoba12
+- Version 3.1.5
+  * PR 593 - PR: Fix detecting Pixi global environments, by
+    @ccordoba12
+  * PR 591 - PR: Use generic args/kwargs in SpyderPdb init method,
+    by @ccordoba12</comment>
+    <requestid>1397689</requestid>
+  </revision>
 </revisionlist>

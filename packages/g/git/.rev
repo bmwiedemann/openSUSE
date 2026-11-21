@@ -3107,4 +3107,20 @@ git 2.48.0</comment>
 - Add zsh BuildRequires: Needed due to zsh-completion dirs.</comment>
     <requestid>1385958</requestid>
   </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>838374e46cd54bd2013afd6184a1c437</srcmd5>
+    <version>2.56.1</version>
+    <time>1794597157</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1396832 from AndreasStieger
+
+git 2.56.1
+CVE-2026-111760 boo#1289501
+CVE-2026-113408 boo#1289502
+CVE-2026-114467 boo#1289503
+CVE-2026-114469 boo#1289504
+CVE-2026-105437 boo#1289505
+CVE-2026-114466 boo#1289506</comment>
+    <requestid>1396863</requestid>
+  </revision>
 </revisionlist>

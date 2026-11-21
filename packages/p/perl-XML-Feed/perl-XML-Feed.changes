@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:29:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0.2 (v1.0.2)
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+
+  ## [1.0.2] - 2026-10-11
+
+  ### Fixed
+
+  * Remove cpan.org email address
+
+-------------------------------------------------------------------
 Tue Sep  8 09:43:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.0.1

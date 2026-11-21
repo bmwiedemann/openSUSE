@@ -279,4 +279,27 @@
     CHANGELOG.md file provided with this package (forwarded request 1369527 from glaubitz)</comment>
     <requestid>1369544</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7d9624c092d9e1a79c3dbfb1f68def50</srcmd5>
+    <version>15.0.0~b6</version>
+    <time>1793990640</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1395414 from glaubitz)</comment>
+    <requestid>1395415</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>573e2f74ca267a8ec38785d579a80f0d</srcmd5>
+    <version>15.0.0</version>
+    <time>1794838498</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1397869 from glaubitz)</comment>
+    <requestid>1397902</requestid>
+  </revision>
 </revisionlist>

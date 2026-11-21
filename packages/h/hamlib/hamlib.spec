@@ -1,7 +1,7 @@
 #
 # spec file for package hamlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,8 @@ Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{
 # taken from debian
 Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
+# PATCH-FIX-UPSTREAM hamlib-swig-py3.patch -- replace obsolete PyInt_FromLong with PyLong_FromLong in bindings/hamlib.swg
+Patch1:         hamlib-swig-py3.patch
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  libtool

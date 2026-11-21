@@ -21,7 +21,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-holidays
-Version:        0.107
+Version:        0.109
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -30,17 +30,21 @@ Source:         https://github.com/vacanza/python-holidays/archive/refs/tags/v%{
 BuildRequires:  %{python_module convertdate}
 BuildRequires:  %{python_module hijri-converter >= 2.2}
 BuildRequires:  %{python_module korean-lunar-calendar}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 2.3}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module polib}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module polib >= 1.2}
+BuildRequires:  %{python_module pytest >= 9.0.1}
+BuildRequires:  %{python_module coverage >= 7.12}
+BuildRequires:  %{python_module pygments >= 2.20}
+BuildRequires:  %{python_module pytest-cov >= 7}
+BuildRequires:  %{python_module pytest-xdist >= 3.8}
+BuildRequires:  %{python_module python-dateutil >= 2.9.0.post0}
+BuildRequires:  %{python_module setuptools >= 77}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-python-dateutil
+Requires:       python-python-dateutil >= 2.9.0.post0
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts

@@ -1,9 +1,111 @@
 -------------------------------------------------------------------
+Fri Nov  6 03:07:34 AM UTC 2026 - Glass Su <glass.su@suse.com>
+- lvm2.changes
+  * Amend entries from me@jacobbaungard.com and tomas.chvatal@gmail.com
+- lvm2.spec
+  * reorder patches
+- Update patches for btrfs fsadm support due to commit 2575c7d9079e:
+  * fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+  * fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 06:13:54 UTC 2026 - Jacob Hansen <me@jacobbaungard.com>
+
+- Update to version 2.03.44
+  * Round non-power-of-two VDO slab size up to a power of two in lvcreate.
+  * Make pthread_setname_np optional for older pthread libraries.
+  * Fix blkio invalidation of held or dirty blocks and interrupted waits.
+  * Report synchronous I/O failures through the blkio completion path.
+  * Release the label scan before forking the polldaemon.
+  * Add configure --with/out-libaio to control async engine support.
+  * Add configure --with/out-liburing to control io_uring support.
+  * Add optional io_uring io engine (requires liburing, kernel 5.1+).
+  * Default the I/O engine to iouring, then threads, then libaio, then sync.
+  * Add pthread-based I/O engine to eliminate libaio io_destroy penalty.
+  * Deprecate use_aio; use_aio=0 still selects sync I/O.
+  * Add io_engine config to select the I/O engine.
+  * Warn and use sync I/O when the requested I/O engine is unavailable.
+  * Zero fill the tail of a short io engine read at the end of a device.
+  * Drain in-flight libaio on io engine destroy.
+  * Remove orphaned pvmove LV when force-removing a RAID LV locked for pvmove.
+  * Preserve committed metadata when pv_write updates an existing PV.
+  * Use mdadm-compatible CRC-32 when detecting DDF metadata.
+  * Detect NVMe multipath devices and handle uncached primary devices.
+  * Use the VDO pool data LV size for VDO memory checks.
+  * Warn about RAID reshape data corruption on kernels older than 6.11.
+  * Suggest remedies when duplicate PV devices block VG updates or activation.
+  * Improve documentation about PVs layered on top of LVs.
+  * Reject cache pool resize with a clear error instead of failing internally.
+  * Preserve RAID1 recovery state and rebuild markers when reducing images.
+  * Accept transient or incomplete dm-raid status during repair and reduction.
+  * Report the dead-primary RAID repair advice instead of refusing a rebuild.
+  * Fix out-of-bounds read when parsing short dmeventd client messages.
+  * Reject malformed numeric fields in dmeventd client registration messages.
+  * Reject dmeventd registrations without a plugin or device name.
+  * Use non-blocking dmeventd FIFO I/O and timeouts for stalled clients.
+  * Fix dmeventd timeout thread spin when no timeout is scheduled.
+  * Fix dmeventd monitor thread list when a thread fails before linking.
+  * Unregister dmeventd devices from plugins if monitoring stops early.
+  * Do not reuse dmeventd grace-period threads when the device inode is unknown.
+  * Reset dmeventd pending SIGALRM without changing signal disposition.
+  * Warn when parent directories of dmeventd FIFO paths are not secure.
+  * Validate systemd-activated dmeventd FIFOs and use non-blocking I/O.
+  * Fix dmeventd info when the running daemon returns no status reply data.
+  * Run build-tree binaries against build libraries, not installed copies.
+  * Avoid spurious dmeventd unregister errors when removing monitored snapshots.
+  * Run mirror repair from dmeventd when mirror reports in-sync with failed legs.
+  * Fix out-of-bounds access on an unterminated mda_header raw_locns (BZ2510937).
+  * Log open failures at debug for devices excluded after scan I/O errors.
+  * Fix blkdeactivate to exit 0 when devices stay mounted by policy.
+  * Fix blkdeactivate -l wholevg when another LV in the VG stays mounted.
+  * Fix blkdeactivate exit status on failed deactivation or mpath queueing.
+  * Fix blkdeactivate umount for paths with spaces or lsblk hex escapes.
+  * Update lvmdump for lvmlockd; add -A; drop lvmetad collection.
+  * Harden fsadm size parsing and use mktemp for temporary mount dirs.
+  * Ignore _FSADM_YES from the environment; pass --yes only from the CLI.
+  * Fix fsadm fsck exit codes and mount detection via /proc/self/mountinfo.
+  * Harden lvm_import_vdo YAML and stat parsing against shell injection.
+  * Use mktemp in lvm_import_vdo; validate TMPDIR and tool binary overrides.
+  * Harden lvresize_fs_helper temp mounts, signal cleanup, and TMPDIR checks.
+  * Validate lvresize_fs_helper resize sizes and value-taking options.
+  * Fix lvresize_fs_helper btrfs, e2fsck handling, and --fsextend/--fsreduce.
+  * Prevent redundant device access after scan I/O errors (DEV_SCAN_NOT_READ).
+  * Apply lvmlockd --lockopt force to all lock requests.
+  * Keep PR state after failed start.
+  * Apply PTPL when extending VG to ensure persistence when power cycling devs.
+  * Allow vgextend before any host starts PR on new devs.
+  * Fix pvscan autoactivation when DEVLINKS symlinks are not yet created.
+- rebase fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
+  to match with new version.
+- remove bug-1288220_pvscan-preserve-preferred-device-name-when-importing.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 21:41:28 UTC 2026 - Glass Su <glass.su@suse.com>
 - lvm2 on LUKS: failed to activate VG after unencrypted device appears during boot (bsc#1288220)
   * Add upstream patch
     + bug-1288220_pvscan-preserve-preferred-device-name-when-importing.patch
     
+-------------------------------------------------------------------
+Mon Oct 26 11:44:43 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- lvm.spec:
+  * Drop the liblvm2cmd2_03 obsoletes on liblvm2app2_2 and liblvm2cmd2_02.
+    The generations ship disjoint file sets and are co-installable per the
+    library packaging policy.
+    The sibling libdevmapper packages in this spec never obsoleted theirs,
+    and every supported upgrade path has already passed a release carrying these obsoletes.
+    Removes the two version defines that only fed them.
+  * Ship lvm-dumpconfig.8 as a symlink to lvm-config.8.
+
+- lvm2-rpmlintrc:
+  * Narrow lvm2-rpmlintrc from a blanket addFilter on the whole
+    lvm2-testsuite package to the two script findings its payload
+    legitimately draws (non-executable-script, env-script-interpreter;
+    the payload is a test harness, not installed executables).
+    Everything else the blanket hid stays visible; without any
+    filter the testsuite findings alone exceed the rpmlint
+    badness threshold and fail the build.
+
 -------------------------------------------------------------------
 Sun Oct 18 11:04:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 

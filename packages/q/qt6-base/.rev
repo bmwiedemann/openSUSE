@@ -763,4 +763,12 @@
   * CVE-2026-105924-qtbase-6.12.diff (CVE-2026-105924)</comment>
     <requestid>1393864</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>93b2cfb85924e3c7c58c34bc95096a7a</srcmd5>
+    <version>6.12.0</version>
+    <time>1793899691</time>
+    <user>anag_factory</user>
+    <comment>- Update qt6-waylandclient-private-devel dependencies</comment>
+    <requestid>1394769</requestid>
+  </revision>
 </revisionlist>

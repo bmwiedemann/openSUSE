@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:55:09 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.4.33:
+  * Match filenames in fzf without matching trailing hunk metadata.
+  * Dim the hunk metadata in fzf.
+  * Restore default Ctrl-C handling so blocking work terminates
+    immediately.
+  * Exit immediately with status 130 when fzf aborts, including
+    while stdin remains open.
+
+-------------------------------------------------------------------
 Sun Apr  6 15:23:24 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to versione 0.4.32:

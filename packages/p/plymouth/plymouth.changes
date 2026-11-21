@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 10 14:19:06 UTC 2026 - Alberto Planas <aplanas@suse.com>
+
+- Fix the text rendering in the initrd (no messages or prompt text
+  were drawn by the graphical splash) (boo#1289972):
+  * plymouth-dracut: Requires plymouth-plugin-label-ft, the label
+    plugin that plymouth-populate-initrd adds to the initrd
+  * plymouth-theme-spinner (and bgrt): Requires cantarell-fonts, the
+    font of the theme
+  * Add plymouth-populate-initrd-theme-font.patch: copy the font of
+    the theme as /usr/share/fonts/Plymouth.ttf for label-freetype,
+    instead of the default font
+  * Drop plymouth-install-label-library-and-font-file-to-initrd.patch:
+    label.so does not exist anymore (it is label-pango.so, which is
+    not added to the initrd), and the fonts it copied were only used
+    by the pango plugin (boo#1183425, boo#1184309)
+  * Refresh plymouth-watermark-config.patch
+- Use %autosetup and %autopatch: the patches 0-99 are applied
+  everywhere, 100 and above only in SLE
+- Add plymouth-label-freetype-measure-hidden.patch: backport upstream
+  commit 8af62d1, the label-freetype plugin measures the text of a
+  hidden label.  Without it, the first message of two-step is drawn
+  late or never, because its size is 0x0 when the theme repaints it
+  (boo#1289972)
+
+-------------------------------------------------------------------
 Tue Feb 10 15:29:57 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update plymouth.spec:

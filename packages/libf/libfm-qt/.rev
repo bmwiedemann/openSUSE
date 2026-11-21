@@ -435,4 +435,21 @@
   * Updated Translations</comment>
     <requestid>1348562</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0dd608e0f8a5e92789ddcb684a4d2972</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182266</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * libfm-qt does not depend on menu-cache anymore.
+  * Incremental file listing is implemented (to be used by pcmanfm-qt only
+    for searching).
+  * An old workaround for showing the file dialog is replaced by a new code.
+  * A regression is fixed in the color and font dialogs.
+  * The tree view header is made unmovable.
+  * A rare bug about ghost items is fixed in the side-pane's directory tree.
+  * Upgraded the code for Qt 6.10, especially by replacing invalidateFilter.
+  * Some cleanup.</comment>
+    <requestid>1398743</requestid>
+  </revision>
 </revisionlist>

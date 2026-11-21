@@ -380,4 +380,20 @@
     <comment>version update</comment>
     <requestid>1304137</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>39ee2357b418ab1f9748582dc9eb6221</srcmd5>
+    <version>0.15</version>
+    <time>1793991001</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1395563</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>fc48b754f1290a247ad1d6d98b7dbd6d</srcmd5>
+    <version>0.15.0.1</version>
+    <time>1794932241</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1397777</requestid>
+  </revision>
 </revisionlist>

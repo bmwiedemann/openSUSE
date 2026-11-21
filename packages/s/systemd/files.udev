@@ -81,16 +81,14 @@
 %{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
 %{_datadir}/pkgconfig/udev.pc
-%if %{with upstream}
+%if %{without bootstrap}
 %{_datadir}/polkit-1/actions/io.systemd.cryptenroll.policy
 %endif
 %{_datadir}/polkit-1/actions/org.freedesktop.timesync1.policy
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_bootctl
 %{_datadir}/zsh/site-functions/_kernel-install
-%if %{with upstream}
 %{_datadir}/zsh/site-functions/_systemd-cryptenroll
-%endif
 %{_datadir}/zsh/site-functions/_systemd-hwdb
 %{_datadir}/zsh/site-functions/_udevadm
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
@@ -200,9 +198,6 @@
 %{_mandir}/man8/systemd-tmpfiles-setup-dev-early.service.8.gz
 %{_mandir}/man8/systemd-tmpfiles-setup-dev.service.8.gz
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
-%if %{without upstream}
-%{_mandir}/man8/systemd-udevd-control.socket.8.gz
-%endif
 %{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
 %{_mandir}/man8/systemd-udevd-varlink.socket.8.gz
 %{_mandir}/man8/systemd-udevd.8.gz
@@ -379,9 +374,7 @@
 %{_udevrulesdir}/60-persistent-alsa.rules
 %{_udevrulesdir}/60-persistent-hidraw.rules
 %{_udevrulesdir}/60-persistent-input.rules
-%if %{with upstream}
 %{_udevrulesdir}/60-persistent-media-controller.rules
-%endif
 %{_udevrulesdir}/60-persistent-storage-mtd.rules
 %{_udevrulesdir}/60-persistent-storage-tape.rules
 %{_udevrulesdir}/60-persistent-storage.rules
@@ -430,7 +423,7 @@
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
 %{_unitdir}/initrd.target.wants/systemd-battery-check.service
-%if %{with upstream}
+%if %{without bootstrap}
 %{_unitdir}/initrd.target.wants/systemd-cryptenroll-firstboot.service
 %endif
 %if %{with sd_boot}
@@ -452,7 +445,7 @@
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-bootctl.socket
 %endif
-%if %{with upstream}
+%if %{without bootstrap}
 %{_unitdir}/sockets.target.wants/systemd-cryptenroll.socket
 %endif
 %if %{with sd_boot}
@@ -461,9 +454,6 @@
 %endif
 %if %{without bootstrap}
 %{_unitdir}/sockets.target.wants/systemd-repart.socket
-%endif
-%if %{without upstream}
-%{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
 %endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-varlink.socket
@@ -509,7 +499,7 @@
 %{_unitdir}/systemd-bootctl.socket
 %{_unitdir}/systemd-bootctl@.service
 %endif
-%if %{with upstream}
+%if %{without bootstrap}
 %{_unitdir}/systemd-cryptenroll-firstboot.service
 %{_unitdir}/systemd-cryptenroll.socket
 %{_unitdir}/systemd-cryptenroll@.service

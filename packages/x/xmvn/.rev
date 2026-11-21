@@ -239,4 +239,12 @@
     <comment>build xmvn-mojo with ant</comment>
     <requestid>1377325</requestid>
   </revision>
+  <revision rev="31" vrev="9">
+    <srcmd5>f5b26be4c4a6d78340d7590f6ff753e0</srcmd5>
+    <version>4.3.0</version>
+    <time>1794318113</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396449</requestid>
+  </revision>
 </revisionlist>

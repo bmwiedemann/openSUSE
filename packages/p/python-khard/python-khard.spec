@@ -54,6 +54,8 @@ Khard is also compatible to the email clients mutt and alot and the SIP client t
 %autosetup -p1 -n khard-%{version}
 
 sed -i -e '1{/^#!\/usr\/bin\/env python/d}' khard/__main__.py
+# Remove stale SCM data
+rm -v khard.egg-info/scm_version.json
 
 %build
 %pyproject_wheel

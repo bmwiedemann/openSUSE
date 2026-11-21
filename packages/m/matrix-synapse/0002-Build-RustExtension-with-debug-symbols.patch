@@ -7,10 +7,10 @@ Subject: [PATCH 2/2] Build RustExtension with debug symbols
  build_rust.py | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/build_rust.py b/build_rust.py
-index 65d9ac301d..ecc98a5ec8 100644
---- a/build_rust.py
-+++ b/build_rust.py
+Index: synapse/build_rust.py
+===================================================================
+--- synapse.orig/build_rust.py
++++ synapse/build_rust.py
 @@ -3,7 +3,7 @@
  import os
  from typing import Any
@@ -20,7 +20,7 @@ index 65d9ac301d..ecc98a5ec8 100644
  
  
  def build(setup_kwargs: dict[str, Any]) -> None:
-@@ -19,6 +19,7 @@ def build(setup_kwargs: dict[str, Any]) -> None:
+@@ -20,6 +20,7 @@ def build(setup_kwargs: dict[str, Any])
          # We always build in release mode, as we can't distinguish
          # between using `poetry` in development vs production.
          debug=False,
@@ -28,6 +28,3 @@ index 65d9ac301d..ecc98a5ec8 100644
      )
      setup_kwargs.setdefault("rust_extensions", []).append(extension)
      setup_kwargs["zip_safe"] = False
--- 
-2.51.1
-

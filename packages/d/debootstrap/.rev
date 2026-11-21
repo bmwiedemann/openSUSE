@@ -303,4 +303,19 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
     <comment></comment>
     <requestid>1356294</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>b376689002487d9a0ecde0d1d98c84ff</srcmd5>
+    <version>1.0.145</version>
+    <time>1794932456</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.145:
+  * Use SHA512 if listed in Release file
+  * work_out_debs: On hurd-any, add seedfiles to fulfill passwd's
+    dependency on systemd-tmpfiles
+
+    + Fix debootstrap --variant=fakechroot failure because
+  * Change repository URI for old Ubuntu releases (deb#676370,
+    Now you can fetch popato/woody/sarge/etch/lenny/squeeze if you</comment>
+    <requestid>1398116</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:10:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 7.5.0:
+  * New: Add Jabber Search (XEP-0055)
+  * Improvements: UserAvatar: Be more strict when parsing metadata node
+  * Bug Fixes: Dataform: Strip whitespace from single string fields
+
+-------------------------------------------------------------------
 Tue Oct 27 21:02:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 7.4.0:

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 18 14:57:09 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 5.0.1:
+  * Fix Plugin manager crashes with NameError: name 'req' is not
+    defined (gh#thonny/thonny#3932).
+  * Make installing ESP MicroPython local images working again
+    (gh#thonny/thonny#3903).
+  * Require esptool 5.0.
+- Add BuildRequires and Requires for python3-packaging.
+
+-------------------------------------------------------------------
 Fri May  1 07:45:54 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.0:

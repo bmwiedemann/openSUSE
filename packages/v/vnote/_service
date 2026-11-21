@@ -1,14 +1,41 @@
 <services>
-  <!-- git submodules used by vnote -->
+  <!-- git submodules used by vnote, pinned to the commits of v4.14.4 -->
+  <!-- Nested submodules are included automatically (submodules defaults to enable) -->
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/vnotex/vtextedit.git</param>
-    <param name="revision">b38bac974</param>
+    <param name="revision">77c867bcd09fe65706c2d88d2603f869e9a0a1f8</param>
     <param name="version">_none_</param>
   </service>
   <service name="obs_scm" mode="disabled">
     <param name="scm">git</param>
     <param name="url">https://github.com/vnotex/QHotkey.git</param>
+    <param name="revision">d7b5250e3474da8185fe348d2443013dfb67306d</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/vnotex/vxcore.git</param>
+    <param name="revision">6627808960e234d824f225c76b6c47710ae778ad</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/vnotex/qwindowkit.git</param>
+    <param name="revision">83d37fc7051871f126a09c9f9f84abd66a91b889</param>
+    <param name="version">_none_</param>
+  </service>
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/vnotex/m3.git</param>
+    <param name="revision">aaaadcfcef194734fea5ee904ad8e076b75e2fbd</param>
+    <param name="version">_none_</param>
+  </service>
+  <!-- Fetched by vnote/vxcore at configure time, provided offline instead -->
+  <service name="obs_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/yhirose/cpp-httplib.git</param>
+    <param name="revision">24e58ce5b25d55045af4cd6f463e83a8082fbe6b</param>
     <param name="version">_none_</param>
   </service>
   <service name="tar" mode="disabled"/>

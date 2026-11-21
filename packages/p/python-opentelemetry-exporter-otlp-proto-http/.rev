@@ -331,4 +331,18 @@
     <comment>1</comment>
     <requestid>1381500</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0ecf4feda80d6582ac568ae50e073a4f</srcmd5>
+    <version>1.45.1</version>
+    <time>1793724858</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.45.1:
+  * Restore requests as the default HTTP transport, so proxy
+    environment variables such as HTTPS_PROXY are honored
+    again.
+  * Follow the 0.66b1 lockstep releases of
+    opentelemetry-exporter-http-transport and
+    opentelemetry-exporter-otlp-common.</comment>
+    <requestid>1394356</requestid>
+  </revision>
 </revisionlist>

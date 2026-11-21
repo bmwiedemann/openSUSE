@@ -1480,4 +1480,14 @@ comply with openSUSE policy
   * Updated translations</comment>
     <requestid>1348579</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>238a98a229ed24737ee1b0ed8508e0bb</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182314</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Silenced layershell's warning by updating its code.
+  * CMake maintenance.</comment>
+    <requestid>1398761</requestid>
+  </revision>
 </revisionlist>

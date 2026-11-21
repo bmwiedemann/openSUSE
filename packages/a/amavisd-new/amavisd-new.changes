@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:25:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.15.0
+  * Add config options to control classification of GPG-encrypted
+    content ($privacy_cc_major, $privacy_cc_minor,
+    $privacy_match_mimetypes, $privacy_attribute_pgp_enc)
+  * Add $sql_smtp_resp_maxlen, replacing the hard-coded 255
+    character limit for SMTP responses stored in SQL
+  * Implement ZMQ backend via ZMQ::FFI
+  * Add header_to_policy_bank_maps to load policy banks based on
+    email headers
+  * Support utf8mb4 with DBD::MariaDB
+  * RspamdClient: accept a message supplied as IO::File
+  * Derive mail_id and secret_id length from $mail_id_size_bits,
+    fixing AM.PDP mail_id validation for non-default settings
+  * Do not split multi-octet characters across adjacent
+    encoded-words in Q-encoded header fields (RFC 2047)
+  * Fix subject tagging in AM.PDP mode, broken since 2.14.0
+  * Fix test errors
+
+-------------------------------------------------------------------
 Fri Nov  7 14:13:16 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Remove patch amavisd-new-2.3.0-myhostname.patch. (POSIX::uname)[1] now delivers th FQHN.

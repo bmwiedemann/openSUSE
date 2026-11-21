@@ -202,7 +202,7 @@
 %define shared_uboot 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2026.07
+%define archive_version 2026.10
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -232,14 +232,13 @@ ExclusiveArch:  do_not_build
 %endif
 %endif
 %endif
-Version:        2026.07
+Version:        2026.10
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            http://www.denx.de/wiki/U-Boot
-Source:         http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2
-Source1:        http://ftp.denx.de/pub/u-boot/u-boot-%{archive_version}.tar.bz2.sig
+Source:         https://github.com/u-boot/u-boot/archive/refs/tags/v%{archive_version}.tar.gz#/u-boot-%{archive_version}.tar.bz2
 Source2:        arndale-bl1.img
 #Source3:        https://github.com/JeffyCN/rockchip_mirrors/blob/6186debcac95553f6b311cee10669e12c9c9963d/bin/rk35/rk3568_bl31_v1.28.elf?raw=true#/rk3568_bl31_v1.28.elf
 Source3:        rk3568_bl31_v1.28.elf

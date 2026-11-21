@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  9 19:46:24 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.620.2
+  * This release matches the content provided in the DirectX12 Agility SDK
+    and the 1.620.2 NuGet package.
+    - https://devblogs.microsoft.com/directx/directx12agility/
+    - https://www.nuget.org/packages/Microsoft.Direct3D.D3D12/1.620.2
+  * Dropping PR#294 patch
+
+-------------------------------------------------------------------
+Wed Oct 28 19:25:27 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 1.620.1
+  * This release matches the content provided in the DirectX12 Agility SDK
+    and the 1.620.1 NuGet package.
+    - https://devblogs.microsoft.com/directx/directx12agility/
+    - https://www.nuget.org/packages/Microsoft.Direct3D.D3D12/1.620.1
+  * Including patch of https://github.com/microsoft/DirectX-Headers/pull/294
+    so build completes
+
+-------------------------------------------------------------------
 Fri Jul 31 15:15:28 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 1.619.5:

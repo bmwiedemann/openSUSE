@@ -5,4 +5,5 @@ Description=Very Secure FTP Daemon
 Type=simple
 ExecStart=/usr/sbin/vsftpd /etc/vsftpd.conf -obackground=NO -olisten=NO -olisten_ipv6=NO
 StandardInput=socket
+StandardError=journal
 SuccessExitStatus=2

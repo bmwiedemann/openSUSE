@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov  5 11:09:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.3:
+  * Keyboard: replace gkbd-keyboard-display with tecla
+- Changes from version 2.1.2:
+  * Support GNOME-51.alpha and later
+  * Remove color and wacom panels due to gnome-rr deprecation
+  * cleanup: Remove G_GNUC_CONST for *_get_type functions
+- Changes from version 2.1.1:
+  * Show the two scrollmethod switches for the touchpad
+  * Support dark mode
+  * Remove obsolete bluetooth and cheese code
+  * Update to the latest GVC from upstream
+  * Updated translations
+- Update version dependencies according to meson.build.
+- Disable malcontent: it was dropped due to pending CVEs that are not addressed
+  by upstream due to resource constraints.
+
+-------------------------------------------------------------------
 Fri Mar 27 17:20:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(libsoup-2.4) BuildRequires: Neither used nor

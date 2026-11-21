@@ -1167,4 +1167,55 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>Update openexr to 3.5.2 (forwarded request 1385777 from pluskalm)</comment>
     <requestid>1386188</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>538f0ffecdca399e91dc6d6730e0d931</srcmd5>
+    <version>3.5.3</version>
+    <time>1793724817</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.5.3:
+  * Add support for Python 3.15
+  * Several diagnostic/correctness fixes across the utility tools
+    (exrmetrics, exrmultipart, exrcheck) and core decompression
+    paths (courtesy of @ssoj13/Alex Khal)
+  * Address several long-standing build errors and test failures
+    on i686 (32-bit linux) and s390x (big-endian) hosts.
+  * Fix build issues on macOS &lt; 10.15
+  * Fix build issues on powerpc
+  * Fix for absolute paths for libm in OpenEXRTargets.cmake
+  * Fix for running on Windows 7 involving CreateFile2 (forwarded request 1394480 from Guillaume_G)</comment>
+    <requestid>1394491</requestid>
+  </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>42c455a7d161c42a2d942b27009159d3</srcmd5>
+    <version>3.5.3</version>
+    <time>1794932198</time>
+    <user>anag_factory</user>
+    <comment>- Re-enable testLargeDataWindowOffsets test on 32-bit arm (forwarded request 1397868 from Guillaume_G)</comment>
+    <requestid>1397870</requestid>
+  </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>3077224f9b68830294795c278cb8c496</srcmd5>
+    <version>3.5.4</version>
+    <time>1795182199</time>
+    <user>anag_factory</user>
+    <comment>- version update to 3.5.4
+  * Fix a configuration issue with OpenJPH 0.33.0 that caused it to
+    silently and incorrectly fall back to the vendored version (PR
+    [#2813](https://github.com/AcademySoftwareFoundation/openexr/pull/2813))
+  * The vendored OpenJPH is now built in a custom namespace to avoid
+    symbol collision with other versions when built statically ([2811](https://github.com/AcademySoftwareFoundation/openexr/pull/2811))
+    built statically,
+  * The vendored OpenJPH version is now 0.33.0.
+  * Fix `exrmultipart -convert` on tiled and deep single-part files
+  * `OPENEXR_USE_INTERNAL_IMATH/OPENJPH` are are now included in
+    `OpenEXRConfig.h` alongside `OPENEXR_USE_INTERNAL_DEFLATE/ZSTD`.
+  * 32-bit glibc builds now guarantee support for files of size 2GiB or
+    more ([2812](https://github.com/AcademySoftwareFoundation/openexr/pull/2812))
+  * https://github.com/AcademySoftwareFoundation/openexr/security/advisories/GHSA-PP92-4RV3-WFQ6
+    OpenEXR: a signed-int data-window-origin overflow in the OpenEXRUtil Image API turns `Imf::loadImage`
+    into an attacker-steered out-of-bounds write
+  * https://github.com/AcademySoftwareFoundation/openexr/security/advisories/GHSA-2V77-PVHX-25C3
+    Integer overflow in legacy OpenEXR.OutputFile.writePixels() causes heap over-read</comment>
+    <requestid>1398638</requestid>
+  </revision>
 </revisionlist>

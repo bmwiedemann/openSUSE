@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:35:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4.0
+  New
+  * Support for older Wise installers (versions 4, 5, and 6).
+    Thanks to @alexjurkiewicz for bringing the existence of these
+    installers to light and the initial work on the 64 byte overlay
+    header. See #4
+    Note that there is spotted one even older version with a 13 or
+    17 byte overlay header, that one is not supported, there are
+    already too many differences spotted. But who knows what the
+    future holds.
+  * Multi-file support; REWise now accepts multiple input files,
+    example:
+    $ rewise --verify setup.exe setup.w02 setup.w03
+  * Support for installers that camp at the .rsrc section of the PE
+    file.
+  Output file- name/path changes:
+  * % characters are no longer removed from the wisescript filepath
+    section start/end. As for example this means that where
+    previous it would extract to MAIN/some_file.ext, it will now
+    extract to %MAIN%/some_file.ext.
+  * For the filepath from the wisescript the characters ./ will be
+    replaced with ,/ and ../ will be replaced with ,,/. As for
+    example this means that the extract path %MAIN%/../some_file.ext
+    will become %MAIN%/,,/some_file.ext.
+  Fixes
+  * The offset to the deflate data stream for files described inside
+    the WiseScript is now proper calculated with values from the
+    overlay header. Code for the old method is still there and can
+    be used with the new --calc-deflate-offset
+  * option in case there are any issues; please report those issues.
+  * The issue for installers with weird bytes in their WiseScript
+    header has been resolved.
+  * The issue with conflicting data sizes for OP 0x18 has been
+    resolved (workaround removed).
+  * Fixed calculating NE overlay offset (workaround removed).
+  * The set files dates while using --extract where off by one
+    month.
+  Input argument changes
+  * -c --components is handled different now internal, each
+    character in the given string will now be treated as one
+    component.
+  * -x --extract now requires -g --language to be set for multi
+    lingual installers.
+  * -r --raw now extracts to FILE_# instead of EXTRACTED_#.
+  Removed options:
+  These are no longer needed since we don't extract any temporary
+  files anymore.
+  * -p --preserve
+  * -t --tmp-path
+  * -n --no-extract
+  New operations:
+  * -w --dump-script OUTPUT_SCRIPT
+    Dump the WiseScript.bin to given file.
+  * -A --inst-list
+    List internal Wise files.
+  * -B --inst-extract
+    Extract internal Wise files.
+  * -C --inst-verify
+    Verify internal Wise files.
+  New options:
+  * -1 --read-script INPUT_SCRIPT
+    Read WiseScript.bin from given script file instead of reading
+    it from the main INPUT_FILE itself.
+  * -2 --calc-deflate-offset
+    Use legacy alternative to calculate the deflate start offset.
+  * -m --file-limit
+    This is for --raw and --raw-verify only.
+    Limit the amount of files it verifies or extracts. This is
+     useful for debugging.
+  Security fixes:
+  * Several memleaks.
+  * Path traversal.
+  * Avoidance of strcat, strcpy, strdup and strlen (use strlcpy,
+    strndup and strnlen instead).
+  * The inflate process is limited now in the amount of bytes it
+    may read.
+  Other:
+  * The WiseScript.bin is not extracted to disk anymore, instead it
+    is decompressed fully in memory. This makes the use of a tmp
+    dir useless.
+  * The maximum size of the inflated WiseScript.bin is increased
+    to 2MiB.
+  * to support a few more installers.
+  * Some code refactoring and cleanup has been done.
+
+-------------------------------------------------------------------
 Sat Feb 15 21:07:39 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.1

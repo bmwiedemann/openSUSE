@@ -1,5 +1,5 @@
 diff --git a/src/manifest.json b/src/manifest.json
-index 11d1797..543eebd 100644
+index ca0b04b..202aaea 100644
 --- a/src/manifest.json
 +++ b/src/manifest.json
 @@ -11,7 +11,7 @@
@@ -10,4 +10,4 @@ index 11d1797..543eebd 100644
 +        "docs-rh": [
              {
                  "label": "Managing virtual machines",
-                 "url": "https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-virtual-machines-in-the-web-console_system-management-using-the-rhel-9-web-console"
+                 "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_virtualization/managing-virtual-machines-in-the-web-console_configuring-and-managing-virtualization"

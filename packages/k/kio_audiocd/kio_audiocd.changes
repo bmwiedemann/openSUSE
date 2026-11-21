@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Don't indicate unsaved changes after reset/apply (kde#502029)
+
+-------------------------------------------------------------------
 Sun Nov  1 12:56:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Drop the obsolete libkcompactdisc dependency

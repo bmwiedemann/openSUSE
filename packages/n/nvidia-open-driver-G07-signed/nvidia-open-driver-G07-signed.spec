@@ -16,14 +16,14 @@
 #
 
 
-%define gfx_aarch64_version 595.112.07
+%define gfx_aarch64_version 620.70.06
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.112.07
+%define gfx_version 620.70.06
 %endif
-%define cuda_version 615.71.09
+%define cuda_version 620.70.06
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -99,8 +99,6 @@ Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
 Patch0:         fix-objtool-warnings.patch
-Patch1:         Fixing-build-against-SLE16.1-Kernel.patch
-Patch2:         kernel-7.3.0-opengpu-615.71.09.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -242,12 +240,6 @@ ls -l %{_sourcedir}
 %setup -n open-gpu-kernel-modules-%{version}
 %ifnarch aarch64
 %patch -P 0 -p1
-%endif
-%if %{with cuda}
-%if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
-%patch -P 1 -p1
-%endif
-%patch -P 2 -p1
 %endif
 
 set -- *

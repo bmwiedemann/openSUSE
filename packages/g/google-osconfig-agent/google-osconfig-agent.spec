@@ -19,7 +19,7 @@
 %define shortname osconfig
 
 Name:           google-osconfig-agent
-Version:        20261022.00
+Version:        20261105.03
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -28,6 +28,7 @@ URL:            https://github.com/GoogleCloudPlatform/osconfig
 Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
+Patch0:         CVE-2026-79775.patch
 BuildRequires:  golang(API) >= 1.25.5
 Requires:       google-guest-configs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -37,6 +38,9 @@ Google Cloud OSConfig Agent
 
 %prep
 %setup -n %{shortname}-%{version} -a1
+pushd vendor/github.com/diskfs/go-diskfs
+%patch -P0 -p1
+popd
 
 %build
 %ifnarch ppc64

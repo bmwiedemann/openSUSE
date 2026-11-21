@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 15:09:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.1.1
+  * Bug Fixes
+    + Guard the second buffer write in parseComment (3.x)
+  * Maintenance
+    + Guard the second buffer write in parseComment (3.x)
+  * Dependency updates
+    + Bump release-drafter/release-drafter from 7.7.0 to 7.10.0
+
+-------------------------------------------------------------------
 Tue Sep  8 15:35:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.1.0

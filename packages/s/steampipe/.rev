@@ -351,4 +351,132 @@
   * Backport security-flagged dependency bumps (x/crypto, grpc, containerd, go-git, x/net) (#5040) (forwarded request 1378357 from ph03nix)</comment>
     <requestid>1378374</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>ddf94359c9d79fe82d4d0375d48771ff</srcmd5>
+    <version>2.4.9</version>
+    <time>1793817827</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.9:
+  * v2.4.9 (#5083)
+  * Backport security-flagged dependency bumps (klauspost/compress, go-jose) (#5079)
+  * v2.4.8 (#5075)
+  * Backport: Bump Go version from 1.26.7 to 1.26.10 (#5074) (forwarded request 1394699 from ph03nix)</comment>
+    <requestid>1394732</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>ecda6697646219cea2bd8aba9a255e5a</srcmd5>
+    <version>2.5.0</version>
+    <time>1794932503</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * v2.5.0
+  * Publish the DB image with the workflow's own token (#5152)
+  * Bump FDW version to v2.3.0 (#5151)
+  * Check root's way into Steampipe's database too, and give an include line its own message
+  * Do not count a samerole rule as letting root into the postgres database
+  * Say an upgrade leaves pg_hba.conf behind only across major versions, and check the postgres database and include lines
+  * Check the pg_hba.conf the next start uses, and give advice that holds
+  * Add tests for pg_hba.conf checks and advice that are wrong
+  * Say in GetClientCount's doc how it counts a service an older version started
+  * Put writeFakeInstall's doc back on it and say what the fakes now change
+  * Keep the db_local unit tests inside CI's 30s limit
+  * Count another role's sessions by their database and user, not by an application name postgres's own processes also carry
+  * Count an older version's clients with the service password, see other roles' sessions, and drop the --force advice
+  * Test that a pg_hba.conf link to a missing file is followed up from a linked folder
+  * Test that service stop counts an older version's clients with the service password
+  * Count an older version's clients on service stop too, and follow chained pg_hba.conf links
+  * Add tests for service stop on an older version's service and chained pg_hba.conf links
+  * Restore pg_hba.conf links in place, count an older service's clients, and take the install port late
+  * Add tests for pg_hba.conf links, the abort advice and counting an older service's clients
+  * Give only the move advice when a data move stops on a too-long socket path
+  * Add a test that a too-long socket path on a data move gives only the move advice
+  * Stop on an unfinished or other-major data folder, closes #5137 (#5142)
+  * Point the installation tests' pg_dump at the socket in the data directory
+  * Say what to do when an older install's database cannot be used, refs #5111 (#5146)
+  * A connection whose plugin block failed to load is reported in error, not ready (#5145)
+  * A connection config change made while a plugin is starting is sent once it has started (#5144)
+  * Add tests that guard the data-folder and pg_hba fixes (#5143)
+  * Keep data reachable when the socket path is too long, and keep pg_hba.conf links
+  * Add tests for socket path advice, link restore and older-version shutdown
+  * Keep a leftover backup out of the kept database closes #5136 (#5139)
+  * Stop at once, naming the role, when postgres says root does not exist
+  * Format the socket test
+  * Tell the user what to do for every pg_hba.conf stop, and stop a restart that would fail
+  * Make an install directory with a comma or a double quote work
+  * service status --all no longer panics on an exited process closes #5133 (#5140)
+  * Correct the pg_hba.conf header and rewrite comments, and share one file replace
+  * Use the real old pg_hba.conf in the too-long socket path test and restore InstallDir
+  * Decide in one place whether a backup error stops the install
+  * Test the pg_hba.conf restores on a failed upgrade, and restore only what changed
+  * Restore the old pg_hba.conf when an upgrade fails, and show the socket path error
+  * Reinstalling the current version's programs keeps its database closes #5120 (#5138)
+  * Remove old database folders that hold no database after an upgrade closes #5117 (#5135)
+  * Find a database process that has only just started when forcing a stop closes #5116 (#5134)
+  * Fix the two lint findings on develop and enforce lint (#5131)
+  * Keep non-empty new data when a major upgrade finds a running server closes #5112 (#5121)
+  * Upgrade carries over the newest older database, not the first folder closes #5103 (#5114)
+  * Wait for the fake postgres command line before scanning in the exited-process test (#5115)
+  * Treat pg_hba.conf as Steampipe's only when the checksum line follows the header
+  * Check the socket path length before touching the old data directory on upgrade
+  * Use each plugin's memory_max_mb even when GOMEMLIMIT is set in the environment closes #5095 (#5096)
+  * Rebuild steampipe_plugin_column only when it is missing or wrong closes #5089 (#5090)
+  * Say what the pg_hba.conf check does before the backup starts the old postgres
+  * Test a downgrade to v2.4.9 and the upgrade after it
+  * Never rewrite a pg_hba.conf that Steampipe did not write
+  * Stop the test's processes by its install dir alone
+  * [dep][actions](deps): Bump goreleaser/goreleaser-action (#5012)
+  * [dep][go](deps): Bump github.com/jackc/pgx/v5 from 5.9.2 to 5.10.0 (#5027)
+  * Root each local acceptance test file directly under /tmp
+  * Put the Postgres unix socket in the data directory, not /tmp
+  * Bump github.com/thediveo/enumflag/v2 from 2.0.7 to 2.2.1 (#5035)
+  * [dep][go](deps): Bump github.com/fatih/color from 1.18.0 to 1.19.0 (#5030)
+  * [dep][go](deps): Bump github.com/turbot/go-kit from 1.3.0 to 1.3.1 (#5029)
+  * [dep][go](deps): Bump the go_modules group across 1 directory with 3 updates (#5082)
+  * [dep][actions](deps): Bump actions/setup-go from 5.4.0 to 6.5.0 (#5010)
+  * [dep][actions](deps): Bump actions/stale from 10.1.0 to 10.3.0 (#5013)
+  * Only the OS user who runs Steampipe can connect as root, through the unix socket closes #5101 (#5109)
+  * Write pg_hba.conf before every start, with pg_hba.conf.d rules first closes #5100 (#5108)
+  * Stop with an error when the same-major data folder move fails Refs #4961 (#5111)
+  * Bump embedded PostgreSQL to 14.24.0 and keep the data folder on same-major upgrades closes #4961 (#5107)
+  * Build the DB image from a draft release instead of Google Drive (#5106)
+  * Add the embedded PostgreSQL build script (#5102)
+  * Fix plugin manager panic when connection config changes while a plugin is starting (#5092)
+  * Do not let one bad config file stop all connections from syncing closes #5039 (#5071)
+  * Put turbot/steampipe on Agent Fleet: its gate manifest and declaration (#5085)
+  * Bump github.com/go-jose/go-jose/v4 to v4.1.6 (CVE-2026-116587) (#5081)
+  * [dep][go](deps): Bump github.com/klauspost/compress (#5072)
+  * Remove acceptance tests and test data left over from the check and dashboard commands closes #5068 (#5070)
+  * Remove unused build-artifact steps from the acceptance workflow and the Linux ARM64 skip in migration.bats closes #5066 (#5069)
+  * Make the &quot;service stability&quot; acceptance test run its commands closes #5064 (#5067)
+  * Run migration and force_stop acceptance tests on macOS in run-local.sh (#5065)
+  * Make tests/acceptance/run-local.sh give the same verdict as CI (#5063)
+  * Skip unreadable processes when scanning for steampipe postgres instances closes #5061 (#5062)
+  * Print absolute export paths as-is in the export status message (#5060)
+  * Do not let one bad connection stop all connections from syncing (#5021)
+  * Clear golangci-lint findings (#5050)
+  * Make installation state writes atomic (closes #5038) (#5049)
+  * Add soc2-remediation skill and remove fix-vulnerabilities command (#5048)
+  * Add release skill for cutting a steampipe release (#5047)
+  * Bump github.com/containerd/containerd to v1.7.35 (CVE-2026-53495) (#5041)
+  * [dep][go](deps): Bump google.golang.org/grpc from 1.82.1 to 1.83.2 (#5032)
+  * Bump Go toolchain to 1.26.7 to remediate CVE-2026-39821 (GO-2026-5026) (#5031)
+  * Disable the snapshot acceptance test block (#5026)
+  * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.19.1 to 5.19.2 (#5022)
+  * [dep][go](deps): Bump google.golang.org/grpc from 1.79.3 to 1.82.1 (#5019)
+  * Bump oras.land/oras-go/v2 from 2.5.0 to 2.6.2 (#5018)
+  * [dep][go](deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 (#5008)
+  * [dep][go](deps): Bump github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream (#5007)
+  * [dep][go](deps): Bump golang.org/x/net from 0.54.0 to 0.55.0 (#5016)
+  * [dep][go](deps): Bump golang.org/x/crypto from 0.50.0 to 0.52.0 (#5017)
+  * [dep][go](deps): Bump github.com/containerd/containerd (#5009)
+  * [dep][go](deps): Bump github.com/go-git/go-billy/v5 from 5.8.0 to 5.9.0 (#4988)
+  * [dep][go](deps): Bump github.com/go-git/go-git/v5 from 5.17.1 to 5.19.1 (#4997)
+  * [dep][go](deps): Bump github.com/hashicorp/go-getter from 1.7.9 to 1.8.6 (#4977)
+  * chore: add .wip and .claude to gitignore (#5002)
+  * chore: bump steampipe-plugin-sdk to v6.0.0 (#4998)
+  * Fix release workflow homebrew PR title check (#4983)
+  * Update Go version and fix Dependabot CVE alerts by bumping deps and removing pgconn v1. closes #4963 (#4964)
+  * Harden GitHub Actions: pin actions to SHAs and set explicit permissions (#4965) (forwarded request 1398086 from ph03nix)</comment>
+    <requestid>1398173</requestid>
+  </revision>
 </revisionlist>

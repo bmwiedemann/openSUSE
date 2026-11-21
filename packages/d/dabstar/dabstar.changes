@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Nov 16 18:28:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 6.0.0
+  New Features
+  * EPG (Electronic Programme Guide): EPG/SPI data are received in
+    the background, whichever service is selected. The new EPG
+    window lists the services (with logos), shows day tabs and the
+    programme list with details. You can choose local or UTC time,
+    and received EPG objects can optionally be saved. The EPG button
+    flickers while EPG data are received.
+  * ETI file playback: Recorded ETI (NI) files can be opened like
+    IQ sample files; the file type is detected from the content.
+    Windows that need IQ samples (SIG, CIR, TII, MAP, SNR/MER) are
+    hidden while an ETI file plays and come back afterwards.
+  * Built-in TII map viewer: The map is drawn in its own DABstar
+    window using cached OpenStreetMap tiles. Drag to pan, zoom with
+    the mouse wheel or a double-click, and click a transmitter to
+    see its details.
+  * Announcement support (FIG 0/18): A new TP indicator shows
+    services that support traffic announcements. The SLS indicator
+    (formerly MOT) stays steady when the service signals a slideshow
+    and flickers while slideshow data are received.
+  * Set to Defaults…: Resets all settings, including SDR device
+    settings and window positions, and restarts DABstar. Home
+    coordinates, the Peak Level Delay and the scanned
+    service/ensemble entries are kept.
+  Improvements
+  * Speed-up phase reference detection.
+  * Tool buttons now have short text labels (INFO, FIB, CIR, TII,
+    MAP, SIG, SDR, RAW, ETI, AAC, WAV, DYL, EPG, JOUR) instead of
+    icons to provide a common look-and-feel.
+  * Buttons and controls are disabled when they can't be used, e.g.
+    no running channel, a scan in progress, ETI playback or no
+    selected device.
+  * Disabled widgets use the same colors everywhere.
+
+-------------------------------------------------------------------
+Sun Nov  8 09:47:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add patch
+  * 0001-Don-t-show-rtlsdr-driver-warning.patch
+
+-------------------------------------------------------------------
+Sat Nov  7 17:26:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.9.0
+  New features
+  * Positioning of the FFT window with "Maximum C/I".
+  * Optimize phasereference.cpp in #137
+  * Journaline is back! #135 (Journaline is now also decoded from
+    the X-PAD of audio services.)
+  * Coherent demodulation: New "Coherent" option in the
+    "Demodulation" setting. It uses an averaged channel estimate as
+    phase reference instead of the previous OFDM symbol, which
+    helps with weak, stationary signals. A new COH traffic light
+    shows whether the channel estimate is ready. Until then
+    "Differential, Optimal 3" is used. The algorithm comes from
+    welle.io, many thanks to its developers!
+  * Emergency Warning System (EWS / ASA): FIG 0/15 is now parsed,
+    and the status bar shows when the ensemble takes part in EWS
+    (ASA in Germany).
+  * File player in the main window: When a recorded IQ file (RAW,
+    WAV/SDR or XML) is played, a slider in the main window shows
+    the playback position and lets you seek.
+  * File end action: The "Auto Next Service" checkbox is replaced
+    by a combo box with Stop / Loop / ANS.
+  * The GitHub update check now reports its status in the UI.
+  Performance
+  * log() and exp() replaced by fast approximations (now also used
+    in the common log helpers, with CTest coverage).
+  * FFT planning switched from FFTW_ESTIMATE to FFTW_MEASURE. The
+    results are stored as FFTW wisdom (fftwf_wisdom.txt in the
+    config folder), so the slow measuring only runs once. Note: The
+    first start after installing (or after an FFTW update) takes a
+    bit longer.
+  UI improvements
+  * Removed the separate RSE (Reed-Solomon error) traffic light.
+    The RSC indicator covers it.
+  * Better look for disabled traffic lights.
+  * Better column resizing in the service list.
+  * Reorganized the buttons: the most frequently used ones are now
+    all in the main window.
+  * New transmitter icon in the KML output.
+  * Cleaned up the QLabel frames in the RTL-SDR widget.
+  Fixes / devices
+  * Adalm Pluto: improved device detection.
+  Build / internal
+  * C++20 is now required.
+  * AppStream metadata added for the AppImage.
+  * Replaced the SIGNAL/SLOT macros with function-pointer connects.
+  * Cleaned up the file readers.
+  * Updated the documentation (README, Service Selector, EWS
+    receiver docs).
+
+-------------------------------------------------------------------
 Sun Oct 11 06:02:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8.1

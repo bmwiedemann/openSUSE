@@ -847,4 +847,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
 Allows to drop some patches too. (forwarded request 1370713 from Vogtinator)</comment>
     <requestid>1370799</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>b3fe3599d79e50c1932902d0b124aaa2</srcmd5>
+    <version>0.21.0+git57</version>
+    <time>1793990028</time>
+    <user>anag_factory</user>
+    <comment>- Require /usr/bin/X: 00-general.conf defines ServerPath=/usr/bin/X
+  (boo#1288770). (forwarded request 1393652 from dimstar)</comment>
+    <requestid>1395112</requestid>
+  </revision>
 </revisionlist>

@@ -17,15 +17,14 @@
 
 
 Name:           zpaqfranz
-Version:        65.16
+Version:        65.21
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
 # embeds a large amount of third-party code. Upstream enumerates every piece
 # in the "Credits and copyrights and licenses" block of zpaqfranz.cpp
-# (31 entries, numbered 0 to 30); the tag below is the union of what that
-# block declares, after electing the permissive side of the two dual-licensed
-# pieces:
+#  - 32 entries, numbered 0 to 31; the tag below is the union of that
+#    block, electing the permissive side of the three dual-licensed pieces.
 #  - zpaqfranz itself and libdivsufsort, Embedded Artistry, nilsimsa, zsfx
 #    and ascii-art: MIT (LICENSE is the MIT text),
 #  - zpaq, libtomcrypt AES, salsa20, unzpaq206, the encode.su modifications,
@@ -36,8 +35,9 @@ Summary:        A journaling, incremental, deduplicating archiver
 #  - HighwayHash: Apache-2.0, and BLAKE3 is "CC0-1.0 OR Apache-2.0" - we
 #    elect Apache-2.0, which is already required by HighwayHash, so no
 #    CC0-1.0 obligation is taken on,
-#  - the libtomcrypt AES is "public domain OR WTFPL" - we elect public domain,
-#  - Twofish by Niels Ferguson: Ferguson-Twofish.
+#  - the libtomcrypt AES is "public domain OR WTFPL" - we elect public domain.
+#  - Entry 17 (Twofish by Niels Ferguson, Ferguson-Twofish) was removed
+#    upstream in 65.20, so it is no longer part of this tag.
 #  - zstd 1.5.7 (entry 28), the -m8 backend: BSD-3-Clause.
 #  - postami 0.3.0 / zippami (entry 29), the "work email" SMTP client and the
 #    "work zip" writer: MIT, the licence of the rest of this file.
@@ -48,6 +48,8 @@ Summary:        A journaling, incremental, deduplicating archiver
 #    added entries 29 and 30 to the credits block, so upstream now lists what
 #    it previously shipped unlisted; both are licences this tag already
 #    carries, so neither adds a new term.
+#  - Monocypher 4.0.2 (entry 31), franzsodium engine: BSD-2-Clause
+#    OR CC0-1.0, we elect BSD-2-Clause (already via xxHash).
 # The bundled curl.h is licensed under the curl licence, but only the header
 # is present: libcurl and libssh are dlopened at run time and no curl or
 # libssh code is linked into the binary, so it is not part of this tag.
@@ -63,9 +65,10 @@ Summary:        A journaling, incremental, deduplicating archiver
 # -m7 LZAV dropped)"; neither library has a single symbol left in the source,
 # so neither contributes a licence (and LZ4's BSD-2-Clause survives in this
 # tag only through xxHash, entry 14).
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND LicenseRef-SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND LicenseRef-SUSE-Public-Domain AND Zlib AND Unlicense
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Source-Binary-Exception: */AUTOTEST/sha256.7z -- test-data: upstream self-test fixture archive, only read by 'autotest -all' in %%check
 BuildRequires:  gcc-c++
 # libcurl and libssh are dlopened by name at run time for the URL and SFTP
 # features; the binary does not link them, so these stay weak dependencies.
@@ -76,6 +79,7 @@ Provides:       bundled(blake3)
 Provides:       bundled(highwayhash)
 Provides:       bundled(libdivsufsort-lite) = 2.00
 Provides:       bundled(mbedtls) = 3.6.4
+Provides:       bundled(monocypher) = 4.0.2
 Provides:       bundled(xxhash)
 Provides:       bundled(zstd) = 1.5.7
 
@@ -90,7 +94,7 @@ time machine, but much more efficiently.
 sed -i 's/\r$//' CHANGELOG.md COPYING
 
 %build
-%set_build_flags
+%{set_build_flags}
 # Upstream's Makefile does not know about s390x and strips the executable, so
 # the single translation unit is compiled directly.
 g++ $CXXFLAGS $LDFLAGS \

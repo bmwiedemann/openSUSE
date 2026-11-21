@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Nov 12 20:19:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.1:
+  * Git: optional automatic fetching of the upstream and default
+    branches (git.auto_fetch, off by default); resizable Refs
+    column in the graph; drag files from the Git Panel into
+    terminals and editors; worktree picker searches branch names
+  * Mouse-wheel font zoom in diff views and terminals (ctrl-scroll
+    on Linux); faster window startup on NVIDIA GPUs
+  * Agent: edit_predictions toggle in the status bar; agent-client
+    protocol, read_file truncation and subagent-card improvements;
+    debugger panel default size settings
+  * Fixed a Tree-sitter highlighting crash, a Vim visual-block
+    hang, Forgejo pull-request creation, the lingering GNOME
+    Wayland busy cursor, and two SSH connection failures (stdin
+    readers, macOS pasteboard); C++ lambda highlighting fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Drop the stale zip test-data exception (zip 9.x ships no tests
+  dir); declare the Windows-only and wasm-guest objects the scan
+  now flags
+- Strip the wasm modules no Linux build reads (wit-bindgen fixture,
+  guest archives, dead builtin libdl) and remove the dead branch
+
+-------------------------------------------------------------------
+Fri Nov  6 08:23:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.27.0:
+  * AI: lower Agent Panel memory and CPU use (deferred diffs
+    and thread parsing); commit messages follow the repo style;
+    no credential reads with disable_ai
+  * Git: graph tooltips and rendering performance; clearer
+    error when the push is rejected behind the remote
+  * Languages: Go 1.27 generic-method highlighting; Solargraph
+    crash fix; Ruby LSP on-type formatting
+  * Open README files by default with on_new_window to readme
+  * Fixed crashes in tree-sitter highlighting, Helix select
+    mode and quit on macOS; Vim/Helix mode and focus fixes
+  * Fixed filesystem-watch event losses, SSH percent-encoded
+    usernames, Delve auto-update, model-list error logging
+  * Notices: macOS Catalina and Big Sur dropped (12.0 or
+    later required); agent checkpoints removed
+
+-------------------------------------------------------------------
 Sat Oct 31 13:57:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.26.2 (from 1.24.2):

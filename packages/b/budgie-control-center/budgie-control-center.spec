@@ -16,14 +16,9 @@
 #
 
 
-%if 0%{?suse_version} < 1600
-%bcond_without cheese
-%else
-%bcond_with cheese
-%endif
 %define org org.buddiesofbudgie.controlcenter
 Name:           budgie-control-center
-Version:        2.1.0+0
+Version:        2.1.3
 Release:        0
 Summary:        Fork of GNOME Control Center for Budgie 10
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -38,36 +33,32 @@ Requires:       gnome-color-manager
 Requires:       gnome-online-accounts
 BuildRequires:  cups-devel
 BuildRequires:  meson
-BuildRequires:  pkgconfig(accountsservice)
-%if %{with cheese}
-BuildRequires:  pkgconfig(cheese)
-BuildRequires:  pkgconfig(cheese-gtk)
-%endif
-BuildRequires:  pkgconfig(colord)
+BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
+BuildRequires:  pkgconfig(colord) >= 0.1.34
 BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(gcr-3)
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
-BuildRequires:  pkgconfig(gnome-settings-daemon)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70.0
+BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.33.4
+BuildRequires:  pkgconfig(gnome-settings-daemon) >= 49.beta
 BuildRequires:  pkgconfig(goa-1.0)
 BuildRequires:  pkgconfig(gsound)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(ibus-1.0)
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
+BuildRequires:  pkgconfig(ibus-1.0) >= 1.5.2
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(libnm)
-BuildRequires:  pkgconfig(libnma)
-BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
+BuildRequires:  pkgconfig(libnm) >= 1.24.0
+BuildRequires:  pkgconfig(libnma) >= 1.8.0
+BuildRequires:  pkgconfig(libpulse) >= 2.0
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libwacom)
-BuildRequires:  pkgconfig(malcontent-0)
-BuildRequires:  pkgconfig(mm-glib)
-BuildRequires:  pkgconfig(polkit-gobject-1)
-BuildRequires:  pkgconfig(pwquality)
+BuildRequires:  pkgconfig(libwacom) >= 0.7
+BuildRequires:  pkgconfig(mm-glib) >= 0.7
+BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
+BuildRequires:  pkgconfig(pwquality) >= 1.2.2
 BuildRequires:  pkgconfig(smbclient)
+BuildRequires:  pkgconfig(tecla) >= 47.0
 BuildRequires:  pkgconfig(udisks2)
-BuildRequires:  pkgconfig(upower-glib)
+BuildRequires:  pkgconfig(upower-glib) >= 0.99.8
 Requires:       wdisplays
 
 %description
@@ -78,6 +69,7 @@ Summary:        Bash Completion for Budgie Control Center
 Group:          System/GUI/Other
 Requires:       %{name} = %{version}
 Requires:       bash-completion
+BuildArch:      noarch
 Supplements:    (%{name} and bash-completion)
 
 %description bash-completion
@@ -89,7 +81,7 @@ This package contains the Bash Completion for Budgie Control Center
 %autosetup -p1
 
 %build
-%meson -Ddocumentation=true -Dmalcontent=true -Dbluetooth=false %{!?with_cheese:-Dcheese=false}
+%meson -Ddocumentation=true -Dmalcontent=false
 %meson_build
 
 %install
@@ -97,9 +89,12 @@ This package contains the Bash Completion for Budgie Control Center
 %find_lang %{name} --all-name
 rm %{buildroot}%{_datadir}/polkit-1/rules.d/budgie-control-center.rules
 
+%check
+%meson_test
+
 %files
 %doc README.md
-%{_bindir}/*
+%{_bindir}/budgie-control-center
 %{_datadir}/metainfo/%{org}.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.buddiesofbudgie.ControlCenter.service

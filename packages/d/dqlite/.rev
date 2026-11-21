@@ -135,4 +135,20 @@
     <comment></comment>
     <requestid>1357126</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>e945d1db52a07310045d17ea89daeb18</srcmd5>
+    <version>1.18.7</version>
+    <time>1795022990</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.18.7:
+  * chore: add Renovate
+  * feat: harden message decoding
+  * feat: use MFD_CLOEXEC flag to prevent leak across exec calls
+  * chore: use dqlite-utils snap for tests
+  * README: add dqlite-utils note
+  * fix(docs): configure &amp; automate spell-checking
+  * chore(deps): update actions/checkout action to v7
+  * chore(deps): update codecov/codecov-action action to v7</comment>
+    <requestid>1398238</requestid>
+  </revision>
 </revisionlist>

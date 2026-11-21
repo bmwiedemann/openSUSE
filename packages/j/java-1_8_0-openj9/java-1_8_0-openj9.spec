@@ -32,18 +32,18 @@
 %global abs2rel perl -e %{script}
 %global syslibdir       %{_libdir}
 # Standard JPackage naming and versioning defines.
-%global updatever       504
-%global buildver        b01
+%global updatever       512
+%global buildver        b09
 %global root_repository https://github.com/ibmruntimes/openj9-openjdk-jdk8/archive
-%global root_revision   96b63b6cb8597d38a3f8ec6f0a2fba17f46bdaef
-%global root_branch     v0.61.0-release
+%global root_revision   3e53ab25c9297e5aa938c611bc90ff692691e847
+%global root_branch     v0.63.0-release
 %global omr_repository  https://github.com/eclipse-openj9/openj9-omr/archive
-%global omr_revision    ebd02d9129dc06fa67a6f885f99a3926aa869154
-%global omr_branch      v0.61.0-release
+%global omr_revision    c2a3a9ae0f8f70ab32e489e453114f37136aa67e
+%global omr_branch      v0.63.0-release
 %global openj9_repository https://github.com/eclipse-openj9/openj9/archive
-%global openj9_revision a1daf225f5cb0ccfb5d7309014701570435a94c4
-%global openj9_branch   v0.61.0-release
-%global openj9_tag      openj9-0.61.0
+%global openj9_revision 2578b5aeb27ad6966f66bb970dc4f16d8af6ccda
+%global openj9_branch   v0.63.0-release
+%global openj9_tag      openj9-0.63.0.1
 # priority must be 6 digits in total
 %global priority        1801
 %global featurever      8
@@ -123,9 +123,6 @@ Patch2:         multiple-pkcs11-library-init.patch
 # Disable doclint for compatibility
 Patch3:         disable-doclint-by-default.patch
 Patch4:         reproducible-version.patch
-# Fixes for build with gcc 16
-Patch6:         omr-gcc16.patch
-Patch7:         openj9-gcc16.patch
 # Fixes for reproducible builds
 Patch8:         java-40y.patch
 Patch9:         reproducible-generatecharacter.patch
@@ -191,8 +188,6 @@ Requires:       fontconfig
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
-Requires(post): file
-Requires(post): java-ca-certificates
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -244,6 +239,8 @@ Summary:        OpenJDK 8 Runtime Environment with Eclipse OpenJ9
 # Require jpackage-utils for ownership of /usr/lib/jvm/
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
+Requires(posttrans): file
+Requires(posttrans): java-ca-certificates
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -384,8 +381,6 @@ rm -rvf jdk/src/share/native/sun/java2d/cmm/lcms/lcms2*
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
@@ -809,7 +804,7 @@ export JAVA_HOME=%{_jvmdir}/%{jrelnk}
 
 # check if the java-cacerts is a valid keystore (bnc#781690)
 if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     %{_sbindir}/update-ca-certificates
 fi
 
@@ -821,7 +816,7 @@ fi
 # if cacerts does exists, neither does not contain/point to a
 # valid keystore (bnc#781690) ...
 if [ X"`%{_bindir}/file --mime-type -b -L %{cacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     # bnc#727223
     rm -f %{cacerts}
     ln -s %{javacacerts} %{cacerts}

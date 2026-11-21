@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 12 19:36:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.3.0:
+  * Article filters can overwrite stored articles via
+    `msg.overwrite` plus "Force overwrite" checkbox (#2490)
+  * Database cleanup can run automatically on startup or exit, and
+    cache directories ship CACHEDIR.TAG files (#2464, #2482)
+  * Feed and article filters match any (OR) or all (AND),
+    with "Show enabled feeds" and "Show feeds/folders" options
+    (#2477, #2476)
+  * External tools can use custom icons; per-feed icon fetching in
+    batch editing; feed discovery uses publisher icons (#2492,
+    #2480)
+  * WordPress posts/pages and MediaWiki category/search pages can
+    be added as feeds via their JSON/MediaWiki APIs (#2433)
+  * Read and unread fonts are now configured separately; reworked
+    shortcuts with reading commands and Ctrl+K groups (#2443)
+  * Fix crash when deleting multiple feeds; fix lost article-list
+    sorting; faster feed counts and lower memory use (#2507)
+  * Article extractor: updated Go modules, redirect-aware links
+    with shared cookies, plus download and time limits
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Rebase rssguard-add_library_version.patch and rssguard-go.patch
+  for the reworked CMake files (standard-plugin integration,
+  smoke-test target, extractor version check)
+- Raise golang(API) BuildRequires floor 1.25 to 1.26 to match
+  upstream's go.mod
+- Strip two NSIS files (zlib1.dll, NSIS.exe) from the tarball via
+  _service excludes; the rest of the Windows-only installer
+  binaries stays under resources/scripts with an exception
+- Add google-noto-sans-fonts BuildRequires: the new GUI unit tests
+  need a real font, and the buildroot ships none
+
+-------------------------------------------------------------------
 Thu Aug 20 11:14:51 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 5.2.5:

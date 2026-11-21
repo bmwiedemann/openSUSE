@@ -123,4 +123,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: WCN6855 hw2.0: update board-2.bin</comment>
     <requestid>1381433</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bad45a4f5493e1561432c1c76d2350ef</srcmd5>
+    <version>20261031</version>
+    <time>1793989963</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261031 (git commit bda6eccc3a8f):
+  * ath11k: QCA2066 hw2.1@nfa725: add to WLAN.HSP.1.1.c6-00302-QCAHSPSWPL_V1_V2_SILICONZ_LITE-1
+  * ath11k: QCA2066 hw2.1: update board-2.bin</comment>
+    <requestid>1394979</requestid>
+  </revision>
 </revisionlist>

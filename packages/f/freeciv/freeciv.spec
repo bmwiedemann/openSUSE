@@ -1,7 +1,7 @@
 #
 # spec file for package freeciv
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           freeciv
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -51,10 +51,6 @@ Requires:       freeciv_client-%{version}
 BuildRequires:  pkgconfig(readline)
 %else
 BuildRequires:  readline-devel
-%endif
-# for Qt6 on Leap 15.6
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc12-c++
 %endif
 
 %lang_package
@@ -109,9 +105,6 @@ Freeciv executable using the SDL3 library
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} < 1600
-export CXX=g++-12
-%endif
 %meson \
 	-Dclients=gtk3.22,gtk4,qt,sdl3 \
 	-Daudio=sdl3 \

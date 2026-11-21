@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:06:57 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Provide descriptions for the library package. Limit descriptions
+  to the scope of openSUSE.
+- Modernize macro usage.
+
+-------------------------------------------------------------------
+Wed Nov  4 11:29:54 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to v26.5.5
+  - bugfix: MAKE-PACKAGE destructively modified defining form's cons
+    cells of the package local nicknames, breaking package literals
+    in bytecmp (#839)
+  - bugfix: the first environment is now always page-aligned by using
+    the same allocation mechanism as all subsequent envs (#828)
+  - bugfix: allow loading concatenated fasc files (#842)
+  - bugfix: defclass does not redefine existing classes at compile time
+    with forward-referenced classes in the bytecodes compiler (#843)
+
+-------------------------------------------------------------------
 Fri Mar 27 16:52:59 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to v26.3.27

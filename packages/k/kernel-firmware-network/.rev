@@ -181,4 +181,15 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.3-rc1</comment>
     <requestid>1381443</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67f161520c60b8904d05746dc2b8c477</srcmd5>
+    <version>20261031</version>
+    <time>1793989984</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.4-rc1
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * wilc1000: update WILC1000/WILC3000 firmware to v16.5.2</comment>
+    <requestid>1394987</requestid>
+  </revision>
 </revisionlist>

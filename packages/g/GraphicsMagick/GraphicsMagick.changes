@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov  9 11:44:14 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-116149: Memory corruption via crafted bzip2 compressed images [bsc#1288783]
+  * GraphicsMagick-CVE-2026-116149.patch
+
+-------------------------------------------------------------------
+Tue Nov  3 10:34:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- modified patches
+  * GraphicsMagick-CVE-2026-46523.patch (refreshed)
+  * GraphicsMagick-disable-insecure-coders.patch (refreshed)
+
+-------------------------------------------------------------------
 Sun Oct 18 05:56:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.3.49 (security and bugfix release):

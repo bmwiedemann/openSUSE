@@ -1,4 +1,822 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:47:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.80:
+  * General
+    - [Server] Redact sensitive auth credentials in GetContext HTTP
+      response )(#23797)
+    - [Server] Fix misspelled 'Acccount' field in Extensions model
+      )(#23795)
+    - fix(docs): keep Required indicator for request bodies without
+      content )(#23794)
+    - fix(docs): tolerate request bodies without content in the
+      REST API reference )(#23792)
+    - [Tests] Assert JSON response envelope and body structure
+      across extension install and remove handler tests )(#23791)
+    - [mesheryctl] Validate the provider on the --context server in
+      provider switch )(#23786)
+    - [Server] convert each component once during binding
+      relationship identification )(#23754)
+    - [Server] Guard nil provider and nil logger in performance
+      profile handlers )(#23772)
+    - [Tests] Assert JSON response envelope and body structure
+      across EvaluateRelationshipPolicy tests )(#23736)
+    - [Docker Extension] Don't hang token store and logout when no
+      websocket client is connected (#23765)
+    - [Server] Guard nil provider, persister, and logger across
+      MeshSync handlers (#23770)
+    - [Server] Guard nil provider and nil logger in schedule and
+      organization handlers (#23768)
+    - [Server] Guard nil user, nil provider, and nil SystemID in
+      filter handlers (#23759)
+    - [Server] Guard nil user, nil provider, and nil SystemID
+      across pattern handlers (#23755)
+    - [Server] Guard nil user, nil provider, and nil SystemID in
+      connections handlers (#23752)
+    - [Server] Guard nil user, nil provider, and nil SystemID in
+      k8sconfig handlers (#23750)
+    - [Server] Guard nil user and nil provider in credentials
+      handlers (#23748)
+    - [Server] Prevent false "filters saved" events on unsaved
+      filter conversions (#23711)
+    - [Tests] Assert JSON response envelope and body structure
+      across EvaluateRelationshipPolicy tests (#23738)
+    - [Server] Return 404 for missing filters and validate path
+      UUIDs in filter handlers (#23726)
+    - [Models] Fix remaining unrenamed relationship selector model
+      names (#23720)
+    - [Server] Delete a MeshSync resource's child rows with it
+      (#23216)
+    - [Server] Test undecodable provider response in filter save
+      handler (#23697)
+    - [Server] Accept pagesize=all when listing organizations on
+      the Local provider (#23455)
+    - [Server] Clone designs and filters as fresh records (#23451)
+    - [Server] Persist informational event upon filter save
+      (#23679)
+    - [Server] Return 404 for a design that does not exist (#23688)
+    - [Server] Return 404 for a workspace that does not exist
+      (#23686)
+    - [Server] Filter local connections by connection_type (#23551)
+    - [Server] Guard unchecked nil dereferences, unbounded body
+      reads, and detached goroutine panics in
+      EvaluateRelationshipPolicy (#23664)
+    - [Server] Filter connections by persisted type (#23668)
+    - [Server] Harden pattern resource persistence (#23667)
+    - [Models] Add label-matching relationships for Chaos Mesh
+      (#23647)
+    - [Models] Add hierarchical parent relationships for Chaos Mesh
+      (#23663)
+    - [Server] Enforce user ownership validation in credential get
+      and delete (#23661)
+    - [Server] End SSE streams when the server starts shutting down
+      (#23655)
+    - fix(server): guard nil provider and validate org ID in
+      GetUsersKeys (#23645)
+    - [Models] Add RemoteCluster reference relationships for Chaos
+      Mesh (#23620)
+    - [Server] Guard nil capabilities payload and return
+      ErrResultNotFound in UserCapabilitiesPersister (#23644)
+    - [Server] Stop the HTTP server timeouts from cutting off SSE
+      streams and slow uploads (#23634)
+    - [Server] Introduce CompareAndDelete on StateMachine tracker
+      to prevent re-imported connection eviction (#23632)
+    - [Server] Return 400 for a malformed ID on workspace and
+      environment routes (#23637)
+    - [server] return 404 for unknown resource schemas (#23635)
+    - [Server] Guard nil provider and validate schedule ID across
+      schedule handlers (#23540)
+    - [Server] Extract isNotFoundError helper across environment
+      handlers (#23619)
+    - [Server] Prevent MeshSync database leak on Kubernetes context
+      deletion (#23615)
+    - [Server] Report context snapshot failures before deletion
+      (#23613)
+    - [Server] Return 400 for invalid page/pagesize on Local
+      provider list endpoints (#23608)
+    - fix(server): retain cluster context snapshot for cleanup
+      (#23579)
+    - [Server] Return the saved filters from POST /api/filter
+      (#23600)
+    - [Models] Fix relationship selectors that name models that do
+      not exist (#23566)
+    - [Server] Bound request body size and guard against DoS in
+      ValidationHandler (#23589)
+    - [Server] Prevent in-place match selector mutation and
+      cross-relationship state corruption in policy binding
+      (#23585)
+    - [Server] Guard nil provider and nil user dereferences across
+      user handlers (#23543)
+    - [Server] Write HTTP status 200 and error response in
+      DeleteContext (#23563)
+    - [Server] Guard invalid UUID status codes, missing 404
+      responses, and unchecked token extraction in performance
+      profile handlers (#23561)
+    - [Server] Remove adapter from AdapterTracker on delete and
+      prevent session sync resurrection (#23555)
+    - [Server] Preserve the provider status when deleting a
+      performance profile fails (#23549)
+    - [Server] Return 404 when deleting a performance profile that
+      does not exist (#23544)
+    - [Server] Guard nil database handler, validate userID, and
+      check rows affected in preference persister (#23536)
+    - Use Debugf for adapter status logging (#23288)
+    - [Server] Escape literal keys in relationship cleanup paths
+      (#23525)
+    - [Server] Honour Environment purpose property and align
+      SystemDatabaseModels to v1beta3 (#23429)
+    - [Server] Replace stale MeshSync metadata on updates (#23440)
+    - [Server] Fix blank load-test name panic (#23502)
+    - [Server] Return 404 when updating or deleting a missing
+      credential (#23503)
+    - [Server] Prevent stream corruption and double-serialization
+      in design package export (#23497)
+    - [Server] Guard unchecked context type assertions, nil
+      provider panics, and 403 form parsing errors in fetch results
+      handlers (#23435)
+    - [Server] Persist Discovery resolutions only when the stored
+      status still matches (#23294)
+    - [Server] Guard nil provider and unsafe token extraction in
+      results and performance handlers (#23420)
+    - [Server] Validate context ID and guard nil pointer
+      dereferences in contexts handler (#23424)
+    - [Server] Validate connection ID and guard nil dereferences in
+      PerformConnectionAction (#23417)
+    - [Server] Validate connection ID and guard nil dereference in
+      DeleteConnection (#23404)
+    - [Server] Guard nil provider dereference and unbounded body
+      reads in extension install and remove handlers (#23395)
+  * Meshery CLI
+    - [mesheryctl] Fix HTTP response body and file descriptor leaks
+      in utils (#22645)
+    - [mesheryctl] Lowercase --context name in system context view
+      (#23784)
+    - [mesheryctl] Guard nil TestStartTime, fix dead check, and
+      standardize timestamp in perf result (#23727) (#23729)
+    - [mesheryctl] Exclude URL query from imported design name
+      (#23703)
+    - [mesheryctl] Preserve followed Kubernetes log lines (#23705)
+    - [mesheryctl] Reset the system flags after TestResetCmd
+      (#23481)
+    - [mesheryctl] Document token file security ordering (#23683)
+    - fix: restrict Windows token file permissions (#23380)
+    - [mesheryctl] Resolve log pod names unambiguously (#23666)
+    - [mesheryctl] Fix design import filename on Windows (#23665)
+    - [mesheryctl] Add system uninstall command (#23607)
+    - [mesheryctl] Make ForceCleanupCluster best-effort and
+      idempotent (#23601)
+    - fix(mesheryctl): select filters by full name (#23580)
+    - [mesheryctl] Report a method-changing redirect instead of
+      following it (#23405)
+    - [mesheryctl] Reset the meshconfig given by --config in system
+      reset (#23500)
+    - [mesheryctl] sanitize the design name in design export file
+      paths (#23557)
+    - Enforce exact argument validation in environment delete
+      (#23532)
+    - [Server][mesheryctl] Fix typos in user-facing error and log
+      messages (#23546)
+    - [mesheryctl]: Reject unexpected positional arguments in
+      connection create (#23374)
+    - [mesheryctl] Consolidate performance test configuration
+      (#23442)
+    - [mesheryctl] Enforce exact argument validation in filter
+      delete (#23519)
+    - [mesheryctl] Test answered platform prompt in installer BATS
+      (Test Pl… (#23518)
+    - [Server] Prune empty subscriber entries from EventBroadcaster
+      and [mesheryctl] fix portforward errOut ineffassign (#23516)
+    - [mesheryctl] Add BATS test for installer ADAPTERS (Test Plan
+      #6) (#23517)
+    - [mesheryctl] Enforce owner-only token file on Windows via
+      explicit DACL (#23507)
+    - [mesheryctl] Paginate ID prefix lookup across multiple pages
+      in GetID (#23206)
+    - [mesheryctl] Resolve token locations for requests the way
+      login does (#23475)
+    - [mesheryctl] Use the --context context's version in system
+      start (#23461)
+    - [mesheryctl] Reject unknown tokens in token set and in-use
+      tokens in token delete (#23457)
+    - [mesheryctl] Name design export files by type and reject
+      unknown --type (#23447)
+    - [mesheryctl] Reject dotted context names (#23441)
+    - fix(mesheryctl): sanitize filesystem-unsafe characters in
+      view --save filenames (#23436)
+    - [mesheryctl] Wait on a dialable endpoint in system start on
+      Docker (#23430)
+    - [mesheryctl] Add a missing token entry to the --config file,
+      not the default (#23422)
+    - [mesheryctl] Trim trailing slashes from the context endpoint
+      (#23391)
+  * Maintenance
+    - [Helm] Give MeshSync read-only RBAC, expose Broker service
+      values, clean up CRs on uninstall (#23259)
+    - [CI] Stream test output and upload artifacts in server Unit
+      tests (#23724)
+    - fix: restrict Windows token file permissions (#23380)
+    - [mesheryctl] Add system uninstall command (#23607)
+    - [mesheryctl] Test answered platform prompt in installer BATS
+      (Test Pl… (#23518)
+    - [mesheryctl] Add BATS test for installer ADAPTERS (Test Plan
+      #6) (#23517)
+    - [Chore] Exclude Meeting Minutes Changes from Docs Preview
+      Builds (#23494)
+  * Documentation
+    - [Helm] Give MeshSync read-only RBAC, expose Broker service
+      values, clean up CRs on uninstall (#23259)
+    - [Docs] Describe content-tree sidebar navigation in
+      contributing guide (#23801)
+    - fix(ui): handle validation error taps in every design
+      validator state (#23409)
+    - [Docs] Remove Bitcask from Meshery database docs (#23691)
+    - [mesheryctl] Add system uninstall command (#23607)
+    - [docs] Fix broken links in contributing guides (#23617)
+    - [Docs] Improve breadcrumb semantics, list structure, and
+      focus visibility for accessibility (#23602)
+    - [Docs] Fix breadcrumb accessibility (#23603)
+    - [mesheryctl] Report a method-changing redirect instead of
+      following it (#23405)
+    - Docs/fix reference typos (#23570)
+    - [Docs] Fix ReferenceError: initLightbox is not defined on
+      popstate navigation (#23530)
+    - [Docs] Fix initLightbox ReferenceError (#23533)
+    - docs: correct provider reference details (#23522)
+    - docs: fix broken internal links (#23521)
+    - [mesheryctl] Enforce owner-only token file on Windows via
+      explicit DACL (#23507)
+    - [mesheryctl] Paginate ID prefix lookup across multiple pages
+      in GetID (#23206)
+    - [Docs] used fork URL in sparse-clone to match fork-and-PR
+      workflow (#22252)
+    - [mesheryctl] Reject unknown tokens in token set and in-use
+      tokens in token delete (#23457)
+    - [mesheryctl] Name design export files by type and reject
+      unknown --type (#23447)
+    - [Docs] Hide empty TOC container on medium screens and add
+      focus styles (#23413)
+    - [Docs] Use phrasing content in codeblock pre and add copy
+      button focus ring (#23415)
+    - [Docs] Fix invisible pagination labels in light mode and add
+      mobile styles (#23411)
+
+-------------------------------------------------------------------
+Mon Nov 16 05:36:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.79:
+  * General
+    - [Server] Fix channel close race on client disconnect in
+      loadTestHelperHandler )(#23287)
+    - [Server] Fail design import when no manifest resources match
+      registered components )(#23378)
+    - [Docs] Fix broken help-wanted search link in Docker Extension
+      README )(#23297)
+  * Meshery CLI
+    - [mesheryctl] Enforce exact argument validation in system
+      stop, update, and delete )(#23358)
+    - [mesheryctl] Fix adapter lint errors and [Server] suppress
+      ghost event broadcasts )(#23326)
+    - [mesheryctl] Enforce exact argument validation in registry
+      generate )(#23312)
+    - [mesheryctl] Mock browser opener in NavigateToBrowser unit
+      tests )(#23271)
+  * Maintenance
+    - [CI] Fix failure email content in go-mod-sync workflow
+      )(#23225)
+    - [mesheryctl] Mock browser opener in NavigateToBrowser unit
+      tests )(#23271)
+  * Documentation
+    - [Docs] Fix unclosed CSS comment and improve tab accessibility
+      )(#23399)
+    - [Docs] Fix invalid footer media query and improve navbar
+      semantics and a11y )(#23394)
+    - fix(docs): open linked images in the lightbox )(#23383)
+    - docs: set KubeCon logo component version )(#23382)
+    - [Docs] Keep the KubeCon Lab 2 script from closing the
+      attendee shell )(#23377)
+    - [Server] Reach remote-cluster brokers, follow a recreated
+      broker, and shut down gracefully on SIGTERM )(#23262)
+    - [Docs] Create Models: name jq as required where the SVG
+      command appears )(#23371)
+  * - update to 1.0.78:
+  * General
+    - fix: make the KubeCon workshop Path B labs work and fix the
+      mesheryctl and server bugs they exposed )(#23356)
+  * Meshery CLI
+    - fix(mesheryctl): fix model init identity, login --provider
+      panic, and token file permissions )(#23362)
+  * Documentation
+    - [UI] Restore validation error deep links in Kanvas Designer
+      )(#23370)
+    - fix: make the KubeCon workshop Path B labs work and fix the
+      mesheryctl and server bugs they exposed )(#23356)
+    - docs: fix model scaffold guidance in KubeCon workshop and
+      Create Models guide )(#23361)
+    - fix(mesheryctl): fix model init identity, login --provider
+      panic, and token file permissions )(#23362)
+  * - update to 1.0.77:
+  * General
+    - [Server] Guard nil dereferences for user, SystemID, provider,
+      and connection in telemetry handlers )(#23338)
+    - [Server] Guard against SSRF in remote URL imports )(#23331)
+    - [Server] Guard nil MesheryInstanceID and typed-nil
+      INSTANCE_ID in K8s context paths )(#23305)
+    - [Server] Prevent nil pointer dereference on unauthenticated
+      /user/logout )(#23311)
+    - [Server] Evict state machine from tracker on DeleteContext
+      error )(#23256)
+    - [Helm] Add env.MESHSYNC_DEFAULT_DEPLOYMENT_MODE with embedded
+      default )(#23291)
+    - [Server] Implement MapPreferencePersister unit tests and safe
+      logger handling )(#23293)
+    - [Docs] Fix broken help-wanted search links in README.md
+      )(#23289)
+    - [Server] Probe NOTFOUND Kubernetes connections so their
+      unreachable condition can resolve )(#23235)
+  * Meshery CLI
+    - [mesheryctl] Fix nil dereference and slice bounds panic in
+      environment view )(#23365)
+    - fix(mesheryctl): sanitize spaces and path separators in
+      relationship view --save filename )(#23359)
+    - [mesheryctl] Added Port Fallback To Unused Port )(#22308)
+    - [mesheryctl] Enforce exact argument validation in system
+      provider view )(#23352)
+    - [mesheryctl] Use MeshKit errors for token assignment and
+      rollback )(#23340)
+    - [mesheryctl] Guard nil timestamp and UUID fields across
+      design and filter commands )(#23325)
+    - [mesheryctl] Fix connection view empty-slice panic when
+      TotalCount > 0 )(#23328)
+    - [mesheryctl] Respect -c/--context across system token create,
+      set, and view )(#23317)
+    - [mesheryctl] Validate positional arguments in design undeploy
+      )(#23309)
+    - [mesheryctl] Validate positional arguments in model export
+      )(#23304)
+    - fix(mesheryctl): escape model path and validate input in
+      relationship view )(#23302)
+    - [mesheryctl] Replace path separators in file names saved by
+      component view )(#23300)
+    - [mesheryctl] Fix Kubernetes log stream descriptor leak in
+      system logs )(#22471)
+    - [mesheryctl] Parse positional mesh name argument in adapter
+      deploy and remove (#23275) )(#23276)
+    - [mesheryctl] Fix file descriptor leak in model init )(#22438)
+    - [mesheryctl] Honor the --context flag in system dashboard,
+      login and logout )(#23280)
+    - [mesheryctl] Return actionable error for unsupported meshery
+      publish target )(#23270)
+  * Bug Fixes
+    - [Server] Dedup inventory parent additions across relationship
+      copies )(#23366)
+  * Maintenance
+    - [Server] Dedup inventory parent additions across relationship
+      copies )(#23366)
+    - [CI] Restrict OSPS Baseline workflow to upstream repository
+      )(#23308)
+    - [CI] Restrict Hugo Pages deployment to upstream repository
+      )(#23307)
+    - [CI] Slim high-volume docs pages so GitHub Pages can publish
+      again )(#23321)
+    - [CI] Restrict Trivy image scan workflow to upstream
+      repository )(#23306)
+  * Documentation
+    - [mesheryctl] Added Port Fallback To Unused Port )(#22308)
+    - [mesheryctl] Use MeshKit errors for token assignment and
+      rollback )(#23340)
+    - [mesheryctl] Respect -c/--context across system token create,
+      set, and view )(#23317)
+    - docs(install): add playground sandbox-cluster Broker
+      exposure, interim MeshSync RBAC and recovery runbook
+      )(#23250)
+    - [Docs] Stop telling Create Model users to turn on Immediate
+      Registration )(#23323)
+    - [Docs] Hide generated error-code pages from the sidebar
+      )(#23222)
+    - [Docs] Add KubeCon Playground workshop: build your own model
+      and design )(#23267)
+  * - update to 1.0.76:
+  * General
+    - [Server] Exclude soft-deleted connections and mappings in
+      GetEnvironmentConnections )(#23263)
+    - [Server] Retain API group paths in manifest errors and record
+      partial registration )(#23249)
+    - [mesheryctl] Update kubectl reference link and clean up
+      README )(#23255)
+    - [Server] Guard nil dereferences, detached goroutines, and
+      unmarshal errors in events streamer )(#23233)
+    - [Server] Propagate manifest extraction errors and add
+      positive CRD test )(#23232)
+    - [Server] Fix missing metrics query parameter in
+      GetMesheryPattern )(#23227)
+    - fix: correct meshmodel policies pagination )(#23231)
+    - [Server] Fix runtime panic in getResolvedManifest (MeshModel)
+      )(#23228)
+    - [Server] Fix HTTP error handling in
+      DefaultLocalProvider.PublishMetrics )(#23218)
+    - [Server] Initialize valid MachineCtx for Kubernetes
+      connection registration )(#23210)
+    - [Models] Seed cert-manager and dapr relationships on newest
+      model version )(#23204)
+    - fix(server): preserve correct annotation classification for
+      alias components )(#23177)
+    - [Server] Do not route non-Kubernetes status updates through
+      the Kubernetes machine )(#23201)
+    - [Server] Resolve unused function and unchecked error lint
+      failures )(#23181)
+    - [Server] Fix connection definition updates )(#23192)
+    - [Server] Rollback in-memory state machine on database update
+      failure )(#23155)
+    - [Server] Return HTTP 404 when deleting non-existent model or
+      connection definition )(#22821)
+    - [Server] Handle registry lookup errors during connection
+      registration )(#23072)
+    - fix(handlers): preserve context for background FSM
+      transitions )(#23146)
+    - [Server] Report Kubernetes context conversion failures
+      instead of silently skipping connections )(#23171)
+    - [Server] Cancel stalled Kubernetes discovery requests
+      )(#23166)
+    - [Server] Propagate database and marshal errors from
+      GetMesheryK8sContexts )(#22967)
+    - fix(server): report asynchronous context deletion errors
+      )(#23145)
+    - [Server] Validate connection ID path parameter in telemetry
+      handlers )(#23126)
+    - [Server] Align DeleteUserCredential invalid UUID error with
+      ErrInvalidUUID )(#23125)
+    - [Server] Validate multi-selector relationships and prevent
+      ghost relationship bleed (#23111) )(#23113)
+    - [Server] Validate credential ID path parameter in
+      GetUserCredentialByID )(#23115)
+    - [Server] Resolve Kubernetes unreachable condition after
+      connection deletion )(#23101)
+    - [Server] Preserve composite string formatting and non-greedy
+      reference matching in pattern filler )(#23090)
+    - [Server] Prevent index out-of-bounds panic in ExtensionProxy
+      router )(#23088)
+    - [Server] Dynamically size planner channels and eliminate
+      mutex deadlock on fan-in )(#23085)
+    - [Server] Return HTTP 400 for malformed and 404 for
+      non-existent filter deletion )(#23087)
+    - [Server] Prevent send on closed channel panic in
+      ProviderTracker )(#23086)
+    - [Helm] Fix ingressClassName rendering in meshery chart
+      )(#23064)
+    - [Server] Reset registration status on component generation
+      failure and allow retries )(#23081)
+    - [Server] Cascade mapping deletions on workspace and member
+      removal and deduplicate designs )(#23077)
+    - [Server] Deduplicate environment connection mappings and
+      cascade delete on removal )(#23048)
+    - [Server] Parse Content-Disposition when naming a design
+      imported from a URL )(#23045)
+    - [Server] Stop repeated workspace assignments from surviving
+      removal )(#23043)
+    - [Server] Match every label in MeshSync resource filters
+      )(#23041)
+    - [Server] Fix unauthenticated path traversal in model export
+      via version fields )(#23031)
+    - [Server] Deduplicate workspace environment, view, and team
+      mappings )(#23034)
+    - [Server] Keep a connection's created_at and owner when
+      updating it )(#23027)
+    - [Server] Return 404 instead of creating a connection when
+      updating an unknown ID )(#23004)
+    - [Server] Prevent unchecked type assertions and detached
+      goroutine nil panics in GraphQL resolvers )(#23011)
+    - [Server] Keep a performance profile's created_at when editing
+      it )(#23002)
+    - [Server] Apply Additional Options saved from the UI to load
+      tests )(#22996)
+    - [Server] Keep a filter's file, visibility and created_at when
+      updating it )(#22995)
+    - [Server] Prevent caching uninitialized state machine on Start
+      failure )(#22975)
+    - [Server] Sum registration failure counts across models
+      )(#22977)
+    - [Server] Save performance results when anonymous sharing is
+      off )(#22952)
+    - [Server] Retain ORDER BY clause in GetMeshSyncResources
+      handler )(#22829)
+    - [server] Prevent nil pointer dereference on pattern clone and
+      ErrRequestBody )(#22768)
+    - [Server] Prevent unchecked type assertion and detached
+      goroutine nil panics in middlewares )(#22964)
+    - fix(server): guard against nil patternData in pattern update
+      handler (#22898) )(#22946)
+    - [Server] Fix file descriptor leaks in component SVG
+      generation and OCI export (#22814) )(#22815)
+    - [Server] Prevent unbounded goroutine leak in
+      MeshSyncRegistrationQueue.Send )(#22901)
+    - [Server] Close the gzip reader in TarXZ )(#22893)
+    - [Server] Prevent nil pointer dereferences on missing context
+      values in state machines )(#22885)
+    - [Docker Extension] Fix nil-pointer panic in proxy ServeHTTP
+      )(#22691)
+    - [Server] Keep stored design fields when re-saving through
+      POST /api/pattern )(#22843)
+    - [Server] Use a valid OCI repository name when exporting
+      models )(#22862)
+    - [Server] Close temp certificate file descriptor and guard
+      type assertion in LoadTestHandler )(#22818)
+    - [Server] Close file descriptor on all return paths in
+      k8s_components_registration )(#22765)
+    - [Server] Close each adapter client per host in Provision
+      )(#22839)
+  * Meshery CLI
+    - [mesheryctl] Reject --page 0 and --pagesize 0 in components
+      list and … )(#23260)
+    - [mesheryctl] Respect --skip-browser in system dashboard
+      --port-forward )(#23240)
+    - [mesheryctl] Align flag struct json tags with Cobra flag
+      names )(#23236)
+    - [mesheryctl] Enforce exact argument validation in registry
+      purge )(#23132)
+    - [mesheryctl] Add input validation for design apply )(#23211)
+    - [mesheryctl] Deprecate no-op --page flag on model export
+      )(#23214)
+    - [mesheryctl] Reject unexpected positional arguments in system
+      login )(#23209)
+    - [mesheryctl] Reject ambiguous design ID prefixes )(#23190)
+    - [mesheryctl] Reject --page 0 and --pagesize 0 in relationship
+      list an… )(#23195)
+    - [Docs] Correct invalid flags in mesheryctl command reference
+      )(#23191)
+    - [mesheryctl] Enforce exact argument validation in system
+      provider list )(#23180)
+    - [mesheryctl] Enforce exact argument validation in system
+      context list )(#23189)
+    - [mesheryctl] Validate --page and --pagesize in design list
+      and connec… )(#23176)
+    - [mesheryctl] Fix filter view example comment formatting in
+      docs )(#23161)
+    - [mesheryctl] Enforce argument validation in system token view
+      )(#23143)
+    - [mesheryctl] Enforce maximum argument validation in system
+      token view )(#23123)
+    - [mesheryctl] Enforce argument validation in filter list
+      )(#23140)
+    - [mesheryctl] Show only the requested services in system logs
+      on Docker )(#23136)
+    - docs(mesheryctl): update design command and subcommands help
+      text )(#23128)
+    - [mesheryctl] Enforce exact argument validation in environment
+      create )(#23119)
+    - fix/Reduce duplicated formatting logic in view subcommands
+      )(#22928)
+    - [mesheryctl] Enforce exact argument validation in workspace
+      create )(#23121)
+    - [mesheryctl] Enforce exact argument validation in environment
+      view )(#23117)
+    - [mesheryctl] Enforce exact argument validation in environment
+      list )(#23105)
+    - [Server] Scope adapter events to the user and operation that
+      requested them )(#23098)
+    - [mesheryctl] Enforce exact argument validation in
+      organization list )(#23103)
+    - [mesheryctl] Add subcommand examples and action overview to
+      registry help text )(#23053)
+    - [mesheryctl] Fix invalid system channel view example
+      )(#23100)
+    - [mesheryctl] Enforce exact argument validation in workspace
+      list )(#23075)
+    - [mesheryctl] Enforce exact argument validation in design list
+      )(#23069)
+    - [mesheryctl] Enforce exact argument validation in component
+      list )(#23058)
+    - [mesheryctl] Fix remaining HTTP response body leaks )(#23028)
+    - [mesheryctl] Prevent hang on empty token view prompt and
+      respect --yes flag )(#23036)
+    - Fix/issue 22923 filter import url v2 )(#23017)
+    - [mesheryctl] Send the deploy payload from design delete -f
+      )(#23021)
+    - [mesheryctl] Reject unexpected positional arguments in system
+      logout )(#23000)
+    - [mesheryctl] Respect --follow for system logs on Docker
+      )(#22979)
+    - fix(mesheryctl): use IsValidUrl to detect URLs in filter
+      import )(#22969)
+    - [mesheryctl] Preserve silent flag across system restart
+      )(#22776)
+    - feat(server): adopt the error and event condition contract
+      from meshery/schemas )(#22950)
+    - [mesheryctl] Restore TestApplyCmd for perf apply )(#22944)
+    - [mesheryctl] Remove unused errPatternMsg constant )(#22945)
+    - [mesheryctl] Print perf result latencies in milliseconds
+      )(#22939)
+    - [mesheryctl] Send saved headers, cookies and content type in
+      perf apply )(#22938)
+    - [mesheryctl] Propagate errors and handle non-200 responses in
+      registry update and publish )(#22926)
+    - [mesheryctl] Restore the adapter event stream and fail fast
+      without it )(#22927)
+    - [mesheryctl] Fix unclosed file descriptors in helpers
+      (#22902) )(#22908)
+    - fix: correct meshery performance CLI examples )(#22900)
+    - [mesheryctl] Find designs by name in design export )(#22890)
+    - [mesheryctl] Save and fetch designs correctly in design apply
+      and delete )(#22887)
+    - fix(mesheryctl): surface error detail in ErrUndeployDesign
+      )(#22866)
+    - refactor(mesheryctl): Update model to use schema instead of
+      reference to server/models )(#22877)
+    - [mesheryctl] Remove the workspace --count flag that always
+      failed )(#22871)
+    - [mesheryctl] Prevent slice out-of-bounds panic and unchecked
+      type assertions in model import )(#22867)
+    - [mesheryctl] Fix design and filter list showing wrong names
+      by using strings.TrimSuffix )(#22668)
+    - [mesheryctl] Add perf delete command )(#22840)
+    - [mesheryctl] Apply perf apply --options and --cert-path to
+      existing profiles )(#22861)
+    - [mesheryctl] Send perf apply durations in whole seconds and
+      reject the rest )(#22858)
+    - [mesheryctl] Accept any case of --output-format in the output
+      formatter factories )(#22855)
+    - fix(mesheryctl): support relative file paths in design
+      undeploy )(#22838)
+    - fix(mesheryctl): support positional file argument and
+      validate input in design delete )(#22773)
+    - [mesheryctl] Validate the provider before system provider
+      switch asks for confirmation )(#22789)
+    - [mesheryctl] Return an error instead of exiting on stdin read
+      failures in prompts )(#22850)
+    - [mesheryctl] Prevent nil pointer dereference panic and
+      unhandled HTTP status in perf apply )(#22801)
+  * Maintenance
+    - [Server] Trigger Kubernetes cluster teardown on connection
+      deletion )(#23219)
+    - feat(server): adopt the error and event condition contract
+      from meshery/schemas )(#22950)
+    - [CI] Paginate changed-file validation in
+      auto-merge-meeting-minutes (fixes #22684) )(#22692)
+  * Documentation
+    - [Docs] Fix grammar, spelling, and formatting in mesheryctl
+      E2E testing guide )(#23264)
+    - [Docs] Fix duplicate response schema entry in REST API
+      reference )(#23265)
+    - [mesheryctl] Deprecate no-op --page flag on model export
+      )(#23214)
+    - Fix/installation docs match install script )(#23168)
+    - [Docs] Show full MESHERY_SERVER_CALLBACK_URL with
+      /api/user/token path )(#23212)
+    - [mesheryctl] Reject ambiguous design ID prefixes )(#23190)
+    - [Docs] Correct invalid flags in mesheryctl command reference
+      )(#23191)
+    - [Docs] Fix broken help-wanted search link on Contributing
+      page )(#23185)
+    - [Server] Index the events table for Notification Center
+      queries )(#23174)
+    - [mesheryctl] Fix filter view example comment formatting in
+      docs )(#23161)
+    - [Docs] Document model export flags in mesheryctl reference
+      )(#23169)
+    - [Docs] Add perf delete and system delete to mesheryctl
+      reference )(#23158)
+    - [Docs] Add design evaluate and registry purge to mesheryctl
+      reference )(#23148)
+    - [Docs] Fix "Applilcation" typo in AWS Application Autoscaling
+      model )(#23141)
+    - [Docs] Support system theme preference and cross-tab
+      synchronization )(#23137)
+    - fix/Reduce duplicated formatting logic in view subcommands
+      )(#22928)
+    - [mesheryctl] Fix invalid system channel view example
+      )(#23100)
+    - [Docs] Define AI provider Connection contract )(#23091)
+    - [Docs] Add newcomer introduction for Rithul Raveendran
+      )(#23067)
+    - [mesheryctl] Fix remaining HTTP response body leaks )(#23028)
+    - Fix/issue 22923 filter import url v2 )(#23017)
+    - [Docs] Fix illegible contrast on primary alerts )(#23030)
+    - [UI] Roll back Catalog Content preference on save failure
+      )(#23029)
+    - fix(docs): standardize OpenAPI schema URL )(#21638)
+    - fix: harden event replay, stale idempotency bindings, and
+      revision ordering )(#22965)
+    - feat(server): insert events, replay idempotent creates and
+      correlate repeated failures on MeshKit v1.0.29 )(#22958)
+    - docs: fix Everytime typo in build and release guide )(#22777)
+    - feat(server): adopt the error and event condition contract
+      from meshery/schemas )(#22950)
+    - [Docs] Use the API paths the server registers )(#22953)
+    - [Server] Prevent nil pointer dereference on in-cluster
+      context discovery )(#22823)
+    - [Catalog] Migrate Kafka design to Apache Kafka 4.4.0
+      )(#22872)
+    - docs: add Shape Builder extension guide )(#22895)
+    - fix: correct meshery performance CLI examples )(#22900)
+    - [Docs] Add stable error code pages and index )(#22879)
+    - [mesheryctl] Remove the workspace --count flag that always
+      failed )(#22871)
+    - [mesheryctl] Add perf delete command )(#22840)
+
+-------------------------------------------------------------------
+Thu Nov  5 18:41:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.75:
+  * General
+    - [Server] Default namespace for namespaced kinds in
+      resolveResourcePath @rudrakshSoni-dev (#22566)
+    - [server] Prevent nil pointer dereference on invalid load test
+      URL @Supersaiyan101 (#22736)
+    - [Server] Allow GitHub and Artifact Hub connections to
+      register @Karman580 (#22711)
+    - [Agents] Add pre-landing-review and migration-risk-analyzer
+      skills (#22372) @VimalN2005 (#22718)
+    - [Server] Isolate ExportModel working directory with
+      per-request temp dir (#22609) @VimalN2005 (#22742)
+    - [Server] Fix race in MeshSync deployment mode notifications
+      @Karman580 (#22733)
+    - [Server] Remove unused SetOverrideValues from graphql/model
+      @RameshwariS (#22737)
+    - [Server] Return 404 for missing resources and validate UUID
+      in MeshSync handlers @Amansingh0807 (#22695)
+    - [Server] Name the declared namespace on a Forbidden from the
+      default fallback dry-run @rudrakshSoni-dev (#22661)
+    - chore: make CLAUDE.md a symlink to AGENTS.md @ritzorama
+      (#22606)
+    - docs(agents): require treehouse worktrees and no-mistakes
+      landing @CodeAhmedJamil (#22605)
+    - Fix(server): resolve dry-run GVR discovery and in-design
+      namespaces @rudrakshSoni-dev (#22464)
+  * Meshery CLI
+    - [mesheryctl] fix command help examples using unaccepted flags
+      @Fazlul105 (#22707)
+    - [mesheryctl] return errors from system token list and view
+      @Fazlul105 (#22706)
+    - [mesheryctl] validate channel argument upfront on system
+      channel switch @Fazlul105 (#22703)
+    - [mesheryctl] system start / system reset delete a "manifests"
+      folder in the current directory @ayushgade06 (#22700)
+    - [mesheryctl] Fix nil pointer dereference panic in design
+      export on non-200 responses @Supersaiyan101 (#22705)
+    - [Docs]fix CLI reference anchor @shatrughantwt (#22721)
+    - [mesheryctl] Add missing delimiter between error message and
+      cause @kkm121 (#22715)
+    - fix(mesheryctl): close unclosed HTTP response bodies across
+      api.Delete and api.Add callers @The-AnkitPatel (#22724)
+    - [mesheryctl] Fix HTTP response body and connection leaks in
+      IsMesheryRunning and MakeRequest @muskan-creates352 (#22727)
+    - [Server/mesheryctl] Interpolate format args in MeshKit error
+      construc… @barbierajput378-pixel (#22735)
+    - fix/CLI reference docs should not include /home/runner/...
+      @Aravind226 (#22746)
+    - [mesheryctl] Print model list flag validation errors once
+      @adityacosmos24 (#22604)
+    - [mesheryctl] Fix grammar in component and model command
+      descriptions @Ultronious (#22622)
+    - [mesheryctl] Fix continuous HTTP response body leak in system
+      dashboard @muskan-creates352 (#22627)
+    - [mesheryctl] Fix HTTP response body descriptor leaks in
+      system check @muskan-creates352 (#22583)
+    - [mesheryctl] model: fix double-wrapped export flag validation
+      error and add tests @somaz94 (#19866)
+    - [mesheryctl] Re-enable unit tests and fix query URL in
+      environment list_test.go @AliRana30 (#22589)
+    - fix(mesheryctl): golangci-lint errors in mesheryctl
+      @banana-three-join (#22580)
+    - [mesheryctl] Reject --page values below 1 in perf profile and
+      perf result @Raghavcommercialwinner (#22248)
+  * Maintenance
+    - [mesheryctl] return errors from system token list and view
+      @Fazlul105 (#22706)
+    - [CI] Replace legacy setInterval polling in waitFor.ts with
+      Playwright expect.poll @Rohith-Saran (#22713)
+    - Fix broken DCO documentation link in PR welcome comment
+      @motalib6 (#22745)
+    - [UI] Replace waitForTimeout in user preference e2e spec with
+      a web-first assertion @nguyenvanlinh14 (#22619)
+    - [Docs] Fix two stale links in GOVERNANCE.md @ayanasarkar
+      (#22453)
+  * Documentation
+    - fix(server): stop embedding design contents in event metadata
+      @yi-nuo426 (#22769)
+    - [Docs] Update outdated Playwright E2E testing guide
+      references @muskan-creates352 (#22226)
+    - [mesheryctl] fix command help examples using unaccepted flags
+      @Fazlul105 (#22707)
+    - [Server] Document performance result endpoint and correct
+      stale error route (#22240) @VimalN2005 (#22697)
+    - [Docs] Add air-gapped Kubernetes installation guide
+      @rahmanaisha (#22714)
+    - [Docs]fix CLI reference anchor @shatrughantwt (#22721)
+    - [Docs] Serve the main docs font as WOFF2 and preload it
+      @ayushgade06 (#22738)
+    - fix/CLI reference docs should not include /home/runner/...
+      @Aravind226 (#22746)
+    - [Docs] Clarify Docker startup delay and local site URL
+      @peremunoz (#22652)
+    - [mesheryctl] Fix grammar in component and model command
+      descriptions @Ultronious (#22622)
+    - [Docs] Fix broken in-page anchor links across docs
+      @ayanasarkar (#22441)
+    - [Docs] Fix typos, missing words, and duplicate tokens in
+      Workspaces and Operator CRDs guides @Paramveersingh-S
+      (#22300)
+
+-------------------------------------------------------------------
 Sat Oct 24 17:08:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.74:

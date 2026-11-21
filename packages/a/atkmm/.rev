@@ -344,4 +344,12 @@
 - Drop graphviz BuildRequires: No longer needed.</comment>
     <requestid>1355919</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>575a4cdd69bbd997d34d0cf6442785ac</srcmd5>
+    <version>2.36.4</version>
+    <time>1793817951</time>
+    <user>anag_factory</user>
+    <comment>- Update URL to new home.</comment>
+    <requestid>1394826</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Nov 20 01:13:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.2:
+  * Fix flaky timeout and context availability in
+    test_on_ready_counter_is_synchronized
+  * Fix spawn when the main module is a script
+  * Allow a pool to start with zero processes
+  * Credit READY to the worker that ran the task
+  * Fix pool terminate() hang when a worker dies holding the outqueue lock
+  * Raise the task's exception from imap() iterators
+  * Reject non-positive chunksize in Pool.imap() and Pool.imap_unordered(),
+    including when Python runs with optimization enabled
+
+-------------------------------------------------------------------
 Sun Oct 25 11:59:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.1:

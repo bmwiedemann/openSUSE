@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:56:11 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.0.10:
+  * SiriLic is now a Siril Python plugin (rewrite); no longer a standalone wxPython app
+  * Package now installs into %{_datadir}/siril/scripts/sirilic
+  * Require siril >= 1.4 and python3-tk; drop wxPython/setuptools
+
+-------------------------------------------------------------------
 Fri Sep 13 13:01:42 UTC 2024 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.15.12:

@@ -16,10 +16,8 @@
 #
 
 
-%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
-
 Name:           gstreamer-rtsp-server
-Version:        1.28.8
+Version:        1.28.9
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
@@ -32,8 +30,8 @@ BuildRequires:  meson >= 1.4
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.1
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.0
-BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-app-1.0)
 BuildRequires:  pkgconfig(gstreamer-net-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtsp-1.0)

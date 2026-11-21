@@ -2252,4 +2252,16 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1384763</requestid>
   </revision>
+  <revision rev="210" vrev="11">
+    <srcmd5>a5afca4fe9f96be361d1777ab020aea3</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1795022972</time>
+    <user>anag_factory</user>
+    <comment>- Fix spelling and wording in summaries and descriptions.
+- Replace the deprecated PreReq with Requires(pre) in the bash-sh subpackage.
+- Run spec-cleaner in full mode.
+- Use the %configure macro for both configure invocations.
+- Collapse the three identical %if %{with alternatives} blocks in the preamble into one. (forwarded request 1397355 from scarabeus_iv)</comment>
+    <requestid>1397867</requestid>
+  </revision>
 </revisionlist>

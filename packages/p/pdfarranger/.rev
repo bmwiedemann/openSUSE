@@ -170,4 +170,13 @@
     - Windows ZIP &amp; MSI: Updated OpenSSL DLL files (among others) (forwarded request 1375209 from Giohk404)</comment>
     <requestid>1375211</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>4aeb2a7592627c2ad477d8db5adcc016</srcmd5>
+    <version>1.14.0</version>
+    <time>1793817980</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream changes to fix build with newer pikepdf versions:
+  * 0001-Add-changes-for-newer-pikepdf.patch</comment>
+    <requestid>1394867</requestid>
+  </revision>
 </revisionlist>

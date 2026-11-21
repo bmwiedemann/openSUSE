@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Oct 26 06:24:05 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 370
+  * 366
+    - Networkmanager: Don't activate new network connections by default
+    - Networkmanager: Navigate to details page after creation
+    - Translations and dependency updates
+  * 367
+    - Translation updates
+  * 368
+    - Limit concurrent connections bsc#1281994/CVE-2026-91149
+    - Harden cockpit-ws against trailing slash bsc#1281989/CVE-2026-91147
+    - Sanitize URLs from PackageKit CVE-2026-91148
+    - Interactive file chooser for SSH keys
+    - Bug fixes and translation updates
+    - Resolves RHEL-263070, RHEL-262891, RHEL-253609 for rhel-10.4
+    - Resolves RHEL-263066 for rhel-9.10
+  * 369
+    - Translations and dependency updates
+  * 370
+    - systemd: Make chrony sources drop-in world-readable (RHEL-253609)
+    - storaged: Recognize TPM2 key slots (RHEL-167807)
+    - storaged: Support UTF-8 encoding for mount points
+
+-------------------------------------------------------------------
 Thu Aug 27 14:46:56 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Symlink opensuse's branding to opensuse-leap as they should share the same

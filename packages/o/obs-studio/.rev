@@ -162,4 +162,13 @@ There are still minor multi-architecture adjustments to refine, but the package 
 Build obs-studio with the latest available version of ffmpeg. </comment>
     <requestid>1369099</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8f810886a61bab7c1305b20eca62a481</srcmd5>
+    <version>33.0.1</version>
+    <time>1794591272</time>
+    <user>anag_factory</user>
+    <comment>- Remove manual binary stripping in %install to allow proper debuginfo and
+  debugsource package generation.</comment>
+    <requestid>1397212</requestid>
+  </revision>
 </revisionlist>

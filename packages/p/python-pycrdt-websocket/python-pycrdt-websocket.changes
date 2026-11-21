@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:00:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.16.9
+  * Clean up empty rooms when serving a client fails.
+  * Ensure rooms are initialized before reporting that they have
+    started.
+  * Fix send task exception handling.
+  * Fix concurrent clients joining the same room.
+  * Add `ydoc_observed` event.
+  * Wait for `start()` to return in `WebsocketServer.stop()`.
+  * Unobserve awareness callback in `YRoom.stop`.
+  * Drop Python 3.10 and add Python 3.15.
+  * Bump pycrdt to >=0.14.13,<0.15.0 and pycrdt-store to
+    >=0.1.5,<0.2.0.
+
+-------------------------------------------------------------------
 Mon Dec  1 21:36:57 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.0:

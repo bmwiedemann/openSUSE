@@ -8785,17 +8785,17 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/build.json
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/boringssl/src/build.json
 +++ chromium-146.0.7680.65/third_party/boringssl/src/build.json
-@@ -129,6 +129,10 @@
-             {"src": "crypto/fipsmodule/sha/asm/sha512-armv4.pl"},
-             {"src": "crypto/fipsmodule/aes/asm/vpaes-armv7.pl"}
+@@ -182,6 +182,10 @@
+                 "src": "crypto/fipsmodule/aes/asm/vpaes-armv7.pl"
+             }
          ],
 +        "perlasm_ppc64le": [
 +            {"src": "crypto/fipsmodule/aes/asm/aesp8-ppc.pl"},
 +            {"src": "crypto/fipsmodule/aes/asm/ghashp8-ppc.pl"}
 +        ],
          "perlasm_x86": [
-             {"src": "crypto/fipsmodule/aes/asm/aesni-x86.pl"},
-             {"src": "crypto/fipsmodule/bn/asm/bn-586.pl"},
+             {
+                 "src": "crypto/fipsmodule/aes/asm/aesni-x86.pl"
 @@ -238,6 +242,7 @@
              "crypto/cpu_arm_freebsd.cc",
              "crypto/cpu_arm_linux.cc",
@@ -8804,16 +8804,16 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/build.json
              "crypto/crypto.cc",
              "crypto/curve25519/curve25519.cc",
              "crypto/curve25519/curve25519_64_adx.cc",
-@@ -806,6 +811,9 @@
-         "perlasm_arm": [
-             {"src": "crypto/test/asm/trampoline-armv4.pl"}
+@@ -949,6 +953,9 @@
+                 "src": "crypto/test/asm/trampoline-armv4.pl"
+             }
          ],
 +        "perlasm_ppc64le": [
 +            {"src": "crypto/test/asm/trampoline-ppc.pl"}
 +        ],
          "perlasm_x86": [
-             {"src": "crypto/test/asm/trampoline-x86.pl"}
-         ],
+             {
+                 "src": "crypto/test/asm/trampoline-x86.pl"
 Index: chromium-146.0.7680.65/third_party/boringssl/src/util/pregenerate/build.go
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/boringssl/src/util/pregenerate/build.go
@@ -8869,14 +8869,14 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/gen/sources.gni
    "gen/bcm/ghash-ssse3-x86-apple.S",
    "gen/bcm/ghash-ssse3-x86-linux.S",
    "gen/bcm/ghash-ssse3-x86_64-apple.S",
-@@ -365,6 +367,7 @@ crypto_sources = [
+@@ -367,6 +367,7 @@
    "crypto/cpu_arm_freebsd.cc",
    "crypto/cpu_arm_linux.cc",
    "crypto/cpu_intel.cc",
 +  "crypto/cpu_ppc64le.cc",
    "crypto/crypto.cc",
+   "crypto/curve25519/cpace.cc",
    "crypto/curve25519/curve25519.cc",
-   "crypto/curve25519/curve25519_64_adx.cc",
 Index: chromium-146.0.7680.65/third_party/boringssl/src/gen/sources.bzl
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/boringssl/src/gen/sources.bzl
@@ -8897,14 +8897,14 @@ Index: chromium-146.0.7680.65/third_party/boringssl/src/gen/sources.bzl
      "gen/bcm/ghashv8-armv7-linux.S",
      "gen/bcm/ghashv8-armv8-apple.S",
      "gen/bcm/ghashv8-armv8-linux.S",
-@@ -365,6 +367,7 @@ crypto_sources = [
+@@ -367,6 +367,7 @@
      "crypto/cpu_arm_freebsd.cc",
      "crypto/cpu_arm_linux.cc",
      "crypto/cpu_intel.cc",
 +    "crypto/cpu_ppc64le.cc",
      "crypto/crypto.cc",
+     "crypto/curve25519/cpace.cc",
      "crypto/curve25519/curve25519.cc",
-     "crypto/curve25519/curve25519_64_adx.cc",
 Index: chromium-146.0.7680.65/third_party/perfetto/buildtools/grpc/BUILD.gn
 ===================================================================
 --- chromium-146.0.7680.65.orig/third_party/perfetto/buildtools/grpc/BUILD.gn

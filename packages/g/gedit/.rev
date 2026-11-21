@@ -1344,4 +1344,12 @@ Pushing GNOME 45.rc packages</comment>
 - Replace pkgconfig(gtksourceview-4) with</comment>
     <requestid>1386365</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>cb9ae6fd765f943226bf557a27178450</srcmd5>
+    <version>51.0</version>
+    <time>1795103613</time>
+    <user>anag_factory</user>
+    <comment>- Add gedit-desktop-translation.patch: Fix invalid desktop file translation.</comment>
+    <requestid>1398425</requestid>
+  </revision>
 </revisionlist>

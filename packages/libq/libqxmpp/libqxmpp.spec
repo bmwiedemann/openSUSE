@@ -18,9 +18,9 @@
 
 %define qt6_version 6.4.0
 
-%define sover 10
+%define sover 11
 Name:           libqxmpp
-Version:        1.16.3
+Version:        1.17.2
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -86,7 +86,7 @@ Development package for qxmpp.
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 # Exclude tests needing a network connection
-%{ctest --exclude-regex "tst_(QXmppIceConnection|QXmppTransferManager)"}
+%{ctest --exclude-regex "tst_(FileSharing|IceConnection)"}
 
 %ldconfig_scriptlets -n libQXmppQt6-%{sover}
 

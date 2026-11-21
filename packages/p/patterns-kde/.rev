@@ -418,4 +418,15 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
   [edited by fabian@ritter-vogt.de]</comment>
     <requestid>1386185</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>4b00d30a22194cda7c9690ffe8c5d703</srcmd5>
+    <version>20260830</version>
+    <time>1794317928</time>
+    <user>anag_factory</user>
+    <comment>- Have the main pattern recommend opensuse-welcome. This used to be pulled in
+  by the various X-related patterns (IIRC last via games), which was cleaned
+  up. As we have no underlying pattern for graphical systems anymore, desktops
+  need to pull it in directly. (forwarded request 1396255 from dimstar)</comment>
+    <requestid>1396263</requestid>
+  </revision>
 </revisionlist>

@@ -409,4 +409,12 @@ TOTAL=1 PASS=1, rpmlint 0 errors / 0 warnings / 0 badness,
 soname-check.sh clean over all 8 packages, source_validator rc0.</comment>
     <requestid>1373797</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c9aaade1d1357687835bd2b1daf16687</srcmd5>
+    <version>1.26.0</version>
+    <time>1793724811</time>
+    <user>anag_factory</user>
+    <comment>Update ngtcp2 to 1.26.0: new stream APIs, flow-control and CUBIC fixes, rebased patches, no soname change.</comment>
+    <requestid>1394472</requestid>
+  </revision>
 </revisionlist>

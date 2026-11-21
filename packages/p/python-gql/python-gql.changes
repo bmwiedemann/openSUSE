@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov 16 00:14:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.0:
+  * Support Python 3.14 and 3.15 and remove Python 3.9 support
+  * Add comprehensive directive support to DSL module
+  * Feature dsl schema shortcuts
+  * Support HTTP multipart subscriptions in AIOHTTPTransport
+  * show oneOf in introspection query
+  * Add `extra_args` parameter to subscribe() for aiohttp transport
+  * Add extensions support to GraphQLRequest
+  * Feature support httpx2
+  * Fix DeprecationWarning in test_requests_batch online tests
+  * Don't fall back to Apollo when not in subprotocols
+  * DSL using immutable graphql-core AST classes
+  * Support standard http.cookiejar.CookieJar in RequestsHTTPTransport
+    cookies typing
+  * Fix gql to work with graphql-core 3.3.0rc0
+  * Skip multipart parts with empty Content-Type instead of raising
+  * Coerce a single value to a list when serializing list variables
+  * Refactor DSL code to use Self type
+  * Fix python 3.9 dev dependencies
+  * Replace archived backoff with tenacity
+- Drop patch tests.patch, included upstream.
+
+-------------------------------------------------------------------
 Tue Jul  7 05:59:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.0.0:

@@ -599,4 +599,12 @@
     <comment>1</comment>
     <requestid>1385176</requestid>
   </revision>
+  <revision rev="55" vrev="10">
+    <srcmd5>73ff1205c2de9e9a0d1bc9261ccf4b58</srcmd5>
+    <version>3.5.3</version>
+    <time>1795182193</time>
+    <user>anag_factory</user>
+    <comment>Fix CVE-2026-88822 and CVE-2026-88823 (and synchronize with SLFO:Main).</comment>
+    <requestid>1398148</requestid>
+  </revision>
 </revisionlist>

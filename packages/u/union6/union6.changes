@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:32:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:44:03 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+  * GroupBoxElement: Fix checkbox alignment (kde#528493)
+  * HeaderElement: Add constructor for default QStyleOption
+  * HeaderElement: Use correct fallback name, add headerView
+  * LineEditElement: Check for widget existing
+  * HeaderElement: Return contentsSizeFromStyle if there is no headerOption
+  * HeaderElement: Draw label using QCommonStyle, use visualRect for subElementRect
+  * ItemViewElement: Fix alternateBase palette override
+  * ItemViewElement: Check if fullrow selection is for any abstractItemView
+  * MenuItemElement: Reserve columns for icons
+  * ComboBoxElement: Always include text in subElementList (kde#527410)
+  * DrawItemText: Ensure we draw mnemonics only for items that have it explicitly set (kde#528236)
+  * AbstractElement: Ensure we use correct fontmetrics
+  * SpinBoxElement: Fix spinbox sizing
+  * UnionStyle: Remove autofillBackground from spinboxes (kde#528280)
+  * Check if a library dir is a directory rather than just exists (kde#528147)
+  * ItemViewElement: Allow overriding background color (kde#527260)
+  * BackgroundDrawing: Allow overriding background color
+  * AbstractElement: Text color overriding from palette (kde#527260)
+  * delegate.css: Separate itemviewitem and itemdelegate list behavior
+  * output/widgets: Add enum context to cache hashes for elements (kde#527246)
+  * CheckBoxElement: Rely on qcommonstyle for subelementRects (kde#527767)
+  * AbstractElement: Always add fallback
+  * delegate.css: Set focusframe only to show inside graphicsview
+  * Elements: Add fallbacks to most elements
+  * MenuItemElement: Give separator it's own propertygroup
+  * TabElement: Call vSpace/hSpace directly, call m_style for subelement
+  * UnionStyle: Use contentsSize isntead of contentsType for sizeFromContents hash
+  * UnionStyle: Raise cache amount, skip cache update for pixelMetrics (kde#527409)
+
+-------------------------------------------------------------------
 Tue Oct 27 18:10:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.8.2

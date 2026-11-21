@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261019.tar.gz#/kernel-firmware-tools-20261019.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -131,6 +131,9 @@ Supplements:    modalias(usb:v0710p8001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v085Ap8025d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v085Ap8027d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v10ACp0102d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap0250d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap0450d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap0850d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1110d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1130d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1131d*dc*dsc*dp*ic*isc*ip*in*)
@@ -138,13 +141,26 @@ Supplements:    modalias(usb:v110Ap1150d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1151d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1250d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1251d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1252d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1253d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1410d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1411d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1450d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1451d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1452d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1453d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1613d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1618d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1619d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1653d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1658d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap1659d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap165Ad*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap165Bd*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap7002d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap7003d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap7004d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v110Ap7005d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v14B0p3410d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p0001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p0002d*dc*dsc*dp*ic*isc*ip*in*)
@@ -213,8 +229,9 @@ This package contains kernel firmware files for various serial drivers.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh serial < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh serial < WHENCE-dist > WHENCE
+
 
 %build
 # nothing to do
@@ -224,6 +241,7 @@ mv WHENCE.new WHENCE
 scripts/install-licenses.sh serial %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} serial < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}

@@ -1114,4 +1114,12 @@ Index: timescaledb-2.30.2.tar.gz
 Binary file timescaledb-2.30.2.tar.gz (revision 58) deleted</comment>
     <requestid>1386598</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>cf8c37812e84d4e796e971db9005f02e</srcmd5>
+    <version>2.32.0</version>
+    <time>1794591155</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.32.0</comment>
+    <requestid>1397113</requestid>
+  </revision>
 </revisionlist>

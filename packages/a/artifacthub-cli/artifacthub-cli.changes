@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:56:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.24.0:
+  * Bump version to 1.24.0 (#4952)
+  * Clarify official status definition and docs (#4951)
+  * Enforce restrictedHTTPClient on all requests (#4950)
+  * Bump Trivy to 0.76.2 (#4939)
+  * Upgrade dependencies (#4938)
+  * Replace category classifier (#4930)
+  * Upgrade dependencies and base images (#4922)
+  * Add ignore flag to ah lint (#4917)
+  * Skip ignored packages in tracker sources (#4902)
+  * Improve ah lint errors for Tekton git versioning (#4901)
+  * Update db tests dockerfile (#4898)
+  * Fix security report crash on CVSS v4.0-only data  (#4887)
+  * Adding support for Helm images annotation (#4886)
+  * Replace bitnamilegacy/kubectl with rancher/kubectl (#4881)
+  * Upgrade frontend dependencies (#4873)
+
+-------------------------------------------------------------------
 Wed Jul 08 05:12:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.23.0:

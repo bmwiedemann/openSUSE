@@ -1,19 +1,17 @@
-Index: tftp-hpa-5.3/tftpd/tftpd.c
-===================================================================
---- tftp-hpa-5.3.orig/tftpd/tftpd.c
-+++ tftp-hpa-5.3/tftpd/tftpd.c
-@@ -383,6 +383,14 @@ int main(int argc, char **argv)
-     const char *pidfile = NULL;
-     u_short tp_opcode;
+--- a/tftpd/tftpd.c
++++ b/tftpd/tftpd.c
+@@ -602,6 +602,14 @@
+ 
+     capset_none();
  
 +    time_t my_time = 0;
 +    struct tm* p_tm;
 +    char envtz[10];
 +    my_time = time(NULL);
 +    p_tm = localtime(&my_time);
-+    snprintf(envtz, sizeof(envtz) - 1, "UTC%+d", (p_tm->tm_gmtoff * -1)/3600);
++    snprintf(envtz, sizeof(envtz) - 1, "UTC%+d",
++             (int)((p_tm->tm_gmtoff * -1) / 3600));
 +    setenv("TZ", envtz, 0);
-+
-     /* basename() is way too much of a pain from a portability standpoint */
- 
-     p = strrchr(argv[0], '/');
+ #ifdef HAVE_LOCALE_H
+     setlocale(LC_CTYPE, "");     /* For to(w)(lower|upper)() */
+ #endif

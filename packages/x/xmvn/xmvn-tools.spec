@@ -35,7 +35,7 @@ BuildRequires:  beust-jcommander >= 1.82
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  modello >= 2.0.0
+BuildRequires:  modello-ant-task
 BuildRequires:  objectweb-asm
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus

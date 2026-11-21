@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:13:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.0:
+  * Added braille support
+  * Added Powerline support
+  * Added various arrows and symbols
+  * Added alternate round top three
+  * Small bugfixes and improvements
+- Adapt to upstream renamed release asset (intel-one-mono-ttf.zip);
+  ship OFL.txt as separate source as the new archive omits it
+
+-------------------------------------------------------------------
 Fri Jul 26 16:06:30 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Simplify specfile

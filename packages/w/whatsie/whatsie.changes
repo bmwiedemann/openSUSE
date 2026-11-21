@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:47:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 6.2.0:
+  New features:
+  * More apps from Ktechpit in About, and an optional link on the lock screen
+  * Ukrainian interface translation
+  * A Quit action in the launcher entry (#402)
+  Fixes:
+  * No hang when the graphics stack floods its warnings (#387)
+  * The WhatsApp theme survives a restart (#389)
+  * The monochrome tray icon is sized correctly on HiDPI displays (#396)
+
+-------------------------------------------------------------------
 Tue Sep 22 14:30:55 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to 6.1.1:

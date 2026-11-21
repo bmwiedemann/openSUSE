@@ -3251,4 +3251,13 @@ Detailed changelog:
     <comment>Resubmitted from a clean branch of security:apparmor with sources identical to the superseded request from home:scarabeus_iv: that project builds with a substituted development linter whose findings failed the branch builds, while the package itself compiles and packages cleanly, as the builds in this branch project show. The changes are unchanged: pass the distribution build flags to the plain make builds of the parser and the binutils programs, so apparmor_parser, aa-exec, aa-load and aa-status are built with fortify and stack-protector hardening like the rest of the package. Also drop the obsolete BuildRoot tag and use the pkgconfig() spelling for the pkg-config BuildRequires. (forwarded request 1386766 from scarabeus_iv)</comment>
     <requestid>1387079</requestid>
   </revision>
+  <revision rev="244" vrev="5">
+    <srcmd5>151dc31269e5598403705a7c99f22f0e</srcmd5>
+    <version>5.0.2</version>
+    <time>1793817749</time>
+    <user>anag_factory</user>
+    <comment>- add transmission-2246.patch: allow transmission to lock its
+  lockfile (boo#1289007) (forwarded request 1394563 from cboltz)</comment>
+    <requestid>1394564</requestid>
+  </revision>
 </revisionlist>

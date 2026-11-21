@@ -392,4 +392,41 @@
     errors. Thanks to afldl for reporting this issue.</comment>
     <requestid>1379400</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d77a3276a836c7eab7bb899cc8421812</srcmd5>
+    <version>6.6</version>
+    <time>1793899183</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.6.0 (CVE-2026-115927, bsc#1289050,
+                   CVE-2026-116577, bsc#1289064,
+                   CVE-2026-116578, bsc#1289058):
+  # General changes
+  - Python 3.15 is now supported. Python 3.9 and 3.10 are no longer
+    supported; 3.11 is the minimum supported version.
+  - Free-threaded python interpreters are now supported; prebuilt
+    wheels are available for 3.14t and 3.15t.
+  - Windows on ARM is now supported and prebuilt wheels are available.
+  - Prebuilt wheels are now available for ``riscv64``, ``ppc64le``,
+    and ``s390x`` architectures on Linux. These architectures are
+    experimental and have limited support and testing.
+  - PyPy 8.0 is now supported (for both Python 3.11 and 3.12).
+  - Error messages have been improved in many places.
+  - Improved handling of `asyncio.CancelledError` in various parts of
+    the framework.
+  # Feature highlights
+  - New feature ``cross_origin_protection`` provides a new mechanism
+    for protecting against XSRF and other cross-origin attacks. This
+    feature is easier to use than ``xsrf_cookies`` and is expected to
+    become the default in Tornado 6.7.
+  # Deprecation notices
+  - The ``host`` argument to the `.HTTPServerRequest` constructor is
+    deprecated (since Tornado 6.5.2); use ``headers[&quot;Host&quot;]`` instead.
+    It will be removed in Tornado 6.7.
+  - The ``start_line`` argument to the ``HTTPServerRequest``
+    constructor will become required in Tornado 6.7. The ``method``,
+    ``uri``, and ``version`` arguments are deprecated and will be
+    removed at the same time. All remaining arguments will become
+    keyword-only. A `DeprecationWarning` is now emitted when</comment>
+    <requestid>1394871</requestid>
+  </revision>
 </revisionlist>

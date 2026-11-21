@@ -19,7 +19,7 @@
 %global pkg_name network-byte-order
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        Network byte order utilities
 License:        BSD-3-Clause
@@ -82,6 +82,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

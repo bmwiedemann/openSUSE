@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 00:05:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-gitpython-3.2.patch:
+  * Support changes required by GitPython's new path validation.
+
+-------------------------------------------------------------------
 Thu Apr 23 00:44:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 2.9.0.

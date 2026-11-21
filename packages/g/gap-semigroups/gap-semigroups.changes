@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:45:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.7.1
+  * Fix detection of GAP strings
+  * Add PreImagesRepresentativeNC method for SHBI
+  * Add missing representation filters
+  * Use preimages instead of inverse of zero injection
+  * Use IsComponentObjectRep in Objectify with a record
+  * Fix uniform random pperm
+
+-------------------------------------------------------------------
 Mon Sep 28 16:27:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.7.0

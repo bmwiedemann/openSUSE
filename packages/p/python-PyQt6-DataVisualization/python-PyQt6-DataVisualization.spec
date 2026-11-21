@@ -21,14 +21,13 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.12.0
+Version:        6.12.1
 Release:        0
 Summary:        Python bindings for the Qt Data Visualization library
 License:        GPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqtdatavisualization
-Source:         https://www.riverbankcomputing.com/pypi/packages/pyqt6-datavisualization/pyqt6_datavisualization-%{version}.tar.gz
-#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%%{qtlib}/pyqt6_datavisualization-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_datavisualization-%{version}.tar.gz
 BuildRequires:  %{python_module PyQt6-devel >= 6.12}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pyqt-builder >= 1.20 with %python-pyqt-builder < 2}

@@ -1,7 +1,7 @@
 #
 # spec file for package libecpint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2021 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,6 +26,8 @@ License:        MIT
 Group:          Productivity/Scientific/Chemistry
 URL:            https://github.com/robashaw/libecpint
 Source0:        %{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libecpint-link-cerfcpp.patch -- link against cerf::cerfcpp for C++ dawson symbol
+Patch0:         libecpint-link-cerfcpp.patch
 
 BuildRequires:  cmake >= 3.12
 BuildRequires:  doxygen
@@ -80,7 +82,7 @@ generic.
 This package contains development headers and libraries for libecpint
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %{cmake} -DCMAKE_SKIP_RPATH=OFF -DLIBECPINT_USE_CERF=ON

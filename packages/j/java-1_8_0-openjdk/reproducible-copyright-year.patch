@@ -1,23 +1,7 @@
-# Derive the copyright year from SOURCE_DATE_EPOCH
-#
-# configure takes COPYRIGHT_YEAR from the wall clock unless
-# --with-copyright-year is given. That year is substituted into the bottom
-# line of every generated javadoc page (make/Javadoc.gmk CopyrightLine), so
-# two builds that straddle New Year produce a different javadoc bundle in
-# its entirety - which is what the whole -javadoc subpackage differing came
-# down to.
-#
-# Honour SOURCE_DATE_EPOCH when it is set and no explicit year was asked
-# for, which is what later releases do via JDK-8282567.
-#
-# The spec re-runs openjdk/common/autoconf/autogen.sh after applying the
-# patches, so generated-configure.sh does not need patching too.
-#
-
-diff --git a/openjdk/common/autoconf/jdk-options.m4 b/openjdk/common/autoconf/jdk-options.m4
-index 18ba585209b..bd1bf7bd549 100644
---- a/openjdk/common/autoconf/jdk-options.m4
-+++ b/openjdk/common/autoconf/jdk-options.m4
+diff --git a/common/autoconf/jdk-options.m4 b/common/autoconf/jdk-options.m4
+index 18ba585209..bd1bf7bd54 100644
+--- a/common/autoconf/jdk-options.m4
++++ b/common/autoconf/jdk-options.m4
 @@ -596,6 +596,16 @@ AC_DEFUN_ONCE([JDKOPT_SETUP_JDK_VERSION_NUMBERS],
      AC_MSG_ERROR([Copyright year must have a value])
    elif test "x$with_copyright_year" != x; then

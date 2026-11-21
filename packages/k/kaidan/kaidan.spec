@@ -17,10 +17,10 @@
 
 
 %define kf6_version 6.11.0
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 Name:           kaidan
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        A XMPP client based on KDE Framework
 License:        AML AND GPL-3.0-or-later AND SUSE-GPL-3.0+-with-openssl-exception AND MIT AND CC-BY-SA-4.0
@@ -38,15 +38,15 @@ BuildRequires:  qt6-declarative-tools >= %{qt6_version}
 BuildRequires:  qt6-gui-private-devel >= %{qt6_version}
 BuildRequires:  qt6-sql-sqlite >= %{qt6_version}
 BuildRequires:  cmake(KDSingleApplication-qt6)
-BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
+BuildRequires:  cmake(KF6ItemModels) >= %{kf6_version}
 BuildRequires:  cmake(KF6KIO) >= %{kf6_version}
 BuildRequires:  cmake(KF6Kirigami) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiAddons) >= 1.8.0
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
 BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6QQC2DesktopStyle) >= %{kf6_version}
-BuildRequires:  cmake(QXmppQt6) >= 1.14.0
+BuildRequires:  cmake(QXmppQt6) >= 1.17.1
 BuildRequires:  cmake(Qt6Concurrent) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Keychain) >= 0.15.0
@@ -62,7 +62,6 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(ZXing) >= 1.0.8
 BuildRequires:  pkgconfig(icu-uc) >= 61.0
 Requires:       gstreamer-plugins-good-qtqml6
 Requires:       kf6-kirigami-imports >= %{kf6_version}

@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sat Nov 14 21:24:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.16.0
+  * Highlights
+    + Archivers without a dependency-injection container. The new
+      ServiceLoaderArchiverManager finds archivers, unarchivers and
+      resource collections through java.util.ServiceLoader. Code
+      that cannot get Sisu components injected, such as plugins
+      written against the Maven 4 API, can now use the 4.x line.
+      Inside Maven, the injected DefaultArchiverManager works as
+      before. The provider interfaces in org.codehaus.plexus
+      .archivers.spi are internal and change incompatibly in 5.0,
+      so use ServiceLoaderArchiverManager rather than implementing
+      them.
+    + Buffered uncompressed tar output. TarArchiver now buffers its
+      output when it writes a tar archive without compression.
+    + Default excludes on Windows. plexus-io 3.8.1 applies the
+      default excludes on Windows as well.
+    + Deprecation: org.codehaus.plexus.archiver.par
+      .PlexusIoJarFileResourceCollection is deprecated in favor of
+      PlexusIoParFileResourceCollection. The par component itself
+      is unchanged.
+  * New features and improvements
+    + Backport the ServiceLoader based ArchiverManager to 4.x
+  * Bug Fixes
+    + Keep the 4.15.0 DefaultArchiverManager API and deprecate
+      par.PlexusIoJarFileResourceCollection
+    + Unpack archived file sets in archivers created without a
+      container on 4.x
+    + Fix buffering in TarArchiver
+  * Documentation updates
+    + Document archivers.spi as internal on 4.x
+    + Backport the README to 4.x with Java 8 examples
+  * Maintenance
+    + Replace deprecated IOUtil.close and TarArchiveEntry id getters
+  * Build
+    + Carry the default-branch settings to 4.x
+  * Dependency updates
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 1.1.0 to
+      1.1.2
+    + Bump com.google.guava:guava from 33.7.2-jre to 33.8.0-jre
+    + Bump org.codehaus.plexus:plexus-io from 3.8.0 to 3.8.1
+
+-------------------------------------------------------------------
 Mon Oct 19 05:17:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.15.0

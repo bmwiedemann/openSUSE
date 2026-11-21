@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov  6 13:02:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.7.0
+  * New features and improvements
+    + Read module descriptors without ASM
+    + Choose the versioned module descriptor by the target release
+  * Bug Fixes
+    + Read the module descriptor of a multi-release output directory
+    + Read module descriptors newer than ASM supports
+  * Documentation updates
+    + Drop the Source Xref menu item
+    + Stop pinning a version in the README snippet
+  * Maintenance
+    + Target 1.7.0 for the next release
+    + Drop the Source Xref menu item
+  * Build
+    + Let the extra matrix entries take the default Maven version
+    + Use the shared release-drafter workflow
+    + Build on JDK 26, 27 and 28-ea
+    + Ignore Mockito 5 in Dependabot
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump org.ow2.asm:asm from 9.10.1 to 9.11
+- Modified patch:
+  * plexus-languages-atinject.patch
+    + rediff
+
+-------------------------------------------------------------------
 Mon Sep 28 13:07:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.0
@@ -62,7 +90,7 @@ Wed Apr 10 09:14:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
     + Add java bytecode class file version detection
     + Fix badge in README
   * Documentation updates
-    + Fix typo module (#125) @Thihup
+    + Fix typo module
     + Fix scm protocol
 
 -------------------------------------------------------------------

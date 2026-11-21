@@ -15,56 +15,42 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# This macro MUST be defined first in the spec file,
+# as it is used by the python-rpm-macros package to determine the
+# current runtime version used by the system, and inject the correct
+# value into the {python_module} macro.
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        2.3.0
+Version:        2.5.7
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
-License:        MIT and CC-BY-4.0
+License:        MIT AND CC-BY-4.0
 URL:            https://github.com/Faugus/faugus-launcher
-Group:          System/Emulators/PC
-
 # Get the source from tar_scm
 Source0:        %{name}-%{version}.tar.xz
 # Exclusions
 Source1:        faugus-launcher.rpmlintrc
-
-BuildArch:      noarch
-
-# Faugus BuildDeps
-BuildRequires:  meson
-BuildRequires:  gtk4-tools
-BuildRequires:  desktop-file-utils
 BuildRequires:  appstream-glib
-
+BuildRequires:  desktop-file-utils
 # To remove duplicated files
 BuildRequires:  fdupes
-
+BuildRequires:  gtk4-tools
+# Faugus BuildDeps
+BuildRequires:  meson
 # Python version management
 BuildRequires:  python-rpm-macros
-
+Requires:       %{python_module Pillow}
 # Runtime python module dependencies
 Requires:       %{python_module base}
-Requires:       %{python_module Pillow}
 Requires:       %{python_module gobject}
 Requires:       %{python_module icoextract}
 Requires:       %{python_module psutil}
 Requires:       %{python_module requests}
 Requires:       %{python_module vdf}
-Requires:       %{python_module psutil}
-Requires:       %{python_module dbus-python}
-
+Requires:       typelib(Adw) = 1
 # GObject Introspection typelibs for GTK4 and libadwaita
 Requires:       typelib(Gtk) = 4.0
-Requires:       typelib(Adw) = 1
-
-# Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll
-%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
-Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
-%endif
-
 Recommends:     ca-certificates-steamtricks
 Recommends:     gamemode%{?_isa}
 Recommends:     gamescope
@@ -73,8 +59,13 @@ Recommends:     libvkd3d1%{?_isa}
 Recommends:     mangohud%{?_isa}
 Recommends:     ntsync-autoload
 Recommends:     ntsync-autoload-udev-rules
-
 Obsoletes:      faugus-launcher < %{version}
+BuildArch:      noarch
+
+# Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll
+%if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
+Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
+%endif
 
 %description
 A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Proton.
@@ -100,7 +91,7 @@ find faugus/ -type f -name '*.py' -exec chmod 0644 {} +
 
 # Fix bytecode mtime for SLE 16 / Leap 16.x / Tumbleweed / Slowroll
 find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
-%{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
+python3 -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
 
 # Faugus ships SVG files with the executable bit enabled, so we fix that here.
 chmod 0644 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/*.svg

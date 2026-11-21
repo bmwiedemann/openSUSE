@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov  8 17:53:33 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Add wslay-libnettle4.patch for compatibility with libnettle-devel >= 4
+  * wslay-libnettle4.patch
+
+-------------------------------------------------------------------
 Fri Jul  9 08:52:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add upstream patch to fix build with recent sphinx versions:

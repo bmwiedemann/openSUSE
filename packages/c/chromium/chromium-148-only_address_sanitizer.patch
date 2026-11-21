@@ -12,15 +12,6 @@
  }
  
  void ForwardToOldHandler(int signal, siginfo_t* info, void* context) {
-@@ -1457,7 +1457,7 @@
-   // violation that needs to be investigated.
-   PrintToStderr("\n## V8 sandbox violation detected!\n\n");
- }
--#endif  // V8_USE_ANY_SANITIZER
-+#endif  // V8_USE_ADDRESS_SANITIZER
- 
- void InstallCrashFilter() {
-   // Register an alternate stack for signal delivery so that signal handlers
 @@ -1480,14 +1480,14 @@
    }
    CHECK(success);

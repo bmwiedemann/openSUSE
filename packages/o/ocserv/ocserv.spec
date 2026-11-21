@@ -35,8 +35,8 @@ Source100:      https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x1f424189
 Patch1:         %{name}-enable-systemd.patch
 #PATCH-FIX-UPSTREAM marguerite@opensuse.org tweak configuration
 Patch2:         %{name}.config.patch
-#PATCH-FIX-OPENSUSE marguerite@opensuse.org leap doesn't have LZ4_compress_default
-Patch3:         %{name}-LZ4_compress_default.patch
+#PATCH-FIX-UPSTREAM ocserv-nettle4.patch -- build against GNU Nettle 4
+Patch4:         ocserv-nettle4.patch
 BuildRequires:  /usr/bin/ronn
 BuildRequires:  autogen
 BuildRequires:  firewall-macros

@@ -1,7 +1,7 @@
 #
 # spec file for package tags
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tags
-Version:        2.5
+Version:        2.6
 Release:        0
 Summary:        A simple text tagger
 License:        X11

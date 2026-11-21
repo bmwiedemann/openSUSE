@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define _name eduvpn_common
 Name:           eduvpn-common
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        Shared library for eduVPN
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  go1.25
+BuildRequires:  go1.26
 BuildRequires:  golang-packaging
 BuildRequires:  python-rpm-macros
 Recommends:     python3-%{name}
@@ -47,13 +47,13 @@ Recommends:     python3-%{name}
 %description
 Shared library written in Go with functions that all eduVPN clients can use.
 
-%package -n lib%{_name}-5_0_3
+%package -n lib%{_name}-5_0_4
 Summary:        Shared library for eduVPN
 Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
-%description -n lib%{_name}-5_0_3
+%description -n lib%{_name}-5_0_4
 Shared library written in Go with functions that all eduVPN clients can use.
 
 %package -n python-%{name}
@@ -102,10 +102,10 @@ pushd wrappers/python
 %pytest tests.py
 popd
 
-%post -n lib%{_name}-5_0_3 -p /sbin/ldconfig
-%postun -n lib%{_name}-5_0_3 -p /sbin/ldconfig
+%post -n lib%{_name}-5_0_4 -p /sbin/ldconfig
+%postun -n lib%{_name}-5_0_4 -p /sbin/ldconfig
 
-%files -n lib%{_name}-5_0_3
+%files -n lib%{_name}-5_0_4
 %license LICENSE
 %doc CHANGES.md README.md
 %{_libdir}/lib%{_name}-%{version}.so
@@ -114,7 +114,9 @@ popd
 %license LICENSE
 %doc CHANGES.md README.md
 %dir %{python_sitelib}/%{_name}
-%{python_sitelib}/%{_name}/
+%{python_sitelib}/%{_name}/*.py
+%{python_sitelib}/%{_name}/py.typed
+%pycache_only %{python_sitelib}/%{_name}/__pycache__
 %{python_sitelib}/%{_name}-%{version}*
 
 %changelog

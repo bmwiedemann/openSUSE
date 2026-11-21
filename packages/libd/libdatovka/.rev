@@ -163,4 +163,16 @@
   * multipart-parser-c is MIT</comment>
     <requestid>1378263</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>962fd945acccf92a7676bd119dd388d5</srcmd5>
+    <version>0.8.0</version>
+    <time>1794318238</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.8.0
+  * Added specMessFlag into struct isds_envelope.
+  * Added function isds_SuspMessageReport() to report a message as spam.
+- enable tests in a new %check
+  * add 0001-test-fix-ccache-builds.patch</comment>
+    <requestid>1396463</requestid>
+  </revision>
 </revisionlist>

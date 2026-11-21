@@ -48,7 +48,7 @@
 
 %bcond_without mold
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %ifarch x86_64
 %bcond_without hip
 %bcond_with    hiprt
@@ -111,7 +111,7 @@
 %global pkg_name blender
 
 Name:           blender-5.2
-Version:        5.2.3
+Version:        5.2.4
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -158,6 +158,9 @@ BuildRequires:  mold
 %endif
 BuildRequires:  ninja
 BuildRequires:  potrace-devel
+%ifarch aarch64
+BuildRequires:  sse2neon-devel
+%endif
 BuildRequires:  xz
 BuildRequires:  (cmake(OpenAL) or  pkgconfig(openal))
 BuildRequires:  (cmake(SDL2) or pkgconfig(sdl2))

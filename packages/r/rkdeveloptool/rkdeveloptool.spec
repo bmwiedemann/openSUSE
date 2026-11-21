@@ -16,23 +16,22 @@
 #
 
 
-%define build_cxxflags %optflags -flto=auto
-
+%define build_cxxflags %{optflags} -flto=auto
 Name:           rkdeveloptool
-Version:        1.32~git.20210408.46bb4c0
+Version:        20250307
 Release:        0
-URL:            https://github.com/rockchip-linux/rkdeveloptool
 Summary:        Utility for Rockchip SoCs
 License:        GPL-2.0-or-later
-Group:          System/Boot
+URL:            https://github.com/rockchip-linux/rkdeveloptool
 Source0:        rkdeveloptool-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libusb-1.0)
 Requires(post): udev
-Requires(postun):udev
+Requires(postun): udev
 
 %description
 rkdeveloptool provides ways to read/write rockusb devices.

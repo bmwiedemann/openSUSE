@@ -1022,4 +1022,15 @@
     <user>dimstar_suse</user>
     <comment>osc copypac from project:openSUSE:Factory package:sdbootutil revision:115, using expand</comment>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>f43043b73ab81ddd7cde626a6a6e4742</srcmd5>
+    <version>1+git20261111.77a75dc</version>
+    <time>1794590891</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20261111.77a75dc:
+  * Keep the crypttab options of the devices already enrolled
+  * Keep secrets out of the --start-trace-code log
+  * Track a RAID device once, and warn about TPM2 slots without tpm2-device (forwarded request 1396843 from aplanas)</comment>
+    <requestid>1396845</requestid>
+  </revision>
 </revisionlist>

@@ -107,4 +107,20 @@ Built and checked locally on aarch64: 510 tests pass, rpmlint 0 errors,
     <comment>Update python-langgraph-sdk to 0.4.11.</comment>
     <requestid>1394126</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d98f517501e82581a232f8a13ee11ca3</srcmd5>
+    <version>0.4.12</version>
+    <time>1793991495</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-sdk to 0.4.12: drop ignored fairness_weight, fix priority docs.</comment>
+    <requestid>1395841</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>55d6e7f30f61abd09f173b4fb2826b31</srcmd5>
+    <version>0.4.14</version>
+    <time>1794090828</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.14</comment>
+    <requestid>1396037</requestid>
+  </revision>
 </revisionlist>

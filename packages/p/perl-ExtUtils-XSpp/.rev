@@ -14,4 +14,15 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f6fb75633c499fea0069355243b79fa6</srcmd5>
+    <version>0.190.0</version>
+    <time>1794162140</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.190.0 (0.19)
+   see /usr/share/doc/packages/perl-ExtUtils-XSpp/Changes
+  0.19  Thu Jul  2 21:47:07 CEST 2026
+          - Tentative fix for ExtUtils::ParseXS in blead.</comment>
+    <requestid>1396139</requestid>
+  </revision>
 </revisionlist>

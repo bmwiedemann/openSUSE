@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov 16 05:43:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.2.0:
+  * Bug Fixes
+    - Update kube & k8s (25d2163)
+    - Show (-) instead of NaN% when allocatable is zero (8b04d6e)
+  * Features
+    - Report DRA devices under the extended resource name of their
+      DeviceClass (809367e)
+    - Add claim level to --group-by for DRA ResourceClaims
+      (f004d72)
+    - Report devices from Dynamic Resource Allocation (DRA)
+      (893379d)
+    - Add --pod-with-namespace to display pods as namespace/pod
+      (b5f8d6e)
+  * Dependencies
+    - chore(deps): update jdx/mise-action action to v5 (#374)
+    - chore(deps): update rust crate tracing-bunyan-formatter to
+      v0.3.12 (#373)
+    - chore(deps): bump tokio from 1.53.1 to 1.54.1 (#365)
+    - chore(deps): bump tracing-bunyan-formatter from 0.3.10 to
+      0.3.11 (#367)
+    - chore(deps): bump serde_json from 1.0.151 to 1.0.154 (#368)
+    - chore(deps): bump thiserror from 2.0.20 to 2.0.21 (#362)
+    - chore(deps): bump clap from 4.6.6 to 4.6.7 (#361)
+
+-------------------------------------------------------------------
 Sat Sep 19 09:11:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.0:

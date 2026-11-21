@@ -4,8 +4,8 @@
     <param name="url">https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info.git</param>
     <param name="scm">git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="changesgenerate">enable</param>
-    <param name="revision">20240407</param>
+<!--    <param name="changesgenerate">enable</param> -->
+    <param name="revision">20261111</param>
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">

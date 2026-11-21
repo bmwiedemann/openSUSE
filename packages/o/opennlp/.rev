@@ -47,4 +47,20 @@
     <comment>bsc#1272520, CVE-2026-63317</comment>
     <requestid>1367685</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1131dcf023c18e1b9f7217d1ae947087</srcmd5>
+    <version>2.5.13</version>
+    <time>1795105213</time>
+    <user>anag_factory</user>
+    <comment>2.5.13</comment>
+    <requestid>1398725</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>84d8e1500ead06349995755fecb523ff</srcmd5>
+    <version>2.5.13</version>
+    <time>1795182405</time>
+    <user>anag_factory</user>
+    <comment>opennlp-maxent provide needed by languagetool</comment>
+    <requestid>1398845</requestid>
+  </revision>
 </revisionlist>

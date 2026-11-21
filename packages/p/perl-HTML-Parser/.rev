@@ -353,4 +353,16 @@ _______________________________________________________________________________<
         bsc#1267606</comment>
     <requestid>1357947</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>02cba06927ff190011611a6d321df2d6</srcmd5>
+    <version>3.860.0</version>
+    <time>1793990080</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.860.0 (3.86)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+  3.86      2026-09-19
+      - Expand an entity whose value is the string being decoded to the
+        value that string had when the call began (GH#69) (Paul Johnson)</comment>
+    <requestid>1395151</requestid>
+  </revision>
 </revisionlist>

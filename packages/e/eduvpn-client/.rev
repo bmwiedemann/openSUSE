@@ -39,4 +39,12 @@
     <comment>version update to 4.7.2 (forwarded request 1349372 from reneum)</comment>
     <requestid>1349374</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d4f0deb390882655a1cd58e231cb4fd2</srcmd5>
+    <version>4.7.3</version>
+    <time>1794242723</time>
+    <user>anag_factory</user>
+    <comment>update eduvpn-client to 4.7.3 (forwarded request 1396340 from reneum)</comment>
+    <requestid>1396342</requestid>
+  </revision>
 </revisionlist>

@@ -663,4 +663,25 @@
   CVE-2026-60075 bsc#1273062</comment>
     <requestid>1369560</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>7d21bc31c8eb2fa10a642933d52e9aa1</srcmd5>
+    <version>7.0.0</version>
+    <time>1794236598</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.0.0 (7.00)
+   see /usr/share/doc/packages/perl-Date-Manip/Changes
+  7.00  expected 2026-09-01
+    -  Not a major release
+           This is NOT a major release change. It is simply a bump of one
+           minor version from 6.99. There are no current plans for another
+           major release.
+    -  CPAN email contact removed
+           As of April, CPAN no longer forwards emails, so the old cpan.org
+           email address is no longer a supported contact method and has been
+           removed.
+           Reported in GitHub #53
+    -  Time zone fixes
+           Newest zoneinfo data (tzdata 2026c).</comment>
+    <requestid>1396025</requestid>
+  </revision>
 </revisionlist>

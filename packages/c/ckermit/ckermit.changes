@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:25:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 11.0.514:
+  * New community-maintained upstream (OpenKermit), first non-beta
+    release since 9.0.302 from 2011 with heavily modernized codebase
+  * Added C unit tests and Python regression test suite; fixed many
+    bugs and races they uncovered, refreshed code for modern toolchains
+  * CVE-2025-68920: malicious remote can overwrite and exfiltrate
+    local files (boo#1255718)
+  * Hardened defaults: manual transfer mode with binary file type,
+    file collisions rejected, remote commands restricted
+  * New SHOW INTERFACES command, better IPv6 link-local support and
+    new SET TCP CONNECT-TIMEOUT option
+  * Removed support for 16-bit Unix platforms
+- Drop all patches, included upstream now:
+  * decl-definition-conflict.patch, time_and_file_failure.patch,
+    gcc14.patch, default-transfer-mode.patch, remote-security.patch
+- Build with the default C standard instead of -std=gnu89
+- Spec cleanup: drop obsolete Group tags, add missing gcc and make
+  BuildRequires, point URL at the new upstream home
+
+-------------------------------------------------------------------
 Wed Jan 14 17:12:30 CET 2026 - Ruediger Oertel <ro@suse.de>
 
 - add patches from debian:

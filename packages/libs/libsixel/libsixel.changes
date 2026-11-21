@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 15:10:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2026-33023.patch (bsc#1262127, CVE-2026-33023)
+- add CVE-2026-44638.patch (bsc#1265315, CVE-2026-44638)
+- add CVE-2026-44637.patch (bsc#1265314, CVE-2026-44637)
+- add CVE-2026-44636.patch (bsc#1265313, CVE-2026-44636)
+
+-------------------------------------------------------------------
 Fri Sep  5 12:46:55 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Fix-a-heap-buffer-overflow-problem-reported-by-err2z.patch

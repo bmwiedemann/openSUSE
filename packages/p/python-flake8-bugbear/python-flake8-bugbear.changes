@@ -1,4 +1,139 @@
 -------------------------------------------------------------------
+Sun Nov  8 23:17:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.10.27:
+  * ~~~~~~~~
+  * B007: don't flag a loop variable that is read by a function
+    or lambda defined
+  * in the same scope as the loop
+  * B049: New check for ``@abstractmethod`` listed before
+    ``@property``,
+  * ``@classmethod`` or ``@staticmethod`` (or a property
+    ``.setter``/``.getter``/
+  * ``.deleter``). It must be the innermost decorator, otherwise
+    the class definition
+  * raises ``AttributeError``
+  * B906: don't flag ``visit_`` methods of libcst visitors
+    (classes inheriting
+  * from ``libcst``), which have no ``generic_visit``
+  * B045: detect reuse of an enclosing loop's control variable in
+    a nested loop
+  * in the same scope (#360).
+  * B046: New check for ``dict.fromkeys()`` called with a mutable
+    value, which is
+  * shared by every key
+  * B005: say in the message that only strings with repeated
+    characters are
+  * reported, since ``.strip("abc")`` style character sets are
+    fine
+  * B047: New check for ``except`` handlers that can never run
+    because an earlier
+  * handler already catches a builtin parent exception
+  * B044: also report asserts on other always-true values, such
+    as a message
+  * without a condition (``assert "x must be positive"``), non-
+    zero numbers,
+  * f-strings with literal text, non-empty list/set/dict literals
+    and lambdas
+  * (#534, #440)
+  * B031: only treat a bare ``groupby()`` call as
+    ``itertools.groupby`` when the
+  * module doesn't bind ``groupby`` to something else, such as
+    its own
+  * ``def groupby``
+  * B025: fix the message running ``except`` and the exception
+    name together
+  * (``exceptValueError``) and dropping the ``*`` for ``except*``
+    handlers
+  * B903: don't flag classes that inherit from another class,
+    like an exception
+  * or ``dict`` subclass, which a namedtuple can't replace, and
+    fix ``__slot__``
+  * in the message to ``__slots__``
+  * B950: respect the ``max-doc-length`` option for docstring and
+    comment-only lines,
+  * as ``pycodestyle``'s ``W505`` does; behavior is unchanged
+    when it is not set
+  * B902: treat ``abc.abstractclassmethod`` and
+    ``abc.abstractstaticmethod`` like
+  * ``classmethod`` and ``staticmethod`` instead of expecting
+    ``self``
+  * B909: also check loops over ``d.keys()``, ``d.values()`` and
+    ``d.items()``,
+  * which are views of ``d``, so ``for k in d.keys(): d.pop(k)``
+    is reported like
+  * ``for k in d: d.pop(k)``
+  * B012: don't flag ``break`` or ``continue`` in an ``async
+    for`` loop inside a
+  * ``finally`` block, as for ``for`` and ``while`` loops
+  * B018: also report generator expressions and lambdas used as
+    statements. A
+  * statement like ``(print(x) for x in items)`` never runs its
+    body, and a bare
+  * ``lambda x: True`` is usually an assignment that lost its
+    target
+  * B018: also report ``map()``, ``filter()``, ``reversed()``,
+    ``zip()`` and
+  * ``enumerate()`` calls used as statements. They return lazy
+    iterators, so
+  * ``map(print, items)`` on its own line never calls ``print``
+  * B909: also check mutations in ``if`` conditions and
+    ``elif``/``else``
+  * branches inside loops
+  * B042: don't treat a class named like an exception as one when
+    its only base is
+  * ``object``, as in ``class ParsedException(object)``
+  * B911: only treat a bare ``batched()`` call as
+    ``itertools.batched`` when the
+  * module doesn't bind ``batched`` to something else, such as
+    its own
+  * ``def batched``, the same way B031 handles ``groupby()``
+- update to 26.9.30:
+  * B008: resolve direct module-level imports and aliases when
+    matching `extend-immutable-calls`
+  * B015: allow comparisons inside pytest/unittest exception and
+    warning assertion context managers, where an overloaded
+    comparison may intentionally raise (#462).
+  * B020: stop flagging names bound inside nested destructuring
+    patterns, like `series` in `for i, (ax, (series, name)) in
+    enumerate(zip(axs, series))`; the loop rebinds the top-level
+    targets, not those names
+  * Add Python 3.15 support / CI
+  * B913: fix crash on `{**d for d in ...}` dict unpacking in
+    comprehensions, new in Python 3.15; B035 no longer mistakes
+    the unpacked expression for a static key
+  * B018: also report unary and arithmetic operations used as
+    statements, such as a `+c * d` continuation line that lost
+    its parentheses
+  * B042: don't treat a class named like an exception as one when
+    its only bases are parameterized generics such as
+    `ContextManager[T]`; a generic base named like an exception,
+    such as `MyError[int]`, now counts
+- update to 26.9.9:
+  * B044: New check for `assert `, which is always true
+  * B031: allow reusing a group after assigning `list(group)` or
+    `tuple(group)` back to the same name
+  * B028: report `warnings.warn` calls that pass an explicitly
+    empty `skip_file_prefixes` tuple
+  * B019: also flag `async_lru.alru_cache` and check cache
+    decorators on `async def` methods
+  * B023: don't flag a function whose every reference is a direct
+    call inside the loop body
+  * B020: don't flag `for self.a in self.b`: rebinding an
+    attribute is not rebinding the base name
+  * B018: handle also useless calls such as `isinstance(x, int)`
+    without assigning or using the result
+  * B031: don't count a store-context reference as a use of the
+    `groupby` generator, and don't treat references in mutually
+    exclusive `if`/`elif`/`else` branches as multiple uses
+  * B902: don't raise a false positive on a metaclass defined
+    with a dotted base such as `abc.ABCMeta` or `enum.EnumMeta`
+  * B913: Add an optional check for unused `_` targets in `zip()`
+    loops
+  * B912: only emit on Python 3.14+ where `map()` supports
+    `strict=`
+
+-------------------------------------------------------------------
 Wed Apr  1 07:26:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 25.11.29:

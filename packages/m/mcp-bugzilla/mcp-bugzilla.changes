@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  6 07:48:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.22.0:
+  * Expose sort order parameter in bugs_quicksearch
+  * Ship the quicksearch syntax reference with the server
+  * Handle partial endpoint failures gracefully in bug_info
+- Keep fastmcp as a versioned floor instead of upstream's exact
+  pin on 4.1.4; the fastmcp API the server uses is unchanged
+
+-------------------------------------------------------------------
 Tue Sep 22 13:49:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.21.0:

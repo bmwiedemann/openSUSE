@@ -218,4 +218,24 @@ D435.</comment>
 - add 0007-cmake-use-libcurl-from-system.patch</comment>
     <requestid>1384496</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dc73db5ef7b88535a551fd70d6880d50</srcmd5>
+    <version>2.59.2</version>
+    <time>1794838492</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.59.2
+  * see release notes here:
+    https://github.com/realsenseai/librealsense/releases/tag/v2.59.2
+- remove 0003-Install-presets-to-usr-share.patch (presets were
+  dropped)
+- renamed:
+  * 0004-disable-pedantic.patch -&gt; 0003-disable-pedantic.patch
+  * 0005-third-party-use-libraries-from-system.patch -&gt;
+    0004-third-party-use-libraries-from-system.patch
+  * 0006-rsutils-build-as-shared.patch -&gt;
+    0005-rsutils-build-as-shared.patch
+  * 0007-cmake-use-libcurl-from-system.patch -&gt;
+    0006-cmake-use-libcurl-from-system.patch</comment>
+    <requestid>1397886</requestid>
+  </revision>
 </revisionlist>

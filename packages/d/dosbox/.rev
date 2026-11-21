@@ -421,4 +421,24 @@
   * https://www.dosbox-staging.org/releases/release-notes/0.82.2</comment>
     <requestid>1286512</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>c38449368401ff311baecdb8a2e80385</srcmd5>
+    <version>0.83.1</version>
+    <time>1794932252</time>
+    <user>anag_factory</user>
+    <comment>Added libslirp0 to recommends. Its via dlopen().
+
+- Updated to 0.83.1
+  * Changed files dosbox-staging-config.patch and dosbox-staging-name.patch.
+  * https://www.dosbox-staging.org/releases/release-notes/0.83.1</comment>
+    <requestid>1397901</requestid>
+  </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>ceadd37bb1d1533261ea7824ccfcb42c</srcmd5>
+    <version>0.83.1</version>
+    <time>1795023015</time>
+    <user>anag_factory</user>
+    <comment>- fix description</comment>
+    <requestid>1398214</requestid>
+  </revision>
 </revisionlist>

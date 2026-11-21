@@ -27,11 +27,12 @@
 %define dijkstrajs_version 1.0.3
 %define chokidar_version 4.0.3
 %define readdirp_version 4.1.2
-# Commit of the @moonshot-ai/kimi-code@2.4.1 release tag the NAPI helper
-# sources below are vendored from (tag object 1fc1d165c83b175873a46897e1e9db73dc70c984).
-%define pi_tui_git 2c73f3f50af4fa7f2540ca0d2e33b07a1408e3a7
+# Commit of the @moonshot-ai/kimi-code@2.5.0 release tag the NAPI helper
+# sources below are vendored from (peeled commit 41c341434ae24e45bfe0f2232ec11b80531ac717).
+# The pi-tui native sources are unchanged at the 2.7.0 tag (byte-identical), so the pin stays.
+%define pi_tui_git 41c341434ae24e45bfe0f2232ec11b80531ac717
 Name:           kimi-code
-Version:        2.4.1
+Version:        2.7.0
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT
@@ -48,7 +49,7 @@ URL:            https://github.com/MoonshotAI/kimi-code
 # load on Linux and only the Linux leg is rebuilt.
 # Recipe: gunzip the registry tarball, tar --delete -f it package/native,
 # gzip -9 it again.
-# https://registry.npmjs.org/@moonshot-ai/kimi-code/-/kimi-code-2.4.1.tgz
+# https://registry.npmjs.org/@moonshot-ai/kimi-code/-/kimi-code-2.7.0.tgz
 Source0:        kimi-code-%{version}.tgz
 Source1:        https://registry.npmjs.org/ws/-/ws-%{ws_version}.tgz
 Source2:        https://registry.npmjs.org/qrcode/-/qrcode-%{qrcode_version}.tgz

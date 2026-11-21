@@ -15,10 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname  0_48
+%define soname  0_50
 %bcond_without check
 Name:           resvg
-Version:        0.48.1
+Version:        0.50.0
 Release:        0
 Summary:        SVG rendering library
 License:        Apache-2.0 OR MIT
@@ -104,7 +104,6 @@ install -Dm 0755 ./target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dm 0755 ./target/release/usvg %{buildroot}%{_bindir}/usvg
 cargo cinstall --offline --all-features --verbose -p resvg-capi \
     --destdir=%{buildroot} --prefix=%{_prefix}
-install -Dm 0644 ./crates/c-api/ResvgQt.h -t %{buildroot}%{_includedir}/%{name}/
 ln -sf %{name}/%{name}.h %{buildroot}%{_includedir}/%{name}.h
 ln -sf %{name}/ResvgQt.h %{buildroot}%{_includedir}/ResvgQt.h
 

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Nov 14 17:17:05 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.4.2:
+  * httpclient: reject header names that are not RFC 9110 tokens
+  * httpclient: new maxBodySize option caps response bodies
+  * Fix overflow checks in ARC/ORC string and seq payload sizes
+  * parsexml: no overflow on overlong numeric character references
+  * Lexer no longer reads past the buffer on an unterminated
+    Unicode escape
+  * net.parseIPv6Address rejects groups of more than 4 hex digits
+  * strutils.find clamps `last` instead of raising IndexDefect
+  * unicode.lastRune and runeStrAtPos no longer raise IndexDefect
+    on invalid UTF-8
+  * net: IPv6 `$` no longer compresses a single zero group
+  * Compiler no longer crashes on `$cstring(nil)`
+  * osproc: on Windows, .bat/.cmd arguments with cmd.exe
+    metacharacters raise OSError (BatBadBut)
+  * {.global.} variables declared in loops are no longer reset
+  * .forbids checks every listed effect, not only the first
+  * goto-based exceptions: a try/except in a hook no longer catches
+    the exception that is propagating
+  * std/re and std/nre: docs mark them deprecated (no compiler
+    warning); use nim-regex or std/nre2 instead
+  * Update bundled Atlas to 0.16.4 (atlas-0.16.4.tar.gz replaces
+    atlas-0.14.7.tar.gz)
+- Rebase nim-2.2.2-pcre2.patch onto 2.4.2: upstream changed the
+  findAll cstring iterator and bufSubstr in lib/impure/re.nim, so
+  those hunks are regenerated; std/re compile errors now show
+  PCRE2's message text instead of a bare error number (std/nre
+  still raises the number)
+
+-------------------------------------------------------------------
 Thu Oct 29 07:56:33 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.4.0:

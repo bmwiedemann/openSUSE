@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:47:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.32.0
+  This release includes security fixes, performance improvements,
+  and bug fixes since 2.31.0. As part of our ongoing proactive
+  security reviews, this release includes a larger set of security
+  fixes than usual. We recommend that you upgrade as soon as
+  possible.
+  
+  - Loader Changes For the loader changes take effect a PostgreSQL
+    restart is required.
+    - #10966 Check database ownership before stopping or restarting
+      background workers on database commands
+    - #10983 Run the background worker scheduler as the database
+      owner instead of as superuser
+  - Features
+    - #10864 Improve continuous aggregate refresh performance by
+      updating the watermark once per batch
+    - #10878 Enable Adaptive Integer Compression (AIC) by default
+    - #10927 Remove user switching when allocating ids from the
+      internal catalog sequences
+    - #10953 Allow database owners to start, stop, and restart
+      background workers without superuser
+    - #10960 Run the telemetry job as the database owner instead of
+      the role that installed the extension
+  - Bugfixes
+    - #10075 Removing the bloom1_contains function and rejecting
+      anonymous record arrays in bloom1_contains_any
+    - #10296, #10745 Fix continuous aggregate refresh skipping the
+      last invalidated bucket for variable-sized buckets
+    - #10854 Correctly skip rows with conversion errors during COPY
+      FROM ON_ERROR ignore
+    - #10855 Enforce REJECT_LIMIT during COPY FROM on PostgreSQL 18
+      and later
+    - #10887 Fix "repalloc called with invalid pointer" when
+      compressing batches of more than 992 rows for certain data
+      patterns
+    - #10893 Fix typo in the columnar README example
+    - #10902 Fix concurrent UPDATE/DELETE on hypertables silently
+      skipping rows under READ COMMITTED
+    - #10919 Check schema CREATE privilege when creating a
+      continuous aggregate
+    - #10925 Create chunk constraints without switching to the
+      catalog owner
+    - #10961 Fix crash in decompress_chunk when the hypertable is
+      dropped concurrently
+    - #10961 Fix null dereference in in-memory recompression when
+      the compression settings are missing
+    - #10961 Fix stale chunk and hypertable state in compress_chunk
+      when a concurrent decompress or compression change commits
+    - #10962 Reset search_path after every COMMIT in the
+      columnstore policy
+    - #10964 Fix crash in cagg_validate_query when called with a
+      SELECT INTO statement
+    - #10964 Fix crash in cagg_validate_query when the user lacks
+      SELECT permission on the hypertable
+    - #10965 Verify the server certificate on telemetry SSL
+      connections
+    - #10967 Fix crash in show_policies when called more than once
+      in the same query
+    - #10968 Fix crash in add_policies and alter_policies when a
+      drop_created_before retention policy exists on the hypertable
+      or the continuous aggregate
+    - #10970 Fix ORDER BY pushdown for realtime continuous
+      aggregates with an ORDER BY in their definition
+    - #10988 Report a missing policy config key as a user error
+      instead of an internal error
+    - #10988 Restrict changing the config check function of a job
+      to the job ownerwhat
+    - #10989 Match job procedures by OID in DDL hooks
+    - #10991 Fix function overload in approximate_row_count
+    - #10993 Require ownership of the chunk, not just of the
+      hypertable, to do chunk operations on them
+  - GUCs
+    - compression_orderby_default_function: Function to use for
+      calculating default order_by setting for compression.
+      Default: timescaledb.compression_orderby_default_function
+    - compression_segmentby_default_function: Function to use for
+      calculating default segment_by setting for compression.
+      Default: timescaledb.compression_segmentby_default_function
+
+-------------------------------------------------------------------
 Tue Oct 20 16:51:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.31.0

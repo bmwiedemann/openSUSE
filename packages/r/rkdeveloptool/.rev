@@ -16,4 +16,12 @@ Required for flashing various Rockchip SoC based devices.</comment>
     <comment></comment>
     <requestid>933448</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8c4d75049951e4d5dc35bc54be96376a</srcmd5>
+    <version>20250307</version>
+    <time>1793817900</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394796</requestid>
+  </revision>
 </revisionlist>

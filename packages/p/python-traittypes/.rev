@@ -106,4 +106,20 @@
     <comment>- Dejavu: Skip testing xarray on  Python 3.9 (forwarded request 1154415 from bnavigator)</comment>
     <requestid>1154416</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3ed1d6c96469fb33e27ca5ef2cadbd32</srcmd5>
+    <version>0.2.3</version>
+    <time>1794236666</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.3:
+  * Remove _bad_values which is not validated and make traitlets
+    fail
+  * Passing dtype to Pandas.Series
+- Drop obsolete patches:
+  * python-traittypes-remove-nose.patch (upstreamed)
+  * python-fix-nptypes.patch (upstreamed)
+- Add python-traittypes-fix-tests.patch:
+  * Fix test suite failures with modern xarray and pandas</comment>
+    <requestid>1396189</requestid>
+  </revision>
 </revisionlist>

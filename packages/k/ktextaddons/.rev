@@ -113,4 +113,13 @@
   * 0001-Revert-Remove-default-destructor-which-allows-to-use.patch (forwarded request 1384760 from Vogtinator)</comment>
     <requestid>1384761</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>ee11ab617c2737447fbd36498fe2bdfb</srcmd5>
+    <version>2.2.0</version>
+    <time>1793989767</time>
+    <user>anag_factory</user>
+    <comment>- Add patch to prevent runtime breakages:
+  * 0001-Bump-soversion-for-each-release.patch (forwarded request 1394898 from krop)</comment>
+    <requestid>1395169</requestid>
+  </revision>
 </revisionlist>

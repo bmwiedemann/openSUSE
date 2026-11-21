@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 18 14:23:48 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.16.0:
+  * Rework query EXPLAIN compatibility for modern MySQL.
+  * Add JSON and TREE EXPLAIN formats in query analysis.
+  * Add runtime EXPLAIN ANALYZE support in query analysis.
+  * Quote current database names during query analysis.
+- Changes from 1.15.4:
+  * Extend MySQL 9.x compatibility through the 9.x series.
+  * Keep replication status field normalization limited to fields
+    used by built-in dashboards.
+  * Add tests for MySQL 9.x statement selection and InnoDB status
+    parsing.
+- Drop obsolete Group tag.
+
+-------------------------------------------------------------------
 Sat Jul 26 07:46:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - innotop 1.15.2:

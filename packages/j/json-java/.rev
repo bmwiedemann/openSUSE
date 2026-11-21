@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>1203980</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8d2f85b7ac4fb6dde5c1e7e32e72689c</srcmd5>
+    <version>20260814</version>
+    <time>1794318095</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-59171, bsc#1289695</comment>
+    <requestid>1396439</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,7 @@
 #
 # spec file for package google-guest-agent
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,12 +20,12 @@
 %define shortname guest-agent
 
 Name:           google-guest-agent
-Version:        20261022.00
+Version:        20261105.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
 Group:          System/Daemons
-URL:            https://%{provider_prefix}
+URL:            https://github.com/GoogleCloudPlatform/%{shortname}
 Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc

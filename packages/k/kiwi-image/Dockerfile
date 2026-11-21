@@ -42,7 +42,7 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.kiwi
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI KIWI Appliance Builder 10.3 (kiwi)"
-LABEL org.opencontainers.image.description="KIWI Appliance Builder 10.3 (kiwi) container based on the openSUSE Tumbleweed Base Container Image. This container is only supported in privileged mode."
+LABEL org.opencontainers.image.description="KIWI Appliance Builder 10.3 (kiwi) container based on the openSUSE Tumbleweed Base Container Image. Only supported in privileged mode."
 LABEL org.opencontainers.image.version="%%kiwi_version%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"

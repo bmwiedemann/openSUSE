@@ -329,4 +329,13 @@
     links</comment>
     <requestid>1369591</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>776cbcef8caab7654ec818bb1aef5c23</srcmd5>
+    <version>3.11.3</version>
+    <time>1795103701</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytz-2026.4.patch:
+  * Support changes required by pytz 2026.4.</comment>
+    <requestid>1398549</requestid>
+  </revision>
 </revisionlist>

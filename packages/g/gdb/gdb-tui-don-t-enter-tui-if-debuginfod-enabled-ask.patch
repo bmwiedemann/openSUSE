@@ -1,7 +1,7 @@
-From 83a5d9064208d705b490bed89f37ade4da3c4a29 Mon Sep 17 00:00:00 2001
+From e12fbf822ef7e14d7957a1e996ee8d09fc10cad4 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
 Date: Sat, 14 Mar 2026 15:29:05 +0100
-Subject: [PATCH 5/8] [gdb/tui] Don't enter TUI if debuginfod enabled == ask
+Subject: [PATCH 51/57] Don't enter TUI if debuginfod enabled == ask
 
 PR tui/31449 reports a SIGFPE when the debuginfod query happens while enabling
 TUI using the "tui enable" command:
@@ -313,7 +313,7 @@ index 00000000000..bc1a55a1b96
 +    }
 +}
 diff --git a/gdb/tui/tui.c b/gdb/tui/tui.c
-index 06a899e2418..5dabb9967ae 100644
+index 01aee2f1788..3e3a657a670 100644
 --- a/gdb/tui/tui.c
 +++ b/gdb/tui/tui.c
 @@ -41,6 +41,7 @@
@@ -324,9 +324,9 @@ index 06a899e2418..5dabb9967ae 100644
  
  #include <fcntl.h>
  
-@@ -392,6 +393,10 @@ tui_enable (void)
-   if (tui_active)
-     return;
+@@ -407,6 +408,10 @@ tui_enable (void)
+ 
+   tui_batch_rendering defer;
  
 +  if (debuginfod_enabled_ask_p ()
 +      && defaulted_query_auto_answers_p () != TRIBOOL_TRUE)

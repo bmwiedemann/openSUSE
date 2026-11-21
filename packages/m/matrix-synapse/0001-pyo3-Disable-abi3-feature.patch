@@ -25,14 +25,11 @@ Index: synapse/build_rust.py
  from setuptools_rust import Binding, RustExtension
  
  
-@@ -16,27 +14,11 @@ def build(setup_kwargs: dict[str, Any])
-         target="synapse.synapse_rust",
-         path=cargo_toml_path,
+@@ -18,25 +16,10 @@ def build(setup_kwargs: dict[str, Any])
          binding=Binding.PyO3,
--        # This flag is a no-op in the latest versions. Instead, we need to
--        # specify this in the `bdist_wheel` config below.
+         # This flag is a no-op in the latest versions. Instead, we need to
+         # specify this in the `bdist_wheel` config below.
 -        py_limited_api=True,
-+        # This flag is a no-op in the latest versions.
 +        py_limited_api=False,
          # We always build in release mode, as we can't distinguish
          # between using `poetry` in development vs production.
@@ -42,12 +39,12 @@ Index: synapse/build_rust.py
      setup_kwargs["zip_safe"] = False
 -
 -    # We look up the minimum supported Python version with
--    # `python_requires` (e.g. ">=3.10.0,<4.0.0") and finding the first Python
+-    # `python_requires` (e.g. ">=3.11.0,<4.0.0") and finding the first Python
 -    # version that matches. We then convert that into the `py_limited_api` form,
--    # e.g. cp310 for Python 3.10.
+-    # e.g. cp311 for Python 3.11.
 -    py_limited_api: str
 -    python_bounds = SpecifierSet(setup_kwargs["python_requires"])
--    for minor_version in itertools.count(start=10):
+-    for minor_version in itertools.count(start=11):
 -        if f"3.{minor_version}.0" in python_bounds:
 -            py_limited_api = f"cp3{minor_version}"
 -            break
@@ -55,16 +52,3 @@ Index: synapse/build_rust.py
 -    setup_kwargs.setdefault("options", {}).setdefault("bdist_wheel", {})[
 -        "py_limited_api"
 -    ] = py_limited_api
-Index: synapse/rust/Cargo.toml
-===================================================================
---- synapse.orig/rust/Cargo.toml
-+++ synapse/rust/Cargo.toml
-@@ -34,8 +34,6 @@ mime = "0.3.17"
- pyo3 = { version = "0.29.0", features = [
-     "macros",
-     "anyhow",
--    "abi3",
--    "abi3-py310",
-     # So we can pass `bytes::Bytes` directly back to Python efficiently,
-     # https://docs.rs/pyo3/latest/pyo3/bytes/index.html
-     "bytes",

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Nov 16 00:25:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on python-frostwork.
+
+-------------------------------------------------------------------
+Sat Nov 14 07:43:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.6.0:
+  * Dropped Python 3.10 and PyPy support; requires Python >= 3.11
+  * New dependency on frostwork >= 0.2.2 for encoding detection
+    and HTML base URL and meta refresh scanning
+  * html_to_unicode now detects the encoding the way Firefox does
+    and reports UTF-8 as utf-8; added html_encoding helper
+  * Encoding labels follow the Encoding Standard: UTF-32 no longer
+    supported, utf-16 is little-endian, gb2312 and gbk resolve
+    to gbk
+  * get_base_url and get_meta_refresh find URLs the way browsers
+    do and resolve them per WHATWG URL; ignore unparsable and
+    data: and javascript: base URLs
+  * safe_url_string parses URLs the way browsers do: slash
+    handling, percent-decoded hosts, numeric hosts as IPv4,
+    opaque non-special hosts, dot-segment resolution, empty
+    path serialized as /
+  * Deprecate safe_download_url
+  * resolve_encoding no longer resolves non-text and escape
+    codecs; parse_data_uri uses forgiving base64; is_url accepts
+    uppercase schemes and requires ://
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec: require python-frostwork >= 0.2.2, needed by the new
+  frostwork integration
+
+-------------------------------------------------------------------
 Thu Oct  1 16:01:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.5.0:

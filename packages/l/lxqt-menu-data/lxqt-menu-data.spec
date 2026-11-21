@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-menu-data
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global debug_package %{nil}
 Name:           lxqt-menu-data
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Menu files for LXQt Panel, Configuration Center and PCManFM-Qt
 License:        LGPL-2.1-or-later
@@ -29,11 +29,11 @@ Source2:        %{name}.keyring
 
 Patch1:         001-lxqt-applications-menu-2.0.0.patch
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(lxqt2-build-tools)
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 BuildArch:      noarch
 

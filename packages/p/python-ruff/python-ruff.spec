@@ -28,27 +28,27 @@
 %define origname python-ruff
 %bcond_without libalternatives
 Name:           %{origname}%{psuffix}
-Version:        0.17.3
+Version:        0.17.5
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 # Legal-Review-Notice: ruff itself is MIT, but the binary statically links
-# the vendored Rust dependencies. Re-derived on this re-vendor with
-# "cargo tree --offline -p ruff -e normal" over the vendored tree (299
-# unique crates; the count in earlier notices did not reproduce and is
-# corrected): the only copyleft licence in the linked graph is
-# MPL-2.0, from three crates -
-#  - colored, a direct dependency of ruff and ruff_linter,
-#  - option-ext, pulled in through shellexpand -> dirs -> dirs-sys,
-#  - version-ranges, pulled in through pyproject-toml -> pep508_rs ->
-#    pep440_rs.
-# r-efi offers an LGPL-2.1-or-later option but is UEFI-target-only and is
-# absent from the Linux graph. Everything else is permissive (MIT, MIT-0,
-# Apache-2.0, Unicode-3.0, Unicode-DFS-2016, BSD, ISC, Zlib, Unlicense,
-# CC0-1.0, WTFPL, BSL-1.0, PSF-2.0). MPL-2.0 section 3.2 is satisfied
-# because the complete vendor.tar.zst ships in the src.rpm.
+# the vendored Rust dependencies:
+# - re-derived on this re-vendor with "cargo tree --offline -p ruff
+#   -e normal" over the vendored tree (303 unique crates)
+# - MPL-2.0: colored, a direct dependency of ruff and ruff_linter
+# - MPL-2.0: option-ext, via shellexpand -> dirs -> dirs-sys
+# - MPL-2.0: version-ranges, via pyproject-toml -> pep508_rs ->
+#   pep440_rs
+# - r-efi offers LGPL-2.1-or-later but is UEFI-target-only and absent
+#   from the Linux graph
+# - everything else is permissive (MIT, MIT-0, Apache-2.0, Unicode-3.0,
+#   Unicode-DFS-2016, BSD, ISC, Zlib, Unlicense, CC0-1.0, WTFPL, BSL-1.0, PSF-2.0)
+# - MPL-2.0 section 3.2 is satisfied: the complete vendor.tar.zst
+#   ships in the src.rpm
 License:        MIT AND MPL-2.0
 URL:            https://github.com/astral-sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: prebuilt stack-switching stub for the wasm32 CPU target, unused by Linux builds
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 # upstream raised its MSRV to 1.97 in 0.16.10 (crates/ruff's workspace
@@ -63,7 +63,7 @@ BuildRequires:  rust >= 1.97
 # do not apply that, it makes the test flavour declare a phantom
 # python313-ruff-test subpackage that OBS then parses for scheduling.
 %if %{without test}
-BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module maturin >= 1.9.3}
 BuildRequires:  %{python_module pip}
 BuildRequires:  alts
 BuildRequires:  fdupes

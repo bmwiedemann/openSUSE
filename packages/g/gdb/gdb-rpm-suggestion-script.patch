@@ -33,7 +33,7 @@ diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
  * Man Pages::                   Manual pages
  * Copying::                     GNU General Public License says
                                  how you can copy and share @value{GDBN}
-@@ -50588,6 +50589,111 @@ Show the current verbosity setting.
+@@ -50986,6 +50987,111 @@ Show the current verbosity setting.
  
  @end table
  
@@ -969,7 +969,7 @@ diff --git a/gdb/testsuite/lib/gdb.exp b/gdb/testsuite/lib/gdb.exp
  
      # If DEBUGINFOD_URLS is set, gdb will try to download sources and
      # debug info for f.i. system libraries.  Prevent this.
-@@ -2610,6 +2611,18 @@ proc default_gdb_start { } {
+@@ -2850,6 +2851,18 @@ proc default_gdb_start { } {
  	}
      }
  

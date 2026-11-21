@@ -1,7 +1,7 @@
 #
 # spec file for package libusb-compat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,20 @@
 
 %define debug_package_requires libusb-0_1-5 = %{version}-%{release}
 Name:           libusb-compat
-Version:        0.1.8
+Version:        0.1.9
 Release:        0
 Summary:        libusb-1.0 Compatibility Layer for libusb-0.1
 License:        BSD-3-Clause AND LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://libusb.info/
 Source:         https://github.com/libusb/libusb-compat-0.1/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
 BuildRequires:  automake
+BuildRequires:  gcc
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libusb-1.0)
+BuildRequires:  pkgconfig(libusb-1.0) >= 0.9.1
 
 %description
 A compatibility layer allowing applications written for libusb-0.1 to
@@ -42,7 +43,6 @@ and walk like libusb-0.1.
 Version:        0.1.13
 Release:        0
 Summary:        libusb-1.0 Compatibility Library for libusb-0.1
-Group:          System/Libraries
 # libusb-compat-hide-libusb-1_0.patch hides this requirement
 Requires:       %(rpm -q --provides libusb-1_0-0 | grep libusb-1.0.so.0)
 # Special symbol for packages, that use libusb-0.1 API, but use libusb-1.0 features:
@@ -59,7 +59,6 @@ and walk like libusb-0.1.
 
 %package devel
 Summary:        libusb-1.0 Compatibility Layer for libusb-0.1
-Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libusb-0_1-4 = 0.1.13
 Requires:       libusb-1_0-devel
@@ -78,7 +77,7 @@ and walk like libusb-0.1.
 %setup -q
 
 %build
-./bootstrap.sh
+# Upstream 0.1.9 tarball ships a pre-generated configure (no bootstrap.sh).
 %configure --disable-static
 %make_build
 

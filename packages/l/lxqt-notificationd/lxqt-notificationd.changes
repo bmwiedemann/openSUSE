@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:20:23 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Replaced deprecated layershell codes.
+  * CMake maintenance.
+  * Used literal operators for Qt string types.
+
+-------------------------------------------------------------------
 Tue Apr 21 01:20:46 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

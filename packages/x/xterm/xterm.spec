@@ -19,11 +19,10 @@
 
 %define splitbin 0%{?suse_version} >= 1300
 Name:           xterm
-Version:        411
+Version:        412
 Release:        0
 Summary:        The basic X terminal program
 License:        MIT
-Group:          System/X11/Utilities
 URL:            https://invisible-island.net/xterm/xterm.html
 Source:         https://invisible-mirror.net/archives/xterm/xterm-%{version}.tgz
 Source1:        https://invisible-mirror.net/archives/xterm/xterm-%{version}.tgz.asc
@@ -47,13 +46,10 @@ Patch8:         xterm-decomposed_bitmaps.patch
 Patch9:         xterm-desktop-item-in-gnome-utilities-appfolder.patch
 BuildRequires:  bdftopcf
 BuildRequires:  groff
-BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-%if 0%{?suse_version} < 1600
-BuildRequires:  utempter-devel
-%endif
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xaw7)
@@ -62,6 +58,9 @@ Requires:       luit
 Recommends:     xorg-x11-fonts-legacy
 Provides:       XFree86:%{_prefix}/X11R6/bin/xterm
 Provides:       xorg-x11:%{_prefix}/X11R6/bin/xterm
+%if 0%{?suse_version} < 1600
+BuildRequires:  utempter-devel
+%endif
 %if %{splitbin}
 Requires:       %{name}-bin
 %endif
@@ -78,7 +77,6 @@ This package contains the basic X.Org terminal program desktop launcher.
 
 %package bin
 Summary:        The basic X terminal program
-Group:          System/X11/Utilities
 Requires:       xterm-resize = %{version}-%{release}
 
 %description bin
@@ -87,7 +85,6 @@ This package contains the basic X.Org terminal program.
 
 %package resize
 Summary:        Set environment and terminal settings to current window size
-Group:          System/X11/Utilities
 
 %description resize
 Prints a shell command for setting the appropriate environment variables to
@@ -100,7 +97,7 @@ bunzip2 %{basename:%{SOURCE8}} %{basename:%{SOURCE9}}
 
 %build
 %define xappdefs   %{_datadir}/X11/app-defaults
-%define xfontsd    %{_datadir}/fonts
+%define xfontsd    %{_fontsdir}
 %define xterminfo  %{_prefix}/lib/X11%{_sysconfdir}
 
 %configure \
@@ -167,9 +164,9 @@ install -m 644 *.pcf.gz %{buildroot}%{xfontsd}/misc/
 %{_bindir}/koi8rxterm
 %{_bindir}/Backarrow2Delete
 %{_bindir}/Backarrow2BackSpace
-%{_mandir}/man1/xterm.1.gz
-%{_mandir}/man1/koi8rxterm.1.gz
-%{_mandir}/man1/uxterm.1.gz
+%{_mandir}/man1/xterm.1%{?ext_man}
+%{_mandir}/man1/koi8rxterm.1%{?ext_man}
+%{_mandir}/man1/uxterm.1%{?ext_man}
 %dir %{xterminfo}
 %{xterminfo}/xterm.termcap
 %{xterminfo}/xterm.terminfo

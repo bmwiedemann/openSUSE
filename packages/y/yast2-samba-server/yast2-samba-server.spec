@@ -53,7 +53,7 @@ Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-users
 
 # bnc #386473, recommend yast2-samba-server when installaing these packages
-Supplements:    samba
+Supplements:    (samba and yast2)
 
 Supplements:    autoyast(samba-server)
 

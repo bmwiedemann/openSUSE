@@ -19,23 +19,18 @@
 %global DBusName com.github.FontManager.FontManager
 %global DBusName2 com.github.FontManager.FontViewer
 Name:           font-manager
-Version:        0.9.4
+Version:        0.9.6
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later
 URL:            https://fontmanager.github.io
 Source0:        https://github.com/FontManager/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
-Patch1:         0001-reproducible-build.patch
-# PATCH-FIX-UPSTREAM 0002-Fix-compilation-error-with-newer-Vala-versions.patch -- based on commit e2ad529a
-# Needs vala >= 0.56.19 (Tumbleweed only); Leap 16.x ships 0.56.18
-Patch2:         0002-Fix-compilation-error-with-newer-Vala-versions.patch
 BuildRequires:  appstream-glib
 BuildRequires:  gettext-runtime
 BuildRequires:  libgio-2_0-0 >= 2.7
 BuildRequires:  libgmodule-2_0-0 >= 2.50
-BuildRequires:  meson >= 0.59
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
-BuildRequires:  vala >= 0.56
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(fontconfig) >= 2.12
 BuildRequires:  pkgconfig(freetype2) >= 2.10
@@ -53,6 +48,8 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
 BuildRequires:  pkgconfig(pango) >= 1.45
 BuildRequires:  pkgconfig(sqlite3) >= 3.35
 BuildRequires:  pkgconfig(thunarx-3)
+BuildRequires:  pkgconfig(vapigen) >= 0.56
+BuildRequires:  pkgconfig(vapigen-0.56) >= 0.56
 BuildRequires:  pkgconfig(webkitgtk-6.0) >= 2.4
 Requires:       %{name}-common
 Requires:       font-viewer
@@ -110,10 +107,6 @@ This package provides integration with the Thunar file manager.
 
 %prep
 %setup -q
-%patch -P 1 -p1
-%if 0%{?suse_version} >= 1699
-%patch -P 2 -p1
-%endif
 
 %build
 %meson \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:39:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python-pycdio-swig-python3.patch: replace obsolete
+  PyString_FromString with PyUnicode_FromString in swig/pyiso9660.i.
+
+-------------------------------------------------------------------
 Wed Jun  4 09:04:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

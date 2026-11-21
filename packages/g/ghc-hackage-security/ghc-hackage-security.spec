@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.3.3
+Version:        0.6.4.0
 Release:        0
 Summary:        Hackage security library
 License:        BSD-3-Clause

@@ -33,4 +33,32 @@
     <comment>1</comment>
     <requestid>1372558</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d15267a568750ee3125b9320e815d8d4</srcmd5>
+    <version>4.4.0</version>
+    <time>1794838465</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.4.0:
+  * Support Python 3.14 and 3.15 and remove Python 3.9 support
+  * Add comprehensive directive support to DSL module
+  * Feature dsl schema shortcuts
+  * Support HTTP multipart subscriptions in AIOHTTPTransport
+  * show oneOf in introspection query
+  * Add `extra_args` parameter to subscribe() for aiohttp transport
+  * Add extensions support to GraphQLRequest
+  * Feature support httpx2
+  * Fix DeprecationWarning in test_requests_batch online tests
+  * Don't fall back to Apollo when not in subprotocols
+  * DSL using immutable graphql-core AST classes
+  * Support standard http.cookiejar.CookieJar in RequestsHTTPTransport
+    cookies typing
+  * Fix gql to work with graphql-core 3.3.0rc0
+  * Skip multipart parts with empty Content-Type instead of raising
+  * Coerce a single value to a list when serializing list variables
+  * Refactor DSL code to use Self type
+  * Fix python 3.9 dev dependencies
+  * Replace archived backoff with tenacity
+- Drop patch tests.patch, included upstream.</comment>
+    <requestid>1397808</requestid>
+  </revision>
 </revisionlist>

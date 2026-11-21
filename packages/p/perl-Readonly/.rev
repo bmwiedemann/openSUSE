@@ -214,4 +214,13 @@ Use SPDX format (http://www.spdx.org/licenses) (forwarded request 116757 from ba
   	- Minor typo patch from Gregor Herrmann &lt;gregoa@debian.org&gt; fixes #21</comment>
     <requestid>404104</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f607e649a26a7c8e3afe30750b2f1cbb</srcmd5>
+    <version>2.50.0</version>
+    <time>1794236574</time>
+    <user>anag_factory</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1395929</requestid>
+  </revision>
 </revisionlist>

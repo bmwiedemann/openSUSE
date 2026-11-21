@@ -17,45 +17,47 @@
 
 
 %global shlib_name libghostty-vt0
-%global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dstrip=false -Dversion-string=%{version} -fsys=freetype -fsys=harfbuzz -fsys=fontconfig -fsys=libpng -fsys=zlib -fsys=oniguruma -fsys=glslang -fsys=spirv-cross -fsys=simdutf -fsys=gtk4-layer-shell -fsys=highway %{?_smp_mflags}
 # See editors/vim vim.spec
 %define site_runtimepath %{_datadir}/vim/site
-
 %bcond_without  standalone_terminfo
-
 Name:           ghostty
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
+%global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p --build-id=sha1 -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dstrip=false -Dversion-string=%{version} -fsys=freetype -fsys=harfbuzz -fsys=fontconfig -fsys=libpng -fsys=zlib -fsys=oniguruma -fsys=glslang -fsys=spirv-cross -fsys=simdutf -fsys=gtk4-layer-shell -fsys=highway %{?_smp_mflags}
 Summary:        Cross-platform terminal emulator
 License:        MIT AND OFL-1.1
 URL:            https://github.com/ghostty-org/ghostty
 # can be verified with:
 # minisign -V -P 'RWQlAjJC23149WL2sEpT/l0QKy7hMIFhYdQOFy0Z7z7PbneUgvlsnYcV' -m ghostty-%%{version}.tar.gz
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
-Source2:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
 Source1:        vendor.tar.zst
+Source2:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
 Source98:       %{name}-rpmlintrc
 Source99:       vendor.sh
+Source97:       vendor-build-fetch-all.sh
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pandoc
 BuildRequires:  pkgconfig
+BuildRequires:  python-nautilus-common-files
+BuildRequires:  python3-gobject
+BuildRequires:  zig >= 0.17.0
 BuildRequires:  zstd
-BuildRequires:  zig >= 0.15.2
 BuildRequires:  cmake(glslang)
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(graphene-1.0)
-BuildRequires:  pkgconfig(gtk4)
-BuildRequires:  pkgconfig(gtk4-layer-shell-0)
+BuildRequires:  pkgconfig(gtk4) >= 4.18
+BuildRequires:  pkgconfig(gtk4-layer-shell-0) >= 1.0.4
 BuildRequires:  pkgconfig(harfbuzz)
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.7
 BuildRequires:  pkgconfig(libhwy)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(ncurses)
@@ -68,8 +70,6 @@ BuildRequires:  pkgconfig(spirv-cross-c-shared)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  python-nautilus-common-files
-BuildRequires:  python3-gobject
 %if %{with standalone_terminfo}
 Requires:       terminfo-ghostty = %{version}
 %else
@@ -83,7 +83,6 @@ emulator that uses platform-native UI and GPU acceleration.
 
 %package        bash-completion
 Summary:        Bash Support for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -94,7 +93,6 @@ Bash support for %{name}.
 
 %package        fish-completion
 Summary:        Fish Support for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
@@ -105,7 +103,6 @@ Fish support for %{name}.
 
 %package        zsh-completion
 Summary:        Zsh Support for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
@@ -116,7 +113,6 @@ Zsh support for %{name}.
 
 %package        nushell-completion
 Summary:        Nushell Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       nushell
 Supplements:    (%{name} and nushell)
@@ -127,7 +123,6 @@ Optional Nushell command-line completion support for %{name}.
 
 %package doc
 Summary:        Documentation for %{name}
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -186,7 +181,6 @@ and maintaining terminal state, extracted directly from Ghostty's real-world pro
 
 %package devel
 Summary:        Development files for for ghostty's VT library
-Group:          Development/Libraries/C and C++
 Requires:       %{shlib_name} = %{version}
 
 %description devel
@@ -205,7 +199,11 @@ zig build %{common_build_flags}
 
 %install
 export DESTDIR=%{buildroot}
-zig build %{common_build_flags} --prefix %{_prefix} --prefix-lib-dir %{_libdir}
+# zig 0.17 does not put DESTDIR in front of an absolute lib dir
+zig build %{common_build_flags} --prefix %{_prefix} --prefix-lib-dir %{_lib}
+# zig 0.17 does not install the symlink tic creates for the ghostty alias
+mkdir -p %{buildroot}%{_datadir}/terminfo/g
+ln -s ../x/xterm-ghostty %{buildroot}%{_datadir}/terminfo/g/ghostty
 mv %{buildroot}%{_datadir}/vim/vimfiles \
   %{buildroot}%{site_runtimepath}
 %if %{without standalone_terminfo}
@@ -213,6 +211,17 @@ rm -rv %{buildroot}%{_datadir}/terminfo/
 %endif
 
 mv %{buildroot}%{_datadir}/pkgconfig/ %{buildroot}%{_libdir}
+# The generated .pc carries the DESTDIR-prefixed prefix and a fixed lib dir
+sed -i -e 's|^prefix=.*|prefix=%{_prefix}|' -e 's|^libdir=.*|libdir=%{_libdir}|' \
+  %{buildroot}%{_libdir}/pkgconfig/libghostty-vt.pc
+rm %{buildroot}%{_libdir}/libghostty-vt.a %{buildroot}%{_libdir}/pkgconfig/libghostty-vt-static.pc
+
+for pc in %{buildroot}%{_libdir}/pkgconfig/libghostty-vt*.pc; do
+  sed -i \
+    -e 's|^prefix=.*|prefix=%{_prefix}|' \
+    -e 's|^libdir=.*|libdir=%{_libdir}|' \
+    "$pc"
+done
 
 %find_lang com.mitchellh.ghostty
 

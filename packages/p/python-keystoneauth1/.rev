@@ -518,4 +518,12 @@ update to version 2.12.0
   * trivial: Update docs for Adapter.register_conf_options</comment>
     <requestid>1392489</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5275fb4fbaa703c6870e2b66dafdc3d7</srcmd5>
+    <version>5.18.1</version>
+    <time>1794591243</time>
+    <user>anag_factory</user>
+    <comment>- allow newer urllib3</comment>
+    <requestid>1397199</requestid>
+  </revision>
 </revisionlist>

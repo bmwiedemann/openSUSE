@@ -18,10 +18,10 @@
 
 %define libopenmpt libopenmpt0
 %define libopenmpt_modplug libopenmpt_modplug1
-%define libopenmpt_modplug_version 0.8.9.0
+%define libopenmpt_modplug_version 0.8.10.0
 
 Name:           libopenmpt
-Version:        0.8.9
+Version:        0.8.10
 Release:        0
 Summary:        C++ and C library to decode tracker music files
 License:        BSD-3-Clause

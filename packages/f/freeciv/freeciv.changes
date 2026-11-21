@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  8 06:00:02 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.2.7:
+  * https://freeciv.fandom.com/wiki/NEWS-3.2.7
+- Drop Leap 15 workarounds in spec file
+
+-------------------------------------------------------------------
 Fri Sep  4 18:23:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with SDL3

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov  5 18:30:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 0.9.1:
+  * Moves to circular-buffer 2.x, picking up a memory-safety fix
+  * Add initial bpf_link_info support
+  * Add process name to filtering
+  * Add Nix flake dev shell for local development
+- new upstream home at https://github.com/jfernandez/bpftop
+
+-------------------------------------------------------------------
 Tue Sep  2 04:48:55 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.7.1:

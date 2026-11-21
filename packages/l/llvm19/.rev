@@ -218,4 +218,15 @@
 </comment>
     <requestid>1373281</requestid>
   </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>327a3e584709b2d15c2917771a1d0284</srcmd5>
+    <version>19.1.7</version>
+    <time>1793817909</time>
+    <user>anag_factory</user>
+    <comment>- Update keyring.
+- Build compiler-rt builtins for wasm32-wasip1 and ship them in the clang-rpm,
+  so that clang can link wasm32-wasip1 binaries with a WASI sysroot.
+</comment>
+    <requestid>1394814</requestid>
+  </revision>
 </revisionlist>

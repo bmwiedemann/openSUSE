@@ -22,10 +22,11 @@ Version:        2.5.5
 Release:        0
 Summary:        A Python implementation of Markdown
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/trentm/python-markdown2
 Source:         https://files.pythonhosted.org/packages/source/m/markdown2/markdown2-%{version}.tar.gz
 Patch1:         0001-Avoid-overlapping-regex-matches-that-trigger-excessi.patch
+# PATCH-FIX-UPSTREAM bsc#1288876 Based on gh#trentm/python-markdown2#751
+Patch2:         CVE-2026-118694-unclosed-inline-link-parentheses.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pygments}
 BuildRequires:  %{python_module setuptools}

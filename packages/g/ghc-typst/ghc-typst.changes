@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Tue Nov 10 17:51:40 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.12.1.
+  ## 0.12.1
+
+    * Tests: read top-level test files as raw bytes. This matches how
+      imports and the executable read files. Previously the tests read
+      them through a text handle, which should strip CRs on Windows.
+
+    * Tests: handle Windows paths and line endings. Golden files record
+      paths with forward slashes, and git converts them to CRLF when
+      checking them out on Windows.
+
+    * Switch to yamlet (#110, Théophile Choutri de Tarlé). This gives us
+      order-preserving mappings, as in typst itself, as well as correct
+      YAML semantics.
+
+    * Identify filepath in package relative to package root (#111).
+      This ensures that when we are interpreting modules that
+      don't reside at the package root, we get the right `evalLocalDir`
+      and resolve relative imports correctly.
+
+    * Fix path of entry point module for imports.
+
+    * Match Typst shorthand reference lexing (#108, Samuel Huang).
+      Require a label character after @, greedily consume internal
+      punctuation, and keep supplement failures fatal.
+
+-------------------------------------------------------------------
+Thu Sep 24 03:33:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.12.
+  ## 0.12
+
+    * Support 'in' operator on modules (#106).
+
+    * Return an error instead of crashing on integer division by zero (#103,
+      Vladimir Babin).
+
+    * Add support for the stroke type (#76, #107, Samuel Huang)
+      [API change] Adds `VStroke` to `Val`, `TStroke` to `ValType`,
+      `Stroke`, `emptyStroke`.
+
+-------------------------------------------------------------------
+Fri Aug 28 05:47:12 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.11.0.1.
+  ## 0.11.0.1
+
+    * Fix `calc.pow` so it accepts negative exponents (#102).
+
+-------------------------------------------------------------------
+Tue Jul 21 16:09:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update typst to version 0.11.
+  ## 0.11
+
+    * Fall back on defaults for settable element fields (#100).
+      In typst, settable fields like list.marker are materialized when
+      an element is passed to a show rule, so e.g. `it.marker` works in
+      `#show list: it => ..` even when no explicit marker was given.
+      Previously such accesses caused an evaluation failure in typst-hs
+      (e.g. with the cheq package).
+
+    * flake.nix: also ensure presence of typst compiler, for testing.
+
+    * Support for typst 0.15 features:
+
+      + Switch to typst-symbols 0.3 (typst 0.15 symbols).
+      + Add `calc.asinh`, `calc.acosh`, `calc.atanh`, and `calc.erf`.
+          This adds a dependency on the erf package.
+      + Add `inclusive` parameter to `range`.
+      + Add `map` and `filter` methods on dictionaries and arguments.
+      + Support `base` parameter in the `int` constructor, and add
+        `int.min` and `int.max`. Field access on a type now falls back to
+        the type's scope, which also makes `str.to-unicode` and
+        `str.from-unicode` accessible.
+      + Make delimiter symbols (e.g. `chevron.l`) callable in math mode to
+        produce an `lr` element.
+      + Add `html` module, with `html.elem`, `html.frame`, and the typed
+        HTML element functions (`html.div`, `html.span`, etc.).
+      + Add the `path` type [API change: adds `VPath` to `Val` and `TPath`
+        to `ValType`]. Relative paths are resolved at construction time,
+        relative to the constructing file. Paths are accepted wherever
+        file-path strings are accepted (`read`, `csv`, `json`, `image`,
+        `bibliography`, etc.); in element fields they are coerced to
+        strings. The deprecated `path` visualize element is removed.
+      + Add `curve` element (the replacement for the removed `path`
+        element), with its `curve.move`, `curve.line`, `curve.quad`,
+        `curve.cubic`, and `curve.close` functions.
+
+-------------------------------------------------------------------
 Mon Jun  1 20:06:59 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update typst to version 0.10.

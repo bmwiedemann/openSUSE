@@ -53,8 +53,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 29.7.2
-%define docker_git_version 6a43e3d5af
+%define docker_real_version 29.9.2
+%define docker_git_version 0367cbeb49
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -62,7 +62,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.36.1
+%define buildx_version 0.38.1
 %endif
 
 # Used when generating the "build" information for Docker version. The value of

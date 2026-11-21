@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:36:29 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Add 0002-fix-youtube-streams.patch to allow QMPlay2 to wait for
+  YouTube streams when using yt-dlp
+
+-------------------------------------------------------------------
 Sun Aug  2 11:40:18 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 26.08.02:

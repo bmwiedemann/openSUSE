@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Nov  5 01:14:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 26.11.1:
+   * Security (CVE-2026-111497): Raised the compress extra requirement
+     floors to brotli >= 1.2.1 (CPython) and brotlicffi >= 1.2.1.0
+     (PyPy) to address an out-of-bounds write in the Brotli decoder.
+     (bsc#1288235)
+   * Standardized all four WebSocket per-message compression extensions
+     (permessage-deflate, -bzip2, -brotli, -snappy) to uniformly enforce
+     the maxMessagePayloadSize decompression budget.
+   * Added PayloadCorruptError (mapped to WebSocket close code 1007) for
+     corrupt compressed payloads and ensured asyncio connections drop on
+     unhandled receive errors.
+   * Fixed permessage-brotli failing on the second message of a
+     connection and required brotli >= 1.2.0 for bounded decompression
+     via output_buffer_limit.
+   * Removed python-snappy from the default compress extra so it remains
+     an optional dependency when native libsnappy is installed.
+   * Deferred loading the vendored FlatBuffers runtime until a
+     FlatBuffers message is actually built or parsed, rather than on
+     every import of autobahn.
+   * Avoided eagerly importing numpy on WebSocket-only imports, reducing
+     per-process memory overhead by 13-17 MB on CPython and preventing
+     broken numpy installations from breaking imports.
+   * Fixed Python 3.14 compatibility across asyncio entry points
+     (ApplicationRunner.run(), Component.start(), run(), and WebSocket
+     factories) when no implicit event loop exists.
+   * Fixed ApplicationSession.call() on the asyncio backend to raise the
+     underlying payload codec error instead of an unrelated
+     AttributeError.
+   * Updated dependency floors for cryptography >= 50, zope.interface >=
+     6.2, and cbor2 >= 6.1.0.
+   * Added test coverage for compressor version floors and WebSocket-only
+     import isolation.
+- Refreshed patch no-flatc-entrypoint.patch
+
+-------------------------------------------------------------------
 Mon Sep 21 04:46:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Do not ship twisted/plugins/dropin.cache to make package build reproducible

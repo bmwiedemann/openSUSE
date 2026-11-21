@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Nov 14 23:24:21 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Restored cmake-files to cmake(MT32Emu) (it's needed for dosbox).
+- Switched to Qt6.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:35:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.8.6
+  * Fixed several inaccuracies in the audio renderer and improved
+    performance. The floating point renderer has an option to use
+    lookup tables to speedup computations of the math functions
+    once again, yet with a higher accuracy provided. This is
+    controlled via Cmake configuration property
+    libmt32emu_MATH_TYPE_FOR_FLOAT_RENDERER, which by default
+    enables the optimisation for the maximum performance having
+    sufficient CPU resources. 
+    Note, in most cases the audio output is no longer
+    bit-identical to one produced by previous versions, albeit
+    there must be no audible differences. (#148).
+
+-------------------------------------------------------------------
+Tue Nov  3 16:21:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.8.5
+  * Fixed a portability issue in unit tests. (#150).
+
+-------------------------------------------------------------------
+Tue Nov  3 09:51:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 2.8.4
+  * Fixed a heap buffer overflow in the MIDI stream parser that
+    occurred when the client submitted a fragmented SysEx message
+    with the first fragment exceeding the maximum supported size.
+    (#149).
+
+-------------------------------------------------------------------
 Sun Jun  7 17:50:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.8.3

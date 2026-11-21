@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2-0-tss
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        4.1.3
+Version:        4.2.1
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -25,7 +25,7 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-tss
 Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{version}/tpm2-tss-%{version}.tar.gz.asc
-# curl https://github.com/williamcroberts.gpg > tpm2-tss.keyring
+# curl https://github.com/moritzbuhl.gpg > tpm2-tss.keyring
 Source2:        tpm2-tss.keyring
 Source3:        baselibs.conf
 BuildRequires:  /usr/sbin/groupadd
@@ -37,6 +37,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libopenssl) >= 3
+BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 # The same user is employed by trousers (and was employed by the old
@@ -77,8 +78,10 @@ Requires:       libtss2-tcti-cmd0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
 Requires:       libtss2-tcti-i2c-helper0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
+Requires:       libtss2-tcti-null0 = %{version}
 Requires:       libtss2-tcti-pcap0 = %{version}
 Requires:       libtss2-tcti-spi-helper0 = %{version}
+Requires:       libtss2-tcti-spi-ltt2go0 = %{version}
 Requires:       libtss2-tcti-spidev0 = %{version}
 Requires:       libtss2-tcti-swtpm0 = %{version}
 Requires:       libtss2-tctildr0 = %{version}
@@ -163,6 +166,15 @@ Group:          System/Libraries
 TPM Command Transmission Interface library for communicating using the
 protocol exposed by the Microsoft software TPM2 simulator.
 
+%package -n libtss2-tcti-null0
+Summary:        TCTI interface library that does not connect to any TPM
+Group:          System/Libraries
+
+%description -n libtss2-tcti-null0
+TPM Command Transmission Interface library that is not connected to
+any TPM. It can be used by applications that only need ESYS
+functionality that does not require TPM access.
+
 %package -n     libtss2-fapi1
 Summary:        FAPI interface library
 Group:          System/Libraries
@@ -231,6 +243,15 @@ the details of communication with a TPM via SPI protocol. It uses user
 supplied methods for SPI and timing operations in order to be platform
 independent.
 
+%package -n     libtss2-tcti-spi-ltt2go0
+Summary:        TCTI interface library for the LetsTrust-TPM2Go USB TPM
+Group:          System/Libraries
+
+%description -n libtss2-tcti-spi-ltt2go0
+A TCTI module for communication with the LetsTrust-TPM2Go, a TPM
+attached via a USB-to-SPI bridge. It uses libusb and the spi-helper
+TCTI to access the TPM.
+
 %package -n     libtss2-tcti-i2c-helper0
 Summary:        TCTI i2c interface library
 Group:          System/Libraries
@@ -251,7 +272,8 @@ export PATH="$PATH:%{_sbindir}"
     --with-udevrulesdir=%{_udevrulesdir} \
     --with-runstatedir=%{_rundir} \
     --with-tmpfilesdir=%{_tmpfilesdir} \
-    --with-sysusersdir=%{_sysusersdir}
+    --with-sysusersdir=%{_sysusersdir} \
+    --enable-tcti-spi-ltt2go
 %make_build PTHREAD_LDFLAGS=-pthread
 
 %install
@@ -262,6 +284,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{udev_rule_file}
 # Conflicts with system-users
 rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
+%define udev_ltt2go_rule_file 90-ltt2go.rules
+mv %{buildroot}%{_udevrulesdir}/ltt2go-udev.rules %{buildroot}%{_udevrulesdir}/%{udev_ltt2go_rule_file}
 
 %post
 %{_bindir}/udevadm trigger -s tpm -s tpmrm || :
@@ -281,6 +305,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-tcti-spidev0 -p /sbin/ldconfig
 %post -n libtss2-tcti-mssim0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-mssim0 -p /sbin/ldconfig
+%post -n libtss2-tcti-null0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-null0 -p /sbin/ldconfig
 %post -n libtss2-mu0 -p /sbin/ldconfig
 %postun -n libtss2-mu0 -p /sbin/ldconfig
 %post -n libtss2-rc0 -p /sbin/ldconfig
@@ -297,6 +323,8 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %postun -n libtss2-tcti-pcap0 -p /sbin/ldconfig
 %post -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-spi-helper0 -p /sbin/ldconfig
+%post -n libtss2-tcti-spi-ltt2go0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-spi-ltt2go0 -p /sbin/ldconfig
 %post -n libtss2-tcti-i2c-helper0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-i2c-helper0 -p /sbin/ldconfig
 
@@ -307,6 +335,7 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %{_mandir}/man5/*
 %{_mandir}/man7/tss2-*
 %{_udevrulesdir}/%{udev_rule_file}
+%{_udevrulesdir}/%{udev_ltt2go_rule_file}
 %dir %{_sysconfdir}/tpm2-tss/
 %config %{_sysconfdir}/tpm2-tss/fapi-config.json
 %dir %{_sysconfdir}/tpm2-tss/fapi-profiles
@@ -341,6 +370,9 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 %files -n libtss2-tcti-mssim0
 %{_libdir}/libtss2-tcti-mssim.so.*
 
+%files -n libtss2-tcti-null0
+%{_libdir}/libtss2-tcti-null.so.*
+
 %files -n libtss2-fapi1
 %{_libdir}/libtss2-fapi.so.*
 
@@ -366,6 +398,9 @@ rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %files -n libtss2-tcti-spi-helper0
 %{_libdir}/libtss2-tcti-spi-helper.so.*
+
+%files -n libtss2-tcti-spi-ltt2go0
+%{_libdir}/libtss2-tcti-spi-ltt2go.so.*
 
 %files -n libtss2-tcti-i2c-helper0
 %{_libdir}/libtss2-tcti-i2c-helper.so.*

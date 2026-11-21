@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:34:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.60.1
+  - Bug Fixes:
+    - Fix annotate saving backup.info to the default repository.
+      (Reviewed by Stefan Fercot, Douglas J Hunley.)
+    - Fix possible block incremental restore failure on SFTP
+      storage. (Reviewed by Douglas J Hunley. Reported by
+      Fineline19.)
+    - Fix use of SFTP file handles after a reconnect. (Reviewed by
+      Douglas J Hunley.)
+    - Fix excessive memory use by the memory context free list.
+      (Fixed by Vasiliy Koshkin. Reviewed by David Steele, Douglas
+      J Hunley.)
+    - Do not lower a minimum TLS version set by the OpenSSL config.
+      (Reviewed by Douglas J Hunley, Stefan Fercot.)
+    - Fix reporting of OpenSSL errors. (Reviewed by Douglas J
+      Hunley, Stefan Fercot.)
+  - Documentation Improvements:
+    - Document TLS settings skipped when repo-storage-verify-tls=n.
+
+-------------------------------------------------------------------
 Sun Oct 18 11:33:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.60.0

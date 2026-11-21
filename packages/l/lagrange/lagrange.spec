@@ -20,13 +20,13 @@
 %define tui_app_id fi.skyjake.clagrange
 
 Name:           lagrange
-Version:        1.21.2
+Version:        2.0.3
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
 URL:            https://gmi.skyjake.fi/lagrange
 Source0:        https://git.skyjake.fi/skyjake/lagrange/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.10
+BuildRequires:  cmake >= 3.15
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -34,13 +34,14 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(fribidi)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(ncursesw) >= 6
 BuildRequires:  pkgconfig(openssl)
-# https://github.com/skyjake/lagrange/issues/768
-BuildRequires:  pkgconfig(sdl2) >= 2.0.22
+BuildRequires:  pkgconfig(opusfile)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -55,6 +56,19 @@ Summary:        TUI client for browsing Geminispace
 %description -n clagrange
 Clagrange is a TUI client for browsing Geminispace.
 
+%package -n gmget
+Summary:        A simple curl-like tool for making Gemini requests
+
+%description -n gmget
+gmget is a simple curl-like tool for making Gemini requests on the command line
+using Lagrange's identities and user data.
+
+%package -n lgrsyncd
+Summary:        sync server for Lagrange's user data
+
+%description -n lgrsyncd
+lgrsyncd is the sync server for Lagrange's user data sync.
+
 %prep
 %setup -q
 
@@ -62,10 +76,11 @@ Clagrange is a TUI client for browsing Geminispace.
 %cmake \
     -DTFDN_ENABLE_SSE41=NO \
     -DENABLE_TUI=YES
-%cmake_build
+%cmake_build all lgrsyncd
 
 %install
 %cmake_install
+%cmake_install -C sync
 %suse_update_desktop_file %{gui_app_id} WebBrowser
 %suse_update_desktop_file %{tui_app_id} WebBrowser
 
@@ -87,5 +102,12 @@ Clagrange is a TUI client for browsing Geminispace.
 %dir %{_datadir}/icons/hicolor/256x256
 %dir %{_datadir}/icons/hicolor/256x256/apps
 %{_datadir}/icons/hicolor/256x256/apps/%{tui_app_id}.png
+
+%files -n gmget
+%{_bindir}/gmget
+
+%files -n lgrsyncd
+%{_bindir}/lgrsyncd
+%doc sync/lgrsyncd.service.example
 
 %changelog

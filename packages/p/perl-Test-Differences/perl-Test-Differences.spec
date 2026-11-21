@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Differences
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,17 @@
 
 %define cpan_name Test-Differences
 Name:           perl-Test-Differences
-Version:        0.720.0
+Version:        0.730.0
 Release:        0
-# 0.72 -> normalize -> 0.720.0
-%define cpan_version 0.72
+# 0.73 -> normalize -> 0.730.0
+%define cpan_version 0.73
 #Upstream:  All Rights Reserved. You may use, distribute and modify this software under the terms of the GNU public license, any version, or the Artistic license.
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Test strings and data structures and show differences if not ok
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DC/DCANTRELL/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

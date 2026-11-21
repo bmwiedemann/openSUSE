@@ -1,4 +1,206 @@
 -------------------------------------------------------------------
+Fri Nov 13 18:09:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20261113.
+  git-annex (10.20261113) upstream; urgency=medium
+
+    * Added transfers command, displays a live view of transfers.
+    * Don't prompt for verification of proxied remotes, which is not
+      necessary and didn't work. (Fixes reversion in 10.20261026.)
+    * p2phttp: When --directory is used to serve a large number of
+      repositories, limit the amount of git helper processes and open files.
+    * Fix buggy handling of a submodule in a linked git worktree.
+    * Fix bug in parsing the P2P protocol that caused breakage when filenames
+      contained unicode multibyte space characters.
+    * Fix mimetype and mimencoding detection of non-ascii filenames
+      in non-unicode locales.
+    * Avoid display issues with multiple progress meters when not in a
+      unicode locale.
+    * Botan is enabled by default; removed build flag.
+    * git-annex.cabal: Switch from magic to libmagic.
+    * Allow the MAGIC environment variable to override the bundled magic file
+      location.
+    * The Linux arm64-ancient build has reached end of security support
+      and will be removed after this release. Android users are recommended
+      to switch to running `pkg install git-annex` inside termux.
+    * NoLLMDependencies: Update for network and http-semantics.
+    * Fix build when the Memory build flag is disabled.
+    * Fix testremote failure with p2phttp remote.
+      (Reversion from 10.20261005)
+
+- refresh "0001-Build-with-ram-instead-of-memory-package-to-support-.patch"
+
+-------------------------------------------------------------------
+Thu Nov  5 18:53:04 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Enable support for Blake3, Botan, and XXH3.
+
+-------------------------------------------------------------------
+Mon Oct 26 18:01:10 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20261026.
+  git-annex (10.20261026) upstream; urgency=high
+
+    * This releases fixes a security hole that allowed private data
+      exfiltration from special remotes. (CVE-2026-112818)
+      https://git-annex.branchable.com/security/cross_repository_data_exfiltration_via_special_remote/
+    * verifyremote: New command, used to verify the configuration of special
+      remotes is safe.
+    * enableremote: Display configuration and prompt for verifyremote to be
+      run. Until it is verified, the special remote cannot be used,
+      and git pushes to all remotes will be prevented.
+    * When a special remote has been autoenabled, allow it to be used without
+      verification, but prevent sending annexed files or git pushes to any
+      remote until it is verified.
+    * After upgrading git-annex, existing special remotes will continue to work
+      as before. If a special remote could have been configured by a third
+      party, you should verify its configuration using the
+      `git-annex verifyremote` command.
+    * Changes to special remote configuration received in the git-annex
+      branch no longer take effect until git-annex verifyremote is run to
+      review and verify the new configuration.
+    * init: When run in an already initialized repository, avoid
+      autoenabling new special remotes, since files received from
+      them could leak out via other git-annex processes running in the
+      repository.
+    * init --autoenable: Refuse to perform probably unsafe action unless
+      forced.
+    * Added remote.name.annex-verified git config.
+    * git-annex.cabal: Added Memory build flag to support building with
+      older versions of crypton that don't use ram.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 26 Oct 2026 14:00:00 -0400
+
+  git-annex (10.20261020) upstream; urgency=medium
+
+    * adjust --hide-unwanted: New option to make an adjusted branch
+      containing only wanted files.
+    * push: Force push to remote git-annex branch when it has been
+      supersceded by a transition.
+    * Fix handling of --sameas special remotes with onlyencryptcreds=yes.
+    * Linux standalone builds bundled CA certs updated for
+      EMudhra Intermediate CA Compromise.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 20 Oct 2026 16:45:06 -0400
+
+  git-annex (10.20261006) upstream; urgency=medium
+
+    * Fix stack build.
+
+   -- Joey Hess <id@joeyh.name>  Tue, 06 Oct 2026 10:06:34 -0400
+
+  git-annex (10.20261005) upstream; urgency=medium
+
+    * Fix mask special remote to not hang after the first file.
+    * Fix concurrent import of identical files to not fail with
+      "transfer already in progress".
+    * Also fixes possible data corruption when importing identical small files.
+    * Use git-credential in more situations when accessing urls that need a
+      password or other authentication, including the web, bittorrent and
+      httpalso special remotes, and git-annex addurl and importfeed.
+    * external: Fix DOWNLOAD-URL to support git-credential, which it
+      was already documented to do.
+    * external: Support git-credential in TRANSFER-RETRIEVE-URL,
+      CHECKPRESENT-URL, and RETRIEVEIMPORT-URL
+    * webdav: Fix a hang when credentials are not available.
+      (Reversion introduced in 10.20260901)
+    * export: Display a warning when the user is either in the middle
+      of an export conflict, or has been unsafely writing directly to a
+      remote that is configured with exporttree=yes but without
+      importtree=yes.
+    * importfeed: Avoid displaying empty feed titles.
+    * Allow retrieval from some importtree=yes special remotes when there
+      is no recorded content identifier.
+    * Automate updating remote.name.annexUrl for annex+https servers,
+      by re-probing the http remote's annex.url config when unable to connect
+      to an annex+https server.
+    * test, testremote: Support --tap output when built with TastyTap build
+      flag.
+    * testremote: Add --ensure-readonly mode.
+    * Support bup 0.34, while also still working with previous versions.
+    * When built with Botan, also use it for HMAC.
+    * NoLLMDependencies: Update for crypton.
+    * NoLLMDependencies: Update for tls.
+    * Support building with QuickCheck 2.17.
+    * Support building with crypton 1.1.0.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 05 Oct 2026 10:44:55 -0400
+
+  git-annex (10.20260901) upstream; urgency=medium
+
+    * Behavior change: drop --auto --from a remote does not any longer
+      try to drop content that is not known to be present on the remote.
+      This avoids unncessary work and makes it consistent with the behavior
+      of git-annex sync and push.
+    * External special remote protocol extended to support IMPORTKEY.
+    * git-annex-remote-internetarchive supports --no-content imports.
+    * diffdriver: Avoid crashing when git passes an (undocumented) 8th
+      parameter.
+    * The preferred content groupwanted expression will no longer
+      consider a groupwanted expression of "" to be set, which allows
+      another group's groupwanted expression to be used instead.
+    * Fixed buggy handling of preferred content
+      "balanced=groupname:lackingcopies"
+    * Expand preferred content "lackingcopies" and "approxlackingcopies"
+      expression syntax to support "groupname:number"
+    * Expand preferred content "copies", "lackingcopies", and
+      "approxlackingcopies" expression syntax to support group limits which
+      can include/exclude multiple groups. Eg
+      "copies=archive+backup-offsite=3"
+    * Also expanded --lackingcopies, --approxlackingcopies, and --copies
+      with the same syntax.
+    * Expand preferred content "balanced", "fullybalanced",
+      "sizebalanced" and "fullysizebalanced" expression syntax to support
+      group limits as well. Eg
+      "balanced=backup:lackingcopies=archive-offsite"
+    * importfeed: Fix reporting and logging of problems with feeds.
+    * importfeed: When adding an url, indicate which feed it is from.
+    * Fix reversion in 8.20200226 that broke git-annex benchmark --databases
+    * Remove the ParallelBuild cabal flag and add cabal.project that
+      enables parallel build by default with ghc 9.8+ and cabal-install 3.12.
+    * NoLLMDependencies: Update for warp and magic.
+    * git-annex.cabal: Pin magic to 1.1 avoiding build failure on Windows
+      with newer version.
+    * stack.yaml: Update to lts-24.52
+
+   -- Joey Hess <id@joeyh.name>  Tue, 01 Sep 2026 11:25:45 -0400
+
+  git-annex (10.20260717) upstream; urgency=medium
+
+    * External special remote protocol extended to support import.
+      Developers of external special remotes should consider if import makes
+      sense for them and add support.
+    * Support importtree=yes with rsync special remotes.
+    * Added git-annex-remote-internetarchive special remote that imports an
+      Internet Archive item and serves as an example for how to easily write
+      importtree=yes external special remotes.
+      https://git-annex.branchable.com/tips/how_to_make_a_simple_importtree_special_remote/
+    * Added DOWNLOAD-URL extension to the external special remote protocol.
+    * git-annex is guaranteed to not contain LLM generated code,
+      and will attempt to remain buildable with versions of dependencies
+      that predate the addition of any LLM generated code.
+      See https://git-annex.branchable.com/no_llm_code/
+    * git-annex.cabal: Added NoLLMDependencies build flag.
+    * Added stack-NoLLMDependencies.yaml
+    * Avoid redundant hash verification after a hash verification fails.
+    * Fix build with time-1.15.
+
+   -- Joey Hess <id@joeyh.name>  Mon, 20 Jul 2026 13:04:47 -0400
+
+- drop obsolete "0001-persistent-2.12.0.1-include-the-code-from-persistent.patch"
+
+- refresh "0001-Build-with-ram-instead-of-memory-package-to-support-.patch"
+
+-------------------------------------------------------------------
+Tue Aug 25 18:26:12 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Create tmp/configure-stamp after building so that the Makefile's
+  install targets reuse the configuration from %build instead of
+  reconfiguring with different cabal flags and ghc options and
+  rebuilding+relinking the binary during %install; drops a full
+  second build and helps reproducible builds
+
+-------------------------------------------------------------------
 Thu Jun 25 16:29:37 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20260624.

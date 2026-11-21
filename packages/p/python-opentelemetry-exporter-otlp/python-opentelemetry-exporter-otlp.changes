@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  1 22:02:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.45.1:
+  * `opentelemetry-api`: make `AnyValue` and `AttributeValue`
+    explicit type aliases
+  * `opentelemetry-sdk`: fix thread leak bug in resource
+    initialization logic for long running resource detectors
+  * `opentelemetry-exporter-otlp-proto-http`: restore `requests`
+    as the default HTTP transport so proxy environment variables
+    such as `HTTPS_PROXY` are honored again
+  * `opentelemetry-api`: fix quadratic time parsing of the
+    `tracestate` header and discard `tracestate` headers longer
+    than 8192 characters
+
+-------------------------------------------------------------------
 Tue Sep 29 10:06:14 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.45.0
@@ -182,7 +197,7 @@ Tue Sep 29 10:06:14 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * opentelemetry-exporter-otlp-proto-grpc: Fix incorrect default
     port for OTLP gRPC exporter self-metrics (#5668)
   * opentelemetry-api: update W3CBaggagePropagator to properly
-    handle whitespace (#5680) 
+    handle whitespace (#5680)
 
 -------------------------------------------------------------------
 Tue Jul  7 19:00:48 UTC 2026 - Dirk Müller <dmueller@suse.com>

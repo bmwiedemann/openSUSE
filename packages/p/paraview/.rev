@@ -653,4 +653,12 @@ Please consider for 13.2, which already has 4.2.0-RC1 and the only change is the
     <comment></comment>
     <requestid>1353107</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>76194b5017e554b0675200fbf6104364</srcmd5>
+    <version>6.2.0</version>
+    <time>1793994175</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1395899</requestid>
+  </revision>
 </revisionlist>

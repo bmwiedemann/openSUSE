@@ -1,7 +1,29 @@
 Index: packages/xemacs-packages/calc/calc-ext.el
 ===================================================================
---- packages/xemacs-packages/calc/calc-ext.el.orig
-+++ packages/xemacs-packages/calc/calc-ext.el
+---
+ xemacs-packages-20250605/xemacs-packages/calc/calc-ext.el          |    2 
+ xemacs-packages-20250605/xemacs-packages/calc/calc.el              |    2 
+ xemacs-packages-20250605/xemacs-packages/edit-utils/paren.el       |    2 
+ xemacs-packages-20250605/xemacs-packages/gnats/lib-src/install-sid |    8 +++
+ xemacs-packages-20250605/xemacs-packages/gnats/lib-src/send-pr     |   26 +++++-----
+ xemacs-packages-20250605/xemacs-packages/speedbar/speedbar.el      |    2 
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/pstogif        |   16 +++++-
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-au          |    8 ++-
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-file        |    4 +
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-html        |    7 ++
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-image       |    7 ++
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-mpeg        |    7 ++
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-plain       |    8 +++
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-ps          |    9 +++
+ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tmdecode       |   15 +++--
+ xemacs-packages-20250605/xemacs-packages/tm/mel-u.el               |   11 ++--
+ xemacs-packages-20250605/xemacs-packages/tm/tm-play.el             |    4 +
+ xemacs-packages-20250605/xemacs-packages/viper/viper-ex.el         |    2 
+ xemacs-packages-20250605/xemacs-packages/w3/lisp/css.el            |    5 +
+ 19 files changed, 107 insertions(+), 38 deletions(-)
+
+--- xemacs-packages-20250605/xemacs-packages/calc/calc-ext.el
++++ xemacs-packages-20250605/xemacs-packages/calc/calc-ext.el	2026-10-21 13:33:38.250426399 +0000
 @@ -19,7 +19,7 @@
  ;; file named COPYING.  Among other things, the copyright notice
  ;; and this notice must be preserved on all copies.
@@ -11,10 +33,8 @@ Index: packages/xemacs-packages/calc/calc-ext.el
  
  (provide 'calc-ext)
  
-Index: packages/xemacs-packages/calc/calc.el
-===================================================================
---- packages/xemacs-packages/calc/calc.el.orig
-+++ packages/xemacs-packages/calc/calc.el
+--- xemacs-packages-20250605/xemacs-packages/calc/calc.el
++++ xemacs-packages-20250605/xemacs-packages/calc/calc.el	2026-10-21 13:33:38.254426326 +0000
 @@ -64,7 +64,7 @@
  ;;; "report-calc-bug", and "defmath".  User-accessible variables begin
  ;;; with "var-".
@@ -24,10 +44,8 @@ Index: packages/xemacs-packages/calc/calc.el
  
  (provide 'calc)
  
-Index: packages/xemacs-packages/edit-utils/paren.el
-===================================================================
---- packages/xemacs-packages/edit-utils/paren.el.orig
-+++ packages/xemacs-packages/edit-utils/paren.el
+--- xemacs-packages-20250605/xemacs-packages/edit-utils/paren.el
++++ xemacs-packages-20250605/xemacs-packages/edit-utils/paren.el	2026-10-21 13:33:38.254426326 +0000
 @@ -147,7 +147,7 @@ appropriate for the syntax of a program
    "*If the cursor is on a parenthesis, the matching parenthesis will blink.
  This variable controls how long each phase of the blink lasts in seconds.
@@ -37,10 +55,8 @@ Index: packages/xemacs-packages/edit-utils/paren.el
    :group 'paren-matching)
  
  (defcustom paren-max-blinks (* 5 60 5)	; 5 minutes is plenty...
-Index: packages/xemacs-packages/gnats/lib-src/install-sid
-===================================================================
---- packages/xemacs-packages/gnats/lib-src/install-sid.orig
-+++ packages/xemacs-packages/gnats/lib-src/install-sid
+--- xemacs-packages-20250605/xemacs-packages/gnats/lib-src/install-sid
++++ xemacs-packages-20250605/xemacs-packages/gnats/lib-src/install-sid	2026-10-21 13:33:38.254426326 +0000
 @@ -29,6 +29,14 @@ BINDIR=/usr/bin
  
  SUBMITTER=
@@ -56,13 +72,11 @@ Index: packages/xemacs-packages/gnats/lib-src/install-sid
  
  if [ $# -eq 0 ]; then
    echo "$USAGE"
-Index: packages/xemacs-packages/gnats/lib-src/send-pr
-===================================================================
---- packages/xemacs-packages/gnats/lib-src/send-pr.orig
-+++ packages/xemacs-packages/gnats/lib-src/send-pr
+--- xemacs-packages-20250605/xemacs-packages/gnats/lib-src/send-pr
++++ xemacs-packages-20250605/xemacs-packages/gnats/lib-src/send-pr	2026-10-21 13:33:38.254426326 +0000
 @@ -76,18 +76,25 @@ fi
  
- #
+ #
  
 -if [ -z "$TMPDIR" ]; then
 -  TMPDIR=/tmp
@@ -105,87 +119,8 @@ Index: packages/xemacs-packages/gnats/lib-src/send-pr
  # If they told us to use a specific file, then do so.
  if [ -n "$IN_FILE" ]; then
    if [ "$IN_FILE" = "-" ]; then
-Index: packages/xemacs-packages/ispell/ispell.el
-===================================================================
---- packages/xemacs-packages/ispell/ispell.el.orig
-+++ packages/xemacs-packages/ispell/ispell.el
-@@ -523,7 +523,7 @@ and then re-start emacs."
- 
- ;;; First part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-1
-  '((nil					; default (English.aff)
-     "[A-Za-z]" "[^A-Za-z]" "[']" nil ("-B") nil iso-8859-1)
-@@ -547,7 +547,7 @@ and then re-start emacs."
- 
- ;;; Second part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-2
-  '(("czech"
-     "[A-Za-z\301\311\314\315\323\332\331\335\256\251\310\330\317\253\322\341\351\354\355\363\372\371\375\276\271\350\370\357\273\362]"
-@@ -568,7 +568,7 @@ and then re-start emacs."
- 
- ;;; Third part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-3
-  '(("esperanto"
-     "[A-Za-z\246\254\266\274\306\330\335\336\346\370\375\376]"
-@@ -587,7 +587,7 @@ and then re-start emacs."
- 
- ;;; Fourth part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-4
-  '(("francais-tex"			; Francais.aff
-     "[A-Za-z\300\302\306\307\310\311\312\313\316\317\324\331\333\334\340\342\347\350\351\352\353\356\357\364\371\373\374\\]"
-@@ -609,7 +609,7 @@ and then re-start emacs."
- 
- ;;; Fifth part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-5
-  '(("norsk"				; 8 bit Norwegian mode
-     "[A-Za-z\305\306\307\310\311\322\324\330\345\346\347\350\351\362\364\370]"
-@@ -630,7 +630,7 @@ and then re-start emacs."
- 
- ;;; Sixth part of dictionary, shortened for loaddefs.el
- ;;;###autoload
--(setq
-+(defvar
-  ispell-dictionary-alist-6
-  ;; include Russian iso coding system too?
-  ;;   "[']" t ("-d" "russian") "~latin1" iso-8859-1
-@@ -720,12 +720,12 @@ LANGUAGE.aff file \(e.g., english.aff\).
- 			       (const koi8-r))))
-   :group 'ispell)
- 
--;;; update the dictionaries at load time
--(setq ispell-dictionary-alist
--      (append ispell-local-dictionary-alist	; dictionary customizations
--	      ispell-dictionary-alist-1 ispell-dictionary-alist-2
--	      ispell-dictionary-alist-3 ispell-dictionary-alist-4
--	      ispell-dictionary-alist-5 ispell-dictionary-alist-6))
-+;; ;;; update the dictionaries at load time
-+;; (setq ispell-dictionary-alist
-+;;       (append ispell-local-dictionary-alist	; dictionary customizations
-+;; 	      ispell-dictionary-alist-1 ispell-dictionary-alist-2
-+;; 	      ispell-dictionary-alist-3 ispell-dictionary-alist-4
-+;; 	      ispell-dictionary-alist-5 ispell-dictionary-alist-6))
- 
- 
- 
-Index: packages/xemacs-packages/speedbar/speedbar.el
-===================================================================
---- packages/xemacs-packages/speedbar/speedbar.el.orig
-+++ packages/xemacs-packages/speedbar/speedbar.el
+--- xemacs-packages-20250605/xemacs-packages/speedbar/speedbar.el
++++ xemacs-packages-20250605/xemacs-packages/speedbar/speedbar.el	2026-10-21 13:33:38.258426256 +0000
 @@ -1640,11 +1640,11 @@ Images are not available in Emacs 20 or
    (setq speedbar-show-unknown-files (not speedbar-show-unknown-files))
    (speedbar-refresh))
@@ -199,10 +134,8 @@ Index: packages/xemacs-packages/speedbar/speedbar.el
  
  (defun speedbar-insert-button (text face mouse function
  				    &optional token prevline)
-Index: packages/xemacs-packages/tm/lib-src/pstogif
-===================================================================
---- packages/xemacs-packages/tm/lib-src/pstogif.orig
-+++ packages/xemacs-packages/tm/lib-src/pstogif
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/pstogif
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/pstogif	2026-10-21 13:33:38.258426256 +0000
 @@ -45,6 +45,15 @@ eval 'exec perl -w -S $0 ${1+"$@"}' # Po
  # 
  
@@ -251,10 +184,8 @@ Index: packages/xemacs-packages/tm/lib-src/pstogif
      if ($flip) {
  	rename($tmp, $in) unless system("$PNMFLIP -$flip $in > $tmp");
  	}
-Index: packages/xemacs-packages/tm/lib-src/tm-au
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-au.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-au
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-au
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-au	2026-10-21 13:33:38.258426256 +0000
 @@ -28,6 +28,10 @@ fi
  
  if [ "$5" = "" ]; then
@@ -284,10 +215,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-au
  	;;
  "extract")
  	echo "$2; $3 -> $filename"
-Index: packages/xemacs-packages/tm/lib-src/tm-file
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-file.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-file
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-file
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-file	2026-10-21 13:33:38.258426256 +0000
 @@ -28,6 +28,10 @@ fi
  
  if [ "$5" = "" ]; then
@@ -299,10 +228,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-file
  else
  	filename="$TM_TMP_DIR/$5"
  fi
-Index: packages/xemacs-packages/tm/lib-src/tm-html
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-html.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-html
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-html
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-html	2026-10-21 13:33:38.258426256 +0000
 @@ -33,6 +33,10 @@ fi
  
  if [ "$5" = "" ]; then
@@ -331,10 +258,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-html
      ;;
  "extract")
      echo "extract to $filename"
-Index: packages/xemacs-packages/tm/lib-src/tm-image
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-image.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-image
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-image
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-image	2026-10-21 13:33:38.258426256 +0000
 @@ -52,6 +52,11 @@ if [ "$5" = "" ]; then
  		filename="$TM_TMP_DIR/mime$$.img"
  		;;
@@ -357,10 +282,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-image
  	;;
  "extract")
  	echo "extract to $filename"
-Index: packages/xemacs-packages/tm/lib-src/tm-mpeg
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-mpeg.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-mpeg
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-mpeg
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-mpeg	2026-10-21 13:33:38.258426256 +0000
 @@ -27,6 +27,10 @@ if [ "$TM_TMP_DIR" = "" ]; then
  fi
  if [ "$5" = "" ]; then
@@ -387,10 +310,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-mpeg
  	;;
  "extract")
  	echo "extract to $filename"
-Index: packages/xemacs-packages/tm/lib-src/tm-plain
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-plain.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-plain
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-plain
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-plain	2026-10-21 13:33:38.258426256 +0000
 @@ -27,12 +27,18 @@ if [ "$TM_TMP_DIR" = "" ]; then
  fi
  if [ "$5" = "" ]; then
@@ -419,10 +340,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-plain
  	echo "$2; $3 ->"
  	tmdecode "$3" "$1" /dev/stdout | lpr
  	;;
-Index: packages/xemacs-packages/tm/lib-src/tm-ps
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tm-ps.orig
-+++ packages/xemacs-packages/tm/lib-src/tm-ps
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-ps
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tm-ps	2026-10-21 13:33:38.258426256 +0000
 @@ -27,16 +27,21 @@ if [ "$TM_TMP_DIR" = "" ]; then
  fi
  if [ "$5" = "" ]; then
@@ -455,10 +374,8 @@ Index: packages/xemacs-packages/tm/lib-src/tm-ps
  	echo "$2; $3 ->"
  	tmdecode "$3" "$1" /dev/stdout | lpr
  	;;
-Index: packages/xemacs-packages/tm/lib-src/tmdecode
-===================================================================
---- packages/xemacs-packages/tm/lib-src/tmdecode.orig
-+++ packages/xemacs-packages/tm/lib-src/tmdecode
+--- xemacs-packages-20250605/xemacs-packages/tm/lib-src/tmdecode
++++ xemacs-packages-20250605/xemacs-packages/tm/lib-src/tmdecode	2026-10-21 13:33:38.258426256 +0000
 @@ -19,6 +19,8 @@
  # Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  # Boston, MA 02111-1307, USA.
@@ -501,10 +418,8 @@ Index: packages/xemacs-packages/tm/lib-src/tmdecode
  	eval "mmencode -u $2 | gzip -cd $OUTPUT"
  	;;
  *)
-Index: packages/xemacs-packages/tm/mel-u.el
-===================================================================
---- packages/xemacs-packages/tm/mel-u.el.orig
-+++ packages/xemacs-packages/tm/mel-u.el
+--- xemacs-packages-20250605/xemacs-packages/tm/mel-u.el
++++ xemacs-packages-20250605/xemacs-packages/tm/mel-u.el	2026-10-21 13:33:38.258426256 +0000
 @@ -36,8 +36,7 @@
  (defvar uuencode-external-encoder '("uuencode" "-")
    "*list of uuencode encoder program name and its arguments.")
@@ -537,10 +452,8 @@ Index: packages/xemacs-packages/tm/mel-u.el
        (if filename
  	  (as-binary-process
  	   (apply (function call-process-region)
-Index: packages/xemacs-packages/tm/tm-play.el
-===================================================================
---- packages/xemacs-packages/tm/tm-play.el.orig
-+++ packages/xemacs-packages/tm/tm-play.el
+--- xemacs-packages-20250605/xemacs-packages/tm/tm-play.el
++++ xemacs-packages-20250605/xemacs-packages/tm/tm-play.el	2026-10-21 13:33:38.258426256 +0000
 @@ -104,6 +104,8 @@
    (get-unified-alist mime/content-decoding-condition al)
    )
@@ -559,11 +472,9 @@ Index: packages/xemacs-packages/tm/tm-play.el
  	      (message "External method is starting...")
  	      (setq cal (put-alist
  			 'name (replace-as-filename name) cal))
-Index: packages/xemacs-packages/viper/viper-ex.el
-===================================================================
---- packages/xemacs-packages/viper/viper-ex.el.orig
-+++ packages/xemacs-packages/viper/viper-ex.el
-@@ -1870,7 +1870,7 @@ reversed."
+--- xemacs-packages-20250605/xemacs-packages/viper/viper-ex.el
++++ xemacs-packages-20250605/xemacs-packages/viper/viper-ex.el	2026-10-21 13:33:38.258426256 +0000
+@@ -1860,7 +1860,7 @@ reversed."
    (condition-case nil
        (progn
  	(pop-to-buffer (get-buffer-create "*info*"))
@@ -572,11 +483,9 @@ Index: packages/xemacs-packages/viper/viper-ex.el
  	(message "Type `i' to search for a specific topic"))
      (error (beep 1)
  	   (with-output-to-temp-buffer " *viper-info*"
-Index: packages/xemacs-packages/w3/lisp/css.el
-===================================================================
---- packages/xemacs-packages/w3/lisp/css.el.orig
-+++ packages/xemacs-packages/w3/lisp/css.el
-@@ -208,8 +208,9 @@ For a terminal screen, the value is alwa
+--- xemacs-packages-20250605/xemacs-packages/w3/lisp/css.el
++++ xemacs-packages-20250605/xemacs-packages/w3/lisp/css.el	2026-10-21 13:33:38.258426256 +0000
+@@ -201,8 +201,9 @@ For a terminal screen, the value is alwa
  
  (modify-syntax-entry ?' "\"" css-syntax-table)
  (modify-syntax-entry ?` "\"" css-syntax-table)
@@ -588,5 +497,3 @@ Index: packages/xemacs-packages/w3/lisp/css.el
  
  (eval-when-compile
    (defvar css-scratch-val nil)
-Index: packages/package-compile.el
-===================================================================

@@ -2983,4 +2983,22 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.22</comment>
     <requestid>1386995</requestid>
   </revision>
+  <revision rev="320" vrev="2">
+    <srcmd5>ceac1c0fa077b58315e87bf7867ecd0b</srcmd5>
+    <version>7.2.22</version>
+    <time>1793724794</time>
+    <user>anag_factory</user>
+    <comment>- Fix kmp build against kernel-longterm 6.18.55+, where
+  drm_fb_helper_restore_fbdev_mode_unlocked() was changed
+    adding kernel-longterm_6-18-55.patch</comment>
+    <requestid>1394420</requestid>
+  </revision>
+  <revision rev="321" vrev="3">
+    <srcmd5>6801b235a019452145a84db423be9050</srcmd5>
+    <version>7.2.22</version>
+    <time>1793990046</time>
+    <user>anag_factory</user>
+    <comment>- add kernel-7.4.patch</comment>
+    <requestid>1395130</requestid>
+  </revision>
 </revisionlist>

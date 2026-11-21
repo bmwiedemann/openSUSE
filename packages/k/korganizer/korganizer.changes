@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:40:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Use static method
+  * conf_datetime is not defined on windows => avoid to assign nullptr
+  * We need to assign once parshiotNames, Previously when we called findParshaName we fill again this QStringList
+  * "buffer + i18n(" Omer");" was never assigned
+  * Fix potential mem leak
+  * Add buttonbox after widget
+  * Fix KMessageBox api. Second argument is message not title
+  * cppcheck-suppressions.xml - suppress constParameterCallback
+
+-------------------------------------------------------------------
 Wed Oct  7 07:04:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

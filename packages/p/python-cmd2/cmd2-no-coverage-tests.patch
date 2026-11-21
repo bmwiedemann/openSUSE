@@ -2,20 +2,19 @@
  pyproject.toml |    6 ------
  1 file changed, 6 deletions(-)
 
-Index: cmd2-4.0.0/pyproject.toml
+Index: cmd2-4.4.1/pyproject.toml
 ===================================================================
---- cmd2-4.0.0.orig/pyproject.toml
-+++ cmd2-4.0.0/pyproject.toml
-@@ -93,12 +93,6 @@ warn_unused_ignores = false
- 
- [tool.pytest.ini_options]
- testpaths = ["tests"]
--addopts = [
+--- cmd2-4.4.1.orig/pyproject.toml
++++ cmd2-4.4.1/pyproject.toml
+@@ -111,11 +111,6 @@ addopts = [
+     "-n=auto",
+     # Spread slow terminal cases across workers instead of queuing them in one batch.
+     "--maxschedchunk=1",
 -    "--cov=cmd2",
--    "--cov-append",
+-    "--cov-config=pyproject.toml",
+-    "--cov-report=xml",
 -    "--cov-report=term",
 -    "--cov-report=html",
--]
+ ]
  
- [tool.setuptools]
- packages = ["cmd2"]
+ [tool.coverage.run]

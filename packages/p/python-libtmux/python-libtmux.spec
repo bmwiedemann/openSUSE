@@ -24,6 +24,8 @@ Summary:        Python API / wrapper for tmux
 License:        MIT
 URL:            https://github.com/tmux-python/libtmux/
 Source:         https://github.com/tmux-python/libtmux/archive/v%{version}.tar.gz#/libtmux-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support tmux 3.8
+Patch0:         support-tmux-3.8.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -47,7 +49,7 @@ and control tmux servers, sessions, windows, and panes. It is the tool powering
 tmuxp, a tmux workspace manager.
 
 %prep
-%setup -q -n libtmux-%{version}
+%autosetup -p1 -n libtmux-%{version}
 
 %build
 %pyproject_wheel
@@ -81,7 +83,7 @@ mv src.bak src
 
 %files %{python_files}
 %{python_sitelib}/libtmux/
-%{python_sitelib}/libtmux-%{version}*-info
+%{python_sitelib}/libtmux-%{version}.dist-info
 %doc README.md
 %license LICENSE
 

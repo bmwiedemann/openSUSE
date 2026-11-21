@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-notificationd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-notificationd
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        LXQt Notification daemon
 License:        LGPL-2.1-or-later
@@ -26,18 +26,18 @@ Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 
 BuildRequires:  cmake(KF6WindowSystem)
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
-BuildRequires:  cmake(lxqt) >= 2.4.0
-BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools)
 
 Recommends:     %{name}-lang = %{version}-%{release}
 

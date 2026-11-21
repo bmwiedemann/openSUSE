@@ -37,7 +37,6 @@ Source10:       apache-%{base_name}-build.tar.xz
 Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch10:        jline-3.30.x.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
@@ -57,16 +56,16 @@ BuildRequires:  jakarta-inject
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
-BuildRequires:  jline3
-BuildRequires:  jline3-builtins
-BuildRequires:  jline3-console
-BuildRequires:  jline3-console-ui
-BuildRequires:  jline3-jansi-core
-BuildRequires:  jline3-native
-BuildRequires:  jline3-reader
-BuildRequires:  jline3-style
-BuildRequires:  jline3-terminal
-BuildRequires:  jline3-terminal-jni
+BuildRequires:  jline3 >= 4.1
+BuildRequires:  jline3-builtins >= 4.1
+BuildRequires:  jline3-console >= 4.1
+BuildRequires:  jline3-console-ui >= 4.1
+BuildRequires:  jline3-jansi-core >= 4.1
+BuildRequires:  jline3-native >= 4.1
+BuildRequires:  jline3-reader >= 4.1
+BuildRequires:  jline3-style >= 4.1
+BuildRequires:  jline3-terminal >= 4.1
+BuildRequires:  jline3-terminal-jni >= 4.1
 BuildRequires:  jul-to-slf4j
 BuildRequires:  maven-resolver-api >= 2.0.14
 BuildRequires:  maven-resolver-connector-basic
@@ -83,7 +82,7 @@ BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
 BuildRequires:  maven-wagon-provider-api
 BuildRequires:  methanol
-BuildRequires:  modello
+BuildRequires:  modello-ant-task
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
@@ -191,9 +190,6 @@ BuildArch:      noarch
 
 %patch -P 1 -p1
 %patch -P 2 -p1
-%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal < 4.1}%{!?pkg_vcmp:0}
-%patch -P 10 -p1
-%endif
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
 %pom_xpath_set pom:project/pom:properties/pom:securityDispatcherVersion 4

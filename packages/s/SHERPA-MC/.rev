@@ -193,4 +193,15 @@
     <comment></comment>
     <requestid>1319263</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>15ca8d0b4befb48bdd2358e907554b18</srcmd5>
+    <version>2.2.16</version>
+    <time>1794932445</time>
+    <user>anag_factory</user>
+    <comment>- Update Source URL
+- Add SHERPA-MC-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_*, PyInt_*) with Python 3 C API in AddOns/Python/*.i.
+</comment>
+    <requestid>1398102</requestid>
+  </revision>
 </revisionlist>

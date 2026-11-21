@@ -1,7 +1,7 @@
 #
 # spec file for package lximage-qt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lximage-qt
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        LXQt Image Viewer
 License:        GPL-2.0-or-later
@@ -26,14 +26,14 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 
-BuildRequires:  cmake(Qt6DBus) >= 6.3.0
+BuildRequires:  cmake(Qt6DBus) >= 6.10.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6PrintSupport)
@@ -44,7 +44,6 @@ BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
 

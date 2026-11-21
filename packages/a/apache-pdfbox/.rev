@@ -150,4 +150,12 @@ Only fontbox and jempbox are built as pdfbox itself depends on Adobe's pcif.</co
     <comment>2.0.36 + CVE-2026-33929</comment>
     <requestid>1346818</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>58588d40d7f24543df92dc54857b5f41</srcmd5>
+    <version>3.0.8</version>
+    <time>1794816453</time>
+    <user>anag_factory</user>
+    <comment>Split into two multibuild flavours to avoid cluttering Rings</comment>
+    <requestid>1397285</requestid>
+  </revision>
 </revisionlist>

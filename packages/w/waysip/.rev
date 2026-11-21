@@ -24,4 +24,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1288419</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ae96525a1633c86ab1c8eafec9b61813</srcmd5>
+    <version>0.7.1</version>
+    <time>1794162119</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.7.1:
+  * chore: try publish libwaysip only
+  * Merge pull request #134 from waycrate/dependabot/github_actions/rust-lang/crates-io-auth-action-1.0.6
+  * chore(deps): bump rust-lang/crates-io-auth-action from 1.0.5 to 1.0.6
+  * feat(ci): split waysip and libwaysip (#133)
+  * Merge pull request #132 from waycrate/dependabot/github_actions/rust-lang/crates-io-auth-action-1.0.6
+  * chore(deps): bump rust-lang/crates-io-auth-action from 1.0.5 to 1.0.6
+  * fix: switch to exclusive keyboard interactivity (#131)
+  * fix: ensure shm buffer is in-memory (#130)</comment>
+    <requestid>1396098</requestid>
+  </revision>
 </revisionlist>

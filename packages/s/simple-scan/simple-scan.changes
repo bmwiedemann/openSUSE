@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:03:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add simple-scan-desktop.patch: Fix desktop file translations
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Tue Apr  7 14:53:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:
@@ -1018,7 +1024,7 @@ Tue Apr  1 21:06:51 UTC 2014 - zaitor@opensuse.org
 Sun Mar 23 17:52:43 UTC 2014 - zaitor@opensuse.org
 
 - Update to version 3.11.92:
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Mar  4 23:44:51 UTC 2014 - zaitor@opensuse.org
@@ -1238,7 +1244,7 @@ Sat Feb 12 19:52:17 CET 2011 - vuntz@opensuse.org
 -------------------------------------------------------------------
 Tue Dec 14 15:47:00 CET 2010 - vuntz@opensuse.org
 
-- 
+-
 - Own /usr/share/gnome and /usr/share/gnome/help to fix build.
 
 -------------------------------------------------------------------

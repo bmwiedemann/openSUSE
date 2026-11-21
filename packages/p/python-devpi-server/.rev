@@ -324,4 +324,18 @@
     <comment>- Drop the pin on setuptools, packages in question have been fixed</comment>
     <requestid>1384636</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b3e4356bf82b178336bee45d72bd7d09</srcmd5>
+    <version>6.21.0</version>
+    <time>1794236674</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.21.0:
+  * Use sha256 for login token signing. Existing tokens will be
+    invalidated, but they are valid for only 10 hours anyway.
+  * Block ``.`` and ``..`` as user and index names.
+  * Reported by Zachariah Mithani [zachariah-mithani] (AploSec)
+  * https://github.com/devpi/devpi/security/advisories/GHSA-w72q-
+    5vww-p2rh</comment>
+    <requestid>1396187</requestid>
+  </revision>
 </revisionlist>

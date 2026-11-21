@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Nov 13 20:41:29 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- BuildRequires: sse2neon-devel to fix aarch64 build
+
+-------------------------------------------------------------------
+Tue Nov 10 20:16:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.2.4
+  - 8a5de9e044f Release: Update license.md
+  - 6cd276f5481 Fix: unescaped node group name in Python expression
+    when swapping nodes
+  - 52e7d47ffab Deps: Update Brotli to 1.0.10 for Blender 5.2 LTS
+  - d81557c1dc5 GreasePencil: Hide 'Duration' parameter from
+    "Insert Blank Frame" operator.
+  - e95e6a604cb Fix: Handling of invalid values in Curves readfile
+    code.
+  - 7cfc037e5d6 Fix: Handling of invalid values in GreasePencil
+    readfile code.
+  - 98988ac2507 GreasePencil: Disable 'duration' and 'end frame'
+    features.
+  - ee9243c2105 Fix: Grease Pencil: Replace end frames on load by
+    empty drawing.
+  - b2f7ecf43f1 Fix: Curves: Attribute validator allows invalid
+    curve type.
+  - 79dc9a76027 Fix: Grease Pencil: Assert on Eval with multi-users
+    Drawings.
+  - f753f573717 Fix: Workbench: Shadows missing on small objects
+  - 77615c07ee3 Fix #148108: Workbench: Shadow Overlay broken on
+    overlapping vertices
+  - c8453eb7013 Fix: Grease Pencil: Missing pressure curves for 5.2
+  - 35528c4c39f Fix #51231: EXR lossy DWA compression applies to
+    data passes
+  - e3d74b054f2 Fix #163829: Cycles: Crash with bump from
+    displacement and emission
+  - 63a43776b2a Fix #165789: Holes in the result of the skin
+    modifier
+  - c2424b9b8df Fix #161843: Missing "Generic Tool: Annotate" in
+    the key map editor
+  - 48f565c2a13 Fix #163797: Lists of bundles and closures need
+    nullptr checks
+  - 12a90365700 Fix #161799: Matrix to Rotation conversion is wrong
+    on GPU
+  - 7d8883d1458 Fix #163416: Crash when blurring images by a huge
+    amount
+  - df9cdfc0e50 Fix #161506: Flatten operator doesn't work with
+    vertices and edges without faces attached
+  - 24557154a6c Fix: Node Wrangler: Error with `Reset Nodes` when
+    active node is `None`
+  - b26e261ac1d Fix #165392: VSE retiming key RNA API was incorrect
+  - 8b081108407 Fix #165588: `libraries.write` crashes due to
+    unsynchronized view layer.
+  - 85512d656cf Fix #162744: Resolve mutex deadlock condition in
+    the VSE text code
+  - 7c7d0d1a479 Fix #165546: Object LineArt properties are missing
+    overridable flags
+  - 8bacfd21da9 Overlay: Minor fixes to overlay grid following
+    2dbeb1167d
+  - 87ff8344f05 Fix #162338: Overlay: Variable infinite grid line
+    count
+  - 752a2e9f8dd Fix #163317: Correct UV editor grid offset
+  - d8d53237265 Fix #164661: some operators don't work on animated
+    NLA strip properties
+  - abf3501b7b0 Fix #164229: Certain handle type pairs no longer
+    allowed
+  - 223427efa0b Fix #165353: Fillet Curve creates huge positions at
+    reversed corners
+  - 97f75fb856d Fix: UI: Text-box trackpad scroll not working
+  - f6e7b442edb Fix: Crash symmetrizing bones with Action
+    constraint animation
+  - 0952f1535f3 Fix #165148: Grease Pencil: Delaunay Fill Tool
+    crashes on empty drawing
+  - 21d323a3a6f Fix #164817: Scene automasking settings ignored for
+    certain operators
+  - d7e6e01d6db Fix #165111: Cycles: Kernel compile crash from data
+    race in path_cache_get
+  - ac9f16ce1e0 Fix: Nodes: `clear_interface_selection` clears
+    active selection
+  - 5bfd915e97f Fix #155252: Selection not cleared by node
+    interface operators
+  - 4f5026e9989 Fix: Build: Add PIP_BUILD_CONSTRAINT for new pip
+    versions
+  - e0d07a06095 Python: Update certifi to 2026.10.19 and pip to
+    26.2.2
+
+-------------------------------------------------------------------
+Tue Nov  3 23:03:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Adapt hip conditional to handle 16.1
+
+-------------------------------------------------------------------
 Sat Oct 24 00:26:29 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.2.3

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  8 22:11:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Drop Python 3.10 support (breaking change).
+  * Drop support for deprecated @cachedmethod features (breaking
+    change).
+  * Drop support for @cached(cache=None) (breaking change).
+  * Require custom cache classes to support __len__ when used
+    with info=True (breaking change).
+  * Refactor _CacheInfo and make it public as CacheInfo
+    (potentially breaking change).
+  * Return callable objects instead of functions from @cached and
+    the cachetools.func decorators (potentially breaking change).
+  * Do not set cache_info to None on @cached wrappers if info is
+    not set (potentially breaking change).
+
+-------------------------------------------------------------------
 Sat Sep 26 21:36:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.0:

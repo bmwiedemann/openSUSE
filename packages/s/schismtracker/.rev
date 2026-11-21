@@ -413,4 +413,12 @@
     <comment>- Add a runtime dependency on SDL3 because one was missing.</comment>
     <requestid>1355130</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8556ff9e93feaf3515c0874f51a9064d</srcmd5>
+    <version>20261102</version>
+    <time>1793725225</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20261102</comment>
+    <requestid>1394702</requestid>
+  </revision>
 </revisionlist>

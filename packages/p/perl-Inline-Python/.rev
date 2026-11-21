@@ -48,4 +48,15 @@
     <comment></comment>
     <requestid>1282170</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e9b25e051e4ddf5861869b00f0735a79</srcmd5>
+    <version>0.590.0</version>
+    <time>1793990627</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.590.0 (0.59)
+   see /usr/share/doc/packages/perl-Inline-Python/Changes
+  0.59 Sun  Oct 25 19:07:00 CET 2026 (Stefan Seifert)
+          - Fix installation on macOS with non-system Python (nukopian)</comment>
+    <requestid>1395144</requestid>
+  </revision>
 </revisionlist>

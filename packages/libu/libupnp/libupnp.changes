@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:46:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.2.4
+  * Stop calling asynchronous completions after UpnpUnRegisterClient()
+  * Now sends the QueryStateVariable error before freeing its request
+  * Stop merging chunked trailer fields into the response headers
+
+-------------------------------------------------------------------
+Tue Nov 17 12:05:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.2.3
+  * Initialises every pollfd entry in RunMiniServer()
+  * Sends the Server header as an RFC 7231 product list
+  * Waits for GENA and timeout callbacks in UpnpUnRegisterClient()
+  * Locks the web server settings that requests read
+
+-------------------------------------------------------------------
+Fri Nov 13 14:18:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.2.2
+  * GHSA-7vj7-3hjc-p8q9: Terminate the document returned by
+    http_Download(). The entity was copied together with the byte
+    after it, which was assumed to be a NUL.
+  * GHSA-wcf8-pjfj-w9wv: Stop a replaced XML alias from being
+    released twice.
+
+-------------------------------------------------------------------
+Wed Nov  4 17:15:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.2
+  * Cast input to ctype calls to unsigned char
+
+-------------------------------------------------------------------
 Fri Oct 30 00:19:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 22.1.10

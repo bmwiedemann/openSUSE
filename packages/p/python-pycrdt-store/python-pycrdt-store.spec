@@ -24,7 +24,7 @@
 %bcond_with test
 %endif
 Name:           python-pycrdt-store%{?psuffix}
-Version:        0.1.3
+Version:        0.1.5
 Release:        0
 Summary:        Persistent storage for pycrdt
 License:        MIT
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 3.6.2 with python-anyio < 5)
-Requires:       (python-pycrdt >= 0.12.13 with python-pycrdt < 0.13)
+Requires:       (python-pycrdt >= 0.14.0 with python-pycrdt < 0.15)
 Requires:       (python-sqlite-anyio >= 0.2.3 with python-sqlite-anyio < 0.3)
 %if %{with test}
 BuildRequires:  %{python_module pycrdt-store = %{version}}

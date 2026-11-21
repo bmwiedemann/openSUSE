@@ -1,7 +1,7 @@
 #
 # spec file for package python-graphql-relay
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,21 +22,19 @@ Version:        3.2.0
 Release:        0
 Summary:        Relay implementation for Python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/graphql-python/graphql-relay-py
 Source:         https://files.pythonhosted.org/packages/source/g/graphql-relay/graphql-relay-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support graphql-core 3.3+
+Patch0:         support-graphql-core-3.3.patch
 BuildRequires:  %{python_module graphql-core >= 3.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module promise}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest >= 6.2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-describe}
-BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-promise
-Requires:       (python-graphql-core >= 3.2)
+Requires:       python-graphql-core >= 3.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,7 +45,7 @@ This is a library to allow the easy creation of Relay-compliant servers using
 the GraphQL Python reference implementation of a GraphQL server.
 
 %prep
-%setup -q -n graphql-relay-%{version}
+%autosetup -p1 -n graphql-relay-%{version}
 
 %build
 %pyproject_wheel
@@ -62,6 +60,7 @@ the GraphQL Python reference implementation of a GraphQL server.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/graphql[-_]relay*/
+%{python_sitelib}/graphql[-_]relay
+%{python_sitelib}/graphql[-_]relay-%{version}.dist-info
 
 %changelog

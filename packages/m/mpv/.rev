@@ -3636,4 +3636,12 @@
   * hwdec: add per use access hooks to mappers and use them in hwdec_vulkan</comment>
     <requestid>1379069</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>f9b036e3d19e9353e6152476929439f6</srcmd5>
+    <version>0.42.0</version>
+    <time>1794090837</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396045</requestid>
+  </revision>
 </revisionlist>

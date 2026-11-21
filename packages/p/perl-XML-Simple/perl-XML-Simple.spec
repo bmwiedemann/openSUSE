@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Simple
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,34 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-XML-Simple
-Version:        2.25
-Release:        0
 %define cpan_name XML-Simple
-Summary:        An API for simple XML files
+Name:           perl-XML-Simple
+Version:        2.250.0
+Release:        0
+# 2.25 -> normalize -> 2.250.0
+%define cpan_version 2.25
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-Simple/
-Source0:        https://cpan.metacpan.org/authors/id/G/GR/GRANTM/%{cpan_name}-%{version}.tar.gz
+Summary:        An API for simple XML files
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/G/GR/GRANTM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(XML::NamespaceSupport) >= 1.04
-BuildRequires:  perl(XML::SAX) >= 0.15
+BuildRequires:  perl(XML::NamespaceSupport) >= 1.40
+BuildRequires:  perl(XML::SAX) >= 0.150
 BuildRequires:  perl(XML::SAX::Expat)
-Requires:       perl(XML::NamespaceSupport) >= 1.04
-Requires:       perl(XML::SAX) >= 0.15
+Requires:       perl(XML::NamespaceSupport) >= 1.40
+Requires:       perl(XML::SAX) >= 0.150
 Requires:       perl(XML::SAX::Expat)
+Provides:       perl(XML::Simple) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -52,15 +55,16 @@ allows them to be called as methods of an *XML::Simple* object. The object
 interface can also be used at either end of a SAX pipeline.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -68,7 +72,6 @@ find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

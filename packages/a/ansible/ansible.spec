@@ -16,9 +16,9 @@
 #
 
 
-%define ansible_community_major_version 14
-%define required_ansible_core_version 2.21.5
-%define next_ansible_core_version 2.22.0
+%define ansible_community_major_version 15
+%define required_ansible_core_version 2.22.0
+%define next_ansible_core_version 2.23.0
 
 
 %{?sle15_python_module_pythons}
@@ -43,13 +43,15 @@
 %endif
 
 Name:           ansible
-Version:        14.5.0
+Version:        15.0.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source:         https://files.pythonhosted.org/packages/source/a/ansible/ansible-%{version}.tar.gz
-Source99:       ansible-rpmlintrc
+Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM bsc#1285531 gh#ansible-collections/google.cloud#785 ansible-doc --list crash; drop once the packaged google.cloud includes it
+Patch0:         google-cloud-documentation-short_description-first.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  %{ansible_python}-setuptools
@@ -84,7 +86,7 @@ modules can be written in any language and are transferred to managed machines
 automatically.
 
 %prep
-%setup -q -n ansible-%{version}
+%autosetup -p1 -n ansible-%{version}
 
 for file in .git_keep .travis.yml ; do
   find . -name "$file" -delete

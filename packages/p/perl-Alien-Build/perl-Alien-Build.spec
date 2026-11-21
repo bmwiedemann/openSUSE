@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Alien-Build
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,43 +18,44 @@
 
 %define cpan_name Alien-Build
 Name:           perl-Alien-Build
-Version:        2.840.0
+Version:        2.880.0
 Release:        0
-# 2.84 -> normalize -> 2.840.0
-%define cpan_version 2.84
+# 2.88 -> normalize -> 2.880.0
+%define cpan_version 2.88
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Build external dependencies for use in CPAN
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Capture::Tiny) >= 0.17
+BuildRequires:  perl(Capture::Tiny) >= 0.170
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(ExtUtils::CBuilder)
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.30
-BuildRequires:  perl(FFI::CheckLib) >= 0.11
-BuildRequires:  perl(File::Which) >= 1.10
+BuildRequires:  perl(FFI::CheckLib) >= 0.110
+BuildRequires:  perl(File::Which) >= 1.100
 BuildRequires:  perl(File::chdir)
 BuildRequires:  perl(JSON::PP)
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Path::Tiny) >= 0.077
+BuildRequires:  perl(Path::Tiny) >= 0.130
 BuildRequires:  perl(Test2::API) >= 1.302096
 BuildRequires:  perl(Test2::V0) >= 0.000121
 BuildRequires:  perl(Text::ParseWords) >= 3.26
 BuildRequires:  perl(parent)
-Requires:       perl(Capture::Tiny) >= 0.17
+Requires:       perl(Capture::Tiny) >= 0.170
 Requires:       perl(Digest::SHA)
 Requires:       perl(ExtUtils::CBuilder)
 Requires:       perl(ExtUtils::MakeMaker) >= 6.64
 Requires:       perl(ExtUtils::ParseXS) >= 3.30
-Requires:       perl(FFI::CheckLib) >= 0.11
-Requires:       perl(File::Which) >= 1.10
+Requires:       perl(FFI::CheckLib) >= 0.110
+Requires:       perl(File::Which) >= 1.100
 Requires:       perl(File::chdir)
 Requires:       perl(JSON::PP)
 Requires:       perl(List::Util) >= 1.33
-Requires:       perl(Path::Tiny) >= 0.077
+Requires:       perl(Path::Tiny) >= 0.130
 Requires:       perl(Test2::API) >= 1.302096
 Requires:       perl(Text::ParseWords) >= 3.26
 Requires:       perl(parent)
@@ -149,7 +150,7 @@ for CPAN. It is mainly designed to be used at install time of a CPAN
 client, and work closely with Alien::Base which is used at runtime.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

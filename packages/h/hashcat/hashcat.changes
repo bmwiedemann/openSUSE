@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  3 21:58:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.0.0
+  * 146 new hash-modes, including yescrypt, Kerberos 5 etype 3,
+    FreeBSD GELI, OpenBSD softraid, Google fscrypt, KDE KWallet,
+    OpenSSH bcrypt-pbkdf, BIP39 passphrases, MSSQL (2025) and
+    iClass.
+  * 91 of them are raw hash-modes for the new hash functions
+    introduced through hash recipes, from 40084 to 40175.
+  * 26 new hash primitives.
+  * Eight new tools to extract hashes.
+  * The 74 hash-modes that run only as a stored recipe now have
+    numbers from 40009 to 40082. The old numbers still work.
+
+-------------------------------------------------------------------
 Fri Oct 16 09:41:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot v7.1.2-942-gef3508ed8

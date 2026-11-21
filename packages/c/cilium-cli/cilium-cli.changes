@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:03:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.20.3:
+  * Minor Changes:
+    - cilium-cli: Apply standard scheduling params to all
+      connectivity pods (cilium/cilium#49113)
+    - helm: move SPIRE chart values under ztunnel
+      (cilium/cilium#48942)
+  * CI Changes:
+    - cilium-cli: Fix unschedulable client pod on 2-node clusters
+      (cilium/cilium#49776)
+    - cilium-cli: Ignore restarts of never-started containers
+      (cilium/cilium#49641)
+    - cilium-cli: restore v2alpha1 BGP deprecation log exception
+      (cilium/cilium#49919)
+    - cilium-cli: Retry policy deletes on API server errors
+      (cilium/cilium#49777)
+  * Misc Changes:
+    - cilium sysdump collects CiliumCIDRGroups again. The task had
+      failed since cilium-cli v0.18.4 and left an empty
+      ciliumcidrgroups-<ts>.yaml in the bundle.
+      (cilium/cilium#49914)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49695)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49744)
+    - chore(deps): update auto-merge-trusted-deps (main)
+      (cilium/cilium#49895)
+    - cilium-cli: Add a flag to skip creating the host-netns
+      DaemonSet during connectivity tests. (cilium/cilium#49466)
+    - cilium-cli: add explicit timeout to ensure health check
+      termination (cilium/cilium#49837)
+    - cilium-cli: Discover Gateway API versions for sysdump
+      (cilium/cilium#49840)
+    - Update stable release to v0.20.2 in #3329
+    - go.mod: drop controller-runtime replace directive in #3330
+    - chore(deps): update docker.io/library/golang:1.27.3 docker
+      digest to 2920bb1 in #3331
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 4488103 in #3332
+    - chore(deps): update go in #3334
+    - chore(deps): update
+      docker.io/library/golang:1.27.3-alpine3.23 docker digest to
+      5d51133 in #3335
+
+-------------------------------------------------------------------
 Fri Oct 30 06:26:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.20.2:

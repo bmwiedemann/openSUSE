@@ -263,4 +263,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: Update video firmware binary for Glymur</comment>
     <requestid>1381440</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>931d1cff8b98803c378495c1f6bc9abe</srcmd5>
+    <version>20261031</version>
+    <time>1793989977</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261031 (git commit bda6eccc3a8f):
+  * qcom: vpu: Update video firmware binary for Kaanapali</comment>
+    <requestid>1394985</requestid>
+  </revision>
 </revisionlist>

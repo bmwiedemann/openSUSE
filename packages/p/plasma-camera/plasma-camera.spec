@@ -21,14 +21,14 @@
 
 %bcond_without released
 Name:           plasma-camera
-Version:        26.08.2
+Version:        26.11.80
 Release:        0
 Summary:        Camera application for Plasma Mobile
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/unstable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -76,6 +76,7 @@ A camera application for Plasma Mobile.
 %{_kf6_applicationsdir}/org.kde.plasma.camera.desktop
 %{_kf6_appstreamdir}/org.kde.plasma.camera.appdata.xml
 %{_kf6_bindir}/plasma-camera
+%{_kf6_configkcfgdir}/plasma-camera.kcfg
 
 %files lang -f %{name}.lang
 

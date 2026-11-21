@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:51:35 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Update upstream tarball link, as the old one was retired
+
+-------------------------------------------------------------------
 Fri Oct  2 11:58:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add set of upstream patches enabling build with pytest 9.1:

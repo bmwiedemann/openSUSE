@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 08:52:40 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- support kernel 7.4 (gtk4 finally)
+- enable LTO, it is long supported (since 6.6)
+- noarch for some subpackages
+- add %check with some basic tests
+
+-------------------------------------------------------------------
 Thu Sep 10 23:44:33 UTC 2026 - Tony Jones <tonyj@suse.com>
 
 - Create perf-plugin-jvmti package to support JAVA profiling

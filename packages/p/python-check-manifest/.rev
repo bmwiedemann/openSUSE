@@ -220,4 +220,16 @@ Needed for python3-jupyter_ipython</comment>
     <comment></comment>
     <requestid>1353135</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>5daa414846a27ecbe07140e7599ce2c3</srcmd5>
+    <version>0.51</version>
+    <time>1795103663</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-ignore-list-equality.patch to fix test failures with
+  setuptools &gt;= 83. Compare stored glob rules rather than matcher
+  objects while preserving Unicode-normalised filtering. Add
+  regression tests for equality, clearing and combining ignore lists.
+</comment>
+    <requestid>1398495</requestid>
+  </revision>
 </revisionlist>

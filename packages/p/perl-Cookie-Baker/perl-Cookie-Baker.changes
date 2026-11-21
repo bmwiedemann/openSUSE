@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:46:36 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-Cookie-Baker/Changes
+
+  0.14 2026-11-12T09:32:20Z
+     - fix use of hex #23
+  0.13 2026-11-08T07:54:40Z
+     - add validations for some values
+
+-------------------------------------------------------------------
 Fri Mar  8 22:02:59 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

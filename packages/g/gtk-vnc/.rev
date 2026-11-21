@@ -511,4 +511,41 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
     <comment>- Replace BuildRequires on python3-devel with python3-base</comment>
     <requestid>1367529</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>18545b4aa28e658859a6860426ea53d4</srcmd5>
+    <version>1.6.0</version>
+    <time>1794597148</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.0:
+  * Set gmp min version to 6.2.0
+  * Avoid accidental build dep on glib 2.76
+  * Fix --gtk-vnc-debug operation with glib &gt;= 2.80
+  * Include log domain and timestamp in debug messages
+  * Implement extended mouse button psuedo-encoding
+  * Implement extended clipboard psuedo-encoding
+  * Add APIs to provide automatic clipboard synchronization
+  * Fixes to keyboard mapping on Win32
+  * Avoid rounding in zoom level to allow fully granular steps
+  * Fix offset calculation when at non-100% zoom levels
+  * Correctly render background when zoomed out
+  * Fix menubar layout in python example viewer
+  * Keep tight encoding available even when jpeg support is not built.
+  * Fix crashes from emitting errors/signals in coroutines instead of main
+    event loop context
+  * Drop code for generating Diffie-Hellman parameters and use built-in
+    defaults fromgnutls
+  * Drop obsolete use of gnutls_global_init
+  * Stop declaring 'get_type()' funcs G_GNUC_CONST for compat with GCC 16
+  * Fix array bounds checks handling auth types
+  * Don't unconditionally ask for VNC_CONNECTION_CREDENTIAL_CA_CERT_DATA
+  * Add APIs to opt-in to handling of new credential types
+  * Add support for hook to perform TLS validation
+  * Fix SASL auth with QEMU servers prior to 9.2
+  * Fix various memory leaks in library, tools and examples
+  * Fix potential use-after-free in TLS cert location code
+  * Reverse order of search directory sub-trees, so that $HOME/.pki is
+    preferred over /etc/pki
+  * Require the clientcert.pem and clientkey.pem to be loaded from the same</comment>
+    <requestid>1396747</requestid>
+  </revision>
 </revisionlist>

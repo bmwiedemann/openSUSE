@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * kfileitemmodel: apply the refresh of an item that setData() renamed (kde#527059)
+  * KStandardItemListWidget: respect DPR when creating a drag pixmap in Details view
+  * dolphinview: drop the frame of the view where the style draws one (kde#527201)
+  * dolphinviewcontainer: name the view properties after the url the view shows (kde#526398)
+  * dolphinmainwindow: pass the folder of the custom command as one argument (CVE-2026-110236, boo#1285432)
+  * CI: Comment flatpak job
+
+-------------------------------------------------------------------
 Wed Oct  7 07:01:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

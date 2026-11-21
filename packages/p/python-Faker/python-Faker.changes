@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:15:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 40.44.0:
+  * Allow repeated digits in pt_BR CPF and RG generators.
+  * Keep en_CA SINs out of the 0 and 8 series.
+  * Use Luhn check digit for no_NO Postgiro (0000) BBANs.
+  * Fix en_GB VAT ID generation.
+  * Add es_CO bank and internet providers.
+  * Fix BBAN length in fa_IR and mk_MK IBAN generators.
+  * Catch NotImplementedError in Documentor formatters.
+  * Update vi_VN address formats, administrative units, and
+    postcodes.
+  * Generate valid CNP birth dates in ro_RO ssn().
+  * Compute Norwegian MOD11 check digit for no_NO iban().
+  * Add si_LK person provider.
+  * Generate structurally valid Irish IBANs for en_IE.
+  * Add Pillow as an optional dependency.
+- Add %{python_module python-stdnum >= 1.20} to BuildRequires:
+  needed by test_bank and test_ssn test suites.
+
+-------------------------------------------------------------------
 Fri Aug 21 09:48:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 40.36.0:

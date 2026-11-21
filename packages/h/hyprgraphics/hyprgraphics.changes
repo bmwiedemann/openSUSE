@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:34:38 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.6.0:
+   - ABI breaking update:
+    * resource/text: remove dep on pango
+    * Add missing include for uint8_t
+    * egl: add XRGB16161616F and ARGB16161616F to formats
+    * render: add missing weight and italic to STextResourceData
+    * packaging: add Requires to pkgconfig for automatic make cflags
+    * packaging: make optional pkg-config deps conditional
+   - Add pkgconfig(libheif) as build dep to enable HEIF/AVIF support
+
+-------------------------------------------------------------------
 Sat May  9 14:47:23 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.5.1:

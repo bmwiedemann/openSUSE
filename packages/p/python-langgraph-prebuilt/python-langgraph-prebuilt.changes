@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:28:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.3:
+  * ToolCallRequest.override(state=...): state overrides from
+    wrap_tool_call now also replaces runtime.state, so the
+    tool sees them via both InjectedState and ToolRuntime
+  * Send-dispatched tool calls now get the same state as an
+    edge: read the state the node would get from an edge,
+    coerced to its input schema
+
+-------------------------------------------------------------------
+Sat Nov 14 07:46:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.2:
+  * create_react_agent: build the call_model missing-messages
+    error only when raised instead of on every model call,
+    speeding up long tool loops (same ValueError text)
+  * ToolNode: allow the node name to be None
+
+-------------------------------------------------------------------
 Thu Oct 15 08:29:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.1.1:

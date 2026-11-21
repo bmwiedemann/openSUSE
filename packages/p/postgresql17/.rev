@@ -347,4 +347,41 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
 - Use LLVM 15 on SLE-15 up to SP5 and LLVM 17 on SP6 and SP7.</comment>
     <requestid>1381700</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f558fe6ddecf99f6917ebf63d85e53b8</srcmd5>
+    <version>17.12</version>
+    <time>1794591197</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1290237: Update to 17.12:
+  https://www.postgresql.org/docs/17/release-17-12.html
+  https://www.postgresql.org/about/news/p-3442/
+  * CVE-2026-6460: Add defenses against problems caused by altering
+    composite types concurrently with operations on data of those
+    types
+  * CVE-2026-116306: Cope with concurrent rowtype changes in
+    ExecEvalFieldStore[De]Form()
+  * CVE-2026-16237: Enforce view row visibility in INSERT ... ON
+    CONFLICT
+  * CVE-2026-120146: Align REASSIGN OWNED's caller-privilege checks
+    with ALTER ... OWNER TO's checks
+  * CVE-2026-116310: Fix use-after-free in COPY FROM ON_ERROR
+    reporting
+  * CVE-2026-116332: Disallow closing a portal that is still being
+    set up
+  * CVE-2026-120143: Forcibly close portals associated with
+    transition tables at the end of the trigger function
+  * CVE-2026-116304: Fix race condition leading to use-after-free
+    in shared tupledesc management
+  * CVE-2026-120152: Fix use-after-free in pg_show_all_settings()
+  * CVE-2026-120150: Fix use-after-free in expanded-record domain
+    constraint checking
+  * CVE-2026-116328: Prevent memory corruption after a large
+    allocation in a generation memory context is freed
+  * CVE-2026-116315: Fix buffer overrun in tsvector_delete()
+  * CVE-2026-116317: Fix buffer overrun in ts_rank_cd()
+  * CVE-2026-116321: Prevent construction of invalid name values
+    via element assignment
+  * CVE-2026-116327: Treat application of a leaky function to a</comment>
+    <requestid>1397339</requestid>
+  </revision>
 </revisionlist>

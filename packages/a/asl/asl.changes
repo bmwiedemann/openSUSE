@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  8 07:37:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld316
+  Additions
+  * Add -w[no-]e-register-128 command line switch to enable or
+    disable warnings about possible accidental use of displacement
+    (-)128 on SC/MP.
+  * Add -underscore-predef-symbols command line switch to enforce
+    leading underscores on names of all predefined/built-in symbols.
+  Bugfix
+  * Fix building on PPC64 .
+- Update to version 142-bld315
+  Additions
+  * Add predefined variable ASL_VERSION that contains major version,
+    minor version, and build number in format 0xMMnnbbbb.
+  Bugfix
+  * SC/MP: E register is allowed as displacement for PC-based
+    addressing only for data accesses.
+
+-------------------------------------------------------------------
 Mon Oct 12 06:01:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 142-bld314

@@ -24,35 +24,35 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-black
-Version:        26.5.1
+Version:        26.10.1
 Release:        0
 Summary:        A code formatter written in, and written for Python
 License:        MIT
 URL:            https://github.com/psf/black
 Source:         https://files.pythonhosted.org/packages/source/b/black/black-%{version}.tar.gz
-BuildRequires:  %{python_module aiohttp >= 3.3.2}
+BuildRequires:  %{python_module aiohttp >= 3.10}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module click >= 8.0.0}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
-BuildRequires:  %{python_module hatch_vcs}
-BuildRequires:  %{python_module hatchling >= 1.8.0}
+BuildRequires:  %{python_module hatch_vcs >= 0.3.0}
+BuildRequires:  %{python_module hatchling >= 1.27.0}
 BuildRequires:  %{python_module mypy_extensions >= 0.4.3}
 BuildRequires:  %{python_module packaging >= 22.0}
-BuildRequires:  %{python_module pathspec >= 0.9.0}
+BuildRequires:  %{python_module pathspec >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytokens >= 0.1.10}
+BuildRequires:  %{python_module pytokens >= 0.4.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Suggests:       python-aiohttp >= 3.10.0
 Requires:       python-click >= 8.0.0
 Requires:       python-mypy_extensions >= 0.4.3
-Requires:       python-packaging
-Requires:       python-pathspec >= 0.9.0
+Requires:       python-packaging >= 22.0
+Requires:       python-pathspec >= 1.0.0
 Requires:       python-platformdirs >= 2
-Requires:       python-pytokens >= 0.1.10
+Requires:       python-pytokens >= 0.4.0
 
 %if %{with libalternatives}
 BuildRequires:  alts

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:20:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14.0
+  * Improve the robots.txt regex.
+  * 1293 fix parser unwrap.
+  * removed is_file check from path extraction.
+  * fix: support LF-only line endings in --request-file parsing.
+  * Fix/1148 update self signed certs.
+  * feat: -w accepts multiple wordlists.
+  * fix: don't panic when parallel is set in a config file.
+  * fix: keep config file scope when a target is given and accept
+    bare domains.
+  * fix: terminate JSON statistics records with newline.
+  * fix: treat /dir -> /dir/ redirects that switch http/https as
+    directories.
+  * fix: hand each parallel child its output path by env, not argv
+    search.
+  * fix: match whole --stdin arg when filtering parallel children.
+
+-------------------------------------------------------------------
 Sat Dec 13 16:26:47 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13.1

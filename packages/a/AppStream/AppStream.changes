@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Nov 11 09:59:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.3:
+  * Features:
+    + Search: Make fulltext token search a bit more space and time-efficient
+    + Xml: Leave out translations we don't need while parsing
+    + Reduce allocations in as_locale_is_compatible
+    + Avoid some needless copying and folding when writing the cache
+    + Stemmer: Cache stems in-memory instead of recreating them every time
+  * Bugfixes:
+    + Release: Don't drop catalog descriptions when reading other translations
+    + Cache: Do not free a the GError we propagate to the caller
+    + Reject loading bundles that do not have an explicit type
+    + Compose: Actually add the bundle of a unit to its components
+    + Meson: compose: Run the pkgconf file fixup in the global build root
+    + Bundle: Add back support for Limba
+    + Yaml: Handle translated screenshot media like the XML reader does
+    + Split words properly when tokenizing values with + or -
+    + Validate incoming locale strings more strictly before passing them on
+    + Compose: Reject Qt locale with non-POSIX names
+    + Compose: Fix potential crashes when encounterim bad QM translations
+    + Cli: Fix not used `--datapath` option
+    + Cli: Make --no-cache work and reject a bad --datapath
+  * Miscellaneous: Move locale-related code into its own unit
+- Update version dependencies according to meson.build.
+- Drop 0001-bundle-Add-back-support-for-Limba.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Nov  5 19:43:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * 0001-bundle-Add-back-support-for-Limba.patch
+
+-------------------------------------------------------------------
+Thu Oct 29 07:18:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.2:
+  * Features:
+    + Content-rating: Add attribute titles and group descriptions
+    + Pool: Allow adding extra data locations with explicit scope and origin
+    + Ascli: sysinfo: Print some more information about the OS, like its
+      support period
+    + Bundle: Drop Limba, add Manifold
+  * Bugfixes:
+    + Cli: Fail YAML validation for missing input
+    + Compose: Fix build on a newer kernel with an old glibc
+    + Pool: Work around all Flatpak origins having the same name
+    + Pool: Include scope in metadata cache keys for Flatpak
+    + Apt: Don't hang when tar emits lots of stderr output
+    + Its: Support MetaInfo files that use the specification's namespace
+    + System-info: Don't prefix an OS ID that already is rDNS
+    + Sysinfo: Also replace `-` with `_` at `dns_to_rdns` function
+
+-------------------------------------------------------------------
+Thu Oct  1 06:52:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Tue Sep 29 07:23:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.2.1:

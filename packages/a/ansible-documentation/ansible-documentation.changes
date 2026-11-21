@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Fri Nov 06 12:53:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.22.0:
+  * Fix duplicate explicit target name 'documentation' (#4132)
+    (#4133)
+  * Reflect that synchronous DaWGs meetings don't happen anymore
+    (#4126) (#4128)
+  * ci: refresh dev dependencies (#4119)
+  * documentation_contributions.rst: add link to open issues on
+    ansible-documentatiojn repo (#4121) (#4122)
+  * Update actions. (#4103)
+  * [Steering Committee vote is NEEDED before merge] Update
+    inclusion process with SC-selected model (#4065) (#4107)
+  * Add the Ansible community 15.0.0a4 porting guide (#4105)
+    (#4106)
+  * build(deps): bump actions/setup-python from 7.0.0 to 7.1.0
+    (#4093) (#4095)
+  * Suggest short_description at the top of DOCUMENTATION (#4079)
+    (#4096)
+  * ci: refresh dev dependencies (#4091)
+  * Document runtime deprecation of rc failure inference (#4066)
+    (#4086)
+  * [stable-2.22] ci: refresh docs build dependencies (#4075)
+  * ci: refresh dev dependencies (#4083)
+  * Fix YAML syntax in playbook example (#4009) (#4068)
+  * Merge pull request #3999 from bcoca/passlib_changes (#4034)
+  * Update docs after secret floor change (#4060) (#4067)
+  * Add the Ansible community 15.0.0a3 porting guide (#4063)
+    (#4064)
+  * ci: refresh dev dependencies (#4052)
+  * Enhance 2.16 porting guide with warnings backports (#4036)
+    (#4044)
+  * Merge pull request #4030 from Shrews/warning-backports
+  * Add the Ansible community 14.5.0 porting guide (#4031) (#4032)
+  * ci: refresh dev dependencies (#4025)
+  * Add the Ansible community 15.0.0a2 porting guide (#4020)
+    (#4021)
+  * Add documentation for secret masking (#3934) (#4019)
+  * ci: refresh dev dependencies (#4014)
+  * Remove no longer used Zizmor config. (#3998) (#4000)
+  * Add Ansible 15 porting guide to index. (#3995) (#3996)
+  * Add the Ansible community 15.0.0a1 porting guide (#3993)
+    (#3994)
+  * [stable 2.22]: Update stable-2.22 branch to remove devel only
+    tooling (#3990)
+  * ci: refresh dev dependencies (#3986)
+  * [devel] ci: refresh dev dependencies (#3939)
+  * ci: update to use self-repository syntax (#3891)
+  * docs: remove duplicate 'the' in module tmpdir docs (#3962)
+  * docs: fix 'allow to provide' grammar in module defaults groups
+    (#3967)
+  * docs: fix 'allows to run' grammar in command guide seealso
+    (#3968)
+  * docs: remove duplicate 'the' in tmpdir directory note (#3969)
+  * Ansible 14 is out, Ansible 13 is EOL (#3957)
+  * docs: remove duplicate 'the' in MAINTAINERS pip-compile note
+    (#3963)
+  * ci: ignore actionlint warning about self-repo syntax (#3941)
+  * [devel] ci: refresh docs build dependencies: update
+    antsibull-docs (#3953)
+  * [devel] ci: refresh docs build dependencies (#3951)
+  * docs: update Galaxy namespace request link to service-requests
+    category (#3945)
+  * Add the Ansible community 14.4.0 porting guide (#3943)
+  * Fix a typo within the sample spec (#3927)
+  * docs: add Secure Development Practice (#3735)
+  * docs: add cross-links and forum references to CRA security
+    documents (#3916)
+  * ci: refresh dev dependencies (#3915)
+  * build(deps): bump re-actors/alls-green from 1.2.2 to 1.3.0
+    (#3917)
+  * docs: add Ansible Security Policy (#3721)
+  * docs: add Vulnerability Management Policy (#3734)
+  * build(deps): bump wntrblm/nox from 2026.08.10 to 2026.08.17
+    (#3910)
+  * ci: refresh dev dependencies (#3907)
+  * docs(maintainers): add details about sphinx version bumps
+    (#3890)
+  * typo: unit tests are in tests/unit (#3888)
+  * ci: refresh dev dependencies (#3896)
+  * Fix noxfile's session assignments. (#3898)
+  * build(deps): bump wntrblm/nox from 2026.07.11 to 2026.08.10
+    (#3897)
+  * build(constraints.in): remove constraint for sphinx from devel
+    (#3889)
+  * Workflows: app-id is apparently deprecated, use client-id
+    instead (#3619)
+  * CI: update zizmor dependency (#3892)
+  * Indicate windows connection resiliency and perf is delayed
+    (#3887)
+  * Add the Ansible community 14.3.0 porting guide (#3885)
+  * ci: refresh dev dependencies (#3883)
+  * vault_guide: Update vault example script (#3753)
+  * [devel] ci: refresh dev dependencies (#3839)
+  * Pin the alls-green action to hash (#3869)
+  * Pin actions to hash (#3847)
+  * Add basic ruff config to disable problematic rules (#3862)
+  * chore: ignore ruff warnings about blind exception handlers in
+    yamllint checker (#3857)
+  * chore: fix ruff checks in linted files in hacking/ (#3842)
+  * docs: add porting guide workflow to remove files (#3852)
+  * Document soft deprecation of rc failure inference (#3605)
+  * Document register projections (#3752)
+  * chore: bump sphinx to 9.1.0 (#3846)
+  * chore: fix ruff checks in docs/bin/ (#3841)
+  * Bump actions/setup-python from 6.3.0 to 7.0.0 (#3840)
+  * Ansible 15 roadmap (#3794)
+  * update Galaxy token URL (#3825)
+  * Fix duplicate word in cli_parsing docs (#3820)
+  * Fix duplicate word in testing_running_locally docs (#3817)
+  * Bump actions/setup-python from 6 to 6.3.0 (#3819)
+  * Bump wntrblm/nox from 2026.04.10 to 2026.07.11 (#3818)
+  * Remove outdated UTF-8 encoding comment recommendation (#3821)
+  * ci: refresh dev dependencies (#3816)
+  * Add the Ansible community 14.2.0 porting guide (#3811)
+  * ci: refresh dev dependencies (#3807)
+  * Add note about role argument_specs coercion (#3803)
+  * ci: refresh dev dependencies (#3802)
+  * ci: refresh dev dependencies (#3798)
+  * Add 2.22 roadmap and porting guide (#3793)
+  * ci: refresh dev dependencies (#3790)
+  * Bump actions/checkout from 6 to 7 (#3791)
+  * fix: reduce fetch depth for deploy checkout to shallow clone
+    (#3785)
+  * Add the Ansible community 13.8.0 porting guide (#3781)
+  * Add the Ansible community 14.1.0 porting guide (#3780)
+  * removed orphan pages - I (#3754)
+  * dev_guide: Fix link (#3742)
+  * Review requests (#3472)
+  * get_started_inventory.rst: fix small typo (#3769)
+  * ci: refresh dev dependencies (#3768)
+  * chore: update latest version in scheduled build (#3763)
+  * fix(build): force Python version with nox (#3762)
+  * fix: remove pings from build failure notifications (#3764)
+  * ci: refresh dev dependencies (#3746)
+  * ci: refresh docs build dependencies (#3758)
+  * Bump python and OS version (#3757)
+  * Bump Python version to 3.13 (#3743)
+  * fix(getting_started_ee): remove unnecessary become from EE
+    examples (#3737)
+  * Add PowerShell 7 documentation (#3692)
+  * Add note to roadmap index pointing to devel branch for upcoming
+    releases (#3660)
+  * updated documentation for networking collections (#3722)
+  * [devel] ci: refresh dev dependencies (#3719)
+  * chore: remove stable-2.19 note from banner (#3725)
+  * chore: remove banner about Red Hat Summit (#3726)
+  * Add the Ansible community 14 porting guide (#3723)
+  * ci: refresh docs build dependencies (#3720)
+  * Add warning about module_utils import restriction (#3668)
+  * ansible-galaxy: update skeleton_ignore parameter docs (#3470)
+  * Add 'module' in 'The crypt _module_ is used' (#3675)
+  * Add multi-parent metagroup example and clarify group_vars
+    inheritance (#3493)
+  * Document expected --start-at-task behavior (#3589)
+  * Add note on Collection Testing with ansible-test (#3654)
+  * Fix minor grammar mistakes and typos (#3667)
+  * Add the Ansible community 14.0.0rc1 porting guide (#3694)
+  * ci: refresh dev dependencies (#3690)
+  * ci: refresh docs build dependencies (#3691)
+  * Add the Ansible community 14.0.0b1 porting guide (#3685)
+  * Update style_guide, add AGENTS.md file. Assisted-by: Claude
+    Opus, Gemini (#3662)
+  * Add the Ansible community 13.7.0 porting guide (#3677)
+  * ci: refresh dev dependencies (#3673)
+  * ci: refresh docs build dependencies (#3674)
+  * faq: update doc for generating password hash (#3473)
+  * update python support matrix (#3647)
+  * ci: refresh dev dependencies (#3658)
+  * ci: refresh docs build dependencies (#3659)
+  * Update Debian installation instructions (#3487)
+  * ci: refresh dev dependencies (#3649)
+  * ci: refresh docs build dependencies (#3652)
+  * Add the Ansible community 14.0.0a4 porting guide (#3645)
+  * code_of_conduct: add reference to AI policy, add the license
+    section (#3640)
+  * Add Ansible AI Policy (#3588)
+  * Fix documentation: value name is `removed_at_date` not
+    `remove_by_date` for `deprecated` (#3590)
+  * ci: refresh dev dependencies (#3629)
+  * ci: refresh docs build dependencies (#3630)
+  * Propose fix typos (#3631)
+  * add docs on resource reporting (#3595)
+  * updates to collection namespace requests (#3603)
+  * Add the Ansible community 14.0.0a3 porting guide (#3617)
+  * Add the Ansible community 13.6.0 porting guide (#3614)
+  * Bump wntrblm/nox from 2026.02.09 to 2026.04.10 (#3612)
+  * ci: refresh dev dependencies (#3610)
+  * ci: refresh docs build dependencies (#3611)
+  * Galaxy namespace request: use forum instead of galaxy repo
+    (#3598)
+  * update the pip-compile workflow for stable-2.21 (#3592)
+  * add 14 to list of package versions (#3594)
+  * update tagger script for stable-2.21 (#3593)
+  * Add the Ansible community 14.0.0a2 porting guide (#3596)
+
+-------------------------------------------------------------------
+Fri Nov 06 08:48:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.6:
+  * [PR #4126/e2917a4f backport][stable-2.21] Reflect that
+    synchronous DaWGs meetings don't happen anymore (#4129)
+  * ci: refresh dev dependencies (#4115)
+  * documentation_contributions.rst: add link to open issues on
+    ansible-documentatiojn repo (#4121) (#4123)
+  * Update actions. (#4102)
+  * [Steering Committee vote is NEEDED before merge] Update
+    inclusion process with SC-selected model (#4065) (#4108)
+  * Suggest short_description at the top of DOCUMENTATION (#4079)
+    (#4097)
+  * ci: refresh dev dependencies (#4088)
+  * [stable-2.21] ci: refresh docs build dependencies (#4072)
+  * ci: refresh dev dependencies (#4084)
+  * Fix YAML syntax in playbook example (#4009) (#4069)
+  * Merge pull request #3999 from bcoca/passlib_changes (#4035)
+  * ci: refresh dev dependencies (#4051)
+  * Enhance 2.16 porting guide with warnings backports (#4036)
+    (#4045)
+  * Merge pull request #4030 from Shrews/warning-backports
+  * Add the Ansible community 14.5.0 porting guide (#4031) (#4033)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:03:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.5:

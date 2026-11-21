@@ -32,6 +32,8 @@ Patch0:         libnfs-5.0.3-glibc-2_43.patch
 Patch1:         libnfs-CVE-2026-53689.patch
 # PATCH-FIX-UPSTReAM libnfs-CVE-2026-57918.patch mgorse@suse.com -- socket: prevent an underflow in xid.
 Patch2:         libnfs-CVE-2026-57918.patch
+# PATCH-FIX-UPSTREAM libnfs-CVE-2026-108985.patch bsc#1284986 xwang@suse.com -- ZDR: enforce the maxsize bound
+Patch3:         libnfs-CVE-2026-108985.patch
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -89,4 +89,12 @@ crossed range and no Bugzilla report references this package.
 </comment>
     <requestid>1380832</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2cc0d8546635f913ce8c10b6f2fbf4e3</srcmd5>
+    <version>0.22.0</version>
+    <time>1793991500</time>
+    <user>anag_factory</user>
+    <comment>Update mcp-bugzilla to 0.22.0: sort-order param in quicksearch, ship syntax reference.</comment>
+    <requestid>1395830</requestid>
+  </revision>
 </revisionlist>

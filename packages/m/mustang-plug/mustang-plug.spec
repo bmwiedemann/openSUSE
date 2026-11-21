@@ -1,7 +1,7 @@
 #
 # spec file for package mustang-plug
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 Name:           mustang-plug
-Version:        1.4.3
+Version:        1.5.0
 Release:        0
 Summary:        Software for Fender Mustang amps
 License:        GPL-3.0-or-later
 URL:            https://github.com/offa/plug
 Source0:        https://github.com/offa/plug/archive/refs/tags/v%{version}.tar.gz#/mustang-plug-%{version}.tar.gz
-Source1:        mustang-plug.svg
 Patch0:         0001-Build-helper-libraries-as-OBJECT-libraries.patch
-Patch1:         0001-Improve-udev-rules-add-uaccess-support.patch
-Patch2:         0001-Add-missing-UsbDeviceMock-for-MustangTest.patch
-Patch3:         https://github.com/offa/plug/commit/79bdcbc2ed12.patch#/add_missing_cstdint.patch
+Patch1:         0001-Add-missing-UsbDeviceMock-for-MustangTest.patch
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  cmake(Qt5Core)
-BuildRequires:  cmake(Qt5Gui)
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  pkgconfig
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(gmock)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -57,22 +55,15 @@ hardware for regular (non-root) users.
 %autosetup -n plug-%{version} -p1
 
 %build
-%cmake \
-    -DPLUG_UDEV_RULE_PATH:PATH=%{_udevrulesdir} \
-    -DPLUG_DESKTOP_PATH:PATH=%{_datadir}/applications/ \
-    %{nil}
+%cmake
 %cmake_build
 
 %install
 %cmake_install
-install -m 0644 -D -t %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/ %{S:1}
 # Remove pointless cmake config
-rm %{buildroot}%{_datadir}/plug/cmake/*
-rmdir --ignore-fail-on-non-empty -p %{buildroot}%{_datadir}/plug/cmake
+rm -r %{buildroot}%{_libdir}/cmake/plug
 # Remove Debian specific plugdev udev rules
 rm %{buildroot}%{_udevrulesdir}/*-plugdev.rules
-
-sed -i -e 's@.*Icon=.*@Icon=mustang-plug@' -e '/.*Path=.*/ d' %{buildroot}%{_datadir}/applications/*desktop
 
 %check
 %ctest

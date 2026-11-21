@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Nov 11 10:25:03 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261111.77a75dc:
+  * Keep the crypttab options of the devices already enrolled
+  * Keep secrets out of the --start-trace-code log
+  * Track a RAID device once, and warn about TPM2 slots without tpm2-device
+
+-------------------------------------------------------------------
+Tue Nov 10 20:50:52 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261110.7e795df:
+  * Fix cosmetic error when erroll is called two times
+  * Remove the pcrlock policy credential after make-policy
+
+-------------------------------------------------------------------
+Tue Nov 03 12:29:07 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261103.83e67aa:
+  * Include pcrextend in initrd
+  * Get rid off new SELinux AVC flocking on ESP instead of /run
+  * Systemd v262 log skipped PCRs as info instead as notice
+
+-------------------------------------------------------------------
+Fri Oct 30 12:44:48 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261030.75d9961:
+  * Read vendor cmdline.d drop-ins from /usr/lib/kernel/cmdline.d
+  * Track installed files in the ESP
+
+-------------------------------------------------------------------
+Wed Oct 28 15:50:21 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261028.5233b70:
+  * Enroll recovery key if no one is provided via combustion
+
+-------------------------------------------------------------------
+Tue Oct 27 19:26:41 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20261027.f17cbce:
+  * Support new kernel/initrd order for PCR9 in grub2 2.16
+  * Use the preferred boot entry in systemd-boot
+  * Serialize concurrent sdbootutil runs
+
+-------------------------------------------------------------------
 Mon Oct 26 11:51:26 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20261026.4e266f0:

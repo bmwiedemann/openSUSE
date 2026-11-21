@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Plack-Middleware-ReverseProxy
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,32 @@
 #
 
 
-Name:           perl-Plack-Middleware-ReverseProxy
-Version:        0.16
-Release:        0
 %define cpan_name Plack-Middleware-ReverseProxy
-Summary:        Supports app to run as a reverse proxy backend
+Name:           perl-Plack-Middleware-ReverseProxy
+Version:        0.170.0
+Release:        0
+# 0.17 -> normalize -> 0.170.0
+%define cpan_version 0.17
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{version}.tar.gz
+Summary:        Supports app to run as a reverse proxy backend
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIYAGAWA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Plack) >= 0.9988
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.59
+BuildRequires:  perl(Plack) >= 0.998.800
 BuildRequires:  perl(Plack::Middleware)
 BuildRequires:  perl(Plack::Request)
 BuildRequires:  perl(parent)
-Requires:       perl(Plack) >= 0.9988
+Requires:       perl(Plack) >= 0.998.800
 Requires:       perl(Plack::Middleware)
 Requires:       perl(Plack::Request)
 Requires:       perl(parent)
+Provides:       perl(Plack::Middleware::ReverseProxy) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -46,11 +50,11 @@ reverse-proxy. You can specify the reverse proxy address and stop fake
 requests using 'enable_if' directive in your app.psgi.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -61,7 +65,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license LICENSE
 

@@ -379,4 +379,40 @@
     <comment></comment>
     <requestid>1361591</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c3ce72af818128a5b960bb8eaf6f9870</srcmd5>
+    <version>0.4.4</version>
+    <time>1794317903</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.4:
+  * Fixed a missing import.
+  * Fixed #273: Enforce compatible-release bounds in environment
+    markers. Thanks to Luochenchen for the patch.
+  * Fix #194: Add an urls property to expose project and home
+    URLs. Thanks to Sinkleberg for the patch.
+  * Improve performance of export entry search to take linear
+    time. Thanks to Brian Willows for the patch.
+  * Use tarfile.data_filter rather than tarfile.tar_filter in
+    unarchive() when extraction filters are available, matching
+    the Python 3.14 default. Path and link containment checks now
+    use os.path.realpath and no longer fail with IndexError for
+    members such as . or ./. Thanks to Kobain for the patch.
+  * unarchive() now resolves member paths through symlinks seen
+    earlier in the same archive, so a chain of individually
+    harmless-looking links cannot be used to write outside the
+    destination on Pythons without extraction filters. Thanks to
+    Kobain for the patch.
+  * version   Improve NormalizedVersion by addressing correctness
+    and performance gaps found by comparison with packaging.
+    Thanks to Damian Shaw for the patch. Improve SemanticVersion
+    by comparing numeric prerelease identifiers, including those
+    longer than 8 digits. Thanks to Muneeb Sheikh for the patch.
+  * Improve NormalizedVersion by addressing correctness and
+    performance gaps found by comparison with packaging. Thanks
+    to Damian Shaw for the patch.
+  * Improve SemanticVersion by comparing numeric prerelease
+    identifiers, including those longer than 8 digits. Thanks to
+    Muneeb Sheikh for the patch.</comment>
+    <requestid>1396188</requestid>
+  </revision>
 </revisionlist>

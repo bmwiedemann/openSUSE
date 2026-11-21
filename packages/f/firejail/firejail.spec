@@ -16,10 +16,12 @@
 #
 
 
+%bcond_without x11
+
 Name:           firejail
-Version:        0.9.80
+Version:        0.9.82.2
 Release:        0
-Summary:        Linux namepaces sandbox program
+Summary:        Linux namespaces sandbox program
 License:        GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://firejail.wordpress.com
@@ -74,8 +76,12 @@ sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjcl
 %build
 %sysusers_generate_pre %{SOURCE3} %{name} %{name}-group.conf
 
-%configure --docdir=%{_docdir}/%{name} \
-	    --enable-selinux
+%configure \
+  --docdir=%{_docdir}/%{name} \
+%if %{with x11}
+  --enable-x11-legacy \
+%endif
+  --enable-selinux
 %make_build
 
 %install
@@ -125,8 +131,8 @@ rm %{buildroot}%{_docdir}/firejail/COPYING
 
 %files zsh-completion
 %license COPYING
-%dir %{_datarootdir}/zsh
-%dir %{_datarootdir}/zsh/site-functions/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions/
 %{_datadir}/zsh/site-functions/_firejail
 
 %changelog

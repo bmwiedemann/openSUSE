@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
 # Legal-Review-Notice:
@@ -45,12 +45,12 @@ Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{versi
 BuildRequires:  cmake >= 3.20
 BuildRequires:  gcc-c++
 BuildRequires:  ninja
-BuildRequires:  opencl-cpp-headers
-BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  vulkan-headers
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(OpenCL-CLHPP)
+BuildRequires:  pkgconfig(OpenCL-Headers)
 BuildRequires:  pkgconfig(vulkan)
 # The ONNX backend dlopens libonnxruntime at run time and degrades
 # gracefully without it; recommend the Factory runtime so the backend

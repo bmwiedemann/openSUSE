@@ -24,14 +24,31 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        25.devel3.ca3b0768b
+Version:        25.devel475.275dd4727
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
 # MANUAL
+# Override build.rpm, see also https://github.com/openSUSE/obs-build/blob/master/configs/
 %global rb_build_versions %{rb_default_ruby}
 BuildRequires:  dbus-1-common
-Requires:       dbus-1-common
+# YaST dependencies used in tests
+BuildRequires:  %{rubygem ruby-dbus}
+BuildRequires:  %{rubygem abstract_method}
+BuildRequires:  %{rubygem cfa_grub2}
+BuildRequires:  %{rubygem cheetah}
+BuildRequires:  %{rubygem eventmachine}
+BuildRequires:  %{rubygem nokogiri}
+BuildRequires:  %{rubygem rspec}
+BuildRequires:  augeas-lenses
+BuildRequires:  distribution-release
+BuildRequires:  libstorage-ng-ruby
+BuildRequires:  xsltproc
+BuildRequires:  yast2-pkg-bindings
+BuildRequires:  yast2-ruby-bindings
+BuildRequires:  yast2-transfer
+# lsmod
+BuildRequires:  kmod
 # /MANUAL
 BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
@@ -54,6 +71,12 @@ D-Bus service exposing some YaST features that are useful for Agama.
   --no-rdoc --no-ri \
   --symlink-binaries \
   -f
+
+# MANUAL
+%check
+cd %{buildroot}%{gem_base}/gems/%{mod_full_name}
+rspec
+#/ MANUAL
 
 %gem_packages
 

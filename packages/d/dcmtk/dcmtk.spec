@@ -16,20 +16,18 @@
 #
 
 
-%define abiversion 20
+%define abiversion 21
 Name:           dcmtk
-Version:        3.7.0
+Version:        3.7.1
 Release:        0
 Summary:        DICOM Toolkit
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://dicom.offis.de/dcmtk.php.en
-Source0:        https://dicom.offis.de/download/dcmtk/dcmtk370/%{name}-%{version}.tar.gz
+Source0:        https://dicom.offis.de/download/dcmtk/dcmtk371/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE dcmtk-fix-DCMTKTargets.cmake.patch -- Do not track executables to be able to use dcmtk-devel without dcmtk package
 Patch0:         dcmtk-fix-DCMTKTargets.cmake.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch
-# PATCH-FIX-UPSTREAM -- CVE-2026-5663
-Patch2:         0001-Sanitize-all-strings-passed-to-the-exec-options.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes

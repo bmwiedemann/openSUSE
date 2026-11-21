@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Nov 11 04:49:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.56.1:
+  * CVE-2026-111760: Recursive clones are susceptible to Remote
+    Code Execution (boo#1289501)
+  * CVE-2026-113408: It is possible for a server to advertise an
+    unborn HEAD that contains path-traversal characters (e.g.,
+    `refs/heads/../../../TARGET`). With the files ref backend that
+    can lead to ref-updating actions to write to unwanted files.
+    (boo#1289502)
+  * CVE-2026-114467: When Git strips the GPG signatures from a
+    commit message, it only accounts for two signatures. A commit
+    message containing more than two signatures therefore causes a
+    stack memory corruption. (boo#1289503)
+  * CVE-2026-114469: Git rejects patches larger than ~1 GiB, because
+    its patch application code does not work well with large files.
+    That check, however, only considered the size of the patch as it
+    appears in the input, which for binary patches is much smaller
+    than the size of the file the patch describes, as binary patches
+    are compressed and encoded. A binary patch that inflates to a
+    very large size therefore slipped past the check and crashed Git
+    with an out-of-bounds read. (boo#1289504)
+  * CVE-2026-105437: When merging, Git computes the size of the
+    buffer holding the merge result in a way that can overflow for
+    very large merges, which can be triggered by a large number of
+    conflicts combined with a large `conflict-marker-size`. The
+    resulting buffer can then be too small, and Git writes past its
+    end (and, before and after that, before its start), corrupting
+    the heap. (boo#1289505)
+  * CVE-2026-114466: In response to CVE-2019-1348, `fast-import`
+    disallows the `export-marks` feature by default. The features
+    `rewrite-submodules-to` and `rewrite-submodules-from` as well
+    as theoption `export-pack-edges` that were introduced in the
+    meantime also allow reading from arbitrary paths, and are
+    therefore now also disallowed by default. (boo#1289506)
+  * Defense-in-depth: read-cache: reject cache entries with over-
+    long names.
+  * Various fix-ups on HTTP tests.
+  * HTTP Header redaction code has been adjusted for a newer
+    version of cURL library that shows its traces differently from
+    earlier versions.
+  * The imap-send command was adjusted to work with OpenSSL 4.0
+
+-------------------------------------------------------------------
 Sat Oct 17 19:37:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add zsh BuildRequires: Needed due to zsh-completion dirs.

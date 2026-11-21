@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 10 15:24:08 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.24.1 (CVE-2026-77473, bsc#1289849, CVE-2026-102643, bsc#1289842)
+  * Fixed a potential "short read/write" issue in SFTP
+  * Added protection against unreasonable packet lengths when parsing SSH
+    and SFTP packets
+  * Added restrictions on which SSH channel requests are allowed to be sent
+    more than once on a channel
+  * Improved error reporting
+  * Improved path sanitizaation for SCP, to protect against additional
+    "path traversal" attacks
+  * Fixed a race condition in server authentication that could result in the
+    wrong username being set as the authenticated user
+  * Fixed a possible leak of options across authentication attempts
+  * Fixed multiple SFTP "path traversal" issues, where a malicious SFTP server
+    could trick an SFTP client into writing outside of the requested target
+    directory
+  * Fixed multiple SFTP chroot escape issues, where a client could read and
+    write files outside of a chroot'd AsyncSSH SFTP server.
+  * Fixed revocation checking to handle the case where a host certificate is
+    sent with a trusted CA but where the host key within the certificate is
+    marked as revoked
+  * Fixed SSH channels receive window updates to be properly tracked when
+    reading on the channel is paused
+  * Changed SSH config file username token substitution to disallow the username
+    from being an empty string
+  * Fixed deprecation errors on des-cbc and des2-cbc ciphers
+
+-------------------------------------------------------------------
 Tue Sep 22 12:18:36 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.24.0 (fixes CVE-2026-62949 (bsc#1280972))

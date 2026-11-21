@@ -1,7 +1,7 @@
 #
 # spec file for package kmod
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,19 +22,19 @@
 
 Name:           kmod
 %define lname	libkmod2
-Version:        34.2
+Version:        34.3
 Release:        0
 Summary:        Utilities to load modules into the kernel
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Kernel
 URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
-
 #Git-Web:	http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 #Git-Clone:	git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod
 Source:         https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.xz
 Source2:        https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.sign
 Source3:        %name.keyring
 Source4:        README.usrmerge
+Source5:        kmod-rpmlintrc
 Patch1:         0002-modprobe-Recognize-allow-unsupported-modules-on-comm.patch
 Patch2:         0003-libkmod-config-Recognize-allow_unsupported_modules-i.patch
 Patch3:         0009-libkmod-Implement-filtering-of-unsupported-modules-o.patch
@@ -43,10 +43,8 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         Revert-build-check-for-__xstat-declarations.patch
 Patch8:         riscv-hwprobe.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  libopenssl-devel >= 1.1.0
-BuildRequires:  libtool
+BuildRequires:  meson
 BuildRequires:  pkg-config >= 0.21
 BuildRequires:  scdoc
 BuildRequires:  xz
@@ -76,8 +74,7 @@ modules like insert, remove, list, check properties, resolve
 dependencies and aliases.
 
 These tools are designed on top of libkmod, a library that is shipped
-with kmod. The aim is to be compatible with tools, configurations and
-indexes from module-init-tools project.
+with kmod.
 
 %package -n %lname
 Summary:        Library to interact with Linux kernel modules
@@ -85,8 +82,8 @@ License:        LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n %lname
-libkmod was created to allow programs to easily insert, remove and
-list modules, also checking its properties, dependencies and aliases.
+libkmod allows programs to insert, remove and list modules,
+checking their properties, dependencies and aliases.
 
 %package -n libkmod-devel
 Summary:        Development files for libkmod
@@ -95,8 +92,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description -n libkmod-devel
-libkmod was created to allow programs to easily insert, remove and
-list modules, also checking its properties, dependencies and aliases.
+libkmod allows programs to insert, remove and list modules,
+checking their properties, dependencies and aliases.
 
 This package contains the development headers for the library found
 in %lname.
@@ -108,36 +105,26 @@ cp "%_sourcedir/README.usrmerge" .
 %build
 rm -f m4/gtk-doc.m4 libkmod/docs/gtk-doc.make # dangling symlinks
 touch m4/gtk-doc.m4 libkmod/docs/gtk-doc.make
-GTKDOCIZE=/bin/true autoreconf -fi
-export LDFLAGS="-Wl,-z,relro,-z,now"
+%set_build_flags
+export LDFLAGS="$LDFLAGS -Wl,-z,relro,-z,now"
 # The extra --includedir gives us the possibility to detect dependent
 # packages which fail to properly use pkgconfig, cf. bugzilla.opensuse.org/795968
-%configure \
-	--with-xz \
-	--with-zlib \
-	--with-openssl \
-%if 0%{?use_zstd}
-	--with-zstd \
+%meson \
+%if !0%{?use_zstd}
+	-Dzstd=disabled \
 %endif
-	--includedir="%_includedir/kmod" \
-	--with-rootlibdir="%_libdir" \
-%if 0%{?suse_version} > 1500
-	--with-module-directory="%_prefix/lib/modules" \
-%endif
-	--bindir="%_bindir"
-%make_build
+	-Dmoduledir="%_prefix/lib/modules" --includedir="%_includedir/kmod"
+
+%meson_build
 
 %install
+%meson_install
 b="%buildroot"
-%make_install
-rm -f "$b/%_libdir"/*.la
 mkdir -p "$b/%_bindir" "$b/bin"
-for i in lsmod; do
-	ln -s "%_bindir/kmod" "$b/%_bindir/$i"
+ln -s "%_bindir/kmod" "$b/%_bindir/lsmod"
 %if 0%{?suse_version} < 1550
-	ln -s "%_bindir/kmod" "$b/bin/$i"
+ln -s "%_bindir/kmod" "$b/bin/lsmod"
 %endif
-done
 
 %post
 %{?regenerate_initrd_post}

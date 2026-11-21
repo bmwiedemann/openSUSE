@@ -33,6 +33,7 @@ BuildRequires:  %{python_module h11 >= 0.16}
 BuildRequires:  %{python_module truststore >= 0.10}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       ca-certificates-mozilla
 Requires:       python-h11 >= 0.16
 Requires:       python-truststore >= 0.10
 Suggests:       python-h2 >= 3

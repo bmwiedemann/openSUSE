@@ -1430,4 +1430,22 @@
     <comment>1</comment>
     <requestid>1383239</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>128abdba9027596766b66db6c86ff2ca</srcmd5>
+    <version>3.3.1</version>
+    <time>1794317906</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.1:
+  * Declarations for the C99 ``bool`` type in ``&lt;stdbool.h&gt;``
+    were added.
+  * Fused function objects are slightly smaller in the Limited API.
+  * Cython warns when enabling subinterpreter support for modules
+    that cannot currently support it for technical reasons.
+  * The shared module is now automatically declared as
+    ``freethreading_compatible`` and sets
+    ``subinterpretes_compatible`` as applicable
+    (currently depending on memoryview usage).
+    Both are overridable by users as usual.</comment>
+    <requestid>1396203</requestid>
+  </revision>
 </revisionlist>

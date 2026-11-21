@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:16:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.3.0:
+  * reno: Update master for unmaintained/2025.1
+  * Stop logging LUKS key material
+  * Use pyproject.toml to maintain coverage options
+  * Fix mypy errors in StringToBytesTest scenario lists
+  * Declare Python 3.15 support
+  * Fix typo
+  * Update master for stable/2026.2
+  * Replace deprecated pyparsing interface
+
+-------------------------------------------------------------------
 Mon Sep  7 07:14:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.2.0:

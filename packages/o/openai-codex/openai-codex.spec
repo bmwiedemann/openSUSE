@@ -90,6 +90,16 @@ Summary:        OpenAI Codex coding agent for the terminal
 # Apache-2.0") elect Apache-2.0. Upstream's own gix move (0.81.0 ->
 # 0.89.0, gix-pack 0.68.0 -> 0.76.0) retires the boo#1285151 backport:
 # codex-bump-gix-0.88.patch and codex-gix-error-anyhow.patch are dropped.
+# - Re-vendor (no upstream bump): zip 9.0.0 -> 9.0.5 (boo#1287915).
+# - Knock-ons: lzma-rust2 0.21.0 -> 0.22.0, constant_time_eq gains 0.6.1,
+#   zstd 0.13.3 -> 0.14.3.
+# - zstd-safe 7.2.4 -> 8.2.0, zstd-sys unified on 2.1.2 (system libzstd for
+#   both closures, verified by the %install DT_NEEDED assertion).
+# - Re-derived scope: 777 third-party crates (776 tallied, aws-lc-sys
+#   itemised separately as before).
+# - Tally: Apache-2.0 542, MIT 178, Unicode-3.0 20, MPL-2.0 12, ISC 9,
+#   BSD-3-Clause 12, Zlib 5, BSD-2-Clause 1, CC0-1.0 1.
+# - Tally: CDLA-Permissive-2.0 1, bzip2-1.0.6 1; License: tag unchanged.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
@@ -127,16 +137,9 @@ License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
 Source1:        vendor.tar.zst
-# The vendor closure carries test-only fixtures the prebuilt-binary scan
-# flags: libloading's Windows DLLs (loaded only by its Windows-only tests)
-# and flate2's corrupt-input fixture. Neither is built, linked, loaded or
-# shipped on Linux. Everything else the scan flags is unbundled, not
-# excepted: cargo_vendor filter=true keeps the Windows/wasm-only crates
-# (including wit-parser, whose UI-test inputs are gone with it) out of the
-# tarball, the two import libs and the WSL nupkg the filter leaves are
-# stripped at repack (with their .cargo-checksum.json entries), and
-# code-mode-protocol builds against the system protoc via PROTOC (Patch0)
-# instead of its vendored copy.
+# Test-only fixtures the scan flags are declared below; none is built,
+# linked, loaded or shipped on Linux. The rest is unbundled (cargo_vendor
+# filter=true) or stripped at repack with checksums dropped.
 # Source-Binary-Exception: vendor.tar.zst:vendor/libloading-*/tests/*.dll -- test-data: fixtures loaded only by libloading's Windows-only tests, never on Linux
 # Source-Binary-Exception: vendor.tar.zst:vendor/flate2-*/tests/corrupt-gz-file.bin -- test-data: gzip decode-error fixture read by flate2's corrupt-file tests, never executed
 # PATCH-FIX-OPENSUSE codex-drop-v8-code-mode.patch mpluskal@suse.com -- drop the workspace members whose v8 dependency downloads a prebuilt library at build time
@@ -289,12 +292,9 @@ export PROTOC=%{_bindir}/protoc
 cd codex-rs
 # Only codex-cli is built: a workspace-wide build would also pull the v8
 # crate through the code-mode members, which cannot be built offline.
-# NOTE for spec-cleaner: the cargo build invocation below and the cargo test
-# invocation in the check section must keep the braced macro form, with the
-# cargo arguments appended as plain shell text. Unbracing them makes rpm
-# parse the first argument as a macro option, and the build fails at
-# spec-parse time with a "cargo_build: invalid option" error. Do not "fix".
-%{cargo_build} -p codex-cli --bin codex
+# NOTE for spec-cleaner: this and the cargo test invocation in %check keep
+# their arguments after a double dash, which rpm drops before passing on.
+%cargo_build -- -p codex-cli --bin codex
 
 %install
 # Where the binary lands depends on the cargo-packaging version: recent ones
@@ -387,7 +387,7 @@ cd codex-rs
 # the landlock tests self-skip when the kernel lacks support.
 # --release reuses the artifacts built in %%build instead of recompiling the
 # whole dependency graph with the dev profile.
-%{cargo_test} --release -p codex-protocol -p codex-apply-patch \
+%cargo_test -- --release -p codex-protocol -p codex-apply-patch \
     -p codex-execpolicy -p codex-file-search -p codex-config
 
 %files

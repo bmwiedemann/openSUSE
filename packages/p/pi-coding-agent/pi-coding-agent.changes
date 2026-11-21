@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Nov 11 20:00:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.2:
+  * Fork sessions whose folder was moved or deleted: forking copies
+    the session into the current folder under a new id, so later
+    resumes stop asking where to continue
+  * Starting a session whose working directory is gone now offers
+    Continue, Fork or Cancel instead of only continuing
+  * Fixed /import leaving a duplicate session copy when the working
+    directory is gone, and Anthropic OAuth reporting an outdated
+    Claude Code version
+- Refresh the vendored node_modules: the seven @earendil-works
+  packages move to 1.5.2 with minor @aws-sdk/@smithy/rolldown/vite
+  bumps riding along. The dev/optional platform addons stay out of
+  the vendor archive and the pi-tui, photon-node and quickjs-wasi
+  tarballs stay repacked without their prebuilt binaries, so the
+  payload is still built from source throughout
+
+-------------------------------------------------------------------
+Tue Nov 10 07:34:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.1:
+  * Shell credential commands: `pi auth login/logout <provider>`
+    without starting a session, with API-key and no-browser options
+  * Idle prompt cache warming: eligible caches stay warm up to 30
+    minutes between runs; `cacheWarming` now defaults to `idle`
+  * Anthropic message threads: only new messages are sent while the
+    server continues the conversation
+  * Richer Mermaid diagrams: pie charts, author-defined styles and
+    clickable labels (mermaid renderer now lovely-mermaid)
+  * GitHub Copilot classifiers via codemode `models.classify()`
+  * `pi update --extensions` reports each package's npm version or
+    git commit change
+  * BREAKING for extension authors: custom GrepOperations.readFile
+    is deprecated; grep context lines now come from ripgrep
+  * OpenAI-compatible models no longer send an empty `tools` array,
+    fixing 400 errors from vLLM 0.20+ behind LiteLLM
+  * Fixed grep `glob` matching relative to `path`, bash tool exit
+    reporting, image resizing memory use, plus many MCP, OAuth,
+    session-tree and provider fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
+Sun Nov  8 07:02:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the QuickJS codemode runtime from source:
+  quickjs-wasi 3.6.2 with quickjs-ng 6d46d07, using the
+  distribution clang and wasi-sysroot: codemode scripts run again.
+- Ship the encoding, headers, structured-clone and crypto sandbox
+  extensions built from the same tree.
+- Hold Slowroll unresolvable until its toolchain catches up:
+  BuildRequires libclang_rt23 >= 23.1.4 for the wasm32 builtins.
+- Drop pi-codemode-without-quickjs.patch, now obsolete.
+
+-------------------------------------------------------------------
+Mon Nov  2 13:27:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.0:
+  * Extension update changelogs shown after extension updates;
+    custom self-update command via PI_SELF_UPDATE_COMMAND or
+    selfUpdateCommand; faster streaming and TUI rendering
+  * GPT-6.1 Terra on OpenAI, Azure OpenAI Responses and OpenAI
+    Codex; default OpenAI model now gpt-6.1-sol; model catalog
+    moved to models.dev v2
+  * BREAKING for extension authors: tool argument validation now
+    runs on @earendil-works/pi-schema instead of TypeBox
+  * Fixed glob-matching denial of service, terminal escape
+    injection via titles and sign-in URLs, MCP OAuth metadata
+    URL validation, plus many TUI, codemode, provider and
+    platform fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored node_modules 1.4.0 -> 1.5.0: the six
+  @earendil-works packages move to 1.5.0 and pi-schema 1.5.0 is
+  new; minimatch 10.2.6 -> 11.0.3, undici 8.10.2 -> 8.12.3.
+  122 shipped modules and the licence union is unchanged
+  * CVE-2026-87018 (boo#1285858): undici is 8.12.3, above the
+    8.12.2 fix floor, so this update fixes it
+  * CVE-2026-112366 (boo#1286064): picomatch 4.0.7 stays in the
+    dev-only tree dropped from the shipped node_modules, so
+    the package is not affected by it
+- Strip every prebuilt binary from the vendored sources, so the
+  payload is built from source throughout: drop the dev/optional
+  platform .node addons (rolldown, lightningcss, fsevents) from
+  the vendor archive and repack the pi-tui, photon-node and
+  quickjs-wasi tarballs without their binary members. The
+  doom-overlay example's prebuilt doom.wasm stays in the pristine
+  Source0 under a test-data exception; %prep deletes it before
+  the build
+- Codemode scripts now report a clear tool error instead of
+  running: quickjs-wasi/quickjs.wasm is compiled with wasi-sdk,
+  which is neither packaged nor fetchable in an offline build, so
+  it cannot be rebuilt here; add pi-codemode-without-quickjs.patch
+  saying so
+
+-------------------------------------------------------------------
 Thu Oct 22 10:02:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.4.0:

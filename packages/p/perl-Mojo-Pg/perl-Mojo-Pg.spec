@@ -18,10 +18,10 @@
 
 %define cpan_name Mojo-Pg
 Name:           perl-Mojo-Pg
-Version:        5.0.0
+Version:        5.10.0
 Release:        0
-# 5.0 -> normalize -> 5.0.0
-%define cpan_version 5.0
+# 5.01 -> normalize -> 5.10.0
+%define cpan_version 5.01
 License:        Artistic-2.0
 Summary:        Wrapper around DBD::Pg for using PostgreSql with Mojolicious
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,11 +34,11 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(DBD::Pg) >= 3.7.4
 BuildRequires:  perl(Mojo::SQL) >= 0.10
 BuildRequires:  perl(Mojolicious) >= 8.500
-BuildRequires:  perl(SQL::Abstract::Pg) >= 1.0
+BuildRequires:  perl(SQL::Abstract::Pg) >= 1.10
 Requires:       perl(DBD::Pg) >= 3.7.4
 Requires:       perl(Mojo::SQL) >= 0.10
 Requires:       perl(Mojolicious) >= 8.500
-Requires:       perl(SQL::Abstract::Pg) >= 1.0
+Requires:       perl(SQL::Abstract::Pg) >= 1.10
 Provides:       perl(Mojo::Pg) = %{version}
 Provides:       perl(Mojo::Pg::Database)
 Provides:       perl(Mojo::Pg::Migrations)

@@ -36,7 +36,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  vala
-BuildRequires:  pkgconfig(enchant) >= 1.3
+BuildRequires:  pkgconfig(enchant-2) >= 1.3
 BuildRequires:  pkgconfig(geany) >= 1.26
 BuildRequires:  pkgconfig(glib-2.0) >= 2.16
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24

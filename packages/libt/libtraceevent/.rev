@@ -144,4 +144,22 @@
     <comment></comment>
     <requestid>1337883</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ecedf4c4b68ae1d014c1bd96ffdf37d6</srcmd5>
+    <version>1.9.1</version>
+    <time>1793724679</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.9.1:
+  * Fix leaks and NULL check in process_int_dynamic_array()
+  * Avoid host-specific getname_flags output
+  * Handle short reads when reading BTF
+  * Avoid racing recursive builds of both libraries
+  * Reject non-text symbol arithmetic
+  * Add printable characters
+  * Parse %pB and %pa address specifiers
+  * Pretty print function parameters of enum-type
+  * utest: Fix type of args in test_btf_read
+  * utest: Read btf file in utest if mmap fails</comment>
+    <requestid>1394334</requestid>
+  </revision>
 </revisionlist>

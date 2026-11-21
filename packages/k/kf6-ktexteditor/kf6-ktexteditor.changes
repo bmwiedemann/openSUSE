@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Too many changes since 6.31.0, only listing bugfixes:
+  * Fix Kate snippet templates with empty tabstops and selection overwrite (kde#478303)
+  * vi-mode: Keep existing selection when entering Visual Mode (kde#526924)
+  * Ask to close the other document when saving as a file that is open (kde#521546)
+  * Clear the undo history before auto reloading a file changed on disk (kde#523615)
+  * rendering: fix caret rendering for line height scaling (kde#524760)
+  * view: match exact character sequences for selection occurrence highlights (kde#487095)
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

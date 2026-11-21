@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:34:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update recv to version 0.1.3.
+  ## v0.1.3
+
+  * Adding `receiveWith`, a `receive` the caller can give up on through an
+    `STM` action: nothing is closed and no thread is interrupted to make it
+    return.  Requires network 3.2.10.
+
+-------------------------------------------------------------------
+Thu Aug 27 14:47:11 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update recv to version 0.1.2.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/recv-0.1.2/src/ChangeLog.md
+
+-------------------------------------------------------------------
 Tue Apr 22 01:25:40 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update recv to version 0.1.1.

@@ -1,22 +1,22 @@
-diff --color -rubN obs-studio.orig/cmake/finders/FindLibx264.cmake obs-studio/cmake/finders/FindLibx264.cmake
---- obs-studio.orig/cmake/finders/FindLibx264.cmake	2026-07-30 20:06:29.331970771 -0300
-+++ obs-studio/cmake/finders/FindLibx264.cmake	2026-07-30 22:22:24.423983638 -0300
+diff '--color=auto' -rubN obs-studio.orig/cmake/finders/FindLibx264.cmake obs-studio/cmake/finders/FindLibx264.cmake
+--- obs-studio.orig/cmake/finders/FindLibx264.cmake	2026-10-31 11:30:31.004730169 -0300
++++ obs-studio/cmake/finders/FindLibx264.cmake	2026-11-02 20:19:15.466812207 -0300
 @@ -43,6 +43,11 @@
    pkg_search_module(PC_Libx264 QUIET x264)
  endif()
  
-+set(Libx264_FOUND FALSE CACHE BOOL "Disable x264 detection")
-+set(Libx264_INCLUDE_DIR "")
-+set(Libx264_LIBRARY "")
-+message(STATUS "Libx264 detection forcibly disabled by build spec.")
++if(NOT PC_Libx264_FOUND AND NOT TARGET Libx264::Libx264)
++  set(Libx264_FOUND FALSE CACHE BOOL "Disable x264 detection")
++  message(STATUS "Libx264 not found; obs-x264 plugin will be disabled.")
++endif()
 +
  # Libx264_set_soname: Set SONAME on imported library target
  macro(Libx264_set_soname)
    if(CMAKE_HOST_SYSTEM_NAME MATCHES "Darwin")
-diff --color -rubN obs-studio.orig/frontend/settings/OBSBasicSettings.cpp obs-studio/frontend/settings/OBSBasicSettings.cpp
---- obs-studio.orig/frontend/settings/OBSBasicSettings.cpp	2026-07-30 20:06:29.456868281 -0300
-+++ obs-studio/frontend/settings/OBSBasicSettings.cpp	2026-07-30 22:23:57.258617222 -0300
-@@ -4951,8 +4951,12 @@
+diff '--color=auto' -rubN obs-studio.orig/frontend/settings/OBSBasicSettings.cpp obs-studio/frontend/settings/OBSBasicSettings.cpp
+--- obs-studio.orig/frontend/settings/OBSBasicSettings.cpp	2026-10-31 11:30:31.166722613 -0300
++++ obs-studio/frontend/settings/OBSBasicSettings.cpp	2026-11-02 21:00:35.245830473 -0300
+@@ -4903,8 +4903,25 @@
  	ADD_QUALITY("HQ");
  	ADD_QUALITY("Lossless");
  
@@ -27,55 +27,123 @@ diff --color -rubN obs-studio.orig/frontend/settings/OBSBasicSettings.cpp obs-st
 +		QString(SIMPLE_ENCODER_X264));
 +		ui->simpleOutRecEncoder->addItem(ENCODER_STR("SoftwareLowCPU"),
 +		QString(SIMPLE_ENCODER_X264_LOWCPU));
++	} else {
++		if (EncoderAvailable("ffmpeg_h264")) {
++			ui->simpleOutRecEncoder->addItem(ENCODER_STR("Software (OpenH264)"),
++			QString("ffmpeg_h264"));
++		}
++		if (EncoderAvailable("ffmpeg_openh264")) {
++			ui->simpleOutRecEncoder->addItem(ENCODER_STR("Software (OpenH264)"),
++			QString("ffmpeg_openh264"));
++		}
++		if (EncoderAvailable("ffmpeg_vaapi_tex")) {
++			ui->simpleOutRecEncoder->addItem(ENCODER_STR("Hardware (VAAPI)"),
++			QString("ffmpeg_vaapi_tex"));
++		}
 +	}
  	if (EncoderAvailable("obs_qsv11")) {
  		ui->simpleOutRecEncoder->addItem(ENCODER_STR("Hardware.QSV.H264"), QString(SIMPLE_ENCODER_QSV));
  	}
-diff --color -rubN obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp
---- obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp	2026-07-30 20:06:29.457519750 -0300
-+++ obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp	2026-07-30 22:24:56.092607837 -0300
-@@ -1748,7 +1748,9 @@
- 
- #define ENCODER_STR(str) QTStr("Basic.Settings.Output.Simple.Encoder." str)
- 
--	ui->simpleOutStrEncoder->addItem(ENCODER_STR("Software"), QString(SIMPLE_ENCODER_X264));
-+	if (service_supports_encoder(vcodecs, "obs_x264"))
-+		ui->simpleOutStrEncoder->addItem(ENCODER_STR("Software"),
-+		QString(SIMPLE_ENCODER_X264));
- #ifdef _WIN32
- 	if (service_supports_encoder(vcodecs, "obs_qsv11")) {
- 		ui->simpleOutStrEncoder->addItem(ENCODER_STR("Hardware.QSV.H264"), QString(SIMPLE_ENCODER_QSV));
-diff --color -rubN obs-studio.orig/frontend/utility/SimpleOutput.cpp obs-studio/frontend/utility/SimpleOutput.cpp
---- obs-studio.orig/frontend/utility/SimpleOutput.cpp	2026-07-30 20:06:29.464435937 -0300
-+++ obs-studio/frontend/utility/SimpleOutput.cpp	2026-07-30 22:25:38.715431608 -0300
-@@ -122,7 +122,7 @@
- #endif
- 	}
- 
+diff '--color=auto' -rubN obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp
+--- obs-studio.orig/frontend/settings/OBSBasicSettings_Stream.cpp	2026-10-31 11:30:31.167714070 -0300
++++ obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp	2026-11-02 21:00:36.202487589 -0300
+@@ -1515,20 +1515,22 @@
+ /* we really need a way to find fallbacks in a less hardcoded way. maybe. */
+ static QString get_adv_fallback(const QString &enc)
+ {
+-	if (enc == "obs_nvenc_hevc_tex" || enc == "obs_nvenc_av1_tex" || enc == "jim_hevc_nvenc" ||
+-	    enc == "jim_av1_nvenc") {
+-		return "obs_nvenc_h264_tex";
+-	}
+-	if (enc == "h265_texture_amf" || enc == "av1_texture_amf") {
+-		return "h264_texture_amf";
+-	}
+-	if (enc == "com.apple.videotoolbox.videoencoder.ave.hevc") {
+-		return "com.apple.videotoolbox.videoencoder.ave.avc";
+-	}
+-	if (enc == "obs_qsv11_av1") {
+-		return "obs_qsv11";
+-	}
 -	return "obs_x264";
-+	return "ffmpeg_aom_av1";
++	if (!enc.isEmpty() && enc != "obs_x264" && EncoderAvailable(enc.toUtf8().constData()))
++		return enc;
++
++	// H.264 por hardware via VAAPI
++	if (EncoderAvailable("ffmpeg_h264"))
++		return "ffmpeg_h264";
++
++	// H.264 por hardware via VAAPI
++	if (EncoderAvailable("ffmpeg_vaapi_tex"))
++		return "ffmpeg_vaapi_tex";
++
++	// H.264 por software via OpenH264
++	if (EncoderAvailable("ffmpeg_openh264"))
++		return "ffmpeg_openh264";
++
++	return QString("none");
  }
  
- void SimpleOutput::LoadRecordingPreset()
-diff --color -rubN obs-studio.orig/plugins/CMakeLists.txt obs-studio/plugins/CMakeLists.txt
---- obs-studio.orig/plugins/CMakeLists.txt	2026-07-30 20:06:29.507421824 -0300
-+++ obs-studio/plugins/CMakeLists.txt	2026-07-30 22:26:22.722459335 -0300
-@@ -95,7 +95,6 @@
+ static QString get_adv_audio_fallback(const QString &enc)
+diff '--color=auto' -rubN obs-studio.orig/frontend/utility/SimpleOutput.cpp obs-studio/frontend/utility/SimpleOutput.cpp
+--- obs-studio.orig/frontend/utility/SimpleOutput.cpp	2026-10-31 11:30:31.174722240 -0300
++++ obs-studio/frontend/utility/SimpleOutput.cpp	2026-11-02 22:12:11.233487686 -0300
+@@ -90,7 +90,13 @@
+ /* mistakes have been made to lead us to this. */
+ const char *get_simple_output_encoder(const char *encoder)
+ {
+-	if (strcmp(encoder, SIMPLE_ENCODER_X264) == 0) {
++	if (strcmp(encoder, SIMPLE_ENCODER_X264) == 0 || strcmp(encoder, SIMPLE_ENCODER_X264_LOWCPU) == 0) {
++         if (EncoderAvailable("libx264"))
++             return "libx264";
++         if (EncoderAvailable("ffmpeg_h264"))
++             return "ffmpeg_h264";
++         if (EncoderAvailable("obs_x264"))
++             return "obs_x264";
+ 		return "obs_x264";
+ 	} else if (strcmp(encoder, SIMPLE_ENCODER_X264_LOWCPU) == 0) {
+ 		return "obs_x264";
+Binary files obs-studio.orig/.git/index and obs-studio/.git/index differ
+diff '--color=auto' -rubN obs-studio.orig/libobs/obs-encoder.c obs-studio/libobs/obs-encoder.c
+--- obs-studio.orig/libobs/obs-encoder.c	2026-10-31 11:30:31.206720748 -0300
++++ obs-studio/libobs/obs-encoder.c	2026-11-02 20:53:58.681188947 -0300
+@@ -35,6 +35,18 @@
+ 			return info;
+ 	}
+ 
++	/* Transparent fallback to the missing obs_x264 encoder */
++	if (id && strcmp(id, "obs_x264") == 0) {
++		const char *fallbacks[] = {"libx264", "ffmpeg_h264", "ffmpeg_vaapi_tex", "ffmpeg_openh264", NULL};
++		for (int f = 0; fallbacks[f] != NULL; f++) {
++			for (size_t i = 0; i < obs->encoder_types.num; i++) {
++				struct obs_encoder_info *info = obs->encoder_types.array + i;
++				if (strcmp(info->id, fallbacks[f]) == 0)
++					return info;
++			}
++		}
++	}
++
+ 	return NULL;
+ }
+ 
+diff '--color=auto' -rubN obs-studio.orig/plugins/CMakeLists.txt obs-studio/plugins/CMakeLists.txt
+--- obs-studio.orig/plugins/CMakeLists.txt	2026-10-31 11:30:31.223038238 -0300
++++ obs-studio/plugins/CMakeLists.txt	2026-11-02 17:58:54.137050217 -0300
+@@ -107,7 +107,6 @@
  
  check_obs_websocket()
  
--add_obs_plugin(obs-x264)
- add_obs_plugin(oss-audio PLATFORMS FREEBSD OPENBSD)
- add_obs_plugin(rtmp-services)
- add_obs_plugin(sndio PLATFORMS LINUX FREEBSD OPENBSD)
-diff --color -rubN obs-studio.orig/plugins/obs-x264/.clang-format obs-studio/plugins/obs-x264/.clang-format
---- obs-studio.orig/plugins/obs-x264/.clang-format	2026-07-30 20:06:29.654386092 -0300
+-add_core_module(obs-x264)
+ add_core_module(oss-audio PLATFORMS FREEBSD OPENBSD)
+ add_core_module(rtmp-services)
+ add_core_module(sndio PLATFORMS LINUX FREEBSD OPENBSD)
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/.clang-format obs-studio/plugins/obs-x264/.clang-format
+--- obs-studio.orig/plugins/obs-x264/.clang-format	2026-10-31 11:30:31.366713285 -0300
 +++ obs-studio/plugins/obs-x264/.clang-format	1969-12-31 21:00:00.000000000 -0300
 @@ -1,2 +0,0 @@
 -Language: C
 -BasedOnStyle: InheritParentConfig
-diff --color -rubN obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in obs-studio/plugins/obs-x264/cmake/windows/obs-module.rc.in
---- obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in	2026-07-30 20:06:29.654980810 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in obs-studio/plugins/obs-x264/cmake/windows/obs-module.rc.in
+--- obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.in	2026-10-31 11:30:31.368097986 -0300
 +++ obs-studio/plugins/obs-x264/cmake/windows/obs-module.rc.in	1969-12-31 21:00:00.000000000 -0300
 @@ -1,24 +0,0 @@
 -1 VERSIONINFO
@@ -102,8 +170,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/cmake/windows/obs-module.rc.
 -    VALUE "Translation", 0x0409, 0x04B0
 -  END
 -END
-diff --color -rubN obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake obs-studio/plugins/obs-x264/cmake/x264-test.cmake
---- obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake	2026-07-30 20:06:29.654980810 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake obs-studio/plugins/obs-x264/cmake/x264-test.cmake
+--- obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake	2026-10-31 11:30:31.368097986 -0300
 +++ obs-studio/plugins/obs-x264/cmake/x264-test.cmake	1969-12-31 21:00:00.000000000 -0300
 @@ -1,11 +0,0 @@
 -add_executable(obs-x264-test)
@@ -117,8 +185,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/cmake/x264-test.cmake obs-st
 -add_test(NAME obs-x264-test COMMAND obs-x264-test)
 -
 -set_target_properties(obs-x264-test PROPERTIES FOLDER plugins/obs-x264)
-diff --color -rubN obs-studio.orig/plugins/obs-x264/CMakeLists.txt obs-studio/plugins/obs-x264/CMakeLists.txt
---- obs-studio.orig/plugins/obs-x264/CMakeLists.txt	2026-07-30 20:06:29.654943145 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/CMakeLists.txt obs-studio/plugins/obs-x264/CMakeLists.txt
+--- obs-studio.orig/plugins/obs-x264/CMakeLists.txt	2026-10-31 11:30:31.368057979 -0300
 +++ obs-studio/plugins/obs-x264/CMakeLists.txt	1969-12-31 21:00:00.000000000 -0300
 @@ -1,22 +0,0 @@
 -cmake_minimum_required(VERSION 3.28...3.30)
@@ -143,8 +211,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/CMakeLists.txt obs-studio/pl
 -set_target_properties_obs(obs-x264 PROPERTIES FOLDER plugins/obs-x264 PREFIX "")
 -
 -include(cmake/x264-test.cmake)
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini obs-studio/plugins/obs-x264/data/locale/af-ZA.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini	2026-07-30 20:06:29.655078920 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini obs-studio/plugins/obs-x264/data/locale/af-ZA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini	2026-10-31 11:30:31.368220958 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/af-ZA.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,8 +0,0 @@
 -Bitrate="Bistempo"
@@ -155,8 +223,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/af-ZA.ini obs-st
 -None="(Geen)"
 -EncoderOptions="x264 opties (geskei deur spasies)"
 -VFR="Reëlbare beeldduur (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini obs-studio/plugins/obs-x264/data/locale/ar-SA.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini	2026-07-30 20:06:29.655157871 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini obs-studio/plugins/obs-x264/data/locale/ar-SA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ar-SA.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="معدل النقل"
@@ -172,8 +240,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ar-SA.ini obs-st
 -VFR="معدل إطارات متغيّر (VFR)"
 -HighPrecisionUnsupported="لا يدعم OBS استخدام x264 بتنسيقات عالية الجودة إلى الألوان"
 -HdrUnsupported="OBS لا يدعم استخدام x264 مع Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini obs-studio/plugins/obs-x264/data/locale/az-AZ.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini	2026-07-30 20:06:29.655157871 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini obs-studio/plugins/obs-x264/data/locale/az-AZ.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/az-AZ.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bit sürəti"
@@ -189,16 +257,16 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/az-AZ.ini obs-st
 -VFR="Dəyişən Kadr Tezliyi (VFR)"
 -HighPrecisionUnsupported="OBS, x264-ün yüksək dəqiqlikli rəng formatları ilə istifadəsini dəstəkləmir."
 -HdrUnsupported="OBS, x264-ün Rec. 2100 ilə istifadəsini dəstəkləmir."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini obs-studio/plugins/obs-x264/data/locale/ba-RU.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini	2026-07-30 20:06:29.655228222 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini obs-studio/plugins/obs-x264/data/locale/ba-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ba-RU.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ba-RU.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,4 +0,0 @@
 -Bitrate="Битрейт"
 -BufferSize="Буфер ҙурлығы"
 -Tune="Көйләү"
 -None="(Юҡ)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini obs-studio/plugins/obs-x264/data/locale/be-BY.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini	2026-07-30 20:06:29.655228222 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini obs-studio/plugins/obs-x264/data/locale/be-BY.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/be-BY.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Бітрэйт"
@@ -214,8 +282,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/be-BY.ini obs-st
 -VFR="Пераменная частата кадраў (VFR)"
 -HighPrecisionUnsupported="OBS не падтрымлівае выкарыстанне x264 з высокадакладнымі фарматамі колеру."
 -HdrUnsupported="OBS не падтрымлівае выкарыстанне x264 з Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini obs-studio/plugins/obs-x264/data/locale/bg-BG.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini	2026-07-30 20:06:29.655228222 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini obs-studio/plugins/obs-x264/data/locale/bg-BG.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/bg-BG.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,11 +0,0 @@
 -Bitrate="Битрейт"
@@ -229,8 +297,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/bg-BG.ini obs-st
 -EncoderOptions="x264 Опции (отделени с разстояние)"
 -HighPrecisionUnsupported="OBS не поддържа изпозлването на x264 с високопрецизни формати за цветове."
 -HdrUnsupported="OBS не поддържа използването на x264 с Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini obs-studio/plugins/obs-x264/data/locale/bn-BD.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini	2026-07-30 20:06:29.655353580 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini obs-studio/plugins/obs-x264/data/locale/bn-BD.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/bn-BD.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -Bitrate="বিটরেট"
@@ -243,8 +311,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/bn-BD.ini obs-st
 -None="(একটিও না)"
 -EncoderOptions="x264 বিকল্প (স্পেইস দিয়ে)"
 -VFR="পরিবর্তনশীল ফ্রেমরেট (ভিএফআর)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini obs-studio/plugins/obs-x264/data/locale/ca-ES.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini	2026-07-30 20:06:29.655390652 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini obs-studio/plugins/obs-x264/data/locale/ca-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ca-ES.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Taxa de bits"
@@ -260,8 +328,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ca-ES.ini obs-st
 -VFR="Velocitat de fotogrames variable (VFR)"
 -HighPrecisionUnsupported="L'OBS no admet l'ús de x264 amb formats d'alta precisió de color."
 -HdrUnsupported="L'OBS no admet l'ús de x264 amb Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini obs-studio/plugins/obs-x264/data/locale/cs-CZ.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini	2026-07-30 20:06:29.655427758 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini obs-studio/plugins/obs-x264/data/locale/cs-CZ.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/cs-CZ.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -CustomBufsize="Použít vlastní velikost vyrovnávací paměti"
@@ -276,8 +344,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/cs-CZ.ini obs-st
 -VFR="Měnící se snímkování (VFR)"
 -HighPrecisionUnsupported="OBS nepodporuje použití x264 s vysoce přesnými barevnými formáty."
 -HdrUnsupported="OBS nepodporuje použití x264 s Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini obs-studio/plugins/obs-x264/data/locale/da-DK.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini	2026-07-30 20:06:29.655463056 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini obs-studio/plugins/obs-x264/data/locale/da-DK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/da-DK.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bit-hastighed"
@@ -293,8 +361,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/da-DK.ini obs-st
 -VFR="Variable billedhastighed (VFR)"
 -HighPrecisionUnsupported="OBS understøtter ikke brug af x264 med farveformater med høj præcision."
 -HdrUnsupported="OBS understøtter ikke brug af x264 med Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini obs-studio/plugins/obs-x264/data/locale/de-DE.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini	2026-07-30 20:06:29.655499523 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini obs-studio/plugins/obs-x264/data/locale/de-DE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/de-DE.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -CustomBufsize="Benutzerdefinierte Puffergröße verwenden"
@@ -307,8 +375,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/de-DE.ini obs-st
 -EncoderOptions="x264-Optionen (Durch Leerzeichen getrennt)"
 -HighPrecisionUnsupported="Das Verwenden von x264 mit Farbformaten mit hoher Präzision wird nicht unterstützt."
 -HdrUnsupported="Das Verwenden von x264 mit Rec. 2100 wird nicht unterstützt."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini obs-studio/plugins/obs-x264/data/locale/el-GR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini	2026-07-30 20:06:29.655536524 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini obs-studio/plugins/obs-x264/data/locale/el-GR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/el-GR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Ρυθμός μετάδοσης bit"
@@ -324,13 +392,13 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/el-GR.ini obs-st
 -VFR="Μεταβλητός Ρυθμός καρέ (VFR)"
 -HighPrecisionUnsupported="Το OBS δεν υποστηρίζει τη χρήση x264 με μορφές χρώματος υψηλής ακρίβειας."
 -HdrUnsupported="Το OBS δεν υποστηρίζει τη χρήση x264 με Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini obs-studio/plugins/obs-x264/data/locale/en-GB.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini	2026-07-30 20:06:29.655569102 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini obs-studio/plugins/obs-x264/data/locale/en-GB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/en-GB.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/en-GB.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1 +0,0 @@
 -HighPrecisionUnsupported="OBS does not support using x264 with high-precision colour formats."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini obs-studio/plugins/obs-x264/data/locale/en-US.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini	2026-07-30 20:06:29.655602419 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini obs-studio/plugins/obs-x264/data/locale/en-US.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/en-US.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,14 +0,0 @@
 -Bitrate="Bitrate"
@@ -347,8 +415,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/en-US.ini obs-st
 -VFR="Variable Framerate (VFR)"
 -HighPrecisionUnsupported="OBS does not support using x264 with high-precision color formats."
 -HdrUnsupported="OBS does not support using x264 with Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini obs-studio/plugins/obs-x264/data/locale/es-ES.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini	2026-07-30 20:06:29.655642151 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini obs-studio/plugins/obs-x264/data/locale/es-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/es-ES.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Tasa de bits"
@@ -364,8 +432,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/es-ES.ini obs-st
 -VFR="Framerate Variable (VFR)"
 -HighPrecisionUnsupported="OBS no admite el uso de x264 con formatos de color de alta precisión."
 -HdrUnsupported="OBS no admite el uso de x264 con Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini obs-studio/plugins/obs-x264/data/locale/et-EE.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini	2026-07-30 20:06:29.655678146 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini obs-studio/plugins/obs-x264/data/locale/et-EE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/et-EE.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bitikiirus"
@@ -381,8 +449,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/et-EE.ini obs-st
 -VFR="Muutuv kaadrisagedus (VFR)"
 -HighPrecisionUnsupported="OBS ei toeta x264 kasutamist ülitäpsete värvivormingutega."
 -HdrUnsupported="OBS ei toeta x264 kasutamist koos Rec. 2100-ga."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini obs-studio/plugins/obs-x264/data/locale/eu-ES.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini	2026-07-30 20:06:29.655714606 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini obs-studio/plugins/obs-x264/data/locale/eu-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/eu-ES.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -Bitrate="Bit-tasa"
@@ -397,8 +465,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/eu-ES.ini obs-st
 -EncoderOptions="x264 aukerak (tarte batez bananduta)"
 -VFR="Fotograma-tasa aldakorra (VFR)"
 -HdrUnsupported="OBSk ez du onartzen x264 erabiltzea Rec. 2100-rekin."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini obs-studio/plugins/obs-x264/data/locale/fa-IR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini	2026-07-30 20:06:29.655764162 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini obs-studio/plugins/obs-x264/data/locale/fa-IR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/fa-IR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="نرخ بیت"
@@ -414,8 +482,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fa-IR.ini obs-st
 -VFR="فریم های متغیر (وی اف ار)"
 -HighPrecisionUnsupported="OBS از استفاده از x264 با فرمت های رنگی با دقت بالا پشتیبانی نمی کند."
 -HdrUnsupported="OBS از استفاده از x264 با ضبط 2100 پشتیبانی نمی کند."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini obs-studio/plugins/obs-x264/data/locale/fi-FI.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini	2026-07-30 20:06:29.655822853 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini obs-studio/plugins/obs-x264/data/locale/fi-FI.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/fi-FI.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bittinopeus"
@@ -431,8 +499,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fi-FI.ini obs-st
 -VFR="Muuttuva ruutunopeus (Variable Framerate (VFR))"
 -HighPrecisionUnsupported="OBS ei tue x264:n käyttöä tarkkojen väriformaattien kanssa."
 -HdrUnsupported="OBS ei tue x264:n käyttöä Rec. 2100:n kanssa."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini obs-studio/plugins/obs-x264/data/locale/fil-PH.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini	2026-07-30 20:06:29.655880085 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini obs-studio/plugins/obs-x264/data/locale/fil-PH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/fil-PH.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -Bitrate="Bitreyt"
@@ -447,8 +515,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fil-PH.ini obs-s
 -EncoderOptions="x264 Pagpipilian (magkahiwalay sa pamamagitan ng patlang)"
 -VFR="Pabago-bago ng Framerate (VFR)"
 -HdrUnsupported="Hindi sinusuportahan ng OBS ang paggamit ng x264 na may Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini obs-studio/plugins/obs-x264/data/locale/fr-FR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini	2026-07-30 20:06:29.655941187 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini obs-studio/plugins/obs-x264/data/locale/fr-FR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/fr-FR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Débit"
@@ -464,8 +532,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/fr-FR.ini obs-st
 -VFR="Débit d'images variable (VFR)"
 -HighPrecisionUnsupported="OBS ne prend pas en charge l'utilisation de x264 avec des formats de couleur à haute précision."
 -HdrUnsupported="OBS ne prend pas en charge l'utilisation de l'encodeur x264 avec Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini obs-studio/plugins/obs-x264/data/locale/gd-GB.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini	2026-07-30 20:06:29.655978793 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini obs-studio/plugins/obs-x264/data/locale/gd-GB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/gd-GB.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -Bitrate="Reat bhiodan"
@@ -478,8 +546,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/gd-GB.ini obs-st
 -None="(Chan eil gin)"
 -EncoderOptions="Roghainnean x264 (’gan sgaradh le geal-spàs)"
 -VFR="Reat fhrèamaichean caochlaideach (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini obs-studio/plugins/obs-x264/data/locale/gl-ES.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini	2026-07-30 20:06:29.656016271 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini obs-studio/plugins/obs-x264/data/locale/gl-ES.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/gl-ES.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Taxa de bits"
@@ -495,8 +563,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/gl-ES.ini obs-st
 -VFR="Taxa variábel de fotogramas (VFR)"
 -HighPrecisionUnsupported="OBS non admite o uso de x264 con formatos de cor de alta precisión."
 -HdrUnsupported="OBS non admite o uso de x264 con Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini obs-studio/plugins/obs-x264/data/locale/he-IL.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini	2026-07-30 20:06:29.656083980 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini obs-studio/plugins/obs-x264/data/locale/he-IL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini	2026-10-31 11:30:31.368310987 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/he-IL.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="קצב סיביות"
@@ -512,8 +580,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/he-IL.ini obs-st
 -VFR="קצב פריימים משתנה (VFR)"
 -HighPrecisionUnsupported="OBS לא תומך בשימוש ב־x264 עם תצורות של צבעים בדיוק גבוה."
 -HdrUnsupported="OBS לא תומך בשימוש ב־x264 עם Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini obs-studio/plugins/obs-x264/data/locale/hi-IN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini	2026-07-30 20:06:29.656127275 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini obs-studio/plugins/obs-x264/data/locale/hi-IN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/hi-IN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="बिटदर"
@@ -529,8 +597,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hi-IN.ini obs-st
 -VFR="गतिशील फ़्रेमरेट (VFR)"
 -HighPrecisionUnsupported="OBS उच्च-परिशुद्धता रंग स्वरूपों के साथ x264 का उपयोग करने का समर्थन नहीं करता है."
 -HdrUnsupported="OBS, Rec. 2100 के साथ x264 का उपयोग करने का समर्थन नहीं करता है."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini obs-studio/plugins/obs-x264/data/locale/hr-HR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini	2026-07-30 20:06:29.656167662 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini obs-studio/plugins/obs-x264/data/locale/hr-HR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/hr-HR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Protok"
@@ -546,8 +614,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hr-HR.ini obs-st
 -VFR="Promenjivi framerate (VFR)"
 -HighPrecisionUnsupported="OBS ne podržava uporabu formata x264 s visokopreciznim bojama."
 -HdrUnsupported="OBS ne podržava uporabu formata x264 s Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini obs-studio/plugins/obs-x264/data/locale/hu-HU.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini	2026-07-30 20:06:29.656207587 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini obs-studio/plugins/obs-x264/data/locale/hu-HU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/hu-HU.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bitsebesség"
@@ -563,8 +631,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hu-HU.ini obs-st
 -VFR="Változó képkockasebesség (VFR)"
 -HighPrecisionUnsupported="Az OBS nem támogatja az x264 használatát magas pontosságú színformátumokkal."
 -HdrUnsupported="Az OBS nem támogatja az x264 és a Rec. 2100 használatát."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini obs-studio/plugins/obs-x264/data/locale/hy-AM.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini	2026-07-30 20:06:29.656252170 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini obs-studio/plugins/obs-x264/data/locale/hy-AM.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/hy-AM.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Բիթրեյթ"
@@ -580,8 +648,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/hy-AM.ini obs-st
 -VFR="Փոփոխական կադրերի արագություն (VFR)"
 -HighPrecisionUnsupported="OBS-ը չի աջակցում x264-ի օգտագործումը բարձր ճշգրտության գունային ձևաչափեր:"
 -HdrUnsupported="OBS-ը չի աջակցում x264-ի օգտագործումը Rec.-ով 2100 թ."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini obs-studio/plugins/obs-x264/data/locale/id-ID.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini	2026-07-30 20:06:29.656298518 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini obs-studio/plugins/obs-x264/data/locale/id-ID.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/id-ID.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,11 +0,0 @@
 -CustomBufsize="Gunakan Modifikasi Ukuran Buffer"
@@ -595,8 +663,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/id-ID.ini obs-st
 -VFR="Framerate Variabel (VFR)"
 -HighPrecisionUnsupported="OBS tidak mendukung penggunaan x264 dengan format warna berpresisi tinggi."
 -HdrUnsupported="OBS tidak mendukung penggunaan x264 dengan Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini obs-studio/plugins/obs-x264/data/locale/it-IT.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini	2026-07-30 20:06:29.656342068 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini obs-studio/plugins/obs-x264/data/locale/it-IT.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/it-IT.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Velocità in bit"
@@ -612,8 +680,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/it-IT.ini obs-st
 -VFR="Frequenza fotogrammi variabile (VFR)"
 -HighPrecisionUnsupported="OBS non supporta l'uso di x264 con formati di colore ad alta precisione."
 -HdrUnsupported="OBS non supporta l'uso di x264 con Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini obs-studio/plugins/obs-x264/data/locale/ja-JP.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini	2026-07-30 20:06:29.656383474 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini obs-studio/plugins/obs-x264/data/locale/ja-JP.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ja-JP.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="ビットレート"
@@ -629,17 +697,17 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ja-JP.ini obs-st
 -VFR="可変フレームレート (VFR)"
 -HighPrecisionUnsupported="OBSは高精度カラーフォーマットでの x264 の使用をサポートしていません。"
 -HdrUnsupported="OBSは Rec. 2100 で x264 の使用をサポートしていません。"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini obs-studio/plugins/obs-x264/data/locale/kaa.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini	2026-07-30 20:06:29.656422960 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini obs-studio/plugins/obs-x264/data/locale/kaa.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kaa.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/kaa.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,5 +0,0 @@
--Bitrate="Bit tezligi"
+-Bitrate="Битрейт"
 -CustomBufsize="Arnawlı bufer kólemin qollanıw"
--BufferSize="Bufer kólemi"
--Profile="Profil"
--None="(Joq)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini obs-studio/plugins/obs-x264/data/locale/kab-KAB.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini	2026-07-30 20:06:29.656490159 -0300
+-BufferSize="Буфер көлеми"
+-Profile="Профиль"
+-None="(Жоқ)"
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini obs-studio/plugins/obs-x264/data/locale/kab-KAB.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/kab-KAB.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -Bitrate="Aktum"
@@ -652,8 +720,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/kab-KAB.ini obs-
 -None="(Ulac)"
 -EncoderOptions="tinefrunin x264 (berzent s tallunt)"
 -VFR="Aktum n yikataren ameskil (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini obs-studio/plugins/obs-x264/data/locale/ka-GE.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini	2026-07-30 20:06:29.656422960 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini obs-studio/plugins/obs-x264/data/locale/ka-GE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ka-GE.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="ბიტსიხშირე"
@@ -669,8 +737,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ka-GE.ini obs-st
 -VFR="კადრის ცვლადი სიხშირე (VFR)"
 -HighPrecisionUnsupported="OBS-ში ვერ გამოიყენება x264 მაღალი სიზუსტის ფერების მქონე ფორმატებისთვის."
 -HdrUnsupported="OBS-ში ვერ იქნება გამოყენებული ერთად x264 და Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini obs-studio/plugins/obs-x264/data/locale/kmr-TR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini	2026-07-30 20:06:29.656532155 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini obs-studio/plugins/obs-x264/data/locale/kmr-TR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/kmr-TR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Rêjeya bitê"
@@ -686,8 +754,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/kmr-TR.ini obs-s
 -VFR="Rêjeya çarçoveya guherbar (VFR)"
 -HighPrecisionUnsupported="OBS piştgiriya bikaranîna x264 bi formatên rengîn ên rastbûna bilind nake."
 -HdrUnsupported="OBS piştgiriya bikaranîna x264 bi Rec. 2100 re nake."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini obs-studio/plugins/obs-x264/data/locale/ko-KR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini	2026-07-30 20:06:29.656572087 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini obs-studio/plugins/obs-x264/data/locale/ko-KR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ko-KR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="비트레이트"
@@ -703,8 +771,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ko-KR.ini obs-st
 -VFR="가변 프레임레이트 (VFR)"
 -HighPrecisionUnsupported="OBS는 고정밀 색상 형식의 x264 인코딩을 지원하지 않습니다."
 -HdrUnsupported="OBS는 x264로 Rec. 2100을 지원하지 않습니다."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/lo-LA.ini obs-studio/plugins/obs-x264/data/locale/lo-LA.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/lo-LA.ini	2026-07-30 20:06:29.656610386 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/lo-LA.ini obs-studio/plugins/obs-x264/data/locale/lo-LA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/lo-LA.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/lo-LA.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="ອັດຕາບິດ"
@@ -720,8 +788,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/lo-LA.ini obs-st
 -VFR="ເຟຣມເຣດແບບປ່ຽນແປງໄດ້ (VFR)"
 -HighPrecisionUnsupported="OBS ບໍ່ຮອງຮັບການໃຊ້ x264 ກັບຮູບແບບສີທີ່ມີຄວາມລະອຽດສູງ."
 -HdrUnsupported="OBS ບໍ່ຮອງຮັບການໃຊ້ x264 ກັບ Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini obs-studio/plugins/obs-x264/data/locale/lv-LV.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini	2026-07-30 20:06:29.656649509 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini obs-studio/plugins/obs-x264/data/locale/lv-LV.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/lv-LV.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -CustomBufsize="Izmantot Pielāgotu Bufera Izmēru"
@@ -736,8 +804,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/lv-LV.ini obs-st
 -VFR="Mainīgs Kadru ātrums (VFR)"
 -HighPrecisionUnsupported="OBS neatbalsta x264 izmantošanu ar augstas precizitātes krāsu formātiem."
 -HdrUnsupported="OBS neatbalsta x264 izmantošanu ar Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini obs-studio/plugins/obs-x264/data/locale/mn-MN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini	2026-07-30 20:06:29.656687325 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini obs-studio/plugins/obs-x264/data/locale/mn-MN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/mn-MN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -Bitrate="Битийн хурд"
@@ -750,8 +818,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/mn-MN.ini obs-st
 -None="(Байхгүй)"
 -EncoderOptions="x264 Сонголт (зайгаар тусгаарлагдсан)"
 -VFR="Тогтмол Биш Фрэйм-ийн хэмжээ (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini obs-studio/plugins/obs-x264/data/locale/ms-MY.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini	2026-07-30 20:06:29.656730499 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini obs-studio/plugins/obs-x264/data/locale/ms-MY.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ms-MY.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Kadar Bit"
@@ -767,8 +835,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ms-MY.ini obs-st
 -VFR="Kadar Bingkai Boleh Ubah (VFR)"
 -HighPrecisionUnsupported="OBS tidak menyokong penggunaan x264 bersama format warna ketepatan-tinggi."
 -HdrUnsupported="OBS tidak menyokong penggunaan x264 dengan Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini obs-studio/plugins/obs-x264/data/locale/nb-NO.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini	2026-07-30 20:06:29.656896509 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini obs-studio/plugins/obs-x264/data/locale/nb-NO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/nb-NO.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,9 +0,0 @@
 -CustomBufsize="Bruk egendefinert bufferstørrelse"
@@ -780,8 +848,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/nb-NO.ini obs-st
 -None="(Ingen)"
 -EncoderOptions="x264 alternativer (separert med mellomrom)"
 -VFR="Variabel bildefrekvens (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini obs-studio/plugins/obs-x264/data/locale/nl-NL.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini	2026-07-30 20:06:29.656896509 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini obs-studio/plugins/obs-x264/data/locale/nl-NL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/nl-NL.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,11 +0,0 @@
 -CustomBufsize="Aangepaste buffergrootte gebruiken"
@@ -795,18 +863,18 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/nl-NL.ini obs-st
 -VFR="Variabele Framerate (VFR)"
 -HighPrecisionUnsupported="OBS ondersteunt niet het gebruiken van x264 met hoge precissie kleur formaten."
 -HdrUnsupported="OBS ondersteunt niet het gebruiken van x264 met Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini obs-studio/plugins/obs-x264/data/locale/nn-NO.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini	2026-07-30 20:06:29.657846290 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini obs-studio/plugins/obs-x264/data/locale/nn-NO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/nn-NO.ini	2026-10-31 11:30:31.368713191 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/nn-NO.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1 +0,0 @@
 -Profile="Profil"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini obs-studio/plugins/obs-x264/data/locale/oc-FR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini	2026-07-30 20:06:29.658523253 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini obs-studio/plugins/obs-x264/data/locale/oc-FR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/oc-FR.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/oc-FR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1 +0,0 @@
 -Profile="Perfil"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini obs-studio/plugins/obs-x264/data/locale/pl-PL.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini	2026-07-30 20:06:29.659877758 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini obs-studio/plugins/obs-x264/data/locale/pl-PL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/pl-PL.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Przepływność bitowa"
@@ -822,8 +890,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pl-PL.ini obs-st
 -VFR="Zmienna liczba klatek na sekundę (VFR)"
 -HighPrecisionUnsupported="OBS nie obsługuje kodeka x264 z formatami kolorów o wysokiej precyzji."
 -HdrUnsupported="OBS nie obsługuje użycia x264 z Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini obs-studio/plugins/obs-x264/data/locale/pt-BR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini	2026-07-30 20:06:29.661265845 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini obs-studio/plugins/obs-x264/data/locale/pt-BR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/pt-BR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Taxa de bits"
@@ -839,8 +907,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-BR.ini obs-st
 -VFR="Taxa de quadros variável (VFR)"
 -HighPrecisionUnsupported="OBS não suporta o uso de x264 com formatos de cor de alta precisão."
 -HdrUnsupported="OBS não suporta o uso de x264 com Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini obs-studio/plugins/obs-x264/data/locale/pt-PT.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini	2026-07-30 20:06:29.661265845 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini obs-studio/plugins/obs-x264/data/locale/pt-PT.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/pt-PT.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Taxa de bits"
@@ -856,8 +924,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/pt-PT.ini obs-st
 -VFR="Taxa de fotogramas variável (VFR)"
 -HighPrecisionUnsupported="O OBS não suporta o uso de x264 com formatos de cores de alta precisão."
 -HdrUnsupported="OBS não suporta o uso de x264 com Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini obs-studio/plugins/obs-x264/data/locale/ro-RO.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini	2026-07-30 20:06:29.661359527 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini obs-studio/plugins/obs-x264/data/locale/ro-RO.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ro-RO.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Rată de biți"
@@ -873,8 +941,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ro-RO.ini obs-st
 -VFR="Frecvență de cadre variabilă (VFR)"
 -HighPrecisionUnsupported="OBS nu acceptă utilizarea x264 cu formate de culoare de mare precizie."
 -HdrUnsupported="OBS nu suportă folosirea lui x264 cu Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini obs-studio/plugins/obs-x264/data/locale/ru-RU.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini	2026-07-30 20:06:29.661404228 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini obs-studio/plugins/obs-x264/data/locale/ru-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ru-RU.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Битрейт"
@@ -890,8 +958,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ru-RU.ini obs-st
 -VFR="Переменная частота кадров (VFR)"
 -HighPrecisionUnsupported="OBS не поддерживает использование x264 с высокоточными цветовыми форматами."
 -HdrUnsupported="OBS не поддерживает использование x264 с Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini obs-studio/plugins/obs-x264/data/locale/si-LK.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini	2026-07-30 20:06:29.661447916 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini obs-studio/plugins/obs-x264/data/locale/si-LK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/si-LK.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,8 +0,0 @@
 -Bitrate="බිටුඅනුපා."
@@ -902,8 +970,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/si-LK.ini obs-st
 -Tune="සුසරය"
 -None="(කිසිත් නැත)"
 -EncoderOptions="x264 විකල්ප (හිස්තැනකින් වෙන්කර)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini obs-studio/plugins/obs-x264/data/locale/sk-SK.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini	2026-07-30 20:06:29.661490561 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini obs-studio/plugins/obs-x264/data/locale/sk-SK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sk-SK.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -CustomBufsize="Použiť vlastnú veľkosť medzipamäte"
@@ -918,8 +986,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sk-SK.ini obs-st
 -VFR="Premenlivá rýchlosť snímkov (VFR)"
 -HighPrecisionUnsupported="OBS nepodporuje použitie x264 s vysoko-precíznymi farebnými formátmi."
 -HdrUnsupported="OBS nepodporuje použitie x264 s Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini obs-studio/plugins/obs-x264/data/locale/sl-SI.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini	2026-07-30 20:06:29.661530345 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini obs-studio/plugins/obs-x264/data/locale/sl-SI.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sl-SI.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bitna hitrost"
@@ -935,15 +1003,15 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sl-SI.ini obs-st
 -VFR="Spremenljiva hitrost sličic"
 -HighPrecisionUnsupported="OBS ne podpira rabo x264 z visoko-natančnimi zapisi barv."
 -HdrUnsupported="OBS ne podpira rabe x264 z Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini obs-studio/plugins/obs-x264/data/locale/sq-AL.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini	2026-07-30 20:06:29.661561981 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini obs-studio/plugins/obs-x264/data/locale/sq-AL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sq-AL.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sq-AL.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,3 +0,0 @@
 -Profile="Profili"
 -None="(Asnjë)"
 -EncoderOptions="Parametrat e x264 (ndarë me hapësire)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini obs-studio/plugins/obs-x264/data/locale/sr-CS.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini	2026-07-30 20:06:29.661620419 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini obs-studio/plugins/obs-x264/data/locale/sr-CS.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sr-CS.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,10 +0,0 @@
 -Bitrate="Protok"
@@ -956,8 +1024,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-CS.ini obs-st
 -None="(Nijedno)"
 -EncoderOptions="x264 opcije (odvojene razmakom)"
 -VFR="Promenjivi framerate (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini obs-studio/plugins/obs-x264/data/locale/sr-SP.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini	2026-07-30 20:06:29.661686346 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini obs-studio/plugins/obs-x264/data/locale/sr-SP.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sr-SP.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Проток"
@@ -973,8 +1041,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sr-SP.ini obs-st
 -VFR="Промењиви framerate (VFR)"
 -HighPrecisionUnsupported="OBS не подржава коришћење x264 са високопрецизним форматима боја."
 -HdrUnsupported="OBS не подржава коришћење x264 са Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini obs-studio/plugins/obs-x264/data/locale/sv-SE.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini	2026-07-30 20:06:29.661729188 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini obs-studio/plugins/obs-x264/data/locale/sv-SE.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/sv-SE.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,12 +0,0 @@
 -Bitrate="Bithastighet"
@@ -989,8 +1057,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/sv-SE.ini obs-st
 -VFR="Varierande bildfrekvens (VFR)"
 -HighPrecisionUnsupported="OBS har inte stöd för användning av x264 med färg-format med högprecision."
 -HdrUnsupported="OBS saknar stöd för att använda x264 med Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini obs-studio/plugins/obs-x264/data/locale/szl-PL.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini	2026-07-30 20:06:29.661928884 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini obs-studio/plugins/obs-x264/data/locale/szl-PL.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/szl-PL.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,9 +0,0 @@
 -CustomBufsize="Użyj włosnyj miary bufōra"
@@ -1002,16 +1070,16 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/szl-PL.ini obs-s
 -None="(Brak)"
 -EncoderOptions="Ôpcyje x264 (roztajlowane spacyjōm)"
 -VFR="Zmiynno wielość klotek na sekōnda (VFR)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini obs-studio/plugins/obs-x264/data/locale/ta-IN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini	2026-07-30 20:06:29.661928884 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini obs-studio/plugins/obs-x264/data/locale/ta-IN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ta-IN.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ta-IN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,4 +0,0 @@
 -Bitrate="பிட்விகிதம்"
 -Profile="சுயவிவரம்"
 -None="(எதுவுமில்லை)"
 -EncoderOptions="x264 விருப்பங்கள் (இடைவெளி விட்டு பிரிக்கப்பட்டவை)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini obs-studio/plugins/obs-x264/data/locale/th-TH.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini	2026-07-30 20:06:29.661928884 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini obs-studio/plugins/obs-x264/data/locale/th-TH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/th-TH.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="บิตเรท"
@@ -1027,8 +1095,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/th-TH.ini obs-st
 -VFR="บิตเรทแปรผัน (VBR)"
 -HighPrecisionUnsupported="OBS ไม่รองรับการใช้งาน x264 กับรูปแบบสีที่มีความแม่นยำสูง"
 -HdrUnsupported="OBS ไม่รองรับการใช้งานรูปแบบ x264 กับ Rec 2100"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini obs-studio/plugins/obs-x264/data/locale/tl-PH.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini	2026-07-30 20:06:29.661928884 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini obs-studio/plugins/obs-x264/data/locale/tl-PH.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/tl-PH.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,9 +0,0 @@
 -Bitrate="Ang Bitrate"
@@ -1040,8 +1108,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/tl-PH.ini obs-st
 -Tune="Ang tono"
 -None="(Wala)"
 -EncoderOptions="x264 Mga opsyon (pinaghiwalay ng espasyo)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini obs-studio/plugins/obs-x264/data/locale/tr-TR.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini	2026-07-30 20:06:29.662157623 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini obs-studio/plugins/obs-x264/data/locale/tr-TR.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/tr-TR.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Bit hızı"
@@ -1057,16 +1125,16 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/tr-TR.ini obs-st
 -VFR="Değişken Kare Hızı (VFR)"
 -HighPrecisionUnsupported="OBS, x264'ün yüksek hassasiyetli renk biçimleriyle kullanılmasını desteklemez."
 -HdrUnsupported="OBS, x264'ün Rec. 2100 ile kullanımını desteklemiyor."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini obs-studio/plugins/obs-x264/data/locale/tt-RU.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini	2026-07-30 20:06:29.662262980 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini obs-studio/plugins/obs-x264/data/locale/tt-RU.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/tt-RU.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/tt-RU.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,4 +0,0 @@
 -Bitrate="Битрейт"
 -Profile="Профиль"
 -Tune="Көйләү"
 -None="(Юк)"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini obs-studio/plugins/obs-x264/data/locale/ug-CN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini	2026-07-30 20:06:29.662306439 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini obs-studio/plugins/obs-x264/data/locale/ug-CN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ug-CN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="بايت نىسبىتى"
@@ -1082,8 +1150,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ug-CN.ini obs-st
 -VFR="ئۆزگىرىشچان كېشەك نىسبىتى (VFR)"
 -HighPrecisionUnsupported="OBS يۇقىرى ئېنىقلىقتىكى رەڭ پىچىمىدىكى x264 ئىشلىتىشنى قوللىمايدۇ"
 -HdrUnsupported="OBS  بۇ Rec. 2100 ھالىتىدە x264 ئىشلىتىشنى قوللىمايدۇ."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini obs-studio/plugins/obs-x264/data/locale/uk-UA.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini	2026-07-30 20:06:29.662347972 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini obs-studio/plugins/obs-x264/data/locale/uk-UA.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/uk-UA.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Бітрейт"
@@ -1099,13 +1167,13 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/uk-UA.ini obs-st
 -VFR="Змінна частота кадрів (VFR)"
 -HighPrecisionUnsupported="OBS не підтримує використання x264 з високоточними кольоровими форматами."
 -HdrUnsupported="OBS не підтримує використання x264 з Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini obs-studio/plugins/obs-x264/data/locale/ur-PK.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini	2026-07-30 20:06:29.662379179 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini obs-studio/plugins/obs-x264/data/locale/ur-PK.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/ur-PK.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/ur-PK.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1 +0,0 @@
 -Bitrate="بٹریٹ"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini obs-studio/plugins/obs-x264/data/locale/vi-VN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini	2026-07-30 20:06:29.662417537 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini obs-studio/plugins/obs-x264/data/locale/vi-VN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/vi-VN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="Tốc độ bit"
@@ -1121,8 +1189,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/vi-VN.ini obs-st
 -VFR="Framerate thay đổi được (VFR)"
 -HighPrecisionUnsupported="OBS không hỗ trợ sử dụng x264 với các định dạng màu có độ chính xác cao."
 -HdrUnsupported="OBS không hỗ trợ sử dụng x264 với Rec. 2100."
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini obs-studio/plugins/obs-x264/data/locale/zh-CN.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini	2026-07-30 20:06:29.662459827 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini obs-studio/plugins/obs-x264/data/locale/zh-CN.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini	2026-10-31 11:30:31.369713145 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/zh-CN.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="码率"
@@ -1138,8 +1206,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-CN.ini obs-st
 -VFR="可变帧率（VFR）"
 -HighPrecisionUnsupported="OBS不支持使用高精度颜色格式的x264。"
 -HdrUnsupported="OBS 不支持在 Rec. 2100 下使用 x264。"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini obs-studio/plugins/obs-x264/data/locale/zh-TW.ini
---- obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini	2026-07-30 20:06:29.662499618 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini obs-studio/plugins/obs-x264/data/locale/zh-TW.ini
+--- obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini	2026-10-31 11:30:31.370713098 -0300
 +++ obs-studio/plugins/obs-x264/data/locale/zh-TW.ini	1969-12-31 21:00:00.000000000 -0300
 @@ -1,13 +0,0 @@
 -Bitrate="位元率"
@@ -1155,8 +1223,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/data/locale/zh-TW.ini obs-st
 -VFR="可變畫面播放速率 (VFR)"
 -HighPrecisionUnsupported="OBS 不支援將 x264 與高精度色彩格式搭配使用。"
 -HdrUnsupported="OBS 不支援將 x264 與 Rec. 2100 搭配使用。"
-diff --color -rubN obs-studio.orig/plugins/obs-x264/obs-x264.c obs-studio/plugins/obs-x264/obs-x264.c
---- obs-studio.orig/plugins/obs-x264/obs-x264.c	2026-07-30 20:06:29.662838107 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264.c obs-studio/plugins/obs-x264/obs-x264.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264.c	2026-10-31 11:30:31.370713098 -0300
 +++ obs-studio/plugins/obs-x264/obs-x264.c	1969-12-31 21:00:00.000000000 -0300
 @@ -1,865 +0,0 @@
 -/******************************************************************************
@@ -2024,8 +2092,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/obs-x264.c obs-studio/plugin
 -	.get_video_info = obs_x264_video_info,
 -	.caps = OBS_ENCODER_CAP_DYN_BITRATE | OBS_ENCODER_CAP_ROI,
 -};
-diff --color -rubN obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c obs-studio/plugins/obs-x264/obs-x264-plugin-main.c
---- obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c	2026-07-30 20:06:29.662499618 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c obs-studio/plugins/obs-x264/obs-x264-plugin-main.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c	2026-10-31 11:30:31.370713098 -0300
 +++ obs-studio/plugins/obs-x264/obs-x264-plugin-main.c	1969-12-31 21:00:00.000000000 -0300
 @@ -1,16 +0,0 @@
 -#include <obs-module.h>
@@ -2044,8 +2112,8 @@ diff --color -rubN obs-studio.orig/plugins/obs-x264/obs-x264-plugin-main.c obs-s
 -	obs_register_encoder(&obs_x264_encoder);
 -	return true;
 -}
-diff --color -rubN obs-studio.orig/plugins/obs-x264/obs-x264-test.c obs-studio/plugins/obs-x264/obs-x264-test.c
---- obs-studio.orig/plugins/obs-x264/obs-x264-test.c	2026-07-30 20:06:29.662499618 -0300
+diff '--color=auto' -rubN obs-studio.orig/plugins/obs-x264/obs-x264-test.c obs-studio/plugins/obs-x264/obs-x264-test.c
+--- obs-studio.orig/plugins/obs-x264/obs-x264-test.c	2026-10-31 11:30:31.370713098 -0300
 +++ obs-studio/plugins/obs-x264/obs-x264-test.c	1969-12-31 21:00:00.000000000 -0300
 @@ -1,71 +0,0 @@
 -#include <stdio.h>

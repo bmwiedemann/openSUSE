@@ -18,7 +18,7 @@
 
 %define shortname fresh
 Name:           fresh-editor
-Version:        0.5.5
+Version:        0.5.9
 Release:        0
 Summary:        A terminal text editor you can just use
 # Legal-Review-Notice: MPL-2.0 comes from vendored option-ext 0.2.0, which is
@@ -28,7 +28,12 @@ License:        GPL-3.0-or-later AND MPL-2.0
 URL:            https://getfresh.dev/
 Source0:        %{shortname}-v%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: wasm relocatable object for wasm32 target
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/* -- other-platform: Windows objects for builds without nasm
+# Source-Binary-Exception: *libloading*/tests/*.dll -- test-data: windows test dlls in test directory
+# Source-Binary-Exception: *lzma-sys*/tests/* -- test-data: test fixtures for decompressor testing
 BuildRequires:  cargo-packaging
+BuildRequires:  memory-constraints
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -43,6 +48,8 @@ The goal for Fresh is to be an intuitive and accessible, high-performance termin
 %autosetup -p1 -a1 -n %{shortname}-v%{version}
 
 %build
+# rustc peaks near 10 GB RSS; cap parallel jobs by RAM, not cores
+%limit_build -m 2000
 %{cargo_build}
 
 %install

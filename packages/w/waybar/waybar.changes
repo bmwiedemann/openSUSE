@@ -1,4 +1,341 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:03:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  * fix: update tooltip method to use pango markup formatting
+  * fix(image): treat missing interval as once
+  * fix: remove unnecessary console log for battery status
+  * memory: use markup rather than text for memory tooltip
+  * fix: use pango markup for consistent formatting in format and tooltip-format
+  * fix: use SafeSignal in ipc in order to not call GTK funcs from a thread
+  * fix(keyboard-state): fix segfault on device hotplug removal
+  * hyprland/workspaces: Add enable-bar-scroll option
+  * bump: niri/workspaces: change icons priority
+  * fix: ensure AAppIconLabel image remains not visibile if icons are disabled
+  * fix(cava): remove silent CSS class on reactivation
+  * feat: add tooltip-format config option in cpu module
+  * battery: power switch events
+  * feat: add {tooltip} in format replacements in custom module
+  * feat(niri): niri depends on socket
+  * fix: owerwrite handleScroll to remove any scrolling handling from group
+  * fix(mpris): fall back to next non-ignored player and prefer playing players
+  * bluetooth: fix segfault when DBus manager fails to initialize
+  * battery: fix SIGABRT on USB device unplug race condition
+  * mpd: fix socket FD leak on system-level connection errors
+  * [WIP] Fix waybar responsiveness and interaction issues
+  * fix(util): ensure SleeperThread lifecycle safety and thread sync
+  * fix(util): bound SafeSignal queue growth under burst load
+  * fix: float interval cast
+  * fix(command): return non-zero when child exec fails
+  * fix(network): align tooltip and tooltip text
+  * perf(memory): optimize string operations; remove deep copies, memdup, and icon theme rescanning
+  * fix(hyprland-ipc): harden fd lifecycle and listener loop
+  * fix: sync tooltip updates without resetting hover state
+  * fix(mpris): disconnect GLib signals before destroying objects
+  * fix(menu): keep popup menus alive after builder teardown
+  * fix(tray): complete attention/overlay implementation
+  * fix(hyprland): misc hardening with ipc socket and events
+  * Add simple calendar tooltip example for clock module
+  * systemd-failed-units: add tooltip with list of failed units
+  * Fix menu-actions GTK callback pointer handling
+  * fix(hyprland/window): Fix segfault caused by use-after-free
+  * Add start-expanded option to group
+  * fix: prevent resource leak when rebinding Wayland globals
+  * Network: Fix default interface selection.
+  * clarify logical condition in wlr taskbar module
+  * Fix network bandwidth rate calculation for early updates
+  * Fix unnecessary allocation in GTK callback
+  * fix: prevent resource leak when rebinding dwl globals
+  * feat(client): add support for 8-bit hex color codes in CSS
+  * niri/workspaces: feature - add "hide-empty" config option
+  * fix(bar): ensure exception safety for group module allocation
+  * fix(network): prevent near-zero bandwidth on rapid event-driven updates
+  * Network: fix: delete correct address type
+  * memory: feature - add "unit" config option
+  * fix the io failure for hotplug-in device
+  * fix(sni): use std::make_unique for Item allocation
+  * Various toctou fixes
+  * fix(hyprland/workspaces): adapt dispatch commands for Lua IPC protocol
+  * fix(battery): prevent crash when removing a hot-plugged device
+  * fix(delayWorker): stop loop for static modules with no exec command
+  * feat(modules): pause background threads when display is asleep
+  * Fix (wayfire/backend): Fixed unhandled exception (out_of_range) after…
+  * fix(mpd): avoid false no-song warning when stopped
+  * fix(amodule): prevent crash when cursor timeout fires after destruction
+  * Fix connection loop in pulseaudio
+  * perf(mpd): avoid duplicate playing-state updates
+  * perf(json): parse directly from string buffers
+  * fix(hyprland/workspaces): fix IPC call when using move-to-monitor
+  * Fix (memory): Fix tooltip showing incorrect unit and add proper unit initialization
+  * fix(niri/workspaces): segfault when setting workspace button markup
+  * fix(privacy): segfault due to use-after-free from get_children()
+  * fix(sni): ignore name/pixmap updates for custom icons
+  * fix: mpd specify timer interval in seconds
+  * fix(sway/workspaces): use number when available to avoid parsing issues
+  * fix(hyprland): replace EventBox with Button for taskbar window items
+  * fix(tray): hide module when no items are visible
+  * (Fix) (sway workspace module) persistent workspaces always removed
+  * fix(hyprland): support custom scroll commands
+  * fix(mpd): truncate before sanitization and improve tooltip UX
+  * hyprland/workspaces persistent fix and improve cursor handling configuration
+  * fix(sway/language): keep flag visible across hot-plug and unknown layouts
+  * battery: guard _exists = true assignment inside if condition
+  * hyprland/window: fix title not showing for windows in special workspaces
+  * Fix  bug #4241
+  * Add tooltip functionality on hyprland/language module
+  * fix(hyprland/language): handle commas in keyboard-name config
+  * fix: Watch new CSS files on appearance change
+  * fix(sway/workspaces): escape markup in workspace if enabled
+  * custom_modules: Fix mediaplayer.py handling untitled track
+  * fix: USR1/USR2 handling on OpenBSD
+  * fix(hyprland): keep workspace hover over taskbar icons
+  * Fix timeout created by most recent gtk-layer-shell release when creating bars for multiple monitors.
+  * fix: issue #4955 wrong behaviour of regex for sway/window 'rewrite'
+  * fix: Return when ID doesn't exist, we only care about the interest list.
+  * Fix indentation formatting in power_menu.xml
+  * fix(hyprland/workspaces) Special Workspace Multi-Monitor Support
+  * feat(hyprland/workspace): improved styling for named special workspaces
+  * fix(sni): retry Host proxy creation on transient errors
+  * fix: prioritize plugged status over full when battery is full and plugged in
+  * Fix clang build error
+  * fix(wlr/taskbar): let task titles shrink within available space
+  * perf(label): skip redundant markup updates
+  * Refactor: simplify conditional expressions in Hyprland workspace module
+  * docs: clarify global tooltip styling behavior
+  * Fallback formatting when format-paused is missing uses ALabel
+  * meson_options: improve sndio's description
+  * Document light and dark stylesheets in manual
+  * bar: warn on invalid height type in configuration
+  * Hide niri/language widget if formatted string is empty
+  * Force layer-shell commit after configure
+  * added a "fallback" option to hyprland/window when no window in focus
+  * Allow tooltip formatting the CPU module.
+  * Additional options when muted for the PulseAudio-Slider module
+  * cpu: add load{1,5,15} format variables
+  * feat(temperature): add hwmon-name option for stable sensor selection
+  * feat(sway/workspaces): add format for negative indices
+  * feat: add custom format-icons for each key in keyboard-state module
+  * feat(wlr/taskbar): expose active toplevel state on the bar window
+  * feat(battery): add option to smooth power for more stable time_remaining estimates
+  * Encode icon inside label
+  * power-profiles-daemon: split driver into cpu driver and platform driver
+  * feature: group - add reveal-delay config option for drawer
+  * feat: add compact versions of bandwidthBytes to network module
+  * river/tags: Allow river tags to be styled based on monitor focus
+  * feat: add support for configurable first day of the week in calendar
+  * feat: add mango modules: workspace,language,keymode,window,layout
+  * feat: allow sorting niri workspaces
+  * Add hide-active
+  * feat: support Pango markup in remaining tooltips
+  * mpd: Implement idle events for Playing state
+  * feat: Show Niri/window component when workspace is empty
+  * Add "ignore-workspaces" option to sway/workspaces module
+  * feat (hyprland/workspaces): expose workspace name as CSS class
+  * [feat] sway/workspaces: refer to outputs by their monitor identifier in persistent-workspaces
+  * feature: add on-click-copy clipboard functionality
+  * Add CSS classes for sway workspace indicators depending on associated output
+  * Add css class to hyprland language module of short_name language code
+  * Add max-windows option to hyprland/workspaces
+  * feat(language): add tooltip support with configurable tooltip-format
+  * Add CSS selector for expanded drawers
+  * [RFC] niri/window: add col/max_col parameters
+  * feat (hyprland/workspaces): support for state specific icon overrides
+  * feat(wlr/taskbar): add justify option to control horizontal alignment of the module box
+  * feat(cpu): add {icons} format replacement for all per-core icons
+  * pulseaudio: add target option to control source (microphone) volume
+  * hostname dependend module
+  * Add an option to search for name in hwmon directory for the temperature module
+  * dwl/window: allow hiding of title when either inactive or empty
+  * feat (clock): Add support for optional CSS classes to the clock module's calendar tooltip
+  * wireplumber: add more volume formats
+  * dwl/tags: add hide-vacant option
+  * feat (tray): Ignore Tray items by service name and when dbus properties load
+  * feat(disk)!: handle multiple disks at once
+  * feat(image): expand ~ & $HOME in path
+  * add prefer-album-artist to mpris module
+  * feat(backlight): added percentexp as format option
+  * pulseaudio: Add 'sink-mapping' config option
+  * feat(hyprland/workspaces): grouping icons by @eonphi in #4861 -> format-bluetooth and device.form-factor support for wireplumber module
+  * Add '-' support to wifi config
+  * feat(clock): Add action to execute external command
+  * feat: add customgraph module
+  * feat(niri/workspaces): Add enable-bar-scroll option
+  * feat(mpd): add playing-interval option
+  * feat(group): add reveal-by-default option
+  * feat(custom): add image
+  * River/tags: Add static CSS classes for all available tags.
+  * feat: add support for bt peripheral device battery
+  * Added Idle Inhibitor Features: Signal Inputs & Activity Detection
+  * feat(niri/workspaces): add {total} format token to workspaces
+  * Sway IPC client: robustness improvements & code cleanups
+  * log: use native journald protocol for when running as a service
+  * feat(cursor): use cursor-shape-v1 cursor names instead of Gdk::CursorType
+  * refactor(ALabel): generic label+tooltip helper to remove per-module duplication
+  * Add missing documentation for the "target" option of the PulseAudio-Slider module.
+  * feat(hyprland/submap): add config option to specify different icons for submaps
+  * hyprland/workspaces: add debounce timer to prevent workspace button f…
+  * waybar-styles.5: add semicolon to css import statement
+  * feat(ALabel): allow custom percentage thresholds in format-icons
+  * feat(group): Add .empty class to empty groups
+  * feat(wlr/taskbar): add homogeneous option to evenly distribute button widths
+  * feat(niri/worspaces): add ignore-workspaces configuration option
+  * feat: allow not switching output when clicking sway/workspace
+  * Support hiding tray icons
+  * Implemented "only-physical" parameter in the wireplumber module.
+  * feat(hyprland/workspaces): add deduplication and max-icons option to workspace-taskbar
+  * clock: add weeks-numbering option for configurable CW calculation
+  * feat(Group/Drawer): add dynamic drawer hiding modules based on module's class
+  * feat: add display-condition configuration option
+  * allow dynamic timeout setting for idle inhibitor
+  * Added a taskbar squash option
+  * add click coordinates to script
+  * feat: Add wifi network link bitrate value
+  * add format-icons to river/layout
+  * feat: add new module 'images' to render multiple images under one gtk container
+  * feat(hyprland/workspaces): add uniqueIcons option
+  * [hyprland/workspaces] Add tooltips to hyprland/workspaces
+  * feat: add way to use environment value for 'output' option
+  * feat: Added source_desc argument to format_source in pulseaudio.cpp
+  * feat: added dbus handler to update current player
+  * feat(wlr/taskbar): add truncate option to ellipsize long button text
+  * added output-dimensions option
+  * feat (niri/workspaces): add dynamic window icons to workspaces matching hyprland/workspaces
+  * fix(tray): segfault due to use-after-free from iterating children
+  * fix: Use workspace ID to handle hyprland/workspace updates
+  * (sni) be able to control oder of tray items, and clean up sni module based on clang-tidy
+  * feat: sway/workspaces: add custom workspace sorting functionality
+  * WWAN module (ModemManager)
+  * Add GeoClue2 location privacy item
+  * feat(niri): add workspace-taskbar support
+  * net: add ethernet link speed
+  * fix: backward-compat + bug fixes and man-page build fix for 0.16.0
+  * fix: batch of crash/freeze fixes (clock DST, interval:0, thread-safety, reconnects)
+  * fix(wireplumber): correct linear→cubic volume conversion (0% on Bluetooth) + source-muted state
+  * fix(clock): degrade gracefully on an invalid format specifier
+  * fix(keyboard-state): read lock LEDs from all devices, not just the first
+  * fix: tray accel-group crash (#5142), wlr/taskbar shell-exec of built-in actions (#3284), MPD connect-timeout freeze (#1186)
+  * fix: mpris resume SIGSEGV (#5124), wireplumber async UAF (#3974), stale reload batch state (#4129)
+  * ci: headless smoke + screenshot test for the bar
+  * fix: backlight leds subsystem (#2848), sway/ipc reconnect (#3166), ethernet unplug regression (#4364)
+  * refactor(custom): move continuous exec onto GLib command stream
+  * fix(niri): keep the initial IPC connect synchronous
+  * feat(format): expand pow_format modifiers
+  * fix(label): compare markup cache by raw bytes, not collation
+  * fix: batch of bugs found reviewing the 0.15.0..master diff
+  * fix: resource-leak / correctness cleanups from the 0.15.0..master review (low severity)
+  * fix(image): don't crash at startup when the widget isn't realized yet (#5051)
+  * fix(wireplumber): reconnect when PipeWire/WirePlumber restarts (#2882)
+  * ci(smoke): sanitizer build + module/interaction/a11y/layout coverage
+  * fix: backlight I/O flooding (#5020) + network IP recovery after link flap (#5122)
+  * fix(wlr/taskbar): respect all-outputs
+  * ci(smoke): fix state tier hang from bare wait on a lingering daemon
+  * docs(man): add load
+  * fix(idle_inhibitor.cpp): Fix build for systems without SIGRTMIN/SIGRTMAX
+  * refactor(cava): fix thread-safety, resource leaks, and style violations
+  * use nmcli implementation for calculating WiFi signal strength
+  * refactor: rm direct dp.emit() call in constructor.
+  * cava bump
+  * fix(tooltips): keep dynamic tooltips from resetting hover delay
+  * fix(mpris): sanitize metadata to prevent multiline UI expansion
+  * util/enum: make header-only and drop mandatory Hyprland dependency
+  * fix(sway/ipc): don't mistake events for the subscribe reply
+  * fix(backlight): clamp scroll step to min-brightness
+  * config: add min-brightness to backlight example
+  * Replace lone tab character in style.css with spaces for consistency
+  * privacy: disconnect pending timeouts on destruction
+  * fix(hyprland/workspaces): handle workspace ID changes
+  * feat: clang format options added on makefile and docker image for arc…
+  * fix: fix module backlight format using clang
+  * fix(hyprland/workspaces): respect enable-bar-scroll config option
+  * docs(states): wireplumber uses >=, not <=
+  * fix(hyprland/language): ensuring exact match of the device name
+  * sink the GVariant to prevent freeing a floating variant
+  * meson: Fix unwinding error in libunwind over glibc
+  * fix: don't block startup on the desktop portal
+  * fix(tray): fall back when dbus menu is unavailable
+  * ipc: Improve teardown process
+  * ext/workspaces: fix inverted capability bit checks
+  * fix(hyprland): detect dispatch protocol via configProvider
+  * Fix crash with keyboard-state on keyboard removal
+  * wlr/taskbar: reload icon when the widget scale factor changes
+  * Fix/command read busy loop
+  * fix(tooltips): only update the tooltip of the hovered module
+  * fix(hyprland/language): ignore empty/unknown layouts from virtual keyboards
+  * fix(hyprland/workspaces): only deduplicate taskbar icons when max-icons is set
+  * icon_loader: fix ctype usage
+  * memory: fix get_free_memory() on NetBSD
+  * fix(tray): prebuild the dbusmenu before the first right click
+  * bump libjsoncpp
+  * fix(tray): accept dbusmenus without the Version property
+  * fix(wireplumber): apply common muted class to primary node
+  * fix(taskbar): avoid stale pointer in drag payload
+  * fix(custom): stop applying module-level CSS classes to the inner label
+  * fix(custom,disk): catch fmt::format_error
+  * fix(load): respect tooltip-format config
+  * fix(tray): respect tooltip config option
+  * fix(hyprland/workspace): GTK memory leak
+  * mango/window: added max-length option to documentation
+  * docs(temperature): document disable-on-sleep and what actually triggers it
+  * Portable uptime usage, fallback to CLOCK_MONOTONIC
+  * fix(tray): do not abort on a malformed orders entry
+  * sni/watcher: accept combined "bus_name/object_path" item registrations (Electron 43.4.1+)
+  * fix(power-profiles-daemon): guard async callback lifetime
+  * ext/worksapces: sort buttons when workspace changes group
+  * fix(hyprland/language): split activelayout on the last comma outside parens
+  * fix(inhibitor): use a private system bus connection and reconnect when closed
+  * mpris: add hide-on-paused option
+  * fix(sni): destroy the dbusmenu and drop its reference in ~Item()
+  * fix(backlight): let stop() cancel the udev worker only in epoll_wait()
+  * fix/disks: added linebreak just after second path
+  * feat(sway/workspaces): Add CSS class to identify workspaces by number
+  * fix(network): read the ACK after get_station requests
+  * fix(modules): disconnect GLib signal handlers before destroying objects
+  * clock: use standalone month names in calendar header
+  * feat(label): add fit-height to fit multi-line labels into the bar
+  * fix(hyprland): Support addressable workspace IPC
+  * Add bar blur option
+  * fix(backlight): calculate scroll limits in device units
+  * feat(mango/workspaces): add tag-filter option to restrict visible tag…
+  * fix(battery): round capacity instead of truncating it
+  * fix(keyboard-state): inotify descriptor leak
+  * fix(power-profiles-daemon): initialize active profile iterator
+  * fix: sanitized tooltip text
+  * GTK4. Dockerfiles update
+  * GTK4. freeBSD update
+  * docs(custom): make interval and signal descriptions agree
+  * fix(nix): match the current libcava wrap source and directory
+  * fix(subprojects): keep libcava as wrap-file so sandboxed builds work
+  * feat(battery): add {eta} replacement for estimated end time
+  * fix(bar): waybar crashes when an output's scale changes
+  * feat: Add umbriel/workspaces, umbriel/window & umbriel/layout
+  * fix(ci): repair checkout step in Nix lockfile updater
+  * fix(util/command, custom_graph): forked child must not inherit a pending pthread_cancel
+  * fix(network): misc fixes and cleanups in network module
+  * fix(tooltips): show the tooltip again after scrolling a module
+  * fix(wireplumber): resolve default node once it is added
+  * fix(custom): keep module name and class on the label when there is no image
+  * Add ext-workspaces scroll support
+  * fix(hyprland/workspaces): clear the tooltip when its format is empty
+  * group: allow replacing the drawer leader when expanded
+  * feat: load cava and gps as runtime modules
+  * fix(sni): disconnect the dbusmenu from its client before destroying it
+  * Add Umbriel to README #5434
+  * fix(AModule): let unhandled clicks propagate to parent groups
+  * ci: harden lockfile updater with explicit job permissions
+  * test(smoke): inject clicks through a virtual pointer and gate on them
+  * fix(main): keep the signal thread alive on EINTR
+  * fix(bar): run the first module updates without a pipe write each
+  * fix(cava): handle a missing audio server instead of crashing
+  * fix(wireplumber): survive a missing or stopped pipewire
+  * fix(bluetooth): drop connected devices that vanish with their controller
+  * fix(wwan): survive a missing modemmanager and follow modem changes
+  * fix: show mpd format-disconnected and reject an out-of-range image size
+  * test(smoke): run most modules for real in the smoke workflow
+  * fix: clamp interval values and make the hardware smoke tier run on ci
+  * fix(idle_inhibitor): toggle once per signal across all bars
+  * feat(tray): support wildcard keys in icons
+
+-------------------------------------------------------------------
 Fri Feb 13 17:47:46 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to 0.15.0:

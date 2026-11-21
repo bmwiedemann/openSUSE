@@ -327,4 +327,20 @@
   * Require at least one digit in ordered list continuation</comment>
     <requestid>1392698</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>0f9e1491fe009479be746cbec25f55ae</srcmd5>
+    <version>3.4.0</version>
+    <time>1793724885</time>
+    <user>anag_factory</user>
+    <comment> Add 7 CVE and bug references</comment>
+    <requestid>1394582</requestid>
+  </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>62285fd9d3a45bbd36bf679aea0ae4bc</srcmd5>
+    <version>3.4.0</version>
+    <time>1793990012</time>
+    <user>anag_factory</user>
+    <comment>Add two more CVE and bug references</comment>
+    <requestid>1395069</requestid>
+  </revision>
 </revisionlist>

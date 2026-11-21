@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:37:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.94
+  * Fixed off-by-one error in the sample monitor window (audio
+    input sampling).
+  * Assure unity gain for sinc resampling kernel used for audio
+    input sampling.
+  * Small optimization to replayer voice mixer code
+    (double-precision div -> mul).
+
+-------------------------------------------------------------------
 Fri Oct 30 18:40:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.93

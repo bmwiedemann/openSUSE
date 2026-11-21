@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:06:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 0.2.3:
+  * Remove _bad_values which is not validated and make traitlets
+    fail
+  * Passing dtype to Pandas.Series
+- Drop obsolete patches:
+  * python-traittypes-remove-nose.patch (upstreamed)
+  * python-fix-nptypes.patch (upstreamed)
+- Add python-traittypes-fix-tests.patch:
+  * Fix test suite failures with modern xarray and pandas
+
+-------------------------------------------------------------------
 Sun Mar  3 11:34:08 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Dejavu: Skip testing xarray on  Python 3.9

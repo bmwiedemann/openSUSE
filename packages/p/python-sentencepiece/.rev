@@ -7,4 +7,12 @@
     <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
     <requestid>1365271</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>349f47a553918eaa95e81ed21926ce58</srcmd5>
+    <version>0.2.3</version>
+    <time>1794090811</time>
+    <user>dimstar_suse</user>
+    <comment>Forward python-sentencepiece 0.2.3 to Factory (Lite runtime, training improvements, Python fixes)</comment>
+    <requestid>1396010</requestid>
+  </revision>
 </revisionlist>

@@ -974,4 +974,20 @@ Go's unicode.Version.</comment>
     <comment>1</comment>
     <requestid>1394076</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>f2ff28639f08d6236b277aa161909fcd</srcmd5>
+    <version>2.104.0</version>
+    <time>1794591228</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397174</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>27ed12b945cb4a30d001545f19f24178</srcmd5>
+    <version>2.105.0</version>
+    <time>1795103802</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398632</requestid>
+  </revision>
 </revisionlist>

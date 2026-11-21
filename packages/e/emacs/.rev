@@ -2459,4 +2459,12 @@ Now one could consider building emacs with gsettings support (both debian and fe
   * Fix incomplete fix for CVE-2026-79992 (forwarded request 1384523 from WernerFink)</comment>
     <requestid>1384524</requestid>
   </revision>
+  <revision rev="228" vrev="7">
+    <srcmd5>580baf57deba288c51a78b32af512dab</srcmd5>
+    <version>31.1</version>
+    <time>1793724728</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1394390</requestid>
+  </revision>
 </revisionlist>

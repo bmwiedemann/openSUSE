@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:40:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Add support for Django 6.1
+  * Remove support for Python 3.10
+
+-------------------------------------------------------------------
 Fri Apr 17 17:22:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.0:

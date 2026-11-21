@@ -4,6 +4,8 @@ Conflicts=getty@tty7.service plymouth-quit.service
 After=ypbind.service gpm.service winbind.service acpid.service
 Wants=systemd-user-sessions.service systemd-logind.service
 After=systemd-user-sessions.service systemd-logind.service
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
 OnFailure=plymouth-quit.service
 
 [Service]

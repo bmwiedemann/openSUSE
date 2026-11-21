@@ -15,4 +15,12 @@
     <comment>build with sisu-plexus</comment>
     <requestid>1174347</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4fb5784daceadf1af9d724bcb2482cd5</srcmd5>
+    <version>0.0.8</version>
+    <time>1794591440</time>
+    <user>anag_factory</user>
+    <comment>Use the plexus-metadata-generator ant task</comment>
+    <requestid>1397348</requestid>
+  </revision>
 </revisionlist>

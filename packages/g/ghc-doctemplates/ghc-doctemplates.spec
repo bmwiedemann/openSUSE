@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-doctemplates
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.11.0.1
+Version:        0.11.1
 Release:        0
 Summary:        Pandoc-style document templates
 License:        BSD-3-Clause
@@ -120,11 +120,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
-%dir %{_datadir}/%{pkg_name}-%{version}
-%{_datadir}/%{pkg_name}-%{version}/README.md
-%{_datadir}/%{pkg_name}-%{version}/changelog.md
 
 %files devel -f %{name}-devel.files
+%doc README.md changelog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

@@ -27,9 +27,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/tatsuhiro-t/wslay
 Source0:        https://github.com/tatsuhiro-t/wslay/archive/release-%{version}.tar.gz#/%{name}-release-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM -- NOTE: It can only be used on Leap >= 15.3 and Tumbleweed
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 Patch0:         0001-Fix-sphinx-3.3-errors.patch
-%endif
+# PATCH-FIX-OPENSUSE - fix for nettle >= 4
+Patch1:         wslay-libnettle4.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cunit-devel
@@ -92,7 +92,11 @@ in HTTP.
 This package holds the development files.
 
 %prep
-%autosetup -p1 -n %{name}-release-%{version}
+%setup -q -n %{name}-release-%{version}
+%patch -P 0 -p1
+%if %{pkg_vcmp libnettle-devel >= 4}
+%patch -P 1 -p1
+%endif
 
 %build
 export CFLAGS="%{optflags} -fpermissive"

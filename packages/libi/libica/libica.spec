@@ -39,6 +39,8 @@ Patch01:        libica-FIPS-SUSE-certification.patch
 ###
 Patch10:        libica-fips_powerup_tests-extend-RSA-KAT-coverage-to-3072-and-4096.patch
 ###
+Patch11:        libica-fips-version-non-fips-mode.patch
+###
 
 BuildRequires:  autoconf
 BuildRequires:  automake

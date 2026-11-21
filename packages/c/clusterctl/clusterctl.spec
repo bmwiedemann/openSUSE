@@ -20,7 +20,7 @@
 %define version_git_minor %(echo %{version} | awk 'BEGIN { FS=\".\"}; {print $2}')
 
 Name:           clusterctl
-Version:        1.14.3
+Version:        1.14.4
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0
@@ -29,8 +29,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.10
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.26
 
 %description
 The clusterctl CLI tool handles the lifecycle of a Cluster API management

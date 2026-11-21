@@ -264,4 +264,12 @@
   * 0001-service-do-not-start-too-early.patch (forwarded request 1385298 from Vogtinator)</comment>
     <requestid>1386488</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b55e5ce6726645babacb639b49f50a50</srcmd5>
+    <version>6.32.0</version>
+    <time>1794816387</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.32 (forwarded request 1396584 from krop)</comment>
+    <requestid>1397395</requestid>
+  </revision>
 </revisionlist>

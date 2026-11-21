@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-XSpp
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,77 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-ExtUtils-XSpp
-Version:        0.18
-Release:        0
 %define cpan_name ExtUtils-XSpp
+Name:           perl-ExtUtils-XSpp
+Version:        0.190.0
+Release:        0
+# 0.19 -> normalize -> 0.190.0
+%define cpan_version 0.19
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS for C++
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/ExtUtils-XSpp/
-Source:         http://www.cpan.org/authors/id/S/SM/SMUELLER/%{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/M/MB/MBARBON/%{cpan_name}-%{cpan_version}.tar.gz
+Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::ParseXS) >= 3.07
 BuildRequires:  perl(ExtUtils::Typemaps) >= 1
-BuildRequires:  perl(Module::Build) >= 0.40
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(Test::Base)
 BuildRequires:  perl(Test::Differences)
 Requires:       perl(ExtUtils::ParseXS) >= 3.07
 Requires:       perl(ExtUtils::Typemaps) >= 1
+Provides:       perl(ExtUtils::XSpp) = %{version}
+Provides:       perl(ExtUtils::XSpp::Cmd)
+Provides:       perl(ExtUtils::XSpp::Driver)
+Provides:       perl(ExtUtils::XSpp::Exception)
+Provides:       perl(ExtUtils::XSpp::Exception::code)
+Provides:       perl(ExtUtils::XSpp::Exception::object)
+Provides:       perl(ExtUtils::XSpp::Exception::perlcode)
+Provides:       perl(ExtUtils::XSpp::Exception::simple)
+Provides:       perl(ExtUtils::XSpp::Exception::stdmessage)
+Provides:       perl(ExtUtils::XSpp::Exception::unknown)
+Provides:       perl(ExtUtils::XSpp::Grammar)
+Provides:       perl(ExtUtils::XSpp::Grammar::YappDriver) = 1.210.0
+Provides:       perl(ExtUtils::XSpp::Lexer)
+Provides:       perl(ExtUtils::XSpp::Node)
+Provides:       perl(ExtUtils::XSpp::Node::Access)
+Provides:       perl(ExtUtils::XSpp::Node::Argument)
+Provides:       perl(ExtUtils::XSpp::Node::Class)
+Provides:       perl(ExtUtils::XSpp::Node::Comment)
+Provides:       perl(ExtUtils::XSpp::Node::Constructor)
+Provides:       perl(ExtUtils::XSpp::Node::Destructor)
+Provides:       perl(ExtUtils::XSpp::Node::Enum)
+Provides:       perl(ExtUtils::XSpp::Node::EnumValue)
+Provides:       perl(ExtUtils::XSpp::Node::File)
+Provides:       perl(ExtUtils::XSpp::Node::Function)
+Provides:       perl(ExtUtils::XSpp::Node::Member)
+Provides:       perl(ExtUtils::XSpp::Node::Method)
+Provides:       perl(ExtUtils::XSpp::Node::Module)
+Provides:       perl(ExtUtils::XSpp::Node::Package)
+Provides:       perl(ExtUtils::XSpp::Node::PercAny)
+Provides:       perl(ExtUtils::XSpp::Node::Preprocessor)
+Provides:       perl(ExtUtils::XSpp::Node::Raw)
+Provides:       perl(ExtUtils::XSpp::Node::Type)
+Provides:       perl(ExtUtils::XSpp::Parser)
+Provides:       perl(ExtUtils::XSpp::Plugin::feature::default_xs_typemap)
+Provides:       perl(ExtUtils::XSpp::Typemap)
+Provides:       perl(ExtUtils::XSpp::Typemap::parsed)
+Provides:       perl(ExtUtils::XSpp::Typemap::reference)
+Provides:       perl(ExtUtils::XSpp::Typemap::simple)
+Provides:       perl(ExtUtils::XSpp::Typemap::wrapper)
+%undefine       __perllib_provides
 %{perl_requires}
-# MANUAL
+# MANUAL BEGIN
+Requires:       gcc-c++
 Provides:       xspp = %{version}
 Obsoletes:      xspp < %{version}
-Provides:       perl(ExtUtils::XSpp) = %{version}00
-Requires:       gcc-c++
+# MANUAL END
 
 %description
 Anything that does not look like a XS++ directive or a class declaration is
@@ -53,22 +95,22 @@ delimiter like this:
   %}
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Build.PL installdirs=vendor optimize="%{optflags}"
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor optimize="%{optflags}"
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples README scripts XSP.yp
+%doc Changes examples README XSP.yp
 
 %changelog

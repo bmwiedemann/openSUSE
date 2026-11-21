@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:31:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typo in description
+
+-------------------------------------------------------------------
+Thu Nov 12 16:37:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.12:
+  Security Fixes
+  * An LZX uncompressed block header with invalid R0/R1/R2 values
+    followed by a verbatim/aligned block referencing them can make
+    libmspack write up to 2GB past the end of its history window.
+  * CAN-2026-2038211: CHM PMGL/PMGI lookups can have cycles, leading
+    to infinite loops.
+  * CAB sets where the first mergeable file has an invalid filename
+    (blank or over 256 chars), and salvage mode is enabled, causes
+    cabd_can_merge_folders to read already-freed memory.
+  * CHM files with undersized ControlData/ResetTable files or invalid
+    PMGI entry counts can make chminfo overread or underread its
+    buffers.
+  * CAB MS-ZIP and Quantum match offsets greater than the number of
+    bytes already decoded makes libmspack read uninitialised memory
+    from its history window and write it as output.
+  * CAB files can "hide" entries (which other tools might see) using
+    an atypical FileOffset value. libmspack warns on finding this
+    discrepancy and salvage mode finds the "hidden" entries.
+  + See https://github.com/kyz/libmspack/blob/master/libmspack/ChangeLog
+    for a full changelog.
+
+-------------------------------------------------------------------
 Mon Jan 22 17:09:16 UTC 2024 - Danilo Spinella <danilo.spinella@suse.com>
 
 - The following bugs and CVEs are not affecting TW:
@@ -88,14 +118,14 @@ Mon Jan 15 14:27:41 UTC 2018 - mardnh@gmx.de
 
 - Update to version 0.6
    * read_spaninfo(): a CHM file can have no ResetTable and have a
-   negative length in SpanInfo, which then feeds a negative output 
+   negative length in SpanInfo, which then feeds a negative output
    length to lzxd_init(), which then sets frame_size to a value of
-   your choosing, the lower 32 bits of output length, larger than 
+   your choosing, the lower 32 bits of output length, larger than
    LZX_FRAME_SIZE. If the first LZX block is uncompressed, this
    writes data beyond the end of the window.
    This issue was raised by ClamAV as CVE-2017-6419.
 
-   * lzxd_init(), lzxd_set_output_length(), mszipd_init(): due to the 
+   * lzxd_init(), lzxd_set_output_length(), mszipd_init(): due to the
    issue mentioned above, these functions now reject negative lengths
 
    * cabd_read_string(): add missing error check on result of read().
@@ -135,7 +165,7 @@ Fri Apr  4 08:58:51 UTC 2014 - jengelh@inai.de
 Mon Jun 24 10:13:52 UTC 2013 - werner@suse.de
 
 - Avoid Source URL for http://www.cabextract.org.uk/ as this does
-  not work 
+  not work
 
 -------------------------------------------------------------------
 Sat Jun 22 17:08:46 UTC 2013 - dimstar@opensuse.org

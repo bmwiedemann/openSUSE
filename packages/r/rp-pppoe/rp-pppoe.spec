@@ -1,7 +1,7 @@
 #
 # spec file for package rp-pppoe
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Release:        0
 Summary:        A PPP Over Ethernet Redirector for PPPD
 License:        GPL-2.0-or-later
 URL:            https://dianne.skoll.ca/projects/%{name}
-Source0:        https://dianne.skoll.ca/projects/%{name}/download/%{name}-%{version}.tar.gz
+Source0:        https://web.archive.org/web/20230506040442/https://dianne.skoll.ca/projects/%{name}/download/%{name}-%{version}.tar.gz
 Source1:        %{_name}-connect
 Source2:        %{_name}-setup
 Source3:        %{_name}-start
@@ -68,8 +68,7 @@ install -pm0644 %{SOURCE7} %{buildroot}%{_unitdir}/%{_name}-server.service
 ln -s %{_name}-stop %{buildroot}%{_sbindir}/adsl-stop
 ln -s %{_name}-start %{buildroot}%{_sbindir}/adsl-start
 install -Dpm0644 %{buildroot}%{_sysconfdir}/ppp/plugins/README %{buildroot}%{_defaultdocdir}/%{name}/README.plugins
-rm -r %{buildroot}%{_sysconfdir}/ppp/plugins \
-      %{buildroot}%{_defaultdocdir}/%{name}/LICENSE
+rm -r %{buildroot}%{_sysconfdir}/ppp/plugins %{buildroot}%{_defaultdocdir}/%{name}/LICENSE
 
 %pre
 %service_add_pre %{_name}.service
@@ -92,11 +91,9 @@ rm -r %{buildroot}%{_sysconfdir}/ppp/plugins \
 %dir %{_defaultdocdir}/%{name}
 %doc %{_defaultdocdir}/%{name}/*
 %attr(0640,root,root) %config(noreplace) %{_sysconfdir}/ppp/%{_name}-server-options
-%{_sbindir}/%{_name}
-%{_sbindir}/%{_name}-*
+%{_sbindir}/%{_name}{,-*}
 %{_mandir}/man?/*%{?ext_man}
 %{_sbindir}/adsl-st*
-%{_unitdir}/%{_name}.service
-%{_unitdir}/%{_name}-server.service
+%{_unitdir}/%{_name}{,-server}.service
 
 %changelog

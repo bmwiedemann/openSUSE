@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 30 17:20:05 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Add SLES_NVIDIA product to the %{requires,recommends} macros
+  (bsc#1287638)
+- Use the correct product provide for SLES_SAP, which is
+  provides(SLES_SAP)
+
+-------------------------------------------------------------------
 Sun Sep 27 08:38:01 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Recognize Leap standard and immutable mode in

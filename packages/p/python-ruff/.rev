@@ -3778,4 +3778,20 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
     <comment>Update python-ruff to 0.17.3.</comment>
     <requestid>1393078</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>41d86ffbb2f585d88d7b0d7f18cf942d</srcmd5>
+    <version>0.17.4</version>
+    <time>1794162076</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-ruff to 0.17.4: tarfile check, BOM panic fix, NO_COLOR precedence.</comment>
+    <requestid>1395821</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>c0467826e13c5c6ce470be997c655cfb</srcmd5>
+    <version>0.17.5</version>
+    <time>1794816363</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.17.5</comment>
+    <requestid>1397543</requestid>
+  </revision>
 </revisionlist>

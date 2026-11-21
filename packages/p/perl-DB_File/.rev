@@ -38,4 +38,26 @@
     06ea397e5d654ebeb9d22a6993c8aaebf710ce9b</comment>
     <requestid>1332521</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c9d138cb428e419be3fa970815da155a</srcmd5>
+    <version>1.861</version>
+    <time>1793817812</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.861
+   see /usr/share/doc/packages/perl-DB_File/Changes
+  1.861 13 October 2026
+  * Update to version 1.861
+    Tue Oct 13 10:04:57 2026 +0100
+    68d942587c4f2d40cfc94aa0d3626ba101fb3e40
+  * update email address
+    Fri Oct 9 17:40:19 2026 +0100
+    8aad0cf864bde5f9c3b67a3cb6917dc722749389
+  * Bump actions/checkout from 6 to 7
+    Fri Jul 3 12:49:06 2026 +0100
+    34f18f049f0f84f8cc13b36a06514fe37fd220ef
+  * Bump actions/cache from 5 to 6
+    Fri Jul 3 12:48:35 2026 +0100
+    c740b91701fa40845463ad2476e2b346303b570d</comment>
+    <requestid>1394670</requestid>
+  </revision>
 </revisionlist>

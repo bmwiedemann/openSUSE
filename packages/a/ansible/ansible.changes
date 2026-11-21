@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:49:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 15.0.0:
+  Ansible 15.0.0 includes ansible-core 2.22.0 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 15
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/15/CHANGELOG-v15.rst
+  * Removed Collections
+    - cyberark.pas (previously included version: 1.0.39)
+    - netapp.cloudmanager (previously included version: 21.24.0)
+    You can still install a removed collection manually with
+    ansible-galaxy collection install <name-of-collection>.
+  * Added Collections
+    - ansible.mariadb (version 6.0.2)
+    - everpure.flasharray (version 1.46.0)
+    - everpure.flashblade (version 1.29.0)
+
+-------------------------------------------------------------------
+Fri Nov  6 08:45:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 14.6.0:
+  Ansible 14.6.0 includes ansible-core 2.21.6 as well as a curated
+  set of Ansible collections that provide a vast number of modules
+  and plugins.
+  Collections which have opted-in to being a part of the Ansible 14
+  unified changelog will have an entry on this page:
+  https://github.com/ansible-community/ansible-build-data/blob/main/14/CHANGELOG-v14.rst
+  * Added Collections
+    - everpure.flasharray (version 1.46.0)
+    - everpure.flashblade (version 1.29.0)
+
+-------------------------------------------------------------------
+Tue Oct 27 10:41:00 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Add google-cloud-documentation-short_description-first.patch
+  from upstream (gh#ansible-collections/google.cloud#785): fix
+  ansible-doc --list crashing on the
+  google.cloud.gcp_containeranalysis_note module (bsc#1285531)
+- Use %autosetup in %prep
+
+-------------------------------------------------------------------
 Thu Oct  8 05:03:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 14.5.0:

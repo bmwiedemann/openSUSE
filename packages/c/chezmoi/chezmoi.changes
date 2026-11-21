@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:58:12 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.74.1:
+  - Fixes
+    * fix: Make chezmoi init --apply really run chezmoi apply
+    * fix: Ensure config template data is reloaded in chezmoi init --apply
+
+-------------------------------------------------------------------
+Fri Nov  6 16:49:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.74.0:
+  - Features
+    * feat: Remove deprecated remove command
+    * feat: Add skip conflicts option to apply command choices
+    * feat: Mark builtin KeePassXC YubiKey support as no longer experimental
+    * feat: Mark builtin gopass support as no longer experimental
+    * feat: Mark 1Password Connect support as no longer experimental
+    * feat: Mark ssh command as no longer experimental
+    * feat: Mark docker command as no longer experimental
+    * feat: Check permissions of age identity files when using builtin age
+  - Fixes
+    * fix: Correct root group entries for keepassxc builtin mode
+
+-------------------------------------------------------------------
 Tue Oct 20 17:49:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.73.3:

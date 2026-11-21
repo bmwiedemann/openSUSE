@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov  4 07:44:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261104 (git commit 0cb5a7fb037e):
+  * Linux-firmware: Add Dell ISH firmware 582.7822.0 for Intel Nova Lake-H systems.
+  * intel-ipu6: Add firmware binary for IPU8
+  * intel-ipu6: Support IPU 7 and later as well
+
+-------------------------------------------------------------------
+Fri Oct  9 16:09:04 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * linux-firmware: Add ISH firmware files for Intel Nova Lake-H/S platforms
+
+-------------------------------------------------------------------
 Thu Sep 17 10:30:58 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260916 (git commit e289868675d1):

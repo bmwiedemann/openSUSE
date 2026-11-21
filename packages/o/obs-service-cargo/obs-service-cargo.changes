@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:25:32 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 7.3.0:
+  * Update dependencies
+
+-------------------------------------------------------------------
 Wed Sep 23 02:27:56 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1282256 - CVE-2026-93599,CVE-2026-93602,CVE-2026-93601,CVE-2026-93600 - rustls-webpki multiple issues

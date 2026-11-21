@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 13 19:46:07 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Run tests on a copy to not modify build results (boo#1227364)
+
+-------------------------------------------------------------------
 Tue Oct 13 01:54:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.2.2:

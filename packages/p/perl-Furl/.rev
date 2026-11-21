@@ -163,4 +163,22 @@
         there is no Content-Length headers(#137)</comment>
     <requestid>1312573</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9b8b9c6ef981383faa5c775108077632</srcmd5>
+    <version>3.160.0</version>
+    <time>1794324604</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.160.0 (3.16)
+   see /usr/share/doc/packages/perl-Furl/Changes
+  3.16 2026-11-06T10:22:58Z
+      - [SECURITY] Fix memory exhaustion via unbounded decompression of gzip/deflate
+        responses, a.k.a. &quot;zip bomb&quot; (CVE-2026-65059) (#139, robrwo++)
+        bsc#1289200
+      - Add max_decompressed_size option to limit the size of a decoded response body.
+        By default the limit is 100 MiB for responses held in memory, and there is no
+        limit for responses streamed with write_file/write_code. Going over the
+        limit makes the request return an internal 500 response (with
+        X-Internal-Response) (#140)</comment>
+    <requestid>1396532</requestid>
+  </revision>
 </revisionlist>

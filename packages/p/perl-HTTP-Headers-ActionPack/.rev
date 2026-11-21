@@ -7,4 +7,19 @@
     <comment>Dochazka dependency</comment>
     <requestid>356328</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4399e0c4f544f7d83999a35858559b02</srcmd5>
+    <version>0.100.0</version>
+    <time>1794236671</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-HTTP-Headers-ActionPack/Changes
+  0.10     2026-10-23
+    - If a header param's value somehow ended up as undef, this would produce
+      an unitialized value warning. (Dave Rolsky)
+   [Security]
+    - Accept-Language headers are checked as substrings, not regular expressions. (CVE-2026-113877)
+      bsc#1287831</comment>
+    <requestid>1396202</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:44:50 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.16.0
+  * Update version mapping for GraalPy 3.13
+    gh#PyO3/maturin#3297
+  * properly normalize / validate abiflags and include in
+    environment signature
+    gh#PyO3/maturin#3299
+  * Fix MinGW stable ABI library names in generated PyO3 config
+    gh#PyO3/maturin#3298
+  * fix: lossy-decode external command output in interpreter
+    discovery
+    gh#PyO3/maturin#3302
+  * build(deps): update rustls for RUSTSEC-2026-0285
+    gh#PyO3/maturin#3308
+  * Include SOABI_PLATFORM in Python 3.15 stable ABI extension
+    filenames
+    gh#PyO3/maturin#3305
+  * Sort compressed tag sets
+    gh#PyO3/maturin#3315
+  * Update manylinux/musllinux policies to the latest main
+    gh#PyO3/maturin#3322
+  * docs: recommend declaring the Rust MSRV
+    gh#PyO3/maturin#3317
+  * Emit a WASI platform tag for non-bin extension wheels
+    gh#PyO3/maturin#3321
+  * Don't include the cargo target directory or cache directories
+    in wheels built from sdists
+    gh#PyO3/maturin#3320
+  * fix: avoid global uv fallback in pixi environments
+    gh#PyO3/maturin#3306
+  * Fix the cargo-deny advisories that fail Lint
+    gh#PyO3/maturin#3328
+  * Update pyo3-introspection to 0.30
+    gh#PyO3/maturin#3329
+  * Ignore unreachable zip extract advisories in cargo deny
+    gh#PyO3/maturin#3334
+  * Normalize Provides-Extra names from
+    project.optional-dependencies
+    gh#PyO3/maturin#3333
+  * Join a multi-line description into a single-line Summary
+    gh#PyO3/maturin#3332
+  * Update https cert bundle for the eMudhra CA compromise
+    gh#PyO3/maturin#3337
+  * fix: use the toolchain pyodide-build expects
+    gh#PyO3/maturin#3338
+  * feat: upload emscripten wheels to pypi
+    gh#PyO3/maturin#3340
+  * use system ca certificates instead of ureq's WebPki when
+    building with native-tls
+    gh#PyO3/maturin#3341
+  * Put all License-File entries at the sdist root
+    gh#PyO3/maturin#3331
+  * Pass macosx_deployment_target to zigbuild
+    gh#PyO3/maturin#3313
+  * Use the pp80 ABI tag for PyPy 3.12 in the bundled sysconfig
+    gh#PyO3/maturin#3343
+  * feat: add configurable PGO dependency group
+    gh#PyO3/maturin#3310
+    gh#PyO3/maturin#3278
+  * fix: update rustix to 1.1.5
+    gh#PyO3/maturin#3344
+
+-------------------------------------------------------------------
 Sun Sep  6 00:49:55 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to 1.15.0

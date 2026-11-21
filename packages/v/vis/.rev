@@ -217,4 +217,41 @@ be understated; thanks goes out to everyone for their efforts!
 (🤖: Submission of vis via https://src.opensuse.org/pool/vis/pulls/1 by mcepl)</comment>
     <requestid>1186601</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a85ee08bb7096b25cc9f43294dfc35a3</srcmd5>
+    <version>0.9+git.1793606990.d89b6c27</version>
+    <time>1793724884</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9+git.1793606990.d89b6c27:
+  * lua: filetype: update filetype fallback to scintillua 6.8
+  * lua/lexers: update to scintillua 6.8
+  * lua: add more context and an usage example to win:status documentation
+  * Handle use of '~' in --prefix argument modified:   configure
+  * lua: filetype: detect filetype without lpeg
+  * view: Line: clean up member names
+  * view: remove Line::cells_index
+  * view: remove Line::prev &amp; Line::next
+  * view: delete View::topline &amp; View::bottomline
+  * view: merge text_buffer into same allocation as other view data
+  * view: split VisCell storage up like in UI
+  * view: split up cell and line storage
+  * ui-terminal: avoid unlikely overflow in cell count calculation
+  * core: remove extern keyword usage on global arrays
+  * vis-options: fix unlikely name_copy leak
+  * gitignore: ignore tags
+  * core: use tagged union for Movement function pointers
+  * lua: correct vis.lexers and vis.lpeg documentation
+  * ui-curses: disable useless 8-bit mode
+  * macOS: define _DARWIN_C_SOURCE before _XOPEN_SOURCE
+  * util/curses: silence warning about unused function
+  * README: remove closed name and logo issues from contribution suggestions
+  * util: add os_write_file, cleanup write_all
+  * ui: vt100: handle EINTR and partial writes
+  * revert &quot;CI: build and test on FreeBSD and OpenBSD&quot;
+  * CI: build and test on FreeBSD and OpenBSD
+  * map: use str8 for vis_map_put/delete
+  * map: make vis_map_get/vis_map_closest take str8 as key
+  * map: make vis_map_prefix take a str8</comment>
+    <requestid>1394505</requestid>
+  </revision>
 </revisionlist>

@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Compress-Lzma
 Name:           perl-IO-Compress-Lzma
-Version:        2.217.0
+Version:        2.225.0
 Release:        0
-# 2.217 -> normalize -> 2.217.0
-%define cpan_version 2.217
+# 2.225 -> normalize -> 2.225.0
+%define cpan_version 2.225
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Write lzma files/buffers
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,12 +31,12 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Lzma) >= 2.217
-BuildRequires:  perl(IO::Compress::Base) >= 2.217
-BuildRequires:  perl(IO::Uncompress::Base) >= 2.217
-Requires:       perl(Compress::Raw::Lzma) >= 2.217
-Requires:       perl(IO::Compress::Base) >= 2.217
-Requires:       perl(IO::Uncompress::Base) >= 2.217
+BuildRequires:  perl(Compress::Raw::Lzma) >= 2.225
+BuildRequires:  perl(IO::Compress::Base) >= 2.225
+BuildRequires:  perl(IO::Uncompress::Base) >= 2.225
+Requires:       perl(Compress::Raw::Lzma) >= 2.225
+Requires:       perl(IO::Compress::Base) >= 2.225
+Requires:       perl(IO::Uncompress::Base) >= 2.225
 Provides:       perl(IO::Compress::Adapter::Lzip) = %{version}
 Provides:       perl(IO::Compress::Adapter::Lzma) = %{version}
 Provides:       perl(IO::Compress::Adapter::Xz) = %{version}

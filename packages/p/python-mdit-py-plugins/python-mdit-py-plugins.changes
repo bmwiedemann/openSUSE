@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 20 03:49:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * Require markdown-it-py >= 3.0 (and >= 4.1.0 for section_ref, gfm,
+    and gfm_autolink)
+  * Escape plugin renderer output in texmath, dollarmath, myst_block,
+    colon_fence, and tasklists
+  * Harden attrs/attrs_block defaults: drop event-handler attributes,
+    validate URL attributes, and enforce allowed on text spans
+  * Fix ReDoS backtracking in texmath math blocks and admon headers
+  * Add the section_ref plugin for section-sign references
+  * Fix parser hangs in gfm_autolink and texmath blockquotes
+  * Fix dollarmath same-line $$...$$ swallowing lines and blockquote >
+    prefixes
+  * Fix front_matter parsing when closed by the YAML ... marker
+  * Reserve inline footnote ids before parsing inner content
+  * Keep explicit heading ids in anchors and stop stripping slug titles
+  * Fix attrs unterminated groups, class accumulation, and closing-token
+    merges
+  * Fix myst_role parsing with trailing or escaped backslashes
+
+-------------------------------------------------------------------
 Thu May 28 04:22:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.1:

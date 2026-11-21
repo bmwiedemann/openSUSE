@@ -203,4 +203,17 @@ Well, that changelog is not so much better than none. Seems upstream is very tig
     <comment></comment>
     <requestid>1355284</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c44e161a8ea30634f1f7f5fc4feff171</srcmd5>
+    <version>3.2.7</version>
+    <time>1794932307</time>
+    <user>anag_factory</user>
+    <comment>- Add gdcm-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_*, PyInt_*) with Python 3 C API in Wrapping/Python/gdcmswig.i.
+- version 3.2.7
+  * no release notes
+  * gdcm-2.4.0-usecopyright.patch removed (upstream)
+</comment>
+    <requestid>1398020</requestid>
+  </revision>
 </revisionlist>

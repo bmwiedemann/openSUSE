@@ -16,11 +16,12 @@
 #
 
 
+%define __builder ninja
 %define s_name  munt-lib%{name}_%{s_ver}
-%define s_ver   2_8_3
+%define s_ver   2_8_6
 %define sover   2
 Name:           mt32emu
-Version:        2.8.3
+Version:        2.8.6
 Release:        0
 Summary:        An emulator of the Roland MT-32, CM-32L and LAPC-I synthesiser modules
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -30,10 +31,11 @@ Patch0:         %{name}-2.6.3-name.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(jack)
@@ -71,17 +73,21 @@ Development files for lib%{name}.
 %autosetup -p1 -n %{s_name}
 
 %build
+export CMAKE_GENERATOR="Ninja"
 %cmake -LA \
        -DCMAKE_SHARED_LINKER_FLAGS="-lm" \
        -DLIB_INSTALL_DIR:PATH="%{_lib}" \
        -Dlibmt32emu_PKGCONFIG_INSTALL_PREFIX="%{_libdir}"
-%make_build
+%cmake_build
 
 %install
 %cmake_install
-rm -r %{buildroot}%{_datadir}/doc %{buildroot}%{_libdir}/cmake
+rm -r %{buildroot}%{_datadir}/doc
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
+
+%check
+%ctest
 
 %files qt
 %license %{name}_qt/COPYING.txt
@@ -103,6 +109,8 @@ rm -r %{buildroot}%{_datadir}/doc %{buildroot}%{_libdir}/cmake
 %{_includedir}/%{name}/*.h
 %dir %{_includedir}/%{name}/c_interface
 %{_includedir}/%{name}/c_interface/*.h
+%dir %{_libdir}/cmake/MT32Emu
+%{_libdir}/cmake/MT32Emu/MT32Emu*.cmake
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324519</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b46f35c82bcdb4ad48b51f74888ce442</srcmd5>
+    <version>9.0.0</version>
+    <time>1794591344</time>
+    <user>anag_factory</user>
+    <comment>Update to 9.0.0 (forwarded request 1395990 from amanzini)</comment>
+    <requestid>1397301</requestid>
+  </revision>
 </revisionlist>

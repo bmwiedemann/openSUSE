@@ -285,4 +285,19 @@ since we bumped libgo SONAME as well for 15</comment>
   on aarch64.  [gcc#125953]</comment>
     <requestid>1384961</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>eb67eff41b7d5c14e6c496caa9f2a1cc</srcmd5>
+    <version>15.3.0+git11272</version>
+    <time>1794317947</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc15-pr124370.patch to fix stack corruption in std::bitset
+  stream extraction [bsc#1289549] [gcc#124370] (CVE-2026-115455)
+- Add gcc15-pr127666.patch to fix std::from_chars to not read past
+  end of input [bsc#1289550] [gcc#127666] (CVE-2026-115456)
+- Add gcc15-cve-2026-114690.patch to fix buffer overrun in __gnu_parallel
+  search [bsc#1288775] (CVE-2026-114690)
+- Add gcc15-cve-2026-114691.patch to fix overflow in std::vector&lt;bool&gt;
+  constructors [bsc#1288774] (CVE-2026-114691)</comment>
+    <requestid>1396313</requestid>
+  </revision>
 </revisionlist>

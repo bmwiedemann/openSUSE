@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Thu Oct 29 10:36:15 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.54.1.0
+  * Features
+    ~ sqlite
+      + upgrade to sqlite 3.54.1 (1dee4e5)
+      + support automatic_index and cache_spill pragmas (559581a)
+  * Fixes
+    ~ jdbc
+      + quote savepoint name before interpolating into sql
+        (140c04d)
+    ~ native
+      + keep the live handle when open is called on an open db
+        (920136d)
+      + bound strfilter output to the searched string bytes
+        (87444ae)
+      + release the correct critical array pointer in serialize
+        (49e5c18)
+    ~ unscoped
+      + create extracted library and db copy readable by owner only
+        (a315b4b)
+      + preserve SQL null bindings for null streams (201218f)
+  * Perf
+    ~ jdbc
+      + avoid cubic regex backtracking when finding primary keys
+        (03582c2)
+  * Changes
+    ~ jdbc
+      + share sql quote escaping between metadata and savepoints
+        (6e26d10)
+  * Build
+    ~ deps
+      + bump org.graalvm.sdk:nativeimage (d9ff142)
+      + bump org.graalvm.buildtools:native-maven-plugin (44d8081)
+      + bump org.graalvm.buildtools:native-maven-plugin (0748a6a)
+      + bump org.graalvm.sdk:nativeimage from 25.2.4 to 25.3.4.1
+        (04adaab)
+      + bump org.graalvm.buildtools:native-maven-plugin (13a3976)
+      + bump actions/setup-java from 5 to 6 (9af0d95)
+    ~ deps-dev
+      + bump org.mockito:mockito-core from 5.23.0 to 5.24.0
+        (ec7ddcd)
+      + bump com.tngtech.archunit:archunit-junit5 (d5bfa71)
+      + bump surefire.version from 3.6.0 to 3.6.1 (df7dbf7)
+      + bump org.sonatype.central:central-publishing-maven-plugin
+        (3ee4140)
+      + bump org.codehaus.mojo:animal-sniffer-maven-plugin
+        (c5992df)
+      + bump org.codehaus.mojo:versions-maven-plugin (e54786b)
+      + bump surefire.version from 3.5.6 to 3.6.0 (0062a19)
+      + bump org.apache.maven.plugins:maven-compiler-plugin
+        (29f9aff)
+      + bump org.jreleaser:jreleaser-maven-plugin (3ecd1ee)
+    ~ unscoped
+      + fix maven publishing (77ea1b1)
+      + update setup-java inputs (6474e66)
+      + bump android signatures to 0.16.0 (eb45649)
+      + enable immutable github releases with jreleaser (e5cd48b)
+  * Documentation
+    + fill documentation gaps (3850773), closes #777
+    + document default compiled SQLite extensions (4610eaf), closes
+      #1075
+
+-------------------------------------------------------------------
+Thu Sep  3 10:30:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Silence error "Classes found in the wrong directory" that appears
+  with new maven-bundle-plugin running with older underlying bnd.
+
+-------------------------------------------------------------------
 Wed Aug 26 10:51:31 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v3.53.4.0

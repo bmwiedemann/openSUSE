@@ -1,16 +1,16 @@
 --- a/configure.ac	2026-08-26 09:25:34.712811719 +0200
 +++ b/configure.ac	2026-08-26 09:27:18.429345003 +0200
-@@ -65,6 +65,10 @@
- AC_SUBST(CRYPTO_OSSL_LT_REVISION, 1)
+@@ -64,6 +64,10 @@
+ AC_SUBST(CRYPTO_OSSL_LT_CURRENT, 3)
+ AC_SUBST(CRYPTO_OSSL_LT_REVISION, 2)
  AC_SUBST(CRYPTO_OSSL_LT_AGE, 3)
- 
 +AC_SUBST(CRYPTO_BORINGSSL_LT_CURRENT, 0)
 +AC_SUBST(CRYPTO_BORINGSSL_LT_REVISION, 0)
 +AC_SUBST(CRYPTO_BORINGSSL_LT_AGE, 0)
 +
+ 
  # from nghttp2
  major=`echo $PACKAGE_VERSION |cut -d. -f1 | sed -e "s/[^0-9]//g"`
- minor=`echo $PACKAGE_VERSION |cut -d. -f2 | sed -e "s/[^0-9]//g"`
 --- a/crypto/boringssl/Makefile.am	2026-08-26 09:25:34.707471566 +0200
 +++ b/crypto/boringssl/Makefile.am	2026-08-26 09:28:38.517920390 +0200
 @@ -34,9 +34,14 @@

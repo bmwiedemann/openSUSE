@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 10 14:17:45 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Use boolean Supplements and plain Conflicts for the branding
+  subpackages: replace the obsolete packageand() and otherproviders()
+  zypp syntax with (systemd-default-settings and branding-<flavor>)
+  Supplements and Conflicts on the generic branding name.
+
+- Add a Supplements entry to the branding-upstream subpackage, as
+  required by rpmlint's branding check.
+
+- Clean the spec with spec-cleaner in full mode: Group tags and
+  default %defattr lines removed, tag order and macro forms
+  normalized.
+
+-------------------------------------------------------------------
+Mon Nov  9 18:00:19 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import 0.11
+
+  bc8d696 SLE: add the standard header to the logind drop-in
+  843143f SLE: drop the udevd drop-in, it has never been effective
+
+-------------------------------------------------------------------
 Wed Apr 10 09:30:19 UTC 2024 - Franck Bui <fbui@suse.com>
 
 - Import 0.10

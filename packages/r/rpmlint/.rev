@@ -5884,4 +5884,41 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * polkit-rules-whitelist: adjust fwupd rules path to new prefix (bsc#1279948)</comment>
     <requestid>1386463</requestid>
   </revision>
+  <revision rev="556" vrev="1">
+    <srcmd5>7eeb4ce0dcaa1433c405739d7722571f</srcmd5>
+    <version>2.10.0+git20261110.ea50e74a</version>
+    <time>1794410620</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0+git20261110.ea50e74a:
+  * dbus-services: add tukitd backward compatibility entry (bsc#1286924)
+- Update to version 2.10.0+git20261109.6cd551cd:
+  * whitelistings: reinstate systemd 261 entries for compat (bsc#1282497)
+- Update to version 2.10.0+git20261106.8eae64bd:
+  * dbus-services: adjust backintime Qt service digest (bsc#1288838)
+  * systemd-tmpfiles: whitelist flake-pilot /tmp/flakes (bsc#1285113)
+  * dbus-services: adjust systemd import1 D-Bus config digest (bsc#1282497)
+- Update to version 2.10.0+git20261029.7f24f179:
+  * FileDigestCheck: ignore symbolic links targeting other restricted files
+  * dbus-services: adjust tukitd whitelisting (bsc#1286924)
+- Update to version 2.10.0+git20261026.783e34a5:
+  * security.toml: allow symlinks in Varlink socket units (bsc#1287673)
+- Update to version 2.10.0+git20261023.1f39d4f4:
+  * varlink-whitelist: added systemd v262 changes (bsc#1282497)
+</comment>
+    <requestid>1396493</requestid>
+  </revision>
+  <revision rev="557" vrev="1">
+    <srcmd5>058cc3412a6cc27888d51085a1dfaf48</srcmd5>
+    <version>2.10.0+git20261112.acc4ace9</version>
+    <time>1795103655</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20261112.acc4ace9:
+  * sysctl-whitelist: update health-checker digest (bsc#1289763)
+
+- Update to version 2.10.0+git20261111.aa5e4443:
+  * dbus-services: whitelist owly (bsc#1288451)
+  * test/test_world_writable: fix assertion
+  * dbus-services: add plasma6-login-manager(-kcm) (bsc#1260402, bsc#1260039)</comment>
+    <requestid>1397059</requestid>
+  </revision>
 </revisionlist>

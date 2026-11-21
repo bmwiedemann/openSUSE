@@ -33,4 +33,33 @@
             https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/6648e8194c69697b2e1a15fe76a06a480b183a51...f6fd52a0a95472e079cbfc6ef7f089702b80e045</comment>
     <requestid>1378628</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>75890934467dd7e02d699e433429e12f</srcmd5>
+    <version>1.40.0</version>
+    <time>1793725183</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.40.0 (1.040)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+  1.040     2026-10-11 01:06:25Z
+          - adjust tests to handle a change in perl 5.45.4 (see perl issue
+            #24845) (PR #26, Richard Leach)
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/f6fd52a0a95472e079cbfc6ef7f089702b80e045...7de0e6a06031ede80028583dd45d0cd41105ae5b</comment>
+    <requestid>1394674</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7f2780321e47ea002c3ad7d89c6bcd0a</srcmd5>
+    <version>1.41.0</version>
+    <time>1795023140</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.41.0 (1.041)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+  1.041     2026-11-10 03:00:31Z
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/7de0e6a06031ede80028583dd45d0cd41105ae5b...245a45abc90190c0bff04d97e6d2b541b4bb9f12
+            This is the last data update before switching to the &quot;unify&quot; branch
+            in JSON-Schema-Test-Suite, which reorganizes the tests in a new
+            format.</comment>
+    <requestid>1398402</requestid>
+  </revision>
 </revisionlist>

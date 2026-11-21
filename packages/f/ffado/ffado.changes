@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:25:31 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a Supplements: pci:v*d*sv*sd*bc0Csc00i10* so ffado is
+  installed in systems that use firewire-ohci.
+
+-------------------------------------------------------------------
 Sun Oct 18 09:32:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - libffado-date_time.patch: avoid mismatched format string types

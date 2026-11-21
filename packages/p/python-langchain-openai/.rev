@@ -203,4 +203,20 @@ The new azure-identity extra is not required: the import is guarded and falls ba
     <comment>Update python-langchain-openai to 1.7.3.</comment>
     <requestid>1392940</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>53856cb2cf09bde0852b3d5afff3db83</srcmd5>
+    <version>1.7.4</version>
+    <time>1794090792</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.4</comment>
+    <requestid>1396002</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f916ed1cb4bd23cdf944545882134ab4</srcmd5>
+    <version>1.8.0</version>
+    <time>1794820250</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-openai to 1.8.0: OpenAIClassifier for the GA Decisions API, model profile refresh.</comment>
+    <requestid>1397538</requestid>
+  </revision>
 </revisionlist>

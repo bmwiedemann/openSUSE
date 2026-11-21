@@ -17,7 +17,7 @@
 
 
 Name:           gthumb
-Version:        4.0.1
+Version:        4.0.3
 Release:        0
 Summary:        An Image Viewer and Browser for GNOME
 License:        GPL-2.0-or-later
@@ -46,7 +46,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.26.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
 BuildRequires:  pkgconfig(libheif) >= 1.11
 BuildRequires:  pkgconfig(libjxl) >= 0.3.0
 BuildRequires:  pkgconfig(libjxl_threads) >= 0.3.0

@@ -421,4 +421,14 @@
 </comment>
     <requestid>1376916</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6b8b3f73b7559068335c26a9fec1eeea</srcmd5>
+    <version>2.2.5</version>
+    <time>1794591152</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.5
+  * https://github.com/indilib/indi/releases/tag/v2.2.5
+</comment>
+    <requestid>1397108</requestid>
+  </revision>
 </revisionlist>

@@ -405,4 +405,12 @@ etc.
 As discussed before we are going to move SELinux modules from /var/lib/selinux to /etc/selinux (bsc#1221342). This small change allows you to build your packages dynamically (not depending on selinux-package version) and us to change module directory macro in upcoming versions of selinux-policy package without interfering with other packages using custom SELinux modules. (forwarded request 1318594 from djz88)</comment>
     <requestid>1318602</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>d67153fc361852dad99751b582af6fe5</srcmd5>
+    <version>3.1.0</version>
+    <time>1793899189</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394889</requestid>
+  </revision>
 </revisionlist>

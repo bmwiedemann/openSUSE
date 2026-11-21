@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:16:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.225.0 (2.225)
+   see /usr/share/doc/packages/perl-IO-Compress-Lzma/Changes
+
+    2.225 9 October 2026
+
+      * update to version 2,225
+        Fri Oct 9 15:53:51 2026 +0100
+        a7f3361daf20019d0ef5fc69be5609fce1006865
+
+      * Update email address
+        Fri Oct 9 14:08:20 2026 +0100
+        a525322af6bd38b7f7d4118ff4f62ea331b24bf8
+
+      * Install lzma library for Compress
+        Fri Aug 28 15:48:33 2026 +0100
+        d6fcdcb869414c35eecdf22b7759e1c6e7ddb121
+
+    2.224 28 August 2026
+
+      * put "use private::MakeUtil;" back into Makefile.PL
+        Fri Aug 28 15:01:27 2026 +0100
+        fbb4562bbd40894064cee0f6c77b08f0c48d8785
+
+      * Update to version 2.224
+        Fri Aug 28 11:42:48 2026 +0100
+        8d555331e352e4cc0ea10ef7410a8d4de006015c
+
+      * remove 5.6-specific code and make 5.8 the min versionsupported
+        Wed Aug 26 16:06:46 2026 +0100
+        7ae05f113aa1ea3b205135e038885fe10065a54b
+
+      * equivalent fix for https://github.com/pmqs/IO-Compress/pull/82
+        Tue Aug 25 11:23:10 2026 +0100
+        687c08b99d579f99c0f2cc6e2561e883cd630f2b
+
+      * Merge pull request #7 from pmqs/dependabot/github_actions/actions/checkout-7
+        Fri Jul 3 12:03:22 2026 +0100
+        4914802f2193c1c3515f18418e96b7443226def7
+
+      * Bump actions/checkout from 6 to 7
+        Wed Jul 1 08:46:22 2026 +0000
+        38b4b591383a283c2cc8b5e265eae8f92a2518c8
+
+      * fix spelling typo
+        Tue Feb 24 19:48:12 2026 +0000
+        a13bbd5eb87c614abe22e97e7c0aa340a04b29ef
+
+-------------------------------------------------------------------
 Mon Feb  2 06:19:04 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.217.0 (2.217)

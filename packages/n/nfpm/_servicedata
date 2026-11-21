@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/goreleaser/nfpm</param>
-              <param name="changesrevision">db22372bfbddb6b2968ff71e9c25e6bb1a2355c2</param></service></servicedata>
+              <param name="changesrevision">db22372bfbddb6b2968ff71e9c25e6bb1a2355c2</param></service><service name="tar_scm">
+                <param name="url">https://github.com/goreleaser/nfpm.git</param>
+              <param name="changesrevision">44ea002d6394aed93d4695d05add27915d6ba65d</param></service></servicedata>

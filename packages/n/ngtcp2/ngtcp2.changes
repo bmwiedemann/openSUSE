@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:30:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.26.0:
+  * New API: ngtcp2_conn_tx_strmq_push_if_not and an
+    extend_max_data callback
+  * Receiving STOP_SENDING no longer closes the stream; a
+    STREAM_LIMIT error is returned on STREAMS_BLOCKED
+    violations
+  * STREAM_DATA_BLOCKED and DATA_BLOCKED are now sent only
+    when data is actually blocked
+  * CUBIC congestion control fixes: CWND increment, undo
+    state reset on confirmed loss, slow-start pacing gain
+  * Hardened connection ID handling, path validation and
+    client migration, plus 0RTT and token handling fixes
+  * 32-bit platform fixes and a fixed heap overrun on
+    targets with 4-byte aligned malloc
+- Rebase curl-impersonate.patch and
+  ngtcp2-boringssl-shared.patch for the new sources
+- Spec cleanup: use pkgconfig() interdependencies between the
+  -devel subpackages and tag the carried patches
+
+-------------------------------------------------------------------
 Wed Aug 26 11:25:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Require boringssl-devel >= 0.20260813 at build time: the previous

@@ -16,17 +16,20 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-cffi
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        Foreign Function Interface for Python calling C code
 License:        MIT
 URL:            https://cffi.readthedocs.org
 Source0:        https://files.pythonhosted.org/packages/source/c/cffi/cffi-%{version}.tar.gz
 Source1:        python-cffi-rpmlintrc
-# PATCH-FIX-UPSTREAM gh#python-cffi/cffi#224
-Patch0:         support-pycparser-3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycparser}
@@ -38,6 +41,13 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libffi)
 Requires:       python-pycparser
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -54,13 +64,24 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_clone -a %{buildroot}%{_bindir}/cffi-gen-src
 
 %check
 %pytest_arch -W ignore::UserWarning src/c/ testing/
 
+%post
+%python_install_alternative cffi-gen-src
+
+%postun
+%python_uninstall_alternative cffi-gen-src
+
+%pre
+%python_libalternatives_reset_alternative cffi-gen-src
+
 %files %{python_files}
 %license LICENSE
 %doc README.md doc/source/*.rst doc/misc/*.rst
+%python_alternative %{_bindir}/cffi-gen-src
 %{python_sitearch}/cffi
 %{python_sitearch}/_cffi_backend.*.so
 %{python_sitearch}/cffi-%{version}.dist-info

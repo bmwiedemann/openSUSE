@@ -57,4 +57,17 @@
     <comment></comment>
     <requestid>1320191</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>0712dacb873689a03c1c1d4ebef0243c</srcmd5>
+    <version>2.0.0</version>
+    <time>1795023011</time>
+    <user>anag_factory</user>
+    <comment>- Refresh tarball giac-2.0.0.tar.gz from upstream: the tarball was
+  republished with real content changes (new build/test helper files
+  and updates to configure, Makefiles and several sources).
+- Add giac-ambiguous-bitset.patch: qualify std::bitset to resolve
+  ambiguity with pari's bitset() in optimization.cc.
+</comment>
+    <requestid>1398211</requestid>
+  </revision>
 </revisionlist>

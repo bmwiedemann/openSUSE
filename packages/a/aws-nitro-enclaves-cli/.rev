@@ -107,4 +107,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1385220</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>44737dc583ba08a06d4cc26cc800bbf5</srcmd5>
+    <version>1.5.3~git0.536dca3</version>
+    <time>1794816459</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.3
+  bsc#1290140 CVE-2026-123609
+  bsc#1290214 CVE-2026-123611
+  bsc#1290216 CVE-2026-123612
+  bsc#1290231 CVE-2026-123613
+  bsc#1290019 CVE-2026-123570</comment>
+    <requestid>1397393</requestid>
+  </revision>
 </revisionlist>

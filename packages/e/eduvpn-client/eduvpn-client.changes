@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:44:52 UTC 2026 - René Neumaier <r.neumaier@mailbox.org>
+
+- Update to 4.7.3
+  * UI: Remove right click on server to change profile as it's
+    buggy
+  * Server: Fix secure internet lookup if already exists by
+    @CocytusChen
+  * Upstream building targets and Documentation changes
+- Specfile change
+  * Requires eduvpn-common >= 5.0.4
+  * Rename variable 'vname' to 'upstream_name'
+  * Add variable 'pypack_name' to reflect python package name
+  * Refer pycache in python files section
+
+-------------------------------------------------------------------
 Sun Apr 26 10:26:14 UTC 2026 - René Neumaier <r.neumaier@mailbox.org> - 4.7.2
 
 - Update to 4.7.2

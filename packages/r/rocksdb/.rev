@@ -306,4 +306,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment>1</comment>
     <requestid>1394192</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>afa00855a158839348121389cdac696d</srcmd5>
+    <version>11.13.2</version>
+    <time>1794162122</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396114</requestid>
+  </revision>
 </revisionlist>

@@ -1,6 +1,8 @@
---- openjdk/jdk/src/share/classes/java/util/Properties.java	2024-10-07 14:14:13.617125153 +0200
-+++ openjdk/jdk/src/share/classes/java/util/Properties.java	2024-10-07 14:35:53.223317114 +0200
-@@ -826,7 +826,12 @@
+diff --git a/jdk/src/share/classes/java/util/Properties.java b/jdk/src/share/classes/java/util/Properties.java
+index aba5fd1a33..2a550ff1e8 100644
+--- a/jdk/src/share/classes/java/util/Properties.java
++++ b/jdk/src/share/classes/java/util/Properties.java
+@@ -826,7 +826,12 @@ class Properties extends Hashtable<Object,Object> {
          if (comments != null) {
              writeComments(bw, comments);
          }

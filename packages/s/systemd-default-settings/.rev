@@ -103,4 +103,24 @@
   5088997 SLE: Disable pids controller limit under user instances (jsc#SLE-10123)</comment>
     <requestid>1166612</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>68c8b802d2a61a4e9785bd4b8adb3907</srcmd5>
+    <version>0.11</version>
+    <time>1795103588</time>
+    <user>anag_factory</user>
+    <comment>- Use boolean Supplements and plain Conflicts for the branding
+  subpackages: replace the obsolete packageand() and otherproviders()
+  zypp syntax with (systemd-default-settings and branding-&lt;flavor&gt;)
+  Supplements and Conflicts on the generic branding name.
+- Add a Supplements entry to the branding-upstream subpackage, as
+  required by rpmlint's branding check.
+- Clean the spec with spec-cleaner in full mode: Group tags and
+  default %defattr lines removed, tag order and macro forms
+  normalized.
+
+- Import 0.11
+  bc8d696 SLE: add the standard header to the logind drop-in
+  843143f SLE: drop the udevd drop-in, it has never been effective</comment>
+    <requestid>1397956</requestid>
+  </revision>
 </revisionlist>

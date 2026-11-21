@@ -17,7 +17,7 @@
 
 
 Name:           eksctl
-Version:        0.231.0
+Version:        0.232.0
 Release:        0
 Summary:        The official CLI for Amazon EKS
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         eksctl-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.5
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
 
 %description

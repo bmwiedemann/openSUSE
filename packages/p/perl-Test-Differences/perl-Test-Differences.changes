@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  4 11:09:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.730.0 (0.73)
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+
+  0.73   2026-10-03
+
+      - Changes to tests only, to cope with changes to how line numbers
+        are reported in what will become perl 5.46 (thanks to Richard Leach)
+
+-------------------------------------------------------------------
 Tue Jul  8 05:37:07 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.720.0 (0.72)

@@ -17,7 +17,7 @@
 
 
 Name:           desktop-file-utils
-Version:        0.28
+Version:        0.29
 Release:        0
 Summary:        Utilities for Manipulating Desktop Files
 License:        GPL-2.0-or-later
@@ -48,7 +48,7 @@ Requires:       gawk
 Requires:       coreutils
 
 %description
-This packages contains a couple of command line utilities for
+This package contains a couple of command line utilities for
 working with desktop files.
 
 More information about desktop files can be found at:
@@ -70,7 +70,8 @@ install -m0755 %{SOURCE1} %{buildroot}%{_bindir}/suse-update-mime-defaults
 install -D -m644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.desktop-file-utils
 # Create ghosts based on default $XDG_DATA_DIRS:
 mkdir -p %{buildroot}%{_datadir}/applications
-touch %{buildroot}%{_datadir}/applications/mimeinfo.cache
+touch %{buildroot}%{_datadir}/applications/mimeinfo.cache \
+    %{buildroot}%{_datadir}/applications/intent.cache
 
 install -d -m 755 %{buildroot}/%{_unitdir}
 install -m 644 %{SOURCE4} %{buildroot}%{_unitdir}
@@ -105,6 +106,7 @@ fi
 %{_bindir}/desktop-file-validate
 %{_bindir}/suse-update-mime-defaults
 %{_bindir}/update-desktop-database
+%ghost %{_datadir}/applications/intent.cache
 %ghost %{_datadir}/applications/mimeinfo.cache
 %{_mandir}/man1/desktop-file-edit.1%{?ext_man}
 %{_mandir}/man1/desktop-file-install.1%{?ext_man}

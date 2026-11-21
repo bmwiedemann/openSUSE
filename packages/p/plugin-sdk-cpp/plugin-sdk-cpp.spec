@@ -17,7 +17,7 @@
 
 
 Name:           plugin-sdk-cpp
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        C++ SDK for writing Falcosecurity plugins
 License:        Apache-2.0

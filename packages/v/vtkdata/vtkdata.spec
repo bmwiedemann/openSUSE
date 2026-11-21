@@ -17,7 +17,7 @@
 
 
 Name:           vtkdata
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 %define series  9.7
 Summary:        Kitware VTK Library Data

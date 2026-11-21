@@ -285,4 +285,14 @@
     <comment>1</comment>
     <requestid>1373620</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>d905b934865bde30ebbc92d8d53f690e</srcmd5>
+    <version>3.3.0</version>
+    <time>1795182344</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.0:
+  * CMake maintenance.
+  * Silenced layershell's warning.</comment>
+    <requestid>1398771</requestid>
+  </revision>
 </revisionlist>

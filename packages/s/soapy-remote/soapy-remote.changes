@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:47:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.4:
+  * Report stream lifecycle RPC failures as error codes instead of
+    throwing, fixing host abort and scheduler deadlock on lost link
+  * Fail the RPC receive when the peer closes mid-payload, fixing
+    a spin at full CPU while holding the device mutex
+  * Bound stream header bytes and elems in acquireRecv, rejecting
+    oversized headers that could overrun the endpoint buffers
+
+-------------------------------------------------------------------
 Sun Oct 11 09:24:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.3:

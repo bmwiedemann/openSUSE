@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Nov 12 06:25:53 UTC 2026 - Kevin Deldycke <kevin@deldycke.com>
+
+- update to 10.2.0:
+  * Drop Python 3.10, and raise the floors of Click to 8.5, Cloup
+    to 4, tabulate to 0.10 and extra-platforms to 14.
+  * Build JSONC and XML support in, which drops the jsonc and xml
+    extras and the xmltodict dependency.
+  * Remove the module aliases and arguments that 9.x deprecated.
+    Every name the package root exported in 9.x still imports
+    from it.
+  * The toml extra writes TOML with tomlrt in place of tomlkit.
+  * Full list of changes:
+    https://github.com/kdeldycke/click-extra/blob/v10.2.0/changelog.md
+- Drop the boltons, deepmerge, tomli, tomlkit, xmltodict and
+  pygments-ansi-color requirements, which 10.x no longer uses.
+- Deselect the tests that write TOML: tomlrt is not packaged.
+- Deselect the network tests by their marker.
+- Deselect test_screen_fits_an_eighty_column_terminal: the screen
+  names the build host, which widens it on some architectures.
+- Deselect test_startup_time_stays_within_a_ratio_of_click and
+  test_sigterm_shows_the_cursor_again: both time out on a loaded
+  build host.
+- Stop deselecting the mkdocs tests, which now skip themselves
+  without mkdocs-click, and stop removing the coverage options,
+  which pyproject.toml no longer sets.
+
+-------------------------------------------------------------------
 Sat Oct 31 12:46:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.5.1:

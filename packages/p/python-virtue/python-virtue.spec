@@ -1,7 +1,7 @@
 #
 # spec file for package python-virtue
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,33 +23,30 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-virtue
-Version:        2025.7.1
+Version:        2026.11.2
 Release:        0
 Summary:        After trial comes virtue. A test runner for good
 License:        MIT
 URL:            https://github.com/Julian/Virtue
 Source:         https://files.pythonhosted.org/packages/source/v/virtue/virtue-%{version}.tar.gz
+BuildRequires:  %{python_module attrs >= 22.2.0}
+BuildRequires:  %{python_module click}
+BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyrsistent}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Twisted >= 23.10.0rc1
-Requires:       python-attrs >= 19
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
+Requires:       python-attrs >= 22.2.0
 Requires:       python-click
 Requires:       python-colorama
 Requires:       python-pyrsistent
 Suggests:       python-importlib_metadata
-BuildArch:      noarch
-# SECTION test requirements
-BuildRequires:  %{python_module Twisted >= 23.10.0rc1}
-BuildRequires:  %{python_module attrs >= 19}
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module colorama}
-BuildRequires:  %{python_module pyrsistent}
-BuildRequires:  %{python_module pytest}
-# /SECTION
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -57,6 +54,7 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
+BuildArch:      noarch
 %python_subpackages
 
 %description

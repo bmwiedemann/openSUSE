@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  8 18:55:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.0:
+  * Drop support for python 3.10 (See also #2064).
+  * Pyflakes has been updated to >= 4.1.0, < 4.2.0 (See also #2070).
+
+-------------------------------------------------------------------
 Mon Oct 26 09:23:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.1:

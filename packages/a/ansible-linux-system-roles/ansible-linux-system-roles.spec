@@ -17,29 +17,29 @@
 
 
 # Define individual versions for each role
-%global firewall_version 1.11.6
-%global timesync_version 1.11.4
-%global journald_version 1.5.2
-%global ssh_version 1.7.1
-%global crypto_policies_version 1.5.2
-%global systemd_version 1.3.7
-%global ha_cluster_version 1.31.3
+%global firewall_version 1.14.0
+%global timesync_version 1.15.0
+%global journald_version 1.8.0
+%global ssh_version 1.9.1
+%global crypto_policies_version 1.9.0
+%global systemd_version 1.5.2
+%global ha_cluster_version 1.32.2
 %global mssql_version 2.6.6
-%global suseconnect_version 1.0.2
-%global auto_maintenance_version 1.120.5
-%global certificate_version 1.5.0
-%global selinux_version 1.11.1
-%global podman_version 1.9.2
-%global cockpit_version 1.7.4
-%global aide_version 1.2.5
-%global postfix_version 1.6.6
-%global keylime_server_version 1.2.4
-%global postgresql_version 1.5.1
-%global kernel_settings_version 1.3.8
-%global network_version 1.18.0
-%global sudo_version 1.2.9
-%global logging_version 1.16.0
-%global himmelblau_version 1.2.0
+%global suseconnect_version 1.0.3
+%global auto_maintenance_version 2.5.0
+%global certificate_version 1.10.0
+%global selinux_version 1.13.1
+%global podman_version 1.14.3
+%global cockpit_version 1.10.0
+%global aide_version 1.5.0
+%global postfix_version 1.10.0
+%global keylime_server_version 1.4.1
+%global postgresql_version 1.9.0
+%global kernel_settings_version 1.6.0
+%global network_version 1.21.1
+%global sudo_version 1.5.0
+%global logging_version 1.17.1
+%global himmelblau_version 2.1.0
 
 %if 0%{?suse_version} >= 1600
 %global sle16 1
@@ -51,7 +51,7 @@
 %define ansible_collection_path %{_datadir}/ansible/collections/ansible_collections/suse/%{ansible_collection_name}
 
 Name:           ansible-linux-system-roles
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Collection of Ansible roles for Linux system management
 License:        GPL-3.0-or-later

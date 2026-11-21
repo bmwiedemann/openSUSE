@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:59:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.0:
+  * Set gmp min version to 6.2.0
+  * Avoid accidental build dep on glib 2.76
+  * Fix --gtk-vnc-debug operation with glib >= 2.80
+  * Include log domain and timestamp in debug messages
+  * Implement extended mouse button psuedo-encoding
+  * Implement extended clipboard psuedo-encoding
+  * Add APIs to provide automatic clipboard synchronization
+  * Fixes to keyboard mapping on Win32
+  * Avoid rounding in zoom level to allow fully granular steps
+  * Fix offset calculation when at non-100% zoom levels
+  * Correctly render background when zoomed out
+  * Fix menubar layout in python example viewer
+  * Keep tight encoding available even when jpeg support is not built.
+  * Fix crashes from emitting errors/signals in coroutines instead of main
+    event loop context
+  * Drop code for generating Diffie-Hellman parameters and use built-in
+    defaults fromgnutls
+  * Drop obsolete use of gnutls_global_init
+  * Stop declaring 'get_type()' funcs G_GNUC_CONST for compat with GCC 16
+  * Fix array bounds checks handling auth types
+  * Don't unconditionally ask for VNC_CONNECTION_CREDENTIAL_CA_CERT_DATA
+  * Add APIs to opt-in to handling of new credential types
+  * Add support for hook to perform TLS validation
+  * Fix SASL auth with QEMU servers prior to 9.2
+  * Fix various memory leaks in library, tools and examples
+  * Fix potential use-after-free in TLS cert location code
+  * Reverse order of search directory sub-trees, so that $HOME/.pki is
+    preferred over /etc/pki
+  * Require the clientcert.pem and clientkey.pem to be loaded from the same
+    search directory sub-tree
+  * Allow all of cacert.pem, cacrl.pem, clientkey.pem and clientcert.pem to be
+    in exactly the same directory.
+  * Support loading multiple client certs, via indexed names clientkeyNN.pem &
+    clientcertNN.pem for NN in the range 0-3, to better support post-quantum
+    crypto.
+  * Add API to override the default TLS certificate dir locations
+  * Add API to override the default TLS algorithm priority string
+  * Add new options to gvnccapture to set TLS certificate dir and algorithm
+    priority
+  * Add docs to gvnccapture manual page about TLS certificate handling
+- Update version dependencies according to meson.build.
+- Drop patches merged upstream:
+  * 001-src-introduce-a-vncclipboard.h-header-file.patch
+  * 002-Add-the-extended-clipboard-pseudo-encoding.patch
+  * 003-Implement-extended-clipboard-capability-negotiation.patch
+  * 004-Implement-client-to-server-clipboard-update-notification.patch
+  * 005-Flush-pending-clipboard-on-focus-in-event.patch
+  * 006-Implement-response-to-server-clipboard-REQUEST-action.patch
+  * 007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
+  * 008-Complete-server-to-client-data-sync-PROVIDE.patch
+  * 009-fix-error-handling-in-main-thread-context.patch
+  * 010-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 09:09:00 MDT 2026 - carnold@suse.com
 
 - Replace BuildRequires on python3-devel with python3-base

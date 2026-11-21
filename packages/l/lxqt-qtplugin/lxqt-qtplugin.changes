@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:34:15 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Fixed a case where SVG tray icons would not appear if they did not
+    belong to the icon theme.
+
+-------------------------------------------------------------------
 Mon Apr 20 17:02:38 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

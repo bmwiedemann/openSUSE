@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 17 17:18:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0 (CVE-2026-82049):
+  * Update code with CPython 3.14.8 version
+
+-------------------------------------------------------------------
 Thu Sep 10 07:22:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- update to 1.7.0
+- update to 1.7.0 (CVE-2026-11940):
   * Update code with CPython 3.14.7 version
 
 -------------------------------------------------------------------

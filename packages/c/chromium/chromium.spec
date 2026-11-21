@@ -66,16 +66,13 @@
 %define llvm_version 23
 %define llvm_version_long 23.1
 %define llvm_version_long_plus 23.2
+%else
+%define llvm_version 21
+%define llvm_version_long 21.1
+%define llvm_version_long_plus 22.2
+%endif
 # RUST version
 %define rust_version 1.94
-%else
-# LLVM version
-%define llvm_version 19
-%define llvm_version_long 19.1
-%define llvm_version_long_plus 19.2
-# RUST version
-%define rust_version 1.92
-%endif
 # GCC version
 %define gcc_version 14
 # minimal esbuild version
@@ -139,7 +136,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        156.0.8078.79
+Version:        157.0.8103.78
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -227,6 +224,8 @@ Patch413:       chromium-155-v8-cxx-include.patch
 Patch414:       chromium-156-revert_ift_patcher.patch
 Patch415:       chromium-156-verification-tokens.patch
 Patch416:       chromium-156-blink_static_cast.patch
+Patch417:       chromium-157-revert_ift_patcher.patch
+Patch418:       chromium-157-drop-distinct_counter.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -307,26 +306,21 @@ Patch1050:      chromium-140-old-flac.patch
 # only in ffmpeg avutil >= 60.31
 Patch1051:      chromium-150-ffmpeg_no_agtm.patch
 Patch1052:      chromium-162dc276a85b4f7d353adbe312d05d8e7a4c28e3.patch
-Patch1061:       chromium-146-static-assert.patch
-# llvm19 segfaults in
-# ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
-Patch1062:       chromium-146-clang-19-crash.patch
+Patch1053:      chromium-e0f704daa316a959feb165460602f4ed982e718f.patch
 # error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
 Patch1064:       chromium-146-keyfactory.patch
-Patch1065:       chromium-150-i18n-builder-enum.patch
 # error with llvm < 23
 # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
 Patch1066:       chromium-146-ignore-for-ubsan.patch
 Patch1067:       chromium-146-bytemuck.patch
 Patch1068:       chromium-148-only_address_sanitizer.patch
-# error: no member named 'iota' in namespace 'std::ranges'
-Patch1069:       chromium-148-revert_std_ranges_iota.patch
 Patch1071:       chromium-150-raw-ref-map-find.patch
-Patch1072:       chromium-151-privatefriends.patch
-Patch1073:       chromium-151-constexpr.patch
 Patch1074:       chromium-152-no-lifetime-checks.patch 
-Patch1075:       chromium-152-no-warning-suppression-map.patch
 Patch1080:       rollup.patch
+# next crubit revert
+Patch1081:       chromium-7d76145781dca8ca4b26ee412360bf9e9c0a3b70.patch
+# revert, none of our llvm versions accepts this
+Patch1082:       chromium-72777c30be767d4f192f2a3ca94e838e0b83550e.patch
 # end conditionally applied patches
 BuildRequires:  SDL-devel
 BuildRequires:  bison
@@ -592,6 +586,11 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %autopatch -p1 -m 450 -M 599
 %endif
 
+# more crubit reverts
+%patch -p1 -R -P 1081
+# revert, not even llvm23 accepts this
+%patch -p1 -R -P 1082
+
 %if %{without libxml2_2_12}
 %patch -p1 -P 1010
 %endif
@@ -611,22 +610,14 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 # GetAgtmSideData is only in libavutil >= 60.31, ffmpeg > 8.1
 %if %{with system_ffmpeg}
+%patch -p1 -R -P 1053
 %patch -p1 -R -P 1052
 %patch -p1 -P 1051
 %endif
 
-clang_version="$(clang-%{llvm_version} --version | sed -n 's/clang version //p')"
-if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
-%patch -p1 -P 1061
-%patch -p1 -P 1062
-%patch -p1 -P 1065
-%patch -p1 -P 1069
-%patch -p1 -P 1072
-%patch -p1 -P 1073
-%patch -p1 -P 1075
-fi
 %patch -p1 -P 1064
 
+clang_version="$(clang-%{llvm_version} --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1066
 %patch -p1 -P 1067
@@ -667,6 +658,11 @@ popd
 
 %build
 
+ccache -o compression=true
+ccache -o compression_level=3
+ccache -o max_size=30G
+ccache -o sloppiness=gcno_cwd
+ccache -o hash_dir=false
 ccache --show-config
 # Zero out the hit/miss stats from previous runs to have data from this build
 ccache --zero-stats
@@ -924,6 +920,7 @@ keeplibs=(
     third_party/omnibox_proto
     third_party/one_euro_filter
     third_party/openscreen
+    third_party/openscreen/src/third_party/simple_dns/src
     third_party/openscreen/src/third_party/tinycbor/src/src
     third_party/ots
     third_party/pdfium
@@ -960,6 +957,7 @@ keeplibs=(
     third_party/selenium-atoms
     third_party/sentencepiece
     third_party/sentencepiece/src/third_party/darts_clone
+    third_party/sframe
     third_party/shell-encryption
     third_party/simdutf
     third_party/simplejson
@@ -1272,8 +1270,8 @@ myconf_gn+=" rtc_use_h264=false"
 %endif
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
-myconf_gn+=" v8_metagen_libclang_so=\"%{_prefix}/lib64/libclang.so\""
-myconf_gn+=" v8_metagen_libclang_bindings_dir=\"$RPM_BUILD_DIR/%{?buildsubdir}/python-clang\""
+# new flag as of 20261006
+myconf_gn+=" v8_use_metagen=false"
 myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
 myconf_gn+=" rust_bindgen_root=\"%{_prefix}\""
 myconf_gn+=" rustc_version=\"$rustc_version\""

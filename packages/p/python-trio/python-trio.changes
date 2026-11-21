@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov  1 08:57:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.35.0
+  Features
+  * Mark that Trio supports 3.15. (#3563)
+  Bugfixes
+  * Ensure that Trio consistently encodes all hostnames using IDNA
+    2008. (#11)
+  * Ensure trio.lowlevel.notify_closing works even on events that
+    have been deleted, e.g. because they were registered as one shot
+    events. (#3502)
+  * trio.Process no longer emits an EncodingWarning on Linux when
+    Python runs with -X warn_default_encoding (or
+    PYTHONWARNDEFAULTENCODING=1). (#3555).
+  Miscellaneous internal changes
+  * The typing for async-file-objects is now consistent about what
+    it exposes based on what is exposed by the underlying object.
+    (#3542)
+
+-------------------------------------------------------------------
 Fri Oct  9 13:51:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.34.0

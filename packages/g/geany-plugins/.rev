@@ -447,4 +447,13 @@
     <comment></comment>
     <requestid>1317852</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>23410eb8f07992f3e24cf5001b8aca33</srcmd5>
+    <version>2.1</version>
+    <time>1795103754</time>
+    <user>anag_factory</user>
+    <comment>- Replace pkgconfig(enchant) with pkgconfig(enchant-2) BuildRequires: The
+  correct one meson checks for.</comment>
+    <requestid>1398615</requestid>
+  </revision>
 </revisionlist>

@@ -5930,4 +5930,56 @@
     mouse_mask().</comment>
     <requestid>1386702</requestid>
   </revision>
+  <revision rev="344" vrev="117">
+    <srcmd5>45b36dbf9af6f1f949e64ce43fe84ba7</srcmd5>
+    <version>unknown</version>
+    <time>1794324588</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20261107
+  + check for terminating NUL in canonical_name() for infocmp -F
+    (report/testcase by Martin Mirchev).
+  + fix an infinite loop in parse_ti_delay() on malformed terminfo
+    (report/testcase by Martin Mirchev).
+  + add valid_div() check to tparm '/' and '%' operators to guard against
+    SIGFPE on dividing INT_MIN by -1 (report/testcase by Martin Mirchev).
+  + add sanity-checks to _nc_infotocap() when moving mandatory padding
+    (report/testcase by Martin Mirchev).
+  + reorder check for missing '\0' in str_table and a strlen() call
+    (report/testcase by Martin Mirchev).
+  + add check in decode_xterm_X10() to ensure that enough bytes were
+    read (report by Martin Mirchev).
+  + use CLOCK_MONOTONIC instead of CLOCK_REALTIME when it is available
+    (patch by Yeatol).
+  + add limit check in lib_add_wch.c (report/testcase by Serhiy
+    Storchaka),
+  + improve cleanup on EOF in next_char (report by Oliver Zhang).
+  + improve fix for filling cells for multicolumn characters in
+    lib_addch.c (patch by Vassili Courzakis).
+  + fixes for tvi910, tvi950, wy100 (patch by Adam Di Carlo)
+- Add ncurses patch 20261031
+  + improve configure check for wcwidth, for msys2 port.
+  + modify configure check for multiuser systems to use getent if it is
+    available.
+  + remove obsolete configure macro CF_LDFLAGS_STATIC (prompted by
+    discussion with Julian Waters).
+  + modify convert_strings to disallow overlapping strings.
+  + add null-pointer checks for terminfo/termcap function parameters.
+  + pad str_table with a '\0' in case of malformed terminfo data which</comment>
+    <requestid>1396272</requestid>
+  </revision>
+  <revision rev="345" vrev="118">
+    <srcmd5>1b1d84f4f99038c2f16b802b73e4917d</srcmd5>
+    <version>unknown</version>
+    <time>1795022974</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20261114
+  + review/fix teraterm special keys -TD
+  + add kp5/kbeg to xterm+noapp (report by Jakub Horky)
+  + add kbeg to linux-basic, konsole, terminology (patches by Jakub Horky)
+  + add st-0.9.2 -TD
+  + revise numeric keypad for iterm2, nsterm, mlterm -TD
+  + make c++ binding's &quot;operator=&quot; private, since those do construct new
+    copies (patch by Martin Mirchev).</comment>
+    <requestid>1397899</requestid>
+  </revision>
 </revisionlist>

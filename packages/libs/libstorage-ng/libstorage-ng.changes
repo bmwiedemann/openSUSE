@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Sat Nov 14 00:28:52 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Slovenian) (bsc#1149754)
+- 4.5.370
+
+--------------------------------------------------------------------
+Mon Nov 9 06:42:03 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1103
+- add partition ids for /var and /var/tmp
+- add tests for the new partition ids
+- add integration test for the new partition ids
+- Version bump
+- Add some missing DPS GUIDs
+- 4.5.369
+
+--------------------------------------------------------------------
+Tue Nov 3 15:12:52 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Russian) (bsc#1149754)
+- 4.5.368
+
+--------------------------------------------------------------------
 Fri Oct 30 11:15:17 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1102

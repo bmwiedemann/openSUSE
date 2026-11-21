@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 13 18:09:07 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.6.2
+  Fixed bugs:
+  * Fix crash caused by constructing JoyXml objects after
+    pointer check
+  * Fix use of absolute Flatpak translation path at startup
+  * Fix invalid translations marked as finished in the
+    translation files
+  * Fix missing dot in numeric keyboard
+  Notable changes:
+  * Enable compiling with clang-tidy (optional)
+  * Code cleanup with clang-tidy and virtual functions
+  * Organize header files into logical groupings
+  * New translations: Arabic, Hungarian, Chinese (Traditional),
+    Hakka (Traditional)
+  * Update translations for: French, German, Italian, Japanese,
+    Russian, Swedish, Romanian, Tamil, Indonesian, Portuguese,
+    Portuguese (Brazil), Korean, Breton
+
+-------------------------------------------------------------------
 Sat May 23 06:49:08 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.6.1

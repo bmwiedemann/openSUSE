@@ -545,4 +545,14 @@
     <comment>1</comment>
     <requestid>1376195</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e17ac8a46754118458f9e8b6e3a32dd1</srcmd5>
+    <version>7.17.2</version>
+    <time>1794591001</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.17.2:
+  * Addresses CVE-2026-114140 (bsc#1286876)
+  * Use org-level security policy</comment>
+    <requestid>1396973</requestid>
+  </revision>
 </revisionlist>

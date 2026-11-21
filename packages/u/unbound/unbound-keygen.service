@@ -8,7 +8,7 @@ ConditionPathExists=!/etc/unbound/unbound_control.key
 Type=oneshot
 Group=unbound
 ExecStart=/usr/sbin/unbound-control-setup -d /etc/unbound/
-ExecStart=/sbin/restorecon /etc/unbound/*
+ExecStart=/bin/sh -c 'test -x /sbin/restorecon && /sbin/restorecon /etc/unbound/* || true'
 RemainAfterExit=yes
 
 [Install]

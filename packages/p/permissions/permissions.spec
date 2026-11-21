@@ -23,28 +23,29 @@ Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
 License:        GPL-2.0-or-later
-Group:          Productivity/Security
-URL:            http://github.com/openSUSE/permissions
+URL:            https://github.com/openSUSE/permissions
 Source:         permissions-%{version}.tar.xz
 Source2:        permissions.rpmlintrc
 BuildRequires:  gcc-c++
-BuildRequires:  libacl-devel
-BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libacl)
+BuildRequires:  pkgconfig(libcap)
 # we require an rpmlint which supports the :package: coupling syntax,
 # otherwise the rpmlint run will fail.
 #!BuildConflicts:  rpmlint-mini < 2.9.0+git20260211.72e34881
-BuildRequires:  tclap
-# test suite
-BuildRequires:  python3-base
-BuildRequires:  acl
-BuildRequires:  system-user-bin
-BuildRequires:  system-user-nobody
+BuildRequires:  pkgconfig(tclap)
 Requires:       permctl
 Requires:       permissions-config
 Provides:       aaa_base:%{_datadir}/permissions
+# SECTION test suite
+BuildRequires:  acl
+BuildRequires:  python3-base
+BuildRequires:  system-user-bin
+BuildRequires:  system-user-nobody
+# /SECTION
 
 %prep
 %autosetup
@@ -55,10 +56,13 @@ Provides:       aaa_base:%{_datadir}/permissions
 
 %install
 %meson_install
+# chkstat is a backward compatibility symlink to permctl, give it
+# the permctl manual page under its own name as well
+ln -s permctl.8 %{buildroot}%{_mandir}/man8/chkstat.8
 # Fix shebang in scripts: Remove dependency on /usr/bin/python3,
 # making scripts to depends on the real python3 binary, not the link.
 # (bsc#1212476)
-for f in %{buildroot}/usr/lib/zypp/plugins/commit/*
+for f in %{buildroot}%{_prefix}/lib/zypp/plugins/commit/*
 do
   [ -f $f ] && sed -i "1s@#\!.*python.*@#\!$(realpath %__python3)@" $f
 done
@@ -72,7 +76,7 @@ done
 %description
 File and directory permission settings depending on the local security
 settings. The local security setting ("easy", "secure", or "paranoid") can be
-configured in /etc/sysconfig/security.
+configured in %{_sysconfdir}/sysconfig/security.
 
 This package does not contain files, it just requires the necessary packages.
 
@@ -80,17 +84,17 @@ This package does not contain files, it just requires the necessary packages.
 
 %package config
 Summary:        SUSE Linux Default Permissions config files
-Group:          Productivity/Security
+#!BuildIgnore:  group(trusted)
 Requires(post): %fillup_prereq
 Requires(post): permctl
-#!BuildIgnore:  group(trusted)
 Requires(pre):  group(trusted)
 Obsoletes:      permissions-doc < %{version}
 Provides:       permissions-doc = %{version}
 BuildArch:      noarch
 
 %description config
-The actual permissions configuration files, /usr/share/permissions/permission.*.
+The actual permissions configuration files,
+%{_datadir}/permissions/permission.*.
 
 %files config
 %defattr(644, root, root, 755)
@@ -103,7 +107,7 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 %{_datadir}/permissions/variables.conf
 %config(noreplace) %{_sysconfdir}/permissions.local
 %{_fillupdir}/sysconfig.security
-%{_mandir}/man5/permissions.5%{ext_man}
+%{_mandir}/man5/permissions.5%{?ext_man}
 
 %post config
 %{fillup_only -n security}
@@ -112,9 +116,8 @@ The actual permissions configuration files, /usr/share/permissions/permission.*.
 
 %package -n permctl
 Summary:        SUSE Linux Default Permissions tool
-Group:          Productivity/Security
-Provides:       chkstat = %version-%release
-Obsoletes:      chkstat < %version-%release
+Provides:       chkstat = %{version}-%{release}
+Obsoletes:      chkstat < %{version}-%{release}
 
 %description -n permctl
 Tool to check and set file permissions.
@@ -122,26 +125,26 @@ Tool to check and set file permissions.
 %files -n permctl
 %{_bindir}/chkstat
 %{_bindir}/permctl
-%{_mandir}/man8/permctl.8%{ext_man}
+%{_mandir}/man8/chkstat.8%{?ext_man}
+%{_mandir}/man8/permctl.8%{?ext_man}
 %{_rpmconfigdir}/macros.d/macros.*
 
 %package -n permissions-zypp-plugin
-BuildArch:      noarch
+Summary:        A zypper commit plugin for calling permctl
+Requires:       libzypp(plugin:commit) = 1
 Requires:       permissions = %{version}
 Requires:       python3-zypp-plugin
-Requires:       libzypp(plugin:commit) = 1
-Summary:        A zypper commit plugin for calling permctl
-Group:          Productivity/Security
+BuildArch:      noarch
 
 %description -n permissions-zypp-plugin
 This package contains a plugin for zypper that calls `permctl --system` after
 new packages have been installed. This is helpful for maintaining custom
-entries in /etc/permissions.local.
+entries in %{_sysconfdir}/permissions.local.
 
 %files -n permissions-zypp-plugin
-%dir /usr/lib/zypp
-%dir /usr/lib/zypp/plugins
-%dir /usr/lib/zypp/plugins/commit
-/usr/lib/zypp/plugins/commit/permissions.py
+%dir %{_prefix}/lib/zypp
+%dir %{_prefix}/lib/zypp/plugins
+%dir %{_prefix}/lib/zypp/plugins/commit
+%{_prefix}/lib/zypp/plugins/commit/permissions.py
 
 %changelog

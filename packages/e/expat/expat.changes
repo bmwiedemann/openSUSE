@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Nov 17 11:47:19 UTC 2026 - David Anes <david.anes@suse.com>
+
+- security patches for 2.10.0:
+  * CVE-2026-124317, bsc#1290472: out-of-bounds read in the unknown
+    encoding decoder functions unknown_toUtf8 and unknown_toUtf16.
+    Upstream pull request 1492.
+    - Added patches: expat-CVE-2026-124317-01.patch,
+      expat-CVE-2026-124317-02.patch,
+      expat-CVE-2026-124317-test-reproducer.patch
+  * CVE-2026-128241, bsc#1290473: xmlwf follows a symbolic link in -d
+    output mode, and it creates output files with mode 0666. Upstream
+    pull request 1502.
+    - Added patches: expat-CVE-2026-128241-01.patch,
+      expat-CVE-2026-128241-02.patch
+
+-------------------------------------------------------------------
+Mon Nov  2 10:20:22 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 2.10.0:
+  * Security fixes:
+    * CVE-2026-113351, bsc#1286599: denial of service with use of
+      XML_ParserReset
+    * CVE-2026-115506, bsc#1287856: detect billion laughs attacks
+      quicker and more of its variations
+    * CVE-2026-117610, bsc#1288868: fix initial non-final empty
+      subparser parse calls, was segfaulting
+    * CVE-2026-118370, bsc#1288848: protect attIndex and nPrefixes in
+      storeAtts from signed integer overflow
+  * Bug fixes:
+    * Initialize m_parsingStatus.finalBuffer in parserInit
+    * Improve XML_Parse for XML_CONTEXT_BYTES == 0
+    * Use C99 length modifiers for ptrdiff_t and size_t
+    * Check isCalledFromInsideHandler first in XML_Parse
+    * Add missing check for a character handler reset
+  * Library version bumped from 14:0:13 to 14:1:13
+
+-------------------------------------------------------------------
 Tue Oct  6 13:29:56 UTC 2026 - David Anes <david.anes@suse.com>
 
 - update to 2.9.0:
@@ -1526,4 +1563,3 @@ Tue Nov 23 14:59:17 CET 1999 - ke@suse.de
 - first SuSE package: version 1.1.
 - apply Debian patch to build shared libs.
 - build libexpat.a.
-

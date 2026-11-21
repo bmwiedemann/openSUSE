@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-sway
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,13 @@
 
 
 %bcond_with betatest
-
 Name:           patterns-sway
-Version:        20200619
+Version:        20261030
 Release:        0
 Summary:        Patterns for Installation (Sway)
 License:        MIT
-Group:          Metapackages
 URL:            https://github.com/openSUSE/patterns
 Source0:        %{name}-rpmlintrc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  patterns-rpm-macros
 
 %description
@@ -36,18 +33,16 @@ not make sense.
 
 This particular package contains the sway patterns.
 
-
 ################################################################################
 
 %package sway
 %pattern_graphicalenvironments
 Summary:        Sway Tiling Wayland Compositor and related tools
-Group:          Metapackages
 Provides:       pattern() = sway
 Provides:       pattern-icon() = pattern-sway
-Provides:       pattern-order() = 1460
+Provides:       pattern-order() = 1470
 Provides:       pattern-visible()
-
+# SECTION core compositor
 Requires:       Mesa
 Requires:       alacritty
 Requires:       fontawesome-fonts
@@ -59,21 +54,26 @@ Requires:       swayidle
 Requires:       swaylock
 Requires:       waybar
 Requires:       wofi
-
+# /SECTION
+# SECTION output management
 Recommends:     kanshi
-%if 0%{?suse_version} > 1500
+# /SECTION
+# SECTION clipboard
+Recommends:     wl-clipboard
+# /SECTION
+# SECTION audio
 Recommends:     pipewire-pulseaudio
-%else
-Recommends:     pulseaudio
-%endif
 Recommends:     pulseaudio-utils
-
+# /SECTION
+# SECTION desktop integration
 Recommends:     desktop-data-openSUSE
 Recommends:     system-config-printer
-
+# /SECTION
 #upstream brandings for clean Sway experience
+# SECTION upstream branding
 Recommends:     sway-branding-upstream
 Recommends:     waybar-branding-upstream
+# /SECTION
 
 %description sway
 Sway Tiling Wayland Compositor and related tools.

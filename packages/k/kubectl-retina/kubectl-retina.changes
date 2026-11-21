@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Thu Nov 19 05:50:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.3:
+  * fix(capture): check download host paths against the base
+    directory (#2974)
+  * fix(capture): trim URLs from upload errors (#2971)
+  * deps: update multicloud test dependencies (#2968)
+  * deps: bump golangci-lint to v2.14.0 (#2827)
+  * deps: bump golang.org/x/mod from 0.42.0 to 0.43.0 (#2962)
+  * fix(e2e): keep WaitForPodReady polling after a pod list error
+    (#2870)
+  * deps: bump the windows-base group across 3 directories with 2
+    updates (#2965)
+  * deps: bump the aws-sdk group across 1 directory with 2 updates
+    (#2961)
+  * deps: bump the golang-base group across 7 directories with 1
+    update (#2963)
+  * deps: bump the azurelinux-base group across 4 directories with
+    2 updates (#2964)
+  * feat(capture): update capture output handling (#2959)
+  * fix(devcontainer): start Docker on Ubuntu 26.04 hosts and
+    replace flaky installs (#2826)
+  * deps: bump the aws-sdk group with 3 updates (#2954)
+  * deps: bump golang.org/x/sys from 0.49.0 to 0.50.0 (#2955)
+  * deps: bump the aws-sdk group across 1 directory with 3 updates
+    (#2950)
+  * deps: bump the codeql-action group across 1 directory with 4
+    updates (#2929)
+  * deps: bump the golang-base group across 7 directories with 1
+    update (#2946)
+  * deps: bump the windows-base group across 3 directories with 2
+    updates (#2948)
+  * deps: bump azure/setup-helm from 5.0.1 to 5.1.0 (#2949)
+  * deps: bump github.com/aws/aws-sdk-go-v2 from 1.47.5 to 1.47.6
+    (#2952)
+  * deps: bump github.com/gopacket/gopacket from 1.7.5 to 1.7.7
+    (#2951)
+  * deps: bump the azurelinux-base group across 4 directories with
+    2 updates (#2947)
+  * deps: bump the golang-base group across 3 directories with 1
+    update (#2953)
+  * fix(ci): add imageTag parameter for prebuilt E2E (#2935)
+  * deps: bump github.com/gopacket/gopacket from 1.7.4 to 1.7.5
+    (#2941)
+  * deps: bump github.com/onsi/ginkgo/v2 from 2.33.1 to 2.34.0
+    (#2939)
+  * docs: add blog section to Retina website (#2937)
+
+-------------------------------------------------------------------
+Wed Nov 11 06:02:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.2:
+  * deps: bump the aws-sdk group with 2 updates (#2932)
+  * docs: Clarify namespace and selector usage in capture CLI
+    documentation (#2919)
+  * deps: bump golang.org/x/sync from 0.24.0 to 0.25.0 (#2933)
+  * feat(capture): update capture targets (#2926)
+  * deps: pin krb5,  popt, zlib dependencies to fix security issues
+    (#2928)
+  * feat(ci): support E2E validation with prebuilt images (#2878)
+  * deps: bump github.com/prometheus/common from 0.73.0 to 0.73.1
+    (#2923)
+  * fix: Update golang.org/crypto and go-jose dependencies (#2925)
+  * deps: bump github.com/spf13/pflag from 1.0.10 to 1.1.0 (#2922)
+  * fix: upgrade golang.org/x/net to v0.62.0 (#2905)
+  * fix(ci): install pinned LLVM without Chocolatey (#2918)
+  * deps: bump google.golang.org/grpc from 1.84.0 to 1.85.0 (#2912)
+  * deps: bump github.com/prometheus/common from 0.72.1 to 0.73.0
+    (#2911)
+  * deps: bump the golang-base group across 7 directories with 1
+    update (#2900)
+  * deps: bump qs from 6.15.3 to 6.15.4 in /site (#2913)
+  * deps: bump follow-redirects from 1.16.1 to 1.16.2 in /site
+    (#2914)
+  * deps: bump the aws-sdk group across 1 directory with 3 updates
+    (#2907)
+  * deps: bump github.com/aws/aws-sdk-go-v2 from 1.47.3 to 1.47.4
+    (#2908)
+  * fix(windows): report native eBPF registration error instead of
+    syscall last-error (#2909)
+  * deps: bump github.com/aws/aws-sdk-go-v2/service/s3 from 1.114.3
+    to 1.114.4 in the aws-sdk group (#2903)
+  * deps: bump the azurelinux-base group across 4 directories with
+    2 updates (#2901)
+  * deps: bump the windows-base group across 3 directories with 2
+    updates (#2902)
+  * deps: bump body-parser from 1.20.6 to 1.20.9 in /site (#2897)
+  * deps: bump postcss-selector-parser from 6.1.4 to 6.1.5 in /site
+    (#2896)
+  * deps: bump fast-uri from 3.1.8 to 3.1.9 in /site (#2895)
+  * deps: bump oss/go/microsoft/golang from `d104fef` to `d104fef`
+    in /controller in the golang-base group across 1 directory
+    (#2892)
+  * deps: bump github.com/Microsoft/hcsshim from 0.14.1 to 0.15.0
+    (#2891)
+
+-------------------------------------------------------------------
 Sat Oct 24 18:06:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.3.1:

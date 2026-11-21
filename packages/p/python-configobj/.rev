@@ -211,4 +211,13 @@ Refers only to the license available at http://www.voidspace.org.uk/python/licen
     <comment></comment>
     <requestid>1243049</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>df58c31c47031061c98630c92384c1a7</srcmd5>
+    <version>5.0.9</version>
+    <time>1793990018</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-112300: Avoid ReDOS in section parsing. (bsc#1286097)
+  * Add patch CVE-2026-112300.patch</comment>
+    <requestid>1395072</requestid>
+  </revision>
 </revisionlist>

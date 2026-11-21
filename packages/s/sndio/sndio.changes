@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 16 10:49:10 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 1.11.0:
+  * Bump shared library major version to 9 (libsndio9) due to
+    extended display strings and control names in struct
+    sioctl_desc.
+  * aucat: Use reallocarray from libbsd.
+  * aucat: Factor channel join and expand routines.
+  * sndiod: Identify MIDI ports by names instead of indices on the
+    wire and support midithru control with sndioctl.
+  * sndiod: Drop dead code and simplify hello message handling and
+    Unix socket binding.
+  * sndiod: Add dynamic mode settings via server.mode control.
+  * libsndio: Add sio_onxrun(3) to report buffer underruns.
+  * libsndio: Preserve POLLERR bits and improve error handling.
+- Packaging changes:
+  * Rename libsndio7 to libsndio9 per shared library policy.
+  * Remove obsolete --with-libbsd configure flag (libbsd is default
+    on Linux).
+  * Fix configure script hardcoding version=1.10.0 so that
+    sndio.pc advertises version 1.11.0.
+  * Explicitly specify --mandir=%{_mandir} in configure.
+  * Drop obsolete Group tags.
+  * Add explicit BuildRequires for gcc and make.
+
+-------------------------------------------------------------------
 Tue Mar 11 16:05:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.10.0:

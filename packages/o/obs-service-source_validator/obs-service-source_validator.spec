@@ -39,7 +39,11 @@ Requires:       %{build_pkg_name}
 Requires:       bzip2
 Requires:       diffutils
 Requires:       patch
+%if 0%{?fedora}
+Requires:       perl = 4:%{perl_version}
+%else
 Requires:       perl = %{perl_version}
+%endif
 Requires:       perl-TimeDate
 Requires:       unzip
 Requires:       xz

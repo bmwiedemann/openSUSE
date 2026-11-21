@@ -4,7 +4,7 @@
 
 --- xemacs-packages-20130822/xemacs-packages/tramp/lisp/tramp-compat.el
 +++ xemacs-packages-20130822/xemacs-packages/tramp/lisp/tramp-compat.el	2015-02-11 13:47:13.405517971 +0000
-@@ -55,6 +55,9 @@
+@@ -60,6 +60,9 @@
    (require 'trampver)
    (require 'tramp-loaddefs)
  
@@ -16,11 +16,11 @@
    (if (featurep 'xemacs)
 --- xemacs-packages-20130822/xemacs-packages/tramp/texi/tramp.texi
 +++ xemacs-packages-20130822/xemacs-packages/tramp/texi/tramp.texi	2022-08-18 14:15:43.434780366 +0000
-@@ -16,51 +16,19 @@
+@@ -17,55 +17,19 @@
  
  @include trampver.texi
  
--@c Macro for formatting a filename according to the respective syntax.
+-@c Macro for formatting a file name according to the respective syntax.
 -@c xxx and yyy are auxiliary macros in order to omit leading and
 -@c trailing whitespace.  Not very elegant, but I don't know it better.
 -
@@ -38,7 +38,9 @@
 -@ifclear x
 -\one\@w{}\two\@c
 -@end ifclear
+-@ifset x\one\
 -@clear x\one\
+-@end ifset
 -@end macro
 -
 -@macro trampfn {method, user, host, localname}
@@ -70,7 +72,9 @@
 -@ifclear x@c
 -\one\@w{}\two\@c
 -@end ifclear
--@clear x\one\@c
+-@ifset x\one\
+-@clear x\one\
+-@end ifset
 -@end macro
 -
 -@macro trampfn {method, user, host, localname}@c

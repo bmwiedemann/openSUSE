@@ -18,17 +18,17 @@
 
 %bcond_with test
 
-%define library_version 1.0.0
-%define library_soversion 0unstable
+%define library_version 1.1.2
+%define library_pkg 1_1
+%define library_soversion 1.1
 Name:           aws-c-io
-Version:        0.27.7
+Version:        1.1.2
 Release:        0
 Summary:        I/O and TLS package AWS SDK for C
 License:        Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/awslabs/aws-c-io
 Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
-Patch0:         aci_add-so-version.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
@@ -41,11 +41,13 @@ BuildRequires:  pkgconfig(libssl)
 This is a module for the AWS SDK for C. It handles all I/O
 and TLS work for application protocols.
 
-%package -n lib%{name}%{library_soversion}
+%package -n lib%{name}%{library_pkg}
 Summary:        Shared library files for aws-c-io library
 Group:          Development/Libraries/C and C++
+Provides:       lib%{name}0unstable = %{version}
+Obsoletes:      lib%{name}0unstable < %{version}
 
-%description -n lib%{name}%{library_soversion}
+%description -n lib%{name}%{library_pkg}
 This is a module for the AWS SDK for C. It handles all I/O
 and TLS work for application protocols.
 
@@ -54,7 +56,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-io library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion} = %{version}
+Requires:       lib%{name}%{library_pkg} = %{version}
 
 %description devel
 This is a module for the AWS SDK for C. It handles all I/O
@@ -68,7 +70,8 @@ This package contains the development files.
 %build
 %define __builder ninja
 %cmake \
-    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_PREFIX_PATH=%{_libdir}/cmake/aws-c-common/modules
 %make_jobs
 
 # Testsuite requires internet connection, so it won't work
@@ -81,10 +84,10 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %install
 %cmake_install
 
-%post -n lib%{name}%{library_soversion} -p /sbin/ldconfig
-%postun -n lib%{name}%{library_soversion} -p /sbin/ldconfig
+%post -n lib%{name}%{library_pkg} -p /sbin/ldconfig
+%postun -n lib%{name}%{library_pkg} -p /sbin/ldconfig
 
-%files -n lib%{name}%{library_soversion}
+%files -n lib%{name}%{library_pkg}
 %doc README.md
 %license LICENSE
 %{_libdir}/lib%{name}.so.%{library_soversion}
@@ -93,6 +96,8 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %files devel
 %{_libdir}/cmake/%{name}/
 %{_libdir}/lib%{name}.so
-%{_includedir}/*
+%dir %{_includedir}/aws/io
+%{_includedir}/aws/io/*
+%{_includedir}/aws/testing/*
 
 %changelog

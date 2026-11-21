@@ -170,4 +170,16 @@
         Gianni Ceccarelli)</comment>
     <requestid>1291923</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>971ce7a93b92c1f09ed92750d4511557</srcmd5>
+    <version>0.730.0</version>
+    <time>1793817820</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.730.0 (0.73)
+   see /usr/share/doc/packages/perl-Test-Differences/Changes
+  0.73   2026-10-03
+      - Changes to tests only, to cope with changes to how line numbers
+        are reported in what will become perl 5.46 (thanks to Richard Leach)</comment>
+    <requestid>1394690</requestid>
+  </revision>
 </revisionlist>

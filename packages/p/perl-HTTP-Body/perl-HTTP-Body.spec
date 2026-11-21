@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Body
 Name:           perl-HTTP-Body
-Version:        1.240.0
+Version:        1.250.0
 Release:        0
-# 1.24 -> normalize -> 1.240.0
-%define cpan_version 1.24
+# 1.25 -> normalize -> 1.250.0
+%define cpan_version 1.25
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP Body Parser
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -49,7 +49,9 @@ Provides:       perl(HTTP::Body::XFormsMultipart) = %{version}
 %description
 HTTP::Body parses chunks of HTTP POST data and supports
 application/octet-stream, application/json,
-application/x-www-form-urlencoded, and multipart/form-data.
+application/x-www-form-urlencoded, multipart/form-data, and XForms
+submissions (multipart/related and application/xml). A body of any other
+content type is handled like application/octet-stream.
 
 Chunked bodies are supported by not passing a length value to new().
 

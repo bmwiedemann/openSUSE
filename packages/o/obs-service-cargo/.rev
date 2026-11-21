@@ -1276,4 +1276,14 @@ packages. This library is fasted, easier to maintain and easier for a user to co
     <comment>1</comment>
     <requestid>1379799</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>12d0256fcf1f282f4fbdced87a5d81ab</srcmd5>
+    <version>7.3.0</version>
+    <time>1794932494</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.3.0:
+  * Update dependencies
+</comment>
+    <requestid>1398168</requestid>
+  </revision>
 </revisionlist>

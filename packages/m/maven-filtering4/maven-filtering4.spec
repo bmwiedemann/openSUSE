@@ -1,7 +1,7 @@
 #
 # spec file for package maven-filtering4
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,15 @@
 
 %global base_name maven-filtering
 %global version_suffix 4
-%global file_version 4.0.0-beta-2-SNAPSHOT
+%global file_version 4.0.0-beta-2
 Name:           %{base_name}%{version_suffix}
-Version:        4.0.0~20260707.git2d20dde
+Version:        4.0.0~beta2
 Release:        0
 Summary:        Shared component providing resource filtering
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/%{name}/index.html
-Source0:        %{base_name}-%{version}.tar.xz
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{base_name}/%{file_version}/%{base_name}-%{file_version}-source-release.zip
 Source1:        %{name}-build.xml
 Patch0:         %{name}-java8compat.patch
 Patch1:         0001-Be-gracious-with-binary-files-among-the-resources-to.patch
@@ -39,6 +39,7 @@ BuildRequires:  plexus-build-api0
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
 BuildRequires:  slf4j
+BuildRequires:  unzip
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.shared:maven-shared-components:pom:)
@@ -57,7 +58,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{version}
+%setup -q -n %{base_name}-%{file_version}
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
 %patch -P 1 -p1

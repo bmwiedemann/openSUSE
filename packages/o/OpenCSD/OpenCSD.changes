@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 13 15:49:36 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.8.4:
+  * Update: build: Add itm headers to installation. (github #94)
+  * Bugfix: opencsd: etm4: Fix handling of invalid TRACE_INFO
+    packet. (github #93)
+
+-------------------------------------------------------------------
 Thu Jul  9 09:39:52 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 1.8.3:

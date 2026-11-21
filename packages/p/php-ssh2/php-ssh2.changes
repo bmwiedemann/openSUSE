@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov 14 19:35:02 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.6.0:
+  * Fix: SFTP path corruption for root-path URLs
+  * Add SHA-256 and raw host key inspection
+  * Fix: Fix concurrent SSH authentication state and redact secrets
+  * PHP 8.6 compatibility: use zval_ptr_dtor_nogc instead of zval_dtor
+    alias
+  * PHP 8.6 compatibility: Replace zval_is_true
+  * Fix PHP 8.1 Windows CI - missed check in PR #89
+  * Add timeout to close path
+  * Fix: correct SSH2 shell and exec environments
+  * Fix: preserve SSH2 resource and stream lifecycles
+- Allow building with php7
+  + ssh2-php7.patch
+
+-------------------------------------------------------------------
 Fri Apr 17 07:45:28 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to 1.5.0:

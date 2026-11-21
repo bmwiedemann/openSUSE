@@ -18,10 +18,10 @@
 
 %define cpan_name Mail-SPF
 Name:           perl-Mail-SPF
-Version:        3.202.603.310
+Version:        3.202.611.50
 Release:        0
-# 3.20260331 -> normalize -> 3.202.603.310
-%define cpan_version 3.20260331
+# 3.20261105 -> normalize -> 3.202.611.50
+%define cpan_version 3.20261105
 License:        BSD-3-Clause
 Summary:        An object-oriented implementation of Sender Policy Framework
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -33,17 +33,21 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Error)
+BuildRequires:  perl(Net::DNS::DomainName)
+BuildRequires:  perl(Net::DNS::Packet)
 BuildRequires:  perl(Net::DNS::RR)
 BuildRequires:  perl(Net::DNS::Resolver)
 BuildRequires:  perl(Net::DNS::Resolver::Programmable)
 BuildRequires:  perl(NetAddr::IP)
 BuildRequires:  perl(URI::Escape) >= 1.130
 Requires:       perl(Error)
+Requires:       perl(Net::DNS::DomainName)
+Requires:       perl(Net::DNS::Packet)
 Requires:       perl(Net::DNS::Resolver)
 Requires:       perl(NetAddr::IP)
 Requires:       perl(URI::Escape) >= 1.130
 Provides:       perl(Mail::SPF) = %{version}
-Provides:       perl(Mail::SPF::Base)
+Provides:       perl(Mail::SPF::Base) = %{version}
 Provides:       perl(Mail::SPF::EAbstractClass)
 Provides:       perl(Mail::SPF::EClassMethod)
 Provides:       perl(Mail::SPF::EDNSError)
@@ -77,25 +81,25 @@ Provides:       perl(Mail::SPF::ETermIPv4PrefixLengthExpected)
 Provides:       perl(Mail::SPF::ETermIPv6AddressExpected)
 Provides:       perl(Mail::SPF::ETermIPv6PrefixLengthExpected)
 Provides:       perl(Mail::SPF::EUnexpectedTermObject)
-Provides:       perl(Mail::SPF::Exception)
+Provides:       perl(Mail::SPF::Exception) = %{version}
 Provides:       perl(Mail::SPF::GlobalMod)
-Provides:       perl(Mail::SPF::MacroString)
-Provides:       perl(Mail::SPF::Mech)
-Provides:       perl(Mail::SPF::Mech::A)
-Provides:       perl(Mail::SPF::Mech::All)
-Provides:       perl(Mail::SPF::Mech::Exists)
-Provides:       perl(Mail::SPF::Mech::IP4)
-Provides:       perl(Mail::SPF::Mech::IP6)
-Provides:       perl(Mail::SPF::Mech::Include)
-Provides:       perl(Mail::SPF::Mech::MX)
-Provides:       perl(Mail::SPF::Mech::PTR)
-Provides:       perl(Mail::SPF::Mod)
-Provides:       perl(Mail::SPF::Mod::Exp)
-Provides:       perl(Mail::SPF::Mod::Redirect)
+Provides:       perl(Mail::SPF::MacroString) = %{version}
+Provides:       perl(Mail::SPF::Mech) = %{version}
+Provides:       perl(Mail::SPF::Mech::A) = %{version}
+Provides:       perl(Mail::SPF::Mech::All) = %{version}
+Provides:       perl(Mail::SPF::Mech::Exists) = %{version}
+Provides:       perl(Mail::SPF::Mech::IP4) = %{version}
+Provides:       perl(Mail::SPF::Mech::IP6) = %{version}
+Provides:       perl(Mail::SPF::Mech::Include) = %{version}
+Provides:       perl(Mail::SPF::Mech::MX) = %{version}
+Provides:       perl(Mail::SPF::Mech::PTR) = %{version}
+Provides:       perl(Mail::SPF::Mod) = %{version}
+Provides:       perl(Mail::SPF::Mod::Exp) = %{version}
+Provides:       perl(Mail::SPF::Mod::Redirect) = %{version}
 Provides:       perl(Mail::SPF::PositionalMod)
-Provides:       perl(Mail::SPF::Record)
-Provides:       perl(Mail::SPF::Request)
-Provides:       perl(Mail::SPF::Result)
+Provides:       perl(Mail::SPF::Record) = %{version}
+Provides:       perl(Mail::SPF::Request) = %{version}
+Provides:       perl(Mail::SPF::Result) = %{version}
 Provides:       perl(Mail::SPF::Result::Error)
 Provides:       perl(Mail::SPF::Result::Fail)
 Provides:       perl(Mail::SPF::Result::Neutral)
@@ -105,13 +109,13 @@ Provides:       perl(Mail::SPF::Result::Pass)
 Provides:       perl(Mail::SPF::Result::PermError)
 Provides:       perl(Mail::SPF::Result::SoftFail)
 Provides:       perl(Mail::SPF::Result::TempError)
-Provides:       perl(Mail::SPF::SenderIPAddrMech)
-Provides:       perl(Mail::SPF::Server)
-Provides:       perl(Mail::SPF::Term)
+Provides:       perl(Mail::SPF::SenderIPAddrMech) = %{version}
+Provides:       perl(Mail::SPF::Server) = %{version}
+Provides:       perl(Mail::SPF::Term) = %{version}
 Provides:       perl(Mail::SPF::UnknownMod)
-Provides:       perl(Mail::SPF::Util)
-Provides:       perl(Mail::SPF::v1::Record)
-Provides:       perl(Mail::SPF::v2::Record)
+Provides:       perl(Mail::SPF::Util) = %{version}
+Provides:       perl(Mail::SPF::v1::Record) = %{version}
+Provides:       perl(Mail::SPF::v2::Record) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 

@@ -17,7 +17,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xgrammar
-Version:        0.2.8
+Version:        0.2.9
 Release:        0
 Summary:        Efficient, Flexible and Portable Structured Generation
 License:        Apache-2.0
@@ -79,7 +79,7 @@ export CMAKE_GENERATOR=Ninja
 # links against apache-tvm-ffi correctly) before importing the public API.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -B -c "import xgrammar; from xgrammar import Grammar, GrammarCompiler, CompiledGrammar"
 
-%files %{python_files}
+%files %python_files
 %license LICENSE NOTICE
 %doc README.md
 %{python_sitearch}/xgrammar

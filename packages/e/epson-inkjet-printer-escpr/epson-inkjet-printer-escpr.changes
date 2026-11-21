@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 09:48:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.10:
+  * Supported new models.
+- include license
+
+-------------------------------------------------------------------
 Wed Apr  9 19:28:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix Factory submission by actually dropping bug_x86_64.patch
@@ -36,7 +43,7 @@ Mon Jan 18 20:37:51 UTC 2021 - antoine.belvire@opensuse.org
   * Supported new model:
     + Epson-EP-713A_Series
     + Epson-EP-813A_Series
-  * Fixed an issue of filter crash when FIFO I/O was closed. 
+  * Fixed an issue of filter crash when FIFO I/O was closed.
 - Rebased bug_x86_64.patch.
 
 -------------------------------------------------------------------
@@ -154,7 +161,7 @@ Fri Oct 14 22:44:29 UTC 2016 - nico.kruber@gmail.com
 
 - Upgraded to 1.6.9
   * Supported new models
-  * Fixed a problem that Saturation value wasn't reflected 
+  * Fixed a problem that Saturation value wasn't reflected
     when using the lpr command
 - Upgraded to 1.6.8
   * Supported new models

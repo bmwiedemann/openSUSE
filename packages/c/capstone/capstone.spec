@@ -19,13 +19,14 @@
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %define sover   5
 Name:           capstone
-Version:        5.0.6
+Version:        5.0.9
 Release:        0
 Summary:        A multi-platform, multi-architecture disassembly framework
 License:        BSD-3-Clause
-Group:          Development/Tools/Building
 URL:            https://www.capstone-engine.org
 Source:         https://github.com/capstone-engine/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM capstone-m68k-insn-name-off-by-one.patch https://github.com/capstone-engine/capstone/commit/7441aee2280516042561035ebca99a600c66d57d
+Patch0:         capstone-m68k-insn-name-off-by-one.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -43,14 +44,12 @@ disasm engine for binary analysis and reversing in the security community.
 
 %package -n libcapstone%{sover}
 Summary:        A multi-platform, multi-architecture disassembly framework
-Group:          System/Libraries
 
 %description -n libcapstone%{sover}
 Capstone is a disassembly framework.
 
 %package -n libcapstone-devel
 Summary:        Development files to build upon libcapstone
-Group:          Development/Libraries/C and C++
 Requires:       libcapstone%{sover} = %{version}
 
 %description -n libcapstone-devel
@@ -58,15 +57,13 @@ Development files to build upon libcapstone, C language only.
 
 %package -n libcapstone-devel-static
 Summary:        Static library for capstone
-Group:          Development/Libraries/C and C++
-Requires:       libcapstone-devel = %{version}
+Requires:       pkgconfig(capstone) = %{version}
 
 %description -n libcapstone-devel-static
 Statically linked libcapstone.
 
 %package doc
 Summary:        Documentation for capstone, a disassembly framework
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
@@ -74,7 +71,6 @@ Capstone is a multi-architecture disassembly framework.
 
 %package -n python3-capstone
 Summary:        Python bindings for the Capstone disassembly framework
-Group:          Development/Languages/Python
 BuildArch:      noarch
 
 %description -n python3-capstone
@@ -83,7 +79,7 @@ Capstone is a multi-architecture disassembly framework.
 This package contains the Capstone bindings for Python.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define __builder ninja

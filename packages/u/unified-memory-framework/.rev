@@ -38,4 +38,15 @@
     another pool</comment>
     <requestid>1274936</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7bea89bfed799d7d325226f7390314e4</srcmd5>
+    <version>1.3.0</version>
+    <time>1795022992</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0:
+- Rename the runtime package to libumf1 to match the new SONAME.
+- Recommend libtbbmalloc2 for the scalable pool and proxy library.
+- Correct the license to include the LLVM exception.</comment>
+    <requestid>1398141</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct 23 15:28:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.2:
+  * Upstream moved to the maintained grimler fork, tarball now
+    comes from SourceHut
+  * Support Odin protocol version 4
+  * Fix flashing firmware images larger than 3.5GB
+  * New --wait option waits for a device to appear (CLI and GUI)
+  * New --skip-size-check option; the file size is now checked
+    against the partition size before flashing
+  * Fix segfault when flashing with a partition identifier
+  * Fix total-bytes packet overflow on 32-bit platforms
+  * libpit: document more PIT header fields (UFS type, LUN count)
+  * Frontend ported to Qt6
+  * udev rules switched to uaccess tags
+  * This package is not affected by CVE-2026-57209 (boo#1271956):
+    the flaw is in proxy/request_context.go of a namesake Go
+    reverse proxy, this package ships C++/Qt sources only
+  * This package is not affected by CVE-2026-57210 (boo#1271957):
+    same namesake Go project, no such code is shipped here
+- Modernize spec file: cmake_build/cmake_install macros, Qt6
+  build requirements, license file packaged, dead rpmlintrc
+  filters dropped
+
+-------------------------------------------------------------------
 Fri Jan 19 12:21:23 UTC 2018 - jengelh@inai.de
 
 - Replace %__-type macro indirections.

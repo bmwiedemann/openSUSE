@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Patch1:         fix-build.patch
 Patch2:         add-missing-include.patch
 # PATCH-FIX-OPENSUSE
 Patch3:         0001-Fix-failing-build-due-to-missing-iomanip.h-include.patch
+# PATCH-FIX-UPSTREAM cura-engine-find-stb_image_h.patch -- look for stb/stb_image.h instead of deprecated stb_image_resize.h
+Patch4:         cura-engine-find-stb_image_h.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gmock

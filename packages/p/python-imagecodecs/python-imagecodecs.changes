@@ -2,6 +2,7 @@
 Sun Oct 25 22:41:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.10.10:
+  * (CVE-2026-120251, bsc#1289035, CVE-2026-120252, bsc#1289036)
   * Reject 0-D input to array codecs (#151, breaking).
   * Reject bitspersample outside dtype range (breaking).
   * Reject dtype too wide for bitspersample (#153, breaking).

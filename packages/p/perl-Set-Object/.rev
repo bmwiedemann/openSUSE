@@ -265,4 +265,17 @@
 </comment>
     <requestid>1269394</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d1901db0ee62717d95f341ef666e8fa2</srcmd5>
+    <version>1.430.0</version>
+    <time>1794090808</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.430.0 (1.43)
+   see /usr/share/doc/packages/perl-Set-Object/Changes.pod
+  1.43, 2025-09-08
+    - pinact run -u
+    - improve make release
+    - minor XS cleanup for -Wunused-variable</comment>
+    <requestid>1396033</requestid>
+  </revision>
 </revisionlist>

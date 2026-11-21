@@ -39,7 +39,7 @@ BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-util
 BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-metadata-generator-ant
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-plexus

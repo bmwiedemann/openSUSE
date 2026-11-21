@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 07:56:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 2.7.0:
+  * make ADDITIONAL_MODULES compatible with white spaces
+  * Modernize for Go 1.27
+  * Switch to io stdlib and remove last dependency on github.com/mssola/capture
+  * Check for error before using the result (avoids a null pointer crash)
+  * Fix file descriptor leaks
+  * Modernize test suite
+
+-------------------------------------------------------------------
 Thu Aug 20 09:33:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 2.6.0:

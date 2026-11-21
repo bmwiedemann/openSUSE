@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:21:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Add multibuild "extras" flavour to build modules with picocli
+  dependency (debugger, tools, preflight, examples) separately
+- Generate pdfbox, pdfbox-debugger and pdfbox-preflight executables
+  in the extras flavour
+- Require apache-pdfbox-jbig2 and add it to script classpaths
+
+-------------------------------------------------------------------
+Thu Nov 12 10:48:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.0.8
+  * Changes of 3.0.x:
+    - Split io module into separate artifact pdfbox-io
+    - Dropped JAXB dependency
+    - Added picocli and commons-io dependencies for debugger and
+      tools
+  * Removed patch:
+    - pdfbox-CVE-2026-33929.patch
+      + fixed upstream in 3.0.8 (PDFBOX-6180)
+
+-------------------------------------------------------------------
 Tue Apr 14 09:47:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

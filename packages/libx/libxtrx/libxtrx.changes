@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 14 08:36:22 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Disable xtrx_fft also for Leap 16.1.
+
+-------------------------------------------------------------------
 Fri Jan  9 16:41:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Use %ldconfig_scriptlets

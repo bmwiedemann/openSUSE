@@ -18,10 +18,10 @@
 
 %define cpan_name Mozilla-CA
 Name:           perl-Mozilla-CA
-Version:        20261020.0.0
+Version:        20261105.0.0
 Release:        0
-# 20261020 -> normalize -> 20261020.0.0
-%define cpan_version 20261020
+# 20261105 -> normalize -> 20261105.0.0
+%define cpan_version 20261105
 #Upstream: SUSE-Public-Domain
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
 Summary:        Mozilla's CA cert bundle in PEM format

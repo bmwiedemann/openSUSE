@@ -18,3 +18,5 @@
 #skip_noarch: 1
 #custom_build: -
 #./Build build flags=%{?_smp_mflags} --myflag
+# 'ChangeLog' has older entries, and 'Changes' contains the recent ones
+changesfile: Changes

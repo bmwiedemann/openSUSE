@@ -872,4 +872,12 @@ update to 9.6.20</comment>
   * Removed redirects from recommended dependencies</comment>
     <requestid>1392494</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>526e3540398a4a8d7e887e6401158987</srcmd5>
+    <version>9.8.1</version>
+    <time>1794317969</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396375</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package lz4
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,19 @@
 
 %define lname	liblz4-1
 Name:           lz4
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        Hash-based Predictive Lempel–Ziv compressor
 License:        BSD-2-Clause AND GPL-2.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://lz4.github.io/lz4/
-
 #Git-Clone:	https://github.com/lz4/lz4
 Source:         https://github.com/lz4/lz4/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch2:         lz-export.diff
-BuildRequires:  pkgconfig
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  pkg-config
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -44,7 +43,7 @@ This subpackage provides a GPL command-line utility to make use of
 the LZ4 algorithm.
 
 %package -n %lname
-Summary:        Hash-based predictive Lempel-Ziv compressor
+Summary:        Hash-based predictive Lempel–Ziv compressor
 License:        BSD-2-Clause
 Group:          System/Libraries
 
@@ -52,6 +51,7 @@ Group:          System/Libraries
 LZ4 is a lossless data compression algorithm that is focused on
 compression and decompression speed. It belongs to the LZ77
 (Lempel–Ziv) family of byte-oriented compression schemes. It is a
+LZP2 fork and provides better compression ratio for text files.
 
 This subpackage contains the (de)compressor code as a shared library.
 
@@ -65,6 +65,7 @@ Requires:       %lname = %version
 LZ4 is a lossless data compression algorithm that is focused on
 compression and decompression speed. It belongs to the LZ77
 (Lempel–Ziv) family of byte-oriented compression schemes. It is a
+LZP2 fork and provides better compression ratio for text files.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of liblz4.
@@ -73,22 +74,22 @@ applications that want to make use of liblz4.
 %autosetup -p1
 
 %build
-%define __sourcedir build/cmake
-%cmake \
-  -DBUILD_STATIC_LIBS:BOOL=OFF
+cd build/cmake/
+%cmake -DBUILD_STATIC_LIBS:BOOL=OFF
 %cmake_build
 
 %install
+cd build/cmake/
 %cmake_install
-%fdupes %{buildroot}/%{_mandir}
+LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
+%fdupes %buildroot/%_mandir
 
 %check
-LD_LIBRARY_PATH="%buildroot/%_libdir" ldd -r "%buildroot/%_bindir/lz4"
+cd build/cmake/
 # TS fails on its own help output
 %make_build check -k || :
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/lz4*

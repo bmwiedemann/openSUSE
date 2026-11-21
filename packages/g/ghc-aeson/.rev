@@ -486,4 +486,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>1358326</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>88611b9f7fd72d26bd1970133a986f1b</srcmd5>
+    <version>2.2.5.1</version>
+    <time>1793990889</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1395507</requestid>
+  </revision>
 </revisionlist>

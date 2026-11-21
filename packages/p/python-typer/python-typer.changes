@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  9 20:15:48 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to 0.29.0
+  * Use Pydantic for parameter validation.
+  * Ensure that the default option name is not changed by setting a
+    metavar.
+- We do not include the Typer skill as Library Skills won't look
+  in the place it would be installed to.
+
+-------------------------------------------------------------------
 Mon Oct 19 05:38:49 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - Update to 0.27.3

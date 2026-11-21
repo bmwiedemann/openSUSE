@@ -1,4 +1,129 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:22:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.32.0:
+  https://istio.io/latest/news/releases/1.32.x/announcing-1.32/
+  https://istio.io/latest/news/releases/1.32.x/announcing-1.32/change-notes/
+  * Fixed istioctl install and istioctl manifest generate rejecting
+    the cni.ambient.enablementSelectors,
+    cni.ambient.shareHostNetworkNamespace and
+    cni.ambient.enableAmbientDetectionRetry values. The istio-cni
+    chart supports them, but they were missing from the
+    IstioOperator values schema, so they could only be set by
+    installing the chart directly with Helm. (Issue #61180)
+  * Improved istioctl analyze error reporting when an explicitly
+    specified --meshConfigFile cannot be read or parsed.
+  * Updated minimum supported Kubernetes version to 1.33.x.
+  * Fixed istioctl skipping verification of the istiod certificate
+    when connecting to xDS with a service account token (istioctl
+    proxy-status, istioctl x internal-debug, and --xds-address in
+    general). istioctl now verifies the server against the Istio
+    root certificate from the istio-ca-root-cert ConfigMap and the
+    expected server name: --authority if set, the host of
+    --xds-address if it is a DNS name, or
+    istiod.<istio-namespace>.svc when connecting to an IP address
+    or localhost. Pass --insecure (or set ISTIOCTL_INSECURE=true)
+    to explicitly skip verification. (Issue #41937)
+  * Fixed istioctl analyze building Kubernetes clients directly
+    from istio-system multicluster secrets without sanitizing the
+    kubeconfig, which could allow a crafted secret to run an exec
+    credential plugin (or read local files via other unsafe auth
+    fields) on the machine running istioctl. The kubeconfig is now
+    sanitized the same way istiod already sanitizes these secrets.
+  * Fixed istioctl install --set
+    values.base.validationFailurePolicy being rejected as an
+    unknown field. The value was already supported by the base and
+    istiod charts, but was missing from the operator’s
+    values_types.proto schema.
+  * Fixed istioctl bug-report crashing when an include or exclude
+    filter has too many fields.
+  * Fixed istioctl bug-report --duration not filtering logs when
+    used without --end-time.
+  * Fixed istioctl install --set not supporting several Helm chart
+    values that were missing from the operator’s values_types.proto
+    schema. The following values can now be set:
+    cni.terminationGracePeriodSeconds, cni.updateStrategy,
+    cni.seLinuxOptions, cni.tolerations, pilot.initContainers,
+    pilot.pdb, pilot.deploymentAnnotations,
+    pilot.sidecarInjectorWebhookAnnotations,
+    pilot.trustedZtunnelName, global.proxy_init.forceApplyIptables
+    and global.waypoint.tolerations.
+  * Fixed istioctl manifest translate writing unquoted values from
+    IstioOperator input (such as namespace and release name) into
+    generated install shell scripts. Crafted values could inject
+    additional shell commands when those scripts were run.
+    Arguments are now escaped with shellescape.Quote.
+  * Fixed istioctl analyze so VirtualService references to
+    Kubernetes Gateway API Gateway resources no longer produce
+    false ReferencedResourceNotFound errors. (Issue #60708)
+
+-------------------------------------------------------------------
+Sat Nov  7 16:39:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.31.4:
+  https://istio.io/latest/news/security/istio-security-2026-009/
+  * Istio CVEs
+    - GHSA-rr2c-p22p-6r9r (CVSS score 8.2, High): In ambient mode,
+      an operator-precedence error let a port-level STRICT
+      PeerAuthentication be skipped when the workload mode was
+      PERMISSIVE or DISABLE under a mesh-wide STRICT policy,
+      allowing plaintext traffic to reach a port that required
+      mTLS. Credit: This vulnerability was discovered and reported
+      by Ravikanth Reddy.
+    - GHSA-7m6f-j3gp-2r53 (CVSS score 6.5, Moderate): An
+      AuthorizationPolicy when condition on
+      request.headers[:authority] or request.headers[host] was
+      matched case-sensitively, so a request with a
+      differently-cased host could bypass it. These conditions are
+      now matched case-insensitively, the same as hosts. Credit:
+      This vulnerability was discovered and reported by @akoul.
+    - GHSA-cxwg-46mx-q8hf (CVSS score 7.4, High): A new inbound
+      connection reusing the 4-tuple of a torn-down connection
+      could bypass the sidecar proxy by matching a stale conntrack
+      ESTABLISHED entry. A SYN-only rule is now evaluated ahead of
+      the ESTABLISHED divert rule in both iptables and nftables
+      modes. Credit: This vulnerability was discovered and reported
+      by @ramaraochavali, @akshayreddyb, @Pawan-Bishnoi, and
+      @deveshkandpal1224.
+    - GHSA-635j-qv98-9275 (CVSS score 7.7, High): Any workload with
+      a mesh identity could crash istiod by sending an
+      istio.io/debug xDS request whose resource name fails URL
+      parsing, leaving the control plane in a crash loop for the
+      whole mesh. The request is now rejected with InvalidArgument.
+      Credit: This vulnerability was discovered and reported by
+      Alon Lerner of Checkmarx Research.
+    - GHSA-8jw7-82jp-wr2c (CVSS score 6.3, Moderate): In ambient
+      mode, an AuthorizationPolicy with an empty to or from entry
+      that was not rejected by the validating webhook caused istiod
+      to crash and crash-loop until the policy was removed,
+      stopping config distribution for the whole mesh. Such entries
+      are now treated as an empty operation or source, matching the
+      sidecar behavior. Credit: This vulnerability was discovered
+      and reported by @r0binak.
+    - GHSA-gf6w-6mxv-5fj4 (CVSS score 6.3, Moderate): In
+      multicluster installations, a proxy could claim another
+      cluster’s CLUSTER_ID and receive that cluster’s kubernetes://
+      secrets over SDS. istiod no longer accepts a node metadata
+      CLUSTER_ID that differs from the cluster the proxy’s token
+      was validated against. Credit: This vulnerability was
+      discovered and reported by Yonghwa Lee (Xint by Theori).
+    - GHSA-77vw-rg85-wx5x (CVSS score 6.5, Moderate): ztunnel
+      panicked when parsing a 55-byte traceparent header that did
+      not contain four dash-separated fields, terminating the
+      inbound HBONE connection task and dropping every stream
+      multiplexed on that connection. Headers with the correct
+      length but an invalid field layout were also accepted instead
+      of rejected. Invalid traceparent headers are now ignored and
+      a new trace ID is generated. Credit: This vulnerability was
+      discovered and reported by @RaphaelFakhri.
+    - GHSA-9gqj-583v-mpqp (CVSS score 5.6, Moderate):
+      AuthorizationPolicy ipBlocks, notIpBlocks and the source.ip
+      condition on ambient waypoints, and on sidecars receiving
+      HBONE traffic, matched the Envoy internal listener address
+      instead of the client IP, so DENY rules on these fields could
+      fail open.
+
+-------------------------------------------------------------------
 Fri Oct 23 16:16:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.31.3:

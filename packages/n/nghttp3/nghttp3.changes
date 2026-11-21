@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  2 13:24:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.19.0:
+  * Extend minimum unsent bytes in anticipation of QMux
+  * Clamp glitch rate-limiter burst and check priority
+    field size, applying buffer limit early
+  * Fix map key removal on table resize failure, improve
+    map hasher and simplify insertion
+  * Fix balloc alignment
+  * Document NGHTTP3_ERR_INVALID_ARGUMENT for oversized
+    header block submissions
+  * Clean up QPACK opcode branching
+  * Fix fuzzer ASAN failure
+  * Extend test coverage for trailers in CONNECT streams
+- The library soname is unchanged at 9
+
+-------------------------------------------------------------------
 Mon Aug 24 18:07:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Add curl-impersonate.patch backporting backward compatible changes

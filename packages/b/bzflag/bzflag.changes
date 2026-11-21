@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Nov 16 18:50:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.4.32
+  * Support new miniupnpc API.
+  * Fix regression that caused drawInfo/LOD rendering issues.
+  * Fix joystick scaling.
+  * Fix joystick rumble setting.
+  * Work around GLEW issue on Wayland.
+  * Fix custom flags added via zoneflag in a zone.
+  * Add support for per-face ricochet on pyramids.
+  * Fix flag types disappearing when used in world weapons.
+  * Resolved a memory leak in the c-ares DNS resolution handler.
+  * Fix client hang if window resized to be very narrow.
+  * Fix Out-of-Bounds Heap Write in Flag Handlers.
+  * Fix TCP length overrun in NetHandler.
+  * Fix image size overflow in MediaFile::readImage.
+  * Fix texture download allow list bypass.
+
+-------------------------------------------------------------------
 Sat Apr 19 08:46:08 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.4.30

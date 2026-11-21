@@ -1,7 +1,7 @@
 #
 # spec file for package qtkeychain-qt5
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           qtkeychain-qt5
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        A password store library
 License:        BSD-2-Clause
@@ -31,7 +31,7 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  cmake(Qt5Test)
-BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 
 %description
 qtkeychain can be used to store passwords.

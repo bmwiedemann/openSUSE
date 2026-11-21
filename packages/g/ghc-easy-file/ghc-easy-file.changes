@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov  3 06:17:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update easy-file to version 0.2.6.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Mon May  1 07:15:52 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update easy-file to version 0.2.5.

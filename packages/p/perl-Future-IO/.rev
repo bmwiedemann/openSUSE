@@ -71,4 +71,41 @@
              `-&gt;sysread` and `-&gt;syswrite`</comment>
     <requestid>1301452</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>39ed6e649976b237a0024a4b9bbbf2cf</srcmd5>
+    <version>0.230.0</version>
+    <time>1794090806</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.230.0 (0.23)
+   see /usr/share/doc/packages/perl-Future-IO/Changes
+  0.23    2026-03-12
+          [CHANGES]
+           * Improved performance of ImplBase's timer queue implementation
+           * Also probe for KQueue implementation on OpenBSD and Darwin
+          [BUGFIXES]
+           * Fixed handling of `O_NONBLOCK` flag on default impl
+           * Ensure that `-&gt;poll` enqueued during another `-&gt;poll` in default
+             impl is not immediately invoked
+  0.22    2026-02-27
+          [CHANGES]
+           * Document that you should always `poll` for at least one of the
+             `POLLIN`, `POLLOUT` or `POLLPRI` flags
+           * Provide optional base implementation methods for handling an
+             alarm+sleep timer queue, to reduce code duplication
+           * Probe for `Future::IO::Impl::KQueue` on FreeBSD
+          [BUGFIXES]
+           * Make sure to actually load the `POSIX` module to get its constants
+           * Skip over probed impl modules that do not support the `poll` method
+  0.21    2026-02-26
+          [CHANGES]
+           * Much improved default internal implementation:
+              - Supports -&gt;poll with `POLLPRI`
+              - Supports -&gt;poll on multiple filehandles at once
+          [BUGFIXES]
+           * Need to `-&gt;poll` for both `POLLOUT` and `POLLPRI` while waiting for
+             `-&gt;connect`; this may make it work on Windows
+  0.20    2026-02-10
+          [CHANGES]</comment>
+    <requestid>1396031</requestid>
+  </revision>
 </revisionlist>

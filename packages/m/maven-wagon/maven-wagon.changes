@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 13 12:14:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the plexus-metadata-generator ant task instead of the command
+  line tool
+
+-------------------------------------------------------------------
 Wed Feb 21 22:10:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Clean the spec file and simplify it a bit

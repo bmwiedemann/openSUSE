@@ -352,4 +352,12 @@
       slot `titlebar`, and empty previews have an empty title (forwarded request 1382399 from develop7)</comment>
     <requestid>1382400</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>dcdf20258fd8fddc57406d94a6cedd33</srcmd5>
+    <version>0.117.0</version>
+    <time>1794318219</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396468</requestid>
+  </revision>
 </revisionlist>

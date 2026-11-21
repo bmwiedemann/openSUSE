@@ -145,4 +145,24 @@
   + Updated translations.</comment>
     <requestid>1363135</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b60235dcc47e658dea26341c6d71d7bc</srcmd5>
+    <version>48.0+29</version>
+    <time>1794410986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 48.0+29:
+  * use Vala's SingleInstance attribute
+  * user: wrap accountservice access in local class
+  * monitor: delegate process updates from process monitor to memory and CPU
+    monitors
+  * monitor: split out process monitor
+  * monitor: make BackgroundMonitor a standard Usage.Monitor
+  * monitor: make GameMode support standard Usage.Monitor
+  * move main function to application
+  * restructure source tree to split ui from backend
+  * settings: move to wrapping instead of extending GSettings
+  * Updated translations.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1396860</requestid>
+  </revision>
 </revisionlist>

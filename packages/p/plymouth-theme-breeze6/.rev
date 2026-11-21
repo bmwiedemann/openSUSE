@@ -420,4 +420,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.8.2 (forwarded request 1393228 from krop)</comment>
     <requestid>1393354</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>668f27ba67d2cb4ab8e244a42f919882</srcmd5>
+    <version>6.8.3</version>
+    <time>1794590958</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.8.3</comment>
+    <requestid>1396817</requestid>
+  </revision>
 </revisionlist>

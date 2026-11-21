@@ -20,7 +20,7 @@
 %endif
 
 Name:           drmcru
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        Linux DRM/KMS custom resolution utility
 License:        GPL-3.0-or-later

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  3 22:15:10 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update keyring.
+
+-------------------------------------------------------------------
+Thu Oct 29 15:40:54 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Build compiler-rt builtins for wasm32-wasip1 and ship them in the clang-rpm,
+  so that clang can link wasm32-wasip1 binaries with a WASI sysroot.
+
+-------------------------------------------------------------------
 Sun Aug 23 13:52:04 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Remove soft limit on open files. Depending on the number of jobs,

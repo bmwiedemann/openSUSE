@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-default-settings
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,16 @@
 
 
 %define extra_version %{nil}
-
 Name:           systemd-default-settings
-URL:            https://github.com/openSUSE/systemd-default-settings
-Version:        0.10
+Version:        0.11
 Release:        0
 Summary:        Generic SUSE Customization of systemd defaults
 License:        GPL-2.0-or-later
-Group:          System/Base
+URL:            https://github.com/openSUSE/systemd-default-settings
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
-BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 Requires:       %{name}-branding = %{version}-%{release}
+BuildArch:      noarch
 
 %description
 This package overrides some of the upstream default settings which are
@@ -39,11 +37,10 @@ pulled in by the branding package instead.
 
 %package branding-SLE
 Summary:        SLE Specific Customization of systemd defaults
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Supplements:    packageand(%{name}:branding-SLE)
+Supplements:    (%{name} and branding-SLE)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}-%{release}
-Conflicts:      otherproviders(%{name}-branding)
 
 %description branding-SLE
 This package overrides some of the upstream default settings to make
@@ -51,11 +48,10 @@ them better suited for SLE distributions.
 
 %package branding-openSUSE
 Summary:        openSUSE Specific Customization of systemd defaults
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Supplements:    packageand(%{name}:branding-openSUSE)
+Supplements:    (%{name} and branding-openSUSE)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}-%{release}
-Conflicts:      otherproviders(%{name}-branding)
 
 %description branding-openSUSE
 This package overrides some of the upstream default settings to make
@@ -63,10 +59,10 @@ them better suited for openSUSE distributions.
 
 %package branding-upstream
 Summary:        Restore upstream systemd defaults
-Group:          System/Base
-Provides:       %{name}-branding = %{version}-%{release}
+Supplements:    (%{name} and branding-upstream)
 Conflicts:      %{name}
-Conflicts:      otherproviders(%{name}-branding)
+Conflicts:      %{name}-branding
+Provides:       %{name}-branding = %{version}-%{release}
 
 %description branding-upstream
 Installing this package restores some of the upstream default settings
@@ -75,18 +71,17 @@ package.
 
 %package branding-SLE-Micro
 Summary:        SLE-Micro Specific Customization of systemd defaults
-Group:          System/Base
 Requires:       %{name} = %{version}-%{release}
-Supplements:    packageand(%{name}:branding-SLE-Micro)
+Supplements:    (%{name} and branding-SLE-Micro)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}-%{release}
-Conflicts:      otherproviders(%{name}-branding)
 
 %description branding-SLE-Micro
 This package overrides some of the upstream default settings to make
 them better suited for SLE-Micro distributions.
 
 %prep
-%setup -q -n %name-%{version}%{extra_version}
+%setup -q -n %{name}-%{version}%{extra_version}
 
 %build
 
@@ -96,7 +91,7 @@ them better suited for SLE-Micro distributions.
 # Convert early drop-ins into regular ones on Factory (1699) and ALP (1600). The
 # removal of early drop-ins happens on these 2 distros only. SLE15/Leap15 (1500)
 # still relies one them.
-%if %{suse_version} >= 1600
+%if 0%{?suse_version} >= 1600
 find %{buildroot} -name __\*.conf -exec rename '.conf.d/__' '.conf.d/' {} \;
 %endif
 
@@ -110,22 +105,17 @@ find %{buildroot} -name \*-defaults-SLE-Micro.conf -printf "/%%P\n" >SLE-Micro.l
 # Reloading PID1 is probably not enough as some changes will require
 # service restarts or even a reboot. But it might be useful in a few
 # cases so...
-[ -x /usr/bin/systemctl ] &&
-	/usr/bin/systemctl daemon-reload || :
+[ -x %{_bindir}/systemctl ] &&
+	%{_bindir}/systemctl daemon-reload || :
 
 %files -f SUSE.list
-%defattr(-,root,root)
 
 %files branding-SLE -f SLE.list
-%defattr(-,root,root)
 
 %files branding-openSUSE -f openSUSE.list
-%defattr(-,root,root)
 
 %files branding-upstream
-%defattr(-,root,root)
 
 %files branding-SLE-Micro -f SLE.list -f SLE-Micro.list
-%defattr(-,root,root)
 
 %changelog

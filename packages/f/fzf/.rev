@@ -1417,4 +1417,32 @@ varienvironment able.
     <comment>1</comment>
     <requestid>1386650</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>02c6299313c5907e9b83941438e84319</srcmd5>
+    <version>0.75.0</version>
+    <time>1794236647</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.75.0
+  * Added {change,transform,bg-transform}-info-command actions (#4951)
+  * transform-nth and transform-with-nth (and their bg- variants) no longer
+   split the output at |
+  * change-nth and transform-nth now handle empty and invalid values the same
+    way as change-with-nth and transform-with-nth
+  * change-nth and change-with-nth now apply the value after the current one
+    in the |-separated list
+  * Fixed --no-sort being ignored in filter mode with --sync, --tac, or --bench (#4940)
+  * Fixed --walker=follow skipping a symlink in one --walker-root when its
+    target is an ancestor of another root (#4944)
+  * Fixed data races in the preview and the search result cache (#4947)
+  * Fixed O(n^2) action parsing in --listen. A single ~1 MB request could
+    block the server for ~30 s
+  * vim plugin: Fixed garbage text on screen in Neovim with set title when the
+    fzf command contains ANSI escape sequences (#4941)
+  * nushell: The completion integration now requires nushell 0.116.1 or above,
+    where an interactive completer can take the terminal through the
+    @interactive attribute (#4934)
+- remove deprecated &quot;Group&quot; fields
+</comment>
+    <requestid>1396180</requestid>
+  </revision>
 </revisionlist>

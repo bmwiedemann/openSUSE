@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  2 09:21:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.0
+  * Improvedd the quality vs. speed tradeoffs across all presets:
+  * ~5-8% improvement in cycle efficiency at similar quality levels
+  * ~10-11% run time reduction in multi-threaded mode
+  * Speed optimizations in MD pruning, RDOQ and coefficient cost,
+    MV cost and subpel search, loop filter parameter derivation,
+    and block copies
+  * Now runs anti-aliasing-aware screen content detection only on
+    I-frames in multi-threaded mode
+  * Added low-delay tile parallelism
+  * Added opt-in CBR pre-encode frame skipping
+  * Added screen content tools for RTC: IntraBC on I-frames and
+    palette on intra blocks of inter frames
+
+-------------------------------------------------------------------
 Fri Jul 17 11:44:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.2.0

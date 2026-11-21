@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %endif
 Name:           dd_rescue
-Version:        1.99.24
+Version:        1.99.25
 Release:        0
 Summary:        Data copying in the presence of I/O Errors
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -30,10 +30,6 @@ Source0:        https://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz
 Source1:        https://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
-# PATCH-FIX-OPENSUSE dd_rescue-ssp-strong.patch -- the libddr_lzo.po rule
-# appends basic -fstack-protector which downgrades the distro
-# -fstack-protector-strong from %%optflags; use strong instead
-Patch0:         dd_rescue-ssp-strong.patch
 BuildRequires:  lzop
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base

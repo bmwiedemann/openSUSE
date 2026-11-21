@@ -17,8 +17,8 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_145
-Version:        2.8.145
+%define lname	libgsoap-2_8_147
+Version:        2.8.147
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception

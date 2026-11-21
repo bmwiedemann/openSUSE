@@ -17,13 +17,14 @@
 
 
 Name:           python-oslo.log
-Version:        8.3.1
+Version:        8.3.2
 Release:        0
 Summary:        OpenStack log library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.log
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_log/oslo_log-%{version}.tar.gz
+BuildRequires:  %{python_module debtcollector >= 3.0.0}
 BuildRequires:  %{python_module eventlet >= 0.38.2}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.context >= 2.21.0}

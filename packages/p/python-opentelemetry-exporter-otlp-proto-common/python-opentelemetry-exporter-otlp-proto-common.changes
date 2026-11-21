@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:14:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.45.1: lockstep release with
+  opentelemetry-proto 1.45.1, no functional changes in this
+  package.
+
+-------------------------------------------------------------------
 Tue Sep 29 10:11:12 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.45.0

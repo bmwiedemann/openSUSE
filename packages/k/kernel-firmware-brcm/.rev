@@ -95,4 +95,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * [cypress]: Update firmware for cyfmac43455 SDIO</comment>
     <requestid>1381437</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24470b3b1a7c6c2ca15ee2e0d3061152</srcmd5>
+    <version>20261109</version>
+    <time>1794816368</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261109 (git commit 69e51bb26f3f):
+  * WHENCE: Link the Raspberry Pi 5B revD</comment>
+    <requestid>1396919</requestid>
+  </revision>
 </revisionlist>

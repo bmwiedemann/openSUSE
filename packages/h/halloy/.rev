@@ -489,4 +489,41 @@ Added:
     reduced from 10 to 8</comment>
     <requestid>1381973</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>193f0cc053dc8576632d3737bec1a41b</srcmd5>
+    <version>2026.10</version>
+    <time>1793991557</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.10:
+Added:
+  * SQLite history storage, with automatic migration of existing
+    gzip history as buffers are used and loading of history in
+    windows.
+  * Search buffer to search messages across all servers, channels
+    and queries, opened from the command bar, sidebar menu,
+    a nickname's context menu, the search key binding or /search
+  * Added buffer.text_input.upload_long_paste to automatically use
+    filehost in case pasted text is too long
+  * Pane title bar button and shortcut to scroll to the backlog
+    divider
+  * Condensed message gained support for summary via
+    buffer.server_messages.condense.format = &quot;summary&quot;
+  * Pressing Tab after /topic  fills in the current channel
+    topic for editing
+  * Highlight matches can be optionally named via the name property
+  * Notification and highlights matches sound property now accept
+    an array of sounds, in which case they'll be picked at random
+  * Right-clickable text in the server buffer now offers a context
+    menu
+  * Added Gopher(+s) / Gemini protocol schemes
+    (make links clickable)
+  * Added support for IPv6 literal links
+  * Focus mode can be entered with focus_down, focusing the
+    top-most visible message in the buffer
+  * Pressing Tab in the config editor inserts an indent, set by
+    config_editor.indent
+    (&quot;tab&quot; by default, or a positive integer from 1 to 8)
+  * Sidebar typing indicators for queries</comment>
+    <requestid>1395882</requestid>
+  </revision>
 </revisionlist>

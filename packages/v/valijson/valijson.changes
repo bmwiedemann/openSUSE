@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 11 05:46:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.4:
+  * Include double_parser.hpp in the bundled header in #255
+  * Support ipv6 format in #256
+  * Support hostname format in #257
+  * Fix implicit int64_t -> uint64_t conversions that trip up
+    -Wsign-conversion in #251
+  * Gate json11 adapter tests behind valijson_EXCLUDE_JSON11 in
+    #259
+  * Fix QtJsonAdapter int64 truncation in #258
+
+-------------------------------------------------------------------
 Wed Jul 22 06:33:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.3:

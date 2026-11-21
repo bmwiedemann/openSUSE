@@ -16,9 +16,9 @@
 #
 
 
-%define libname %{name}8
+%define libname %{name}11
 Name:           libdatovka
-Version:        0.7.4
+Version:        0.8.0
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
 License:        LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -26,6 +26,7 @@ Group:          System/Libraries
 URL:            https://www.datovka.cz/cs/pages/libdatovka.html
 Source0:        https://datovka.nic.cz/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://datovka.nic.cz/%{name}/%{name}-%{version}.tar.xz.sha256
+Patch:          0001-test-fix-ccache-builds.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
@@ -33,6 +34,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-tools
+BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(json-c)
 
 %description
@@ -64,6 +66,7 @@ developing applications that use %{name}.
 %build
 %configure \
 	--disable-static \
+	--enable-test \
 	--with-docbook-xsl-stylesheets=/usr/share/xml/docbook/stylesheet/nwalsh/current
 %make_build
 
@@ -74,6 +77,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
+
+%check
+make check
 
 %files -f %{name}.lang
 

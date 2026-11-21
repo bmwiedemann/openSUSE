@@ -26,7 +26,7 @@
 %endif
 
 Name:           c-ares%pkg_suffix
-Version:        1.34.8
+Version:        1.34.9
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -37,6 +37,8 @@ Source3:        c-ares.keyring
 Source4:        baselibs.conf
 Source5:        series
 Source10:       README.md
+Patch1:         old-gtest.patch
+Patch2:         test-fixes.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 # Needed for getservbyport_r function to work properly.
@@ -109,7 +111,8 @@ to build packages that depend on c-ares.
 %endif
 
 %if ("@BUILD_FLAVOR@" != "testsuite")
-%ldconfig_scriptlets -n %{libname}
+%post   -n %{libname} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 %endif
 
 %check

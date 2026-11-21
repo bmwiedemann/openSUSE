@@ -19,7 +19,7 @@
 %global desc SpotBugs is the spiritual successor of FindBugs, carrying on from the point\
 where it left off with support of its community.
 Name:           spotbugs
-Version:        4.9.8
+Version:        4.10.5
 Release:        0
 Summary:        A tool for static analysis to look for bugs in Java code
 License:        LGPL-2.1-only
@@ -40,6 +40,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.code.gson:gson)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
+BuildRequires:  mvn(jakarta.annotation:jakarta.annotation-api)
 BuildRequires:  mvn(jaxen:jaxen)
 BuildRequires:  mvn(net.jcip:jcip-annotations)
 BuildRequires:  mvn(net.sf.saxon:Saxon-HE) < 11
@@ -111,7 +112,6 @@ cp %{SOURCE4} %{name}/etc/script.properties
 
 sed -i -e 's#@SPOTBUGS_HOME@#%{_datadir}/%{name}#' %{name}/etc/script.properties
 
-%pom_xpath_remove pom:packaging %{name}
 %pom_xpath_remove 'pom:scope[.="runtime"]' %{name}-ant
 
 %pom_change_dep com.github.stephenc.jcip:jcip-annotations net.jcip: %{name}
@@ -122,6 +122,7 @@ sed -i -e 's#@SPOTBUGS_HOME@#%{_datadir}/%{name}#' %{name}/etc/script.properties
 
 %pom_add_dep org.apache.ant:ant %{name}-ant
 %pom_add_dep com.github.spotbugs:spotbugs:%{version} %{name}-ant
+%pom_add_dep jakarta.annotation:jakarta.annotation-api %{name}
 
 cat >pom.xml <<__POM__
 <project
@@ -327,6 +328,7 @@ ln -s $(xmvn-resolve \
         org.apache.commons:commons-{lang3,text} \
         org.dom4j:dom4j \
         com.google.code.gson:gson \
+        jakarta.annotation:jakarta.annotation-api \
         jaxen:jaxen \
         org.ow2.asm:asm{,-{commons,util,analysis,tree}} \
         net.jcip:jcip-annotations \

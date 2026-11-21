@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SQL-Abstract-Pg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name SQL-Abstract-Pg
 Name:           perl-SQL-Abstract-Pg
-Version:        1.0.0
+Version:        1.10.0
 Release:        0
-# 1.0 -> normalize -> 1.0.0
-%define cpan_version 1.0
+# 1.01 -> normalize -> 1.10.0
+%define cpan_version 1.01
 License:        Artistic-2.0
 Summary:        PostgreSQL features for SQL::Abstract
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -41,7 +42,7 @@ SQL::Abstract::Pg extends SQL::Abstract with a few PostgreSQL features used
 by Mojo::Pg.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

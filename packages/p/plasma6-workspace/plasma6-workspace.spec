@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.8.2
+Version:        6.8.3
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -388,11 +388,11 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %exclude %{_kf6_libdir}/libkfontinstui.so
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_plasmashell
 %{_datadir}/zsh/site-functions/_krunner
+%{_datadir}/zsh/site-functions/_plasmashell
 %{_kf6_applicationsdir}/kcm_autostart.desktop
-%{_kf6_applicationsdir}/kcm_componentchooser.desktop
 %{_kf6_applicationsdir}/kcm_colors.desktop
+%{_kf6_applicationsdir}/kcm_componentchooser.desktop
 %{_kf6_applicationsdir}/kcm_cursortheme.desktop
 %{_kf6_applicationsdir}/kcm_desktoptheme.desktop
 %{_kf6_applicationsdir}/kcm_feedback.desktop
@@ -409,12 +409,12 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_applicationsdir}/kcm_users.desktop
 %{_kf6_applicationsdir}/kcm_wallpaper.desktop
 %{_kf6_applicationsdir}/org.kde.baloorunner.desktop
-%{_kf6_applicationsdir}/org.kde.plasma-interactiveconsole.desktop
 %{_kf6_applicationsdir}/org.kde.kcolorschemeeditor.desktop
 %{_kf6_applicationsdir}/org.kde.kfontinst.desktop
 %{_kf6_applicationsdir}/org.kde.kfontview.desktop
 %{_kf6_applicationsdir}/org.kde.klipper.desktop
 %{_kf6_applicationsdir}/org.kde.plasma-fallback-session-save.desktop
+%{_kf6_applicationsdir}/org.kde.plasma-interactiveconsole.desktop
 %{_kf6_applicationsdir}/org.kde.plasmashell.desktop
 %{_kf6_applicationsdir}/org.kde.plasmawindowed.desktop
 %{_kf6_applicationsdir}/org.kde.secretprompter.desktop
@@ -427,6 +427,8 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_bindir}/ksmserver
 %{_kf6_bindir}/ksplashqml
 %{_kf6_bindir}/lookandfeeltool
+%{_kf6_bindir}/plasma_session
+%{_kf6_bindir}/plasma_waitforname
 %{_kf6_bindir}/plasma-apply-colorscheme
 %{_kf6_bindir}/plasma-apply-cursortheme
 %{_kf6_bindir}/plasma-apply-desktoptheme
@@ -434,8 +436,6 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_bindir}/plasma-apply-wallpaperimage
 %{_kf6_bindir}/plasma-interactiveconsole
 %{_kf6_bindir}/plasma-shutdown
-%{_kf6_bindir}/plasma_session
-%{_kf6_bindir}/plasma_waitforname
 %{_kf6_bindir}/plasmashell
 %{_kf6_bindir}/plasmawindowed
 %{_kf6_bindir}/startplasma-wayland
@@ -446,15 +446,14 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_configdir}/autostart/xembedsniproxy.desktop
 %{_kf6_configkcfgdir}/colorssettings.kcfg
 %{_kf6_configkcfgdir}/cursorthemesettings.kcfg
+%{_kf6_configkcfgdir}/desktopthemesettings.kcfg
 %{_kf6_configkcfgdir}/feedbacksettings.kcfg
 %{_kf6_configkcfgdir}/fontssettings.kcfg
 %{_kf6_configkcfgdir}/freespacenotifier.kcfg
 %{_kf6_configkcfgdir}/iconssettingsbase.kcfg
+%{_kf6_configkcfgdir}/klipper.kcfg
 %{_kf6_configkcfgdir}/launchfeedbacksettings.kcfg
 %{_kf6_configkcfgdir}/lookandfeelsettings.kcfg
-%{_kf6_configkcfgdir}/stylesettings.kcfg
-%{_kf6_configkcfgdir}/desktopthemesettings.kcfg
-%{_kf6_configkcfgdir}/klipper.kcfg
 %{_kf6_configkcfgdir}/nighttimesettings.kcfg
 %{_kf6_configkcfgdir}/notifications_badgesettings.kcfg
 %{_kf6_configkcfgdir}/notifications_behaviorsettings.kcfg
@@ -465,6 +464,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_configkcfgdir}/regionandlangsettingsbase.kcfg
 %{_kf6_configkcfgdir}/smserversettings.kcfg
 %{_kf6_configkcfgdir}/soundthemesettings.kcfg
+%{_kf6_configkcfgdir}/stylesettings.kcfg
 %{_kf6_configkcfgdir}/terminal_settings.kcfg
 %{_kf6_debugdir}/*.categories
 %{_kf6_iconsdir}/hicolor/*/apps/kfontview.png
@@ -515,27 +515,28 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_plugindir}/plasma/
 %{_kf6_plugindir}/plasmacalendarplugins/
 %{_kf6_qmldir}/org/kde/breeze/
+%{_kf6_qmldir}/org/kde/kworkspace/
 %{_kf6_qmldir}/org/kde/notificationmanager/
 %{_kf6_qmldir}/org/kde/plasma/
 %{_kf6_qmldir}/org/kde/taskmanager/
-%{_kf6_sharedir}/dbus-1/services/org.kde.secretprompter.service
-%{_kf6_sharedir}/dbus-1/services/org.kde.KSplash.service
-%{_kf6_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
-%{_kf6_sharedir}/dbus-1/services/org.kde.Shutdown.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.fontinst.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.krunner.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.KSplash.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.LogoutPrompt.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.plasma.Notifications.service
 %{_kf6_sharedir}/dbus-1/services/org.kde.runners.baloo.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.secretprompter.service
+%{_kf6_sharedir}/dbus-1/services/org.kde.Shutdown.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.fontinst.service
 %{_kf6_sharedir}/dbus-1/system.d/org.kde.fontinst.conf
 %{_kf6_sharedir}/desktop-directories/
 %{_kf6_sharedir}/kconf_update/
 %{_kf6_sharedir}/kfontinst/
 %{_kf6_sharedir}/kglobalaccel/org.kde.krunner.desktop
+%{_kf6_sharedir}/kio_desktop/
 %dir %{_kf6_sharedir}/kio
 %dir %{_kf6_sharedir}/kio/servicemenus
 %{_kf6_sharedir}/kio/servicemenus/installfont.desktop
-%{_kf6_sharedir}/kio_desktop/
 %{_kf6_sharedir}/konqsidebartng/
 %{_kf6_sharedir}/krunner/dbusplugins/plasma-runner-baloosearch.desktop
 %{_kf6_sharedir}/kstyle/
@@ -547,13 +548,12 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %dir %{_kf6_sharedir}/xdg-desktop-portal/portals/
 %{_kf6_sharedir}/xdg-desktop-portal/kde-portals.conf
 %{_kf6_sharedir}/xdg-desktop-portal/portals/plasmanotify.portal
-%{_libexecdir}/baloorunner
-%{_libexecdir}/ksecretprompter
-%{_libexecdir}/plasma-startup-sound
 %{_kf6_libexecdir}/kauth/fontinst
 %{_kf6_libexecdir}/kauth/fontinst_helper
 %{_kf6_libexecdir}/kauth/fontinst_x11
+%{_libexecdir}/baloorunner
 %{_libexecdir}/kfontprint
+%{_libexecdir}/ksecretprompter
 %{_libexecdir}/ksmserver-logout-greeter
 %{_libexecdir}/plasma-changeicons
 %{_libexecdir}/plasma-dbus-run-session-if-needed
@@ -561,6 +561,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_libexecdir}/plasma-fallback-session-save
 %{_libexecdir}/plasma-setup-xwayland
 %{_libexecdir}/plasma-sourceenv.sh
+%{_libexecdir}/plasma-startup-sound
 %{_userunitdir}/plasma-baloorunner.service
 %{_userunitdir}/plasma-core.target
 %{_userunitdir}/plasma-gmenudbusmenuproxy.service

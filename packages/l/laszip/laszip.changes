@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  7 18:41:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add laszip-truncated-vlr-count.patch (boo#1285759,
+  CVE-2026-110603): clamp an inflated VLR count to what fits
+  before the point block and zero the array so truncated reads
+  cannot leave uninitialized entries that crash the destroy path.
+
+-------------------------------------------------------------------
 Wed Jul 29 08:12:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.5.0:

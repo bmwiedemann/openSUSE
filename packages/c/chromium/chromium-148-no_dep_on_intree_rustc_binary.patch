@@ -1,6 +1,8 @@
---- chromium-148.0.7778.5/build/rust/cargo_crate.gni	2026/04/08 21:57:34	1.1
-+++ chromium-148.0.7778.5/build/rust/cargo_crate.gni	2026/04/08 21:57:43
-@@ -456,12 +456,6 @@
+Index: chromium-157.0.8103.15/build/rust/cargo_crate.gni
+===================================================================
+--- chromium-157.0.8103.15.orig/build/rust/cargo_crate.gni
++++ chromium-157.0.8103.15/build/rust/cargo_crate.gni
+@@ -481,12 +481,6 @@ template("cargo_crate") {
          rustc_print_cfg_path,
        ]
  
@@ -13,9 +15,11 @@
        build_script_target = ":${_build_script_name}($rust_macro_toolchain)"
        deps = [
          ":${_build_script_name}_write_rustflags",
---- chromium-148.0.7778.5/build/rust/std/BUILD.gn	2026/04/08 21:57:55	1.1
-+++ chromium-148.0.7778.5/build/rust/std/BUILD.gn	2026/04/08 21:58:01
-@@ -267,12 +267,6 @@
+Index: chromium-157.0.8103.15/build/rust/std/BUILD.gn
+===================================================================
+--- chromium-157.0.8103.15.orig/build/rust/std/BUILD.gn
++++ chromium-157.0.8103.15/build/rust/std/BUILD.gn
+@@ -309,12 +309,6 @@ if (toolchain_has_rust) {
        out_libdir = rebase_path(target_out_dir, root_build_dir)
        out_depfile = rebase_path(depfile, root_build_dir)
  
@@ -27,10 +31,12 @@
 -
        # For the rustc sysroot we must include even the rlibs we don't pass to
        # the C++ linker.
-       all_stdlibs_to_copy = stdlib_files + skip_stdlib_files
---- chromium-149.0.7808.0/build/config/rust.gni	2026/04/30 12:44:06	1.1
-+++ chromium-149.0.7808.0/build/config/rust.gni	2026/04/30 12:44:23
-@@ -435,8 +435,3 @@
+       all_stdlibs_to_copy = stdlib_files + skip_stdlib_files + stdlib_test_files
+Index: chromium-157.0.8103.15/build/config/rust.gni
+===================================================================
+--- chromium-157.0.8103.15.orig/build/config/rust.gni
++++ chromium-157.0.8103.15/build/config/rust.gni
+@@ -452,8 +452,3 @@ rustc_wrapper_inputs = [
    "//build/rust/gni_impl/rustc_wrapper.py",
  ]
  

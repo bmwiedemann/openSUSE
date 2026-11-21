@@ -383,4 +383,41 @@
 - Changes in 18.00.0002:</comment>
     <requestid>1384660</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>996baca2ea8419ac927e4575bd5eac01</srcmd5>
+    <version>18.00.0006</version>
+    <time>1793991543</time>
+    <user>anag_factory</user>
+    <comment>- Update to 18.00.0006:
+  * https://odbc.postgresql.org/docs/release.html
+  * Large-object read overflows the application buffer
+    (CVE-2026-120057, bsc#1289252).
+  * Row cache overflow when a later FETCH changes the column count
+    (CVE-2026-120058, bsc#1289253).
+  * Driver uses a server-supplied column name as a format string
+    (CVE-2026-120059, bsc#1289254).
+  * Driver does not validate server-supplied counts and lengths
+    (CVE-2026-120060, bsc#1289255).
+  * ODBC escape parser stack buffer overflow
+    (CVE-2026-120061, bsc#1289256).
+  * SQL injection through SQLSpecialColumns table and schema names
+    (CVE-2026-120062, bsc#1289257).
+  * Stack buffer overflow when quoting long schema and table names
+    (CVE-2026-120063, bsc#1289258).
+  * Driver does not validate column numbers and row indexes in
+    binding and descriptor functions
+    (CVE-2026-120064, bsc#1289259).
+  * Driver does not escape a server-supplied column name in its
+    updatable-cursor queries (CVE-2026-120065, bsc#1289260).
+  * Log files are created with default permissions at a predictable
+    path and follow symbolic links
+    (CVE-2026-120066, bsc#1289261).
+  * Stack buffer overflow when reading the keyset (ctid/oid)
+    columns of an updatable cursor
+    (CVE-2026-120067, bsc#1289262).
+  * Hardening: SQLSetDescRecW stored a freed buffer and the address
+    of a local variable as deferred bound data. It now stores the
+    application's pointers, as SQLSetDescRec does.</comment>
+    <requestid>1395876</requestid>
+  </revision>
 </revisionlist>

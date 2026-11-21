@@ -113,4 +113,41 @@
       - Add regression tests for numeric conditions and malicious XLSX formats.</comment>
     <requestid>1393888</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4ee0165a77fb58b0dae5731bc95da38a</srcmd5>
+    <version>0.210.0</version>
+    <time>1795023141</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.210.0 (0.21)
+   see /usr/share/doc/packages/perl-Spreadsheet-XLSX/Changes
+  0.21  2026-11-15
+      - Decode XML entities and numeric character references once in worksheet
+        names before optional character conversion (RT #50705). Support lookup
+        by decoded names and report undefined name conversion results.
+      - Abort with a clear error when a string converter returns undef
+        (RT #84528), while continuing to accept empty converted strings.
+      - Decode predefined XML entities and numeric character references once
+        in shared and inline strings, including rich text and phonetic hints
+        (RT #93962). Decode before the optional converter, preserve literal
+        entity text and add the original workbook as a regression fixture.
+      - Resolve built-in number formats and apply row/column default styles
+        when a cell has no explicit style (RT #101636). Cell styles override
+        row styles, which override column defaults; preserve raw values.
+        Add regression tests for decimals, percentages and built-in dates.
+      - Resolve absolute and relative worksheet relationship targets and
+        normalize dot segments (RT #86667). Report missing targets with sheet
+        and relationship details; reject external targets and root traversal.
+        Preserve chartsheet placeholders and add regression tests.
+      - Replace legacy match and postmatch variables with local captures and
+        match lengths (RT #70879), without raising the minimum Perl version.
+      - Preserve token boundaries around escaped and quoted literals when
+        detecting date formats (RT #87746). Add the original workbook and
+        regression tests for date types, raw values and formatted output.
+      - Handle line breaks and other XML whitespace in Relationship tags
+        (RT #111087). Add regression tests for LF, CRLF and attribute order.
+      - Avoid uninitialized-value warnings for undefined shared-string cell
+        values during parsing and formatting (RT #114521). Preserve raw undef
+        values and add regression tests.</comment>
+    <requestid>1398405</requestid>
+  </revision>
 </revisionlist>

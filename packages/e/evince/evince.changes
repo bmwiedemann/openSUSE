@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 16 08:57:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 48.5:
+  * Backends:
+    + Fix heap overflow decoding packed glyphs of PK fonts
+    + Fix stack overflow on a truncated PK preamble
+    + Validate the tables of TFM and OFM font files
+    + Fix buffer overflow reading the TFM font family
+    + Fix out-of-bounds write reading GF font specials
+    + Reject invalid VF packet lengths and VF fonts without characters
+    + Detect short reads in the DVI reader and the font loaders
+    + Fix out-of-bounds read parsing DVI color specials
+    + Fix an endless font search when fonts cannot be generated
+    + Add tests for loading malformed DVI fonts
+  * Cut-n-paste: Fix use-after-free in the synctex parser, CVE-2026-63729
+  * Libview: Fix bounds checks of the accessible children of the view and its
+    pages
+  * Shell:
+    + Escape field codes in the arguments passed to ev_spawn
+    + Escape annotation text shown in the annotations sidebar
+    + Add tests for the ev_spawn arguments and the annotations sidebar
+- Drop evince-CVE-2026-63729.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Oct 13 20:07:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update version dependencies according to meson.build.

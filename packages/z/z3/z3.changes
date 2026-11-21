@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:02:20 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 5.4.1
+  * Handle dual polarity for generated universal quantifiers (#11644)
+  * Handle canceled model searches in Spacer global subsumption
+    (#11635)
+  * Replay guarded integer and real product equality clauses in F* proof
+    checker (#11629)
+  * Remove timing-out arithmetic alias SAT control and stabilize native
+    checker regressions
+  * Update NFV CI workflows for single-audit PR policy and admission
+    permissions (#11630, #11642)
+
+-------------------------------------------------------------------
+Wed Nov 11 07:51:50 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 5.4.0
+  * Add SMT-LIB integer exponentiation and refine total real power
+    semantics.
+  * Prevent model evaluation loops on symbolic division and modulo.
+  * Fix root comparisons for overlapping intervals and simplify bounds.
+  * Support Pareto optimization on real fronts and pre-optimize QE.
+  * Fix MaxSMT/pd-maxres soft weight accumulation and objective bounds.
+  * Improve FiniteSet simplification and reject oversized cardinalities.
+  * Fix recursive datatype cycles, recognizers, and sequence handling.
+  * Add smt.case_split_relevant_first and fix delayed-heap crashes.
+  * Fix small-format FP FMA significand extraction (e.g. FP(2,3)).
+  * Fix incremental SAT unsat cores and level-zero assumption tracking.
+  * Fix Spacer null models, query lifetime, and QBMC proof traces.
+  * Skip unsupported stages in proof pipelines without failing runs.
+  * Expand Lean and F*/Pulse proof reconstruction (arrays, sets, cuts).
+  * Fix empty input handling in Python PbEq, PbLe, and PbGe bindings.
+  * Saturate AST/API reference counts to avoid overflow under sharing.
+  * Java: add Linux ARM64, improve Maven/JAR bundling and lib caching.
+  * Release OCaml runtime lock during heavy checks and tactics.
+  * Build fixes for static libraries, CMake rules, and Windows paths.
+
+-------------------------------------------------------------------
 Fri Oct 30 06:53:41 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 5.3.3

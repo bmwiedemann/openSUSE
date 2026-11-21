@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov  8 09:30:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add soapy-plutosdr-libiio1-includedir.patch: search the
+  include/iio/ header layout as well (libiio 1.x moved the
+  headers there), fixing the CMake configure failure.
+- Add soapy-plutosdr-libiio1-scan-api.patch: port the device
+  scan to the libiio 1.x API (iio_scan, iio_err); the scan
+  context API 0.2.4 uses was removed in libiio 1.0.
+- Add soapy-plutosdr-libiio1-streaming.patch: port contexts,
+  channel attrs and the streaming engine to the libiio 1.x
+  block-queue API the driver needs to build at all.
+
+-------------------------------------------------------------------
+Wed Oct 21 07:53:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.4:
+  * Keep a bufflen buffer size across sample rate changes
+  * Double the automatic RX buffer at 10.5 to 15.7 Msps, fixing
+    sample loss at 13-15 Msps
+  * Close remaining streams during device teardown, fixing a
+    segfault when streams outlive the device
+
+-------------------------------------------------------------------
 Sun Oct 11 09:23:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.2.3:

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:20:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update obexftp-0.24-move_to_python3.patch: replace remaining
+  Python 2 PyString_* calls in swig/charmap.i with Python 3 C API.
+
+-------------------------------------------------------------------
 Wed May  7 09:16:08 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes

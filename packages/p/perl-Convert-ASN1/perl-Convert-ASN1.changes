@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 10 13:29:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.360.0 (0.36)
+   see /usr/share/doc/packages/perl-Convert-ASN1/ChangeLog
+
+  0.36 -- Mon Nov 09 18:44:55 AST 2026
+  Release 0.35 as production release.  Includes:
+  Bug Fixes
+  Thanks to Oliver Welter (@oliwel)
+    * Fix year interpretation when decoding UTCTime and GeneralizedTime- #83
+    * Use Sigstore to sign release
+  0.35 -- Sun Nov 08 12:05:15 AST 2026
+  Bug Fixes
+  Thanks to Oliver Welter (@oliwel)
+    * Fix year interpretation when decoding UTCTime and GeneralizedTime- #83
+    * Use Sigstore to sign release
+
+-------------------------------------------------------------------
 Fri Mar  8 22:02:51 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

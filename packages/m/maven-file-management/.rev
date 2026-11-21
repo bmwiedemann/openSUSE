@@ -63,4 +63,12 @@
     <comment>3.2.0</comment>
     <requestid>1273820</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5bc3a98f6f80bd99a8ad1304801faf3f</srcmd5>
+    <version>3.2.0</version>
+    <time>1794318108</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396446</requestid>
+  </revision>
 </revisionlist>

@@ -131,4 +131,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Update AMD cpu microcode</comment>
     <requestid>1381449</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>de35aeaeb8be887cbc05993c395796a1</srcmd5>
+    <version>20260926</version>
+    <time>1793990005</time>
+    <user>anag_factory</user>
+    <comment>- Fix supplements to add dependency on kernel (bsc#1249138)</comment>
+    <requestid>1394995</requestid>
+  </revision>
 </revisionlist>

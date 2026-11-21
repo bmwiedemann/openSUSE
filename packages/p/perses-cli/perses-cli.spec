@@ -18,7 +18,7 @@
 
 %define executable_name percli
 Name:           perses-cli
-Version:        0.55.0
+Version:        0.55.1
 Release:        0
 Summary:        CLI for the Perses observability visualisation project
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.27 >= 1.27.2
+BuildRequires:  go1.27 >= 1.27.3
 BuildRequires:  zsh
 Provides:       percli = %{version}
 

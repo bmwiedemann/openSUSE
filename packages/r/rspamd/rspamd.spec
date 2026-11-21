@@ -70,7 +70,7 @@
 %define __builder ninja
 
 Name:           rspamd
-Version:        4.2.3
+Version:        4.3.0
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -423,6 +423,9 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/surbl-whitelist.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/suspicious_tlds.inc
 %config(noreplace) %{_sysconfdir}/rspamd/maps.d/equivalent_domains.inc
+%config(noreplace) %{_sysconfdir}/rspamd/maps.d/phishing_rewrite_domains.inc
+%config(noreplace) %{_sysconfdir}/rspamd/maps.d/phishing_rewrite_redirectors.inc
+%config(noreplace) %{_sysconfdir}/rspamd/maps.d/phishing_trusted_redirectors.inc
 
 %dir %{_sysconfdir}/rspamd/modules.d
 %config(noreplace) %{_sysconfdir}/rspamd/modules.d/antivirus.conf

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov  7 10:59:41 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 9.0.0:
+  * Introduce a QueueView
+  * Respect "ReplayGain" metadata for track and album gain/peak
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Dec 21 02:38:12 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 8.1.0:

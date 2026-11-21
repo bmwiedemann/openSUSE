@@ -14,10 +14,10 @@ Subject: [PATCH] replace with suse docs and move docs without eqiv to docs-rh
  7 files changed, 24 insertions(+), 19 deletions(-)
 
 diff --git a/pkg/kdump/manifest.json b/pkg/kdump/manifest.json
-index 323d6ebc9..7d625b1f7 100644
+index 634901b..b40a4f1 100644
 --- a/pkg/kdump/manifest.json
 +++ b/pkg/kdump/manifest.json
-@@ -5,7 +5,7 @@
+@@ -6,7 +6,7 @@
      "tools": {
          "index": {
              "label": "Kernel dump",
@@ -25,12 +25,12 @@ index 323d6ebc9..7d625b1f7 100644
 +            "docs-rh": [
                  {
                      "label": "Configuring kdump",
-                     "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_monitoring_and_updating_the_kernel/configuring-kdump-in-the-web-console_managing-monitoring-and-updating-the-kernel"
+                     "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_monitoring_and_updating_the_kernel/configuring-kdump-in-the-web-console_assembly_managing-kernel-command-line-parameters-with-uki"
 diff --git a/pkg/networkmanager/manifest.json b/pkg/networkmanager/manifest.json
-index fa9b2799c..cfa237c2b 100644
+index fa9b279..321e08b 100644
 --- a/pkg/networkmanager/manifest.json
 +++ b/pkg/networkmanager/manifest.json
-@@ -10,25 +10,28 @@
+@@ -10,23 +10,19 @@
              "docs": [
                  {
                      "label": "Managing networking bonds",
@@ -41,7 +41,6 @@ index fa9b2799c..cfa237c2b 100644
 -                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-network-teaming_configuring-and-managing-networking#proc_configuring-a-network-team-by-using-the-rhel-web-console_configuring-network-teaming"
 +                    "url": "https://documentation.suse.com/sle-micro/6.0/html/Micro-6.0-cockpit/index.html#cockpit-managing-bonds"
                  },
-+                
                  {
                      "label": "Managing networking bridges",
 -                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-a-network-bridge_configuring-and-managing-networking#proc_configuring-a-network-bridge-by-using-the-rhel-web-console_configuring-a-network-bridge"
@@ -58,17 +57,9 @@ index fa9b2799c..cfa237c2b 100644
 +                    "url": "https://documentation.suse.com/sle-micro/6.0/html/Micro-6.0-cockpit/index.html#task-managing-firewall-cockpit"
                  }
              ],
-+            "docs-rh": [
-+                {
-+                    "label": "Managing networking teams",
-+                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_networking/configuring-network-teaming_configuring-and-managing-networking#proc_configuring-a-network-team-by-using-the-rhel-web-console_configuring-network-teaming"
-+                }
-+            ],
              "keywords": [
-                 {
-                     "matches": ["network", "interface", "bridge", "vlan", "bond", "team", "port", "mac", "ipv4", "ipv6"]
 diff --git a/pkg/packagekit/manifest.json b/pkg/packagekit/manifest.json
-index 911380a8a..1a2de58cc 100644
+index 8da8eb9..c6b35e0 100644
 --- a/pkg/packagekit/manifest.json
 +++ b/pkg/packagekit/manifest.json
 @@ -9,7 +9,7 @@
@@ -78,13 +69,13 @@ index 911380a8a..1a2de58cc 100644
 -            "docs": [
 +            "docs-rh": [
                  {
-                     "label": "Managing software updates",
-                     "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/managing-software-updates-in-the-web-console_system-management-using-the-rhel-9-web-console"
+                     "label": "Applying live kernel patching",
+ 		    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_monitoring_and_updating_the_kernel/applying-patches-with-kernel-live-patching_assembly_managing-kernel-command-line-parameters-with-uki#proc_applying-patches-witch-kernel-live-patching-in-the-web-console_applying-patches-with-kernel-live-patching"
 diff --git a/pkg/shell/manifest.json b/pkg/shell/manifest.json
-index 9160c2773..29082412d 100644
+index f93ef28..1d5709d 100644
 --- a/pkg/shell/manifest.json
 +++ b/pkg/shell/manifest.json
-@@ -26,7 +26,7 @@
+@@ -29,7 +29,7 @@
          "zh-cn": "中文（中国）",
          "zh-tw": "中文（台灣）"
      },
@@ -94,10 +85,10 @@ index 9160c2773..29082412d 100644
              "label": "Web Console",
              "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_systems_using_the_rhel_9_web_console/index"
 diff --git a/pkg/storaged/manifest.json b/pkg/storaged/manifest.json
-index fac446117..27977253d 100644
+index fac4461..3aaabad 100644
 --- a/pkg/storaged/manifest.json
 +++ b/pkg/storaged/manifest.json
-@@ -14,20 +14,22 @@
+@@ -14,35 +14,19 @@
              "docs": [
                  {
                      "label": "Managing partitions",
@@ -118,15 +109,27 @@ index fac446117..27977253d 100644
                      "label": "Managing LVMs",
 -                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/configuring_and_managing_logical_volumes/index"
 -                },
+-                {
+-                    "label": "Managing physical drives",
+-                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_storage_devices/index"
+-                },
+-                {
+-                    "label": "Managing VDOs",
+-                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/deduplicating_and_compressing_logical_volumes_on_rhel/creating-a-deduplicated-and-compressed-logical-volume_deduplicating-and-compressing-logical-volumes-on-rhel#creating-virtual-data-optimizer-in-the-web-console_creating-a-deduplicated-and-compressed-logical-volume"
+-                },
+-                {
+-                    "label": "Using LUKS encryption",
+-                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_storage_devices/encrypting-block-devices-using-luks_managing-storage-devices#configuring-the-luks-passphrase-in-the-web-console_encrypting-block-devices-using-luks"
+-                },
+-                {
+-                    "label": "Using Tang server",
+-                    "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/security_hardening/configuring-automated-unlocking-of-encrypted-volumes-using-policy-based-decryption_security-hardening#configuring-automated-unlocking-using-a-tang-key-in-the-web-console_configuring-automated-unlocking-of-encrypted-volumes-using-policy-based-decryption"
 +                    "url": "https://documentation.suse.com/sle-micro/6.0/html/Micro-6.0-cockpit/index.html#id-1.7.7"
-+                }
-+	    ],
-+	    "docs-rh": [
-                 {
-                     "label": "Managing physical drives",
-                     "url": "https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/9/html/managing_storage_devices/index"
+                 }
+             ],
+             "keywords": [
 diff --git a/pkg/systemd/manifest.json b/pkg/systemd/manifest.json
-index d4b59ab0d..4bcf70e65 100644
+index 4afcbd6..5d39140 100644
 --- a/pkg/systemd/manifest.json
 +++ b/pkg/systemd/manifest.json
 @@ -12,7 +12,7 @@
@@ -157,7 +160,7 @@ index d4b59ab0d..4bcf70e65 100644
              ],
              "keywords": [
 diff --git a/pkg/users/manifest.json b/pkg/users/manifest.json
-index 1f181afc5..b176b14d0 100644
+index 1f181af..b176b14 100644
 --- a/pkg/users/manifest.json
 +++ b/pkg/users/manifest.json
 @@ -6,7 +6,7 @@
@@ -169,6 +172,3 @@ index 1f181afc5..b176b14d0 100644
                  }
              ],
              "keywords": [
--- 
-2.47.0
-

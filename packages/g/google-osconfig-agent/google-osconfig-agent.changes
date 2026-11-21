@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:05:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20261105.03 (bsc#1289973, bsc#1290117)
+  * E2E tests v2 redesign: migrate PackageResource Googet tests (#1073)
+- from version 20261105.01
+  * Fix race between osconfig reboot and Windows TrustedInstaller
+    reboot (#1082)
+- from version 20261105.00
+  * E2E tests v2 redesign: migrate PackageResource Msi tests (#1074)
+
+-------------------------------------------------------------------
+Mon Nov  9 08:33:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-79775.patch to fix github.com/diskfs/go-diskfs:
+  malformed SquashFS image can cause crashes and persistent CPU
+  loops in rclone's archive backend (bsc#1278163, CVE-2026-79775)
+
+-------------------------------------------------------------------
+Thu Nov  5 08:52:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20261103.02
+  * E2E V2: Migrate guest policy package repository case  (#1058)
+- from version 20261103.01
+  * E2E tests v2 redesign: migrate PackageResource Yum tests (#1068)
+- from version 20261103.00
+  * E2E tests v2 redesign: migrate PackageResource Deb tests (#1063)
+- from version 20261102.00
+  * add tests (#1062)
+- from version 20261029.00
+  * e2e v2: migrate os patch job execution (#1061)
+- from version 20261027.00
+  * E2E tests v2 redesign: migrate RepositoryResource Apt tests (#1075)
+- Update github.com/klauspost/compress to v1.20.3
+  (bsc#1288461, CVE-2026-116591)
+- Update github.com/tink-crypto/tink-go to v2.9.0
+  (bsc#1285110, CVE-2026-109425)
+- Update golang.org/x/net to v0.62.0 (bsc#1289368, CVE-2026-78661)
+  (bsc#1289424, CVE-2026-97045)
+
+-------------------------------------------------------------------
 Mon Nov  2 11:12:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/go-jose/go-jose to v4.1.6 (bsc#1288375,

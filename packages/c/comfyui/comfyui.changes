@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  4 11:37:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.44.0:
+  * MiniMax-H3 support: latent upscaler, Sol-H3-VAE, context
+    windows, H3 Max nodes (Recast, Extend, Reframe, Insert,
+    Lip Sync, Camera Control) and PH3Image
+  * New VAE compute dtype node; TextGenerateV2 with Autogrow
+    image inputs
+  * Video saving with ProRes output and chroma subsampling
+    options
+  * Faster conditioning (skip concat for single conditions,
+    no torch.equal on identical tensors); fp8 fast-path and
+    LTX VAE decoder fixes
+  * New partner nodes (Patina, VEED, BFL upscale targets,
+    Pruna, Topaz Wonder 4, Sonilo, OpenAI GPT models);
+    ByteDance Seedance 1.x nodes deprecated
+  * Track upstream dependency floors: frontend-package 1.57.6,
+    workflow-templates 0.11.101, embedded-docs 0.5.16
+  * Rolls up the 0.43.1/0.43.2 tags (partner nodes,
+    workflow-template updates)
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+- Both patches still apply against the new sources
+
+-------------------------------------------------------------------
 Sat Oct 31 18:24:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix comfyui --version: the launcher answers it itself with

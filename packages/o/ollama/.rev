@@ -1040,4 +1040,41 @@ because we don't need git-web and the other stuff here (forwarded request 125417
   misordered/duplicate events</comment>
     <requestid>1387265</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>0c64683cde433748f026c2a1bda85f4e</srcmd5>
+    <version>0.40.16</version>
+    <time>1794591182</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 0.40.16
+  * Add Ripple Preview, a 65B dense model built for agentic coding
+  * ollama launch claude always routes Claude Code to the
+    selected model
+  * ollama launch explains when a cloud model has been retired
+  * /v1/responses respects truncation and no longer silently
+    truncates by default
+  * /v1/models returns an empty list instead of null when no
+    models are installed
+  * Updated llama.cpp
+  * Release notes: https://github.com/ollama/ollama/releases/tag/v0.40.16
+- Update generated using pbuild-ai
+
+- Updated to version 0.40.15
+  * Add Xiaomi MiMo mimo-v2.6, a 9B model for code and agents
+  * Add AutoTrust decision models in 9b, 35b, and 27b-vl sizes
+    that return choices, yes/no probabilities, and ratings
+  * ollama launch supports Kimi Code CLI, migrates kimi-cli setups
+  * ollama launch fills in Pi's model list automatically
+  * Recurrent and vision GGUF models can serve concurrent requests
+  * Qwen3 and Qwen3.5 models support long-context (YaRN) scaling
+  * Running ollama with no arguments opens the welcome launcher
+  * Release notes: https://github.com/ollama/ollama/releases/tag/v0.40.15
+- Update generated using pbuild-ai
+
+- Updated to version 0.40.14
+  * ollama launch claude applies model output token limit
+  * cloud models no longer hit the 128k default cap
+  * /api/chat decodes compressed cloud web search responses
+  * OpenAI endpoints keep packaged sampler defaults</comment>
+    <requestid>1397135</requestid>
+  </revision>
 </revisionlist>

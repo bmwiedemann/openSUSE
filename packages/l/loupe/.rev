@@ -225,4 +225,14 @@
     -Don't keep showing saving overlay after error.</comment>
     <requestid>1392235</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>5135ff7b306ae3f7a2395b6bb1aab64e</srcmd5>
+    <version>51.2</version>
+    <time>1794597166</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.2:
+  * Fixed: Require glycin version 4.0.5 which requires gufo-exif 4.0.5 which
+    contains fixes for not loading metadata.</comment>
+    <requestid>1397039</requestid>
+  </revision>
 </revisionlist>

@@ -352,4 +352,64 @@ checksums. Data only, no code or dependency change.</comment>
     <comment>Update python-comfyui-workflow-templates-core to 0.3.391.</comment>
     <requestid>1394127</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>5668bec57977c5b318c91783649bf2ee</srcmd5>
+    <version>0.3.392</version>
+    <time>1793818000</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.392</comment>
+    <requestid>1394855</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>c32bc49f977582a4e295d59a600a13be</srcmd5>
+    <version>0.3.394</version>
+    <time>1794090818</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.394: manifest grows 668 to 680 entries; json floor to &gt;= 0.1.129.</comment>
+    <requestid>1396018</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>03f8ba5e4f144223bbb118c1b8dea127</srcmd5>
+    <version>0.3.397</version>
+    <time>1794428291</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.397</comment>
+    <requestid>1396905</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>84edc013568c6b29a87e5e85df30324a</srcmd5>
+    <version>0.3.398</version>
+    <time>1794816482</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.398: adds Gemini 4 Hydrogen template, he/it search indexes.
+- Raise the json floor to &gt;= 0.1.133 (already in Factory) for the new template JSON.</comment>
+    <requestid>1397530</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>94b04305ec048a384bcf4e54fa730458</srcmd5>
+    <version>0.3.401</version>
+    <time>1794932338</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.401: 5 new manifests, index refreshes.
+- Needs sr#1398010 (json 0.1.136) first.</comment>
+    <requestid>1398011</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ac4b6dd9d04fa67bff138a3eb2d2eee4</srcmd5>
+    <version>0.3.402</version>
+    <time>1795103786</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.402: 6 new manifests, index refreshes.
+- Needs sr#1398612 (json 0.1.137) first.</comment>
+    <requestid>1398613</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>8f4458ed03e953fdd8e5a7beebb80b84</srcmd5>
+    <version>0.3.403</version>
+    <time>1795182502</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.403: 3 new manifests, index refreshes.
+- Needs sr#1398899 (json 0.1.138) first.</comment>
+    <requestid>1398900</requestid>
+  </revision>
 </revisionlist>

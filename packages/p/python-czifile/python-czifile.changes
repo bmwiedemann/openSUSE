@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov  8 18:01:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.10.14:
+  * Precompute more CziDirectoryEntryDV attributes.
+  * Sanitize attachment file names to prevent path traversal.
+  * Fix infinite loops on negative segment and attachment chunk
+    sizes.
+  * Fix chained CziImage views discarding ROI.
+  * Do not close caller-owned file handles on failed CziFile
+    construction.
+  * Add CziImage.subblock_sizes property.
+  * Size chunks decode cache by predominant subblock size.
+  * Bound number of pending futures in CziImage.asarray.
+  * Support experimental chunked-extensible compression.
+  * Require imagecodecs >= 2026.8.16 for chunked codec.
+
+-------------------------------------------------------------------
 Sun Jun 14 10:27:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6.12:

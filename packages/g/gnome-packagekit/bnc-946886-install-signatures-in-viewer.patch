@@ -5,10 +5,10 @@ Subject: [PATCH] gpk-update-viewer: offer to install signatures if needed
 
 https://bugzilla.gnome.org/show_bug.cgi?id=756991
 ---
-Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
+Index: gnome-packagekit-43.0+77/src/gpk-update-viewer.c
 ===================================================================
---- gnome-packagekit-43.0.orig/src/gpk-update-viewer.c
-+++ gnome-packagekit-43.0/src/gpk-update-viewer.c
+--- gnome-packagekit-43.0+77.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-43.0+77/src/gpk-update-viewer.c
 @@ -60,6 +60,7 @@ static	GCancellable		*cancellable = NULL
  static	GSettings		*settings = NULL;
  static	GPtrArray		*update_array = NULL;
@@ -25,12 +25,12 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
 +static PkResults *last_results;
 +static gboolean need_signature_for_distro = FALSE;
 +static gboolean need_signature_for_update = FALSE;
- 
- enum {
- 	GPK_UPDATES_COLUMN_TEXT,
-@@ -2296,6 +2301,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
+ static struct {
+ 	gint x;
+ 	gint y;
+@@ -2300,6 +2305,168 @@ gpk_update_viewer_packages_to_ids (GPtrA
  }
- 
+
  static void
 +gpk_update_viewer_get_distro_upgrades_cb (PkClient *client, GAsyncResult *res, gpointer user_data);
 +
@@ -197,18 +197,18 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  gpk_update_viewer_get_updates_cb (PkClient *client, GAsyncResult *res, gpointer user_data)
  {
  	g_autoptr(PkResults) results = NULL;
-@@ -2315,6 +2482,7 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2319,6 +2486,7 @@ gpk_update_viewer_get_updates_cb (PkClie
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
  	PkInfoEnum info;
 +	PkExitEnum exit_enum;
- 
+
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2324,6 +2492,14 @@ gpk_update_viewer_get_updates_cb (PkClie
+@@ -2328,6 +2496,14 @@ gpk_update_viewer_get_updates_cb (PkClie
  		return;
  	}
- 
+
 +	exit_enum = pk_results_get_exit_code(results);
 +	if (exit_enum == PK_EXIT_ENUM_KEY_REQUIRED) {
 +		need_signature_for_update = TRUE;
@@ -220,18 +220,18 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2667,6 +2843,7 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2714,6 +2890,7 @@ gpk_update_viewer_get_distro_upgrades_cb
  	GtkWidget *widget;
  	g_autoptr(PkError) error_code = NULL;
  	GtkWindow *window;
 +	PkExitEnum exit_enum;
- 
+
  	/* get the results */
  	results = pk_client_generic_finish (client, res, &error);
-@@ -2676,6 +2853,14 @@ gpk_update_viewer_get_distro_upgrades_cb
+@@ -2723,6 +2900,14 @@ gpk_update_viewer_get_distro_upgrades_cb
  		return;
  	}
- 
+
 +	exit_enum = pk_results_get_exit_code(results);
 +	if (exit_enum == PK_EXIT_ENUM_KEY_REQUIRED) {
 +		need_signature_for_distro = TRUE;
@@ -243,9 +243,9 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  	/* check error code */
  	error_code = pk_results_get_error_code (results);
  	if (error_code != NULL) {
-@@ -2759,6 +2944,53 @@ gpk_update_viewer_activate_cb (GtkApplic
+@@ -2806,6 +2991,53 @@ gpk_update_viewer_activate_cb (GtkApplic
  }
- 
+
  static void
 +gpk_update_viewer_button_decline_cb (GtkWidget *widget, gpointer data)
 +{
@@ -297,10 +297,10 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  gpk_update_viewer_application_startup_cb (GtkApplication *_application, gpointer user_data)
  {
  	GtkWidget *main_window;
-@@ -2809,6 +3041,8 @@ gpk_update_viewer_application_startup_cb
+@@ -2856,6 +3088,8 @@ gpk_update_viewer_application_startup_cb
  		return;
  	}
- 
+
 +	gpk_update_viewer_setup_dialog_signature ();
 +
  	main_window = GTK_WIDGET(gtk_builder_get_object (builder, "dialog_updates"));

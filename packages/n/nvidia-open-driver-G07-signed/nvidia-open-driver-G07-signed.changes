@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov  4 19:58:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA and CUDA variant to 620.70.06 (boo#1289478)
+- supersedes the following patches:
+  * kernel-7.3.0-opengpu-615.71.09.patch
+  * supersedes Fixing-build-against-SLE16.1-Kernel.patch
+
+-------------------------------------------------------------------
 Thu Oct 22 10:53:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 595.112.07 (boo#1286763)

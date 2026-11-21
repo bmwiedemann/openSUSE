@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 16:20:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- afflib 3.7.23:
+  * CVE-2026-119601: af_get_page heap out-of-bounds write
+    (boo#1289123)
+  * documentaiton updates
+
+-------------------------------------------------------------------
 Sat Feb 14 19:05:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - afflib 3.7.22:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 18 14:50:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-connections-desktop.patch: Fix desktop file translations.
+
+-------------------------------------------------------------------
 Mon Sep 14 15:27:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 51.0:
@@ -309,8 +314,8 @@ Mon Aug  8 11:55:31 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Wed Apr 13 20:43:39 UTC 2022 - Emily Gonyer <emilyyrose@gmail.com>
 
-- Changes from 42.1.1: 
-  + Fix handling of non-char keyboard input. 
+- Changes from 42.1.1:
+  + Fix handling of non-char keyboard input.
 
 -------------------------------------------------------------------
 Fri Apr  8 17:17:48 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

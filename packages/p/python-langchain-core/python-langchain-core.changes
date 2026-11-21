@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:25:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.4:
+  * Standardize finish reason on message-finish events: carry
+    raw `finish_reason` plus normalized `normalized_finish_reason`
+    (`stop`, `length`, `tool_call`, `content_filter`, `refusal`,
+    `context_exceeded`, `error`, `other`) and Anthropic-only
+    `finish_state` (`complete`/`suspended`); core corrects refusal
+    and tool-call cases, providers map their own values.
+  * Tag synthetic HumanInTheLoop tool messages with `lc_source`
+    and `lc_data` decision metadata; `add_notification_metadata`
+    now also accepts ToolMessage.
+  * Raise python-langchain-protocol floor to >= 0.0.22 for the
+    new MessageFinishData fields.
+
+-------------------------------------------------------------------
+Thu Nov 19 07:29:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.3 (crosses 1.8.2):
+  * Add `headers` parameter to `langsmith_gateway` for per-request
+    credentials; gateway headers stay private and unserialized,
+    proxy settings are ignored in the gateway context, and
+    gateway-key fallback is limited to the same origin.
+  * Avoid warning-filter races during schema creation for dynamic
+    field and non-v1 root schemas.
+  * Keep warning suppression context-local so parallel calls no
+    longer hide warnings from unrelated threads or tasks.
+
+-------------------------------------------------------------------
+Mon Nov 16 20:32:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.1:
+  * Add `langsmith_gateway` context manager for per-context
+    LangSmith gateway routing; chat models built inside it go
+    through the gateway per request instead of the
+    LANGSMITH_GATEWAY env var.
+
+-------------------------------------------------------------------
+Wed Nov 11 19:50:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.0:
+  * Drop support for Python 3.10, which reached end-of-life;
+    minimum supported version is now Python 3.11.
+  * Add decision models in langchain_core.decisions
+    (BaseDecisionModel and typesafe-flavored types).
+
+-------------------------------------------------------------------
+Tue Nov 10 07:29:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.7:
+  * Cap nesting depth in load()/loads() at 200 levels;
+    deeply nested payloads are now rejected with ValueError.
+
+-------------------------------------------------------------------
+Fri Nov  6 07:43:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.6 (crosses 1.7.5):
+  * Translate Gemini safety blocks to refusal content blocks;
+    standardize model refusal content blocks.
+  * End tool run on cancellation; load RemoveMessage serialized by
+    LangChain.js.
+  * Merge streamed AIMessageChunks once when accumulating runnable
+    streams.
+  * Stop parse_partial_json from retrying one character at a time.
+
+-------------------------------------------------------------------
+Tue Nov  3 18:52:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.4:
+  * Avoid mutating message content in the Anthropic translator
+  * Deselect 17 uuid7 run-tree and tracing tests broken by the
+    python-uuid-utils 1.0.0 API change; bare uuid7() production
+    call sites are unaffected
+
+-------------------------------------------------------------------
 Sat Oct 31 13:45:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.3:

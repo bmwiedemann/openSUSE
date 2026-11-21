@@ -47,8 +47,8 @@
 %define default_mpm     prefork
 %define suse_maintenance_mmn  0
 %define apache_mmn      %(test -s %{SOURCE0} && \
-                          { echo -n apache_mmn_; bzcat %{SOURCE0} | \
-                            awk '/^#define MODULE_MAGIC_NUMBER_MAJOR/ {printf "%d", $3}'; } || \
+                          { echo -n apache_mmn_; tar -xjOf %{SOURCE0} %{upstream_name}-%{version}/include/ap_mmn.h | \
+                            awk '/^#define MODULE_MAGIC_NUMBER_MAJOR/ {printf "%d", $3; exit}'; } || \
                           echo apache_mmn_notfound)
 %define static_modules  unixd systemd
 %define dynamic_modules authz_core access_compat actions alias allowmethods asis auth_basic auth_digest \\\
@@ -104,15 +104,15 @@
 %define build_http2 1
 
 Name:           apache2%{psuffix}
-Version:        2.4.67
+Version:        2.4.71
 Release:        0
 Summary:        The Apache HTTPD Server
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
 URL:            https://httpd.apache.org/
 # essential sources
-Source0:        https://www.apache.org/dist/httpd/%{upstream_name}-%{version}.tar.bz2
-Source1:        https://www.apache.org/dist/httpd/%{upstream_name}-%{version}.tar.bz2.asc
+Source0:        https://dlcdn.apache.org/httpd/%{upstream_name}-%{version}.tar.bz2
+Source1:        https://dlcdn.apache.org/httpd/%{upstream_name}-%{version}.tar.bz2.asc
 Source2:        apache2.keyring
 Source3:        apache2.service
 Source4:        apache2@.service
@@ -122,8 +122,8 @@ Source6:        apache2.changes
 Source7:        apache2.tmpfiles
 Source10:       apache2-ssl-dirs.tar.bz2
 # test
-# svn checkout http://svn.apache.org/repos/asf/httpd/test/framework/trunk/ httpd-framework
-Source20:       %{testsuite_name}-%{tversion}.tar.bz2
+# git checkout https://github.com/apache/httpd-tests/ commit 4c187f27ecbf498a28c5a1c9b4de5873a8ad1ca4
+Source20:       httpd-framework-git4c187f2.tar.bz2
 Source21:       apache2-mod_example.c
 # integration settings
 Source30:       sysconfig.apache2
@@ -180,6 +180,8 @@ Patch2:         apache2-logresolve-tmp-security.patch
 Patch3:         apache2-LimitRequestFieldSize-limits-headers.patch
 # [fate317766] backport of an upstream commit
 Patch4:         apache2-HttpContentLengthHeadZero-HttpExpectStrict.patch
+# PATCH-FIX-UPSTREAM bsc#1282733 bsc#1246913 mod_ssl: ignore SSLRandomSeed with OpenSSL 1.1.1+
+Patch5:         apache2-mod_ssl-SSLRandomSeed-noop-openssl-1.1.1.patch
 # PATCH:  https://marc.info/?l=apache-httpd-users&m=147448312531134&w=2
 Patch100:       apache-test-application-xml-type.patch
 # PATCH:  /test_ssl_var_lookup?SSL_SERVER_SAN_DNS_0 returns <build-host-name>
@@ -189,6 +191,8 @@ Patch100:       apache-test-application-xml-type.patch
 # even if in live system I do not experience this inconsistency, let's turn off
 # these variables from the test
 Patch101:       apache-test-turn-off-variables-in-ssl-var-lookup.patch
+# PATCH this test always fails as the server returns the hostname of the buildserver (not localhost)
+Patch102:       apache-test-remove-broken-cgi-test.patch
 BuildRequires:  apache-rpm-macros-control
 #Since 2.4.7 the event MPM requires apr 1.5.0 or later.
 BuildRequires:  apr-devel >= 1.5.0
@@ -311,6 +315,8 @@ provides HTTP services in sync with the current HTTP standards.
 
 %prep
 %autosetup -p1 -n %{upstream_name}-%{version} -a20
+# Make sure the apache_mmn provides matches the module magic number of the sources
+test "%{apache_mmn}" = "apache_mmn_$(awk '/^#define MODULE_MAGIC_NUMBER_MAJOR/ {print $3; exit}' include/ap_mmn.h)"
 
 #
 # BUILD

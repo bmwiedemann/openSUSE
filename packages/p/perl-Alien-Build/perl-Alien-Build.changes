@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:31:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.880.0 (2.88)
+   see /usr/share/doc/packages/perl-Alien-Build/Changes
+
+  2.88      2026-09-19 03:03:10 -0600
+    - Fixes for Solaris (gh#442)
+    - Added checklib_args2 method to Alien::Build::Wrapper (gh#440)
+  2.87      2026-09-11 20:31:38 -0600
+    - Alien::Base::Wrapper->mm_args2 no longer overwrites a caller-specified
+      CONFIGURE_REQUIRES version with its own, lower, requirement.  Instead
+      the newer of the two version numbers is used (gh#428, gh#429, gh#439,
+      johannessen++)
+    - Fetch::Wget plugin now treats Wget2 (which some newer Linux
+      distributions ship as /usr/bin/wget in place of GNU Wget) as not
+      found, the same as it already does for the BusyBox wget, since it
+      does not follow the same interface as GNU Wget. (gh#439)
+  2.86_05   2026-09-06 12:42:08 -0600
+    - additional t/alien_build_plugin_build_cmake.t diagnostic fixes.
+  2.86_04   2026-08-24 19:58:22 -0600
+    - Re-release with normal tooling
+  2.86_03   2026-08-24
+    - fix t/alien_build_plugin_build_cmake.t diag to work on pre-5.22 Perl
+  2.86_02   2026-08-23
+    - test fix for t/alien_build_util.t to tolerate filesystem not handling symlinks
+  2.86_01   2026-07-31 11:47:12 -0600
+    - Added CPU arch detection support for illumos (Marcel Telka++ gh#427)
+    - Add Alien::Build::Meta->has_requires (gh#431)
+    - Fix false warning in Download::Negotiate by detecting Download::GitHub (gh#431)
+
+-------------------------------------------------------------------
 Thu Dec 12 16:08:41 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.840.0 (2.84)

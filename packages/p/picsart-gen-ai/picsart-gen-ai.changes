@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Nov 16 20:35:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.89.1:
+  * New `credits history` subcommand: lists credit transactions
+    newest-first (spending/deduct, refunds, grants) with the
+    product that used them (-n 20 by default, --all, --type,
+    --json)
+  * cli.js bundle grows 1072276 -> 1077988 bytes; the npm
+    manifest (same deps and engines), skills and launcher are
+    unchanged, so the delta is the new command
+- Re-vendor: the dependency set is unchanged (73 lock entries,
+  71 tarballs, no floats); licences re-derived over the new tree,
+  unchanged (MIT, ISC, Apache-2.0, BlueOak-1.0.0, MIT OR CC0-1.0),
+  no copyleft
+
+-------------------------------------------------------------------
+Wed Nov 11 13:00:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.88.1:
+  * The model catalog is no longer bundled (cli.js shrinks
+    1340789 -> 1072276 bytes): it loads live from models-hub at
+    startup and is cached in ~/.gen-ai/catalog-cache/
+  * GEN_AI_SDK_MODE is gone; GEN_AI_CATALOG_FILE points at a saved
+    catalog response instead (tests, offline CI)
+- Re-vendor: 13 dependency floats (inquirer ansi/checkbox/confirm/
+  core/figures/input/search/select/type, ansi-regex 6.6.0,
+  brace-expansion 5.0.13, lilconfig 3.1.5, mute-stream 4.0.0);
+  licences re-derived over the new tree, unchanged (MIT, ISC,
+  Apache-2.0, BlueOak-1.0.0, MIT OR CC0-1.0), no copyleft
+  * GHSA-6jwq-xf8q-xcwh: brace-expansion unbounded parsing and
+    expansion work causes CPU denial of service (fixed in 5.0.13)
+
+-------------------------------------------------------------------
+Tue Nov  3 18:40:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.87.1:
+  * New GEN_AI_SDK_MODE setting: `static` pins the model catalog
+    bundled with this release; the default loads the live
+    models-hub catalog, falling back to the bundled one
+- Re-vendor: 11 dependency floats (inquirer ansi/checkbox/
+  confirm/core/figures/input/search/select/type, ansi-regex 6.5.0,
+  semver 7.8.6); licences re-derived over the new tree, unchanged
+  (MIT, ISC, Apache-2.0, BlueOak-1.0.0, MIT OR CC0-1.0),
+  no copyleft
+
+-------------------------------------------------------------------
 Mon Oct 26 19:28:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.86.0 (real content, not a republish:

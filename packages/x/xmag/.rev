@@ -105,4 +105,18 @@
   * Use double for all floating point numbers, not a mix of double and float</comment>
     <requestid>1207648</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c773cd7d1791d113e34585872f28ea08</srcmd5>
+    <version>1.0.9</version>
+    <time>1794816523</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.9
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- switch to meson</comment>
+    <requestid>1397643</requestid>
+  </revision>
 </revisionlist>

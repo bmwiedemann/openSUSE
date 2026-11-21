@@ -1,7 +1,7 @@
 #
 # spec file for package mypaint
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://mypaint.org
 Source:         https://github.com/mypaint/mypaint/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Patch0:         https://patch-diff.githubusercontent.com/raw/mypaint/mypaint/pull/1193.patch
+# PATCH-FIX-UPSTREAM mypaint-py3-PyUnicode_FromString.patch -- replace obsolete PyString_FromString with PyUnicode_FromString in lib/tiledsurface.hpp
+Patch1:         mypaint-py3-PyUnicode_FromString.patch
 BuildRequires:  ImageMagick
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-search-documents
-Version:        12.0.0
+Version:        12.1.0
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        MIT

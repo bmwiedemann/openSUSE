@@ -927,4 +927,41 @@
 </comment>
     <requestid>1376289</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e23f117d0ed3885efb07d8d4791cd560</srcmd5>
+    <version>4.22.0</version>
+    <time>1795023008</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.22.0:
+  * Add Barbican secret store migrate helper
+  * Fix Barbican key-manager microversion negotiation
+  * config: Pass status code retry options to adapter
+  * Bump testtools minimum version
+  * connect_as: don't let OS_* vars override project
+  * Remove Resource.has_body attribute
+  * docs: Add guide on configuring service tokens
+  * docs: Merge connect, connect-via-config docs
+  * examples: Remove redundant Opts object
+  * volume: Add 'details' parameter to 'attachments' proxy method
+  * Add SDK support for Barbican container ACL operations
+  * Remove Resource.create_returns_body attribute
+  * Remove Resource.create_requires_id attribute
+  * Remove Resource.create_method attribute
+  * image: Parse boolean string properties leniently
+  * image: Parse hw_vif_multiqueue_enabled as BoolStr
+  * Clean up connection resources upon garbage collection
+  * accelerator: Add device status field and enable/disable
+    support
+  * Replace atexit with weakref.finalize
+  * tox: Run mypy over package
+  * placement: Add support for usages
+  * placement: Add support for bulk update, delete resource
+    provider inventories
+  * placement: Add support for deleting resource provider traits
+  * placement: Add support for allocation candidates
+  * placement: Add support for resource provider allocations
+  * placement: Add support for bulk create of allocations
+  * placement: Add support for allocations</comment>
+    <requestid>1398207</requestid>
+  </revision>
 </revisionlist>

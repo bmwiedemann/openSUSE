@@ -17,27 +17,20 @@
 
 
 Name:           bugwarden
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        MCP server for Bugzilla with operator-controlled security guards
-# Upstream is Apache-2.0; the rest is the aggregate of the crates statically
-# linked into the binary from vendor.tar.zst.
+# Apache-2.0 plus the vendored crates statically linked into the binary
 License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND ISC AND MIT AND Unicode-3.0
 URL:            https://github.com/plusky/bugwarden
 Source0:        %{name}-%{version}.tar.zst
-# Vendored with cargo_vendor filter=true (crates no Linux target uses are
-# emptied), then repacked with ring's pregenerated/*-nasm.o and *-win32n.o
-# and aws-lc-sys's builder/prebuilt-nasm/*.obj stripped and their
-# .cargo-checksum.json entries dropped: prebuilt objects only Windows
-# targets use. Redo the strip after every re-vendor.
+# cargo_vendor filter=true, minus Windows-only ring pregenerated/*-nasm.o, *-win32n.o and
+# aws-lc-sys builder/prebuilt-nasm/*.obj and their checksums; redo after every re-vendor
 Source1:        vendor.tar.zst
-# The HTTP transport tests in %%check construct a reqwest client, which
-# refuses to build when the system CA store is empty — even though the
-# tests themselves only ever speak plain HTTP to localhost.
+# %%check: reqwest refuses an empty CA store, though the tests only speak plain HTTP
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo-packaging
-# Workspace MSRV; the pinned toolchain upstream uses for its own checks is
-# dropped in %%prep so the distribution compiler is used instead.
+# Workspace MSRV
 BuildRequires:  rust >= 1.88
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -87,8 +80,7 @@ command line definition.
 
 %prep
 %autosetup -p1 -a1
-# Upstream pins an exact toolchain for its own reproducible checks, which would
-# make the build reach for rustup; build with the distribution compiler.
+# Upstream's pinned toolchain would make cargo reach for rustup
 rm -f rust-toolchain.toml
 
 %build
@@ -96,19 +88,13 @@ rm -f rust-toolchain.toml
 
 %install
 install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
-# Worked example policy, shipped as the starting point an operator edits. The
-# server never reads it on its own: the policy file is named explicitly with
-# --policy / BUGWARDEN_POLICY, so an unconfigured server cannot silently pick
-# up a policy that happens to sit here.
+# Example only: read solely when named with --policy or BUGWARDEN_POLICY
 install -D -m 0644 examples/policy.toml \
   %{buildroot}%{_sysconfdir}/%{name}/policy.toml
-# Worked example audit-stream configuration, shipped on the same terms:
-# it is read only when named with --audit-config / BUGWARDEN_AUDIT_CONFIG,
-# and without that flag no audit stream is written at all.
+# Example only: read solely when named with --audit-config or BUGWARDEN_AUDIT_CONFIG
 install -D -m 0644 examples/audit.toml \
   %{buildroot}%{_sysconfdir}/%{name}/audit.toml
-# Man page and shell completions are generated from the CLI definition and
-# shipped pre-built in the release tarball, so nothing has to be run here.
+# Man page and completions come generated in the release tarball
 install -D -m 0644 crates/%{name}/man/%{name}.1 \
   %{buildroot}%{_mandir}/man1/%{name}.1
 install -D -m 0644 crates/%{name}/completions/%{name}.bash \

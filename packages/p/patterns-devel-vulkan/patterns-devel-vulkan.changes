@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 31 09:37:31 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Set Version to 20261030.
+- Fix libglfw-devel to glfw-devel (renamed provider) and promote it with glm-
+  devel, libXi-devel and libXxf86vm-devel from Suggests to Recommends.
+- Pattern Suggests were the DVD pull mechanism of 2008, but that mechanism is
+  dead: pattern Suggests land on no current install media, every product, so
+  dropping them changes the installed set not at all today.
+- Add libvulkan_lvp Recommends (software ICD) and promote the libvulkan_intel and
+  libvulkan_radeon ICDs from Suggests to Recommends; drop the gcc-c++ Suggests
+  (already covered by the C and C++ patterns).
+- Recommend the C++ development pattern.
+- Add Recommends renderdoc (the standard Vulkan frame debugger) in a new
+  Debugging tools SECTION.
+- Raise the no-binary rpmlintrc filter from warning to error level.
+- Format with spec-cleaner 1.3.1: drop the Group
+  tags, fix the copyright header, and label the Recommends with SECTION headers.
+
+-------------------------------------------------------------------
 Thu Nov 17 02:08:02 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed broken build from previous change 
@@ -12,3 +31,4 @@ Wed Nov 16 21:15:46 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 Tue Nov 15 12:59:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - created pattern for Vulkan development 
+

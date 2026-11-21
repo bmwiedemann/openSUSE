@@ -25,6 +25,11 @@ Summary:        Portable Command Line Archive File Manager
 License:        GPL-3.0-or-later
 URL:            https://github.com/wummel/patool
 Source:         https://github.com/wummel/patool/releases/download/%{version}/patool-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Source-Binary-Exception: patool-4.1.0.tar.gz:patool-4.1.0/tests/data/* -- test-data: upstream archive fixtures only read by the test suite, never shipped
+# CVE-2026-124584: refuse symlink following and directory escape in
+# gzip extractor (embedded original filename).
+# PATCH-FIX-OPENSUSE patool-CVE-2026-124584-gzip-symlink.patch mpluskal@suse.com -- harden gzip/py_gzip extract paths, no upstream fix yet
+Patch0:         patool-CVE-2026-124584-gzip-symlink.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -54,7 +59,8 @@ RPM (.rpm), RAR (.rar), TAR (.tar), XZ (.xz), and ZIP (.zip, .jar) formats.
 It relies on helper applications to handle those archive formats.
 
 %prep
-%autosetup -n patool-%{version}
+%setup -q -n patool-%{version}
+%autopatch -p1
 
 %build
 %python3_build

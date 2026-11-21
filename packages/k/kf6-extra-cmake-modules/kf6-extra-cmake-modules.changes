@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * ECMGenerateQDoc: Fix appending extra index directories
+  * Add support for QML_IMPORT_PATH
+  * ECMInstallIcons: document .svg as the scalable icon format
+  * ECMInstallIcons: install .svg scalable icons with the old form of arguments
+  * Add find module and macro to update the XDG Intent cache
+  * ecm_test_set_dir_properties: fix comparing symlink-resolved path to one not
+  * Canberra, PulseAudio, UDev find modules: warn when reading deprecated vars
+  * Docs: add missing Since information to  FindWaylandProtocols & Findepoxy
+  * Drop obsolete FOUND_VAR args to find_package_handle_standard_args
+  * Canberra, UDev, PulseAudio find modules: drop explicit uppercase FOUND variant
+  * ECMGenerateQDoc: Add framework path to includes
+  * Enable /bigobj with MSVC
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

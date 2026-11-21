@@ -1,4 +1,561 @@
 -------------------------------------------------------------------
+Thu Nov 05 16:42:27 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to version 4.0.8+git0.a969c748:
+  * SELinux fixes based on community feedback
+  * fix: bridge crypto-bigint 0.5 to 0.7
+  * Version 4.0.8
+  * Fix: NixOS: Avoid many packages being built multiple times. (#1916)
+  * Offer the password change on an enrolled device (#1888)
+  * fix(selinux): allow systemd to manage Himmelblau sockets (#1911)
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 5 updates
+  * chore: refresh cargo vet metadata
+  * Reuse loaded Hello keys
+  * cargo vet
+  * Version 4.0.7
+  * Await idprovider sleeps instead of blocking the runtime (#1883)
+  * Fix Evolution PRT SSO cookie account parsing (#1853)
+  * fix: preserve daemon descriptors only across restarts (#1745)
+  * Avoid inadvertently creating sqlite database when checking for tpm status.
+  * Properly report status in `aad-tool tpm`.
+  * Allow unwraps in socket regression tests
+  * fix: allow disconnected unix-chkpwd socket path
+  * fix: listen on host-namespace himmelblaud sockets
+  * fix: select distro packaging tool
+  * Import Dependabot #1833 pinned action updates
+  * Import Dependabot #1835 pinned action updates
+  * Import Dependabot #1845 pinned action updates
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 1 update
+  * Unit test HSM type resolution by taking it out of the `tpm_init!` macro.
+  * Avoid accidentally invalidating existing keys when using `hsm_type = tpm_if_possible`.
+  * rpm: couple interdependent package versions
+  * Reset completed MFA polling state
+  * cargo fmt
+  * cargo vet
+  * Version 4.0.6
+  * Update cargo vet audits for backport
+  * Fix creation-time SELinux labels for homes and skeleton content (#1826)
+  * sso: do not panic when stderr is closed (#1827)
+  * fix: avoid NSS recursion for mapped users
+  * Skip D-Bus activation of BlueZ when probing for Bluetooth
+  * Preserve lookup eligibility at the NSS boundary
+  * Prevent legacy lookup and stale password cache reuse
+  * fix: avoid caching synthetic user lookups
+  * fix(nix): enable TPM support in Nix packages / NixOS module
+  * fix(ci): Add rpm-build to RPM builder images
+  * Fix blocking client response framing
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 5 updates
+  * Use Cargo scratch directory for executable o365 test fixtures
+  * Fix stable-4.x auth tests on read-only source mounts
+  * Version 4.0.5
+  * cargo vet
+  * Update cargo vet audits for backport
+  * Update make vet from main branch
+  * Fix casing of attributes passed to `tpm2_createprimary`.
+  * fix: probe Entra authority without redirects
+  * fix: quiet expected user lookup misses
+  * fix: handle Arch installs without VERSION_ID
+  * fix: fetch profile photos without blocking PAM
+  * fix: omit unnamed groups from initgroups
+  * fix(nix): cover su and polkit in PAM services
+  * fix(nix): order PAM module before unix-early
+  * fix(o365): select AppImage architecture
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group with 9 updates
+  * ci(fuzz): install cargo-fuzz with stable
+  * Version 4.0.4
+  * chore: update rustls and der crates
+  * Version 4.0.3
+  * Update cargo vet audits for backport
+  * Fix mapping of local users to profile pictures
+  * fix(selinux): label the Intune policy cache directory
+  * Update libhimmelblau to latest version
+  * Version 4.0.2
+  * fix(auth): gate Intune MFA resource
+  * Version 4.0.1
+  * cargo vet
+  * fix(auth): restore systemd compatibility
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group with 3 updates
+  * ci: add stable 4.x release branch
+  * Increase the recursion limit for fuzz build
+  * chore: refresh cargo vet metadata
+  * Update libhimmelblau
+  * build(deps): bump mozilla-actions/sccache-action from 0.0.10 to 0.0.11
+  * build(deps): bump cachix/install-nix-action from 31.11.0 to 31.11.1
+  * build(deps): bump step-security/harden-runner from 2.20.1 to 2.21.0
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 6 updates
+  * build(deps): bump github/codeql-action/upload-sarif
+  * fix: install Entra SSO policy for Betterbird
+  * security: restrict SSPR Hello fallback to local logins
+  * Validate OIDC group UUIDs before name matching
+  * Reject Hello password reauth when offline
+  * Block remote Hello PIN during offline auth
+  * Delay breakglass password caching until MFA succeeds
+  * Resolve fedora-cisco-openh264 key import failure
+  * security: authenticate systemd daemon-call bypass
+  * Fix local group membership parsing
+  * ci: limit OBS credential exposure
+  * Preserve Debian PAM account jumps.
+  * fix(auth): borrow TOTP QR string
+  * fix(pam): avoid online try_unseal auth
+  * provide hello totp secret alongside qr code
+  * update auth test socket path to target/
+  * apparmor: allow runc container networking
+  * Install SELinux policy during image builds.
+  * fix(rpm): restore rpmsaved config
+  * fix(auth): set up offline Hello TOTP
+  * fix(profile): preserve desktop session selection
+  * Skip Hello TOTP for local password-only sessions
+  * Fix bad-domain PAM auth lockup
+  * create krb5 config dir
+  * fix(nss): restore initgroups fallback
+  * fix(auth): skip Intune for OIDC
+  * cargo vet
+  * Rewrite idmap in Rust
+  * policies: bound custom compliance script execution
+  * systemd: hide mok-variables from himmelblaud-tasks
+  * Reconcile local groups periodically
+  * Build ARM64 RPM tooling in target images.
+  * fix: keep fonts out of the sandboxed QR greeter SVG
+  * fix: address Copilot review on Arch packaging
+  * fix: keep QR greeter SVG private under runtime dir
+  * feat: detect GNOME version via pacman
+  * feat: wire make arch and pacman install
+  * feat: add Arch PKGBUILD and package builder
+  * fix(o365): avoid busy test script exec
+  * chore: add donation support messaging
+  * cargo vet
+  * Update libhimmelblau 0.8.29 -> 0.8.30
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump step-security/harden-runner from 2.20.0 to 2.20.1
+  * build(deps): bump actions/stale from 10.3.0 to 11.0.0
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 2 updates
+  * packaging: install default config under /usr/lib/
+  * selinux/apparmor: allow layered configuration paths
+  * docs: document layered configuration precedence
+  * config: support layered configuration files
+  * cargo vet
+  * Remove unused dependency: r-efi:6.0.0
+  * Remove unused dependency: portable-atomic:1.13.1
+  * Remove unused dependency: bs58:0.5.1
+  * Update rust MSRV to 1.85
+  * cargo clippy
+  * chore(deps): upgrade gettext-rs
+  * ci: ignore der 0.8.1 updates
+  * cargo vet
+  * build(deps): bump cachix/install-nix-action from 31.10.7 to 31.11.0
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 7 updates
+  * build(deps): bump ossf/scorecard-action from 2.4.3 to 2.4.4
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1
+  * Update Cargo.nix
+  * cargo vet
+  * chore(deps): update libwebauthn to 0.9.0
+  * pam: add no_info_prompt to fold info text into the password prompt
+  * fix(nix): added `CacheDirectory` and added it to `ReadWritePaths`
+  * docs: mark orchestrator config experimental
+  * refactor: rename orchestrator config option
+  * Use ok for account stack success.
+  * Support OIDC login group filters.
+  * Add configurable logon script timeout.
+  * cargo audit/cargo vet
+  * Add funding.json wellKnown pointer
+  * Skip Entra post-auth tasks for OIDC.
+  * Add configurable OIDC account ID claims
+  * security: gate the o365 URL handler on a Microsoft 365 origin allowlist
+  * security: reject RFC2307 ids in systemd's dynamic user range
+  * security: reject subid account names containing ':' or control characters
+  * security: bind PamChangeAuthToken to the connecting peer
+  * build(deps): bump actions/checkout from 6.0.2 to 7.0.0
+  * build(deps): bump actions/cache from 6.0.0 to 6.1.0
+  * build(deps): bump step-security/harden-runner from 2.19.4 to 2.20.0
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump cachix/install-nix-action from 31.10.6 to 31.10.7
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 21 updates
+  * fix(vet): diff crates locally
+  * tools: default cargo vet to codex
+  * fix(broker): satisfy rustfmt and cover broker-interactive QR suppression
+  * fix(broker): prefer Hello PIN for Interactive Edge auth
+  * fix(broker): do not send unicode QR art through pinentry
+  * fix(pam): make account denials terminal
+  * debian: make the pam_allow_groups denial terminal in the account phase
+  * make pin shorter than 6 count towards pin reset count
+  * feat: add additional selinux denies via helper script from Aurora (based on Fedora 44 Kionite)
+  * disable apply_policy by default
+  * update githook to /usr/bin/env bash
+  * security: replace rsa with aws-lc shim
+  * chore(cargo): generate patch shims
+  * chore(cargo): switch overrides to patch
+  * l10n: refine Uzbek auth messages
+  * more verboseness in qr postinst
+  * add qr postrm to fedora
+  * add script to remove qr assets
+  * check debian-gdm user instead of version
+  * use debian-gdm user in qr postinst
+  * fix(sso): replace old Mozilla policy URLs
+  * fix(auth): retry failed password changes
+  * feat(oidc): support password grant
+  * i18n: add Slovenian translations
+  * i18n: add Latvian translations
+  * i18n: add Lithuanian translations
+  * i18n: add Croatian translations
+  * i18n: add Estonian translations
+  * i18n: add Vietnamese translations
+  * i18n: add Ukrainian translations
+  * i18n: add Thai translations
+  * i18n: add Swedish translations
+  * i18n: add Slovak translations
+  * i18n: add Romanian translations
+  * i18n: add Polish translations
+  * i18n: add Norwegian Bokmal translations
+  * i18n: add Hungarian translations
+  * i18n: add Hebrew translations
+  * i18n: add Finnish translations
+  * i18n: add Greek translations
+  * i18n: add Danish translations
+  * i18n: add Czech translations
+  * i18n: add Bengali translations
+  * i18n: add Bulgarian translations
+  * i18n: add Korean translations
+  * feat(i18n): add Indonesian locale
+  * i18n: add Dutch translations
+  * i18n: add Arabic translations
+  * feat(i18n): add Uzbek translations
+  * l10n: add Turkish translations
+  * i18n: add Italian translation
+  * i18n: add Japanese translations
+  * i18n: add Simplified Chinese locale
+  * i18n: add Ethiopian language locales
+  * feat(i18n): add Urdu locale
+  * feat(i18n): add Catalan translations
+  * l10n: add Portuguese Portugal locale
+  * i18n: add Brazilian Portuguese translations
+  * i18n: add Canadian French locale
+  * i18n: add Hindi translations
+  * l10n: add Spanish translations
+  * l10n: add Serbian Latin translation
+  * i18n: add French translations
+  * Be more specific about WebAuthn user verification errors
+  * feat(i18n): add translation generator
+  * l10n: add German translations
+  * cargo vet
+  * feat(i18n): add gettext auth framework
+  * Typo fix in doc comment
+  * stop MS Auth related message appearing for OIDC/DAG
+  * add debian files to .gitignore
+  * add opensuse files to .gitignore
+  * fix(nss): avoid locked shadow entries
+  * fix(auth): shorten daemon startup wait
+  * Revert "Work around resume lockout on network down"
+  * Revert "dispatcher: refine Himmelblau restart workaround"
+  * Revert "packaging: disable duplicate NM workaround scripts"
+  * fix(resolver): release db lock before offline auth fallback to prevent deadlock
+  * cargo vet
+  * chore(deps): update cmov lockfile
+  * chore(deps): update anyhow to 1.0.103
+  * fix(deps): patch opentelemetry baggage propagation CVE
+  * fix(auth): retry transient fail user existence lookups
+  * fix(rpm): allow tpm2-tss dependency
+  * orchestrator(okta) Include additional okta endpoints
+  * fix(pkg): suggest orchestrator package
+  * feat(orchestrator): add Okta provider
+  * Downgrade error to info in logs, ensure we're returning a proper error
+  * Ensure errors are propagated properly, don't mask response errors
+  * Added interactive user-facing re-prompting on token expiration
+  * fix(nss): depend on systemd users
+  * fix(apparmor): support Debian 12 ABI
+  * fix(orchestrator): allow netavark locks
+  * ci: add Socket firewall checks
+  * chore(orchestrator): drop unused matchers
+  * fix(keycloak): fail on error message
+  * fix(keycloak): label password field
+  * feat(orchestrator): add fail action
+  * fix(keycloak): retry rejected prompts
+  * feat(orchestrator): branch on DOM
+  * fix(orchestrator): normalize input prompts
+  * auth: add password long prompts
+  * fix(qr): label TOTP with username
+  * fix(auth): preserve password prompts
+  * fix(auth): show orchestrator text input
+  * feat(qr): render Keycloak TOTP setup
+  * feat(orchestrator): extract prompt values
+  * fix(keycloak): order new user steps
+  * fix(keycloak): handle password updates
+  * cargo vet
+  * build(deps): bump github/codeql-action from 4.36.0 to 4.36.2
+  * build(deps): bump actions/checkout from 4.2.2 to 7.0.0
+  * build(deps): bump actions/cache from 5.0.5 to 6.0.0
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 24 updates
+  * pam: wait for himmelblaud during auth startup
+  * packaging: disable duplicate NM workaround scripts
+  * dispatcher: refine Himmelblau restart workaround
+  * pam: add enable_kerberos_cache and fetch_profile_picture
+  * nix: add python, rustc and cargo to shell
+  * fix(sso): update Entra SSO extension
+  * fix(sso): clarify Mozilla policy logs
+  * fix(rpm): clean SSO policy on erase
+  * Add Thunderbird policy asset and install/remove support for sso-policies
+  * ci(release): simplify generated release notes
+  * Fix release publishing for old tags
+  * Add GitHub release and linked artifact automation
+  * Remove the openSUSE systemd-user work-around
+  * Add NSS shadow lookups for Himmelblau users
+  * fix(nix module): allowed AF_INET and AF_INET6 to systemd sandbox
+  * daemon: add per-user systemd timer for compliance checks
+  * Throttle Intune policy application on login
+  * daemon: apply Intune policy asynchronously
+  * Fix Nix string list defaults
+  * Make MFA poll prompt services configurable
+  * Handle password changes in password-only auth
+  * Fix test errors lacking surface parity
+  * Update Cargo.nix
+  * cargo vet
+  * Bump libhimmelblau to 0.8.22
+  * ci: automate OBS stable branch submissions
+  * Remove the obs auto update job which doesn't work
+  * ci: add OBS auto-update workflow for stable-3.x
+  * sso: fix Chrome ExtensionInstallForcelist missing update URL
+  * Continue the never-ending chase for SELinux support
+  * Respect configured remote service deny list
+  * Retry enrollment with MFA on strong auth errors
+  * build(deps): bump actions/stale from 10.2.0 to 10.3.0
+  * build(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+  * build(deps): bump step-security/harden-runner from 2.19.3 to 2.19.4
+  * Improve contributor guides regarding AI use
+  * nss: reject non-directory names before GetCredentialType probe
+  * Eliminate use of that word to shoo away bots
+  * Remove invalid domain specific conf examples
+  * tpm: fix validate_hsm_pin_path to accept real state and credential dirs
+  * Fix cargo-fuzz install in fuzz CI
+  * Update Cargo.nix
+  * Work around resume lockout on network down
+  * Reset Hello TOTP when passwd changes Hello key
+  * Clear Hello TOTP keys during full cache clear
+  * Add automatic fallback when requested MFA method is unavailable
+  * Add path validation for HSM PIN file operations
+  * Propagate database errors in name mapping instead of silently discarding
+  * Harden database file permissions to owner-only access
+  * Fix SSHd configuration load order on Fedora/RHEL systems
+  * cargo vet
+  * Update ldap3_proto to 0.6.2
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.5
+  * build(deps): bump actions/dependency-review-action from 4.9.0 to 5.0.0
+  * build(deps): bump DeterminateSystems/magic-nix-cache-action
+  * build(deps): bump cachix/cachix-action
+  * build(deps): bump step-security/harden-runner from 2.19.1 to 2.19.3
+  * build(deps): bump openssl in the cargo group across 1 directory
+  * Fix apparmor DEB file takeover relationships
+  * Generate the example himmelblau.conf
+  * himmelblau-init-hsm-pin: don't bind the hsm-pin to PCR7
+  * pam lib and sqlite lib
+  * mostly fix nix rust-analyzer support
+  * Regenerate man pages
+  * fix(man): remove unused .EX/.EE regex in combine.py
+  * fix(man): clean up man page formatting for site pipeline
+  * fix(test_selinux_policy): Remove fedora42 as an example
+  * feat: Remove Fedora 42 and add support for Fedora 44
+  * cargo vet
+  * aad-tool manpage true up
+  * aad-tool compliance-check command
+  * Introduce browser-orchestrated OIDC MFA for native, provider-agnostic Linux sign-in (#1273)
+  * Enhance/slop guard
+  * qr-greeter: support GNOME Shell 50
+  * Fix broker expiresOn unit conversion
+  * fix(auth): apply request_timeout to attempt_online() HTTP probes
+  * Increase 2.x dependabot cadence
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+  * build(deps): bump cachix/install-nix-action from 31.10.5 to 31.10.6
+  * cargo audit
+  * Update rand to version 0.8.6
+  * Update Cargo.nix
+  * Remove unnecessary override dependencies
+  * Update deny.toml to permit LGPL-2.1-only
+  * cargo clippy
+  * cargo vet
+  * Shim crates to newer versions
+  * Remove unused dependencies
+  * Reject auth when token spn local part differs from requested account_id
+  * qr-greeter: preserve untagged multi-line messages
+  * Add caBLE/hybrid transport for cross-device FIDO2 passkey login
+  * Partially reapply "Add socket units for himmelblaud"
+  * Update Cargo.nix
+  * cargo vet
+  * build(deps): bump DeterminateSystems/magic-nix-cache-action
+  * build(deps): bump actions/github-script from 7.1.0 to 9.0.0
+  * build(deps): bump step-security/harden-runner from 2.18.0 to 2.19.1
+  * build(deps): bump rustls-webpki in the cargo group across 1 directory
+  * build(deps): bump cachix/install-nix-action from 31.10.4 to 31.10.5
+  * build(deps): bump mozilla-actions/sccache-action from 0.0.9 to 0.0.10
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 17 updates
+  * Update Cargo.nix
+  * Correct the description of connection_timeout config
+  * Renumber config options for easier option injection
+  * Enforce good hygiene by checking if `cargo fmt` was run
+  * Add configurable request_timeout to fix multi-address DNS failures
+  * Add IP version selection via himmelblau.conf
+  * Update Cargo.nix
+  * Remove unused dependencies
+  * Add automated dependency cleanup script
+  * feat(deps): add mask shim scaffold generator
+  * Deduplication work for crate dependencies
+  * feat(deps): add override shim scaffold generator
+  * feat(deps): detect duplicate crate versions in dependency analysis
+  * feat(deps): add shallow-usage dependency analysis mode
+  * feat: add barely-used dependency detection system
+  * ci: add cargo-udeps for thorough unused dependency detection
+  * chore(deps): prune unused workspace dependencies
+  * Revert "Add socket units for himmelblaud"
+  * README: add mention of ubuntu 26.04
+  * Add new dependabot ignores
+  * Add opencode option to backport script
+  * cargo vet
+  * Regenerate Cargo.nix
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 11 updates
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+  * build(deps): bump cachix/install-nix-action from 31.10.3 to 31.10.4
+  * build(deps): bump actions/cache from 5.0.4 to 5.0.5
+  * build(deps): bump step-security/harden-runner from 2.16.1 to 2.18.0
+  * Fix PAM authselect and only on install
+  * Update rustls-webpki to 0.103.10
+  * nix `crate2nix -- generate`
+  * cargo vet
+  * broker: implement acquireTokenInteractive with pinentry
+  * Add socket units for himmelblaud
+  * Set WatchdogSec=120s in units and use sdnotify to ping
+  * nss: implement initgroups_dyn to avoid slow group enumeration
+  * nss/pam: bail out early when SYSTEMD_ACTIVATION_UNIT points to himmelblau
+  * Update Cargo.nix
+  * cargo vet
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 18 updates
+  * build(deps): bump quinn-proto in the cargo group across 1 directory
+  * build(deps): bump cachix/install-nix-action from 31.9.1 to 31.10.1
+  * build(deps): bump step-security/harden-runner from 2.15.0 to 2.16.0
+  * build(deps): bump github/codeql-action from 4.32.5 to 4.33.0
+  * build(deps): bump actions/cache from 5.0.3 to 5.0.4
+  * build(deps): bump cachix/cachix-action from 16 to 17
+  * Update rand, rustls-webpki, aws-lc-sys
+  * Fixed width SUSE logo
+  * Update SUSE sponsor logo
+  * extended UBUNTU_DEB822_VERSIONS and UBUNTU_CODENAMES with 26.04/resolute
+  * Add Ubuntu 26.04 target
+  * Add a more robust check for crate2nix
+  * Update Cargo.nix and add a git hook for auto updating it
+  * cargo vet
+  * auth: fix FIDO auth code extraction after server-side redirect change
+  * Add PoP (Proof of Possession) token support for broker token acquisition
+  * cargo vet
+  * Update libhimmelblau to v0.8.17
+  * selinux: allow unconfined_service_t to search himmelblaud_t dirs
+  * Fix deadlock in decoupled Hello key PRT authentication path
+  * Fix username casing in import_broker_prts
+  * idprovider: gate provider init with OnceCell
+  * idprovider: minimize mutex hold time in provider paths
+  * idprovider: avoid re-entrant mutex locking in OIDC paths
+  * idprovider: release providers lock before async alias lookup
+  * Replaced RwLock with Mutex
+  * ci: run nixbuild on master & update Cargo.nix
+  * broker: expiresOn is in milliseconds, not seconds
+  * make: fix glob for log message
+  * cargo vet
+  * broker: support caller-supplied redirect URI
+  * Update libhimmelblau to v0.8.14
+  * build: add DEB_REVISION_APPEND variable for cargo deb --deb-revision
+  * nss: block local group-name collisions on getgrnam
+  * gh-actions: check if crate2nix is up-to-date
+  * nix: switch to crate2nix
+  * nix: generate Cargo.nix with crate2nix
+  * nix: move broker service file to src/broker
+  * nix: move o365.nix
+  * nix: move gen_param_code.py
+  * nix: move docs-xml to common crate
+  * backport: scope cache decisions and fix per-target skip filtering
+  * Update supported versions list
+  * Drop the 'coauthor' by claude injections
+  * backport: fix vet update commit detection and interactive vet run
+  * Correctly parse commits in backport script
+  * aad-tool: add --force-reauth to test-auth
+  * Drop some trailing whitespace
+  * Add a clear contributor policy
+  * Append a list of required actions for a PR
+  * Guard against some AI slop PRs
+  * pam: add 'try_unseal' option and config integration
+  * broker: enable tracing crate and implement LogControl1 callbacks
+  * cargo vet
+  * Update identity_dbus_broker to 0.2.0
+  * packaging: fix if/else block for debian's postrm
+  * Update apparmor.unix-chkpwd.local (Issue #1252)
+  * Address PR review: add FIDO config tests, fix pulse timer cleanup on destroy
+  * Address PR review: use Pango enum, fix legacy SVG copy, remove dead code
+  * Show security key icon during insert prompt
+  * Fix FIDO UX review issues
+  * Improve FIDO/passkey login UX in GDM greeter
+  * nix
+  * man page update
+  * simply config loading.
+  * Update docs-xml/himmelblauconf/base/enable_passwordless.xml
+  * Add an enable_passwordless boolean config option (default: true for backward compatibility) that controls whether AuthOption::Passwordless is included in GetCredentialType requests. When disabled, Entra ID falls back to the password + MFA push notification flow.
+  * Enable Intune policy application by default
+  * When Hello user encounters SSPR demand, be permissive
+  * Remove the himmelbot job
+  * fix(auth): require configured provider; revert config-less startup
+  * Add PrivateTmp back to Tasks Daemon
+  * Drop dead code
+  * Drop krb5 ccache dir code
+  * Add a TODO comment
+  * Drop non working packaged krb5 snippet file
+  * Write kerberos config snippet
+  * Extend resolver interface to return kerberos config together with TGTs
+  * Update selinux policy for himmelblaud_tasks_t
+  * Use libkrimes to store TGTs
+  * feat(firefox): Update Firefox extension to v1.8.0
+  * add tests for sudo_groups functionality
+  * Store PRT in systemd FD Store when stopping
+  * Enable FD Store in systemd unit
+  * Add memfd dependency
+  * cargo vet
+  * Do not clear $NOTIFY_SOCKET when calling sd_ready
+  * Drop trailing whitespace in gen_servicefiles.py
+  * Simplify the himmelbot action, based on opencode docs
+  * Opportunistically refresh PRT after 4 hours
+  * Fix token cache 24h purge
+  * cargo vet
+  * Fix AWS-LC has PKCS7_verify Certificate Chain Validation Bypass
+  * Another attempt at fixing Himmelblau
+  * build(deps): bump step-security/harden-runner from 2.14.2 to 2.15.0
+  * build(deps): bump actions/dependency-review-action from 4.8.2 to 4.8.3
+  * build(deps): bump actions/upload-artifact from 6.0.0 to 7.0.0
+  * build(deps): bump github/codeql-action from 4.32.4 to 4.32.5
+  * build(deps): bump anomalyco/opencode
+  * Remove unused static QR code image assets
+  * Build: Remove static QR code image assets from build/packaging
+  * Refactor: Remove static QR code image usage from runtime
+  * qr-greeter: fix user code strip bypassed by static PNG path
+  * qr-greeter: fix extractUserCode to handle Microsoft's 9-char no-hyphen format
+  * qr-greeter: embed user code in QR SVG to fix overlap on small screens
+  * nixosbuild: only run on push not on pr
+  * broker: use SSO server nonce for PRT only when provided
+  * Show an unicode QR in device authentication flow
+  * Factor unicode qr generation out
+  * Fix pam_himmelblau blocking local user password changes (#1199)
+  * Version 4.0.0
+  * Branch stable-3.x
+  * Remove unused File import
+  * Remove misleading safe_id alias, use account_id directly
+  * Use is_ascii_alphanumeric() for account_id validation
+  * Fix path traversal in LoadProfilePhoto AccountsService writes
+  * Update src/common/src/auth.rs
+  * Split the authenticate macro in separate functions
+  * do not use pam_fail
+  * Drop initialization tracing span
+- Drop patches now in upstream:
+  * o365-url-handler-test-etxtbsy.patch
+  * conf_example.patch
+  * python311-build.patch
+
+-------------------------------------------------------------------
 Thu Sep 10 20:23:54 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.14+git0.7d1ea961:

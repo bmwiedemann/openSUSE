@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  2 07:19:21 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * xe: Add GSC 108.0.0.1211 for NVL
+
+-------------------------------------------------------------------
+Wed Sep  2 13:01:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.3-rc1
+
+-------------------------------------------------------------------
 Fri Aug  7 16:14:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260806 (git commit 16d815da3637):

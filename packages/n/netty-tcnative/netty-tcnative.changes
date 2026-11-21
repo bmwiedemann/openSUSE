@@ -1,8 +1,78 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:44:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.86 Final
+  * Wipe session ticket keys before freeing them (#1052)
+  * Make setNpnProtos0 and setAlpnProtos0 safe on failure and
+    validate the protocol list (#1029)
+  * Make the narrowing of the options in getOptions explicit
+    (#1048)
+  * Preserve the selected credential after handshake completion
+    (#1051)
+  * Fail the build when a downloaded archive does not match its
+    SHA-256 (#1049)
+  * Use const STACK_OF(SSL_CIPHER)* for SSL_get_ciphers (#1050)
+  * Reject negative sizes in SSLContext.setMaxCertList (#1047)
+  * Pass the uncompressed length as jint when calling the Java
+    decompress method (#1046)
+  * Reject session timeouts that do not fit into 32 bits on
+    BoringSSL / AWS-LC (#1045)
+
+-------------------------------------------------------------------
+Tue Nov  3 08:58:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.85 Final
+  * Fix out-of-bounds read in select_next_proto when no protocol
+    matches (#1044)
+  * Check for allocation failures that were previously unchecked
+    (#1040)
+  * Send unknown_ca when the chain was truncated and the
+    TrustManager rejected the certificate (#1038)
+  * Validate timeout, cache mode and cache size before narrowing
+    them (#1036)
+  * Don't sign-extend int options into the 64 bit SSL options
+    (#1035)
+  * Throw IllegalArgumentException when signing algorithm id does
+    not fit into 16 bits (#1034)
+  * Fix native memory leak in SSL_CTX_setup_certs when using
+    BoringSSL or AWS-LC (#1031)
+  * Do not discard the configured password when setCertificate(Bio)
+    fails without a new one (#1030)
+  * Throw NPE when null is passed to setSessionTicketKeys0 and
+    setSessionIdContext (#1028)
+  * Fix native memory leaks in SSLContext JNI_OnLoad (#1027)
+  * Fix native memory leaks in SSLContext.setPrivateKeyMethod0
+    (#1026)
+  * Fix native memory leak in SSL.parseX509Chain when the BIO is
+    null (#1025)
+  * Support SSLContext.setKeyLogCallback with OpenSSL 1.1.1+ (#1021)
+  * Update getSigAlgs to handle algorithms without combined NID
+    (#1019)
+  * Delete local references to Java-returned result arrays in JNI
+    callbacks (#1016)
+  * Fix infinite loop in musl_compat fallbacks on old glibc headers
+    (#1037)
+  * Preserve musl compatibility in FIPS build (#1008)
+  * Update to latest netty-jni-util release (#1041)
+  * Upgrade apr to 1.7.6 (#1032)
+
+-------------------------------------------------------------------
 Tue Sep 22 15:19:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.84 Final
-  * No formal changelog present
+  * Security fixes:
+    + CVE-2026-116539, GHSA-gf9q-9mg7-g5qh, bsc#1289170: Heap buffer
+      overflow in tcn_write_to_bytebuffer BIO callback from
+      unhandled ring buffer write index wrap (JVM crash DoS).
+    + CVE-2026-116540, GHSA-mmc8-vg2v-fvvw, bsc#1289171:
+      Use-after-free in ssl_tlsext_ticket_key_cb during session
+      ticket key rotation with OpenSSL 3.x.
+    + CVE-2026-116541, GHSA-9xr3-jwv4-r489, bsc#1289172: DoS in
+      tcn_write_to_bytebuffer BIO write callback overreporting
+      consumed bytes during TLS 1.3 post-handshake flights.
+    + CVE-2026-116542, GHSA-2784-hxmm-4hgf, bsc#1289173: SNI
+      hostname spoofing via embedded NUL bytes and overlong UTF-8
+      encodings in JNI NewStringUTF decoding.
 
 -------------------------------------------------------------------
 Wed Jul 15 09:08:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>

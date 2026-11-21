@@ -16,10 +16,10 @@
 #
 
 
-%define _atlas_version 0.14.7
+%define _atlas_version 0.16.4
 %define _sat_commit 9d52513b3c68bfb929dbd687d4fb2836cfee6936
 Name:           nim
-Version:        2.4.0
+Version:        2.4.2
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
@@ -36,6 +36,11 @@ Patch1:         nim-fix-tests-i586.patch
 # https://github.com/nim-lang/Nim/pull/24405 (closed, not merged)
 # PATCH-FIX-OPENSUSE nim-2.2.2-pcre2.patch andrea.manzini@suse.com -- port re.nim and nre.nim to pcre2, libpcre1 not in Factory
 Patch2:         nim-2.2.2-pcre2.patch
+# Windows-only icon resources: linked only by koch/nim Windows builds, never on Linux
+# Source-Binary-Exception: nim-2.4.2.tar.xz:nim-2.4.2/icons/nim.res -- other-platform: Windows resource object for the nim.exe icon, unused on Linux
+# Source-Binary-Exception: nim-2.4.2.tar.xz:nim-2.4.2/icons/koch.res -- other-platform: Windows resource object for the koch.exe icon, unused on Linux
+# Source-Binary-Exception: nim-2.4.2.tar.xz:nim-2.4.2/icons/nim_icon.o -- other-platform: Windows COFF object for the nim.exe icon, unused on Linux
+# Source-Binary-Exception: nim-2.4.2.tar.xz:nim-2.4.2/icons/koch_icon.o -- other-platform: Windows COFF object for the koch.exe icon, unused on Linux
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
@@ -211,6 +216,11 @@ cat << EOT >> tests_to_skip
   tests/misc/tvcc.nim
   tests/threads/t7172.nim
   tests/dll/nimhcr_basic.nim
+  tests/dll/nimhcr_compile.nim
+  tests/dll/nimhcr_exception_msg.nim
+  tests/dll/nimhcr_layout.nim
+  tests/dll/nimhcr_layout_order.nim
+  tests/dll/nimhcr_unhandled.nim
   tests/dll/nimhcr_async.nim
   tests/dll/nimhcr_logging.nim
   tests/dll/nimhcr_integration.nim

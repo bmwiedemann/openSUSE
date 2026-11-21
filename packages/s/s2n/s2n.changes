@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Nov  9 14:58:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.13
+  * chore: bindings release 0.3.46 (#6130)
+  * docs: clarify aws-kms-tls-auth revocation requires KMS key rotation (#6128)
+  * refactor: guard libcrypto function calls (#6133)
+  * fix: add null check for quic_transport_parameters (#6135)
+  * fix: validate x509 extension length on the length-only path (#6126)
+  * fix(bindings): remove Result from CertValidationCallbackSync (#5779)
+  * feat: Adds API to make fragment length configurable (#6139)
+  * test: add rust buffered send test (#6060)
+  * feat: add 20261021 security policies (#6141)
+- from version 1.7.12
+  * build(deps): update bindgen requirement from 0.72 to 0.73
+    in /bindings/rust/standard (#6084)
+  * chore: bindings release 0.3.45 (#6116)
+  * refactor: remove length-prefixed logic for PQ key shares (#6041)
+  * fix: guard DH param sizes against uint16 truncation (#6062)
+  * fix: initialize s2n_cert fields in s2n_connection_get_peer_cert_chain (#6045)
+  * fix: copy ticket key before use to avoid concurrent rotation UAF (#6043)
+  * fix: enforce max handshake length in parse_message (#6055)
+  * chore: add new team member (#6122)
+  * fix: treat s2n_allowed_to_cache_connection error return as false (#6125)
+  * fix(mem): Reverse MADV_DONTDUMP on mlock allocator free (#6120)
+  * fix: prefer ECDSA signature schemes in ELB TLS 1.3 security policies (#6127)
+
+-------------------------------------------------------------------
 Thu Oct  8 06:05:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.11

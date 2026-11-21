@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt2-build-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define _name lxqt-build-tools
 Name:           lxqt2-build-tools
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Core build tools for LXQt
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source1:        %{url}/releases/download/%{version}/%{_name}-%{version}.tar.xz.a
 Source2:        %{name}.keyring
 BuildRequires:  cmake >= 3.16.0
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt6Core) >= 6.6
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildArch:      noarch
 

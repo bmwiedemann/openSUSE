@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:02:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.29:
+  * Add support for --add-keywords and --remove-keywords
+  * Add --set-exec shortcut for setting the Exec key
+  * Require Exec key when DBusActivatable is unset (Balló
+    György).
+  * Validate the Keywords key (KlfJoat).
+  * Add Phosh to list of valid OnlyShowIn= environments (Sam
+    Day).
+  * Add new game categories (JakobDev).
+  * Add HealthFitness category (JakobDev).
+  * Implement the intent cache from the intent-apps spec
+  * Code cleanup and modernization (Sebastian Wick).
+  * Manpage fixes (fdo#76, fdo#77) (KlfJoat).
+
+-------------------------------------------------------------------
 Mon Apr 13 09:22:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not require systemd: either this is installed in a system that

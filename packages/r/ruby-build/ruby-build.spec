@@ -24,7 +24,7 @@
 %endif
 
 Name:           ruby-build
-Version:        20261023
+Version:        20261119
 Release:        0
 BuildArch:      noarch
 License:        MIT
@@ -36,13 +36,13 @@ BuildRequires:  fdupes
 %if %{with test}
 BuildRequires:  bats
 %endif
+Requires:       /usr/bin/xargs
+Requires:       awk
 Requires:       bash
 Requires:       curl
 Requires:       gzip
 Requires:       make
 Requires:       tar
-Requires:       awk
-Requires:       /usr/bin/xargs
 # Maybe Requires would be better.
 Recommends:     %{name}-dependencies-mri
 

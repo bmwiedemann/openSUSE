@@ -90,6 +90,7 @@ Requires:       rebootmgr
 Requires:       rpm
 Requires:       shadow
 Requires:       systemd
+Requires:       tar
 Requires:       util-linux
 Requires:       group(nobody)
 Requires:       user(nobody)
@@ -132,7 +133,6 @@ Requires:       sysextmgr
 #Requires:      sysextmgr-tukit-plugin
 Conflicts:      gettext-runtime-mini
 Conflicts:      krb5-mini
-Requires:       yast2-logs
 
 %description base
 This is the openSUSE MicroOS runtime system. It contains only a minimal multiuser

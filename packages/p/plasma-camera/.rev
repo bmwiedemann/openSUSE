@@ -55,4 +55,20 @@
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383593</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3d4187a8955bc3df88a4511e62dcb94b</srcmd5>
+    <version>26.08.3</version>
+    <time>1793990582</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395394</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c20aa777f924668d27795b5d3519f9f9</srcmd5>
+    <version>26.11.80</version>
+    <time>1794932448</time>
+    <user>anag_factory</user>
+    <comment>Submit beta package to fix the factory build</comment>
+    <requestid>1398105</requestid>
+  </revision>
 </revisionlist>

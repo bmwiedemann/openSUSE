@@ -467,4 +467,13 @@
   * Updated translations and bumped the version</comment>
     <requestid>1348569</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>745a5587117251eb5dd6ad562bf6311e</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182286</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Used std::pair instead of QPair, and did some cleanup.</comment>
+    <requestid>1398751</requestid>
+  </revision>
 </revisionlist>

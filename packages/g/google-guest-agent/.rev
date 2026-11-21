@@ -1191,4 +1191,23 @@
   CVE-2026-116585, CVE-2026-116586, CVE-2026-116587) (forwarded request 1394438 from glaubitz)</comment>
     <requestid>1394442</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>a433ac777936a56754bb4a839b88e860</srcmd5>
+    <version>20261105.00</version>
+    <time>1793899389</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261105.00
+  * Refuse Windows account changes on Active Directory domain
+    controllers. (#642)
+- Remove stale Go module version overrides in _service file (forwarded request 1395162 from glaubitz)</comment>
+    <requestid>1395163</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>e5c77bd69668c4252b545bd28ce6b855</srcmd5>
+    <version>20261105.00</version>
+    <time>1795182395</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1398843</requestid>
+  </revision>
 </revisionlist>

@@ -31,4 +31,28 @@
     <comment>Update to 5.2.3</comment>
     <requestid>1392692</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>125980f555a1fe23cdbe8213ebbde1a2</srcmd5>
+    <version>5.2.3</version>
+    <time>1793817996</time>
+    <user>anag_factory</user>
+    <comment>Fix for 16.1</comment>
+    <requestid>1394964</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aab494afeb5b145814efb8df814f639b</srcmd5>
+    <version>5.2.4</version>
+    <time>1794411006</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.2.4</comment>
+    <requestid>1396865</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>b843998fa9d1da00c07796814a8e2f0f</srcmd5>
+    <version>5.2.4</version>
+    <time>1794838484</time>
+    <user>anag_factory</user>
+    <comment>Build fix for aarch64</comment>
+    <requestid>1397876</requestid>
+  </revision>
 </revisionlist>

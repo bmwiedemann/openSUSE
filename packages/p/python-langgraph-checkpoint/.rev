@@ -39,4 +39,12 @@
     <comment>Update python-langgraph-checkpoint to 4.3.1.</comment>
     <requestid>1392920</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0008dba2774db963560ba3d836d959d7</srcmd5>
+    <version>4.3.2</version>
+    <time>1794816480</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-checkpoint to 4.3.2: InMemoryStore search paging, batched read dedupe.</comment>
+    <requestid>1397535</requestid>
+  </revision>
 </revisionlist>

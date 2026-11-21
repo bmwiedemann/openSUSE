@@ -72,4 +72,15 @@
   * Fixed process respawn during logout</comment>
     <requestid>1394419</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>874ed74dbe20fa796fb525ccbd72be67</srcmd5>
+    <version>51.4.0</version>
+    <time>1794410944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 51.4.0:
+  * Fix accessibility
+- Changes from version 51.3.0:
+  * Don't show one-pixel-border when dropping an icon</comment>
+    <requestid>1396745</requestid>
+  </revision>
 </revisionlist>

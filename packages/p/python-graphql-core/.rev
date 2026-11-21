@@ -145,4 +145,41 @@
     descriptions) when sorting</comment>
     <requestid>1359257</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2a4ae74ec0012905ee037c05b55c12ec</srcmd5>
+    <version>3.3.1</version>
+    <time>1793991385</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.1:
+  * Security fix (CVE-2026-119286): Create a fresh ValidationAbortedError
+    on each aborted validation instead of reusing a module-level exception,
+    preventing a memory leak via accumulated tracebacks.
+  * Fixed an issue where input values sharing a default value coerced it
+    based on whichever type was used first; coerced defaults are now
+    memoized per argument or input field.
+  * Ported changes from GraphQL.js v17.0.2.
+  * Breaking: Python 3.7 to 3.9 are no longer supported; Python 3.10 to 3.15
+    are now supported.
+  * Breaking: Functions and options deprecated in GraphQL.js 16 have been
+    removed.
+  * Breaking: AST nodes are now frozen dataclasses, and all AST collection
+    fields are tuples instead of lists.
+  * Breaking: ExecutionContext has been renamed to Executor, and the
+    execution_context_class parameter is now executor_class.
+  * Breaking: subscribe() now stays synchronous when possible (like
+    execute()) and raises a GraphQLError if called on non-subscription
+    operations.
+  * Breaking: create_source_event_stream() now takes a built Executor (via
+    Executor.build()) instead of raw request arguments.
+  * Breaking: A Python int that cannot be represented exactly as a float now
+    raises a GraphQLError when coerced to Float.
+  * Breaking: An explicit Undefined variable value is now treated as
+    omitted, allowing fallback to the variable's default value.
+  * Breaking: Input coercion follows the specification more strictly, and
+    default values are validated against their types.
+  * Breaking: Directives on directive definitions and directive extensions
+    are now part of the language; the parser option
+    experimental_directives_on_directive_definitions has been removed.</comment>
+    <requestid>1395656</requestid>
+  </revision>
 </revisionlist>

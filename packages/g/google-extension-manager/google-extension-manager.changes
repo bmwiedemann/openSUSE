@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:46:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20261105.00
+  * Move plugin manager OS-specific checks into per-OS source files.
+  * Split config logging on the ini writer's own line break.
+  * Refuse Windows account changes on Active Directory domain controllers.
+  * Move the core plugin config file path into per-OS source files.
+  * Send PLUGIN_CONFIG_REMOVE only when a plugin removal is requested.
+  * Fix data races in guest agent plugin manager.
+  * Reject path traversal and symlink entries in UnpackTargzFile.
+  * Fix the MDS mTLS credentials directory permissions on Linux.
+  * Add Network Telemetry Agent which collects diagnostic information
+    which can be used to debug networking issues.
+  * Add Network Telemetry Agent which collects diagnostic information
+    which can be used to debug networking issues.
+- Remove stale Go module version overrides in _service file
+
+-------------------------------------------------------------------
+Fri Oct 30 07:42:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update github.com/go-jose/go-jose/v4 to v4.1.6 (bsc#1288342,
+  CVE-2026-116585, CVE-2026-116586, CVE-2026-116587)
+
+-------------------------------------------------------------------
+Wed Oct 28 08:53:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20261022.00
+  * Update Go toolchain and module dependencies, this also updates
+    golang.org/x/net to v0.61.0 (bsc#1287488, CVE-2026-97032)
+  * Reduce Linux snapshot service gRPC keepalive interval and add
+    post-snapshot failsafe watchdog
+  * Implement support for `InstanceSetup.NetworkEnabled` flag in the core plugin.
+  * Support extracting ISV versions from discovered process fields.
+- from version 20261015.00
+  * Ensure OS Login configuration on disk is rolled back on startup when
+    OS Login is disabled in metadata, even if the boot disk or image
+    previously had OS Login enabled.
+  * Add `remove_state` field to `StopRequest` and deprecate `cleanup`.
+  * Update Guest Telemetry Extension to version 1.2 bringing several
+    security improvements.
+  * Avoid storing plugin state if the plugin is a local plugin, and clean up
+    existing state files for local plugins.
+  * [MWLID] Don't return an error on `GetStatus` if `lastError` is not nil.
+  * [MWLID] Initialize `galog`.
+  * Fix TestCheckExpiredKey to use valid OpenSSH authorized key format
+  * Force network configuration reload when another manager rolls back state.
+  * Update go mod dependencies.
+  * Update incorrect comments. Remove redundant check.
+  * Support falling back to stderr for version command output.
+  * Update protoc generated header comments to v7.36.0.
+  * Update go mod dependencies.
+  * Respect both the `disable-address-manager` metadata key and the `disable`
+    configuration flag under the `AddressManager` section of the configuration file.
+  * Exactly match the legacy implementation of the `sshd_config` for OS Login.
+  * Only log "No local plugins to install" if there are actually no plugins.
+  * Respect the `sysprep-specialize` configuration flag in the `MetadataScripts`
+    section of the configuration file.
+  * No public description
+  * No public description
+  * Fix order-dependent tests.
+  * Update env vars to support separate intervals for scan and report
+  * Update command arguments for disabled shells.
+  * Ensure USE_DISCOVERED_PROCESS_PATH commands run as the discovered process user.
+  * When cleaning up `NetworkManager` network configuration files, use `os.Remove`
+    instead of `os.RemoveAll`
+  * Update guest_telemetry_extension to version 1.1.
+  * Avoid writing the private PEM key if MDS returns empty content for the endpoint.
+  * Refresh credentials when the identity UUID is changed, and defer the next timed
+    refresh.
+  * Skip core plugin installation if it doesn't exist.
+  * Ignore requests from ACS for uninstalling local plugins, and all requests for
+    the core plugin.
+  * Refactor workloadcertrefresh late-loaded module into an independent extension.
+- from version 20260922.00
+  * [MWLID] Don't return an error on `GetStatus` if `lastError` is not nil.
+  * [MWLID] Initialize `galog`.
+- from version 20260917.00
+  * Fix TestCheckExpiredKey to use valid OpenSSH authorized key format
+  * Force network configuration reload when another manager rolls back state.
+  * Update go mod dependencies.
+  * Update incorrect comments. Remove redundant check.
+  * Support falling back to stderr for version command output.
+  * Update protoc generated header comments to v7.36.0.
+  * Update go mod dependencies.
+  * Respect both the `disable-address-manager` metadata key and the `disable`
+    configuration flag under the `AddressManager` section of the configuration file.
+  * Exactly match the legacy implementation of the `sshd_config` for OS Login.
+  * Only log "No local plugins to install" if there are actually no plugins.
+  * Respect the `sysprep-specialize` configuration flag in the `MetadataScripts`
+    section of the configuration file.
+  * No public description
+  * No public description
+  * Fix order-dependent tests.
+  * Update env vars to support separate intervals for scan and report
+  * Update command arguments for disabled shells.
+  * Ensure USE_DISCOVERED_PROCESS_PATH commands run as the discovered process user.
+  * When cleaning up `NetworkManager` network configuration files, use `os.Remove`
+    instead of `os.RemoveAll`
+  * Update guest_telemetry_extension to version 1.1.
+  * Avoid writing the private PEM key if MDS returns empty content for the endpoint.
+  * Refresh credentials when the identity UUID is changed, and defer the next timed
+    refresh.
+  * Skip core plugin installation if it doesn't exist.
+  * Ignore requests from ACS for uninstalling local plugins, and all requests for
+    the core plugin.
+  * Refactor workloadcertrefresh late-loaded module into an independent extension.
+- from version 20260903.01
+  * Force network configuration reload when another manager rolls back state.
+  * Update go mod dependencies.
+- from version 20260825.00
+  * Update incorrect comments. Remove redundant check.
+  * Support falling back to stderr for version command output.
+  * Update protoc generated header comments to v7.36.0.
+- from version 20260820.00
+  * Update go mod dependencies.
+  * Respect both the `disable-address-manager` metadata key and the `disable`
+    configuration flag under the `AddressManager` section of the configuration file.
+  * Exactly match the legacy implementation of the `sshd_config` for OS Login.
+  * Only log "No local plugins to install" if there are actually no plugins.
+  * Respect the `sysprep-specialize` configuration flag in the `MetadataScripts`
+    section of the configuration file.
+  * No public description
+  * No public description
+  * Fix order-dependent tests.
+  * Update env vars to support separate intervals for scan and report
+  * Update command arguments for disabled shells.
+  * Ensure USE_DISCOVERED_PROCESS_PATH commands run as the discovered process user.
+  * When cleaning up `NetworkManager` network configuration files, use `os.Remove`
+    instead of `os.RemoveAll`
+  * Update guest_telemetry_extension to version 1.1.
+  * Avoid writing the private PEM key if MDS returns empty content for the endpoint.
+  * Refresh credentials when the identity UUID is changed, and defer the next timed
+    refresh.
+  * Skip core plugin installation if it doesn't exist.
+  * Ignore requests from ACS for uninstalling local plugins, and all requests for
+    the core plugin.
+  * Refactor workloadcertrefresh late-loaded module into an independent extension.
+- Bump required google-guest-agent version to 20261022.00
+- Bump required Go API version to 1.26
+- Use correct upstream URL in URL field
+
+-------------------------------------------------------------------
 Wed Sep 16 11:45:04 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
 
 - Change name to google-extension-manager per request from Google

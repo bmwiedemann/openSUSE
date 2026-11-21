@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Oct 27 20:38:42 UTC 2026 - chris@computersalat.de
+
+- config.postfix:
+  * Fix timezone
+  * /usr/sbin/postconf: fatal: -e, -X, or -# accepts no multi-line input
+  * master.cf generation
+- update patches
+  * postfix-main.cf.patch
+  * postfix-master.cf.patch
+- rebase patch
+  * postfix-vda-v14-3.0.3.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 06:18:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - remove /usr/local/include from compilation options

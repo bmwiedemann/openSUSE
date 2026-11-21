@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:53:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.13.1:
+  * Security: prevent excessive memory and CPU consumption when
+    decoding truncated MessagePack arrays
+
+-------------------------------------------------------------------
 Fri Oct 16 06:05:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.13.0:

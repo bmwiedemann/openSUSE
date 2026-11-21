@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:05:37 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Modernize packaging for multi-arch and Immutable OS:
+  * Scope s390x-only subpackages (osasnmpd, zdsfs, hmcdrvfs, libekmfweb1,
+    libkmipclient1, chreipl-fcp-mpath, genprotimg-data) and dependencies
+    under %ifarch s390x to fix package build on x86_64.
+  * Unify %prep at top-level and remove duplicate %prep from %else branch.
+  * Update fallback _fillupdir to %{_datadir}/fillup-templates.
+  * Remove dead BuildRequires: libica-devel-static and redundant mdevctl.
+  * Remove obsolete Requires(pre): shadow (handled by systemd-sysusers).
+  * Remove dracut-internal services (sel-ebc-boot-mount.service,
+    sel-ebc-override-crypttab.service, sel-ebc-paes-enforce.service,
+    sel-ebc-pvebc.service) and alias opticsmon.service from systemd macros.
+  * Remove non-existent fillup_only calls (mon_statd, opticsmon, zpcimon).
+  * Fix bashism in osasnmpd wrapper script (use cleanup() instead of
+    function cleanup).
+  * Remove unused Requires: perl from osasnmpd.
+  * Remove obsolete %post chreipl-fcp-mpath (udev file triggers handle reload).
+  * Remove duplicate directory ownership of netboot in genprotimg-data.
+  * Add explicit %dir entries for bash and zsh completion directories
+    under x86_64 %files and match zsh completion pattern '_*'.
+  * Add Recommends: parted (for mkdump.pl) and Suggests: python3-yq, qemu-tools.
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Tue Sep 22 07:36:27 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.44.1 

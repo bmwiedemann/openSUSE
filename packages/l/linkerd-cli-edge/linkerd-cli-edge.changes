@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:03:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.11.2:
+  * proxy: v2.374.0 (#15781)
+  * build(deps): bump node-forge from 1.4.0 to 1.4.3 in /web/app
+    (#15763)
+  * proxy: v2.373.0 (#15768)
+  * chore: bump k8s testing ref to 1.37 (#15740)
+
+-------------------------------------------------------------------
+Sat Oct 31 12:30:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.10.3:
+  * chore(deps): bump golang.org/x/net to 0.62.0 (#15755)
+
+-------------------------------------------------------------------
 Fri Oct 30 06:20:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.10.2:

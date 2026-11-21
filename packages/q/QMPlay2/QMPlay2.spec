@@ -32,6 +32,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM 0002-fix-youtube-streams.patch -- Fix YouTube stream waiting for yt-dlp
+Patch2:         0002-fix-youtube-streams.patch
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  lld
@@ -80,10 +82,7 @@ BuildRequires:  pkgconfig(libswresample) >= 3.1.100
 BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(portaudio-2.0)
-# Enable rubberband support on openSUSE Tumbleweed and openSUSE Leap 15.5, SLE15SP5+
-%if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
-%endif
 BuildRequires:  pkgconfig(shaderc)
 BuildRequires:  pkgconfig(taglib) >= 1.9
 BuildRequires:  pkgconfig(vdpau)

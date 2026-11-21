@@ -19,11 +19,10 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.74.5
+Version:        0.75.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
-Group:          Productivity/File utilities
 URL:            https://github.com/junegunn/fzf
 Source0:        https://github.com/junegunn/fzf/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -36,7 +35,6 @@ command history, processes, hostnames, bookmarks, git commits, etc.
 
 %package tmux
 Summary:        Tmux integration for fzf
-Group:          Productivity/File utilities
 Supplements:    (fzf and tmux)
 BuildArch:      noarch
 
@@ -46,7 +44,6 @@ separate tmux pane.
 
 %package bash-integration
 Summary:        Bash completion for fzf
-Group:          Productivity/File utilities
 Requires:       bash-completion
 Requires:       fzf
 Enhances:       (fzf and bash-completion)
@@ -59,7 +56,6 @@ Bash shell completions for fzf
 
 %package fish-integration
 Summary:        Fish completion for fzf
-Group:          Productivity/File utilities
 Requires:       fish
 Requires:       fzf
 Enhances:       (fzf and fish)
@@ -80,7 +76,6 @@ end
 
 %package zsh-integration
 Summary:        ZSH completion for fzf
-Group:          Productivity/File utilities
 Requires:       fzf
 Requires:       zsh
 Enhances:       (fzf and zsh)
@@ -95,7 +90,6 @@ zsh shell completions for fzf
 
 %package -n vim-fzf
 Summary:        Vim plugin for fzf
-Group:          Productivity/File utilities
 Requires:       (vim or neovim)
 Enhances:       (fzf and zsh)
 BuildArch:      noarch

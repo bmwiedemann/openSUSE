@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 15 16:57:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.31:
+  * Add forward_intermediates()/prune_intermediate_layers() support
+    to most models
+  * Add CSPNeXt (RTMDet backbone) models with pretrained weights
+  * Add hyperparameter sweep support (sweep.py) and train.py
+    improvements
+  * Add multi-label classification support in train.py/validate.py
+  * Add WSD LR scheduler and RoPE refactor/precision fixes
+  * reset_classifier() and checkpoint reconstruction fixes across
+    ViT, EVA, BEiT, NaFlexViT, RepViT, iFormer
+  * NaFlex fixes: norm placement, SwiGLU alignment, grayscale and
+    non-RGB channels
+  * Fix layer-wise LR decay grouping and InceptionNeXt feature
+    sizes
+  * head_hidden_size and pool type handling improvements
+  * Optimizer, EMA, model resizing and training fixes
+
+-------------------------------------------------------------------
 Wed Sep 23 18:28:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.30:

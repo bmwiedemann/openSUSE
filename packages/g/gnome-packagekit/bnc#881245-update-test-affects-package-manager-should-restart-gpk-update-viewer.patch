@@ -1,8 +1,8 @@
-Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
+Index: gnome-packagekit-43.0+77/src/gpk-update-viewer.c
 ===================================================================
---- gnome-packagekit-43.0.orig/src/gpk-update-viewer.c
-+++ gnome-packagekit-43.0/src/gpk-update-viewer.c
-@@ -203,7 +203,17 @@ gpk_update_viewer_check_restart (void)
+--- gnome-packagekit-43.0+77.orig/src/gpk-update-viewer.c
++++ gnome-packagekit-43.0+77/src/gpk-update-viewer.c
+@@ -207,7 +207,17 @@ gpk_update_viewer_check_restart (void)
  		message = _("Some of the updates that were installed require you to log out and back in before the changes will be applied.");
  		/* TRANSLATORS: the button text for the log out */
  		button = _("Log Out");
@@ -21,7 +21,7 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  	} else if (restart_update == PK_RESTART_ENUM_SECURITY_SESSION) {
  		/* TRANSLATORS: the message text for the log out */
  		message = _("Some of the updates that were installed require you to log out and back in to remain secure.");
-@@ -229,6 +239,21 @@ gpk_update_viewer_check_restart (void)
+@@ -233,6 +243,21 @@ gpk_update_viewer_check_restart (void)
  #else
  		show_button = FALSE;
  #endif
@@ -41,9 +41,9 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
 +		/* needed to force gpk-update-viewer to quit */
 +		ret = FALSE;
  	}
- 
+
  	/* only show the button if we can do the action */
-@@ -437,6 +462,7 @@ gpk_update_viewer_update_packages_cb (Pk
+@@ -441,6 +466,7 @@ gpk_update_viewer_update_packages_cb (Pk
  	/* check restart */
  	if (restart_update == PK_RESTART_ENUM_SYSTEM ||
  	    restart_update == PK_RESTART_ENUM_SESSION ||
@@ -51,7 +51,7 @@ Index: gnome-packagekit-43.0/src/gpk-update-viewer.c
  	    restart_update == PK_RESTART_ENUM_SECURITY_SESSION ||
  	    restart_update == PK_RESTART_ENUM_SECURITY_SYSTEM) {
  		gpk_update_viewer_check_restart ();
-@@ -1776,6 +1802,10 @@ gpk_update_viewer_populate_details (PkUp
+@@ -1780,6 +1806,10 @@ gpk_update_viewer_populate_details (PkUp
  		/* TRANSLATORS: reboot required */
  		gtk_text_buffer_insert_with_tags_by_name (text_buffer, &iter, _("The computer will have to be restarted after the update for the changes to take effect."), -1, "para", NULL);
  		gtk_text_buffer_insert (text_buffer, &iter, "\n", -1);

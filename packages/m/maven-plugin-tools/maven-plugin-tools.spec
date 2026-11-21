@@ -28,7 +28,8 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{name}/%{file_ver}/%{name}-%{file_ver}-source-release.zip
 Source1:        %{name}-build.tar.xz
-Patch0:         0002-Remove-dependency-on-jtidy.patch
+Patch0:         0001-Remove-dependency-on-jtidy.patch
+Patch1:         0002-A-standalone-plugin-descriptor-generator.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -110,6 +111,7 @@ API documentation for %{name}.
 %prep
 %setup -q -a1 -n %{name}-%{file_ver}
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 

@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Wed Nov  4 13:00:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.20.0 (5.02)
+   see /usr/share/doc/packages/perl-CGI/Changes
+
+  5.02 2026-11-03
+      [ RELEASE NOTES ]
+      - this is a security release fixing a large number of vulnerabilities,
+        several of them exploitable by any client against any script. all
+        users should upgrade
+      - to fix them some default behaviour has changed, see BREAKING CHANGES
+        below - most changes only affect malicious or malformed requests, but
+        please read them before upgrading. where a change could reasonably
+        affect a legitimate application an opt out or migration path is given
+      - the minimum *supported* perl version is now 5.10, however the dist
+        will still install for 5.8 (no guarantees about tests passing however)
+      [ SECURITY ]
+      - denial of service:
+        - CVE-2026-120631: CGI::Cookie->parse (and so CGI->cookie) used a
+          client supplied cookie expires value as a regex, so a Cookie header
+          could make it die or backtrack catastrophically
+          bsc#1289321
+        - CVE-2026-120632: a crafted multipart/related Content-Type header
+          caused cubic regex backtracking (~15s of CPU for an 8KB header, no
+          body needed) bsc#1289352
+        - CVE-2026-120650: request size, param and upload limits were missing
+          or unenforced: $POST_MAX defaulted to no limit, and was not enforced
+          at all for multipart bodies without a CONTENT_LENGTH (chunked
+          encoding), or for the boundary line of a multipart body without a
+          boundary=; PUTDATA/POSTDATA/PATCHDATA bodies were read into memory
+          in one go; and there was no limit on the number of params or
+          uploads in a request (a 40MB form body took 9s and 1.5GB of memory
+          to parse) - see the new $CGI::MAX_PARAMS and $CGI::MAX_UPLOADS
+          bsc#1289440
+        - CVE-2026-120651: an infinite loop reading a short PUT/POST/PATCH
+          body when $DISABLE_UPLOADS was set bsc#1289441
+        - CVE-2026-120645: scrolling_list used submitted values as a regex
+          for optgroups bsc#1289435
+        - CVE-2026-120646: uploadInfo() dereferenced plain strings as symbolic
+          references, so died when given some, e.g. "0" bsc#1289436
+      - header injection / response splitting:
+        - CVE-2026-120639: with autoEscape off, header() decoded HTML entities
+          in extra header values after checking them for newlines, so
+          &#13;&#10; became CRLF; and multipart_start() and
+          CGI::Push::do_push did no newline checks
+          bsc#1289428
+        - CVE-2026-120644: CGI::Cookie path/domain/expires were not checked,
+          so ";" injected other cookie attributes
+          bsc#1289433
+        - CVE-2026-120647: the header() -attachment filename did not escape
+          quotes bsc#1289437
+      - open redirects, and URLs/forms pointing at other hosts:
+        - CVE-2026-120633: url(), self_url(), virtual_host(), virtual_port()
+          trusted the client supplied X-Forwarded-Host header, and an
+          unvalidated Host, affecting the default redirect() location,
+          start_html(-base=>1) and default start_form() actions
+          bsc#1289393
+        - CVE-2026-120638: redirect() HTML decoded its URL after the
+          application had checked it, e.g. "/&#47evil.example/" became
+          "//evil.example/" bsc#1289427
+        - CVE-2026-120636: URLs built from the client supplied REQUEST_URI
+          could be protocol relative (//evil.example), absolute-form
+          (http://evil.example/) or have backslashes, and url(-relative=>1)
+          could return e.g. javascript:alert(1)
+          bsc#1289396
+      - cross site scripting:
+        - CVE-2026-120643: url()/self_url() could contain a raw single quote
+          (URI->canonical decodes %27)
+          bsc#1289432
+        - CVE-2026-120648: comment() text could end the HTML comment bsc#1289439
+      - information disclosure:
+        - CVE-2026-120634: CGI::Carp warnings buffered for warningsToBrowser
+          were not reset between requests in persistent environments, so one
+          user's warnings could be shown to another
+          bsc#1289394
+      - CVE-2026-120635: multipart parsing differentials (fields smuggled past
+        a filtering proxy or WAF that parses per the RFCs):
+        - the boundary was matched anywhere, not only at the start of a line
+        - the boundary was used without its "--" for some User-Agents
+        - Content-Disposition name/filename were found inside other
+          parameters' quoted values
+        - boundaries over the RFC 2046 limit corrupted and merged parts
+        - bsc#1289395
+      - other:
+        - CVE-2026-120641: client supplied upload filenames could contain a
+          path, allowing path traversal in applications that use them to save
+          the file bsc#1289430
+        - CVE-2026-120640: clients could set POSTDATA/PUTDATA/PATCHDATA/
+          XForms:Model through the query string or a form field,
+          indistinguishable from the real body (e.g. a cross site HTML form
+          posting to a JSON endpoint)
+          bsc#1289429
+        - CVE-2026-120642: under taint mode the upload filename, uploadInfo()
+          values, path_info, Accept(), and some cookie and url_param values
+          were untainted bsc#1289431
+        - CVE-2026-120637: an unrecognised REQUEST_METHOD (e.g. OPTIONS) made
+          the process' own command line arguments the request params
+          bsc#1289397
+      [ BREAKING CHANGES ]
+      - X-Forwarded-Host is no longer used by url()/self_url()/virtual_host()
+        /virtual_port(), and Host is only used if it is a valid host[:port].
+        behind a reverse proxy pass the right Host / SERVER_NAME, or set
+        $CGI::TRUST_X_FORWARDED_HOST = 1
+      - $CGI::POST_MAX now defaults to 128MB, set it to -1 for no limit
+      - $CGI::MAX_PARAMS (10,000) and $CGI::MAX_UPLOADS (1,000) are new
+        limits, set them to -1 for no limit. requests exceeding any of the
+        limits get a "413 Request entity too large" cgi_error
+      - upload filenames (param('upload'), the upload filehandle, and the
+        upload_hook) have any directory part and control characters removed.
+        the raw value is in uploadInfo($fh)->{'Content-Disposition'}, or set
+        $CGI::SANITIZE_UPLOAD_FILENAMES = 0
+      - redirect() URLs and header() values are no longer HTML unescaped -
+        pass e.g. /x?a=1&b=2, not /x?a=1&amp;b=2
+      - multipart_start() header names are now capitalised like header()'s
+      - url(-relative=>1) prefixes a result that looks like it has a scheme
+        with ./, and URLs built from REQUEST_URI are reduced to a path on
+        this host (request_uri() still returns the literal value)
+      - url()/self_url() percent encode single quotes
+      - CGI::Cookie dies if path, expires or domain contain ";" or control
+        characters, or domain isn't a valid host name
+      - header() -attachment backslash escapes " and \ in the filename
+      - comment() inserts a space into any "--" in its text
+      - client sent params named POSTDATA, PUTDATA, PATCHDATA or XForms:Model
+        are ignored (an application's own initializer can still set them)
+      - under taint mode more request data is tainted, as listed above, so
+        must be untainted before use in e.g. open() or system()
+      - malformed multipart bodies are rejected: boundaries over 200
+        characters, a body supplied boundary not starting with --, or a
+        boundary line over 1KB. multipart/related requires the media type to
+        be exactly multipart/related (its parameters may now be in any order)
+      - offline (command line) debugging mode is only used when there is no
+        REQUEST_METHOD and no CGI server, FastCGI or mod_perl
+      - PUTDATA/POSTDATA/PATCHDATA upload_hook callbacks are now called per
+        4K chunk, as they already were for multipart uploads
+      - the IE 3.01 for Mac / DreamPassport multipart special case is removed
+      [ FIX ]
+      - chunked (no CONTENT_LENGTH) multipart requests without a boundary=
+        always failed, and the boundary line read now works under mod_perl
+      - read_postdata_putdata ignored SPIN_LOOP_MAX, dying on the first zero
+        length read
+      - a second CGI->new in the same request lost cgi_error, and shared the
+        first object's param arrays
+      - optgroup() ignored the documented -novals option
+      - import_names() wiped nested packages when clearing the namespace
+      - an upload whose filename was "0" lost its name
+      - an empty extra header() value came out as a lone "
+      [ META ]
+      - all modules are now version 5.00, including CGI::Cookie (was 4.59)
+      [ TESTING ]
+      - tests for all of the above
+
+-------------------------------------------------------------------
 Wed May  6 07:45:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.720.0 (4.72)

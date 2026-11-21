@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:14:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gdcm-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_*, PyInt_*) with Python 3 C API in Wrapping/Python/gdcmswig.i.
+
+-------------------------------------------------------------------
+Sat Nov 14 11:19:49 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 3.2.7
+  * no release notes
+  * gdcm-2.4.0-usecopyright.patch removed (upstream)
+
+-------------------------------------------------------------------
 Fri May 22 04:59:39 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Build with bundled poppler on Leap 16.1 since poppler has been

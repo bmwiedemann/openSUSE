@@ -17,7 +17,7 @@
 #
 
 
-%define soname 8_0_7
+%define soname 8_0_8
 
 # Handling libxdp support
 %if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150500 && 0%{?is_opensuse}
@@ -59,7 +59,7 @@
 %endif
 
 Name:           suricata
-Version:        8.0.7
+Version:        8.0.8
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
@@ -79,11 +79,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-setuptools
-BuildRequires:  rust >= 1.63.0
+BuildRequires:  rust >= 1.75.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(hiredis)
-BuildRequires:  pkgconfig(hwloc)
+BuildRequires:  pkgconfig(hwloc) >= 2.0.0
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libevent)

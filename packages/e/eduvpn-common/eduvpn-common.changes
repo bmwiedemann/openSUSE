@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  9 12:31:13 UTC 2026 - René Neumaier <r.neumaier@mailbox.org>
+
+- Update to 5.0.4
+  * Update dependencies (no details found in upstream changelog)
+- Specfile change
+  * BuildRequires to go1.26 (found in go.mod)
+  * Refer pycache in files section
+
+-------------------------------------------------------------------
 Wed Jul 29 09:09:52 UTC 2026 - René Neumaier <r.neumaier@mailbox.org>
 
 - Update to upstream 5.0.3

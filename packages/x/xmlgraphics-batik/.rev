@@ -377,4 +377,12 @@
     <comment>1.18 needed by bsc#1231428, CVE-2024-28168</comment>
     <requestid>1207476</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>42d0f7c1cc5cfc635c67b96c55ecc72b</srcmd5>
+    <version>1.20</version>
+    <time>1794816453</time>
+    <user>anag_factory</user>
+    <comment>1.20 with security fixes</comment>
+    <requestid>1397290</requestid>
+  </revision>
 </revisionlist>

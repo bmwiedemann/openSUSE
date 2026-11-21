@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct 26 08:34:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 9.11.1
+  * bug fixes
+    + !480: fix regression introduced in 9.11 version (!460).
+    + !481: performance optimization in computeAllFrames(), fix
+      LimitExceededException on some complex classes.
+
+- Upgrade to version 9.11
+  * new Opcodes.V28 constant for Java 28 (no support of preview
+    features yet)
+  * bug fixes
+    + !460: store the forward references to a label inline in the
+      bytecode, instead of in a separate array
+    + !464: improve AdviceAdapter for classes with stack map frames
+  * security fixes
+    + !456: validate the BootstrapMethods attribute length
+    + !457: more code_length validation in ClassReader.readCode()
+    + !458: check that each subroutine has at most one ret
+      instruction
+    + !459: avoid recursion in replaceAsmInstructions()
+    + !461: do not create Edge instances for the exception handlers
+    + !462: large methods optimization
+    + !463: add an API to provide control over the resources used by
+      ClassWriter
+    + !464: add a setComputeLimits() method in AdviceAdapter
+    + !465: add a recursion limit in SignatureReader
+    + !466: add an API to provide control over the resources used by
+      JSRInlinerAdapter
+    + !468: add an API to provide control over the resources used by
+      Analyzer
+    + !469: add an API to provide control over the resources used in
+      asm.util
+    + !474: add a recursion limit for ConstantDynamic constants in
+      ClassReader
+    + !475: make SimpleVerifier.isAssignableFrom() non-recursive
+    + !476: add a recursion limit for annotations in ClassReader
+    + !477: make Printer.printList() non-recursive and inline it
+
+-------------------------------------------------------------------
 Mon May 25 21:27:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 9.10.1

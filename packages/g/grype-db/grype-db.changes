@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Nov 17 06:08:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.0:
+  * Added Features
+    - enable DHI advisory provider [PR #1092]
+  * Additional Changes
+    - Allow the quality gate's yardstick and grype binaries to be
+      set by environment variable [PR #1172]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#1173)
+    - chore(deps): Bump go.opentelemetry.io/otel/sdk from 1.46.0 to
+      1.47.0 (#1176)
+
+-------------------------------------------------------------------
+Tue Nov 10 05:47:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.8:
+  * chore(deps): update anchore dependencies (#1171)
+  * chore(deps): Bump astral-sh/setup-uv (#1169)
+
+-------------------------------------------------------------------
+Fri Nov 06 07:44:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.7:
+  * chore(deps): update anchore dependencies (#1167)
+  * Run the DB quality gate on the Go yardstick (#1164)
+  * chore(deps): update tool versions (#1168)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:50:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.6:
+  * chore(deps): update anchore dependencies (#1148)
+  * chore(deps): update tool versions (#1166)
+  * chore(deps): update tool versions (#1165)
+  * chore(deps): Bump github.com/go-jose/go-jose/v4 from 4.1.5 to
+    4.1.6 (#1163)
+  * chore(deps): update tool versions (#1160)
+  * chore(deps): update tool versions (#1159)
+  * chore(deps): update tool versions (#1158)
+  * chore(deps): update tool versions (#1155)
+  * bump match labels to pass qg (#1157)
+  * chore(deps): Bump the go-minor-patch group with 2 updates
+    (#1152)
+  * chore(deps): Bump gitpython from 3.1.62 to 3.2.1 (#1151)
+  * bump certifi and uv (#1150)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:05:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.5:

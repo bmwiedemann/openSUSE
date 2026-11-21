@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 15 11:10:33 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to ABI 13.13.1
+  * The generation of `.pyi` stub files has been improved so that
+    they pass the scrutiny of `flake8-pyi`.  Support has been added
+    for PEP 526 (Syntax for Variable Annotations) and PEP 673 (Self
+    Type)
+
+-------------------------------------------------------------------
 Sun Oct 18 09:02:11 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to ABI 13.13

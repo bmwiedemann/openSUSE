@@ -16,15 +16,16 @@
 #
 
 
-%define sover		14
-%define soname		%{sover}_0_0
+%define sover_ma	16
+%define sover_mi	1
+%define soname		%{sover_ma}_%{sover_mi}_0
 %define libname		%{name}%{soname}
 %define develname	%{name}-devel
 
-%define libfilezillaversion 0.57.0
+%define libfilezillaversion 0.58.0
 
 Name:           libfzssh
-Version:        1.4.0
+Version:        1.5.2
 Release:        0
 Summary:        A C++ SSH/SFTP library based on libfilezilla
 License:        AGPL-3.0-or-later
@@ -79,9 +80,9 @@ Files needed for development with %{name}.
 %files -n %{libname}
 %license agpl3.txt
 %doc README
-%{_libdir}/%{name}.so.%{sover}.0.0
-%{_libdir}/%{name}-client.so.%{sover}.0.0
-%{_libdir}/%{name}-crypt.so.%{sover}.0.0
+%{_libdir}/%{name}.so.%{sover_ma}.%{sover_mi}.0
+%{_libdir}/%{name}-client.so.%{sover_ma}.%{sover_mi}.0
+%{_libdir}/%{name}-crypt.so.%{sover_ma}.%{sover_mi}.0
 
 %files -n %{develname}
 %{_includedir}/fzssh/

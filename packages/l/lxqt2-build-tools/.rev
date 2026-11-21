@@ -62,4 +62,16 @@
   * Refactored YAML desktop file processing</comment>
     <requestid>1348584</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>917d4d668ae9fecfda0211bd2962da07</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182277</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Set the C standard to C99.
+  * Improved desktop file translations handling.
+  * CMake maintenance.
+  * Removed menu-cache support (it isn't used anymore).</comment>
+    <requestid>1398747</requestid>
+  </revision>
 </revisionlist>

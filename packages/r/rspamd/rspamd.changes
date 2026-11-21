@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Fri Nov 13 20:04:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.3.0
+  - Incompatible changes
+    - Phishing: URL mismatches are now scored separately from
+      phishing. Rewrite permissions come from dynamic maps, and
+      selected security URL wrapper hosts are trusted. The mismatch
+      rollout is kept conservative
+    - Symbol options: options are stored verbatim. []{};, and % are
+      percent-encoded only when options are joined (X-Spamd-Result,
+      X-Virus, metadata_exporter, ClickHouse, the symbols log
+      line). asn, reputation, rbl, dmarc, content rules and
+      MULTIPLE_UNIQUE_HEADERS now insert multi-value results as
+      separate options
+    - SPF: a record is evaluated in the order of its terms, and the
+      qualifier of an include or redirect is applied after the
+      mechanisms. Before this, -ip4:1.2.3.4 +ip4:1.2.3.0/24 -all
+      let 1.2.3.4 pass
+    - DKIM: signatures with duplicated tags or l=0 over a body are
+      rejected. So are RSA keys under 1024 bits and keys that are
+      not of the type k= declares. The d= domain is lowercased in
+      results, symbol options and glob maps
+    - SMTPUTF8 addresses: ASCII syntax violations now score as
+      INVALID_FROM_ASCII_ADDR and INVALID_RCPT_ASCII_ADDR (1.0).
+      INVALID_FROM_8BIT and INVALID_RCPT_8BIT fire only for 8-bit
+      addresses
+    - MIME and archives: a multipart child without Content-Type is
+      read as text unless its data is binary, so short-text fuzzy
+      hashes of such children change. get_files(n) and
+      get_files_full(n) count files rather than names, and other
+      names of an entry are flagged as aliases. With no limit
+      given, archive.unpack is capped at 1 GiB of output and a
+      million headers, and it uses only the filters libarchive
+      implements itself
+    - Lua API: lua_util inflate returns errors as a second value.
+      lua_url get_redirected is no longer an alias of get_phished.
+      The image flag is set only on urls seen solely as image
+      sources, so get_urls returns a link that is also an image
+      source. A get_date result of 0 means no date in the
+      time('message') selector and the spamassassin plugin, so
+      DATE_IN_PAST rules no longer match mail without a Date header
+    - PDF: content streams are read as operands and operators,
+      pages follow the page tree in document order, and words are
+      spaced by text position moves. Extracted text changes as a
+      result
+  - Features
+    - SMTPUTF8: address checks per
+      draft-ietf-mailmaint-smtputf8-syntax
+    - Phishing: explicit rewrite trust maps
+    - New rules: BAD_DKIM_SIGNER (multimap) matches every checked
+      DKIM d= against the bad_dkim_signers glob map.
+      HTML_TINY_PIXEL_TRACKER and the HTML_TINY_PIXEL_PROBE
+      composite catch contentless messages with tiny external
+      tracking pixels. DATE_FAR_FUTURE_NO_TZ flags far-future Date
+      headers without a timezone
+    - Truncated and unreadable content: new symbols report content
+      that was cut short or could not be read:
+      - MIME_UNREADABLE_ARCHIVE, MIME_TRUNCATED_ARCHIVE and
+        TEXT_WORDS_TRUNCATED
+      - OOXML_INCOMPLETE and SVG_INCOMPLETE
+      - PDF_NO_OBJECTS, PDF_DECODE_LIMIT, PDF_UNDECODED_STREAMS,
+        PDF_PARSE_ERRORS and PDF_TEXT_TRUNCATED
+    - Text part get_stats gains words_sampled and words_truncated
+    - Deeper inspection: EXE_IN_ARCHIVE checks names in archives
+      named as documents, in OOXML/ODF packages and in the first
+      1000 names. The HTML tags limit is harder to reach, and
+      hidden elements are tracked past it
+    - Tools and API: archive.unpack gains the ignore_case and
+      filters = false options. statistics_dump gains dump --user to
+      dump the statistics of selected users
+    - WebUI: D3 7.9.2, CodeJar 5.0.0 and Tabulator 6.7.1
+    - Bug fixes
+    - Critical: a header line without a colon in one
+      unauthenticated HTTP request aborted the worker, and so did
+      an empty Deliver-To header. An empty MIME part stopped
+      parsing, so no part after it was scanned
+    - Milter and proxy: fixed session use-after-frees on upstream
+      failure and on a second end of body. Also fixed:
+      - reads past CONNECT and MACRO commands
+      - transaction handling on MAIL and on a repeated CONNECT
+      - QUIT handling behind queued output, and writes after a
+        partial write
+      - references to ESMTP arguments
+      - sockets of keepalive backends that were never closed
+    - HTTP and protocol: the lua_http error handler no longer runs
+      on freed data after a reply. Idle connections are pooled by
+      TLS verification and peer address and checked for pending
+      data. A plaintext reply to an encrypted request is refused.
+      forbid_local also blocks unspecified, shared, reserved,
+      multicast, unique local, link-local and IPv4-in-IPv6
+      addresses. X-Rspamd-Rcpt-Esmtp-Args keeps keywords without a
+      value and bounds recipient indexes, and repeated From, IP and
+      Settings-ID headers no longer leak
+    - Redis: RESP3 maps, sets and doubles no longer crash the
+      worker. The pool no longer frees a held connection that was
+      closed, hashes key fields with their lengths, fails on
+      AUTH/SELECT errors and caps connections per server. TLS
+      options now reach script uploads, statistics_dump and fuzzy
+      storage. Sentinel supports TLS and credentials and keeps the
+      last valid upstreams after discovery errors. fuzzy_storage
+      keeps the order of updates to a repeated digest
+    - DNS and maps: librdns takes only the records that answer the
+      question and now retries truncated replies over TCP. IDN
+      names are converted without the transitional rules, and
+      lua_dns PTR requests are fixed. Maps back off retries by
+      failure class: a map whose first fetch failed used to stay
+      empty for 100 minutes. Maps also honour Retry-After: 0 and
+      keep polling after connect or DNS failures
+    - SPF and DMARC: SPF fixes:
+      - macro and prefix-length parsing, dual prefixes (a/24//64)
+        and ip6=
+      - macros and ptr now use the checked address
+      - flattened records are bounded, and rspamadm dnstool
+        spf-flatten follows the record order
+      
+      DMARC reads a record to its end; before this, an unknown tag
+      or spaces around = dropped the policy. It also validates pct
+      and rua, checks alignment correctly for IDN From domains and
+      applies the organisational policy again. dmarc_report claims
+      keys with RENAMENX and honours keys_expire
+    - DKIM and ARC: DKIM signs headers added by
+      lua_mime.modify_headers and hashes the signature header per
+      RFC 6376. It skips empty tag-specs (;;d=trusted named another
+      sealer). ARC trusts a forwarder only for what it vouched for
+      and parses ARC-Authentication-Results from the raw header
+      value. It selects headers by their parsed i= tag and fails
+      chains over 50 sets. Sender text is escaped in
+      Authentication-Results, so MAIL FROM or HELO can no longer
+      add a result of its own
+    - MIME and dates: the boundary search is no longer quadratic,
+      and content after 64 sibling containers is no longer dropped.
+      Fixes cover:
+      - MIME structure: embedded messages are parsed and decoded
+        once, and transport padding, multiparts inside opaque
+        S/MIME, binary text/html and UTF-16 without a BOM are
+        handled
+      - header parameters: RFC 2231 values, quoted pairs and nested
+        comments are decoded as mail readers do
+      - charsets: converters are cached, and ISO-8859-16 aliases
+        are converted
+      - dates: smtp_date validation, dateless Received hops in
+        nreceived_bad_time, and rspamd_gmtime before 2000-03-01
+      
+      Several leaks are also fixed
+    - HTML and CSS: tree building, entity decoding, unquoted
+      attributes and base resolution follow browsers. Links are
+      taken from href, action, src, formaction and xlink:href,
+      including past the tags limit. Hiding is tracked more
+      accurately: author CSS overrides color, bgcolor and hidden,
+      !important and specificity are applied correctly, and hiding
+      by opacity, offset or clip is tracked. CSS syntax, tokens and
+      colours are read as browsers read them. HIDDEN_TEXT ignores
+      LRM/RLM preheader padding, and external images with zero or
+      CSS-set sizes count as tiny
+    - URLs: the reported host is the one a browser goes to (last @,
+      backslashes, encoded separators, IDN mapping). Numeric hosts
+      are read by the URL standard and marked as obscured. Urls
+      that mail clients make clickable are now found, and a 200 KB
+      line no longer takes seconds to scan. urls_limit_reached is
+      set when max_urls is reached. url_redirector caches failures
+      only for error_expire, waits for a concurrent resolution of
+      the same chain and adds URL_REDIRECTOR_LIMIT
+    - Archives and documents: zip names are read as unrar, 7-Zip
+      and bsdtar read them, covering zip64, concatenated zips and
+      Unicode Path names. The same applies to rar 4/5 and 7z names.
+      Gzip header fields are read in RFC 1952 order; evil.exe was
+      listed as il.exe. lua_magic detects file types by where
+      signatures appear and follows the PE header. It requires
+      [Content_Types].xml for OOXML and validates standalone SVG.
+      PDF, OOXML, SVG and calendar parsing follow what readers
+      accept and is bounded. Scanners use both the name and the
+      detected content of an attachment
+    - Text and Lua: language detection no longer depends on a few
+      characters, a short stop words list or the worker history. A
+      max_html_len setting was written over max_word_len and set
+      words_decay to zero. lua_util.idna_convert_utf8 caused heap
+      corruption with 8-bit domains. Also fixed:
+      - set_recipients, set_from and filter_words
+      - the re_cache leak past 8192 regexps
+      - a mime_expressions double free at config load
+      - multipattern, lru, zstd, controller and logger
+    - Rules and build: iPhone Mail X-Mailer with five-digit iOS
+      build numbers no longer triggers FORGED_X_MAILER. SMTPUTF8
+      checks accept Catalan L·L and give the same verdict on older
+      ICU. libucl is synced with upstream, including CBOR support.
+      The build works with older ICU and binutils 2.39+ libbfd, and
+      RPM packaging works on Fedora 44
+
+-------------------------------------------------------------------
 Wed Oct 21 13:42:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.3

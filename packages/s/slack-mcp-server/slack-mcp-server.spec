@@ -16,11 +16,8 @@
 #
 
 
-# Flags shared by %%build and %%check:
-#   -buildmode=pie  position independent executable, the openSUSE default
-#   -mod=vendor     build strictly from the vendored tree unpacked from Source1,
-#                   never from the network (OBS workers have none)
-#   -modcacherw     leave the module cache writable so cleanup cannot fail
+# Flags shared by %%build and %%check: pie per openSUSE default, vendor-only
+# (no network on OBS workers), writable module cache so cleanup cannot fail
 %define goflags "-buildmode=pie -mod=vendor -modcacherw"
 # Go module path, as declared in go.mod; the version variables live under it.
 %define gomodule github.com/korotovsky/slack-mcp-server
@@ -59,10 +56,8 @@ export GOPROXY=off
 export GOTOOLCHAIN=local
 export CGO_ENABLED=1
 
-# Upstream's Makefile passes "-s -w", which strips the symbol table and DWARF
-# and would leave the debuginfo subpackage empty; only the version stamping is
-# kept here. BinaryName is what the server reports as its own name over MCP, so
-# it has to match the installed binary.
+# Upstream Makefile passes "-s -w" (strips debuginfo); keep only version
+# stamping here. BinaryName must match the installed binary (reported over MCP).
 go build \
     -ldflags "-X %{gomodule}/pkg/version.Version=v%{version} -X %{gomodule}/pkg/version.BinaryName=%{name}" \
     -o bin/%{name} ./cmd/%{name}
@@ -74,11 +69,9 @@ install -D -m 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
 export GOFLAGS=%{goflags}
 export GOPROXY=off
 export GOTOOLCHAIN=local
-# The TestIntegration* cases in pkg/handler drive a real Slack workspace and an
-# OpenAI endpoint -- they fail outright with "SLACK_MCP_XOXP_TOKEN not set" and
-# "SLACK_MCP_OPENAI_API must be set" rather than skipping themselves. Everything
-# else in that package, and every other package, runs.
-go test -skip '^TestIntegration' ./...
+# pkg/handler's TestIntegration* need live Slack/OpenAI credentials
+# and fail rather than skip without them; everything else runs.
+go test -skip '^TestIntegration(Conversations|.*ChannelsList)' ./...
 
 %files
 %license LICENSE

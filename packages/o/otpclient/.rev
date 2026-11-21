@@ -816,4 +816,29 @@
       anything is written. Exact duplicates are unchecked, tokens that share an</comment>
     <requestid>1392417</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>4b33f31d0ca2df6bde506cc2d2af216c</srcmd5>
+    <version>5.3.2</version>
+    <time>1793725164</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.3.2:
+  * Fix: an outdated compiled settings schema found ahead of the
+    current one no longer aborts the application at startup. It
+    starts with default settings and logs a warning naming the missing
+    keys and the directory holding the outdated schema.
+  * Change: staged (DESTDIR) installs no longer generate the GSettings
+    schema and icon caches.
+- Update to version 5.3.1:
+  * New: tray icon style setting (color, dark or light) under
+    Settings, Integration. The icon updates without a restart, and the
+    choice is included in settings export and import.
+  * Fix: the Select button showed a missing-image placeholder with icon
+    themes that lack the Adwaita-only selection-mode icon, such as
+    Breeze. The icon is now bundled with the application.
+- Package the new tray-dark and tray-light icons.
+- Drop the removal of gschemas.compiled and icon-theme.cache, the
+  install no longer generates them.
+- Own %%{_datadir}/bash-completion/*, as already done for zsh and fish.</comment>
+    <requestid>1394643</requestid>
+  </revision>
 </revisionlist>

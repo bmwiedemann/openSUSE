@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:57:38 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Set the C standard to C99.
+  * Improved desktop file translations handling.
+  * CMake maintenance.
+  * Removed menu-cache support (it isn't used anymore).
+
+-------------------------------------------------------------------
 Mon Apr 20 14:39:23 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

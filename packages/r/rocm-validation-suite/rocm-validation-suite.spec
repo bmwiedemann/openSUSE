@@ -39,6 +39,7 @@
 %global rocm_release 7.2
 %global rocm_patch 1
 %global rocm_version %{rocm_release}.%{rocm_patch}
+%global rocmomp_prefix %{_libdir}/rocm/rocm-%{rocm_release}/llvm
 
 %bcond_with compat
 %if %{with compat}
@@ -147,11 +148,8 @@ tar xf %{SOURCE1}
 mv mxDataGenerator-* mxDataGenerator
 cp -p mxDataGenerator/LICENSE.md mxDataGenerator/LICENSE.mxDataGenerator.md
 
-# disable rpath
-# Fixes these related issues on build
-# ERROR   0010: file '/opt/rocm/usr/lib64/librvslib.so.0.0.0' contains an empty runpath in [:/..]
-sed -i -e 's@set(CMAKE_SHARED_LINKER_FLAGS_INIT@#set(CMAKE_SHARED_LINKER_FLAGS_INIT@' CMakeLists.txt
-sed -i -e 's@set(CMAKE_EXE_LINKER_FLAGS_INIT@#set(CMAKE_EXE_LINKER_FLAGS_INIT@' CMakeLists.txt
+# configure rpath
+sed -i 's@--rpath,.*"@--rpath,%{rocmomp_prefix}"@' CMakeLists.txt
 
 # fix opt/rocm things
 sed -i -e 's@set(ROCM_PATH "/opt/rocm"@set(ROCM_PATH "%{pkg_prefix}"@' CMakeLists.txt

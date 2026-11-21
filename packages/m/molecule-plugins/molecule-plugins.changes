@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov  3 14:53:40 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- update to 26.11.0:
+  * Features
+    - gce: add on_host_maintenance and guest_accelerators platform
+      options (#350)
+  * Fixes
+    - podman: forward memory, memory_swap and pids_limit to
+      containers (#398)
+
+-------------------------------------------------------------------
 Wed Oct 14 04:37:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - update to 26.10.12:

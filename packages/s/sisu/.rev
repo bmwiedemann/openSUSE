@@ -159,4 +159,20 @@
     <comment>Fix build after removal of bootstrap plugins</comment>
     <requestid>1375783</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>eee88cd55ae87cf721f97081d117bd81</srcmd5>
+    <version>1.1.1</version>
+    <time>1793725118</time>
+    <user>anag_factory</user>
+    <comment>1.1.1</comment>
+    <requestid>1394616</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d506295c544c95ff9f756e920eeda2fd</srcmd5>
+    <version>1.1.2</version>
+    <time>1794591384</time>
+    <user>anag_factory</user>
+    <comment>1.1.2</comment>
+    <requestid>1397313</requestid>
+  </revision>
 </revisionlist>

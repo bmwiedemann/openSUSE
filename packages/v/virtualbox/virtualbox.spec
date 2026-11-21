@@ -130,6 +130,9 @@ Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch30:        kernel-longterm_6-18-44.patch
 Patch32:        Leap-16.1.patch
+# Fixing kernel-longterm kmp build with 6.18.55+
+Patch33:        kernel-longterm_6-18-55.patch
+Patch34:        kernel-7.4.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}

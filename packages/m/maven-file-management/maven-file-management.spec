@@ -30,7 +30,7 @@ BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
-BuildRequires:  modello >= 2.0.0
+BuildRequires:  modello-ant-task
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  slf4j

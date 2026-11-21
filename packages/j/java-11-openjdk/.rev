@@ -719,4 +719,28 @@
     <comment>Add bug number</comment>
     <requestid>1376664</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>b9b86d485c5b14faab896b431653de98</srcmd5>
+    <version>11.0.33.0</version>
+    <time>1793818044</time>
+    <user>anag_factory</user>
+    <comment>Octobre 2026 CPU fixes</comment>
+    <requestid>1394909</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>5614589a937e5d34e3db351bf46c6508</srcmd5>
+    <version>11.0.33.1</version>
+    <time>1795023048</time>
+    <user>anag_factory</user>
+    <comment>November 2026 CSPU fixes</comment>
+    <requestid>1398341</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>8f29997e4f233f4c573c30c26d8db26d</srcmd5>
+    <version>11.0.33.1</version>
+    <time>1795103670</time>
+    <user>anag_factory</user>
+    <comment>A proper fix for debug symbols/jmod size</comment>
+    <requestid>1398542</requestid>
+  </revision>
 </revisionlist>

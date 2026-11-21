@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov  3 07:02:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update URL to new home.
+
+-------------------------------------------------------------------
 Thu Jun 25 17:26:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.46.5:
@@ -415,7 +420,7 @@ Fri Oct  3 15:39:10 EST 2008 - mboman@suse.de
 Thu Sep 18 17:37:34 CEST 2008 - maw@suse.de
 
 - Update to version 2.13.8:
-  + Context: Added set_font_map() because the C function is now 
+  + Context: Added set_font_map() because the C function is now
     public (non backend-only) API
   + LayoutRun/GlyphItem: Added split() and letter()
   + Renderer: Added draw_glyph_item()

@@ -72,4 +72,12 @@ Supersedes SR 1374737.</comment>
     <comment>Update soapy-plutosdr to 0.2.3 (TX buffer scaling, bufflen/MTU fixes).</comment>
     <requestid>1384074</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e21e871d9bb232fe729b1ab63d9a51c8</srcmd5>
+    <version>0.2.4</version>
+    <time>1794236877</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.4 with libiio 1.x port (scan/context/attrs/streaming); 16.0/s390x still on libiio 0.26 there.</comment>
+    <requestid>1396136</requestid>
+  </revision>
 </revisionlist>

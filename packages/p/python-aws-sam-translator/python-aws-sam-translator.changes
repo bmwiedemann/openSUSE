@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:16:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.115.0:
+  * New resource types and features: Lambda Managed Instances,
+    Durable Functions, WebSocket API, AWS::Serverless::WebFunction,
+    MicroVMs and network connectors
+  * CapacityProvider gains KmsKeyArn, LoggingConfig, tag
+    propagation and S3 object storage mode pass-through
+  * Api gains ResponseTransferMode, EndpointAccessMode and
+    RestApi security policy support
+  * Globals: per-property merge strategy for list properties
+  * Self-managed Kafka event sources support OAuth and IAM auth
+  * Support Python 3.14, drop Python 3.9 for running SAM
+  * Emit user-facing errors for malformed intrinsics instead of
+    tracebacks; fix duplicate OPTIONS method error for paths
+    with trailing slash
+  * Packaging: migrate console script to libalternatives,
+    raise boto3/jsonschema/pydantic requirement floors to match
+    upstream (pydantic 2.x); set a default AWS region for the
+    offline test suite
+
+-------------------------------------------------------------------
 Wed Nov 26 09:37:26 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.103.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov  5 18:34:28 UTC 2026 - Cor Blom <cornelis@solcon.nl>
+
+- Updaqte to 0.9.10:
+  Fixed
+  * Fix MusicXML export losing measure boundaries with chords (#183)
+  * Add more robust logic to find the last Bar in a ScorePart (#180)
+  * ly2xml, check that list is not empty before working on it (#184).
+    This fixes an error when exporting a LilyPond file to MusicXML:
+    frescobaldi/frescobaldi#1712
+  * Fix tests errors (#189)
+  Changed
+  * License changed from GPL-2.0-or-later to GPL-3.0-or-later (#187)
+- Updated license to reflect change
+
+-------------------------------------------------------------------
 Sat Jan  4 10:17:09 UTC 2025 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 0.9.9:

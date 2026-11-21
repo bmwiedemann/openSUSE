@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Nov  8 21:08:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.4:
+  * Fixed a missing import.
+  * Fixed #273: Enforce compatible-release bounds in environment
+    markers. Thanks to Luochenchen for the patch.
+  * Fix #194: Add an urls property to expose project and home
+    URLs. Thanks to Sinkleberg for the patch.
+  * Improve performance of export entry search to take linear
+    time. Thanks to Brian Willows for the patch.
+  * Use tarfile.data_filter rather than tarfile.tar_filter in
+    unarchive() when extraction filters are available, matching
+    the Python 3.14 default. Path and link containment checks now
+    use os.path.realpath and no longer fail with IndexError for
+    members such as . or ./. Thanks to Kobain for the patch.
+  * unarchive() now resolves member paths through symlinks seen
+    earlier in the same archive, so a chain of individually
+    harmless-looking links cannot be used to write outside the
+    destination on Pythons without extraction filters. Thanks to
+    Kobain for the patch.
+  * version   Improve NormalizedVersion by addressing correctness
+    and performance gaps found by comparison with packaging.
+    Thanks to Damian Shaw for the patch. Improve SemanticVersion
+    by comparing numeric prerelease identifiers, including those
+    longer than 8 digits. Thanks to Muneeb Sheikh for the patch.
+  * Improve NormalizedVersion by addressing correctness and
+    performance gaps found by comparison with packaging. Thanks
+    to Damian Shaw for the patch.
+  * Improve SemanticVersion by comparing numeric prerelease
+    identifiers, including those longer than 8 digits. Thanks to
+    Muneeb Sheikh for the patch.
+
+-------------------------------------------------------------------
 Tue Jun 23 11:28:29 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.4.3

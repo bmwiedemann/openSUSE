@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:22:46 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * Supported OpenSSH askpass prompt modes.
+  * CMake maintenance.
+
+-------------------------------------------------------------------
 Mon Apr 20 23:01:51 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

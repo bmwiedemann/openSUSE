@@ -17,16 +17,17 @@
 
 
 Name:           bun-pty
-Version:        0.5.2
+Version:        0.6.1
 Release:        0
 Summary:        Pseudo-terminal library for Bun FFI consumers
 License:        MIT
 # Legal-Review-Notice: 45 crates are statically linked (cargo tree -e normal
 # on rust-pty, minus the proc-macro closure); every one is MIT or MIT OR
 # Apache-2.0, so the tag is upstream's own licence.
-URL:            https://github.com/sursaone/bun-pty
-Source0:        https://github.com/sursaone/bun-pty/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/sursatech/bun-pty
+Source0:        https://github.com/sursatech/bun-pty/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Source-Binary-Exception: vendor.tar.zst:rust-pty/vendor/winapi-*-gnu-*/lib/*.a -- other-platform: Windows MinGW import libraries the Linux build never links
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 
@@ -45,13 +46,19 @@ binary of it.
 # leave the debuginfo package empty.
 export CARGO_PROFILE_RELEASE_STRIP=none
 # The vendor tarball unpacks next to the crate, so cargo has to run there
-# to see its .cargo/config.toml; the macro still writes to ../target.
+# to see its .cargo/config.toml; the library lands in rust-pty/target.
 cd rust-pty
 %{cargo_build}
 
 %install
-install -Dpm 0755 target/release/librust_pty.so \
-    %{buildroot}%{_libdir}/%{name}/librust_pty.so
+# CARGO_TARGET_DIR moved across cargo-packaging vintages (top-level
+# target/ vs rust-pty/target/): install whichever the build produced.
+lib=
+for d in target/release rust-pty/target/release; do
+    [ -f "$d/librust_pty.so" ] && lib="$d/librust_pty.so"
+done
+[ -n "$lib" ] || { echo "librust_pty.so not found"; exit 1; }
+install -Dpm 0755 "$lib" %{buildroot}%{_libdir}/%{name}/librust_pty.so
 
 %check
 # All eight entry points the TypeScript side dlopens.

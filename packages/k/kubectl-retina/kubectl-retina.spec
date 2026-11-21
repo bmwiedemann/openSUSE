@@ -1,7 +1,7 @@
 #
 # spec file for package kubectl-retina
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           kubectl-retina
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        CLI for the Retina Kubernetes network observability platform
 License:        MIT
 URL:            https://github.com/microsoft/retina
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.26
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Retina is a cloud-agnostic, open-source Kubernetes network observability

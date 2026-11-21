@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Nov 18 13:59:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.9:
+  * Theme chrome and file icons: borderless themes, styled gutter
+    and explorer, tab and status bar separator glyphs, and
+    file-type icons with Nerd Font support.
+  * Live-preview theme editor.
+  * Markdown preview of diagrams and math via external tools.
+  * Recent Files menu to reopen recently closed files.
+  * File explorer dims gitignored entries when shown.
+  * Workboard overview of Orchestrator workspaces and agents.
+  * New Welcome screen with release highlights and keybindings.
+  * LSP completions support server replace ranges (textEdit).
+  * Clickable next/previous match arrows in status bar search.
+  * Command palette Tab completion for longest common path prefix.
+  * Plugin map settings configurable via Settings UI.
+  * Live diff and git gutter ignore line-ending style (CRLF vs LF).
+  * Cursor position restored for files opened on CLI across runs.
+  * Terminal tabs restore in shell working directory after restart.
+  * Word navigation handles non-ASCII characters properly.
+  * Glob '?' matches full Unicode characters.
+  * Fix smart Home on soft-wrapped lines with multi-byte indent.
+
+-------------------------------------------------------------------
+Fri Nov  6 15:25:08 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.8:
+  * Auto-hide tab bar when a single file is open.
+  * Explorer folder colour themeable separately from syntax.
+  * Shaded sticky-parent band in file explorer.
+  * Go to Next / Previous Paragraph motions in Go menu and palette.
+  * Search/Replace panel is now per-window.
+  * Replace All no longer rewrites files twice under symlinks.
+  * Find Next ignores matches removed by edits.
+  * Markdown: Tab honours configured size and indents selections.
+  * Syntax highlighting fixes for Python match/case, C++, C,
+    Bash subshells, and C# regex backtracking.
+  * Full document sync support for LSP servers.
+  * Diff mode fixes for stray tabs, click past line end, and
+    modified markers.
+  * Merge conflict resolution no longer leaves extra blank lines.
+- Declare Source-Binary-Exception for vendored wasm32 and ring
+  prebuilt objects as other-platform.
+
+-------------------------------------------------------------------
+Mon Nov  2 06:39:32 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.7:
+  * Compare Files: side-by-side editable file comparison via
+    'fresh --diff A B'.
+  * Universal Search across all workspaces: toggle 'All
+    workspaces' (Alt+A) to search every local workspace's files,
+    unsaved buffers, and terminals.
+  * Search & Replace honours Case Sensitive and Whole Word flags.
+  * Idle CPU, memory, and log growth fixes from git_statusbar on
+    Linux: file reads no longer count as changes.
+  * Unsaved work is kept in one place whatever the launch mode;
+    crash-safe sudo saves and atomic save replacement.
+  * Terminal improvements: pass Ctrl+V when clipboard has no
+    text, kitty keyboard protocol for attached daemon clients.
+  * Performance: eliminate typing stutter on long wrapped lines
+    and reduce memory use during replace-all on large files.
+  * Keybindings: Shift+Home selects to first non-blank character.
+- Generate vendor.tar.zst with cargo_vendor filter=true (drops
+  non-Linux crates) and an explicit update=true; strip the prebuilt
+  vendor/psm-0.1.24/src/arch/wasm32.o object from it.
+- Cap parallel rustc jobs by memory (%limit_build -m 2000) and
+  build on 16 GB workers (_constraints); rustc was OOM-killed on
+  aarch64.
+
+-------------------------------------------------------------------
 Sat Oct 31 14:34:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.5.5:

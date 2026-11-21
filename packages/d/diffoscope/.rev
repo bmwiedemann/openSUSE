@@ -867,4 +867,22 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Support radare2 &gt;= 5.9.0</comment>
     <requestid>1383095</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>6aeeb6369414757bb958e340483b66f3</srcmd5>
+    <version>339</version>
+    <time>1794932450</time>
+    <user>anag_factory</user>
+    <comment>- update to 339:
+  * Rework including .zip-related differences for .odt files.
+  * Add some comments to recent OdtFile changes.
+  * Update copyright years.
+  * Binutils no longer shows the top-level directory; update
+    expected test output.
+  * Mark that the test_nupkg_compressed_files test requires the
+    tlsh Python module. (Closes: #1151752)
+  * Support the dumppdf binary being called dumppdf.py on the
+    host system.
+  * Update copyright years.</comment>
+    <requestid>1398109</requestid>
+  </revision>
 </revisionlist>

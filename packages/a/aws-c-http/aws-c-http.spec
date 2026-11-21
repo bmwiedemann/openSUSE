@@ -17,10 +17,11 @@
 #
 
 
-%define library_version 1.0.0
-%define library_soversion 1_0_0
+%define library_version 1.2.0
+%define library_pkg 1_2
+%define library_soversion 1.2
 Name:           aws-c-http
-Version:        0.11.0
+Version:        1.2.0
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
@@ -41,11 +42,13 @@ BuildRequires:  pkgconfig(libcrypto)
 %description
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
 
-%package -n lib%{name}%{library_soversion}
+%package -n lib%{name}%{library_pkg}
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 Group:          System/Libraries
+Provides:       lib%{name}1_0_0 = %{version}
+Obsoletes:      lib%{name}1_0_0 < %{version}
 
-%description -n lib%{name}%{library_soversion}
+%description -n lib%{name}%{library_pkg}
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
 
 This package contains the dynamically linked library.
@@ -53,7 +56,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-http library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion} = %{version}
+Requires:       lib%{name}%{library_pkg} = %{version}
 
 %description devel
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
@@ -67,28 +70,29 @@ This package contains the development files.
 %define __builder ninja
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_MODULE_PATH=%{_libdir}/cmake \
-    %{nil}
+    -DCMAKE_PREFIX_PATH=%{_libdir}/cmake/aws-c-common/modules
 %cmake_build
 
 %install
 %cmake_install
 
-%ldconfig_scriptlets -n lib%{name}%{library_soversion}
+%ldconfig_scriptlets -n lib%{name}%{library_pkg}
 
 %files
 %license LICENSE
 %{_bindir}/*
 
-%files -n lib%{name}%{library_soversion}
+%files -n lib%{name}%{library_pkg}
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %license LICENSE
-%{_libdir}/cmake/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/cmake/%{name}/
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws/http
+%{_includedir}/aws/http/*
 
 %changelog

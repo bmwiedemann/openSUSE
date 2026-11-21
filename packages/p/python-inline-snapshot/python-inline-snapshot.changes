@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 16 04:54:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.36.2:
+  * Reduce memory use in active snapshot modes by eagerly recording snapshot
+    changes without retaining completed test frames until the final report.
+  * Defer generating source representations until they are needed, improving
+    performance when comparing matching snapshots with updates disabled.
+  * Speed up snapshot conversion for literal constants, especially in large
+    lists and dictionaries.
+  * Built-in literal values are always managed; attempting to register their
+    types as unmanaged raises `TypeError`.
+  * Scope unmanaged type registrations to the current snapshot context,
+    inheriting registrations from the parent context.
+  * Speed up snapshot comparisons by avoiding unnecessary deep copies of
+    immutable built-in values.
+  * Speed up snapshot conversion by reading AST constant values directly
+    instead of compiling and evaluating them.
+  * Respect `show-updates` in the short report, hiding snapshot
+    representation change messages when it is disabled.
+  * The `customize` hook now receives `snapshot_value` (or `...` if missing)
+
+-------------------------------------------------------------------
 Sat Aug 22 09:36:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.35.4:

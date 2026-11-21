@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov  5 12:50:40 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1289302_CVE-2026-109908_encparse-fix-heap-out-of-bounds-write-in-setCode.patch
+  * X.Org libfontenc File Parsing Validation Failure (bsc#1289302,
+    CVE-2026-109908)
+
+-------------------------------------------------------------------
 Sun Feb  8 19:08:47 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 1.1.9

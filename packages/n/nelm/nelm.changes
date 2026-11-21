@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Nov 05 15:16:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.4:
+  * Bug Fixes
+    - prevent panic when release deletion fails (#715) (4820837)
+    - report the inaccessible events feed through the nelm logger
+      (#713) (52bcdc9)
+- Update to version 1.30.3:
+  * Bug Fixes
+    - optimize memory usage of release list (#711) (2a19028)
+- Update to version 1.30.2:
+  * Bug Fixes
+    - optimize plan building for large releases (#709) (aba6e3a)
+    - restore network parallelism when building resource infos
+      (#708) (f10c001)
+    - skippable untouched resources check for progress reporter
+      (#704) (0c56110)
+- Update to version 1.30.1:
+  * Bug Fixes
+    - switch managed-services.deckhouse.io readiness tracking to
+      Available only (#700) (2c15572)
+- Update to version 1.30.0:
+  * Features
+    - add LintMode in chart render options and pass it to the Helm
+      engine (#695) (f5cff5a)
+- Update to version 1.29.1:
+  * Bug Fixes
+    - noop resources sent to legacyprogressreporter too (cb25490)
+
+-------------------------------------------------------------------
 Wed Oct 28 06:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.0:

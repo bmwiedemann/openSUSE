@@ -1325,4 +1325,13 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
   * 0016-infiniband-support.patch</comment>
     <requestid>1363500</requestid>
   </revision>
+  <revision rev="146" vrev="2">
+    <srcmd5>7468409cea13b9da373110c4d38c2dd3</srcmd5>
+    <version>4.4.3.P1</version>
+    <time>1795103601</time>
+    <user>anag_factory</user>
+    <comment>- Fix buffer overflow in print_hw_addr(), CVE-2026-18103
+  [bsc#1274246, dhcp-CVE-2026-18103.patch]</comment>
+    <requestid>1398167</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:50:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.6:
+  * chore(backport release-1.12): docs: document the CLI's API
+    token environment variables (#7989)
+  * chore(deps): bump Go to 1.27.4 (#8038)
+  * chore(deps): bump golang.org/x/text from 0.43.0 to 0.44.0 in
+    the go-minor group (#8009)
+  * chore(deps): bump the go-patch group with 5 updates (#8008)
+  * chore(deps): bump azure/setup-helm from 5.0.1 to 5.1.0 (#8007)
+  * chore(deps): bump golang.org/x/oauth2 from 0.37.0 to 0.38.0 in
+    the go-minor group (#7963)
+  * chore(deps): bump library/node from 26.12.1 to 26.13.0 (#7947)
+  * chore(deps): bump the go-patch group with 7 updates (#7962)
+  * chore(deps/api): bump the go-patch group in /api with 3 updates
+    (#7890)
+  * chore(deps): bump the go-minor group across 1 directory with 5
+    updates (#7930)
+  * chore(deps): bump the go-patch group with 10 updates (#7892)
+  * chore(deps/client): bump the go-patch group across 1 directory
+    with 3 updates (#7891)
+  * chore(deps): bump the go-patch group across 1 directory with 7
+    updates (#7794)
+  * chore(deps): bump the go-minor group with 2 updates (#7791)
+
+-------------------------------------------------------------------
 Wed Oct 28 07:05:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.5:

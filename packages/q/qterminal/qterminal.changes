@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:55:13 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to version 2.5.0:
+  * Added OSC-8 hyperlink settings to properties.
+  * Enabled QTermWidget's new background image modes (filling, corners and
+    tiles).
+  * Implemented visual bell and added an option for it.
+  * Added a feature for maximizing the current sub-terminal.
+  * Optionally notify the user when the output stops in a minimized window
+    ("silence notification").
+  * Enhanced inter-process communication.
+
+-------------------------------------------------------------------
 Tue Apr 21 00:03:39 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 2.4.0:

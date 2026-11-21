@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 12 22:25:44 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 0.1.20:
+  * Drop support for Python 3.9; add Python 3.15.
+  * Modernize type annotations (builtin generics, PEP 604 unions).
+  * Dependency updates for development tooling.
+- update to 0.1.19:
+  * Add support for package-based installation (#194)
+  * Require setuptools>=69.0 for setuptools.modified (#217)
+  * Use bool for install_mo.force to match Command base type (#215)
+  * Various dev-dependency bumps (ruff, mypy)
+
+-------------------------------------------------------------------
 Tue May 19 22:04:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.18:

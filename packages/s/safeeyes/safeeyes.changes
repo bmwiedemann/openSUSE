@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Nov 18 10:57:07 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.1:
+  * Drop support for end-of-life Python 3.10 #915
+  * trayicon: root GetLayout reply at the requested parent id #916
+  * Add desktop file for settings to fix #919 #920
+  * Apply, OK, Cancel buttons in settings #917
+  * settings: save the postpone unit #918
+
+-------------------------------------------------------------------
+Fri Nov 13 07:49:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.6.0:
+  * Fix broken star history chart in README #904
+  * Fix #906 #908
+  * Bump pytest from 8.3.5 to 9.0.3 #909
+  * Drop support for end-of-life Python 3.10 #915
+  * trayicon: root GetLayout reply at the requested parent id #916
+  * Add desktop file for settings to fix #919 #920
+  * Apply, OK, Cancel buttons in settings #917, which was originally proposed by
+  * settings: save the postpone unit by index, not its translated label #918
+
+-------------------------------------------------------------------
 Thu Sep 10 12:51:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.5.1:

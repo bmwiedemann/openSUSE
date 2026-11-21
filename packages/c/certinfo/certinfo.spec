@@ -16,7 +16,7 @@
 #
 
 Name:           certinfo
-Version:        1.0.40+git20260221.5574ad1
+Version:        1.0.41+git20261031.4a31f3c
 Release:        0
 Summary:        Print x509 certificate info
 License:        MIT

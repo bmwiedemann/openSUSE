@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov 20 05:38:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.232.0:
+  * Features
+    - Add elasticLoadBalancing to kubernetesNetworkConfig (#8909)
+    - Add --cfn-disable-termination-protection flag to opt out of
+      CloudForm… (#8900)
+  * Improvements
+    - Scope IRSA trust for EBS/EFS CSI add-on roles to the add-on
+      service account (#8924)
+    - Add get and list secrets permissions to emr-containers role
+      (#8915)
+    - Use the EKS default Kubernetes version when --version is not
+      set (#8905)
+  * Bug Fixes
+    - Scope IRSA trust for EBS/EFS CSI add-on roles to the add-on
+      service account (#8924)
+  * Maintenance
+    - Fix/integration test failures (#8926)
+    - Update coredns (#8883)
+    - Remove go.mod replace pins and apply blocked dependency
+      updates (#8918)
+    - test: disable self-registration on the identity provider
+      test's Cognito user pool (#8914)
+  * Dependencies
+    - Build(deps): Bump the go-minor-patch group across 1 directory
+      with 5 updates (#8925)
+    - Build(deps): Bump go.opentelemetry.io/otel/trace from 1.44.0
+      to 1.47.0 (#8922)
+    - Build(deps): Bump the aws-sdk group across 1 directory with
+      18 updates (#8887)
+    - Build(deps): Bump github.com/klauspost/compress from 1.18.1
+      to 1.18.7 (#8908)
+    - Build(deps): Bump github.com/mark3labs/mcp-go from 0.58.0 to
+      1.1.1 (#8892)
+    - Build(deps): Bump sigs.k8s.io/gateway-api from 1.6.1 to 1.6.3
+      in the kubernetes group across 1 directory (#8888)
+    - Build(deps): Bump jlumbroso/free-disk-space from 1.3.1 to
+      2.0.0 (#8886)
+    - Build(deps): Bump the test-tooling group across 1 directory
+      with 3 updates (#8884)
+
+-------------------------------------------------------------------
 Sun Oct 04 16:51:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.231.0:

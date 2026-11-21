@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:28:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.7:
+  * IQ file input support (U8 and S16 sample formats)
+  * sdrplay support improvements: antenna naming aligned with
+    dumpvdl2, automatic bandwidth adjustment and multiplier
+    selection, cleanup and better error handling
+  * fix unsafe processing of input in label decoding
+  * enable resampling routines to fall back to faster
+    non-resampling ones when possible
+  * allow timestamping of audio and IQ input via -T
+  * speed up output processing by reusing formatted data
+  * add -V for version output
+
+-------------------------------------------------------------------
 Wed Aug 26 14:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch to the actively maintained upstream repository

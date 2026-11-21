@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 15 22:24:48 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.15.10
+Bug fixes
+  * Avoid integer underflow on problematic TTYs. Using mkdwarfs on
+    narrow terminals with "live" (unicode or ascii) progress output
+    would trigger an integer underflow and subsequently a huge
+    memory allocation.
+- Changes in 0.15.9:
+Bug fixes
+  * Always join I/O thread in filesystem_extractor, even when
+    archive_write_close() causes close() to throw. This caused some
+    of the tests to fail when building against libarchive-3.8.10
+    or later.
+  * While v0.15.8 fixed an issue where the total_hardlink_size was
+    computed incorrectly, it introduced an accidentally quadratic
+    complexity algorithm while doing so. This was only noticeable
+    with a large number of duplicate files, but it could cause a
+    significant slowdown when building or re-building metadata.
+  * Correctly update segmenter progress context for sparse holes.
+    Without --no-sparse-files, the segmenter progress context would
+    not count the size of sparse holes, which would cause the
+    progress to be reported incorrectly and finish below 100%.
+    This is purely a cosmetic issue with no functional impact,
+    but the fix was trivial.
+
+-------------------------------------------------------------------
 Sun Oct 18 05:33:27 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to version 0.15.8

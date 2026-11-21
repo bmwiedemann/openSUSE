@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 29 15:33:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require /usr/bin/X: 00-general.conf defines ServerPath=/usr/bin/X
+  (boo#1288770).
+
+-------------------------------------------------------------------
 Sun Aug 02 10:11:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Build from develop branch

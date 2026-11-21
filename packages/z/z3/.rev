@@ -595,4 +595,48 @@ test-z3 link against a 6 GB disk constraint.
     install paths</comment>
     <requestid>1393811</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>c8db2b66fb5cd522f22556e8addeb3c9</srcmd5>
+    <version>5.4.0</version>
+    <time>1794410953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.4.0
+  * Add SMT-LIB integer exponentiation and refine total real power
+    semantics.
+  * Prevent model evaluation loops on symbolic division and modulo.
+  * Fix root comparisons for overlapping intervals and simplify bounds.
+  * Support Pareto optimization on real fronts and pre-optimize QE.
+  * Fix MaxSMT/pd-maxres soft weight accumulation and objective bounds.
+  * Improve FiniteSet simplification and reject oversized cardinalities.
+  * Fix recursive datatype cycles, recognizers, and sequence handling.
+  * Add smt.case_split_relevant_first and fix delayed-heap crashes.
+  * Fix small-format FP FMA significand extraction (e.g. FP(2,3)).
+  * Fix incremental SAT unsat cores and level-zero assumption tracking.
+  * Fix Spacer null models, query lifetime, and QBMC proof traces.
+  * Skip unsupported stages in proof pipelines without failing runs.
+  * Expand Lean and F*/Pulse proof reconstruction (arrays, sets, cuts).
+  * Fix empty input handling in Python PbEq, PbLe, and PbGe bindings.
+  * Saturate AST/API reference counts to avoid overflow under sharing.
+  * Java: add Linux ARM64, improve Maven/JAR bundling and lib caching.
+  * Release OCaml runtime lock during heavy checks and tactics.
+  * Build fixes for static libraries, CMake rules, and Windows paths.</comment>
+    <requestid>1396668</requestid>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>c64d6950cf8ee5d26e36ce6df075d16e</srcmd5>
+    <version>5.4.1</version>
+    <time>1794591086</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.4.1
+  * Handle dual polarity for generated universal quantifiers (#11644)
+  * Handle canceled model searches in Spacer global subsumption
+    (#11635)
+  * Replay guarded integer and real product equality clauses in F* proof
+    checker (#11629)
+  * Remove timing-out arithmetic alias SAT control and stabilize native
+    checker regressions
+  * Update NFV CI workflows for single-audit PR policy and admission
+    permissions (#11630, #11642)</comment>
+    <requestid>1397013</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 
 %define so_ver  13
 Name:           libnpupnp
-Version:        6.3.0
+Version:        6.3.1
 Release:        0
 Summary:        A C++ base UPnP library, derived from Portable UPnP, a.k.a libupnp
 License:        BSD-3-Clause

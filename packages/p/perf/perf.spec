@@ -15,11 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-# perf does not link with LTO
-%define _lto_cflags %{nil}
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
-%define version_pure %(echo %{version}|sed 's@\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1\\2@')
+%define version_pure %(echo %{version} | awk -F. '{printf "%%d%%02d\\n", $1, $2}')
+
+%if %{version_pure} >= 704
+%define gtk_version 4
+%else
+%define gtk_version 2
+%endif
+
 %ifarch s390x s390
 %define         _perf_unwind NO_LIBUNWIND=1
 %else
@@ -46,7 +50,10 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+# remove gtk2 once 7.4 hits TW -- gtk_version cannot be used (the installation
+# phase cannot handle %%version -- evaluates on host)
 BuildRequires:  gtk2-devel
+BuildRequires:  gtk4-devel
 BuildRequires:  java-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
@@ -96,12 +103,13 @@ Group:          Development/Tools/Other
 Requires:       %{name} = %{version}
 
 %description gtk
-A GTK2 frontend for perf-report. (Use `perf report --gtk`.)
+A GTK%{gtk_version} frontend for perf-report. (Use `perf report --gtk`.)
 
 %package devel
 Summary:        Development headers for perf
 Group:          Development/Libraries/Other
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 Development headers for perf. This is currently only dlfilter header.
@@ -124,12 +132,14 @@ Group:          System/Shells
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
 
 %description bash-completion
 bash command line completion support for perf.
 
 %package rebuild
 Summary:        Empty package to ensure rebuilding perf in OBS
+BuildArch:      noarch
 %requires_eq kernel-source
 
 %description rebuild
@@ -155,21 +165,23 @@ cmdlist=tools/perf/util/generate-cmdlist.sh
 test -f "$cmdlist" && chmod +x "$cmdlist"
 %autopatch -p1 -m%{version_pure}0
 
+%if %{gtk_version} == 2
 # don't error out on deprecated definitions in gtk2.h
 sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c
+%endif
 
 # skip info-from-txt generation (it's the same as man anyway)
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
 # PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
-%define perf_options JDIR=${JAVA_HOME} LIBTRACEEVENT_DYNAMIC=1 BUILD_BPF_SKEL=1 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core tipdir=share/doc/packages/perf %{_perf_unwind}
+%define perf_options JDIR=${JAVA_HOME} LIBTRACEEVENT_DYNAMIC=1 BUILD_BPF_SKEL=1 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK%{gtk_version}=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core tipdir=share/doc/packages/perf %{_perf_unwind}
 
 %build
 cd tools/perf
 export WERROR=0
 
 # Specifying "all doc" as one invocation when using -f Makefile.perf doesn't
-# work and all compiling is deferred to later %install; so seperate into two
+# work and all compiling is deferred to later %%install; so seperate into two
 make %{?_smp_mflags} -f Makefile.perf \
 	V=0 VF=0 \
 	%{perf_options} \
@@ -208,12 +220,23 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 
 %fdupes %{buildroot}/%{_prefix}/lib/%{name}-core
 
+%check
+cd tools/perf
+# at least something; many tests are HW-dependent
+./perf test \
+	"demangle" \
+	"kallsyms" \
+	"perf stat" \
+	"print" \
+	"Simple expression" \
+	"DSO data tests" \
+	|& tee test_log
+grep -q '^Failed tests *: *0$' test_log
+
 %files
 %license COPYING
 %doc CREDITS README tools/perf/design.txt
-%if 0%{?suse_version} > 1315
-%attr(0644, root, root) %doc %{_docdir}/perf/tips.txt
-%endif
+%doc %{_docdir}/perf/tips.txt
 %{_bindir}/perf
 %{_bindir}/trace
 %{_prefix}/lib/%{name}-core

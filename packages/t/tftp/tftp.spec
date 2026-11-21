@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           tftp
-Version:        5.3
+Version:        7.2
 Release:        0
 Summary:        Trivial File Transfer Protocol (TFTP)
 License:        BSD-3-Clause
@@ -32,18 +32,24 @@ Source3:        tftp.service
 Source4:        tftp.socket
 Source5:        tftp.sysconfig
 Patch0:         tftp-hpa-0.43_include_sys_params.patch
-Patch1:         tftp-hpa-0.46_colon_check.patch
-Patch4:         tftp-hpa-0.49-fortify-strcpy-crash.patch
 Patch5:         tftp-hpa-0.48-tzfix.patch
-Patch7:         tftp-hpa-0.48-macros-crash.patch
 Patch8:         tftp-hpa-0.48-macros-v6mapped.patch
-Patch43:        tftp-config_h.patch
+Patch9:         tftp-hpa-5.4-stdbool.patch
+Patch10:        tftp-hpa-5.4-macro-dirs.patch
+Patch11:        tftp-hpa-7.2-test-user.patch
+Patch12:        tftp-hpa-7.2-configure-dep-tracking.patch
+Patch13:        tftp-hpa-7.2-uintmax-timeout.patch
+Patch14:        tftp-hpa-7.2-autoconf-prereq.patch
+Patch15:        tftp-hpa-7.2-test-jail.patch
+
 BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  bc
 BuildRequires:  binutils-devel
+BuildRequires:  libcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  tcpd-devel
 Requires:       netcfg
 Requires(pre):  user(tftp)
 Recommends:     inet-daemon
@@ -60,14 +66,15 @@ component configuration files.
 %autosetup -p1 -n %{name}-hpa-%{version}
 
 %build
-autoreconf -fi
-export CFLAGS="%{optflags} -fcommon -std=gnu11"
-%configure \
-  --enable-largefile \
-  --with-tcpwrappers \
-  --with-remap \
-  --with-ipv6
+autoreconf -fiv
+export CFLAGS="%{optflags} -std=gnu11"
+%configure
 %make_build
+
+%check
+# Run the upstream client-server test suite. The build root has no
+# nobody user, so run the server as the tftp user.
+LOCALHOSTS=127.0.0.1 TFTP_TEST_USER=tftp ./tests/test-tftp.sh
 
 %install
 %make_install INSTALLROOT=%{buildroot} MANDIR="%{_mandir}"

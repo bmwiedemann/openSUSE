@@ -24,22 +24,20 @@
 %bcond_with libalternatives
 %endif
 Name:           python-guessit
-Version:        4.4.0
+Version:        4.5.4
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/wackou/guessit
 Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-six.patch
-Patch0:         remove-six.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.6.0}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 6}
+BuildRequires:  %{python_module rebulk >= 6.0.2}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

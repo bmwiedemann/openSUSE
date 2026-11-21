@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:26:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add license
+- remove -O0
+
+-------------------------------------------------------------------
 Sat Mar 22 01:28:52 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
@@ -193,7 +199,7 @@ Thu Feb  4 19:11:52 UTC 2010 - guido+opensuse.org@berhoerster.name
 -------------------------------------------------------------------
 Sun Feb 22 23:35:59 CET 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Thu Jun 21 17:33:02 CEST 2007 - adrian@suse.de
@@ -203,7 +209,7 @@ Thu Jun 21 17:33:02 CEST 2007 - adrian@suse.de
 -------------------------------------------------------------------
 Mon Nov 13 18:45:38 CET 2006 - ro@suse.de
 
-- added directory to filelist 
+- added directory to filelist
 
 -------------------------------------------------------------------
 Mon Nov 13 14:58:25 CET 2006 - poeml@suse.de
@@ -396,12 +402,12 @@ Mon Jun 16 10:13:02 CEST 2003 - coolo@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Mon Apr 29 10:40:53 CEST 2002 - drahn@suse.de
 
-- update to: tidy version 020428 
+- update to: tidy version 020428
 
 -------------------------------------------------------------------
 Mon Dec  4 11:51:19 MET 2000 - mge@suse.de

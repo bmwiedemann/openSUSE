@@ -17,7 +17,7 @@
 
 
 Name:           gperftools
-Version:        2.19.1
+Version:        2.19.3
 Release:        0
 Summary:        Performance Tools for C++
 License:        BSD-3-Clause
@@ -154,7 +154,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing $VALGRIND_FL"
 %configure \
   --with-gnu-ld \
   --with-pic \
-  --disable-deprecated-pprof \
   --docdir=%{_defaultdocdir}/%{name}
 %make_build
 

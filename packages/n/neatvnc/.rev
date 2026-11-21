@@ -329,4 +329,22 @@
     <comment>1</comment>
     <requestid>1383307</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5c9167f587aacad035272488a385a247</srcmd5>
+    <version>1.0.4</version>
+    <time>1794236865</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.4:
+  * enc: h264: ffmpeg: Import buffers via single object
+  * pixels: Allow all modifiers on AMD
+  * enc: h264: v4l2m2m: Use poll() instead of map to wait
+  * stream: ws: http: Add bounds checks for fields
+  * server: Validate client requested bpp
+  * enc: h264: ffmpeg: Release queued frames on destroy
+  * enc: h264: ffmpeg: Pass on empty packets
+  * enc: h264: Handle encoder creation failure
+  * enc: tight: Fail on JPEG too big for tile buffer
+  * enc: tight: Fall back to basic if JPEG fails</comment>
+    <requestid>1396294</requestid>
+  </revision>
 </revisionlist>

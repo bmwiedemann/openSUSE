@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:14:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gnome-photos Recommends, package is archived upstream.
+
+-------------------------------------------------------------------
+Tue Nov 10 11:17:56 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do no longer recommend malcontent-control: malcontent has been removed from
+  Tumbleweed due to unaddressed CVEs.
+
+-------------------------------------------------------------------
 Mon Apr  6 02:13:43 UTC 2026 - Federico Mena Quintero <federico@suse.com>
 
 - Update suse_version macro for 1610 (jsc#PED-15831)

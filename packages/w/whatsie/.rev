@@ -175,4 +175,20 @@
     * Debian packaging for the Qt6 rewrite.</comment>
     <requestid>1379824</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aa802853a17934567f280ce792aef5e8</srcmd5>
+    <version>6.2.0</version>
+    <time>1794318255</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2.0:
+  New features:
+  * More apps from Ktechpit in About, and an optional link on the lock screen
+  * Ukrainian interface translation
+  * A Quit action in the launcher entry (#402)
+  Fixes:
+  * No hang when the graphics stack floods its warnings (#387)
+  * The WhatsApp theme survives a restart (#389)
+  * The monochrome tray icon is sized correctly on HiDPI displays (#396)</comment>
+    <requestid>1396481</requestid>
+  </revision>
 </revisionlist>

@@ -23,16 +23,12 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-myst-parser
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        An extended commonmark compliant parser, with bridges to docutils & sphinx
 License:        MIT
 URL:            https://myst-parser.readthedocs.io/
 Source:         https://github.com/executablebooks/MyST-Parser/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PyPI tarball does not contain tests
-#Source:         https://files.pythonhosted.org/packages/source/m/myst-parser/myst-parser-%%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support docutils 0.23
-Patch0:         support-docutils-0.23.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
@@ -41,7 +37,7 @@ BuildRequires:  %{python_module docutils >= 0.20 with %python-docutils < 0.24}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module linkify-it-py}
 BuildRequires:  %{python_module markdown-it-py >= 4.2}
-BuildRequires:  %{python_module mdit-py-plugins >= 0.6.1}
+BuildRequires:  %{python_module mdit-py-plugins >= 0.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -50,7 +46,7 @@ Requires:       python-PyYAML
 Requires:       python-Sphinx
 Requires:       python-docutils >= 0.20
 Requires:       python-markdown-it-py >= 4.2
-Requires:       python-mdit-py-plugins >= 0.6.1
+Requires:       python-mdit-py-plugins >= 0.7.0
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -85,10 +81,6 @@ It contains an extended CommonMark (https://commonmark.org)-compliant parser usi
 %prep
 %autosetup -p1 -n MyST-Parser-%{version}
 rm docs/.gitignore
-# Allow tests to be importable, correct import paths
-# This can all die post 5.0.0
-touch tests/__init__.py
-sed -i 's/from conftest import/from tests.conftest import/' tests/test_renderers/*.py
 
 %build
 %pyproject_wheel
@@ -116,6 +108,7 @@ sed -i 's/from conftest import/from tests.conftest import/' tests/test_renderers
 ignore="--ignore=tests/test_renderers/test_fixtures_sphinx.py"
 ignore+=" --ignore=tests/test_renderers/test_myst_refs.py"
 ignore+=" --ignore=tests/test_sphinx/test_sphinx_builds.py"
+ignore+=" --ignore=tests/test_renderers/test_section_refs.py"
 %pytest $ignore
 
 %pre

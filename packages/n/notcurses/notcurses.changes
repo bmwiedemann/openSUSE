@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:52:19 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- BuildRequire pkgconfig(libavdevice) to fix build without ffmpeg -mini
+
+-------------------------------------------------------------------
 Mon Jan 19 08:55:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.17:

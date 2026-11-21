@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 13 12:48:46 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update http-types to version 0.12.6.
+  ## 0.12.6 [2026-08-13]
+
+  * Remove `array` dependency
+
+-------------------------------------------------------------------
 Sun May 31 21:06:46 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update http-types to version 0.12.5.

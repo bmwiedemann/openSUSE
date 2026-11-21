@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:22:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Merge the external native debug symbols back into the binaries
+  before packaging, so that the -debuginfo packages carry DWARF
+  again; the jmods stay small (bsc#1282358)
+- Check the debug symbols with eu-readelf instead of nm
+- Keep internal debug symbols on SLE12: its eu-unstrip
+  (elfutils 0.158) cannot merge them
+
+-------------------------------------------------------------------
+Wed Nov 18 07:51:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-17.0.21.1+2 (November 2026 CSPU)
+  * Fixes
+    + JDK-8397404: [17u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 17.0.21.1
+    + JDK-8387541, CVE-2026-114945, bsc#1290787: Enhance
+      StringBuilder checks
+    + JDK-8393456, CVE-2026-114940, bsc#1290782: Improve TLS client
+      connections
+    + JDK-8393212, CVE-2026-114938, bsc#1290745: Base64
+      optimization improvements
+    + JDK-8391595, CVE-2026-114944, bsc#1290786: [REDO] Enhance JMX
+      Connections
+    + JDK-8390694, CVE-2026-114942, bsc#1290785: Enhance vector
+      masks
+    + JDK-8389989, CVE-2026-114946, bsc#1290788: Enhance loop
+      handling
+    + JDK-8389830, CVE-2026-114943, bsc#1290784: Enhance JFR Events
+    + JDK-8387162, CVE-2026-114939, bsc#1290781: Enhance Kerberos
+      tickets
+    + JDK-8316771: Krb5.java has not defined messages for all error
+      codes
+    + JDK-8396048: (tz) Update to tzdata2026f
+    + JDK-8394581: [17u] TestSHA512Intrinsics.java and
+      TestSHA512MultiBlockIntrinsics.java fail with JDK 17 on
+      Graviton Hosts
+    + JDK-8394492: Update FreeType to 2.15.0
+    + JDK-8393195: Update Libpng to 1.6.59
+    + JDK-8394665: Bump update version for OpenJDK: jdk-17.0.21.1
+- Removed patch:
+  * JDK-8395142-17u.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
+Mon Nov  9 13:11:29 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Disable native debug symbols embedded in modules, resulting in a
+  huge java-17-openjdk-jmods package size and increasing jlink output
+  size considerably if its --strip-debug command-line argument is not
+  used (bsc#12823588)
+
+-------------------------------------------------------------------
 Thu Oct 29 07:42:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modified patch:

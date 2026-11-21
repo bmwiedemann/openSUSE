@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov  4 01:29:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- CVE-2026-118694: Fix quadratic time for unclosed inline-link parentheses
+  (bsc#1288876)
+  * Add patch CVE-2026-118694-unclosed-inline-link-parentheses.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 08:02:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Avoid-overlapping-regex-matches-that-trigger-excessi.patch

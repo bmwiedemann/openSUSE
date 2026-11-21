@@ -17,7 +17,7 @@
 %define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.11.28.2
+Version:        5.11.28.3
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
@@ -25,6 +25,8 @@ URL:            https://github.com/qr243vbi/nekobox
 Source0:        %{url}/releases/download/%{version}/nekobox-unified-source-%{version}.tar.xz
 Source1:        nekobox-qt.spec.in
 Source2:        nekobox-core.spec.in
+# PATCH-FIX-UPSTREAM nekobox-go-thrift-compat.patch -- add PreallocSize to vendored thrift and disable jsonv2 on Go 1.27
+Patch0:         nekobox-go-thrift-compat.patch
 
 %if 0%{?suse_version} > 0
 BuildRequires:  patchelf

@@ -1,7 +1,7 @@
 #
 # spec file for package urh
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -52,13 +52,8 @@ Requires:       python3-psutil
 Requires:       python3-pyzmq
 Recommends:     inspectrum
 Recommends:     rfcat
-%if 0%{?suse_version} <= 1500
 BuildRequires:  python3-Cython
 Requires:       python3-Cython
-%else
-BuildRequires:  python3-Cython0
-Requires:       python3-Cython0
-%endif
 
 %description
 The Universal Radio Hacker is a software for investigating unknown wireless
@@ -78,7 +73,7 @@ sed -i -e '/^#!\//, 1d' \
   --with-limesdr \
   --with-rtlsdr \
   --with-usrp \
-  --with-plutosdr
+  --without-plutosdr
 
 %install
 %python3_install

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 05 14:15:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.3:
+  * INS-3140: Fix CVE-2026-111943 for nova (#493)
+  * Update all non-major dependencies (#472)
+
+-------------------------------------------------------------------
 Tue Oct 13 04:30:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.2:

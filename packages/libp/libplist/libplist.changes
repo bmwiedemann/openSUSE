@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Nov  7 12:06:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.8.1:
+  * Hardening: length-based range checks for bplist object data,
+    node-count limit against crafted reference expansion, geometric
+    bytearray growth fixing quadratic appends on large plists
+  * Fix use-after-free in plist_copy_node(), double-free in
+    node_from_xml() error paths and leaks on allocation failure
+    across the XML, binary and OpenStep parsers
+  * Fix plist_get_date_val() rounding and sign handling so dates
+    round-trip, handle out-of-range and NaN without UB
+  * No SONAME or API change (libtool 12:0:0 -> 12:1:0, headers
+    unchanged); libplist-2_0-12 subpackages carry over
+- Spec cleanup: ldconfig scriptlets, macro-ified paths and build
+  calls, reordered dependencies (no functional change)
+
+-------------------------------------------------------------------
 Tue Oct 20 13:27:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.8.0:

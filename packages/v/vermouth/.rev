@@ -403,4 +403,12 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update commit shas</comment>
     <requestid>1377790</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>afb3b0cd540607010d0e609c33fcaca7</srcmd5>
+    <version>2.7.0</version>
+    <time>1793817884</time>
+    <user>anag_factory</user>
+    <comment>Bump to version 2.7.0</comment>
+    <requestid>1394791</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cliff
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
@@ -33,19 +33,19 @@ BuildRequires:  %{python_module autopage >= 0.4.0}
 BuildRequires:  %{python_module PrettyTable >= 0.7.2}
 BuildRequires:  %{python_module PyYAML >= 3.12}
 BuildRequires:  %{python_module Sphinx >= 5.0.0}
-BuildRequires:  %{python_module cmd2 >= 3.0.0}
+BuildRequires:  %{python_module cmd2 >= 4.0.0}
 BuildRequires:  %{python_module coverage >= 5.0}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module stevedore >= 5.6.0}
 BuildRequires:  %{python_module testscenarios >= 0.4}
-BuildRequires:  %{python_module testtools >= 2.2.0}
+BuildRequires:  %{python_module testtools >= 2.8.0}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PrettyTable >= 0.7.2
 Requires:       python-PyYAML >= 3.12
 Requires:       python-autopage >= 0.4.0
-Requires:       python-cmd2 >= 3.0.0
+Requires:       python-cmd2 >= 4.0.0
 Requires:       python-stevedore >= 5.6.0
 BuildArch:      noarch
 %python_subpackages

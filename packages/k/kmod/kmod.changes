@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  2 10:10:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 34.3
+  * depmod gained an -m/--moduledir option.
+  * Removed deprecated arguments for depmod:
+    --unresolved-error, --quiet, --root and --map.
+  * Removed deprecated arguments for rmmod: -w.
+  * Removed deprecated arguments for insmod: -p and -s.
+  * Optimized index reading by lazily reading nodes on demand.
+
+-------------------------------------------------------------------
 Mon Jun 15 13:28:49 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - riscv-hwprobe.patch: handle riscv_hwprobe in syscall wrapper, fixes testsuite

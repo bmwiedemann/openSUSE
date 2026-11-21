@@ -2183,4 +2183,21 @@
   * podman-etcd: deterministic departure lock and force-new-cluster recovery</comment>
     <requestid>1382538</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>c5e48fbbeb0d5aec441bba2aa6778840</srcmd5>
+    <version>4.18.0+git118.8806b1e9</version>
+    <time>1794816380</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.0+git118.8806b1e9:
+  * gcp-pd-move: optimize agent (#2224) (bsc#1290101) 
+  * valkey: add valkey as an alias for the redis agent
+  * crypt: add allow_clone for non-shared encrypted devices
+  * LVM-activate: add basic access mode for local volume groups
+  * Merge pull request #2222 from Obihoernchen/filesystem-lustre-tgt
+  * podman-etcd: fall back to revision comparison when claim time isn't definitive
+  * podman-etcd: post-check force_new_cluster claims and yield on version skew
+  * podman-etcd: make force_new_cluster a claim timestamp
+  * podman-etcd: pre-check force_new_cluster holders before writing</comment>
+    <requestid>1397317</requestid>
+  </revision>
 </revisionlist>

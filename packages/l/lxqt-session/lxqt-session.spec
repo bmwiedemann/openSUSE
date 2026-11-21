@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2024 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           lxqt-session
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        LXQt Session Manager
 License:        LGPL-2.1-or-later
@@ -28,7 +28,7 @@ Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.as
 Source2:        %{name}.keyring
 # Special patch source, conditionally applied
 ## PATCH-FIX-openSUSE Removes hyprland and river for Leap >= 16.0
-Source3:         0004-Remove-compositors-for-leap-16.patch
+Source3:        0004-Remove-compositors-for-leap-16.patch
 
 # mvetter@suse.com bsc#1127043 - Use Openbox as default WM
 Patch1:         0001-set-default-wm.patch
@@ -38,7 +38,7 @@ Patch2:         0002-fix-xdg-desktop-portal-lxqt.patch
 Patch3:         0003-add-option-for-miriway.patch
 
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -51,17 +51,17 @@ BuildRequires:  cmake(LayerShellQt) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(qtxdg-tools) >= 4.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(qtxdg-tools)
+BuildRequires:  cmake(qtxdg-tools) >= 4.1.0
 
 BuildRequires:  pkgconfig(libproc2) >= 4.0.0
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(lxqt) >= 2.1.0
+BuildRequires:  pkgconfig(lxqt) >= 2.5.0
 BuildRequires:  pkgconfig(x11)
 
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires:       %{name}-branding = %{version}-%{release}
 Requires:       qtxdg-tools
 Recommends:     %{name}-lang = %{version}-%{release}

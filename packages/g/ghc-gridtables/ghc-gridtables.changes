@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Oct 25 18:06:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update gridtables to version 0.1.1.1.
+  ## gridtables-0.1.1.1
+
+  -   Fix a bug in computing table alignments with colspans (#3).
+      If a header cell with colspans has an alignment, that
+      alignment is given to all the columns spanned instead of
+      just the first.
+
+  -   Bump version bound for doclayout.
+
+  -   Remove call to partial function `tail`.
+
+  -   Allow containers 0.8.
+
+  -   Fix list of tested GHC versions in cabal file.
+
+-------------------------------------------------------------------
+Sun Sep 27 16:29:16 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update gridtables to version 0.1.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Sep 22 10:12:29 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update gridtables to version 0.1.1.0.

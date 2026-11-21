@@ -1,9 +1,28 @@
 -------------------------------------------------------------------
+Fri Nov  6 19:32:15 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
+  setup, otherwise get the following message:
+  * "Attention, "README.md" is not mentioned in spec files as source or patch."
+
+-------------------------------------------------------------------
+Fri Oct 30 17:07:47 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding a systemd-detect-virt check for "wsl" so if the patterns-wsl packages
+  are installed in non-WSL environments they don't do anything.
+
+-------------------------------------------------------------------
+Thu Oct 29 19:24:08 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Specify pattern-order() for wsl_base, wsl_systemd and wsl_gui
+
+-------------------------------------------------------------------
 Wed Mar 27 15:17:12 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>
 
-- Adjusting %{_tmpfilesdir}/wslg.conf to be provided by a new package
-  named patterns-wsl-tmpfiles which is required by patterns-wsl-systemd
-  * WSL uses '/etc/zypp/zypp.conf:solver.onlyRequires = true' by default
+- Update to version 20240327
+  * Adjusting %{_tmpfilesdir}/wslg.conf to be provided by a new package
+    named patterns-wsl-tmpfiles which is required by patterns-wsl-systemd
+    - WSL uses '/etc/zypp/zypp.conf:solver.onlyRequires = true' by default
 
 -------------------------------------------------------------------
 Fri Mar 22 17:19:23 UTC 2024 - Scott Bradnick <scott.bradnick@suse.com>

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        9.5.1
+Version:        10.2.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -36,15 +36,11 @@ Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 # SECTION Build dependencies
-# https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
-BuildRequires:  %{python_module boltons >= 26.2.0}
-BuildRequires:  %{python_module click >= 8.4.1}
-BuildRequires:  %{python_module cloup >= 3.0.7}
-BuildRequires:  %{python_module deepmerge >= 1.0.1}
-BuildRequires:  %{python_module extra-platforms >= 13.4}
+# https://github.com/kdeldycke/click-extra/blob/v10.2.0/pyproject.toml
+BuildRequires:  %{python_module click >= 8.5}
+BuildRequires:  %{python_module cloup >= 4}
+BuildRequires:  %{python_module extra-platforms >= 14}
 BuildRequires:  %{python_module tabulate >= 0.10}
-BuildRequires:  %{python_module tomli >= 2 if %python-base < 3.11}
-BuildRequires:  %{python_module tomlkit >= 0.13}
 BuildRequires:  %{python_module wcmatch >= 10.0}
 BuildRequires:  %{python_module wcwidth >= 0.8.3}
 # optional dependencies
@@ -53,16 +49,14 @@ BuildRequires:  %{python_module hjson >= 3.1}
 BuildRequires:  %{python_module json5 >= 0.12.1}
 BuildRequires:  %{python_module mkdocs >= 1.4}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pygments >= 2.14}
-BuildRequires:  %{python_module pygments-ansi-color >= 0.3}
+BuildRequires:  %{python_module pygments >= 2.18}
 BuildRequires:  %{python_module pymdown-extensions >= 10}
-BuildRequires:  %{python_module xmltodict >= 1.0.0}
 BuildRequires:  git-core
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 8.0}
-BuildRequires:  %{python_module myst-parser >= 4.0.0}
-BuildRequires:  %{python_module pygments-ansi-color >= 0.3.0}
+BuildRequires:  %{python_module jsonschema >= 4.18}
+BuildRequires:  %{python_module myst-parser >= 5.1}
 BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-httpserver >= 1.1.0}
 BuildRequires:  %{python_module pytest-randomly >= 4.0.0}
@@ -70,19 +64,14 @@ BuildRequires:  %{python_module requests >= 2.34}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-boltons >= 26.2.0
-Requires:       python-click >= 8.4.1
-Requires:       python-cloup >= 3.0.7
-Requires:       python-deepmerge >= 1.0.1
-Requires:       python-extra-platforms >= 13.4
+Requires:       python-click >= 8.5
+Requires:       python-cloup >= 4
+Requires:       python-extra-platforms >= 14
 Requires:       python-tabulate >= 0.10
 Requires:       python-wcmatch >= 10.0
 Requires:       python-wcwidth  >= 0.8.3
-Requires:       (python-tomli >= 2 if python-base < 3.11)
 Suggests:       python-PyYAML >= 6.0.3
 Suggests:       python-pygments >= 2.14
-Suggests:       python-pygments-ansi-color >= 0.3.0
-Suggests:       python-tomlkit >= 0.13
 BuildArch:      noarch
 %if %{with libalternatives}
 Requires:       alts
@@ -108,8 +97,6 @@ Requires(postun): update-alternatives
 %python_clone -a %{buildroot}%{_bindir}/%{executable_name}
 
 %check
-# remove coverage configuration
-sed -i '/--cov.*",/d' pyproject.toml
 # ignore test that requires network connectivity
 IGNORED_CHECKS="test_ansi_lexers_candidates"
 # assumes that the testsuite is running in a git checkout
@@ -126,24 +113,23 @@ IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.STR-False
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.NAME-True-result2]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.VALUE-True-result3]"
 IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-result4]"
-#
-IGNORED_CHECKS+=" or test_patched_formatter_renders_ansi"
-IGNORED_CHECKS+=" or test_patched_formatter_preserves_pymdownx_mro"
-IGNORED_CHECKS+=" or test_on_config_patches_formatters"
-IGNORED_CHECKS+=" or test_on_config_patches_mkdocs_click"
-IGNORED_CHECKS+=" or test_on_config_idempotent"
-IGNORED_CHECKS+=" or test_patch_mkdocs_click_forces_color_during_capture"
-IGNORED_CHECKS+=" or test_patch_mkdocs_click_usage"
-IGNORED_CHECKS+=" or test_patch_mkdocs_click_idempotent"
-IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
-IGNORED_CHECKS+=" or test_full_build_renders_ansi_colors"
-IGNORED_CHECKS+=" or test_on_config_registers_stylesheet"
 # Broken with Click 8.4+
 IGNORED_CHECKS+=" or test_command_listing_is_not_cut_by_an_abbreviation"
 # Broken with extra-platforms 13.10+
 IGNORED_CHECKS+=" or test_screen_drawn_with_color"
+# the screen names the build host, which can widen it past 80 columns
+IGNORED_CHECKS+=" or test_screen_fits_an_eighty_column_terminal"
+# timing tests, which fail on a loaded build host
+IGNORED_CHECKS+=" or test_startup_time_stays_within_a_ratio_of_click or test_sigterm_shows_the_cursor_again"
+# writing TOML needs tomlrt, which is not packaged
+IGNORED_CHECKS+=" or test_export_config or test_serialize_toml or test_serialize_roundtrip"
+IGNORED_CHECKS+=" or test_serialize_strips_none or test_show_params_native_types"
+IGNORED_CHECKS+=" or test_introspection_flags_load_config_first or test_markup_strips_ansi_by_default"
+IGNORED_CHECKS+=" or (test_standalone_no_color_rendering and toml)"
+IGNORED_CHECKS+=" or (test_standalone_table_rendering and toml)"
+IGNORED_CHECKS+=" or (test_max_column_widths and toml)"
 
-%pytest --import-mode=importlib -k "not (${IGNORED_CHECKS})"
+%pytest --import-mode=importlib -m "not network" -k "not (${IGNORED_CHECKS})"
 
 %if %{with libalternatives}
 %pre

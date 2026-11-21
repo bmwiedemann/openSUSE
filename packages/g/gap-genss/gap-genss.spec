@@ -17,7 +17,7 @@
 
 
 Name:           gap-genss
-Version:        1.6.10
+Version:        1.7.0
 Release:        0
 Summary:        GAP: generic Schreier-Sims
 License:        GPL-3.0-or-later

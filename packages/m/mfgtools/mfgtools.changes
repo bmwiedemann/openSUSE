@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:34:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.243:
+  * Add i.MX952 support
+  * Add -force-ctrl option for HID backup transfer
+  * Fix use-after-free in fastboot sparse file handling
+  * Fix memory corruption in libuuu fastboot
+  * Fix case-sensitivity in if-command comparison
+  * Fix fastboot loop variable substitution and qspi script bugs
+  * Burn large SPI NOR images in chunks to avoid timeouts
+  * Handle devices sending empty fastboot INFO (e.g. barebox)
+  * Support CMake 4.0 (minimum now 3.5)
+  * Fix gcc15 build errors
+- Drop upstream-adopted mfgtools-gcc13.patch and
+  mfgtools-gcc15.patch
+
+-------------------------------------------------------------------
 Sun Jul 27 18:25:53 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.5.201

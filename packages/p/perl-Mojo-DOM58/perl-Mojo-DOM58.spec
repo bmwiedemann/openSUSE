@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-DOM58
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name Mojo-DOM58
 Name:           perl-Mojo-DOM58
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
-# 3.002 -> normalize -> 3.2.0
-%define cpan_version 3.002
+# 3.003 -> normalize -> 3.3.0
+%define cpan_version 3.003
 License:        Artistic-2.0
 Summary:        Minimalistic HTML/XML DOM parser with CSS selectors
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DB/DBOOK/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -42,10 +43,11 @@ Mojo::DOM58 is a minimalistic and relaxed pure-perl HTML/XML DOM parser
 based on Mojo::DOM. It supports the at https://html.spec.whatwg.org/ and at
 https://www.w3.org/TR/xml/, and matching based on at
 https://www.w3.org/TR/selectors/. It will even try to interpret broken HTML
-and XML, so you should not use it for validation.
+and XML, so you should not use it for validation or sanitization. Its
+interpretation of broken markup can differ from that of a web browser.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

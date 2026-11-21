@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * ossfuzz: Fix libzip build
+  * ossfuzz: Compile brotli earlier since poppler also needs it
+  * ossfuzz: Fix compilation of ebook-tools with newer cmake
+  * ossfuzz: Disable harfbuzz in poppler for now
+  * oss-fuzz: Get a newer cmake from pip
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

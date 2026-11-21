@@ -489,36 +489,34 @@ Index: chromium-144.0.7559.59/third_party/skia/src/opts/SkRasterPipeline_opts.h
          // The constrained_add is the most subtle part of lerp. The first term is on the interval
          // [-1, 1), and the second term is on the interval is on the interval [0, 1) because
          // both terms are too high by a factor of 2 which will be handled below. (Both R and L are
-@@ -6757,7 +7017,12 @@ LOWP_STAGE_GP(bilerp_clamp_8888, const S
+@@ -7429,7 +7429,12 @@
          U16 v2  = constrained_add(scaled_mult(tx, width), middle) + 1;
          // Divide by 2 to calculate v and at the same time bring the intermediate value onto the
          // interval [0, 1/2] to set up for the lerpY.
 +#if defined(SKRP_CPU_VSX)
-+	// constrained_add() on POWER is run in half precision mode to avoid undefined behavior
++       // constrained_add() on POWER is run in half precision mode to avoid undefined behavior
 +        return v2;
 +#else
          return v2 >> 1;
 +#endif
      };
  
-     const uint32_t* ptr;
-@@ -6791,9 +7056,15 @@ LOWP_STAGE_GP(bilerp_clamp_8888, const S
-         I16 width  = (I16)bottom - (I16)top;
-         U16 middle = bottom + top;
+     // `roundDownAtInteger` is only used by nearest-neighbor (`gather_*`) stages.
+@@ -7519,7 +7524,13 @@
          // Add + 0x80 for rounding.
+-        U16 blend  = constrained_add(scaled_mult(ty, width), middle) + 0x80;
+ 
 +#if defined(SKRP_CPU_VSX)
-+	// constrained_add() on POWER is run in half precision mode to avoid undefined behavior
++        // constrained_add() on POWER is run in half precision mode to avoid undefined behavior
 +        U16 blend  = constrained_add(scaled_mult(ty, width) / 2, middle / 2) + (0x80 / 2);
 +        return blend >> 7;
 +#else
-         U16 blend  = constrained_add(scaled_mult(ty, width), middle) + 0x80;
--
++        U16 blend  = constrained_add(scaled_mult(ty, width), middle) + 0x80;
          return blend >> 8;
 +#endif
-+
      };
  
-     r = lerpY(topR, bottomR);
+     *r = lerpY(topR, bottomR);
 Index: chromium-144.0.7559.59/third_party/skia/src/core/SkVx.h
 ===================================================================
 --- chromium-144.0.7559.59.orig/third_party/skia/src/core/SkVx.h
@@ -699,5 +697,3 @@ Index: chromium-144.0.7559.59/third_party/skia/src/core/SkBlitter_ARGB32.cpp
      // The following (left) shifts cause the top 5 bits of the mask components to
      // line up with the corresponding components in an SkPMColor.
      // Note that the mask's RGB16 order may differ from the SkPMColor order.
---- chromium-148.0.7778.5/third_party/skia/src/opts/SkRasterPipeline_opts.h	2026/04/08 22:36:34	1.1
-+++ chromium-148.0.7778.5/third_party/skia/src/opts/SkRasterPipeline_opts.h	2026/04/08 22:39:31

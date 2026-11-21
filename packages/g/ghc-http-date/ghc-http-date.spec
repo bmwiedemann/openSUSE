@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-date
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,15 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.11
+Version:        0.0.13
 Release:        0
 Summary:        HTTP Date parser/formatter
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-attoparsec-devel
 BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
@@ -40,12 +38,8 @@ BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-doctest-devel
-BuildRequires:  ghc-doctest-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
-BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-locale-prof
 %endif
 
 %description
@@ -99,6 +93,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 17 11:40:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add fish-fix-cmake-4.5-install-code.patch: use the install(CODE)
+  signature instead of install(SCRIPT CODE ...) for the inline
+  directory-creation commands. CMake 4.5 rejects the latter because
+  SCRIPT has no filename, which made configuration fail with
+  "install SCRIPT given invalid argument: SCRIPT: missing required
+  value" (upstream commit 95dccbe).
+
+-------------------------------------------------------------------
 Fri Jul 17 22:57:42 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.8.1:

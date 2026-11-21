@@ -18,10 +18,10 @@
 
 %define cpan_name DateTime-TimeZone
 Name:           perl-DateTime-TimeZone
-Version:        2.690.0
+Version:        2.720.0
 Release:        0
-# 2.69 -> normalize -> 2.690.0
-%define cpan_version 2.69
+# 2.72 -> normalize -> 2.720.0
+%define cpan_version 2.72
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Time zone object base class and factory
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -294,7 +294,9 @@ Provides:       perl(DateTime::TimeZone::Australia::Lord_Howe) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Melbourne) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Perth) = %{version}
 Provides:       perl(DateTime::TimeZone::Australia::Sydney) = %{version}
+Provides:       perl(DateTime::TimeZone::CST6CDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Catalog) = %{version}
+Provides:       perl(DateTime::TimeZone::EST5EDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Andorra) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Astrakhan) = %{version}
 Provides:       perl(DateTime::TimeZone::Europe::Athens) = %{version}
@@ -341,12 +343,14 @@ Provides:       perl(DateTime::TimeZone::Local) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::Android) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::Unix) = %{version}
 Provides:       perl(DateTime::TimeZone::Local::VMS) = %{version}
+Provides:       perl(DateTime::TimeZone::MST7MDT) = %{version}
 Provides:       perl(DateTime::TimeZone::OffsetOnly) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Change) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Observance) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Rule) = %{version}
 Provides:       perl(DateTime::TimeZone::OlsonDB::Zone) = %{version}
+Provides:       perl(DateTime::TimeZone::PST8PDT) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Apia) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Auckland) = %{version}
 Provides:       perl(DateTime::TimeZone::Pacific::Bougainville) = %{version}

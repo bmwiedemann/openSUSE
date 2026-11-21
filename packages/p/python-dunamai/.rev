@@ -156,4 +156,17 @@
     formatting mode change (forwarded request 1370272 from rrahl0)</comment>
     <requestid>1370273</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0b834d6965df0ff9cf950a353bffca49</srcmd5>
+    <version>1.26.4</version>
+    <time>1794317895</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.26.4:
+  * Fixed: Hyphenated tags in the `describe` field in
+    `.git_archival.json` were not parsed correctly
+    when the repository was exactly on a tagged commit.
+  * Fixed: `Version.bump()` ignored the `increment` when a stage
+    had no revision.</comment>
+    <requestid>1396169</requestid>
+  </revision>
 </revisionlist>

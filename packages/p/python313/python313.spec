@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.16
+Version:        3.13.18
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -691,7 +691,12 @@ export PYTHONPATH="$(pwd -P)/Lib"
 # have /dev/shm
 
 # test_freeze_simple_script is skipped, because it fails without bundled libs.
-%make_build -j1 test TESTOPTS="-u curses -v -i test_freeze_simple_script -x $EXCLUDE --timeout=5400"
+TESTOPTS="-u curses -v -i test_freeze_simple_script"
+%ifarch s390x
+# TimerfdTests are flaky on s390x due to virtualization/scheduling jitter (gh#python/cpython#124873)
+TESTOPTS="$TESTOPTS -i test_timerfd_*"
+%endif
+%make_build -j1 test TESTOPTS="$TESTOPTS -x $EXCLUDE --timeout=5400"
 # use network, be verbose:
 #make test TESTOPTS="-l -u network -v"
 %endif

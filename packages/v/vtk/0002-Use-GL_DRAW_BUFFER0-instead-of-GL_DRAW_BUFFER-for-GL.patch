@@ -105,17 +105,6 @@ index bdafa26e..ecef68dd 100644
    sval = cs.DrawBinding.GetDrawBuffer(0);
    if (sval == GL_BACK_LEFT)
    {
-@@ -495,8 +495,8 @@ void vtkOpenGLState::vtkglBindFramebuffer(unsigned int target, unsigned int val)
-     {
-       cs.DrawBinding.Binding = val;
-       ::glBindFramebuffer(GL_DRAW_FRAMEBUFFER, val);
--#ifdef GL_DRAW_BUFFER
--      ::glGetIntegerv(GL_DRAW_BUFFER, (int*)&cs.DrawBinding.DrawBuffers[0]);
-+#ifdef GL_DRAW_BUFFER0
-+      ::glGetIntegerv(GL_DRAW_BUFFER0, (int*)&cs.DrawBinding.DrawBuffers[0]);
- #endif
-     }
-   }
 @@ -1625,8 +1625,8 @@ void vtkOpenGLState::ResetFramebufferBindings()
  {
    auto& cs = this->Stack.top();

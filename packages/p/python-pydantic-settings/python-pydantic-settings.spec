@@ -26,15 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.14.2
+Version:        2.16.3
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-settings
 Source:         https://files.pythonhosted.org/packages/source/p/pydantic-settings/pydantic_settings-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support changes required by ruff 0.16
-Patch0:         support-ruff-0.16.patch
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
@@ -52,7 +50,8 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-pydantic >= 2.7.0
-Requires:       python-python-dotenv >= 0.21.0
+Requires:       python-python-dotenv >= 1.2.2
+Requires:       python-typing-extensions >= 4.0.0
 Requires:       python-typing-inspection >= 0.4.0
 Suggests:       python-PyYAML >= 6.0.1
 Suggests:       python-azure-identity >= 1.16.0

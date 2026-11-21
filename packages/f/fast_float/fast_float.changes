@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  2 10:04:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.3.3
+  * std::float32_t/std::float64_t is left unmodified on
+    invalid input
+  * Right-shifting a negative value in detail::power() is avoided
+  * integer_times_pow10 arguments wider than 64 bits are rejected
+
+-------------------------------------------------------------------
 Fri Oct  9 21:31:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.3.2

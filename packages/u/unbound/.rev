@@ -952,4 +952,15 @@ Features
     [bsc#1286143]</comment>
     <requestid>1387072</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>8c35a4bc3ef8e062ad55bbaa434c0885</srcmd5>
+    <version>1.26.2</version>
+    <time>1795182213</time>
+    <user>anag_factory</user>
+    <comment>- Guard the restorecon call in unbound-keygen.service with a
+  test -x check so it no longer fails the service on systems
+  without policycoreutils/restorecon installed (boo#1289481,
+  boo#1290250)</comment>
+    <requestid>1398178</requestid>
+  </revision>
 </revisionlist>

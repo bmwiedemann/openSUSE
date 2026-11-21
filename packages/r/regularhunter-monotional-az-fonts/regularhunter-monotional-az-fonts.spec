@@ -1,7 +1,7 @@
 #
 # spec file for package regularhunter-monotional-az-fonts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           regularhunter-monotional-az-fonts
-Version:        2.10
+Version:        3.0
 Release:        0
 Summary:        A humanist, monospace font based on DejaVu
 License:        OFL-1.1

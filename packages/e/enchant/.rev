@@ -441,4 +441,13 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385392</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>75fe7c1b90e47d68ed77d32652017883</srcmd5>
+    <version>2.8.21</version>
+    <time>1793724745</time>
+    <user>anag_factory</user>
+    <comment>- Move documentation from library package (where it violates SLPP) to the -data
+  package.</comment>
+    <requestid>1394401</requestid>
+  </revision>
 </revisionlist>

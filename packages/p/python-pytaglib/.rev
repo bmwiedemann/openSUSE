@@ -107,4 +107,12 @@
   * fix #88: rename pyprinttags3 --&gt; pyprinttags, ignore unsupported tags in the script</comment>
     <requestid>1347926</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>899957754c2f8049d0d2dea792c6404e</srcmd5>
+    <version>3.2.0</version>
+    <time>1794838472</time>
+    <user>anag_factory</user>
+    <comment>- Skip a test broken by TagLib.</comment>
+    <requestid>1397818</requestid>
+  </revision>
 </revisionlist>

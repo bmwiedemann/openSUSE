@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  6 03:41:27 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update emojis to version 0.1.6.
+  # 0.1.6
+
+    * Update emoji data to Emoji 18.0. Added emojis again have no
+      aliases, because their source has still not been updated since
+      Emoji 15.0.
+
+-------------------------------------------------------------------
 Sat Jun  6 12:26:58 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update emojis to version 0.1.5.

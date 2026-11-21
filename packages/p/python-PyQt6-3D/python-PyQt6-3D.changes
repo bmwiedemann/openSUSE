@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:49:22 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.12.1
+  * `.pyi` type stub files now pass flake8-pyi.
+
+-------------------------------------------------------------------
 Sun Oct 18 10:13:45 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.12.0

@@ -484,4 +484,15 @@
           - switch from Params::Util to Params::SomeUtil</comment>
     <requestid>1379463</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5938cfcf76df15ce9e9d49e9c9b060bf</srcmd5>
+    <version>6.40.0</version>
+    <time>1794090804</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.40.0 (6.040)
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+  6.040     2026-09-26 14:10:14-04:00 America/New_York
+          - let PPI documents have a filename for better error reporting (I hope)</comment>
+    <requestid>1396030</requestid>
+  </revision>
 </revisionlist>

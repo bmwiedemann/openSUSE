@@ -25,6 +25,7 @@ License:        LGPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/noctalia-dev/noctalia-qs
 Source0:        %{name}-%{version}.tar.zst
+Patch0:         fix-qt612-hyprland-moc-metatypes.patch
 BuildRequires:  cli11-devel
 BuildRequires:  cmake >= 3.22
 BuildRequires:  cpptrace-devel
@@ -82,6 +83,7 @@ binary.
 %build
 %cmake \
     -DCMAKE_BUILD_TYPE=Release \
+    -DNO_PCH=ON \
     -DDISTRIBUTOR="openSUSE" \
     -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=YES \
     -DCRASH_HANDLER=ON \

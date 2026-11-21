@@ -652,4 +652,65 @@
   * Add libggml-hip subpackage</comment>
     <requestid>1393677</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d1844a915829c0ba6a30f6ea2e234294</srcmd5>
+    <version>0.9.0</version>
+    <time>1794162112</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.0:
+  * Update ggml to 0.29.0 and add FP8 E4M3 quantization.
+  * Add Clover, Limite, Metis-1.6 and Mistral Large 4 models.
+  * Improve multi-sequence inference, audio support and Gemma 4
+    prefill performance.
+  * Update the server web UI to build b12110.
+</comment>
+    <requestid>1396093</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e39a631c67b24a9d5f418a8fe3522f5f</srcmd5>
+    <version>1.0.0</version>
+    <time>1794932273</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.0:
+  * Remove deprecated public APIs, promote the NextN speculative
+    API to llama.h, and remove the defrag threshold option.
+  * Add FP8 KV caches, configurable CPU sharing for the MoE expert
+    cache, and external PLE shards.
+  * Add Kimi-K3.1-Pro, Ripple and xing4_0 text models, drama-3 TTS,
+    and MageVL-Cowork and Kimi-K3.1 vision support.
+  * Add Gemma 4 streaming audio input and share compute buffers
+    between multimodal subcontexts.
+  * Harden server handling of CORS, DNS rebinding and private URLs;
+    require opt-in for unauthenticated tools and private media
+    URLs.
+  * Add the /v1/audio/speech endpoint and cancel MCP tool calls
+    when clients disconnect or requests time out.
+  * Update the web UI to build b12359, with chat groups, a markdown
+    editor and improved mobile layouts.
+  * Update ggml to 1.0.0 with FP8 support, API cleanup and backend
+    performance improvements.
+- Update library package names for the new major SONAME.
+- Correct CMake minimum versions and declare Python 3 and OpenCL
+  build dependencies for the backends that need them.</comment>
+    <requestid>1397906</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>0f15322da07a84af09359c52c02dc467</srcmd5>
+    <version>1.0.0</version>
+    <time>1795023039</time>
+    <user>anag_factory</user>
+    <comment>- spec file fixes (drop obsolete package, summary typo, remove
+  erratic mkdir to a directory outside buildroot)
+
+- Require the PIE configuration for selected GCC versions.
+- Move SONAME links to their runtime library packages.
+
+- Enable the RPC backend with TCP and RDMA support.
+- Add libggml-rpc and ggml-rpc-server subpackages.
+- Require matching libraries from the development packages and
+  expand the llama.cpp development package description.
+- Use GCC 15 for Leap 15.7 builds.
+- Use GCC 16 for Leap 16 builds on all architectures.</comment>
+    <requestid>1398247</requestid>
+  </revision>
 </revisionlist>

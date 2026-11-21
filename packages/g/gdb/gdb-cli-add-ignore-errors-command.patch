@@ -1,79 +1,11 @@
-From 6634dd948f02d1f7bd5c0a952899620276b1c260 Mon Sep 17 00:00:00 2001
-From: Tom de Vries <tdevries@suse.de>
-Date: Mon, 7 Apr 2025 16:19:48 +0200
-Subject: [PATCH] [gdb/cli] Add ignore-errors command
+commit 71805452529151b410d2ef9e9d742e67d75c4aef
+Author: Tom de Vries <tdevries@suse.de>
+Date:   Thu Aug 6 14:07:35 2026 +0200
 
-While trying to reproduce a failing test-case from the testsuite on the
-command line using a gdb command script, I ran into the problem that a command
-failed which stopped script execution.
-
-I could work around this by splitting the script at each error, but I realized
-it would be nice if I could tell gdb to ignore the error.
-
-A python workaround ignore-errors exists, mentioned here (
-https://sourceware.org/legacy-ml/gdb/2010-06/msg00100.html ), which is
-already supplied by distros like Fedora and openSUSE.
-
-FTR, a more elaborate try-catch solution was posted here (
-https://sourceware.org/bugzilla/show_bug.cgi?id=8487 ).
-
-This patch adds native ignore-errors support (so no python needed).
-
-So with this script:
-...
-$ cat script.gdb
-ignore-errors run
-echo here
-...
-we have:
-...
-$ gdb -q -batch -x script.gdb
-No executable file specified.
-Use the "file" or "exec-file" command.
-here$
-...
-
-Note that quit is not caught:
-...
-$ gdb -q
-(gdb) ignore-errors quit
-$
-...
-which is the same behaviour as with the python implementation.
-
-Tested on x86_64-linux.
-
-gdb/ChangeLog:
-
-2021-05-18  Tom de Vries  <tdevries@suse.de>
-
-	* cli/cli-cmds.c (ignore_errors_command_completer)
-	(ignore_errors_command): New function.
-	(_initialize_cli_cmds): Add "ignore-errors" cmd.
-
-gdb/doc/ChangeLog:
-
-2021-05-18  Tom de Vries  <tdevries@suse.de>
-
-	* gdb.texinfo (Command Files): Document command ignore-errors.
-
-gdb/testsuite/ChangeLog:
-
-2021-05-18  Tom de Vries  <tdevries@suse.de>
-
-	* gdb.base/ignore-errors.exp: New test.
-	* gdb.base/ignore-errors.gdb: New command file.
----
- gdb/cli/cli-cmds.c                       | 35 ++++++++++++++++++++++++
- gdb/doc/gdb.texinfo                      |  8 +++++-
- gdb/testsuite/gdb.base/ignore-errors.exp | 24 ++++++++++++++++
- gdb/testsuite/gdb.base/ignore-errors.gdb |  2 ++
- 4 files changed, 68 insertions(+), 1 deletion(-)
- create mode 100644 gdb/testsuite/gdb.base/ignore-errors.exp
- create mode 100644 gdb/testsuite/gdb.base/ignore-errors.gdb
+    ignore-errors
 
 diff --git a/gdb/cli/cli-cmds.c b/gdb/cli/cli-cmds.c
-index 0140c717ca2..c244eebbdf7 100644
+index dc17ad71d6c..062f8f4a293 100644
 --- a/gdb/cli/cli-cmds.c
 +++ b/gdb/cli/cli-cmds.c
 @@ -39,6 +39,7 @@
@@ -84,7 +16,7 @@ index 0140c717ca2..c244eebbdf7 100644
  
  #include "ui-out.h"
  #include "interps.h"
-@@ -2572,6 +2573,34 @@ shell_internal_fn (struct gdbarch *gdbarch,
+@@ -2621,6 +2622,34 @@ shell_internal_fn (struct gdbarch *gdbarch,
      return value::allocate_optimized_out (int_type);
  }
  
@@ -116,10 +48,10 @@ index 0140c717ca2..c244eebbdf7 100644
 +    }
 +}
 +
- void _initialize_cli_cmds ();
- void
- _initialize_cli_cmds ()
-@@ -2972,4 +3001,10 @@ when GDB is started."), GDBINIT).release ();
+ INIT_GDB_FILE (cli_cmds)
+ {
+   struct cmd_list_element *c;
+@@ -3020,4 +3049,10 @@ when GDB is started."), GDBINIT).release ();
    c = add_cmd ("source", class_support, source_command,
  	       source_help_text, &cmdlist);
    set_cmd_completer (c, deprecated_filename_completer);
@@ -131,10 +63,10 @@ index 0140c717ca2..c244eebbdf7 100644
 +  set_cmd_completer (c, ignore_errors_command_completer);
  }
 diff --git a/gdb/doc/gdb.texinfo b/gdb/doc/gdb.texinfo
-index 47c538520ab..b830d42da72 100644
+index 71f6427ff51..e8d2bbd2625 100644
 --- a/gdb/doc/gdb.texinfo
 +++ b/gdb/doc/gdb.texinfo
-@@ -29472,7 +29472,8 @@ The lines in a command file are generally executed sequentially,
+@@ -29822,7 +29822,8 @@ The lines in a command file are generally executed sequentially,
  unless the order of execution is changed by one of the
  @emph{flow-control commands} described below.  The commands are not
  printed as they are executed.  An error in any command terminates
@@ -144,7 +76,7 @@ index 47c538520ab..b830d42da72 100644
  
  @value{GDBN} first searches for @var{filename} in the current directory.
  If the file is not found there, and @var{filename} does not specify a
-@@ -29567,6 +29568,11 @@ the controlling expression.
+@@ -29917,6 +29918,11 @@ the controlling expression.
  @item end
  Terminate the block of commands that are the body of @code{if},
  @code{else}, or @code{while} flow-control commands.
@@ -194,8 +126,3 @@ index 00000000000..5962ff49b11
 @@ -0,0 +1,2 @@
 +ignore-errors run
 +echo here\n
-
-base-commit: 1398f45a2641e0e9e0e331681655404ae1d4ed97
--- 
-2.43.0
-

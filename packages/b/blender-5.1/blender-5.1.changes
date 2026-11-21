@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 13 20:42:18 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- BuildRequires: sse2neon-devel to fix aarch64 build
+
+-------------------------------------------------------------------
+Tue Nov  3 23:03:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Adapt hip conditional to handle 16.1
+
+-------------------------------------------------------------------
 Mon Jul 13 07:26:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - the cmake finder for the tiff library got rename from "Tiff" to

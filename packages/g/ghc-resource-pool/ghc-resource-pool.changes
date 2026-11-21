@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 15 14:54:05 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update resource-pool to version 0.5.1.0.
+  # resource-pool-0.5.1.0 (2026-08-15)
+  * Spawn a collector thread per stripe and make them wake up when appropriate
+    instead of polling every second.
+
+-------------------------------------------------------------------
 Wed Jul  8 15:47:31 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update resource-pool to version 0.5.0.1.

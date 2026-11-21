@@ -18,11 +18,10 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-oauthlib
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        A Generic Implementation of the OAuth Request-Signing Logic
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/oauthlib/oauthlib
 Source:         https://files.pythonhosted.org/packages/source/o/oauthlib/oauthlib-%{version}.tar.gz
 BuildRequires:  %{python_module PyJWT >= 2.0.0}

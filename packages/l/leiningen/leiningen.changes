@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 18 10:51:43 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.1:
+  * More reliable SSH signing when deploying.
+  * Avoid drawbridge dependency when unnecessary.
+  * Significantly faster uberjar creation.
+
+-------------------------------------------------------------------
+Tue Jun 23 12:16:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.13.0:
+  * Verify pom signatures in addition to jars for GPG/SSH.
+  * Emit correct exit code when dependency signature verification fails.
+  * Verify SSH signatures with lein deps :verify allowed-signers.
+  * Avoid native access warnings on Windows.
+  * Ensure synthetic jar entries have timestamps matching project.clj file.
+  * Support SOURCE_DATE_EPOCH environment variable.
+  * Sign with SSH keys when deploying; :signing {:ssh-key nil} to disable.
+  * Update Maven Resolver API dependency, improving behavior when rate limited.
+
+-------------------------------------------------------------------
 Mon Sep 15 08:06:38 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12.0:

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 29 11:32:00 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.720.0 (2.72)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+
+  2.72    2026-10-28
+  - This release is based on version 2026f of the Olson database. This release includes contemporary
+    changes for Cuba.
+  2.71    2026-09-30
+  - This release is based on version 2026e of the Olson database. This release includes contemporary
+    changes for Manitoba, CA.
+  2.70    2026-09-20
+  - This release is based on version 2026d of the Olson database. This release includes contemporary
+    changes for Canada's Northwest Territories.
+
+-------------------------------------------------------------------
 Thu Jul  9 08:47:12 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.690.0 (2.69)

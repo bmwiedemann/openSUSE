@@ -1,4 +1,194 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:28:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.47.0:
+  This release brings significant improvements to make Tekton CLI
+  more AI-agent-friendly, with structured JSON/YAML input and
+  output, consistent exit codes, and improved resource management.
+  It also includes security fixes, bug fixes, component upgrades,
+  and dependency updates.
+  * Features
+    - Agentic AI and Machine-Readable CLI
+      This release brings important enhancements toward making
+      Tekton CLI ready for the agentic AI era. With AI coding
+      agents increasingly using command-line tools to interact with
+      external systems, tkn is evolving to provide a more
+      predictable, structured, and machine-readable interface.
+      Key improvements include:
+      - Machine-readable JSON/YAML Output: Extended structured
+        output support across CLI commands, making it easier for AI
+        agents and automation tools to consume Tekton resource
+        information without parsing human-readable tables.
+      - Structured JSON Input: Added JSON input support for start
+        commands, allowing AI agents to create and execute Tekton
+        resources using structured data rather than complex
+        combinations of command-line flags.
+      - Consistent Exit Codes: Introduced consistent exit codes to
+        help AI agents and automation workflows reliably identify
+        command success and failure without relying on output
+        parsing.
+      - AI Agent Context: Added CONTEXT.md to provide AI agents
+        with repository-specific context and guidance, improving
+        their understanding of the Tekton CLI codebase.
+      - Improved Resource Operations: Enhanced JSON/YAML support
+        for operations such as listing, describing, cancelling, and
+        deleting Tekton resources.
+  * Other Enhancements
+    - 1. Security Enhancements
+      Several security improvements and vulnerability fixes are
+      included in this release:
+      - Updated the Go toolchain to address standard library
+        security vulnerabilities, including CVE-2026-111943.
+      - Updated klauspost/compress to version 1.20.2 to address
+        CVE-2026-116591.
+      - Fixed a plugin directory resolution vulnerability (CWE-426)
+        by rejecting relative plugin directories.
+      - Restricted insecure TLS behavior during bundle
+        installation, requiring --remote-skip-tls for insecure
+        bundle name resolution (CWE-319).
+      - Prevented unbounded memory allocation when extracting tar
+        layers to improve protection against resource exhaustion.
+      - Updated security-related dependencies, including Sigstore
+        and go-jose.
+    - 2. Bug Fixes and Improvements
+      - Improved release tag detection and switched to a stable
+        GoReleaser image.
+      - Fixed tkn customrun describe --last to select the most
+        recent CustomRun.
+      - Improved CustomRun deletion to return an error when the
+        requested resource is not found.
+      - Improved TaskRun deletion to handle structured deletion
+        safely.
+      - Restricted resource fetching during tkn hub install
+        operations.
+      - Improved plugin discovery and validation by checking
+        executable permissions.
+      - Improved tkn logging to display only failed steps when
+        using --log-failed.
+      - Added Go formatting and documentation freshness checks to
+        CI.
+      - Improved release configuration and dependency management.
+    - 3. Component and Dependency Updates
+      - Updated Tekton Pipelines to v1.18.0.
+      - Updated Tekton Triggers to v0.38.0.
+      - Updated OpenTelemetry dependencies.
+      - Updated Docker CLI, Google go-containerregistry, gRPC,
+        Go-Jose, and other dependencies.
+      - Consolidated the vt10x dependency.
+      - Updated Go linting and development tooling.
+      - bump(deps): bump tektoncd/triggers version from 0.37.2 to
+        0.38.0
+      - bump(deps): bump klauspost/compress to 1.20.2 to fix
+        CVE-2026-116591
+      - chore(deps): bump github.com/sigstore/sigstore from 1.11.0
+        to 1.11.3
+      - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+        /tools
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore: bump tektoncd/pipeline version to v1.18.0
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.6
+        to 4.1.9
+      - chore(deps): bump the all group with 3 updates
+      - chore(deps): bump the go-k8s-dependencies group across 1
+        directory with 3 updates
+      - chore(deps): bump google.golang.org/grpc from 1.84.0 to
+        1.85.0
+      - chore(deps): bump the all group across 1 directory with 2
+        updates
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump github.com/tektoncd/triggers from 0.37.1
+        to 0.37.2
+      - chore(deps): bump github.com/go-chi/chi/v5 from 5.3.2 to
+        5.4.0
+      - chore(deps): bump the all group across 1 directory with 4
+        updates
+      - chore: updating go version from 1.26.6 to 1.26.10
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump golang.org/x/term from 0.46.0 to 0.47.0
+      - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5
+        to 4.1.6
+      - chore(deps): bump the all group with 3 updates
+      - chore(deps): bump golang.org/x/text from 0.42.0 to 0.43.0
+      - chore(deps): bump goa.design/goa/v3 from 3.32.0 to 3.34.0
+      - chore(deps): bump go.opentelemetry.io/otel from 1.46.0 to
+        1.47.0
+      - chore(deps): bump the all group with 3 updates
+      - chore(deps): bump goa.design/goa/v3 from 3.30.0 to 3.32.0
+      - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+        /tools
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump google.golang.org/grpc from 1.83.2 to
+        1.84.0
+      - chore(deps): bump the go-k8s-dependencies group across 1
+        directory with 3 updates
+      - chore(deps): bump the all group with 2 updates
+      - chore(deps): bump github.com/tektoncd/triggers from 0.37.0
+        to 0.37.1
+      - chore(deps): bump the all group with 4 updates
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump golang.org/x/crypto from 0.56.0 to 0.57.0
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): bump the all group with 4 updates
+      - chore(deps): bump
+        go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+      - chore(deps): bump
+        go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+      - chore(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0
+        to 1.45.0
+      - chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump the all group with 4 updates
+      - chore(deps): bump github.com/google/go-containerregistry
+      - chore(deps): bump github.com/tektoncd/pipeline from 1.15.1
+        to 1.16.0
+      - chore(deps): bump go.opentelemetry.io/otel from 1.45.0 to
+        1.46.0
+      - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+        /tools
+      - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.4
+        to 4.1.5
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): bump google.golang.org/grpc from 1.83.1 to
+        1.83.2
+      - chore(deps): bump github.com/golangci/golangci-lint/v2 in
+        /tools
+      - chore(deps): bump github.com/tektoncd/pipeline from 1.15.0
+        to 1.15.1
+      - chore(deps): bump the all group with 3 updates
+      - chore(deps): bump goa.design/goa/v3 from 3.29.2 to 3.30.0
+      - chore(deps): bump github.com/google/go-containerregistry
+      - chore(deps): bump the all group with 4 updates
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): bump github.com/stretchr/testify from 1.12.0
+        to 1.12.1
+      - chore(deps): bump google.golang.org/grpc from 1.83.0 to
+        1.83.1
+      - chore(deps): bump the go-k8s-dependencies group with 3
+        updates
+      - chore(deps): bump goa.design/goa/v3 from 3.29.1 to 3.29.2
+      - chore(deps): bump github.com/tektoncd/triggers from 0.36.0
+        to 0.37.0
+      - chore(deps): bump github.com/stretchr/testify from 1.11.1
+        to 1.12.0
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump goa.design/goa/v3 from 3.28.0 to 3.29.1
+      - chore(deps): bump the all group with 2 updates
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): add release-v0.46.x to dependabot config
+      - fix(security): bump Go stdlib go1.26.5 → go1.26.6
+      - chore(deps): bump the all group with 4 updates
+      - chore(deps): bump github.com/letsencrypt/boulder
+      - chore(deps): bump github.com/google/go-containerregistry
+      - chore(deps): bump github.com/docker/cli
+      - chore(deps): bump github.com/tektoncd/pipeline from 1.14.1
+        to 1.15.0
+      - chore(deps): bump go.opentelemetry.io/otel from 1.44.0 to
+        1.45.0
+      - chore(deps): consolidate vt10x dependency
+
+-------------------------------------------------------------------
 Fri Oct 23 11:01:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.2:

@@ -15,4 +15,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1244437</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9444e6df03f1e57e8a06478935755dd1</srcmd5>
+    <version>1.10.0</version>
+    <time>1793990625</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.10.0 (1.01)
+   see /usr/share/doc/packages/perl-SQL-Abstract-Pg/Changes
+  1.01  2026-10-25
+    - Added support for bulk inserts. (array of hashes)</comment>
+    <requestid>1395142</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 29 09:46:58 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 4.7.6:
+  * This update adds options to convert PDFs, audio, or YouTube 
+    videos to scores via MuseScore.com, as well as fixes for 
+    several bugs and crashes.
+
+    To learn more, see the full announcements for 4.7.6 at
+    https://musescore.org/en/4.7.6
+
+-------------------------------------------------------------------
 Wed Oct 21 09:42:45 UTC 2026 - Cor Blom <cornelis@solcon.nl>
 
 - Add qmlcachegen-unity-build.diff to fix build with Qt 6.12

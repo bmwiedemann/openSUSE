@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov  3 18:30:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.71.0:
+  * lib: add length check for CONTINUATION frames
+  * lib: disallow HEADERS and PUSH_PROMISE in CONNECT streams
+  * lib: fix priority update handling and update window upfront
+  * lib: handle too large window size when consuming data
+  * lib: fix signed integer overflow in
+    nghttp2_session_get_stream_local_window_size and detect size_t
+    overflow in nghttp2_nv_array_copy
+  * lib: better map hasher and simplified map insertion
+  * nghttpx: client TLS certificate validation based on RFC 9525
+    (CertLookupTree rewrite) and refactored Router
+  * nghttpx: remove server push support
+  * nghttpx: fix GSO disabled on QUIC connections and check QUIC
+    version
+  * Add option to limit the maximum outbound queue size
+- The library soname is unchanged at 14
+
+-------------------------------------------------------------------
 Fri Jul 31 08:15:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Require the versions configure actually checks for: libnghttp3 >= 1.17.0

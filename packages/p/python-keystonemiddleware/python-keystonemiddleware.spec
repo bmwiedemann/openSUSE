@@ -17,7 +17,7 @@
 
 
 Name:           python-keystonemiddleware
-Version:        13.0.1
+Version:        13.0.2
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0

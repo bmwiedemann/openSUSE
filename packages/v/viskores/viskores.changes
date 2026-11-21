@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 04 00:00:00 UTC 2026  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.2.0-0
+
+- Update to Viskores 1.2.0:
+  * Core
+    - Viskores now requires viskores::cont::Initialize before use
+    - Improved checking of class triviality
+    - Fixed memory_order constants for C++20
+    - Added check for Kokkos finalize
+    - Avoid copies on AMD APUs in the Kokkos build
+    - Added id-only cell locator queries
+  * Filters
+    - New Fiber Uncertainty Visualization filter
+    - Spline evaluation on structured grids
+    - Monotonicity checks for arrays
+    - Deprecated CPU threading for multiblock filters
+  * Rendering
+    - New ANARI device
+    - Fixed 3D camera pan and viewport change rendering issues
+    - Wireframe overlay now visible through pseudocolor
+  * Bug Fixes
+    - Fixed CellLocatorBoundingIntervalHierarchy
+    - Fixed array access for rectilinear splines
+    - Fixed wedge point ordering, triangulation and volume
+    - Fixed bug in Kokkos Reduce function
+  * Build
+    - Device library is now private
+    - pkg-config files install to libdir/pkgconfig
+    - Shortened header filenames to avoid Windows MAX_PATH failures
+  * Release notes: https://github.com/Viskores/viskores/releases/tag/v1.2.0
+
+-------------------------------------------------------------------
 Tue Apr 29 00:00:00 UTC 2026  - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com> - 1.1.1-0
 
 - Update to Viskores 1.1.1:

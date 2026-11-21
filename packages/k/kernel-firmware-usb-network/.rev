@@ -49,4 +49,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361051</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>443f64650885a39c2018023e351a3b82</srcmd5>
+    <version>20261012</version>
+    <time>1793990003</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261012 (git commit b9df1a1aa45b):
+  * aic: Add AIC8800D80 Bluetooth and Wi-Fi firmware</comment>
+    <requestid>1394994</requestid>
+  </revision>
 </revisionlist>

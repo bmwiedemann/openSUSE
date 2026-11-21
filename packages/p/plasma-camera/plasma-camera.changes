@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Nov 15 00:15:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update applications.keyring
+
+-------------------------------------------------------------------
+Sat Nov 14 11:12:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.11.80
+  * New feature release
+- Changes since 26.08.3:
+  * Libcamera 0.8 support
+  * Fix type name in kcfg file
+  * Install kcfg file
+
+-------------------------------------------------------------------
+Tue Nov  3 20:40:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- No code change since 26.08.2
+
+-------------------------------------------------------------------
 Wed Oct  7 07:05:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

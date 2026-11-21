@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:33:47 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add %license to %files.
+
+-------------------------------------------------------------------
 Mon Oct 26 16:05:48 UTC 2026 - Michael Matz <matz@suse.com>
 
 - Add a couple more CVE fixes that meanwhile got upstream:

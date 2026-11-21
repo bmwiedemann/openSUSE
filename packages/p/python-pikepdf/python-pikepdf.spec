@@ -17,9 +17,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-pikepdf
-Version:        10.17.0
+Version:        10.18.0
 Release:        0
 Summary:        Read and write PDFs with Python, powered by qpdf
 License:        MPL-2.0
@@ -28,33 +27,33 @@ URL:            https://github.com/pikepdf/pikepdf
 Source:         https://files.pythonhosted.org/packages/source/p/pikepdf/pikepdf-%{version}.tar.gz
 ## SECTION test requirements
 BuildRequires:  %{python_module Pillow >= 10.0.1}
-BuildRequires:  %{python_module devel >= 3.10}
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module fonttools >= 4.40}
 BuildRequires:  %{python_module hypothesis >= 6.36}
 BuildRequires:  %{python_module jsonschema >= 4.18}
 BuildRequires:  %{python_module lxml >= 4.8}
-BuildRequires:  %{python_module nanobind-devel >= 2.0}
+BuildRequires:  %{python_module nanobind-devel >= 3.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
 BuildRequires:  %{python_module pytest-helpers-namespace >= 2019.1.8}
-BuildRequires:  %{python_module tzdata}
-BuildRequires:  timezone
-# Upstream use pytest-timeout >= 1.4.2
 BuildRequires:  %{python_module pytest-timeout >= 2.1.0}
 BuildRequires:  %{python_module pytest-xdist >= 2.5.0}
 BuildRequires:  %{python_module python-dateutil >= 2.8.1}
+BuildRequires:  %{python_module referencing}
 BuildRequires:  %{python_module scikit-build-core >= 0.10}
-BuildRequires:  %{python_module setuptools >= 61}
+BuildRequires:  %{python_module setuptools >= 80.9.0}
+BuildRequires:  %{python_module tzdata}
 BuildRequires:  %{python_module wheel >= 0.37}
+BuildRequires:  timezone
 ## /SECTION
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg8-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libqpdf) >= 12.2.0
+BuildRequires:  pkgconfig(libqpdf) >= 12.4.2
 Requires:       python-Pillow >= 10.0.1
 Requires:       python-fonttools >= 4.40
 Requires:       python-jsonschema >= 4.18
@@ -78,7 +77,7 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch -k "not test_minimum_qpdf_version and not test_descriptor_reads_match_stream_reads_damaged"
+%pytest_arch
 
 %files %{python_files}
 %license LICENSE.txt

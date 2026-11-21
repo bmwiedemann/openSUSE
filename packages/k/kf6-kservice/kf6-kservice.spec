@@ -16,14 +16,14 @@
 #
 
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define rname kservice
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kservice
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Plugin framework for desktop services
 License:        LGPL-2.1-or-later

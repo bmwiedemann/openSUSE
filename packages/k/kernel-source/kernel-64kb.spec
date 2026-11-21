@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.3
-%define patchversion 7.3.1
-%define git_commit 881502140beea90a9c852730f56d862b92499c6c
+%define patchversion 7.3.5
+%define git_commit b2eda329c22ffb33b0331f29bccd7ede92d21d63
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-64kb
-Version:        7.3.1
+Version:        7.3.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8815021
+Release:        <RELEASE>.gb2eda32
 %else
 Release:        0
 %endif
@@ -91,6 +91,12 @@ BuildRequires:  u-boot-tools
 %endif
 %if %use_suse_kabi_tools
 BuildRequires:  suse-kabi-tools
+%endif
+%ifarch aarch64
+BuildRequires:  rust
+BuildRequires:  rust-src
+BuildRequires:  rust-bindgen
+BuildRequires:  clang
 %endif
 # Do not install p-b and dracut for the install check, the %post script is
 # able to handle this

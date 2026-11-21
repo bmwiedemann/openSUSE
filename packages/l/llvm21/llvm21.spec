@@ -75,6 +75,7 @@
 %bcond_with valgrind
 %bcond_without polly
 %bcond_without lld
+%bcond_without wasm_runtime
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -1219,6 +1220,27 @@ MALLOC_CHECK_=$MALLOC_CHECK_BACK
 
 cd ..
 
+%if %{with wasm_runtime}
+# Build compiler-rt builtins for wasm32-wasip1 in a separate build directory
+cmake -G Ninja -B wasm-crt -S projects/compiler-rt \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_C_COMPILER=%{sourcedir}/build/bin/clang \
+    -DCMAKE_CXX_COMPILER=%{sourcedir}/build/bin/clang++ \
+    -DCMAKE_AR=%{sourcedir}/build/bin/llvm-ar \
+    -DCMAKE_RANLIB=%{sourcedir}/build/bin/llvm-ranlib \
+    -DCMAKE_C_COMPILER_TARGET=wasm32-wasip1 \
+    -DCMAKE_C_COMPILER_WORKS=ON \
+    -DCMAKE_CXX_COMPILER_WORKS=ON \
+    -DCMAKE_SYSTEM_NAME=WASI \
+    -DLLVM_ENABLE_PER_TARGET_RUNTIME_DIR=ON \
+    -DLLVM_COMMON_CMAKE_UTILS=%{sourcedir}/../cmake \
+    -DLLVM_MAIN_SRC_DIR=%{sourcedir} \
+    -DCOMPILER_RT_BAREMETAL_BUILD=ON \
+    -DCOMPILER_RT_DEFAULT_TARGET_ONLY=ON \
+    -DCMAKE_INSTALL_PREFIX=%{_libdir}/clang/%{_sonum}
+ninja -C wasm-crt %{?_smp_mflags} builtins
+%endif
+
 %install
 # Installation seems to build some files not contained in "all".
 export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
@@ -1226,6 +1248,11 @@ export LD_LIBRARY_PATH=%{sourcedir}/build/%{_lib}
 
 # Install FileCheck needed for testing Rust boo#1192629
 install -m 0755 build/bin/FileCheck %{buildroot}%{_bindir}/FileCheck
+
+%if %{with wasm_runtime}
+# Install wasm32-wasip1 compiler-rt builtins
+DESTDIR=%{buildroot} ninja -C wasm-crt install-builtins
+%endif
 
 # Remove files that won't be needed anymore.
 # This reduces the total amount of disk space used during build. (bnc#1074625)
@@ -1535,7 +1562,7 @@ popd
 # This reduces the total amount of disk space used during build. (bnc#1074625)
 # This is meant to happen after build, install and check, but before
 # creating the final RPMs.
-rm -rf ./stage1 ./build
+rm -rf ./stage1 ./build ./wasm-crt
 
 %ldconfig_scriptlets -n libLLVM%{_sonum}
 %if %{?suse_version} >= 1600
@@ -1634,6 +1661,9 @@ fi
 %endif
 %ifarch aarch64 %{arm} loongarch64 ppc64le x86_64
 %{_libdir}/clang/%{_sonum}/lib/linux/liborc_rt-*.a
+%endif
+%if %{with wasm_runtime}
+%{_libdir}/clang/%{_sonum}/lib/wasm32-unknown-wasip1/
 %endif
 
 %files -n libclang_rt%{_sonum}

@@ -387,4 +387,24 @@
   * Reject negative maxsize in Cache.__init__.</comment>
     <requestid>1380844</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>969a6ae2f9f8f2c264dda7631fb87845</srcmd5>
+    <version>8.0.0</version>
+    <time>1794317904</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.0.0:
+  * Drop Python 3.10 support (breaking change).
+  * Drop support for deprecated @cachedmethod features (breaking
+    change).
+  * Drop support for @cached(cache=None) (breaking change).
+  * Require custom cache classes to support __len__ when used
+    with info=True (breaking change).
+  * Refactor _CacheInfo and make it public as CacheInfo
+    (potentially breaking change).
+  * Return callable objects instead of functions from @cached and
+    the cachetools.func decorators (potentially breaking change).
+  * Do not set cache_info to None on @cached wrappers if info is
+    not set (potentially breaking change).</comment>
+    <requestid>1396198</requestid>
+  </revision>
 </revisionlist>

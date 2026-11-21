@@ -44,7 +44,6 @@ BuildRequires:  %{python_module stevedore >= 5.9.1}
 BuildRequires:  %{python_module testresources >= 2.0.0}
 BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module typing-extensions >= 4.12}
-BuildRequires:  %{python_module urllib3 < 2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-PyYAML >= 3.13

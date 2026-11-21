@@ -338,4 +338,28 @@ version 2.4.3:
     <comment>1</comment>
     <requestid>1386208</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9fd94c455b1b9ea8e2f24cdd9d23a708</srcmd5>
+    <version>3.5.1</version>
+    <time>1793818059</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394922</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b606f4774a6c30aac252f4ce4a394d6f</srcmd5>
+    <version>3.6.2</version>
+    <time>1795023145</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398413</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>928a85de44e2027ce9f8a786209790e7</srcmd5>
+    <version>3.6.3</version>
+    <time>1795182565</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398928</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 28 19:10:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update github.com/klauspost/compress to v1.20.4 (boo#1288613
+  CVE-2026-116591)
+
+-------------------------------------------------------------------
 Sat Oct 10 20:48:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Disable secret service until we solved the conflicts

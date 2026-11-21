@@ -31,4 +31,12 @@
     <comment>Update to 1.21; set set_version service to manual mode (factory-auto decline fix); spec cleanup</comment>
     <requestid>1357118</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>290372b18aa3c0a731d7f357865d5d27</srcmd5>
+    <version>1.22</version>
+    <time>1794090833</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1396044</requestid>
+  </revision>
 </revisionlist>

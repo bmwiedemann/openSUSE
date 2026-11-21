@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-hyprland
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,30 +15,14 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-#
-# spec file for package patterns-hyprland
-#
-# Copyright (c) 2026 SUSE LLC
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
 
 Name:           patterns-hyprland
-Version:        20260129
+Version:        20261031
 Release:        0
 Summary:        Patterns for Installation (Hyprland)
 License:        MIT
-Group:          Metapackages
 URL:            https://github.com/openSUSE/patterns
+Source0:        %{name}-rpmlintrc
 BuildRequires:  patterns-rpm-macros
 BuildArch:      noarch
 
@@ -52,55 +36,62 @@ This particular package contains the Hyprland pattern.
 %package hyprland
 %pattern_graphicalenvironments
 Summary:        Hyprland (Wayland compositor)
-Group:          Metapackages
 Provides:       pattern() = hyprland
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1815
 Provides:       pattern-visible()
-
-# Base system
+# SECTION base system
 Requires:       pattern() = base
-
-# Core compositor and portal stack
+# /SECTION
+# SECTION compositor and portals
 Requires:       hyprland
 Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-hyprland
-
-# Login/session
+# /SECTION
+# SECTION login
 Recommends:     greetd-gtkgreet-hyprland
-
-# Bar
-Recommends:     swaybar
-
-# Notifications
+# /SECTION
+# SECTION lock and idle
+Recommends:     hypridle
+Recommends:     hyprlock
+# /SECTION
+# SECTION authentication agent
+Recommends:     hyprpolkitagent
+# /SECTION
+# SECTION bar
+Recommends:     waybar
+# /SECTION
+# SECTION notifications
 Recommends:     mako
-
-# Launcher
+# /SECTION
+# SECTION launcher
 Recommends:     rofi-wayland
-
-# Screenshots
+# /SECTION
+# SECTION screenshots
 Recommends:     grim
 Recommends:     slurp
-
-# Color picker
+# /SECTION
+# SECTION color picker
 Recommends:     hyprpicker
-
-# Wallpapers (Hyprland-native)
+# /SECTION
+# SECTION Hyprland-native wallpaper
 Recommends:     hyprpaper
-
-# Terminal
+# /SECTION
+# SECTION terminal
 Recommends:     kitty
-
-# File manager
+# /SECTION
+# SECTION file manager
 Recommends:     thunar
-
-# Small helper utilities
+# /SECTION
+# SECTION small helper utilities
 Recommends:     hyprland-qtutils
-
-# openSUSE welcome + branding glue
+Recommends:     wl-clipboard
+# /SECTION
+# openSUSE welcome
 %if 0%{?is_opensuse}
+# SECTION openSUSE welcome
 Recommends:     opensuse-welcome-launcher
-Recommends:     hyprland-branding-openSUSE
+# /SECTION
 %endif
 
 %description hyprland
@@ -116,40 +107,31 @@ manager.
 
 %package hyprland_extra
 %pattern_graphicalenvironments
-Summary:        Hyprland Extra Components (plugins and add-ons)
-Group:          Metapackages
+Summary:        Hyprland Extra Components (plugins and extras)
 Provides:       pattern() = hyprland_extra
+Provides:       pattern-extends() = hyprland
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1816
 Provides:       pattern-visible()
-Provides:       pattern-extends() = hyprland
-Supplements:    (patterns-hyprland-hyprland and patterns-hyprland-hyprland_extra)
-
 Requires:       pattern() = hyprland
-
-# A minimal dock
+# SECTION minimal dock
 Recommends:     nwg-dock-hyprland
-
-# Optional workflow tools
-Recommends:     waybar
+# /SECTION
+# SECTION workflow tools
 Recommends:     yazi
-
-# Hyprland plugins
+# /SECTION
+# SECTION plugins
 Recommends:     hyprland-plugin-borders-plus-plus
-Recommends:     hyprland-plugin-hyprbars
 Recommends:     hyprland-plugin-csgo-vulkan-fix
-Recommends:     hyprland-plugin-hyprexpo
+Recommends:     hyprland-plugin-hyprbars
 Recommends:     hyprland-plugin-hyprfocus
-Recommends:     hyprland-plugin-hyprscrolling
-Recommends:     hyprland-plugin-hyprtrails
-Recommends:     hyprland-plugin-hyprwinwrap
-Recommends:     hyprland-plugin-xtra-dispatchers
-
-# We need a browser
-Recommends: 	MozillaFirefox
+# /SECTION
+# SECTION browser
+Recommends:     MozillaFirefox
+# /SECTION
 
 %description hyprland_extra
-Optional add-ons for the Hyprland Wayland compositor, including commonly used
+Optional extras for the Hyprland Wayland compositor, including commonly used
 plugins and additional workflow tools.
 
 %files hyprland_extra
@@ -169,4 +151,3 @@ for i in hyprland hyprland_extra; do
 done
 
 %changelog
-

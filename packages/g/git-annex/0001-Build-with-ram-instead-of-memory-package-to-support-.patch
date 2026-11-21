@@ -1,13 +1,64 @@
+diff --git a/Utility/AuthToken.hs b/Utility/AuthToken.hs
+index 46a7c4a7b6..4f94c984a1 100644
+--- a/Utility/AuthToken.hs
++++ b/Utility/AuthToken.hs
+@@ -25,7 +25,7 @@ import Utility.Exception
+ 
+ import Data.Maybe
+ import Data.Char
+-import qualified "memory" Data.ByteArray as BA
++import qualified Data.ByteArray as BA
+ import qualified Data.Text as T
+ import qualified Data.Text.Encoding as TE
+ import qualified Data.ByteString.Lazy as L
+diff --git a/Utility/Hash/Crypton.hs b/Utility/Hash/Crypton.hs
+index 91091038db..a7c60578f7 100644
+--- a/Utility/Hash/Crypton.hs
++++ b/Utility/Hash/Crypton.hs
+@@ -73,7 +73,7 @@ import Data.IORef
+ #if MIN_VERSION_crypton(1,1,0)
+ import qualified "ram" Data.ByteArray as BA
+ #else
+-import qualified "memory" Data.ByteArray as BA
++import qualified Data.ByteArray as BA
+ #endif
+ import "crypton" Crypto.Hash
+ 
+diff --git a/Utility/Hash/Types.hs b/Utility/Hash/Types.hs
+index 2e63e9c805..8bcf0a6e84 100644
+--- a/Utility/Hash/Types.hs
++++ b/Utility/Hash/Types.hs
+@@ -11,7 +11,7 @@
+ module Utility.Hash.Types where
+ 
+ import qualified Data.ByteString as S
+-import qualified "memory" Data.ByteArray.Encoding as BAE
++import qualified Data.ByteArray.Encoding as BAE
+ import Data.String
+ import Control.DeepSeq
+ import GHC.Generics
+diff --git a/Utility/IPAddress.hs b/Utility/IPAddress.hs
+index cde446b642..e2d677af10 100644
+--- a/Utility/IPAddress.hs
++++ b/Utility/IPAddress.hs
+@@ -22,7 +22,7 @@ import Utility.Exception
+ 
+ import Network.Socket
+ import Data.Word
+-import "memory" Data.Memory.Endian
++import Data.Memory.Endian
+ import Data.List
+ import Text.Printf
+ 
 diff --git a/git-annex.cabal b/git-annex.cabal
-index 2fef9ae934..9ddfd828ea 100644
 --- a/git-annex.cabal
 +++ b/git-annex.cabal
-@@ -265,7 +265,7 @@ Executable git-annex
-    socks (>= 0.6.0),
-    stm-chans,
-    crypto-api,
--   memory,
-+   ram,
-    deepseq,
-    split,
-    attoparsec (>= 0.13.2.2),
+@@ -325,7 +325,7 @@ Executable git-annex
+   if flag(Memory)
+     Build-Depends: memory, crypton (< 1.1.0)
+   else
+-    Build-Depends: memory, ram, crypton (>= 1.1.0)
++    Build-Depends: ram, crypton (>= 1.1.0)
+ 
+   -- Fully optimize for production.
+   if flag(Production)

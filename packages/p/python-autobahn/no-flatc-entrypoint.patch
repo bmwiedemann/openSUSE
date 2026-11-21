@@ -1,8 +1,8 @@
-Index: autobahn-26.7.1/pyproject.toml
+Index: autobahn-26.11.1/pyproject.toml
 ===================================================================
---- autobahn-26.7.1.orig/pyproject.toml
-+++ autobahn-26.7.1/pyproject.toml
-@@ -231,7 +231,6 @@ asyncio = []
+--- autobahn-26.11.1.orig/pyproject.toml
++++ autobahn-26.11.1/pyproject.toml
+@@ -261,7 +261,6 @@ asyncio = []
  
  [project.scripts]
  wamp = "autobahn.__main__:_main"

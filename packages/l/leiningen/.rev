@@ -203,4 +203,25 @@
   * Update Clojure version</comment>
     <requestid>1304745</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>70b3419c71f69776d21d573949632132</srcmd5>
+    <version>2.13.1</version>
+    <time>1795023118</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.13.1:
+  * More reliable SSH signing when deploying.
+  * Avoid drawbridge dependency when unnecessary.
+  * Significantly faster uberjar creation.
+
+- Update to 2.13.0:
+  * Verify pom signatures in addition to jars for GPG/SSH.
+  * Emit correct exit code when dependency signature verification fails.
+  * Verify SSH signatures with lein deps :verify allowed-signers.
+  * Avoid native access warnings on Windows.
+  * Ensure synthetic jar entries have timestamps matching project.clj file.
+  * Support SOURCE_DATE_EPOCH environment variable.
+  * Sign with SSH keys when deploying; :signing {:ssh-key nil} to disable.
+  * Update Maven Resolver API dependency, improving behavior when rate limited.</comment>
+    <requestid>1398380</requestid>
+  </revision>
 </revisionlist>

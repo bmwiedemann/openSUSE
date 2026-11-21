@@ -19,7 +19,7 @@
 # It seems to be an upstream naming bug:
 %define _name pam_pkcs11-pam_pkcs11
 Name:           pam_pkcs11
-Version:        0.6.13
+Version:        0.6.14
 Release:        0
 Summary:        PKCS #11 PAM Module
 License:        LGPL-2.1-or-later

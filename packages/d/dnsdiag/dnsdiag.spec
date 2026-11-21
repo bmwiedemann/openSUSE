@@ -20,7 +20,7 @@
 %define pythons python3
 %bcond_with test
 Name:           dnsdiag
-Version:        2.10.0
+Version:        2.10.1
 Release:        0
 Summary:        DNS request auditing toolset
 License:        BSD-3-Clause
@@ -35,14 +35,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python3-cryptography >= 42.0.5
 Requires:       python3-cymruwhois >= 1.6
 Requires:       python3-dnspython >= 2.9.0
 Requires:       python3-httpx2 >= 2.13.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  python3-cymruwhois >= 1.6
-BuildRequires:  python3-dnspython >= 2.9.0
+BuildRequires:  python3-dnspython >= 2.9.2
 BuildRequires:  python3-pytest
 %endif
 

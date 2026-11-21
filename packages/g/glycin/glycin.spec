@@ -25,7 +25,7 @@ Name:           %{flavor}
 %endif
 %define _name glycin
 
-Version:        2.2.5
+Version:        2.2.6
 Release:        0
 Summary:        Sandboxed image rendering
 License:        LGPL-2.1-or-later OR MPL-2.0
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(glycin-2)
 %endif
 %if "%{name}" == "glycin-loaders"
-BuildRequires:  (pkgconfig(libjxl) >= 0.8.2 with pkgconfig(libjxl) < 0.13.0)
+BuildRequires:  pkgconfig(libjxl) >= 0.11.1
 BuildRequires:  pkgconfig(libheif) >= 1.17.4
 BuildRequires:  pkgconfig(librsvg-2.0)
 Requires:       bubblewrap

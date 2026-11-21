@@ -827,4 +827,13 @@ This addition of patch not mentioned in changelog should have been rejected by t
     <comment>- add riscv-hwprobe.patch</comment>
     <requestid>1359593</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>4fc62dd5f7338aeb634775c8deda5fe7</srcmd5>
+    <version>34.3</version>
+    <time>1793899712</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 34.3
+new try</comment>
+    <requestid>1394923</requestid>
+  </revision>
 </revisionlist>

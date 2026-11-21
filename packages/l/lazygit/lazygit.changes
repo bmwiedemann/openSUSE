@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 09 10:16:40 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 0.66.3:
+  * Only recognize .gitmodules keys and section headers at the start of a line
+  * Add a test showing that .gitmodules keys are found in the middle of a line
+  * Ignore submodules with a suspicious path in .gitmodules
+  * Add a test showing that nuking the working tree can stash changes in other repositories
+  * Refuse to remove a submodule whose git dir isn't below .git/modules
+  * Add a test showing that removing a submodule can delete more than its git dir
+  * Ignore submodules with a suspicious name in .gitmodules
+  * Add a test showing that removing a submodule can delete a directory outside the repository
+  * Parse .gitmodules completely before loading nested submodules
+  * Delete the right git dir when removing a submodule in a linked worktree
+  * Add a test showing that removing a submodule in a linked worktree deletes the wrong git dir
+
+-------------------------------------------------------------------
 Mon Oct 19 09:40:14 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.66.2:

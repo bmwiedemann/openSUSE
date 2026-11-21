@@ -1,7 +1,7 @@
 #
 # spec file for package ogre
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define major 13
+%define major 14
 %define minor 6
-%define third 5
+%define third 1
 %define sover  %{major}.%{minor}
 %define soname %{major}_%{minor}
 %define plugin_dir %{_libdir}/OGRE%{soname}
 # Version from https://github.com/OGRECave/ogre/blob/v%version/Components/Overlay/CMakeLists.txt#L25
-%define im_version 1.87
+%define im_version 1.92.9b
 # CG is non free, so not build by default
 %bcond_with cg
 # OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
@@ -35,22 +35,19 @@ Version:        %{major}.%{minor}.%{third}
 Release:        0
 Summary:        Object-Oriented Graphics Rendering Engine
 License:        LGPL-2.1-only
-Group:          Development/Libraries/C and C++
 URL:            https://www.ogre3d.org/
 Source0:        https://github.com/OGRECave/ogre/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/ocornut/imgui/archive/v%{im_version}.tar.gz#/imgui-%{im_version}.tar.gz
 Source99:       %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE python3-sitelib.patch -- Fix python path detected on build time
 Patch0:         python3-sitelib.patch
-# PATCH-FEAT-UPSTREAM 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
-Patch1:         0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
 # PATCH-FIX-UPSTREAM fix-sse-detection.patch -- Fix detection of sse for x86 (vs x64)
-Patch2:         fix-sse-detection.patch
-Patch3:         swig-3-cpp11.patch
-# PATCH-FIX-OPENSUSE fix-gslang-cpp17.patch -- Our GLSlang package requires c++17
-Patch4:         fix-gslang-cpp17.patch
-Patch5:         fix-glslang-plugin-compilation.patch
-BuildRequires:  cmake >= 3.10
+Patch1:         fix-sse-detection.patch
+# PATCH-FIX-UPSTREAM swig-3-cpp11.patch -- noexcept instead of dynamic throw()
+Patch2:         swig-3-cpp11.patch
+# PATCH-FIX-UPSTREAM fix-glslang-plugin-compilation.patch -- include glslang Types.h
+Patch3:         fix-glslang-plugin-compilation.patch
+BuildRequires:  cmake >= 3.13
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -64,9 +61,6 @@ BuildRequires:  python3
 BuildRequires:  swig
 BuildRequires:  cmake(SPIRV-Tools)
 BuildRequires:  cmake(assimp)
-%if %{with mono}
-BuildRequires:  mono(mcs)
-%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(freetype2)
@@ -80,6 +74,9 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zziplib)
 Obsoletes:      libOgreMain <= %{version}
+%if %{with mono}
+BuildRequires:  mono(mcs)
+%endif
 %if %{with cg}
 BuildRequires:  cg-devel
 %endif
@@ -108,21 +105,18 @@ with the %{name}-demos package.
 
 %package mono
 Summary:        Mono bindings OGRE
-Group:          Development/Libraries/C and C++
 
 %description mono
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 
 %package python
 Summary:        Python bindings for OGRE
-Group:          Development/Libraries/C and C++
 
 %description python
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 
 %package -n libOgreMain%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 Recommends:     %{name}-media >= %{version}
 Recommends:     libOgreMain%{soname}-codecs
 Recommends:     libOgreMain%{soname}-plugins
@@ -137,7 +131,6 @@ objects and other intuitive classes.
 
 %package -n libOgreBites%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 
 %description -n libOgreBites%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -145,7 +138,6 @@ Reusable utilities for rapid prototyping with Ogre.
 
 %package -n libOgreBitesQt%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 
 %description -n libOgreBitesQt%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -153,7 +145,6 @@ Reusable utilities for rapid prototyping with Ogre.
 
 %package -n libOgreMeshLodGenerator%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 
 %description -n libOgreMeshLodGenerator%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -161,7 +152,6 @@ Mesh LOD allows to swap the models to Low-poly models in far distance, which mak
 
 %package -n libOgreMain%{soname}-codecs
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 Provides:       libOgreMain-codecs = %{version}
 
 %description -n libOgreMain%{soname}-codecs
@@ -169,11 +159,10 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 
 %package -n libOgreMain%{soname}-plugins
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
-Provides:       libOgreMain-plugins = %{version}
-Conflicts:      libOgreMain-plugins <= 1.12.13
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Conflicts:      libOgreMain-plugins <= 1.12.13
+Provides:       libOgreMain-plugins = %{version}
 
 %description -n libOgreMain%{soname}-plugins
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -181,7 +170,6 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 %if %{with cg}
 %package -n libOgreMain%{soname}-plugin-Cg
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 Provides:       libOgreMain-plugin-Cg = %{version}
 
 %description -n libOgreMain%{soname}-plugin-Cg
@@ -192,7 +180,6 @@ This package contains the Cg plugin.
 
 %package -n libOgrePaging%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 
 %description -n libOgrePaging%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -204,7 +191,6 @@ textures can be applied by height.
 
 %package -n libOgreProperty%{soname}
 Summary:        Ogre 3D: an open source graphics engine
-Group:          System/Libraries
 
 %description -n libOgreProperty%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -214,7 +200,6 @@ names, and have those values exposed via a self-describing interface.
 
 %package -n libOgreOverlay%{soname}
 Summary:        Ogre Overlay library
-Group:          System/Libraries
 
 %description -n libOgreOverlay%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -227,7 +212,6 @@ per second.
 
 %package -n libOgreVolume%{soname}
 Summary:        Ogre Volume component
-Group:          System/Libraries
 
 %description -n libOgreVolume%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -248,7 +232,6 @@ geometry can be displayed.
 
 %package -n libOgreRTShaderSystem%{soname}
 Summary:        Ogre Runtime Shader System
-Group:          System/Libraries
 
 %description -n libOgreRTShaderSystem%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -275,7 +258,6 @@ properties, scene setup and other user definitions.
 
 %package -n libOgreTerrain%{soname}
 Summary:        Ogre Terrain System component
-Group:          System/Libraries
 
 %description -n libOgreTerrain%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -297,7 +279,6 @@ The Ogre Terrain System features:
 
 %package -n libOgreMain-devel
 Summary:        Development files for the Ogre Main library
-Group:          Development/Libraries/C and C++
 Requires:       libOgreMain%{soname} = %{version}
 Requires:       libOgreMain%{soname}-codecs = %{version}
 Requires:       libOgreMain%{soname}-plugins = %{version}
@@ -313,7 +294,6 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 
 %package -n libOgreBites-devel
 Summary:        Development headers for rapid prototyping
-Group:          Development/Libraries/C and C++
 Requires:       libOgreBites%{soname} = %{version}
 Requires:       libOgreBitesQt%{soname} = %{version}
 
@@ -324,7 +304,6 @@ Reusable utilities for rapid prototyping with Ogre.
 
 %package -n libOgreMeshLodGenerator-devel
 Summary:        Development headers for Mesh LOD
-Group:          Development/Libraries/C and C++
 Requires:       libOgreMeshLodGenerator%{soname} = %{version}
 
 %description -n libOgreMeshLodGenerator-devel
@@ -333,7 +312,6 @@ Mesh LOD allows to swap the models to Low-poly models in far distance, which mak
 
 %package -n libOgrePaging-devel
 Summary:        Development headers for the Ogre Paging Scene Manager component
-Group:          Development/Libraries/C and C++
 Requires:       libOgrePaging%{soname} = %{version}
 
 %description -n libOgrePaging-devel
@@ -349,7 +327,6 @@ component.
 
 %package -n libOgreProperty-devel
 Summary:        Development files for the Ogre Property component
-Group:          Development/Libraries/C and C++
 Requires:       libOgreProperty%{soname} = %{version}
 
 %description -n libOgreProperty-devel
@@ -359,7 +336,6 @@ This package contains the development headers for the property component.
 
 %package -n libOgreOverlay-devel
 Summary:        Development files for the Ogre Overlay component
-Group:          Development/Libraries/C and C++
 Requires:       libOgreOverlay%{soname} = %{version}
 
 %description -n libOgreOverlay-devel
@@ -369,7 +345,6 @@ This package contains the development headers for the overlay component.
 
 %package -n libOgreVolume-devel
 Summary:        Development files for the Ogre Volume component
-Group:          Development/Libraries/C and C++
 Requires:       libOgreVolume%{soname} = %{version}
 
 %description -n libOgreVolume-devel
@@ -379,7 +354,6 @@ This package contains the development headers for the volume component.
 
 %package -n libOgreRTShaderSystem-devel
 Summary:        Development files for the OGRE Runtime Shader System component
-Group:          Development/Libraries/C and C++
 Requires:       libOgreRTShaderSystem%{soname} = %{version}
 
 %description -n libOgreRTShaderSystem-devel
@@ -390,7 +364,6 @@ This package contains the development headers for the Runtime Shader System
 
 %package -n libOgreTerrain-devel
 Summary:        Development files for the Ogre Terrain System component
-Group:          Development/Libraries/C and C++
 Requires:       libOgreTerrain%{soname} = %{version}
 
 %description -n libOgreTerrain-devel
@@ -400,7 +373,6 @@ This package contains the development headers for the Ogre Terrain System.
 
 %package devel
 Summary:        Development files for the Ogre Engine
-Group:          Development/Libraries/C and C++
 # By name rather than by pkgconfig(): the compat package ogre1 installs
 # its pkgconfig files at the same unversioned paths, so asking for the
 # symbols makes every consumer of ogre-devel ambiguous to the resolver.
@@ -419,7 +391,6 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 
 %package -n ogre-demos
 Summary:        Ogre demo programs
-Group:          Development/Libraries/C and C++
 Requires:       %{name}-media = %{version}
 Requires:       libOgreMain%{soname}-plugins = %{version}
 %if %{with cg}
@@ -433,7 +404,6 @@ This package contains the demo applications.
 
 %package -n ogre-demos-devel
 Summary:        Sources for the Ogre demo programs
-Group:          Development/Sources
 Requires:       libOgreRTShaderSystem-devel = %{version}
 Requires:       libOgreTerrain-devel = %{version}
 
@@ -449,7 +419,6 @@ This package contains the source of the demo applications.
 
 %package -n ogre-tools
 Summary:        Additional utilities for working with the Ogre 3D engine
-Group:          Development/Libraries/C and C++
 
 %description -n ogre-tools
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented, flexible
@@ -463,7 +432,6 @@ This package contains various tools that make working with ogre easier.
 
 %package -n ogre-docs
 Summary:        Documentation for the Ogre 3D engine
-Group:          Documentation/Other
 
 %description -n ogre-docs
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented, flexible
@@ -503,51 +471,41 @@ rm %{buildroot}%{_includedir}/OGRE/Ogre.i
 mkdir -p "%{buildroot}%{_docdir}"
 mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 # Install samples' source
-mkdir -p %{buildroot}%{_datadir}/OGRE
-cp -R Samples %{buildroot}%{_datadir}/OGRE/
+mkdir -p %{buildroot}%{_datadir}/OGRE-%{sover}
+cp -R Samples %{buildroot}%{_datadir}/OGRE-%{sover}/
 # create a dummy target for /etc/alternatives/ogre (plugins config)
-mv %{buildroot}%{_datadir}/OGRE/plugins.cfg %{buildroot}%{_datadir}/OGRE/plugins%{sover}.cfg
+mv %{buildroot}%{_datadir}/OGRE-%{sover}/plugins.cfg %{buildroot}%{_datadir}/OGRE-%{sover}/plugins%{sover}.cfg
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/ogre %{buildroot}%{_datadir}/OGRE/plugins.cfg
+ln -s -f %{_sysconfdir}/alternatives/ogre %{buildroot}%{_datadir}/OGRE-%{sover}/plugins.cfg
 # Fix file and directory permissions
-find %{buildroot}%{_datadir}/OGRE/ -type f -exec chmod 0644 \{\} +
-find %{buildroot}%{_datadir}/OGRE/ -type d -exec chmod 0755 \{\} +
+find %{buildroot}%{_datadir}/OGRE-%{sover}/ -type f -exec chmod 0644 \{\} +
+find %{buildroot}%{_datadir}/OGRE-%{sover}/ -type d -exec chmod 0755 \{\} +
 # Remove duplicates
 %fdupes %{buildroot}%{_includedir}/OGRE
 %fdupes %{buildroot}%{_datadir}
 
 %post -n libOgreMain%{soname}-plugins
 update-alternatives --install \
-  %{_datadir}/OGRE/plugins.cfg \
+  %{_datadir}/OGRE-%{sover}/plugins.cfg \
   ogre \
-  %{_datadir}/OGRE/plugins%{sover}.cfg \
+  %{_datadir}/OGRE-%{sover}/plugins%{sover}.cfg \
   $(printf '%02d%02d' %{major} %{minor})
 
 %postun -n libOgreMain%{soname}-plugins
-if [ ! -f %{_datadir}/OGRE/plugins%{sover}.cfg ] ; then
-   update-alternatives --remove ogre %{_datadir}/OGRE/plugins%{sover}.cfg
+if [ ! -f %{_datadir}/OGRE-%{sover}/plugins%{sover}.cfg ] ; then
+   update-alternatives --remove ogre %{_datadir}/OGRE-%{sover}/plugins%{sover}.cfg
 fi
 
-%post -n libOgreBites%{soname} -p /sbin/ldconfig
-%postun -n libOgreBites%{soname} -p /sbin/ldconfig
-%post -n libOgreBitesQt%{soname} -p /sbin/ldconfig
-%postun -n libOgreBitesQt%{soname} -p /sbin/ldconfig
-%post -n libOgreMain%{soname} -p /sbin/ldconfig
-%postun -n libOgreMain%{soname} -p /sbin/ldconfig
-%post -n libOgreMeshLodGenerator%{soname} -p /sbin/ldconfig
-%postun -n libOgreMeshLodGenerator%{soname} -p /sbin/ldconfig
-%post -n libOgrePaging%{soname} -p /sbin/ldconfig
-%postun -n libOgrePaging%{soname} -p /sbin/ldconfig
-%post -n libOgreProperty%{soname} -p /sbin/ldconfig
-%postun -n libOgreProperty%{soname} -p /sbin/ldconfig
-%post -n libOgreVolume%{soname} -p /sbin/ldconfig
-%postun -n libOgreVolume%{soname} -p /sbin/ldconfig
-%post -n libOgreOverlay%{soname} -p /sbin/ldconfig
-%postun -n libOgreOverlay%{soname} -p /sbin/ldconfig
-%post -n libOgreRTShaderSystem%{soname} -p /sbin/ldconfig
-%postun -n libOgreRTShaderSystem%{soname} -p /sbin/ldconfig
-%post -n libOgreTerrain%{soname} -p /sbin/ldconfig
-%postun -n libOgreTerrain%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libOgreBites%{soname}
+%ldconfig_scriptlets -n libOgreBitesQt%{soname}
+%ldconfig_scriptlets -n libOgreMain%{soname}
+%ldconfig_scriptlets -n libOgreMeshLodGenerator%{soname}
+%ldconfig_scriptlets -n libOgrePaging%{soname}
+%ldconfig_scriptlets -n libOgreProperty%{soname}
+%ldconfig_scriptlets -n libOgreVolume%{soname}
+%ldconfig_scriptlets -n libOgreOverlay%{soname}
+%ldconfig_scriptlets -n libOgreRTShaderSystem%{soname}
+%ldconfig_scriptlets -n libOgreTerrain%{soname}
 
 %files -n libOgreMain%{soname}
 %license LICENSE
@@ -555,12 +513,14 @@ fi
 %{_libdir}/libOgreMain.so.%{sover}
 
 %files media
-%dir %{_datadir}/OGRE
-%dir %{_datadir}/OGRE/Media
-%{_datadir}/OGRE/resources.cfg
-%{_datadir}/OGRE/Media/Main
-%{_datadir}/OGRE/Media/RTShaderLib
-%{_datadir}/OGRE/Media/Terrain/
+%dir %{_datadir}/OGRE-%{sover}
+%dir %{_datadir}/OGRE-%{sover}/Media
+%dir %{_datadir}/OGRE-%{sover}/Media/packs
+%{_datadir}/OGRE-%{sover}/resources.cfg
+%{_datadir}/OGRE-%{sover}/Media/Main
+%{_datadir}/OGRE-%{sover}/Media/RTShaderLib
+%{_datadir}/OGRE-%{sover}/Media/packs/SdkTrays.zip
+%{_datadir}/OGRE-%{sover}/Media/packs/profiler.zip
 
 %if %{with mono}
 %files mono
@@ -584,8 +544,8 @@ fi
 
 %files -n libOgreMain%{soname}-plugins
 %dir %{plugin_dir}
-%{_datadir}/OGRE/plugins%{sover}.cfg
-%{_datadir}/OGRE/plugins.cfg
+%{_datadir}/OGRE-%{sover}/plugins%{sover}.cfg
+%{_datadir}/OGRE-%{sover}/plugins.cfg
 %ghost %{_sysconfdir}/alternatives/plugins.cfg
 %ifnarch aarch64 %{arm}
 %{plugin_dir}/RenderSystem_GL.so{,.%{sover}}
@@ -649,6 +609,7 @@ fi
 %{_libdir}/libOgreBites.so
 %{_libdir}/libOgreBitesQt.so
 %{_libdir}/pkgconfig/OGRE-Bites.pc
+%{_libdir}/pkgconfig/OGRE-BitesQt.pc
 
 %files -n libOgreMeshLodGenerator-devel
 %{_includedir}/OGRE/MeshLodGenerator
@@ -692,15 +653,16 @@ fi
 %files -n ogre-demos
 %{_libdir}/OGRE/Samples/
 %{_bindir}/SampleBrowser
-%{_datadir}/OGRE/Media/*
-%exclude %{_datadir}/OGRE/Media/Main
-%exclude %{_datadir}/OGRE/Media/RTShaderLib
-%exclude %{_datadir}/OGRE/Media/Terrain/
-%{_datadir}/OGRE/GLX_backdrop.png
-%{_datadir}/OGRE/samples.cfg
+%{_datadir}/OGRE-%{sover}/Media/*
+%exclude %{_datadir}/OGRE-%{sover}/Media/packs/SdkTrays.zip
+%exclude %{_datadir}/OGRE-%{sover}/Media/packs/profiler.zip
+%exclude %{_datadir}/OGRE-%{sover}/Media/Main
+%exclude %{_datadir}/OGRE-%{sover}/Media/RTShaderLib
+%{_datadir}/OGRE-%{sover}/GLX_backdrop.png
+%{_datadir}/OGRE-%{sover}/samples.cfg
 
 %files -n ogre-demos-devel
-%{_datadir}/OGRE/Samples
+%{_datadir}/OGRE-%{sover}/Samples
 
 %files -n ogre-tools
 %{_bindir}/OgreMeshUpgrader

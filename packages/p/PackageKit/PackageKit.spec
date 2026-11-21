@@ -42,6 +42,10 @@ Source99:       PackageKit.keyring
 Patch0:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
 Patch1:         PackageKit-remove-polkit-rules.patch
+# PATCH-FIX-UPSTREAM PackageKit-CVE-2026-104619.patch bsc#1284389, CVE-2026-104619 sckang@suse.com -- zypp: Add version checks when updating packages
+Patch2:        PackageKit-CVE-2026-104619.patch
+# PATCH-FIX-UPSTREAM PackageKit-CVE-2026-104620.patch bsc#1284954, CVE-2026-104620 sckang@suse.com -- zypp: sanitize RPM tag name to prevent path traversal in temp files
+Patch3:        PackageKit-CVE-2026-104620.patch
 
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes

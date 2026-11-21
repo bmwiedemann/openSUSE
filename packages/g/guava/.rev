@@ -135,4 +135,12 @@
     <comment>Adapt the generated OSGi data to reality</comment>
     <requestid>1384555</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>17e3aa4755bb524db4a6e9a921c55b8b</srcmd5>
+    <version>33.8.0</version>
+    <time>1793991539</time>
+    <user>anag_factory</user>
+    <comment>33.8.0 + CVE-2026-118042, bsc#1289621</comment>
+    <requestid>1395874</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package xrootd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,7 @@
 %bcond_with    ceph
 
 Name:           %{pname}%{psuffix}
-Version:        5.9.0
+Version:        5.9.9
 Release:        0
 Summary:        An eXtended Root Daemon
 License:        LGPL-3.0-or-later
@@ -561,6 +561,7 @@ popd
 %{_mandir}/man8/xrdsssadmin.8%{?ext_man}
 %{_mandir}/man8/xrootd.8%{?ext_man}
 %{_mandir}/man1/xrdmapc.1%{?ext_man}
+%{_mandir}/man1/xrootd-config.1%{?ext_man}
 %{_sysusersdir}/%{pname}-user.conf
 %{_tmpfilesdir}/%{pname}.conf
 %{_unitdir}/cmsd@.service

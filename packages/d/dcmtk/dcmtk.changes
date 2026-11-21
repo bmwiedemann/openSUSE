@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 15 14:09:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.7.1. See docs/CHANGES.371 for the full list of changes
+  * Fixes CVE-2026-44038, boo#1284754
+  * Fixes CVE-2026-44037, boo#1284753
+  * Fixes CVE-2026-44036, boo#1284752
+  * Fixes CVE-2026-44035, boo#1284751
+  * Fixes CVE-2026-44034, boo#1284750
+  * Fixes CVE-2026-44033, boo#1284749
+  * Fixes CVE-2026-44031, boo#1284748
+  * Fixes CVE-2026-97059, boo#1282651
+  * Fixes CVE-2026-50254, boo#1269946
+  * Fixes CVE-2026-52868, boo#1269945
+  * Fixes CVE-2026-50003, boo#1269944
+  * Fixes CVE-2026-44628, boo#1269943
+  * Fixes CVE-2026-35505, boo#1269942
+  * Fixes CVE-2026-12805, boo#1268767
+  * Fixes CVE-2026-10194, boo#1266995
+- Drop patch:
+  * 0001-Sanitize-all-strings-passed-to-the-exec-options.patch
+- Rebase 0001-dcmimage-Link-privately-to-libtiff-and-libpng.patch
+
+-------------------------------------------------------------------
 Tue Apr  7 19:52:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (CVE-2026-5663, boo#1261594)

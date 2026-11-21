@@ -967,4 +967,21 @@ It does not make sense to double the whole HISTORY of upstream source in .change
     <comment></comment>
     <requestid>1354420</requestid>
   </revision>
+  <revision rev="93" vrev="3">
+    <srcmd5>bde16d1b5dc461e85d8a6a5ba7f0f3f8</srcmd5>
+    <version>7.2.2</version>
+    <time>1793990043</time>
+    <user>anag_factory</user>
+    <comment>- Add rlim_infinity.patch to fix compatibility with Python 3.15</comment>
+    <requestid>1395125</requestid>
+  </revision>
+  <revision rev="94" vrev="4">
+    <srcmd5>017d46469845f95c36aa675b26d9a48c</srcmd5>
+    <version>7.2.2</version>
+    <time>1794816450</time>
+    <user>anag_factory</user>
+    <comment>- Replace rlim_infinity.patch with a different patch to actually fix
+  compatibility with Python 3.15.</comment>
+    <requestid>1397214</requestid>
+  </revision>
 </revisionlist>

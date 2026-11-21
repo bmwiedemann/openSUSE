@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Tue Nov 10 06:04:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v20260814
+  * #1070 Fix XML.unescape for valid whitespace chars
+- Update to v20260719
+  * #1069 pre-release-20260719 prep for next release
+  * #1068 Max number length config for BigInteger and BigDecimal
+  * #1067 bound BigDecimal→BigInteger expansion in
+    objectToBigInteger (completes CVE-2026-59171 fix)
+  * #1065 Fixes CVE-2026-59171 (bsc#1289695)
+  * #1062 Refactor CDL row serialization for readability
+  * #1061 Restore lenient jsonarray allow consecutive commas and
+    insert null
+  * #1058 Docs and warnings cleanup
+- Update to v20260522
+  * #1054 pre-release-20260522 prep for next release
+  * #1053 update security.md with key data
+  * #1046 Validate XML numeric character references before string
+    construction
+  * #1044 Ignore static fields in JSONObject.fromJson()
+  * #1041 Enhance README with license clarification
+  * #1039 Fix XML forceList parsing issue
+  * #1038 Fix input validation in XMLTokener.unescapeEntity()
+  * #1037 Fix ClassCastException in JSONML.toJSONArray and
+    toJSONObject
+  * #1029 add badge to external hosted javadoc
+  * #1028 Refactoring: Fix sonarqube reliability issues
+  * #1027 Save/restore default locale in test
+- Update to v20251224
+  * #1021 Add LTS JDK 25 build to github actions
+  * #1020 Record type support
+  * #1017 Refactoring: Fix some SonarQube issues
+  * #1014 Refactoring: String check logic in CDL
+  * #1013 Refactoring: FIx Sonarqube issues in JSONArray
+  * #1011 Refactoring: Fix SonarQube issues in JSONObject
+  * #1009 Fix strict mode check for period after number
+  * #1008 Fixed JSONArray strict mode check for leading comma
+  * #1006 JSONObject.fromJson() with unit tests
+  * #1005 Refactoring: Fix sonarQube issues in JSONObject
+  * #1004 Refactoring: Fix sonarcube issues in JSONObject
+  * #1001 Refactoring: sonarqube issues in JSONObject
+  * #1000 Refactoring: Fix some sonarcube issues from recent commits
+  * #999 fixed some strict mode issues
+  * #995 Fix regression XML parsing null with keepStrings
+  * #994 Add Jacoco option to build, restore method check in
+    populateMap()
+  * #993 Added JUnit tests for XMLTokenerTest
+  * #992 Added JUnit test cases for HTTPTokener
+  * #991 update CodeQL to v3
+  * #990 Refactoring: fix SonarQube issues in populateMap()
+  * #989 Refactoring: Remove unused code
+  * #988 Refactoring: Remove unused method from jsonobject
+  * #987 Refactor: Check equality with literal on lhs
+  * #983 Allow retaining null-valued bean properties in JSONObjects
+- Update to v20250517
+  * #969 refactored large test for strict mode
+  * #968 Update keepStrings behavior to reflect changes in
+    keepBooleanAsString, keepNumberAsString
+  * #966 granular flags to control for keeping boolean or number
+    values as strings
+  * #962 Fix: handles edge case 'no \n at end of csv dataset +
+    empty last column'
+  * #961 Option to store null value in JSONObject when parsing a map
+  * #960 Updated configuration to enable strictMode unit testing
+    with Maven
+  * #955 Add testWithStrictMode option to build.gradle
+  * #951 Fixing and updating unit tests for default strictMode
+  * #950 upgrade upload-artifact from v3 to v4 - pipeline change
+  * #949 deprecated unnecessary setter method
+  * #948 Use JSONTokener JSONParserConfiguration in JSONObject and
+    JSONArray constructors
+  * #946 add missing javaDoc for JSONParserConfiguration
+  * #942 Copy all fields when cloning JSONParserConfiguration
+  * #938 Strict mode unit tests
+  * #937 Update JSONParserConfiguration usage in JSONTokener,
+    JSONArray, and JSONObject
+  * #931 remove-duplicate-moditect: from pom.xml
+- Update to v20250107
+  * #930 pre-release-20250107: updates for next release
+  * #929 restore moditect in pom.xml
+- Update to v20241224
+  * #924 pre-release-20241224: updates for next release
+  * #907 Fix a bug when calling JSONArray.addAll() with Collection
+    as Object
+  * #894 update jsonpath from 2.4.0 to 2.9.0
+  * #889 Fixed non-idempotent unit tests in JSONObjectTest
+  * #879 Extend syntax error information
+  * #877, #886, #888, #911, #921 Strict mode opt-in feature
+  * #876 Remove jsonparserconfig ctor- just use
+    withOverwriteDuplicateKey
+  * #867 Improve performance in toString()
+
+-------------------------------------------------------------------
 Thu Sep  5 23:55:19 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v20240303

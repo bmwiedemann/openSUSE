@@ -86,4 +86,13 @@
     Disclosed via a pull request #3426. Fixed in #3445.</comment>
     <requestid>1383306</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>68a872369a9b50d45d54f67087cd61ca</srcmd5>
+    <version>2.45.1</version>
+    <time>1794236863</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.45.1:
+  * GHSA-78q5-mpjq-5q34: Remote code execution via manual OPML import (`--import-from-opml`)</comment>
+    <requestid>1396290</requestid>
+  </revision>
 </revisionlist>

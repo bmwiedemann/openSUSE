@@ -16,17 +16,15 @@
 #
 
 
-%define realversion 4.8.0b2
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-administration
-Version:        4.8.0~b2
+Version:        4.8.0
 Release:        0
 Summary:        Microsoft Azure Key Vault Administration Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_keyvault_administration/azure_keyvault_administration-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_keyvault_administration/azure_keyvault_administration-%{version}.tar.gz
 BuildRequires:  %{python_module azure-keyvault-nspkg >= 1.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -58,7 +56,7 @@ management (azure-keyvault-secrets) - securely store and control access to token
 passwords, administration, API keys, and other secrets.
 
 %prep
-%setup -q -n azure_keyvault_administration-%{realversion}
+%setup -q -n azure_keyvault_administration-%{version}
 
 %build
 %pyproject_wheel

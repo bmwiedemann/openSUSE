@@ -17,17 +17,21 @@
 
 
 Name:           noctalia
-Version:        5.4.1
+Version:        5.5.0
 Release:        0
 Summary:        A sleek and minimal desktop shell thoughtfully crafted for Wayland.
 License:        MIT
 URL:            https://github.com/noctalia-dev/noctalia
 Source0:        %{name}-%{version}.tar.gz
 
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
-BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
+%if 0%{?suse_version} && 0%{?suse_version} <= 1610
+BuildRequires:  gcc15-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+BuildRequires:  fdupes
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
@@ -61,9 +65,17 @@ BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wireplumber-0.5)
 BuildRequires:  pkgconfig(xkbcommon)
 
+Requires:       adwaita-fonts
 Requires:       git
+Requires:       pipewire
 Requires:       qalculate
+Requires:       wireplumber >= 0.5
 
+Recommends:     ddcutil
+Recommends:     gnome-keyring
+Recommends:     libheif1
+Recommends:     power-profiles-daemon
+Recommends:     sound-theme-freedesktop
 Recommends:     upower
 
 Conflicts:      noctalia-git
@@ -77,11 +89,26 @@ Noctalia is in early development. Expect breaking configuration and behavior cha
 %autosetup
 
 %build
-%meson -Dtests=disabled
+%if 0%{?suse_version} && 0%{?suse_version} <= 1610
+export CC=gcc-15 CXX=g++-15
+%endif
+%meson \
+  -Dtests=disabled \
+  -Dnative_optimizations=false \
+  -Djemalloc=auto
 %meson_build
 
 %install
 %meson_install
+
+comp="%{_vpath_builddir}/noctalia completions"
+$comp bash > noctalia.bash
+$comp fish > noctalia.fish
+$comp zsh > _noctalia
+
+install -Dm644 noctalia.bash %{buildroot}%{_datadir}/bash-completion/completions/noctalia
+install -Dm644 noctalia.fish -t %{buildroot}%{_datadir}/fish/vendor_completions.d
+install -Dm644 _noctalia -t %{buildroot}%{_datadir}/zsh/site-functions
 
 find %{buildroot}%{_datadir}/noctalia/assets/templates \
 	-type f -name '*.sh' \
@@ -105,5 +132,16 @@ find %{buildroot}%{_datadir}/noctalia/assets/templates \
 %{_datadir}/applications/dev.noctalia.Noctalia.desktop
 %{_datadir}/applications/dev.noctalia.Noctalia.Annotator.desktop
 %{_datadir}/icons/hicolor/scalable/apps/noctalia.svg
+
+# completions
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/noctalia
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/noctalia.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_noctalia
 
 %changelog

@@ -65,11 +65,15 @@ popd
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+donttest="test_wait_r"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_dump_decimal_numeric_binary_too_big"
+fi
 if [ "$(arch)" = "s390x" ]; then
 # ignore flaky test failures in s390x, bsc#1268604
-  %pytest -k 'not test_wait_r' || :
+  %pytest -k "not ($donttest)" || :
 else
-  %pytest -k 'not test_wait_r'
+  %pytest -k "not ($donttest)"
 fi
 
 %files %{python_files}

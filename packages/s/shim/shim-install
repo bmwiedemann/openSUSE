@@ -23,7 +23,8 @@ grub_install_target=
 self="`basename $0`"
 grub_cfg="/boot/grub2/grub.cfg"
 update_boot=no
-check_fallback=no
+update_boot_fallback=no
+update_boot_fallback_when_exist=no
 def_grub_efi="${source_dir}/grub.efi"
 def_boot_efi=
 
@@ -92,6 +93,10 @@ fi
 if [ x"${GRUB_DISTRIBUTOR}" = x ] && [ -f "${sysconfdir}/os-release" ] ; then
     . "${sysconfdir}/os-release"
     GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
+fi
+
+if [ -f "${sysconfdir}/os-release" ] ; then
+    . "${sysconfdir}/os-release"
     OS_ID="${ID}"
 fi
 
@@ -353,22 +358,27 @@ else
     exit 1;
 fi
 
-if test "$removable" = "no" -a -f "$efibootdir/$def_boot_efi"; then
-    if test -n "$ca_string" && (grep -q "$ca_string" "$efibootdir/$def_boot_efi"); then
+# NOT removable: Only update if bootx64.efi doesn't exist (new install)
+# OR if it exists and contains SUSE's CA string (SUSE-owned default boot path)
+if test "$removable" = "no"; then
+    if test ! -f "$efibootdir/$def_boot_efi" || \
+       { test -n "$ca_string" && grep -q "$ca_string" "$efibootdir/$def_boot_efi"; }; then
         update_boot=yes
+        update_boot_fallback=yes
 	# We should only update fallback.efi if it is already present. If it is
 	# not present, we should not create one because it will break the
 	# images created as removable target (e.g. SL-Micro selfinstall image).
 	# Remember the purpose here is to update sle distro loaders and also loaders
 	# in fallback path if they are found to be SUSE owned, but that should not
 	# instroduce unexpected behavior change from removable to non-removable.
-	# Some firmware may only support removable boot path.
-	if [ "$OS_ID" = "sl-micro" ]; then
-	    check_fallback=yes
-	fi
+	# Some firmware may only support removable boot path. (bsc#1270036)
+        if [ "$OS_ID" = "sl-micro" ]; then
+            update_boot_fallback_when_exist=yes
+        fi
     fi
-else
+elif test "$removable" = "yes"; then
     update_boot=yes
+    update_boot_fallback=no
 fi
 
 if test "$clean" = "yes"; then
@@ -428,17 +438,22 @@ if test "$update_boot" = "yes"; then
     # Copy default shim to bootx64.efi/bootaa64.efi
     # firmware only support one bootx64.efi, so do not copy bootx64.non-nx.efi as a fallback
     cp "$source_shim_efi" "${efibootdir}/${def_boot_efi}"
-    if test "$removable" = "no"; then
-	if test ${check_fallback} = "yes" &&
-	   test -f "${efibootdir}/fallback.efi"; then
-	   cp "${source_dir}/fallback.efi" "${efibootdir}"
+    if test "$update_boot_fallback" = "yes"; then
+        # Some causes need to check fallback file before copy it
+        if test "$update_boot_fallback_when_exist" = "yes"; then
+            if test -f "${efibootdir}/fallback.efi"; then
+                cp "${source_dir}/fallback.efi" "${efibootdir}/"
+            fi
+        else
+            cp "${source_dir}/fallback.efi" "${efibootdir}/"
 	fi
-        # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes
-        # mandatory if a MOK request exists. Copy MokManager to \EFI\boot so
-        # that boot*.efi can load MokManager to process the request instead
-        # of shutting down the system immediately.
-        cp "${source_dir}/MokManager.efi" "${efibootdir}"
     fi
+    # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes
+    # mandatory if a MOK request exists. Copy MokManager to \EFI\boot so
+    # that boot*.efi can load MokManager to process the request instead
+    # of shutting down the system immediately.
+    # Please also reference: bsc#1285863#11
+    cp "${source_dir}/MokManager.efi" "${efibootdir}"
 fi
 
 

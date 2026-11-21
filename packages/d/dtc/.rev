@@ -370,4 +370,31 @@
 - rename ftdump to dtc-ftdump to avoid conflict with ft2demos</comment>
     <requestid>1329358</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>12c15bf60cf81bd3879e7990b7361953</srcmd5>
+    <version>1.8.1</version>
+    <time>1793724718</time>
+    <user>anag_factory</user>
+    <comment>- add fix-32bitbuild.patch to fix build
+
+- Update to 1.8.1:
+  * Build system ported to Meson; Makefiles are deprecated
+  * New libfdt APIs: fdt_get_property_namelen_w and
+    fdt_setprop_namelen variants
+  * dtc: informative error for stray identifiers, improved type
+    guessing and label/phandle restoration when decompiling to dts
+  * fdtdump: return an error code on wrong tag value instead of
+    silently proceeding
+  * dtdiff: accept dtbo files as dtb input; fdtput: prefer strtol
+    over sscanf
+  * New overlay checks: warn about missing #address-cells for
+    interrupt parents
+  * Revert accidental ABI breakage introduced in 1.8.0
+  * Fix UBSAN null pointer dereference in fdt_property
+  * FreeBSD and non-GNU linker compatibility improvements
+  * Build against pkgconfig(yaml-0.1) instead of libyaml-devel
+- Drop ce1d858.patch and 9a1c801a1a3c102bf95c5339c9e985b26b823a21.patch:
+  both are upstream in this release</comment>
+    <requestid>1394373</requestid>
+  </revision>
 </revisionlist>

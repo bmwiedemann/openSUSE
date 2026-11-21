@@ -16,6 +16,7 @@
 #
 
 
+%define __builder ninja
 %define sover   1
 %define sname   %{name}%{sover}
 Name:           iir
@@ -27,7 +28,7 @@ URL:            https://github.com/berndporr/%{sname}
 Source0:        https://github.com/berndporr/%{sname}/archive/%{version}.tar.gz#/%{sname}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
+BuildRequires:  ninja
 
 %description
 
@@ -70,12 +71,12 @@ and the compiler can optimise both filter code and main program at the same time
 %autosetup -p1 -n %{sname}-%{version}
 
 %build
-%cmake
+export CMAKE_GENERATOR="Ninja"
+%cmake -LA -DIIR1_INSTALL_STATIC=OFF
 %cmake_build
 
 %install
 %cmake_install
-rm %{buildroot}%{_libdir}/lib%{name}_static.a
 
 %ldconfig_scriptlets -n lib%{sname}
 

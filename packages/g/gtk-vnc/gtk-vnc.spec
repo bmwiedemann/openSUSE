@@ -21,24 +21,13 @@
 %define _sonamepkg 2_0
 
 Name:           gtk-vnc
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        A GTK widget for VNC clients
 License:        LGPL-2.1-only AND LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://wiki.gnome.org/Projects/gtk-vnc
-Source0:        https://download.gnome.org/sources/gtk-vnc/1.5/%{name}-%{version}.tar.xz
-
-Patch1:         001-src-introduce-a-vncclipboard.h-header-file.patch
-Patch2:         002-Add-the-extended-clipboard-pseudo-encoding.patch
-Patch3:         003-Implement-extended-clipboard-capability-negotiation.patch
-Patch4:         004-Implement-client-to-server-clipboard-update-notification.patch
-Patch5:         005-Flush-pending-clipboard-on-focus-in-event.patch
-Patch6:         006-Implement-response-to-server-clipboard-REQUEST-action.patch
-Patch7:         007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
-Patch8:         008-Complete-server-to-client-data-sync-PROVIDE.patch
-Patch9:         009-fix-error-handling-in-main-thread-context.patch
-Patch10:        010-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
+Source0:        https://download.gnome.org/sources/gtk-vnc/1.6/%{name}-%{version}.tar.xz
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4
@@ -48,12 +37,12 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  vala
-BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gnutls) >= 3.1.18
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.42.0
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gnutls) >= 3.6.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.56.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+BuildRequires:  pkgconfig(libpulse-simple) >= 11.0
 
 %description
 gtk-vnc is a VNC viewer widget for GTK+. It is built using coroutines

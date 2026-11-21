@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Nov 07 16:32:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.20.4 (.3 was not released):
+  * chore(deps): update library/golang docker tag to v1.27.3
+  * chore(deps): update dependency cilium/cilium to v1.20.4
+  * chore(deps): update golang
+  * chore(deps): update go toolchain directive to v1.27.2
+  * Update stable release to 1.20.2
+
+-------------------------------------------------------------------
 Thu Oct 08 04:56:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.20.2 (no releases between 1.19.4 and this):

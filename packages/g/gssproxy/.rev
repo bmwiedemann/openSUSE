@@ -83,4 +83,23 @@
     <comment></comment>
     <requestid>1361730</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0a5aed48b4fc736cb68e3941fc59c11d</srcmd5>
+    <version>0.9.3</version>
+    <time>1795103925</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.3 
+- Drop patches now in upstream:
+  * Don-t-check-for-libref_array-explicitly.patch
+  * Fix-cross-compilation.patch
+  * Remove-unneeded-include-in-configure-script.patch
+  * gssproxy-Modernize-systemd.m4-macro.patch
+  * harden_gssproxy.service.patch
+- Fix NULL pointer dereference with no target_name that can lead to
+  daemon crash; (CVE-2026-116497); (bsc#1288030); Add patch
+  0001-CVE-2026-116497.patch
+- Fix installation in transactional systems, use systemd-tmpfiles
+  to create /var/lib/gssproxy and /var/lib/gssproxy/rcache (forwarded request 1398709 from scabrero)</comment>
+    <requestid>1398734</requestid>
+  </revision>
 </revisionlist>

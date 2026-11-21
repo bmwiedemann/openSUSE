@@ -805,4 +805,12 @@ the underlying buffer would always contain a NUL-terminated string.
     <comment>fix build on ppc64le</comment>
     <requestid>1358034</requestid>
   </revision>
+  <revision rev="86" vrev="10">
+    <srcmd5>08db39a5a6e79ea15d7393adc6a774c6</srcmd5>
+    <version>4.9.2</version>
+    <time>1794932207</time>
+    <user>anag_factory</user>
+    <comment>Enable offline test suite and fix rpmlint errors.</comment>
+    <requestid>1397970</requestid>
+  </revision>
 </revisionlist>

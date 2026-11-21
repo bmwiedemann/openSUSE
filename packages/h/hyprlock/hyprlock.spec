@@ -25,7 +25,7 @@
 %endif
 
 Name:           hyprlock
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Hyprland's screen locking utility
 License:        BSD-3-Clause

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Nov 18 17:56:59 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add patches from Gentoo allowing for builds with Python 3.13:
+  7000_py312_1857516.patch 7001_py312_1777414.patch
+  7003_py312_1755530.patch 7004_py312_1858062.patch
+  7005_py312_1752927.patch 7006_py312_1858065.patch
+  7007_py312_1766085.patch 7008_py312_1787628.patch
+  7009_py312_misc.patch 7010_py312_virtualenv.patch
+  7011_py312_setuptools.patch 7012_py312_remove_python_check.patch
+  7013_py312_1875052.patch 7014_py312_make_dafsa_fix.patch
+  7015_py312_regexp_warnings.patch 7016_py313_1677422.patch
+  7017_py313_virtualenv_pipes.patch 7018_py312_missing_packages.patch
+  7019_py314_1969769.patch
+- remove obsolete seamonkey-2.53.20-mach-use-python-311.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 23:25:01 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- remove Leap 15.x dependencies in the spec file
+- allow seamonkey to be built on Leap 16.x provided that
+  Python 3.11 is available
+
+-------------------------------------------------------------------
+Mon Nov 16 21:25:42 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Update source URLs
+
+-------------------------------------------------------------------
+Thu Oct  1 07:06:05 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Use default GCC (GCC 16) on openSUSE Tumbleweed again.
+
+-------------------------------------------------------------------
 Wed Aug 12 22:43:53 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.24

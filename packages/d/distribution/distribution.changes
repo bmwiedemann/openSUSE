@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:21:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1290728, CVE-2026-128085: Denial of Service via attribute
+    truncation bypass using Unicode replacement characters
+
+-------------------------------------------------------------------
+Tue Nov 10 16:20:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1288318, CVE-2026-116585,CVE-2026-116586,CVE-2026-116587:
+    multiple security issues in github.com/go-jose/go-jose before 4.1.6
+
+-------------------------------------------------------------------
 Wed Oct 28 17:45:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
@@ -12,7 +26,7 @@ Sun Oct 18 22:15:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 - update vendor.tar to address:
   * bsc#1285297, CVE-2026-78669: golang.org/x/net/http2: excessive
     CPU consumption from repeated initial window changes
-  * bsc#1287474, CVE-2026-9703: golang.org/x/net/http2: HTTP/2
+  * bsc#1287474, CVE-2026-97032: golang.org/x/net/http2: HTTP/2
     server crash due to HPACK encoder race
   * bsc#1287163, CVE-2026-78663: golang.org/x/net/http2: double
     flow control refund on HTTP/2 server streams
@@ -174,6 +188,11 @@ Mon May 18 18:00:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
   * fix(storage): bounds-check the file basename in PurgeUploads
     Walk callback
   * chore(release): prepare for v3.1.1 release
+
+-------------------------------------------------------------------
+Tue Apr 28 08:03:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- rebuild with go 1.26 (bsc#1259718)
 
 -------------------------------------------------------------------
 Mon Apr 27 09:26:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
@@ -347,6 +366,11 @@ Mon Jun 30 13:34:28 UTC 2025 - Dirk Müller <dmueller@suse.com>
   * `reference` package has been moved to
     github.com/distribution/reference in
     https://github.com/distribution/distribution/pull/4063
+
+-------------------------------------------------------------------
+Thu Jun 12 06:10:45 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- rebuild with more recent go go1.24 (bsc#1244471)
 
 -------------------------------------------------------------------
 Wed Oct 23 08:33:01 UTC 2024 - Dirk Müller <dmueller@suse.com>

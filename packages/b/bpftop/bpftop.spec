@@ -1,7 +1,7 @@
 #
 # spec file for package bpftop
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           bpftop
-Version:        0.7.1
+Version:        0.9.1
 Release:        0
 Summary:        Dynamic real-time view of running eBPF programs
 License:        Apache-2.0
-URL:            https://github.com/Netflix/bpftop
+URL:            https://github.com/jfernandez/bpftop
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.78

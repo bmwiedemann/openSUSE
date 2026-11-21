@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Sun Nov 15 12:22:43 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.0.3
+  - Added Preferences > Appearance > Square corners.
+  - Contents of sensitive input prompts are not backed up or remembered for
+    restoring later.
+  - Identity files (certificates) are forced to owner-only file permissions
+    (600).
+  - Identities: Certificates expiring in year 9999+ are treated as never
+    expiring.
+  - Improved text contrast of inactive tab bar buttons.
+  - Feeds: "Read All" buttons switches to "Refresh" when there are no unread
+    entries.
+  - Minor fine-tuning of document theme colors.
+  - Fixed: Feeds list scrolls to the current entry.
+  - Fixed: Books sidebar shows stale content after updating a book.
+  - Fixed: Occasional glitch when scrolling with a regular stepped mouse wheel.
+  - Fixed: Active tab button in the inactive split has the wrong color.
+  - Fixed: Link background misaligned behind the link icon.
+  - Fixed: Potential crash in text renderer due to unexpected C0 control
+    characters.
+  - Linux: Improved system dark mode detection.
+  - Linux: Enable per-pixel scroll events (already handled on macOS), e.g., for
+    trackpads.
+  - Linux: Potential workaround for a rare Wayland glitch where keys get
+    repeated unexpectedly.
+
+-------------------------------------------------------------------
+Tue Nov 10 08:01:16 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 2.0.2
+  - Adjusted the weight of the Material UI icons font.
+  - Fixed: Possible crash at launch when all sidebar buttons are disabled.
+  - Added build option to disable revealing files via the system file manager.
+- update to 2.0.1
+  - Android's Material UI icons are used on Linux and Web builds as well.
+  - Fixed: Going to previous page on a book cover should just show nav/tab bars.
+  - Fixed: "Home" toolbar button did not open a homepage bookmark, only
+    "about:lagrange".
+  - Fixed: Remote bookmarks were not shown in the Bookmarks list.
+  - Fixed: Button/finger release over the tab bar could inadvertently open the
+    tab context menu.
+  - Fixed: Link icons were sometimes vertically misaligned.
+- update to 2.0.0
+  - New features:
+    - Syncing user data across devices with end-to-end encryption. (Relies on a
+      sync server.)
+    - Paginated view mode that behaves like an e-reader. Content is presented as
+      pages with up to four columns on screen.
+    - Enhanced Gempub support with all chapters combined into a single sequence
+      of pages.
+    - Bookshelf for managing your Gempub book collection. Book metadata is
+      synced across devices (e.g., source URLs, reading positions).
+    - Any Gemtext page can be saved as a Gempub book to the bookshelf.
+    - Subscribing to Tinylog feeds.
+    - Reader tab: feed entries get a dedicated (pinned) tab with entry
+      navigation. Tinylog response link chains are expanded when entry contents
+      are available.
+    - Bookmark trash: deleted bookmarks go into a trash folder instead of being
+      immediately gone.
+    - View tools: convenient floating bar for tab-specific actions (identity
+      pinning, auto-reload, paginated mode).
+    - Per-protocol and per-site theme customization and content settings.
+    - New document themes: Arboreal, Ember, and Paper.
+    - Hyphenation for English text (disabled by default).
+    - Support for system fonts and color Emoji.
+    - Native file open/save dialogs (via SDL3).
+    - TUI: Mouse input is supported.
+  - Changes and enhancements:
+    - SDL3 is required.
+    - Improved performance of document parsing and layout.
+    - Revised UI design: rounded corners, a new slider widget, and improved tab
+      bar appearance.
+    - Sidebar lists support variable-height items and support selecting multiple
+      items (click/hold the Shift key).
+    - Feeds: Up to 1000 items visible in the list.
+    - Outline: long headings get wrapped to multiple lines.
+    - Sort order setting for Identities and Subscriptions sidebars.
+    - Reorganized Preferences.
+    - Support for ECDSA and Ed25519 client certificates. (ECDSA is the new
+      default.)
+    - File format of user data files has been cleaned up. A new ".lst" format is
+      used for text-based lists. Feed entries are serialized as binary into
+      "feeds.lgr". "mimehooks.txt" is not read any more; use "tools.ini"
+      instead.
+    - TUI: Improved appearance of UI controls, e.g., list items and buttons. The
+      key shortcuts are now in the bottom, and the menu bar is always visible.
+  - Fixes:
+    - Addressed various glitches in the app UI and behavior.
+    - Many bug fixes.
+
+-------------------------------------------------------------------
 Fri Oct  2 18:43:40 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.21.2

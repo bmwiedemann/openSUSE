@@ -258,4 +258,12 @@
     of the `!wait_async()` function (:ticket:`#1331`).</comment>
     <requestid>1392497</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c8272cdd93997a3caec3e8b024a02dc8</srcmd5>
+    <version>3.3.6</version>
+    <time>1794838476</time>
+    <user>anag_factory</user>
+    <comment>- Skip an overflowing test on 32 bit.</comment>
+    <requestid>1397824</requestid>
+  </revision>
 </revisionlist>

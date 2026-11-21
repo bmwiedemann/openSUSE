@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="disabled">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/stleary/JSON-java.git</param>
-		<param name="revision">20240303</param>
+		<param name="revision">20260814</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="filename">json-java</param>
 	</service>

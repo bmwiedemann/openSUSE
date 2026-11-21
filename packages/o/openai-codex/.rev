@@ -565,4 +565,20 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update openai-codex to 0.166.0 (filtered vendor)</comment>
     <requestid>1394170</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9c745e7c9bab90bed79756709b273199</srcmd5>
+    <version>0.166.0</version>
+    <time>1794090742</time>
+    <user>dimstar_suse</user>
+    <comment>Drop Windows-only prebuilt objects from openai-codex vendor: 43 MSVC/Windows files, test fixtures excepted.</comment>
+    <requestid>1395935</requestid>
+  </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>27a8c7ca0ee0d05edee61c7309f9884f</srcmd5>
+    <version>0.166.0</version>
+    <time>1794162111</time>
+    <user>dimstar_suse</user>
+    <comment>Re-vendor with zip 9.0.0 -&gt; 9.0.5 (boo#1287915, CVE-2026-115905): fixed zip line plus lockstep knock-ons.</comment>
+    <requestid>1396092</requestid>
+  </revision>
 </revisionlist>

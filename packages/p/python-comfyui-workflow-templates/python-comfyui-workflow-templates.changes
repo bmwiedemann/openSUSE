@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.112:
+  * Tracks upstream releases: pins move to core 0.3.403,
+    json 0.1.138 and media-assets-02 0.1.35; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 3 new templates
+    (Ideogram v4.6 text-to-image, image edit, precise edit),
+    index refreshes and a Breeze TTS2 script fix, recorded
+    in those packages
+
+-------------------------------------------------------------------
+Thu Nov 19 07:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.111:
+  * Tracks upstream releases: pins move to core 0.3.402,
+    json 0.1.137 and media-assets-02 0.1.34; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 6 new templates
+    (HeyGen Avatar 6 x2, Kling 4 x3, Breeze TTS2), index
+    refreshes and media-assets-02 0.1.34, recorded in those
+    packages
+
+-------------------------------------------------------------------
+Mon Nov 16 20:34:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.110 (crosses 0.11.109):
+  * Tracks upstream releases: pins move to core 0.3.401,
+    json 0.1.136 and media-assets-02 0.1.33; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 5 new templates
+    (Seedance 2.5 Flash x3, Wevisone VL, RelayVSR), index
+    refreshes and the Bria fix, recorded in those packages
+
+-------------------------------------------------------------------
+Thu Nov 12 19:36:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.107:
+  * Tracks upstream releases: pins move to core 0.3.398,
+    json 0.1.133 and media-assets-02 0.1.32; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: Gemini 4 Hydrogen
+    template, Italian and Hebrew indexes, MOSS fixes and
+    usage reordering, recorded in those packages
+
+-------------------------------------------------------------------
+Wed Nov 11 13:01:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.106 (crosses 0.11.104 and 0.11.105):
+  * Tracks upstream releases: pins move to core 0.3.397,
+    json 0.1.132 and media-assets-02 0.1.31; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 13 new core entries, and
+    the json adds/refreshes recorded in those packages
+
+-------------------------------------------------------------------
+Sat Nov  7 13:17:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.103 (crosses 0.11.102):
+  * Tracks upstream releases: pins move to core 0.3.394,
+    json 0.1.129 and media-assets-02 0.1.29; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 13 new and 1 dropped
+    core entry, and the json adds/rewrites recorded in those
+    packages
+
+-------------------------------------------------------------------
+Tue Nov  3 18:53:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.101:
+  * Tracks upstream releases: pins move to core 0.3.392,
+    json 0.1.127 and media-assets-02 0.1.27; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins
+  * Content delta rides the bundles: 7 swapped core entries
+    and the json adds/rewrites recorded in those packages
+
+-------------------------------------------------------------------
 Sat Oct 31 14:00:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.100 (crosses 0.11.98 and 0.11.99):

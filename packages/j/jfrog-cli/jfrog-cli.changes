@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:48:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.133.0:
+  No changes in: gofrog, jfrog-cli-core, jfrog-cli-security,
+  jfrog-client-go
+  * Bug Fixes
+    - [jfrog-cli-artifactory] RTECO-2334 - Fix Conan build info
+      artifact collection for references with user/channel #609
+    - [jfrog-cli-artifactory] Fix Bundler credentials for usernames
+      containing '@' #585
+
+-------------------------------------------------------------------
+Fri Nov 13 05:49:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.132.0:
+  No changes in: gofrog, jfrog-client-go
+  * New Features
+    - [jfrog-cli] feat: create package alias for helm and updated
+      integration tests #3591
+  * Bug Fixes
+    - [build-info-go] RTECO-2245 - Fail on a failed yarn info and
+      add entries for missing Yarn dependencies #432
+    - [jfrog-cli] RTECO-0000 - Move macOS test runners from retired
+      macos-14 to macos-latest #3761
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/go-openapi/swag/jsonutils to 0.27.1 #588
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/klauspost/compress to 1.18.7 #590
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/grpc-ecosystem/grpc-gateway/v2 to 2.29.0 #591
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/pelletier/go-toml/v2 to 2.4.3 #593
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/in-toto/in-toto-golang to 0.11.0 #594
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      oras.land/oras-go/v2 to 2.6.4 #598
+    - [jfrog-cli-artifactory] [Frogbot] Update version of
+      github.com/beevik/etree to 1.7.1 #600
+    - [jfrog-cli-artifactory] jf helm package fails to collect
+      build-info when Chart.yaml and packaged chart archive are in
+      different directories. #501
+    - [jfrog-cli-security] XRAY-159762 - Excludes patterns for
+      Static-SCA generating SBOM #931
+    - [jfrog-cli-security] XRAY-167698 - jf ca
+      include-cached-packages fail fixed #935
+    - [jfrog-cli-security] Fix: preserve dependencies across
+      repeated SBOM node occurrences #932
+    - [jfrog-cli-security] XRAY-167150 - Update Xspecter to 1.9.0
+      to resolve imported Maven BOMs #939
+    - [jfrog-cli-security] Fix release repo path construction #940
+    - [jfrog-cli-security] XRAY-163629 - Check .npmrc host matches
+      jf c server before sending credentials #943
+    - [jfrog-cli-security] XRAY-167694 - Keep scan results paths
+      valid on Windows when the Git URL has a port #942
+  * Internal Changes
+    - [jfrog-cli] RTECO-0000 - Upgrade Alpine packages in slim
+      image (zlib CVE-2026-4738) #3763
+    - [jfrog-cli-security] Update dependencies #944
+  * Other Changes
+    - [jfrog-cli] JFMIG-82 - Remove data-transfer plugin dependency
+      from transfer-files; deprecate transfer-plugin-install #3747
+    - [jfrog-cli-core] JFMIG-88 - Replace data-transfer plugin with
+      GET/PUT streaming in transfer-files #1629
+    - [jfrog-cli-core] JFMIG-145 - Batch Docker dir-content AQL in
+      transfer-files Files Diff phase #1630
+
+-------------------------------------------------------------------
+Wed Nov 04 09:11:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.131.0:
+  No changes in: build-info-go, gofrog, jfrog-cli-core, jfrog-cli-security
+  * Bug Fixes
+    - [jfrog-cli] RTECO-2742 - Add Helm push E2E tests for chart
+      versions with SemVer build metadata (+) #3752
+    - [jfrog-cli-artifactory] RTECO-2742 - Fix jf helm push build
+      info for chart versions with SemVer build metadata (+) #584
+  * Other Changes
+    - [jfrog-cli-artifactory] RTECO-0000 - Allow Frogbot to check
+      out approved fork pull requests #583
+    - [jfrog-cli-artifactory] RTECO-0000 - Install Mono from the
+      Ubuntu archive (apt-key and Mono repo missing on 26.04) #582
+    - [jfrog-client-go] XRAY-167698 - jf ca include-cached-packages
+      fail fixed #1404
+- Update to version 2.130.0:
+  No changes in: build-info-go, gofrog
+  * Bug Fixes
+    - [jfrog-client-go] RTECO-2726 - Fix(multipart): keep checksum
+      token after retried /complete #1402
+  * Internal Changes
+    - [jfrog-cli] RTECO-0000 - Upgrade
+      github.com/andybalholm/brotli to v1.2.7 #3748
+    - [jfrog-cli-core] RTECO-0000 - Upgrade
+      github.com/andybalholm/brotli to v1.2.7 #1628
+    - [jfrog-cli-security] Update Go to 1.26.10 and Dependencies
+      #933
+
+-------------------------------------------------------------------
 Thu Oct 29 07:20:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.129.0:

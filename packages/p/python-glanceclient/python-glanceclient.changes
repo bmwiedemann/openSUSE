@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:40:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- is now compatible with newer urllib3 as well
+
+-------------------------------------------------------------------
 Mon Sep  7 09:42:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13.0:

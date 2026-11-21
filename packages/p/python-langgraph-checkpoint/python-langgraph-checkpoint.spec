@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph-checkpoint
-Version:        4.3.1
+Version:        4.3.2
 Release:        0
 Summary:        Library with base interfaces for LangGraph checkpoint savers
 License:        MIT

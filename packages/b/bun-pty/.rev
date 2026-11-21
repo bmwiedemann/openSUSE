@@ -42,4 +42,20 @@ Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <comment>Update bun-pty to 0.5.2.</comment>
     <requestid>1392807</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>614473b3b45fdab3e48aaa46b20cdd29</srcmd5>
+    <version>0.6.0</version>
+    <time>1793991498</time>
+    <user>anag_factory</user>
+    <comment>Update bun-pty to 0.6.0: require Bun 1.4.0, engine-native bun:ffi.</comment>
+    <requestid>1395824</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>304dc2c6a285835b7d33c938dc06fb1f</srcmd5>
+    <version>0.6.1</version>
+    <time>1794932317</time>
+    <user>anag_factory</user>
+    <comment>Update bun-pty to 0.6.1: fix pre-onData output loss, repo moved to sursatech</comment>
+    <requestid>1398007</requestid>
+  </revision>
 </revisionlist>

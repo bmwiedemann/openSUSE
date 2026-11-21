@@ -17,11 +17,10 @@
 
 
 Name:           raspberrypi-rpiboot
-Version:        20240926.102326.3
+Version:        20261002.115811.0
 Release:        0
 Summary:        Raspberry Pi rpiboot tool
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/raspberrypi/usbboot.git
 Source0:        %{name}-%{version}.tar
 BuildRequires:  libusb-1_0-devel

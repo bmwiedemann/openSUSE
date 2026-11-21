@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 02:04:03 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.7.1, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/v9.7.1/Documentation/release/9.7.md
+- Rebase patches:
+  * 0002-Use-GL_DRAW_BUFFER0-instead-of-GL_DRAW_BUFFER-for-GL.patch
+
+-------------------------------------------------------------------
 Mon Sep 21 16:58:56 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use upstream default for library naming, i.e. include the major

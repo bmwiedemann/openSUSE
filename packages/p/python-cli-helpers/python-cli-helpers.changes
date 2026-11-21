@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov  8 20:44:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.3:
+  * Fix inferred `float` and `Decimal` columns skipping number
+    formatting and decimal alignment.
+
+-------------------------------------------------------------------
 Sun Oct 25 11:15:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.2:

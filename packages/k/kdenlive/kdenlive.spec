@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kdenlive
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -34,7 +34,6 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Remove-unused-qml-imports.patch
-Patch1:         0001-Fix-confusing-expression-statement-qml-error-with-Qt.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
@@ -89,6 +88,8 @@ BuildRequires:  pkgconfig(mlt++-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(mlt-framework-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(x11)
 Requires:       libmlt7-module-qt6
+# boo#1290457
+%requires_eq    libopentimelineio%{_otio_sonum}
 Requires:       melt >= 7
 # Required at runtime
 Requires:       kf6-qqc2-desktop-style >= %{kf6_version}

@@ -340,4 +340,14 @@
     <comment>- Update to release 2.2.1.6:</comment>
     <requestid>1386646</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>b12a4f308442f1a9a39a8b5097ce55f3</srcmd5>
+    <version>2.2.1.6</version>
+    <time>1794591120</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-126497: heap OOB write in bundled libdxfrw
+  dwgReader18::parseDataPage() on crafted R2004 DWG (boo#1290030)
+  * fix-CVE-2026-126497.patch</comment>
+    <requestid>1397069</requestid>
+  </revision>
 </revisionlist>

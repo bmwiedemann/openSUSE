@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 19 01:29:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.2.post2:
+  * No changelog.
+- Add patch replace-python-2-swig-macros.patch:
+  * Replace removed SWIG 4.5 Python 2 macros in libfdt.i
+
+-------------------------------------------------------------------
 Thu Aug 14 15:41:06 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.7.2.post1:

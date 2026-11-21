@@ -1,7 +1,7 @@
 #
 # spec file for package libmspack
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,12 @@
 # "alpha" in the version string just says that it is an alpha version.
 %define _version %{version}alpha
 Name:           libmspack
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        Library That Implements Different Microsoft Compressions
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
+#Git-Clone:     https://github.com/kyz/libmspack.git
 URL:            https://www.cabextract.org.uk/libmspack/
 Source:         https://www.cabextract.org.uk/libmspack/%{name}-%{_version}.tar.gz
 Source2:        baselibs.conf
@@ -64,7 +65,7 @@ The purpose of libmspack is to provide both compression and
 decompression of some loosely related file formats used by Microsoft.
 Currently the most common formats are implemented.
 
-This subpacke provides useful programs that make use of libmspack.
+This subpackage provides useful programs that make use of libmspack.
  * cabd_memory - An implementation of the mspack_system interface using
                  only memory
  * cabrip      - Extracts any CAB files embedded in another file.

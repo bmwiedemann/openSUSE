@@ -33,20 +33,24 @@ Name:           %{name_pg}-pgaudit
 %endif
 # you need to update both the Version: field and the define below for the factory check
 %if "%{name_pg}" == "postgresql14"
-Version:        1.6.3
+Version:        1.6.4
 %endif
 %if "%{name_pg}" == "postgresql15"
-Version:        1.7.1
+Version:        1.7.2
 %endif
 %if "%{name_pg}" == "postgresql16"
-Version:        16.1
+Version:        16.2
 %endif
 %if "%{name_pg}" == "postgresql17"
-Version:        17.1
+Version:        17.2
 %endif
 %if "%{name_pg}" == "postgresql18"
-Version:        18.0
+Version:        18.1
 %endif
+%if "%{name_pg}" == "postgresql19"
+Version:        19.0
+%endif
+%define pkg_version %{version}
 Release:        0
 Summary:        An auditing module for PostgreSQL
 License:        PostgreSQL
@@ -54,7 +58,7 @@ Group:          Productivity/Databases/Tools
 URL:            https://github.com/pgaudit/pgaudit
 %if "%{name_pg}" != ""
 # not nill flavour
-Source:         %https://github.com/pgaudit/pgaudit/archive/refs/tags/%{version}.tar.gz#/%{ext_name}-%{version}.tar.gz
+Source:         %https://github.com/pgaudit/pgaudit/archive/refs/tags/%{version}.tar.gz#/%{ext_name}-%{pkg_version}.tar.gz
 %else
 # Track the existance of get-tars
 Source99:       get-tars
@@ -79,7 +83,7 @@ commands may be enabled or disabled by the superuser. Once enabled, however,
 audit logging may not be disabled by a user.
 
 %prep
-%autosetup -p1 -n %{ext_name}-%{version}
+%autosetup -p1 -n %{ext_name}-%{pkg_version}
 
 %build
 %make_pgxs

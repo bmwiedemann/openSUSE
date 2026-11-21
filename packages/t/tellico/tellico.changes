@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 16 09:47:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.3.1
+  * Updated importing logic to expand allowable values for imported fields.
+  * Fixed crashing bug for re-entrant image loading (kde#526952).
+  * Fixed bug with Collectorz image location during importing (kde#527908).
+  * Fixed table colors in Video template.
+  * Fixed search results from OMDb.
+
+-------------------------------------------------------------------
 Sat Oct 10 14:39:50 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 4.3 

@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-about
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-about
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        LXQt About Dialog
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,14 +26,14 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(lxqt) >= 2.1.0
-BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools)
 
 Requires(post): desktop-file-utils
 Requires(pre):  desktop-file-utils

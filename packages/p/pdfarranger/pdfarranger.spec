@@ -30,7 +30,9 @@ Summary:        Merge, split, rotate, crop, and rearrange pages of PDF documents
 License:        GPL-3.0-only
 URL:            https://github.com/pdfarranger/pdfarranger
 Source0:        https://github.com/pdfarranger/pdfarranger/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        %{name}.rpmlintrc
+Source1:        pdfarranger.rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Add-changes-for-newer-pikepdf.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -74,8 +76,10 @@ pages using a graphical interface. It is a frontend for pikepdf.
 
 %install
 %pyproject_install
+
 %find_lang %{name} %{?no_lang_C}
-%fdupes -s %{buildroot}
+
+%fdupes %{buildroot}
 
 %check
 %pytest
@@ -83,12 +87,12 @@ pages using a graphical interface. It is a frontend for pikepdf.
 %files
 %license COPYING
 %doc README.md
-%{_bindir}/%{name}
-%{python_sitelib}/%{name}
-%{python_sitelib}/%{name}-%{version}*.*-info
+%{_bindir}/pdfarranger
+%{python_sitelib}/pdfarranger
+%{python_sitelib}/pdfarranger-%{version}*.*-info
 %{_datadir}/applications/com.github.jeromerobert.pdfarranger.desktop
-%{_mandir}/man1/%{name}.1%{?ext_man}
-%{_datadir}/%{name}/
+%{_mandir}/man1/pdfarranger.1%{?ext_man}
+%{_datadir}/pdfarranger/
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/com.github.jeromerobert.pdfarranger.metainfo.xml
 

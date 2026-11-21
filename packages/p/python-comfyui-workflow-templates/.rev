@@ -365,4 +365,63 @@ its own request first.</comment>
     <comment>Update python-comfyui-workflow-templates to 0.11.100.</comment>
     <requestid>1394124</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>481d0016712e0a51c464977015a47223</srcmd5>
+    <version>0.11.101</version>
+    <time>1793818003</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.101</comment>
+    <requestid>1394856</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>f774465854d0a91da5cc5018f03884c2</srcmd5>
+    <version>0.11.103</version>
+    <time>1794090820</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.103: release-train pin roll; shim code unchanged.</comment>
+    <requestid>1396019</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2c30c3bf7ded17471c08672476dcf3d5</srcmd5>
+    <version>0.11.106</version>
+    <time>1794428302</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.106</comment>
+    <requestid>1396909</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>03146a813716775ccd008427f8786011</srcmd5>
+    <version>0.11.107</version>
+    <time>1794590989</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.107: pins core 0.3.398, json 0.1.133, media-assets-02 0.1.32.</comment>
+    <requestid>1397197</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b12942d7b88bc1e50f8a0c4a5549e950</srcmd5>
+    <version>0.11.110</version>
+    <time>1794932339</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.110: pins core 0.3.401, json 0.1.136.
+- Stage with sr#1398010 (json) and sr#1398011 (core).</comment>
+    <requestid>1398013</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7f1b77be76a550fd821be7b888931274</srcmd5>
+    <version>0.11.111</version>
+    <time>1795103788</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.111: pins core 0.3.402, json 0.1.137.
+- Stage with sr#1398612 (json) and sr#1398613 (core).</comment>
+    <requestid>1398614</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0e0674c3ec7c0529c3836dbe7e24f247</srcmd5>
+    <version>0.11.112</version>
+    <time>1795182505</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.112: pins core 0.3.403, json 0.1.138.
+- Stage with sr#1398899 (json) and sr#1398900 (core).</comment>
+    <requestid>1398901</requestid>
+  </revision>
 </revisionlist>

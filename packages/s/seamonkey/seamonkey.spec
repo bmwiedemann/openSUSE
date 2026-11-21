@@ -1,7 +1,7 @@
 #
 # spec file for package seamonkey
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #               2006-2018 Wolfgang Rosenauer
 #               2018-2026 Tristan Miller
 #
@@ -17,9 +17,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-### build options
 
-# Components to include/exclude
 %bcond_without	dominspector
 %bcond_without	irc
 %bcond_without	localizations
@@ -33,10 +31,7 @@
 %bcond_without	system_nspr
 %bcond_without	system_nss
 %bcond_without	system_zlib
-# Disable system AV1 on Leap; as of 15.6 dav1d is not yet packaged for it
-%if 0%{?suse_version} > 1600
 %bcond_without	system_av1
-%endif
 %bcond_with     system_jpeg
 %bcond_with     system_png
 
@@ -44,7 +39,6 @@
 %bcond_with     clang
 %bcond_without  lto
 %bcond_with     gold
-
 
 %define progname       %{name}
 %define sources_subdir %{name}-%{version}
@@ -62,8 +56,8 @@ License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
 URL:            https://www.seamonkey-project.org/
 
-Source0:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source.tar.xz
-Source1:        https://archive.mozilla.org/pub/seamonkey/releases/%{version}/source/seamonkey-%{version}.source-l10n.tar.xz
+Source0:        https://archive.seamonkey-project.org/releases/%{version}/source/seamonkey-%{version}.source.tar.xz
+Source1:        https://archive.seamonkey-project.org/releases/%{version}/source/seamonkey-%{version}.source-l10n.tar.xz
 Source2:        spellcheck.js
 Source3:        mozilla.sh.in
 Source4:        suse-default-prefs.js
@@ -86,16 +80,36 @@ Patch3:         seamonkey-2.53.3-lto.patch
 Patch4:         seamonkey-2.53.7.1-man-page.patch
 Patch5:         seamonkey-2.53.20-boo1237231.patch
 Patch6:         seamonkey-2.53.17.1-bmo531915.patch
-Patch8:         seamonkey-2.53.20-mach-use-python-311.patch
 Patch9:         seamonkey-2.53.21-bmo1862601.patch
 Patch10:        seamonkey-2.53.21-bmo1927380.patch
-Patch11:	seamonkey-2.53.20-system-av1.patch
+Patch11:        seamonkey-2.53.20-system-av1.patch
 Patch13:        seamonkey-2.53.21-bmo1662867.patch
 Patch14:        seamonkey-2.53.24-bmo1882209.patch
 Patch15:        seamonkey-2.53.24-bmo1866191.patch
 Patch16:        seamonkey-2.53.24-bmo2033279.patch
 Patch17:        seamonkey-2.53.24-rust_version.patch
 Patch18:        seamonkey-2.53.24-rust_u2fhid.patch
+
+# Python patches from Gentoo: https://github.com/BioMike/gentoo-seamonkey-patches/releases/tag/2.53.24-r1
+Patch7000:      7000_py312_1857516.patch
+Patch7001:      7001_py312_1777414.patch
+Patch7003:      7003_py312_1755530.patch
+Patch7004:      7004_py312_1858062.patch
+Patch7005:      7005_py312_1752927.patch
+Patch7006:      7006_py312_1858065.patch
+Patch7007:      7007_py312_1766085.patch
+Patch7008:      7008_py312_1787628.patch
+Patch7009:      7009_py312_misc.patch
+Patch7010:      7010_py312_virtualenv.patch
+Patch7011:      7011_py312_setuptools.patch
+Patch7012:      7012_py312_remove_python_check.patch
+Patch7013:      7013_py312_1875052.patch
+Patch7014:      7014_py312_make_dafsa_fix.patch
+Patch7015:      7015_py312_regexp_warnings.patch
+Patch7016:      7016_py313_1677422.patch
+Patch7017:      7017_py313_virtualenv_pipes.patch
+Patch7018:      7018_py312_missing_packages.patch
+Patch7019:      7019_py314_1969769.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
@@ -104,8 +118,8 @@ BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  hunspell-devel
 %if 0%{?suse_version} > 1600 && %{with system_av1}
-BuildRequires:  libaom-devel
 BuildRequires:  dav1d-devel
+BuildRequires:  libaom-devel
 %endif
 BuildRequires:  libiw-devel
 BuildRequires:  libnotify-devel
@@ -113,20 +127,16 @@ BuildRequires:  libproxy-devel
 %if %{with system_libvpx}
 BuildRequires:  libvpx-devel >= 1.10.0
 %endif
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200 && 0%{?is_opensuse}
 BuildRequires:  libwebp-devel >= 1.0.0
-%endif
 %if %{with system_icu}
 BuildRequires:  libicu-devel >= 67.1
 %endif
 BuildRequires:  makeinfo
 BuildRequires:  memory-constraints
-BuildRequires:  python311-base
+BuildRequires:  %{pythons} >= 3.11
 BuildRequires:  startup-notification-devel
 BuildRequires:  unzip
-%if 0%{?suse_version} > 1560
 BuildRequires:  translate-suse-desktop
-%endif
 BuildRequires:  xorg-x11-libXt-devel
 BuildRequires:  yasm
 BuildRequires:  zip
@@ -142,36 +152,28 @@ BuildRequires:  pkgconfig(libffi) > 3.0.9
 %endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(xcomposite)
-%if 0%{?suse_version} > 1600
 BuildRequires:  cargo1.84
 BuildRequires:  rust1.84
-%else
-BuildRequires:  cargo
-BuildRequires:  rust >= 1.76
-%endif
-BuildRequires:  rust-cbindgen
+BuildRequires:  clang-devel
 BuildRequires:  git
 BuildRequires:  nasm >= 2.13
-BuildRequires:  clang-devel
+BuildRequires:  rust-cbindgen
 %if %{with clang}
 BuildRequires:  clang
 %else
-# Use GCC 14 on Tumbleweed because builds of 2.53.21 fail with GCC 15
-%if 0%{?suse_version} > 1600
-%define gcc_version 14
-%endif
 BuildRequires:  gcc%{?gcc_version:%gcc_version}-c++
 %if %{with gold}
 BuildRequires:  binutils-gold
 %endif
 %endif
 
-PreReq:         /bin/sh coreutils
+PreReq:         /bin/sh
+PreReq:         coreutils
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
+Provides:       seamonkey-mail = %{version}
 Provides:       web_browser
 Provides:       browser(npapi)
-Provides:       seamonkey-mail = %{version}
 Obsoletes:      seamonkey-mail <= 2.0
 Provides:       seamonkey-spellchecker = %{version}
 Obsoletes:      seamonkey-spellchecker <= 2.0
@@ -225,7 +227,6 @@ Firefox and Thunderbird) retains Mozilla's more traditional-looking
 interface.  Many Thunderbird and (legacy) Firefox extensions are
 compatible with SeaMonkey.
 
-
 %package irc
 Summary:        IRC for SeaMonkey
 Group:          Productivity/Networking/IRC
@@ -241,7 +242,6 @@ PreReq:         %{name} = %{version}
 
 %description venkman
 A JavaScript debugger for the SeaMonkey web browser.
-
 
 %package dom-inspector
 Summary:        The SeaMonkey DOM Inspector
@@ -265,7 +265,6 @@ PreReq:         %{name} = %{version}
 This package contains several optional languages for the user interface
 of SeaMonkey.
 
-
 %package translations-other
 Summary:        Extra translations for SeaMonkey
 Group:          System/Localization
@@ -276,7 +275,6 @@ PreReq:         %{name} = %{version}
 This package contains several optional languages for the user interface
 of SeaMonkey.
 %endif
-
 
 %prep
 %setup -q -b 6 -c
@@ -298,16 +296,13 @@ cp %{SOURCE7} GNUmakefile
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 8 -p1
 
 %if %{with system_icu}
-%if 0%{?suse_version} >= 1600
 %patch -P 9 -p1
 %patch -P 10 -p1
 %endif
-%endif
 
-%if 0%{?suse_version} > 1600 && %{with system_av1}
+%if %{with system_av1}
 %patch -P 11 -p1
 %endif
 
@@ -317,6 +312,34 @@ cp %{SOURCE7} GNUmakefile
 %patch -P 16 -p1
 %patch -P 17 -p1
 %patch -P 18 -p1
+
+%if %python_version_nodots >= 312
+%patch -P 7000 -p1
+%patch -P 7001 -p1
+%patch -P 7003 -p1
+%patch -P 7004 -p1
+%patch -P 7005 -p1
+%patch -P 7006 -p1
+%patch -P 7007 -p1
+%patch -P 7008 -p1
+%patch -P 7009 -p1
+%patch -P 7010 -p1
+%patch -P 7011 -p1
+%patch -P 7012 -p1
+%patch -P 7013 -p1
+%patch -P 7014 -p1
+%patch -P 7015 -p1
+%endif
+%if %python_version_nodots >= 313
+%patch -P 7016 -p1
+%patch -P 7017 -p1
+%endif
+%if %python_version_nodots >= 312
+%patch -P 7018 -p1
+%endif
+%if %python_version_nodots >= 314
+%patch -P 7019 -p1
+%endif
 
 %define with_sys()   ac_add_options --with%%{!?with_system_%1:out}-system-%1
 %define endis_sys()  ac_add_options --%%{?with_system_%1:enable}%%{!?with_system_%1:disable}-system-%1
@@ -348,7 +371,6 @@ ac_add_options --enable-alsa
 ac_add_options --enable-default-toolkit=cairo-gtk3
 ac_add_options --enable-libproxy
 
-
 ### Features
 
 ### Components to include
@@ -361,7 +383,6 @@ ac_add_options --disable-updater
 # Calendar is always enabled as it's required to build various
 # components and addons
 ac_add_options --enable-calendar
-
 
 ### System vs. bundled libraries
 
@@ -477,7 +498,6 @@ make %{?_smp_mflags}
 %if %{with localizations}
 make -j1 locales
 %endif
-
 
 %install
 

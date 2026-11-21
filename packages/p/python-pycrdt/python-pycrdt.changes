@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 18 12:58:47 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 0.14.13:
+  * Stop publishing 32-bit wheels.
+  * Fix update stream closure during provider shutdown.
+- Update to 0.14.10:
+  * Fix cross-thread cleanup and invalidate borrowed callback views.
+  * Drain pending provider updates on normal context exit.
+  * Add Provider.synced event for initial synchronization.
+- Bump anyio to >= 4.14.0.
+- Bump trio to < 0.36 for tests.
+
+-------------------------------------------------------------------
 Fri Oct 16 00:17:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.14.9:

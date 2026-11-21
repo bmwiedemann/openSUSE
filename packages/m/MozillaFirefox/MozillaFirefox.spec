@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          158
+%define major          159
 %define mainver        %major.0.1
-%define orig_version   158.0.1
+%define orig_version   159.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -62,6 +62,17 @@
 # ccache doesn't work with pgo
 %if 0%{?do_profiling}
 %define useccache     0
+%endif
+
+# Build the wasm-sandboxed libraries (RLBox).
+%define wasm_sandbox   1
+# Toolchain only available on Tumbleweed right now
+%if 0%{?suse_version} < 1699
+%define wasm_sandbox   0
+%endif
+# WASM compilation in general not possible on big endian
+%ifarch s390x
+%define wasm_sandbox   0
 %endif
 
 # SLE-12 doesn't have this macro
@@ -133,7 +144,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.40
-BuildRequires:  mozilla-nss-devel >= 3.130
+BuildRequires:  mozilla-nss-devel >= 3.131
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -172,6 +183,14 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
 BuildRequires:  clang-devel
 #!BuildIgnore:  clang-tools
+%if %{wasm_sandbox}
+# wasm32-wasip1 builtins for the wasm sandbox, shipped since LLVM 23
+BuildRequires:  clang >= 23
+BuildRequires:  lld
+BuildRequires:  llvm >= 23
+BuildRequires:  wasi-libc
+BuildRequires:  wasi-libcxx
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -228,6 +247,7 @@ Source19:       google-api-key
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
 # Gecko/Toolkit
+Patch2:         mozilla-fix-wasm-sysroot.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-s390-context.patch
@@ -241,6 +261,7 @@ Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
+Patch27:        lock-timeout.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
@@ -498,8 +519,11 @@ ac_add_options --with-mozilla-api-keyfile=%{SOURCE18}
 ac_add_options --with-google-safebrowsing-api-keyfile=%{SOURCE19}
 ac_add_options --with-unsigned-addon-scopes=app
 ac_add_options --allow-addon-sideload
-# at least temporary until the "wasi-sysroot" issue is solved
+%if %{wasm_sandbox}
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot/
+%else
 ac_add_options --without-wasm-sandboxed-libraries
+%endif
 %ifarch x86_64 aarch64
 ac_add_options --enable-rust-simd
 %endif

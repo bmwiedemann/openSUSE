@@ -2241,4 +2241,16 @@ Pushing GNOME 45.rc packages</comment>
     <comment>- Update version dependencies according to meson.build.</comment>
     <requestid>1384577</requestid>
   </revision>
+  <revision rev="251" vrev="3">
+    <srcmd5>432d886d534bba6c7ef9d19d95e73513</srcmd5>
+    <version>1.4.0</version>
+    <time>1794597147</time>
+    <user>anag_factory</user>
+    <comment>- Add PackageKit-CVE-2026-104619.patch: zypp: Add version checks
+  when updating packages (bsc#1284389, CVE-2026-104619).
+- Add PackageKit-CVE-2026-104620.patch: zypp: sanitize RPM tag name
+  to prevent path traversal in temp files
+  (bsc#1284954, CVE-2026-104620).</comment>
+    <requestid>1396744</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1320800</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8795c3c1a2104c2681829cac65df2534</srcmd5>
+    <version>1.4.6</version>
+    <time>1794932452</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.6:
+  * Added Qt6 audio support for Windows and MacOS
+  * Clearer logs in console
+  * Moved CI to GitHub only (removed Travis and AppVeyor)</comment>
+    <requestid>1398110</requestid>
+  </revision>
 </revisionlist>

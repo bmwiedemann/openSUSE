@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:25:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Disable gr-iio support (add bcond_with iio, disabled by default)
+  and drop BuildRequires on libiio-devel and libad9361-iio-devel:
+  GNU Radio 3.10 is not compatible with libiio >= 1.0 (API and ABI
+  breakage in upstream libiio).
+
+-------------------------------------------------------------------
 Thu Oct  8 01:47:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove {Build,}Requires on python3-click-plugins, it is now not needed.

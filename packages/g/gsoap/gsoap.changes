@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:37:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.147
+  * Fix `soap_timegm()` for Windows systems timezone edge case
+    issue when parsing `1970-01-01T00:00:00Z`.
+  * Fix regression issue when the library is compiled in DEBUG mode
+    (non-production mode) with versions 2.8.140-146.
+  * Fix regression issue for sparc64 systems.
+  * Fix regression issue for keep-alive support.
+  * Update soapcpp2 to improve serialization of nillable C++17
+    `std::optional` class/struct members when not set, but required
+    with nonzero minOccurs, this serializes to an `xsi:nil` element
+    when nillable.
+
+-------------------------------------------------------------------
+Thu Oct 29 08:22:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 2.8.146
+  * Update compile-time configuration option `WITH_SELF_PIPE` to
+    use `poll()` when available.
+
+-------------------------------------------------------------------
 Wed Oct 21 20:18:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.145

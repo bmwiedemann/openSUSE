@@ -108,4 +108,12 @@ hand-written ldconfig scriptlets with %ldconfig_scriptlets and drops Group.
 Built on aarch64: 0 rpmlint badness, 0 warnings, source_validator clean.</comment>
     <requestid>1368326</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f6f948742accb7f951538a10f56a4bfb</srcmd5>
+    <version>3.5.0</version>
+    <time>1794090871</time>
+    <user>dimstar_suse</user>
+    <comment>Fix truncated-VLR invalid free (boo#1285759, CVE-2026-110603): clamp inflated VLR count, zero VLR array.</comment>
+    <requestid>1396079</requestid>
+  </revision>
 </revisionlist>

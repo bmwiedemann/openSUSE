@@ -17,4 +17,12 @@
   * This includes the always-on for cgo and congestion control.</comment>
     <requestid>1382181</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bab696ef945a2aefbe6dd209eb9e8e26</srcmd5>
+    <version>0.15.0~0</version>
+    <time>1794090733</time>
+    <user>dimstar_suse</user>
+    <comment>update to 0.15.0</comment>
+    <requestid>1395919</requestid>
+  </revision>
 </revisionlist>

@@ -24,6 +24,9 @@
 %global openssl_sover 0
 %global boringssl_soname %{soname}_crypto_boringssl
 %global boringssl_sover 0
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+%global force_gcc_version 14
+%endif
 %if 0%{?suse_version} >= 1699
 %bcond_without openssl
 %bcond_without boringssl
@@ -33,11 +36,8 @@
 # build boringssl suport only in Factory
 %bcond_with boringssl
 %endif
-%if 0%{?suse_version} && 0%{?suse_version} < 1600
-%global force_gcc_version 14
-%endif
 Name:           ngtcp2
-Version:        1.25.0
+Version:        1.26.0
 Release:        0
 Summary:        Implementation of the IETF QUIC protocol
 License:        MIT
@@ -46,8 +46,10 @@ Source0:        https://github.com/ngtcp2/ngtcp2/releases/download/v%{version}/n
 Source1:        https://github.com/ngtcp2/ngtcp2/releases/download/v%{version}/ngtcp2-%{version}.tar.xz.asc
 Source2:        ngtcp2.keyring
 Source3:        baselibs.conf
+# PATCH-FIX-OPENSUSE curl-impersonate.patch -- raw transport-params API for curl-impersonate
 # https://github.com/lexiforest/curl-impersonate/raw/refs/tags/v2.1.1/patches/ngtcp2.patch
 Patch0:         curl-impersonate.patch
+# PATCH-FIX-OPENSUSE ngtcp2-boringssl-shared.patch -- build boringssl crypto backend as shared library
 Patch1:         ngtcp2-boringssl-shared.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -117,7 +119,7 @@ QUIC protocol.
 %package -n libngtcp2_crypto_gnutls-devel
 Summary:        GnuTLS Development files for ngtcp2
 Requires:       %{gnutls_soname}%{gnutls_sover} = %{version}
-Requires:       libngtcp2-devel = %{version}-%{release}
+Requires:       pkgconfig(libngtcp2) = %{version}
 
 %description -n libngtcp2_crypto_gnutls-devel
 GnuTLS as TLS backend development files for use with libngtcp2.
@@ -125,7 +127,7 @@ GnuTLS as TLS backend development files for use with libngtcp2.
 %package -n libngtcp2_crypto_ossl-devel
 Summary:        OpenSSL Development files for ngtcp2
 Requires:       %{openssl_soname}%{openssl_sover} = %{version}
-Requires:       libngtcp2-devel = %{version}-%{release}
+Requires:       pkgconfig(libngtcp2) = %{version}
 
 %description -n libngtcp2_crypto_ossl-devel
 OpenSSL as TLS backend development files for use with libngtcp2.
@@ -135,7 +137,7 @@ QUIC protocol.
 Summary:        BoringSSL Development files for ngtcp2
 Requires:       %{boringssl_soname}%{boringssl_sover} = %{version}
 Requires:       boringssl-devel
-Requires:       libngtcp2-devel = %{version}-%{release}
+Requires:       pkgconfig(libngtcp2) = %{version}
 
 %description -n libngtcp2_crypto_boringssl-devel
 BoringSSL as TLS backend development files for use with libngtcp2.

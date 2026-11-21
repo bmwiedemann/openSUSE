@@ -388,4 +388,14 @@
   * Bumped version and updated dependencies</comment>
     <requestid>1348577</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0612eca2bfc2877323bea2e4e5d08d9a</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182307</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.0:
+  * Fixed a case where SVG tray icons would not appear if they did not
+    belong to the icon theme.</comment>
+    <requestid>1398759</requestid>
+  </revision>
 </revisionlist>

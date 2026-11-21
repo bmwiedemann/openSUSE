@@ -167,4 +167,43 @@
   	  forms need more. See NOTES in HTTP::Body.</comment>
     <requestid>1393478</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>cbc9ad50c7e41172ffd1e27484de7a1e</srcmd5>
+    <version>1.250.0</version>
+    <time>1793991550</time>
+    <user>anag_factory</user>
+    <comment>bsc#1288651, bsc#1288652, bsc#1289589
+
+- updated to 1.250.0 (1.25)
+   see /usr/share/doc/packages/perl-HTTP-Body/Changes
+  1.25      2026-11-05 18:47:08+01:00 Europe/Berlin
+  	- SECURITY, CVE-2026-117500: the suffix of an upload's filename is
+  	  worked out from its last 255 bytes only, only when $file_temp_suffix
+  	  is unset, and for the default $basename_regexp by a string search
+  	  instead of the regexp; a filename of many dots ending in a backslash
+  	  made the default $basename_regexp take time quadratic in its length
+  	  (7 s per part at the 32 KiB header limit, once per part) in the
+  	  default configuration
+      bsc#1288651
+  	- SECURITY, CVE-2026-117501: a chunked body is framed line by line with
+  	  a limit on the chunk-size line ($HTTP::Body::max_chunk_line_size,
+  	  1024 bytes), chunk data is passed on as it arrives instead of being
+  	  held until the chunk is complete, malformed framing (a line that is
+  	  no chunk-size line, a size that does not fit an integer, chunk data
+  	  not followed by CRLF) croaks instead of buffering forever, and
+  	  nothing after the trailer or after the body parser is done is kept
+      bsc#1288652
+  	- SECURITY, CVE-2026-121006: the trailer of a chunked body is limited
+  	  to $HTTP::Body::max_trailer_size bytes (32768) and
+  	  $HTTP::Body::max_trailer_lines header lines (100); everything that
+  	  followed the last chunk in the same call to add() was parsed with
+  	  HTTP::Headers, which takes time quadratic in the number of fields of
+  	  one name (6 s for 16 KiB of &quot;a:&quot; lines)
+      bsc#1289589
+  	- trailing_headers: a trailer is read up to its blank line also when it
+  	  arrives in later calls to add() than the last chunk; it used to be
+  	  lost
+  	- XFormsMultipart: a part other than the start part now gets its</comment>
+    <requestid>1395878</requestid>
+  </revision>
 </revisionlist>

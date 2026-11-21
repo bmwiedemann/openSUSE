@@ -17,16 +17,16 @@
 
 
 Name:           python-extension-helpers
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
-Summary:        Utilities for building and installing packages wuth compiled extensions
+Summary:        Utilities for building and installing packages with compiled extensions
 License:        BSD-3-Clause
 URL:            https://github.com/astropy/extension-helpers
 Source:         https://files.pythonhosted.org/packages/source/e/extension_helpers/extension_helpers-%{version}.tar.gz
 Source100:      python-extension-helpers-rpmlintrc
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 64}
+BuildRequires:  %{python_module setuptools >= 77.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -37,11 +37,11 @@ BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tomli if %python-base < 3.11}
+BuildRequires:  %{python_module tomli >= 1.0.0 if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
 # /SECTION
 Requires:       python-setuptools >= 64
-Requires:       (python-tomli if python-base < 3.11)
+Requires:       (python-tomli >= 1.0.0 if python-base < 3.11)
 BuildArch:      noarch
 %python_subpackages
 

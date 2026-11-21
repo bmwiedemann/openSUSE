@@ -2377,4 +2377,12 @@
     <comment>version update to 6.19</comment>
     <requestid>1373744</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>3ce3c8c90071b51344fcda12853acc3e</srcmd5>
+    <version>6.20</version>
+    <time>1794932192</time>
+    <user>anag_factory</user>
+    <comment>Update man-pages to 6.20: new git-bisect-rebase(1) and file_attr(2type) pages, sysfs(5) split, spec Group cleanup. (forwarded request 1397484 from amanzini)</comment>
+    <requestid>1397851</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:25:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20261116
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20261116 2026-11-17 Australia/Melbourne
+    * Security: the verifier now rejects (result "invalid") a
+      DKIM-Signature that has no h= tag or an empty one, whose h= tag
+      doesn't include From, or that has no bh= tag, as RFC 6376 requires.
+      The check meant to reject a missing h= tag never fired, so such a
+      signature covered none of the message's header fields, and without
+      bh= not its body either, yet still passed. One such signature, made
+      with a key published under the signer's own d= domain, verified on
+      any message. Signatures made without bh= by pre-standard drafts of
+      DKIM are now rejected too
+      Thanks to Jakub Kozub
+    * Document that the ARC verifier accepts an ARC-Message-Signature with
+      an empty or missing h= tag, as the ARC test suite expects
+
+-------------------------------------------------------------------
+Fri Nov  6 11:32:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.20261105
+   see /usr/share/doc/packages/perl-Mail-DKIM/Changes
+
+  1.20261105 2026-11-06 Australia/Melbourne
+    * Don't canonicalize ARC-Seals once the ARC chain has failed, and only
+      match ARC-Authentication-Results at the start of a header field
+      Thanks to Sidney Markowitz <sidney@apache.org> and the
+      Apache SpamAssassin PMC
+    * Check ARC signature tags and instance numbers before looking up keys
+    * Speed up ARC-Seal canonicalization for long ARC chains
+    * Check ARC instance numbers in the ARC signer, and limit it to 50
+      ARC sets
+    * Speed up DKIM header canonicalization for long h= lists
+    * ARC signer skips messages with unparseable ARC headers rather than
+      dying, and matches ARC header names case insensitively
+    * ARC-Seal canonicalization takes the ARC-Authentication-Results
+      instance from the start of the field
+    * ARC verifier fails a chain with a missing or extra
+      ARC-Authentication-Results header, and no longer warns about a
+      missing cv= tag
+    * Speed up parsing of long header fields, and of header field names,
+      tag lists, h= lists and policy records with long runs of whitespace
+      Thanks to Sidney Markowitz <sidney@apache.org> and the
+      Apache SpamAssassin PMC
+    * Only check test timings under AUTHOR_TESTING, so slow machines
+      don't fail them
+      Thanks to Sidney Markowitz <sidney@apache.org>
+    * Speed up verifying messages with many signatures and many header
+      fields, by indexing the header once for all the signatures
+      Thanks to Sidney Markowitz <sidney@apache.org> and the
+      Apache SpamAssassin PMC
+    * Fix slow matching of ARC-Seal and ARC-Message-Signature headers with
+      a long run of whitespace and no i= tag
+    * ARC verifier fails a chain with an ARC-Authentication-Results header
+      whose instance can't be found or is outside 1..50, rather than
+      ignoring it, so an AAR not covered by the seals can't sit alongside
+      a passing chain; the ARC signer skips such a message
+
+-------------------------------------------------------------------
 Mon Sep 23 05:32:49 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.20240923

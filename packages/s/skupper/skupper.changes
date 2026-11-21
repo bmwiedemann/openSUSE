@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov 12 06:04:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * Document intended controller realization scopes (#2625)
+  * Local system proxy (#2584)
+  * Fix network-status publish never retrying after failure.
+    (#2612)
+  * upgrade kin-openapi version (#2615)
+  * Fix bundle static links when Site has linkAccess: default
+    (#2588)
+  * Enhance debug conn with --kind filter; move sweeper to
+    internal/debug. (#2604)
+  * Expose MultiKeyListener related attributes in Network Observer
+    API (#2610)
+  * Add the upgrade flag to skupper system install command (#2597)
+
+-------------------------------------------------------------------
 Sat Oct 24 16:56:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.4:

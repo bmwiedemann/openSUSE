@@ -928,4 +928,36 @@
     <comment>bsc#1275115, CVE-2026-56403, CVE-2026-56404, CVE-2026-56405, (forwarded request 1383697 from david.anes)</comment>
     <requestid>1383718</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>762496543d18ee99d5ed424756d21f98</srcmd5>
+    <version>2.10.0</version>
+    <time>1793724661</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.0:
+  * Security fixes:
+    * CVE-2026-113351, bsc#1286599: denial of service with use of
+      XML_ParserReset
+    * CVE-2026-115506, bsc#1287856: detect billion laughs attacks
+      quicker and more of its variations
+    * CVE-2026-117610, bsc#1288868: fix initial non-final empty
+      subparser parse calls, was segfaulting
+    * CVE-2026-118370, bsc#1288849: protect attIndex and nPrefixes in
+      storeAtts from signed integer overflow
+  * Bug fixes:
+    * Initialize m_parsingStatus.finalBuffer in parserInit
+    * Improve XML_Parse for XML_CONTEXT_BYTES == 0
+    * Use C99 length modifiers for ptrdiff_t and size_t
+    * Check isCalledFromInsideHandler first in XML_Parse
+    * Add missing check for a character handler reset
+  * Library version bumped from 14:0:13 to 14:1:13 (forwarded request 1394428 from david.anes)</comment>
+    <requestid>1394454</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>8978ec04babc17fa74fa982cccea6178</srcmd5>
+    <version>2.10.0</version>
+    <time>1795103581</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398192</requestid>
+  </revision>
 </revisionlist>

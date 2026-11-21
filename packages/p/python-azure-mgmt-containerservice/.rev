@@ -755,4 +755,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1386435 from glaubitz)</comment>
     <requestid>1386527</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>37c915b97d5b52d1ba5e41a01cd22db1</srcmd5>
+    <version>41.9.0</version>
+    <time>1794591398</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 41.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1397253 from glaubitz)</comment>
+    <requestid>1397323</requestid>
+  </revision>
 </revisionlist>

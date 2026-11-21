@@ -289,4 +289,18 @@
   * Fix missing -lz in some scenarios.</comment>
     <requestid>1315673</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>9d1d264677b347aafa3488fb139e8ab7</srcmd5>
+    <version>unknown</version>
+    <time>1795023115</time>
+    <user>anag_factory</user>
+    <comment>- Fix virtual-to-physical translation for AArch64 Linux kernels
+  built with 52-bit PA support, but booted on 48-bit-only hardware:
+  * libkdumpfile-tests-Fix-xlat-linux-aarch64-64k.patch
+  * libkdumpfile-aarch64-Fix-root-pgt-52-48.patch
+
+- Add libkdumpfile-binutils-2.46.patch: fix build with
+  binutils &gt;= 2.46, which removed the TRUE/FALSE macros.</comment>
+    <requestid>1398366</requestid>
+  </revision>
 </revisionlist>

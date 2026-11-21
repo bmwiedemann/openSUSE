@@ -202,4 +202,20 @@
     -  NEW CODE(s)</comment>
     <requestid>1357780</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4025360d9f473f4a042283e5da4265ac</srcmd5>
+    <version>3.910.0</version>
+    <time>1794090797</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.910.0 (3.91)
+   see /usr/share/doc/packages/perl-Locale-Codes/Changes
+  3.91  2026-09-01  sbeck
+    -  NEW CODE(s)
+    -  CPAN email contact removed
+           As of April, CPAN no longer forwards emails, so the old cpan.org
+           email address is no longer a supported contact method and has been
+           removed.
+           Reported in GitHub #22</comment>
+    <requestid>1396024</requestid>
+  </revision>
 </revisionlist>

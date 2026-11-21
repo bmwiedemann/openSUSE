@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:06:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261109 (git commit 69e51bb26f3f):
+  * amd-sof: Add ACP 7.F SOF topology for RT721
+  * amd-sof: Add ACP 7.F SOF topologies
+  * amd-sof: Add ACP 7.F SOF firmware
+  * cirrus: cs35l63: Firmware for Lenovo laptops with SSID 2369 and 236a
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs35l57: Add firmware for Cirrus CS35L57 for a Lenovo laptop
+  * cirrus: cs42l45: Update CS42L49 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus CS35L56 family for various Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops
+
+-------------------------------------------------------------------
+Mon Nov  2 13:03:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.4-rc1
+
+-------------------------------------------------------------------
+Fri Oct 23 15:29:08 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261022 (git commit 412eb7861d40):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.5 build
+
+-------------------------------------------------------------------
+Fri Oct  9 16:10:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * cirrus: cs35l41: Add firmware and tuning for Lenovo Thinkbook laptops
+  * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops
+  * cirrus: cs42l45: Add CS42L49 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l57 cs35l63: Add firmware for some Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for a Dell laptop
+  * cirrus: cs35l41: Add support for Lenovo Yoga Slim 7 Carbon 14ACN6
+
+-------------------------------------------------------------------
 Sun Sep 27 08:18:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260926 (git commit 9b858e5bb58d):

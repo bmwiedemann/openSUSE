@@ -33,4 +33,14 @@
 </comment>
     <requestid>1280524</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>702a869f2553d9274eafe3172a937cd6</srcmd5>
+    <version>1.2.0</version>
+    <time>1795103816</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1397928 from dimstar
+
+Replace obsolete PyInt_* calls with PyLong_* in fann2/fann2.i for Python 3</comment>
+    <requestid>1398643</requestid>
+  </revision>
 </revisionlist>

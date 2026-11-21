@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 11 02:42:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vty-unix to version 0.5.0.0.
+  0.5.0.0
+  =======
+
+  Enhancements:
+
+  * Overall performance has been improved due to a change from the lazy to
+    CPS-based Writer monad. (thanks Andrzej Rybczak)
+  * Terminal titles are now UTF-8 encoded. (thanks Andrzej Rybczak)
+
+-------------------------------------------------------------------
+Wed Aug 19 03:37:21 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vty-unix to version 0.4.0.0.
+  0.4.0.0
+  =======
+
+  * Added support for terminfo operators "*", "/", and "m" (thanks Chris
+    Forno)
+
+-------------------------------------------------------------------
 Mon Jun 15 02:33:34 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update vty-unix to version 0.3.0.0.

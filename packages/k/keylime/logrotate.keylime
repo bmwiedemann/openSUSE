@@ -1,5 +1,5 @@
 /var/log/keylime/*.log {
-    su keylime tss
+    su keylime keylime
     weekly
     missingok
     rotate 4

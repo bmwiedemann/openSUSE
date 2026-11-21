@@ -1,17 +1,8 @@
-Index: chromium-144.0.7524.0/build/rust/rust_bindgen.gni
+Index: chromium-157.0.8103.15/build/rust/rust_bindgen.gni
 ===================================================================
---- chromium-144.0.7524.0.orig/build/rust/rust_bindgen.gni
-+++ chromium-144.0.7524.0/build/rust/rust_bindgen.gni
-@@ -26,7 +26,7 @@ if (!use_chromium_rust_toolchain &&
- } else if (host_os == "win") {
-   _libclang_path += "/bin"
- } else {
--  _libclang_path += "/lib"
-+  _libclang_path += "/lib64"
- }
- 
- # Template to build Rust/C bindings with bindgen.
-@@ -135,6 +135,13 @@
+--- chromium-157.0.8103.15.orig/build/rust/rust_bindgen.gni
++++ chromium-157.0.8103.15/build/rust/rust_bindgen.gni
+@@ -136,6 +136,13 @@ template("rust_bindgen") {
        deps += [ ":${_rust_bindgen_generator_target_name}_static_fns" ]
      }
  
@@ -25,11 +16,11 @@ Index: chromium-144.0.7524.0/build/rust/rust_bindgen.gni
      rustflags = [
        # Don't warn about unused code in the generated bindings.
        "-Adead_code",
-Index: chromium-144.0.7524.0/build/rust/rust_bindgen_generator.gni
+Index: chromium-157.0.8103.15/build/rust/rust_bindgen_generator.gni
 ===================================================================
---- chromium-144.0.7524.0.orig/build/rust/rust_bindgen_generator.gni
-+++ chromium-144.0.7524.0/build/rust/rust_bindgen_generator.gni
-@@ -33,7 +33,7 @@ if (!use_chromium_rust_toolchain &&
+--- chromium-157.0.8103.15.orig/build/rust/rust_bindgen_generator.gni
++++ chromium-157.0.8103.15/build/rust/rust_bindgen_generator.gni
+@@ -29,7 +29,7 @@ if (!use_chromium_rust_toolchain &&
  } else if (host_os == "win") {
    _libclang_path += "/bin"
  } else {
@@ -38,12 +29,12 @@ Index: chromium-144.0.7524.0/build/rust/rust_bindgen_generator.gni
  }
  
  # Template to build Rust/C bindings with bindgen.
-@@ -269,6 +269,8 @@ template("rust_bindgen_generator") {
+@@ -223,6 +223,8 @@ template("rust_bindgen_generator") {
      # causes bindgen not to emit function bindings. Override it.
      if (!is_win) {
        args += [ "-fvisibility=default" ]
 +      args += [ "-I/usr/include/c++/v1" ]
 +      args += [ "-I/usr/lib64/clang/" + clang_version + "/include" ]
      }
- 
-     if (is_win) {
+     if (!defined(_library_name) || !_wrap_static_fns) {
+       not_needed([ _bindgen_target_name ])

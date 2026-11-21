@@ -1478,4 +1478,20 @@ New Features:
     <comment>Update GraphicsMagick to 1.3.49 (forwarded request 1385824 from pluskalm)</comment>
     <requestid>1386191</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>dbd95c678e9783a6fd11f4023fdde89d</srcmd5>
+    <version>1.3.49</version>
+    <time>1793817766</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-46523</comment>
+    <requestid>1394658</requestid>
+  </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>39a3d01f81c9f6ce4af3036506820f4c</srcmd5>
+    <version>1.3.49</version>
+    <time>1794324578</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1288783], CVE-2026-116149</comment>
+    <requestid>1396319</requestid>
+  </revision>
 </revisionlist>

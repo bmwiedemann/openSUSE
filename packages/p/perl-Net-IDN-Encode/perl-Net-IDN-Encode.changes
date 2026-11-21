@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Oct 30 11:28:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.600.0 (2.600)
+   see /usr/share/doc/packages/perl-Net-IDN-Encode/Changes
+
+  2.600 2026-10-29
+          - stable release of the changes in 2.590 and 2.591
+          - fix CVE-2026-74766, a heap use-after-free in the XS decode_punycode
+          - fix CVE-2026-74765, an integer overflow and out-of-bounds read in the
+            XS encode_punycode
+          - fix CVE-2026-87078, memory leaks when the XS functions reject input
+          - fix CVE-2026-87079, quadratic decoding of large labels
+          - fix CVE-2026-87080, the pure-Perl decoder accepting a truncated label
+          - fix CVE-2026-87081, quadratic encoding of overlong labels in to_ascii
+          - fix CVE-2026-87082, the XS encode_punycode looping for ever on
+            malformed UTF-8 input
+
+  2.591 2026-10-06 (TRIAL RELEASE)
+          - fix the XS encode_punycode error message on perl 5.12.5
+          - fix warnings from Net::IDN::UTS46 on perl 5.14 and 5.16
+          - fix test failures on perl 5.12 and older, and on Windows
+          - add a GitHub Actions workflow
+
+  2.590 2026-09-17 (TRIAL RELEASE)
+          - fix CVE-2026-74766, a heap use-after-free in the XS decode_punycode
+            on attacker-supplied punycode
+          - fix CVE-2026-74765, an integer overflow and out-of-bounds read in the
+            XS encode_punycode
+          - fix CVE-2026-87078, memory leaks when the XS functions reject input
+          - fix CVE-2026-87079, the quadratic cost of decoding large labels in
+            the XS backend, and in the pure-Perl backend when the input has the
+            UTF-8 flag set
+          - fix CVE-2026-87080, the pure-Perl decoder treating a truncated label
+            as complete and adding an extra character to the result
+          - fix CVE-2026-87081, the quadratic cost of encoding an overlong label
+            in to_ascii:
+            * to_ascii now rejects a label too long for DNS before encoding
+              it
+          - fix CVE-2026-87082, the XS encode_punycode looping for ever on
+            malformed UTF-8 input:
+            * both punycode backends now reject malformed UTF-8
+            * a truncated sequence in a UTF-8 flagged string had made the XS
+              loop for ever and crashed the pure-Perl backend
+          - reject surrogates and code points above U+10FFFF, which are not
+            Unicode scalar values:
+            * the punycode encoder and decoder reject them in both backends
+            * Net::IDN::UTS46 rejects them in a label even when
+              AllowUnassigned is set
+          - add the RFC 3492 overflow checks to both punycode backends, so they
+            reject the same inputs:
+            * the counters are perl UV integers bounded at the RFC limit of
+              0xFFFFFFFF
+            * on such input the XS had returned a corrupt label or crashed
+          - fix the XS reading past the end of a stringified reference argument
+          - fix the XS decode_punycode crashing on an undef argument:
+            * both backends now warn once about the undefined value and
+              return the empty string
+          - stop the XS encode_punycode altering its argument:
+            * it had upgraded the scalar to UTF-8 in place, so a byte string
+              came back flagged and an undef came back defined
+          - stringify an overloaded object argument once in the pure-Perl
+            backend, so a stringification that changes between calls cannot crash
+            perl
+          - speed up the XS encoder by decoding its input once rather than once
+            per round
+          - report a decoded code point above U+10FFFF from uts46_to_unicode as
+            an invalid punycode sequence [P4] rather than a disallowed character
+            [V6]
+          - make the XS and pure-Perl backends behave the same:
+            * both reject any argument count other than one with a usage message,
+              where pure Perl had ignored extra arguments
+            * both report a non-basic character after the delimiter as a non-base
+              character, where pure Perl had said invalid digit
+            * both report the caller's location in error messages
+            * both accept U+FFFF and report a surrogate as an invalid code point
+              on every perl version, where the XS on perl 5.10 to 5.12 had
+              rejected either as "malformed UTF-8"
+          - load the XS on perl 5.8, where the version check had failed and the
+            module silently used pure Perl
+          - recommend Test::LeakTrace for the test phase
+
+-------------------------------------------------------------------
 Sat Sep  5 19:59:01 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Remove use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch

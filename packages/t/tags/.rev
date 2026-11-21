@@ -39,4 +39,15 @@
 - Update version dependencies according to meson.build.</comment>
     <requestid>1384261</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6b69826fe5c4d80ef320722f52f51b9a</srcmd5>
+    <version>2.6</version>
+    <time>1794932468</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6:
+  * Updated translations
+  * Performance improvements
+  * UX improvements</comment>
+    <requestid>1398125</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov  5 15:15:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.25
+   see /usr/share/doc/packages/perl-Encode/Changes
+
+  $Revision: 3.25 $ $Date: 2026/10/26 01:42:18 $
+  ! Encode.pm encoding.pm Byte/Byte.pm CN/CN.pm EBCDIC/EBCDIC.pm JP/JP.pm
+    KR/KR.pm Symbol/Symbol.pm TW/TW.pm Unicode/Unicode.pm
+    lib/Encode/Alias.pm lib/Encode/Config.pm lib/Encode/Encoder.pm
+    lib/Encode/Encoding.pm lib/Encode/GSM0338.pm lib/Encode/Guess.pm
+    lib/Encode/CN/HZ.pm lib/Encode/JP/JIS7.pm lib/Encode/KR/2022_KR.pm
+    lib/Encode/MIME/Header.pm lib/Encode/MIME/Header/ISO_2022_JP.pm
+    lib/Encode/MIME/Name.pm lib/Encode/Unicode/UTF7.pm
+    bin/enc2xs bin/ucmlint
+    Assign $VERSION as a literal string instead of computing it from
+    q$Revision$, per PAUSE Ops request: PAUSE now indexes only
+    statically parseable $VERSION assignments; bump each sub-module
+    and script version by 0.01
+  ! t/taint.t
+    Pulled: detect lack of taint support in Perl < 5.38
+    https://github.com/dankogai/p5-encode/pull/188
+
+-------------------------------------------------------------------
 Thu Apr 30 07:40:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.24

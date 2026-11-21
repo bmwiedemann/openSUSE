@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:59:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-126497: heap OOB write in bundled libdxfrw
+  dwgReader18::parseDataPage() on crafted R2004 DWG (boo#1290030)
+  * fix-CVE-2026-126497.patch
+
+-------------------------------------------------------------------
 Sun Oct 18 05:57:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 2.2.1.6:

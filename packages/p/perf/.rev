@@ -747,4 +747,15 @@
     <comment>1</comment>
     <requestid>1377026</requestid>
   </revision>
+  <revision rev="87" vrev="96">
+    <srcmd5>6380a5fd513dada073c6f1c1c550c557</srcmd5>
+    <version>MACRO</version>
+    <time>1793725166</time>
+    <user>anag_factory</user>
+    <comment>- support kernel 7.4 (gtk4 finally)
+- enable LTO, it is long supported (since 6.6)
+- noarch for some subpackages
+- add %check with some basic tests</comment>
+    <requestid>1394663</requestid>
+  </revision>
 </revisionlist>

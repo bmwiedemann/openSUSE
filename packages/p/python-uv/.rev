@@ -3403,4 +3403,28 @@ licence set is unchanged. Both flavors build green on aarch64.</comment>
     <comment>1</comment>
     <requestid>1393589</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>4a15403f8fafd50dcdb9fe16cd92baa0</srcmd5>
+    <version>0.13.7</version>
+    <time>1793991313</time>
+    <user>anag_factory</user>
+    <comment>Forward python-uv 0.13.7 to Factory</comment>
+    <requestid>1395639</requestid>
+  </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>2add41fbb2a5c0658055e8a2b116440d</srcmd5>
+    <version>0.13.8</version>
+    <time>1794591252</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.13.8: CPython 3.16.0a2, wheel variants for platform resolutions, uvx concurrency fix.</comment>
+    <requestid>1397187</requestid>
+  </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>1a60e683ce434d2c50eaf422b19a7ef7</srcmd5>
+    <version>0.13.9</version>
+    <time>1795023165</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.13.9</comment>
+    <requestid>1398473</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Furl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define cpan_name Furl
 Name:           perl-Furl
-Version:        3.150.0
+Version:        3.160.0
 Release:        0
-# 3.15 -> normalize -> 3.150.0
-%define cpan_version 3.15
+# 3.16 -> normalize -> 3.160.0
+%define cpan_version 3.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightning-fast URL fetcher
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYOHEX/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TO/TOKUHIROM/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 Patch0:         0001-Remove-use-of-Mozilla-CA.patch

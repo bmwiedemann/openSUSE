@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * Fix parsePicture
+  * Port to C++ ranges
+  * Use ranges for sorting CustomData, LineMap and ParameterMap
+  * Replace std::find_if with std::ranges::find
+  * Use default == operator where possible
+  * Add fuzzer gitlab job
+  * Fix an infinite loop when parsing QUOTED-PRINTABLE
+  * Setup ossfuzz
+  * Remove unimplemented methods
+  * Clean forward and includes
+  * Implement sounds for VCard4
+  * Use default copy constructor
+  * vcardparser: Always quote AUTHOR according to RFC 9554
+  * vcardparser: Fix parameter handling according to RFC 6350
+  * Use default copy constructor in Address::Private
+  * Export the QML plugin target for static builds
+  * Use own QUICK_TEST_MAIN executable
+  * Skip failing test on Windows
+  * Require passing CI
+  * doc: Update doc to best practice
+  * doc: Fix todo about license
+  * vcardparser: Implement RFC 6868 parameter escaping
+  * addressee: Fix qml api doc brief and add code example
+  * qml: Improve qml integration and add tests
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

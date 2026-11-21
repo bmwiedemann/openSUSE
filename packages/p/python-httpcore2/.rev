@@ -87,4 +87,13 @@
     `close_notify`.</comment>
     <requestid>1392446</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>156ada50c2d39b7905346e723c0a7418</srcmd5>
+    <version>2.16.0</version>
+    <time>1794932186</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on ca-certificates-mozilla, because 2.15.1+ now
+  eagerly loads CA certificates, and blows up if none are found.</comment>
+    <requestid>1397809</requestid>
+  </revision>
 </revisionlist>

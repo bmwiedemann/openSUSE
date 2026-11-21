@@ -27,6 +27,9 @@ URL:            https://laszip.org/
 # Upstream stopped attaching a release tarball (and its .sha256sum) at 3.5.0;
 # the git auto-archive is the only published artifact.
 Source0:        https://github.com/LASzip/LASzip/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Clamp inflated VLR count and zero the array (boo#1285759).
+# PATCH-FIX-UPSTREAM laszip-truncated-vlr-count.patch -- boo#1285759 (CVE-2026-110603)
+Patch0:         laszip-truncated-vlr-count.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 

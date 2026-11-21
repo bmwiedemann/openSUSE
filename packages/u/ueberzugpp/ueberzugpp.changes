@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov  5 16:10:27 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 2.9.11+git20260919.13c8618:
+  * Seems releases are being cut well after changes are made, but few/no
+    changes are made as part of a new release number. Can see this quite well
+    with v2.9.8 -> v2.9.11
+
+-------------------------------------------------------------------
 Thu Oct 22 16:59:33 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 2.9.10+git20260919.13c8618:

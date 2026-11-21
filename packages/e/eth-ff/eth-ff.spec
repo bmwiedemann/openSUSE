@@ -74,7 +74,7 @@ Contains tools for managing fabric on a management node.
 %autosetup -p0 -n  %{name}-%{version}%{git_ver}
 
 %build
-export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member"
+export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -Wno-address-of-packed-member -Wno-deprecated-declarations"
 cd OpenIb_Host && ./ff_build.sh %{_builddir} $FF_BUILD_ARGS
 
 %install

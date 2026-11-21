@@ -104,4 +104,29 @@
   * Add GFM autolink and composite GFM plugins</comment>
     <requestid>1355509</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e55b32bda358146117f7f0e963d7be91</srcmd5>
+    <version>0.7.0</version>
+    <time>1795182442</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.0:
+  * Require markdown-it-py &gt;= 3.0 (and &gt;= 4.1.0 for section_ref, gfm,
+    and gfm_autolink)
+  * Escape plugin renderer output in texmath, dollarmath, myst_block,
+    colon_fence, and tasklists
+  * Harden attrs/attrs_block defaults: drop event-handler attributes,
+    validate URL attributes, and enforce allowed on text spans
+  * Fix ReDoS backtracking in texmath math blocks and admon headers
+  * Add the section_ref plugin for section-sign references
+  * Fix parser hangs in gfm_autolink and texmath blockquotes
+  * Fix dollarmath same-line $$...$$ swallowing lines and blockquote &gt;
+    prefixes
+  * Fix front_matter parsing when closed by the YAML ... marker
+  * Reserve inline footnote ids before parsing inner content
+  * Keep explicit heading ids in anchors and stop stripping slug titles
+  * Fix attrs unterminated groups, class accumulation, and closing-token
+    merges
+  * Fix myst_role parsing with trailing or escaped backslashes</comment>
+    <requestid>1398860</requestid>
+  </revision>
 </revisionlist>

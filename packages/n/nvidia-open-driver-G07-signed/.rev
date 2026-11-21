@@ -258,4 +258,15 @@
     <comment>- update non-CUDA variant to 595.112.07 (boo#1286763)</comment>
     <requestid>1387216</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>53026163d00c96a341751798c10e9264</srcmd5>
+    <version>620.70.06</version>
+    <time>1793990015</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA and CUDA variant to 620.70.06 (boo#1289478)
+- supersedes the following patches:
+  * kernel-7.3.0-opengpu-615.71.09.patch
+  * supersedes Fixing-build-against-SLE16.1-Kernel.patch</comment>
+    <requestid>1395071</requestid>
+  </revision>
 </revisionlist>

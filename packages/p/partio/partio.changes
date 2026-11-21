@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 14:19:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add partio-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_*, PyInt_*) with Python 3 C API equivalents in
+  src/py/partio.i.
+
+-------------------------------------------------------------------
 Sun Apr 19 10:14:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:

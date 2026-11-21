@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov  7 10:05:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.19.4:
+  * Fix a memory leak
+- drop libmrss-curl_compat.patch
+- new upstream
+- modernize specfile
+
+-------------------------------------------------------------------
 Tue Dec 27 13:28:03 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.19.3:

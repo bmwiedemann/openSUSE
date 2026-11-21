@@ -906,8 +906,8 @@ fi
 %defattr(-,root,openvswitch, 775)
 %dir %{_sysconfdir}/openvswitch
 %ghost %dir %{_localstatedir}/log/openvswitch
-%defattr(-,openvswitch,openvswitch)
 %{_tmpfilesdir}/openvswitch.conf
+%defattr(-,openvswitch,openvswitch)
 %config %ghost %attr(0644,root,root) %{_sysconfdir}/openvswitch/system-id.conf
 # This is no longer the DB path for new installs but we still need this for
 # upgrades that preserve the old DB path.
@@ -1050,8 +1050,8 @@ fi
 %{_datadir}/openvswitch/ovsdb/ovsdb-dot
 
 %files -n ovn
-%defattr(-,openvswitch,openvswitch)
 %{_tmpfilesdir}/ovn.conf
+%defattr(-,openvswitch,openvswitch)
 %ghost %dir %attr(0755,root,root) %{_localstatedir}/log/ovn
 %defattr(-,root,root)
 %{_fillupdir}/sysconfig.ovn

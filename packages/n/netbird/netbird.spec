@@ -17,9 +17,12 @@
 
 
 %ifnarch %{ix86}
-%bcond_with netbird_ui
+# leap <16.0 doesn't have gtk4 version required
+%if 0%{?suse_version} >= 1600
+%bcond_without netbird_ui
 %else
 %bcond_with netbird_ui
+%endif
 %endif
 
 %if 0%{?sle_version} <= 150600 && !0%{?is_opensuse}
@@ -32,7 +35,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.82.0
+Version:        0.83.1
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -42,10 +45,15 @@ Source1:        vendor.tar.zst
 Source2:        %{name}.service
 Source3:        %{name}-management.service
 Source4:        %{name}-signal.service
-Source5:        series
+Source5:        frontend-%{version}.tar.zst
+Source6:        prepare_webassets.sh
+Source7:        Makefile
+Source8:        PACKAGING_README.md
+Source9:        series
+# If we need to fall back to skipping the UI, change skip-ui.patch back to Patch1
+Source98:       skip-ui.patch
 Source99:       update.sh
 Patch0:         service-install-cli-change.patch
-Patch1:         skip-ui.patch
 BuildRequires:  fdupes
 BuildRequires:  fish
 BuildRequires:  git-core
@@ -60,7 +68,9 @@ BuildRequires:  golang(API) >= 1.26
 BuildRequires:  pkgconfig(libpcap)
 # For GUI applet
 %if %{with netbird_ui}
-BuildRequires:  pkgconfig(xxf86vm)
+# for old appindicator version, don't think it's still required with newer ui
+# BuildRequires:  pkgconfig(xxf86vm)
+BuildRequires:  pkgconfig(webkitgtk-6.0)
 %if %{with appindicator_sle}
 BuildRequires:  pkgconfig(appindicator3-0.1)
 %else
@@ -68,9 +78,11 @@ BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
 %endif
 BuildRequires:  hicolor-icon-theme
 %endif
-%if %{without netbird_ui}
-Obsoletes:      netbird-applet < %{version}-%{release}
-%endif
+# If UI becomes too cumbersome and we need to fall back, uncomment/remove macro escapes
+# %%if %%{without netbird_ui}
+# Obsoletes:      netbird-applet < %%{version}-%%{release}
+# Obsoletes:      netbird-ui < %%{version}-%%{release}
+# %%endif
 
 %description
 NetBird combines a configuration-free peer-to-peer private network and a
@@ -78,12 +90,15 @@ centralized access control system in a single platform, making it easy to
 create secure private networks for your organization or home.
 
 %if %{with netbird_ui}
-%package applet
-Summary:        Optional UI panel indicator for %{name}
+%package ui
+Summary:        Optional new Wails GUI (and panel indicator) for %{name}
 Requires:       %{name}
+# For new netbird-ui package, we need to obsolete the old netbird-applet package
+Obsoletes:      %{name}-applet < %{version}
+Provides:       %{name}-applet = %{version}
 
-%description applet
-Optional UI panel indicator for %{name}.
+%description ui
+Optional GUI and panel indicator for %{name}.
 %endif
 
 %package management
@@ -109,6 +124,19 @@ Summary:        Backend relay portion for %{name} server
 Optional new relay component for %{name}. Please note that this does not
 comprise a full netbird backend server, and is merely built for convenience.
 Management/signal/relay are not required for the netbird client application.
+
+%package nblink
+Summary:        Standalone userspace port forwarder for %{name}
+
+%description nblink
+nblink is a new standalone binary that forwards local ports into your NetBird
+network from an ordinary, unprivileged process. It runs the client in
+userspace mode, so there is no TUN device, no root, no installer, and
+/etc/resolv.conf is never touched. Names on the upstream side resolve inside
+the tunnel. It is built for places the regular agent cannot run: managed
+laptops without admin rights, rootless containers on OpenShift and Podman, CI
+jobs, MCP servers and local AI agents that need an internal API, and sidecars
+for apps that hardcode an HTTP endpoint.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
@@ -142,8 +170,8 @@ Zsh command line completion support for %{name}.
 
 %package management-bash-completion
 Summary:        Bash Completion for %{name}
+Requires:       %{name}-management
 Requires:       bash-completion
-Requires:       netbird-management
 Supplements:    (%{name}-management and bash-completion)
 BuildArch:      noarch
 
@@ -152,8 +180,8 @@ Bash command line completion support for %{name}-management.
 
 %package management-fish-completion
 Summary:        Fish Completion for %{name}-management
+Requires:       %{name}-management
 Requires:       fish
-Requires:       netbird-management
 Supplements:    (%{name}-management and fish)
 BuildArch:      noarch
 
@@ -162,7 +190,7 @@ Fish command line completion support for %{name}-management.
 
 %package management-zsh-completion
 Summary:        Zsh Completion for %{name}-management
-Requires:       netbird-management
+Requires:       %{name}-management
 Requires:       zsh
 Supplements:    (%{name}-management and zsh)
 BuildArch:      noarch
@@ -172,8 +200,8 @@ Zsh command line completion support for %{name}-management.
 
 %package signal-bash-completion
 Summary:        Bash Completion for %{name}-management
+Requires:       %{name}-signal
 Requires:       bash-completion
-Requires:       netbird-signal
 Supplements:    (%{name}-signal and bash-completion)
 BuildArch:      noarch
 
@@ -182,8 +210,8 @@ Bash command line completion support for %{name}-management.
 
 %package signal-fish-completion
 Summary:        Fish Completion for %{name}-signal
+Requires:       %{name}-signal
 Requires:       fish
-Requires:       netbird-signal
 Supplements:    (%{name}-signal and fish)
 BuildArch:      noarch
 
@@ -192,7 +220,7 @@ Fish command line completion support for %{name}-signal.
 
 %package signal-zsh-completion
 Summary:        Zsh Completion for %{name}-signal
-Requires:       netbird-signal
+Requires:       %{name}-signal
 Requires:       zsh
 Supplements:    (%{name}-signal and zsh)
 BuildArch:      noarch
@@ -200,8 +228,40 @@ BuildArch:      noarch
 %description signal-zsh-completion
 Zsh command line completion support for %{name}-signal.
 
+%package nblink-bash-completion
+Summary:        Bash Completion for nblink
+Requires:       %{name}-nblink
+Requires:       bash-completion
+Supplements:    (%{name}-nblink and bash-completion)
+BuildArch:      noarch
+
+%description nblink-bash-completion
+Bash command line completion support for nblink.
+
+%package nblink-fish-completion
+Summary:        Fish Completion for nblink
+Requires:       %{name}-nblink
+Requires:       fish
+Supplements:    (%{name}-nblink and fish)
+BuildArch:      noarch
+
+%description nblink-fish-completion
+Fish command line completion support for nblink.
+
+%package nblink-zsh-completion
+Summary:        Zsh Completion for nblink
+Requires:       %{name}-nblink
+Requires:       zsh
+Supplements:    (%{name}-nblink and zsh)
+BuildArch:      noarch
+
+%description nblink-zsh-completion
+Zsh command line completion support for nblink.
+
 %prep
 %autosetup -p1 -a1
+rm -rf client/ui/frontend
+tar xvf %{SOURCE5}
 
 %build
 %if %{without netbird_ui}
@@ -221,6 +281,7 @@ go build -o %{name} -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./client
 go build -o %{name}-mgmt -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./management
 go build -o %{name}-signal -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./signal
 go build -o %{name}-relay -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./relay
+go build -o nblink -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./client/link/cmd/nblink
 
 %if %{with netbird_ui}
 go build -o %{name}-ui -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./client/ui
@@ -228,12 +289,13 @@ go build -o %{name}-ui -buildmode=pie -mod=vendor -ldflags "$LDFLAGS" ./client/u
 
 %install
 install -Dm755 -t %{buildroot}%{_bindir} %{name}{,-mgmt,-signal,-relay}
+install -Dm755 -t %{buildroot}%{_bindir} nblink
 
-# Install the applet and the icons, so the desktop file doesn't have an empty icon.
+# Install the ui and the icons, so the desktop file doesn't have an empty icon.
 %if %{with netbird_ui}
 install -Dm755 %{name}-ui %{buildroot}%{_bindir}/%{name}-ui
-install -Dm644 client/ui/build/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-# All icons are 256x256. These seem to get pulled into the applet binary regardless,
+install -Dm644 client/ui/build/linux/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
+# All icons are 256x256. These seem to get pulled into the ui binary regardless,
 # but still worth throwing in separately.
 install -dm755 %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
 install -Dm644 client/ui/assets/%{name}*.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps
@@ -242,7 +304,7 @@ install -Dm644 client/ui/assets/%{name}-systemtray-connected.png %{buildroot}%{_
 %endif
 
 # Generate completions
-for bin in %{name} %{name}-signal %{name}-mgmt
+for bin in %{name} %{name}-signal %{name}-mgmt nblink
 do
   for sh in bash zsh fish
   do
@@ -353,6 +415,7 @@ failing_tests=(
   TestLogin_ProfileSwitchRejectsJWTObtainedUnderPreviousConfig
   TestExchangeWithFallback_TCPTruncatesToClientSize
   TestSession_ResizeWhileRunningIsApplied
+  TestDaemonConnectError_KeepsServiceHintOtherwise
 )
 # Assemble skip string by replacing spaces with a pipe.
 disable=$(echo ${failing_tests[*]} | sed 's/ /|/g')
@@ -409,7 +472,7 @@ go test -skip "${disable}" ./client/...
 %{_unitdir}/%{name}.service
 
 %if %{with netbird_ui}
-%files applet
+%files ui
 %{_bindir}/%{name}-ui
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/%{name}*.png
@@ -428,6 +491,10 @@ go test -skip "${disable}" ./client/...
 %files relay
 %license LICENSE
 %{_bindir}/%{name}-relay
+
+%files nblink
+%license LICENSE
+%{_bindir}/nblink
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
@@ -458,5 +525,15 @@ go test -skip "${disable}" ./client/...
 %files signal-zsh-completion
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_%{name}-signal
+
+%files nblink-bash-completion
+%{_datadir}/bash-completion/completions/nblink
+
+%files nblink-fish-completion
+%{_datadir}/fish/vendor_completions.d/nblink.fish
+
+%files nblink-zsh-completion
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_nblink
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 12 13:25:59 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Stop auto-refreshing named.root via the download_files Source
+  URL: its daily/weekly "last update" and "related version of root
+  zone" metadata lines triggered constant enforceupstream failures
+  even though the actual root hints were unchanged. named.root is
+  now a plain committed source, refreshed on demand via a
+  manual-mode download_url service instead.
+
+-------------------------------------------------------------------
 Thu Oct 22 10:04:03 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.30

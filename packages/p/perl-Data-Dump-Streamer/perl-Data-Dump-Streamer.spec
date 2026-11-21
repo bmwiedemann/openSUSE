@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Dump-Streamer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,19 @@
 
 %define cpan_name Data-Dump-Streamer
 Name:           perl-Data-Dump-Streamer
-Version:        2.420.0
+Version:        3.2.0
 Release:        0
-# 2.42 -> normalize -> 2.420.0
-%define cpan_version 2.42
+# 3.002 -> normalize -> 3.2.0
+%define cpan_version 3.002
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Accurately serialize a data structure as Perl code
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/Y/YV/YVES/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(B::Utils)
-BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(ExtUtils::Depends)
-BuildRequires:  perl(Module::Build)
-Requires:       perl(B::Utils)
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
 Provides:       perl(Data::Dump::Streamer) = %{version}
 Provides:       perl(Data::Dump::Streamer::Deparser) = %{version}
 %undefine       __perllib_provides
@@ -68,14 +65,15 @@ produce the output, but obeying the depth relationships of the first pass.
 %autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-perl Build.PL --installdirs=vendor optimize="%{optflags}"
-./Build build --flags=%{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-./Build test
+make test
 
 %install
-./Build install --destdir=%{buildroot} --create_packlist=0
+%perl_make_install
+%perl_process_packlist
 %perl_gen_filelist
 
 %files -f %{name}.files

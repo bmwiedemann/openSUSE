@@ -58,6 +58,8 @@ tegra_drm: of:N*T*Cnvidia%2Ctegra194-vic
 tegra_drm: of:N*T*Cnvidia%2Ctegra194-vicC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra20-dc
 tegra_drm: of:N*T*Cnvidia%2Ctegra20-dcC*
+tegra_drm: of:N*T*Cnvidia%2Ctegra20-dsi
+tegra_drm: of:N*T*Cnvidia%2Ctegra20-dsiC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra20-gr2d
 tegra_drm: of:N*T*Cnvidia%2Ctegra20-gr2dC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra20-gr3d
@@ -84,8 +86,12 @@ tegra_drm: of:N*T*Cnvidia%2Ctegra234-nvdec
 tegra_drm: of:N*T*Cnvidia%2Ctegra234-nvdecC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra234-vic
 tegra_drm: of:N*T*Cnvidia%2Ctegra234-vicC*
+tegra_drm: of:N*T*Cnvidia%2Ctegra264-vic
+tegra_drm: of:N*T*Cnvidia%2Ctegra264-vicC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra30-dc
 tegra_drm: of:N*T*Cnvidia%2Ctegra30-dcC*
+tegra_drm: of:N*T*Cnvidia%2Ctegra30-dsi
+tegra_drm: of:N*T*Cnvidia%2Ctegra30-dsiC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra30-gr2d
 tegra_drm: of:N*T*Cnvidia%2Ctegra30-gr2dC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra30-gr3d

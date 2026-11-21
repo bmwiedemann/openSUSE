@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov 15 09:59:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.1:
+  * Fix E2E download checks and pin Civo
+
+-------------------------------------------------------------------
+Thu Nov 05 14:22:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.12.0:
+  * Keep opencode2 on the 2.x release line
+  * Require a redirect for HEAD release lookups
+  * Reject error status codes when resolving releases
+  * Add opencode2 CLI alongside opencode
+  * Document tinygo system install in README
+  * Add system install for TinyGo
+  * Drop the consul-connect app
+
+-------------------------------------------------------------------
 Sat Oct 24 16:51:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.134:

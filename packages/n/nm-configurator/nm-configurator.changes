@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Nov 12 10:10:58 UTC 2026 - Atanas Dinov <atanas.dinov@suse.com>
+
+- Vendor dependencies from upstream Cargo.lock (cargo_vendor
+  update=false); a full cargo update breaks the nl-wireguard build
+- Update to version 0.3.6 (bsc#1274503, CVE-2026-25541):
+  * Bump softprops/action-gh-release from 3.0.3 to 3.0.4
+  * Bump log from 0.4.34 to 0.4.35
+  * Bump rust-toolchain from 1.98 to 1.99
+  * Bump Swatinem/rust-cache from 2.9.2 to 2.9.3
+  * Extract container builds in separate job
+  * Pin rust toolchain
+  * Update release pipeline
+  * Add caching and smoke tests for image builds in the build workflow
+  * Add Dockerfile image bumps to dependabot config
+  * Use multi-stage build for CI
+  * cargo upgrade
+  * Fix linter issues
+  * cargo update
+  * Bump version to 0.3.6
+  * Match MAC addresses only for MAC-identified interfaces (#255)
+  * Bump nmstate from 2.2.60 to 2.2.62 (#246)
+  * Bump actions/checkout from 7.0.0 to 7.0.1 (#248)
+  * Bump softprops/action-gh-release from 3.0.1 to 3.0.3 (#250)
+  * Bump anyhow from 1.0.103 to 1.0.104 (#245)
+  * Bump serde from 1.0.228 to 1.0.229 (#247)
+  * Bump docker/setup-buildx-action from 4.2.0 to 4.4.1 (#252)
+  * Bump docker/setup-qemu-action from 4.2.0 to 4.4.0 (#253)
+  * Fix linter errors (#254)
+  * Bump docker/setup-qemu-action from 4.1.0 to 4.2.0 (#241)
+  * Bump docker/setup-buildx-action from 4.1.0 to 4.2.0 (#242)
+  * Bump env_logger from 0.11.10 to 0.11.11 (#239)
+  * Bump anyhow from 1.0.102 to 1.0.103 (#240)
+  * Bump actions/checkout from 6.0.3 to 7.0.0 (#236)
+  * Bump softprops/action-gh-release from 3.0.0 to 3.0.1 (#237)
+  * Bump log from 0.4.32 to 0.4.33 (#238)
+  * Bump actions/checkout from 6.0.2 to 6.0.3 (#233)
+  * Bump log from 0.4.30 to 0.4.32 (#234)
+  * Bump configparser from 3.1.0 to 3.2.0 (#235)
+  * Bump docker/setup-buildx-action from 4.0.0 to 4.1.0 (#230)
+  * Bump docker/setup-qemu-action from 4.0.0 to 4.1.0 (#231)
+  * Bump log from 0.4.29 to 0.4.30 (#232)
+  * Bump softprops/action-gh-release from 2.6.1 to 3.0.0 (#226)
+  * Bump nmstate from 2.2.59 to 2.2.60 (#228)
+  * Bump clap from 4.6.0 to 4.6.1 (#227)
+  * Pin GHAs (#225)
+  * Bump nmstate from 2.2.58 to 2.2.59 (#224)
+  * Bump env_logger from 0.11.9 to 0.11.10 (#222)
+  * Bump anyhow from 1.0.101 to 1.0.102 (#223)
+  * Bump nmstate from 2.2.57 to 2.2.58 (#215)
+  * Bump clap from 4.5.56 to 4.5.58 (#218)
+  * Bump anyhow from 1.0.100 to 1.0.101 (#216)
+  * Bump env_logger from 0.11.8 to 0.11.9 (#219)
+  * Bump docker/setup-buildx-action from 3 to 4 (#220)
+  * Bump docker/setup-qemu-action from 3 to 4 (#221)
+  * Bump clap from 4.5.54 to 4.5.56 (#214)
+  * Bump clap from 4.5.53 to 4.5.54 (#212)
+  * Bump nmstate from 2.2.56 to 2.2.57 (#209)
+  * Bump log from 0.4.28 to 0.4.29 (#208)
+
+-------------------------------------------------------------------
 Tue Jul 14 11:27:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar.gz to address

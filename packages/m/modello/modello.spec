@@ -17,7 +17,7 @@
 
 
 Name:           modello
-Version:        2.8.1
+Version:        2.10.0
 Release:        0
 Summary:        Modello Data Model toolkit
 License:        Apache-2.0 AND MIT
@@ -26,9 +26,6 @@ URL:            https://codehaus-plexus.github.io/modello
 Source0:        https://repo1.maven.org/maven2/org/codehaus/%{name}/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
-Patch0:         0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
-Patch1:         0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
-Patch2:         0003-Integrate-modello-ant-task-to-modello-source-tree.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -40,7 +37,6 @@ BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsoup
 BuildRequires:  junit5-minimal
 BuildRequires:  objectweb-asm
-BuildRequires:  plexus-build-api >= 1.0
 BuildRequires:  plexus-compiler
 BuildRequires:  plexus-testing
 BuildRequires:  plexus-utils
@@ -62,8 +58,6 @@ Requires:       javadoc-parser
 Requires:       javapackages-tools
 Requires:       jsoup
 Requires:       objectweb-asm
-Requires:       plexus-build-api
-Requires:       plexus-build-api0
 Requires:       plexus-classworlds
 Requires:       plexus-containers-component-annotations
 Requires:       plexus-utils
@@ -139,7 +133,6 @@ build-jar-repository -s lib \
     org.eclipse.sisu.plexus \
     plexus/cli \
     plexus-compiler \
-    plexus/plexus-build-api \
     plexus/utils \
     plexus/xml \
     slf4j/api \
@@ -177,7 +170,7 @@ done
 %fdupes -s %{buildroot}%{_javadocdir}
 
 # script
-%jpackage_script org.codehaus.modello.ModelloCli "" "-Dguice_custom_class_loading=CHILD" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:objectweb-asm/asm:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
+%jpackage_script org.codehaus.modello.ModelloCli "" "-Dguice_custom_class_loading=CHILD" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:objectweb-asm/asm:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
 
 # Ant config
 install -dm 0755 %{buildroot}%{_sysconfdir}/ant.d
@@ -193,8 +186,6 @@ echo "modello-ant-task" \
     "javadoc-parser" \
     "jsoup/jsoup" \
     "objectweb-asm" \
-    "plexus/plexus-build-api" \
-    "plexus/plexus-build-api0" \
     "plexus/classworlds" \
     "plexus-containers/plexus-component-annotations" \
     "plexus/utils" \

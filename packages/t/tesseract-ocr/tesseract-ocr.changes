@@ -15,6 +15,14 @@ Thu Oct 29 10:16:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
     tesseract-CVE-2026-88053.patch,
     tesseract-CVE-2026-88054.patch
   * Raise pkgconfig(lept) floor to >= 1.80 per upstream
+  * Fix double-free/UAF in AppendLinePolygon for RTL PAGE XML output
+    CVE-2026-119338 bsc#1289080
+  * lstm: reject old-format WeightMatrix instead of aborting
+    CVE-2026-119339 bsc#1289082
+  * Reject malformed dimensions in GENERIC_2D_ARRAY deserialization
+    CVE-2026-119340 bsc#1289087
+  * Neutralise file-sourced pointers in ReadAdaptedClass before use
+    CVE-2026-119341 bsc#1289088
 
 -------------------------------------------------------------------
 Fri Oct 16 11:05:56 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>

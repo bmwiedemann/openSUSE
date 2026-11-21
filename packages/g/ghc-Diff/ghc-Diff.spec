@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-Diff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.2
+Version:        2.0.1
 Release:        0
 Summary:        Diff algorithm in pure Haskell
 License:        BSD-3-Clause
@@ -102,7 +102,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG.md
+%doc CHANGELOG.md README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE

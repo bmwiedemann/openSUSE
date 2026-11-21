@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * .pre-commit-config.yaml - fix indent
+  * (pre-commit) Give guidance to markdownlint on the nodejs version to check against to keep it happy.
+  * .pre-commit-config.yml - Comment markdownlint-cli
+  * Clean forward and includes
+  * Fix reading GEO longitude with libicalv4
+  * Export the QML plugin target for static builds
+  * format/lint all xml files and add pre-commit to enforce that
+  * pre-commit autoupdate
+  * pre-commit - keep yaml tidy with yamlfmt
+  * Limit each libical by_ array to its max size and don't double recurrences
+  * Implement occurrenceiterator exclude exception outside iterator range
+  * Refactor occurenceiterator setupIterator's handling of thisAndFuture
+  * Fix far event exception not being returned in iterator (kde#447966)
+  * Refactor occurenceiterator setupIterator function
+  * Reformat OccurenceIterator::setupIterator
+  * autotests/testcalendarobserver.cpp - explicitly unregister observers
+  * Drop obsolete FOUND_VAR arg to find_package_handle_standard_args
+  * Correct the QML documentation module name
+  * clazy detaching-temporary fixes
+  * calendar.cpp - in Calendar::setModified() check if observers are enabled
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

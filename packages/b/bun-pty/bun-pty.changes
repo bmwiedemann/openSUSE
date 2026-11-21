@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Nov 16 20:33:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.1:
+  * Fixed: output written before the first onData listener is no
+    longer lost (#53, #54); the newest 512 KiB of UTF-8, cut only
+    between whole characters, is delivered to the first listener
+    (and any added in the same tick) just after onData() returns
+  * Before, awaiting anything between spawn() and onData() lost the
+    shell's first prompt, or all of a fast command's output;
+    subscribing in the same tick as spawn() sees no change
+  * Repository moved to sursatech/bun-pty; URL and Source0 follow
+    the new location (old links redirect)
+  * No Rust changes: same vendored crates and same eight dlsym
+    entry points, so no consumer rebuild is needed
+
+-------------------------------------------------------------------
+Fri Nov  6 07:40:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.0:
+  * Breaking: Bun 1.4.0 or newer is required (engine-native
+    bun:ffi); the JavaScript API is unchanged
+  * Length argument of bun_pty_read/bun_pty_write is now usize:
+    rebuild any self-built native library pointed to by
+    BUN_PTY_LIB from this version
+  * write() with an empty string no longer throws on Bun 1.4;
+    library load failures now include the dlerror() message
+  * Refresh the vendored dependencies (lazy_static 1.5,
+    crossbeam 0.8.5, shell-words 1.1.1)
+
+-------------------------------------------------------------------
 Mon Oct 26 19:27:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.2:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:56:25 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-HTTP-Headers-ActionPack/Changes
+
+  0.10     2026-10-23
+    - If a header param's value somehow ended up as undef, this would produce
+      an unitialized value warning. (Dave Rolsky)
+   [Security]
+    - Accept-Language headers are checked as substrings, not regular expressions. (CVE-2026-113877)
+      bsc#1287831
+
+-------------------------------------------------------------------
 Wed Aug 26 02:48:51 UTC 2015 - ncutler@suse.com
 
 - add cpanspec.yml so Plack build dependency survives cpanspec -f 

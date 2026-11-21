@@ -1,7 +1,7 @@
 #
 # spec file for package diffutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,7 @@ URL:            https://www.gnu.org/software/diffutils/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=diffutils&download=1#/%{name}.keyring
+Patch1:         CVE-2026-53910.patch
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 
@@ -62,10 +63,16 @@ echo 'int main() { return 77; }' > gnulib-tests/test-free.c
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README THANKS
-%{_bindir}/*
+%doc NEWS README THANKS
+%{_bindir}/cmp
+%{_bindir}/diff
+%{_bindir}/diff3
+%{_bindir}/sdiff
 %{_infodir}/diffutils.info%{?ext_info}
-%{_mandir}/man1/*.1%{?ext_man}
+%{_mandir}/man1/cmp.1%{?ext_man}
+%{_mandir}/man1/diff.1%{?ext_man}
+%{_mandir}/man1/diff3.1%{?ext_man}
+%{_mandir}/man1/sdiff.1%{?ext_man}
 
 %files lang -f %{name}.lang
 %license COPYING

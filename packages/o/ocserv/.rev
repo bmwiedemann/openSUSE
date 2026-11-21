@@ -226,4 +226,12 @@
     <comment></comment>
     <requestid>1338864</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>2f162b63e840e7209062665361326c7b</srcmd5>
+    <version>1.4.1</version>
+    <time>1794932511</time>
+    <user>anag_factory</user>
+    <comment>- Update ocserv.keyring based on the most recent published one. (forwarded request 1398096 from dimstar)</comment>
+    <requestid>1398197</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,43 @@
+diff --git a/src/main/java/org/apache/maven/shared/filtering/BaseFilter.java b/src/main/java/org/apache/maven/shared/filtering/BaseFilter.java
+index 914b3e8..8365f45 100644
+--- a/src/main/java/org/apache/maven/shared/filtering/BaseFilter.java
++++ b/src/main/java/org/apache/maven/shared/filtering/BaseFilter.java
+@@ -214,7 +214,7 @@ class BaseFilter implements DefaultFilterInfo {
+         }
+ 
+         if (!Files.isDirectory(searchRoot)) {
+-            return List.of();
++            return Collections.emptyList();
+         }
+ 
+         // Build a relative glob pattern for the suffix beyond the prefix.
+@@ -266,7 +266,7 @@ class BaseFilter implements DefaultFilterInfo {
+                             try {
+                                 Path literalPath = FilteringUtils.resolveFile(basedir, filterFile);
+                                 if (Files.isRegularFile(literalPath)) {
+-                                    matched = List.of(literalPath);
++                                    matched = Collections.singletonList(literalPath);
+                                 } else {
+                                     getLogger().warn("Filter glob '{}' did not match any files", filterFile);
+                                 }
+diff --git a/src/main/java/org/apache/maven/shared/filtering/DefaultMavenResourcesFiltering.java b/src/main/java/org/apache/maven/shared/filtering/DefaultMavenResourcesFiltering.java
+index b838661..3a14edc 100644
+--- a/src/main/java/org/apache/maven/shared/filtering/DefaultMavenResourcesFiltering.java
++++ b/src/main/java/org/apache/maven/shared/filtering/DefaultMavenResourcesFiltering.java
+@@ -643,7 +643,7 @@ public class DefaultMavenResourcesFiltering implements MavenResourcesFiltering {
+     private String filterFileName(String name, List<FilterWrapper> wrappers) throws MavenFilteringException {
+ 
+         StringBuilder sb = new StringBuilder();
+-        Path path = Path.of(name);
++        Path path = Paths.get(name);
+         Iterator<Path> iterator = path.iterator();
+         while (iterator.hasNext()) {
+             String component = iterator.next().toString();
 diff --git a/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java b/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
-index aa12a5e..21b9aff 100644
+index 91d2278..34f5f4c 100644
 --- a/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
 +++ b/src/main/java/org/apache/maven/shared/filtering/FilteringUtils.java
-@@ -267,7 +267,7 @@ public final class FilteringUtils {
+@@ -268,7 +268,7 @@ public final class FilteringUtils {
              }
          }
  

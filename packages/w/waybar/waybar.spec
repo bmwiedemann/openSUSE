@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -26,44 +26,40 @@ URL:            https://github.com/Alexays/Waybar
 Source0:        https://github.com/Alexays/Waybar/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        waybar.rpmlintrc
 BuildRequires:  cmake
-%if 0%{?sle_version} >= 150400
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++ >= 8
-%endif
 BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  meson >= 0.59.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-# test dependency
-BuildRequires:  pkgconfig(catch2) >= 3.0
-BuildRequires:  sndio-devel >= 1.7.0
-# optional: mpris module
-BuildRequires:  pkgconfig(playerctl)
 # optional: man pages
 BuildRequires:  scdoc
+BuildRequires:  sndio-devel >= 1.7.0
+# test dependency
+BuildRequires:  pkgconfig(catch2) >= 3.0
 # optional: tray module
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(jsoncpp)
+# optional: audio
+BuildRequires:  pkgconfig(libevdev)
+BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(upower-glib)
 # optional: mpd module
 BuildRequires:  pkgconfig(libmpdclient)
 # optional: network
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
-# optional: audio
-BuildRequires:  pkgconfig(libevdev)
-BuildRequires:  pkgconfig(jack)
-BuildRequires:  pkgconfig(libgps)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(mm-glib)
+# optional: mpris module
+BuildRequires:  pkgconfig(playerctl)
 BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(spdlog)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
@@ -72,10 +68,15 @@ BuildRequires:  pkgconfig(xkbregistry)
 # requires branding
 # NOTE: unversioned branding is required to avoid issues like bsc#1205950
 Requires:       %{name}-branding
-# optional: sway integration
-Suggests:       sway
 # Default configurations require Fontawesome 6
 Recommends:     fontawesome-fonts
+# optional: sway integration
+Suggests:       sway
+%if 0%{?sle_version} >= 150400
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++ >= 8
+%endif
 
 %description
 A customizable Wayland bar for Sway and Wlroots based compositors.
@@ -116,6 +117,8 @@ export CXX=g++-13
 %{_bindir}/waybar
 %{_mandir}/man?/%{name}*
 %{_prefix}/lib/systemd/user/waybar.service
+%dir %{_libdir}/waybar
+%{_libdir}/waybar/waybar-gps.so
 
 %files branding-upstream
 %dir %{_sysconfdir}/xdg/waybar

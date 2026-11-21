@@ -18,13 +18,15 @@
 
 
 Name:           kmscon
-Version:        10.0.4+git2
+Version:        10.1.2
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM https://github.com/kmscon/kmscon/pull/623
+Patch1:         0001-Drop-use-of-libdir-for-usr-lib-pam.d.patch
 # PATCH-FIX-DOWNSTREAM
 Patch100:       0001-Reapply-service-Revert-to-agetty-for-showing-issue.patch
 BuildRequires:  docbook-xsl-stylesheets
@@ -75,9 +77,6 @@ need to install this package and its dependencies.
 
 %install
 %meson_install
-
-mkdir -p %{buildroot}%{_pam_vendordir}
-mv %{buildroot}%{_sysconfdir}/pam.d/kmscon %{buildroot}%{_pam_vendordir}/kmscon
 
 # Remove example config from /etc, we use %%doc
 rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example

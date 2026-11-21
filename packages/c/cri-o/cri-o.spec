@@ -16,51 +16,54 @@
 #
 
 
+%define project github.com/cri-o/cri-o
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
-%define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.24.3
+Version:        1.36.7
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
-License:        Apache-2.0
-Url:            https://github.com/cri-o/cri-o
-ExcludeArch:    i586
+# crio links MPL-2.0 code (hashicorp errwrap and go-multierror, parts
+# of cyphar filepath-securejoin), hence the ANDed tag below.
+License:        Apache-2.0 AND MPL-2.0
+URL:            https://github.com/cri-o/cri-o
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        crio.service
 Source3:        sysconfig.crio
 Source4:        crio.conf
-Source5:        cri-o-rpmlintrc
-Source6:        kubelet.env
+Source5:        kubelet.env
 BuildRequires:  device-mapper-devel
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  glib2-devel-static
 BuildRequires:  glibc-devel-static
+BuildRequires:  go-md2man
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  golang-packaging
 BuildRequires:  libapparmor-devel
 BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) >= 1.18
+BuildRequires:  make
 BuildRequires:  sed
-Requires:       patterns-base-apparmor
-Requires:       conntrack-tools
 Requires:       cni
 Requires:       cni-plugins
+Requires:       conmon
+Requires:       conntrack-tools
 Requires:       iproute2
 Requires:       iptables
 Requires:       libcontainers-common >= 0.0.1
+Requires:       patterns-base-apparmor
 Requires:       runc >= 1.0.2
-Requires:       conmon
 Suggests:       katacontainers
 # Provide generic cri-runtime dependency (needed by kubernetes)
 Provides:       cri-runtime
+ExcludeArch:    i586
 # disable stripping of binaries
 %{go_nostrip}
 
@@ -72,11 +75,12 @@ the scope of the CRI.
 
 %package kubeadm-criconfig
 Summary:        CRI-O container runtime configuration for kubeadm
+License:        Apache-2.0 AND MPL-2.0
 Requires:       kubernetes-kubeadm-provider
 Requires(post): %fillup_prereq
 Supplements:    cri-o
-Provides:       kubernetes-kubeadm-criconfig
 Conflicts:      docker-kubic-kubeadm-criconfig
+Provides:       kubernetes-kubeadm-criconfig
 
 %description kubeadm-criconfig
 This package provides the CRI-O container runtime configuration for kubeadm
@@ -89,7 +93,7 @@ This package provides the CRI-O container runtime configuration for kubeadm
 %if 0%{?sle_version} >= 150000 && !0%{?is_opensuse}
 sed -i "s|.*apparmor_profile =.*|apparmor_profile = \"crio-default-%{version}\"|" %{SOURCE4}
 sed -i "s|^cgroup_manager = \"systemd\"$|cgroup_manager = \"cgroupfs\"|g" %{SOURCE4}
-sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE6}
+sed -i "s|--cgroup-driver=systemd|--cgroup-driver=cgroupfs|g" %{SOURCE5}
 %endif
 
 # We can't use symlinks here because go-list gets confused by symlinks, so we
@@ -101,7 +105,7 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 # Build crio
-GO_BUILD="go build -mod vendor" make
+GO_BUILD="go build -mod vendor" GO_MD2MAN=%{_bindir}/go-md2man make
 
 %pre
 %service_add_pre crio.service
@@ -126,20 +130,17 @@ cd $HOME/go/src/%{project}
 
 # Binaries
 install -D -m 0755 bin/crio    %{buildroot}/%{_bindir}/crio
-install -D -m 0755 bin/crio-status    %{buildroot}/%{_bindir}/crio-status
 install -D -m 0755 bin/pinns    %{buildroot}/%{_bindir}/pinns
 install -d %{buildroot}/%{_libexecdir}/crio/bin
 # Completions
 install -D -m 0644 completions/bash/crio %{buildroot}/%{_datadir}/bash-completion/completions/crio
 install -D -m 0644 completions/zsh/_crio %{buildroot}%{_sysconfdir}/zsh_completion.d/_crio
 install -D -m 0644 completions/fish/crio.fish %{buildroot}/%{_datadir}/fish/completions/crio.fish
-install -D -m 0644 completions/bash/crio-status %{buildroot}/%{_datadir}/bash-completion/completions/crio-status
-install -D -m 0644 completions/zsh/_crio-status %{buildroot}%{_sysconfdir}/zsh_completion.d/_crio-status
-install -D -m 0644 completions/fish/crio-status.fish %{buildroot}/%{_datadir}/fish/completions/crio-status.fish
 # Manpages
 install -d %{buildroot}/%{_mandir}/man5
 install -d %{buildroot}/%{_mandir}/man8
 install -m 0644 docs/crio.conf.5 %{buildroot}/%{_mandir}/man5
+install -m 0644 docs/crio.conf.d.5 %{buildroot}/%{_mandir}/man5
 install -m 0644 docs/crio.8      %{buildroot}/%{_mandir}/man8
 # Configs
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{SOURCE4}
@@ -149,7 +150,7 @@ install -D -m 0644 %{SOURCE3}       %{buildroot}%{_fillupdir}/sysconfig.crio
 # Systemd
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/crio.service
 # place kubelet.env in fillupdir
-install -D -m 0644 %{SOURCE6} %{buildroot}%{_fillupdir}/sysconfig.kubelet
+install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.kubelet
 # Symlinks to rc files
 install -d -m 0755 %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rccrio
@@ -159,23 +160,20 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %files
 # Binaries
 %{_bindir}/crio
-%{_bindir}/crio-status
 %{_bindir}/pinns
 %dir %{_libexecdir}/crio
 %dir %{_libexecdir}/crio/bin
 # Completions
 %{_datadir}/bash-completion/completions/crio
-%{_datadir}/bash-completion/completions/crio-status
 %{_sysconfdir}/zsh_completion.d
 %{_sysconfdir}/zsh_completion.d/_crio
-%{_sysconfdir}/zsh_completion.d/_crio-status
 %{_datadir}/fish
 %{_datadir}/fish/completions
 %{_datadir}/fish/completions/crio.fish
-%{_datadir}/fish/completions/crio-status.fish
 # Manpages
-%{_mandir}/man5/crio.conf.5*
-%{_mandir}/man8/crio.8*
+%{_mandir}/man5/crio.conf.5%{?ext_man}
+%{_mandir}/man5/crio.conf.d.5%{?ext_man}
+%{_mandir}/man8/crio.8%{?ext_man}
 # License
 %license LICENSE
 # Configs
@@ -191,7 +189,6 @@ ln -sf service %{buildroot}%{_sbindir}/rccrio
 %{_sbindir}/rccrio
 
 %files kubeadm-criconfig
-%defattr(-,root,root)
 %{_fillupdir}/sysconfig.kubelet
 
 %changelog

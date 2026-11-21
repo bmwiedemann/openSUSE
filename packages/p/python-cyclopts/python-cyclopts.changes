@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Nov 16 20:32:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.5.2 (PyPI releases 2026-11-16, jumps over 5.5.1):
+  * Parse negative numbers as positionals when the command has
+    **kwargs; explicitly named options still win
+  * Reload a config file that goes missing and is restored
+    unchanged instead of returning the empty mapping
+  * Accept negative durations such as -1h30m as values for
+    timedelta parameters, positionally and after an option
+
+-------------------------------------------------------------------
+Sat Nov 14 07:46:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.5.0 (PyPI release 2026-11-14):
+  * Env: use underscores for hyphenated command names in
+    environment variable names, so hyphenated commands resolve
+    their variables correctly
+
+-------------------------------------------------------------------
+Thu Nov 12 19:36:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.4.2 (PyPI release 2026-11-12):
+  * LimitedChoice errors dedupe listed names and include
+    aliases via Argument.positives
+  * Scalar conversion overflow reported as CoercionError,
+    keeping token and target type on the normal error path
+
+-------------------------------------------------------------------
+Wed Nov 11 19:50:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.4.1 (PyPI release 2026-11-11):
+  * LimitedChoice count error states the requirement
+    and lists the group options instead of printing
+    only the supplied arguments
+
+-------------------------------------------------------------------
+Mon Nov  9 08:52:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.4.0 (PyPI release 2026-11-08):
+  * New App(argfile_prefix="@"): read CLI args from files,
+    one per line; files may reference other files
+  * Meta apps: unknown combined short flag reported whole;
+    meta option in combined token takes all values;
+    combined short flags with = no longer misbind
+  * App run as python -m named after module in help/usage
+  * Parse pydantic URL and other custom-schema types as
+    a single value instead of recursing
+  * CoercionError from custom converters printable
+    instead of AssertionError
+  * Shell completion skips Parameter(parse=False) args
+
+-------------------------------------------------------------------
+Tue Nov  3 18:29:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.3.3 (PyPI release 2026-11-02):
+  * Fix NewType nested in containers and unions not
+    converting to its underlying type, including enum
+    choices display
+  * Complete default-command positionals alongside
+    subcommands in bash/zsh/fish
+
+-------------------------------------------------------------------
 Tue Oct 27 18:36:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.3.2 (PyPI release 2026-10-27):

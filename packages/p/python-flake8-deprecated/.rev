@@ -54,4 +54,15 @@
   * Bump pypy minimum version to 3.10.</comment>
     <requestid>1339145</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3f6aeb9fab8880d20af545ea77c11da5</srcmd5>
+    <version>2.4.0</version>
+    <time>1794236693</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * update supported python versions (3.11 to 3.15) @gforcada
+  * improve CI speed by using `uvx` and `prek` @gforcada
+  * tighten GHA with `zizmor` @gforcada</comment>
+    <requestid>1396209</requestid>
+  </revision>
 </revisionlist>

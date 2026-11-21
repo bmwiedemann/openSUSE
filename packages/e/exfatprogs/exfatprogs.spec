@@ -17,7 +17,7 @@
 
 
 Name:           exfatprogs
-Version:        1.4.3
+Version:        1.4.5
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later

@@ -50,4 +50,37 @@ Bugfixes:
   * Possible crash during name resolution (via ngx v0.5.1).</comment>
     <requestid>1350420</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>98b5b5d11494615e901e2f0304c574a9</srcmd5>
+    <version>0.4.2</version>
+    <time>1794318252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.2
+Bugfixes:
+  * State files are now created with restricted permissions.
+    Previously, only the state directory was protected.
+  * ACME server responses with escaped URLs failed to parse.
+  * Some non-compliant ACME server responses with missing fields
+    failed to parse.
+  * Orders for pre-authorized identifiers that omit the
+    authorizations field failed to parse.
+  * The actual ACME server error was not logged correctly
+    if the response had no Replay-Nonce header.
+  * Order finalization errors were not logged correctly.
+- Add keyring and use source_validator in default mode
+- Update to version 0.4.2
+Bugfixes:
+  * State files are now created with restricted permissions.
+    Previously, only the state directory was protected.
+  * ACME server responses with escaped URLs failed to parse.
+  * Some non-compliant ACME server responses with missing fields
+    failed to parse.
+  * Orders for pre-authorized identifiers that omit the
+    authorizations field failed to parse.
+  * The actual ACME server error was not logged correctly
+    if the response had no Replay-Nonce header.
+  * Order finalization errors were not logged correctly.
+- Add keyring and use source_validator in localonly mode</comment>
+    <requestid>1396478</requestid>
+  </revision>
 </revisionlist>

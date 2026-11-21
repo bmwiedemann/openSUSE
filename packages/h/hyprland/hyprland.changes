@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:21:12 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.57.2:
+  + Another round of patches backported from main on top of 0.57.1.
+    This fixes various regressions, as well as some crashes under
+    heavy load from RT scheduling.
+  + Fixes Backported:
+    - config/lua: fix accessing an expired window ref from a lua
+      object
+    - core/fullscreen: fix client_requested_fs_uses_layout_handler
+      being handled incorrectly for some programs
+    - helpers/cm: fix small typo in calculating brightness saturation
+    - keybinds: fix modifier resolution when remapped
+    - overlay: fix double counting when present early exited.
+    - protocols/subcompositor: fix nested ancestor traversal
+    - render: fix invalidation artifacts with two floating overlapped
+      windows
+    - scrolling/fullscreen: fix only internal un-FS not restoring
+      prev col width
+    - seat: fix grab check
+    - algo/scroll: remove redundant cleanup of FS lists when
+      compositor shutdown requested
+    - config/values: adjust limits again
+    - core/layers: allow bottom layers and background layers under fs
+    - core: enable prctl(2) only on Linux
+    - desktop/layerSurface: use refocusPointer instead of simulate on
+      map
+    - init: stop acquiring realtime scheduling
+    - layout/floating: preserve parent-relative window placement
+    - protocols/activation: send urgent-only tokens if serial is
+      missing
+    - protocols/subcompositor: handle expired ancestry during
+      teardown
+    - start: handle and report signal-terminated children
+    - window: allow unpinning window onto special workspace
+
+-------------------------------------------------------------------
+Tue Nov  3 13:13:39 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.57.1:
+  + As usual, a small update with a few fixes backported from main
+    onto 0.57.0.
+  + This fixes some keybind issues, black screens on nvidia, and
+    other minor regressions.
+  + Fixes backported:
+    - config/lua: fix validator for custom accel profiles
+    - keybinds: fix _consuming exceptions for chord resolving
+    - protocols/session-lock: fix removed output causing a protocol
+      error
+    - state/workspace: fix underflow in r parsing resulting in a bad
+      return
+    - config/values: adjust limits for tablet values
+    - config: restore opt-in KMS dmabuf filtering
+    - decoration/groupbar: round boxes in device space to match
+      damage
+    - keybinds: do not shadow mouse event inputs
+    - monitor: set max_bpc based on configured bitdepth
+    - protocols/dmabuf: refresh format feedback after config updates
+    - protocols/dmabuf: use replacement table for feedback updates
+    - renderer: draw small surfaces at their logical size
+    - window: preserve fullscreen on client maximize requests
+
+-------------------------------------------------------------------
 Wed Oct 28 15:51:25 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.57.0:

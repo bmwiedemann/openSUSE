@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI-Nested
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,49 +12,51 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-URI-Nested
-Version:        0.10
-Release:        0
 %define cpan_name URI-Nested
+Name:           perl-URI-Nested
+Version:        0.100.0
+Release:        0
+# 0.10 -> normalize -> 0.100.0
+%define cpan_version 0.10
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Nested URIs
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/URI-Nested/
-Source0:        http://www.cpan.org/authors/id/D/DW/DWHEELER/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/D/DW/DWHEELER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Module::Build) >= 0.300000
+BuildRequires:  perl(Module::Build) >= 0.300
 BuildRequires:  perl(Test::More) >= 0.88
-BuildRequires:  perl(URI) >= 1.40
-Requires:       perl(URI) >= 1.40
+BuildRequires:  perl(URI) >= 1.400
+Requires:       perl(URI) >= 1.400
+Provides:       perl(URI::Nested) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 Nested URIs
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-%{__perl} Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README.md
 
 %changelog

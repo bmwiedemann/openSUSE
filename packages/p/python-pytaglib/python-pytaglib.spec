@@ -58,7 +58,8 @@ export PYTAGLIB_CYTHONIZE=1
 
 %check
 export LANG=en_US.UTF-8
-%pytest_arch
+# TagLib 2.3.2 truncates the decompressed APIC frame to 142 bytes
+%pytest_arch -k 'not test_read_mp3_picture_compressed'
 
 %post
 %python_install_alternative pyprinttags

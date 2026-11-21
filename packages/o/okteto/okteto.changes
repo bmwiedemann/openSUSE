@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Nov 06 08:05:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.25.0:
+  * New Feature
+    - feat(compose): support x-okteto-service-account per service
+      in #5184
+    - feat(compose): fail fast when an x-okteto-service-account
+      doesn't exist in #5188
+    - feat(deploy): deploy dependencies in parallel following
+      depends_on in #5200
+  * Bug Fix
+    - fix: okteto destroy command removes manifest information from
+      config map ev... in #5171
+    - fix: keep protocol when expanding compose port ranges in
+      #5178
+    - fix: report failed init containers during okteto up in #5181
+    - fix(build): request a new BuildKit pod when the session's pod
+      is gone in #5189
+    - fix: wait until the namespace is fully deleted in okteto
+      namespace delete in #5187
+  * Dependencies
+    - build(deps): bump body-parser from 1.20.6 to 1.20.9 in
+      /samples/node.js (#5222)
+    - build(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5 to
+      4.1.6 (#5227)
+    - build(deps): bump proxy-addr from 2.0.7 to 2.0.8 in
+      /samples/node.js (#5185)
+    - build(deps): bump renovatebot/github-action from 46.3.4 to
+      46.3.6 (#5182)
+    - build(deps): bump renovatebot/github-action from 46.3.6 to
+      46.3.7 (#5196)
+    - build(deps): bump renovatebot/github-action from 46.3.7 to
+      46.3.8 (#5203)
+    - build(deps): bump renovatebot/github-action from 46.3.8 to
+      46.3.9 (#5215)
+    - build(deps): bump werkzeug from 3.1.6 to 3.1.9 in
+      /samples/python (#5186)
+    - chore(deps): Update golang-stdlib-extensions (#5172)
+    - chore(deps): Update kubernetes to v0.37.0 (#5166)
+    - chore(deps): Update kubernetes to v0.37.1 (#5218)
+    - chore(deps): Update module al.essio.dev/pkg/shellescape to
+      v1.6.1 (#5180)
+    - chore(deps): Update module github.com/docker/cli to
+      v29.8.0+incompatible (#5183)
+    - chore(deps): Update module
+      github.com/docker/docker-credential-helpers to v0.9.9 (#5170)
+    - chore(deps): Update module github.com/hashicorp/go-getter to
+      v1.8.9 (#5197)
+    - chore(deps): Update module github.com/posthog/posthog-go to
+      v1.27.0 (#5216)
+    - chore(deps): Update module
+      github.com/santhosh-tekuri/jsonschema/v6 to v6.0.3 (#5204)
+    - chore(deps): Update module github.com/sirupsen/logrus to
+      v1.10.2 (#5175)
+    - chore(deps): Update module golang.org/x/crypto to v0.56.0
+      (#5191)
+    - chore(deps): Update module golang.org/x/crypto to v0.57.0
+      (#5199)
+    - chore(deps): Update module golang.org/x/sync to v0.24.0
+      (#5226)
+
+-------------------------------------------------------------------
 Fri Oct 23 16:03:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.24.1:

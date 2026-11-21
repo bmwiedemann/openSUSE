@@ -31,7 +31,7 @@
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 1
 Name:           AppStream
-Version:        1.2.1
+Version:        1.2.3
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -56,9 +56,9 @@ BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.62
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.56
 %if %{with libblake3}
 BuildRequires:  pkgconfig(libblake3)
 %endif
@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
 BuildRequires:  pkgconfig(libcurl) >= 7.62
 BuildRequires:  pkgconfig(libfyaml) >= 0.8
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(vips) >= 8.14

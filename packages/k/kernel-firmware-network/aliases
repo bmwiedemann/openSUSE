@@ -113,6 +113,8 @@ qlcnic: pci:v00001077d00008C30sv*sd*bc02sc00i00*
 rt61pci: pci:v00001814d00000301sv*sd*bc*sc*i*
 rt61pci: pci:v00001814d00000302sv*sd*bc*sc*i*
 rt61pci: pci:v00001814d00000401sv*sd*bc*sc*i*
+slicoss: pci:v0000139Ad00000005sv*sd*bc*sc*i*
+slicoss: pci:v0000139Ad00000007sv*sd*bc*sc*i*
 starfire: pci:v00009004d00006915sv*sd*bc*sc*i*
 tehuti: pci:v00001FC9d00003009sv*sd*bc*sc*i*
 tehuti: pci:v00001FC9d00003010sv*sd*bc*sc*i*

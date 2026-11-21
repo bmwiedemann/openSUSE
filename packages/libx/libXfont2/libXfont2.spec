@@ -34,6 +34,8 @@ Patch1269019:   bsc1269019_CVE-2026-56002_0002-pcfread-validate-bitmap-sizes-and
 Patch1269020:   bsc1269020_CVE-2026-56003_0003-bitscale-add-bounds-check-to-computeProps-for-proper.patch
 Patch1272660:   bsc1272660_CVE-2026-59679_0001-fserve-validate-num_chars-against-encoding-array-siz.patch
 Patch1272661:   bsc1272661_CVE-2026-44950-0002-fserve-bounds-check-cumulative-glyph-data-writes-in-.patch
+Patch1289304:   bsc1289304_CVE-2026-109909_bufio-pcf-reject-negative-skip-count-in-BufFileRawSk.patch
+Patch1289838:   bsc1289838_CVE-2026-109920_FreeType-always-initialise-strike_index.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig

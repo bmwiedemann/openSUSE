@@ -117,4 +117,12 @@ rpmlint 0 errors / 0 warnings / 0 badness (unchanged from the 3.7
 baseline).</comment>
     <requestid>1373840</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>58711a53588b3acc70e1f08d08c47a9a</srcmd5>
+    <version>4.7</version>
+    <time>1793817967</time>
+    <user>anag_factory</user>
+    <comment>Update acarsdec to 4.7</comment>
+    <requestid>1394841</requestid>
+  </revision>
 </revisionlist>

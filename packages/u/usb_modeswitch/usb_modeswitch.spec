@@ -17,22 +17,20 @@
 
 
 %define source_name usb-modeswitch
-%define date	20191128
+%define date	20261111
 %define _udevdir %(pkg-config --variable=udevdir udev)
 Name:           usb_modeswitch
-Version:        2.6.1
+Version:        2.6.3
 Release:        0
 Summary:        A mode switching tool for controlling multiple-device USB gear
 License:        GPL-2.0-or-later
-Group:          Hardware/Mobile
 URL:            https://www.draisberghof.de/usb_modeswitch/
 Source0:        https://www.draisberghof.de/usb_modeswitch/%{source_name}-%{version}.tar.bz2
 Source1:        https://www.draisberghof.de/usb_modeswitch/%{source_name}-data-%{date}.tar.bz2
 Source2:        https://www.draisberghof.de/usb_modeswitch/device_reference.txt
 Source3:        https://www.draisberghof.de/usb_modeswitch/parameter_reference.txt
 Patch1:         usb_modeswitch-fix_fsf_address.patch
-Patch2:	harden_usb_modeswitch@.service.patch
-Patch3:         usb_modeswitch-c23.patch
+Patch2:         harden_usb_modeswitch@.service.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libusb-1.0)
@@ -51,7 +49,6 @@ devices.
 
 %package data
 Summary:        Data Files for USB Modeswitch
-Group:          Hardware/Mobile
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -62,13 +59,12 @@ Data files for usb_modeswitch package.
 %setup -q -a1 -n %{source_name}-%{version}
 %patch -P 1
 %patch -P 2 -p1
-%patch -P 3 -p1
 
 cp %{SOURCE2} .
 cp %{SOURCE3} .
 
 %build
-CFLAGS="%{optflags}" make
+CFLAGS="%{optflags}" %make_build
 
 %install
 # The install target recreates usb_modeswitch_dispatcher, which is racy in respect to its

@@ -1,7 +1,7 @@
 #
 # spec file for package sipgrep
 #
-# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,16 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 
 %bcond_without redis
@@ -21,7 +31,7 @@
 %bcond_without compression
 %bcond_without ssl
 Name:           sipgrep
-Version:        2.2.4
+Version:        2.2.5
 Release:        0
 Summary:        Tool for displaying/troubleshooting SIP signaling on IP networks
 License:        GPL-3.0-or-later

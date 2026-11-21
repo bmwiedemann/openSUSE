@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Nov 16 17:59:08 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 20261116:
+  * Allow rshim load kernel modules
+  * Allow getty read nm-dispatcher console plugin's pid files
+  * Allow virtnwfilterd_t map packet_socket
+  * Allow iiosensorproxy create and use qipcrtr_socket
+  * Allow rndc to read some /proc/net/sys variables
+  * Label /dev/paes with crypt_device_t
+  * Allow sshd-session bind and connect to all tcp ports
+  * Allow tftpd the process setcap permission
+  * Allow pdns get attributes of filesystems with extended attributes
+  * Allow systemd hostnamed to access psi (bsc#1288617)
+  * file_contexts.subs_dist: map systemd-sysext/confext staging dirs onto /
+  * devices: label VFIO character device nodes
+  * Label HOME_DIR/.config/mozilla with mozilla_home_t
+  * Allow importd to read unlabeled (bsc#1286901)
+  * Allow systemd-importd to rw global pressure information (bsc#1286901)
+  * Allow importd to manage machined symlinks as well (bsc#1286901)
+  * Add 2 more generators for systemd
+  * Allow dbus-broker read systemd-nsresourced runtime socket file
+  * Allow systemd_pstore_t to create directories on systemd_pstore_var_lib_t
+  * Allow sdbootutil_t to manage /var/lib/sdbootutil (bsc#1281087)
+
+-------------------------------------------------------------------
+Mon Nov 02 07:10:54 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20261030:
+  * Allow rebootmgr to initialize reboot and soft-reboot (bsc#1287746)
+  * Allow httpd map its private runtime files
+  * Allow qatlib get attributes of a hugetlbfs filesystem
+  * Allow rhsmcertd list insights-client config dirs
+  * Allow svirt_tcg_t to use the passt user-mode networking backend
+  * Allow sshd_session_t to forward connections to a container runtime socket
+  * Allow systemd-oomd the kill capability in the user namespace
+  * Allow systemd-oomd signull all domains
+  * Revert "Allow systemd-oomd signull systemd-resolved"
+  * Update the nvme block devices regex in file context specification
+  * Allow keepalived getpgid of its unconfined scripts
+  * Allow init mounton system dbus pid socket files
+  * Allow systemd-oomd signull systemd-resolved
+  * Allow login_userdomain watch localization files for changes
+  * Allow login_userdomain mounton gnome generic data home dirs
+  * Revert Allow sdbootutil_t write access to /var/lib/sdbootutil (bsc#1281087)
+  * Label /run/gnome-remote-desktop with gnome_remote_desktop_var_run_t
+  * Allow systemd_nsresourced_t setuid/setgid inside a userns (bsc#1285095)
+  * Allow access to systemd-nsresourced runtime socket (bsc#1284651)
+  * Allow smbd watch public directories used for file transfer services
+  * Allow sshd-session read systemd-nsresourced runtime socket file
+  * Allow chrome_sandbox_t map its private tmpfs files
+  * Allow sysadm_t to create iSCSI netlink sockets
+  * Allow ktlshd connect to pcscd over a unix stream socket
+  * Add iptables_dontaudit_read_var_run_dirs() interface
+  * Allow polkit-auth read systemd-nsresourced runtime socket file
+  * Allow systemd-nsresourced the sys_admin capability
+  * Label /var/cache/boomaga with cupsd_rw_etc_t
+  * Allow dirsrv to read filesystem sysctls
+  * Allow cupsd create bluetooth sockets
+  * Allow gnome-remote-desktop handle kerberos replay cache files
+  * Allow multiple domains read systemd-nsresourced runtime socket file
+  * Update mount_nnp_domtrans() with nosuid_transition
+  * Label /run/systemd/coredump socket with systemd_coredump_var_run_t
+- Syncing with upstream rawhide selinux-policy up to:
+  * 8a22f4474f77c7cb32cd6d18e3da75eaef8696de
+
+-------------------------------------------------------------------
 Mon Oct 19 15:00:53 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20261019:

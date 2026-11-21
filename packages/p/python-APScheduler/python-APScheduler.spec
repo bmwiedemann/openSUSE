@@ -24,10 +24,11 @@ Summary:        In-process task scheduler with Cron-like capabilities
 License:        MIT
 URL:            https://github.com/agronholm/apscheduler
 Source:         https://files.pythonhosted.org/packages/source/a/apscheduler/apscheduler-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#agronholm/apscheduler@00c880b
+Patch0:         support-pytz-2026.4.patch
 BuildRequires:  %{python_module SQLAlchemy >= 1.4}
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module anyio >= 4.0}
-BuildRequires:  %{python_module attrs >= 21.3}
 BuildRequires:  %{python_module gevent}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -41,9 +42,6 @@ BuildRequires:  %{python_module tzlocal >= 3.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-
-Requires:       python-attrs >= 21.3
-Requires:       python-pytz
 Requires:       python-tzlocal >= 3.0
 Recommends:     python-SQLAlchemy >= 1.4
 Recommends:     python-Twisted
@@ -77,7 +75,7 @@ APscheduler provides multiple job stores.
   * MongoDB
 
 %prep
-%setup -q -n apscheduler-%{version}
+%autosetup -p1 -n apscheduler-%{version}
 sed -i 's/--cov//' pyproject.toml || true
 
 %build
@@ -88,7 +86,17 @@ sed -i 's/--cov//' pyproject.toml || true
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -p asyncio -k "not (redis or mongodb or rethinkdb or zookeeper or test_broken_pool)"
+donttest="redis or mongodb or rethinkdb or zookeeper or test_broken_pool"
+# Fails due to time_t overflow and slow OBS workers
+if [ "$(getconf LONG_BIT)" = "32" ]; then
+    donttest="$donttest or ((test_max_instances or test_submit_job) and processpool)"
+    donttest="$donttest or test_add_callable_instance_method_job"
+    donttest="$donttest or test_add_callable_class_method_job"
+    donttest="$donttest or test_add_textual_instance_method_job"
+    donttest="$donttest or test_add_textual_class_method_job"
+    donttest="$donttest or test_lookup_job or test_print_jobs"
+fi
+%pytest -p asyncio -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt

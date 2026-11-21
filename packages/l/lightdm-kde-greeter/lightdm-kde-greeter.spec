@@ -19,7 +19,7 @@
 %define _use_internal_dependency_generator 0
 %define __find_requires sh %{SOURCE91}
 Name:           lightdm-kde-greeter
-Version:        6.0.5
+Version:        6.1.8
 Release:        0
 Summary:        LightDM KDE Greeter
 License:        GPL-3.0-or-later
@@ -47,12 +47,15 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6QuickControls2)
+BuildRequires:  cmake(Qt6QuickTest)
 BuildRequires:  cmake(Qt6QuickWidgets)
 BuildRequires:  cmake(Qt6ShaderTools)
 BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6UiTools)
+BuildRequires:  cmake(Qt6WaylandClientPrivate)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(libei-1.0)
 BuildRequires:  pkgconfig(liblightdm-gobject-1)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
@@ -111,20 +114,20 @@ ln -s %{_kf6_sysconfdir}/alternatives/lightdm-default-greeter.desktop \
 %{_kf6_sbindir}/update-alternatives --install \
     %{_kf6_sharedir}/xgreeters/lightdm-default-greeter.desktop \
     lightdm-default-greeter.desktop \
-    %{_kf6_sharedir}/xgreeters/%{name}.desktop \
+    %{_kf6_sharedir}/xgreeters/%{name}-x11.desktop \
     20
 
 %postun
 if [ "$1" = 0 ]; then
     %{_kf6_sbindir}/update-alternatives --remove lightdm-default-greeter.desktop \
-        %{_kf6_sharedir}/xgreeters/%{name}.desktop
+        %{_kf6_sharedir}/xgreeters/%{name}-x11.desktop
 fi
 
 %files
 %doc README.md
 %{_kf6_sharedir}/%{name}
-%{_kf6_bindir}/%{name}-rootimage
-%{_kf6_bindir}/%{name}-wifikeeper
+%{_libexecdir}/%{name}-rootimage
+%{_libexecdir}/%{name}-wifikeeper
 %{_userunitdir}/%{name}-wifikeeper.service
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_lightdm.so
 %{_kf6_libexecdir}/kauth/kcmlightdmhelper
@@ -133,9 +136,12 @@ fi
 %{_kf6_dbuspolicydir}/org.kde.kcontrol.kcmlightdm.conf
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kcontrol.kcmlightdm.service
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kcontrol.kcmlightdm.policy
+%dir %{_kf6_sharedir}/lightdm
+%dir %{_kf6_sharedir}/lightdm/greeters
+%{_kf6_sharedir}/lightdm/greeters/%{name}.desktop
 %dir %{_kf6_sharedir}/xgreeters
 %{_kf6_sharedir}/xgreeters/lightdm-default-greeter.desktop
-%{_kf6_sharedir}/xgreeters/%{name}.desktop
+%{_kf6_sharedir}/xgreeters/%{name}-x11.desktop
 %ghost %{_kf6_sysconfdir}/alternatives/lightdm-default-greeter.desktop
 %license COPYING.GPL3 LICENSES/*.txt
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 20 09:51:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.860.0 (3.86)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.86      2026-09-19
+      - Expand an entity whose value is the string being decoded to the
+        value that string had when the call began (GH#69) (Paul Johnson)
+
+-------------------------------------------------------------------
 Thu May 21 10:02:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.850.0 (3.85)

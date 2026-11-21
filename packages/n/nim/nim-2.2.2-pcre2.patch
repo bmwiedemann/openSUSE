@@ -1,12 +1,6 @@
-From 8c2ec2a7b010ef1a43b967205324ac83d11815d1 Mon Sep 17 00:00:00 2001
-From: ringabout <43030857+ringabout@users.noreply.github.com>
-Date: Mon, 4 Nov 2024 22:32:12 +0800
-Subject: fixes #23668; migrates from pcre to pcre2 (rebased for nim 2.4.0)
-
----
-diff -ruN o/lib/impure/nre.nim p/lib/impure/nre.nim
---- nim-2.4.0.orig/lib/impure/nre.nim	2026-10-29 10:32:07.759422238 +0100
-+++ nim-2.4.0.patched/lib/impure/nre.nim	2026-10-29 10:32:07.816181019 +0100
+diff -Naur nim-2.4.2.orig/lib/impure/nre.nim nim-2.4.2.patched/lib/impure/nre.nim
+--- nim-2.4.2.orig/lib/impure/nre.nim	2026-11-14 18:26:17.102652067 +0100
++++ nim-2.4.2.patched/lib/impure/nre.nim	2026-11-14 18:26:17.104652142 +0100
 @@ -1,6 +1,6 @@
  #
  #            Nim's Runtime Library
@@ -355,9 +349,9 @@ diff -ruN o/lib/impure/nre.nim p/lib/impure/nre.nim
          break
  
        if matchesCrLf and offset < (str.len - 1) and
-diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
---- nim-2.4.0.orig/lib/impure/re.nim	2026-10-29 10:32:07.759354699 +0100
-+++ nim-2.4.0.patched/lib/impure/re.nim	2026-10-29 10:32:07.816181019 +0100
+diff -Naur nim-2.4.2.orig/lib/impure/re.nim nim-2.4.2.patched/lib/impure/re.nim
+--- nim-2.4.2.orig/lib/impure/re.nim	2026-11-14 18:26:17.105652179 +0100
++++ nim-2.4.2.patched/lib/impure/re.nim	2026-11-14 18:26:17.107652253 +0100
 @@ -1,7 +1,7 @@
  #
  #
@@ -403,7 +397,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc raiseInvalidRegex(msg: string) {.noinline, noreturn.} =
    var e: ref RegexError
-@@ -86,21 +83,19 @@
+@@ -86,21 +83,21 @@
    e.msg = msg
    raise e
  
@@ -418,7 +412,9 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
 +  result = pcre2.compile(pattern.cstring, flags, options, addr(errorCode), addr(offset), nil)
    if result == nil:
 -    raiseInvalidRegex($msg & "\n" & pattern & "\n" & spaces(offset) & "^\n")
-+    raiseInvalidRegex($errorCode & "\n" & pattern & "\n" & spaces(offset) & "^\n")
++    var msg = newString(256)
++    discard pcre2.get_error_message(errorCode, msg.cstring, csize_t(msg.len))
++    raiseInvalidRegex($msg.cstring & "\n" & pattern & "\n" & spaces(offset) & "^\n")
  
  proc finalizeRegEx(x: Regex) =
    # XXX This is a hack, but PCRE does not export its "free" function properly.
@@ -431,7 +427,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc re*(s: string, flags = {reStudy}): Regex =
    ## Constructor of regular expressions.
-@@ -116,16 +111,18 @@
+@@ -116,16 +113,22 @@
      result = Regex()
    else:
      new(result, finalizeRegEx)
@@ -451,6 +447,10 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
 +
 +  if reIgnoreCase in flags:
 +    options = options or CASELESS
++  if reMultiLine in flags:
++    options = options or MULTILINE
++  if reDotAll in flags:
++    options = options or DOTALL
 +  result.h = rawCompile(s, cast[csize_t](ZERO_TERMINATED), options)
 +  if reStudy in flags: # TODO: add reJit
 +    var hasJit: cint = cint(0)
@@ -460,8 +460,8 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc rex*(s: string, flags = {reStudy, reExtended}): Regex =
    ## Constructor for extended regular expressions.
-@@ -143,20 +140,23 @@
-   result.setLen(sz)
+@@ -143,20 +146,23 @@
+   endStore(result)
  
  proc matchOrFind(buf: cstring, pattern: Regex, matches: var openArray[string],
 -                 start, bufSize, flags: cint): cint =
@@ -491,7 +491,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  const MaxReBufSize* = high(cint)
    ## Maximum PCRE (API 1) buffer start/size equal to `high(cint)`, which even
-@@ -173,15 +173,18 @@
+@@ -173,15 +179,18 @@
    ## Note: The memory for `matches` needs to be allocated before this function is
    ## called, otherwise it will just remain empty.
    var
@@ -515,7 +515,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
      else: matches[i-1] = ""
    return (rawMatches[0].int, rawMatches[1].int - 1)
  
-@@ -213,15 +216,18 @@
+@@ -213,15 +222,18 @@
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
    var
@@ -538,7 +538,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
      else: matches[i-1] = (-1,0)
    return (rawMatches[0].int, rawMatches[1].int - 1)
  
-@@ -244,16 +250,18 @@
+@@ -244,16 +256,18 @@
        min(start, MaxReBufSize), min(s.len, MaxReBufSize))
  
  proc findBoundsImpl(buf: cstring, pattern: Regex,
@@ -564,7 +564,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc findBounds*(buf: cstring, pattern: Regex,
                   start = 0, bufSize: int): tuple[first, last: int] =
-@@ -261,10 +269,13 @@
+@@ -261,10 +275,13 @@
    ## where `buf` has length `bufSize` (not necessarily `'\0'` terminated).
    ## If it does not match, `(-1,0)` is returned.
    var
@@ -582,7 +582,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
    if res < 0'i32: return (int(res), 0)
    return (int(rawMatches[0]), int(rawMatches[1]-1))
  
-@@ -279,14 +290,18 @@
+@@ -279,14 +296,18 @@
    result = findBounds(cstring(s), pattern,
        min(start, MaxReBufSize), min(s.len, MaxReBufSize))
  
@@ -606,7 +606,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc matchLen*(s: string, pattern: Regex, matches: var openArray[string],
                start = 0): int {.inline.} =
-@@ -295,7 +310,7 @@
+@@ -295,7 +316,7 @@
    ## of zero can happen.
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
@@ -615,7 +615,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc matchLen*(buf: cstring, pattern: Regex, matches: var openArray[string],
                start = 0, bufSize: int): int {.inline.} =
-@@ -304,7 +319,7 @@
+@@ -304,7 +325,7 @@
    ## of zero can happen.
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
@@ -624,7 +624,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc matchLen*(s: string, pattern: Regex, start = 0): int {.inline.} =
    ## the same as `match`, but it returns the length of the match,
-@@ -315,13 +330,13 @@
+@@ -315,13 +336,13 @@
      doAssert matchLen("abcdefg", re"cde", 2) == 3
      doAssert matchLen("abcdefg", re"abcde") == 5
      doAssert matchLen("abcdefg", re"cde") == -1
@@ -640,7 +640,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc match*(s: string, pattern: Regex, start = 0): bool {.inline.} =
    ## returns `true` if `s[start..]` matches the `pattern`.
-@@ -362,17 +377,20 @@
+@@ -362,17 +383,20 @@
    ##
    ## .. note:: The memory for `matches` needs to be allocated before this function is called, otherwise it will just remain empty.
    var
@@ -666,7 +666,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc find*(s: string, pattern: Regex, matches: var openArray[string],
             start = 0): int {.inline.} =
-@@ -388,12 +406,15 @@
+@@ -388,12 +412,15 @@
    ## where `buf` has length `bufSize` (not necessarily `'\0'` terminated).
    ## If it does not match, `-1` is returned.
    var
@@ -686,7 +686,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  proc find*(s: string, pattern: Regex, start = 0): int {.inline.} =
    ## returns the starting position of `pattern` in `s`. If it does not
-@@ -414,18 +435,21 @@
+@@ -414,18 +441,21 @@
    ## Note that since this is an iterator you should not modify the string you
    ## are iterating over: bad things could happen.
    var
@@ -714,7 +714,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
  
  iterator findAll*(buf: cstring, pattern: Regex, start = 0, bufSize: int): string =
    ## Yields all matching `substrings` of `s` that match `pattern`.
-@@ -434,19 +458,22 @@
+@@ -434,20 +464,23 @@
    ## are iterating over: bad things could happen.
    var
      i = int32(start)
@@ -730,19 +730,22 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
 +      matchData, nil)
 +    rawMatches = cast[ptr UncheckedArray[csize_t]](get_ovector_pointer(matchData))
      if res < 0'i32: break
-     let a = rawMatches[0]
-     let b = rawMatches[1]
+-    let a = rawMatches[0]
+-    let b = rawMatches[1]
 -    if a == b and a == i: break
-+    if a == b and a.int == i: break
-     var str = newString(b-a)
-     copyMem(str[0].addr, unsafeAddr(buf[a]), b-a)
++    let a = rawMatches[0].int
++    let b = rawMatches[1].int
++    if a == b and a == i.int: break
+     var str = ""
+     copyMem(beginStore(str, b-a), unsafeAddr(buf[a]), b-a)
+     endStore(str)
      yield str
 -    i = b
 +    i = b.int32
  
  proc findAll*(s: string, pattern: Regex, start = 0): seq[string] {.inline.} =
    ## returns all matching `substrings` of `s` that match `pattern`.
-@@ -503,7 +530,7 @@
+@@ -504,7 +537,7 @@
      doAssert "var1=key; var2=key2".replace(re"(\w+)=(\w+)", "?") == "?; ?"
    result = ""
    var prev = 0
@@ -751,7 +754,7 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
    while prev < s.len:
      var match = findBoundsImpl(s.cstring, sub, prev, s.len, flags)
      flags = 0
-@@ -512,7 +539,7 @@
+@@ -513,7 +546,7 @@
      add(result, by)
      if match.first > match.last:
        # 0-len match
@@ -760,10 +763,10 @@ diff -ruN o/lib/impure/re.nim p/lib/impure/re.nim
      prev = match.last + 1
    add(result, substr(s, prev))
  
-diff -ruN o/lib/wrappers/pcre2.nim p/lib/wrappers/pcre2.nim
---- nim-2.4.0.orig/lib/wrappers/pcre2.nim	1970-01-01 01:00:00.000000000 +0100
-+++ nim-2.4.0.patched/lib/wrappers/pcre2.nim	2026-10-29 10:32:07.821651239 +0100
-@@ -0,0 +1,561 @@
+diff -Naur nim-2.4.2.orig/lib/wrappers/pcre2.nim nim-2.4.2.patched/lib/wrappers/pcre2.nim
+--- nim-2.4.2.orig/lib/wrappers/pcre2.nim	1970-01-01 01:00:00.000000000 +0100
++++ nim-2.4.2.patched/lib/wrappers/pcre2.nim	2026-11-14 18:26:17.109652328 +0100
+@@ -0,0 +1,565 @@
 +#
 +#
 +#            Nim's Runtime Library
@@ -1267,6 +1270,10 @@ diff -ruN o/lib/wrappers/pcre2.nim p/lib/wrappers/pcre2.nim
 +              offset: ptr csize_t,
 +              tableptr: pointer): ptr Pcre
 +
++proc get_error_message*(errorcode: cint,
++                       buffer: cstring,
++                       bufflen: csize_t): cint
++
 +proc config*(what: uint32,
 +             where: pointer): cint
 +
@@ -1325,9 +1332,9 @@ diff -ruN o/lib/wrappers/pcre2.nim p/lib/wrappers/pcre2.nim
 +{.pop.}
 +{.pop.}
 +
-diff -ruN o/tests/stdlib/nre/init.nim p/tests/stdlib/nre/init.nim
---- nim-2.4.0.orig/tests/stdlib/nre/init.nim	2026-10-29 10:32:07.790576710 +0100
-+++ nim-2.4.0.patched/tests/stdlib/nre/init.nim	2026-10-29 10:32:07.846254249 +0100
+diff -Naur nim-2.4.2.orig/tests/stdlib/nre/init.nim nim-2.4.2.patched/tests/stdlib/nre/init.nim
+--- nim-2.4.2.orig/tests/stdlib/nre/init.nim	2026-11-14 18:26:17.110652365 +0100
++++ nim-2.4.2.patched/tests/stdlib/nre/init.nim	2026-11-14 18:26:17.112652439 +0100
 @@ -1,6 +1,8 @@
  import unittest
  include nre

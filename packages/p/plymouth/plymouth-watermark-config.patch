@@ -1,15 +1,15 @@
 diff -Nura plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in
---- plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in	2022-10-27 12:28:09.250335251 +0800
-+++ plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in	2022-10-27 14:41:01.624380841 +0800
-@@ -491,6 +491,7 @@
+--- plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in	2026-11-10 19:46:35.898915443 +0100
++++ plymouth-22.02.122+94.4bd41a3_new/scripts/plymouth-populate-initrd.in	2026-11-10 19:46:35.947570120 +0100
+@@ -490,6 +490,7 @@
  
  PLYMOUTH_MODULE_NAME=$(grep "ModuleName *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ModuleName *= *//')
  PLYMOUTH_IMAGE_DIR=$(grep "ImageDir *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/ImageDir *= *//')
 +PLYMOUTH_WATERMARK_PATH=$(grep "WatermarkPath *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_THEME_DIR}/${PLYMOUTH_THEME_NAME}.plymouth | sed 's/WatermarkPath *= *//')
  
- PLYMOUTH_Font_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^Font *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^Font *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
- PLYMOUTH_TitleFont_PATH=$(fc-list |grep $(fc-match "$(echo $(grep "^TitleFont *= *" ${PLYMOUTH_SYSROOT}${PLYMOUTH_DATADIR}/plymouth/themes/`plymouth-set-default-theme`/`plymouth-set-default-theme`.plymouth | sed -e 's/^TitleFont *= *//'| awk 'NF{NF--};1'))" |awk -F : {'print $1'}) |awk -F : {'print $1'} | sort -u | head -n 1)
-@@ -516,6 +517,12 @@
+ if [ ! -f ${PLYMOUTH_SYSROOT}${PLYMOUTH_PLUGIN_PATH}/${PLYMOUTH_MODULE_NAME}.so ]; then
+     echo "The default plymouth plugin (${PLYMOUTH_MODULE_NAME}) doesn't exist" >&2
+@@ -509,6 +510,12 @@
       inst_recur "${PLYMOUTH_IMAGE_DIR}"
  fi
  
@@ -23,8 +23,8 @@ diff -Nura plymouth-22.02.122+94.4bd41a3/scripts/plymouth-populate-initrd.in ply
       inst ${PLYMOUTH_PLUGIN_PATH}/label-freetype.so $INITRDDIR
       font=$(fc-match -f %{file})
 diff -Nura plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/two-step/plugin.c
---- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c	2022-08-13 20:58:13.000000000 +0800
-+++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/two-step/plugin.c	2022-10-27 14:37:52.319120852 +0800
+--- plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c	2022-08-13 14:58:13.000000000 +0200
++++ plymouth-22.02.122+94.4bd41a3_new/src/plugins/splash/two-step/plugin.c	2026-11-10 19:46:35.947936070 +0100
 @@ -1095,9 +1095,23 @@
          plugin->background_tile_image = ply_image_new (image_path);
          free (image_path);
@@ -53,8 +53,8 @@ diff -Nura plymouth-22.02.122+94.4bd41a3/src/plugins/splash/two-step/plugin.c pl
          if (!ply_kernel_command_line_has_argument ("secure_boot.warn_if_disabled=false") &&
              !ply_is_secure_boot_enabled ()) {
 diff -Nura plymouth-22.02.122+94.4bd41a3/themes/bgrt/bgrt.plymouth.desktop plymouth-22.02.122+94.4bd41a3_new/themes/bgrt/bgrt.plymouth.desktop
---- plymouth-22.02.122+94.4bd41a3/themes/bgrt/bgrt.plymouth.desktop	2022-04-15 16:39:24.000000000 +0800
-+++ plymouth-22.02.122+94.4bd41a3_new/themes/bgrt/bgrt.plymouth.desktop	2022-10-27 14:38:58.846563650 +0800
+--- plymouth-22.02.122+94.4bd41a3/themes/bgrt/bgrt.plymouth.desktop	2022-04-15 10:39:24.000000000 +0200
++++ plymouth-22.02.122+94.4bd41a3_new/themes/bgrt/bgrt.plymouth.desktop	2026-11-10 19:46:35.948186628 +0100
 @@ -7,6 +7,7 @@
  Font=Cantarell 12
  TitleFont=Cantarell Light 30

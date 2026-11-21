@@ -11,8 +11,8 @@
 +numba >= 0.65.0 # Required for N-gram speculative decoding
  
  # Dependencies for CPUs
--torch==2.13.0+cpu; platform_machine == "x86_64" or platform_machine == "s390x" or platform_machine == "aarch64"
--torch==2.13.0; platform_system == "Darwin" or platform_machine == "ppc64le" or platform_machine == "riscv64"
+-torch==2.14.0+cpu; platform_machine == "x86_64" or platform_machine == "s390x" or platform_machine == "aarch64"
+-torch==2.14.0; platform_system == "Darwin" or platform_machine == "ppc64le" or platform_machine == "riscv64"
 -
 -# required for the image processor of minicpm-o-2_6, this must be updated alongside torch
 -torchaudio; platform_machine != "s390x" and platform_machine != "riscv64"
@@ -36,11 +36,11 @@
  py-cpuinfo; platform_machine == "aarch64"
 --- a/requirements/common.txt
 +++ b/requirements/common.txt
-@@ -7,13 +7,13 @@
+@@ -8,13 +8,13 @@
  tqdm
  blake3
  py-cpuinfo
--transformers >= 5.16.1, < 5.20.0
+-transformers >= 5.16.1, < 5.21.0
 +transformers >= 5.16.1
  huggingface_hub >= 1.31.0  # Required for the `huggingface_hub.utils.httpx` re-export
  tokenizers >= 0.23.2  # Required for fast incremental detokenization.
@@ -50,10 +50,10 @@
 -fastapi[standard] >= 0.133.0, < 0.137.0 # First version supporting Starlette 1.0; < 0.137.0 avoids route-tree change that breaks model-hosting-container-standards handler overrides.
 +fastapi[standard] >= 0.133.0 # First version supporting Starlette 1.0.
  starlette >= 1.0.1 # CVE-2026-48710: Host header injection in < 1.0.1
- aiohttp >= 3.14.3
- openai >= 2.25.0  # For Responses API with namespace tools
-@@ -22,11 +22,11 @@
- pillow >= 12.3.0  # Required for image processing
+ aiohttp >= 3.14.4
+ multidict >= 6.9.1
+@@ -25,11 +25,11 @@
+ pillow >= 13.0.0  # Required for image processing
  prometheus-fastapi-instrumentator >= 8.0.0 # v8 unblocks starlette >= 1.0
  tiktoken >= 0.6.0  # Required for DBRX tokenizer
 -lm-format-enforcer == 0.11.3
@@ -64,11 +64,11 @@
 -xgrammar == 0.2.8; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
 +outlines_core >= 0.2.14
 +lark >= 1.2.2
-+xgrammar >= 0.2.1; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
++xgrammar >= 0.2.8; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"
  typing_extensions >= 4.10
  filelock >= 3.20.3 # need to contain https://github.com/tox-dev/filelock/pull/317; GHSA floor
  partial-json-parser # used for parsing partial JSON outputs
-@@ -39,8 +39,8 @@
+@@ -42,8 +42,8 @@
  six>=1.16.0; python_version > '3.11' # transitive dependency of pandas that needs to be the latest version for python 3.12
  setuptools>=78.1.1,<81.0.0; python_version > '3.11' # used by triton; >=78.1.1 for GHSA-5rjg-fvgr-3xxf (83.x needed for GHSA-h35f-9h28-mq5c deferred)
  einops # Required for Qwen2-VL.
@@ -79,7 +79,7 @@
  cloudpickle # allows pickling lambda functions in model_executor/models/registry.py
  watchfiles # required for http server to monitor the updates of TLS files
  python-json-logger # Used by logging as per examples/features/logging_configuration.md
-@@ -49,10 +49,10 @@
+@@ -52,10 +52,10 @@
  cbor2 # Required for cross-language serialization of hashable objects
  ijson # Required for mistral streaming tool parser
  setproctitle # Used to set process names for better debugging and monitoring
@@ -87,7 +87,7 @@
 +openai-harmony >= 0.0.3  # Required for gpt-oss
  anthropic >= 0.71.0
  model-hosting-container-standards >= 0.1.14, < 1.0.0
--mcp >= 2.0.0, < 3.0.0
+-mcp >= 2.2.0, < 3.0.0
 +mcp
  opentelemetry-sdk >= 1.27.0
  opentelemetry-api >= 1.27.0

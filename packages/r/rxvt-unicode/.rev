@@ -29,4 +29,12 @@ This is a request to re-add it to Factory now that it compiles on GCC 16.</comme
 See original superseeded request's comment for full details.</comment>
     <requestid>1381555</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49e39c741374051449a97e93188988a6</srcmd5>
+    <version>9.32</version>
+    <time>1795103905</time>
+    <user>anag_factory</user>
+    <comment>Update to official v9.32 released on November 10th after a 3.5 years long hiatus since 9.31</comment>
+    <requestid>1398727</requestid>
+  </revision>
 </revisionlist>

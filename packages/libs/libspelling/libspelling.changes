@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov  7 06:11:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.11:
+  * Fix false positives when checking words around punctuation and whitespace
+  * Recheck surrounding words after deleting text
+  * Recheck the buffer after changing languages from the spelling menu
+  * Fix the language submenu action namespace
+  * Fix an uninitialized offset when scanning already checked text
+  * Use a single underline by default to improve rendering performance
+  * Remove incorrect G_GNUC_CONST annotations from type registration functions
+  * Fix documentation dependency links and introspection documentation format
+  * Fix checker to take new reference to provider
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Wed Sep  9 07:16:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Better descriptions for libspelling1.

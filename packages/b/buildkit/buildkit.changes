@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Nov 11 05:04:04 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 0.34.2:
+  * vendor: golang.org/x/sys v0.50.0
+  * session: only log healthcheck recovery after a failure
+  * cache: check the imported chains in TestSimpleMarshal
+  * remotecache/gha: upload cache blobs in parallel
+  * vendor: golang.org/x/sys f5cb0306ac0e (fix for go1.27)
+  * exporter: write empty layers array for layerless images
+  * cache(gha): close layer readers after uploading
+  * test azure cache compression round trips
+  * client: skip testImageCacheRejectsUnverifiedDiffIDs on dockerd graphdriver
+  * build(deps): bump github/codeql-action/upload-sarif
+  * remotecache: centralize compression options
+  * solver: release results of builds outliving Discard
+  * solver: fix cancel race in respondToIncoming
+  * source/http: honor Retry-After for rate limits and outages
+  * resolver: jitter exponential retry delays
+  * vendor: update deps to match moby
+  * vendor: update go-winio, aws-sdk-go-v2, smithy-go
+  * vendor: update docker/cli, moby/profiles, moby/sys
+  * cache: only memoize complete layer digest chains
+  * source: preserve image cache across attestation changes
+  * s3: fix partial reads in the cache reader
+  * source/http: do not retry the best-effort HEAD request
+  * cache: extract shared remote cache signing
+  * Fix s3 InvalidRange error on canceled and resumed layer downloads
+  * solve: lock local cache ingests across clients
+  * client: batch solve status by encoded size
+  * vendor: update fsutil to e075fd9305eb
+  * source/git: fix daemon panic on resolver cache poisoning
+  * source/git: test rejection of file-backed submodules
+  * cache: fix content hash leak for removed records
+  * vendor: github.com/klauspost/compress v1.20.2
+  * gateway: create pipe only for served forwarders
+  * gateway: close frontend stdio after exec returns
+  * llbsolver: fix resultProxy.Release error handling
+  * imagerefchecker: don't match chains with missing blobs
+  * gateway: fix double release of failed exec refs
+  * remotecache: never export a partial layer chain
+  * llb: parse chown IDs across the whole uid_t range
+  * dockerfile: add BUILDKIT_DISABLE_ONBUILD build arg
+  * dockerfile: add FROM --reset
+  * dockerfile: add --unset to ENV, LABEL and VOLUME
+  * llb: add DelEnv state option
+  * dockerfile: parse flags for ARG and STOPSIGNAL
+  * vendor: github.com/containerd/stargz-snapshotter v0.19.1
+  * vendor: github.com/containerd/stargz-snapshotter/estargz v0.19.1
+  * vendor: github.com/hanwen/go-fuse/v2 v2.11.0
+  * authprovider: refresh rejected credentials before retrying tokens
+  * solver: fix race on merged edge secondary exporters
+  * runcexecutor: increase container start timeout to 15 seconds
+  * gateway: wait for frontend before HTTP/2 handshake
+  * source/http: retry transient request failures
+  * vendor: golang.org/x/net v0.61.0
+  * vendor: golang.org/x/crypto v0.58.0
+  * vendor: golang.org/x/text v0.43.0
+  * vendor: golang.org/x/term v0.47.0
+  * vendor: golang.org/x/sync v0.24.0
+  * vendor: golang.org/x/mod v0.42.0
+  * vendor: golang.org/x/sys v0.49.0
+  * llbsolver: serialize provenance predicate access
+  * containerdexecutor: fix race on err in event loops
+  * llbsolver: release exec error refs after discard
+  * solver: check job membership by key in TestStaleEdgeMerge
+  * progress: make writer closed flag atomic
+  * llbsolver: synchronize ExecError borrow flag
+  * cache: avoid losing finalize commit on cancel
+  * vendor: update fsutil to ca65610c2295
+  * readme: refresh and expand the frontend overview
+  * vendor: golang.org/x/net v0.60.0
+  * solver: synchronize index IDs with cache tracing
+  * build: disable gRPC tracing to reduce binary size
+  * dockerfile: wait for ssh-agent before reading its output
+  * client: lock gateway exec test output buffer
+  * executor: make resolv.conf generation flags atomic
+  * cache: synchronize isDead check in getRecord
+  * solver: read pipe request under lock in Finalize
+  * build(deps): bump docker/login-action from 4.6.0 to 4.7.0
+  * dockerfile: set resolve cache CacheError at construction
+  * cache: avoid unlocked equalMutable read in immutableRef.Mount
+  * runcexecutor: stop tty resize loop before closing pty
+  * grpcclient: preserve process errors during stdin cleanup
+  * Fix `EXPOSE` history to be valid syntax
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * remotecache: honor gha cache transparency log thresholds
+  * client: honor ignore-error for local cache index publish
+  * vendor: update policy-helpers to 485a1bec29f6
+  * git: add opt-in command tracing
+  * vendor: github.com/containerd/containerd/v2 v2.4.2
+  * solver: test alternative input cache imports
+  * runcexecutor: share keyring in NoProcessSandbox
+  * Fix matching alternative cache input keys
+  * grpcclient: unblock processes when exec stream ends
+  * cache: avoid retaining records that fail provider validation
+  * fix: remove volatile flag in temp mount
+  * resolver: close request body on authorize fail
+  * docs: shorten media type option guidance
+  * solver: synchronize vertex progress updates
+  * docs: clarify image exporter media type selection
+  * vendor: github.com/Microsoft/go-winio v0.6.3
+
+-------------------------------------------------------------------
 Thu Oct 22 04:56:47 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 0.34.1:

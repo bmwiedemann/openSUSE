@@ -61,20 +61,20 @@ Patch11:        CVE-2024-6655.patch
 # PATCH-FEATURE-OPENSUSE automake-1.17.patch -- Add automake 1.17 support to autogen.sh
 Patch12:        automake-1.17.patch
 
-BuildRequires:  cairo-devel
+BuildRequires:  cairo-devel >= 1.6
 BuildRequires:  cups-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gdk-pixbuf-devel
+BuildRequires:  gdk-pixbuf-devel >= 2.21.0
 BuildRequires:  glycin-loaders
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtiff-devel
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(atk)
+BuildRequires:  pkgconfig(atk) >= 1.29.2
 # Needed for patches touching the build system / bootstrapping
 BuildRequires:  libtool
-BuildRequires:  pango-devel
+BuildRequires:  pango-devel >= 1.20
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(x11)

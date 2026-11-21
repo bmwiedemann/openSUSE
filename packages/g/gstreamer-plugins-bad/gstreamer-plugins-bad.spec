@@ -80,7 +80,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.28.8
+Version:        1.28.9
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -800,11 +800,11 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package        extra
-Summary:        GStreamer plugins extra mpeg2 support
+Summary:        GStreamer plugins extra plugins
 Group:          Productivity/Multimedia/Other
 
 %description    extra
-GStreamer plugins bad extras. Provides mpeg2 encoding support
+GStreamer plugins bad extras. Provides mpeg2 encoding and firewire support.
 
 %package -n gstreamer-transcoder
 Summary:        GStreamer Transcoding API
@@ -1047,7 +1047,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstcolormanagement.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcurl.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdash.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstdc1394.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdebugutilsbad.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtls.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdtsdec.so
@@ -1189,6 +1188,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files extra
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpeg2enc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmplex.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstdc1394.so
 
 %if %{with fluidsynth}
 %files fluidsynth

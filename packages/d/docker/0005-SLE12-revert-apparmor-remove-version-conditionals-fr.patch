@@ -1,4 +1,4 @@
-From cfc9eee8433d1d064bafebff1be64b1296263ed1 Mon Sep 17 00:00:00 2001
+From 863d87d54a9eb5b47124ec7c8c385ad39a91ab82 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
 Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
@@ -28,7 +28,7 @@ Signed-off-by: rcmadhankumar <madhankumar.chellamuthu@suse.com>
  create mode 100644 pkg/aaparser/aaparser.go
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
-index 899d8378ed..13caa8245e 100644
+index 5b4c438572..16d9dc143f 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
 @@ -6,9 +6,13 @@
@@ -251,7 +251,7 @@ index 0000000000..89b48b2dba
 +	return numericVersion, nil
 +}
 diff --git a/vendor/github.com/moby/profiles/apparmor/apparmor.go b/vendor/github.com/moby/profiles/apparmor/apparmor.go
-index 244ae70fb2..af79e08980 100644
+index d2d3f815bd..d7068f6920 100644
 --- a/vendor/github.com/moby/profiles/apparmor/apparmor.go
 +++ b/vendor/github.com/moby/profiles/apparmor/apparmor.go
 @@ -16,6 +16,8 @@
@@ -286,10 +286,10 @@ index 244ae70fb2..af79e08980 100644
  }
  
 diff --git a/vendor/github.com/moby/profiles/apparmor/template.go b/vendor/github.com/moby/profiles/apparmor/template.go
-index 4694a6c6e1..181b6cdbd5 100644
+index 71a1899f21..04874b826a 100644
 --- a/vendor/github.com/moby/profiles/apparmor/template.go
 +++ b/vendor/github.com/moby/profiles/apparmor/template.go
-@@ -37,6 +37,7 @@
+@@ -39,6 +39,7 @@
    capability,
    file,
    umount,
@@ -297,7 +297,7 @@ index 4694a6c6e1..181b6cdbd5 100644
    # Host (privileged) processes may send signals to container processes.
    signal (receive) peer=unconfined,
    # runc may send signals to container processes (for "docker stop").
-@@ -47,6 +48,7 @@
+@@ -49,6 +50,7 @@
    signal (receive) peer="{{.DaemonProfile}}",
    # Container processes may send signals amongst themselves.
    signal (send,receive) peer="{{.Name}}",
@@ -305,7 +305,7 @@ index 4694a6c6e1..181b6cdbd5 100644
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -67,8 +69,10 @@
+@@ -69,8 +71,10 @@
    deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  

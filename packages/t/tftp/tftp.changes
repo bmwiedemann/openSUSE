@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Wed Nov 4 12:00:00 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 7.2:
+  * 7.2: tftpd drops unneeded Linux capabilities when started as
+    root (requires libcap)
+  * 7.2: constrain the "rollover" option to 0 and 1
+  * 7.2: fix options negotiation that could return an invalid
+    block size and broke the timeout options
+  * 7.2: fix standalone listening mode without -a or with an
+    address that has a : but no port
+  * 7.2: experimental TFTP "cookie" option to match requests and
+    replies and detect duplicated packets
+  * 7.1: C99 compiler and standard library are now required
+  * 7.1: client rejects reply packets from an address other than
+    the targeted server (--unsafe to override)
+  * 7.1: client defaults to "--blocksize mtu --windowsize 64" and
+    requests tsize to validate the received file length
+  * 7.1: client --no-options option; client defaults to octet mode
+  * 7.1: server --validate, --read-only and --max-upload options
+  * 7.1: --create deletes a failed upload file and refuses writes
+    through a symbolic link (O_NOFOLLOW)
+  * 7.0: reduced server memory footprint
+  * 7.0: client mget/mput commands for multi-file transfers
+  * 7.0: command-mode failures return a nonzero exit status
+  * 7.0: tftpd --jail option (openat2, no chroot, no root needed)
+  * 7.0: tftpd --normalize[=none|root|path] option
+  * 7.0: tftpd logs successful and failed transfers
+  * 6.1: shared client/server transfer implementation
+  * 6.1: windowed transfer recovery for delayed, duplicate and
+    out-of-order packets
+  * 6.1: optional threaded transfer I/O (--disable-threads)
+  * 6.0: RFC 7440 windowsize support
+  * 6.0: threaded I/O in tftpd
+  * 6.0: systemd socket activation (--systemd)
+  * 6.0: multiple --address arguments
+  * 6.0: client blksize and windowsize options, long options
+  * 6.0: drop tcpwrappers support
+- drop tftp-hpa-0.46_colon_check.patch: subsumed by upstream
+  refactoring of the colon checks (commits 59f8a73 and 1259cba)
+- adapt tftp-hpa-0.48-tzfix.patch to 7.2: rewrite the hunk with
+  symmetric context so that GNU patch applies it in the middle of
+  tftpd/tftpd.c (a hunk with more prefix context than suffix
+  context only matches at the end of the file)
+- adapt tftp-hpa-0.48-macros-v6mapped.patch to 7.2: update the
+  rewrite_macros() signature in the hunk context; make v6_mapped[]
+  an unsigned char array to fix a -Woverflow warning
+- adapt tftp-hpa-5.4-stdbool.patch to 7.2: update the hunk context
+  for the #include "config.h" line in tftpd/path.h
+- spec: remove the stale configure options --enable-largefile,
+  --with-tcpwrappers, --with-remap and --with-ipv6 (unrecognized
+  in 7.2; remap and ipv6 are enabled by default)
+- spec: remove -fcommon from CFLAGS (7.2 forces -fno-common)
+- spec: remove BuildRequires: tcpd-devel (tcpwrappers support
+  dropped in 6.0)
+- spec: add BuildRequires: libcap-devel (tftpd capability dropping
+  on Linux)
+- new patch tftp-hpa-7.2-test-user.patch: make the user the test
+  server runs as configurable via the TFTP_TEST_USER environment
+  variable (default: nobody)
+- new patch tftp-hpa-7.2-configure-dep-tracking.patch: accept the
+  --disable-dependency-tracking option passed by the SUSE %configure
+  macro as a no-op (the PA_ build system has no dependency tracking)
+- new patch tftp-hpa-7.2-uintmax-timeout.patch: make the r_timeout
+  locals in tftp_sendfile() and tftp_recvfile() uintmax_t instead of
+  unsigned long. On 32-bit architectures (i586), unsigned long is
+  32-bit while uintmax_t is 64-bit, so passing &r_timeout to
+  client_recv_time() fails with -Wincompatible-pointer-types, which
+  GCC 14+ treats as an error
+- new patch tftp-hpa-7.2-autoconf-prereq.patch: lower AC_PREREQ from
+  2.71 to 2.69 and remove AC_CHECK_INCLUDES_DEFAULT (an autoconf
+  2.70+ macro) so that configure.ac builds with the autoconf 2.69
+  shipped by SLE-15 and SLE-12
+- new patch tftp-hpa-7.2-test-jail.patch: make the test suite work
+  with tftpd builds without --jail support (no openat2): drop the
+  --jail option and use absolute request paths, which the server
+  validate mode requires
+- spec: add a %check section that runs the upstream test suite
+  (tests/test-tftp.sh): client-server transfer tests on localhost
+  with various block sizes and window sizes, run as the tftp user
+  (the build root has no nobody user)
+- spec: add BuildRequires: bc (used by the test suite for timing)
+
+-------------------------------------------------------------------
+Tue Oct 27 11:00:30 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 5.4:
+  * Much stricter validation of path names in non-chroot mode
+  * remap: labels/jump targets, file existence probe, new "gg"
+    modifier
+  * cleaner handling of restricted user namespaces on Linux
+  * new --enable-werror configure option
+  * fix several security-relevant path validation bugs (tftpd/path.c)
+  * fix buffer overflows in the tftp client (unbounded strcpy in
+    request building, OOB write on multi-file put, unbounded write in
+    the interactive command-line argument array)
+  * fix an out-of-bounds read while scanning request fields in tftpd
+  * fix the --map-steps option rejecting valid numeric arguments
+  * fix the \x remap macro returning the wrong substitution length
+  * fix synchnet() passing the wrong nfds argument to select()
+  * add IPv6 support on MacOS X
+- fix CVE-2026-85234 (bsc#1280621): out-of-bounds read in
+  genmatchstring() when a remap rule with the inverse (~) modifier and
+  an abort (a) action formats a custom error message. Fixed upstream
+  in 5.4 (commit 4b493532f5ce)
+- drop tftp-hpa-0.48-macros-crash.patch: fixed upstream in 5.4
+- drop tftp-hpa-0.49-fortify-strcpy-crash.patch: fixed upstream in 5.4
+- drop tftp-config_h.patch: config.h ships with the source tree
+- adapt tftp-hpa-0.43_include_sys_params.patch,
+  tftp-hpa-0.46_colon_check.patch, tftp-hpa-0.48-tzfix.patch and
+  tftp-hpa-0.48-macros-v6mapped.patch to 5.4
+- add tftp-hpa-5.4-stdbool.patch: include <stdbool.h> in tftpd/path.h
+  so that bool/true/false are defined under -std=gnu11
+- add tftp-hpa-5.4-macro-dirs.patch: declare AC_CONFIG_MACRO_DIRS in
+  configure.ac so that autoreconf -fiv finds the project m4 macros in
+  autoconf/m4 (5.4 ships no pre-generated aclocal.m4)
+
+-------------------------------------------------------------------
 Tue Jun 30 08:57:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3:

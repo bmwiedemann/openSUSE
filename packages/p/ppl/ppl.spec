@@ -28,12 +28,12 @@ Release:        0
 Summary:        The Parma Polyhedra Library
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://www.bugseng.com/parma-polyhedra-library
+URL:            https://bugseng.com/ppl
 
 #Git-Web:	http://www.cs.unipr.it/git/gitweb.cgi?p=ppl/ppl.git;a=summary
 #Git-Clone:	git://git.cs.unipr.it/ppl/ppl
-Source:         http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz
-Source2:        http://bugseng.com/products/ppl/download/ftp/releases/%version/ppl-%version.tar.xz.sign
+Source:         https://support.bugseng.com/ppl/download/ftp/releases/%version/ppl-%version.tar.xz
+Source2:        https://support.bugseng.com/ppl/download/ftp/releases/%version/ppl-%version.tar.xz.sign
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  glpk-devel

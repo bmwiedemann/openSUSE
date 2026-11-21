@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:23:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update unicode-transforms to version 0.4.0.1 revision 10.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Jan 15 14:35:39 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update unicode-transforms to version 0.4.0.1 revision 9.

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov 13 07:10:17 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove workaround fixed in 2.19.3 for
+  https://github.com/gperftools/gperftools/issues/1653:
+  '--disable-aw-backtrace --enable-libgcc-unwinder-by-default'
+
+-------------------------------------------------------------------
+Thu Nov 12 07:11:35 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.19.3:
+  * Update vendored aw-backtrace: fixes broken backtraces on aarch64
+    when built with -fstack-protector-strong (gh#gperftools/gperftools#1653)
+  * aw-backtrace now captures the exact pc, sp and frame pointer via a
+    small assembly helper on x86_64 and aarch64
+  * aw-backtrace falls back to frame records for frames with unsupported
+    DWARF expressions (e.g. SVE stack slots) instead of stopping
+  * aw-backtrace understands DW_CFA_AARCH64_negate_ra_state_with_pc
+  * Includes 2.19.2: expand x86-64 DRAP support in aw-backtrace (fixes
+    truncated backtraces with -march=x86-64-v3)
+
+-------------------------------------------------------------------
+Tue Nov 10 10:33:37 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove '--disable-deprecated-pprof' which is not used
+- Workaround to get aarch64 tests to pass again 
+  https://github.com/gperftools/gperftools/issues/1653 :
+  '--disable-aw-backtrace --enable-libgcc-unwinder-by-default'
+
+-------------------------------------------------------------------
 Thu Oct 22 06:51:29 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 2.19.1:

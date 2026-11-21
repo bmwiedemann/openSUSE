@@ -126,4 +126,12 @@ Built locally on aarch64 and on OBS for Tumbleweed x86_64/aarch64; rpmlint
 is unchanged from 2.5.2 (0 errors, 0 badness).</comment>
     <requestid>1373839</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>58a38acf46fdb25a001c632e24a3c60f</srcmd5>
+    <version>2.7</version>
+    <time>1793817964</time>
+    <user>anag_factory</user>
+    <comment>Update gpredict to 2.7</comment>
+    <requestid>1394840</requestid>
+  </revision>
 </revisionlist>

@@ -91,4 +91,12 @@ Fix compilation with GCC 14
     <comment></comment>
     <requestid>1342925</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f3d1641381e3d575943b321404d39b75</srcmd5>
+    <version>6.3.1</version>
+    <time>1794816488</time>
+    <user>anag_factory</user>
+    <comment>Update to version 6.3.1</comment>
+    <requestid>1397557</requestid>
+  </revision>
 </revisionlist>

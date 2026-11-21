@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Nov  5 19:06:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vty to version 6.7.
+  6.7
+  ---
+
+  API changes:
+
+  * `Graphics.Vty.Image`: added `rewriteAttrs` for performing arbitrary
+    attribute transformations over images
+
+  Other improvements:
+
+  * Improved image performance by re-using known text string widths
+    (thanks Andrzej Rybczak)
+
+-------------------------------------------------------------------
 Mon Jun 15 02:29:39 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update vty to version 6.6.

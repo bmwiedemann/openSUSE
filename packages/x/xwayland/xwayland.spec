@@ -37,6 +37,13 @@ Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
+Patch1285087:   bsc1285087_CVE-2026-109092.patch
+Patch1285088:   bsc1285088_CVE-2026-109093.patch
+Patch1285089:   bsc1285089_CVE-2026-109094.patch
+Patch1285090:   bsc1285090_CVE-2026-109095.patch
+Patch1285091:   bsc1285091_CVE-2026-109096.patch
+Patch1285093:   bsc1285093_CVE-2026-109903.patch
+Patch1285094:   bsc1285094_CVE-2026-109904.patch
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

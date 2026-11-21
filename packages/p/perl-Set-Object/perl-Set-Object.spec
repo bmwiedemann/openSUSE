@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Set-Object
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,21 @@
 
 %define cpan_name Set-Object
 Name:           perl-Set-Object
-Version:        1.420.0
+Version:        1.430.0
 Release:        0
-# 1.42 -> normalize -> 1.420.0
-%define cpan_version 1.42
+# 1.43 -> normalize -> 1.430.0
+%define cpan_version 1.43
 License:        Artistic-2.0
 Summary:        Unordered collections (sets) of Perl Objects
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RU/RURBAN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(Set::Object) = %{version}
+Provides:       perl(Set::Object::TieArray)
+Provides:       perl(Set::Object::TieHash)
 Provides:       perl(Set::Object::Weak)
 %undefine       __perllib_provides
 %{perl_requires}
@@ -50,7 +53,7 @@ will lose any magic (eg, tie) or other special bits that they went in with;
 only strings come out.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

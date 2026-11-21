@@ -21,33 +21,34 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           codenomad
-Version:        1.0.1
+Version:        1.1.0
 Release:        0
 Summary:        AI coding command center (Tauri desktop)
 # Upstream is MIT. Derived over the shipped trees, not the build roots.
 # Rust side: normal deps of -p codenomad-tauri for the Linux targets
-# (offline cargo tree over the locked vendor closure, 380 crates):
+# (offline cargo tree over the locked vendor closure, 366 crates):
 # MPL-2.0 links at runtime via tauri -- tauri-utils -- kuchikiki --
 # cssparser/selectors; CDLA-Permissive-2.0 links via reqwest --
 # hyper-rustls -- webpki-roots; Unicode-3.0 via the ICU crates.
-# Zlib, Unlicense, CC0-1.0 and BSD-2-Clause survive as offered
-# alternatives of linked crates (miniz_oxide, memchr et al, dunce,
-# zerocopy). npm side: the staged server is a production
+# Zlib, Unlicense and CC0-1.0 survive as offered
+# alternatives of linked crates (miniz_oxide, memchr et al, dunce).
+# npm side: the staged server is a production
 # (omit-dev) install of the server workspace, 296 packages: MIT,
 # ISC, Apache-2.0, BSD-3-Clause (node-forge takes the BSD choice),
 # BlueOak-1.0.0, the tauri dual MIT/Apache pair, 0BSD. The sharp
 # libvips shims (LGPL-3.0-or-later) and the caniuse/spdx/argparse/
 # WTFPL/AFL bits are dev-only and never staged, so they are out.
 # Re-derive both trees on every bump.
-License:        MIT AND Apache-2.0 AND ISC AND BSD-2-Clause AND BSD-3-Clause AND BlueOak-1.0.0 AND CC0-1.0 AND 0BSD AND MPL-2.0 AND Unicode-3.0 AND Zlib AND Unlicense AND CDLA-Permissive-2.0
+License:        MIT AND Apache-2.0 AND ISC AND BSD-3-Clause AND BlueOak-1.0.0 AND CC0-1.0 AND 0BSD AND MPL-2.0 AND Unicode-3.0 AND Zlib AND Unlicense AND CDLA-Permissive-2.0
 URL:            https://github.com/NeuralNomadsAI/CodeNomad
 Source0:        %{name}-%{version}.tar.gz
 # Rust vendor tree. Produced with the OBS cargo_vendor backend against
 # packages/tauri-app with update=false (respect upstream Cargo.lock),
-# tag=crates (upstream already ships vendor/ with the tao +
-# tauri-plugin-updater forks selected via [patch.crates-io]) and
+# tag=crates (upstream already ships vendor/ with the tao 0.37.2,
+# tauri-plugin-updater 2.14.1, tauri-runtime-wry 2.12.3, wry 0.57.1 and
+# glib 0.18.5 forks selected via [patch.crates-io]) and
 # filter=true (drop crates only needed on non-Linux targets):
-# /usr/lib/obs/service/cargo_vendor --src CodeNomad-1.0.1/packages/tauri-app --outdir vendor-out --compression zst --tag crates --update false --filter true
+# /usr/lib/obs/service/cargo_vendor --src CodeNomad-1.1.0/packages/tauri-app --outdir vendor-out --compression zst --tag crates --update false --filter true
 # The filter leaves two Windows-only prebuilt sets inside Linux crates:
 # aws-lc-sys builder/prebuilt-nasm/*.obj (copied only for windows-x86_64,
 # see use_prebuilt_nasm in builder/main.rs) and ring
@@ -56,15 +57,17 @@ Source0:        %{name}-%{version}.tar.gz
 # repair; Linux builds aws-lc-sys and ring from C and .S sources
 # (verified by compiling both crates offline). Cargo.lock is untouched.
 # Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/libloading-0.7.4/tests/*.dll -- test-data: Windows-only dlopen fixtures for the cfg(windows) test, never touched on Linux
-# Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/wry-0.54.4/examples/custom_protocol/wasm.wasm -- test-data: demo asset fetched only by the custom-protocol example page, never built or shipped
-# Source-Binary-Exception: vendor-crates.tar.zst:vendor-crates/flate2-1.1.9/tests/corrupt-gz-file.bin -- test-data: gzip corpus the gunzip test reads to assert InvalidInput, never executed
-# Source-Binary-Exception: rollup-vendor.tar.zst:rollup-vendor/vendor/libloading-0.8.9/tests/*.dll -- test-data: Windows-only dlopen fixtures for the cfg(windows) functions test, never touched on Linux
+# Source-Binary-Exception: codenomad-1.1.0.tar.gz:CodeNomad-1.1.0/packages/tauri-app/vendor/wry-0.57.1/examples/custom_protocol/wasm.wasm -- test-data: demo asset fetched only by the custom-protocol example page, never built or shipped
+# Source-Binary-Exception: rollup-vendor.tar.zst:vendor-crates/libloading-0.9.0/tests/*.dll -- test-data: Windows-only dlopen fixtures for the cfg(windows) functions test, never touched on Linux
+# Source-Binary-Exception: rollup-vendor.tar.zst:vendor-crates/libmimalloc-sys2-0.1.65/c_src/mimalloc3/bin/* -- other-platform: Windows x64 and arm64 binaries, never used on Linux
+# Source-Binary-Exception: rollup-vendor.tar.zst:vendor-crates/napi-build-2.6.0/src/wasi_heap_sync_exports.o -- other-platform: wasm32 WASI object, never used on Linux
+# Source-Binary-Exception: rollup-vendor.tar.zst:vendor-crates/psm-0.1.32/src/arch/wasm32.o -- other-platform: wasm32 object, never used on Linux
 # Source-Binary-Exception: go-x-sys-c0bba94a.tar.gz:x-sys/windows/testdata/ev-signed-file.exe -- test-data: Authenticode test fixture documented by x/sys's own testdata README, never executed
 Source1:        vendor-crates.tar.zst
 # npm lockfile for the node_modules service (Source10). Upstream's
 # lockfileVersion-3 file cannot be fed verbatim: the service aborts on
-# the 5 workspace "link" entries and the 8 "packages/*" workspace keys.
-# This file drops the links and workspace definitions but re-keys the 3
+# the 5 workspace "link" entries and the 15 "packages/*" workspace keys.
+# This file drops the links and workspace definitions but re-keys the 10
 # nested workspace deps (packages/<ws>/node_modules/...) as
 # node_modules/__ws-<ws>__/... so their tarballs still land in the
 # obscpio (e.g. electron-app's app-builder-bin 4.2.0 beside the top
@@ -72,48 +75,31 @@ Source1:        vendor-crates.tar.zst
 # The registry tarballs ship prebuilt binaries for every platform
 # upstream supports. At repack time the binaries nothing on Linux
 # loads were deleted: all non-Linux platform files
-# (esbuild, rollup, sharp, libvips, tauri-cli, fsevents, iconv),
+# (esbuild, rollup, rolldown, sharp, libvips, tauri-cli, fsevents),
 # the 7zip/app-builder electron-packaging helpers, the playwright
 # screenshot codec, and wasm blobs whose bytes travel inlined in a
 # sibling js file (undici llhttp, source-map mappings, shiki onig).
 # Kept is nothing: every prebuilt binary the Linux build or the
 # staged app loads is now built from source instead (the build section:
-# esbuild via Sources 20-22, rollup NAPI via Sources 23-24).
+# esbuild via Sources 20-21, rollup NAPI via Sources 22-23).
 # The sharp .node and libvips .so files are deleted too: Patch5
 # drops the PWA pwaAssets icon generation, the only sharp
 # consumer, so sharp never loads at build or runtime.
 # package-lock.json integrity values and node_modules.sums were
-# regenerated for exactly those 108 tarballs (97 filtered, shiki
-# onig.wasm, 4 sharp/libvips, 4 esbuild, 2 rollup); the entry set
-# is unchanged, so offline resolution is unaffected.
+# regenerated for those 110 stripped tarballs (162 binaries);
+# the entry set is unchanged, so offline resolution is unaffected.
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 # Checksums for the registry tarballs in node_modules.obscpio (service output).
 Source12:       node_modules.sums
-# From-source esbuild. Upstream publishes no source tarballs, so these
-# are repacked from the Go module proxy (release tags v0.21.5/v0.25.12
-# plus the single pinned dependency both trees need):
-#   esbuild v0.21.5 (git fc37c2fa): h1:oShm8TT5QUhf6vM7teg0nmd14eHu64dPmVluC2f4DMg=
-#   esbuild v0.25.12 (git 208f5399): h1:7kIg7aG2++vhheW5YCzut1q1AjehYVQU752NcMuGVsw=
-#   x/sys c0bba94a (2022-07-15): h1:0A+M6Uqn+Eje4kHMK80dtF3JCXC4ykBgQG4Fe06QRhQ=
-# (re-verify with `go mod download -json` against the proxy/sumdb).
-# Repack: unzip the module zips, rename to the bare top dirs. The build
-# compiles both trees offline (GOPROXY=off, replace to the shipped
-# x/sys) and installs the binaries where the esbuild loaders probe;
-# the 4 prebuilt platform binaries were deleted at repack (sums +
-# lock integrity regenerated, entry set unchanged).
-Source20:       esbuild-0.21.5.tar.gz
-Source21:       esbuild-0.25.12.tar.gz
-Source22:       go-x-sys-c0bba94a.tar.gz
-# From-source rollup NAPI. Source23 is the upstream release tag
-# v4.52.5 workspace (rust/ holds the napi bindings crate), Source24
-# the `cargo vendor` output for its locked Cargo.lock (196 crates).
-# The build compiles bindings_napi offline (vendor source replacement,
-# system toolchain) and installs the binding where the rollup
-# loader probes; both prebuilt .node files were deleted at repack
-# (sums + lock integrity regenerated, entry set unchanged).
-Source23:       rollup-4.52.5.tar.gz
-Source24:       rollup-vendor.tar.zst
+# From-source esbuild 0.28.2 (Go proxy repack with x/sys c0bba94a;
+# prebuilt binaries stripped, sums regenerated).
+Source20:       esbuild-0.28.2.tar.gz
+Source21:       go-x-sys-c0bba94a.tar.gz
+# From-source rollup NAPI 4.68.1 (workspace + cargo vendor 195 crates;
+# prebuilt .node files stripped, sums regenerated).
+Source22:       rollup-4.68.1.tar.gz
+Source23:       rollup-vendor.tar.zst
 # PATCH-FIX-OPENSUSE codenomad-system-node.patch: use system Node.js.
 Patch0:         %{name}-system-node.patch
 # PATCH-FIX-OPENSUSE codenomad-no-opencode-download.patch: no runtime npm.
@@ -145,8 +131,8 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(webkit2gtk-4.1)
-Requires:       nodejs24 >= 24.20
-Requires:       opencode >= 2.1.2
+Requires:       nodejs24 >= 24.22
+Requires:       opencode >= 2.3.0
 # The server shells out to git for repo features (clone, worktrees,
 # rev-parse) and runs directory-only without it.
 Recommends:     git-core
@@ -168,24 +154,18 @@ in-app OpenCode npm installer is neutered; updates flow via RPM.
 # npm closure first (fully offline via the local registry).
 rm -rf node_modules
 local-npm-registry %{_sourcedir} install --include=dev --include=optional --ignore-scripts
-# esbuild from source (the 4 prebuilt platform binaries were deleted
-# at repack). Both release trees build offline with the system
-# toolchain; the binaries land where each loader probes (root
-# 0.25.12, vite-nested 0.21.5) before prebuild, which execs
-# --version and checks it against package.json.
+# esbuild 0.28.2 from source (offline Go build, installed where the
+# loader probes before the prebuild --version check).
 esarch=x64
 %ifarch aarch64
 esarch=arm64
 %endif
-tar xzf %{SOURCE20} && tar xzf %{SOURCE21} && tar xzf %{SOURCE22}
+tar xzf %{SOURCE20} && tar xzf %{SOURCE21}
 export GOPROXY=off CGO_ENABLED=0 GOTOOLCHAIN=local GOFLAGS=-mod=mod GOCACHE=$PWD/.gocache GOPATH=$PWD/.gopath
 top=$PWD
-for esver in 0.21.5 0.25.12; do
-  (cd esbuild-$esver && go mod edit -replace golang.org/x/sys=$top/x-sys && go build -ldflags="-s -w" -o $top/esbuild-bin-$esver ./cmd/esbuild)
-done
-install -D -m0755 esbuild-bin-0.25.12 node_modules/@esbuild/linux-$esarch/bin/esbuild
-install -D -m0755 esbuild-bin-0.21.5 node_modules/vite/node_modules/@esbuild/linux-$esarch/bin/esbuild
-rm -rf esbuild-0.21.5 esbuild-0.25.12 x-sys esbuild-bin-0.21.5 esbuild-bin-0.25.12 .gocache .gopath
+(cd esbuild-0.28.2 && go mod edit -replace golang.org/x/sys=$top/x-sys && go build -ldflags="-s -w" -o $top/esbuild-bin-0.28.2 ./cmd/esbuild)
+install -D -m0755 esbuild-bin-0.28.2 node_modules/@esbuild/linux-$esarch/bin/esbuild
+rm -rf esbuild-0.28.2 x-sys esbuild-bin-0.28.2 .gocache .gopath
 # rollup NAPI from source (both prebuilt .node files were deleted at
 # repack). The crate builds offline from the tag workspace against
 # the locked vendor; the binding lands where the rollup loader
@@ -194,14 +174,14 @@ roarch=x64
 %ifarch aarch64
 roarch=arm64
 %endif
-tar xzf %{SOURCE23} && tar --zstd -xf %{SOURCE24}
-mkdir -p rollup-4.52.5/rust/vendor rollup-4.52.5/rust/.cargo
-cp -a rollup-vendor/vendor/. rollup-4.52.5/rust/vendor/
-printf '[source.crates-io]\nreplace-with = "vendored-sources"\n[source.vendored-sources]\ndirectory = "vendor"\n' > rollup-4.52.5/rust/.cargo/config.toml
+tar xzf %{SOURCE22} && mkdir -p rollup-vendor-tmp && tar --zstd -xf %{SOURCE23} -C rollup-vendor-tmp
+mkdir -p rollup-4.68.1/rust/vendor rollup-4.68.1/rust/.cargo
+cp -a rollup-vendor-tmp/vendor-crates/. rollup-4.68.1/rust/vendor/
+printf '[source.crates-io]\nreplace-with = "vendored-sources"\n[source.vendored-sources]\ndirectory = "vendor"\n' > rollup-4.68.1/rust/.cargo/config.toml
 export CARGO_NET_OFFLINE=true CARGO_HOME=$PWD/.cargo-home
-(cd rollup-4.52.5/rust && cargo build --release --locked --offline -p bindings_napi)
-install -D -m0755 rollup-4.52.5/rust/target/release/libbindings_napi.so node_modules/@rollup/rollup-linux-$roarch-gnu/rollup.linux-$roarch-gnu.node
-rm -rf rollup-4.52.5 rollup-vendor .cargo-home
+(cd rollup-4.68.1/rust && cargo build --release --locked --offline -p bindings_napi)
+install -D -m0755 rollup-4.68.1/rust/target/release/libbindings_napi.so node_modules/@rollup/rollup-linux-$roarch-gnu/rollup.linux-$roarch-gnu.node
+rm -rf rollup-4.68.1 rollup-vendor-tmp .cargo-home
 # Build UI + server and stage src-tauri/resources (server,
 # ui-loading). The bundled-Node download is patched out; the Rust
 # side falls back to /usr/bin/node. This runs under the registry as

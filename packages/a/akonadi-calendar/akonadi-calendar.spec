@@ -18,12 +18,12 @@
 
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.8.2
+%define kpim6_version 6.8.3
 
 %bcond_without kde_python_bindings
 %bcond_without released
 Name:           akonadi-calendar
-Version:        26.08.2
+Version:        26.08.3
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later

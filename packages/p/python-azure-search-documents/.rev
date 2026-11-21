@@ -186,4 +186,15 @@
 - Update Requires from pyproject.toml (forwarded request 1350613 from glaubitz)</comment>
     <requestid>1350681</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>6f47f71b3f2736b999e5c2850fe1d285</srcmd5>
+    <version>12.1.0</version>
+    <time>1794428300</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1396749 from glaubitz)</comment>
+    <requestid>1396907</requestid>
+  </revision>
 </revisionlist>

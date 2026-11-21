@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov  3 17:36:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.0+29:
+  * use Vala's SingleInstance attribute
+  * user: wrap accountservice access in local class
+  * monitor: delegate process updates from process monitor to memory and CPU
+    monitors
+  * monitor: split out process monitor
+  * monitor: make BackgroundMonitor a standard Usage.Monitor
+  * monitor: make GameMode support standard Usage.Monitor
+  * move main function to application
+  * restructure source tree to split ui from backend
+  * settings: move to wrapping instead of extending GSettings
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Fri Jun  5 19:05:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 48.0+13:

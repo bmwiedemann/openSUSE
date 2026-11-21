@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.0.1
+Version:        0.5.1.0
 Release:        0
 Summary:        A high-performance striped resource pooling implementation
 License:        BSD-3-Clause

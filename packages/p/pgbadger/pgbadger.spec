@@ -1,7 +1,7 @@
 #
 # spec file for package pgbadger
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2015 Lars Vogdt
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -31,7 +31,7 @@
 %endif
 
 Name:           pgbadger
-Version:        13.2
+Version:        13.3
 Release:        0
 License:        MIT
 Summary:        A fast PostgreSQL log analyzer

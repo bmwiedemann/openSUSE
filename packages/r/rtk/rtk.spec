@@ -17,19 +17,18 @@
 
 
 Name:           rtk
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
-# Re-derived on the 1.1.0 re-vendor with "cargo tree --offline -p rtk
-# --no-default-features -e normal" over the vendored tree (243 crates vendored,
-# 162 in the linked graph): MPL-2.0 comes from colored and option-ext,
-# Unicode-3.0 from the ICU/zerovec crates, ISC from rustls-webpki and untrusted
-# (and from ring, "Apache-2.0 AND ISC"), CDLA-Permissive-2.0 from webpki-roots,
-# BSD-3-Clause from subtle, Zlib from foldhash (linked via rusqlite and
-# ratatui; already linked at 1.0.1, previously undeclared), and MIT from
-# twenty-five MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...).
+# - Re-derived on the 1.2.0 re-vendor with "cargo tree --offline -p rtk
+#   --no-default-features -e normal" (254 vendored, 179 linked).
+# - MPL-2.0: colored, option-ext.
+# - Unicode-3.0: the ICU/zerovec crates. ISC: rustls-webpki, untrusted,
+#   and ring ("Apache-2.0 AND ISC"). CDLA-Permissive-2.0: webpki-roots.
+# - BSD-3-Clause: subtle. Zlib: foldhash (via rusqlite and ratatui).
+# - MIT: twenty-nine MIT-only crates (rusqlite, libsqlite3-sys, ...).
 # Every dual/triple "OR" expression in the graph is satisfied by Apache-2.0 or MIT,
 # both already named. r-efi offers an LGPL-2.1-or-later option but is
 # UEFI-target-only and absent from the Linux graph. MPL-2.0 section 3.2 is
@@ -40,6 +39,9 @@ License:        Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND 
 URL:            https://github.com/rtk-ai/rtk
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/*.o -- other-platform: pregenerated Windows COFF objects of the ring crate, never used by the Linux build
+# Source-Binary-Exception: vendor.tar.zst:vendor/winapi-*/lib/*.a -- other-platform: Windows import libraries of the winapi crates, only linked by Windows GNU targets
+# Source-Binary-Exception: vendor.tar.zst:vendor/windows_*/lib/* -- other-platform: Windows import libraries of the windows crates, only linked by Windows targets
 # PATCH-FIX-UPSTREAM rtk-unbundle-sqlite.patch mpluskal@suse.com -- link the system SQLite instead of the copy bundled in libsqlite3-sys, https://github.com/rtk-ai/rtk/pull/3446 (upstream keeps bundling as an opt-out default feature; drop this and build with --no-default-features once it lands)
 Patch0:         rtk-unbundle-sqlite.patch
 # PATCH-FIX-UPSTREAM rtk-no-deny-warnings.patch mpluskal@suse.com -- do not turn rustc warnings into errors, the distribution rustc moves independently of upstream's floor, https://github.com/rtk-ai/rtk/pull/3447
@@ -76,18 +78,21 @@ passing output through unchanged for anything it does not recognise.
 export CARGO_PROFILE_RELEASE_STRIP=none
 # --no-default-features builds upstream's Apache-2.0 rtk-oss edition: the default
 # engine feature links the BUSL-1.1 rtk-engine, which Factory cannot ship.
-# NOTE: keep the braced %{cargo_*} form below — spec-cleaner unbraces it
-# and the unbraced form breaks the build (Unknown option - in cargo_build()).
-%{cargo_build} --no-default-features
+# NOTE: the `--` form below is load-bearing — spec-cleaner 1.3.2 drops the
+# braces of a braced cargo macro call, and the bare form it writes breaks
+# the build (Unknown option - in cargo_build()).
+%cargo_build -- --no-default-features
 
 %install
-%{cargo_install} --no-default-features
+%cargo_install -- --no-default-features
 
 %check
 # The integration tests create repositories and configuration below $HOME.
 export HOME=%{_builddir}/fakehome
 mkdir -p "$HOME"
-%{cargo_test} --no-default-features
+# Cap the test threads: the tests in one binary share a single recall DB
+# (5s sqlite busy timeout), which drops hints under 64-way parallelism.
+%cargo_test -- --no-default-features -- --test-threads 8
 
 %files
 %license LICENSE

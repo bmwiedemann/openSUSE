@@ -33,7 +33,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-metadata-generator
+BuildRequires:  plexus-metadata-generator-ant
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-plexus
 BuildArch:      noarch

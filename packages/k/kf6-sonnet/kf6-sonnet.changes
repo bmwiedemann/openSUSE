@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * core/settings: Add restore function to revert changes
+  * Unexport, devirtualize and de-pimpl Sonnet::TextBreaks
+  * Remove unimplemented methods
+  * Use a dedicated trigram type for language detection
+  * Add view-based speller API overloads
+  * Use QStringView in the spell checker plugin interface
+  * List dictionary languages only once when guessing language
+  * aspell: Reduce allocation by half during spellchecking
+  * Make plugins findable prior to installation
+  * Don't leak Voikko instance
+  * Actually build manual tests
+  * Add missing docs
+  * quick: Don't use red text when we can have squiggly line
+  * Unify static and dynamic plugin loading
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

@@ -71,4 +71,60 @@
     <comment>Update graphifyy to 0.9.100</comment>
     <requestid>1394295</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b0d5702776a866ca4c1ab763952154c3</srcmd5>
+    <version>0.9.102</version>
+    <time>1793899202</time>
+    <user>anag_factory</user>
+    <comment>Forward graphifyy 0.9.102 to Factory</comment>
+    <requestid>1394952</requestid>
+  </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f922044a1a55a1616e8fb430beb8241c</srcmd5>
+    <version>0.9.103</version>
+    <time>1793991459</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.103: C#/Solidity/YAML/Markdown/Python extractors, watch perf, Pi skill install.</comment>
+    <requestid>1395753</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0c2629c60d4639baeb1128d3eabe3bb5</srcmd5>
+    <version>0.9.104</version>
+    <time>1794162137</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.104.</comment>
+    <requestid>1396128</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c0086042e46de13547883a5dc01cb3c3</srcmd5>
+    <version>0.9.105</version>
+    <time>1794318013</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.105</comment>
+    <requestid>1396399</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>7585fd32c636309ab4a9e47dd2dfb7ca</srcmd5>
+    <version>0.9.106</version>
+    <time>1794428281</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.9.106</comment>
+    <requestid>1396890</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6c97770365c75a60d57ab5d55a24a8c8</srcmd5>
+    <version>0.9.107</version>
+    <time>1794591259</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.107: C++/PHP/JS call-graph fixes, partial-slice requeue, perf and cloud-signup updates.</comment>
+    <requestid>1397186</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>98f08358e796058a708ebb321757bba0</srcmd5>
+    <version>0.9.111</version>
+    <time>1794932319</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.111: extractor fixes, AST schemas 45/46/47, Python 3.11 floor, Pillow 13 extras.</comment>
+    <requestid>1398012</requestid>
+  </revision>
 </revisionlist>

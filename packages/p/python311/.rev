@@ -2090,4 +2090,27 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
   imports and venv/ensurepip (bsc#1285433).</comment>
     <requestid>1386974</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>93affed010a639d95e86fb190c163a21</srcmd5>
+    <version>3.11.18</version>
+    <time>1794932162</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.11.18:
+  - Ignore cookies with a negative Version attribute, which could
+    bypass domain checks in http.cookiejar.DefaultCookiePolicy
+    (gh#python/cpython#160300).
+  - Reject link members resolving to the destination directory
+    itself in tarfile.tar_filter (gh#python/cpython#160097,
+    CVE-2026-114583, bsc#1288258).
+  - Reject TLS certificate chains containing compromised
+    eMudhra intermediate CA keys (gh#python/cpython#160040,
+    CVE-2026-115557, bsc#1287903, bsc#1287357).
+  - Stop reading mimetypes.knownfiles by default on Windows; use
+    only the registry (gh#python/cpython#159428).
+  - Update bundled libexpat to 2.9.0 (gh#python/cpython#157953).
+  - Fix header folding in modern email policies to re-quote
+    text obtained from encoded words when required
+    (gh#python/cpython#87720).</comment>
+    <requestid>1397639</requestid>
+  </revision>
 </revisionlist>

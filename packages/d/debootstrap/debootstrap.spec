@@ -18,7 +18,7 @@
 
 
 Name:           debootstrap
-Version:        1.0.144
+Version:        1.0.145
 Release:        0
 Summary:        Bootstrap a basic Debian system
 License:        MIT

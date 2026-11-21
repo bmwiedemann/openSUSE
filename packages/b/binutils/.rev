@@ -2560,4 +2560,13 @@ Small adjustment to last .changes entry to mention something
 that users may affect.</comment>
     <requestid>1392774</requestid>
   </revision>
+  <revision rev="188" vrev="3">
+    <srcmd5>dec9de494395238476641a489c7695a5</srcmd5>
+    <version>2.47</version>
+    <time>1794090724</time>
+    <user>dimstar_suse</user>
+    <comment>No code changes.
+- Add %license to %files.</comment>
+    <requestid>1395481</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flake8-deprecated
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Flake8 deprecations plugin
 License:        GPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/gforcada/flake8-deprecated
 Source:         https://files.pythonhosted.org/packages/source/f/flake8-deprecated/flake8_deprecated-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -58,7 +58,7 @@ they should be replaced with.
 
 %files %{python_files}
 %license LICENSE
-%doc CHANGES.rst README.rst
+%doc CHANGES.md README.md
 %{python_sitelib}/flake8_deprecated.py
 %pycache_only %{python_sitelib}/__pycache__/*
 %{python_sitelib}/flake8_deprecated-%{version}.dist-info

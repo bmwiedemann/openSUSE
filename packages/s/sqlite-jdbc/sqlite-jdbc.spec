@@ -17,8 +17,8 @@
 
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
-%global version 3.53.4.0
-%global amalgamation_version 3530400
+%global version 3.54.1.0
+%global amalgamation_version 3540100
 %global debug_package %{nil}
 Name:           sqlite-jdbc
 Version:        %{version}
@@ -75,6 +75,9 @@ find src/main/resources \
 
 sed -i -e '/org\.graalvm\.nativeimage/ d' src/main/java9/module-info.java
 rm src/main/java9/org/sqlite/nativeimage/SqliteJdbcFeature.java
+
+%pom_xpath_inject "pom:plugin[pom:artifactId='maven-bundle-plugin']//pom:instructions" '
+    <_fixupmessages>"Classes found in the wrong directory";is:=warning</_fixupmessages>'
 
 dos2unix SQLiteJDBC.wiki
 mkdir -p target/classpath

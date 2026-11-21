@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:03:48 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
+
+- update to 1.6.21
+  https://github.com/roundcube/roundcubemail/releases/tag/1.6.21
+  CHANGELOG security fixes:
+  + Fix open redirect via IMAP error recovery on attachment get
+  + Fix so Received: header includes only trusted hostname and forwarded IP from a trusted proxy
+  + Fix bug where some managesieve destructive actions could have been triggered cross-site via GET
+  + Fix Sieve script injection via a rule operator
+  + Fix Sieve script injection via set/include modifiers
+  + Fix bug where resolve_url() ignored trusted host setting
+  + Fix mail header injection via a MDN subject
+  + Fix HTTP request injection via the spellcheck ATD backend
+  + Fix IMAP command injection via CRLF in _uid parameter with messages_cache enabled
+  + Fix SSRF in CSS proxy via incomplete is_local_url() nip.io/sslip.io bypass
+  + Fix CSRF validation bypass for file-only POST requests
+  + Fix disabled_actions restriction bypass by writing '_' instead of '-' in the action name
+  + Fix CSRF validation bypass for mail purge/expunge commands
+  + Fix passing potentally unsafe attachment content into ImageMagick on image type conversion
+  + Fix Unbounded CPU loop/DoS in rcube_session::unserialize() via a negative length token
+  + Fix SSRF filter (is_local_url()) bypass via 6to4 (2002::/16) addresses
+  + Fix so IMAP host input is validated more strictly
+
+-------------------------------------------------------------------
 Tue Oct 20 18:49:50 UTC 2026 - Aeneas Jaißle <aj@ajaissle.de>
 
 - update to 1.6.20

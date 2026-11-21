@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Fri Nov 06 08:18:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.23:
+  * fix(storage): keep a repository while its blob upload is
+    unlisted (#4643)
+  * test: cover eMudhra CA distrust in outbound requests (#4647)
+  * fix(sync): stop streaming a blob to a client that has
+    disconnected (#4615)
+  * fix(cli): drain requests on shutdown, and fail when the server
+    can't start (#4638)
+  * fix(common): fail when the root CA file has no PEM certificate
+    (#4642)
+  * fix(gc): keep a new sparse index whose manifests are not synced
+    yet (#4641)
+  * fix(api): deny repositories to bearer tokens without repository
+    grant… (#4639)
+  * test(redis): dial port 0 for unreachable Redis clients (#4635)
+  * fix(retention): order equal-timestamp candidates and guard the
+    regex cache (#4608)
+  * fix(api): don't send a next Link when the catalog page ends on
+    the last repo (#4633)
+  * fix(api): set up OpenID providers on first login so an
+    unreachable is… (#4629)
+  * chore: fix dependabot alerts (#4632)
+  * feat(api): add discoveryurl option for OpenID providers (#4605)
+  * perf(meta): parse repos in parallel during the storage walk
+    (#4631)
+  * fix(api): serialize manifest updates when MetaDB is enabled
+    (#4626)
+  * test(scrub): give TestScrubExtension a real interval (#4625)
+  * fix(search): return multi-arch images from ImageListForCVE
+    (#4621)
+  * fix(meta): keep untagged-retention statistics until the
+    manifest is pruned (#4622)
+  * fix(auth): apply accessControl group membership to OpenID users
+    (#4620)
+  * test(trivy): share one Trivy database download per test process
+    (#4618)
+  * feat(api): accept digest-algorithm on blob upload POST (#4594)
+  * fix(ci): build skopeo without host gpgme libraries (#4600)
+  * chore(deps): bump github.com/go-chi/chi/v5 from 5.3.2 to 5.4.0
+    (#4597)
+  * chore(deps): bump the github-actions group with 8 updates
+    (#4596)
+  * fix(storage): serialize blob upload finalization (#4581)
+  * docs(auth): document passphrase and OIDC token-exchange limits
+    (#4593)
+  * fix(api): consume final blob PUT bodies without length headers
+    (#4577)
+  * chore(deps): bump the go-dependencies group with 15 updates
+    (#4579)
+  * feat(cli): support CA and client certificates per zli config
+    (#4572)
+  * feat(api): enforce per-repository logical byte quotas (#4513)
+  * fix(storage): fsync the directory after a committed rename
+    (#4570)
+  * fix(auth): accept ID token signing algs from OIDC discovery
+    (#4567)
+  * test(sync): make the singleflight dedup test deterministic
+    (#4565)
+  * perf(storage): memoize and prefetch manifests once per
+    repository walk (#4518)
+  * ci: run lighter jobs on GitHub-hosted runners (#4562)
+  * test(blackbox): verify ModelPack model artifacts round-trip
+    through zot (#4558)
+  * fix: isolate bearer OIDC issuer failures and preserve cached
+    verifica… (#4535)
+  * chore(deps): bump the go-dependencies group across 1 directory
+    with 11 updates (#4557)
+  * chore: fix dependabot alerts (#4556)
+  * ci(nightly): harden long-running zb and dedupe index fixture
+    (#4554)
+  * fix(storage): miscellaneous storage fixes before the common
+    blobstore refactor (#4547)
+  * ci(nightly): fix long-running zb benchmark job reliability
+    (#4553)
+  * fix(storage): use per-repo blob mtime for GC delay checks
+    (#4551)
+  * fix(search): don't report unscannable manifests as scan errors
+    (#4546)
+  * refactor(storage): lock wrappers for shared content, and a blob
+    lifecycle for local vs remote storage (#4542)
+  * feat(authz): add option to disable anonymous catalog listing
+    (#4537)
+  * fix(cache): miscellaneous cache fixes (#4541)
+  * chore(deps): bump the github-actions group with 7 updates
+    (#4540)
+  * refactor(storage): name the repo at every repo-scoped lock site
+    in th… (#4539)
+  * refactor(storage): lock image stores through repo-scoped
+    wrappers (#4538)
+  * fix: miscellaneous test fixes  (#4536)
+  * chore: bump zui version (#4534)
+  * ci: nail minimum coverage requirement at 94% (#4532)
+  * feat(sync): stream image blobs to clients during on-demand sync
+    (#4407)
+  * feat(authz): support per-user repository namespaces (#4502)
+  * fix(sync): follow Link header when paginating the remote
+    catalog (#4528)
+  * fix(storage): free leftover uploads after full-disk push
+    failures (#4527)
+  * fix(sync): trust every CA in certDir, not just the last .crt
+    (#4530)
+  * chore: bump golangci-lint (#4529)
+  * chore(deps): bump the go-dependencies group with 15 updates
+    (#4526)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:39:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.22:

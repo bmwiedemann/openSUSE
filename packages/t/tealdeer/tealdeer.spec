@@ -22,7 +22,7 @@
 %endif
 
 Name:           tealdeer
-Version:        1.8.0
+Version:        1.9.1
 Release:        0
 Summary:        An implementation of tldr in Rust
 License:        Apache-2.0 OR MIT

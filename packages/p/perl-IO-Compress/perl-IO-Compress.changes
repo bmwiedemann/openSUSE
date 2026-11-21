@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Oct 10 11:15:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.225.0 (2.225)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.225 9 October 2026
+      * update to version 2,225
+        Fri Oct 9 15:32:13 2026 +0100
+        ad11c5d0913e697572987e9c1bfc49b59743dee3
+      * Update email address
+        Fri Oct 9 14:12:19 2026 +0100
+        08b77153277feaee4aa8f29778470b97983e19ca
+      * Fix inefficient and unbounded code for reading gzip Name & Comment fields #86
+        Fri Oct 9 13:58:14 2026 +0100
+        cdc16a0607c97c457d49fcf23d9f28a049dc05de
+      * add newStreamHook #84
+        Fri Oct 9 11:49:22 2026 +0100
+        d283b082186ec57fb11bd693f7ccca762d567c96
+      * Fix typo
+        Fri Sep 4 00:08:27 2026 +0100
+        f6755650cc4ac1e2e34502ee5db1f9c855215976
+      * Fix typo in Changes file
+        Fri Aug 28 12:32:14 2026 +0100
+        bd72147253d077e10157c4696e9d11b135762a4e
+
+-------------------------------------------------------------------
 Fri Aug 28 17:31:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.224.0 (2.224)

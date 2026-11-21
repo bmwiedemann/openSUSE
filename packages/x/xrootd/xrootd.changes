@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:38:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+* version update to 5.9.9
+  * [XrdSecgsi] -- Accept dCache random tags in GSI (#2992)
+  * [Pfc] -- Fix double free in DataFsSnapshot::write_json_file error paths (#2934)
+* version update to 5.9.8  
+   * [XrdCl] -- Bound the kXR_protocol security requirements copy
+   * [XrdCl] -- Reject response lengths that wrap the buffer size 
+   * [XrdCrypto] -- Fix CRL revocation check
+   * [XrdHttpTPC] -- Do not accept Source AND Destination header in COPY (#2931)
+   * [XrdHttpTpc] -- Fix double close of file descriptor (#2889)
+   * [XrdSecgsi] -- Fix GSI random tag signing
+* version update to 5.9.7
+  * [XrdHttpTPC] -- Fix issue with multi-stream PULL (#2108)
+  * [XrdHttpTPC] -- Share one parsed CA/CRL store across transfers (#2873)
+  * [XrdHttpTPC] -- Improve error message when close fails on destination (#2878)
+* version update to 5.9.6
+  * [XrdMacaroons] -- Deny macaroons requests which fail caveats or HMAC checks
+  * [XrdMacaroons] -- Intersect user-requested activities with allowed activities
+* version update to 5.9.5
+  * [XrdMacaroons] -- Fix double free bug when reading macaroon secret (#2797)
+* version update to 5.9.4
+  * [XrdHttp] -- Construct digest according to OpenSSL's EVP_MAC documentation
+  * [XrdMacaroons] -- Fix support for activity caveats
+* version update to 5.9.3
+  * [XrdHttpTpc] -- Filter source/destination URLs through allowed list of schemes
+  * [XrdHttpTpc] -- Limit curl handle to http and https protocols only
+  * [XrdHttp] -- Encode the key of the opaque query string
+  * [XrdMacaroons] -- Reject user-provided caveats with reserved keys
+* version update to 5.9.2
+  * [cmsd] -- Clear ident field when reusing a request object to avoid segv
+  * [Server] -- Correct relative path check when directory is implied
+  * [XrdCl] -- Fix a possible deadlock in extreme copy (#2619, #2622)
+  * [XrdCl] -- Fix crashes observed with Clang in Release builds
+  * [XrdCl] -- Fix segfault in XCpCtx::WeakestLink() (#2659)
+  * [XrdHttp] -- Fix a null byte buffer overflow when parsing %-encoded strings (#2690)
+  * [XrdHttp] -- Fix a null byte overflow in parseURL in HttpUtils (#2689)
+  * [XrdHttp] -- Fix buffer overflow issues when parsing HTTP request lines (#2691)
+  * [XrdHttp] -- Prevent a buffer overflow when handling a large Host header (#2692)
+  * [XrdThrottle] -- Fix null pointer dereference in ThrottleManager
+  * [XrdXrootd] -- Use correct format specifier when printing out monitoring report (#2741)
+* version update to 5.9.1
+  * [XrdCl] -- Revert fix for #2578 which caused deadlocks in XCache (#2629, #2633)
+  * [XrdEc] -- Fix stack smashing detected by ASAN
+  * [XrdSecsss] -- Fix buffer overrun when decoding bad sss keys
+- fixes CVE-2026-125113 [bsc#1289848]
+- modified patches
+  * xrootd-find-gtest.patch (refreshed)
+
+-------------------------------------------------------------------
 Wed Oct 29 07:33:47 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.9.0:

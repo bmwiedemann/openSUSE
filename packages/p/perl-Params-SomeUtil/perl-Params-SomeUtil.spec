@@ -18,10 +18,10 @@
 
 %define cpan_name Params-SomeUtil
 Name:           perl-Params-SomeUtil
-Version:        1.110.0
+Version:        1.120.0
 Release:        0
-# 1.11 -> normalize -> 1.110.0
-%define cpan_version 1.11
+# 1.12 -> normalize -> 1.120.0
+%define cpan_version 1.12
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Simple, compact and correct param-checking functions
 URL:            https://metacpan.org/release/%{cpan_name}

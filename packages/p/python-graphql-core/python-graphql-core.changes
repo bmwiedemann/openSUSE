@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Nov  6 01:41:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.3.1:
+  * Security fix (CVE-2026-119286): Create a fresh ValidationAbortedError
+    on each aborted validation instead of reusing a module-level exception,
+    preventing a memory leak via accumulated tracebacks.
+  * Fixed an issue where input values sharing a default value coerced it
+    based on whichever type was used first; coerced defaults are now
+    memoized per argument or input field.
+  * Ported changes from GraphQL.js v17.0.2.
+  * Breaking: Python 3.7 to 3.9 are no longer supported; Python 3.10 to 3.15
+    are now supported.
+  * Breaking: Functions and options deprecated in GraphQL.js 16 have been
+    removed.
+  * Breaking: AST nodes are now frozen dataclasses, and all AST collection
+    fields are tuples instead of lists.
+  * Breaking: ExecutionContext has been renamed to Executor, and the
+    execution_context_class parameter is now executor_class.
+  * Breaking: subscribe() now stays synchronous when possible (like
+    execute()) and raises a GraphQLError if called on non-subscription
+    operations.
+  * Breaking: create_source_event_stream() now takes a built Executor (via
+    Executor.build()) instead of raw request arguments.
+  * Breaking: A Python int that cannot be represented exactly as a float now
+    raises a GraphQLError when coerced to Float.
+  * Breaking: An explicit Undefined variable value is now treated as
+    omitted, allowing fallback to the variable's default value.
+  * Breaking: Input coercion follows the specification more strictly, and
+    default values are validated against their types.
+  * Breaking: Directives on directive definitions and directive extensions
+    are now part of the language; the parser option
+    experimental_directives_on_directive_definitions has been removed.
+  * Breaking: Input objects that cannot be given a finite value are rejected
+    during schema validation, with a new error message for circular input
+    object references.
+  * Breaking: validation_aborted_error was removed from
+    graphql.validation.validate.
+  * Added support for incremental delivery (@defer and @stream) via
+    experimental_execute_incrementally(), following the current spec
+    proposal.
+  * Added experimental support for fragment arguments via the parser option
+    experimental_fragment_arguments.
+  * Operations can now be aborted using an AbortSignal (raising an
+    AbortedGraphQLExecutionError with partial results), and executors now
+    support hooks.
+  * Added find_schema_changes() to report safe changes alongside breaking
+    and dangerous changes.
+  * Extended support to Python 3.15.
+  * Fixed lexer crash (unhandled IndexError) on string escape sequences
+    truncated at the end of input, now properly reported as a
+    GraphQLSyntaxError.
+  * Security fix (CVE-2026-75507): Fixed quadratic complexity in the
+    OverlappingFieldsCanBeMerged validation rule when comparing nested
+    inline fragments, preventing DoS via crafted queries. (bsc#1287830)
+  * Security fix (CVE-2026-75508): Count skipped comment tokens toward the
+    parser max_tokens limit to prevent memory exhaustion via comment-padded
+    documents. (bsc#1287829)
+
+-------------------------------------------------------------------
 Sun Jun 14 15:10:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.11:

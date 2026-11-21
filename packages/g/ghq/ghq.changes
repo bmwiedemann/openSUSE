@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov 08 12:52:34 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Update to version 1.12.0:
+  * Reject unsafe repository URL paths
+  * Process all repository arguments in ghq rm
+  * Avoid data races in parallel ghq get operations
+  * Avoid panics for inaccessible repository roots
+  * Reject unknown --vcs values
+  * Use the primary root with multiple GHQ_ROOT entries
+  * Synchronize submodule URLs before updating and descending
+  * Clarify URL-specific configuration
+  * Update Go dependencies (urfave/cli/v3 3.14.0 and golang.org/x/*)
+- Use the distribution Go toolchain without automatic downloads
+  during build and tests.
+
+-------------------------------------------------------------------
 Wed Sep 30 14:48:47 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
 
 - Update to version 1.11.2:

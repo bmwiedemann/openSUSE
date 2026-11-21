@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.11:
+  * Enhancements
+    - Add prek install --hook-command to customize how Git hooks
+      launch prek (#3002)
+    - Bundle the py.typed marker in wheels (#3011)
+    - Match installer glibc requirements to release builds (#3024)
+    - Stream completed hook groups without progress output (#3004)
+    - Support NUL-separated file lists with --files0-from (#3013)
+  * Performance
+    - Infer hook effects to skip unnecessary Git diffs (#3014)
+    - Automatically group read-only hooks (#3020)
+    - Cache file contents across read-only builtin hooks (#3021)
+  * Bug fixes
+    - Preserve number precision in pretty-format-json (#3033)
+    - Quote installed hook arguments for the shell (#3034)
+  * Dependencies
+    - chore(deps): update asyncband to 0.8.0 (#3047)
+    - Update Rust dependencies (#3043)
+    - Update textwrap and shared ICU dependencies (#3042)
+    - Update dependency rust-lang/rustup to v1.29.3 (#3037)
+    - Update Python dependencies (#3038)
+    - Bump Rust toolchain to 1.100.0 (#3026)
+    - Bump MSRV to Rust 1.98 and adopt new APIs (#3025)
+    - Upgrade serde-saphyr to 2.1.1 (#3012)
+
+-------------------------------------------------------------------
+Wed Nov 04 08:50:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.10:
+  * Enhancements
+    - Add a builtin replace-pattern hook (#2981)
+  * Bug fixes
+    - Avoid downloading Node prereleases by default (#2995)
+    - Keep file checks out of rayon's recursive frames (#2999)
+    - Skip Node releases without a compatible archive (#2996)
+  * Documentation
+    - Add equivalent prek.toml examples throughout the
+      documentation (#2979)
+  * Dependencies
+    - Upgrade serde-saphyr to 2.1.0 (#2877)
+    - Update Rust crate fancy-regex to 0.20.0 (#2989)
+    - Update Rust crate json5 to v1.3.4 (#2986)
+    - Update Rust crate webpki-root-certs to v1.0.11 (#2987)
+    - Update Rust crate annotate-snippets to v0.12.17 (#2985)
+    - Update dependency node to v26 (#2990)
+    - Update Python dependencies (#2984)
+
+-------------------------------------------------------------------
 Sat Oct 31 12:34:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.9 (.8 was not released):

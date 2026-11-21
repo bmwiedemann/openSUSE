@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  9 08:49:26 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc13-pr124370.patch to fix stack corruption in std::bitset
+  stream extraction [bsc#1289549] [gcc#124370] (CVE-2026-115455)
+- Add gcc13-pr127666.patch to fix std::from_chars to not read past
+  end of input [bsc#1289550] [gcc#127666] (CVE-2026-115456)
+- Add gcc13-cve-2026-114690.patch to fix buffer overrun in __gnu_parallel
+  search [bsc#1288775] (CVE-2026-114690)
+- Add gcc13-cve-2026-114691.patch to fix overflow in std::vector<bool>
+  constructors [bsc#1288774] (CVE-2026-114691)
+
+-------------------------------------------------------------------
 Tue Sep 29 13:59:16 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc13-pr127656.patch to fix use-after-free in

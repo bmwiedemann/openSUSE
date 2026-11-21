@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 18 04:30:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.5:
+  * Use array-api for cross-framework compatibility
+  * Fix rounding issue for large bfloat16s
+  * Replace microxscaling with torchao
+  * Update IEEE P3109 implementation to Interim Report v3
+- Add patch fix-signed-zero-overflow.patch:
+  * Fix binary64 signed-zero overflow in encode_ndarray
+
+-------------------------------------------------------------------
 Wed May 27 09:59:38 UTC 2026 - spaceja <spaceja@opensuse.org>
 
 - Fixed invalid URL

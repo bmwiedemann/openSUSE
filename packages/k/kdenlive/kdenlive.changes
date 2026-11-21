@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Nov 14 23:10:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Make sure kdenlive is rebuilt if opentimelineio is updated (boo#1290457)
+
+-------------------------------------------------------------------
+Tue Nov  3 20:39:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Too many changes since 26.08.2, only listing bugfixes:
+  * Fix non linear fades broken and crashing (kde#528138)
+  * Fix render rescale fields rounding values while typing (kde#527394)
+  * Drop cached menu shortcuts after change (kde#497906)
+  * Fix custom effects lost from favorites when renamed (kde#526884)
+  * Add missing Kdenlive and FFmpeg versions for Debug Info (kde#523012)
+- Drop patch:
+  * 0001-Fix-confusing-expression-statement-qml-error-with-Qt.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 13:35:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add patches:

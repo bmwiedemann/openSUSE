@@ -128,6 +128,11 @@ Patch23:        gcc13-bsc1239566.patch
 Patch24:        gcc14-bsc1239938.patch
 Patch25:        gcc14-rs6000-msplit-patch-nops.patch
 Patch26:        gcc14-pr119680.patch
+Patch27:        gcc14-pr127656.patch
+Patch28:        gcc14-pr124370.patch
+Patch29:        gcc14-pr127666.patch
+Patch30:        gcc14-cve-2026-114690.patch
+Patch31:        gcc14-cve-2026-114691.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -334,6 +339,7 @@ ln -s newlib-4.4.0.20231231/newlib .
 %patch -p1 -P 19
 %endif
 %patch -p1 -P 20 -P 23 -P 24 -P 25 -P 26
+%patch -p1 -P 27 -P 28 -P 29 -P 30 -P 31
 %patch -P 51
 %patch -p1 -P 60 -P 61
 

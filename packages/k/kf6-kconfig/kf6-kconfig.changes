@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * Remove unimplemented methods
+  * Fix check for user config files (kde#525267)
+  * KConfigIni: handle non-file devices when readLineInto fails
+  * KConfigIni: Stop parseConfig loop when readLineInto fails (kde#526441)
+  * Fix KConfig::copyFrom to be non const
+  * Ensure locale name with language code and country code
+  * ossfuzz: Get a newer cmake from pip
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

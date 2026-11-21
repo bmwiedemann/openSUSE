@@ -103,16 +103,16 @@ Source60:       revoked-SLES-UEFI-SIGN-Certificate-2021-05.crt
 Source61:       revoked-SLES-UEFI-SIGN-Certificate-2022-05.crt
 ###
 Source99:       SIGNATURE_UPDATE.txt
-# PATCH-FIX-SUSE shim-arch-independent-names.patch glin@suse.com -- Use the Arch-independent names
-Patch1:         shim-arch-independent-names.patch
-# PATCH-FIX-OPENSUSE shim-change-debug-file-path.patch glin@suse.com -- Change the default debug file path
-Patch2:         shim-change-debug-file-path.patch
-# PATCH-FIX-SUSE remove_build_id.patch -- Remove the build ID to make the binary reproducible when building with AArch64 container
-Patch3:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
 Patch4:         shim-disable-export-vendor-dbx.patch
 # PATCH-FIX-SUSE shim-objcopy-target.patch -- for binutils >= 2.47
 Patch5:         shim-objcopy-target.patch
+# Makefile: normalize DWARF paths to fix build-id reproducibility - #838
+Patch6:         shim-Makefile-normalize-DWARF-paths-to-fix-build-id-repro.patch
+# Make.defaults: Support overriding preprocessor defines via EXTRA_DEFINES - #837
+Patch7:         shim-Make.defaults-Support-overriding-preprocessor-define.patch
+Patch8:         shim-Allow-overriding-FALLBACK-and-MOK_MANAGER-filen.patch
+Patch9:         shim-Allow-overriding-debug-symbol-filenames-via-preproce.patch
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  dos2unix
 BuildRequires:  efitools
@@ -206,11 +206,21 @@ echo "${sbat}" > data/sbat.vendor.csv
 bash %{_sourcedir}/generate-vendor-dbx.sh %{_sourcedir}/revoked-*.crt
 ls -al *.esl
 
+extra_defines=(
+    '-UDEBUGDIR'
+    '-DDEBUGDIR=L\"/usr/lib/debug/usr/share/efi/$(ARCH)/\"'
+    '-DFALLBACK=L\"\\\\fallback.efi\"'
+    '-DMOK_MANAGER=L\"\\\\MokManager.efi\"'
+    '-DFB_DEBUG_FILE=L\"fallback.debug\"'
+    '-DSHIM_DEBUG_FILE=L\"shim.debug\"'
+)
+
 # first, build MokManager and fallback as they don't depend on a
 # specific certificate
-make CC=%{cc_compiler} RELEASE=0 \
+make CC=%{cc_compiler} RELEASE=0 ENABLE_CODESIGN_EKU=1 \
      MMSTEM=MokManager FBSTEM=fallback \
      POST_PROCESS_PE_FLAGS=-n \
+     EXTRA_DEFINES="${extra_defines[*]}" \
      MokManager.efi.debug fallback.efi.debug \
      MokManager.efi fallback.efi
 # make sure all object files gets rebuilt
@@ -280,6 +290,7 @@ for suffix in "${suffixes[@]}"; do
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
+	 EXTRA_DEFINES="${extra_defines[*]}" \
          shim.efi.debug shim.efi
     #
     # assert correct certificate embedded
@@ -311,6 +322,7 @@ for suffix in "${suffixes[@]}"; do
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
          DEFAULT_LOADER="\\\\\\\\grub.efi" \
          VENDOR_DBX_FILE=$vendor_dbx \
+	 EXTRA_DEFINES="${extra_defines[*]}" \
 	 POST_PROCESS_PE_FLAGS=-n \
          shim.nx.efi.debug shim.nx.efi
     #

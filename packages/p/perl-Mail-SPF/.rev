@@ -237,4 +237,41 @@ On Wednesday 19 September 2012, Julian Mehnle wrote:
     - Do not check for multiple CNAMEs if the included domain is a macro</comment>
     <requestid>1345215</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>e52d59f3f821ed2bf8651f244b2ed720</srcmd5>
+    <version>3.202.611.50</version>
+    <time>1794236594</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.202.611.50 (3.20261105)
+   see /usr/share/doc/packages/perl-Mail-SPF/Changes
+  3.20261105 2026-11-06 Australia/Melbourne
+    ** Thanks to Giovanni &lt;g.bechis@snb.it&gt; for these changes:
+    - RFC 7208 says there MUST be a limit of no more than 10 MX records
+      looked up and checked; throw a permerror when the limit is exceeded
+      instead of silently truncating the list
+    - RFC 7208 says implementations SHOULD limit &quot;void lookups&quot; to two;
+      enable the corresponding regression tests
+    - Ensure every module's $VERSION is set by Dist::Zilla at release time,
+      and manage the version number in README the same way
+    - Security: escape untrusted text in the Received-SPF header to
+      prevent header field injection:
+      - escape parentheses and backslashes in the explanation comment,
+        so text from a malformed SPF record or the sender identity can
+        no longer close the comment early and inject forged fields such
+        as client-ip=
+      - escape control characters (e.g. CR/LF) in the envelope-from and
+        helo fields
+    - Fix macro expansion stopping at the first line break in a macro
+      string, leaving later macros unexpanded
+    - Security: authority_explanation now escapes control and non-ASCII
+      characters in the explanation string (exp= TXT record) published in
+      DNS, and document that the result text() may contain untrusted data
+    - Remove the check for includes of the same domain through CNAME
+      aliases. Including a domain and a CNAME alias of it is legal in
+      RFC 7208, but the check tried to throw a hard fail for it. With
+      a real resolver it read an unpopulated Net::DNS internal field and
+      so in practice did nothing, but where it did take effect (e.g.
+      with Net::DNS::Resolver::Programmable) it could wrongly fail</comment>
+    <requestid>1396020</requestid>
+  </revision>
 </revisionlist>

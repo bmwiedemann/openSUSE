@@ -523,4 +523,17 @@
       heterogeneous sequences of primitive types (and nested sequences) as opposed to only homogeneous primitive sequences,</comment>
     <requestid>1381404</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>509d520381b923c52f6c28f20865088d</srcmd5>
+    <version>1.45.1</version>
+    <time>1793724706</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.45.1:
+  * Make AnyValue and AttributeValue explicit type aliases.
+  * Fix quadratic-time parsing of the tracestate header and
+    discard headers longer than 8192 characters.
+  * CVE-2026-114603: denial of service via unbounded whitespace
+    matching in TraceState.from_header (boo#1287483)</comment>
+    <requestid>1394355</requestid>
+  </revision>
 </revisionlist>

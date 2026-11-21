@@ -18,7 +18,14 @@
        a tarball whose top dir IS the crate makes this service die with
        "No such file or directory" after the manifest line. -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">opencode-process-daemon-2.2.5.tar.zst</param>
+    <!-- update=false: the service's update step re-resolves the graph to
+      the newest Rust 1.90 compatible crates and then dies on the locked
+      flag from respect-lockfile (14 bumps on 2026-11-11, index drift,
+      not a tree change). The lock IS upstream's Cargo.lock
+      (byte-identical to the tag); the vendor set was verified equal to
+      a manual locked cargo vendor run plus the hand-strip below. -->
+    <param name="update">false</param>
+    <param name="srctar">opencode-process-daemon-2.3.0.tar.zst</param>
     <param name="cargotoml">process-daemon/Cargo.toml</param>
     <param name="compression">zst</param>
     <param name="respect-lockfile">true</param>

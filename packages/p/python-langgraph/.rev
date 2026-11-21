@@ -142,4 +142,36 @@ Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <comment>Update python-langgraph to 1.2.19.</comment>
     <requestid>1394125</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>71b39652c6f33e11448b88057aae2dba</srcmd5>
+    <version>1.2.20</version>
+    <time>1793991488</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.20: per-task interrupt ids, strict resume mode.</comment>
+    <requestid>1395822</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cee6f26fab57689fb008bb29b0c51135</srcmd5>
+    <version>1.2.21</version>
+    <time>1794591255</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.21: undeclared subgraph namespace reads fall back to parent, whole-segment matching in get_subgraphs(), interrupt docs.</comment>
+    <requestid>1397193</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ef8667b48d52b95b61c57c2b07c0ba6a</srcmd5>
+    <version>1.2.22</version>
+    <time>1794816480</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.22: child-graph streaming fix, add_messages and runner perf improvements.</comment>
+    <requestid>1397534</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>552e350650065ee908f980460c8f7892</srcmd5>
+    <version>1.2.23</version>
+    <time>1795182481</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.23 (needs prebuilt &gt;= 1.1.3, filed as SR1398596)</comment>
+    <requestid>1398807</requestid>
+  </revision>
 </revisionlist>

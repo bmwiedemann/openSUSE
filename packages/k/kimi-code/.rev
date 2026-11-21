@@ -226,4 +226,60 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update kimi-code to 2.4.1: build NAPI helper from source</comment>
     <requestid>1394172</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>88b221164a4b639d83d89597af5c31cd</srcmd5>
+    <version>2.5.0</version>
+    <time>1793899238</time>
+    <user>anag_factory</user>
+    <comment>Forward kimi-code 2.5.0 to Factory</comment>
+    <requestid>1395084</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fb9393107e56f1dfd591382f391a31d2</srcmd5>
+    <version>2.5.2</version>
+    <time>1794090813</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.5.2 (patch release with MCP and web UI fixes, incl. 2.5.1 changes).</comment>
+    <requestid>1396012</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4a6789155c8eb485a4718babdf673f5a</srcmd5>
+    <version>2.5.3</version>
+    <time>1794411035</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.5.3</comment>
+    <requestid>1396897</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0e7e6ee9eaaf2a2e4f6a14d55cd46766</srcmd5>
+    <version>2.6.0</version>
+    <time>1794591260</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 2.6.0: fullscreen tool-call folding, clipboard OSC52 opt-in, permission rules, skill reload, agent profiles.</comment>
+    <requestid>1397192</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>98336f49c7e6b93761707adec19310dc</srcmd5>
+    <version>2.6.2</version>
+    <time>1794816483</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.6.2</comment>
+    <requestid>1397547</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>76d805d71602eb3f994c3225f91cb8ff</srcmd5>
+    <version>2.6.3</version>
+    <time>1795103776</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 2.6.3: shell output, Stop hooks, background notifications, resume, WebBridge fixes.</comment>
+    <requestid>1398605</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>7413016a4afcd8ae5834493713536162</srcmd5>
+    <version>2.7.0</version>
+    <time>1795182477</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 2.7.0: Bedrock providers, prompt prediction, Steer follow-up, /tasks, web --json.</comment>
+    <requestid>1398892</requestid>
+  </revision>
 </revisionlist>

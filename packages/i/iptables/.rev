@@ -746,4 +746,13 @@ GPL version does not have ^or later^ due to inclusion of numerous GPL 2 ^only^ f
     <comment>- Update to release 1.8.13</comment>
     <requestid>1336355</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>82d867dfac23edbe6f047a7c2fc507a2</srcmd5>
+    <version>1.8.13</version>
+    <time>1794816444</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch to fix build on aarch64 with kernel 7.3+:
+  * iptables-fix-aarch64.patch</comment>
+    <requestid>1397068</requestid>
+  </revision>
 </revisionlist>

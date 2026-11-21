@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 12 21:00:14 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.1:
+  * A native X11 backend is added (after kscreen 6.8 dropped its X11
+    support).
+
+-------------------------------------------------------------------
+Fri Nov  6 09:11:21 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Fixed GTK theme being cleared on applying input/cursor settings.
+  * Followed the Freedesktop.org specification for the cursor search paths
+    (instead of relying on libxcursor).
+  * Fixed compiling after recent KScreen changes.
+  * CMake maintenance.
+  * Silenced some compilation warnings.
+  * Code cleanup.
+  * NOTE: Dropped its X11 support and broke LXQt's Monitor Settings.
+
+-------------------------------------------------------------------
 Tue Apr 21 14:10:20 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

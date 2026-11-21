@@ -1,7 +1,7 @@
 #
 # spec file for package python-tpm2-pytss
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,18 @@
 
 %define pythons python3
 %define srcname tpm2-pytss
-%bcond_with     test
 Name:           python-%{srcname}
-Version:        2.3.0
+Version:        3.0.0
 Release:        0
 Summary:        Python bindings for TSS
 License:        BSD-2-Clause
 URL:            https://github.com/tpm2-software/tpm2-pytss
 Source:         https://github.com/tpm2-software/%{srcname}/archive/refs/tags/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
-#PATCH-FIX-UPSTREAM use-c99-for-preproccessing.patch from https://github.com/tpm2-software/tpm2-pytss/commit/61d00b4dcca131b3f03f674ceabf4260bdbd6a61
-Patch:          use-c99-for-preproccessing.patch
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module asn1crypto}
+# PATCH-FIX-UPSTREAM gh#tpm2-software/tpm2-pytss#702
+Patch0:         use-after-free-nvpublic.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
@@ -45,19 +42,15 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(tss2-esys)
 BuildRequires:  pkgconfig(tss2-fapi)
-Requires:       python3-PyYAML
-Requires:       python3-asn1crypto
 Requires:       python3-cffi
 Requires:       python3-cryptography
 Requires:       python3-packaging
 Requires:       pkgconfig(tss2-esys)
 Requires:       pkgconfig(tss2-fapi)
-%if %{with test}
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 BuildRequires:  swtpm
 # /SECTION
-%endif
 %python_subpackages
 
 %description
@@ -75,25 +68,20 @@ files.
 %autosetup -p1 -n %{srcname}-%{version}
 
 %build
-# Provides a PKG-INFO with "version" for setuptools_scm
-cat <<EOF > PKG-INFO
-Metadata-Version: 1.1
-Version:        %{version}
-EOF
 export CFLAGS="%{optflags}"
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with test}
 %check
 %pytest_arch
-%endif
 
 %files %{python_files}
 %license LICENSE
+%doc README.md
 %{python_sitearch}/tpm2_pytss
 %{python_sitearch}/tpm2_pytss-%{version}.dist-info
 

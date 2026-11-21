@@ -127,4 +127,20 @@
     <comment>4.0.0-rc-7 (rebuild xmvn5 when this enters)</comment>
     <requestid>1380276</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>7490664f181bb9b0cd79e234ce9a9191</srcmd5>
+    <version>4.0.0~rc7</version>
+    <time>1794318110</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396447</requestid>
+  </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>6ea481d2adf98f31932c991fbdee42da</srcmd5>
+    <version>4.0.0~rc7</version>
+    <time>1794932272</time>
+    <user>anag_factory</user>
+    <comment>Build with jline 4.x</comment>
+    <requestid>1397911</requestid>
+  </revision>
 </revisionlist>

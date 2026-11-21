@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 16 05:14:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip an overflowing test on 32 bit. 
+
+-------------------------------------------------------------------
 Sun Oct 25 17:30:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.6:

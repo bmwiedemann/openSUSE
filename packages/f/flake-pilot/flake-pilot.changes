@@ -1,4 +1,1932 @@
 -------------------------------------------------------------------
+Thu Nov 05 15:10:52 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.18 → 3.2.19
+
+-------------------------------------------------------------------
+Thu Nov 05 14:56:20 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use larger read buffers on vsock connections
+
+  For a higher throughput larger buffers on the data path are set.
+  The three copy loops now use a 64 KiB buffer instead of 1 byte,
+  set by a new IO_BUFFER_SIZE constant. Along with the buffers
+  retries are faster. Vsock Connect-back loop now retry every
+  100 ms instead of every 1s. Also stream_listener now creates
+  its socket before starting its thread, so it exists when the
+  command goes to the VM. Before, if sci connected back first,
+  it had to wait a full 1s for its next retry.
+
+-------------------------------------------------------------------
+Wed Nov 04 16:57:20 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.17 → 3.2.18
+
+-------------------------------------------------------------------
+Wed Nov 04 16:56:46 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add a note about other distributions in the docs
+
+-------------------------------------------------------------------
+Wed Nov 04 15:42:34 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.16 → 3.2.17
+
+-------------------------------------------------------------------
+Wed Nov 04 15:21:34 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add best practices chapter
+
+  Add a section about AI workloads
+
+-------------------------------------------------------------------
+Wed Nov 04 11:39:24 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add generic pi image to firecracker appstore
+
+-------------------------------------------------------------------
+Wed Nov 04 10:45:27 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix deepseek firecracker image
+
+  Keep the deepseek model setup to be the default
+
+-------------------------------------------------------------------
+Tue Nov 03 10:19:50 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add copilot to firecracker appstore
+
+-------------------------------------------------------------------
+Mon Nov 02 19:53:52 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.15 → 3.2.16
+
+-------------------------------------------------------------------
+Mon Nov 02 14:09:17 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add access checking for open_dir
+
+  Opening the rootfs and the optional layers needs to be more
+  strict. After opening R_OK | X_OK is required. faccessat2 syscall
+  runs directly on the opened descriptor with:
+
+  - AT_EMPTY_PATH checks the directory the descriptor refers to
+  without looking the path up again, so the path can't be swapped
+  between open and check.
+
+  - AT_EACCESS is essential: the helper's real UID stays root
+  (only the effective IDs are switched), so without it every
+  check would pass.
+
+  The checks happens with the caller's identity, prior any
+  privileges gain
+
+-------------------------------------------------------------------
+Mon Nov 02 12:31:23 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixes on read_config_file
+
+  Make sure to open a registration file such that it does not
+  block on FIFO's. After open check that the file is still a
+  regular file and reject if not. Last check that the filesize
+  does not exceed a certain limit. Currently we set 1MB which
+  is way more than a simple yaml registration files should
+  ever need.
+
+-------------------------------------------------------------------
+Fri Oct 30 10:19:32 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.14 → 3.2.15
+
+-------------------------------------------------------------------
+Fri Oct 30 10:11:07 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix man page rendering
+
+  Several places did not correctly quote the strong values resulting
+  in warning messages of the form: Inline strong start-string without
+  end-string. This commit fixes it
+
+-------------------------------------------------------------------
+Fri Oct 30 09:55:34 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.13 → 3.2.14
+
+-------------------------------------------------------------------
+Thu Oct 29 16:53:01 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update deepseek firecracker appstore
+
+-------------------------------------------------------------------
+Thu Oct 29 16:37:38 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update deepseek container
+
+  Add model setup for deepseek models
+
+-------------------------------------------------------------------
+Thu Oct 29 15:43:12 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing pi dependencies
+
+-------------------------------------------------------------------
+Thu Oct 29 15:08:27 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add --user option to flake-ctl firecracker register
+
+  The new option names the user to call the application as
+  inside of the VM. flake-ctl stores it as user in the runtime
+  section of the registration and firecracker-pilot passes it
+  to the guest as sci_user=NAME on the kernel commandline. The
+  name is validated on both sides such that it cannot break up
+  the kernel commandline.
+
+  sci looks up the user in /etc/passwd and /etc/group of the
+  instance and calls the command with the user and group ID
+  and the supplementary groups of the user, for the console as
+  well as for the vsock based calls. The databases are read
+  directly instead of using NSS, because a statically linked
+  sci cannot load the NSS modules of the glibc in the instance.
+  If the user does not exist in the instance a warning is
+  printed in debug mode and the command is called as root.
+  The setting is ignored for a command which replaces sci as
+  the init process, e.g systemd.
+
+  Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+-------------------------------------------------------------------
+Thu Oct 29 15:03:56 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add deepseek container to appstore
+
+-------------------------------------------------------------------
+Wed Oct 28 21:38:14 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.12 → 3.2.13
+
+-------------------------------------------------------------------
+Wed Oct 28 20:46:33 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop flake-pilot helper sandbox-run
+
+  The sandbox-run helper received all options including
+  the command to call inside of the sandbox as options
+  to the helper binary. With this approach the call cannot
+  be strictly mapped in a sudoers definition. Therefore
+  the sandbox-run helper was droped and a new helper named
+  bubblewrap-pilot was added. The new helper only receives
+  the path of the pilot registered app and the user provided
+  caller options for the command. The helper reads the
+  associated registration options from the app registration
+  and has now all information to call the bwrap
+
+-------------------------------------------------------------------
+Wed Oct 28 18:09:46 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add comment why tmpfs is attached before overlay
+
+  The tmpfs is created before the overlay because an
+  overlay refuses upper, work and lower directories of
+  a detached mount, and nothing can be attached into a
+  detached mount (up to Linux 6.14)
+
+-------------------------------------------------------------------
+Wed Oct 28 18:03:59 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Clear the group when switching back from layers
+
+  Split the identity switch out of open_layers_as() into two helpers
+  for better readability. open_layers_as is now three steps: switch
+  to the caller, open the layers, switch back. Switching back always
+  happens, even after a partial switch.
+
+-------------------------------------------------------------------
+Wed Oct 28 17:08:51 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix potential infinite loop from caller_groups
+
+  The open-ended loop is now for _ in 0..MAX_GROUP_READS.
+
+-------------------------------------------------------------------
+Wed Oct 28 16:44:17 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix the open_user_dir check
+
+  open_root_owned_dir() only checks that each component belongs to
+  root. It doesn't check that the components are not writable by
+  others, or are sticky. If /var/tmp were mode 0777 without the
+  sticky bit, another user could rename bwrap_<uid> and put their
+  own directory or symlink in its place. The owner check wouldn't
+  stop that, because it only covers the directory that was opened.
+  This can't give anyone root, since bwrap runs without privileges,
+  but it would compromise the caller's sandbox. This commit
+  fixes it by require each component to be not writable by others
+
+-------------------------------------------------------------------
+Wed Oct 28 16:28:56 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Guard open_layers
+
+  Just before calling open_layers(), it checks that the effective
+  user and group IDs are exactly the caller's. If not, it refuses
+  with an error and switches back to root as usual.
+
+-------------------------------------------------------------------
+Mon Oct 26 09:28:16 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor build and deployment workflow
+
+  Add build and deployment metadata files. Instead of creating
+  a full build script for each app build, only provide the caller
+  options to the respective flake-ctl podman|firecracker build
+  commands. Next to this add metadata to deploy the built images
+  to an ECR or S3.
+
+  Consequently a tool per appstore is implemented to build and
+  deploy the container or image blobs. All shell scripts to build
+  and push data has been removed.
+
+-------------------------------------------------------------------
+Sun Oct 25 18:25:11 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.11 → 3.2.12
+
+-------------------------------------------------------------------
+Sun Oct 25 18:23:46 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix version number in fedora image
+
+  It's a rawhide build which is currently Fedora46
+
+-------------------------------------------------------------------
+Sun Oct 25 18:14:26 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add fedora image to appstore
+
+-------------------------------------------------------------------
+Sun Oct 25 17:30:47 CET 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Wait for network in initrd only when configured
+
+  firecracker register now writes rd.neednet=0, network add writes
+  rd.neednet=1, and network remove sets it back to rd.neednet=0.
+  the registration template flake-ctl/template/firecracker-flake.yaml
+  contains rd.neednet=1 and ip=dhcp. Registration removed ip= but
+  kept rd.neednet=1, so the initrd waited for a network that was
+  never configured.
+
+-------------------------------------------------------------------
+Sat Oct 24 19:34:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.10 → 3.2.11
+
+-------------------------------------------------------------------
+Sat Oct 24 19:15:54 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new command flake-ctl podman build
+
+  In the same way as flake-ctl firecracker build also
+  support building container images via the new podman
+  build command
+
+-------------------------------------------------------------------
+Sat Oct 24 18:14:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new command flake-ctl firecracker build
+
+  The new flake-ctl firecracker build command allows to
+  build firecracker images from a given KIWI image
+  description. The build command itself only requires
+  podman on the host. The build command starts an instance
+  of a flakes.yml configured kiwi container image and
+  runs a kiwi boxbuild command inside of it. The provided
+  kiwi image description must be suitable to build
+  a firecracker compatible image. In terms of kiwi this
+  is the KIS image type. Examples of such image descriptions
+  are provided with the flake-pilot git repository below
+  the appstore/firecracker directory and can be used
+  as examples for other images.
+
+-------------------------------------------------------------------
+Sat Oct 24 17:45:13 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for local kis image
+
+  flake-ctl firecracker pull --kis-image now accepts a
+  local archive as well as an https URL.
+
+-------------------------------------------------------------------
+Thu Oct 22 09:42:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Better error handling for unregistered pilot
+
+  Running a pilot binary directly no longer panics. Instead
+  a clear error message and exit code is raised. Each pilot
+  loads its registration first thing in main(), but registration::load_config()
+  panicked instead of returning an error. So calling a pilot
+  binary directly aborted with a core dump, and so would a
+  flake whose registration is gone or whose YAML is broken.
+
+-------------------------------------------------------------------
+Wed Oct 21 15:30:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.9 → 3.2.10
+
+-------------------------------------------------------------------
+Wed Oct 21 14:34:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure bubblewrap holds no host mounts
+
+  The current version of the bubblewrap-pilot manages the
+  root of the bwrap in overlay mounts below /var/tmp/bwrap_UID
+  This leaks the contents of the host root directory to a
+  location which allows others to read usually root private
+  data which is a security issue. The proposed fix operates
+  in two conditions:
+
+  1. if the rootfs and layers have no mount points below them,
+  the pilot sets everything up itself in its own namespace.
+
+  2. Mount points below, e.g. /: the pilot hands over to a new
+  helper command, sandbox-run, via sudo. The helper builds
+  the mounts as root in a private mount namespace, then drops
+  to your user for good, sets no_new_privs, and starts bwrap
+  there. Nothing is mounted on the host on either path.
+
+-------------------------------------------------------------------
+Wed Oct 21 13:01:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.8 → 3.2.9
+
+-------------------------------------------------------------------
+Wed Oct 21 12:20:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Differentiate stderr and stdout channels
+
+  firecracker-pilot now keeps the command's stdout and stderr on
+  separate channels whenever its own stdout and stderr aren't both
+  terminals, for example app > out.txt or app 2>err.log. sci tries
+  to connect to that ports before it starts the command.
+  This Fixes #177
+
+-------------------------------------------------------------------
+Wed Oct 21 11:57:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix EOF wait in firecracker-pilot
+
+  The pilot reads just the exit status line and no longer waits
+  for the end of the stream.
+
+-------------------------------------------------------------------
+Wed Oct 21 11:14:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix handling of resume and force_vsock options
+
+  The runtime options resume and force_vsock were used at
+  registration time to create the VM cmdline boot_args
+  sci_resume and sci_force_vsock. Changing the runtime
+  options only without the boot_args caused weird side
+  effects in the behavior of the pilot. This commit
+  makes sure only the runtime options are taken into
+  account and the firecracker-pilot constructs the needed
+  boot_args from the runtime section.
+
+-------------------------------------------------------------------
+Wed Oct 21 10:51:09 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix race condition
+
+  The race came from stream_io on the host ending the whole session
+  when stdin hit EOF, even though the command in the VM was still running.
+  Now an early end of input just tells the command its input is over.
+  The pilot keeps relaying output until the guest closes the stream,
+  and the exit code arrives right after that. The 1s timeout now only
+  matters if the connection breaks.
+
+-------------------------------------------------------------------
+Wed Oct 21 10:43:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firecracker exit code handling
+
+  So far the exit code of the calling program inside the VM was
+  lost in vsock mode. This commit makes sure the exit code is transfered
+  via a new vsock port to the caller. This Fixes #176
+
+-------------------------------------------------------------------
+Mon Oct 19 21:23:58 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bwrap lookup in bubblewrwap-pilot
+
+  bubblewrap-pilot checks that bwrap exists by searching PATH,
+  but it then runs bwrap from the fixed path /usr/bin/bwrap.
+  As such the search doesn't make any sense. This commit
+  Fixes #174
+
+-------------------------------------------------------------------
+Mon Oct 19 21:23:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use the which crate
+
+  Use the which crate to lookup a binary in PATH
+
+-------------------------------------------------------------------
+Mon Oct 19 11:45:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.7 → 3.2.8
+
+-------------------------------------------------------------------
+Mon Oct 19 11:37:41 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- No color output by default
+
+  flake-pilot no longer prints color by default. This change
+  affects the messages as well as any progress information.
+  Applied the change on the documentation side as well.
+  This Fixes bsc#1285040
+
+-------------------------------------------------------------------
+Mon Oct 19 11:28:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add optional egress policy to firecracker network
+
+  flake-ctl firecracker network init now supports the new
+  option --egress-deny. The implementation adds a new chain
+  FLAKE_PILOT_EGRESS. VM traffic to the outside world now jumps
+  from FLAKE_PILOT_FORWARD into the new chain. The new chain
+  holds the egress drop rules first. For two prominent
+  restrictions the --egress-deny option was simplified:
+
+  * --egress-deny link-local
+  * --egress-deny private
+
+  link-local blocks 169.254.0.0/16, which includes the cloud
+  metadata service at 169.254.169.254. Without it, a VM reaches
+  that service as the host and can read the instance's credentials.
+  private blocks the RFC 1918 ranges: 10/8, 172.16/12 and 192.168/16.
+
+  The policy is IPv4 only like the rest of the setup
+
+-------------------------------------------------------------------
+Sat Oct 17 20:28:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.6 → 3.2.7
+
+-------------------------------------------------------------------
+Sat Oct 17 20:28:06 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update user guide
+
+  Fix gcloud example
+
+-------------------------------------------------------------------
+Sat Oct 17 15:04:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.5 → 3.2.6
+
+-------------------------------------------------------------------
+Sat Oct 17 15:03:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update user guide
+
+  Refactor the section how to build your own app images
+
+-------------------------------------------------------------------
+Fri Oct 16 14:15:47 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update user guide
+
+  reference Leap16 variant of claude image in the examples
+
+-------------------------------------------------------------------
+Fri Oct 16 14:14:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix package name in claude image
+
+-------------------------------------------------------------------
+Fri Oct 16 12:04:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for an addon store to podman-pilot
+
+  There is now a new option --use-addon-store to flake-ctl podman pull
+  and load. With it set, the image goes into /usr/lib/podman/storage
+  and nothing is written to /var/lib/podman/storage. The flag
+  is root only because /usr/lib/podman/storage belongs to root
+  and consequently this option cannot be used for rootless flakes.
+  It's important to know that pruning/deleting of data in the
+  additionalstore is not possible with podman because podman treats
+  this as read-only. The data there can only be deleted by hand.
+
+-------------------------------------------------------------------
+Fri Oct 16 10:51:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.4 → 3.2.5
+
+-------------------------------------------------------------------
+Fri Oct 16 09:51:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update claude image
+
+  Add backports repo which provides poetry
+
+-------------------------------------------------------------------
+Thu Oct 15 12:27:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to configure tmpfs size in bwrap sandbox
+
+  The size of the sandbox tmpfs can now be limited. Added new
+  sandbox_tmpfs_size setting under generic: in /etc/flakes.yml.
+  Each flake can use %tmpfs_size:SIZE pilot option, given at
+  call time or registered with the flake. It accepts a number
+  with a k/m/g/t suffix, or a percentage of the host's RAM.
+  bubblewrap-pilot passes it to the helper as
+  sandbox-mount --size SIZE.
+
+-------------------------------------------------------------------
+Thu Oct 15 12:12:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Detect and report squatted private meta data dirs
+
+  squatted private metadata directory is now detected and reported
+  with the name of the user who created it, both by the pilots
+  when they refuse to run and by flake-ctl init.
+
+-------------------------------------------------------------------
+Thu Oct 15 11:01:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add poetry to firecracker claude image
+
+  poetry is handy for many python projects and allows the AI
+  system to directly use it instead of creating its own venv
+
+-------------------------------------------------------------------
+Thu Oct 15 10:47:02 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.3 → 3.2.4
+
+-------------------------------------------------------------------
+Wed Oct 14 20:33:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow install as documented
+
+  Several actions were only done in the spec file and
+  missed if a user does not install the rpm packages.
+  make build && make install now installs everything
+  the spec used to install by hand, and the spec's
+  %build/%install are down to one make call each.
+
+-------------------------------------------------------------------
+Wed Oct 14 16:50:27 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor bubblewrap overlay and write area
+
+  The sandbox's writable layer now lives in a per-instance
+  tmpfs instead of on disk. It's kept across runs until you
+  call the app with %discard or the host reboots. Instance
+  directories are 0700.
+
+-------------------------------------------------------------------
+Wed Oct 14 16:30:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not unconditionally pull newer or prune
+
+  podman-pilot no longer asks the registry for a newer image
+  or prunes images on every launch. Both are now opt-in pilot
+  options, %pull_newer and %prune_images. They can be set in
+  a registration's pilot_options or given at call time,
+  like the existing options.
+
+-------------------------------------------------------------------
+Wed Oct 14 16:22:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.2 → 3.2.3
+
+-------------------------------------------------------------------
+Wed Oct 14 16:17:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix indentation
+
+-------------------------------------------------------------------
+Wed Oct 14 16:07:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Do not call systemfiles script as root
+
+  The systemfiles script now runs in a bash process owned by
+  the calling user instead of through sudo sh. This means
+  only the actual rsync process to provision host dependencies
+  needs privileges.
+
+-------------------------------------------------------------------
+Wed Oct 14 15:11:51 CEST 2026 - Michele Pagot <michele.pagot@suse.com>
+
+- Document FLAKE_LOG_STYLE environment variable in user guide
+
+  Add documentation for the FLAKE_LOG_STYLE environment variable in the
+  troubleshooting section of the user guide.
+
+  This explains how users can control log output styling across pilots,
+  documenting the accepted values (always, never, auto) and the default
+  behavior.
+
+-------------------------------------------------------------------
+Wed Oct 14 14:17:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor running privileged applications
+
+  Every privileged action now goes through one root-owned
+  program, /usr/libexec/flake-pilot/flake-pilot-helper, which
+  is the only thing flake-pilot calls through sudo. It has
+  a fixed set of commands, re-checks every argument, and
+  checks the caller's authority against root-owned data.
+
+-------------------------------------------------------------------
+Wed Oct 14 11:40:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.1 → 3.2.2
+
+-------------------------------------------------------------------
+Wed Oct 14 11:10:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Volume export/release guest address from state
+
+  flake-ctl firecracker volume export now takes the guest address
+  from the allocation file, /var/lib/firecracker/network-state.yaml,
+  which belongs to root. It no longer reads the ip= option from
+  the flake config. That mattered because in user mode the config
+  belongs to the user, who could have put another user's VM address
+  there and so had a host path exported to that VM.
+  volume release --app uses the same lookup.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:59:46 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Close DHCP port on the host for VMs
+
+  The DHCP port on the host is now closed to VMs by default,
+  the same way DNS is. It only opens if the host setup was
+  created with the new flake-ctl firecracker network init --host-dhcp
+  option.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:47:36 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Close DNS port on the host for VMs
+
+  The DNS port on the host is now closed to VMs by default.
+  It only opens if the host setup was created with the new
+  flake-ctl firecracker network init --host-resolver option.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:37:19 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add locking to the firecracker network state file
+
+  Concurrent firecracker network add/remove calls can lose
+  updates. Calls that change the network state now take an
+  exclusive flock and hold it for the whole command, so two
+  concurrent calls can no longer lose each other's changes
+  or hand out the same address twice.
+
+-------------------------------------------------------------------
+Wed Oct 14 10:25:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Load kvm module in sci if present
+
+  So support nested virtualization if firecracker pass virtualization
+  through, sci loads the required kvm module and sets up the
+  permissions for /dev/kvm accordingly
+
+-------------------------------------------------------------------
+Wed Oct 14 10:18:21 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- sci accepted commands from any vsock peer
+
+  sci now only accepts connections from the host (CID 2).
+  It checks the peer before reading any data
+
+-------------------------------------------------------------------
+Wed Oct 14 09:46:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add kiwi to claude firecracker image
+
+  Allows to build images via kiwi from AI spec
+
+-------------------------------------------------------------------
+Tue Oct 13 18:39:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Validate given names and paths in flake-ctl
+
+  Due to the security audit names and path given to
+  flake-ctl must follow a pattern and needs to be validated
+  such that no unexpected paths are used outside the registry
+  and maybe passed along to remove or mv calls
+
+-------------------------------------------------------------------
+Tue Oct 13 18:15:53 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Clearly state isolation limits
+
+-------------------------------------------------------------------
+Tue Oct 13 17:57:59 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.2.0 → 3.2.1
+
+-------------------------------------------------------------------
+Tue Oct 13 14:59:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete OSS scanner metadata
+
+  Anthropic declined the request to include this project
+  to the OSS scanner
+
+-------------------------------------------------------------------
+Tue Oct 13 14:38:07 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor firecracker networking per security scan
+
+  Firecracker networking now uses its own firewall chains,
+  isolates the VMs from each other and from the host, can
+  be fully undone with a new network cleanup command, and
+  gives each user their own TAP devices and addresses.
+
+-------------------------------------------------------------------
+Tue Oct 13 12:21:52 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.79 → 3.2.0
+
+-------------------------------------------------------------------
+Tue Oct 13 12:18:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bubblewrap documentation and code comments
+
+  The bubblewrap pilot intentionally keeps the written
+  data from the overlayfs on the system to be able to
+  re-use this information on the next call of the app.
+  If there is a need for keeping the sandbox data isolated
+  and not exposed or kept on the host we will come up
+  with the respective code on demand
+
+-------------------------------------------------------------------
+Tue Oct 13 12:01:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop sci injection
+
+  When pulling a firecracker image, the code checked if the
+  sci binary was part of the rootfs and injected it if it
+  wasn't. This code is now dropped because mostly unused
+  and it also breaks the checksum validation of the pulled
+  image. It is also considered security critical to modify
+  the rootfs after pull and it drops the eventually needed
+  root permissions from the pull command.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:47:27 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop include feature from flake-pilot
+
+  The include feature is gone from flake-pilot: code, CLI options,
+  templates, completion and docs. Files that still contain an include:
+  section keep working. The section is simply ignored in this case.
+
+-------------------------------------------------------------------
+Tue Oct 13 11:34:26 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update troubleshooting section
+
+  Due to the changes on the NFS export options the information
+  in the chapter was no longer fully correct. This commit
+  fixes it
+
+-------------------------------------------------------------------
+Mon Oct 12 21:13:07 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Create the metadata directory in init
+
+  Don't let the pilots create it and set them free
+  from root privileges in this context
+
+-------------------------------------------------------------------
+Mon Oct 12 20:47:56 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Get rid of some sudo restrictions
+
+  In firecracker-pilot create the socket as calling user
+
+-------------------------------------------------------------------
+Mon Oct 12 20:24:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add privileges documentation chapter
+
+  Added a user guide chapter on the security consequence
+  and a reference sudoers file.
+
+-------------------------------------------------------------------
+Mon Oct 12 19:50:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use absolute paths for every sudo target
+
+  Every program flake-pilot runs through sudo now gets
+  an absolute path, so sudo no longer looks names up
+  via secure_path or the caller's PATH. It also means
+  sudoers rules, which only match absolute paths, can
+  name these programs exactly.
+
+-------------------------------------------------------------------
+Mon Oct 12 16:57:24 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.78 → 3.1.79
+
+-------------------------------------------------------------------
+Mon Oct 12 16:12:09 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use sysctl to enable IP forwarding
+
+  enable_ip_forward() now runs sudo sysctl -w net.ipv4.ip_forward=1
+  instead of starting a root shell with echo
+
+-------------------------------------------------------------------
+Mon Oct 12 16:03:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Export NFS volumes strictly to one app
+
+  NFS volume exports are now limited to one guest's IP, squash
+  every guest user (root included) to the path's owner, drop
+  insecure, and accept only user-owned paths.
+
+-------------------------------------------------------------------
+Mon Oct 12 15:42:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update firecracker appstore images
+
+  drop insecure settings with regards to sudo and ssh
+
+-------------------------------------------------------------------
+Mon Oct 12 15:34:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop runas registration option
+
+  The runas setting in the registration configuration was no longer
+  meaningful anywhere, so it gets removed from the pilots, flake-ctl,
+  the templates, the docs and the bash completion. Whether a flake
+  runs system-wide or per user now comes only from where its
+  registration lives.
+
+-------------------------------------------------------------------
+Mon Oct 12 14:55:39 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.77 → 3.1.78
+
+-------------------------------------------------------------------
+Mon Oct 12 10:34:35 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Sign up for Anthropics OSS scanner
+
+-------------------------------------------------------------------
+Fri Oct 09 10:42:26 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Leap16 requires NetworkManager
+
+-------------------------------------------------------------------
+Fri Oct 09 10:11:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move claude firecracker image to Leap16
+
+-------------------------------------------------------------------
+Thu Oct 08 12:31:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Cleanup unused code
+
+  Delete unused variables, trace methods or imports from
+  the code base.
+
+-------------------------------------------------------------------
+Wed Oct 07 15:36:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.76 → 3.1.77
+
+-------------------------------------------------------------------
+Wed Oct 07 14:56:23 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for direct OCI export
+
+  With the podman export command, only the export from a
+  container present in a local podman registry was supported.
+  This commit adds support for direct unpack of an OCI compliant
+  tarball into the specified target directory.
+
+-------------------------------------------------------------------
+Tue Oct 06 12:38:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix spec file
+
+  The {_sbindir} macro does not resolve to /usr/sbin but /usr/bin
+  on Fedora. We want sci to be installed to /usr/sbin as such
+  revert this macro use in the spec file for now
+
+-------------------------------------------------------------------
+Tue Oct 06 10:34:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.75 → 3.1.76
+
+-------------------------------------------------------------------
+Tue Oct 06 10:15:34 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Switch hardcoded paths in spec to macros
+
+-------------------------------------------------------------------
+Mon Oct 05 15:10:05 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add /etc/flakes/APP.d drop-in directory
+
+  Users can now put drop-in files in /etc/flakes/APP.d/ to adjust
+  system-wide flakes. These files are read last, so their settings
+  win. The read order for system wide flakes therefore changes to:
+
+  1. /usr/share/flakes/APP.yaml
+  2. /usr/share/flakes/APP.d/* in alphabetical order
+  3. /etc/flakes/APP.d/* in alphabetical order
+
+  At registration time an empty drop-in is created in etc/flakes
+  and removed on registration remove. A force registration removes
+  first and therefore comes back with an empty etc/flakes.
+
+  User registrations under ~/.config/flakes never read /etc/flakes.
+  This Fixes #141
+
+-------------------------------------------------------------------
+Sun Oct 04 20:50:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add license statement for the logo
+
+  Use CC-BY-ND for the name and logo of the project
+
+-------------------------------------------------------------------
+Sun Oct 04 20:22:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add a logo to the project
+
+  Did some design work in inkscape to come up with
+  a logo for the flake-pilot project. Actually the
+  pilot is like the captain of ship, steering you
+  to stormy water :) To keep a reference to flake
+  a snowflake icon was used on the spokes of the
+  steering wheel
+
+-------------------------------------------------------------------
+Sun Oct 04 20:03:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.74 → 3.1.75
+
+-------------------------------------------------------------------
+Sun Oct 04 20:02:18 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add app store URLs to user guide
+
+  Add URL references to the prebuilt containers and
+  images used in the context of the documentation
+  to the main page of the user guide
+
+-------------------------------------------------------------------
+Fri Oct 02 15:35:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.73 → 3.1.74
+
+-------------------------------------------------------------------
+Fri Oct 02 15:31:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add missing %post for tmpfiles
+
+  For suse_version >= 1600 the evaluation of the systemd
+  tmpfiles configuration in %post was missing
+
+-------------------------------------------------------------------
+Fri Oct 02 10:03:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.72 → 3.1.73
+
+-------------------------------------------------------------------
+Fri Oct 02 10:02:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Makefile
+
+  tmpfiles source file names changed and a new tmpfile
+  setup was added for podman
+
+-------------------------------------------------------------------
+Fri Oct 02 09:59:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.71 → 3.1.72
+
+-------------------------------------------------------------------
+Thu Oct 01 17:41:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move system wide flake podman storage to var
+
+  To support the immutable flavor the system-wide podman storage is
+  now /var/lib/podman/storage, and the spec packages that directory.
+
+-------------------------------------------------------------------
+Thu Oct 01 17:24:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop rootless_storage_path from config
+
+  Removed the deprecated rootless_storage_path from the system-wide
+  flake-pilot storage config and, as you chose, kept it in the
+  per-user config. flake-ctl builds. rootless_storage_path is deprecated
+  in favor of graphroot, but containers-storage before its config
+  rework (podman 4.x) ignores graphroot for rootless users when
+  CONTAINERS_STORAGE_CONF is set. Newer versions only warn about
+  it as both point to the same path
+
+-------------------------------------------------------------------
+Thu Oct 01 15:48:52 CEST 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update state file handling
+
+  Update the scriptlet that handles the transition to the new structure for
+  state files. The updated implementation addresses concerns about user
+  masquerading in the previous implementation.
+
+-------------------------------------------------------------------
+Wed Sep 30 11:30:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.70 → 3.1.71
+
+-------------------------------------------------------------------
+Wed Sep 30 11:26:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Improve write performance onoverlay
+
+  Remove the sync/dirsync mount options. Writes to the overlay
+  are now cached and batched instead of each one waiting for the
+  disk. Crash safety comes from a sync before reboot plus a
+  1-second journal commit.
+
+-------------------------------------------------------------------
+Wed Sep 30 11:23:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update to latest version of pi for deepseek
+
+-------------------------------------------------------------------
+Tue Sep 29 10:50:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix sudoers setup for firecracker images
+
+  There is no admin user, the user is named ai
+
+-------------------------------------------------------------------
+Tue Sep 29 10:47:13 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add deepseek(pi) firecracker image
+
+-------------------------------------------------------------------
+Sun Sep 27 11:02:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.69 → 3.1.70
+
+-------------------------------------------------------------------
+Sat Sep 26 22:20:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Auto select outgoing interface
+
+  Allow to skip providing the --outgoing-interface name.
+  In this case the code select the default route interface
+  of the host.
+
+-------------------------------------------------------------------
+Sat Sep 26 22:13:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Check if storage path really exists
+
+  In flake-ctl firecracker show, only show the storage
+  path when it really exists
+
+-------------------------------------------------------------------
+Sat Sep 26 21:48:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop the garbage collector from firecracker-pilot
+
+  firecracker-pilot no longer garbage-collects instance
+  metadata. This information is used for the firecracker show
+  command and continues to be useful even if the firecracker
+  process no longer runs. flake-ctl firecracker remove now
+  deletes it, and only for the flake being removed.
+
+-------------------------------------------------------------------
+Sat Sep 26 21:39:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure firecracker-pilot gets HOME from userdb
+
+  firecracker-pilot now gets the home directory from the
+  system user database instead of the HOME variable.
+
+-------------------------------------------------------------------
+Sat Sep 26 21:36:06 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow firecracker show on config without include
+
+  flake-ctl firecracker show no longer crashes on a
+  flake config without an include section. A missing
+  section is now treated as empty.
+
+-------------------------------------------------------------------
+Sat Sep 26 21:29:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix size constraints
+
+-------------------------------------------------------------------
+Sat Sep 26 21:26:53 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add storage information to firecracker show
+
+  flake-ctl firecracker show now reports each VM's
+  storage volume, with its path and size.
+
+-------------------------------------------------------------------
+Thu Sep 24 17:37:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.68 → 3.1.69
+
+-------------------------------------------------------------------
+Thu Sep 24 17:34:35 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix setup of resolver link
+
+  Due to the mount changes to make all mounts visible
+  in the later root the mapping path for systemd data
+  from the initrd has been changed to run/systemd.pre-switch-root.
+  Support both locations for the lookup
+
+-------------------------------------------------------------------
+Thu Sep 24 15:46:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.67 → 3.1.68
+
+-------------------------------------------------------------------
+Thu Sep 24 15:36:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- firecracker-pilot should not delete storage
+
+  The firecracker-pilot should never delete the storage file
+  created for an instance. If there is no storage file available
+  firecracker-pilot creates it, but it should never delete it.
+  For handling the firecracker storage we will eventually come
+  up with a new flake-ctl firecracker storage command
+
+-------------------------------------------------------------------
+Thu Sep 24 15:29:39 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- remount / to make it visible in the overlay
+
+-------------------------------------------------------------------
+Thu Sep 24 15:18:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Leap16 uses NetworkManager
+
+  Make sure a network stack exists in the leap image for 16
+
+-------------------------------------------------------------------
+Thu Sep 24 14:42:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- immediately write journal
+
+-------------------------------------------------------------------
+Thu Sep 24 14:37:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure overlay write mount is visible to /
+
+-------------------------------------------------------------------
+Thu Sep 24 13:03:25 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- fix overlay storage handling
+
+  The ext4 overlay device is now mounted with the sync
+  and dirsync options, so file and directory changes are written
+  to the device right away.
+
+-------------------------------------------------------------------
+Thu Sep 24 11:49:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.66 → 3.1.67
+
+-------------------------------------------------------------------
+Thu Sep 24 11:33:35 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move to leap16 in the examples
+
+-------------------------------------------------------------------
+Thu Sep 24 09:54:20 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update claude firecracker app
+
+  Do not select a predefined login method. This makes
+  it hard to switch between e.g vertex and api key
+
+-------------------------------------------------------------------
+Thu Sep 24 09:43:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move firecracker images to ext4
+
+-------------------------------------------------------------------
+Thu Sep 24 09:40:05 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Switch firecracker storage to ext4
+
+  ext4 with ordering journal is considered best prepared for
+  unexpected powerloss, which can happen in the use cases for
+  firecracker processes that can be killed just like that at
+  any time.
+
+-------------------------------------------------------------------
+Wed Sep 23 22:17:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.65 → 3.1.66
+
+-------------------------------------------------------------------
+Wed Sep 23 16:00:27 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update main page
+
+  Add information on the main page to be more use case focused
+
+-------------------------------------------------------------------
+Wed Sep 23 15:45:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add sanity check for NFS server
+
+  If a flake is configured to use NFS volumes but the NFS
+  server is not started, the startup of such a flake would
+  take a very long time (NFS timeout) and the expected volume
+  cannot be attached to the flake. As such a sanity check if
+  the nfsd process/thread is running on the host prevents
+  users from unknown startup issues.
+
+-------------------------------------------------------------------
+Wed Sep 23 09:41:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.64 → 3.1.65
+
+-------------------------------------------------------------------
+Tue Sep 22 18:43:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Deduplicate podman code between pilot and ctl tool
+
+  Create a new common/src/podman space which holds all methods
+  that can be shared between the podman-pilot source and the
+  flake-ctl source
+
+-------------------------------------------------------------------
+Tue Sep 22 17:33:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new command flake-ctl podman reset
+
+  With podman reset one can stop and remove an eventually running
+  container instance for a podman-pilot app registered with
+  the resume: true feature. In this mode the container instance
+  stays open for subsequent exec calls. To reset them the new
+  command can be used
+
+-------------------------------------------------------------------
+Tue Sep 22 16:04:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Move leap firecracker image to Leap 16
+
+-------------------------------------------------------------------
+Mon Sep 21 21:20:34 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.63 → 3.1.64
+
+-------------------------------------------------------------------
+Mon Sep 21 17:15:13 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add url to the flake store on s3, cloudfront
+
+-------------------------------------------------------------------
+Sun Sep 20 22:35:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.62 → 3.1.63
+
+-------------------------------------------------------------------
+Sun Sep 20 22:34:18 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Use mount call with full path
+
+  Run /usr/bin/mount such that matching with sudo
+  becomes possible
+
+-------------------------------------------------------------------
+Sun Sep 20 21:32:18 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix overlay dir creation for bubblewrap pilot
+
+  There is no need to create the mountpoint directories for
+  the overlay mount with root permissions. Only the actual
+  mount process requires root privileges
+
+-------------------------------------------------------------------
+Sun Sep 20 18:06:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.61 → 3.1.62
+
+-------------------------------------------------------------------
+Sun Sep 20 18:00:55 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix overlay-src sorting in bubblewrap-pilot
+
+  The options provided in the flake registration for
+  bubblewrap may contain --overlay-src paths. This
+  information must be handled before all other options
+  because all --overlay-src paths forms the root
+  bwrap operates on and all other bwrap options must
+  be based on that root tree
+
+-------------------------------------------------------------------
+Sun Sep 20 17:41:13 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- bubblewrap pilot should create user overlay
+
+  The overlay mount created by the bubblewrap pilot
+  must be user specific such that system wide
+  registrations works for each user
+
+-------------------------------------------------------------------
+Sun Sep 20 13:46:47 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add sanity check for firecracker iptables rules
+
+  An application which is configured to use a network does not
+  start if its TAP device or the netfilter rules of the host are
+  missing. We have a check for the tap device but we were missing
+  the rules check. This commits adds it.
+
+-------------------------------------------------------------------
+Sun Sep 20 01:52:26 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.60 → 3.1.61
+
+-------------------------------------------------------------------
+Sun Sep 20 01:51:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore URL
+
+  Now serving from cloudfront (https)
+
+-------------------------------------------------------------------
+Sun Sep 20 01:48:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Make sure to set a User-Agent
+
+  For cloudfront a User-Agent must be provided in
+  the header of the request
+
+-------------------------------------------------------------------
+Sat Sep 19 23:38:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.59 → 3.1.60
+
+-------------------------------------------------------------------
+Sat Sep 19 23:36:19 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore URL
+
+  Now serving from an S3 bucket and not from git LFS
+
+-------------------------------------------------------------------
+Sat Sep 19 21:56:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Remove LFS
+
+  The LFS store, stores each commit for a change of
+  the data files managed under git LFS. For the purpose
+  of an appstore this is not useful as we only want
+  to provide the latest version of appstore content.
+  Also LFS offers 10GB of free storage and with the
+  data provided this quota is reached quickly
+
+-------------------------------------------------------------------
+Sat Sep 19 18:37:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.58 → 3.1.59
+
+-------------------------------------------------------------------
+Sat Sep 19 17:57:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Check if the pilot template exists
+
+  The templates are shipped with the pilot packages. A missing
+  template therefore means the pilot required for this type of
+  registration is not installed. A registration has to fail
+  in this condition.
+
+-------------------------------------------------------------------
+Sat Sep 19 17:35:58 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor registration file reading/writing
+
+  Avoid code duplication for reading and writing the yaml
+  based flake registration files. The pilots as well as
+  the control utility had a lot of code duplication for
+  handling the yaml registration files. This commit adds
+  common registration functions to be used across the
+  entire project.
+
+-------------------------------------------------------------------
+Thu Sep 17 20:54:36 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new pilot named bubblewrap-pilot
+
+  The bubblewrap-pilot is a sandbox pilot based on the
+  bubblewrap (bwrap) tool. It calls the registered command
+  in a given tree, typically a root filesystem tree. In
+  addition to the pilot the respective flake-ctl bubblewrap
+  register/show/remove commands were implemented and
+  documented. Also add new command "flake-ctl podman export"
+  which allows to export a given container into a directory
+  tree. This exported tree can then be used for example
+  in a bubblewrap registration serving as overlay-src
+  data tree.
+
+-------------------------------------------------------------------
+Mon Sep 14 10:39:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor podman appstore
+
+  Add build category and a simple push script to automate
+  building and push to an AWS ECR
+
+-------------------------------------------------------------------
+Fri Sep 11 10:11:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.57 → 3.1.58
+
+-------------------------------------------------------------------
+Fri Sep 11 10:04:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl firecracker/podman remove checks
+
+  When removing a flake it should not be allowed to do this
+  when there are still running instances. In addition for
+  firecracker the removal should also be prohibited when there
+  are active tap devices associated with an instance.
+
+-------------------------------------------------------------------
+Fri Sep 11 09:33:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add tap device sanity check
+
+  If a flake is configured to use a network but its
+  tap device does not exist, an error pointing out
+  that the flake-ctl firecracker network add command
+  must be called first
+
+-------------------------------------------------------------------
+Thu Sep 10 12:14:35 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.56 → 3.1.57
+
+-------------------------------------------------------------------
+Thu Sep 10 12:09:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Add openssl-devel to claude system
+
+-------------------------------------------------------------------
+Thu Sep 10 11:03:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add network and volume info to firecracker show
+
+  flake-ctl firecracker show now also reports information about
+  the network and the NFS volumes attached to each VM instance
+
+-------------------------------------------------------------------
+Thu Sep 10 09:59:26 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Adapt boxbuild options to kiwi v11
+
+-------------------------------------------------------------------
+Wed Sep 09 11:31:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- pull newer kiwi container
+
+  When rebuilding the appstore, pull the latest kiwi container
+  to run the boxbuild inside
+
+-------------------------------------------------------------------
+Tue Sep 08 17:46:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Added some useful software to the claude image
+
+-------------------------------------------------------------------
+Tue Sep 08 17:15:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.55 → 3.1.56
+
+-------------------------------------------------------------------
+Tue Sep 08 17:14:23 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update architecture diagram
+
+-------------------------------------------------------------------
+Sat Sep 05 23:13:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Install latest version of claude
+
+-------------------------------------------------------------------
+Sat Sep 05 22:34:54 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.54 → 3.1.55
+
+-------------------------------------------------------------------
+Sat Sep 05 22:33:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add troubleshooting section regarding users
+
+  When exporting over NFS user IDs might matter
+
+-------------------------------------------------------------------
+Sat Sep 05 22:18:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add troubleshooting section for firewalld
+
+  Add information how to make NFS work when firewalld
+  blocks it
+
+-------------------------------------------------------------------
+Sat Sep 05 21:09:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.53 → 3.1.54
+
+-------------------------------------------------------------------
+Fri Sep 04 14:44:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Dynamically select private network
+
+  The network is no longer hardcoded, it is selected at setup
+  with a preference for 172.16.0.0/24. The selected network is
+  recorded in network.yaml such that other commands like
+  network add or volume add knows about the initialized network.
+  This Fixes #115
+
+-------------------------------------------------------------------
+Fri Sep 04 10:52:06 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.52 → 3.1.53
+
+-------------------------------------------------------------------
+Fri Sep 04 10:46:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix overlay root (/) permission settings
+
+  sci creates the directories with fs::create_dir_all() which uses
+  0777 and let the umask reduce it. At call time of sci no umask
+  is set which caused the root (/) to have the wrong permission
+  settings. This commit fixes the permissions right after the
+  overlay mount and before the switch root.
+
+-------------------------------------------------------------------
+Fri Sep 04 10:26:18 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop use of pivot_root
+
+  sci used the pivot_root (chroot) procedure to switch into the
+  new root (/) in case of an overlay root such that sci as a
+  process can stay active. This root layout however, can confuse
+  applications running on top it. Therefore this commit changes
+  the procedure into a standard switch_root followed by a re-exec
+  of sci to serve as a real init process.
+
+-------------------------------------------------------------------
+Fri Sep 04 09:50:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix default firecracker setup at registration time
+
+  By default the "flake-ctl firecracker register" call uses a
+  firecracker setup template including a network configuraton.
+  If a user does not also configure the network via
+  "flake-ctl firecracker network add", the call will fail
+  because the required tap device is not present. We had
+  the --no-net option to avoid this but that's a bad user
+  experience. Therefore the default setup now comes without
+  a network, meaning the behavior of --no-net is now the
+  default procedure and all required steps to add a network
+  are part of the firecracker network implementation.
+
+-------------------------------------------------------------------
+Fri Sep 04 09:34:36 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Add an ai user to the claude image
+
+-------------------------------------------------------------------
+Thu Sep 03 22:50:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add handler for terminal resize over vsock
+
+  In a firecracker guest/host connection via vsock, the
+  initial terminal size of the caller is transfered as
+  boot arguments. If the terminal size changes during
+  runtime this information was not passed to the pty in
+  the guest and all applications still assumed the original
+  terminal size leading to rendering issues. This commit
+  adds a vsock connection on port 53 to transfer terminal
+  size information as they appear and sci applies them
+  to the pty in the guest. This Fixes #116
+
+-------------------------------------------------------------------
+Thu Sep 03 14:48:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update completion
+
+-------------------------------------------------------------------
+Thu Sep 03 13:48:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.51 → 3.1.52
+
+-------------------------------------------------------------------
+Thu Sep 03 13:48:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix flake-pilot-firecracker-guestvm-tools spec
+
+  Require nfs-client
+
+-------------------------------------------------------------------
+Thu Sep 03 11:07:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add doc chapter about firecracker volumes
+
+-------------------------------------------------------------------
+Thu Sep 03 10:32:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Implement firecracker NFS volume add/remove
+
+  Add firecracker volume add/remove commands to assign
+  a formerly exported NFS volume to a flake and its instances
+
+-------------------------------------------------------------------
+Wed Sep 02 16:34:57 CEST 2026 - copilot-swe-agent[bot] <198982749+Copilot@users.noreply.github.com>
+
+- Implement firecracker NFS volume handling
+
+  Add firecracker volume export/release commands for
+  NFS-backed host paths
+
+  Assisted-by: GPT-5.4
+
+-------------------------------------------------------------------
+Wed Sep 02 16:05:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for NFS mounts in sci
+
+  Add support for optional NFS volume(s) to mount in the
+  VM before the app is called, given as a comma separated
+  list of NAME_OR_IP:/export_path:/mount_path elements.
+  A mount point which does not exist is created. This
+  requires a network setup for the VM and the NFS client
+  tools in the VM image. See sci(8) for details
+  Example: "nfs=some.host:/host/path:/local/path".
+  The nfs variable exists in the VM if provided as part
+  of the firecracker guest config boot_args. There
+  will be follow up implementations in flake-ctl which
+  allows to export NFS shares and add this volume setup
+  to an instance in a similar fashion as it was done
+  for the network support.
+
+-------------------------------------------------------------------
+Wed Sep 02 14:48:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.50 → 3.1.51
+
+-------------------------------------------------------------------
+Wed Sep 02 13:18:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix UDS socket setup
+
+  Check if there is an old UDS socket file still present prior
+  creating a new firecracker process. It must be deleted to allow
+  the new firecracker process to create and connect to it
+
+-------------------------------------------------------------------
+Wed Sep 02 10:51:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix firecracker network setup
+
+  Make sure a host route is added when assigning an IP address
+  to a firecracker instance (tap device)
+
+-------------------------------------------------------------------
+Wed Sep 02 10:38:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update appstore
+
+  Make sure nfs-client exists in the firecracker images
+
+-------------------------------------------------------------------
+Wed Sep 02 10:11:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.49 → 3.1.50
+
+-------------------------------------------------------------------
+Wed Sep 02 10:05:08 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix evaluation of %ignore_missing_volume_path
+
+  The argument parser splits option name and argument name
+  into single words which requires a different matching
+  logic in the loop iterating through the argument values
+
+-------------------------------------------------------------------
+Tue Sep 01 18:29:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add new pilot_options section to the flake config
+
+  Allow to specify pilot options (that are options beginning with a %)
+  like %ignore_missing_volume_path in the flake yaml registration file.
+  A new registration argument named --pilot-option can be used to
+  permanently add a pilot option as part of the registration such
+  that it does not have to be passed at the commandline.
+  This is related to bsc#1274855
+
+  Assisted-by: Claude:claude-opus-4-6
+
+-------------------------------------------------------------------
+Tue Sep 01 17:43:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.48 → 3.1.49
+
+-------------------------------------------------------------------
+Tue Sep 01 17:42:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed Makefile
+
+  ghpages target missing the setup
+
+-------------------------------------------------------------------
+Tue Sep 01 17:38:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.47 → 3.1.48
+
+-------------------------------------------------------------------
+Tue Sep 01 17:38:11 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix bumpversion config
+
+  Invalid path setup
+
+-------------------------------------------------------------------
+Tue Sep 01 14:08:46 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor documentation
+
+  Create a user guide rather than a README. The information in
+  the README has grown a lot and the document became less clear.
+  This commit turns the information into a user guide style
+  documentation and pushes it to gh-pages. The former README
+  just lists a link to the documentation page
+
+-------------------------------------------------------------------
+Mon Aug 31 15:50:34 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix CWE-59 / Privilege Escalation issues
+
+  Several methods like chmod, cp, mkdir shell out to perform
+  the job. If this is done with root privileges a local unprivileged
+  attacker can create a symbolic link pointing to a restricted path.
+  As such none of this operations should allow to follow symlinks
+  in the given path if the calling user is not the same as the
+  one requested for the operation. In addition the combination of
+  tools to shell out like mkdir followed by chmod is not race free.
+  As such this commit also introduces race free implementations
+  which are preferred if the calling user is the same as the
+  one requested for the operation. This fixes bsc#1277029
+
+  Assisted-by: Claude:claude-opus-4-6
+
+-------------------------------------------------------------------
+Mon Aug 31 10:38:50 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.46 → 3.1.47
+
+-------------------------------------------------------------------
+Mon Aug 31 09:55:56 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix --no-net firecracker registrations
+
+  Make sure that no network-interfaces section is passed
+  to firecracker in this case
+
+-------------------------------------------------------------------
+Mon Aug 31 09:54:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Don't store network.yaml meta file in flakes dir
+
+  Do not store the network.yaml metadata file in the flakes
+  directory as it is then also read like a flakes registration
+  with invalid layout
+
+-------------------------------------------------------------------
+Mon Aug 31 00:41:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  Rewrite networking chapter for firecracker
+
+  Assisted-by: Claude:claude-opus-4-6
+
+-------------------------------------------------------------------
+Mon Aug 31 00:24:40 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Delete unused documentation diagrams
+
+-------------------------------------------------------------------
+Mon Aug 31 00:23:45 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl firecracker network remove
+
+  Disconnect a VM application from the host network
+
+-------------------------------------------------------------------
+Mon Aug 31 00:02:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl firecracker network add
+
+  Add a network setup for a given app registration
+  based on the host network init (NAT) and static
+  IP assignment done by the add command.
+
+-------------------------------------------------------------------
+Sun Aug 30 23:16:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add flake-ctl firecracker network init
+
+  Prepare the host to allow for NAT networking and
+  IP forwarding on a given outgoing interface.
+
+-------------------------------------------------------------------
+Sun Aug 30 23:14:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update README
+
+  Fix information about user vs. system wide flakes
+
+-------------------------------------------------------------------
+Sun Aug 30 13:34:52 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for Per-instance boot_args
+
+  An optional instance map inside the firecracker
+  engine section can be added, keyed by the @NAME selector.
+  This allows for e.g. different network settings per
+  firecracker instance and tap device.
+
+-------------------------------------------------------------------
+Sun Aug 30 10:37:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix tap device setup
+
+  The tap name is a free-form string (program basename plus
+  the @NAME instance selector), which could produce names
+  the kernel rejects. With this commit:
+
+  * every character outside [A-Za-z0-9_] becomes _ —
+  covers /, :, whitespace
+  (rejected by the kernel's dev_valid_name)
+  and @ (kernel-legal but iproute2 uses it for
+  the name@parent notation);
+
+  * names longer than IFNAMSIZ - 1 (15) are truncated to the
+  leading characters and re-uniquified with a 6-hex-digit
+  hash suffix, e.g.
+  some-very-long-application-name → tap-some_bbb9de;
+
+  * an empty name degrades to the hash rather than producing
+  the bare prefix.
+
+  * The tap name is logged under PILOT_DEBUG=1, so users can
+  see which device to pre-create. Later versions might
+  offer a network setup in flake-ctl
+
+-------------------------------------------------------------------
+Wed Aug 26 14:37:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 3.1.45 → 3.1.46
+
+-------------------------------------------------------------------
+Wed Aug 26 11:01:59 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop --user flag
+
+  Drop --user flag in favor of auto-detecting user mode.
+
+-------------------------------------------------------------------
 Tue Aug 25 11:26:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 3.1.44 → 3.1.45
@@ -10,13 +1938,6 @@ Sun Aug 23 20:52:31 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
   The image is verified against the checksum record
   fetched from its origin. This Fixes #103
-
--------------------------------------------------------------------
-Sun Aug 23 20:45:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update appstore
-
-  Also add checksum files for kis images
 
 -------------------------------------------------------------------
 Sun Aug 23 20:42:17 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -70,11 +1991,6 @@ Wed Aug 19 18:09:16 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 - Fixed firecracker pilot garbage collector
 
   Only remove firecracker pilot related metadata files ending with .vmid
-
--------------------------------------------------------------------
-Wed Aug 19 17:50:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update appstore
 
 -------------------------------------------------------------------
 Wed Aug 19 17:14:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -150,20 +2066,6 @@ Wed Aug 19 09:25:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 - Update flake-pilot man page
 
   Update the instructions to setup for rootless podman/firecracker
-
--------------------------------------------------------------------
-Tue Aug 18 22:46:14 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update firecracker appstore
-
-  new claude image
-
--------------------------------------------------------------------
-Tue Aug 18 22:36:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update firecracker appstore
-
-  new leap image
 
 -------------------------------------------------------------------
 Tue Aug 18 22:17:46 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -247,16 +2149,6 @@ Tue Aug 18 10:24:15 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
   memory filesystem which is too small to hold an image. Thus
   the temporary data is placed in defaults::TEMP_DIR which is
   expected to be persistent storage
-
--------------------------------------------------------------------
-Tue Aug 18 10:00:28 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update appstore
-
--------------------------------------------------------------------
-Tue Aug 18 09:51:37 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
-
-- Update appstore
 
 -------------------------------------------------------------------
 Tue Aug 18 00:16:33 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
@@ -954,7 +2846,7 @@ Tue Aug 19 15:12:40 CEST 2025 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Revert "kill prior remove when using %remove flag"
 
-  This reverts commit 06c7d4aa71f74865dfecba399fd08cc2fde2e1f2.
+  This reverts commit 7128fb44027b238bbc863f9580fbe068a74998c0.
   no hard killing needed with the event loop entrypoint
 
 -------------------------------------------------------------------

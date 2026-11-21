@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs24
-Version:        24.22.1
+Version:        24.22.3
 Release:        0
 
 # Double DWZ memory limits
@@ -315,7 +315,7 @@ ExclusiveArch:  not_buildable
 
 ## BEGIN NON-NPM PROVIDES ##
 %if %{with intree_brotli}
-Provides:       bundled(brotli) = 1.2.0
+Provides:       bundled(brotli) = 1.2.1
 %else
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
@@ -324,7 +324,7 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(LIEF) = 0.17.0
 Provides:       bundled(ada) = 4.0.0
 Provides:       bundled(libuv) = 1.52.1
-Provides:       bundled(llhttp) = 9.4.3
+Provides:       bundled(llhttp) = 9.4.4
 Provides:       bundled(merve) = 1.2.2
 Provides:       bundled(nghttp3) = 1.18.0
 Provides:       bundled(ngtcp2) = 1.25.0
@@ -333,7 +333,7 @@ Provides:       bundled(node-acorn-walk) = 8.3.5
 Provides:       bundled(node-amaro) = 1.1.11
 Provides:       bundled(node-corepack) = 0.36.0
 Provides:       bundled(node-minimatch) = 10.2.6
-Provides:       bundled(node-undici) = 7.30.1
+Provides:       bundled(node-undici) = 7.30.2
 Provides:       bundled(simdjson) = 4.6.11
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(v8) = 13.6.233.17

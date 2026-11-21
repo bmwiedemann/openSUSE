@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:23:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.0.22:
+  * Add optional finish-reason fields to message-finish: raw
+    finish_reason, normalized normalized_finish_reason (stop,
+    length, tool_call, content_filter, refusal, context_exceeded,
+    error, other) and finish_state (complete/suspended), so
+    consumers can tell truncated or blocked turns from clean
+    finishes without parsing provider values
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.0.21:
+  * Add input.answered event to the protocol.
+
+-------------------------------------------------------------------
 Tue Oct 20 17:10:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.0.20:

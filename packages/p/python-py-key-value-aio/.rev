@@ -28,4 +28,12 @@ Fri Jun 19 06:15:18 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1379422</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>75a6186f2ec0d631ff551e93da67ef03</srcmd5>
+    <version>0.5.0</version>
+    <time>1795103695</time>
+    <user>anag_factory</user>
+    <comment>New package python-py-key-value-aio 0.5.0 (async key-value store abstraction)</comment>
+    <requestid>1398534</requestid>
+  </revision>
 </revisionlist>

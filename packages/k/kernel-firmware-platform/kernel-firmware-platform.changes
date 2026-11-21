@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 11 08:06:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261109 (git commit 69e51bb26f3f):
+  * amd_pmf: Add AMD PMF TA Firmware v4 for 1AH_M80H
+
+-------------------------------------------------------------------
+Mon Nov  2 13:02:59 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.4-rc1
+
+-------------------------------------------------------------------
+Mon Oct 26 16:47:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261026 (git commit 98b55c84e8da):
+  * linux-firmware: nxpwifi: add firmware for IW610 WiFi device
+
+-------------------------------------------------------------------
+Mon Oct 19 07:22:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261017 (git commit a2dcb924f089):
+  * rockchip: add PCIe3 PHY firmware for snps-pcie3
+
+-------------------------------------------------------------------
+Wed Oct 14 14:49:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261014 (git commit d5455717ead0):
+  * wfx: update to firmware 3.18
+
+-------------------------------------------------------------------
+Fri Oct  9 16:09:19 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261009 (git commit 8f9cd8ebb163):
+  * panthor: Add initial firmware for Architecture 14.8 Arm Mali GPU
+
+-------------------------------------------------------------------
 Wed Sep  2 13:01:26 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.3-rc1

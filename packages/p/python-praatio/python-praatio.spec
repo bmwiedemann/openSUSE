@@ -66,6 +66,7 @@ chmod a-x examples/files/*.wav
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+cp -a $(pwd) ../%name.test ; cd ../%name.test # avoid changing files in the package (boo#1227364)
 %pytest
 
 %files %{python_files}

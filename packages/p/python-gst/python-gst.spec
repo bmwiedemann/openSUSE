@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.28.8
+Version:        1.28.9
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
@@ -32,10 +32,10 @@ BuildRequires:  gobject-introspection
 BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-analytics-1.0)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-analytics-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= 1.28.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.8
 Requires:       gstreamer >= %{_version}
 %{python_subpackages}

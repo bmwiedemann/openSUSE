@@ -27,6 +27,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://modemmanager.org/
 Source0:        https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/archive/%{version}/%{name}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM ModemManager-CVE-2026-95622.patch bsc#1282843, glfd#mobile-broadband/ModemManager!1507 sckang@suse.com -- cbm: don't assert handling unsupported encodings (8-bit and reserved)
+Patch0:         ModemManager-CVE-2026-95622.patch
 
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6

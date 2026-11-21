@@ -575,4 +575,12 @@
     - Sanitize attachment file names before saving [#13114]</comment>
     <requestid>1338085</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>bc195f62f3a7ed2337d54d54a112de0f</srcmd5>
+    <version>2.8.0</version>
+    <time>1795023095</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394870</requestid>
+  </revision>
 </revisionlist>

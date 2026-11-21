@@ -16,28 +16,20 @@
 #
 
 
-# Python 2 build fails always
-%define skip_python2 1
-%define pypi_name pymupdf
-%define mupdf_version 1.28.2
+%define mupdf_version 1.28.6
 %{?sle15_python_module_pythons}
 %bcond_without libalternatives
 Name:           python-PyMuPDF
-Version:        1.28.2
+Version:        2.1
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
-Group:          Development/Libraries/Python
 URL:            https://github.com/pymupdf/PyMuPDF
 Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/pymupdf-%{version}.tar.gz
-Source1:        https://casper.mupdf.com/downloads/archive/mupdf-%{mupdf_version}-source.tar.gz
-# PATCH-FIX-UPSTREAM CVE-2026-82035.patch bsc#1280486
-Patch0:         CVE-2026-82035.patch
-BuildRequires:  %{python_module certifi}
-BuildRequires:  %{python_module devel}
+Source1:        https://mupdf.com/downloads/archive/mupdf-%{mupdf_version}-source.tar.gz
+BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module pipcl}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  clang19-devel
 %if 0%{?suse_version} >= 1699
@@ -61,6 +53,18 @@ BuildRequires:  pkgconfig(zlib)
 Requires:       alts
 Provides:       bundled(mupdf) = %version
 # mupdf has bundled() on its own, too, so kinda bad
+# SECTION test requirements
+BuildRequires:  %{python_module certifi}
+BuildRequires:  %{python_module FontTools}
+BuildRequires:  %{python_module Pillow}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module mypy}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pylint}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  codespell
+# /SECTION
 %python_subpackages
 
 %description
@@ -71,14 +75,13 @@ book formats. PyMuPDF can also access files with extensions *.pdf,
 
 %package devel
 Summary:        Python binding for MuPDF
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
 %description devel
 Devel package for %{name}.
 
 %prep
-%autosetup -p1 -n %{pypi_name}-%{version}
+%autosetup -p1 -n pymupdf-%{version}
 cp %{SOURCE1} .
 
 %build
@@ -86,27 +89,47 @@ export CFLAGS="%{optflags} -ffat-lto-objects -frandom-seed=%{version} -I/usr/inc
 export ARCHFLAGS="%{optflags}"
 # -D makes .a files deterministic
 export AR="ar -D"
-# desperate attempt to make it build, dunno why it worked
+# Otherwise, it tries to install pipcl directly
 export PYTHONPATH=%{python3_sitelib}
 %pyproject_wheel
 
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pymupdf
+%python_clone -a %{buildroot}%{_bindir}/pymupdf-config
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-cd /tmp
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import fitz'
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c 'import pymupdf'
+export PYMUPDF_TEST_USE_4LLM=0
+export PYMUPDF_SYSINSTALL_ROOT='-'
+# Expects to run in a git checkout
+donttest="test_codespell or test_release_bug_template or test_open2"
+# Assumes ubuntu, like GitHub Actions
+donttest+=" or test_subset_fonts or test_spikes"
+# No python-pymupdf-fonts
+donttest+=" or test_fontarchive"
+# No pymupdf4llm
+donttest+=" or test_configuration_layout"
+# Non-deterministic failures
+donttest+=" or test_4125"
+# Requires network
+donttest+=" or test_5082 or test_4702 or test_4533 or test_4457"
+donttest+=" or test_4445 or test_2791"
+# Fails on 32 bit
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_2246 or test_4415 or test_4435 or test_4245"
+fi
+# test_tables.py expects results from the ONNX-backed pymupdf_layout engine
+%pytest_arch --ignore tests/test_tables.py -k "not ($donttest)"
 
 %files %{python_files}
 %license COPYING
 %doc README.md
-%{python_sitearch}/[Pp]y[Mm]u[Pp][Dd][Ff]-%{version}*info
+%{python_sitearch}/[Pp]y[Mm]u[Pp][Dd][Ff]_lite-%{version}.dist-info
 %{python_sitearch}/fitz/
 %{python_sitearch}/pymupdf/
 %python_alternative %{_bindir}/pymupdf
+%python_alternative %{_bindir}/pymupdf-config
 %exclude %{python_sitearch}/pymupdf/mupdf-devel/
 
 %files %{python_files devel}

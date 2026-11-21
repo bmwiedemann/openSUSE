@@ -1,7 +1,7 @@
 #
 # spec file for package libhdhomerun
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,15 @@
 
 %define         SO_NR 2
 Name:           libhdhomerun
-Version:        20190621
+Version:        20260326
 Release:        0
 Summary:        HDHomeRun library
 License:        LGPL-2.1-only
-Group:          Productivity/Other
-URL:            http://www.silicondust.com
-Source0:        http://download.silicondust.com/hdhomerun/libhdhomerun_%{version}.tgz
-Source1:        http://download.silicondust.com/hdhomerun/hdhomerun_config_gui_%{version}.tgz
-Source2:        hdhomerun_config_gui.desktop
-Source3:        hdhomerun_config_gui.png
-Patch0:         Makefile.patch
+URL:            https://www.silicondust.com
+Source0:        https://download.silicondust.com/hdhomerun/libhdhomerun_%{version}.tgz
 BuildRequires:  gcc-c++
-BuildRequires:  gtk2-devel
+BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 
 %description
 HDHomeRun configuration library allows you to discover HDHomeRun ATSC/QAM/DVB
@@ -43,8 +37,6 @@ for scripting.
 
 %package -n libhdhomerun%{SO_NR}
 Summary:        HDHomeRun library
-License:        LGPL-2.1-only
-Group:          Productivity/Other
 
 %description -n libhdhomerun%{SO_NR}
 HDHomeRun configuration library allows you to discover HDHomeRun ATSC/QAM/DVB
@@ -55,8 +47,6 @@ for scripting.
 
 %package devel
 Summary:        HDHomeRun library
-License:        LGPL-2.1-only
-Group:          Development/Libraries/Other
 Requires:       libhdhomerun%{SO_NR} = %{version}
 Provides:       libhdhomerun:%{_includedir}/libhdhomerun/hdhomerun.h
 
@@ -65,8 +55,6 @@ Development libraries needed to build applications with libhdhomerun.
 
 %package -n hdhomerun_config
 Summary:        HDHomeRun Config tool
-License:        LGPL-2.1-only
-Group:          Productivity/Other
 
 %description -n hdhomerun_config
 hdhomerun_config is a command line tool to discover, configure, and scan
@@ -74,37 +62,19 @@ HDHomeRun TV tuners. The tool can also be used to update the tuner's firmware.
 
 Firmware updates can be downloaded from http://www.silicondust.com/support/hdhomerun/downloads/linux
 
-%package -n hdhomerun_config_gui
-Summary:        HDHomeRun GTK GUI
-License:        GPL-3.0-only
-Group:          Productivity/Other
-Requires:       libhdhomerun%{SO_NR} = %{version}
-
-%description -n hdhomerun_config_gui
-The HDHomeRun Config GUI is a GUI tool to discover, configure, and scan
-HDHomeRun TV tuners. The tool can also be used to update the tuner's firmware.
-
-Firmware updates can be downloaded from http://www.silicondust.com/support/hdhomerun/downloads/linux
-
 %prep
-%setup -q -b 1 -n hdhomerun_config_gui
-cd ../libhdhomerun
-%patch -P 0
+%setup -q -n libhdhomerun
 
 %build
-ln -s libhdhomerun.so.%{SO_NR} ../libhdhomerun/libhdhomerun.so
-%configure
-make %{?_smp_mflags} all
+# Plain Makefile, no configure script: only export the distro flags.
+# Upstream names the lib unversioned; pass LIBEXT to keep the .so.2 soname.
+%{set_build_flags}
+%make_build LIBEXT=.so.%{SO_NR} all
 
 %install
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/%{_libdir}
 mkdir -p %{buildroot}/%{_includedir}/libhdhomerun
-
-# hdhomerun_config_gui
-cp src/hdhomerun_config_gui %{buildroot}/%{_bindir}
-
-cd ../libhdhomerun
 
 # libraries
 cp libhdhomerun.so.%{SO_NR} %{buildroot}/%{_libdir}
@@ -129,21 +99,13 @@ cp hdhomerun_channelscan.h %{buildroot}/%{_includedir}/libhdhomerun
 cp hdhomerun_device.h %{buildroot}/%{_includedir}/libhdhomerun
 cp hdhomerun_device_selector.h %{buildroot}/%{_includedir}/libhdhomerun
 
-# desktop stuff
-mkdir -p %{buildroot}/%{_datadir}/icons/hicolor/32x32/apps
-cp %{SOURCE3} %{buildroot}/%{_datadir}/icons/hicolor/32x32/apps
-
-mkdir -p  %{buildroot}/%{_datadir}/applications
-cp %{SOURCE2}  %{buildroot}/%{_datadir}/applications
-%suse_update_desktop_file hdhomerun_config_gui
-
 %post -n libhdhomerun%{SO_NR} -p /sbin/ldconfig
 %postun -n libhdhomerun%{SO_NR} -p /sbin/ldconfig
 
 %files -n libhdhomerun%{SO_NR}
 %attr(0755,root,root) %{_libdir}/libhdhomerun.so.%{SO_NR}*
-%license ../libhdhomerun/LICENSE
-%doc ../libhdhomerun/README.md
+%license LICENSE
+%doc README.md
 
 %files devel
 %{_includedir}/libhdhomerun
@@ -151,11 +113,5 @@ cp %{SOURCE2}  %{buildroot}/%{_datadir}/applications
 
 %files -n hdhomerun_config
 %{_bindir}/hdhomerun_config
-
-%files -n hdhomerun_config_gui
-%attr(0755,root,root) %{_bindir}/hdhomerun_config_gui
-%{_datadir}/applications/hdhomerun_config_gui.desktop
-%{_datadir}/icons/hicolor/32x32/apps/hdhomerun_config_gui.png
-%license COPYING
 
 %changelog

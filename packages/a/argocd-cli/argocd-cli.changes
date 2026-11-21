@@ -1,4 +1,405 @@
 -------------------------------------------------------------------
+Thu Nov 19 05:50:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.2:
+  * fix(deps): upgrade dlclark/regexp2 from v1.12.0 to v2.13.0
+    (CVE-2026-77299) (cherry-pick #31005 for 3.6) (#31039)
+  * chore(deps): update dependency helm/helm to v4.3.2
+    (release-3.6) (#30986)
+  * docs: add missing keys to the argocd-cmd-params-cm reference
+    (cherry-pick #30933 for 3.6) (#30987)
+  * docs: explain how to inspect the files received by a CMP
+    sidecar (#18547) (cherry-pick #30486 for 3.6) (#30971)
+  * chore(deps): update group golang to v1.27.4 (release-3.6)
+    (#30915)
+  * docs: fix the sync options example and explain spec options for
+    kubectl syncs (#30815) (cherry-pick #30816 for 3.6) (#30843)
+
+-------------------------------------------------------------------
+Thu Nov 05 14:10:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.1:
+  No CLI-related changes other than dependency updates
+
+-------------------------------------------------------------------
+Thu Nov 05 09:43:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.0:
+  * fix(cli): accept write-repositories in 'argocd admin settings
+    rbac can' (#30457) (cherry-pick #30458 for 3.6) (#30550)
+  * fix(cli): send --header values when refreshing an expired auth
+    token (#30061) (#30511)
+  * fix(cli): honor HTTP_PROXY/HTTPS_PROXY/NO_PROXY for gRPC-web
+    connections (cherry-pick #29642 for 3.6) (#30498)
+  * docs(cli): improve docs for `argocd app create --file -`
+    (#29553) (#29563)
+  * feat(cli): optionally exclude status field when using `argocd
+    admin export` command (#29219)
+  * fix(cli): skip stale destinations in cluster stats (#21808)
+    (#28786)
+  * chore(deps): update dependency git-lfs/git-lfs to v3.8.1
+    (cherry-pick #30360 for 3.6) (#30751)
+  * chore(deps): bump golang.org/x/net from 0.61.0 to 0.62.0 in the
+    golang-x group (cherry-pick #30699 for 3.6) (#30746)
+  * chore(deps): bump the golang-x group with 3 updates
+    (cherry-pick #30198 for 3.6) (#30742)
+  * chore(deps): bump the golang-x group with 2 updates
+    (cherry-pick #30146 for 3.6) (#30739)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.6 to
+    4.1.7 (cherry-pick #30731 for 3.6) (#30735)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.5 to
+    4.1.6 (cherry-pick #30284 for 3.6) (#30711)
+  * chore(deps): update group golang to v1.27.3 (release-3.6)
+    (#30304)
+  * chore(deps): update dependency dexidp/dex to v2.46.0
+    (cherry-pick #30065 for 3.6) (#30216)
+  * chore(deps): update dependency helm/helm to v4.3.1
+    (release-3.6) (#30211)
+  * chore(deps): update group golang (master) (cherry-pick #30090
+    for 3.6) (#30130)
+  * chore(deps): update dependency kubernetes-sigs/kustomize to
+    v5.8.3 (release-3.6) (#30097)
+  * chore(deps): bump dompurify (cherry-pick #30014 for 3.6)
+    (#30034)
+  * chore(dep): bump go-git dependency (cherry-pick #30013 for 3.6)
+    (#30022)
+  * chore(deps): bump google.golang.org/grpc from 1.83.2 to 1.84.0
+    (cherry-pick #29790 for 3.6) (#29914)
+  * chore(deps): update group renovate (#29700)
+  * chore(deps): update dependency pymdown-extensions to v12
+    (#29723)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.85.0 (#29709)
+  * chore(deps): bump the golang-x group with 3 updates (#29705)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29704)
+  * chore(deps): bump the codeql group with 4 updates (#29702)
+  * chore(deps): bump k8s client to 0.37.0 (#29597) (#29595)
+  * chore(deps): update dependency helm/helm to v4.3.0 (#29648)
+  * chore(deps): update module github.com/vektra/mockery/v3 to
+    v3.8.0 (#29630)
+  * chore(deps): bump the golang-x group with 3 updates (#29628)
+  * chore(deps): bump github.com/go-openapi/loads from 0.25.2 to
+    0.25.3 (#29615)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29614)
+  * chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.4 to
+    4.1.5 (#29589)
+  * chore(deps): update group renovate (#29585)
+  * chore(deps): bump github.com/alicebob/miniredis/v2 from 2.38.0
+    to 2.39.0 (#29588)
+  * chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0 in
+    the golang-x group (#29587)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.33.1 to
+    0.33.2 (#29590)
+  * chore(deps): bump github.com/coreos/go-oidc/v3 from 3.20.0 to
+    3.21.0 (#29592)
+  * chore(deps): bump Ubuntu base image digest  to 26.04
+    (resolute-20260811.1) (#29569)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.64.1 (#29557)
+  * chore(deps): bump github.com/prometheus/client_model from 0.6.2
+    to 0.6.3 (#29552)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.62.1 (#29539)
+  * chore(deps): bump the aws-sdk-v2 group with 5 updates (#29551)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.61.1 (#29528)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.59.2 (#29515)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.57.1 (#29501)
+  * chore(deps): bump step-security/harden-runner from 2.21.0 to
+    2.21.1 (#29497)
+  * chore(deps): update docker.io/library/golang docker tag to
+    v1.27.1 (#29492)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.56.3 (#29491)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.53.0 (#29478)
+  * chore(deps): update dependency golang to v1.27.1 (#29490)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.56.1 (#29489)
+  * chore(deps): bump github.com/gobwas/glob from 0.2.3 to 1.0.0
+    (#29482)
+  * chore(deps): bump github.com/bombsimon/logrusr/v4 from 4.1.0 to
+    4.2.0 (#29480)
+  * chore(deps): bump the otel group with 6 updates (#29456)
+  * chore(deps): bump
+    github.com/Azure/azure-sdk-for-go/sdk/azidentity from 1.14.0 to
+    1.14.1 (#29459)
+  * chore(deps): bump the codeql group with 4 updates (#29454)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azcore
+    from 1.23.0 to 1.23.1 (#29462)
+  * chore(deps): bump github.com/skeema/knownhosts from 1.3.2 to
+    1.3.3 (#29458)
+  * chore(deps): bump github.com/go-openapi/loads from 0.25.1 to
+    0.25.2 (#29460)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.10.1 to
+    1.10.2 (#29457)
+  * chore(deps): update group renovate (#29452)
+  * chore(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    (#29461)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29455)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.46.4 (#29385)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.13.2 (#29425)
+  * chore(deps): update dependency git-lfs/git-lfs to v3.8.0
+    (#29426)
+  * chore(deps): bump
+    github.com/grpc-ecosystem/go-grpc-middleware/v2 from 2.3.3 to
+    2.3.4 (#29427)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.43.1 (#29356)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.33.0 to
+    0.33.1 (#29375)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.8 to
+    1.27.9 (#29376)
+  * chore(deps): update group golang (#29268)
+  * chore(deps): update group renovate (#29333)
+  * chore(deps): bump the codeql group with 4 updates (#29338)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29339)
+  * chore(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1
+    (#29340)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.10.0 to
+    1.10.1 (#29341)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.39.2 (#29327)
+  * chore(deps): update dependency pymdown-extensions to v11.0.2
+    (#29329)
+  * chore(deps): update docker.io/library/redis docker tag to
+    v8.10.1 (#29295)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.37.1 (#29299)
+  * chore(deps): bump github.com/stretchr/testify from 1.12.0 to
+    1.12.1 (#29301)
+  * chore(deps): update dependency helm/helm to v4.2.4 (#29187)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.35.4 (#29271)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.13.0 (#29277)
+  * chore(deps): update dependency pygments to v2.21.0 (#29217)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.32.6 (#29232)
+  * chore(deps): bump DOMPurify to 3.4.7 for CVE-2026-49978
+    (#28966)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29228)
+  * chore(deps): bump github.com/go-openapi/loads from 0.25.0 to
+    0.25.1 (#29229)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.7 to
+    1.27.8 (#29230)
+  * chore(deps): bump github.com/stretchr/testify from 1.11.1 to
+    1.12.0 (#29231)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.32.4 (#29223)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.32.2 (#29207)
+  * chore(deps): bump the codeql group with 4 updates (#29213)
+  * chore(deps): bump the aws-sdk-v2 group with 2 updates (#29209)
+  * chore(deps): bump the golang-x group with 2 updates (#29210)
+  * chore(deps): bump github.com/sirupsen/logrus from 1.9.4 to
+    1.10.0 (#29211)
+  * chore(deps): bump github.com/Azure/azure-sdk-for-go/sdk/azcore
+    from 1.22.0 to 1.23.0 (#29212)
+  * chore(deps): bump step-security/harden-runner from 2.20.1 to
+    2.21.0 (#29214)
+  * chore(deps): update module github.com/vektra/mockery/v3 to
+    v3.7.3 (#29167)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.30.4 (#29176)
+  * chore(deps): update group golang to v1.26.6 (#29186)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29192)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.27.0 (#29168)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.26.0 (#29154)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.24.2 (#29151)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.24.1 (#29147)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.24.0 (#29144)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.23.3 (#29133)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.6 to
+    1.27.7 (#29136)
+  * chore(deps): update redis (#29132)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.22.0 (#29129)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.20.1 (#29127)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.17.5 (#29122)
+  * chore(deps): bump the otel group with 2 updates (#29118)
+  * chore(deps): update group renovate (#29115)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29117)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.17.1 (#29113)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.15.0 (#29112)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.14.12 (#29102)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.14.7 (#29099)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.14.4 (#29096)
+  * chore(deps): bump github.com/redis/go-redis/v9 from 9.21.0 to
+    9.22.0 (#29092)
+  * chore(deps): bump the otel group with 4 updates (#29091)
+  * chore(deps): bump the codeql group with 4 updates (#29093)
+  * chore(deps): bump step-security/harden-runner from 2.20.0 to
+    2.20.1 (#29094)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.14.3 (#29085)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.14.0 (#29067)
+  * chore(deps): bump the codeql group with 4 updates (#29077)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.13.1 (#29062)
+  * chore(deps): bump the codeql group with 4 updates (#29021)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.11.8 (#29050)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#29040)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.11.0 (#29038)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.5 to
+    1.27.6 (#29041)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.9.1 (#29034)
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.0
+    (#29020)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.7.1 (#29019)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.7.0 (#29002)
+  * chore(deps): update docker.io/library/busybox docker digest to
+    dc2d74b (#29008)
+  * chore(deps): update docker.io/library/redis docker tag to
+    v8.10.0 (#28991)
+  * chore(deps): update ghcr.io/renovatebot/renovate docker tag to
+    v44.4.5 (#28992)
+  * chore(deps): update dependency markdown to v3.10.3 (#28987)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#28975)
+  * chore(deps): update group renovate (#28988)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#28952)
+  * chore(deps): bump github.com/jarcoal/httpmock from 1.4.1 to
+    1.4.2 (#28953)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.4 to
+    1.27.5 (#28931)
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.23 to
+    0.0.24 (#28883)
+  * chore(deps): bump the codeql group with 4 updates (#28869)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.32.6 to
+    0.33.0 (#28933)
+  * chore(deps): bump github.com/prometheus/client_golang from
+    1.24.0 to 1.24.1 (#28914)
+  * chore(deps): bump go.yaml.in/yaml/v3 from 3.0.4 to 3.0.5
+    (#28913)
+  * chore(deps): update module github.com/vektra/mockery/v3 to
+    v3.7.2 (#28882)
+  * chore(deps): update docker.io/library/redis docker tag to
+    v8.8.1 (#28896)
+  * chore(deps): update dependency dexidp/dex to v2.45.1 (#28850)
+  * chore(deps): update dependency helm/helm to v4.2.3 (#28851)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#28844)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.32.5 to
+    0.32.6 (#28845)
+  * chore(deps): bump the codeql group with 4 updates (#28843)
+  * chore(deps): bump github.com/go-logr/logr from 1.4.3 to 1.4.4
+    (#28823)
+  * chore(deps): bump step-security/harden-runner from 2.19.4 to
+    2.20.0 (#28787)
+  * chore(deps): bump github.com/prometheus/client_golang from
+    1.23.2 to 1.24.0 (#28824)
+  * chore(deps): bump github.com/go-openapi/loads from 0.24.0 to
+    0.25.0 (#28822)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.3 to
+    1.27.4 (#28760)
+  * chore(deps): bump the aws-sdk-v2 group with 5 updates (#28710)
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2
+    (#28696)
+  * chore(deps): update group golang to v1.26.5 (#28628)
+  * chore(deps): bump the aws-sdk-v2 group with 5 updates (#28603)
+  * chore(deps): bump github.com/google/gnostic-models from 0.7.0
+    to 0.7.1 (#28560)
+  * chore(deps): bump the aws-sdk-v2 group with 5 updates (#28514)
+  * chore(deps): update docker.io/bitnamilegacy/kubectl docker tag
+    to v1.33 (#28458)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.12.2 (#28424)
+  * chore(deps): update group node to v24.17.0 (#27924)
+  * chore(deps): bump github.com/redis/go-redis/v9 from 9.20.1 to
+    9.21.0 (#28387)
+  * chore(deps): bump slack-go to v0.23.1 and golang.org/x/net to
+    v0.53.0 (#28377)
+  * chore(deps): bump github.com/coreos/go-oidc/v3 from 3.18.0 to
+    3.19.0 (#28325)
+  * chore(deps): bump library/ubuntu from `f3d2860` to `53958ec` in
+    /test/container (#28370)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.32.3 to
+    0.32.4 (#28372)
+  * chore(deps): bump github.com/cyphar/filepath-securejoin from
+    0.6.1 to 0.7.0 (#28351)
+  * chore(deps): bump github.com/Azure/kubelogin from 0.2.18 to
+    0.2.19 (#28403)
+  * chore(deps): update dependency pymdown-extensions to v11
+    (#28386)
+  * chore(deps): bump github.com/aws/smithy-go from 1.27.2 to
+    1.27.3 (#28473)
+  * chore(deps): update dependency helm/helm to v4.2.2 (#28457)
+  * chore(deps): bump golang.org/x/net from 0.53.0 to 0.55.0 in
+    /gitops-engine (#28540)
+  * chore(deps): bump the aws-sdk-v2 group with 6 updates (#28537)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.0
+    (#28525)
+  * chore(deps): bump sigs.k8s.io/structured-merge-diff/v6 from
+    6.4.0 to 6.4.1 (#28604)
+  * chore(deps): update dependency pymdown-extensions to v11.0.1
+    (#28627)
+  * chore(deps): bump sigs.k8s.io/structured-merge-diff/v6 from
+    6.4.1 to 6.4.2 (#28622)
+  * chore(deps): bump step-security/harden-runner from 2.19.4 to
+    2.20.0 (#28621)
+  * chore(deps): bump golang.org/x/net from 0.56.0 to 0.57.0
+    (#28640)
+  * chore(deps): bump github.com/coreos/go-oidc/v3 from 3.19.0 to
+    3.20.0 (#28643)
+  * chore(deps): bump the aws-sdk-v2 group with 2 updates (#28639)
+  * chore(deps): bump golang.org/x/term from 0.44.0 to 0.45.0
+    (#28642)
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.22 to
+    0.0.23 (#28761)
+  * chore(deps): bump
+    github.com/go-openapi/runtime/server-middleware from 0.32.4 to
+    0.32.5 (#28759)
+  * chore(deps): bump the codeql group with 4 updates (#28762)
+  * chore(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+    (#28739)
+
+-------------------------------------------------------------------
+Wed Nov 04 10:21:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.5.7:
+  * Bug fixes
+    - 4f2aec5: fix(cli): honor HTTP_PROXY/HTTPS_PROXY/NO_PROXY for
+      gRPC-web connections (cherry-pick #29642 for 3.5) (#30497)
+    - 847e0b5: fix(cli): send --header values when refreshing an
+      expired auth token (#30061) (#30546)
+  * Documentation
+    - 6af872f: docs: add FAQ for importing Argo CD as a Go library
+      (cherry-pick #30555 for 3.5) (#30561)
+    - ae0f73a: docs: fix non-existent 'argocd repo edit' command in
+      HA guide (cherry-pick #30694 for 3.5) (#30708)
+  * Dependency updates
+    - a97897b: chore(deps): bump slack-go to v0.23.1 and
+      golang.org/x/net to v0.53.0 (cherry-pick #28377 for 3.5)
+      (#30696)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:18:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.5.6:

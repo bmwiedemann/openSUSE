@@ -70,7 +70,7 @@ ExclusiveArch:  do_not_build
 %define package_name %{pname}%{?pack_suff}
 
 Name:           %{package_name}%{?testsuite:-testsuite}
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        High-performance and widely portable implementation of MPI
 License:        MIT
@@ -83,6 +83,8 @@ Source100:      _multibuild
 Source101:      README.md
 Patch1:         autogen-only-deal-with-json-yaksa-if-enabled.patch
 Patch2:         autoconf-pull-dynamic-and-not-static-libs-from-pkg-config.patch
+Patch3:         Revert-build-fix-ROMIO-make-check-using-portable-makefile.patch
+Patch4:         Revert-Run-legacy-romio-tests-against-the-build-tree.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  fdupes
@@ -96,6 +98,8 @@ BuildRequires:  valgrind-devel
 %ifnarch s390 s390x armv7hl
 BuildRequires:  libnuma-devel
 %endif
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  libtool
 BuildRequires:  mpi-selector
@@ -196,6 +200,10 @@ export FCFLAGS="-fallow-argument-mismatch %{optflags}"
 export CROSS_F77_SIZEOF_INTEGER=4
 %endif
 autoreconf -fi
+(
+    cd src/mpi/romio
+    autoreconf -fi
+)
 %configure \
     --prefix=%{p_prefix} \
     --exec-prefix=%{p_prefix} \

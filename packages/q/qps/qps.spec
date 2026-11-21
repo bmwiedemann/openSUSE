@@ -1,7 +1,7 @@
 #
 # spec file for package qps
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qps
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Visual Process Manager
 License:        GPL-2.0-or-later
@@ -26,16 +26,16 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(lxqt) >= 2.1.0
-BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt2-build-tools)
 
 %description
 Qps is a visual process manager, an X11 version of "top" or "ps" that

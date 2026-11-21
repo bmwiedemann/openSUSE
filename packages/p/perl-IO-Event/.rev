@@ -7,4 +7,13 @@
     <comment>required for perl-File-Flock adi:1</comment>
     <requestid>531232</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>688d8d1d09fea5633123a0c9da628f1f</srcmd5>
+    <version>0.814.0</version>
+    <time>1793725193</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.814.0 (0.814)
+   see /usr/share/doc/packages/perl-IO-Event/Changes</comment>
+    <requestid>1394680</requestid>
+  </revision>
 </revisionlist>

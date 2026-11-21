@@ -24,6 +24,8 @@ License:        GPL-3.0-only AND MIT
 URL:            https://gitlab.gnome.org/GNOME/calls
 Source0:        %{name}-%{version}.tar.xz
 Source1:        libcall-ui-0.gitmodule.tar.xz
+# PATCH-FIX-UPSTREAM glgo#GNOME/calls#753
+Patch0:         calls-desktop.patch
 BuildRequires:  AppStream
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler

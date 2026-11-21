@@ -528,4 +528,12 @@
  Thu Jul 31 07:44:04 UTC 2025 - Josef Reidinger &lt;jreidinger@suse.com&gt;</comment>
     <requestid>1387135</requestid>
   </revision>
+  <revision rev="42" vrev="42">
+    <srcmd5>8a44a33619fdb86870026889db100750</srcmd5>
+    <version>0</version>
+    <time>1793899715</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1394997</requestid>
+  </revision>
 </revisionlist>

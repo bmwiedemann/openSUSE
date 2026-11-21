@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 165
+%define poppler_sover 166
 %define poppler_cpp_sover 3
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        26.10.0
+Version:        26.11.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -55,7 +55,7 @@ BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(cairo-pdf)
 BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
-BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(fontconfig) >= 2.15
 BuildRequires:  pkgconfig(freetype2) >= 24.0.18
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80

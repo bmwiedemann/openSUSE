@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Aug 19 16:29:08 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update esqueleto to version 3.6.0.3.
+  3.6.0.3
+  =======
+  - @parsonsmatt
+      - [#438](https://github.com/bitemyapp/esqueleto/pull/438)
+          - Relax the upper bound on `time` to `< 1.17`, allowing
+            `time-1.14`, `time-1.15`, and `time-1.16`.
+
+-------------------------------------------------------------------
+Fri Aug 14 23:32:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update esqueleto to version 3.6.0.2.
+  3.6.0.2
+  =======
+  - @parsonsmatt
+      - [#436](https://github.com/bitemyapp/esqueleto/pull/436)
+          - After a set operation, resume ident allocation from the union of
+            both branches' ident states (previously the left branch's state
+            only), so the enclosing query can never reuse an ident either
+            branch consumed.
+
+-------------------------------------------------------------------
+Fri Aug 14 19:28:43 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update esqueleto to version 3.6.0.1.
+  3.6.0.1
+  =======
+  - @parsonsmatt
+      - [#435](https://github.com/bitemyapp/esqueleto/pull/435)
+          - Fix two sources of duplicate column aliases, which made outer
+            references to the affected columns fail on PostgreSQL with
+            `42702 column reference is ambiguous` and silently select the wrong
+            column on SQLite: set operations whose branches allocate different
+            numbers of aliases (a variant of
+            [#299](https://github.com/bitemyapp/esqueleto/issues/299)), and
+            selecting the same inner-scope reference more than once in a single
+            select list.
+          - Support declaring a CTE (`with`) inside a set operation branch by
+            parenthesizing the branch; previously this rendered invalid SQL.
+            SQLite does not support parenthesized set operation operands, so
+            this remains PostgreSQL/MySQL-only.
+
+-------------------------------------------------------------------
 Thu Mar 20 14:43:54 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Add esqueleto at version 3.6.0.0 revision 1.

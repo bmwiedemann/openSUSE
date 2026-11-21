@@ -17,18 +17,15 @@
 
 
 Name:           gssproxy
-Version:        0.9.2
+Version:        0.9.3
 Release:        0
 Summary:        Daemon for managing gss-api requests
 License:        MIT
 Group:          Productivity/Networking/System
 URL:            https://github.com/gssapi/gssproxy
 Source0:        https://github.com/gssapi/gssproxy/releases/download/v%{version}/gssproxy-%{version}.tar.gz
-Patch0:         harden_gssproxy.service.patch
-Patch1:         Remove-unneeded-include-in-configure-script.patch
-Patch2:         Don-t-check-for-libref_array-explicitly.patch
-Patch3:         Fix-cross-compilation.patch
-Patch4:         gssproxy-Modernize-systemd.m4-macro.patch
+Source1:        gssproxy.tmpfiles
+Patch1:         0001-CVE-2026-116497.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  krb5-client
@@ -83,6 +80,8 @@ ln -s service %{buildroot}%{_sbindir}/rcgssproxy
 install -D -m 644 examples/gssproxy.conf %{buildroot}%{_sysconfdir}/gssproxy/gssproxy.conf
 install -d -m 700 %{buildroot}%{_localstatedir}/lib/gssproxy/rcache
 install -D -m 644 examples/24-nfs-server.conf %{buildroot}%{_sysconfdir}/gssproxy/24-nfs-server.conf
+install -d -m 0755 %{buildroot}%{_tmpfilesdir}
+install -m 644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}/gssproxy.conf
 
 %check
 make %{?_smp_mflags} check
@@ -92,6 +91,7 @@ make %{?_smp_mflags} check
 
 %post
 %service_add_post gssproxy.service
+%tmpfiles_create gssproxy.conf
 
 %preun
 %service_del_preun gssproxy.service
@@ -105,8 +105,8 @@ make %{?_smp_mflags} check
 %{_sbindir}/rcgssproxy
 %dir %{_libdir}/gssproxy
 %{_libdir}/gssproxy/proxymech.so
-%dir %{_localstatedir}/lib/gssproxy
-%dir %{_localstatedir}/lib/gssproxy/rcache
+%ghost %dir %attr(0755,root,root) %{_sharedstatedir}/gssproxy
+%ghost %dir %attr(0700,root,root) %{_sharedstatedir}/gssproxy/rcache
 %{_unitdir}/gssproxy.service
 %{_userunitdir}/gssuserproxy.service
 %{_userunitdir}/gssuserproxy.socket
@@ -119,5 +119,6 @@ make %{?_smp_mflags} check
 %dir %{_sysconfdir}/gss/
 %dir %{_sysconfdir}/gss/mech.d
 %config %{_sysconfdir}/gss/mech.d/proxymech.conf
+%{_tmpfilesdir}/gssproxy.conf
 
 %changelog

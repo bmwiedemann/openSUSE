@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:41:08 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Changes to add CNSA 1.0 and 2.0 compliance: (jsc#PED-16991)
+  * Use sha512 and AES-256 by default.
+  * Build with --with-luks1-hash=sha512 (PBKDF2, AF and digest hash
+    for new LUKS1 and LUKS2 keyslots), --with-plain-hash=sha512,
+    --with-plain-keybits=512 (AES-256-XTS in plain mode) and
+    --with-verity-hash=sha512.
+  * Use sha512 for the LUKS2 header checksum and the LUKS2
+    reencryption checksum resilience hash.
+  * Add cryptsetup-cnsa-default-sha512.patch
+  * NOTE: plain mode devices created with the previous defaults
+    must now be opened with explicit --hash sha256 --key-size 256.
+
+-------------------------------------------------------------------
 Mon Sep 14 07:19:06 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 2.8.8:

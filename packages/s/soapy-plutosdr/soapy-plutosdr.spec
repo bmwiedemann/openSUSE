@@ -19,7 +19,7 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-plutosdr
 Name:           soapy-plutosdr
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        SoapySDR PlutoSDR module
 # Legal-Review-Notice: LGPL-2.1-only is deliberate. Upstream ships the bare
@@ -30,6 +30,12 @@ License:        LGPL-2.1-only
 URL:            https://github.com/pothosware/SoapyPlutoSDR/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyPlutoSDR.git
 Source:         https://github.com/pothosware/SoapyPlutoSDR/archive/%{name}-%{version}.tar.gz#/SoapyPlutoSDR-%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE soapy-plutosdr-libiio1-includedir.patch mpluskal@suse.com -- find libiio 1.x headers under include/iio/ too, not just the Homebrew libiio layout
+Patch0:         soapy-plutosdr-libiio1-includedir.patch
+# PATCH-FIX-OPENSUSE soapy-plutosdr-libiio1-scan-api.patch mpluskal@suse.com -- port the device scan to the libiio 1.x API (iio_scan, iio_err), the 0.24-era scan context API is gone
+Patch1:         soapy-plutosdr-libiio1-scan-api.patch
+# PATCH-FIX-OPENSUSE soapy-plutosdr-libiio1-streaming.patch mpluskal@suse.com -- port contexts, channel attrs and the streaming engine to the libiio 1.x block-queue API
+Patch2:         soapy-plutosdr-libiio1-streaming.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

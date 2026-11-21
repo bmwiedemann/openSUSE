@@ -19,13 +19,13 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 
 Name:           wayshot
-Version:        1.4.6+git21.g81d360733816e18b1219624976f4286f276a1ecc
+Version:        1.7.1
 Release:        0
 Summary:        Screenshot tool for wlroots based compositors
-License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause
+License:        (0BSD OR MIT OR Apache-2.0) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (MIT OR Unlicense) AND (Apache-2.0 OR Zlib OR MIT) AND BSD-3-Clause AND ISC AND MIT AND Zlib AND BSD-2-Clause AND GPL-3.0-only
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/waycrate/wayshot
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}-wayshot.tar.zst
 Source1:        vendor.tar.zst
 %if 0%{?suse_version} >= 1500
 BuildRequires:  cargo-packaging
@@ -50,7 +50,7 @@ BuildRequires:  pkgconfig(wayland-server)
 A screenshot tool for wlroots based compositors implementing zwlr_screencopy_v1
 
 %prep
-%autosetup -a1
+%autosetup -a1 -n wayshot-%{version}-wayshot
 
 %build
 export CARGO_HOME=$PWD/.cargo
@@ -67,11 +67,11 @@ popd
 %install
 # cargo install does not work with cached cargo home
 install -D -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{name}-%{version}/target/release/wayshot
+install -m 0755 -t %{buildroot}%{_bindir}/ %{_builddir}/%{buildsubdir}/target/release/wayshot
 
 %files
 %{_bindir}/wayshot
-%license LICENSE
+%license LICENSE-BSD LICENSE-GPL
 %doc README.md
 
 %changelog

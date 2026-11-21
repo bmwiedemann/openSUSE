@@ -31,7 +31,7 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    261.4
+%define systemd_version    262.2
 %define systemd_release    0
 %define archive_version    %{nil}
 %endif
@@ -249,6 +249,7 @@ Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
 # and will be removed as soon as a proper fix is merged by upstream.
 Patch:          5001-Revert-udev-update-devlink-with-the-newer-device-nod.patch
 Patch:          5002-Revert-udev-revert-workarounds-for-issues-caused-by-.patch
+Patch:          5003-hostname-setup-label-the-default-hostname-hint-file.patch
 %endif
 
 %description

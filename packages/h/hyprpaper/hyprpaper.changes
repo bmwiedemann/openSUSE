@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:18:11 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.8.5:
+  * Nix: remove pcre dep
+  * Fix: add null check for g_IPCSocket in onRepeatTimer
+- Drop gtk-layer-shell-0 dep as it's no longer needed
+
+-------------------------------------------------------------------
 Fri Jul 31 16:31:49 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to version 0.8.4:

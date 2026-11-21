@@ -728,4 +728,20 @@ https://build.opensuse.org/requests/1305216
     <comment>Avoid CVE-2026-111497 bsc#1287815 by using the system brotli library in ghostscript and ghostscript-mini (forwarded request 1393080 from jsmeix)</comment>
     <requestid>1393081</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>7103d2ad842322c9ac7776eecb9ac826</srcmd5>
+    <version>10.08.0</version>
+    <time>1793899192</time>
+    <user>anag_factory</user>
+    <comment>Ghostscript 10.08.0 also fixes CVE-2026-110133 (bsc#1288957)</comment>
+    <requestid>1394920</requestid>
+  </revision>
+  <revision rev="83" vrev="5">
+    <srcmd5>18a0622491624de8d4c935dbe3260cac</srcmd5>
+    <version>10.08.0</version>
+    <time>1794410655</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript 10.08.0 also fixes CVE-2026-125396 (bsc#1289822) and CVE-2026-112922 (bsc#1288956)</comment>
+    <requestid>1396502</requestid>
+  </revision>
 </revisionlist>

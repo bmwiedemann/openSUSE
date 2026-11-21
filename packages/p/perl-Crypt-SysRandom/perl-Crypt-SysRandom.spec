@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-SysRandom
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,30 @@
 
 %define cpan_name Crypt-SysRandom
 Name:           perl-Crypt-SysRandom
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
-# 0.007 -> normalize -> 0.7.0
-%define cpan_version 0.007
+# 0.008 -> normalize -> 0.8.0
+%define cpan_version 0.008
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl interface to system randomness
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(MIME::Base64) >= 3.11
+Requires:       perl(MIME::Base64) >= 3.11
 Provides:       perl(Crypt::SysRandom) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(Crypt::SysRandom::XS)
+Recommends:     perl(Crypt::SysRandom::XS) >= 0.11
 %{perl_requires}
 
 %description
 This module uses whatever interface is available to procure
-cryptographically random data from the system.
+cryptographically random data from the system. All functions are optionally
+exported.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1

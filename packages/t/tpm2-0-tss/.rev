@@ -530,4 +530,12 @@ This is required for Kanidm as it requires openssl-3 and tpm2-0-tss. (forwarded 
     <comment></comment>
     <requestid>1297495</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>45c94928718b75708dddb213b28c9073</srcmd5>
+    <version>4.2.1</version>
+    <time>1793899178</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394848</requestid>
+  </revision>
 </revisionlist>

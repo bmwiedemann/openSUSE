@@ -1,17 +1,8 @@
-Index: rssguard-5.2.5/localization/CMakeLists.txt
+Index: rssguard-5.3.0/localization/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.5.orig/localization/CMakeLists.txt
-+++ rssguard-5.2.5/localization/CMakeLists.txt
-@@ -8,7 +8,7 @@ if(UPDATE_TRANSLATIONS AND BUILD_WITH_QT
-     "${CMAKE_SOURCE_DIR}/src/librssguard*/*.h"
-     "${CMAKE_SOURCE_DIR}/src/librssguard*/*.ui")
- 
--  qt_add_lupdate(rssguard
-+  qt_add_lupdate(rssguard-${APP_VERSION}
-     TS_FILES "${CMAKE_CURRENT_SOURCE_DIR}/rssguard_en.ts"
-     SOURCES ${ALL_SOURCES}
-     INCLUDE_DIRECTORIES "${CMAKE_BINARY_DIR}/src/librssguard"
-@@ -21,7 +21,7 @@ FILE(GLOB TS_FILES  ${CMAKE_CURRENT_SOUR
+--- rssguard-5.3.0.orig/localization/CMakeLists.txt
++++ rssguard-5.3.0/localization/CMakeLists.txt
+@@ -29,7 +29,7 @@
  set_source_files_properties(${TS_FILES} PROPERTIES OUTPUT_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}")
  
  if(BUILD_WITH_QT6)
@@ -20,18 +11,18 @@ Index: rssguard-5.2.5/localization/CMakeLists.txt
      TS_FILES ${TS_FILES}
      QM_FILES_OUTPUT_VARIABLE QM_FILES
      OPTIONS "-compress"
-@@ -33,5 +33,5 @@ else()
+@@ -41,5 +41,5 @@
    )
  
    add_custom_target(rssguard_lrelease DEPENDS ${QM_FILES})
 -  add_dependencies(rssguard rssguard_lrelease)
 +  add_dependencies(rssguard-${APP_VERSION} rssguard_lrelease)
  endif()
-Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
+Index: rssguard-5.3.0/src/librssguard/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.5.orig/src/librssguard/CMakeLists.txt
-+++ rssguard-5.2.5/src/librssguard/CMakeLists.txt
-@@ -547,11 +547,11 @@ if(WIN32)
+--- rssguard-5.3.0.orig/src/librssguard/CMakeLists.txt
++++ rssguard-5.3.0/src/librssguard/CMakeLists.txt
+@@ -555,11 +555,11 @@
    list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
  endif()
  
@@ -45,7 +36,7 @@ Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
      PRIVATE
      FORCE_BUNDLE_ICONS
    )
-@@ -559,7 +559,7 @@ if(FORCE_BUNDLE_ICONS)
+@@ -567,7 +567,7 @@
    message(STATUS "Forcibly bundling icon themes.")
  endif()
  
@@ -54,7 +45,7 @@ Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
    PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}
    ${CMAKE_CURRENT_SOURCE_DIR}/gui
-@@ -575,31 +575,31 @@ target_include_directories(rssguard
+@@ -583,31 +583,31 @@
  )
  
  # qtlinq
@@ -92,7 +83,7 @@ Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Network
-@@ -612,111 +612,111 @@ target_link_libraries(rssguard PUBLIC
+@@ -620,82 +620,82 @@
  )
  
  if(WEB_ARTICLE_VIEWER_WEBENGINE)
@@ -186,9 +177,10 @@ Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
  elseif(WIN32)
 -  target_link_libraries(rssguard PUBLIC
 +  target_link_libraries(rssguard-${APP_VERSION} PUBLIC
+     psapi
      shell32
      odbc32
-   )
+@@ -703,29 +703,29 @@
  endif()
  
  if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
@@ -223,11 +215,11 @@ Index: rssguard-5.2.5/src/librssguard/CMakeLists.txt
      PRIVATE
      LOAD_PLUGINS_FROM_PARENT
    )
-Index: rssguard-5.2.5/src/rssguard/CMakeLists.txt
+Index: rssguard-5.3.0/src/rssguard/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.5.orig/src/rssguard/CMakeLists.txt
-+++ rssguard-5.2.5/src/rssguard/CMakeLists.txt
-@@ -29,7 +29,7 @@ target_link_libraries(app PUBLIC
+--- rssguard-5.3.0.orig/src/rssguard/CMakeLists.txt
++++ rssguard-5.3.0/src/rssguard/CMakeLists.txt
+@@ -29,7 +29,7 @@
    Qt${QT_VERSION_MAJOR}::Core
    Qt${QT_VERSION_MAJOR}::Gui
    Qt${QT_VERSION_MAJOR}::Widgets
@@ -235,12 +227,21 @@ Index: rssguard-5.2.5/src/rssguard/CMakeLists.txt
 +  rssguard-${APP_VERSION}
  )
  
- if(APPLE)
-Index: rssguard-5.2.5/src/cmake_plugins.cmake
+ # This executable reuses real application startup and is never installed or shipped.
+@@ -43,7 +43,7 @@
+     RSSGUARD_PACKAGE_SMOKE_TEST
+   )
+   target_include_directories(package_smoke_test PRIVATE ${CMAKE_BINARY_DIR}/src/librssguard)
+-  target_link_libraries(package_smoke_test PRIVATE rssguard)
++  target_link_libraries(package_smoke_test PRIVATE rssguard-${APP_VERSION})
+   set_target_properties(package_smoke_test PROPERTIES
+     OUTPUT_NAME rssguard-package-smoke
+     MACOSX_BUNDLE FALSE
+Index: rssguard-5.3.0/src/cmake_plugins.cmake
 ===================================================================
---- rssguard-5.2.5.orig/src/cmake_plugins.cmake
-+++ rssguard-5.2.5/src/cmake_plugins.cmake
-@@ -15,7 +15,7 @@ function(prepare_rssguard_plugin plugin_
+--- rssguard-5.3.0.orig/src/cmake_plugins.cmake
++++ rssguard-5.3.0/src/cmake_plugins.cmake
+@@ -15,7 +15,7 @@
    add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
  
    target_link_libraries(${plugin_target_name} PUBLIC
@@ -249,11 +250,11 @@ Index: rssguard-5.2.5/src/cmake_plugins.cmake
    )
  
    target_compile_definitions(${plugin_target_name}
-Index: rssguard-5.2.5/tests/CMakeLists.txt
+Index: rssguard-5.3.0/tests/CMakeLists.txt
 ===================================================================
---- rssguard-5.2.5.orig/tests/CMakeLists.txt
-+++ rssguard-5.2.5/tests/CMakeLists.txt
-@@ -9,14 +9,14 @@ function(add_rssguard_test TEST_TARGET)
+--- rssguard-5.3.0.orig/tests/CMakeLists.txt
++++ rssguard-5.3.0/tests/CMakeLists.txt
+@@ -9,7 +9,7 @@
    target_link_libraries(${TEST_TARGET}
      PRIVATE
      Qt${QT_VERSION_MAJOR}::Test
@@ -262,11 +263,21 @@ Index: rssguard-5.2.5/tests/CMakeLists.txt
    )
  
    if(WIN32)
+@@ -36,7 +36,7 @@
      add_test(NAME ${TEST_TARGET}
        COMMAND ${CMAKE_COMMAND} -E env
-         "QT_QPA_PLATFORM=offscreen"
--        "PATH=$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
-+        "PATH=$<TARGET_FILE_DIR:rssguard-${APP_VERSION}>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+         "QT_QPA_PLATFORM=${TEST_PLATFORM}"
+-        "PATH=${TEST_EXTRA_PATH}$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
++        "PATH=${TEST_EXTRA_PATH}$<TARGET_FILE_DIR:rssguard-${APP_VERSION}>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
          $<TARGET_FILE:${TEST_TARGET}>
      )
    else()
+@@ -162,7 +162,7 @@
+       add_test(NAME test_zoom_webengine
+         COMMAND ${CMAKE_COMMAND} -E env
+           "QT_QPA_PLATFORM=${ZOOM_TEST_PLATFORM}"
+-          "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
++          "PATH=${CMAKE_SOURCE_DIR}/resources/scripts/libmpv$<SEMICOLON>$<TARGET_FILE_DIR:rssguard-${APP_VERSION}>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+           $<TARGET_FILE:test_zoom>)
+     else()
+       add_test(NAME test_zoom_webengine

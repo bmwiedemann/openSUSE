@@ -1,7 +1,7 @@
 #
 # spec file for package perl-SQL-Abstract
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,31 +18,32 @@
 
 %define cpan_name SQL-Abstract
 Name:           perl-SQL-Abstract
-Version:        2.000001
+Version:        2.000003
 Release:        0
-Summary:        Generate SQL from Perl data structures
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Generate SQL from Perl data structures
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MS/MSTROUT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/G/GE/GETTY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Data::Dumper::Concise)
-BuildRequires:  perl(Hash::Merge) >= 0.12
-BuildRequires:  perl(MRO::Compat) >= 0.12
-BuildRequires:  perl(Moo) >= 2.000001
-BuildRequires:  perl(Sub::Quote) >= 2.000001
+BuildRequires:  perl(Hash::Merge) >= 0.120
+BuildRequires:  perl(MRO::Compat) >= 0.120
+BuildRequires:  perl(Moo) >= 2.0.1
+BuildRequires:  perl(Sub::Quote) >= 2.0.1
 BuildRequires:  perl(Test::Builder::Module) >= 0.84
 BuildRequires:  perl(Test::Deep) >= 0.101
-BuildRequires:  perl(Test::Exception) >= 0.310000
+BuildRequires:  perl(Test::Exception) >= 0.310
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(Text::Balanced) >= 2.00
-Requires:       perl(Hash::Merge) >= 0.12
-Requires:       perl(MRO::Compat) >= 0.12
-Requires:       perl(Moo) >= 2.000001
-Requires:       perl(Sub::Quote) >= 2.000001
+Requires:       perl(Hash::Merge) >= 0.120
+Requires:       perl(MRO::Compat) >= 0.120
+Requires:       perl(Moo) >= 2.0.1
+Requires:       perl(Sub::Quote) >= 2.0.1
 Requires:       perl(Test::Builder::Module) >= 0.84
 Requires:       perl(Test::Deep) >= 0.101
 Requires:       perl(Text::Balanced) >= 2.00
@@ -91,8 +92,9 @@ These are then used directly in your DBI code:
     $sth->execute(@bind);
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -107,7 +109,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes examples README
+%doc Changes examples README SECURITY.md
 %license LICENSE
 
 %changelog

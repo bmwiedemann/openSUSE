@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 17 14:44:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3.2:
+  * Fix the ``deprecated`` version names
+  * Update TOX_CONSTRAINTS_FILE for stable/2026.2
+  * Update .gitreview for stable/2026.2
+
+-------------------------------------------------------------------
 Mon Sep  7 09:14:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3.1:

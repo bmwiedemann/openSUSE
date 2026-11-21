@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  2 07:19:04 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261031 (git commit bda6eccc3a8f):
+  * ath11k: QCA2066 hw2.1@nfa725: add to WLAN.HSP.1.1.c6-00302-QCAHSPSWPL_V1_V2_SILICONZ_LITE-1
+  * ath11k: QCA2066 hw2.1: update board-2.bin
+
+-------------------------------------------------------------------
 Sun Sep 27 08:16:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260926 (git commit 9b858e5bb58d):

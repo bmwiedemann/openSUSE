@@ -753,4 +753,24 @@ Depends on maxima (sr#121612)</comment>
     <comment>1</comment>
     <requestid>1383086</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>624e55fda948fc13e9c133edae4f06d8</srcmd5>
+    <version>26.10.0</version>
+    <time>1794317988</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1396378 from badshah400
+
+* Update to version 26.10.0.</comment>
+    <requestid>1396381</requestid>
+  </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>677bada758d0bfd9c5fdb020bec0d815</srcmd5>
+    <version>26.10.0</version>
+    <time>1794410737</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1396547 from badshah400
+
+Enable %check since all issues with tests have been resolved upstream.</comment>
+    <requestid>1396552</requestid>
+  </revision>
 </revisionlist>

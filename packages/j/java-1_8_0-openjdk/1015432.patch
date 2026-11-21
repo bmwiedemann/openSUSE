@@ -1,6 +1,8 @@
---- openjdk/hotspot/src/os/linux/vm/os_linux.cpp	Wed Oct 23 15:44:12 2013 -0700
-+++ openjdk/hotspot/src/os/linux/vm/os_linux.cpp	Thu Dec 19 16:03:33 2013 +0000
-@@ -4797,9 +4797,19 @@ 
+diff --git a/hotspot/src/os/linux/vm/os_linux.cpp b/hotspot/src/os/linux/vm/os_linux.cpp
+index 742e17d115..af900264ee 100644
+--- a/hotspot/src/os/linux/vm/os_linux.cpp
++++ b/hotspot/src/os/linux/vm/os_linux.cpp
+@@ -5200,9 +5200,19 @@ jint os::init_2(void)
    // size.  Add a page for compiler2 recursion in main thread.
    // Add in 2*BytesPerWord times page size to account for VM stack during
    // class initialization depending on 32 or 64 bit VM.

@@ -1,7 +1,7 @@
 #
 # spec file for package lash
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,8 @@ Patch7:         0001-Fix-detection-of-Python-3.patch
 Patch8:         lash-gcc14-fix.patch
 # fix build with gcc15
 Patch9:         lash-gcc15.patch
+# PATCH-FIX-UPSTREAM lash-swig-py3.patch -- replace obsolete PyString_* with PyUnicode_* in SWIG interface
+Patch10:        lash-swig-py3.patch
 BuildRequires:  alsa-devel
 BuildRequires:  glibc-devel
 BuildRequires:  gtk2-devel
@@ -93,6 +95,7 @@ This package contains the development files for the LASH system.
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 ./autogen.sh

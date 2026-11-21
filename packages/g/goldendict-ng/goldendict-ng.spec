@@ -21,31 +21,21 @@
 %define gcc_ver 11
 %endif
 Name:           goldendict-ng
-Version:        26.5.0
+Version:        26.11.0
 Release:        0
 Summary:        Dictionary Lookup Program
 License:        GPL-3.0-only AND GPL-3.0-or-later
-Group:          Productivity/Office/Dictionary
 URL:            https://xiaoyifang.github.io/goldendict-ng/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
+# /Section dependencies
+BuildRequires:  eb-devel
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  git
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
-# /Section dependencies
-BuildRequires:  eb-devel
-BuildRequires:  hunspell-devel >= 1.2.4
-BuildRequires:  pkgconfig(fmt)
-BuildRequires:  pkgconfig(libzim)
-BuildRequires:  pkgconfig(opencc)
-BuildRequires:  pkgconfig(tomlplusplus)
-BuildRequires:  pkgconfig(vorbis)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xapian-core)
-BuildRequires:  pkgconfig(xtst)
 # /Section Qt
 BuildRequires:  pkgconfig(Qt6Concurrent)
 BuildRequires:  pkgconfig(Qt6Core)
@@ -58,16 +48,25 @@ BuildRequires:  pkgconfig(Qt6TextToSpeech)
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
-# /Section compresion libraries
-BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  pkgconfig(lzo2)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(hunspell) >= 1.2.4
 # /Section ffmpeg 6
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+# /Section compresion libraries
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzim)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(opencc)
+BuildRequires:  pkgconfig(tomlplusplus)
+BuildRequires:  pkgconfig(vorbis)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xapian-core)
+BuildRequires:  pkgconfig(xtst)
+BuildRequires:  pkgconfig(zlib)
 Requires:       qt6-multimedia
 Provides:       goldendict = %{version}
 Obsoletes:      goldendict < 1.5.1

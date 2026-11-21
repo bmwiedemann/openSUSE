@@ -1,6 +1,6 @@
 # Intel One Mono Typeface
 
-![Image of Intel One Mono character set](https://github.com/intel/intel-one-mono/assets/130394986/6c921cf4-f614-41bd-a909-363bb19f9a30)
+![Intel One Mono Preview Image](img/intel-one-mono-preview-image.png)
 
 Introducing Intel One Mono, an expressive monospaced font family that’s built with clarity, legibility, and the needs of developers in mind.
 
@@ -29,7 +29,8 @@ We recommend using these fonts at 7 points and larger in print, 9 pixels and lar
 
 ### Available OpenType Features
 Outside of the default characters, there are a few extra features that are accessible in some applications, as well as via CSS:
-- **Programming Ligatures:** New in release 1.4, by popular demand. To use programming ligatures, activate the `ss01` feature (Stylistic Set #1). Additional refinements are available via `ss02` and `ss03`: Stylistic Set #2 switches the <= and >= combinations to arrow forms (math contractions being the default otherwise), and Stylistic Set #3 additionally activates a “www” ligature.
+- **Programming Ligatures:** To use programming ligatures, activate the `ss01` feature (Stylistic Set #1). Additional refinements are available via `ss02` and `ss03`: Stylistic Set #2 switches the <= and >= combinations to arrow forms (math contractions being the default otherwise), and Stylistic Set #3 additionally activates a “www” ligature.
+- **Alternate three:** New in release 1.5. Alternate form for three added. The round top three, numerator, denomenator, superior and inferior can be activated with stylistic Set #4. 
 - **Raised Colon:** The colon is automatically raised in operators, to align with math symbols. For non-programming contexts, the raised colon can be applied contextually between numbers or activated generally. The contextual option is available via `ss11` (Stylistic Set #11); for the global switch use `ss12` (Stylistic Set #12) or `salt` (Stylistic Alternates).
 - **Language Support:** `ccmp` and `locl` features ensure correct display across a wide range of languages. These are usually active by default. We recommend setting the language tag/setting in your software to the desired language for best results.
 - **Superior/superscript and inferior/subscript figures** are included via their Unicode codepoints, or you can produce them from the default figures via the `sups` (Superscript) and `subs`/`sinf` (Subscript) features.
@@ -72,7 +73,8 @@ NB: The prepared instances contain some additional data that cannot be maintaine
 For TrueType-based formats (.ttf, .woff, .woff2 files), the official releases are manually optimized for screen rendering. These “hinting” sources are stored separately from the .ufo files, which do not contain any TrueType hinting information. When rebuilding TrueType-based formats, we recommend using the “autohint” option to achieve reasonable, though not identical screen rendering.
 
 If you would like to access and edit manual hinting instructions, you will find these in the separate set of source files under `hinting/truetype hinting source`. These special TTF files will be viewable and editable using [Microsoft VTT](https://learn.microsoft.com/en-us/typography/tools/vtt/).
+
  
  
 ## Suggesting Edits
-If you have suggestions for edits or additions to the official releases, please email brand_q@intel.com. 
+If you have requests for edits or additions to the official releases, please open issues and we will try to accomodate them. 

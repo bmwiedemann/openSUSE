@@ -1691,4 +1691,84 @@
     --with-control-api option was used.</comment>
     <requestid>1387003</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>0305b56223f0383d0d4e7c38413bcccb</srcmd5>
+    <version>1.31.9</version>
+    <time>1795023528</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.31.9 ( boo#1290867 boo#1290868 boo#1290871
+  boo#1290872 boo#1290873 boo#1290874 boo#1290875 boo#1290876
+  boo#1290877 ) boo#1290878
+  - Security: a buffer overflow might occur in a worker process
+    when using the &quot;try_files&quot; and &quot;alias&quot; directives in certain
+    configurations (CVE-2026-125283). Thanks to Marc Luchian and
+    Liviu-Alexandru Bud.
+  - Security: a flow control window overflow in HTTP/2 might allow
+    an attacker to cause a segmentation fault in a worker process,
+    or might have potential other impact (CVE-2026-123007). Thanks
+    to Xint.io.
+  - Security: use-after-free might occur in a worker process when
+    using HTTP/2 if worker_connections were not enough
+    (CVE-2026-123633). Thanks to Albert of Vexera AI.
+  - Security: use-after-free might occur in a worker process when
+    using HTTP/3 if worker_connections were not enough
+    (CVE-2026-121810). Thanks to Xint.io.
+  - Security: use-after-free condition might occur if the
+    &quot;resolver&quot; directive was used and the same name was
+    simultaneously resolved in subrequests, allowing an attacker
+    who is able to trigger name resolution to cause segmentation
+    fault in a worker process, or might have potential other impact
+    (CVE-2026-123634). Thanks to Xint.io.
+  - Security: use-after-free might occur in a worker process in the
+    mail proxy server (CVE-2026-113425). Thanks to Xint.io and
+    Maxim Dounin.
+  - Security: in the stream module, an attacker who is able to
+    complete the SSL handshake synchronously might cause client SSL
+    certificates to be verified using the configuration of the
+    default server rather than the virtual server selected by SNI
+    (CVE-2026-120967). Thanks to CERT.PL.
+  - Security: a segmentation fault might occur in a worker process
+    when using PROXY protocol version 2 with dynamic SSL
+    certificate loading (CVE-2026-120993). Thanks to ruokeqx.
+  - Security: the ngx_stream_ssl_preread_module might interpret
+    malformed ClientHello messages differently than other TLS
+    implementations, which might result in bypassing security
+    restrictions (CVE-2026-123640). Thanks to Vivek Parikh of
+    BreachX Zero Day Labs.
+  - Security: worker processes might get caught in an endless loop
+    while reading the request body over SSL (CVE-2026-118899).
+    Thanks to Maxim Dounin.
+  - Change: now header lines without a colon are rejected. Thanks
+    to Maxim Dounin.
+  - Change: now a request is rejected if the chunked request body
+    contains too much framing overhead. Thanks to jskoetsier.
+  - Bugfix: a buffer overflow might occur in a worker process when
+    using a GeoIP database in the MMDB format containing invalid
+    coordinates. Thanks to Y.Horie.
+  - Bugfix: a request might hang if it was proxied while the
+    request body was being discarded. Thanks to Maxim Dounin.
+  - Bugfix: some values of the QPACK static table were decoded
+    incorrectly when using HTTP/3. Thanks to Nexory.
+  - Bugfix: when using HTTP/2, response trailers might delay data
+    of higher priority streams.
+  - Bugfix: the $cookie_... variables and the
+    ngx_http_userid_module handled the &quot;Cookie&quot; request header line
+    incorrectly if it contained a cookie without a name.
+  - Bugfix: non-cacheable variables in the &quot;index&quot; directive might
+    be evaluated incorrectly. Thanks to Maxim Dounin.
+  - Bugfix: OCSP responses for client certificates with uncommon
+    serial numbers might be cached incorrectly when using the
+    &quot;ssl_ocsp_cache&quot; directive. Thanks to Gyejin Lee of QED Audit.
+  - Bugfix: the control API did not respond to requests with a too
+    long request line. Thanks to Daewoo Choi.</comment>
+    <requestid>1398483</requestid>
+  </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>4c32ac010bc81916d838bdb45ceaafb6</srcmd5>
+    <version>1.31.9</version>
+    <time>1795182228</time>
+    <user>anag_factory</user>
+    <comment>Fixed changelog.</comment>
+    <requestid>1398537</requestid>
+  </revision>
 </revisionlist>

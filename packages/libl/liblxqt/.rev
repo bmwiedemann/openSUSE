@@ -456,4 +456,19 @@
   * Fixes brightness adjustment on amdgpu systems</comment>
     <requestid>1352051</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a4d2060b86d7a4158e8bd912308156fd</srcmd5>
+    <version>2.5.1</version>
+    <time>1795182270</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.1:
+  * The main reason for this point release is that it prevents a freeze in
+    lxqt-panel by opening the backlight helper stream with close-on-exec.
+
+- Update to 2.5.0:
+  * Read brightness instead of actual brightness with AMD GPU.
+  * Also, some CMake maintenance and code cleanup.
+- Delete 378.patch</comment>
+    <requestid>1398744</requestid>
+  </revision>
 </revisionlist>

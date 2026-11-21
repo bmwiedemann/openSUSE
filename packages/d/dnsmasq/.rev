@@ -1044,4 +1044,26 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     due to missing extrabytes validation.</comment>
     <requestid>1363468</requestid>
   </revision>
+  <revision rev="109" vrev="3">
+    <srcmd5>e58bce06bf2d42f903fca9924162b876</srcmd5>
+    <version>2.93</version>
+    <time>1793817745</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream security fixes:
+  * CVE-2026-93006, bsc#1288828: TFTP server can serve the wrong
+    file contents because a recently used transfer cache is not
+    invalidated when a transfer finishes
+    (dnsmasq-CVE-2026-93006.patch).
+  * CVE-2026-93007, bsc#1288829: TCP DNS service uses a small fixed
+    pool of child processes and does not set a receive timeout on
+    client connections (dnsmasq-CVE-2026-93007.patch, partial fix).
+  * CVE-2026-93008, bsc#1288830: Records for the CNAME target were
+    cached without checking that they belong to the responding
+    server's zone (dnsmasq-CVE-2026-93008.patch).
+  * CVE-2026-93009, bsc#1288831: Out-of-bounds read in the DHCPv6
+    FQDN option parser (dnsmasq-CVE-2026-93009.patch).
+  * CVE-2026-93011, bsc#1288833: One-byte heap overflow of a name
+    buffer in the DNSSEC validator (dnsmasq-CVE-2026-93011.patch).</comment>
+    <requestid>1394549</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sun Nov 15 15:11:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.10.1
+  * New features and improvements
+    + Replace the 3.10 MessageBuilderFactory with the Maven 4 API
+    + Drop JLine, emit ANSI colors directly
+    + Accept the ? optional-profile prefix in -P
+  * Bug Fixes
+    + Replace the 3.10 MessageBuilderFactory with the Maven 4 API
+    + Fix recursion detection for custom rootDirectory aliases
+    + Do not shadow a custom rootDirectory property
+    + Wait for terminal installation before caching logging output
+    + Add JAnsi compatibility shim to maven-jline and narrow jansi
+      exports in extension.xml
+    + Do not store the default current project in threads that only
+      read it
+    Read jar resources without the JVM jar: cache
+    + Fix DependencyResolutionResult not dispatched when resolution
+      fails
+    + Resolve multiModuleProjectDirectory lexically instead of
+      canonically
+    + Honour the full interpolation flag for profile activation of
+      low validation level builds
+    + Keep the zero between hyphens in the canonical form of a
+      version
+    + fix: error == null to error != null in isError
+    + MNG-8056: Fix -f/-s parameters failing with absolute Cygwin
+      paths
+    + Read the password to encrypt from the standard input when
+      there is no console
+    + JSR330 filtering fix
+    + Report an invalid parent of an attached artifact instead of a
+      NullPointerException
+    + MNG-8092: Only warn about extension in reactor for projects
+      actually built
+    + Accept the ? optional-profile prefix in -P
+    + Fix gh-11618: Make DefaultModelValidator thread-safe
+    + Keep the progress number of a project that is built again
+    + fix: honour quotes in MAVEN_ARGS in bin/mvn
+    + Treat all loopback hosts as local for external mirror rules
+    + Fix #13390: stop POM properties from self-activating profiles
+      in external builds
+    + Print usage when no goals and no POM are specified, improve -f
+      error messages
+    + Evaluate expressions without a mojo execution
+    + Verify the cygpath on the PATH converts to usable Windows
+      paths
+    + Accept documented lowercase values for
+      maven.resolver.validation
+    + Fix settings interpolation with double-hyphen paths
+    + Honour --color in embedded MavenCli.doMain
+  * Documentation updates
+    + Fix link in default-bindings.md.vm
+    + Remove the Maven 2 era design notes from the maven-core site
+  * Maintenance
+    + Remove JLine/JAnsi native-access workarounds from launcher
+      scripts
+    + chore: plugin updates
+    + Use push for PR Automation
+    + Add PR Signal workflow
+    + Align lifecycle model id with the published XSD name
+  * Build
+    + Use https for the Apache snapshots plugin repository
+    + Do not cache the JDKs setup-java installs
+    + Use ubuntu-26.04 instead of ubuntu-latest
+    + Prune superseded integration-test cache generations
+    + Cache the integration-test repository once
+    + Build with Maven 3.10.0 in CI
+    + Test JDK 27 instead of 26
+    + Use the runners' cached Temurin JDKs in CI
+    + Do not save CI caches from pull requests and dependabot/
+      branches
+  * Dependency updates
+    + Bump Sisu to 1.1.2
+    + bump actions/setup-java from 6.0.1 to 6.2.0
+    + use released Resolver 2.0.25
+    + bump com.google.guava:guava from 33.7.1-jre to 33.8.0-jre
+    + Update Maven Surefire and Failsafe plugin to 3.6.1
+    + Resolver 2.0.25
+    + Replace javax.annotation-api with jakarta.annotation-api 1.3.5
+    + bump org.ow2.asm:asm from 9.10.1 to 9.11.1
+    + bump actions/upload-artifact from 7.0.1 to 7.0.2
+    + bump actions/download-artifact from 8.0.1 to 8.0.2
+    + bump slf4jVersion from 2.0.19 to 2.0.20
+- Removed patch:
+  * jline-4.4.x.patch
+    + maven 3.10.x does not depend on jline any more
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0006-Plexus-utils-4.x-Plexus-xml-3.x-and-javax.annotation.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Oct 13 19:34:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Require maven-parent >= 50 in order to interpolate correctly the

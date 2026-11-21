@@ -16,19 +16,17 @@
 #
 
 
-%define lname	libhashcat7
+%define lname	libhashcat8
 Name:           hashcat
-Version:        7.1.2+git942
+Version:        8.0.0
 Release:        0
 Summary:        CPU-based password recovery utility
 License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Security
 URL:            https://hashcat.net/
-#Source:         https://hashcat.net/files/%name-%version.tar.gz
-#Source2:        https://hashcat.net/files/%name-%version.tar.gz.asc
+Source:         https://hashcat.net/files/%name-%version.tar.gz
+Source2:        https://hashcat.net/files/%name-%version.tar.gz.asc
 #  Key ID: 2048R/8A16544F. Fingerprint: A708 3322 9D04 0B41 99CC 0052 3C17 DA8B 8A16 544F
-%define rev ef3508ed8bd791612048f75ed7af20ab296068e0
-Source:         https://github.com/hashcat/hashcat/archive/%rev.tar.gz
 Source3:        %name.keyring
 Source9:        %name-rpmlintrc
 #Changelog:     <source0>/docs/changes.txt
@@ -69,7 +67,7 @@ unique modes of testing for over 100 optimized hashing algorithms.
 This subpackage contains the header files.
 
 %prep
-%autosetup -p1 -n %name-%rev
+%autosetup -p1
 find . -name .lock -type f -delete
 
 %build

@@ -371,4 +371,12 @@ LGPL-2.1 can be relicensed to GPL without further permission. No need to explici
     <comment>Update libplist to 2.8.0.</comment>
     <requestid>1392804</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>1a6241440c02453089705d1f4aeef6c0</srcmd5>
+    <version>2.8.1</version>
+    <time>1794236592</time>
+    <user>anag_factory</user>
+    <comment>Forward libplist 2.8.1: bplist/parser hardening and leak fixes, no SONAME change</comment>
+    <requestid>1395998</requestid>
+  </revision>
 </revisionlist>

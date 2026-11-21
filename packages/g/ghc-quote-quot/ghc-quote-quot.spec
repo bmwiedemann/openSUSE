@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-quote-quot
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.2.1.0
+Version:        0.2.2.0
 Release:        0
 Summary:        Divide without division
 License:        BSD-3-Clause
@@ -30,8 +30,8 @@ BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-template-haskell-prof
+BuildRequires:  ghc-template-haskell-lift-devel
+BuildRequires:  ghc-template-haskell-lift-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel

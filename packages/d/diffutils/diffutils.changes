@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 14 15:58:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2026-53910.patch:
+  bsc#1273068 (CVE-2026-53910) heap-based buffer overflow due to
+  signed integer overflows in line‑mapping calculations
+
+-------------------------------------------------------------------
 Fri Apr 11 04:45:45 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - diffutils 3.12:
@@ -154,7 +161,7 @@ Mon Aug 22 20:34:19 UTC 2016 - astieger@suse.com
 Tue Aug  9 09:03:53 UTC 2016 - mpluskal@suse.com
 
 - Update to version 3.4
-  * diff accepts two new options --color and --palette to generate 
+  * diff accepts two new options --color and --palette to generate
     and configure colored output.  --color takes an optional
     argument specifying when to colorize a line: --color=always,
     --color=auto, --color=never.  --palette is used to configure
@@ -308,7 +315,7 @@ Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Sat Feb 13 15:06:26 CET 2010 - rguenther@suse.de
 
-- fix stack limit autoconf check 
+- fix stack limit autoconf check
 
 -------------------------------------------------------------------
 Mon Dec  7 23:11:11 CET 2009 - jengelh@medozas.de
@@ -350,7 +357,7 @@ Fri Aug 11 15:15:50 CEST 2006 - schwab@suse.de
 -------------------------------------------------------------------
 Mon Jul 24 18:05:18 CEST 2006 - rguenther@suse.de
 
-- diffutils does not need help2man. 
+- diffutils does not need help2man.
 
 -------------------------------------------------------------------
 Fri Mar 10 22:01:21 CET 2006 - schwab@suse.de

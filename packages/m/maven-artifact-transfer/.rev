@@ -89,4 +89,12 @@ put into adi:2</comment>
     <comment>Prepare to be maven4 compatible</comment>
     <requestid>1294856</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>c2861f880280e34d1eae4a78897f954e</srcmd5>
+    <version>0.13.1</version>
+    <time>1794591439</time>
+    <user>anag_factory</user>
+    <comment>Use the plexus-metadata-generator ant task</comment>
+    <requestid>1397347</requestid>
+  </revision>
 </revisionlist>

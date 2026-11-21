@@ -1,7 +1,7 @@
 #
 # spec file for package python-fann2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/FutureLinkCorporation/fann2
 Source:         https://github.com/FutureLinkCorporation/fann2/archive/refs/tags/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-fann2-swig-py3.patch -- define PyInt compatibility macros for Python 3.13+
+Patch0:         python-fann2-swig-py3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -49,6 +51,8 @@ updated to include support for python 2.x/3.x .
 
 %prep
 %setup -q -n fann2-%{version}
+find . -type f -exec sed -i 's/\r$//' {} +
+%patch -P 0 -p1
 
 %build
 export CFLAGS="%{optflags}"

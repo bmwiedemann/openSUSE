@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov  4 16:00:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.114.0:
+  * Tuple unpacking for variable declarations, foreach loops and
+    function literal template parameters (preview, -preview=tuples)
+  * New @__ctfe attribute for compile-time-only functions
+  * Many deprecations are now errors, including foreach variable
+    shadowing and return statements in scope guards
+  * Discarding an assignment to a struct rvalue is now an error
+  * Token strings (q{...}) normalize \r\n to \n
+  * Experimental fast DFA engine (-preview=fastdfa) gained escape
+    analysis
+  * Object.__monitor moved from the compiler to druntime; the ^^
+    operator is now lowered to a druntime hook
+  * core.sys.linux.timerfd moved to core.sys.linux.sys.timerfd
+  * ImportC: single-argument _Static_assert, new construct pragmas
+    and, when targeting Windows, most MSVC intrinsics
+  * Phobos: language-dependent casing in std.uni, GCHeapMallocator,
+    getopt callback with element index
+- Library soname bumped: libphobos2-0_113 -> libphobos2-0_114
+- Leap 15: bootstrap with dmd 2.113 instead of gdc-10: 2.114 fails
+  to link against gdc-10's libgphobos (duplicate _d_allocmemory)
+- Use %autosetup
+
+-------------------------------------------------------------------
+Sun Nov  1 16:29:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.113.1:
+  * Replace no longer existing memory allocation hooks with a
+    proxy GC (#23287).
+  * Fix #24090: failed to detect static initialization of
+    associative array.
+  * Check host compiler support before running dmd-pgo steps
+    (#23839).
+
+-------------------------------------------------------------------
 Sun Aug 23 14:20:57 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.113.0

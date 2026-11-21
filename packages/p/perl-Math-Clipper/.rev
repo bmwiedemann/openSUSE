@@ -46,4 +46,17 @@
     <comment></comment>
     <requestid>704070</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>adc3e82e5247d4ae15b2f3d8b68a34fa</srcmd5>
+    <version>1.300.0</version>
+    <time>1794090803</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.300.0 (1.30)
+   see /usr/share/doc/packages/perl-Math-Clipper/Changes
+  1.30 Thursday October 10 21:41:00 2026
+    - Update dependency on ExtUtils::Typemaps::Default to address potential
+      issue with CVE-2026-107373. This distribution seems unaffected, but
+      better safe than sorry.</comment>
+    <requestid>1396029</requestid>
+  </revision>
 </revisionlist>

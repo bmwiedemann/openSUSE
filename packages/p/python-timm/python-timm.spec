@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-timm
-Version:        1.0.30
+Version:        1.0.31
 Release:        0
 Summary:        PyTorch Image Models
 License:        Apache-2.0

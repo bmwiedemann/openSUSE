@@ -18,7 +18,7 @@
 
 %define cpan_name WebService-MusicBrainz
 Name:           perl-WebService-MusicBrainz
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Web service API to MusicBrainz database

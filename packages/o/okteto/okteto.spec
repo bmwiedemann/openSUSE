@@ -17,7 +17,7 @@
 
 
 Name:           okteto
-Version:        3.24.1
+Version:        3.25.0
 Release:        0
 Summary:        Develop your applications directly in your Kubernetes Cluster
 License:        Apache-2.0

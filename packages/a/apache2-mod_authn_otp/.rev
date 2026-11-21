@@ -132,4 +132,15 @@
   + Use pkg-config to find openssl and libapr (#50). (forwarded request 1295908 from archie172)</comment>
     <requestid>1297005</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8f7ec761e84b091219c74655b6df9261</srcmd5>
+    <version>1.1.13</version>
+    <time>1795103739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.13
+  + Added &quot;OTPAuthUsersFileGroupReadable&quot; configuration setting (issue #56)
+  + Allow some configuration directives in server and virtual host contexts (issue #56)
+  + Fix OpenSSL-related build issue on certain non-standard systems (issue #59) (forwarded request 1398263 from archie172)</comment>
+    <requestid>1398592</requestid>
+  </revision>
 </revisionlist>

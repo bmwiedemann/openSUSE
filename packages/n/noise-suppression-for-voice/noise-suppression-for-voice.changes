@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Nov 07 09:08:30 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.22:
+  * juce: Add reset() and processBlockBypassed()
+  * juce: Limit the VAD threshold to 0.99
+  * common: Add reset() to clear queued audio
+  * build: Do not use the UBSan flag with MSVC
+  * build: Detect the x86 target correctly for MSVC cross-builds
+  * ci: Validate plugins with pluginval and auval
+  * tools: Add noise-suppressor-setup for PipeWire
+  * README: Set MONO channel position in the PipeWire config
+  * LADSPA: Report latency in activate() and document latency
+  * feat: Use fixed-latency output queue and report latency
+  * external/rnnoise: Revert new weights
+
+-------------------------------------------------------------------
 Thu Jun  4 08:57:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Set the set_version service to mode="manual": factory-auto only

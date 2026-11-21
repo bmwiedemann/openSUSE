@@ -914,4 +914,12 @@
  - Fix support for AutoYaST classes adding the missing dependency on</comment>
     <requestid>1387137</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b8092ebfe72970e20604151e63cc037a</srcmd5>
+    <version>25.devel475.275dd4727</version>
+    <time>1793899718</time>
+    <user>anag_factory</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1394999</requestid>
+  </revision>
 </revisionlist>

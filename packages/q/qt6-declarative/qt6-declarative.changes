@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 19:09:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Re-add 0001-QML-engine-Correctly-compare-composites-when-multipl.patch
+  (boo#1289020)
+
+-------------------------------------------------------------------
+Tue Nov  3 19:38:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (boo#1287613, QTBUG-150769)
+  * 0001-QQuickItemView-don-t-leave-dangling-entries-in-unreq.patch
+
+-------------------------------------------------------------------
 Wed Oct 28 10:02:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change (kde#527720)

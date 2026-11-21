@@ -1,7 +1,7 @@
 cabal-version:      >=1.10
 name:               crypton-x509-validation
 version:            1.9.1
-x-revision: 1
+x-revision: 3
 license:            BSD3
 license-file:       LICENSE
 copyright:          Vincent Hanquez <vincent@snarc.org>
@@ -34,7 +34,7 @@ library
         base >=3 && <5,
         bytestring,
         containers,
-        crypton >=1.1 && < 1.2,
+        crypton >=1.1 && < 2.2,
         crypton-asn1-types >=0.4.1 && <0.5,
         crypton-asn1-encoding >=0.10.0 && <0.11,
         crypton-pem >=0.2.4 && <0.4,

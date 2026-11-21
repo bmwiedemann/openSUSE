@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:36:20 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 4.6.1
+  * Added Python 3.15 compatibility.
+  * Raise ExpressionError on unknown TALES expression type, which
+    in turn
+  * Fix converting a render error to a string when the template
+    file is
+  * Fix _resolve_dotted so that each leading dot of a relative name
+  * Fix ExpressionEvaluator raising ValueError when given no
+
+-------------------------------------------------------------------
 Mon Apr 14 05:47:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

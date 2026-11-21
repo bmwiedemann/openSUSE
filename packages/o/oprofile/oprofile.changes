@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:18:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build with binutils >= 2.44 (oprofile-bfd-boolean.patch):
+  bfd_boolean/FALSE removed, libopagent/opjitconv use bool/false
+
+-------------------------------------------------------------------
 Thu Jul 16 11:47:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Use the enviromental variable JAVA_HOME to detect the build JDK

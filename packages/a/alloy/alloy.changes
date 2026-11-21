@@ -1,4 +1,240 @@
 -------------------------------------------------------------------
+Mon Nov 16 06:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.22.0:
+  * BREAKING CHANGES
+    - loki.enrich: Removes target_match_label, logs_match_label and
+      metrics_match_label from loki.enrich and prometheus.enrich.
+      The target_to_log_match and target_to_metric_match arguments
+      are now required.
+    - otelcol.connector: This may render certain configurations
+      invalid. These bad configurations were silently accepted
+      before, but in practice they never caused problems because
+      all connectors currently defined only output one signal type.
+      This issue was surfaced while implementing #7385, which
+      supports more than one output signal.
+  * Features
+    - Add k8seventreceiver to the OTel Engine (#7425) (48317f3)
+    - component.http.oauth2: Add jwt private key client
+      authentication (#7130) (6fbbee3)
+    - database_observability.sql_server: Add server_configuration
+      collector (#7525) (9d18f83)
+    - database_observability.sql_server: Add server_metrics
+      collector (#7545) (f763183)
+    - database_observability.sql_server: Add additional performance
+      counter metrics to server_metrics (#7596) (a97d6a4)
+    - database_observability.sql_server: Add throttling options to
+      query_samples collector (#7567) (8cfd0bd)
+    - database_observability: Add include settings for databases,
+      schemas, and users (#7642) (40be7ff)
+    - database_observability: Default
+      enable_pre_classified_wait_events to true (#7579) (21ac5ef)
+    - database_observability: Emit parsed table names as a list
+      with op=query_parsed_table_names_v2 (#7520) (67aaa9d)
+    - database_observability: Only enable MySQL
+      perf_schema.eventsstatements collector by default in embedded
+      prometheus exporter (#7514) (d9e795f)
+    - database_observability: Preserve default exclusions and warn
+      on settings mismatch (#7626) (84a0021)
+    - helm: Add distroless option (#7516) (962af92)
+    - loki.enrich: Add multi-label matching (#7053) (f168087)
+    - loki.enrich: Remove deprecated match arguments (#7587)
+      (fbd2a29)
+    - otelcol.connector.exceptions: Add exceptions connector
+      component from otel collector contrib (#7385) (782d4e3)
+    - otelcol.receiver.kafka: Add the dial_timeout argument
+      (default 10s). Upstream now requires it. This also applies to
+      otelcol.exporter.kafka (#7586) (14ffd21)
+    - otelcol.receiver.kafka: Add the max_decompress_batch_bytes
+      argument (default 1073741824) (#7586) (14ffd21)
+    - otelcol.receiver.kafka: Add the max_prefetch and
+      max_in_flight blocks to partition_processing (#7586)
+      (14ffd21)
+    - otelcol.receiver.kafka: Deprecate partition_processing >
+      max_buffered_batches in favor of partition_processing >
+      max_prefetch > batches. Upstream removes it in v0.166.0
+      (#7586) (14ffd21)
+    - otelcol.receiver.kafka: Support encoding extensions (#7430)
+      (ede6371)
+    - otelcol: Add Azure encoding extension (#7400) (146ed71)
+    - otelcol: Upgrade to OTel Collector v0.164.1 (#7586) (14ffd21)
+    - prometheus.exporter.cadvisor: Add housekeeping_interval
+      arguments (#7478) (163eeef)
+    - prometheus.operator: Support Prometheus operator scrape
+      classes (#6466) (a941fb5)
+    - prometheus.snmp_exporter: Support multiple config files
+      (#6892) (51f6ffb)
+    - Promote loki.enrich and prometheus.enrich to public preview
+      (#7597) (87cca81)
+    - pyroscope.ebpf: Update ebpf-profiler fork to upstream
+      v0.0.202640 (#7408) (7b0591a)
+    - pyroscope.java: Update async-profiler to v4.6 (#7447)
+      (33bd346)
+  * Bug Fixes
+    - collector: Update root x/net dependency to v0.62.0 (#7599)
+      (5c7b2a1)
+    - database_observability.mysql: Enable additional collectors on
+      embedded exporter (#7608) (8caea29)
+    - database_observability.mysql: Omit digest_text label (#7607)
+      (4ceaddf)
+    - database_observability.postgres: Improve table registry
+      lifecycle and unqualified lookup (#7470) (587dab2)
+    - database_observability.postgres: Include instance label in ID
+      generation (#7301) (295b6ce)
+    - database_observability.sql_server: Check server-level
+      permissions and avoid false positives in health check (#7656)
+      (ae815a7)
+    - database_observability.sql_server: Include instance name in
+      generated server_id (#7521) (5e9571c)
+    - database_observability.sql_server: Parse TopSort and Spool
+      wrappers and keep subtrees of unmodeled operators (#7406)
+      (2e887f6)
+    - database_observability.sql_server: Preserve query shape
+      avoiding normalization (#7395) (72bd5fc)
+    - database_observability.sql_server: Report Azure SQL engine by
+      name in engine_version (#7502) (6760716)
+    - database_observability.sql_server: Support StmtCond explain
+      plans (#7598) (c320b9d)
+    - database_observability.sql_server: Validate parsed table
+      names (#7413) (7f06682)
+    - database_observability: Apply exclusions to embedded
+      exporters (#7580) (8753e61)
+    - deps: Update github.com/andybalholm/brotli to v1.2.7 (#7519)
+      (fccef0f)
+    - faro.receiver: Enforce download_from_origins on redirects and
+      sourcemap URLs (#7477) (9ddd772)
+    - Hide HTTP proxy env vars in support bundles (#7559) (9a75d53)
+    - logging: Fix deadlock in deferred handler when creating
+      loggers concurrently (#7632) (27d88b9)
+    - loki.process: Move stage.logfmt to syntax.Validator (#7446)
+      (aba9a0e)
+    - loki.process: Move stage.luhn to syntax.Validator (#7421)
+      (beeec13)
+    - loki.process: Move stage.multiline to syntax.Validator
+      (#7420) (095f423)
+    - loki.process: Move stage.replace to syntax.Validator (#7518)
+      (2524277)
+    - loki.source.cloudflare: Stop additional_fields from
+      corrupting the extended and all field presets (#7535)
+      (7fd4068)
+    - loki.source.file: Always update position (#7641) (81c690f)
+    - loki.source.file: Read recreated files when the inode is
+      reused (#7538) (e8a8e85)
+    - loki.source.kubernetes,loki.source.podlogs: Prevent
+      re-ingesting logs on re-tails (#7507) (2db65de)
+    - loki.source.windowsevent: Keep the saved bookmark when no new
+      event arrives after a restart (#7589) (b1cf13e)
+    - loki.write: Keep the client running when its settings are
+      unchanged (#7620) (24064ae)
+    - loki.write: WAL segment savepoints (#7200) (2dcc043)
+    - Migrate config from type string to type secret [backport]
+      (#7499) (b89853a)
+    - mimir.alerts.kubernetes: Pick up Secret changes without a
+      restart (#7273) (0bc2b79)
+    - mimir.rules.kubernetes: Fix non-recovering unhealthy state
+      after a failed restart when Mimir is unreachable (#6339)
+      (8dd633d)
+    - otelcol.connector: Reject output signals that a connector
+      cannot produce (#7389) (5343639)
+    - otelcol.exporter.otlphttp: Deprecate enabled in the cookies
+      block (#7418) (659c5eb)
+    - otelcol.exporter.prometheus: Pass missing
+      include_scope_labels to converter (#6787) (f0d65bd)
+    - otelcol.processor.tail_sampling: Pass invert_match through
+      for boolean_attribute policies (#7444) (c139dd7)
+    - otelcol: Report full build version including pre-release
+      suffix in service.version (#7523) (e306584)
+    - prometheus.exporter.kafka: Avoid panic on empty consumer
+      group member assignment (#7428) (c49e0de)
+    - prometheus.operator: Initialize controller-runtime logging
+      (#7287) (072feda)
+    - prometheus.remote_write: Write start timestamp zero samples
+      to the correct series (#7633) (5a12f45)
+    - prometheus: Apply relabel and enrich to start timestamp zero
+      samples (#7647) (035e298)
+    - pyroscope.ebpf: Bug with dropped partially symbolized
+      samples. (#7409) (49b0764)
+    - remotecfg: Restore last success metric in notModified
+      response (#7486) (6eaa407)
+    - security/HIGH/internal/web/ui: Update npm dependency vite to
+      v7.3.7 [SECURITY] (#7464) (3a126f4)
+    - Update go version to 1.27.3 (#7469) (8d0105f)
+
+-------------------------------------------------------------------
+Thu Oct 29 12:59:25 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Check hash of nvm install script after downloading (bsc#1288675)
+- Add sha256sum.txt
+- Require Go 1.27.3 for building
+  * CVE-2026-78669: Prevent excessive CPU consumption from repeated
+    initial window changes in golang.org/x/net/http2 (bsc#1285303)
+  * CVE-2026-78659: Prevent HTTP/2 server memory exhaustion due to
+    Trailer headers in golang.org/x/net/http2 (bsc#1287015)
+  * CVE-2026-78660: Reject malformed framing-related headers in
+    HTTP/2 transport in golang.org/x/net/http2 (bsc#1287083)
+  * CVE-2026-78663: Fix double flow control refund on HTTP/2 server
+    streams in golang.org/x/net/http2 (bsc#1287166)
+  * CVE-2026-97032: Prevent HTTP/2 server crash due to HPACK
+    encoder race (bsc#1287500)
+
+- Update to version 1.21.3:
+  * Security:
+    CVE-2026-116585, CVE-2026-116586, CVE-2026-116587: Bump
+    github.com/go-jose/go-jose/v4 to version 4.1.6 to fix multiple
+    security issues (bsc#1288325)
+  * Bug fixes:
+    Update Beyla to v3.38.1
+    database_observability.postgres: Include instance label in ID
+      generation
+    database_observability.sql_server: Parse TopSort and Spool
+      wrappers and keep subtrees of unmodeled operators
+    loki.source.cloudflare: Stop additional_fields from corrupting
+      the extended and all field presets
+    loki.source.kubernetes,loki.source.podlogs: Prevent
+      re-ingesting logs on re-tails
+    otelcol.exporter.prometheus: Pass missing include_scope_labels
+      to converter
+    otelcol: Report full build version including pre-release suffix
+      in service.version
+
+- Update to version 1.21.2:
+  * Bug fix:
+    Migrate config from type string to type secret
+
+- Update to version 1.21.1:
+  * Bug fixes:
+    faro.receiver: Enforce download_from_origins on redirects and
+      sourcemap URLs
+    prometheus.exporter.kafka: Avoid panic on empty consumer group
+      member assignment
+
+- Upgrade to version 1.21.0:
+  * Breaking changes:
+    otelcol.receiver.kafka: otelcol.receiver.kafka and
+      otelcol.exporter.kafka metadata > retry > max_retries now
+      defaults to 20 (was 3) and is now actually applied.
+    otelcol.connector.signaltometrics:
+      otelcol.connector.signaltometrics error_mode now defaults to
+      ignore (was propagate).
+    loki.write: loki.write configurations that set wal { enabled =
+      true } now fail to load unless Alloy runs with
+      --stability.level=experimental.
+    loki.write: Remove tenant label from metrics
+  * Security:
+    CVE-2026-85525: Update gosnowflake to v2.2.0 (bsc#1279057)
+  * Features:
+    database_observability.postgres: Enable stat_statements by
+      default
+    database_observability.sql_server: Add health_check collector
+    database_observability.sql_server: Add support for clustering
+      mode
+    database_observability.sql_server: Support monitoring multiple
+      database blocks
+    loki.source.cloudflare: Add api_url argument
+    otelcol: Upgrade to OTel Collector v0.162.0
+    Update Beyla to version 3.38.0
+
+-------------------------------------------------------------------
 Tue Oct 20 14:43:24 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Add wrapper script for systemd (bsc#1285585)

@@ -24,9 +24,10 @@ Version:        5.3
 Release:        0
 Summary:        Python interface to libarchive
 License:        CC0-1.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Changaco/python-libarchive-c
 Source:         https://files.pythonhosted.org/packages/source/l/libarchive-c/libarchive_c-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#Changaco/python-libarchive-c#145
+Patch0:         support-libarchive-3.8.10.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

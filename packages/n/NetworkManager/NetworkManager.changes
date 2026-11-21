@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 07:01:14 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add NetworkManager-restrict-dhcp-cleanup-to-ovs.patch:
+  device: Restrict DHCP cleanup in DEACTIVATING to OVS devices
+  (bsc#1284486, glfd#NetworkManager/NetworkManager!2579).
+
+-------------------------------------------------------------------
 Thu Oct  1 09:37:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable 464XLAT Customer-side Translator (CLAT) support on %ix86:

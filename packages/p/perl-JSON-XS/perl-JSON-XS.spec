@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-XS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name JSON-XS
 Name:           perl-JSON-XS
-Version:        4.40.0
+Version:        4.50.0
 Release:        0
-# 4.04 -> normalize -> 4.40.0
-%define cpan_version 4.04
+# 4.05 -> normalize -> 4.50.0
+%define cpan_version 4.05
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON serialising/deserialising, done correctly and fast
 URL:            https://metacpan.org/release/%{cpan_name}

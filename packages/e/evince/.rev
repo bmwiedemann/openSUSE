@@ -1514,4 +1514,31 @@ New stable release</comment>
     <comment>Push GNOME 51.1</comment>
     <requestid>1385394</requestid>
   </revision>
+  <revision rev="191" vrev="1">
+    <srcmd5>3d7dca1272f4b4688681dc58facefe5b</srcmd5>
+    <version>48.5</version>
+    <time>1794932438</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.5:
+  * Backends:
+    + Fix heap overflow decoding packed glyphs of PK fonts
+    + Fix stack overflow on a truncated PK preamble
+    + Validate the tables of TFM and OFM font files
+    + Fix buffer overflow reading the TFM font family
+    + Fix out-of-bounds write reading GF font specials
+    + Reject invalid VF packet lengths and VF fonts without characters
+    + Detect short reads in the DVI reader and the font loaders
+    + Fix out-of-bounds read parsing DVI color specials
+    + Fix an endless font search when fonts cannot be generated
+    + Add tests for loading malformed DVI fonts
+  * Cut-n-paste: Fix use-after-free in the synctex parser, CVE-2026-63729
+  * Libview: Fix bounds checks of the accessible children of the view and its
+    pages
+  * Shell:
+    + Escape field codes in the arguments passed to ev_spawn
+    + Escape annotation text shown in the annotations sidebar
+    + Add tests for the ev_spawn arguments and the annotations sidebar
+- Drop evince-CVE-2026-63729.patch: fixed upstream.</comment>
+    <requestid>1398091</requestid>
+  </revision>
 </revisionlist>

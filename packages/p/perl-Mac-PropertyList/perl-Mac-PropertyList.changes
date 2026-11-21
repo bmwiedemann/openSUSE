@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 17 09:22:52 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.608.0 (1.608)
+   see /usr/share/doc/packages/perl-Mac-PropertyList/Changes
+
+  1.608 2026-10-16T13:44:09Z
+  	* the Math::BigInt stuff should work now
+  1.607_01 2026-10-11T08:26:01Z
+  	* try harder on ReadBinary (#38)
+  1.607 2026-10-05T16:54:59Z
+  	* promote to user version (#38)
+  1.606_01 2026-09-28T12:59:48Z
+  	* try fix for Math::BigInt from David B. Evans (macports)
+  1.606 2026-01-20T16:50:39Z
+  	* remove import from XML::Entities, which does not export.
+  	v5.44 will make this either fatal, or a warning.
+  	(trwyant, #37)
+  1.605 2025-08-08T17:04:09Z
+  	* Fix XML encoding/decoding to be compliant with plutil (Jess Robinson, GH #36)
+  	* keys in dicts are now sorted on output, like plutil (Jess Robinson, GH #36)
+  1.604 2025-07-23T23:09:47Z
+  	* encode entities in writing (GH #35) (turns out I did this wrong)
+  1.603_05 2025-07-21T20:31:59Z
+  	* trial release for proper HTML entity writing (GH #35)
+  1.603_02 2025-02-07T20:50:01Z
+  	* test some 64-bit changes
+
+-------------------------------------------------------------------
 Tue Sep 10 05:32:29 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.602.0 (1.602)

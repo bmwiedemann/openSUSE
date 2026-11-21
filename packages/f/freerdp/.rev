@@ -947,4 +947,37 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment>1</comment>
     <requestid>1387133</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>55ee930cc8e9d287271a29854bac2a3a</srcmd5>
+    <version>3.33.0</version>
+    <time>1793817988</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1394860</requestid>
+  </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>a4d51cdffc67ae490043f7dbbbf4b74e</srcmd5>
+    <version>3.33.0</version>
+    <time>1794236894</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with SDL 3.4.20 with
+  0000-client-sdl-fix-version-guard.patch</comment>
+    <requestid>1396318</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>e0df951b3323befb26af0aed0b298b9d</srcmd5>
+    <version>3.33.1</version>
+    <time>1794591111</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397064</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>ae3739977e8b46022a7bc38fe0519c9f</srcmd5>
+    <version>3.33.1</version>
+    <time>1794838480</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1397879</requestid>
+  </revision>
 </revisionlist>

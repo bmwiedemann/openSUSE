@@ -216,4 +216,18 @@ migrations as well as point release upgrades
   * Remove leftover debug print and add a little bit of quoting</comment>
     <requestid>1353948</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7e176cff81260e0c0cf4310706c9c81c</srcmd5>
+    <version>20261104.561a15e</version>
+    <time>1793818110</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261104.561a15e:
+  * Drop selinux and apparmor and pipewire  migration
+    potentially eliminates boo#1289474
+
+- Update to version 20261015.a7bd330:
+  * Update 16.1 to Stable
+  * Care only about state based distributions in diff</comment>
+    <requestid>1395026</requestid>
+  </revision>
 </revisionlist>

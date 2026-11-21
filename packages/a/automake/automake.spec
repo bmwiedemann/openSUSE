@@ -26,11 +26,11 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
-License:        GFDL-1.3-or-later AND GPL-2.0-or-later AND LicenseRef-SUSE-Public-Domain AND MIT
+License:        GFDL-1.3-or-later AND GPL-3.0-or-later AND LicenseRef-SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/automake
 Source0:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz

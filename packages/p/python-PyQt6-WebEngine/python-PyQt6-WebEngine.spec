@@ -21,23 +21,22 @@
 %define plainpython python
 %{?sle15_python_module_pythons}
 Name:           python-PyQt6-%{qtlib}
-Version:        6.11.0
+Version:        6.140.1
 Release:        0
 Summary:        Python bindings for the Qt WebEngine framework
 License:        GPL-3.0-only
-Group:          Development/Libraries/Python
-URL:            https://www.riverbankcomputing.com/software/pyqt3d
+URL:            https://www.riverbankcomputing.com/software/pyqtwebengine
 Source:         https://files.pythonhosted.org/packages/source/P/PyQt6-%{qtlib}/pyqt6_webengine-%{version}.tar.gz
-BuildRequires:  %{python_module PyQt6-devel >= 6.2}
+BuildRequires:  %{python_module PyQt6-devel >= 6.12}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module pyqt-builder >= 1.17 with %python-pyqt-builder < 2}
-BuildRequires:  %{python_module sip-devel >= 6.9 with %python-sip-devel < 7}
+BuildRequires:  %{python_module pyqt-builder >= 1.21 with %python-pyqt-builder < 2}
+BuildRequires:  %{python_module sip-devel >= 6.15 with %python-sip-devel < 7}
 BuildRequires:  fdupes
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-3d-private-devel
 BuildRequires:  qt6-gui-private-devel
-BuildRequires:  cmake(Qt6WebEngineCore)
+BuildRequires:  cmake(Qt6WebEngineCore) >= 6.140
 BuildRequires:  cmake(Qt6WebEngineQuick)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 Requires:       python-PyQt6 >= %(rpm -q --whatprovides python-PyQt6 --qf "%%{version}")
@@ -56,7 +55,6 @@ libraries that make up the framework.
 
 %package devel
 Summary:        Devel files for %{name}
-Group:          Development/Tools/IDE
 Requires:       python-PyQt6-devel
 Requires:       %plainpython(abi) = %{python_version}
 Supplements:    (eric and python-PyQt6-%{qtlib})

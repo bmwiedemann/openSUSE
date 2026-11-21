@@ -33,4 +33,22 @@
   + add new option to set the channel timeout during upload</comment>
     <requestid>1345040</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7917514ff7f3ecc050141a81e52a1deb</srcmd5>
+    <version>10.1.0</version>
+    <time>1795023183</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 10.1.0 (bsc#1286192)
+  + upload images directly to an EBS snapshot with the EBS direct APIs, no helper instance, ssh or dd needed
+  + add new options --upload-workers, --upload-retries and --upload-timeout, invalid values fall back to the defaults
+  + add new option --write-zero-blocks to also write blocks of zeros
+  + add new options --verify-snapshot and --keep-snapshot-on-verify-failure to read back and check the snapshot
+  + require exactly one .raw or .raw.xz file in a tar archive
+  + use EBS direct for --use-root-swap, use the root device of the donor instance and set DeleteOnTermination on the new image
+  + map --backing-store to the volume type in root swap (ssd = gp3, mag = standard)
+  + clean up the snapshot and report correctly if an upload is aborted or a block fails for good
+  + deprecate and ignore the ssh options, --boot-kernel and --grub2, drop para-virtual support and reject --tpm-support without --boot-mode uefi
+  + drop the paramiko dependency and require boto3 &gt;= 1.29.84 (forwarded request 1398443 from seanmarlow)</comment>
+    <requestid>1398477</requestid>
+  </revision>
 </revisionlist>

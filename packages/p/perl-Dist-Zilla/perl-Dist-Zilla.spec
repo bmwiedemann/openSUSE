@@ -18,10 +18,10 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.39.0
+Version:        6.40.0
 Release:        0
-# 6.039 -> normalize -> 6.39.0
-%define cpan_version 6.039
+# 6.040 -> normalize -> 6.40.0
+%define cpan_version 6.040
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -76,7 +76,7 @@ BuildRequires:  perl(MooseX::SetOnce)
 BuildRequires:  perl(MooseX::Types)
 BuildRequires:  perl(MooseX::Types::Moose)
 BuildRequires:  perl(MooseX::Types::Perl)
-BuildRequires:  perl(PPI::Document) >= 1.222
+BuildRequires:  perl(PPI::Document) >= 1.256
 BuildRequires:  perl(Params::SomeUtil)
 BuildRequires:  perl(Path::Tiny) >= 0.52
 BuildRequires:  perl(Perl::PrereqScanner) >= 1.16
@@ -150,7 +150,7 @@ Requires:       perl(MooseX::SetOnce)
 Requires:       perl(MooseX::Types)
 Requires:       perl(MooseX::Types::Moose)
 Requires:       perl(MooseX::Types::Perl)
-Requires:       perl(PPI::Document) >= 1.222
+Requires:       perl(PPI::Document) >= 1.256
 Requires:       perl(Params::SomeUtil)
 Requires:       perl(Path::Tiny) >= 0.52
 Requires:       perl(Perl::PrereqScanner) >= 1.16

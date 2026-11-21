@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-powermanagement
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-powermanagement
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        Power Management and Auto-suspend
 License:        LGPL-2.1-or-later
@@ -26,24 +26,24 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 
 BuildRequires:  cmake(KF6IdleTime)
 BuildRequires:  cmake(KF6Solid)
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(lxqt)
-BuildRequires:  cmake(lxqt-globalkeys-ui)
-BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(lxqt) >= 2.5.0
+BuildRequires:  cmake(lxqt-globalkeys-ui)
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 BuildRequires:  pkgconfig(xcb-dpms)
 BuildRequires:  pkgconfig(xcb-screensaver)

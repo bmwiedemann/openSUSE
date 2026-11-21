@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov  8 15:40:55 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.70.2:
+  * Bug fixes
+    - Dying patients can no longer be sent home
+    - Machine dynamic information now correctly updates after
+      repair
+    - Fixed key input crash when using the numpad
+    - Fixed side objects becoming passable after purchasing a plot
+    - Fixed patient dialog not opening on epidemic patients
+
+-------------------------------------------------------------------
 Fri Aug 28 14:16:32 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.70.1:

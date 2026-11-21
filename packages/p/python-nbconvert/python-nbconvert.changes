@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 12 00:01:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.17.2:
+  * Addresses CVE-2026-114140 (bsc#1286876)
+  * Use org-level security policy
+
+-------------------------------------------------------------------
 Mon Sep  7 10:58:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - CVE-2026-6658: cross-site scripting (XSS) via unsanitized

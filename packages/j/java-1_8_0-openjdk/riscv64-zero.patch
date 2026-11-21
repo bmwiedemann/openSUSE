@@ -1,7 +1,7 @@
-Index: openjdk/common/autoconf/build-aux/autoconf-config.sub
-===================================================================
---- openjdk.orig/common/autoconf/build-aux/autoconf-config.sub
-+++ openjdk/common/autoconf/build-aux/autoconf-config.sub
+diff --git a/common/autoconf/build-aux/autoconf-config.sub b/common/autoconf/build-aux/autoconf-config.sub
+index 1aab2b303e..662b002a12 100644
+--- a/common/autoconf/build-aux/autoconf-config.sub
++++ b/common/autoconf/build-aux/autoconf-config.sub
 @@ -302,6 +302,7 @@ case $basic_machine in
  	| pdp10 | pdp11 | pj | pjl \
  	| powerpc | powerpc64 | powerpc64le | powerpcle | ppcbe \
@@ -18,11 +18,11 @@ Index: openjdk/common/autoconf/build-aux/autoconf-config.sub
  	| romp-* | rs6000-* \
  	| sh-* | sh[1234]-* | sh[24]a-* | sh[23]e-* | sh[34]eb-* | sheb-* | shbe-* \
  	| shle-* | sh[1234]le-* | sh3ele-* | sh64-* | sh64le-* \
-Index: openjdk/hotspot/src/os/linux/vm/os_linux.cpp
-===================================================================
---- openjdk.orig/hotspot/src/os/linux/vm/os_linux.cpp
-+++ openjdk/hotspot/src/os/linux/vm/os_linux.cpp
-@@ -365,7 +365,7 @@ void os::init_system_properties_values()
+diff --git a/hotspot/src/os/linux/vm/os_linux.cpp b/hotspot/src/os/linux/vm/os_linux.cpp
+index af900264ee..8ccc879e9d 100644
+--- a/hotspot/src/os/linux/vm/os_linux.cpp
++++ b/hotspot/src/os/linux/vm/os_linux.cpp
+@@ -364,7 +364,7 @@ void os::init_system_properties_values() {
    //        1: ...
    //        ...
    //        7: The default directories, normally /lib and /usr/lib.

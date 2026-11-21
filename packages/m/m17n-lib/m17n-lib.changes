@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 12 03:34:22 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update m17n-lib-rpmlintrc:
+  Remove rpmlint filter(".*devel-file-in-non-devel-package.*so")
+  and Filter(".*shlib-policy-missing-suffix"). Since these filters
+  haven't been used, the error report blocks the build process
+  in SLFO-1.1. 
+
+-------------------------------------------------------------------
 Sun Mar 30 10:57:02 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.5:

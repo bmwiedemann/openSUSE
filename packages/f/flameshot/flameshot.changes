@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov  7 17:00:34 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to 15.0.0:
+  * Let the GUI colors be chosen via hex values.
+  * Add arrow style selector.
+  * Increment/decrement circle counter on mouse wheel; add option
+    to disable the circle counter outline.
+  * Add keyboard controls to the monitor selector.
+  * Fall back to native X11 capture when the portal is unavailable
+    and fail fast when the portal cannot take the capture.
+  * The UI language picker is now a filterable search box.
+  * Closing pinned captures is now a configurable shortcut instead
+    of a double click.
+  * Add more desktop terminal emulators to the terminal launcher.
+  * Commit text on Esc in the text tool.
+  * Fix capture when logical min/max coordinates are not zero.
+  * Fix screen capture ignoring the last-region setting.
+  * Fix aspect ratio in selection widget when pressing CTRL.
+  * Fix monitor selector stuck after closing via window manager.
+  * Use the installed binary path in desktop entry actions.
+  * Persist tool size when it changes.
+  * Update save dialog file suffix when the format filter changes.
+  * Remove the legacy argument parsing for the region argument.
+  * Other bug fixes and translation updates.
+
+-------------------------------------------------------------------
 Sun Jun 21 01:02:33 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 14.0.0:

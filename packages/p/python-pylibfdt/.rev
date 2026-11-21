@@ -31,4 +31,15 @@
     <comment></comment>
     <requestid>1299766</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d6e223504930bb0a1baaec981a9cd0ed</srcmd5>
+    <version>1.7.2.post2</version>
+    <time>1795103691</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.2.post2:
+  * No changelog.
+- Add patch replace-python-2-swig-macros.patch:
+  * Replace removed SWIG 4.5 Python 2 macros in libfdt.i</comment>
+    <requestid>1398533</requestid>
+  </revision>
 </revisionlist>

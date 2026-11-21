@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Nov  5 08:19:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300074.0
+  * [OpenTelemetry] Upgrade OpenTelemetry dependencies to v0.150.0
+    by @sky333999 in (#2222)
+  * [Agent] Move the agent from AWS SDK for Go v1 to v2 by @sky333999
+    in (#2222) and (#2309)
+- Remove stale Go module version overrides in _service file
+- Update golang.org/x/net to v0.62.0 (bsc#1289384, CVE-2026-78661)
+  (bsc#1289425, CVE-2026-97045)
+
+-------------------------------------------------------------------
 Thu Oct 29 13:10:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/klauspost/compress to v1.20.3

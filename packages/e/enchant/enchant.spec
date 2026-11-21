@@ -164,13 +164,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libenchant-2-2
 %license COPYING.LIB
-
-%dir %{_defaultdocdir}/%{name}
-
 %doc AUTHORS ChangeLog NEWS README
-%doc %{_defaultdocdir}/%{name}/enchant.html
-%doc %{_defaultdocdir}/%{name}/enchant-2.html
-%doc %{_defaultdocdir}/%{name}/enchant-lsmod-2.html
 
 %{_libdir}/*.so.*
 %dir %{_libdir}/enchant-2
@@ -199,6 +193,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # The directories are not versioned, unfortunately. Not good for the SLPP.
 %dir %{_datadir}/enchant-2
 %{_datadir}/enchant-2/enchant.ordering
+%dir %{_defaultdocdir}/%{name}
+%doc %{_defaultdocdir}/%{name}/enchant.html
+%doc %{_defaultdocdir}/%{name}/enchant-2.html
+%doc %{_defaultdocdir}/%{name}/enchant-lsmod-2.html
 
 %files devel
 %{_includedir}/enchant-2

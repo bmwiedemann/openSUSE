@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov  2 05:37:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20261023:
+  * Add support for Retevis RT86A
+  * ft450d: Setting descriptions are translated
+  * bug fixes to uv5r, h777, alinco, kg935g, ft7100, leixen
+  * btech: Adjust upper UHF bound to match sample image
+  * Fix UV-5G Pro image's invalid NOAA channel
+  * h777: Add support for Zartek ZA-758
+  * Add WLN KD-C56 as alias of Retevis RT15
+
+-------------------------------------------------------------------
 Sun Oct 18 14:16:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20261016:

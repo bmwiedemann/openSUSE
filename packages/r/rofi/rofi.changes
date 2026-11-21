@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Nov 14 10:38:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add wayland-layer-configure-race.patch from upstream PR #2359:
+  * Wait for the initial layer-shell configure event before
+    drawing to prevent hangs, crashes and missing Wayland menus
+    (gh#davatorium/rofi#2353).
+  * Handle buffer-pool allocation failures without dereferencing
+    a NULL pointer.
+
+-------------------------------------------------------------------
+Wed Nov 11 08:09:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.1:
+  * [nkutils] Update to latest version, to allow asan build
+  * [DMenu] Possible fix for rows always being shown. (#2352)
+  * [CI] Use distro check, not custom build
+  * [GIOLaunch] Make gio-launch and compile time option.
+
+-------------------------------------------------------------------
+Mon Nov  9 09:36:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.1.0:
+  * GIO launch
+    This version tries to launch a desktop applications using glib's built-in
+    launching method. This should improve launching of applications and should
+    handle multiple methods transparently. #2275
+  * FZF-V2
+    Added an improved of version of the fzf sorting method. This should closer
+    match fzf's FuzzyMatchV2 scorer. The sorter is called fzf-v2.
+  * Wayland: click-to-exit
+    Click-to-exit is finally enabled in Wayland by default.  Due to the way it
+    is implemented, it has some side-effects in multi-monitor setup: rofi
+    windows will not spill into other screens but be cropped out.
+  * Wayland: improved wayland window mode
+    The window mode for wayland has improved to closer match the functionality
+    offered by the X11 version. It adds 'accept-custom', 'window-command' and
+    the 'close-on-delete' option.
+
+-------------------------------------------------------------------
 Tue Sep  2 05:12:07 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.0:

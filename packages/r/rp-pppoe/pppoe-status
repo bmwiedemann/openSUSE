@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/sh
 
-for i in /run/ppp/??*.pid ; do
+for i in /run/pppd/??*.pid ; do
 	if [ -r "$i" ] && [ `wc -l < "$i"` -eq 2 ] ; then
 		PID=`head -n 1 "$i"`
 		IF=`sed -n '2p' "$i"`

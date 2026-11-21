@@ -17,7 +17,7 @@
 
 
 Name:           skupper
-Version:        2.2.4
+Version:        2.3.0
 Release:        0
 Summary:        Virtual Application Network, enabling rich hybrid cloud communication
 License:        Apache-2.0
@@ -28,8 +28,8 @@ Source2:        regen-vendor.sh
 Source3:        Makefile
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.26
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Skupper enables cloud communication by enabling you to create a Virtual

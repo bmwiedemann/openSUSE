@@ -54,7 +54,6 @@
 %define with_libssh        0%{!?_without_libssh:1}
 %define with_libssh2       0%{!?_without_libssh2:1}
 %define with_numactl       0%{!?_without_numactl:1}
-%define with_nwfilter      0%{!?_without_nwfilter:1}
 %define with_modular_daemons 0%{!?_without_modular_daemons:1}
 %define with_firewalld_zone 0%{!?_without_firewalld_zone:1}
 
@@ -121,14 +120,6 @@
     %define with_selinux_unconfined_daemon_hooks 0
 %endif
 
-# Factory and SLFO strive to drop iptables. The nwfilter driver has a runtime
-# dependency on iptables, but no build-time one. The driver will be built
-# unconditionally, but will no longer be required/recommended by the meta
-# subpackages in Factory and SLFO.
-%if 0%{?suse_version} >= 1600
-    %define with_nwfilter  0
-%endif
-
 # Prefer nftables if available
 %if "%{?default_firewall_backend}" == "nftables"
     %define prefer_nftables 1
@@ -154,7 +145,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        12.8.0
+Version:        12.9.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -165,10 +156,8 @@ Requires:       %{name}-daemon = %{version}-%{release}
 Obsoletes:      %{name}-daemon < %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-config-network = %{version}-%{release}
-%if %{with_nwfilter}
 Requires:       %{name}-daemon-config-nwfilter = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nwfilter = %{version}-%{release}
-%endif
 %if %{with_libxl}
 Requires:       %{name}-daemon-driver-libxl = %{version}-%{release}
 %endif
@@ -696,9 +685,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
-%endif
 Requires:       %{name}-daemon-driver-qemu = %{version}-%{release}
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
@@ -722,9 +709,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 Requires:       %{name}-daemon-driver-lxc = %{version}-%{release}
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
-%endif
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 
@@ -768,9 +753,7 @@ Requires:       %{name}-daemon-driver-interface = %{version}-%{release}
 %endif
 Requires:       %{name}-daemon-driver-network = %{version}-%{release}
 Requires:       %{name}-daemon-driver-nodedev = %{version}-%{release}
-%if %{with_nwfilter}
 Recommends:     %{name}-daemon-driver-nwfilter = %{version}-%{release}
-%endif
 Requires:       %{name}-daemon-driver-secret = %{version}-%{release}
 Requires:       %{name}-daemon-driver-storage = %{version}-%{release}
 Requires:       %{name}-daemon-driver-vbox = %{version}-%{release}
@@ -1049,6 +1032,10 @@ Allows SSH into domains via VSOCK without need for network.
            %{?arg_remote_mode} \
            %{?arg_interface} \
            -Ddriver_network=enabled \
+           -Ddriver_nodedev=enabled \
+           -Ddriver_nwfilter=enabled \
+           -Ddriver_secret=enabled \
+           -Ddriver_storage=enabled \
            -Dstorage_fs=enabled \
            -Dstorage_lvm=enabled \
            -Dstorage_iscsi=enabled \
@@ -1120,6 +1107,20 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc %{buildroot}/%{logrotate
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu %{buildroot}/%{logrotate_dir}
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.libxl %{buildroot}/%{logrotate_dir}
 mv %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtlockd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtlogd %{buildroot}/%{logrotate_dir}
+[ -f %{buildroot}/%{_sysconfdir}/logrotate.d/virtlxcd ] && \
+   mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtlxcd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtnetworkd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtnodedevd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtnwfilterd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtproxyd %{buildroot}/%{logrotate_dir}
+[ -f %{buildroot}/%{_sysconfdir}/logrotate.d/virtqemud ] && \
+   mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtqemud %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtsecretd %{buildroot}/%{logrotate_dir}
+mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtstoraged %{buildroot}/%{logrotate_dir}
+[ -f %{buildroot}/%{_sysconfdir}/logrotate.d/virtxend ] && \
+   mv %{buildroot}/%{_sysconfdir}/logrotate.d/virtxend %{buildroot}/%{logrotate_dir}
 %endif
 
 mkdir -p %{buildroot}/%{_localstatedir}/lib/%{name}
@@ -1137,6 +1138,7 @@ rm -f %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_lxc.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
 rm -f %{buildroot}/%{logrotate_dir}/libvirtd.lxc
+rm -f %{buildroot}/%{logrotate_dir}/virtlxcd
 %endif
 %if ! %{with_qemu}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
@@ -1144,11 +1146,13 @@ rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_qemu.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
 rm -f %{buildroot}/%{logrotate_dir}/libvirtd.qemu
+rm -f %{buildroot}/%{logrotate_dir}/virtqemud
 %endif
 %if ! %{with_libxl}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/libxl.conf
 rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtxend
 rm -f %{buildroot}/%{logrotate_dir}/libvirtd.libxl
+rm -f %{buildroot}/%{logrotate_dir}/virtxend
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_libxl.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_libxl.aug
 %endif
@@ -1539,6 +1543,7 @@ fi
 %{_unitdir}/virtlockd.socket
 %{_unitdir}/virtlockd-admin.socket
 %config(noreplace) %{_sysconfdir}/%{name}/virtlockd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtlockd
 %{_datadir}/augeas/lenses/virtlockd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlockd.aug
 %{_datadir}/augeas/lenses/libvirt_lockd.aug
@@ -1557,6 +1562,7 @@ fi
 %{_unitdir}/virtlogd.socket
 %{_unitdir}/virtlogd-admin.socket
 %config(noreplace) %{_sysconfdir}/%{name}/virtlogd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtlogd
 %{_datadir}/augeas/lenses/virtlogd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlogd.aug
 %doc %{_mandir}/man8/virtlogd.8*
@@ -1570,6 +1576,7 @@ fi
 %{_unitdir}/virtproxyd-tcp.socket
 %{_unitdir}/virtproxyd-tls.socket
 %config(noreplace) %{_sysconfdir}/%{name}/virtproxyd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtproxyd
 %{_datadir}/augeas/lenses/virtproxyd.aug
 %{_datadir}/augeas/lenses/tests/test_virtproxyd.aug
 %doc %{_mandir}/man8/virtproxyd.8*
@@ -1591,6 +1598,7 @@ fi
 %if %{with_interface}
 %files daemon-driver-interface
 %config(noreplace) %{_sysconfdir}/%{name}/virtinterfaced.conf
+%{logrotate_prefix} %{logrotate_dir}/virtinterfaced
 %{_datadir}/augeas/lenses/virtinterfaced.aug
 %{_datadir}/augeas/lenses/tests/test_virtinterfaced.aug
 %{_unitdir}/virtinterfaced.service
@@ -1604,6 +1612,7 @@ fi
 
 %files daemon-driver-network
 %config(noreplace) %{_sysconfdir}/%{name}/virtnetworkd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtnetworkd
 %{_datadir}/augeas/lenses/virtnetworkd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnetworkd.aug
 %config(noreplace) %{_sysconfdir}/%{name}/network.conf
@@ -1634,6 +1643,7 @@ fi
 
 %files daemon-driver-nodedev
 %config(noreplace) %{_sysconfdir}/%{name}/virtnodedevd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtnodedevd
 %{_datadir}/augeas/lenses/virtnodedevd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnodedevd.aug
 %{_unitdir}/virtnodedevd.service
@@ -1646,6 +1656,7 @@ fi
 
 %files daemon-driver-nwfilter
 %config(noreplace) %{_sysconfdir}/%{name}/virtnwfilterd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtnwfilterd
 %{_datadir}/augeas/lenses/virtnwfilterd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnwfilterd.aug
 %config(noreplace) %{_sysconfdir}/%{name}/nwfilter.conf
@@ -1662,6 +1673,7 @@ fi
 
 %files daemon-driver-secret
 %config(noreplace) %{_sysconfdir}/%{name}/virtsecretd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtsecretd
 %{_datadir}/augeas/lenses/virtsecretd.aug
 %{_datadir}/augeas/lenses/tests/test_virtsecretd.aug
 %{_datadir}/augeas/lenses/libvirt_secrets.aug
@@ -1684,6 +1696,7 @@ fi
 
 %files daemon-driver-storage-core
 %config(noreplace) %{_sysconfdir}/%{name}/virtstoraged.conf
+%{logrotate_prefix} %{logrotate_dir}/virtstoraged
 %{_datadir}/augeas/lenses/virtstoraged.aug
 %{_datadir}/augeas/lenses/tests/test_virtstoraged.aug
 %{_unitdir}/virtstoraged.service
@@ -1738,6 +1751,7 @@ fi
 %if %{with_apparmor}
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 %endif
+%{logrotate_prefix} %{logrotate_dir}/virtqemud
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
 %{_unitdir}/virtqemud.service
@@ -1768,6 +1782,7 @@ fi
 
 %files daemon-driver-lxc
 %config(noreplace) %{_sysconfdir}/%{name}/virtlxcd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtlxcd
 %{_datadir}/augeas/lenses/virtlxcd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlxcd.aug
 %{_unitdir}/virtlxcd.service
@@ -1797,6 +1812,7 @@ fi
 %if %{with_apparmor}
 %config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtxend
 %endif
+%{logrotate_prefix} %{logrotate_dir}/virtxend
 %{_datadir}/augeas/lenses/virtxend.aug
 %{_datadir}/augeas/lenses/tests/test_virtxend.aug
 %{_unitdir}/virtxend.service
@@ -1823,6 +1839,7 @@ fi
 
 %files daemon-driver-vbox
 %config(noreplace) %{_sysconfdir}/%{name}/virtvboxd.conf
+%{logrotate_prefix} %{logrotate_dir}/virtboxd
 %{_datadir}/augeas/lenses/virtvboxd.aug
 %{_datadir}/augeas/lenses/tests/test_virtvboxd.aug
 %{_unitdir}/virtvboxd.service

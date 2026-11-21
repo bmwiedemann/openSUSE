@@ -23,14 +23,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-%{mname}%{?pkg_suffix}
-Version:        6.12.0
+Version:        6.12.1
 Release:        0
 Summary:        Python bindings for Qt 6
 License:        GPL-3.0-only OR SUSE-GPL-2.0-with-FLOSS-exception OR NonFree
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/pyqt
-Source:         https://www.riverbankcomputing.com/pypi/packages/pyqt6/pyqt6-%{version}.tar.gz
-#Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%%{version}.tar.gz
+#Source:         https://www.riverbankcomputing.com/pypi/packages/pyqt6/pyqt6-%%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/P/PyQt6/pyqt6-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE - disable-rpaths.diff - Disable RPATH when building PyQt6.
 Patch0:         disable-rpaths.diff
 # PATCH-FIX-OPENSUSE - install binary dbus mainloop integration in arch dependent directory
@@ -47,6 +47,7 @@ BuildRequires:  gdb
 BuildRequires:  python-pyqt-rpm-macros
 BuildRequires:  python-rpm-macros
 BuildRequires:  qt6-base-devel >= 6.12
+BuildRequires:  qt6-gui-private-devel
 BuildRequires:  qt6-macros
 BuildRequires:  cmake(Qt6Bluetooth)
 BuildRequires:  cmake(Qt6Designer)
@@ -62,6 +63,7 @@ BuildRequires:  cmake(Qt6Positioning)
 BuildRequires:  cmake(Qt6PrintSupport)
 BuildRequires:  cmake(Qt6Qml)
 BuildRequires:  cmake(Qt6Quick)
+BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6QuickWidgets)
 %if %{?suse_version} >= 1550
 BuildRequires:  cmake(Qt6Quick3D)
@@ -115,6 +117,7 @@ Requires:       cmake(Qt6Positioning)
 Requires:       cmake(Qt6PrintSupport)
 Requires:       cmake(Qt6Qml)
 Requires:       cmake(Qt6Quick)
+Requires:       cmake(Qt6QuickControls2)
 Requires:       cmake(Qt6QuickWidgets)
 %if %{?suse_version} >= 1550
 Requires:       cmake(Qt6Quick3D)

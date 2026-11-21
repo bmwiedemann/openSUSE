@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 15 10:27:58 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Enable the upstream test suite in %check. The spec declared
+  %bcond_with tests, so %cabal_test expanded to nothing and the
+  QuickCheck suite (test-shellcheck, 2210 properties) was silently
+  skipped; use %bcond_without tests so it runs by default.
+
+-------------------------------------------------------------------
 Mon Aug  4 00:51:39 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Provide an alias "shellcheck" for this package.

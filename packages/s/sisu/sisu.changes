@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Nov 12 18:36:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream release 1.1.2
+  * Release of bugfix and dependency updates
+  * Changes
+    + Flush JSR250 lifecycle cache when a ClassRealm is disposed
+    + chore and deps: slight updates
+
+-------------------------------------------------------------------
+Mon Oct 26 16:11:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream release 1.1.1
+  * Dependency updates and better control over JSR330 bean filtering
+    introduced in 1.1.0.
+  * Changes
+    + Add config hook for visilibility supplier
+    + deps: bump ASM to 9.11.1
+    + site: Add latest releases
+
+-------------------------------------------------------------------
 Wed Jul 29 13:10:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream release 1.1.0

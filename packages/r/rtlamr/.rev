@@ -61,4 +61,12 @@ pass, binary runs.</comment>
     <comment>Update rtlamr to 0.9.6</comment>
     <requestid>1394296</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0992cfd9fc5c69f84d9434571f22da6e</srcmd5>
+    <version>0.9.7</version>
+    <time>1794816528</time>
+    <user>anag_factory</user>
+    <comment>Update rtlamr to 0.9.7: honor -server flag, r900 symbol helpers, rtltcp 20261101.</comment>
+    <requestid>1397670</requestid>
+  </revision>
 </revisionlist>

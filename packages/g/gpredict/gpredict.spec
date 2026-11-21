@@ -17,7 +17,7 @@
 
 
 Name:           gpredict
-Version:        2.6
+Version:        2.7
 Release:        0
 Summary:        Realtime satellite tracking and orbit prediction application
 # Legal-Review-Notice: every upstream source header grants GPL "version 2 ...
@@ -31,13 +31,18 @@ Source:         https://github.com/csete/gpredict/releases/download/v%{version}/
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool >= 0.21
-BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
+BuildRequires:  perl(XML::Parser)
+BuildRequires:  perl(XML::Parser::Expat)
+BuildRequires:  perl(XML::Parser::Style::Debug)
+BuildRequires:  perl(XML::Parser::Style::Objects)
+BuildRequires:  perl(XML::Parser::Style::Stream)
+BuildRequires:  perl(XML::Parser::Style::Subs)
+BuildRequires:  perl(XML::Parser::Style::Tree)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0
 BuildRequires:  pkgconfig(libcurl) >= 7.19
 BuildRequires:  pkgconfig(libgps) >= 2.90
-Recommends:     %{name}-lang
 Recommends:     hamlib
 
 %description

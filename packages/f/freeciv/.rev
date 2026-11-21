@@ -302,4 +302,12 @@
     <comment>build with SDL3 (forwarded request 1375845 from AndreasStieger)</comment>
     <requestid>1375846</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>0a0456021d85498978199d3316e214ef</srcmd5>
+    <version>3.2.7</version>
+    <time>1794236839</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1396271</requestid>
+  </revision>
 </revisionlist>

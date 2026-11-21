@@ -25,6 +25,7 @@ Group:          Development/Languages/Go
 URL:            https://github.com/securego/gosec
 Source:         gosec-%{version}.tar.xz
 Source1:        vendor.tar.xz
+BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.25
 
 %description

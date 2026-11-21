@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct 23 16:37:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260326:
+  * IPv6 support and new discover2 API with multi-type discovery
+  * New sockaddr helpers in hdhomerun_sock, plus _ex variants of
+    the device, video, control and socket constructors
+  * Fix use of poll() in socket handling on Linux/Mac/BSD/Android
+  * Handle Fire TV OS bug returning from socket waits too early
+  * Fix discover when an IP address or interface goes away and
+    comes back within the lifespan of the discover object
+  * Minimum signal strength for channel scan changed to 35%
+- Drop hdhomerun_config_gui subpackage: upstream discontinued the
+  GTK Config GUI and no longer distributes its sources; remove
+  hdhomerun_config_gui_20190621.tgz,
+  hdhomerun_config_gui.desktop and hdhomerun_config_gui.png
+  * Drop gtk2-devel and update-desktop-files BuildRequires with
+    it, add BuildRequires: make
+- Drop Makefile.patch: upstream rewrote the Makefile, the .so.2
+  soname is now passed with LIBEXT on the make command line
+
+-------------------------------------------------------------------
 Thu Feb 29 16:40:51 UTC 2024 - pgajdos@suse.com
 
 - Use %patch -P N instead of deprecated %patchN.

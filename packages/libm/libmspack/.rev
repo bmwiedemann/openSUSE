@@ -255,4 +255,39 @@ No indication of GPL-2.0+ code in the package (forwarded request 107184 from bab
     <comment></comment>
     <requestid>1140704</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>36b769763604aa74f21a70611ba80d6b</srcmd5>
+    <version>0.12</version>
+    <time>1795103603</time>
+    <user>anag_factory</user>
+    <comment>- fix typo in description
+
+- Update to version 0.12:
+  Security Fixes
+  * An LZX uncompressed block header with invalid R0/R1/R2 values
+    followed by a verbatim/aligned block referencing them can make
+    libmspack write up to 2GB past the end of its history window.
+  * CAN-2026-2038211: CHM PMGL/PMGI lookups can have cycles, leading
+    to infinite loops.
+  * CAB sets where the first mergeable file has an invalid filename
+    (blank or over 256 chars), and salvage mode is enabled, causes
+    cabd_can_merge_folders to read already-freed memory.
+  * CHM files with undersized ControlData/ResetTable files or invalid
+    PMGI entry counts can make chminfo overread or underread its
+    buffers.
+  * CAB MS-ZIP and Quantum match offsets greater than the number of
+    bytes already decoded makes libmspack read uninitialised memory
+    from its history window and write it as output.
+  * CAB files can &quot;hide&quot; entries (which other tools might see) using
+    an atypical FileOffset value. libmspack warns on finding this
+    discrepancy and salvage mode finds the &quot;hidden&quot; entries.
+  + See https://github.com/kyz/libmspack/blob/master/libmspack/ChangeLog
+    for a full changelog.
+
+   negative length in SpanInfo, which then feeds a negative output
+   your choosing, the lower 32 bits of output length, larger than
+   * lzxd_init(), lzxd_set_output_length(), mszipd_init(): due to the
+  not work</comment>
+    <requestid>1398202</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Nov 19 05:50:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.39:
+  * Bug Fixes
+    - 9fd9489: fix(go): update charm.land/lipgloss/v2 ( v2.1.0 →
+      v2.1.1 )
+  * Chores
+    - 4fe81c1: chore(mise): update github:goreleaser/goreleaser (
+      v2.20.0 → v2.20.1 )
+    - 5e069ad: chore(mise): update github:goreleaser/goreleaser (
+      v2.20.1 → v2.20.2 )
+    - 2db263a: chore(mise): update go ( 1.27.3 → 1.27.4 )
+
+-------------------------------------------------------------------
+Sun Nov 15 09:04:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.38:
+  * Bug Fixes
+    - 862cc7c: fix(go): update charm.land/lipgloss/v2 ( v2.0.6 →
+      v2.1.0 )
+  * Chores
+    - 2d8024e: chore(mise): update github:goreleaser/goreleaser (
+      v2.19.0 → v2.20.0 )
+
+-------------------------------------------------------------------
+Wed Nov 04 09:10:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.37:
+  * Bug Fixes
+    - 29ca678: fix(go): update charm.land/bubbletea/v2 ( v2.1.0 →
+      v2.1.1 )
+    - 921db21: fix(go): update k8s.io/apimachinery ( v0.37.1 →
+      v0.37.2 )
+    - 9ffce14: fix(go): update k8s.io/client-go ( v0.37.1 → v0.37.2
+      )
+  * Chores
+    - 34d4e51: chore(mise): drop mise.lock in favour of
+      minimum_release_age (#257)
+
+-------------------------------------------------------------------
 Wed Oct 28 06:47:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.36:

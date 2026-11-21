@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov  3 16:36:40 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to 2.42.6
+  * No changelog was made available
+- Update llvm to 22.1.8
+- Update opencl_clang to b953ecee
+- Update spirv_llvm_translator to 0e672448
+- Drop 0001-Replace-ciso646-with-version.patch:
+  * No longer needed with LLVM 22
+- Drop reproducible.patch:
+  * Merged upstream
+- Rebase 0001-Remove-rpath.patch for LLVM 22
+- Rebase 0003-Empty-check-before-vector-use.patch
+- Apply opencl-clang clang patches to llvm-project during %prep for
+  OpenCL 3.1 support
+- Rename libopencl-clang package to libopencl-clang22_1 to match
+  SONAME libopencl-clang.so.22.1
+- Remove stray .clang-format from include directory to resolve
+  rpmlint warning
+
+-------------------------------------------------------------------
 Sun Jul 19 01:26:07 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch https://github.com/intel/intel-graphics-compiler/issues/359

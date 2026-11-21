@@ -1,6 +1,7 @@
 #
 # spec file for package python-pyasn1
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause

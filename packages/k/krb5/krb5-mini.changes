@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Nov 13 14:30:00 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.22.3
+  * Fix a loophole in the KDC's client authdata filtering which
+    could allow clients to include fake PAC and CAMMAC authdata
+    values when requesting service tickets.
+  * Fix a client crash when a KKDCP proxy daemon closes the TLS
+    session without supplying any response data.
+  * Shut down kpropd gracefully when a termination signal is
+    received, when operating in incremental propagation mode.
+  * Detect when an incremental propagation update is applied to a
+    nonexistent principal; when this happens, force a full resync
+    instead of crashing.
+  * Fix a KDC crash when the LDAP KDB module loses its connection
+    to the LDAP server.
+  * When an application accepts a GSS context without asking for
+    delegated credentials, discard any credentials sent by the
+    initiator without parsing them first.
+  * Fix a logic error when checking PAC server checksums:
+    * CVE-2026-111423, bsc#1290049
+  * Check for unkeyed checksums when validating CAMMAC verifiers:
+    * CVE-2026-71199, bsc#1290192
+  * Check for the lockdown_keys attribute when processing password
+    change requests in kadmind:
+    * CVE-2026-107884, bsc#1290028
+  * libgssrpc: use the verified RPCSEC_GSS service type to wrap and
+    unwrap messages:
+    * CVE-2026-118380, bsc#1290190
+  * libgssrpc: disable the AUTH_GSSAPI server auth flavor unless
+    GSSRPC_ALLOW_AUTH_GSSAPI is set:
+    * CVE-2026-112322, bsc#1290188
+    * CVE-2026-112323, bsc#1290189
+  * Fix NegoEx parsing vulnerabilities:
+    * CVE-2026-40355, bsc#1263366
+    * CVE-2026-40356, bsc#1263367
+  * Prevent read overrun in kdb-ldap:
+    * CVE-2026-11850, bsc#1268131
+  * Fix null pointer dereferences, read overruns, unbounded memory
+    allocations and memory leaks leading to denial of service:
+    * CVE-2026-71200, bsc#1290193
+    * CVE-2026-107364, bsc#1290029
+    * CVE-2026-107708, bsc#1284816
+    * CVE-2026-107778, bsc#1284817
+    * CVE-2026-112314, bsc#1290050
+    * CVE-2026-112315, bsc#1290176
+    * CVE-2026-112316, bsc#1290181
+    * CVE-2026-112317, bsc#1290182
+    * CVE-2026-112318, bsc#1290183
+    * CVE-2026-112319, bsc#1290184
+    * CVE-2026-112320, bsc#1290185
+    * CVE-2026-112321, bsc#1290186
+    * CVE-2026-119079, bsc#1290191
+- Drop patches, now included upstream:
+  * 0010-Fix-strchr-conformance-to-C23.patch
+  * 0012-Fix-two-NegoEx-parsing-vulnerabilities.patch
+  * 0013-Prevent-read-overrun-in-libkdb_ldap.patch
+  * 0014-cve-2026-107708.patch
+  * 0015-cve-2026-107778.patch
+
+-------------------------------------------------------------------
 Mon Oct 26 12:19:10 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Mirror the krb5-server /var/log/krb5 fix in krb5-mini: package
@@ -31,7 +91,7 @@ Mon Oct 26 11:46:36 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 Wed Oct 21 10:05:19 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Prevent denial of Service via crafted forwarded credentials
-  * CVE-2026-107778, bsc#1284816
+  * CVE-2026-107708, bsc#1284816
 - Prevent denial of Service via malformed PAC in S4U2Proxy
   * CVE-2026-107778, bsc#1284817
 - Add 0014-cve-2026-107708.patch and 0015-cve-2026-107778.patch

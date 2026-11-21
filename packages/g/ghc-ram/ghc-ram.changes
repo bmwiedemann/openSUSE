@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 28 17:24:57 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update ram to version 0.22.1.
+  ## 0.22.1
+  + Use correct signatures for 'memset' and 'memcpy'
+  The WASM linker is more strict about function signatures matching, see https://releases.llvm.org/11.1.0/tools/lld/docs/WebAssembly.html#function-signatures
+
+  thanks @clinton-grc
+
+-------------------------------------------------------------------
 Sat Mar 28 23:20:53 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Add ram at version 0.22.0.

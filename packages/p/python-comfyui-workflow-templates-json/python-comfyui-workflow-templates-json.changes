@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:27:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.138 (templates grow 707 to 710):
+  * Adds 3 template JSONs (Ideogram v4.6 text-to-image,
+    image edit and precise image edit) and refreshes 15
+    search indexes
+  * The Breeze TTS2 template ships a script that describes
+    the model instead of a product ad
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
+Thu Nov 19 07:30:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.137 (templates grow 701 to 707):
+  * Adds 6 template JSONs (HeyGen Avatar 6 image and identity
+    to video, Kling 4 image edit/text-to-image/long image,
+    Breeze TTS2 text-to-speech) and refreshes 16 search
+    indexes
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
+Mon Nov 16 20:34:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.136 (crosses 0.1.135, files grow 697 to 702):
+  * 0.1.135 adds 5 template JSONs (Seedance 2.5 Flash
+    text/image/ref-to-video, Wevisone VL segmentation,
+    RelayVSR x4 upscale) and refreshes 17 files including
+    two MiniMax H3 image templates and 15 search indexes
+  * 0.1.136 refreshes 15 search indexes and the Bria
+    background-removal template (node wiring and output fix)
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
+Thu Nov 12 19:36:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.133:
+  * Adds the Gemini 4 Hydrogen template JSON plus Italian
+    and Hebrew search indexes
+  * Fixes two MOSS image templates (missing SFT UNet
+    download, gated upstream adapter link) and refreshes
+    all search indexes, now ordered by usage
+
+-------------------------------------------------------------------
+Wed Nov 11 13:01:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.132 (crosses 0.1.130 and 0.1.131):
+  * 0.1.130 adds 8 template JSONs (Seedream 5.5, MiniMax H3,
+    Pika, RelayVSR) and refreshes 176
+  * 0.1.131 refreshes the search indexes and two templates
+  * 0.1.132 adds 5 template JSONs (LTX video, MiniMax H3
+    image API) and refreshes 13
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.129:
+  * Refresh workflow template JSON definitions: new model
+    templates added, changed ones updated, retired ones removed
+
+-------------------------------------------------------------------
+Tue Nov  3 18:50:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.127:
+  * 7 new template JSONs, all owned by the media-assets-02
+    bundle: 3D idol image-to-gaussian-splat, two MiniMax H3
+    Max (recast and reframe), Sonilo Music 1.5, Topaz image
+    enhance Wonder 4, and two P-H3 image (text-to-image and
+    edit)
+  * Drop the 7 retired definitions: three ByteDance Seedance
+    1.5 and four OpenAI image 1
+  * Refresh the Kling v3 video templates, the Seedream 5.0
+    Lite edit template and the localized index files
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Sat Oct 31 13:58:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.126 (crosses 0.1.124 and 0.1.125):

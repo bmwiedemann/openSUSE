@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Mon Nov  2 06:37:04 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-19424-g027e980fd1 snapshot:
+  * Torrent rasterbar 2.1 support,
+  * Removed leechcraft-0.6.70-19214-g121e5318a7+a31f194.patch,
+  * Removed obsoleted build requirenments: boost locale, avdevice,
+    swscale, tcmalloc, speex,
+  * ENABLE_ALL_TESTS instead of different single test options.
+- Disabled lto for gcc 16 (Leap) builds due to internal error.
+- Patched vs. "control reaches end of non-void function" error.
+
+-------------------------------------------------------------------
 Wed Oct 21 07:18:40 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Obsoleted kwin subplugin since kwin-x11 became unavailable.
 - Updated to 0.6.70-19214-g121e5318a7 snapshot:
-  * Obsoleted plugin: gmailnotifier, netstoremanager-googledrive,
+  * Obsoleted plugins: gmailnotifier, netstoremanager-googledrive,
     newlife.
 - Fixed changes and rpmlintrc.
 - Added leechcraft-0.6.70-19214-g121e5318a7+a31f194.patch

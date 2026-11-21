@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 11 17:35:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.13
+  * Sized low-memory render pipeline ring buffers by simulating the
+    actual stage schedule, fixing use-of-uninitialized-memory bugs
+    with vertically subsampled stages.
+  * Reset JPEG reconstruction state, fixing potential
+    use-after-free writes across decoder resets.
+  * Hardening fixes across the core decoder/encoder, JPEG
+    reconstruction, splines, and codec plugins (EXR, APNG, PGX,
+    PNM); this includes fixes for integer overflows in JPEG
+    coefficient buffer allocations and spline area budgets,
+    out-of-bounds read/write guards in chunked frame adapters and
+    truncated EXR scanline streams, bounds-checked Span::subspan
+    slicing, and null pointer guards.
+  * Encoder API: added JXL_ENC_FRAME_SETTING_STRIP_ALPHA frame
+    setting and --strip_alpha CLI flag to control stripping of
+    alpha channels on single-frame images with a single extra
+    channel.
+  * Encoder API: added JXL_ENC_FRAME_SETTING_JPEG_RECON_LFS frame
+    setting and --jpeg_reconstruction_lfs CLI flag to control LF
+    (adaptive DC) smoothing during lossless JPEG recompression;
+    allows non-444 transcoded JPEGs with adaptive DC/LF smoothing
+    to decode.
+
+-------------------------------------------------------------------
 Thu Jul  2 08:40:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.12

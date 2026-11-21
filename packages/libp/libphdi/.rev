@@ -135,4 +135,12 @@
     <comment>- Update to release 20260902</comment>
     <requestid>1375380</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>0af97d0ef27cdf8faaeeb937958f200c</srcmd5>
+    <version>20260902</version>
+    <time>1794236828</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-Changes-to-improve-resilience.patch [CVE-2026-116737, boo#1288093]</comment>
+    <requestid>1396256</requestid>
+  </revision>
 </revisionlist>

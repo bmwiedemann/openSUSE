@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:10:21 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Reconcile package version with upstream tag
+- Update to version 0.42.0:
+  * libcurl based network backend with HTTP/2, HTTP/3 and connection reuse
+  * DVD-Video, Blu-ray HDMV and BD-J menu navigation
+  * DVD-Audio playback
+  * Direct playback of .iso images of DVD-Video, DVD-Audio and Blu-ray discs
+  * Dolby Vision Profile 7 enhancement layer support in `gpu-next`
+  * MPEG-TS programs and HLS variants are exposed as editions
+  * DSD-over-PCM (DoP) passthrough with `--audio-spdif=dsd`
+  * Support for SRV3 (YouTube) subtitles via subrandr library
+  * Context menu populated from the new `menu.conf`, bound to right click
+  * `floating` OSC layout with Fluent icons (`--script-opts=osc-layout=floating`)
+  * API that allows integration between the OSC and (third-party) thumbnailer scripts
+  * Wayland session management
+  * Wayland color management through the protocol instead of the Vulkan API
+  * scRGB output with `--target-trc=scrgb`
+  * Improved HDR colorspace signalling on DRM (Linux)
+  * D3D11 render API backend for libmpv
+  * Reworked terminal video outputs (`sixel`, `kitty` and `tct`)
+  * AMD Frame Rate Conversion filter (`--vf=amf_frc`)
+  * Rewritten display-sync audio drift compensation
+  * `--tls-verify` is enabled by default
+  For more information, see the RELEASE_NOTES shipped with this package,
+  or the complete changelog at <https://github.com/mpv-player/mpv/compare/v0.41.0...v0.42.0>
+- Update BuildRequires to versions required by meson
+
+-------------------------------------------------------------------
 Sat Sep 19 20:28:00 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 0.41.0+git20260918.e76a35ec95:

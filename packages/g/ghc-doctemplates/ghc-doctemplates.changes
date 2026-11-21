@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 22 23:52:29 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update doctemplates to version 0.11.1.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/doctemplates-0.11.1/src/changelog.md
+
+-------------------------------------------------------------------
 Mon Sep  9 06:25:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update doctemplates to version 0.11.0.1.

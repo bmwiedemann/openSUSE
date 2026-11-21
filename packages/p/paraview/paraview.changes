@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Nov  6 01:03:13 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Update to version 6.2.0:
+  * Performance optimizations for static meshes over time (Append
+    DataSets, Append Geometry, Clip, Slice, Slice with Plane,
+    Transform) and new Force Static Mesh filter.
+  * Improved CellGrid support in the Information panel, SpreadSheet
+    View and Render View.
+  * Animated export of the SpreadSheet View, and Alembic and OpenUSD
+    scene export over time.
+  * Python Calculator can use Pipeline Browser names and gains
+    Input, Array and Function helpers.
+  * New paraview.envs module to manage uv-backed virtual
+    environments from pvpython.
+  * New DPvtkReader plugin and OpenStreetMap support in the
+    GeographicalMap plugin.
+  * New Image Binary Threshold filter and Target Process property in
+    the Aggregate Dataset filter.
+  * Configurable cell locators in stream and particle tracing
+    filters.
+  * VTKHDF reader and writer improvements.
+  * Color legend, axis annotation and Chart View interface
+    improvements.
+  * Catalyst dynamic pipeline registration via state/pipelines.
+  * More info: https://gitlab.kitware.com/paraview/paraview/-/blob/master/Documentation/release/ParaView-6.2.0.md
+- Build against VTK 9.7 and Qt6 on Factory (Qt5 is kept for older
+  distributions).
+- Switch python3-qt5 to python3-qt6 (build and runtime requirement of
+  python3-paraview) on Factory.
+- Require Qt5X11Extras only when building with Qt5, Qt6 has no X11Extras.
+- Add libxslt-tools, libxml-2.0, Qt6Core5Compat and Qt6OpenGLWidgets
+  build requirements.
+- Use %ldconfig_scriptlets instead of explicit %post/%postun ldconfig
+  scriptlets.
+- Filter the shlib-policy-name-error rpmlint error for libparaview6_2 in
+  paraview-rpmlintrc: ParaView 6.2 libraries now carry the SONAME
+  version 1 (e.g. libpqCore-pv6.2.so.1) while the shared library
+  package is named after the ParaView version, as in previous releases.
+
+-------------------------------------------------------------------
+Tue Oct 08 00:01:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
+
+- Fix issue that was missing the executables 'vtkProcessXML-pv6.1' and 'vtkWrapClientServer-pv6.1, this
+  was described at: https://bugzilla.suse.com/show_bug.cgi?id=1271224
+
+-------------------------------------------------------------------
 Tue May  5 00:00:00 UTC 2026 - Vicente Adolfo Bolea Sanchez <vicente.bolea@gmail.com>
 
 - Update to version 6.1.0:

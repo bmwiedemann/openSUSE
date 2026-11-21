@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 04:03:35 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- CVE-2026-112300: Avoid ReDOS in section parsing. (bsc#1286097)
+  * Add patch CVE-2026-112300.patch
+
+-------------------------------------------------------------------
 Tue Feb  4 08:55:17 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 5.0.9
@@ -176,7 +182,6 @@ Sun May 27 18:22:00 CEST 2007 - peter+rpmspam@suntel.com.tr
 - add "unzip" as a builddep so it builds on Factory - 4.4.0
 
 -------------------------------------------------------------------
-
 Fri May 11 16:59:40 CEST 2007 - poeml@suse.de
 
 - package created (copy from packman package) - 4.4.0

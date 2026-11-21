@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:46:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update usb-modeswitch-data tarball to version 20261111:
+  * Added devices:
+    + [0bda:1a2b] Realtek Wifi Dongle
+    + [046d:c26d] Logitech G923 Wheel (Xbox ed.)
+    + [0bda:a192] MERCURY MW310UH (Wifi, based on RTL8192FU)
+
+-------------------------------------------------------------------
+Wed Nov 11 18:11:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.3:
+  * Fixed linking error for static builds with jimtcl (static
+    dispatcher)
+- Build in parallel with %make_build
+
+-------------------------------------------------------------------
+Fri Oct 23 17:39:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.2:
+  * Fixed C code bug breaking build with gcc 15
+- Drop usb_modeswitch-c23.patch: fixed upstream
+- Spec cleanup: drop obsolete Group tags
+
+-------------------------------------------------------------------
 Wed Apr 23 13:13:52 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add usb_modeswitch-c23.patch from upstream to fix gcc15 compile

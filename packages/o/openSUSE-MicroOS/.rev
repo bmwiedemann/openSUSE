@@ -939,4 +939,16 @@
     <comment>1</comment>
     <requestid>1386417</requestid>
   </revision>
+  <revision rev="105" vrev="105">
+    <srcmd5>daabf8daa6697f08e2ce5beb15984547</srcmd5>
+    <version>16.0.0</version>
+    <time>1795103631</time>
+    <user>anag_factory</user>
+    <comment>- Don't set explicit console= for RaspberryPi images, the DT sets
+  stdout-path properly
+
+- Use ttyAMA0 as the serial console on aarch64, ttyS0 does not
+  exist there (Pine64 and RaspberryPi keep ttyS0)</comment>
+    <requestid>1398359</requestid>
+  </revision>
 </revisionlist>

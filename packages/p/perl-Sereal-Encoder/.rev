@@ -158,4 +158,41 @@
         Thanks to Thomas Seeling for the suggestion.</comment>
     <requestid>1374863</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b699b451bbb8c29b2d93ee6fb85bf160</srcmd5>
+    <version>7.1.0</version>
+    <time>1794162150</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.1.0 (7.001)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+    7.001
+        * Use protocol v7 by default, with portable little-endian IEEE
+          floating-point storage. Extended values use IEEE binary128 by
+          default, including on long-double Perl builds.
+        * Add float_type (std/native) for explicit native long-double
+          output. Declare the native format, byte order and storage size
+          once per document, and clear known padding. Unidentified layouts
+          support explicitly trusted same-build round trips.
+        * Preserve protocol v1-v6 numeric output behavior and keep v7 header
+          floats portable. Upgrade Decoder to version 7 before emitting v7
+          packets.
+        * Include protocol v6 support for v-strings, negative-integer
+          encoding and keyed SipHash checksums. Add checksum keys, modes,
+          policies, shared and module-specific defaults, and
+          prepare_checksum_key().
+        * Preserve regexp character-set modifiers, /n and /xx, and improve
+          unsupported-type diagnostics.
+        * Preserve unsigned tied integer values on older Perls and
+          strengthen callback lifetime handling.
+        * Fix bundled Snappy builds on Haiku and hobodecoder compatibility
+          with BusyBox od. Improve older-Perl and optional-dependency
+          handling.
+        * Extend hobodecoder and stored corpus coverage for portable and
+          native floats. Include real Fedora s390x producer captures for
+          regression tests. Thanks to pghmcfc for the report and corpus
+          (issue #337).
+        * Ship the shared SECURITY policy and clarify security, checksum and
+          floating-point interoperability documentation.</comment>
+    <requestid>1396147</requestid>
+  </revision>
 </revisionlist>

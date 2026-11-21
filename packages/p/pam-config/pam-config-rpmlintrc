@@ -1,1 +1,6 @@
+# The /etc/pam.d/common-*-pc entries are %ghost: pam-config generates
+# the files in /etc/pam.d at install time, and the static vendor copies
+# live in /usr/lib/pam.d (shipped by the pam package). No file content
+# is shipped in /etc by this package, so the move-to-usr rule for
+# shipped files does not apply to these entries.
 addFilter('E: filelist-forbidden-move-to-usr /etc/pam.d/common*')

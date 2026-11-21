@@ -2,7 +2,7 @@ Index: src/engine/CMakeLists.txt
 ===================================================================
 --- a/src/engine/CMakeLists.txt
 +++ b/src/engine/CMakeLists.txt
-@@ -311,6 +311,7 @@ target_link_libraries(art_engine
+@@ -313,6 +313,7 @@ target_link_libraries(art_engine
      ${LENSFUN_LIBRARIES}
      ${RSVG_LIBRARIES}
      ${EXIV2_LIBRARIES}

@@ -46,7 +46,7 @@ Source2:        vendor-files.tar.bz2
 # from http://www.isc.org/about/openpgp/ ... changes yearly apparently.
 Source3:        %{name}.keyring
 Source4:        dlz-modules-%{dlz_modules_hash}.tar.gz
-Source9:        https://www.internic.net/domain/named.root
+Source9:        named.root
 Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
 # configuration file for systemd-tmpfiles

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Nov 16 16:04:46 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 26.11.1:
+  * l10n: Update translations.
+- Changes from version 26.11.0:
+  * Update README.md, (gh#linuxmint/timeshift#526).
+  * Silence the async script status write after TEMP_DIR is
+    removed.
+  * Exclude log files from rsync snapshots by default.
+  * Device selection: Re-check the location status instead of
+    leaving stale errors.
+  * Restore: Resolve a LABEL= root fstab entry and stop failing
+    silently.
+  * dont abort on page change, (gh#linuxmint/timeshift#513).
+  * Tags as enum (gh#linuxmint/timeshift#493)
+  * apply patch proposed in (gh#linuxmint/timeshift#570) and
+    (gh#linuxmint/timeshift#571).
+  * Ensure default filters take priority over user accounts,
+    (gh#linuxmint/timeshift#547).
+  * [WIP] Keep local hardlinks, (gh#linuxmint/timeshift#546).
+  * AsyncTask: fix double-unref crash on teardown after completion,
+    (gh#linuxmint/timeshift#552).
+  * l10n: Update POT.
+  * Switch symbolic icons to XSI.
+  * Switch fullcolor icons to XSI.
+  * Remove unused class.
+  * ui: Move settings/wizard into burger menu.
+- Changes from version 26.09.0:
+  * Add io_nice for background rsync tasks,
+    (gh#linuxmint/timeshift#492).
+  * Add comment about the deletion policy,
+    (gh#linuxmint/timeshift#505).
+  * Always drop priviledges when opening a directory,
+    (gh#linuxmint/timeshift#518).
+  * Pause snapshots, (gh#linuxmint/timeshift#498).
+  * main window: Fix title, (gh#linuxmint/timeshift#535).
+  * MainWindow.vala: Change 'snasphots' typo to 'snapshots',
+    (gh#linuxmint/timeshift#507).
+
+-------------------------------------------------------------------
 Wed Mar  4 14:37:30 UTC 2026 - malcolmlewis@opensuse.org
 
 - Updated to version 25.12.4:

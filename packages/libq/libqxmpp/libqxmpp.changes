@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Nov 15 13:53:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.17.2
+  * Client: Fix connecting to the server after disconnectFromServer()
+    was called during the DNS lookup of the server
+  * OMEMO: Do not request already subscribed device lists again
+  * PubSub: Fix the form type of node metadata
+  * PubSub: Add the missing implementation of
+    QXmppPubSubPublishOptions::fromDataForm()
+
+-------------------------------------------------------------------
+Sat Nov  7 17:55:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.17.1. Check the CHANGELOG.md file for the full list
+  of changes. Changes since 1.17.0:
+  * MUC: Fix destroying a room without reason or alternate JID,
+    which sent no destroy request
+  * MUC: Fix handling a room destruction without status code 110
+    (as sent by ejabberd), which left the room joined
+  * MUC: Don't emit removedFromRoom() for the own destroyRoom(),
+    which depended on the order of the server's responses
+  * MUC: Fix occupant IDs received before the room's disco#info
+  * MUC: setRoomConfig() for a created room now resolves after
+    the room's disco#info result
+  * MUC: Fix pending tasks never finishing when the room session
+    ended
+  * MUC: Fix leave() while joining before the own presence
+  * MUC: Fail pending tasks when the manager is removed from the
+    client
+  * MUC: Emit removedFromRoom() with ConnectionLost for joined
+    rooms when the stream is not resumed after a disconnect,
+    instead of leaving them silently
+  * MUC: Ignore presences from the bare room JID
+  * Bookmarks: Fix signals for own changes depending on whether
+    the IQ result or the event notification arrives first
+  * MUC: Support the password of a destroy request for a
+    password-protected alternate room
+  * MUC: Report "Cannot create MUC" for a rejected createRoom()
+    and fall back to the error condition if there is no error text
+  * OMEMO: Fix subscribing to the same device lists multiple times
+    and resubscribe to manually subscribed device lists after a
+    reconnection without stream resumption
+  * Roster: Fix the account migration export containing no roster
+    items and no MIX channels with servers supporting roster versioning
+  * Muji: Send contents in the Jingle namespace, which Dino requires
+  * Fix ODR violation of XmlElementId, which broke builds with LTO
+    and could break hash map lookups
+  * DOAP: Bump XEP-0424 (Message Retraction) to 0.5.0
+
+-------------------------------------------------------------------
 Sat Aug  1 08:38:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.16.3

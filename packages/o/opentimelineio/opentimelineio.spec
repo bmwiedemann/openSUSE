@@ -1,7 +1,7 @@
 #
 # spec file for package opentimelineio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%define sonum 18
+
 Name:           opentimelineio
-Version:        0.18.0
+Version:        0.18.1
 Release:        0
 Summary:        API and interchange format for editorial timeline information
 License:        Apache-2.0
@@ -26,14 +28,9 @@ Source:         https://github.com/AcademySoftwareFoundation/OpenTimelineIO/arch
 # PATCH-FIX-UPSTREAM
 Patch0:         0002-CMake-fixes.patch
 BuildRequires:  cmake
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
-%else
 BuildRequires:  gcc-c++
-%endif
-BuildRequires:  cmake(RapidJSON)
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(RapidJSON)
 BuildRequires:  pkgconfig(Imath)
 
 %description
@@ -41,17 +38,17 @@ OpenTimelineIO is an interchange format and API for editorial cut information.
 OTIO contains information about the order and length of cuts and references to
 external media. It is not however, a container format for media.
 
-%package -n libopentimelineio18
+%package -n libopentimelineio%{sonum}
 Summary:        API and interchange format for editorial timeline information
 
-%description -n libopentimelineio18
+%description -n libopentimelineio%{sonum}
 OpenTimelineIO is an interchange format and API for editorial cut information.
 OTIO contains information about the order and length of cuts and references to
 external media. It is not however, a container format for media.
 
 %package devel
 Summary:        Development files for opentimelineio
-Requires:       libopentimelineio18 = %{version}
+Requires:       libopentimelineio%{sonum} = %{version}
 # opentimelineio doesn't link to imath and will break if the soname changes
 %requires_eq    Imath-devel
 
@@ -63,10 +60,6 @@ Development files for opentimelineio.
 rm -r src/deps
 
 %build
-%if 0%{?suse_version} == 1500
-export CXX=g++-13
-%endif
-
 %cmake \
   -DOTIO_FIND_IMATH:BOOL=TRUE \
   -DOTIO_FIND_RAPIDJSON:BOOL=TRUE \
@@ -77,12 +70,17 @@ export CXX=g++-13
 %install
 %cmake_install
 
+# Export opentimelineio sonum to make sure dependent packages can require the exact version
+# they were built with. (https://bugzilla.opensuse.org/1290457)
+mkdir -p %{buildroot}%{_rpmmacrodir}
+echo "%_otio_sonum %{sonum}" > %{buildroot}%{_rpmmacrodir}/macros.opentimelineio
+
 %check
 %ctest
 
-%ldconfig_scriptlets -n libopentimelineio18
+%ldconfig_scriptlets -n libopentimelineio%{sonum}
 
-%files -n libopentimelineio18
+%files -n libopentimelineio%{sonum}
 %license LICENSE.txt
 %doc README.md
 %{_libdir}/libopentime.so.*
@@ -95,6 +93,6 @@ export CXX=g++-13
 %{_libdir}/cmake/opentimelineio/
 %{_libdir}/libopentime.so
 %{_libdir}/libopentimelineio.so
+%{_rpmmacrodir}/macros.opentimelineio
 
 %changelog
-

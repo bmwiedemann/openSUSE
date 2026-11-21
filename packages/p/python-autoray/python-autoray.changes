@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Nov 17 18:50:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * `compose` now supplies an `AutoNamespace` to any *default*
+    implementation taking a `namespace` parameter: the namespace
+    itself when called as `xp.my_func(...)`, so its dtype and
+    device defaults apply, otherwise one from the first argument
+    if it matches the dispatched backend. Implementations
+    registered for a specific backend keep their own signatures.
+  * Namespaces from `get_namespace` are now stable objects:
+    registering a function drops their cached lookups rather than
+    discarding the namespaces, so one already held picks up the
+    new function.
+  * `autoray.lazy` `"sum"`, `"prod"`, `"min"` and `"max"` now
+    accept `keepdims`, matching the eager and array API
+    signatures. The reduced axes are kept as size 1 in the
+    inferred lazy shape.
+  * Added the lazy reductions `"mean"`, `"std"`, `"var"`,
+    `"all"`, `"any"`, `"count_nonzero"`, `"argmin"` and
+    `"argmax"`, which also take `axis` and `keepdims`, and
+    `"cumsum"`, which takes `axis` and accumulates over the
+    flattened array when it is `None`. `"argmin"` and `"argmax"`
+    follow the eager convention of only accepting a scalar
+    `axis`. Backend support for `keepdims` varies: see `XFAILS`
+    in `tests/conftest.py`.
+  * The lazy reductions and `"cumsum"` pass any further keyword
+    arguments, such as `ddof` or `dtype`, straight through to the
+    backend function. A `LazyArray` supplied this way, for
+    example as `where`, is tracked as a dependency of the result.
+  * Added `random_array`, i.e. `do("random.array", ...)`, for
+    backend-agnostic normal, uniform and rademacher random
+    arrays. It accepts backend-specific generators or seeds,
+    inherits dtype and device from `like`, and generates complex
+    normal samples with unit total variance. A complex rademacher
+    sample is a choice from the four roots of unity, so it also
+    has modulus one. `jax` `"random.default_rng"` with
+    `seed=None` warns one time, because tracing fixes its
+    generated seed.
+  * `jax`, `mlx` and `tensorflow` `"random.default_rng"` now
+    default to `seed=None`, and `jax` also accepts a key. `torch`
+    `"random.default_rng"` accepts a `torch.Generator`, and
+    raises a descriptive error if a device is also requested that
+    the generator cannot supply.
+  * Added a random numbers documentation guide, covering
+    `random_array`, the generator objects and their per backend
+    method coverage, the shared random state, the complex normal
+    convention, and the rules for `jax.jit` and `torch.compile`.
+  * `torch` `"random.normal"` and `"random.uniform"` now generate
+    at the requested `dtype` rather than casting afterwards. A
+    complex `dtype` therefore gets a complex sample rather than a
+    real one cast up, which previously left the imaginary part
+    zero, and `float64` now carries full double precision
+    entropy.
+  * `torch` `"random.seed"` is now registered, and seeds the
+    shared random state. Previously it resolved to
+    `torch.random.seed`, which takes no seed and thus raised
+    `TypeError`.
+  * `tensorflow` `"random.seed"` is now registered, as an alias
+    of `tf.random.set_seed`. Previously it raised `ImportError`.
+  * `mlx` now uses mlx's own shared random state, rather than a
+    separate module level generator of autoray's.
+    `do("random.seed", seed, like="mlx")` therefore reaches
+    `mx.random.seed`, and mixing autoray and raw
+    `mlx.core.random` calls is now reproducible in both
+    directions.
+
+-------------------------------------------------------------------
 Sun Jun 14 10:15:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.11:

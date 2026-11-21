@@ -19,7 +19,7 @@
 
 %bcond_with qpdfview
 Name:           kraft
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

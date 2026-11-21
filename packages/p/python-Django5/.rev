@@ -59,4 +59,22 @@
     deleted by GeoDjango when closed.</comment>
     <requestid>1383713</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f725dc088a440150d0ba83239ae7e061</srcmd5>
+    <version>5.2.19</version>
+    <time>1794317957</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.19
+  * CVE-2026-108147: Potential memory exhaustion in MultiPartParser
+    via base64-encoded file upload (bsc#1289340)
+  * CVE-2026-111211: Potential log injection via unescaped geometry
+    form values (bsc#1289344)
+  * CVE-2026-111362: Server-side request forgery via crs member of
+    GeoJSON geometries (bsc#1289345)
+  * CVE-2026-113593: Potential exposure of private data via empty
+    and missing Vary headers (bsc#1289348)
+  * CVE-2026-114582: Server-side request forgery via SpatialReference
+    string input (bsc#1289350)</comment>
+    <requestid>1396360</requestid>
+  </revision>
 </revisionlist>

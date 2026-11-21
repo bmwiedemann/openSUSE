@@ -169,16 +169,16 @@
  }
 --- a/lib/ngtcp2_conn.h	2026-08-24 14:52:28.533935115 +0200
 +++ b/lib/ngtcp2_conn.h	2026-08-24 14:52:55.082724453 +0200
-@@ -467,6 +467,9 @@
+@@ -510,6 +510,9 @@
      /* transport_params is the local transport parameters.  It is used
         for Short packet only. */
      ngtcp2_transport_params transport_params;
 +    /* transport_params_raw contains serialized local transport
 +       parameters, if they are specified. */
 +    ngtcp2_transport_params_raw transport_params_raw;
-     struct {
-       /* max_streams is the maximum number of bidirectional streams which
-          the local endpoint can open. */
+   } local;
+ 
+   struct {
 --- a/tests/ngtcp2_conn_test.c	2026-08-24 14:52:28.527989902 +0200
 +++ b/tests/ngtcp2_conn_test.c	2026-08-24 14:52:55.084864420 +0200
 @@ -97,6 +97,7 @@

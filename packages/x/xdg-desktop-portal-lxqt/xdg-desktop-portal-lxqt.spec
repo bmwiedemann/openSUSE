@@ -1,6 +1,7 @@
 #
 # spec file for package xdg-desktop-portal-lxqt
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           xdg-desktop-portal-lxqt
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A backend implementation for xdg-desktop-portal
 License:        LGPL-2.1-or-later
@@ -26,20 +27,20 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-gui-private-devel
 
 BuildRequires:  cmake(KF6WindowSystem)
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6GuiPrivate)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
+BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libmenu-cache)
 
 Requires:       xdg-desktop-portal
 Supplements:    (xdg-desktop-portal and lxqt-session)

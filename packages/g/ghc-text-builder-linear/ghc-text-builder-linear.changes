@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 26 23:30:34 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update text-builder-linear to version 0.1.4.
+  ## 0.1.4
+
+  * Add `instance Eq Builder` and `instance Ord Builder`.
+  * Fix a bug in `dropBuffer` and `takeBuffer`.
+
+-------------------------------------------------------------------
 Wed Jul 10 21:33:03 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update text-builder-linear to version 0.1.3.

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:11:33 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Temporarily add 5003-hostname-setup-label-the-default-hostname-hint-file.patch
+  until it's merged and released by upstream (bsc#1289683)
+
+-------------------------------------------------------------------
+Thu Nov  5 15:43:30 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 63511d7283d7d0e2a2fc28075481afaf1a7be8f5 (merge of v262.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/f408418369c8d20f9025b39c03f4ece2a0ee7041...63511d7283d7d0e2a2fc28075481afaf1a7be8f5
+
+-------------------------------------------------------------------
+Tue Oct 20 14:58:13 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v262.1 (commit 73612ea502d53baf9b0df4336cfc296a7ee0d524)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v262/NEWS for details.
+
+-------------------------------------------------------------------
 Mon Oct 19 07:10:44 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit f408418369c8d20f9025b39c03f4ece2a0ee7041 (merge of v261.4)

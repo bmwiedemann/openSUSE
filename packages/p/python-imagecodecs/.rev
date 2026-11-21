@@ -291,4 +291,12 @@
     (breaking).</comment>
     <requestid>1392620</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>b382c384670fe6b89ac3eed1eedf38a5</srcmd5>
+    <version>2026.10.10</version>
+    <time>1793724880</time>
+    <user>anag_factory</user>
+    <comment>Add CVE and bug references</comment>
+    <requestid>1394577</requestid>
+  </revision>
 </revisionlist>

@@ -317,4 +317,60 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update python-comfyui-workflow-templates-json to 0.1.126.</comment>
     <requestid>1394123</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>908d89dcfe2602b3cceb4102f0b4daa9</srcmd5>
+    <version>0.1.127</version>
+    <time>1793817999</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.127</comment>
+    <requestid>1394854</requestid>
+  </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>46b4b1fc897769068eb2ddf0304dfa82</srcmd5>
+    <version>0.1.129</version>
+    <time>1793991505</time>
+    <user>anag_factory</user>
+    <comment>Update comfyui-workflow-templates-json to 0.1.129: refresh template definitions.</comment>
+    <requestid>1395835</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d27e4726b2cab02083526eac5e39226c</srcmd5>
+    <version>0.1.132</version>
+    <time>1794428293</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.132</comment>
+    <requestid>1396906</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>311c9502ca2fa364e83fcfb115003682</srcmd5>
+    <version>0.1.133</version>
+    <time>1794590988</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.133: Gemini 4 Hydrogen template, Italian and Hebrew indexes, MOSS fixes.</comment>
+    <requestid>1397196</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4c5614000b4bd2350cb0c8472d2fd444</srcmd5>
+    <version>0.1.136</version>
+    <time>1794932337</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.136: 5 new templates, Bria background-removal fix.</comment>
+    <requestid>1398010</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ccbc8c6f89b31ad84309f0e890e6f3d2</srcmd5>
+    <version>0.1.137</version>
+    <time>1795103786</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.137: 6 new templates, 16 index refreshes.</comment>
+    <requestid>1398612</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b3145ee30ba324bc210de885fca7f25c</srcmd5>
+    <version>0.1.138</version>
+    <time>1795182499</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.138: 3 new templates, 15 index refreshes, Breeze script fix.</comment>
+    <requestid>1398899</requestid>
+  </revision>
 </revisionlist>

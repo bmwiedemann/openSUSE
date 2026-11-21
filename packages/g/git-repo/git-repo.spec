@@ -1,7 +1,7 @@
 #
 # spec file for package git-repo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-repo
-Version:        2.70
+Version:        2.72
 Release:        0
 Summary:        The Multiple Git Repository Tool
 License:        Apache-2.0
@@ -26,6 +26,7 @@ Source:         %{name}-%{version}.tar.xz
 # SECTION tests
 BuildRequires:  git >= 1.9.1
 BuildRequires:  gpg2
+BuildRequires:  python3-base
 # requires pytest monkeypatch
 BuildRequires:  python3-pytest >= 8.3.4
 BuildRequires:  python3-flake8

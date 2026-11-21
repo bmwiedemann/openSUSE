@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 10 19:58:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.18.0
+  * KWallet: Do not block while waiting for KWalletd to answer/unlock
+  * libsecret: Fix deletion of entries in a locked collection
+  * libsecret: Specify libsecret 0.18 as minimum version
+  * Fix possible crash accessing deleted job
+
+-------------------------------------------------------------------
 Sat Aug  1 07:35:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.17.0

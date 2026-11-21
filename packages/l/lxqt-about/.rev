@@ -377,4 +377,15 @@
   * Updated translations and bumped the version</comment>
     <requestid>1348566</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>97fddac916b524bd0bfa75fd6c9e765d</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182280</time>
+    <user>anag_factory</user>
+    <comment>- Updated to version 2.5.0:
+  * CMake maintenance.
+  * Workaround for local URLs in Qt 6.12.
+  * Updated translations and bumped the version.</comment>
+    <requestid>1398748</requestid>
+  </revision>
 </revisionlist>

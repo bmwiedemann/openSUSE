@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Thu Nov 19 06:07:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.124.0:
+  * Features
+    - feat(autodiscovery): update GitHub Actions lockfiles (#11345)
+    - fix(autodiscovery): never downgrade a dependency held back by
+      age (#11300)
+    - feat: detect gitea action url (#11134)
+    - feat(udash)!: Use Udash versioned API (#11233)
+    - feat(github/action): add SHA pinning for Gitea/Forgejo
+      (#11217)
+    - feat(pyprojet): Support dependency group in autodiscovery
+      (#10992)
+    - feat(gitea/pullrequest): add reviewers (#11170)
+    - feat(maven): autodiscovery cooldown and vulnerability support
+      (#10991)
+    - feat(gitea/pullrequest): updatecli update existing
+      pullrequest description (#11103)
+    - feat(gitea): add pull request auto-merge (#11059)
+    - feat(gitea): authenticate from environment variables (#11109)
+    - feat(gitea/pullrequest): automatically closed empty
+      pullrequest (#11102)
+    - feat(maven): add age and osv support (#10990)
+  * Bug Fixes
+    - fix(git): pull working branch with singlebranch (#11266)
+    - fix(github): correctly wait for github api limit when expired
+      (#11287)
+    - fix(autodiscovery/npm): keep exact dependency versions exact
+      (#11288)
+    - fix(engine): clear push errors recovered by a later push of
+      the same branch (#11067)
+    - fix: return an error when pipeline prepare fails (#11239)
+    - fix: fail pipelines using an scm that could not be cloned
+      (#11216)
+    - fix(autodiscovery/githubaction): use goyaml engine to
+      preserve folded scalars (#11006)
+    - fix(gitea): check all pages when looking up remote branches
+      (#11093)
+    - fix(file,yaml): skip a searchpattern matching no file
+      (#10996)
+    - fix(dockercompose/nomad): isMatchingRule returns true if any
+      rule matches (#11038)
+    - fix(npm): accept the repository string shorthand (#10997)
+  * Maintenance
+    - deps(go): bump module gitea.dev/sdk to v1.5.1 (#11349)
+    - deps: bump Updatecli GH action to v0.124.0-rc.1 (#11348)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.21
+      (#11354)
+    - deps(go): bump module github.com/moby/buildkit to v0.34.2
+      (#11344)
+    - deps(go): bump module github.com/zclconf/go-cty to v1.20.0
+      (#11320)
+    - deps(go): bump module github.com/jferrl/go-githubauth to
+      v1.12.0 (#11318)
+    - chore(ci): upgrade uv version (#11302)
+    - deps(golang): Bump minor version for Golang module (#11299)
+    - ci: cancel superseded pull request runs (#11292)
+    - deps(go): bump module github.com/fluxcd/helm-controller/api
+      to v1.7.1 (#11284)
+    - deps: Bump Golang version to 1.27.4 (#11286)
+    - refactor(scm): share search pipeline expansion (#11254)
+    - deps(go): bump module go.yaml.in/yaml/v3 to v3.0.6 (#11269)
+    - deps(go): bump module oras.land/oras-go/v2 to v2.7.0 (#11255)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.10.1 (#11256)
+    - feat: show actions in the console summary (#11248)
+    - deps: update go.yaml.in/yaml/v4 to v4.0.0 (#11226)
+    - deps(updatecli/policies): bump all policies (#11201)
+    - install Updatecli gha workflows v0.123.0 (#11200)
+    - deps: update updatecli scaffold policy (#11187)
+    - deps: update go.yaml.in/yaml/v4 to v4.0.0-rc.9 (#11178)
+    - chore(dockerfile): upgrade node version (#11154)
+    - chore(deps): bump github.com/go-jose/go-jose/v4 from 4.1.4 to
+      4.1.6 in the go_modules group across 1 directory (#11047)
+    - deps(go): bump module helm.sh/helm/v3 to v3.22.1 (#11137)
+    - deps: bump golangci-lint to v2.15.0 (#11125)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.20
+      (#11090)
+    - deps(go): bump module oras.land/oras-go/v2 to v2.6.4 (#11084)
+    - chore(dockerfile): upgrade node version (#11072)
+    - chore(ci): upgrade uv version (#11069)
+    - chore(deps): update Gitea SDK to v1.4.0 (#11039)
+    - chore: disabling gitlab e2e test (#11041)
+    - chore: refactor maven autodiscovery manifest template
+      (#10989)
+    - deps(go): bump module github.com/moby/buildkit to v0.34.1
+      (#11019)
+    - chore(ci): upgrade uv version (#11009)
+    - deps(updatecli/policies): bump all policies (#11008)
+    - chore(dockerfile): upgrade node version (#10999)
+    - deps(go): bump module oras.land/oras-go/v2 to v2.6.3 (#10986)
+    - install Updatecli gha workflows v0.123.0 (#10974)
+
+-------------------------------------------------------------------
 Thu Oct 29 05:37:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.123.0:

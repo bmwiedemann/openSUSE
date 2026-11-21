@@ -28,7 +28,7 @@ retrace=""
 # FFI ABI ties the tree to the opentui RPM 1:1, so on a lockstep bump this
 # leads and the tag's pin is rebased up to it (same %global opentui_version
 # as the spec). Must stay in sync with the opentui package.
-opentui_version="0.8.0"
+opentui_version="0.8.4"
 
 here="$(cd "$(dirname "$0")" && pwd)"
 src="$here/opencode-$version.orig.tar.gz"
@@ -214,9 +214,22 @@ find "$store" -name 'libopentui.so' -delete -printf '    removed %P\n'
 # copy and the source maps are unreachable through its exports map.
 find "$store" \( -name 'libfff_c.so' -o -name 'librust_pty*.so' -o -name 'watcher.node' \
     -o -name 'photon_rs_bg.wasm' -o -name 'photon_rs.js' -o -name 'photon_rs_bg.js' \
-    -o -name 'tree-sitter-*.wasm' -o -name 'tree-sitter.wasm.map' \) -delete -printf '    removed %P\n'
+    -o -name 'tree-sitter-*.wasm' \) -delete -printf '    removed %P\n'
 find "$store" -path '*/tree-sitter-bash/prebuilds' -prune -exec rm -rf {} \; -printf '    removed %P\n'
-find "$store" -path '*/web-tree-sitter/lib/tree-sitter.wasm*' -delete -printf '    removed %P\n'
+# web-tree-sitter's runtime is built from source in %%build (Source30,
+# emscripten), so none of its prebuilt output enters the tree: the wasm
+# module, the two JS bundles loading it, their source maps and the emcc CJS
+# glue in lib/. The package dir stays (package.json, lib/*.c and lib/*.h
+# sources, TS sources, types): %%build overwrites the same paths.
+find "$store" \( -path '*/web-tree-sitter/tree-sitter.wasm' \
+    -o -path '*/web-tree-sitter/tree-sitter.js' \
+    -o -path '*/web-tree-sitter/tree-sitter.cjs' \
+    -o -path '*/web-tree-sitter/tree-sitter.js.map' \
+    -o -path '*/web-tree-sitter/tree-sitter.cjs.map' \
+    -o -path '*/web-tree-sitter/tree-sitter.wasm.map' \
+    -o -path '*/web-tree-sitter/lib/tree-sitter.cjs' \
+    -o -path '*/web-tree-sitter/lib/tree-sitter.wasm*' \) \
+    -delete -printf '    removed %P\n'
 # The @opencode/pty-linux-* prebuilt helpers: superseded by the from-source
 # pty build (%build embeds OPENCODE_PTY_BIN without ever opening them; only
 # the build arch's one would have been used). Drop the two store entries

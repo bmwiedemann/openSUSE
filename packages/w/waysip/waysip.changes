@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 08 03:13:28 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 0.7.1:
+  * chore: try publish libwaysip only
+  * Merge pull request #134 from waycrate/dependabot/github_actions/rust-lang/crates-io-auth-action-1.0.6
+  * chore(deps): bump rust-lang/crates-io-auth-action from 1.0.5 to 1.0.6
+  * feat(ci): split waysip and libwaysip (#133)
+  * Merge pull request #132 from waycrate/dependabot/github_actions/rust-lang/crates-io-auth-action-1.0.6
+  * chore(deps): bump rust-lang/crates-io-auth-action from 1.0.5 to 1.0.6
+  * fix: switch to exclusive keyboard interactivity (#131)
+  * fix: ensure shm buffer is in-memory (#130)
+
+-------------------------------------------------------------------
 Wed Jun 18 03:31:59 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.4.0+git4.g258306c43bc79705635f1ee1d607cc3c3d483b59:
@@ -41,5 +54,3 @@ Mon Mar 18 07:56:34 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 Tue Dec 19 00:08:35 UTC 2023 - Soc Virnyl Estela <uncomfy+openbuildservice@uncomfyhalomacro.pl>
 
 - Initial packaging of waysip 0.1.1
-
-

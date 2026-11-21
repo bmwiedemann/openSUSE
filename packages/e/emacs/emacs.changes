@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 26 07:57:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Avoid cleaning the default native compilation cache when
+  using --init-directory  (boo#1287635)
+
+-------------------------------------------------------------------
 Thu Oct  8 12:50:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch emacs-bsc1284345.patch

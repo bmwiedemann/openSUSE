@@ -11,3 +11,6 @@ addFilter("python3-paraview.* explicit-lib-dependency python3-matplotlib")
 
 # 0 size files are referenced in cmake files
 addFilter("paraview.* zero-length")
+
+# The shared libraries are bundled in a package named after the ParaView version
+addFilter("libparaview.* shlib-policy-name-error")

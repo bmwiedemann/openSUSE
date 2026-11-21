@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:32:18 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 2.5.0:
+  * Disabled the battery settings with no battery.
+  * Also, some CMake maintenance.
+
+-------------------------------------------------------------------
 Mon Apr 20 22:22:01 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.4.0:

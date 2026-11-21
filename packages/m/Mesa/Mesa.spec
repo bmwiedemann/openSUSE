@@ -151,9 +151,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.5
+Version:        26.2.7
 Release:        0
-%define pkg_version 26.2.5
+%define pkg_version 26.2.7
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -185,9 +185,6 @@ Source12:       README-suse-maintenance.md
 Source22:       http://static.crates.io/crates/rustc-hash/rustc-hash-%{_rustc_hash_crate_ver}.crate#/rustc-hash-%{_rustc_hash_crate_ver}.tar.gz
 Patch2:         n_add-Mesa-headers-again.patch
 Patch3:         n_hardcode-libclc-path.patch
-Patch4:         U_nir-load_libclc-do-not-compare-sys_path-against-NULL.patch
-Patch5:         U_nir-load_libclc-turn-sys_path-into-an-array.patch
-Patch6:         U_nir-load_libclc-add-llvm-23-libclc-paths.patch
 Patch17:        tlsdesc_test.patch
 # never to be upstreamed
 Patch54:        n_drirc-disable-rgb10-for-chromium-on-amd.patch
@@ -195,7 +192,6 @@ Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch800:       u_d3d12.patch
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
-Patch10023:     llvm23.patch
 
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers >= 1.613.0
@@ -790,9 +786,6 @@ cp %{SOURCE22} subprojects/packagecache/
 %patch -P 2 -p1
 %endif
 %patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
 %patch -P 17 -p1
 # no longer needed since gstreamer-plugins-vaapi 1.18.4
 %if 0%{?suse_version} < 1550
@@ -802,7 +795,6 @@ cp %{SOURCE22} subprojects/packagecache/
 %patch -P 800 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
-%patch -P 10023 -p1
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0

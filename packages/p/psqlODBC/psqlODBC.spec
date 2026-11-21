@@ -21,8 +21,8 @@
 %endif
 
 Name:           psqlODBC
-Version:        18.00.0005
-%define tarv    18_00_0005
+Version:        18.00.0006
+%define tarv    18_00_0006
 Release:        0
 Summary:        ODBC Driver for PostgreSQL
 License:        LGPL-2.1-or-later

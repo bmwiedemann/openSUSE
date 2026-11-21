@@ -21,10 +21,10 @@
 %endif
 
 %define sover 0
-%define full_sover 0.2.14
+%define full_sover 0.2.17
 
 Name:           libXISF
-Version:        0.2.14+git1.fa35ae2
+Version:        0.2.17+git0.7d94f01
 Release:        0
 Summary:        Library to read/write PixInsight XISF files
 License:        GPL-3.0-or-later

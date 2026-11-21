@@ -13,14 +13,14 @@ openSUSE_Leap_15.6
 openSUSE_Factory
 openSUSE_Factory_LegacyX86
 SLE-15
-SLE-12
+16.1
 16.0
 SLFO
 "
 
 archs="x86_64 i586"
 
-version=16.3
+version=17.2
 
 usage ()
 {
@@ -83,7 +83,7 @@ have_combo ()
 
     if [ "$arch" = "i586" ]; then
 	case " $c " in
-            " openSUSE_Factory "|" SLFO "|" 16.0 ")
+            " openSUSE_Factory "|" SLFO "|" 16.0 "|" 16.1 ")
 		# Doesn't have i586.
 		return 1
 		;;
@@ -123,7 +123,9 @@ case "$n" in
 
     3)
 	quilt setup -d $root -v gdb.spec
-	rm -Rf $root/gdb-*
+	cd $root/gdb-$version-build/gdb-$version
+	quilt push -a
+	rm -Rf $root/gdb-$version-build
 	;;
     
     4)
@@ -227,7 +229,7 @@ case "$n" in
 		fi
 		echo "CONFIG: $c $arch"
 		case $c in
-		    openSUSE_Factory|openSUSE_Factory_LegacyX86|SLFO|16.0)
+		    openSUSE_Factory|openSUSE_Factory_LegacyX86|SLFO|16.0|16.1)
 			bash qa.sh -local -$arch -factory $pkgs/gdb-testresults.$c.$arch
 			;;
 		    SLE-12)

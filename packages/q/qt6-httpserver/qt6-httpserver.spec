@@ -33,6 +33,8 @@ Summary:        Qt HTTP Server
 License:        GPL-3.0-only
 URL:            https://www.qt.io
 Source0:        https://download.qt.io/official_releases/qt/%{short_version}/%{real_version}%{tar_suffix}/submodules/%{tar_name}-%{real_version}%{tar_suffix}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         CVE-2026-110944-qthttpserver-6.12-0001.diff
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6Concurrent) = %{real_version}
 BuildRequires:  cmake(Qt6Core) = %{real_version}

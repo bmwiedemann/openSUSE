@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 13 09:24:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.4.1
+  * Fix an out of bounds read that may happen during renegotiation
+    in TLSv1.2.
+  * Fix TLS interoperability with peers sending more than 32
+    signature algorithms.
+
+-------------------------------------------------------------------
 Mon Oct 26 23:52:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Edit fix_cert_path.patch to restore the TLS_DEFAULT_CA_FILE

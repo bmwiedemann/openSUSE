@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:40:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.7:
+  * Honor the -server flag when connecting to rtl_tcp: resolve
+    the flag address and pass it to the connector (upstream #355)
+  * r900: add helpers converting a decoded packet back to symbols,
+    with round-trip and capture decoding tests
+- Regenerate vendor.tar.gz for rtltcp 20261101 (mock server,
+  LICENSE); still shipping only rtltcp
+
+-------------------------------------------------------------------
 Sun Nov  1 14:39:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.6:

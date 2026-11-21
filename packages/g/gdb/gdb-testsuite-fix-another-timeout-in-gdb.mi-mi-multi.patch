@@ -1,7 +1,7 @@
-From 6da3492819000aa16136905bab03c312b290ab67 Mon Sep 17 00:00:00 2001
+From ed8c604760b7bf6d10220a4cd74bb921a577cc26 Mon Sep 17 00:00:00 2001
 From: Tom de Vries <tdevries@suse.de>
-Date: Tue, 16 Dec 2025 10:31:33 +0100
-Subject: [PATCH] [gdb/testsuite] Fix another timeout in
+Date: Sat, 3 Jan 2026 16:01:25 +0100
+Subject: [PATCH 53/53] [gdb/testsuite] Fix another timeout in
  gdb.mi/mi-multi-commands.exp
 
 On aarch64-linux, with a gdb version 16.3 based package, I ran into (edited
@@ -37,7 +37,7 @@ The setup is that the test-case issues these two commands at once:
 -data-evaluate-expression $b
 ...
 where the length of the first command is artificially increased by prefixing
-it with spaces, show as <LOTS-OF-SPACES> above.
+it with spaces, shown as <LOTS-OF-SPACES> above.
 
 What happens is that gdb, after parsing the first command, executes it, which
 generates output and a prompt.  Then that prompt intermixes with the echoing
@@ -58,7 +58,7 @@ Bug https://sourceware.org/bugzilla/show_bug.cgi?id=33671
  1 file changed, 29 insertions(+), 30 deletions(-)
 
 diff --git a/gdb/testsuite/gdb.mi/mi-multi-commands.exp b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
-index 028e187366a..f5f86059288 100644
+index 3bc63eb2747..cab044dcc35 100644
 --- a/gdb/testsuite/gdb.mi/mi-multi-commands.exp
 +++ b/gdb/testsuite/gdb.mi/mi-multi-commands.exp
 @@ -45,15 +45,15 @@ proc run_test { args } {
@@ -112,7 +112,7 @@ index 028e187366a..f5f86059288 100644
 -	# looking for.  However, due to the unpredictable
 -	# intermingling, it's much easier if we drop the ^ anchor.
 -	# However, with this gone dejagnu would sometimes match the
--	# second comand output before the first commands output.
+-	# second command output before the first commands output.
 -	#
 -	# This approach just looks for the first command output, then,
 -	# once that has been found, we start looking for the second
@@ -159,8 +159,6 @@ index 028e187366a..f5f86059288 100644
  
  	# If one of the above tests failed then lets no waste our time
  	# checking different command lengths.  The actual bug this
-
-base-commit: 58257123680969c03a46d7e877e6a7143bd134c5
 -- 
 2.51.0
 

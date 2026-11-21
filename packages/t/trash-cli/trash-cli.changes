@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  9 23:06:52 UTC 2026 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
+
+- Update to 0.26.9.29.
+  * trash-put no longer leaves a copy of the trashed file in the trash
+    directory when a move across filesystem boundaries is blocked by an
+    error.
+  * Added support for file names that are not valid UTF-8.
+  * trash-restore now accepts absolute paths in trash directories that
+    are not volume trashes.
+  * Removed the "Donate" button.
+  * Deleted trashcli/put/same_volume_gate.py.
+
+- Reworked test coverage and tooling:
+  * Rewrote trash-restore tests (TrashedFiles, unsafe trash dirs) to run
+    through RestoreUser, converted them from unittest to pytest, and
+    added tests for trashinfo reading and volume-trashed files.
+  * Added IsSymLink and IsStickyDir to FakeFs, added the
+    TrashDirHasTrashInfo fixture, and merged RecordingLogger into
+    CaptureLogger.
+  * Improved type hints and enabled mypy for the tests.
+  * Updated dev setup: Docker setup for Python 2.7, editable dev install,
+    and version-pinned PyYAML dev requirements.
+  * Converted the release docs to Markdown.
+
+-------------------------------------------------------------------
 Sat Feb 22 15:09:37 UTC 2025 - Lorenz Holzbauer <lorenzholzbauer@ikmail.com>
 
 - added patch "remove_six.patch" that removes dependency for python3-six 

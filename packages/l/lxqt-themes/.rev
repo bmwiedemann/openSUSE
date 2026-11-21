@@ -157,4 +157,13 @@
   * Fixed calendar year spinboxes in 'Valendas' and 'Silver'</comment>
     <requestid>1348581</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>541156b583dbb7406b116138213a3b16</srcmd5>
+    <version>2.5.0</version>
+    <time>1795182324</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * Several fixes and enhancements.</comment>
+    <requestid>1398763</requestid>
+  </revision>
 </revisionlist>

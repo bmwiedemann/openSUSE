@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 03:12:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.1:
+   * CVE-2026-49272: Breaking: The device code flow token endpoint did
+    not validate the device_code parameter, allowing a request with a known
+    client_id and a bogus device_code to obtain a bearer token. (bsc#1288518)
+
+-------------------------------------------------------------------
 Thu Oct  1 06:06:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 4.0.0 (bsc#1283526, CVE-2026-49264, bsc#1283527, CVE-2026-49265)
@@ -10,7 +18,7 @@ Thu Oct  1 06:06:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
     DeviceCodeGrant, RefreshTokenGrant and ResourceOwnerPasswordCredentialsGrant:
     the grant_type parameter is validated before client authentication, so
     requests missing grant_type now return 400 invalid_request instead of
-    401 invalid_client.
+    401 invalid_client. (CVE-2026-118669, bsc#1288765)
   * #963: Improved PKCE code comparison
   Misc:
   * #904: Stop installing examples into site-packages.

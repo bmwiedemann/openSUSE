@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 07:54:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gnome-tweaks-pt-desktop.patch: Fix desktop file translation (pt). Error
+  detected and reported by desktop-file-utils 0.29.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:44:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

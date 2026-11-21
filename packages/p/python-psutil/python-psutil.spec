@@ -36,6 +36,8 @@ Summary:        A process utilities module for Python
 License:        BSD-3-Clause
 URL:            https://github.com/giampaolo/psutil
 Source:         https://files.pythonhosted.org/packages/source/p/psutil/psutil-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#giampaolo/psutil#3110
+Patch:          rlim_infinity.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

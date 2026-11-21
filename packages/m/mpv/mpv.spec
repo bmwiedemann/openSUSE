@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.41.0+git20260918.e76a35ec95
+Version:        0.42.0
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -36,7 +36,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3-docutils
 BuildRequires:  pkgconfig(alsa) >= 1.0.18
 BuildRequires:  pkgconfig(caca) >= 0.99.beta18
-BuildRequires:  pkgconfig(dvdnav) >= 4.2.0
+BuildRequires:  pkgconfig(dvdnav) >= 6.1.0
+BuildRequires:  pkgconfig(dvdread) >= 7.1.1
 BuildRequires:  pkgconfig(egl) >= 1.4
 BuildRequires:  pkgconfig(ffnvcodec) >= 11.1.5.1
 BuildRequires:  pkgconfig(gbm) >= 17.1.0
@@ -50,14 +51,15 @@ BuildRequires:  pkgconfig(libavdevice) >= 60.3.100
 BuildRequires:  pkgconfig(libavfilter) >= 9.12.100
 BuildRequires:  pkgconfig(libavformat) >= 60.16.100
 BuildRequires:  pkgconfig(libavutil) >= 58.29.100
-BuildRequires:  pkgconfig(libbluray) >= 0.5.0
+BuildRequires:  pkgconfig(libbluray) >= 1.0.2
 BuildRequires:  pkgconfig(libcdio) >= 0.90
 BuildRequires:  pkgconfig(libcdio_paranoia)
+BuildRequires:  pkgconfig(libcurl) >= 7.88.0
 BuildRequires:  pkgconfig(libdisplay-info) >= 0.1.1
-BuildRequires:  pkgconfig(libdrm) >= 2.4.105
+BuildRequires:  pkgconfig(libdrm) >= 2.4.114
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.57
-BuildRequires:  pkgconfig(libplacebo) >= 6.338.2
+BuildRequires:  pkgconfig(libplacebo) >= 7.387.0
 BuildRequires:  pkgconfig(libpulse) >= 1.0
 BuildRequires:  pkgconfig(libsixel) >= 1.5
 BuildRequires:  pkgconfig(libswresample) >= 4.12.100
@@ -69,15 +71,16 @@ BuildRequires:  pkgconfig(openal) >= 1.13
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(rubberband) >= 3.0.0
 BuildRequires:  pkgconfig(shaderc)
+BuildRequires:  pkgconfig(subrandr) >= 1.1.0
 BuildRequires:  pkgconfig(uchardet)
 BuildRequires:  pkgconfig(vapoursynth) >= 56
 BuildRequires:  pkgconfig(vdpau) >= 0.2
-BuildRequires:  pkgconfig(vulkan) >= 1.3.238
-BuildRequires:  pkgconfig(wayland-client) >= 1.21.0
-BuildRequires:  pkgconfig(wayland-cursor) >= 1.21.0
+BuildRequires:  pkgconfig(vulkan) >= 1.4.309
+BuildRequires:  pkgconfig(wayland-client) >= 1.23.0
+BuildRequires:  pkgconfig(wayland-cursor) >= 1.23.0
 BuildRequires:  pkgconfig(wayland-egl) >= 9.0.0
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.31
-BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.38
+BuildRequires:  pkgconfig(wayland-scanner) >= 1.23.0
 BuildRequires:  pkgconfig(x11) >= 1.0.0
 BuildRequires:  pkgconfig(xext) >= 1.0.0
 BuildRequires:  pkgconfig(xkbcommon) >= 0.3.0
@@ -110,12 +113,12 @@ BuildOption:    -Dtests=true
 # We don't want to rebuild all the time.
 BuildOption:    -Dbuild-date=false
 # JIT for Lua.
-%ifarch aarch64 %{ix86} x86_64 riscv64
-BuildRequires:  pkgconfig(luajit)
+%ifarch aarch64 %{ix86} x86_64 %{arm}
 BuildOption:    -Dlua=luajit
+BuildRequires:  pkgconfig(luajit) >= 2.0.0
 %else
-BuildRequires:  pkgconfig(lua5.1)
 BuildOption:    -Dlua=lua5.1
+BuildRequires:  pkgconfig(lua5.1)
 %endif
 
 %description

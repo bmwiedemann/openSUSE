@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Nov 19 05:50:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.77.0:
+  * Document -stdclient for proxies; warn when fast client ignores
+    env proxy (#1192)
+  * Keep hidden chart series in the permalink URL (#1186)
+  * Show warmup count in the UI "All done" line (#1188)
+  * Use gomaxprocs from scli so it applies to everything and is
+    logged consistently; add the value used to the results json as
+    GoMaxProcs along with NumCPU (#1191)
+  * Bump github.com/jhump/protoreflect/v2 from 2.0.0 to 2.0.1
+    (#1187)
+
+-------------------------------------------------------------------
+Tue Nov 17 06:17:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.76.1:
+  * Bump google.golang.org/grpc from 1.84.0 to 1.85.0 (#1180)
+  * Bump fortio.org/scli (#1182)
+  * Fix Counter.RecordN sum of squares for n > 1 (#1181)
+  * test: improve TestInsecureRequest with better certificate
+    validation coverage (#1183)
+  * build(deps): migrate to github.com/jhump/protoreflect/v2
+    (#1176)
+  * Bump grol.io/grol from 0.102.0 to 0.102.1 in the
+    fortio-and-grol group (#1179)
+  * Bump grol.io/grol from 0.101.4 to 0.102.0 in the
+    fortio-and-grol group (#1178)
+  * fix(ui): keep valid graphs when a result is malformed (#1173)
+
+-------------------------------------------------------------------
 Sat Oct 24 19:37:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.76.0:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 19:08:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.14
+  * Corrections regarding possible time_t overflow
+    (Thanks to B. Wiedemann).
+  * Some minor fixes.
+
+-------------------------------------------------------------------
 Wed Jun 10 11:59:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.13

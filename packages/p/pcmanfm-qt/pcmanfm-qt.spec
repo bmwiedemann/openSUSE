@@ -1,6 +1,7 @@
 #
 # spec file for package pcmanfm-qt
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,7 +18,7 @@
 
 
 Name:           pcmanfm-qt
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        File manager and desktop icon manager
 License:        GPL-2.0-or-later
@@ -28,7 +29,7 @@ Source2:        %{name}.keyring
 #bsc#1100208 - mvetter@suse.de - set default openSUSE wallpaper
 Patch0:         %{name}-default-wallpaper.patch
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -36,19 +37,16 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(LayerShellQt) >= 6.0.0
-BuildRequires:  cmake(Qt6DBus) >= 6.6.0
+BuildRequires:  cmake(Qt6DBus) >= 6.10.0
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6Svg)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(fm-qt6)
-BuildRequires:  cmake(lxqt2-build-tools) >= 2.1.0
+BuildRequires:  cmake(lxqt2-build-tools) >= 2.5.0
 
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libmenu-cache) >= 1.1.0
 
 %requires_eq    libQt6Svg6
-#bsc#1128570 - mvetter@suse.de
-Requires:       menu-cache
 #bsc#1100208 - mvetter@suse.de
 Requires:       wallpaper-branding-openSUSE
 Recommends:     %{name}-branding = %{version}-%{release}

@@ -1316,4 +1316,41 @@
   * chore: auto-update generated files (#7152) (forwarded request 1384292 from ph03nix)</comment>
     <requestid>1384376</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>952a640025dfe8dac3fea2cfb8621558</srcmd5>
+    <version>2.20.0</version>
+    <time>1793990662</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.20.0:
+  * feat(ko): allow templates in platforms (#7233)
+  * chore: lint
+  * refactor: move marshaljson methods to right place
+  * Merge commit from fork
+  * chore(deps): update golang.org/x (#7272)
+  * docs: github app (#7271)
+  * docs: update
+  * docs: update Pro page copy (#7270)
+  * chore(deps): update hextra to v0.13.0 (#7268)
+  * fix(bluesky): do not add a link facet when there is no release URL (#7262)
+  * chore: auto-update generated files (#7266)
+  * feat: allow skipping the changelog with --skip=changelog (#7234)
+  * chore(deps): update mcp/registry
+  * chore(deps): update slack, yaml, go-jose
+  * fix(tmpl): escape backslashes in mdv2escape (#7261)
+  * docs: add --snapshot to quick start single-target builds (#7232)
+  * ci: run build workflow on every pull request (#7265)
+  * chore: auto-update generated files (#7264)
+  * fix(nodedist): handle prerelease versions in generation (#7263)
+  * feat(cask): render `zap :not_required` when no zap directives are set (#7253)
+  * ci(deps): bump the actions group with 3 updates (#7259)
+  * chore(deps): bump the gomod group with 6 updates (#7258)
+  * chore(deps): bump golang from `f2c872b` to `d200d2d` in the docker group across 1 directory (#7257)
+  * feat(gitlab): add asset type selection (#7255)
+  * chore: auto-update generated files (#7254)
+  * feat(winget): update manifest schema to latest (1.28.0) (#7242)
+  * ci(deps): bump the actions group with 6 updates (#7241)
+  * chore(deps): bump the gomod group with 4 updates (#7240)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#7239) (forwarded request 1395098 from ph03nix)</comment>
+    <requestid>1395434</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Nov  8 10:36:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.32.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.32.0
+- Changes since 6.31.0:
+  * Update dependency version to 6.32.0
+  * AboutPage: Show the plugin's copyright and bug report URL
+  * Drop custom AboutPlugin in favor of Kirigami.AboutPage
+  * SimpleKCM, AbstractKCM: Handle a null kcm context property
+  * CMake config: drop no longer used template variable
+  * KF6KCMUtilsQuick: use only Qt6QmlIntegration in public interface
+  * Update version to 6.32.0
+
+-------------------------------------------------------------------
 Wed Oct  7 06:47:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.31.0

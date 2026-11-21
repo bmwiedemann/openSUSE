@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov  2 17:35:15 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.9
+  * Add self-test harness with mock EFI headers
+  * Add support for .pkgnote
+  * Record the version of gnu-efi we built against
+  * Fix block descriptor terminator index when capsules are skipped
+  * Fix device path size limit in update info validation
+  * Fix GetVariable call with NULL data size in variable deletion
+  * Fix off-by-one in maximum capsule update count check
+  * Fix out-of-bounds write via malicious capsule HeaderSize
+  * Keep .dynstr and .dynsym when building the binary
+  * Remove support for SHIM_DEBUG to fix BRLY-2026-062
+- Refresh 106.patch
+- Filter the no-binary rpmlint error for the UEFI applications,
+  which are built per architecture
+
+-------------------------------------------------------------------
 Mon Oct 13 10:21:31 UTC 2025 - Richard Lyu <richard.lyu@suse.com>
 
 - Update to version 1.8:

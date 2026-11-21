@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 10:17:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.2.0:
+  * Add an Activity field with a commits-per-month sparkline #1902
+  * Add --activity-months CLI argument to set the activity window #1905
+  * Add an Unreleased field with the commits since the last release #1903
+
+-------------------------------------------------------------------
 Mon Oct 19 07:00:10 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.1.0:

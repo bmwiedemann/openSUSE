@@ -1,7 +1,7 @@
 #
 # spec file for package lasso
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Red Hat, Inc., Raleigh, North Carolina, United States of America.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
 #
@@ -34,7 +34,7 @@ Summary:        Liberty Alliance Single Sign On
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://lasso.entrouvert.org/
-Source:         https://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
+Source:         https://dev.entrouvert.org/releases/lasso/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE fix_shebangs.patch mcepl@suse.com
 # fix incorrect shebangs to be #!/usr/bin/python3
 Patch5:         fix_shebangs.patch
@@ -102,8 +102,6 @@ library.
 export LC_ALL="C.UTF-8"
 export LANG="C.UTF-8"
 %endif
-
-./autogen.sh
 
 %configure %{configure_args} --with-python=python3
 %make_build CFLAGS="%{optflags}"

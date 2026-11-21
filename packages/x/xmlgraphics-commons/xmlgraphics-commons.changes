@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 12 08:33:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.12
+  * Changes
+    + FOP-3284: Reduce access rights to temp files
+    + FOP-3304: Allow FO to add custom schemas
+    + FOP-3311: Allow to compress RenderedImage for PS
+    + FOP-3321: Improve error message when invalid PS setpagedevice
+      used
+    + FOP-3326: Add option to compress postscript graphics
+    + XGC-146: Convert WebP to JPEG
+    + XGC-148: Drop commons-io dependency
+
+-------------------------------------------------------------------
 Sun Apr 26 03:31:30 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to 2.11

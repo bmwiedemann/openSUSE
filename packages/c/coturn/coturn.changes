@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Nov 17 05:34:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.19.2
+  * examples: fail the DTLS plaintext-reject test on harness errors.
+  * dtls_listener: do not use the socket after the session opens.
+  * dtls half-open: key IPv4-mapped sources by their IPv4 address.
+
+-------------------------------------------------------------------
+Tue Nov 10 19:47:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.19.0
+  * Cut example test suite runtime by removing fixed waits.
+  * Bound the Content-Length parse in is_http() to the header block.
+  * Update integrity key generation to use default SHA type.
+  * Refuse to start --use-auth-secret when MD5 is unavailable.
+  * Avoid process-wide FIPS disable for long-term MD5 keying.
+  * Include the padding in the stun_init_channel_message_str length
+    check.
+  * Fix relayed TTL leaking into UDP listener replies.
+  * Fix the inverted USERNAME check in
+    stun_attr_add_integrity_by_user_short_term_str (#2116).
+  * Take the client write size before the send releases the buffer.
+  * Add observe mode to unauthorized-ratelimit (#2109).
+  * Send no_application_protocol when no offered ALPN is supported.
+  * Label the allocation gauge by protocol and IP family (#2111).
+  * udp_send: drop the datagram on EPERM instead of closing the
+    socket (#2110).
+  * Fix OAuth token validity on TURN refresh (#2097).
+  * key OAuth MESSAGE-INTEGRITY with the whole mac_key (#2096).
+  * Keep the last good peer IP lists when the DB refresh fails
+    (#2094).
+  * Bound SQLite userdb '~' expansion to the destination buffer
+   (#2093).
+  * defer cli session close out of the telnet parse callback (#2085)
+  * reject a mismatched realm on connection-bind in check_stun_auth
+    (#2087).
+  * validate redis reply key prefix before offsetting past it
+    (#2080).
+  * stop convert_string_key_to_binary reading past a short key
+    (#2081).
+  * copy denied range before unlocking blacklist in good_peer_addr
+    (#2083).
+
+-------------------------------------------------------------------
 Tue Sep  8 11:51:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.18.0

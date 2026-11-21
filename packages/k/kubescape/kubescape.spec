@@ -17,14 +17,14 @@
 
 
 Name:           kubescape
-Version:        4.0.17
+Version:        4.0.21
 Release:        0
 Summary:        Tool providing a multi-cloud K8s single pane of glass
 License:        Apache-2.0
 URL:            https://github.com/armosec/kubescape
 Source:         kubescape-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.26 >= 1.26.10
+BuildRequires:  go1.27 >= 1.27.4
 
 %description
 Kubescape is a K8s open-source tool providing a multi-cloud K8s single pane of

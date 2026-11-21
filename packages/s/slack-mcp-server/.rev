@@ -17,4 +17,12 @@ skipped -- they drive a live Slack workspace and an OpenAI endpoint and fail
 rather than skip when credentials are absent; everything else passes.</comment>
     <requestid>1369466</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3596e685a88a807ff942cb8f628e1bf9</srcmd5>
+    <version>1.3.0</version>
+    <time>1794590975</time>
+    <user>anag_factory</user>
+    <comment>Move devel to science:machinelearning:mcp; run offline TestIntegrationErrorRecoveryMiddleware in %check</comment>
+    <requestid>1396988</requestid>
+  </revision>
 </revisionlist>

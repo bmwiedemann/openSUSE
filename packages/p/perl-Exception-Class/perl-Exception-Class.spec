@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Exception-Class
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Exception-Class
 Name:           perl-Exception-Class
-Version:        1.450.0
+Version:        1.460.0
 Release:        0
-# 1.45 -> normalize -> 1.450.0
-%define cpan_version 1.45
+# 1.46 -> normalize -> 1.460.0
+%define cpan_version 1.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Module that allows you to declare real exception classes in Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -85,7 +85,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md GOVERNANCE.md README.md SECURITY.md SUPPORT.md
 %license LICENSE
 
 %changelog

@@ -1,5 +1,5 @@
 
-# The SUSE Linux Enterprise FIPS-140-3 container image
+# The SUSE Linux BCI Base in FIPS-140-3 mode
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 

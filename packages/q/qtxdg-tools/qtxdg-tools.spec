@@ -1,7 +1,7 @@
 #
 # spec file for package qtxdg-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qtxdg-tools
-Version:        4.4.0
+Version:        4.5.0
 Release:        0
 Summary:        User tools for libqtxg
 License:        LGPL-2.1-or-later
@@ -29,7 +29,7 @@ BuildRequires:  cmake >= 3.18.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
-BuildRequires:  cmake(Qt6Core) >= 6.6.0
+BuildRequires:  cmake(Qt6Core) >= 6.10.0
 BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(Qt6Xdg)

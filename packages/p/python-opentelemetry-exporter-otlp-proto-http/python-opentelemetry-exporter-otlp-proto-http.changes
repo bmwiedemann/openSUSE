@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:15:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.45.1:
+  * Restore requests as the default HTTP transport, so proxy
+    environment variables such as HTTPS_PROXY are honored
+    again.
+  * Follow the 0.66b1 lockstep releases of
+    opentelemetry-exporter-http-transport and
+    opentelemetry-exporter-otlp-common.
+
+-------------------------------------------------------------------
 Tue Sep 29 10:15:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.45.0

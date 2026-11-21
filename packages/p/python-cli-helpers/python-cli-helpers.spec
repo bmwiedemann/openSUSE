@@ -17,7 +17,7 @@
 
 
 Name:           python-cli-helpers
-Version:        2.15.2
+Version:        2.15.3
 Release:        0
 Summary:        Helpers for building command-line apps
 License:        BSD-3-Clause

@@ -22,7 +22,7 @@ Release:        0
 Summary:        C++ Bindings for GTK+ -- Documentation
 License:        GFDL-1.2-only AND GPL-2.0-or-later
 Group:          Documentation/Other
-URL:            https://gtkmm.org
+URL:            https://gtkmm.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 

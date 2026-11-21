@@ -16,17 +16,17 @@
 #
 
 
-%define qt6_version 6.9.0
+%define qt6_version 6.10.0
 
 %define rname kcmutils
 # Internal QML import
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.kcmutils\\.private.*\\)
 
-# Full KF6 version (e.g. 6.31.0)
+# Full KF6 version (e.g. 6.32.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcmutils
-Version:        6.31.0
+Version:        6.32.0
 Release:        0
 Summary:        Classes to work with KCModules
 License:        LGPL-2.1-or-later
@@ -100,7 +100,7 @@ Requires:       libKF6KCMUtilsCore6 = %{version}
 Requires:       libKF6KCMUtilsQuick6 = %{version}
 Requires:       cmake(KF6ConfigWidgets) >= %{_kf6_version}
 Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
-Requires:       cmake(Qt6Qml) >= %{qt6_version}
+Requires:       cmake(Qt6QmlIntegration) >= %{qt6_version}
 
 %description devel
 KCMUtils provides various classes to work with KCModules. KCModules can be

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:16:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.830.0 (0.83)
+   see /usr/share/doc/packages/perl-Mail-Sendmail/Changes
+
+  0.83 2026-07-04 NEILB
+      - strip CR/LF from header values, to prevent insertion of rogue headers.
+        Deals with issue in CVE-2026-13092. Pull request from Olaf Alders++.
+      - Tried using [PkgVersion] so $VERSION would be auto managed, but
+        caused issues testing as the code expects $VERSION to be there pre-build.
+      - switched to a new test Sendmail server for t/original.t, as the old
+        one was no longer accepting connections.
+
+-------------------------------------------------------------------
 Tue Jul 15 05:39:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.820.0 (0.82)

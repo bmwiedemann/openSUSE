@@ -18,6 +18,8 @@
 
 %define sover  3_10_12
 %bcond_without docs
+# gr-iio is incompatible with libiio >= 1.0 (API and ABI breakage)
+%bcond_with iio
 Name:           gnuradio
 Version:        3.10.12.0
 Release:        0
@@ -44,7 +46,9 @@ BuildRequires:  gmp-devel
 BuildRequires:  gobject-introspection
 BuildRequires:  gsl-devel
 BuildRequires:  libSDL-devel
+%if %{with iio}
 BuildRequires:  libad9361-iio-devel
+%endif
 BuildRequires:  libboost_atomic-devel >= 1.69
 BuildRequires:  libboost_filesystem-devel >= 1.69
 BuildRequires:  libboost_regex-devel >= 1.69
@@ -53,7 +57,9 @@ BuildRequires:  libboost_test-devel >= 1.69
 BuildRequires:  libboost_system-devel
 %endif
 BuildRequires:  libgsm-devel
+%if %{with iio}
 BuildRequires:  libiio-devel
+%endif
 BuildRequires:  libjack-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libthrift-devel
@@ -240,7 +246,7 @@ find  gr-utils/modtool/templates/gr-newmod -name CMakeLists.txt -ls -exec mv '{}
   -DENABLE_GR_AUDIO:BOOL=ON \
   -DENABLE_GR_CHANNELS:BOOL=ON \
   -DENABLE_GR_PDU:BOOL=ON \
-  -DENABLE_GR_IIO:BOOL=ON \
+  -DENABLE_GR_IIO:BOOL=%{?with_iio:ON}%{!?with_iio:OFF} \
   -DENABLE_GR_QTGUI:BOOL=ON \
   -DENABLE_GR_TRELLIS:BOOL=ON \
   -DENABLE_GR_UHD:BOOL=ON \

@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.27.3
+Version:        0.29.0
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module annotated-doc}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module shellingham}
@@ -45,6 +46,7 @@ BuildRequires:  python-rpm-macros
 # Work around Python dependency not being auto-added as there are no modules provided
 Requires:       %{plainpython}(abi) = %{python_version}
 Requires:       python-annotated-doc
+Requires:       python-pydantic
 Requires:       python-rich
 Requires:       python-shellingham
 # both packages provide /usr/bin/typer
@@ -80,6 +82,9 @@ as those that do.
 
 %install
 %pyproject_install
+
+# Remove the .agents directory as it won't be foudn by Library Skills anyhow
+%python_expand rm -r %{buildroot}%{$python_sitelib}/typer/.agents
 
 %python_clone -a %{buildroot}/%{_bindir}/typer
 

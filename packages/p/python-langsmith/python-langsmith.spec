@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.14.16
+Version:        0.15.1
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -25,6 +25,8 @@ URL:            https://github.com/langchain-ai/langsmith-sdk
 Source:         https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM langsmith-python314-iscoroutinefunction.patch mpluskal@suse.com -- use inspect.iscoroutinefunction(), the asyncio alias is deprecated in Python 3.14, gh#langchain-ai/langsmith-sdk#3347
 Patch0:         langsmith-python314-iscoroutinefunction.patch
+# PATCH-FIX-OPENSUSE langsmith-uuid-utils-1.0-compat.patch mpluskal@suse.com -- support uuid-utils 1.0 uuid7(nanoseconds=...); 0.x timestamp=/nanos= removed, breaks %check with TypeError
+Patch1:         langsmith-uuid-utils-1.0-compat.patch
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -101,24 +103,16 @@ integration with the LangChain Python and LangChain JS open source libraries.
 
 %check
 export LANGSMITH_TRACING=false
-# Run unit tests only; skip integration/network tests and modules that need
-# optional providers (LLM wrappers, sandbox websockets client, CLI) or
-# langchain-core (which depends on langsmith -> build cycle);
-# test_hybrid_tracing.py carries an upstream module-level pytest.skip.
-# test_background_thread.py imports the git-only bench/ helper, which
-# upstream does not ship in the sdist.
-# Two upstream tests are deselected: test_admission_under_concurrency
-# over-specifies - it asserts the first replica always claims the next
-# frame, but a concurrent drain can reset between the two writes of one
-# post(); delivery stays correct, admission and drain share
-# compressed_traces.lock. Red on Factory ARM aarch64.
-# test_extract_string_nodes_scales_linearly asserts a wall-clock ratio.
-# test_langchain_tool_attributes_reach_otel_spans imports langchain_core
-# inside the test body with no importorskip; every other langchain_core test
-# lives in an --ignore'd file, so this is the one that needs deselecting.
-%pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py --ignore tests/unit_tests/test_background_thread.py -k 'not test_client_gc and not test_git_info and not test_as_runnable and not test_admission_under_concurrency and not test_extract_string_nodes_scales_linearly and not test_langchain_tool_attributes_reach_otel_spans'
+# Upstream runs its suite with tests/httpx2_alias on PYTHONPATH, aliasing
+# "import httpx" onto the maintained httpx2 fork, so httpx-client tests get
+# the backend they expect (tests/unit_tests/test_session_writes.py).
+export PYTHONPATH="$PWD/tests/httpx2_alias${PYTHONPATH:+:$PYTHONPATH}"
+# Unit tests only: --ignore wrappers/sandbox/cli/evaluation, client and
+# helper files (optional providers, langchain-core cycle, upstream skip,
+# git-only bench), plus fragile -k deselects (concurrency, wall-clock, races).
+%pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py --ignore tests/unit_tests/test_background_thread.py -k 'not test_client_gc and not test_git_info and not test_as_runnable and not test_admission_under_concurrency and not test_extract_string_nodes_scales_linearly and not test_langchain_tool_attributes_reach_otel_spans and not test_refresh_failure_keeps_stale and not test_app_loop_does_not_back_off'
 
-%files %python_files
+%files %{python_files}
 %doc README.md
 %{python_sitelib}/langsmith
 %{python_sitelib}/langsmith-%{version}.dist-info

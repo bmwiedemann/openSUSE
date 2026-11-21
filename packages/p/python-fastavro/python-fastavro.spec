@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastavro
-Version:        1.12.2
+Version:        1.13.1
 Release:        0
 Summary:        Fast read/write of AVRO files
 License:        MIT

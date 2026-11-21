@@ -18,14 +18,14 @@
 
 %define cpan_name Net-IDN-Encode
 Name:           perl-Net-IDN-Encode
-Version:        2.502.0
+Version:        2.600.0
 Release:        0
-# 2.502 -> normalize -> 2.502.0
-%define cpan_version 2.502
+# 2.600 -> normalize -> 2.600.0
+%define cpan_version 2.600
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Internationalizing Domain Names in Applications (UTS #46)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RR/RRWO/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/P/PJ/PJCJ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 BuildRequires:  perl

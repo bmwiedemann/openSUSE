@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.2.5.0
+Version:        2.2.5.1
 Release:        0
 Summary:        Fast JSON parsing and encoding
 License:        BSD-3-Clause

@@ -28,6 +28,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  zita-resampler-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(fftw3f)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libgcrypt) >= 1.2.0
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(libswresample)

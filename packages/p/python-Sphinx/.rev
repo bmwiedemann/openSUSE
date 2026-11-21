@@ -1733,4 +1733,12 @@ IMPORTANT: It would be better to fix/update the test, so if you can fix this ple
     <comment>- Add upstream cpython-autodoc.patch to fix tests</comment>
     <requestid>1384297</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>7b37ff63aa5c08cc6e9ac4b8f8b66551</srcmd5>
+    <version>9.2.0</version>
+    <time>1793724667</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1393891</requestid>
+  </revision>
 </revisionlist>

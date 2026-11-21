@@ -28,16 +28,14 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-celery%{psuffix}
-Version:        5.6.3
+Version:        5.7.0
 Release:        0
 Summary:        Distributed Task Queue module for Python
 License:        BSD-3-Clause
 URL:            https://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
-# PATCH-FIX-UPSTREAM tests.patch boo#1275668 gh#celery/celery@bf1cf69
-Patch1:         tests.patch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,14 +44,14 @@ BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-billiard >= 4.2.1
-Requires:       python-click >= 8.1.2
-Requires:       python-click-didyoumean >= 0.3.0
+Requires:       python-billiard >= 4.3.2
+Requires:       python-click >= 8.3.1
+Requires:       python-click-didyoumean >= 0.3.1
 Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
 Requires:       python-dbm
-Requires:       python-kombu >= 5.6.0
-Requires:       python-python-dateutil >= 2.8.2
+Requires:       python-kombu >= 5.7.0
+Requires:       python-python-dateutil >= 2.9.0
 Requires:       python-tzlocal
 Requires:       python-vine >= 5.1.0
 Recommends:     python-cryptography
@@ -67,12 +65,12 @@ BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module azure-storage-blob >= 12.15.0}
 BuildRequires:  %{python_module boto3 >= 1.26.143}
-BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
 BuildRequires:  %{python_module cryptography >= 36.0.2}
 BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module eventlet >= 0.32.0}
+BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module gevent >= 1.5.0}
 BuildRequires:  %{python_module google-cloud-core}
 BuildRequires:  %{python_module google-cloud-firestore >= 2.23.0}
@@ -112,18 +110,19 @@ scheduling as well.
 
 %check
 %if %{with test}
-# test_check_privileges_no_fchown - first it deletes fchown from the system, so it needs root privileges, and then it runs the worker and complains about root privileges
-# test_init_mongodb_dnspython2_pymongo4_seedlist - pymongo.errors.ConfigurationError: cannot open /etc/resolv.conf
+# first it deletes fchown from the system, so it needs root privileges, and then it runs the worker and complains about root privileges
+donttest="test_check_privileges_no_fchown"
+# pymongo.errors.ConfigurationError: cannot open /etc/resolv.conf
+donttest+=" or test_init_mongodb_dnspython2_pymongo4_seedlist"
 
 # Temporary, remove
-# test_aaa_eventlet_patch::test_aaa_blockdetecet - AssertionError: expected call not found.
-# test_AsynPool::test_gen_not_started
+# AssertionError: expected call not found.
+donttest+=" or test_aaa_blockdetecet"
 
 # Fails if the system timezone is UTC
-# test_uses_utc_timezone
+donttest+=" or test_uses_utc_timezone"
 
-%pytest -k "not test_check_privileges_no_fchown and not test_aaa_blockdetecet and not test_gen_not_started and not test_init_mongodb_dnspython2_pymongo4_seedlist and not test_uses_utc_timezone"
-
+%pytest -k "not ($donttest)"
 %endif
 
 %if !%{with test}

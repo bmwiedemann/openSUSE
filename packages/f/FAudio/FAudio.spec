@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           FAudio
-Version:        26.10
+Version:        26.11
 Release:        0
 Summary:        Accuracy-focused XAudio reimplementation
 License:        Zlib

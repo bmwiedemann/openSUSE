@@ -165,7 +165,7 @@ int check_directory(const char* dir)
 		if (!strcmp(d->d_name, ".") || !strcmp(d->d_name, ".."))
 			continue;
 
-		stpcpy(stpcpy(stpcpy(p, dir), "/"), d->d_name);
+		snprintf(p, sizeof(p), "%s/%s", dir, d->d_name);
 
 		failed += check_entry(p);
 	}
@@ -213,7 +213,7 @@ int check_filesystem(const char* rootdir)
 int rpm_findusrfile(rpmts ts, Header hdr, rpmfi orig_fi)
 {
 	char fn[PATH_MAX] = "/usr";
-	strcpy(fn+strlen(fn), rpmfiFN(orig_fi));
+	snprintf(fn, sizeof(fn), "/usr%s", rpmfiFN(orig_fi));
 
 	rpmdbMatchIterator mi = rpmtsInitIterator(ts, RPMDBI_INSTFILENAMES, fn, 0);
 	if (mi) {
@@ -296,7 +296,7 @@ int check_rpmdb(char* rootdir)
 						// an optimization so we don't have to check hundreds
 						// of kernel modules. If the file at hand is a directory
 						// and does not exist in /usr we can just skip the rest.
-						strcpy(skipdir, rpmfiFN(fi));
+						snprintf(skipdir, sizeof(skipdir), "%s", rpmfiFN(fi));
 					}
 					break;
 				}

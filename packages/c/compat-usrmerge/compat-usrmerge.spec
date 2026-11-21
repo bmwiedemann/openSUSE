@@ -17,7 +17,6 @@
 
 
 %define nvr %{name}-%{version}-%{release}
-
 Name:           compat-usrmerge
 Version:        84.87
 Release:        0
@@ -36,11 +35,12 @@ Source6:        usrmerge_binsbindeps.lua
 Source7:        usrmergefiles.py
 BuildRequires:  gcc
 BuildRequires:  glibc-static
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(rpm)
 
 %description
 Scripts and data files related to UsrMerge
-(https://en.opensuse.org/openSUSE:Usr_merge). Normally not needd.
+(https://en.opensuse.org/openSUSE:Usr_merge). Normally not needed.
 
 %package tools
 Summary:        UsrMerge tools
@@ -59,6 +59,7 @@ convert an existing system to UsrMerge.
 %package build
 Summary:        UsrMerge build tools
 Requires:       lua
+BuildArch:      noarch
 
 %description build
 Build tools related to UsrMerge. This is required for rpmbuild to
@@ -66,11 +67,11 @@ generate proper provides tags for packages that used to have
 binaries in /(s)bin.
 
 %prep
-%setup -qcT
+%setup -q -cT
 
 %build
-gcc -Wall %optflags -o usrmergecheck %{SOURCE2} `pkg-config --libs rpm`
-gcc -Wall %optflags -static -o xmv %{SOURCE4}
+gcc -Wall %{optflags} -o usrmergecheck %{SOURCE2} `pkg-config --libs rpm`
+gcc -Wall %{optflags} -static -o xmv %{SOURCE4}
 
 %install
 install -D -m755 usrmergecheck %{buildroot}%{_bindir}/usrmergecheck
@@ -79,7 +80,7 @@ install -m644 %{SOURCE0} %{buildroot}%{_rpmconfigdir}/lua
 install -m644 %{SOURCE1} %{buildroot}%{_rpmconfigdir}/lua
 install -D -m755 %{SOURCE3} %{buildroot}%{_libexecdir}/convertfs
 install -m755 xmv %{buildroot}%{_libexecdir}/xmv
-install -D -m755 %{SOURCE5} %{buildroot}%{_fileattrsdir}/usrmerge.attr
+install -D -m644 %{SOURCE5} %{buildroot}%{_fileattrsdir}/usrmerge.attr
 install -m644 %{SOURCE6} %{buildroot}%{_rpmconfigdir}/lua
 ###
 mkdir -p %{buildroot}/lib
@@ -89,7 +90,7 @@ while read file; do
 done <<EOF
 /%{_lib}/libc-`rpm -q --qf "%%{version}" glibc`.so
 /%{_lib}/libc.so.6
-%ifarch %arm
+%ifarch %{arm}
 %ifarch armv6hl armv7hl
 /%{_lib}/ld-linux-armhf.so.3
 /%{_lib}/ld-linux.so.3
@@ -116,7 +117,7 @@ done <<EOF
 %ifarch x86_64
 /%{_lib}/ld-linux-x86-64.so.2
 %endif
-%ifarch %ix86 %sparc
+%ifarch %{ix86} %{sparc}
 /%{_lib}/ld-linux.so.2
 %endif
 %ifarch aarch64

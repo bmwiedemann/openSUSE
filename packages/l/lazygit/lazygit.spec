@@ -17,7 +17,7 @@
 
 
 Name:           lazygit
-Version:        0.66.2
+Version:        0.66.3
 Release:        0
 Summary:        Simple terminal UI for git commands
 License:        MIT

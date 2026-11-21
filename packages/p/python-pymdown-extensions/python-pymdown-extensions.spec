@@ -20,14 +20,14 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pymdown-extensions
-Version:        12.3
+Version:        13.1
 Release:        0
 Summary:        Extension pack for Python Markdown
 License:        MIT
 URL:            https://github.com/facelessuser/pymdown-extensions
 Source:         https://github.com/facelessuser/pymdown-extensions/archive/refs/tags/%{version}.tar.gz#/pymdown-extensions-%{version}.tar.gz
-BuildRequires:  %{python_module Markdown >= 3.6}
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module Markdown >= 3.10.3}
+BuildRequires:  %{python_module base >= 3.11.5}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 # test requirements
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module pytest}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Markdown >= 3.6
+Requires:       python-Markdown >= 3.10.3
 Requires:       python-PyYAML >= 3.10
 Recommends:     python-Pygments >= 2.19.1
 BuildArch:      noarch

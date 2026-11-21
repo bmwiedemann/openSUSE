@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        5.6
+Version:        5.6.2
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
@@ -28,6 +28,10 @@ Source2:        %{name}.tmpfiles
 Source3:        %{name}.sysuser
 Source99:       README.SUSE
 Patch1:         harden_shairport-sync.service.patch
+# PATCH-FIX-UPSTREAM shairport-sync-fix-get_info_response-plist.patch (gh#mikebrady/shairport-sync#2325):
+# stray </dict> in the AirPlay 2 info plist breaks libplist parsing at
+# runtime; fixed upstream on the development branch.
+Patch2:         shairport-sync-fix-get_info_response-plist.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  gcc-c++
@@ -40,6 +44,8 @@ BuildRequires:  sysuser-tools
 BuildRequires:  xxd
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(avahi-client)
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libconfig)
 BuildRequires:  pkgconfig(libdaemon)
@@ -115,6 +121,12 @@ mkdir -p %{buildroot}%{_sysusersdir}
 install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}.conf
 
 %sysusers_generate_pre %{SOURCE3} %{name} %{name}.conf
+
+%check
+# The AirPlay 2 info plist must parse: the build pipes plistutil into
+# xxd, which masks its exit status, so a broken plist builds fine and
+# fails only at runtime (upstream issue #2325).
+plistutil -i plists/get_info_response.xml -o /dev/null
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service

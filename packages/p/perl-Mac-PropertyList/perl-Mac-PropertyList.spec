@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mac-PropertyList
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,25 @@
 
 %define cpan_name Mac-PropertyList
 Name:           perl-Mac-PropertyList
-Version:        1.602.0
+Version:        1.608.0
 Release:        0
-# 1.602 -> normalize -> 1.602.0
-%define cpan_version 1.602
+# 1.608 -> normalize -> 1.608.0
+%define cpan_version 1.608
 License:        Artistic-2.0
 Summary:        Work with Mac plists at a low level
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BR/BRIANDFOY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.64
+BuildRequires:  perl(HTML::Entities)
 BuildRequires:  perl(Test::More) >= 1
 BuildRequires:  perl(XML::Entities)
 BuildRequires:  perl(parent)
+Requires:       perl(HTML::Entities)
 Requires:       perl(XML::Entities)
 Requires:       perl(parent)
 Provides:       perl(Mac::PropertyList) = %{version}
@@ -41,11 +44,11 @@ Provides:       perl(Mac::PropertyList::Boolean)
 Provides:       perl(Mac::PropertyList::Container)
 Provides:       perl(Mac::PropertyList::Item)
 Provides:       perl(Mac::PropertyList::LineListSource)
-Provides:       perl(Mac::PropertyList::ReadBinary) = 1.506.0
+Provides:       perl(Mac::PropertyList::ReadBinary) = %{version}
 Provides:       perl(Mac::PropertyList::Scalar)
 Provides:       perl(Mac::PropertyList::Source)
 Provides:       perl(Mac::PropertyList::TextSource)
-Provides:       perl(Mac::PropertyList::WriteBinary) = 1.505.0
+Provides:       perl(Mac::PropertyList::WriteBinary) = %{version}
 Provides:       perl(Mac::PropertyList::array)
 Provides:       perl(Mac::PropertyList::data)
 Provides:       perl(Mac::PropertyList::date)
@@ -82,7 +85,9 @@ Or, you can extend this module to handle those formats (and send a pull
 request).
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -97,7 +102,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CITATION.cff examples
+%doc Changes CITATION.cff examples SECURITY.md
 %license LICENSE
 
 %changelog

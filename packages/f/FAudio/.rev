@@ -477,4 +477,13 @@
     <comment>Update FAudio to 26.10 (forwarded request 1385630 from pluskalm)</comment>
     <requestid>1385980</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>84304c75a8168c970ad9bcf2bb25bdef</srcmd5>
+    <version>26.11</version>
+    <time>1794932464</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.11:
+  * Minor improvements to FAudio CI. (forwarded request 1398119 from dirkmueller)</comment>
+    <requestid>1398123</requestid>
+  </revision>
 </revisionlist>

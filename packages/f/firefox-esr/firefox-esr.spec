@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.6.0
-%define orig_version   153.6.0
+%define mainver        %major.7.0
+%define orig_version   153.7.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -246,7 +246,6 @@ Patch17:        mozilla-libavcodec58_91.patch
 Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch24:        mozilla-bmo1746799.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
 Patch28:        mozilla-bmo2048250.patch

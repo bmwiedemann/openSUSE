@@ -304,4 +304,15 @@
     - Updated Perl requirement to 5.20.</comment>
     <requestid>1354959</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>bbde8d30b924ab39aaff6f3c526fff33</srcmd5>
+    <version>5.10.0</version>
+    <time>1794162151</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.10.0 (5.01)
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+  5.01  2026-10-25
+    - Added support for bulk inserts to insert and insert_p methods in Mojo::Pg::Database.</comment>
+    <requestid>1396148</requestid>
+  </revision>
 </revisionlist>

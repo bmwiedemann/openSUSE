@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 12 12:39:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.2.17+git0.7d94f01:
+  * Fix MSVC issues
+  * Added byteShuffleSSE
+  * Add byteUnshuffleSSE for itemSize==8
+  * Update pugixml
+  * Add little and bigendian read test
+  * Update version and README
+  * Convert Image data to little endian on big endian platform
+  * Implementing byteOrder attribute for data blocks
+  * Read and write header size as little endian
+  * Fix input subblock size check
+  * Bugfixing various issues
+
+-------------------------------------------------------------------
 Thu Oct 22 06:50:15 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.2.14+git1.fa35ae2:

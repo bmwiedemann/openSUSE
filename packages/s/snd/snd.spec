@@ -19,7 +19,6 @@
 %ifarch aarch64
 %define _lto_cflags %{nil}
 %endif
-
 %ifarch %{ix86} x86_64 %{ppc} ppc64 ppc64le
 # The jack support has some inline assembly, but only for x86/ppc
 %bcond_without jack
@@ -27,28 +26,28 @@
 %bcond_with jack
 %endif
 Name:           snd
-Version:        26.4
+Version:        26.8
 Release:        0
 Summary:        Sound File Editor
 License:        LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://ccrma.stanford.edu/software/snd/
-Source:         ftp://ccrma-ftp.stanford.edu/pub/Lisp/snd-%{version}.tar.gz
+Source0:        https://ccrma.stanford.edu/software/snd/snd-%{version}.tar.gz
 Source1:        snd.desktop.in
 Source2:        snd.png
-BuildRequires:  alsa-devel
-BuildRequires:  fftw3-devel
-BuildRequires:  freeglut-devel
 BuildRequires:  gsl
-BuildRequires:  gsl-devel
-BuildRequires:  gtk3-devel
 BuildRequires:  ladspa-devel
-BuildRequires:  libXpm-devel
-BuildRequires:  libdrm-devel
-BuildRequires:  libjack-devel
-BuildRequires:  libsamplerate-devel
 BuildRequires:  motif-devel
+BuildRequires:  pkgconfig
 BuildRequires:  translate-suse-desktop
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(glut)
+BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(jack)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(xpm)
 Requires:       ladspa
 
 %description
@@ -58,7 +57,7 @@ number of sounds each with any number of channels and can be customized
 and extended using guile and guile-gtk.
 
 %prep
-%setup -q
+%autosetup
 cp -a %{SOURCE1} .
 find -name "*~" -type f -print -delete
 find -name "*.png" -type f -exec chmod 0644 "{}" "+"

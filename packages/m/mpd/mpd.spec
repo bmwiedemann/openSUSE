@@ -18,7 +18,7 @@
 
 %define ver 0.24
 Name:           mpd
-Version:        %{ver}.15
+Version:        %{ver}.19
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
@@ -140,7 +140,7 @@ mkdir %{buildroot}%{_sbindir}
 mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}/playlists
 
 %pre
-getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/false -d %{_localstatedir}/lib/%{name} -g audio %{name}
+getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /usr/sbin/nologin -d %{_localstatedir}/lib/%{name} -g audio %{name}
 %service_add_pre %{name}.service %{name}.socket
 
 %post

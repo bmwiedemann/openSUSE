@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  1 15:12:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.45.1:
+  * Fix thread leak in resource initialization for long
+    running resource detectors.
+  * Require opentelemetry-semantic-conventions 0.66b1.
+
+-------------------------------------------------------------------
 Sat Sep 26 14:13:31 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.45.0

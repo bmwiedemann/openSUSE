@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.0:
+  * Add Amazon Bedrock providers, configured with type bedrock
+    and AWS_REGION (#4895)
+  * Add experimental next-prompt predictions in the TUI, opt in
+    with KIMI_CODE_EXPERIMENTAL_PROMPT_PREDICTION=1 (#4754)
+  * Add Follow-up behavior setting under /settings with Steer
+    mode for Enter into the running turn (#4890)
+  * View running foreground agents and activity in /tasks (#5049)
+  * Add kimi web --json and KAP automation endpoints plus
+    kimi server without opening a browser (#4966, #4784)
+  * Fix resuming sessions open in another client, subagent
+    timeouts, session list loading and SSH host handling
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
+Thu Nov 19 07:29:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.3:
+  * Fix duplicated foreground shell command output and a loading
+    state that never cleared (#4994)
+  * Run external Stop hooks after every completed reply (#4995)
+  * Fix restored background-task notifications triggering
+    unexpected new replies on resume or branch (#4989), and such
+    notifications stopping Tower tasks (#4992)
+  * Fix resuming sessions with a removed default model, mismatched
+    session-index rebuilds, repeated model responses and several
+    more known issues (#4982)
+  * Fix Windows WebBridge updates blocked by the running daemon
+    (#4999)
+
+-------------------------------------------------------------------
+Sat Nov 14 08:42:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.2:
+  * Fix multi-second loading delays reopening long sessions
+    (#4885, #4888, #4907)
+  * /feedback rework: drop text-only option, show session files,
+    include request_id metadata (#4876)
+  * Support search_url/feedback_url on custom registry providers
+    (#4875); Swarm live updates, media-upload rejects (#4905,
+    #4922), web fixes (#4927)
+
+-------------------------------------------------------------------
+Thu Nov 12 19:37:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.6.0:
+  * fs:suggest aligned with local fd completion: bounded scans with
+    at most 20 results, hidden and gitignored paths included
+  * Fullscreen mode folds consecutive tool calls and thinking into
+    summary lines with configurable density, and shows turn timers
+    in the activity bar
+  * Copying outside SSH/mosh now goes only to the system clipboard
+    (KIMI_CODE_CLIPBOARD_OSC52=1 keeps the old behavior);
+    fullscreen copy fixes plus a Copy-on-select setting
+  * Allow multiple Edit calls to the same file without re-reading
+  * Apply [[permission.rules]] from config.toml when sessions start
+    and persist user and project permission rules
+  * Preserve prompt cache and tool result notes when forking
+    conversations; fix duplicate tool declaration errors after
+    dynamic tool reload
+  * Reload skills when their files change; same-name workspace
+    skills selectable in a dedicated TUI group
+  * Server API: sessions get agent profile, model and thinking
+    level at creation; transcript frames replaced by per-agent
+    turn streams
+  * Preserve UTF-8 byte order marks when editing and Unicode
+    filenames on download; keep the TUI responsive with large
+    expanded tool output
+  * web: improved interactions and fixed known bugs
+
+-------------------------------------------------------------------
+Wed Nov 11 12:58:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.3:
+  * Steering interrupts the active model request and continues
+    in the same turn; add POST /api/v1/sessions/{session_id}/steer
+    for one-request message steering
+  * web: improved interactions and fixed known bugs
+  * Fix stdio MCP servers configured with script commands such as
+    npx failing to start on Windows
+
+-------------------------------------------------------------------
+Sat Nov  7 13:15:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.2:
+  * Fix duplicate tool declaration errors in select_tools when MCP
+    tool definitions change
+  * web: no longer queue steered messages while a session is
+    running; fix project creation when accessing the Web UI over
+    HTTP
+- Changes in 2.5.1 (skipped):
+  * Fix repeated HTTP 400 errors in sessions caused by empty system
+    messages for dynamic tool schemas
+  * web: generate session titles after the first turn, show local
+    images whose paths contain spaces, restore image and video
+    previews in tool results, and stop the info panel floating over
+    chat in narrow layouts; hide sessions of deleted workspaces
+
+-------------------------------------------------------------------
+Wed Nov  4 18:18:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.0:
+  * Allow /model and /effort while the agent is working; the switch
+    applies from the next turn
+  * Fork running sessions or fork from a selected historical turn
+  * Merge skills from every configured directory in multi-directory
+    projects
+  * Creation-time SSH, Docker and custom-command environments via
+    --environment and --environment-cwd
+  * Set [workspace] require_trust = false to skip workspace trust
+    prompts
+  * Stop building the global full-text search index by default
+    ([database] global_search = true to re-enable)
+  * Faster remote file operations, search and completion
+  * Web dashboard improvements and bug fixes
+
+-------------------------------------------------------------------
 Sat Oct 31 15:27:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the Linux NAPI clipboard helper from source instead of

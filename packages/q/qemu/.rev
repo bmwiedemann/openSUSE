@@ -5229,4 +5229,93 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1383048</requestid>
   </revision>
+  <revision rev="315" vrev="1">
+    <srcmd5>145519b1b9cbbe7cbbf49a279efb5e60</srcmd5>
+    <version>11.1.3</version>
+    <time>1793990053</time>
+    <user>anag_factory</user>
+    <comment>- Drop libpmem support (bsc#1288103)
+- [openSUSE] Update to version 11.1.3
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20261029051934.1487878-2-mjt@tls.msk.ru/
+  A selection of them is reported here below:
+   target/ppc: Name the EBB exceptions
+   hw/intc/exynos4210_combiner: Fix group register range check
+   hw/misc/bcm2835_cprman: Treat invalid clock mux source select as GND
+   hw/usb/hcd-xhci: More reentrancy guard fixes for the XHCI code
+   hw/usb/dev-mtp: Fix heap OOB read in usb_mtp_write_metadata()
+   hw/usb/dev-mtp: Fix assert crash on short CMD_SEND_OBJECT
+   usb-host: delete bottom halves during unrealize
+   usb-host: free request on libusb submit failure
+   tests/qtest/usb-hcd-xhci: test interrupt pacing above 2^32
+   usb-host: free configuration descriptors on error paths
+   usb-host: validate interface number before indexing altsetting
+   tests/qtest: Cover OHCI endpoint type mismatches
+   hw/usb/hcd-ohci: Fail iso packets sent to non-iso endpoints and vice-versa
+   hw/usb/dev-mtp: Fix assert crash on undersized BULK IN
+   hw/uefi: fix ContentInfo detection in wrap_pkcs7()
+   hw/9pfs: fix dirent stream protection for legacy (9p2000.u) Tread
+   iotests/migrate-bitmaps-postcopy-test: add a bitmap on a second node
+   migration/block-dirty-bitmap: fix postcopy abort with bitmaps on several nodes
+   migration: add QEMU_COUNTED_STRING_SIZE for counted string buffers
+   qemu-img: convert: flush target image after copying
+   block: report flush error during bdrv_close()
+   iotests.py: add filter_qemu()
+   iotests: add test cases for failing flush after qemu-img convert
+   seccomp: really fix blocking of setns/execveat/unshare
+   seccomp: fix blocking of setns/execveat/unshare
+   target/riscv: Check Svnapot PTE before updating A/D bits
+   tests/qtest/bios-tables-test: Update riscv64 virt SPCR golden reference
+   hw/riscv/virt-acpi-build: Fix the UART register width in SPCR
+   tests/qtest/bios-tables-test: Allow changes to riscv64 virt SPCR
+   target/riscv/kvm: Preserve VCSR across migration
+   target/riscv/kvm: Reject migration with a different timer frequency
+   target/riscv/kvm: Preserve FCSR across migration
+   targetriscv: svinval instructions raise virtual instruction exception
+   target/riscv: stop translating after WFI
+   target/riscv: Restore LCOFI handling in interrupt CSRs
+   target/riscv: check G-stage write permission for VS-stage A/D updates
+   hw/intc/arm_gicv5: Make IRS_IDR0 reads return actual value, not 0
+   tests/tcg/aarch64: Test the TTBR layout with TCR.DS and a 48-bit OA
+   target/arm: Use the 52-bit TTBR base address layout when TCR.DS is set
+   tests/tcg/aarch64: Add a test for a two-entry 52-bit TTBR table
+   target/arm: Clear TTBR[5:0] from a 52-bit table base address
+   tcg/riscv64: Remove vector min/max ops with immediates
+   target/i386: fix immediate stack adjustment for RET and RETF
+   target/i386/tcg: zero FXSAVE FOP and reserved slot bytes
+   tests/tcg: Add tests for sign extension after rotate
+   tcg/optimize: Do not derive s_mask from rotated s_mask
+   hw/display/vga: fix OOB writes after external surface resize
+   hw/tpm: crb: Do not clear internal buffers when backend is busy
+   tpm_emulator: Reject sending commands smaller than the request header
+   io: cork TLS writes to avoid small TLS records
+   block: Remove now redundant bdrv_wait_serialising_requests() calls
+   block: Fix corruption from broken RMW atomicity
+   block: reject a reopen of an unusable node instead of crashing
+   qcow2: do not clear the dirty bit when reopening a read-only node
+   file-posix: add statx(STATX_DIOALIGN) support
+   block: fix bdrv_next() skipping monitor-owned nodes
+   iotests: cover inactivating a read-only node
+   block/throttle-groups: fix crash when enabling I/O limits on a busy disk
+   io: prevent unbounded read of websocket data from client
+   hw/usb: Fix USB MTP Use-After-Free in usb_mtp_deletefn List Iteration
+   target/i386/tcg: ignore VEX.L for unary scalar instructions
+   accel/kvm: coalesced mmio: check lenght of the MMIO write entry
+   accel/kvm: protect kvm_resample_fd_list with a mutex
+   system: fix buffer overflow in tdx_parse_panic_message
+   target/i386: Don't clear C1 for FCOMI/FCOMIP/FUCOMI/FUCOMIP
+   target/i386: clear C1 for all x87 compare instructions
+   target/i386: Migrate error code only with an exception
+   target/i386/tcg: raise #GP(0) on null SS load with RPL != CPL
+   plugins: fix register handle encoding to reserve NULL as invalid
+   hw/nvme: fix memory leak on sr-iov capable nvme controller removal
+   hw/nvme: fix assertion failure on sr-iov capable nvme controller removal
+   block/nbd: clear reply.cookie under receive_mutex
+   block/nbd: never index requests[] with an unchecked cookie
+   block/nbd: clear reply.cookie when the reply is rejected
+   ...
+- supportconfig: Major update
+</comment>
+    <requestid>1395136</requestid>
+  </revision>
 </revisionlist>

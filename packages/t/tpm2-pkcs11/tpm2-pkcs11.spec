@@ -19,7 +19,7 @@
 %define so_ver  0
 %define pythons python3
 Name:           tpm2-pkcs11
-Version:        1.9.1
+Version:        1.10.1
 Release:        0
 Summary:        A PKCS#11 interface for TPM2 hardware
 License:        BSD-2-Clause
@@ -40,6 +40,8 @@ BuildRequires:  python3-base
 BuildRequires:  python3-cryptography
 BuildRequires:  python3-pip
 BuildRequires:  python3-pyasn1-modules
+# configure checks for the pkcs11 module since 1.10 (unless --disable-ptool-checks)
+BuildRequires:  python3-python-pkcs11
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-tpm2-pytss
 BuildRequires:  python3-wheel

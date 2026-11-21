@@ -1,23 +1,56 @@
 -------------------------------------------------------------------
+Mon Nov 16 18:32:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.6
+  * Use IDF header width when calculating image height.
+  * Hide internal symbols in the shared library.
+  * Check fclose() return value in ansilove_savefile().
+  * Handle PNG encoding failures in output().
+  * Fix image leaks in output() error paths.
+  
+-------------------------------------------------------------------
+Wed Nov 11 18:57:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.5
+  * Make the static library optional and rename its archive.
+  * Fix function name and return type in ansilove_clean(3)
+    synopsis.
+  * Fix const qualifiers in ansilove_loadfile(3) and
+    ansilove_savefile(3).
+  * Reset buffer pointers in ansilove_clean() to make the function
+    idempotent
+  
+-------------------------------------------------------------------
+Mon Nov  2 15:38:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.4
+  * Check if high_font_data_xbin is set rather than trusting the
+    xbin_flags data (CVE-2026-111144).
+  * Fix source files used by format fuzzers.
+  * Refactor the XBIN loader to use a common error label and fix
+    canvas memory leaks.
+  * Fix out-of-bounds reads in RLE decoder (CVE-2026-111143).
+
+-------------------------------------------------------------------
 Sun Oct 25 11:06:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.3
   * Allow overriding the definition of ANSILOVE_EXTERN.
-  - Provide a compatibility fallback implementation for strndup.
-  - Document support for PabloDraw 24-bit ANSI sequences.
-  - Fix line wrapping when the cursor exceeds the column limit in
+  * Provide a compatibility fallback implementation for strndup.
+  * Document support for PabloDraw 24-bit ANSI sequences.
+  * Fix line wrapping when the cursor exceeds the column limit in
     ANSI and PCBoard loaders.
-  - Advance TAB to the next tab stop in ANSI and PCBoard loaders.
-  - Fix black background with the blink bit in BinaryText files
+  * Advance TAB to the next tab stop in ANSI and PCBoard loaders.
+  * Fix black background with the blink bit in BinaryText files
     when iCE colors are disabled.
   
 -------------------------------------------------------------------
 Mon Mar 24 17:26:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.2
-  - Bump cmake_minimum_required to 3.5, to allow building with
+  * Bump cmake_minimum_required to 3.5, to allow building with
     CMake 4.0.
-  - Bump cmake_minimum_required to 3.10 to be more future proof.
+  * Bump cmake_minimum_required to 3.10 to be more future proof.
 
 -------------------------------------------------------------------
 Mon Jun  5 08:11:07 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>

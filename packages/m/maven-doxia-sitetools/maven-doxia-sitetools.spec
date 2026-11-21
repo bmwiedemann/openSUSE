@@ -39,7 +39,7 @@ BuildRequires:  maven-doxia-sink-api
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-resolver-api
-BuildRequires:  modello
+BuildRequires:  modello-ant-task
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-i18n
 BuildRequires:  plexus-interpolation

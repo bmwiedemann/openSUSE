@@ -480,6 +480,7 @@ Suggests:       ksystemlog
 # from data/COMMON-DESKTOP
 Recommends:     MozillaFirefox
 Recommends:     avahi
+Recommends:     opensuse-welcome-launcher
 Suggests:       marble
 Suggests:       kiosktool
 Suggests:       krename

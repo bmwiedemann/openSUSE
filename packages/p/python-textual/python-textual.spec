@@ -45,7 +45,6 @@ BuildRequires:  %{python_module pytest-textual-snapshot >= 1.1.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}
 BuildRequires:  %{python_module syrupy}
 BuildRequires:  %{python_module textual = %{version}}
-BuildRequires:  %{python_module tree-sitter}
 BuildRequires:  tree-sitter
 BuildRequires:  tree-sitter-python
 %endif

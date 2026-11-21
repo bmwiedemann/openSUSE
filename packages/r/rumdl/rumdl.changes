@@ -1,4 +1,136 @@
 -------------------------------------------------------------------
+Thu Nov 19 06:03:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.5:
+  * Changed
+    - The MSRV policy is now a rolling window: rumdl supports at
+      least the three most recent stable Rust releases, and raising
+      the MSRV within that window may happen in any release,
+      announced in the changelog. Previously an MSRV raise required
+      a minor release. Prebuilt binaries, PyPI wheels and npm
+      packages are unaffected.
+    - Raise the minimum supported Rust version to 1.98 and move the
+      MDX JavaScript parser to Oxc 0.159, so projects that embed
+      rumdl alongside current Oxc link one copy of the parser. All
+      dependencies, including the development and fuzz ones, are
+      upgraded to their latest releases.
+  * Fixed
+    - MD076 preserves loose-list spacing when blank-separated
+      blocks inside an item or required structural separators keep
+      the list loose, preventing repeated formatting changes when
+      used with Prettier (#989).
+    - MD013: leave lines exempted from other rules out of reflow
+      (#1007) (f0d9004)
+    - docs: readable prose measure and literal CLI flags on the
+      docs site (853837f)
+    - build: make the CLI allocators optional for library consumers
+      (#1004) (0f735c2)
+    - ci: refer dependency updates to the current MSRV policy
+      (9b554e4)
+    - ci: make dependency refresh complete and reviewable (a05042c)
+    - harden frontmatter handling and reference checks (3ac13d5)
+    - yaml: preserve scalar compatibility when parsing YAML
+      (fb181e6)
+    - MD013: make frontmatter configuration consistent (73aa9d9)
+  * Added
+    - MD029: add the explicit zero list style (b16df44)
+    - schema: describe rule options from the config structs (#1000)
+      (2237c7a)
+
+-------------------------------------------------------------------
+Sun Nov 15 09:04:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.4:
+  * Breaking Changes
+    - Rust library API: Removed unused helpers and deprecated
+      compatibility wrappers.
+      Use warning_to_code_actions instead of
+      warning_to_code_action. See the cleanup commit for the
+      complete list of removals.
+      https://github.com/rvben/rumdl/commit/a58150c893dbf93f368abfd4a690433fdaf2f4f9
+  * Added
+    - MD013: check and reflow frontmatter values (#998) (c40744c)
+    - schema: describe rule sections and option types (#997)
+      (da0faf7)
+  * Fixed
+    - MD013: measure frontmatter before Markdown exemptions
+      (45841ff)
+    - schema: preserve rule aliases and refresh generated options
+      (4a8e9ef)
+    - links: preserve wrapped reference definition metadata
+      (45d2fd9)
+    - MD034: recognize link definitions whose URL is on the next
+      line (#995) (2db197f)
+
+-------------------------------------------------------------------
+Wed Nov 11 06:04:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.3:
+  * Added
+    - MD088: add normalize-spaces option for non-ASCII spaces
+      (f80566c)
+    - MD013: keep two spaces after sentences when reflowing (#979)
+      (c89b5e6)
+    - MD022: add configurable nested heading spacing (#980)
+      (6387c03)
+    - MD012: report one warning per blank-line run with its exact
+      range (20c5727)
+    - MD051: name the closest existing anchor when a link fragment
+      is missing (ef3a0eb)
+  * Fixed
+    - deps: update pulldown-cmark to 0.13.6 (72dea1a)
+    - fmt: keep full analysis when a comment opener is left as text
+      (f1028e7)
+    - MD057: check the definitions links resolve to, as the parser
+      reads them (b2bc481)
+    - lsp: rename only the link fragments that name a changed
+      anchor (2ef8fbd)
+    - MD051: check fragments in reference definitions (b87ee91)
+    - workspace: build the cross-file link index from parsed links
+      (7918bc4)
+    - parser: recognize reference definitions only where the
+      Markdown parser does (fdb95f7)
+    - myst: treat targets, block breaks and comments as structural
+      lines (1db8e75)
+    - parser: lint a tab-indented list in a definition after
+      non-ASCII text (2c0ac8f)
+    - MD048: pair code fence edits in editor quick fixes (8e9e300)
+    - MD048: keep disabled code fences paired (fb4450e)
+    - MD013: preserve disabled lines during paragraph reflow
+      (e647d7e)
+    - MD046: count code blocks from the parser when detecting the
+      consistent style (2bd9549)
+    - MD052: bound example sections by parsed headings (ff8df5f)
+    - MD013: keep footnote code blocks verbatim during reflow
+      (7ca1c09)
+    - check-assets: match filenames at boundaries and read sources
+      in their configured flavor (f94260f)
+    - MD067: end the out-of-order range at the last definition line
+      (7b0a6a7)
+    - cli: skip mimalloc's process-exit cleanup on Windows
+      (7d09be6)
+    - cli: join the workspace index drop thread before the check
+      run returns (dd074bd)
+    - lsp: stop publishing empty diagnostics to pull-diagnostics
+      clients (82bc966)
+    - parser: treat bracket text without a reference definition as
+      literal text (56e6610)
+  * Performance
+    - discovery: probe each parent directory for a repository once
+      per walk (4c14771)
+    - output: serialize JSON warnings without building intermediate
+      values (a9a5f07)
+    - discovery: derive walked directory identities from their
+      parents (4a850d9)
+    - workspace: reuse the cached workspace index without copying
+      or rewriting it (b8f2e1c)
+    - discovery: resolve each walked file once (3618cd4)
+    - cache: build the code-block processor only for hits with tool
+      verdicts (0f05859)
+    - discovery: walk directories in parallel during file discovery
+      (ba13203)
+
+-------------------------------------------------------------------
 Thu Oct 29 06:15:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.2:

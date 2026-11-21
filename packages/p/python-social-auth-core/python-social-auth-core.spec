@@ -20,7 +20,7 @@
 %define modname social-core
 %{?sle15_python_module_pythons}
 Name:           python-social-auth-core
-Version:        5.2.0
+Version:        7.2.0
 Release:        0
 Summary:        Python Social Auth Core
 License:        BSD-3-Clause
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module PyJWT >= 2.13.0}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cryptography >= 46.0.7}
 BuildRequires:  %{python_module defusedxml >= 0.7.1}
-BuildRequires:  %{python_module oauthlib >= 3.3.1}
+BuildRequires:  %{python_module oauthlib >= 4.0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python3-openid >= 3.2.0}
 BuildRequires:  %{python_module requests >= 2.34.0}
@@ -54,11 +54,11 @@ BuildRequires:  %{python_module python3-saml >= 1.16.0}
 Requires:       python-PyJWT >= 2.13.0
 Requires:       python-cryptography >= 46.0.7
 Requires:       python-defusedxml >= 0.7.1
-Requires:       python-oauthlib >= 3.3.1
+Requires:       python-oauthlib >= 4.0.1
 Requires:       python-python3-openid >= 3.2.0
-Requires:       python-python3-saml >= 1.16.0
 Requires:       python-requests >= 2.34.0
 Requires:       python-requests-oauthlib >= 2.0.0
+Recommends:     python-python3-saml >= 1.16.0
 BuildArch:      noarch
 %python_subpackages
 

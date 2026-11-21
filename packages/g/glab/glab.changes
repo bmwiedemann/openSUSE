@@ -1,4 +1,342 @@
 -------------------------------------------------------------------
+Wed Nov 18 05:46:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.131.0:
+  * Features
+    - feat(api): say how long to wait when glab api gets a 429
+      (74182000)
+    - feat(attestation): verify Sigstore attestations from any
+      GitLab instance (03623b1e)
+    - feat(dependency-firewall): add job-level proxy for CI jobs
+      (eb63d2f6)
+    - feat(deploy-token): Add --instance to list for instance-wide
+      audits (ee6bda02)
+    - feat(df): reach registries through proxies in Maven and
+      Gradle settings (499c5236)
+    - feat(df): reach registries through proxies set in
+      package-manager config (f0ff7383)
+    - feat(govern): redact values under camelCase credential names
+      (95786324)
+    - feat(govern): sync Codex sessions from the Codex Stop hook
+      (6fe56080)
+    - feat(localization): add Argo Translation YAML (a3c12eca)
+    - feat(mcp): remove the experimental glab mcp command
+      (88f05f96)
+    - feat(minder): record the folder of each transcript entry
+      (49c593f7)
+    - feat(service-account): Add service-account token command
+      group (37f6c17d)
+    - feat(todo): show the group on group-scoped to-do items
+      (824d17e1)
+    - feat(token): store the rotated token after token rotate
+      --self (4dc88d8d)
+    - feat(work-items): add --status to work-items update
+      (2bc67717)
+  * Bug Fixes
+    - fix(api): redact tokens in GLAB_DEBUG_HTTP response dumps [1
+      of 6] (efc6eff3)
+    - fix(auth): check the OAuth client ID against the token
+      endpoint (e32ba4e5)
+    - fix(df): evaluate nuget coordinates against the firewall API
+      (c5641326)
+    - fix(df): present client_cert to an mTLS outbound proxy
+      (a61abd4a)
+    - fix(df): show the block reason where the package manager
+      fails (210bbd42)
+    - fix(df): trust ca_cert and package-manager CAs for glab df go
+      module downloads (dc123472)
+    - fix(df): trust the user's JVM truststore on Maven and Gradle
+      registry connections (7d5f75a3)
+    - fix(minder): keep audit event requests under GitLab's 5 MB
+      body limit (70a4c15b)
+    - fix(minder): report sessions started without a GitLab remote
+      (4d99be56)
+    - fix(mr): resolve the MR of a differently named local branch
+      via tracking (d3f8b51d)
+    - fix(mr-merge): improve message about no pipeline having been
+      run (55ab1ffa)
+    - fix(orbit): show install hint instead of stale help when
+      binary is missing (2b831dcf)
+    - fix(release): warn when notes and notes-file are both
+      provided (b9b75518)
+    - fix(update): skip post-upgrade banner in CI and when stderr
+      is not a terminal (91fdfe17)
+    - fix(utils): use per-parser goldmark extension constructors
+      (627fc1b6)
+    - fix(variable): support scoped group updates and deletes
+      (ce1ff90c)
+  * Documentation
+    - docs: Fix comment to make more concise and correct (3f54b8db)
+    - docs: add reviewer and maintainer onboarding guide (6f72f3f6)
+    - docs: update security release process to match current
+      practice (1a831787)
+  * Maintenance
+    - chore(duo): add review rule for keeping bundled skills in
+      sync (9d225409)
+    - chore(lint): ignore testdata fixtures in markdownlint config
+      (596c99b7)
+    - ci: gate release on unit and integration tests (948a7c1b)
+    - ci: key the Go cache on go.sum and .tool-versions (a60e9e3f)
+    - ci: skip tests:coverage when a test job fails (5f95db6a)
+    - refactor(commands): use cobra.CompletionWithDesc more where
+      appropriate (cc347c6d)
+  * Dependencies
+    - chore(deps): update Go to 1.27.4 (c789a57e)
+    - chore(deps): update module charm.land/lipgloss/v2 to v2.1.0
+      (c6669dac)
+    - chore(deps): update module github.com/avast/retry-go/v5 to
+      v5.1.1 (159c6676)
+    - chore(deps): update module github.com/docker/cli to
+      v29.9.3+incompatible (c97214a5)
+    - chore(deps): update module github.com/pelletier/go-toml/v2 to
+      v2.4.3 (e69a678e)
+    - chore(deps): update module github.com/tidwall/pretty to
+      v1.3.0 (9f012508)
+    - chore(deps): update module github.com/yuin/goldmark/v2 to
+      v2.1.15 (97c6342e)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.48.0 (835148ea)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.52.0 (b021d44f)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/protos/gen/go/gitlab/autoflow to
+      v0.1.15 (fee6d3ab)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/protos/gen/go/gitlab/autoflow to
+      v0.1.16 (ef735f81)
+    - chore(deps): update module golang.org/x/mod to v0.43.0
+      (4820a69f)
+    - chore(deps): update module golang.org/x/oauth2 to v0.38.0
+      (5853ca27)
+    - chore(deps): update module golang.org/x/sync to v0.25.0
+      (ec770b63)
+    - chore(deps): update module golang.org/x/sys to v0.50.0
+      (140a6f79)
+    - chore(deps): update module golang.org/x/sys to v0.50.0
+      (20766b5c)
+    - chore(deps): update module golang.org/x/term to v0.48.0
+      (1ea225d6)
+    - chore(deps): update module golang.org/x/text to v0.44.0
+      (6a7fbf70)
+  * Others
+    - revert: resolve the MR of a differently named local branch
+      via tracking (c92c8b77)
+    - test(autoflow): keep the saved token binding out of the real
+      temp dir (42a424a4)
+    - test: keep command tests out of the developer's glab and
+      Claude state [2 of 6] (c32c8918)
+
+-------------------------------------------------------------------
+Wed Nov 11 05:46:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.130.0:
+  * Features
+    - feat(autoflow): add autoflow workflow cancel (86ff6c5d)
+    - feat(autoflow): add autoflow workflow get (33ab6e14)
+    - feat(autoflow): add autoflow workflow send (8d27dd6b)
+    - feat(autoflow): add autoflow workflow start (beba5177)
+    - feat(autoflow): connect to a local AutoFlow service without
+      TLS (9d82a5af)
+    - feat(autoflow): default the namespace to the token's
+      organization (50a9780e)
+    - feat(autoflow): pass keyword arguments and channels to
+      workflow start (bd28f3eb)
+  * Maintenance
+    - chore(codeowners): add Relay maintainers as co-owners of the
+      AutoFlow code (b5cc7daa)
+    - refactor(api): make the token exchange audience a parameter
+      (a8eabb4d)
+    - refactor(cmdutils): add a flag that reads a secret from a
+      file or the environment (548abd5f)
+- Update to version 1.129.0:
+  * Features
+    - feat(api): accept PKCS#12 and DER client certificates
+      (a54dd94b)
+    - feat(commands): alias delete/set shell (non-)completion
+      (e953c5d2)
+    - feat(df): reach registries through the package manager's own
+      proxy (1d02b21b)
+    - feat(govern): redact common credential names such as
+      OPENAI_API_KEY and PGPASSWORD (0007f369)
+    - feat(govern): redact values assigned to credential-like names
+      in text (204bd639)
+    - feat(govern): use Duo Agent Platform key names in audit
+      events (7065aefd)
+    - feat(milestone): add --include-descendants to milestone list
+      (8a2d643a)
+    - feat(minder): rename glab govern to glab minder (31a5b6e1)
+    - feat(release): add --clobber and --skip-existing to download
+      (e343a4a5)
+    - feat(service-account): Add the create, update and delete
+      commands (9bee6cb5)
+    - feat(service-account): Add the list and get commands
+      (2200452e)
+    - feat(stack): make reorder and infer usable without a TTY
+      (a6a0d574)
+    - feat: add timelog command for time tracking (c66fd5fa)
+  * Bug Fixes
+    - fix(artifact-registry): correct the token exchange
+      prerequisite (a351dcb8)
+    - fix(auth): stop resending a dead OAuth refresh token
+      (93073794)
+    - fix(auth): validate OAuth client ID before browser step
+      (b3fbc759)
+    - fix(cmdutils): say how to set ssh_host when a remote is on a
+      subdomain of a logged-in host (704bba79)
+    - fix(config): honour GLAB_PROXY for the proxy key (8ff30e46)
+    - fix(config): share local config across git worktrees
+      (9f834e27)
+    - fix(df): check Maven packages fetched through a mirror
+      (f796daed)
+    - fix(df): check and forward plain-HTTP requests through the
+      proxy (49b84ef3)
+    - fix(help): show argument and environment variable sections
+      again (86659706)
+    - fix(issuable view): fetch all note pages when showing
+      comments (f49808d9)
+    - fix(note): keep a piped body when --attach is set (6bfeca37)
+  * Documentation
+    - docs(auth): say client_id is ignored on GitLab.com (4b8f993a)
+    - docs(mr): describe milestone filter as a title (445203da)
+    - docs(skills): expand glab-stack guidance for non-interactive
+      reorder and infer (a09b525e)
+    - docs: update TW assignments handbook link in docs metadata
+      (e840eebd)
+  * Maintenance
+    - chore(lint): let rumdl enforce MD055 and MD056 for doc tables
+      (2102ff87)
+    - chore(lint): run rumdl on root Markdown files (42fe3283)
+    - chore(localization): add CODEOWNERS entry for docs-locale
+      (8e536821)
+    - chore: update dependency firewall code owners (2fca7db5)
+    - ci(snap): fail edge release job on upload errors again
+      (1340f2d2)
+  * Dependencies
+    - chore(deps): update dependency markdownlint-cli2 to v0.24.0
+      (1737e133)
+    - chore(deps): update module charm.land/bubbletea/v2 to v2.1.1
+      (a904b073)
+    - chore(deps): update module github.com/avast/retry-go/v5 to
+      v5.0.1 (8406cd16)
+    - chore(deps): update module github.com/itchyny/gojq to
+      v0.12.20 (93c35dff)
+    - chore(deps): update module github.com/yuin/goldmark to v2
+      (4167006b)
+    - chore(deps): update module github.com/yuin/goldmark/v2 to
+      v2.1.11 (f9a08938)
+    - chore(deps): update module github.com/yuin/goldmark/v2 to
+      v2.1.13 (0c4586cd)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.43.0 (addf9b9a)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.46.0 (00478f61)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.46.1 (f2623abf)
+    - chore(deps): update module k8s.io/apimachinery to v0.37.2
+      (7ae55bab)
+    - chore(deps): update module k8s.io/client-go to v0.37.2
+      (4ec064d5)
+  * Others
+    - test(api): pin the Duo Agent Platform auth contract
+      (7daafce0)
+    - test(binarymgr): allow architecture-independent test fixtures
+      (c01ab4c4)
+    - test(git): pin the return to the including block per included
+      file (6962821a)
+    - test: isolate unit tests from CI and glab environment
+      variables (58b05c32)
+
+-------------------------------------------------------------------
+Wed Nov 04 09:09:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.128.0:
+  * Features
+    - feat(deploy-token): Add the delete command (171edc5a)
+    - feat(df): fetch Go modules through the user's own GOPROXY
+      (a8b66b25)
+    - feat(df): support registries behind an upstream proxy
+      (199f034a)
+    - feat(govern): redact common secret formats before uploading
+      sessions (e79373a1)
+  * Bug Fixes
+    - fix(api): offer only HTTP/1.1 to HTTPS proxies (2ca9e118)
+    - fix(config): keep glab-managed keys in the global config
+      (289f000f)
+    - fix(df): warn once per registry when a registry request fails
+      (02d9f1ce)
+    - fix(git): keep the first HostName for an SSH host alias
+      (5ce7dc9b)
+    - fix(govern): don't skip a Claude Code transcript entry still
+      being written (055141e1)
+    - fix(markdown): preserve hard line breaks (dc2ea409)
+    - fix(project): show the real total in the contributors list
+      header (a7bb4af9)
+    - fix(release): preserve description and name when omitted on
+      update (6a3bcf71)
+    - fix(user): show the real total in the user events header
+      (0de5b6f8)
+  * Documentation
+    - docs(skills): use --description-file and stdin instead of
+      nested heredocs (ca3e4aea)
+  * Maintenance
+    - refactor(packages): deprecate the rm alias of delete in
+      favour of del (9f7f7a3e)
+  * Dependencies
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.42.0 (2350dad6)
+- Update to version 1.127.0:
+  * Features
+    - feat(commands): config shell completion (b0a2a85c)
+    - feat(commands): ssh-key shell completion (29d7a05c)
+    - feat(credential-helper): add error code and host to error
+      responses (b846e1ee)
+    - feat(deploy-token): Add the create command (d0bb4dc1)
+    - feat(deploy-token): Add the get command (4df8498a)
+    - feat(duo): support Duo CLI v10 auto-updates (735c92fe)
+    - feat(govern): choose which agents glab govern setup sets up
+      (6488ba9d)
+    - feat(issue): read note body from piped stdin (2ae77b41)
+    - feat(work-items): add --parent flag to create and update
+      (557881b4)
+    - feat(work-items): add date filters to list (0d65c92c)
+    - feat: added the Software Factory configuration file
+      (3c4a9a4f)
+  * Bug Fixes
+    - fix(mr issue): limit concurrent lookups in bulk commands
+      (20807603)
+    - fix(mr): show the real total in the mr issues header
+      (d0d530cc)
+    - fix(release): report a failed close and remove a partial
+      asset (02fd67e6)
+    - fix: aligned non-TTY output without being truncated
+      (a5ae8a5a)
+  * Documentation
+    - docs(auth): correct OAuth client ID requirements for the Git
+      credential helper (6292eb1b)
+    - docs(auth): recommend glab as Git credential helper on
+      OAuth-only instances (88a9afeb)
+  * Maintenance
+    - chore(lint): report every issue instead of a truncated sample
+      (0f19cc0b)
+    - chore: let gitlab-bot approve docs changes (08ffbf67)
+  * Dependencies
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.39.2 (acd63fe4)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.40.0 (2e38182b)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.40.2 (f48ea2bc)
+    - chore(deps): update module go.yaml.in/yaml/v3 to v3.0.6
+      (7b012455)
+  * Others
+    - perf(mr view): skip fields and approval state the output
+      doesn't use (661eb14a)
+    - test(govern): widen timing margin in OpenCode child process
+      test (3206215f)
+    - test(telemetry): cover a leading repo override in command
+      attribution (2ba3f40d)
+
+-------------------------------------------------------------------
 Fri Oct 30 05:55:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.126.0:

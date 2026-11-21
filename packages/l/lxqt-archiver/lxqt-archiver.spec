@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-archiver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lxqt-archiver
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        LXQt File Archiver
 License:        GPL-2.0-or-later
@@ -26,20 +26,19 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
 BuildRequires:  cmake(fm-qt6)
 BuildRequires:  cmake(lxqt2-build-tools)
 
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libexif)
-BuildRequires:  pkgconfig(libmenu-cache)
 
 Recommends:     %{name}-lang = %{version}-%{release}
 Requires:       bsdtar

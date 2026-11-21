@@ -108,6 +108,8 @@ Patch0:         sbcl-1.1.2-install.patch
 Patch1:         remove-qemu-workarounds.patch
 # PATCH-FIX-UPSTREAM Use SOURCE_DATE_EPOCH for the manual generation date
 Patch2:         sb-manual-source-date-epoch.patch
+# PATCH-FIX-UPSTREAM https://bugs.launchpad.net/sbcl/+bug/2173766 LOGCOUNT without POPCNT used the wrong register since 2.6.8
+Patch3:         sbcl-x86-64-logcount-register.patch
 ExcludeArch:    s390x
 Requires:       sbcl-bin
 

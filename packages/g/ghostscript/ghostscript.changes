@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 10 11:51:40 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Ghostscript version 10.08.0 also fixes the following
+  two security issue (cf. the below entry dated "Tue Oct 13"):
+- CVE-2026-125396
+  "Type 1 font-loader `.forceput` save/restore UAF yields native
+   read/write and controlled dispatch/RCE under `-dSAFER`"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709684
+  (bsc#1289822)
+- CVE-2026-112922
+  "Out-of-bounds read in ghostscript shade_next_color
+   via integer overflow of indexed color index in mesh shading"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709572
+  (bsc#1288956)
+
+-------------------------------------------------------------------
+Wed Nov  4 10:41:21 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Ghostscript version 10.08.0 also fixes the following
+  security issue (cf. the below entry dated "Tue Oct 13"):
+- CVE-2026-110133
+  "Heap buffer overflow in Ghostscript TrueType outliner
+   due to nPointsTotal integer underflow during retry rollback"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709573
+  (bsc#1288957)
+
+-------------------------------------------------------------------
 Tue Oct 27 12:19:35 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Build --without-local-brotli to not use the brotli sources

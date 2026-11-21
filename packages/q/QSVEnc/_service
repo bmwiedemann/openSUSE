@@ -3,7 +3,7 @@
     <param name="url">https://github.com/rigaya/QSVEnc.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">8.30</param>
+    <param name="revision">8.38</param>
     <param name="filename">QSVEnc</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v([^\+]*)(?:\+0)?((?:\+[1-9][0-9]*)?)+\1\2</param>

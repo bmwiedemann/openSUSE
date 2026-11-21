@@ -1,7 +1,7 @@
 #
 # spec file for package tpm2.0-abrmd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_with selinux
 %endif
 Name:           tpm2.0-abrmd
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -38,12 +38,11 @@ Group:          Productivity/Security
 URL:            https://github.com/tpm2-software/tpm2-abrmd
 Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz
 Source1:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{version}/tpm2-abrmd-%{version}.tar.gz.asc
-# curl https://github.com/williamcroberts.gpg > tpm2-abrmd.keyring
+# curl https://github.com/flihp.gpg > tpm2-abrmd.keyring
 Source2:        tpm2-abrmd.keyring
 Source3:        tpm2.0-abrmd.rpmlintrc
 Source4:        README.SUSE
 Patch0:         harden_tpm2-abrmd.service.patch
-Patch1:         1229047-fix-bin-sbin-selinux.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  checkpolicy

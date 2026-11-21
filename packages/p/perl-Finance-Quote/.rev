@@ -608,4 +608,23 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
   	* Added CurrencyRates/UniRate.pm.</comment>
     <requestid>1378663</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c7448b7f1e5e7d3f79eaf22f9aef3fec</srcmd5>
+    <version>1.720.0</version>
+    <time>1793990629</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.720.0 (1.72)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+  1.72      2026-10-25 11:15:50-07:00 America/Los_Angeles
+  	* Tradegate.pm, Union.pm, XETRA.pm: Added &quot;germany&quot; method to methodinfo hash.
+  	* Sinvestor.pm: Added &quot;germany&quot; method to methodinfo hash.
+  	* OnVista.pm: Added &quot;germany&quot; method to methodinfo hash.
+  	* Comdirect.pm: Added &quot;germany&quot; method, modified parsing for ISIN and WKN values.
+  	* Finanzpartner.pm: Added &quot;germany&quot; method to methodinfo hash.
+  	* Deka.pm: Added user-agent to request. Added &quot;germany&quot; method to methodinfo hash.
+  	* Consorsbank.pm: Added &quot;germany&quot; label. Fixed name for &quot;Amundi CAC 40 Daily (-2x) Inv ETF Acc&quot; in t/consorsbank.t.
+  	* TreasuryDirect.pm: fixed; every CUSIP returned &quot;Parse error&quot;. Note that bid and ask were inverted and have been swapped, and that price now has six decimal places rather than two.
+  	* Added NPSNAV.pm for India's National Pension Scheme (NPS) funds.</comment>
+    <requestid>1395145</requestid>
+  </revision>
 </revisionlist>

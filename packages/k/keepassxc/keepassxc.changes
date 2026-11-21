@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov  3 15:01:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.8.0:
+  - New features: remote database synchronization and import using
+    external tools, configurable keyboard shortcuts, SSH Agent key
+    generation (RSA, ECDSA, Ed25519), Wayland Auto-Type via XDG
+    Desktop Portals, Quick Unlock using Polkit.
+  - Migrate to Qt 6.
+  - Security fixes: use-after-free when importing crafted KDB files
+    (CVE-2026-69150), entry reference injection and out-of-bounds
+    writes in browser integration, integer overflow in the legacy
+    KDB importer, protected attributes exposed via Secret Service.
+  - Auto-Type plugins are now part of the main binary.
+  - Application state is stored in XDG_STATE_HOME.
+  - Full changelog: https://github.com/keepassxreboot/keepassxc/blob/2.8.0/CHANGELOG.md
+- Build against Qt 6 (drop Qt5 and Qt5X11Extras), enable Wayland
+  Auto-Type (xkbcommon) and Polkit Quick Unlock (keyutils).
+- Build with gcc13 on Leap 15 (C++20 required).
+- Port Debian/Ubuntu packaging (debian.tar.xz, keepassxc.dsc) to
+  Qt 6 and drop the stale libsodium/ykpers/yubikey/xvfb deps.
+- Use pkgconfig() deps shared by openSUSE and Fedora, drop
+  libargon2, private Qt headers, old SLE conditionals and obsolete
+  scriptlets.
+- Package the Polkit Quick Unlock policy.
+- Refresh the signing keyring (previous one had expired).
+
+-------------------------------------------------------------------
 Tue Mar 10 19:05:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.7.12:

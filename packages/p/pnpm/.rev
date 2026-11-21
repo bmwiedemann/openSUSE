@@ -1363,4 +1363,41 @@ Binary file pnpm-11.5.2.tgz (revision 57) deleted</comment>
       format documented for the setting. Existing per-version</comment>
     <requestid>1363544</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>39246bd67b28147daf93fdb34e5325b2</srcmd5>
+    <version>11.28.11</version>
+    <time>1794090735</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 11.28.11:
+  pnpm 11.28.11 fixes frozen installs with
+  excludeLinksFromLockfile, pnpm link in workspaces, pnpm deploy
+  with dangling symlinks, and verifyDepsBeforeRun starting needless
+  installs.
+  * Patch Changes
+    - Installing packages
+      - pnpm deploy now keeps a symlink in the project whose target
+        is missing from the source, such as a link into a
+        node_modules directory that was removed after the build.
+        Deploy used to fail with ENOENT on such a link #17571.
+      - A package with bundledDependencies and a build script now
+        keeps its bundled dependencies when it is restored from the
+        side-effects cache #17523.
+      - pnpm install now links the runtime that an earlier pnpm
+        install --no-runtime skipped #17542.
+      - Commands of a package whose bin paths contain excess parent
+        directory segments, such as ../dist/cli.js, are no longer
+        missing. Such paths now resolve inside the package #17586.
+      - Generated POSIX shell shims now quote their paths, so shell
+        special characters in a path stay literal.
+      - A repeat pnpm install now rewrites the bin shims after
+        extendNodePath changes. Before, it reported &quot;Already up to
+        date&quot; and the shims kept the NODE_PATH of the previous
+        setting.
+    - Lockfile and resolution
+      - pnpm install --frozen-lockfile now accepts the lockfile it
+        wrote with excludeLinksFromLockfile and
+        linkWorkspacePackages on, when a project depends on a
+        workspace package through a plain version range or a</comment>
+    <requestid>1395937</requestid>
+  </revision>
 </revisionlist>

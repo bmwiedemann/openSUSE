@@ -19,7 +19,7 @@
 %global pkg_name skylighting-format-blaze-html
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.1.2.2
 Release:        0
 Summary:        HTML formatter for skylighting syntax highlighting library
 License:        BSD-3-Clause

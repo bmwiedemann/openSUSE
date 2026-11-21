@@ -17,8 +17,8 @@
 
 
 %global major 26
-%global minor 3
-%global micro 27
+%global minor 5
+%global micro 5
 Name:           ecl
 Version:        %{major}.%{minor}.%{micro}
 Release:        0
@@ -51,19 +51,18 @@ described in the X3J13 Ansi specification, featuring CLOS (Common-Lisp Object
 System), conditions, loops, etc, plus a translator to C, which can produce
 standalone executables.
 
-ECL supports the operating systems Linux, FreeBSD, NetBSD, OpenBSD, OS X,
-Solaris and Windows, running on top of the Intel, Sparc, Alpha, PowerPC and ARM
-processors.
-
 %package -n lib%{name}%{major}_%{minor}
-Summary:        Embeddable Common-Lisp -- shared library
+Summary:        Embeddable Common-Lisp
 Group:          System/Libraries
 
 %description -n lib%{name}%{major}_%{minor}
-This package contains the ECL shared library.
+ECL (Embeddable Common-Lisp) is an interpreter of the Common-Lisp language as
+described in the X3J13 Ansi specification, featuring CLOS (Common-Lisp Object
+System), conditions, loops, etc, plus a translator to C, which can produce
+standalone executables.
 
 %package devel
-Summary:        Embeddable Common-Lisp -- development files
+Summary:        Header files for the Embeddable Common-Lisp library
 Group:          Development/Libraries/C and C++
 Requires:       lib%{name}%{major}_%{minor} = %{version}
 %if 0%{?suse_version}
@@ -77,14 +76,10 @@ described in the X3J13 Ansi specification, featuring CLOS (Common-Lisp Object
 System), conditions, loops, etc, plus a translator to C, which can produce
 standalone executables.
 
-ECL supports the operating systems Linux, FreeBSD, NetBSD, OpenBSD, OS X,
-Solaris and Windows, running on top of the Intel, Sparc, Alpha, PowerPC and ARM
-processors.
-
 This package contains development files for ECL.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export TEX='tex -recorder'
@@ -94,9 +89,10 @@ export TEXI2DVI_USE_RECORDER=yes
 %define _lto_cflags %{nil}
 %endif
 
+std=""
 %if 0%{?suse_version} > 1600
 # needed for GCC 15
-CFLAGS="-std=gnu17" \
+std="-std=gnu17"
 %endif
 
 %configure \
@@ -108,8 +104,7 @@ CFLAGS="-std=gnu17" \
 	--enable-libatomic=system \
 	--with-dffi \
 	--with-defsystem \
-	CFLAGS="$CFLAGS %{optflags} -Wno-unused -Wno-return-type -Wno-unknown-pragmas" \
-	%{nil}
+	CFLAGS="%{optflags} $std -Wno-unused -Wno-return-type -Wno-unknown-pragmas"
 
 %make_build
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400
@@ -120,11 +115,11 @@ sed -i -e '/@pxref{si_safe_eval}/ d' src/doc/manual/standards/evaluation.txi
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/%{name}-%{version}/{TAGS,*.a}
-rm -f %{buildroot}%{_infodir}/dir
+rm -f %{buildroot}%{_libdir}/%{name}-%{version}/{TAGS,*.a} \
+	%{buildroot}%{_infodir}/dir \
+	%{buildroot}%{_libdir}/lib%{name}.so.%{major}
 
-%post -n lib%{name}%{major}_%{minor} -p /sbin/ldconfig
-%postun -n lib%{name}%{major}_%{minor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{major}_%{minor}
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info.gz

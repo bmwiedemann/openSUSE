@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  2 22:45:26 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.9.0
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-9-0-2026-11-02
+
+-------------------------------------------------------------------
 Thu Oct 22 17:03:18 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Emit UNDEFINED event when undefining source after migration

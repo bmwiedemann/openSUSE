@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Nov 11 10:55:17 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 6.0.0:
+  * enhance: make shared tool cache safe at any capacity (#1401)
+  * fix!: remove the dbfs log workaround and require Gitea 1.26.2 (#1395)
+  * refactor!: remove the builtin actions (#1407)
+  * fix: stop a stalled docker daemon from hanging jobs and the e2e suite (#1404)
+  * fix: re-detect the cache address per job and prefer IPv4 (#1398)
+  * enhance: add ubuntu-26.04 to the default labels (#1396)
+  * fix: empty root-owned bind workspaces for non-root runners (#1399)
+  * enhance: improve hashFiles coercion and log grouping (#1394)
+  * refactor(container): stream copies into the job and archives out of the host (#1340)
+  * feat: port the path patterns of @actions/glob (#1342)
+  * fix: make container.sweep opt-in (#1389)
+  * fix: prevent masking gaps in workflow command logs (#1384)
+  * fix: upgrade Alpine packages in the runner images (#1388)
+
+-------------------------------------------------------------------
+Thu Nov 05 09:39:43 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.4.0:
+  * enhance: trust a private CA with runner.ca_file and add container.volumes (#1366)
+  * chore(deps): update go.yaml.in/yaml/v4 to v4.0.0 (#1381)
+  * fix(cache): stop the cache server from running its volume out of space (#1377)
+  * fix: give each Dockerfile action image its own ID (#1372)
+  * fix: give git-lfs the checkout token once (#1371)
+
+-------------------------------------------------------------------
 Mon Nov  2 13:11:40 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 5.3.0:

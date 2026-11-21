@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Nov  6 11:38:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.1.0 (7.001)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+
+    7.001
+        * Use protocol v7 by default, with portable little-endian IEEE
+          floating-point storage. Extended values use IEEE binary128 by
+          default, including on long-double Perl builds.
+        * Add float_type (std/native) for explicit native long-double
+          output. Declare the native format, byte order and storage size
+          once per document, and clear known padding. Unidentified layouts
+          support explicitly trusted same-build round trips.
+        * Preserve protocol v1-v6 numeric output behavior and keep v7 header
+          floats portable. Upgrade Decoder to version 7 before emitting v7
+          packets.
+        * Include protocol v6 support for v-strings, negative-integer
+          encoding and keyed SipHash checksums. Add checksum keys, modes,
+          policies, shared and module-specific defaults, and
+          prepare_checksum_key().
+        * Preserve regexp character-set modifiers, /n and /xx, and improve
+          unsupported-type diagnostics.
+        * Preserve unsigned tied integer values on older Perls and
+          strengthen callback lifetime handling.
+        * Fix bundled Snappy builds on Haiku and hobodecoder compatibility
+          with BusyBox od. Improve older-Perl and optional-dependency
+          handling.
+        * Extend hobodecoder and stored corpus coverage for portable and
+          native floats. Include real Fedora s390x producer captures for
+          regression tests. Thanks to pghmcfc for the report and corpus
+          (issue #337).
+        * Ship the shared SECURITY policy and clarify security, checksum and
+          floating-point interoperability documentation.
+
+    6.003
+        * Fix bundled Snappy builds on Haiku, which has no byteswap.h.
+        * Use portable od arguments in hobodecoder for BusyBox systems and
+          report signal termination correctly in checksum tests.
+
+    6.002
+        * Preserve unsigned tied integer values on older Perls instead of
+          converting their private cached values through a signed integer.
+        * Keep sorted-key wire expectations independent of Perl's temporary
+          hash reference counts.
+        * Report the actual missing dependency when skipping t/400_evil.t.
+        * Skip only hobodecoder decompression checks when its optional
+          Compress::Zlib dependency is unavailable, and show child errors.
+
+    6.001
+        * Add protocol v6 support for VSTRING extension tags, NEG_VARINT, and
+          keyed SipHash checksums. Upgrade Decoder to version 6 throughout the
+          fleet before emitting v6 packets.
+        * Add checksum_key, checksum_key_v1/v2/v3, checksum_mode, and
+          checksum_policy options, shared and Encoder-specific defaults, and
+          prepare_checksum_key().
+        * Preserve regexp character set modifiers, /n, and /xx. Upgrade Decoder
+          before emitting these modifiers.
+        * Ship a SECURITY policy in release archives and improve the protocol
+          specification, diagnostics, build and compatibility tests, and
+          general robustness.
+        * Reported fixes: regexp modifiers
+          (https://github.com/Sereal/Sereal/issues/180 and
+          https://github.com/Sereal/Sereal/issues/262), and unsupported-type
+          diagnostics (https://github.com/Sereal/Sereal/issues/191).
+          Related work: specification
+          (https://github.com/Sereal/Sereal/issues/218) and packaged security
+          policy (https://github.com/Sereal/Sereal/issues/305).
+        * Thanks to Matt Koscica and Oz Kaiser (@tatikoma), with assistance from
+          Claude Code and Codex.
+
+    5.011
+        * Robustness fixes. Thanks to Steffen Mueller and kumar-Prakash07.
+        * Preserve zstd deprecation warnings when building with IBM XL C on AIX.
+        * Raise the minimum supported Perl version to 5.14.
+        * Fix the Sereal::Decoder prerequisite version in generated package metadata.
+          See https://github.com/Sereal/Sereal/issues/317
+
+-------------------------------------------------------------------
 Thu Aug  6 07:52:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.10.0 (5.010)

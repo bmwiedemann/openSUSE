@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 13:48:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (CVE-2026-114366)
+  * CVE-2026-114366.patch
+
+-------------------------------------------------------------------
 Wed Sep 30 16:15:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.12.0

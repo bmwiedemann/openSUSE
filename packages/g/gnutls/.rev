@@ -1865,4 +1865,12 @@ bsc#901857 (forwarded request 493933 from AndreasStieger)</comment>
     <comment>1</comment>
     <requestid>1393860</requestid>
   </revision>
+  <revision rev="173" vrev="5">
+    <srcmd5>ad8030470e052dc7c6a17c440c27cf71</srcmd5>
+    <version>3.8.13</version>
+    <time>1795182210</time>
+    <user>anag_factory</user>
+    <comment>Fix CVE-2026-88648 and CVE-2026-95184.</comment>
+    <requestid>1398161</requestid>
+  </revision>
 </revisionlist>

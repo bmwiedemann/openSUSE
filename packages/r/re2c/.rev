@@ -450,4 +450,12 @@
     <comment>1</comment>
     <requestid>1375170</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>2abd864951652f527a0bdac97a9ee635</srcmd5>
+    <version>4.6</version>
+    <time>1794236549</time>
+    <user>anag_factory</user>
+    <comment>fix CVE-2026-2903</comment>
+    <requestid>1395993</requestid>
+  </revision>
 </revisionlist>

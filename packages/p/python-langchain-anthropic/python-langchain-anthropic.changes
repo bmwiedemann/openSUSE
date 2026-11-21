@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Nov  7 12:43:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.10:
+  * Require langchain-core >= 1.7.5 for refusal handling
+  * Support standardized refusal content blocks: skip refusal
+    input blocks (the Messages API has none), propagate
+    stop_reason refusal metadata, and raise ModelRefusalError on
+    refused structured output
+  * Fix streamed usage metadata handling when stream_usage is off
+
+-------------------------------------------------------------------
+Tue Nov  3 18:48:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.9:
+  * 1.7.8: strip index from compaction blocks; handle null
+    cache-creation token counts
+  * 1.7.9: report streamed content-block tokens to callbacks
+  * Raise langchain-core floor to >= 1.7.3 per upstream metadata
+
+-------------------------------------------------------------------
 Thu Oct 29 12:19:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.7:

@@ -402,6 +402,14 @@ Patch:          0001-bash-completion-add-_init_completion-marker.patch
 Patch:          0001-linux-allocate-EFI-kernel-buffer-as-GRUB_EFI_LOADER_.patch
 Patch:          0001-insmod-ignore-efi_uga-on-EFI.patch
 Patch:          0001-Skip-in-place-verifier-for-the-synthesized-initrd.patch
+Patch:          0001-commands-crypttab-harden-cryptokey-update-path.patch
+Patch:          0001-linux-fix-insert_dir-OOM-error-return.patch
+Patch:          0001-nvme-guard-PRP-list-DMA-addresses-above-4-GiB.patch
+Patch:          0001-blsuki-harden-LoaderEntries-size-checks-in-set_bli_l.patch
+Patch:          0002-blsuki-Refactor-set_bli_loader_entries-error-handlin.patch
+Patch:          0003-blsuki-clean-up-UTF-16-size-handling-in-LoaderEntrie.patch
+Patch:          0004-blsuki-Cleanup-indentation-without-code-change.patch
+Patch:          0001-configure.ac-bump-SBAT-for-September-2026-CVE.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -431,17 +439,7 @@ Recommends:     memtest86+
 %endif
 %endif
 
-%global sbat_generation_grub %(tar -xOf %{SOURCE0} grub-%{version}/configure.ac | sed -n '/^GLOBAL_SBAT_LEVEL=/s///p')
-
-%ifarch %{efi}
-%if "%{?sbat_generation_grub}" == ""
-%{error: GLOBAL_SBAT_LEVEL is not found in %{SOURCE0}}
-%endif
-%endif
-
-%if "%{platform}" == "ieee1275" && "%{?sbat_generation_grub}" == ""
-%{error: GLOBAL_SBAT_LEVEL is not found in %{SOURCE0}}
-%endif
+%global sbat_generation_grub 7
 
 %if 0%{?suse_version} >= 1600
 # Always requires a default cpu-platform package
@@ -718,6 +716,20 @@ swap partition while resuming.
 %autosetup -p1 -n grub-%{version}
 
 %build
+
+%ifarch %{efi} ppc64 ppc64le
+# Verify that the upstream SBAT generation embedded in an EFI image matches
+# the expected value. Usage: check_sbat_generation <image> <generation>
+check_sbat_generation() {
+    local img="$1" expected="$2" found
+    found=$(strings -a "$img" | sed -n 's/^grub,\([0-9]\+\),.*/\1/p' | head -n1)
+    if [ "$found" != "$expected" ]; then
+        echo "ERROR: $img SBAT generation ($found) != $expected"
+        exit 1
+    fi
+}
+%endif
+
 # collect evidence to debug spurious build failure on SLE15
 ulimit -a
 # patches above may update the timestamp of grub.texi
@@ -853,6 +865,8 @@ mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 ./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat=} \
 		-d grub-core ${GRUB_MODULES}
 
+check_sbat_generation grub.efi %{sbat_generation_grub}
+
 %if 0%{?suse_version} >= 1600
 rm memdisk.sqsh
 
@@ -899,6 +913,8 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
     fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter linux bli regexp loadenv test echo true sleep efifwsetup efibootnext
+
+check_sbat_generation grubbls.efi %{sbat_generation_grub}
 %endif
 
 %ifarch x86_64 aarch64
@@ -1083,6 +1099,8 @@ EOF
             -c %{platform}-config -s "" --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
         ls -l "grub.elf"
         # truncate -s -%brp_pesign_reservation "grub.elf"
+
+        check_sbat_generation grub.elf %{sbat_generation_grub}
 fi
 %endif
 cd ..

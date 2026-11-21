@@ -242,4 +242,44 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update zpaqfranz to 65.16.</comment>
     <requestid>1394113</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>96326330e22b3b5a57c6331afa094671</srcmd5>
+    <version>65.17</version>
+    <time>1793817960</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.17</comment>
+    <requestid>1394844</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b4065433b4360e3220d0ae98c5cba89b</srcmd5>
+    <version>65.18</version>
+    <time>1794162132</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 65.18.</comment>
+    <requestid>1396123</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>689b6960764893b9caba4a2e540f71b1</srcmd5>
+    <version>65.19</version>
+    <time>1794318008</time>
+    <user>anag_factory</user>
+    <comment>Update to 65.19</comment>
+    <requestid>1396392</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1976ff557d767432695cdaa06316dd21</srcmd5>
+    <version>65.20</version>
+    <time>1794591241</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.20: archive rollback on full disk, crash and hang fixes, Ferguson-Twofish license dropped.</comment>
+    <requestid>1397190</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>632a9bc635c239f68aa18d9eb28c836d</srcmd5>
+    <version>65.21</version>
+    <time>1795103751</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.21: JSON output and version command, x date/size filters, -ifexist file, -timer</comment>
+    <requestid>1398610</requestid>
+  </revision>
 </revisionlist>

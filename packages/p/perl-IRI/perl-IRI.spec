@@ -18,10 +18,10 @@
 
 %define cpan_name IRI
 Name:           perl-IRI
-Version:        0.14.0
+Version:        0.160.0
 Release:        0
-# 0.014 -> normalize -> 0.14.0
-%define cpan_version 0.014
+# 0.16 -> normalize -> 0.160.0
+%define cpan_version 0.16
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Internationalized Resource Identifiers
 URL:            https://metacpan.org/release/%{cpan_name}

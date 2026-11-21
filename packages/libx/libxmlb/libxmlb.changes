@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:32:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.3.30:
+  * New Features:
+    + Add support for the XPath normalize-space() function
+    + Increase the maximum number of node attributes and tokens
+    + Record in the silo if the node was added as external info
+  * Bugfixes:
+    + Convert xml:lang tags to POSIX form when required
+    + Fix OR branches still being evaluated after the limit is reached
+    + Fix XbLzmaDecompressor reset leaving the stream unusable
+    + Fix a bound value losing its level inside a tuple
+    + Fix a crash when a query value was never bound
+    + Fix a crash when searching one silo from several threads
+    + Fix comma-separated function arguments being parsed in reverse
+    + Fix escaped tab and newline not decoding in query parsing
+    + Fix literal backslashes not surviving the query escape round-trip
+    + Fix mixed-type comparisons swapping their operands
+    + Fix parser depth leaking from one failed source to the next
+    + Fix unbound query variables silently comparing against zero
+    + Fix unfinished predicates being ignored at the start of a section
+    + Fix xb_query_context_copy() silently dropping bindings after a gap
+    + Fix xb_silo_stem() returning the unstemmed string on equal length
+    + Fix xb_value_bindings_copy() aborting when a slot is unbound
+
+-------------------------------------------------------------------
 Mon Aug 17 04:59:13 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add libxmlb-tests subpackage with installed tests

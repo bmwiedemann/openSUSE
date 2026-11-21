@@ -106,7 +106,7 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.7.0
+Version:        9.7.1
 Release:        0
 %define series  9.7
 %define libver  9_7

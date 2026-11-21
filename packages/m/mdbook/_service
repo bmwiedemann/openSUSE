@@ -1,13 +1,10 @@
 <services>
   <service name="cargo_vendor" mode="manual">
     <param name="url">https://github.com/rust-lang/mdBook</param>
-    <param name="revision">v0.4.49</param>
+    <param name="revision">v0.5.4</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
-    <param name="changesgenerate">true</param>
-    <param name="changesauthor">Soc Virnyl Estela</param>
-    <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
-    <param name="changesoutfile">mdbook.changes</param>
+    <param name="changesgenerate">false</param>
     <param name="update">true</param>
   </service>
 </services>

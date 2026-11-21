@@ -18,7 +18,7 @@
 
 
 Name:           ansilove
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        ANSI and ASCII art to PNG converter
 License:        BSD-2-Clause

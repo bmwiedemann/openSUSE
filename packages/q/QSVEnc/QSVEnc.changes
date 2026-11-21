@@ -1,4 +1,116 @@
 -------------------------------------------------------------------
+Tue Nov 17 13:18:21 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 8.38.0:
+  * Add preview of VPP filters, (With additionally included
+    HWEncVppPreview).
+  * Add --seek support for avi/avs/vpy input.
+  * Improve --vpp-colorspace VUI output.
+  * Fix error when multiple --vpp-colorspace filters are chained.
+  * Fix --vpp-colorspace failing with no path when range and matrix
+    (or similar) change in the same stage.
+  * --vpp-afs and --vpp-kfm mode=24 count output timestamps from
+    the first input frame.
+  * Fix --vpp-afs timestamp drift with --avsync vfr and a custom
+    --timebase.
+  * Fix GPU counter thread shutdown.
+- Changes from version 8.37.0:
+  * Fix hw decode error on Sandy Bridge (and probably Ivy Bridge)
+    when using --adapt-resolution.
+- Changes from version 8.36.0:
+  * Fix old frames mixed in when using --vpp-kfm.
+  * Speed up --vpp-kfm.
+  * Run single-frame, multi-frame, and mask pre/post processing of
+    --vpp-onnx on the OpenCL path.
+  * Add --vpp-vhs-restore. (rigaya/HWEnc-onnx-models#1).
+- Changes from version 8.35.0:
+  * Speed up reconstruction in --vpp-kfm and --vpp-rtgmc.
+  * Speed up --vpp-kfm when ucf=on.
+  * Reduce memory use of --vpp-kfm and --vpp-rtgmc.
+  * Reduce CPU usage of --opencl-task-threads 2.
+  * Fix encode failure on Linux when the iHD driver is in a
+    non-standard location and QSV cannot be used.
+  * Fix encode failure when --avhw is specified with VA-API
+    selected.
+  * Fix abnormal exit on interrupt.
+  * Fix --vpp-kfm mode=24,ucf=on stopping output.
+  * Fix --vpp-kfm ucf=on exiting with an error at the end of
+    VFR/P24 output.
+  * Fix --vpp-kfm 24p, UCF, and high bit-depth output stopping.
+- Changes from version 8.34.0:
+  * Improve stability when the encoder is busy.
+- Changes from version 8.33.0:
+  * Wait 1 ms on encoder busy retry to reduce CPU utilization,
+    (gh#rigaya/QSVEnc#334).
+  * Improve --seek and --seekto accuracy on mpegts/mp4 input,
+    (gh#rigaya/QSVEnc#326 and gh#rigaya/QSVEnc#328).
+  * Improve --trim behavior on short mpegts videos,
+    (gh#rigaya/QSVEnc#330).
+  * Sync the VPP output before --ssim, --psnr, or --vmaf reads it,
+    fixing failures and wrong scores, (gh#rigaya/QSVEnc#319).
+  * Fix --ssim over 1.0 when the plane size is not a multiple of 4,
+    (gh#rigaya/QSVEnc#322).
+  * Stop the encode with an error instead of dropping frames and
+    exiting successfully when a task fails during pipeline flush,
+    (gh#rigaya/QSVEnc#320).
+  * Continue OpenCL processing on a VA decode-error report so
+    trailing frames are not lost, (gh#rigaya/QSVEnc#333).
+  * Fix cases where the encoder waited 5 seconds before exiting,
+    (gh#rigaya/QSVEnc#332).
+  * Fix error log output on Linux when IO statistics are
+    unavailable, (gh#rigaya/QNVEnc#807).
+  * Fix --vpp-kfm output information to progressive, and inherit
+    SAR for raw output.
+  * Speed up block analysis in --vpp-kfm.
+  * Speed up the detail-reference blur in --vpp-rtgmc-retouch.
+- Changes from version 8.32.0:
+  * Add VA-API encoding support on Linux. (--backend)
+  * Disable --la-depth in ICQ mode. ICQ with LookaheadDepth can
+    stall before encode starts on some Intel graphics drivers,
+    (gh#rigaya/QSVEnc#315).
+  * Synchronize MFX VPP output before encode on Linux VA memory,
+    fixing old frames mixed in by color conversion and same-format
+    resize, (gh#rigaya/QSVEnc#308).
+  * Improve CPU utilization information on Linux systems.
+  * Fix TrueHD audio timestamp calculation,
+    (gh#rigaya/QSVEnc#805).
+  * Optimize --vpp-rtgmc search-prefilter. Exclude the repair path
+    from the program when it is unused (about 8x), and inline it
+    for profiles with small expansion.
+  * Reduce host sync waits in --vpp-kfm so GPU submission stays
+    continuous.
+  * Optimize motion search in --vpp-degrain.
+  * Reduce --vpp-nnedi output initialization to the kept field on
+    processed planes.
+  * Use the subgroup predictor in --vpp-nnedi even when the
+    auto-selected SIMD width is not 16 or 32.
+  * Deepen the encoder output queue so encode waits overlap filter
+    processing.
+  * Fix missing completion events for interlaced --vpp-resize and
+    fix --vpp-rtgmc-search-prefilter search_refine=3 producing 0
+    frames.
+  * Fix crash when using OpenCL vpp filters with --output-csp
+    yuv444, (gh#rigaya/QSVEnc#311).
+- Changes from version 8.31.0:
+  * Fix OpenCL interop failure when multiple Intel OpenCL platforms
+    are present.
+  * Fix device-not-found platform search results being reported as
+    errors when multiple Intel OpenCL platforms are present.
+  * Fix --vpp-afs failure on environments without
+    cl_khr_image2d_from_buffer.
+  * Fix --vpp-afs non deterministic behaviour.
+  * Fix a crash on exit in --vpp-afs with YUV444.
+  * Fix pixel format conversion.
+  * Fix --frames used together with --trim referring to the empty
+    trim list just after initialization.
+  * Fix an out-of-bounds write at the end of a row in --vpp-tweak,
+    (gh#rigaya/QSVEnc#313).
+- Add 341.patch: Fix build and loading with libplacebo API 387.
+  FIXME: Declined upstream since QSVEnc does not support the
+  --vpp-libplacebo-* filters on Linux. Disable libplacebo build
+  option, see <https://github.com/rigaya/QSVEnc/pull/341>.
+
+-------------------------------------------------------------------
 Wed Sep 16 20:35:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.30+0:

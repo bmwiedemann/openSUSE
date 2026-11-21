@@ -17,7 +17,7 @@
 
 
 Name:           nginx-module-acme
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        NGINX module for automatic certificate management (ACMEv2)
 License:        Apache-2.0
@@ -25,6 +25,7 @@ URL:            https://github.com/nginx/nginx-acme
 Source0:        https://github.com/nginx/nginx-acme/releases/download/v%{version}/nginx-acme-%{version}.tar.gz
 Source1:        https://github.com/nginx/nginx-acme/releases/download/v%{version}/nginx-acme-%{version}.tar.gz.asc
 Source2:        vendor.tar.zst
+Source3:        nginx-module-acme.keyring
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  nginx-source

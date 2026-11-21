@@ -96,4 +96,14 @@
     <comment></comment>
     <requestid>1153932</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f2c0fc9818a2477f00ea99ca11338b73</srcmd5>
+    <version>3.7</version>
+    <time>1793724715</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.7:
+  Please read CHANGELOG as there happen a lot changes meanwhile
+- Drop patch fix_return.patch as now fixed in upstream code stream</comment>
+    <requestid>1394367</requestid>
+  </revision>
 </revisionlist>

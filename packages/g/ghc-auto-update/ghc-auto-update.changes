@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 17 21:32:14 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update auto-update to version 0.2.8.
+  ## 0.2.8
+
+  * use `atomicWriteIORef` instead of `writeIORef` in the following modules to
+    avoid more issues: [#1112](https://github.com/yesodweb/wai/pull/1112)
+      * `Control.Reaper` (`spawn` & `reaper`)
+      * `Control.AutoUpdate.Event` (`getUpdateResult`)
+
+-------------------------------------------------------------------
+Sat Aug  8 21:01:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update auto-update to version 0.2.7.
+  ## 0.2.7
+
+  * Use `atomicModifyIORef` in `mkAutoUpdate(Helper)` to prevent race conditions
+    in multi-threaded situations.
+    [#1103](https://github.com/yesodweb/wai/pull/1103)
+
+  ## 0.2.6.1
+
+  * Fixed documentation of when `leadingMuteEdge` and `trailingDelayEdge` were
+    introduced in `Control.Debounce`.
+
+-------------------------------------------------------------------
 Mon Dec 23 01:14:37 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update auto-update to version 0.2.6.

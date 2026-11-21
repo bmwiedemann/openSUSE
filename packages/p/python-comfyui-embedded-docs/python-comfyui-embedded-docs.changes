@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Nov 15 07:40:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.17:
+  * New node docs: PH3ImageConditioning, SoniloMusic15,
+    TextGenerateV2, Pika H3 Flex and Pika audio nodes, Tencent
+    HY nodes, Breeze, LTX video API and MiniMax H3 Image nodes,
+    plus RelayVSR, Kling 4.0 Flash, GPT Image 2.6, Omni Flash
+    1.2 and Seedance 4k pages
+  * Mark Seedance 1.x nodes deprecated; note Grok Image Edit
+    and GPT Image 2.5 retirements and Tripo 7-day task expiry
+  * Render the Seedance retirement callout as Markdown across
+    all 15 locales; document the Seedance 2.5 4k value and the
+    Draft-to-4k route
+  * Refresh the existing node documentation and its
+    translations, including the OpenAI and TextGenerate schema
+    sync, Split Image Channels, Camera Info mesh input,
+    HeyGen, Save Image Advanced, Claude, Luma and Krea 2 fixes
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+
+-------------------------------------------------------------------
+Tue Nov  3 18:41:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.16:
+  * New node docs: Kling 4.0 family, Patina material nodes,
+    VEED dubbing, MiniMax H3 latent upscaler and H3 Max nodes
+    with context windows, Flux Video Upscale V2, Pruna P-Video
+    upscale, VAE compute dtype, Ideogram region editing, video
+    chroma subsampling and MOV/ProRes, plus Topaz Wonder 4
+  * Localize leftover English step and Range connectors across
+    published locales and close the pipeline source of it
+  * Mark GeminiVideoOmni deprecated; retire Seedance 1.5 Pro
+    251215 docs
+  * Refresh the existing node documentation and its translations
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+- Spec-cleaner modernization: %files %python_files
+
+-------------------------------------------------------------------
 Mon Oct 26 19:29:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.15:

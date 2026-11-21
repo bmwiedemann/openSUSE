@@ -17,7 +17,7 @@
 
 
 Name:           diun
-Version:        4.33.1
+Version:        4.34.0
 Release:        0
 Summary:        Receive notifications when an image is updated on a Docker registry
 License:        MIT
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source11:       %{name}.service
 Source12:       %{name}.sysusers
-BuildRequires:  go1.26 >= 1.26.10
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  sysuser-tools
 %{sysusers_requires}
 

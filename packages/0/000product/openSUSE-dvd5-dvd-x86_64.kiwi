@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261102" schemaversion="4.1">
+<image name="OBS__openSUSE___20261120" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261102</productvar>
+      <productvar name="VERSION">20261120</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261102,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261120,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261102/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261120/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -540,8 +540,6 @@
       <repopackage name="gnome-online-accounts-lang"/>
       <repopackage name="gnome-packagekit"/>
       <repopackage name="gnome-packagekit-lang"/>
-      <repopackage name="gnome-photos"/>
-      <repopackage name="gnome-photos-lang"/>
       <repopackage name="gnome-remote-desktop"/>
       <repopackage name="gnome-remote-desktop-lang"/>
       <repopackage name="gnome-session"/>
@@ -555,7 +553,6 @@
       <repopackage name="gnome-shell-search-provider-gnome-calculator"/>
       <repopackage name="gnome-shell-search-provider-gnome-characters"/>
       <repopackage name="gnome-shell-search-provider-gnome-clocks"/>
-      <repopackage name="gnome-shell-search-provider-gnome-photos"/>
       <repopackage name="gnome-shell-search-provider-gnome-weather"/>
       <repopackage name="gnome-shell-search-provider-nautilus"/>
       <repopackage name="gnome-shell-search-provider-seahorse"/>
@@ -1247,6 +1244,7 @@
       <repopackage name="libblogger2"/>
       <repopackage name="libbluetooth3"/>
       <repopackage name="libbluray4"/>
+      <repopackage name="libbnxt_re1"/>
       <repopackage name="libboost_filesystem1_92_0"/>
       <repopackage name="libboost_filesystem1_92_0-x86-64-v3"/>
       <repopackage name="libboost_iostreams1_92_0"/>
@@ -1284,8 +1282,8 @@
       <repopackage name="libcairomm-1_16-1"/>
       <repopackage name="libcamd3"/>
       <repopackage name="libcamel-1_2-68"/>
-      <repopackage name="libcamera-base0_7"/>
-      <repopackage name="libcamera0_7"/>
+      <repopackage name="libcamera-base0_8"/>
+      <repopackage name="libcamera0_8"/>
       <repopackage name="libcanberra-gtk-module-common"/>
       <repopackage name="libcanberra-gtk0"/>
       <repopackage name="libcanberra-gtk2-module"/>
@@ -1338,7 +1336,6 @@
       <repopackage name="libcom_err2"/>
       <repopackage name="libcom_err2-32bit"/>
       <repopackage name="libcomposefs1"/>
-      <repopackage name="libconfig++15"/>
       <repopackage name="libcpupower1"/>
       <repopackage name="libcrack2"/>
       <repopackage name="libcrack2-32bit"/>
@@ -1364,8 +1361,6 @@
       <repopackage name="libdaemon0"/>
       <repopackage name="libdatrie1"/>
       <repopackage name="libdav1d7"/>
-      <repopackage name="libdazzle-1_0-0"/>
-      <repopackage name="libdazzle-lang"/>
       <repopackage name="libdb-4_8"/>
       <repopackage name="libdb-4_8-x86-64-v3"/>
       <repopackage name="libdbus-1-3"/>
@@ -1460,7 +1455,6 @@
       <repopackage name="libfdisk1"/>
       <repopackage name="libfdk-aac2"/>
       <repopackage name="libfdt1"/>
-      <repopackage name="libffado2"/>
       <repopackage name="libffi8"/>
       <repopackage name="libffi8-32bit"/>
       <repopackage name="libffmpegthumbnailer4"/>
@@ -1717,7 +1711,6 @@
       <repopackage name="libidn2-0"/>
       <repopackage name="libidn2-0-32bit"/>
       <repopackage name="libidn2-lang"/>
-      <repopackage name="libiec61883-0"/>
       <repopackage name="libIex-3_5-34"/>
       <repopackage name="libIex-3_5-34-x86-64-v3"/>
       <repopackage name="libIlmThread-3_5-34"/>
@@ -1757,8 +1750,8 @@
       <repopackage name="libjson-glib-1_0-0"/>
       <repopackage name="libjte2"/>
       <repopackage name="libJudy1"/>
-      <repopackage name="libjxl0_12"/>
-      <repopackage name="libjxl0_12-x86-64-v3"/>
+      <repopackage name="libjxl0_13"/>
+      <repopackage name="libjxl0_13-x86-64-v3"/>
       <repopackage name="libkaccounts6-2"/>
       <repopackage name="libkate1"/>
       <repopackage name="libkbdfile1"/>
@@ -1938,7 +1931,7 @@
       <repopackage name="libKF6Syndication6"/>
       <repopackage name="libKF6SyntaxHighlighting6"/>
       <repopackage name="libKF6SyntaxHighlighting6-lang"/>
-      <repopackage name="libKF6TextAddons1"/>
+      <repopackage name="libKF6TextAddons2_2_0"/>
       <repopackage name="libKF6TextEditor6"/>
       <repopackage name="libKF6TextTemplate6"/>
       <repopackage name="libKF6TextWidgets6"/>
@@ -2245,7 +2238,7 @@
       <repopackage name="libopeniscsiusr0"/>
       <repopackage name="libopenjp2-7"/>
       <repopackage name="libopenjp2-7-x86-64-v3"/>
-      <repopackage name="libopenjph0_32"/>
+      <repopackage name="libopenjph0_33"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenobex2"/>
       <repopackage name="libopenraw9"/>
@@ -2320,8 +2313,6 @@
       <repopackage name="libply-splash-core5"/>
       <repopackage name="libply-splash-graphics5"/>
       <repopackage name="libply5"/>
-      <repopackage name="libpmem1"/>
-      <repopackage name="libpmemobj1"/>
       <repopackage name="libpng16-16"/>
       <repopackage name="libpng16-16-x86-64-v3"/>
       <repopackage name="libpolkit-agent-1-0"/>
@@ -2331,7 +2322,7 @@
       <repopackage name="libpoppler-cpp3"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt6-3"/>
-      <repopackage name="libpoppler165"/>
+      <repopackage name="libpoppler166"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit"/>
       <repopackage name="libportal-gtk3-1"/>
@@ -2575,7 +2566,7 @@
       <repopackage name="libsigc-2_0-0"/>
       <repopackage name="libsigc-3_0-0"/>
       <repopackage name="libsignon-qt6-1"/>
-      <repopackage name="libsimdutf37"/>
+      <repopackage name="libsimdutf38"/>
       <repopackage name="libslang2"/>
       <repopackage name="libslirp0"/>
       <repopackage name="libslp1"/>
@@ -2600,7 +2591,7 @@
       <repopackage name="libsoup2-lang"/>
       <repopackage name="libsource-highlight4"/>
       <repopackage name="libsoxr0"/>
-      <repopackage name="libspandsp3"/>
+      <repopackage name="libspandsp4"/>
       <repopackage name="libspeech-provider-1_0"/>
       <repopackage name="libspeechd2"/>
       <repopackage name="libspeechd_module0"/>
@@ -2743,6 +2734,7 @@
       <repopackage name="libvirt-daemon-config-network"/>
       <repopackage name="libvirt-daemon-driver-network"/>
       <repopackage name="libvirt-daemon-driver-nodedev"/>
+      <repopackage name="libvirt-daemon-driver-nwfilter"/>
       <repopackage name="libvirt-daemon-driver-qemu"/>
       <repopackage name="libvirt-daemon-driver-secret"/>
       <repopackage name="libvirt-daemon-driver-storage"/>
@@ -2868,7 +2860,6 @@
       <repopackage name="libxkbfile1"/>
       <repopackage name="libxkbregistry0"/>
       <repopackage name="libxklavier16"/>
-      <repopackage name="libxml++-3_0-1"/>
       <repopackage name="libxml2-16"/>
       <repopackage name="libxml2-tools"/>
       <repopackage name="libxmlb2"/>
@@ -3028,6 +3019,7 @@
       <repopackage name="ModemManager-bash-completion"/>
       <repopackage name="ModemManager-lang"/>
       <repopackage name="mokutil"/>
+      <repopackage name="mokutil-bash-completion"/>
       <repopackage name="monapo-fonts"/>
       <repopackage name="mosh"/>
       <repopackage name="mousepad"/>
@@ -3460,11 +3452,11 @@
       <repopackage name="plymouth-dracut"/>
       <repopackage name="plymouth-lang"/>
       <repopackage name="plymouth-plugin-label"/>
+      <repopackage name="plymouth-plugin-label-ft"/>
       <repopackage name="plymouth-plugin-two-step"/>
       <repopackage name="plymouth-scripts"/>
       <repopackage name="plymouth-theme-bgrt"/>
       <repopackage name="plymouth-theme-spinner"/>
-      <repopackage name="pmdk"/>
       <repopackage name="pngquant"/>
       <repopackage name="policycoreutils"/>
       <repopackage name="policycoreutils-lang"/>

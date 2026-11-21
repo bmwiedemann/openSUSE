@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Nov  7 12:48:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.3:
+  * New SentencePiece Lite zero-dependency C++20 runtime
+    (header-only here; lite/ itself stays disabled)
+  * Training: auto character coverage, sparse L1 Unigram pruning,
+    custom pretokenizer callback, unk_id=-1 with byte fallback
+  * Python: pickling preserves encode options, normalizer flag
+    fixes, decode/encode edge cases, buffer-protocol inputs,
+    free-threaded fixes; requires Python >= 3.10
+  * Performance work plus OSS-Fuzz robustness fixes (bounds checks,
+    fuzzer-timeout and input-validation hardening)
+  * Removed long-deprecated APIs: SetVocabulary/ResetVocabulary/
+    LoadVocabulary, SampleEncodeAndScore*, CalculateEntropy,
+    *AsSerializedProto variants, OverrideNormalizerSpec and
+    __getstate_for_pickle__; several TrainerSpec fields dropped
+    from the spm_train flags
+  * C++20 baseline; build against system protobuf 36.2 and flatc
+- Packaging: upstream no longer bundles abseil-cpp, so drop
+  sentencepiece-use-bundled-abseil.patch (no longer applies) and
+  vendor abseil-cpp 20260817.0, the exact upstream pin, for the
+  offline FetchContent build instead
+- Add sentencepiece-system-flatc.patch (schema header from the
+  system flatc, no flatbuffers clone) and
+  sentencepiece-link-system-protobuf-lite.patch (link the system
+  protobuf-lite into the extension)
+- Raise pybind11 floor to >= 2.13 per upstream (built against 3.1;
+  upstream caps < 3.1 over a batch-decode slowdown)
+
+-------------------------------------------------------------------
 Sun Jul 12 19:07:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-sentencepiece 0.2.2

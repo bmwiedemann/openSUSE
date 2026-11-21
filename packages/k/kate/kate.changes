@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov  3 20:39:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.3/
+- Changes since 26.08.2:
+  * Do not capture params in lambda slot
+  * Fix not using built PATH on macos
+  * Fix the locals view tooltips
+  * Don't request members of variables that have none anymore
+  * Fix stale variables in collapsed scopes after stepping
+  * Fix crash on a late variables response after clearing the locals view
+  * Fix structs and arrays not expandable in the locals view (kde#526140)
+  * Fix crash when restoring a sidebar with missing tool views
+  * Fix incorrect discard/remove text
+  * Fix "Open At Head" action
+  * Fix reading incorrect config key
+  * Delete all views when closing a split that shows a widget
+  * Fix duplicate tabs and crash after changing the tab limit
+  * Skip skip-worktree files when loading files from git
+  * Return widgets without a tab from KateViewSpace::widgets()
+  * Fix registration of new documents in project
+  * tests with ASAN on FreeBSD are very slow
+  * try to fix latex test on windows
+  * git-blame: ignore the configured revs file when it is missing
+
+-------------------------------------------------------------------
 Wed Oct  7 07:02:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.2

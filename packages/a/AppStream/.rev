@@ -722,4 +722,40 @@ Features:
     process</comment>
     <requestid>1381525</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>39aa2191962660ca25d59e11070deee7</srcmd5>
+    <version>1.2.2</version>
+    <time>1794162064</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change:
+  * 0001-bundle-Add-back-support-for-Limba.patch
+
+- Update to version 1.2.2:
+  * Features:
+    + Content-rating: Add attribute titles and group descriptions
+    + Pool: Allow adding extra data locations with explicit scope and origin
+    + Ascli: sysinfo: Print some more information about the OS, like its
+      support period
+    + Bundle: Drop Limba, add Manifold
+  * Bugfixes:
+    + Cli: Fail YAML validation for missing input
+    + Compose: Fix build on a newer kernel with an old glibc
+    + Pool: Work around all Flatpak origins having the same name
+    + Pool: Include scope in metadata cache keys for Flatpak
+    + Apt: Don't hang when tar emits lots of stderr output
+    + Its: Support MetaInfo files that use the specification's namespace
+    + System-info: Don't prefix an OS ID that already is rDNS
+    + Sysinfo: Also replace `-` with `_` at `dns_to_rdns` function
+
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1395626</requestid>
+  </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>d377bd3839ef0b6cb01e8ca97addfcd0</srcmd5>
+    <version>1.2.3</version>
+    <time>1794597154</time>
+    <user>anag_factory</user>
+    <comment>Fly-by update via Geckopit (forwarded request 1396839 from dimstar)</comment>
+    <requestid>1396840</requestid>
+  </revision>
 </revisionlist>

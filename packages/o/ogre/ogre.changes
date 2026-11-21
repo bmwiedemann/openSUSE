@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Oct 18 09:26:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 14.6.1:
+  * Major release 14: libraries renamed libOgre*13_6 to
+    libOgre*14_6 (SOVERSION 13.6 to 14.6); plugins moved to
+    OGRE14_6.
+  * Core: task-based WorkQueue API, transparent objects on their
+    own render queue, object-space bones by default, builtin
+    factories made private (SMT_DEFAULT / MOT_*),
+    AnyNumeric/HashedVector gone.
+  * New across 14.x: rectangular area lights, mesh/task shaders,
+    layered render targets, float16 vertices, multisample textures,
+    HDR display output, GpuSharedParameters auto constants.
+  * Fuzz-driven asset-loading hardening including a PVR3 decoder
+    heap overflow fix; pre-1.8 mesh formats disabled by default.
+  * Python bindings act like sequences, Degree converts to Radian,
+    PixelBox takes a memoryview; ImGui dialog for render settings.
+  * Runtime data moved to versioned /usr/share/OGRE-14.6 (upstream
+    parallel-install support): plugins.cfg, resources.cfg,
+    samples.cfg and Media live there now; the media subpackage
+    keeps resources.cfg, the core Main/RTShaderLib media and the
+    Essential SdkTrays/profiler zips, sample media moves to demos.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Refresh bundled imgui to 1.92.9b as required by this release.
+- Ship the new OGRE-BitesQt.pc in libOgreBites-devel.
+- Drop obsolete patches:
+  * 0001-Vulkan-Use-find_package-to-support-system-wide-insta.patch
+    (cosmetic only; upstream fixed VULKAN_SDK reporting instead)
+  * fix-gslang-cpp17.patch (upstream sets cxx_std_17 on the glslang
+    plugin target; nothing else includes glslang headers)
+- Spec cleanup: drop Group tags, use %ldconfig_scriptlets, require
+  cmake >= 3.13 per upstream minimum.
+
+-------------------------------------------------------------------
 Thu Aug 13 16:20:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Let ogre-devel require its own -devel subpackages by name instead of

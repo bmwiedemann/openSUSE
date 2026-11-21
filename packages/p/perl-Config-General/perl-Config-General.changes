@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 18 13:58:39 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.690.0 (2.69)
+   see /usr/share/doc/packages/perl-Config-General/Changelog
+
+  2.69  - fix Changelog
+
+  2.68  - fixes fix codeberg.org/scip/Config-General/issues/10:
+          and closes CVE-2026-129820 + CVE-2026-129821:
+          validate incoming config hashes, forbid comment, here-doc and include markers
+
+-------------------------------------------------------------------
 Thu Jan  9 05:30:49 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.670.0 (2.67)

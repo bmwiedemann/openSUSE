@@ -34,4 +34,15 @@
     <comment> (forwarded request 1350683 from alarrosa)</comment>
     <requestid>1350691</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>6006fa51b2fe1208e6c6b4acd7997e30</srcmd5>
+    <version>6.12.1</version>
+    <time>1794932258</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.12.1
+  * `.pyi` type stub files now pass flake8-pyi.
+- v6.12.0
+  * Added support for Qt v6.12.</comment>
+    <requestid>1397735</requestid>
+  </revision>
 </revisionlist>

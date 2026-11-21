@@ -1,1 +1,6 @@
-addFilter(r'^lvm2-testsuite')
+# The lvm2-testsuite payload is a test harness: its scripts are sourced
+# or executed by the harness itself, not installed as system executables.
+# Scope the exemption to those two findings on that subpackage only;
+# everything else stays visible.
+addFilter(r"^lvm2-testsuite\..*: E: non-executable-script")
+addFilter(r"^lvm2-testsuite\..*: E: env-script-interpreter")

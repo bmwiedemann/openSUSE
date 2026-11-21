@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:01:00 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Refresh tarball giac-2.0.0.tar.gz from upstream: the tarball was
+  republished with real content changes (new build/test helper files
+  and updates to configure, Makefiles and several sources).
+
+-------------------------------------------------------------------
+Tue Nov 17 14:33:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add giac-ambiguous-bitset.patch: qualify std::bitset to resolve
+  ambiguity with pari's bitset() in optimization.cc.
+
+-------------------------------------------------------------------
 Sat Nov 22 21:17:21 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

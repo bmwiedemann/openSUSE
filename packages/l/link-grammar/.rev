@@ -503,4 +503,19 @@
   + Fix build break due to missing header file.</comment>
     <requestid>1381461</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>13678b48bedd994251d161edcb423581</srcmd5>
+    <version>5.13.2</version>
+    <time>1793818014</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.13.2:
+  * Fix compilation error in previous release
+- Changes from version 5.13.1:
+  * Fix CC passing in Makefile.am
+  * link_grammar.i: Use PyLong_* instead of PyInt_*
+  * node.js dependencies update
+  * Fix compiler warnings about `const char*`
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1394885</requestid>
+  </revision>
 </revisionlist>

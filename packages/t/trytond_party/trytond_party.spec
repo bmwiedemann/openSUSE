@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_party
-Version:        %{majorver}.7
+Version:        %{majorver}.8
 Release:        0
 Summary:        The "party" module for the Tryton ERP system
 License:        GPL-3.0-only

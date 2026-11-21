@@ -1,7 +1,7 @@
 #
 # spec file for package pavucontrol-qt
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol-qt
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        A Pulseaudio mixer in Qt
 License:        GPL-2.0-only
@@ -26,13 +26,13 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 
-BuildRequires:  cmake >= 3.5.0
+BuildRequires:  cmake >= 3.18.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(Qt6Widgets) >= 6.10.0
 BuildRequires:  cmake(lxqt2-build-tools)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libpulse-mainloop-glib)

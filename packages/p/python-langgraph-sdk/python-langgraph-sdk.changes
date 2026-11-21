@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Nov  7 12:43:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.14:
+  * runs.create, runs.stream and runs.wait gain strict_resume:
+    a resume answering an interrupt that is not waiting fails
+    with UnknownInterruptError instead of being silently ignored
+  * StreamMode gains tools and lifecycle modes for runs.stream
+
+-------------------------------------------------------------------
+Sat Nov  7 12:43:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.13:
+  * Add cancel_reason to Run
+  * threads.get_state and threads.get_history gain select,
+    letting the server skip loading unneeded state keys
+
+-------------------------------------------------------------------
+Wed Nov  4 11:37:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.12:
+  * Drop PrioritySettings.fairness_weight, ignored by the server
+  * Correct PrioritySettings.priority ordering docs (-5 runs
+    first, 5 runs last)
+  * Rejoin a run stream that closes cleanly while the run is
+    still pending or running instead of ending it
+
+-------------------------------------------------------------------
 Sat Oct 31 13:50:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.11:

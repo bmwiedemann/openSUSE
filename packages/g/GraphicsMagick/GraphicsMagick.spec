@@ -34,6 +34,8 @@ Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
 # CVE-2026-46523: heap-use-after-free via a crafted MSL image [bsc#1268125]
 Patch8:         GraphicsMagick-CVE-2026-46523.patch
+# CVE-2026-116149: Memory corruption via crafted bzip2 compressed images [bsc#1288783]
+Patch9:         GraphicsMagick-CVE-2026-116149.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

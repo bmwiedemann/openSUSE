@@ -1,4 +1,226 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:22:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Merge the external native debug symbols back into the binaries
+  before packaging, so that the -debuginfo packages carry DWARF
+  again; the jmods stay small (bsc#1282358)
+- Check the debug symbols with eu-readelf instead of nm
+- Keep internal debug symbols on SLE12: its eu-unstrip
+  (elfutils 0.158) cannot merge them
+
+-------------------------------------------------------------------
+Wed Nov 18 07:57:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.33.1+1 (November 2026 CSPU)
+  * Fixes
+    + JDK-8393195: Update Libpng to 1.6.59
+    + JDK-8394492: Update FreeType to 2.15.0
+    + JDK-8393456, CVE-2026-114940, bsc#1290782: Improve TLS client
+      connections
+    + JDK-8391595, CVE-2026-114944, bsc#1290786: [REDO] Enhance JMX
+      Connections
+    + JDK-8389830, CVE-2026-114943, bsc#1290784: Enhance JFR Events
+    + JDK-8389989, CVE-2026-114946, bsc#1290788: Enhance loop
+      handling
+    + JDK-8387162, CVE-2026-114939, bsc#1290781: Enhance Kerberos
+      tickets
+    + JDK-8316771: Krb5.java has not defined messages for all error
+      codes
+    + JDK-8396904: Bump update version for OpenJDK: jdk-11.0.33.1
+
+-------------------------------------------------------------------
+Mon Nov  9 13:15:33 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Disable native debug symbols embedded in modules, resulting in a
+  huge java-11-openjdk-jmods package size and increasing jlink output
+  size considerably if its --strip-debug command-line argument is not
+  used (bsc#1282358)
+
+-------------------------------------------------------------------
+Wed Nov  4 07:16:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.33+10 (October 2026 CPU)
+  * Security fixes
+    + JDK-8383530: Enhance Javadoc Searching
+    + JDK-8383679, CVE-2026-87294, bsc#1286490: Enhance Certificate
+      Name Checks
+    + JDK-8383439, CVE-2026-83395, bsc#1286479: Enhance HTTP Client
+      Response Handling
+    + JDK-8386783: WebRowSet empty elements read value of previous
+      element
+    + JDK-8383301, CVE-2026-83387, bsc#1286478: Enhance WebRowSets
+    + JDK-8380715, CVE-2026-83374, bsc#1286472: Enhance PKCS5
+      padding
+    + JDK-8384654, CVE-2026-87367, bsc#1286943: Enhance Template
+      Handling
+    + JDK-8384736, CVE-2026-91379, bsc#1286498: Enhance JShell
+    + JDK-8383699, CVE-2026-87290, bsc#1286484: Enhance XPath
+      Expressions
+    + JDK-8383047, CVE-2026-83380, bsc#1286476: Enhance LDAP logins
+    + JDK-8384021, CVE-2026-101516, bsc#1286395: Enhance Certificate
+      Constraint Checking
+    + JDK-8387152, CVE-2026-91462, bsc#1286547: Enhance krb5 tokens
+    + JDK-8387238, CVE-2026-91464, bsc#1286550: Enhance Kerberos
+      validation
+    + JDK-8386013: Enhance EventListenerList
+    + JDK-8382407: Enhance LDAP Lookups
+    + JDK-8390400, CVE-2026-91487, bsc#1286551: Enhance C2
+      comparisons
+    + JDK-8385209, CVE-2026-91394, bsc#1286507: Enhance HTTP client
+      caching
+    + JDK-8386535, CVE-2026-91453, bsc#1286545: Improve HTTP headers
+    + JDK-8385476, CVE-2026-91400, bsc#1286517: Enhance MIDI file
+      handling
+    + JDK-8386923, CVE-2026-91461, bsc#1286546: Enhance TLS
+      Extensions
+    + JDK-8387217, CVE-2026-91463, bsc#1286549: Enhance krb5 client
+    + JDK-8386515, CVE-2026-91451, bsc#1286542: Enhance HTTP server
+      parsing
+    + JDK-8373677: Clear text HttpServer connection could fail fast
+      if receiving SSL ClientHello
+    + JDK-8384872, CVE-2026-91332, bsc#1286491: Enhance HTTP Client
+    + JDK-8383756, CVE-2026-87292, bsc#1286486: Enhance Network
+      Clients
+    + JDK-8383281: Enhance MD5 Digesting
+    + JDK-8384664, CVE-2026-91335, bsc#1286494: Enhance Image
+      Handling
+    + JDK-8384746, CVE-2026-91380, bsc#1286500: Enhance Preferences
+    + JDK-8386552, CVE-2026-91418, bsc#1286539: Enhance GIF loading
+    + JDK-8270915: GIFImageReader disregards ignoreMetadata flag
+      which causes memory exhaustion
+    + JDK-8384688, CVE-2026-91375, bsc#1286497: Enhance jmod
+      handling
+    + JDK-8386525, CVE-2026-91452, bsc#1286544: Enhance HTTP Server
+      Handler
+    + JDK-8386187, CVE-2026-91415, bsc#1286537: Enhance font
+      rendering
+    + JDK-8385260, CVE-2026-91398, bsc#1286515: Enhance SOCKS5
+      support
+    + JDK-8385249, CVE-2026-91397, bsc#1286513: Enhance diagnostic
+      sessions
+    + JDK-8385229, CVE-2026-91396, bsc#1286510: Improve Pack200
+      handling
+    + JDK-8385219, CVE-2026-91395, bsc#1286508: Enhance Pack200
+      unpacking
+    + JDK-8384930, CVE-2026-91374, bsc#1286496: Enhance jstatd
+    + JDK-8384771, CVE-2026-91373, bsc#1286495: Enhance TLS
+      handshakes
+    + JDK-8384455: Enhance DataFlavor
+    + JDK-8384445, CVE-2026-91334, bsc#1286493: Enhance JPEG loading
+    + JDK-8384031, CVE-2026-83400, bsc#1286480: Enhance XML
+      Processing
+    + JDK-8383076, CVE-2026-83381, bsc#1286477: Enhance SASL
+      Authentication
+    + JDK-8382178, CVE-2026-83376, bsc#1286474: Enhance TLS
+      certificate handling
+    + JDK-8395142, CVE-2026-91403, bsc#1287264: CA Enhancements
+    + JDK-8395690, CVE-2026-114820, bsc#1287962: CA certificate
+      improvements
+  * Other fixes
+    + JDK-8387235: JShell tests failing
+    + JDK-8396214: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.33
+    + JDK-8394772: [17u] Update tzmappings.override location after
+      JDK-8343788 backport
+    + JDK-8394265: [21u] Add explicit zone offset test for
+      America/Rainy_River
+    + JDK-8393848: Align the JDK with Microsoft's new timezone name
+      for Manitoba
+    + JDK-8392538: Align the JDK with Microsoft's new timezone names
+      for British Columbia/Alberta
+    + JDK-8343788: Provide means to alter lib/tzmappings entries on
+      Windows
+    + JDK-8317126: Redundant entries in Windows `tzmappings` file
+    + JDK-8396048: (tz) Update to tzdata2026f
+    + JDK-8393337: (tz) Update Timezone Data to 2026e
+    + JDK-8393344: Cherry-pick metazone changes from CLDR to support
+      tzdata2026e for JDK update releases
+    + JDK-8392377: (tz) Update Timezone Data to 2026d
+    + JDK-8392519: Cherry-pick metazone changes from CLDR for
+      tzdata2026d, for JDK update release
+    + JDK-8377992: (zipfs) Align ZipFileSystem END header validation
+      with the ZipFile implementation
+    + JDK-8341625: Improve ZipFile validation of the END header
+    + JDK-8304013: Add a fast, non-manual alternative to
+      test/jdk/java/util/zip/ZipFile/TestTooManyEntries
+    + JDK-8377983: (zipfs) ZipFileSystem.initCEN needlessly reads
+      END header
+    + JDK-8316391: (zipfs) ZipFileSystem.readFullyAt does not
+      tolerate short reads
+    + JDK-8255380: (zipfs) ZipFileSystem::readExtra can fail if
+      zipinfo-time is not set to false
+    + JDK-8272746: ZipFile can't open big file
+      (NegativeArraySizeException)
+    + JDK-8391807: Inconsistent TimeZone Names Displayed across JDK
+      release trains
+    + JDK-8392072: Follow-on fix for Improve certification checking
+    + JDK-8391256: TestZoneTextPrinterParser.java assertion fails
+      with expected: <Mountain Standard Time> but was: <Mountain
+      Daylight Time>
+    + JDK-8388214: (tz) Update Timezone Data to 2026c
+    + JDK-8325680: Uninitialised memory in deleteGSSCB of
+      GSSLibStub.c:179
+    + JDK-8390380: Cherry-pick metazone changes from CLDR to support
+      tzdata2026c for JDK update releases
+    + JDK-8390388: Cherry-pick tz attributes from newer CLDR data
+      for jdk25u and earlier
+    + JDK-8381379: Support std/dstOffset attributes in CLDR's
+      metazone definitions
+    + JDK-8380223: Refactor test/jdk/sun/util/resources TestNG tests
+      to JUnit
+    + JDK-8374434: Several JShell tests report JUnit discovery
+      warnings
+    + JDK-8365776: Convert JShell tests to use JUnit instead of
+      TestNG
+    + JDK-8387123: Remove LuxTrust Global Root CA
+    + JDK-8359735: [Ubuntu 25.10]
+      java/lang/ProcessBuilder/Basic.java,
+      java/lang/ProcessHandle/InfoTest.java fail due to
+      rust-coreutils
+    + JDK-8305481: gtest is_first_C_frame failing on ARM
+    + JDK-8300805: Update autoconf build-aux files with latest from
+      2022-09-17
+    + JDK-8285630: Fix a configure error in RISC-V cross build
+    + JDK-8265192: [macos_aarch64] configure script fails if GNU
+      uname in PATH
+    + JDK-8277444: Data race between
+      JvmtiClassFileReconstituter::copy_bytecodes and class linking
+    + JDK-8386991: Insets are incorrectly set in newer Gnome
+      versions
+    + JDK-8283562: JDK-8282306 breaks gtests on zero
+    + JDK-8378180: Compiling OpenJDK with C23 C-Compiler gives
+      warning: initialization discards ‘const’ qualifier from
+      pointer target type 8254871: Remove unnecessary string copy in
+      NetworkInterface.c
+    + JDK-8312182: THPs cause huge RSS due to thread start timing
+      issue 8314139: TEST_BUG:
+      runtime/os/THPsInThreadStackPreventionTest.java could fail on
+      machine with large number of cores 8310687: JDK-8303215 is
+      incomplete 8312585: Rename DisableTHPStackMitigation flag to
+      THPStackMitigation
+    + JDK-8380993: [REDO] Incorrect Interpretation of POSIX TZ
+      Environment Variable on AIX
+    + JDK-8385390: Update FreeType to 2.14.3
+    + JDK-8386277: Bump update version of OpenJDK: 11.0.33
+    + JDK-8347000: Bug in com/sun/net/httpserver/bugs/B6361557.java
+      test
+    + JDK-8395369: Adjust aix VirtualMachineImpl.c to latest changes
+      on Linux
+    + JDK-8267617: Certificate's IP x509 NameConstraints raises
+      ArrayIndexOutOfBoundsException
+    + JDK-8300167: Add validation of the raster's layout before
+      using in native
+    + JDK-8243246: HTTP Client sometimes gets java.io.IOException ->
+      Invalid chunk header byte 32
+    + JDK-8298240: Replace the usage of ImageLayoutException by the
+      CMMException
+    + JDK-8290368: Introduce LDAP and RMI protocol-specific object
+      factory filters to JNDI implementation
+- Removed patch:
+  * tzdata-2026c.patch
+    + not needed any more
+
+-------------------------------------------------------------------
 Mon Aug 24 16:50:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-11.0.32.1+1 (August 2026 CSPU)

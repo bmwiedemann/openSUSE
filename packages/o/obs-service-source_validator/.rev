@@ -954,4 +954,12 @@ last submission had wrong tar ball for unknown reason</comment>
   * Fix directory assets handling</comment>
     <requestid>1384455</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>4914d920c81700d9204dca929ba317f3</srcmd5>
+    <version>0.48</version>
+    <time>1795103847</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398674</requestid>
+  </revision>
 </revisionlist>

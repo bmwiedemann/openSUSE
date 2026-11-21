@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 19 05:49:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.129:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.30
+- Update to version 3.17.128:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.29
+
+-------------------------------------------------------------------
+Wed Nov 18 15:11:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.127:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.56
+- Update to version 3.17.126:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.24
+- Update to version 3.17.125:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.55
+- Update to version 3.17.124:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.97
+- Update to version 3.17.123:
+  * chore(deps): bump sigstore/cosign-installer from 4.1.2 to 4.1.3
+- Update to version 3.17.122:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.23
+- Update to version 3.17.121:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.54
+
+-------------------------------------------------------------------
 Thu Oct 22 05:05:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.120:

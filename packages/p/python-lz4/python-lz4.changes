@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 11 12:30:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests which broke with lz4 1.11 (boo#1289631)
+
+-------------------------------------------------------------------
 Wed Nov 12 14:42:31 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.4.5

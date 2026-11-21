@@ -111,4 +111,12 @@ added dependency.</comment>
     <comment>Update soapy-bladerf to 0.4.3 (RX2/TX2-alone support, stream-args fix).</comment>
     <requestid>1384068</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>26c40feb0c094b5e4ba66cffcc6083ca</srcmd5>
+    <version>0.4.4</version>
+    <time>1794816482</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.4: FIR filter + DAC Trim on BladeRF 2.0</comment>
+    <requestid>1397532</requestid>
+  </revision>
 </revisionlist>

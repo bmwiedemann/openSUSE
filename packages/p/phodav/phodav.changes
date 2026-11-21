@@ -36,6 +36,9 @@ Wed Oct 28 12:43:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 - Split out lang files from the shared library package: fixing policy violation
 - Provide phodav-3.0 by the libphodav-3_0-0 to have the new lang package
   installable
+- fixes CVE-2026-114417 [bsc#1289865]
+        CVE-2026-114418 [bsc#1289866]
+        CVE-2026-114419 [bsc#1289867] 
 
 -------------------------------------------------------------------
 Tue Oct 15 12:06:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>

@@ -2,36 +2,35 @@ Format: 3.0 (quilt)
 Source: keepassxc
 Binary: keepassxc
 Architecture: any
-Version: 2.7.12-1.1
-Maintainer: Julian Andres Klode <jak@debian.org>
-Homepage: https://www.keepassxc.org/
-Standards-Version: 4.4.0
-Vcs-Browser: https://salsa.debian.org/debian/keepassxc
-Vcs-Git: https://salsa.debian.org/debian/keepassxc.git
+Version: 2.8.0-1.1
+Maintainer: KeePassXC Team <team@keepassxc.org>
+Homepage: https://keepassxc.org/
+Standards-Version: 4.6.2
+Vcs-Browser: https://github.com/keepassxreboot/keepassxc
+Vcs-Git: https://github.com/keepassxreboot/keepassxc.git
 Build-Depends: asciidoctor,
-               cmake,
-               debhelper (>= 10),
-               libargon2-dev | libargon2-0-dev,
-               libbotan-2-dev (>=2.12.1),
-               libusb-1.0-0-dev,
+               cmake (>= 3.16),
+               debhelper (>= 12),
+               libbotan-3-dev | libbotan-2-dev (>= 2.19.1),
+               libgl-dev,
+               libkeyutils-dev,
                libminizip-dev,
                libpcsclite-dev,
-               libqt5svg5-dev,
-               libqt5x11extras5-dev,
                libqrencode-dev,
                libreadline-dev,
-               libsodium-dev,
+               libusb-1.0-0-dev,
+               pkgconf,
+               libx11-dev,
                libxi-dev,
+               libxkbcommon-dev,
                libxtst-dev,
-               libykpers-1-dev,
-               libyubikey-dev,
                libzxcvbn-dev,
-               qtbase5-dev,
-               qtbase5-private-dev,
-               qttools5-dev,
-               qttools5-dev-tools,
-               xauth,
-               xvfb,
+               qt6-base-dev (>= 6.2.4),
+               qt6-l10n-tools,
+               qt6-svg-dev,
+               qt6-tools-dev,
+               qt6-tools-dev-tools,
                zlib1g-dev
 Package-List:
  keepassxc deb utils optional arch=any
+DEBTRANSFORM-TAR: keepassxc-2.8.0-src.tar.xz

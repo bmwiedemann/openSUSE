@@ -456,4 +456,28 @@ probably belongs in same stagings as nodejs22
 For details, see https://c-ares.org/changelog.html</comment>
     <requestid>1373366</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f41f2a73f7a9d7c75a94b8398fee967a</srcmd5>
+    <version>1.34.9</version>
+    <time>1794324582</time>
+    <user>anag_factory</user>
+    <comment>- c-ares 1.34.9:
+  * buffer overflow when ares_dup() or ares_save_options() runs while another thread changes the servers (bsc#1289583)
+  * uninitialized memory returned for a numeric IPv6 name with a prefix length (bsc#1289584)
+  * the query cache could return an answer obtained using different EDNS options (bsc#1289585)
+  * use-after-free when an application cancels lookups from a callback, or shuts a channel down (bsc#1289578)
+  * use-after-free of a connection after the socket-state callback returns (bsc#1289579)
+  * use-after-free when an application cancels lookups from a server-state callback (bsc#1289580)
+  * use-after-free of a server record when an application changes its DNS servers from a callback (bsc#1289581)
+  * use-after-free of a cached DNS answer while the application is still reading it (bsc#1289582)
+  * memory corruption when an application cancels its lookups after a connection failure (bsc#1289574)
+  * a DNS reply that arrived from a different server than the one queried could be accepted (bsc#1289575)
+  * use-after-free of a lookup after shutting down a failed connection (bsc#1289576)
+- test-fixes.patch: fix testsuite to only use localhost
+
+- c-ares 1.34.8:
+- old-gtest.patch: old gtest adaptation to run tests in SLE15:Update
+- c-ares 1.34.6:</comment>
+    <requestid>1396362</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.3.2
+Version:        0.3.5
 Release:        0
 Summary:        Markdown Linter written in Rust
 # Legal-Review-Notice: MPL-2.0 from the colored crate (statically linked).
@@ -26,8 +26,7 @@ License:        MIT AND MPL-2.0
 URL:            https://github.com/rvben/rumdl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# rust-version = "1.94.0"
-BuildRequires:  cargo >= 1.94
+BuildRequires:  cargo >= 1.98
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_tier1_arches}
 

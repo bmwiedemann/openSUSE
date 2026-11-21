@@ -17,13 +17,14 @@
 
 
 Name:           dabstar
-Version:        5.8.1
+Version:        6.0.0
 Release:        0
 Summary:        A DAB receiver with a technical focus
 License:        GPL-2.0-only
 URL:            https://github.com/tomneda/DABstar
 Source:         https://github.com/tomneda/DABstar/archive/refs/tags/V%{version}.tar.gz#/DABstar-%{version}.tar.gz
 Source1:        %{name}.desktop
+Patch0:         0001-Don-t-show-rtlsdr-driver-warning.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme

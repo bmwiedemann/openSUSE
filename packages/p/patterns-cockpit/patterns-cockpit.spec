@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-cockpit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,38 +22,40 @@ Version:        16.0
 Release:        0
 Summary:        Pattern for Cockpit, a web based remote system management interface
 License:        MIT
-Group:          Metapackages
 URL:            http://en.opensuse.org/Patterns
-Source0:        %name.rpmlintrc
-ExclusiveArch:  x86_64 %arm32 aarch64 ppc64le s390x riscv64
+Source0:        %{name}.rpmlintrc
 Provides:       pattern() = cockpit
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 9060
 Provides:       pattern-visible()
+BuildRequires:  patterns-rpm-macros
 Obsoletes:      patterns-microos-cockpit
 Provides:       patterns-microos-cockpit
 Obsoletes:      patterns-base-cockpit
 Provides:       patterns-base-cockpit
-Requires:	cockpit
+ExclusiveArch:  x86_64 %{arm32} aarch64 ppc64le s390x riscv64
+# SECTION Core Cockpit components
+Requires:       cockpit
+Requires:       cockpit-bootloader
+Requires:       cockpit-networkmanager
+Requires:       cockpit-repos
+Requires:       cockpit-storaged
 Requires:       cockpit-system
 Requires:       cockpit-ws
-Requires:       (cockpit-kdump if kdump)
-Requires:       (cockpit-podman if podman)
-Requires:       (cockpit-machines if libvirt-daemon-qemu)
-Requires:       cockpit-networkmanager
-Requires:       (cockpit-tukit if transactional-update)
-Requires:       cockpit-storaged
-Requires:       (cockpit-selinux if selinux-tools)
-Requires:       (cockpit-packages if PackageKit)
-Requires:       (cockpit-packagekit if PackageKit)
-Requires:       cockpit-repos
-Requires:       cockpit-bootloader
-Requires:       (cockpit-subscriptions if suseconnect-ng)
-Requires:       (cockpit-firewalld if firewalld)
 Requires:       sudo
-BuildRequires:  patterns-rpm-macros
+# /SECTION
+# SECTION Conditional components (only when the corresponding stack is present)
+Requires:       (cockpit-firewalld if firewalld)
+Requires:       (cockpit-kdump if kdump)
+Requires:       (cockpit-machines if libvirt-daemon-qemu)
+Requires:       (cockpit-packagekit if PackageKit)
+Requires:       (cockpit-packages if PackageKit)
+Requires:       (cockpit-podman if podman)
+Requires:       (cockpit-selinux if selinux-tools)
+Requires:       (cockpit-subscriptions if suseconnect-ng)
+Requires:       (cockpit-tukit if transactional-update)
+# /SECTION
 %pattern_advsysmgmt
-
 
 %description
 Packages required to run the Cockpit system management service.
@@ -62,7 +64,6 @@ Packages required to run the Cockpit system management service.
 %package client
 %pattern_advsysmgmt
 Summary:        Cockpit Client
-Group:          Metapackages
 Provides:       pattern() = cockpit_client
 Provides:       pattern-extends() = cockpit
 Provides:       pattern-icon() = pattern-generic
@@ -103,4 +104,5 @@ done
 %dir %{_docdir}/patterns-cockpit
 %{_docdir}/patterns-cockpit/cockpit_client.txt
 %endif
+
 %changelog

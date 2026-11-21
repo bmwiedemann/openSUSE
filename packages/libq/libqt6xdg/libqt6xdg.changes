@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 08:44:01 UTC 2026 - Андрей Алыпов <and.november@opensuse.org>
+
+- Update to 4.5.0:
+  * Files are opened in the URI format with DBus activated apps.
+  * Also, the code is cleaned up in various ways.
+
+-------------------------------------------------------------------
 Mon Apr 20 15:07:00 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 4.4.0:

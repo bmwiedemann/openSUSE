@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-zip-archive
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.3.2
+Version:        0.5
 Release:        0
 Summary:        Library for creating and modifying zip archives
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -44,10 +43,6 @@ BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pretty-devel
-BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
@@ -87,7 +82,7 @@ instances of MonadIO, so zip-archive is a better choice if you want to
 manipulate zip archives in "pure" contexts.
 
 As an example of the use of the library, a standalone zip archiver and
-extracter is provided in the source distribution.
+extractor is provided in the source distribution.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -117,7 +112,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build

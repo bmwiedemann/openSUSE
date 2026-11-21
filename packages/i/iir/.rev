@@ -60,4 +60,12 @@
   * https://github.com/berndporr/iir1/releases/tag/1.11.1</comment>
     <requestid>1393296</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>30b11487109b9dfe0fb5c0432f11b373</srcmd5>
+    <version>1.11.1</version>
+    <time>1794932251</time>
+    <user>anag_factory</user>
+    <comment>- Disabled static library requires to cmake(iir) (it's needed for dosbox).</comment>
+    <requestid>1397885</requestid>
+  </revision>
 </revisionlist>

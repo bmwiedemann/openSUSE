@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov  8 22:10:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Honor a deps: ignore[inferred-dependency] comment directive
+    to exclude an import from inferred dependencies, via a new
+    generic _directives module that parses the scope:
+    action[rule, ...] shape (#26).
+
+-------------------------------------------------------------------
 Tue Feb 10 04:32:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 1.6.0.

@@ -30,6 +30,9 @@ URL:            https://mupdf.com/
 Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
+# Source-Binary-Exception: mupdf-1.28.6-source.tar.gz:mupdf-1.28.6-source/thirdparty/zxing-cpp/wrappers/android/* -- other-platform: Android-only gradle wrapper jar for the zxing-cpp demo app, deleted in %%prep and never entered by the Linux build
+# Source-Binary-Exception: mupdf-1.28.6-source.tar.gz:mupdf-1.28.6-source/thirdparty/zxing-cpp/wrappers/kn/* -- other-platform: Kotlin/Native gradle wrapper jar for the iOS/Android zxing-cpp demo, deleted in %%prep and never entered by the Linux build
+# Source-Binary-Exception: mupdf-1.28.6-source.tar.gz:mupdf-1.28.6-source/thirdparty/lcms2/fuzzers/fuzzers.exp -- other-platform: Windows-only lcms2 fuzzer link exports, unused by any Linux build
 Patch0:         mupdf-no-strip.patch
 # Build against the system cmark-gfm instead of the vendored thirdparty copy.
 # Upstream 1.28.5 wires up USE_SYSTEM_CMARK_GFM itself (and fixed the
@@ -38,6 +41,9 @@ Patch0:         mupdf-no-strip.patch
 # registry.h that the system library does not install.
 # PATCH-FIX-OPENSUSE mupdf-system-cmark-gfm.patch mpluskal@suse.com -- link cmark-gfm-extensions, declare cmark_release_plugins
 Patch1:         mupdf-system-cmark-gfm.patch
+# NULL list pointer after free (upstream Bug 709768, boo#1285930).
+# PATCH-FIX-UPSTREAM mupdf-709768-double-free.patch -- commit 3984925b660a
+Patch2:         mupdf-709768-double-free.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -68,7 +74,9 @@ Provides:       bundled(freeglut-art) = 3.0.0
 Provides:       bundled(gumbo-parser) = 0.10.1
 Provides:       bundled(lcms2) = 2.19
 Provides:       bundled(lcms2-art) = 2.19
-Provides:       bundled(mujs) = 1.3.8
+# bundled mujs is verbatim upstream 1.3.10 (sort OOB fixed);
+# 1.3.11-only hardening, e.g. the jsR_isindex guard, is missing
+Provides:       bundled(mujs) = 1.3.10
 
 %description
 MuPDF is a PDF and XPS viewer and parser/rendering library.

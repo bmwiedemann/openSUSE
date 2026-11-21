@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:40:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix-ignore-list-equality.patch to fix test failures with
+  setuptools >= 83. Compare stored glob rules rather than matcher
+  objects while preserving Unicode-normalised filtering. Add
+  regression tests for equality, clearing and combining ignore lists.
+
+-------------------------------------------------------------------
 Wed May 13 09:14:03 UTC 2026 - Ana Guerrero <ana.guerrero+factory@suse.com>
 
 - Drop Suggests on breezy. 

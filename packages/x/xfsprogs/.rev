@@ -1177,4 +1177,33 @@ Index: xfsprogs-6.19.0.tar.xz
 Binary file xfsprogs-6.19.0.tar.xz (revision 95) deleted</comment>
     <requestid>1392831</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>a877777b42406903cf4e7f65757b2976</srcmd5>
+    <version>7.3.0</version>
+    <time>1794816364</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.3.0
+  - xfs_admin: remove eval use
+  - xfsprogs: add gcc generated stack usage files to gitignore
+  - repair: remove the unused queues_started variable in do_inode_prefetch
+  - db: constify construct_records_per_block
+  - libfrog: constify cvt*
+  - libfrog: constify getprnam
+  - libxfs: remove stale xfs_trans_mod_sb() declaration
+  - xfs_db: read a shortform parent pointer's value after its name
+  - tools: add a new script to generate fixes tags
+  - mkfs: enable metadata directory trees by default
+  - mkfs: add config file for the 2026 LTS kernel
+- update to 7.2.1
+  - xfs_healer: fail earlier on non-xfs filesystems
+  - xfs_healer: correct xfd_ API usage
+  - man: fix alignment of the rtstart field in ioctl_xfs_fsgeometry.2
+  - xfs_quota: fix XFS_GETQSTAT parameter pointer
+  - mkfs: allow disabling quota flags
+  - xfs_scrub: terminate systemd services if the sysadmin unmounts
+  - man/xfs_rtgroup_geometry: add rg_writepointer field description
+  - xfs_io: report rg_writepointer in report rg_info()
+ -------------------------------------------------------------------</comment>
+    <requestid>1397562</requestid>
+  </revision>
 </revisionlist>

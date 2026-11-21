@@ -15,4 +15,20 @@
     <comment>Update zed to 1.26.2 (filtered vendor; own zsh dirs)</comment>
     <requestid>1394190</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>43a25d62a29b0655e73e33667bd12181</srcmd5>
+    <version>1.27.0</version>
+    <time>1793991503</time>
+    <user>anag_factory</user>
+    <comment>Update zed to 1.27.0: lower Agent Panel memory/CPU use, Go 1.27 highlight, crash fixes.</comment>
+    <requestid>1395807</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3ab4b565b110a1d37a9a39c272893e0e</srcmd5>
+    <version>1.28.1</version>
+    <time>1795022977</time>
+    <user>anag_factory</user>
+    <comment>Update zed to 1.28.1: Git auto-fetch and resizable Refs column, wheel font zoom, faster NVIDIA startup</comment>
+    <requestid>1397194</requestid>
+  </revision>
 </revisionlist>

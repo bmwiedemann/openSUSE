@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:48:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.17.5:
+  * Preview: new ASYNC401, PLE0211 and RUF202 rules; RUF101
+    expanded to other suppression comments; G004 fix marked
+    unsafe
+  * Bug fixes: no crash on closed stderr; keyword args with
+    parenthesized values; autofix corrections (ICN001, B010,
+    PYI034, UP031); B008 ignores frozen dataclasses
+  * Performance improvements; FreeBSD source builds with
+    libc 0.2.190 fixed
+- Re-vendored Rust dependencies (vendored zip 9.4.1 -> 9.5.1);
+  licence set unchanged (MIT AND MPL-2.0)
+- Require maturin >= 1.9.3 as upstream does
+
+-------------------------------------------------------------------
+Fri Nov  6 07:48:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.17.4:
+  * Preview: tarfile-ignore-zeros-true check
+  * Fix panic on BOM-prefixed files in diagnostic rendering
+  * Accept bare raise and match identifiers after a semicolon
+  * CLI: NO_COLOR takes precedence, CLICOLOR=0 is honored
+  * Re-vendored dependencies (vendored zip 8.6.0 -> 9.0.5)
+
+-------------------------------------------------------------------
 Tue Oct 27 11:30:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - revert python_subpackages change - breaks on 32bit

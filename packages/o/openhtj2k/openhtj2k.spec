@@ -1,7 +1,7 @@
 #
 # spec file for package openhtj2k
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           openhtj2k
-Version:        0.19.0
+Version:        0.28.1
 Release:        0
 Summary:        An open source implementation of ITU-T Rec.814 | ISO 15444-15 (a.k.a. HTJ2K)
 License:        BSD-3-Clause
 URL:            https://github.com/osamu620/OpenHTJ2K
 Source:         https://github.com/osamu620/OpenHTJ2K/archive/refs/tags/v%{version}.tar.gz
-Patch0:         openhtj2k-0.3.0-tiff.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -51,7 +50,10 @@ OpenHTJ2K is an open source implementation of ITU-T Rec.814 | ISO/IEC 15444-15 (
 %autosetup -n OpenHTJ2K-%{version}
 
 %build
-%cmake -DCMAKE_BUILD_TYPE=Release
+%cmake \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DOPENHTJ2K_TARGET_CPU=generic \
+  -DOPENHTJ2K_BUILD_TESTS=OFF
 %make_build
 
 %install
@@ -67,10 +69,8 @@ OpenHTJ2K is an open source implementation of ITU-T Rec.814 | ISO/IEC 15444-15 (
 %{_bindir}/open_htj2k_enc
 
 %files -n openhtj2k-devel
-%dir %{_includedir}/open_htj2k
-%dir %{_includedir}/open_htj2k/interface
-%{_includedir}/open_htj2k/interface/decoder.hpp
-%{_includedir}/open_htj2k/interface/encoder.hpp
+%{_includedir}/open_htj2k/
+%{_libdir}/cmake/openhtj2k/
 %{_libdir}/libopenhtj2k.so
 %{_libdir}/pkgconfig/open_htj2k.pc
 

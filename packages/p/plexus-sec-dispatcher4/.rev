@@ -23,4 +23,20 @@
     <comment>4.2.0</comment>
     <requestid>1380274</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e83594f5e18e9aef6dfe80a458419083</srcmd5>
+    <version>4.3.0</version>
+    <time>1793991524</time>
+    <user>anag_factory</user>
+    <comment>4.3.0</comment>
+    <requestid>1395845</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>d3b45063b9f6eedf14b083dc6f94dd16</srcmd5>
+    <version>4.3.0</version>
+    <time>1794318103</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396444</requestid>
+  </revision>
 </revisionlist>

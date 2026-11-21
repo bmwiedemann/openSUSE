@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-hybridcompute
-Version:        10.0.0
+Version:        10.1.0
 Release:        0
 Summary:        Microsoft Azure Hybrid Compute Management Client Library
 License:        MIT

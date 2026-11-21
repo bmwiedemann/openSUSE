@@ -25,7 +25,7 @@ Release:        0
 Summary:        C++ Interface for GTK4 (a GUI Library for X)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://www.gtkmm.org/
+URL:            https://gtkmm.gnome.org
 Source0:        %{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov  6 19:38:08 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-115557: Distrust compromised eMudhra
+  intermediate CA keys (bsc#1287357)
+   CVE-2026-115557-distrust-emudhra-ca-keys.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 18:05:16 UTC 2026 - Matej Cepl <mcepl@suse.com>
 
 - Require Expat 2.8.5 for Python (bsc#1285433)

@@ -328,4 +328,12 @@ put into adi:2</comment>
     <comment>Interpolate correctly plugin versions in lifecycle config</comment>
     <requestid>1384681</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>5c10c1965fcde4df2e7ca2ad8139b3bd</srcmd5>
+    <version>3.10.1</version>
+    <time>1794828496</time>
+    <user>anag_factory</user>
+    <comment>3.10.1</comment>
+    <requestid>1397745</requestid>
+  </revision>
 </revisionlist>

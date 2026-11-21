@@ -1,17 +1,30 @@
-From 122ad3693ebf643e8f3d0eafd9ec4ac5b13130d7 Mon Sep 17 00:00:00 2001
+From 9f5631855aefce5d5bd7a397bdd9b3ad26e4a581 Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Wed, 26 Feb 2025 16:26:49 +0100
 Subject: [PATCH] Remove optional dependency on universalchardet
 
 ---
+ builtins/src/main/java/module-info.java             |  1 -
  builtins/src/main/java/org/jline/builtins/Nano.java | 12 ------------
- 1 file changed, 12 deletions(-)
+ 2 files changed, 13 deletions(-)
 
+diff --git a/builtins/src/main/java/module-info.java b/builtins/src/main/java/module-info.java
+index 6e4f098e..9f469029 100644
+--- a/builtins/src/main/java/module-info.java
++++ b/builtins/src/main/java/module-info.java
+@@ -33,7 +33,6 @@ module org.jline.builtins {
+     requires transitive org.jline.style;
+ 
+     // Optional dependencies
+-    requires static juniversalchardet;
+     requires static org.jline.shell;
+ 
+     // Export public API
 diff --git a/builtins/src/main/java/org/jline/builtins/Nano.java b/builtins/src/main/java/org/jline/builtins/Nano.java
-index b5112c2e..7d3bb3a7 100644
+index 623d1620..5ce40421 100644
 --- a/builtins/src/main/java/org/jline/builtins/Nano.java
 +++ b/builtins/src/main/java/org/jline/builtins/Nano.java
-@@ -53,7 +53,6 @@ import org.jline.utils.InfoCmp.Capability;
+@@ -54,7 +54,6 @@ import org.jline.utils.InfoCmp.Capability;
  import org.jline.utils.RegexTimeoutException;
  import org.jline.utils.SafeRegex;
  import org.jline.utils.Status;
@@ -19,7 +32,7 @@ index b5112c2e..7d3bb3a7 100644
  
  import static org.jline.builtins.SyntaxHighlighter.*;
  import static org.jline.keymap.KeyMap.KEYMAP_LENGTH;
-@@ -382,17 +381,6 @@ public class Nano implements Editor {
+@@ -383,17 +382,6 @@ public class Nano implements Editor {
              }
              byte[] bytes = bos.toByteArray();
  
@@ -38,5 +51,5 @@ index b5112c2e..7d3bb3a7 100644
              try (BufferedReader reader =
                      new BufferedReader(new InputStreamReader(new ByteArrayInputStream(bytes), charset))) {
 -- 
-2.54.0
+2.56.0
 

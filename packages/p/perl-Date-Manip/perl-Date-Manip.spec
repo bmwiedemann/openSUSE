@@ -18,10 +18,10 @@
 
 %define cpan_name Date-Manip
 Name:           perl-Date-Manip
-Version:        6.990.0
+Version:        7.0.0
 Release:        0
-# 6.99 -> normalize -> 6.990.0
-%define cpan_version 6.99
+# 7.00 -> normalize -> 7.0.0
+%define cpan_version 7.00
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Date manipulation routines
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 01:59:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove case from BuildRequires, it isn't needed.
+
+-------------------------------------------------------------------
 Tue Aug 13 05:14:47 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and autosetup macros.

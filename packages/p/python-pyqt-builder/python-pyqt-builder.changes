@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 15 10:40:58 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.21.0
+  * The PyQt6-Pdf package has been added containing the QtPdf and
+    QtPdfWidgets modules from PyQt6-WebEngine.
+  * pyqt-qt-wheel: The `--package-version` option has been renamed
+    `--qt-module-version`.
+
+-------------------------------------------------------------------
 Sun Oct 18 08:59:45 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.20.1

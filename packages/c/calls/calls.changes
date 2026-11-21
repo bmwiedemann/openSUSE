@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 07:48:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add calls-desktop.patch: Fix desktop file translation.
+
+-------------------------------------------------------------------
 Tue Oct 20 19:28:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to meson.build.

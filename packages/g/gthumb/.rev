@@ -1188,4 +1188,37 @@
   * Updated translations.</comment>
     <requestid>1394403</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>ff9521b767a08b7c44da8a78daf14274</srcmd5>
+    <version>4.0.2</version>
+    <time>1794410987</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.2:
+  * Bugfixes:
+    + Import Files: fixed import process that never completes
+    + Import Files: fixed missing thumbnails
+    + Selection and Catalog: load next image after removing the current image</comment>
+    <requestid>1396861</requestid>
+  </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>4087460a193ed89098d426fb17480784</srcmd5>
+    <version>4.0.3</version>
+    <time>1794932467</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.0.3:
+  * Features: Browser and Viewer: show the selections the file belongs to
+  * Bugfixes:
+    + Compare by basename when the values are equal
+    + When changing image keep the previous zoom if a custom zoom was used
+    + Allow to rename files when the location is writable</comment>
+    <requestid>1398124</requestid>
+  </revision>
+  <revision rev="137" vrev="2">
+    <srcmd5>3c891782aaebd9f0a19e1e59ec2c9815</srcmd5>
+    <version>4.0.3</version>
+    <time>1795182552</time>
+    <user>anag_factory</user>
+    <comment>- Version libadwaita dependency.</comment>
+    <requestid>1398920</requestid>
+  </revision>
 </revisionlist>

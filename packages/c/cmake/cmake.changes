@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Nov 13 20:44:59 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to CMake 4.5.0
+  * "import std" is now available for all C++ 20 and later code
+    with "CXX_SCAN_FOR_MODULES" enabled.
+  * The "CMAKE_INSTALL_SBOM_FORMATS" variable was added to enable
+    Software Bill of Materials (SBOM) generation.
+  * The "install(SBOM)" and "export(SBOM)" commands were added to
+    generate Software Bill of Materials (SBOM) files.
+  * The "CMD_NON_TARGET_DIRECTIVE" diagnostic category was added to
+    diagnose commands that affect the directory scope when comparable
+    target-specific commands exist.
+  * The Ninja Generators, Makefile Generators, and "FASTBuild" generator
+    now provide "install_prep/all" and "install_prep/<component>"
+    convenience build targets by default.
+  * The "FASTBuild" generator, Ninja Generators, and the Makefile
+    Generators now provide "test_prep/<test-name>" and "test_prep/all"
+    convenience build targets by default.
+  * The "add_custom_rule()" command was added to allow the definition of
+    pattern rules.
+  * The "cmake_language(PRINT_PROPERTIES)", "cmake_language(PRINT_TARGETS)"
+    and "cmake_language(PRINT_VARIABLES)" commands were added to print
+    CMake system information in human-readable form for debugging.
+  * Many commands now accept Alias Targets. The commands operate on
+    the underlying aliased target. See Release Notes for the commands
+    that now supports Alias Targets.
+  * The "ExternalProject" module's "ExternalProject_Add()" command now
+    sets "CMAKE_INSTALL_PREFIX" to the external project's "INSTALL_DIR"
+    in its default configure command, so a CMake external project
+    installs into the prefix the module reserves for it rather than the
+    built-in default (e.g. "/usr/local").
+  * The "FindPython3" and "FindPython" modules gained, respectively, the
+    variable "Python3_SOSABI_PLATFORM" and "Python_SOSABI_PLATFORM"
+    which gives, on some platforms, for the Stable Application Binary
+    Interface, the extension including the platform triplet.
+  * "ctest(1)" gained a "--out-of-date" option to run only tests whose
+    recorded build dependencies are newer than the last time the tests
+    ran.
+
+-------------------------------------------------------------------
 Thu Oct  8 17:10:23 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to CMake 4.4.4

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov  8 07:02:29 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-conduit to version 0.3.1.
+  ## 0.3.1
+
+  * Fix dependency issues: https://github.com/psibi/crypton-conduit/issues/5
+
+-------------------------------------------------------------------
 Mon Mar 30 22:43:17 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-conduit to version 0.3.0.

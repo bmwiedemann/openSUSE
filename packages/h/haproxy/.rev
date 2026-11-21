@@ -2141,4 +2141,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1393626</requestid>
   </revision>
+  <revision rev="197" vrev="2">
+    <srcmd5>0d9e0efe433ae644617d032afdc6cbfd</srcmd5>
+    <version>3.4.7+git57.0faeaeda6</version>
+    <time>1793899336</time>
+    <user>anag_factory</user>
+    <comment>  * BUG/MEDIUM: mux-h1: only accept the H2 preface on the first request (bsc#1286738) CVE-2026-110353
+- Update to version 3.4.6+git1.3ce8f6169: (bsc#1286739) CVE-2026-110354
+  * MAJOR: mux-h1: Drain requests on client side before shut a stream down</comment>
+    <requestid>1395110</requestid>
+  </revision>
+  <revision rev="198" vrev="1">
+    <srcmd5>e25e61b24c826cd6666fa95a9e95f31f</srcmd5>
+    <version>3.4.8+git0.1b15b69ac</version>
+    <time>1795103666</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4.8+git0.1b15b69ac:</comment>
+    <requestid>1398497</requestid>
+  </revision>
 </revisionlist>

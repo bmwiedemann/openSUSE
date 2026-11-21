@@ -100,4 +100,14 @@
 - Replace gtk-doc BuildRequires for scdoc and pkgconfig(gi-docgen): follow</comment>
     <requestid>1393624</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>be15af335e541c20eefb0ed8767d696e</srcmd5>
+    <version>3.2</version>
+    <time>1794597169</time>
+    <user>anag_factory</user>
+    <comment>- fixes CVE-2026-114417 [bsc#1289865]
+        CVE-2026-114418 [bsc#1289866]
+        CVE-2026-114419 [bsc#1289867]</comment>
+    <requestid>1397053</requestid>
+  </revision>
 </revisionlist>

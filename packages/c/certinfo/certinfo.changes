@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 02 16:28:37 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.0.41+git20261031.4a31f3c:
+  * update gorleaser
+  * update go version
+  * Bump github.com/stretchr/testify from 1.12.0 to 1.12.1 in the go group (#52)
+  * Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 in the go group (#51)
+  * small refactor
+
+-------------------------------------------------------------------
 Sat Feb 21 17:06:35 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.0.40+git20260221.5574ad1:

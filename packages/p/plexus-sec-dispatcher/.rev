@@ -79,4 +79,12 @@
     <comment>Add dependency on objectweb-asm to build with sisu 0.9.0.M4</comment>
     <requestid>1282191</requestid>
   </revision>
+  <revision rev="11" vrev="9">
+    <srcmd5>ee4900acd8cd6621044ca96672f6df8a</srcmd5>
+    <version>2.0</version>
+    <time>1794318099</time>
+    <user>anag_factory</user>
+    <comment>Use modello-ant-task instead of ModelloCli</comment>
+    <requestid>1396442</requestid>
+  </revision>
 </revisionlist>

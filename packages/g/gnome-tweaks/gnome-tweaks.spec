@@ -25,7 +25,8 @@ License:        CC0-1.0 AND GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Tweaks
 Source0:        %{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM glgo#GNOME/gnome-tweaks#550 -- Fix invalid desktop file translation
+Patch0:         gnome-tweaks-pt-desktop.patch
 BuildRequires:  fdupes
 # GI is needed to have typelib() Requires
 BuildRequires:  gobject-introspection

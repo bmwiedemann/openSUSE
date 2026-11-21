@@ -17,7 +17,7 @@
 
 
 Name:           python-openstacksdk
-Version:        4.20.0
+Version:        4.22.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module jmespath >= 0.9.0}
 BuildRequires:  %{python_module jsonpatch >= 1.16}
 BuildRequires:  %{python_module jsonschema >= 3.2.0}
 BuildRequires:  %{python_module keyring >= 24.0.0}
-BuildRequires:  %{python_module keystoneauth1 >= 5.12.0}
+BuildRequires:  %{python_module keystoneauth1 >= 5.16.0}
 BuildRequires:  %{python_module os-service-types >= 1.8.1}
 BuildRequires:  %{python_module oslo.config >= 6.1.0}
 BuildRequires:  %{python_module oslotest >= 3.2.0}
@@ -62,7 +62,7 @@ Requires:       python-dogpile.cache >= 0.6.5
 Requires:       python-iso8601 >= 0.1.11
 Requires:       python-jmespath >= 0.9.0
 Requires:       python-jsonpatch >= 1.16
-Requires:       python-keystoneauth1 >= 5.10.0
+Requires:       python-keystoneauth1 >= 5.16.0
 Requires:       python-os-service-types >= 1.8.1
 Requires:       python-platformdirs >= 3
 Requires:       python-psutil >= 3.2.2

@@ -1699,4 +1699,27 @@
   + Updated translations.</comment>
     <requestid>1379630</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fe2bd9f707cd4c0f2529925a0e1ab6c1</srcmd5>
+    <version>1.7.3</version>
+    <time>1794410984</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.3:
+  * fixed command injection with custom link actions (CVE-2026-118692)
+  * fixed arbitrary local file read via crafted embedded-file name
+    (CVE-2026-118693)
+  * reject symlinked multifile node directories + prevent cleanup from following
+    symlinks
+  * reject empty tables during XML parsing so malformed XML cannot reach table
+    construction or clipboard indexing
+  * on node name header, show node icon and aux icons on the left rather than on
+    the right, just after last visited nodes buttons
+  * improved image download on HTML paste from browser
+  * fixed crash when destroying anchored widgets
+  * build with libxml++5 on windows/msys2, ubuntu 26.04+, flatpak
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Refresh patch with quilt.</comment>
+    <requestid>1396858</requestid>
+  </revision>
 </revisionlist>

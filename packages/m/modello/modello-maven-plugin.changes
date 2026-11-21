@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Sat Nov 14 21:07:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.10.0
+  * Highlights
+    + No more plexus-build-api. Neither modello-core nor
+      modello-maven-plugin depends on it. The Maven plugin no longer
+      skips generation when the .mdo file is unchanged, and
+      generators no longer ask the IDE to refresh the files they
+      write.
+    + m2e support built in. The plugin ships
+      META-INF/m2e/lifecycle-mapping-metadata.xml, so Eclipse runs
+      all 22 generator goals on configuration and incremental builds
+      without a lifecycle-mapping entry in your POM. Generated
+      source roots are now registered in m2e. If a goal fails, the
+      error marker appears on pom.xml instead of the .mdo file.
+    + API changes for extensions: AbstractModelloGenerator
+      .getBuildContext() is gone, and the mojo constructors no
+      longer take a BuildContext. Custom generators or code that
+      constructs the mojos need updating; plugin users don't.
+    + Requirements are unchanged: Maven 3.9.0 or later and Java 8 or
+      later.
+  * Removed
+    + Drop plexus-build-api from the Maven plugin and ship m2e
+      lifecycle mapping
+    + Drop plexus-build-api from modello-core
+  * Dependency updates
+    + Bump plexus-xml from 3.1.0 to 3.1.1
+    + Bump sisu.version from 1.1.1 to 1.1.2
+    + Bump com.fasterxml.jackson:jackson-bom from 2.22.4 to 2.23.0
+
+-------------------------------------------------------------------
+Wed Nov 11 05:21:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.9.0
+  * Removed
+    + Require Maven 3.9.0
+  * New features and improvements
+    + Support xs:enumeration restrictions in XSD generation via
+      field metadata
+    + XsdGenerator: emit mixed="true" on complexTypes with
+      xml.format="mixed" fields
+    + Link bare URLs in xdoc descriptions
+    + Add ant task to modello
+    + Make the command-line tool correspond to what the
+      modello-maven-plugin can do
+    + Add switch to disable the StAX reader version check
+  * Bug Fixes
+    + Fix xdoc generator to HTML-escape content of {@code} and
+      {@literal} tags
+  * Documentation updates
+    + Document xml.insertParentFieldsUpTo
+    + Drop the Source Xref menu item
+  * Maintenance
+    + Use the new constants by the ant task too
+    + Keep Dependabot on Maven 3.9.x
+    + Move the IT fixtures to JUnit 5 and drop the JUnit 4 version
+    + Remove redundant javaVersion and
+      project.reporting.outputEncoding properties
+    + Clean up declared dependencies
+    + Keep plexus-xml on 3.x in Dependabot
+    + Keep SLF4J on 1.7.x in Dependabot
+    + Port the IT scripts from BeanShell to Groovy
+  * Build
+    + Allow running the release drafter by hand
+  * Dependency updates
+    + Bump org.jsoup:jsoup from 1.23.1 to 1.24.1
+    + Bump com.google.guava:guava from 33.7.2-jre to 33.8.0-jre
+    + Update guava to 33.7.2-jre
+    + Bump sisu.version from 1.1.0 to 1.1.1
+    + Bump com.fasterxml.jackson:jackson-bom from 2.22.2 to 2.22.4
+    + Bump org.codehaus.woodstox:stax2-api from 4.3.0 to 4.3.2
+    + Bump com.fasterxml.woodstox:woodstox-core from 7.2.2 to 7.3.0
+    + Bump org.xmlunit:xmlunit-core from 2.13.0 to 2.14.0
+    + Bump org.yaml:snakeyaml from 2.6 to 2.7
+- Removed patches:
+  * 0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+  * 0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+  * 0003-Integrate-modello-ant-task-to-modello-source-tree.patch
+    + integrated upstream or fixed differently
+
+-------------------------------------------------------------------
 Wed Sep  9 09:10:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.8.1

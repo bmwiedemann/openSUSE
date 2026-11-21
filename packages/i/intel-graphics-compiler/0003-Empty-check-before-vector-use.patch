@@ -1,8 +1,8 @@
 diff --git a/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp b/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
-index 838ea8bd4..86477bdb9 100644
+index 455799a4c..00c9e6ce5 100644
 --- a/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
 +++ b/IGC/Compiler/Optimizer/InstructionHoistingOptimization.cpp
-@@ -149,8 +149,12 @@ private:
+@@ -239,8 +239,12 @@ private:
        auto it = std::find(hoistedInstr.begin(), hoistedInstr.end(), newInstr);
        return it != hoistedInstr.end();
      };

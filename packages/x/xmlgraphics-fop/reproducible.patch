@@ -1,6 +1,18 @@
---- a/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java
-+++ b/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java
-@@ -86,7 +86,9 @@ abstract class FileIDGenerator {
+--- fop-2.12/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java	2026-11-12 09:02:14.056761571 +0100
++++ fop-2.12/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java	2026-11-12 09:02:28.483206857 +0100
+@@ -129,7 +129,8 @@
+     }
+ 
+     protected void addPlan(Document doc, Element svgRoot, EventList data) {
+-        Date currentDate = new Date();
++        String sde = System.getenv("SOURCE_DATE_EPOCH");
++        Date currentDate = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
+ 
+         Date lastWeek = startDate;
+         Date future = endDate;
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java	2026-11-12 09:02:14.147120032 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/FileIDGenerator.java	2026-11-12 09:02:28.480767660 +0100
+@@ -86,7 +86,9 @@
  
          private void generateFileID() {
              DateFormat df = new SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'SSS");
@@ -11,9 +23,9 @@
              // Ignoring the filename here for simplicity even though it's recommended
              // by the PDF spec
              digest.update(PDFDocument.encode(String.valueOf(document.getCurrentFileSize())));
---- a/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java
-+++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java
-@@ -35,8 +35,10 @@ public class PDFEmbeddedFile extends PDFStream {
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java	2026-11-12 09:02:14.147812780 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFEmbeddedFile.java	2026-11-12 09:02:28.481002255 +0100
+@@ -35,8 +35,10 @@
          put("Type", new PDFName("EmbeddedFile"));
          put("Subtype", new PDFName("application/octet-stream"));
          PDFDictionary params = new PDFDictionary();
@@ -26,9 +38,9 @@
          put("Params", params);
      }
  
---- a/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java
-+++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java
-@@ -251,7 +251,8 @@ public class PDFInfo extends PDFObject {
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java	2026-11-12 09:02:14.148557041 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFInfo.java	2026-11-12 09:02:28.481194682 +0100
+@@ -251,7 +251,8 @@
  
              // creation date in form (D:YYYYMMDDHHmmSSOHH'mm')
              if (creationDate == null) {
@@ -38,9 +50,9 @@
              }
              bout.write(encode("/CreationDate "));
              bout.write(encodeString(formatDateTime(creationDate)));
---- a/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
-+++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java
-@@ -135,7 +135,8 @@ public class PDFMetadata extends PDFStream {
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java	2026-11-12 09:02:14.148755672 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFMetadata.java	2026-11-12 09:02:28.481387651 +0100
+@@ -135,7 +135,8 @@
  
          //Set creation date if not available, yet
          if (info.getCreationDate() == null) {
@@ -50,9 +62,9 @@
              info.setCreationDate(d);
          }
  
---- a/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java
-+++ b/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java
-@@ -106,7 +106,9 @@ public class PDFSignature {
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java	2026-11-12 09:02:14.149527693 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/pdf/PDFSignature.java	2026-11-12 09:02:28.481587251 +0100
+@@ -106,7 +106,9 @@
              if (signParams.getReason() != null) {
                  put("Reason", signParams.getReason());
              }
@@ -63,9 +75,9 @@
              PDFArray array = new PDFArray();
              array.add(new SigRef());
              put("Reference", array);
---- a/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java
-+++ b/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java
-@@ -544,7 +544,9 @@ public class IFRenderer extends AbstractPathOrientedRenderer {
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java	2026-11-12 09:02:14.153600393 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/render/intermediate/IFRenderer.java	2026-11-12 09:02:28.481873560 +0100
+@@ -545,7 +545,9 @@
          } else {
              xmpBasic.setCreatorTool(Version.getVersion());
          }
@@ -76,20 +88,21 @@
          if (getUserAgent().getCreationDate() != null) {
              xmpBasic.setCreateDate(getUserAgent().getCreationDate());
          } else {
---- a/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java
-+++ b/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java
-@@ -262,7 +262,9 @@ class PDFRenderingUtil {
-         fopXMP.mergeInto(docXMP, exclude);
-         XMPBasicAdapter xmpBasic = XMPBasicSchema.getAdapter(docXMP);
-         //Metadata was changed so update metadata date
--        xmpBasic.setMetadataDate(new java.util.Date());
+Only in fop-2.12/fop-core/src/main/java/org/apache/fop/render/intermediate: IFRenderer.java.orig
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java	2026-11-12 09:02:14.157251417 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/render/pdf/PDFRenderingUtil.java	2026-11-12 09:02:28.482204972 +0100
+@@ -262,7 +262,9 @@
+             fopXMP.mergeInto(docXMP, exclude);
+             XMPBasicAdapter xmpBasic = XMPBasicSchema.getAdapter(docXMP);
+             //Metadata was changed so update metadata date
+-            xmpBasic.setMetadataDate(new java.util.Date());
 +        String sde = System.getenv("SOURCE_DATE_EPOCH");
 +        java.util.Date d = (sde == null) ? new java.util.Date() : new java.util.Date(1000 * Long.parseLong(sde));
 +        xmpBasic.setMetadataDate(d);
-         PDFMetadata.updateInfoFromMetadata(docXMP, pdfDoc.getInfo());
+             PDFMetadata.updateInfoFromMetadata(docXMP, pdfDoc.getInfo());
  
-         PDFMetadata pdfMetadata = pdfDoc.getFactory().makeMetadata(
-@@ -481,7 +483,9 @@ class PDFRenderingUtil {
+             PDFMetadata pdfMetadata = pdfDoc.getFactory().makeMetadata(
+@@ -482,7 +484,9 @@
                  augmentDictionary((PDFDictionary)currentPage.get("DPart"), extension);
              }
          } else if (type == PDFDictionaryType.PagePiece) {
@@ -100,9 +113,10 @@
              if (currentPage.get("PieceInfo") == null) {
                  currentPage.put("PieceInfo", new PDFDictionary());
                  currentPage.put("LastModified", date);
---- a/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java
-+++ b/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java
-@@ -211,7 +211,9 @@ public class PSDocumentHandler extends AbstractBinaryWritingIFDocumentHandler {
+Only in fop-2.12/fop-core/src/main/java/org/apache/fop/render/pdf: PDFRenderingUtil.java.orig
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java	2026-11-12 09:02:14.158678821 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/render/ps/PSDocumentHandler.java	2026-11-12 09:02:28.482480995 +0100
+@@ -213,7 +213,9 @@
          //PostScript Header
          gen.writeln(DSCConstants.PS_ADOBE_30);
          gen.writeDSCComment(DSCConstants.CREATOR, new String[] {getUserAgent().getProducer()});
@@ -113,9 +127,10 @@
          gen.writeDSCComment(DSCConstants.LANGUAGE_LEVEL, gen.getPSLevel());
          gen.writeDSCComment(DSCConstants.PAGES, new Object[] {DSCConstants.ATEND});
          gen.writeDSCComment(DSCConstants.BBOX, DSCConstants.ATEND);
---- a/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java
-+++ b/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java
-@@ -149,8 +149,10 @@ public class FileCompare {
+Only in fop-2.12/fop-core/src/main/java/org/apache/fop/render/ps: PSDocumentHandler.java.orig
+--- fop-2.12/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java	2026-11-12 09:02:14.164980601 +0100
++++ fop-2.12/fop-core/src/main/java/org/apache/fop/tools/anttasks/FileCompare.java	2026-11-12 09:02:28.482734681 +0100
+@@ -152,8 +152,10 @@
      }
  
      private void writeHeader(PrintWriter results) {
@@ -127,9 +142,10 @@
          results.println("<html><head><title>Test Results</title></head><body>\n");
          results.println("<h2>Compare Results<br>");
          results.println("<font size='1'>created " + dateTime
---- a/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java
-+++ b/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java
-@@ -82,7 +82,8 @@ abstract class TestDocument {
+Only in fop-2.12/fop-core/src/main/java/org/apache/fop/tools/anttasks: FileCompare.java.orig
+--- fop-2.12/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java	2026-11-12 09:02:14.180602175 +0100
++++ fop-2.12/fop-core/src/test/java/org/apache/fop/render/rtf/rtflib/testdocs/TestDocument.java	2026-11-12 09:02:28.482944142 +0100
+@@ -82,7 +82,8 @@
          para.newLineBreak();
          para.newText("generated by class " + getClass().getName());
          para.newLineBreak();
@@ -139,15 +155,3 @@
          para.close();
     }
  }
---- a/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java
-+++ b/fop/examples/plan/src/org/apache/fop/plan/SimplePlanDrawer.java
-@@ -129,7 +129,8 @@ public class SimplePlanDrawer implements PlanDrawer {
-     }
- 
-     protected void addPlan(Document doc, Element svgRoot, EventList data) {
--        Date currentDate = new Date();
-+        String sde = System.getenv("SOURCE_DATE_EPOCH");
-+        Date currentDate = (sde == null) ? new Date() : new Date(1000 * Long.parseLong(sde));
- 
-         Date lastWeek = startDate;
-         Date future = endDate;

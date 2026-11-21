@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Tue Nov 10 09:12:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.35.6:
+  - 4c9c2490f [Backport 2.35-maintenance]
+    packaging/scripted-installer: Only chown pre-existing files
+    when needed (#16790)
+  - 72246ea85 packaging/scripted-installer: Don't treat chmod
+    failures as fatal
+  - 41347cc0c packaging/scripted-installer: Handle colliding
+    closure better
+  - b7f372d2c packaging/scripted-installer: Only chown pre-existing
+    files when needed
+  - 251f9fdd5 [Backport 2.35-maintenance] libexpr: Don't leak
+    output of SourceAccessor::showPath in eval (#16787)
+  - e4438891d tests/nixos: Silence nix-daemon stderr logs in nixos
+    functional tests
+  - 973da855f tests/functional: Add regression test for 16550
+  - 1341e865c libutil: Clarify SourcePath::to_string and
+    SourceAccessor::showPath comments
+  - 76645abb7 libstore: Fix builtins.readDir builtins.storeDir
+  - 7118eae27 libexpr: Don't leak output of
+    SourceAccessor::showPath in eval
+
+-------------------------------------------------------------------
+Sun Nov  8 15:20:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.35.5:
+  - 96b080768 [Backport 2.35-maintenance] Fix fetchers lazy attrs
+    (#16779)
+  - 7234acff0 libfetchers: Delete comparison from LazyAttr
+  - 42294fd56 libfetchers: DRY in lazy attrs construction
+  - b6021366e libutil: DRY starship operator
+  - c84d9ae5d fix(libfetchers): compare lazy attributes by value
+  - 1e4c944e2 refactor(libflake): detect self attribute changes
+    without comparing refs
+  - 121a55cc1 fix(nix profile): don't upgrade unchanged Git flakes
+  - a07dd1eb6 test(flakes): cover --inputs-from with an unlocked
+    Git input
+  - ed8739e52 [Backport 2.35-maintenance]:
+    packaging/scripted-installer: More thorough fixes for
+    installing over an existing install (#16778)
+  - b8e380a68 packaging/scripted-installer: Test and fix up
+    idempotency over an existing install
+  - 23b869664 packaging/scripted-installer: Only chown when
+    necessary
+  - 26ccf214c packaging/scripted-installer: Drop
+    --preserve=ownership from cp invocations
+  - d25a6ef57 [Backport 2.35-maintenance] libutil: Don't require
+    read permission on the root of an FS accessor (#16776)
+  - 925d605d3 libutil: Don't require read permission on the root of
+    an FS accessor
+  - eb491c18e [Backport 2.35-maintenance] builtins.getFlake: Fix
+    multi-component 'dir' in path flakerefs to store paths (#16765)
+  - 9712abc85 builtins.getFlake: Fix multi-component 'dir' in path
+    flakerefs to store paths
+  - cbd40d8b1 [Backport 2.35-maintenance] Bump nixpkgs (#16730)
+  - 2e6705b5b ci: macos-14 -> macos-15
+  - 821523839 Revert "packaging: cacert: 3.126 -> 3.131.1"
+  - 1d54833e6 flake.lock: Update
+  - c6ae23207 [Backport 2.35-maintenance] LegacySSHStore: Don't
+    throw from queryRealisationUncached() (#16725)
+  - 32d932635 LegacySSHStore: Don't throw from
+    queryRealisationUncached()
+  - 8219f5882 [Backport 2.35-maintenance] libutil: Include
+    `<sys/syscall.h>` for `SYS_close_range` (#16706)
+  - ba1372743 [Backport 2.35-maintenance] Extend darwin sandbox by
+    bucketing store paths (#16704)
+  - 3a6f33217 libutil: Include <sys/syscall.h> for SYS_close_range
+  - 78ec1e09f Extend darwin sandbox by bucketing store paths
+  - fb039fcac [Backport 2.35-maintenance] build: pass
+    structuredAttrsRC as format argument to prevent crash on '%'
+    (#16691)
+  - 5f16378b4 build: pass structuredAttrsRC as format argument to
+    prevent crash on '%'
+  - a6b230020 [Backport 2.35-maintenance] libstore: Rate limit
+    download progress updates (#16690)
+  - bd3a7a8ef [Backport 2.35-maintenance] libstore: Emit progress
+    in copyPaths in chunks (#16689)
+  - 8c8e63622 libstore: Rate limit download progress updates
+  - 3180b66ed libstore: Emit progress in copyPaths in chunks
+  - f231d7f6c [Backport 2.35-maintenance] libutil: reject truncated
+    Brotli streams (#16669)
+  - c7ea889c3 libutil: Use existing BrotliDecoderIsUsed, documents
+    BrotliDecompressionSink a bit more
+  - be8e195fd libutil: reject truncated Brotli streams
+
+-------------------------------------------------------------------
 Thu Oct 22 21:58:19 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.35.4:

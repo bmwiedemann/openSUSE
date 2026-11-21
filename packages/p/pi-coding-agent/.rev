@@ -312,4 +312,36 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update to 1.4.0</comment>
     <requestid>1387109</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>c8629d54e0f447e33f97bdf6a5d3ab5d</srcmd5>
+    <version>1.5.0</version>
+    <time>1793818093</time>
+    <user>anag_factory</user>
+    <comment>update</comment>
+    <requestid>1394961</requestid>
+  </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>e98bb1d9ac50aa0036aa781276c0a66f</srcmd5>
+    <version>1.5.0</version>
+    <time>1794162124</time>
+    <user>dimstar_suse</user>
+    <comment>Build QuickJS codemode runtime from source (clang + wasi-sysroot); codemode scripts run again instead of erroring.</comment>
+    <requestid>1396115</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>b9055840d3f74aa9d310f8253f5b78e1</srcmd5>
+    <version>1.5.1</version>
+    <time>1794410754</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.5.1</comment>
+    <requestid>1396574</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bc1535faf47059edf1e516a06807c5e5</srcmd5>
+    <version>1.5.2</version>
+    <time>1794590984</time>
+    <user>anag_factory</user>
+    <comment>Update pi-coding-agent to 1.5.2: fork sessions whose folder moved, Continue/Fork/Cancel on missing dirs, /import and OAuth fixes.</comment>
+    <requestid>1396961</requestid>
+  </revision>
 </revisionlist>

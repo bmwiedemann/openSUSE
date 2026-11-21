@@ -25,7 +25,7 @@
 %define group clojure
 %define base_name clojure
 Name:           %{base_name}%{name_suffix}
-Version:        1.12.6
+Version:        1.12.7
 Release:        0
 Summary:        Clojure core environment and runtime library
 License:        EPL-1.0

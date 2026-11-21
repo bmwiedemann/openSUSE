@@ -536,4 +536,19 @@ that go1.21 can be build.  I believe Staging:L for now.
   __gnu_pbds::priority_queue.  [bsc#1283123] (CVE-2026-102010)</comment>
     <requestid>1381853</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>8f50c0820a910a1b23db175e4d814d3c</srcmd5>
+    <version>13.5.0+git10516</version>
+    <time>1794317939</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc13-pr124370.patch to fix stack corruption in std::bitset
+  stream extraction [bsc#1289549] [gcc#124370] (CVE-2026-115455)
+- Add gcc13-pr127666.patch to fix std::from_chars to not read past
+  end of input [bsc#1289550] [gcc#127666] (CVE-2026-115456)
+- Add gcc13-cve-2026-114690.patch to fix buffer overrun in __gnu_parallel
+  search [bsc#1288775] (CVE-2026-114690)
+- Add gcc13-cve-2026-114691.patch to fix overflow in std::vector&lt;bool&gt;
+  constructors [bsc#1288774] (CVE-2026-114691)</comment>
+    <requestid>1396274</requestid>
+  </revision>
 </revisionlist>

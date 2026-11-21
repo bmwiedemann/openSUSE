@@ -17,7 +17,7 @@
 
 
 Name:           k8tz
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        CLI tool to inject timezones into Kubernetes Pods and CronJobs
 License:        Apache-2.0

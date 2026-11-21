@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-ansible
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,8 +21,9 @@ Version:        1.0.0
 Release:        0
 Summary:        Patterns for Ansible automation
 License:        MIT
-Group:          Metapackages
 URL:            https://www.suse.com/
+Source0:        %{name}-rpmlintrc
+BuildRequires:  patterns-rpm-macros
 BuildArch:      noarch
 
 %description
@@ -36,15 +37,16 @@ not make sense.
 
 %package automation
 Summary:        Ansible automation engine and Linux system roles
-Group:          Metapackages
 Provides:       pattern() = ansible_automation
+Provides:       pattern-category() = Systems%20Management
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 3100
-Provides:       pattern-category() = Systems%20Management
 Provides:       pattern-visible()
+# SECTION Ansible automation engine
 Requires:       ansible
 Requires:       ansible-core
 Requires:       ansible-linux-system-roles
+# /SECTION
 
 %description automation
 Ansible automation engine with SUSE Linux system roles for configuration
@@ -59,20 +61,21 @@ Install this pattern to manage your SLES fleet with Ansible.
 
 %if 0%{?suse_version} >= 1600
 %package devtools
+%pattern_development
 Summary:        Ansible development and testing tools
-Group:          Metapackages
 Provides:       pattern() = ansible_devtools
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 3110
-Provides:       pattern-category() = Development
 Provides:       pattern-visible()
 Requires:       pattern() = ansible_automation
-Requires:       ansible-lint
-Requires:       molecule
-Requires:       ansible-navigator
+# SECTION Ansible development and testing tools
 Requires:       ansible-builder
-Requires:       ansible-runner
 Requires:       ansible-creator
+Requires:       ansible-lint
+Requires:       ansible-navigator
+Requires:       ansible-runner
+Requires:       molecule
+# /SECTION
 
 %description devtools
 Development and testing tools for Ansible content creation. Includes

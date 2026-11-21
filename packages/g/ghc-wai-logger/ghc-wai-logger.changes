@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 27 10:51:50 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update wai-logger to version 2.5.1.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Fri Oct 11 08:25:29 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update wai-logger to version 2.5.0.

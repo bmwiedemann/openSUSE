@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov  6 22:06:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.8.0 (0.008)
+   see /usr/share/doc/packages/perl-Crypt-SysRandom/Changes
+
+  0.008     2026-11-06 17:02:33+01:00 Europe/Brussels
+            - Add random_hex, random_base64, random_base64url and
+            random_uuid functions
+
+-------------------------------------------------------------------
 Fri Jul 11 14:39:33 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.7.0 (0.007)

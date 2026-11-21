@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 14 10:52:11 UTC 2026 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to 7.3.0
+  - xfs_admin: remove eval use
+  - xfsprogs: add gcc generated stack usage files to gitignore
+  - repair: remove the unused queues_started variable in do_inode_prefetch
+  - db: constify construct_records_per_block
+  - libfrog: constify cvt*
+  - libfrog: constify getprnam
+  - libxfs: remove stale xfs_trans_mod_sb() declaration
+  - xfs_db: read a shortform parent pointer's value after its name
+  - tools: add a new script to generate fixes tags
+  - mkfs: enable metadata directory trees by default
+  - mkfs: add config file for the 2026 LTS kernel
+
+- update to 7.2.1
+  - xfs_healer: fail earlier on non-xfs filesystems
+  - xfs_healer: correct xfd_ API usage
+  - man: fix alignment of the rtstart field in ioctl_xfs_fsgeometry.2
+  - xfs_quota: fix XFS_GETQSTAT parameter pointer
+  - mkfs: allow disabling quota flags
+  - xfs_scrub: terminate systemd services if the sysadmin unmounts
+  - man/xfs_rtgroup_geometry: add rg_writepointer field description
+  - xfs_io: report rg_writepointer in report rg_info()
+
+ -------------------------------------------------------------------
 Thu Sep 17 11:13:30 UTC 2026 - Avinesh Kumar <avinesh.kumar@suse.com>
 
 - update to 7.2.0

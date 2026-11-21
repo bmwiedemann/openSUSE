@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov  5 18:47:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.11.0:
+  * fix: preserve scroll position when navigating output in #2178
+
+-------------------------------------------------------------------
 Wed Oct 14 04:37:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Suggest podman so the "(podman or docker)" requirement resolves to

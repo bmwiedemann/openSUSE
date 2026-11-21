@@ -1,7 +1,7 @@
-Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-35/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-33/config/policy-SUSE.xml
+--- ImageMagick-7.1.2-35.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-35/config/policy-SUSE.xml
 @@ -105,6 +105,8 @@
  
    <!-- Prevent access to sensitive system directories. -->
@@ -11,10 +11,10 @@ Index: ImageMagick-7.1.2-33/config/policy-SUSE.xml
  
    <!-- Prevent directory traversal via relative paths. -->
    <policy domain="path" rights="none" pattern="*../*"/>
-Index: ImageMagick-7.1.2-33/config/policy-limited.xml
+Index: ImageMagick-7.1.2-35/config/policy-limited.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-limited.xml
-+++ ImageMagick-7.1.2-33/config/policy-limited.xml
+--- ImageMagick-7.1.2-35.orig/config/policy-limited.xml
++++ ImageMagick-7.1.2-35/config/policy-limited.xml
 @@ -108,6 +108,8 @@
  
    <!-- Prevent access to sensitive system configuration files. -->
@@ -24,10 +24,10 @@ Index: ImageMagick-7.1.2-33/config/policy-limited.xml
  
    <!-- Prevent indirect file reads using @filename syntax. -->
    <policy domain="path" rights="none" pattern="@*"/>
-Index: ImageMagick-7.1.2-33/config/policy-open.xml
+Index: ImageMagick-7.1.2-35/config/policy-open.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-open.xml
-+++ ImageMagick-7.1.2-33/config/policy-open.xml
+--- ImageMagick-7.1.2-35.orig/config/policy-open.xml
++++ ImageMagick-7.1.2-35/config/policy-open.xml
 @@ -167,6 +167,8 @@
  
    <!-- Prevent access to sensitive system locations. -->
@@ -37,10 +37,10 @@ Index: ImageMagick-7.1.2-33/config/policy-open.xml
  
    <!-- Disable indirect file reads (@filename). -->
    <!-- <policy domain="path" rights="none" pattern="@*"/> -->
-Index: ImageMagick-7.1.2-33/config/policy-secure.xml
+Index: ImageMagick-7.1.2-35/config/policy-secure.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-secure.xml
-+++ ImageMagick-7.1.2-33/config/policy-secure.xml
+--- ImageMagick-7.1.2-35.orig/config/policy-secure.xml
++++ ImageMagick-7.1.2-35/config/policy-secure.xml
 @@ -105,6 +105,8 @@
  
    <!-- Prevent access to sensitive system directories. -->
@@ -50,11 +50,11 @@ Index: ImageMagick-7.1.2-33/config/policy-secure.xml
  
    <!-- Prevent directory traversal via relative paths. -->
    <policy domain="path" rights="none" pattern="*../*"/>
-Index: ImageMagick-7.1.2-33/config/policy-websafe.xml
+Index: ImageMagick-7.1.2-35/config/policy-websafe.xml
 ===================================================================
---- ImageMagick-7.1.2-33.orig/config/policy-websafe.xml
-+++ ImageMagick-7.1.2-33/config/policy-websafe.xml
-@@ -99,6 +99,8 @@
+--- ImageMagick-7.1.2-35.orig/config/policy-websafe.xml
++++ ImageMagick-7.1.2-35/config/policy-websafe.xml
+@@ -103,6 +103,8 @@
  
    <!-- Prevent access to operating system configuration files. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>

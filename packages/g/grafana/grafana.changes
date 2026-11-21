@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Nov 18 16:02:57 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Bump golang.org/x/sys to version 0.50.0 to fix ppc64le build
+- Add 0002-Bump-golang.org-x-sys-to-0.50.0.patch
+
+-------------------------------------------------------------------
+Fri Nov 13 10:00:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 12.4.15:
+  * Security:
+    CVE-2026-116585, CVE-2026-116586, CVE-2026-116587: Bump
+      github.com/go-jose/go-jose/v4 to fix multiple security issues
+      (bsc#1288361)
+    CVE-2026-116591: Bump github.com/klauspost/compress to fix
+                     streaming decoder panic (bsc#1288465)
+    CVE-2026-78661: Bump golang.org/x/net to fix quadratic
+                    complexity when coalescing text nodes
+                    (bsc#1289373)
+    CVE-2026-97045: Bump golang.org/x/net to fix rendering raw text
+                    (bsc#1289411)
+    CVE-2026-106475: Fix improper authorization / path validation
+                     through elasticsearch (bsc#1290256)
+    CVE-2026-81843: Fix memory exhaustion denial of service in
+                    Elasticsearch data source index patterns
+                    (bsc#1290429)
+    CVE-2026-111000: Fix privilege escalation through folder move
+                     in the folders API (bsc#1290426)
+    CVE-2026-106472: Fix server-side request forgery in the
+                     Prometheus data source resource API
+                     (bsc#1290420)
+    CVE-2026-107365: Fix unintended API access through the Google
+                     Cloud Monitoring data source resource proxy
+                     (bsc#1290422)
+    CVE-2026-107509: Fix memory exhaustion denial of service in SQL
+                     Expressions (bsc#1290423)
+    CVE-2026-82014: Fix team preferences RBAC bypass through the
+                    set-home-dash endpoint (bsc#1290436)
+    CVE-2026-102589: Fix cross-instance user impersonation through
+                     image renderer JWTs (bsc#1290419)
+  * Features and enhancements:
+    DateTime: Bump moment-timezone for 2026 time zone changes.
+
+- Update to version 12.4.14:
+  * Security:
+    CVE-2026-88858: Fixed server-side expression parser DoS
+                    (bsc#1288733)
+    CVE-2026-88967: Fixed Azure Monitor access token disclosure
+                    (bsc#1288732)
+    CVE-2026-100354: Bump github.com/getkin/kin-openapi to fix
+                     uncontrolled recursion (bsc#1285819)
+    CVE-2026-100353: Bump github.com/getkin/kin-openapi to fix
+                     three unpatched nil-items panic paths
+                     (bsc#1285815)
+    CVE-2026-100352: Bump github.com/getkin/kin-openapi to fix YAML
+                     NaN/Inf values bypass built-in guards
+                     (bsc#1285809)
+
+- Update to version 12.4.13:
+  * Security:
+    CVE-2026-93294: Fixed unintended proxy exposure in Azure
+                    Monitor data source (bsc#1285517)
+    CVE-2026-78669: Bumped golang.org/x/net to fix excessive CPU
+                    consumption (bsc#1285276)
+    CVE-2026-78659: Bumped golang.org/x/net to fix HTTP/2 server
+                    memory exhaustion (bsc#1286991)
+    CVE-2026-78660: Bumped golang.org/x/net to fix framing-related
+                    headers validation (bsc#1287061)
+    CVE-2026-78663: Bumped golang.org/x/net to fix double flow
+                    control refund on HTTP/2 server streams
+                    (bsc#1287127)
+    CVE-2026-97032: Bumped golang.org/x/net to fix HTTP/2 server
+                    crash due to HPACK encoder race (bsc#1287495)
+  * Features and enhancements:
+    Alerting: Strip sensitive headers from oauth2 cross-host
+              redirects.
+    Dashboard: Fall back when collection deletion is unsupported.
+
+- Update to version 12.4.12:
+  * Security:
+    CVE-2026-13719: Fixed disclosed alert rules in restricted
+                    folders (bsc#1283525)
+    CVE-2026-13720: Fixed file-provisioning metadata when creating
+                    a dashboard (bsc#1283524)
+    CVE-2026-81841: Fixed information disclosure via unrevoked
+                    access tokens (bsc#1284250)
+    CVE-2026-81842: Fixed authorization bypass via missing
+                    destination folder permission check
+                    (bsc#1283597)
+    CVE-2026-61709: Bump github.com/openfga/openfga to fix
+                    unauthorized access (bsc#1281132)
+    CVE-2026-81871: Bump otlploggrpc to fix TLS certificate bypass
+                    (bsc#1281470)
+    CVE-2026-81872: Bump go.opentelemetry.io/otel/sdk/log to fix
+                    DoS via attacker-driven log emission
+                    (bsc#1281471)
+  * Bug fixes:
+    Unified Storage: Return 403 instead of 500 on namespace
+                     mismatch.
+
+-------------------------------------------------------------------
 Thu Sep 17 13:01:40 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 12.4.11:
@@ -42,6 +142,25 @@ Wed Sep  2 10:24:13 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
     CVE-2026-83530: Bump github.com/google/cel-go to version 0.31.0
                     to enforce expression size limit before source
                     construction (bsc#1279990)
+    CVE-2026-63209: Bump github.com/klauspost/compress to fix
+                    integer overflow (bsc#1283756)
+    CVE-2026-100349: Bump github.com/getkin/kin-openapi to fix
+                     nil-pointer panic (bsc#1285796)
+    CVE-2026-100348: Bump github.com/getkin/kin-openapi to fix spec
+                     loader panics (bsc#1285792)
+    CVE-2026-100347: Bump github.com/getkin/kin-openapi to fix
+                     unauthenticated panic (bsc#1285788)
+    CVE-2026-100351: Bump github.com/getkin/kin-openapi to fix
+                     ValidationHandler security-requirement bypass
+                     (bsc#1285806)
+    CVE-2026-100350: Bump github.com/getkin/kin-openapi to fix
+                     uncontrolled resource consumption
+                     (bsc#1285800)
+    CVE-2026-97394: Bump github.com/getkin/kin-openapi to fix
+                    nil-pointer dereference panic (bsc#1285824)
+    CVE-2026-61801: Bump github.com/moby/sys/user to fix unbounded
+                    parsing of user and group database files
+                    (bsc#1284850)
   * Bug fixes:
     Dashboards: Fix adhoc and groupby variable datasource on UI
                 import
@@ -78,6 +197,9 @@ Wed Sep  2 10:24:13 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
   * Security:
     CVE-2026-41178: Fix opentelemetry-go's baggage parsing
                     (bsc#1276658)
+    CVE-2026-37236: Bump github.com/grpc-ecosystem/grpc-gateway to
+                    fix HTTP method bypass (bsc#1277979)
+    CVE-2026-9703: Fix viewer role permissions (bsc#1285848)
   * Features and enhancements:
     Alerting: Add protected fields authorization check to
               provisioning API
@@ -125,6 +247,11 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
                     updating golang.org/x/net (bsc#1265763)
     CVE-2026-8609: Fix pre-authentication DoS in the OAuth login
                    route (bsc#1271330)
+    CVE-2026-89090: Bump
+      github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream to fix
+      host process to termination (bsc#1280676)
+    CVE-2026-33379: Fix dashboard snapshot permission bypass
+                    (bsc#1289605)
   * Various bug fixes and enhancements.
 
 - Update to version 12.4.3:

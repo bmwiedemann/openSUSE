@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 33b68e2c701198457657c2e656ef9a9cc4272d01
+%define git_version 69e51bb26f3fa3e118dd770f1962a93bed690dc1
 
 Name:           kernel-firmware-bluetooth
-Version:        20260929
+Version:        20261109
 Release:        0
 Summary:        Kernel firmware files for various Bluetooth drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20261111.tar.gz#/kernel-firmware-tools-20261111.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -57,6 +57,7 @@ Supplements:    modalias(usb:v*p*d*dcE0dsc01dp01ic*isc*ip*in*)
 Supplements:    modalias(usb:v*p*d*dcE0dsc01dp04ic*isc*ip*in*)
 Supplements:    modalias(usb:v044Ep3001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v044Ep3002d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0471p0215d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0489p*d*dc*dsc*dp*icFFisc01ip01in*)
 Supplements:    modalias(usb:v04BFp030Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04CAp*d*dc*dsc*dp*icFFisc01ip01in*)

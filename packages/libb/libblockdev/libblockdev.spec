@@ -43,7 +43,7 @@
 %define         soversion  3
 
 Name:           libblockdev
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        A library for low-level manipulation with block devices
 License:        LGPL-2.1-only

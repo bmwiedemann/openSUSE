@@ -16,8 +16,8 @@
 #
 
 
-%define lname       libcamera0_7
-%define lname_base  libcamera-base0_7
+%define lname       libcamera0_8
+%define lname_base  libcamera-base0_8
 %global flavor @BUILD_FLAVOR@%nil
 %if "%flavor" == "full"
 %define extname -@BUILD_FLAVOR@
@@ -30,7 +30,7 @@
 %bcond_with    signed_ipa
 
 Name:           libcamera%extname
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -41,6 +41,7 @@ URL:            https://libcamera.org/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
 Patch1:         libcamera-ov02e10-initial-support.patch
+BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  c++_compiler
 BuildRequires:  meson >= 1.0.1
 BuildRequires:  pkg-config
@@ -48,7 +49,6 @@ BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-ply
 BuildRequires:  xz
-BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libevent_pthreads)

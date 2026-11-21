@@ -4724,4 +4724,20 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>[bsc#1288781], [bsc#1288782], [bsc#1288783], [bsc#1288785], [bsc#1288786], [bsc#1288787], [bsc#1288788], [bsc#1288789], [bsc#1288790], [bsc#1288791], [bsc#1288792], [bsc#1288793], [bsc#1288794], [bsc#1288796], CVE-2026-116147, CVE-2026-116148, CVE-2026-116149, CVE-2026-116150, CVE-2026-116151, CVE-2026-116152, CVE-2026-116153, CVE-2026-116154, CVE-2026-116155, CVE-2026-116156, CVE-2026-116157, CVE-2026-116158, CVE-2026-116159, CVE-2026-116160</comment>
     <requestid>1393803</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>eb7f104feef673a868d012f0054da1b4</srcmd5>
+    <version>7.1.2.35</version>
+    <time>1793817807</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1282560]</comment>
+    <requestid>1394948</requestid>
+  </revision>
+  <revision rev="358" vrev="2">
+    <srcmd5>3eec80814c6c080a138a71f27847ab3e</srcmd5>
+    <version>7.1.2.35</version>
+    <time>1794318005</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1289692], CVE-2026-123273</comment>
+    <requestid>1396495</requestid>
+  </revision>
 </revisionlist>

@@ -11,4 +11,13 @@
 * I can be the maintainer in such low update cadence case</comment>
     <requestid>1115769</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1ed027d661727480b4823b9cac5c8606</srcmd5>
+    <version>2.400.0</version>
+    <time>1794162106</time>
+    <user>dimstar_suse</user>
+    <comment>- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1396090</requestid>
+  </revision>
 </revisionlist>

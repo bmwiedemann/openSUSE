@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-botocore%{?psuffix}
-Version:        1.43.114
+Version:        1.43.125
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -50,7 +50,7 @@ BuildRequires:  %{python_module botocore = %{version}}
 BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module urllib3 < 2.1}
+BuildRequires:  %{python_module urllib3 < 3}
 BuildRequires:  procps
 %endif
 %python_subpackages

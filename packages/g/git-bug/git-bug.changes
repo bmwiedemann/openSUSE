@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Nov 14 00:52:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove Web UI and all related scripts, etc.
+
+-------------------------------------------------------------------
+Sat Nov 14 00:39:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Build only the CLI and terminal UI on all architectures:
+  - Remove the Web UI build option, frontend build dependencies
+    and licence collection.
+  - Drop the npm container, lockfiles, inventories, helper scripts,
+    tests and packaging documentation, together with the Rust addon
+    sources, vendored crates, source services and build constraints.
+  - Run offline CLI tests instead of the Web UI checks.
+
+-------------------------------------------------------------------
+Thu Nov  5 11:45:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Complete JavaScript revendoring for the reported security fixes:
+  - Override all @graphql-tools/utils dependencies to 12.0.2 and
+    remove the remaining vulnerable 11.2.2 copy used by GraphQL
+    code generation. Fix prototype pollution through non-primitive
+    incremental-result paths, CVE-2026-114604, bsc#1287363.
+  - Retain body-parser 2.4.0 for the compressed-request denial of
+    service fix, CVE-2026-111181, bsc#1287338.
+  - Retain qs 6.17.0 for empty-array query parameter injection,
+    CVE-2026-110910, bsc#1288154.
+  - Regenerate the npm lock, source inventories and container with
+    860 tarballs. Reject security inventories retaining utils
+    11.2.2 and document the code-generation override.
+
+-------------------------------------------------------------------
+Mon Nov  2 19:08:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update JavaScript vendoring for security fixes:
+  - body-parser 2.3.0 -> 2.4.0 (bsc#1287338, CVE-2026-111181).
+  - @graphql-tools/utils 12.0.1 -> 12.0.2 (bsc#1287363,
+    CVE-2026-114604); add vendored dependency
+    @whatwg-node/promise-helpers 2.0.1.
+  - qs 6.16.1 -> 6.17.0 (bsc#1288154, CVE-2026-110910).
+  - Regenerate npm lock and node_modules container (861 tarballs);
+    update prepare-webui-lock.py security inventory replacements.
+
+-------------------------------------------------------------------
+Thu Oct 29 12:32:50 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add GPL-3.0-or-later and MPL-2.0 to main license tag
+  Triggered by Legaldb review
+
+-------------------------------------------------------------------
 Fri Oct 23 17:38:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix vendored CVEs and build Web UI native addons from source

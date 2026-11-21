@@ -23,13 +23,14 @@
 %bcond_with dcompiler_dmd
 %endif
 Name:           dub
-Version:        1.42.0
+Version:        1.43.0
 Release:        0
 Summary:        Package manager and meta build tool for the D programming language
 License:        MIT
-Group:          Development/Languages/Other
 URL:            https://code.dlang.org
-Source:         https://github.com/dlang/dub/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Upstream tarball bundles Windows DLLs in bin/ (libcurl.dll, libeay32.dll, ssleay32.dll)
+# Repacked without bin/*.dll from https://github.com/dlang/dub/archive/v%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 %if %{with dcompiler_dmd}

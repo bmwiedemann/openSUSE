@@ -1,7 +1,7 @@
 #
 # spec file for package tidy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,9 +92,8 @@ mv tidy-html5-tests-* tests
 
 %build
 %cmake \
-    -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DINCLUDE_INSTALL_DIR:PATH=include/%{name} \
-    -DTIDY_COMPAT_HEADERS:BOOL=ON -DCMAKE_C_FLAGS_RELWITHDEBINFO="-O0 -ggdb3" \
+    -DTIDY_COMPAT_HEADERS:BOOL=ON \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake_build
 ../tidy-html5-doxygen/build_docs.sh
@@ -105,8 +104,7 @@ mv tidy-html5-tests-* tests
 %check
 %ctest
 
-%post   -n libtidy58 -p /sbin/ldconfig
-%postun -n libtidy58 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libtidy58
 
 %files
 %{_bindir}/tidy
@@ -116,6 +114,7 @@ mv tidy-html5-tests-* tests
 %doc build/docs/api/
 
 %files -n libtidy58
+%license README/LICENSE.txt
 %{_libdir}/libtidy*.so.*
 
 %files -n libtidy-devel

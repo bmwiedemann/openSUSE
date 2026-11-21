@@ -18,9 +18,9 @@
 
 %define series 1.4
 %define pythons python3
-%define srcver 1.4.4-5
+%define srcver 1.4.4-6
 Name:           onboard
-Version:        1.4.4.5
+Version:        1.4.4.6
 Release:        0
 Summary:        Simple on-screen Keyboard
 License:        GPL-3.0-only
@@ -28,7 +28,6 @@ Group:          System/X11/Utilities
 URL:            https://github.com/onboard-osk/onboard
 Source:         %{url}/archive/refs/tags/v%{srcver}.tar.gz#/onboard-%{srcver}.tar.gz
 Source1:        onboard-defaults.conf
-Patch0:         https://github.com/onboard-osk/onboard/commit/1ced23c0.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

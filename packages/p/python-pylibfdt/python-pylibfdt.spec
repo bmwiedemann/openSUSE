@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylibfdt
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-pylibfdt
-Version:        1.7.2.post1
+Version:        1.7.2.post2
 Release:        0
 Summary:        Python binding for libfdt
 License:        BSD-2-Clause AND GPL-2.0-only
 URL:            https://pypi.org/project/pylibfdt/
 Source:         https://files.pythonhosted.org/packages/source/p/pylibfdt/pylibfdt-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#dgibson/dtc@5008d1d
+Patch0:         replace-python-2-swig-macros.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -40,7 +42,7 @@ architectures.
 Python binding part.
 
 %prep
-%setup -q -n pylibfdt-%{version}
+%autosetup -p1 -n pylibfdt-%{version}
 
 %build
 %pyproject_wheel

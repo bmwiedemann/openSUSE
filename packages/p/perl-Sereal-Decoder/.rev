@@ -182,4 +182,70 @@
       * Raise the minimum supported Perl version to 5.14.</comment>
     <requestid>1393994</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>743aef5e7741297644bc4adcc40b452c</srcmd5>
+    <version>7.1.0</version>
+    <time>1793990636</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.1.0 (7.001)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+  7.001
+      * Read protocol versions 1 through 7. Decode portable little-endian
+        v7 floats, including IEEE binary128 on Perl builds without
+        quadmath, converting values to the local NV type.
+      * Validate v7 native long-double declarations and reject known
+        format, byte-order and size mismatches. Add
+        allow_unknown_long_double for explicitly trusted same-build reads
+        of unidentified layouts; storage sizes must still match.
+      * Preserve native floating-point behavior for protocol v1-v6 input.
+        Add legacy_float_byteorder for older data with a known source byte
+        order.
+      * Include protocol v6 v-string and negative-integer support, keyed
+        SipHash verification, checksum keys, modes, policies and defaults.
+        Add prepare_checksum_key(), get_sereal_checksum() and
+        validate_sereal_checksum().
+      * Restore regexp character-set modifiers, /n and /xx, and report the
+        required Perl version for unsupported modifiers.
+      * Harden malformed-input and object handling. Retain Decoder handles
+        across callbacks, and run output DESTROY callbacks before
+        capturing input on Perl 5.24.
+      * Restore older-Perl builds, avoid read-only regexp buffer
+        corruption on Perl 5.14, and correct 32-bit size handling and
+        allocation diagnostics.
+      * Fix bundled Snappy builds on Haiku and hobodecoder compatibility
+        with BusyBox od. Improve optional-dependency diagnostics.
+      * Extend independent wire-format and stored corpus coverage,
+        including real Fedora s390x producer captures. Add a
+        floating-point corpus collector and named declarations in</comment>
+    <requestid>1395901</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>1a8445836594d83e578626878aa76105</srcmd5>
+    <version>7.3.0</version>
+    <time>1795023143</time>
+    <user>anag_factory</user>
+    <comment>- updated to 7.3.0 (7.003)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+  7.003
+      * Correct a false native long-double declaration test failure on
+        older x86 macOS Perls.
+  7.002
+      * Add an opt-in paranoid preset for authenticated input, bounded
+        decompression and container sizes, UTF-8 validation, restricted
+        object blessing and THAW, and a recursion limit of 2048. Explicit
+        constructor options can override each default.
+      * Add allow_classes for ordinary and frozen objects and
+        track_classes for per-class object counts. Permit genuine Regexp
+        objects through refuse_objects unless an allowlist excludes them.
+      * Add allow_unsigned as an explicit checksum-policy opt-out. Lower
+        the normal recursion limit from 10000 to 8192, or 4096 on Cygwin.
+        Clarify the trust assumptions and limits of paranoid mode.
+      * Balance custom-op argument and result references on Perl builds
+        with PERL_RC_STACK.
+      * Fix native floating-point declaration tests on older FreeBSD and
+        macOS Perls. Remove hobodecoder's od dependency and make child
+        tests portable on Windows. Bound randomized test runtime and TAP
+        memory use, and adapt deep-recursion tests to Cygwin's stack.</comment>
+    <requestid>1398407</requestid>
+  </revision>
 </revisionlist>

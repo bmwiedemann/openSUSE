@@ -512,4 +512,28 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update opencode to 2.2.5: pty helper built from source, prebuilt vendor weight stripped</comment>
     <requestid>1394194</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>86aba752441bd3aac878fe5fb1aae2b0</srcmd5>
+    <version>2.2.6</version>
+    <time>1794162156</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.2.6; tree-sitter.wasm now built from source. Requires new package emscripten (sr#1396154), stage together.</comment>
+    <requestid>1396155</requestid>
+  </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b01932afc7a0a163de8ec090aa3ec0f6</srcmd5>
+    <version>2.2.7</version>
+    <time>1794428283</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.2.7 (upstream moved sst to anomalyco)</comment>
+    <requestid>1396893</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>fcad0d5d52a307a12466dee03be05192</srcmd5>
+    <version>2.3.0</version>
+    <time>1795022985</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.3.0 (stage with opentui 0.8.4, which it pins exactly)</comment>
+    <requestid>1398390</requestid>
+  </revision>
 </revisionlist>

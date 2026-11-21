@@ -15,9 +15,9 @@
 #
 
 Name:           limine
-Version:        12.9.4
+Version:        12.10.0
 Release:        0
-Summary:        Modern, advanced, portable, multiprotocol bootloader and boot manager
+Summary:        Modern, secure, portable, multiprotocol bootloader and boot manager
 License:        BSD-2-Clause
 Group:          System/Boot
 URL:            https://github.com/Limine-Bootloader/Limine
@@ -32,7 +32,7 @@ BuildRequires:  llvm
 ExclusiveArch:  x86_64 riscv64 aarch64 loongarch64
 
 %description
-Limine is a modern, advanced, portable, multiprotocol bootloader and boot manager,
+Limine is a modern, secure, portable, multiprotocol bootloader and boot manager,
 also used as the reference implementation for the Limine boot protocol.
 
 %prep

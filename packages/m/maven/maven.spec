@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
 Name:           %{base_name}%{?maven_version_suffix}
-Version:        3.10.0
+Version:        3.10.1
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -39,7 +39,6 @@ Patch3:         0003-Remove-dependency-on-powermock.patch
 Patch4:         0004-Fix-build-with-qdox-2.0.1.patch
 Patch5:         0005-Reproducible-maven.build.timestamp.patch
 Patch6:         0006-Plexus-utils-4.x-Plexus-xml-3.x-and-javax.annotation.patch
-Patch7:         jline-4.4.x.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
@@ -60,10 +59,6 @@ BuildRequires:  jakarta-inject
 BuildRequires:  jansi
 BuildRequires:  javapackages-local
 BuildRequires:  jcl-over-slf4j
-BuildRequires:  jline3-jansi-core
-BuildRequires:  jline3-native
-BuildRequires:  jline3-terminal
-BuildRequires:  jline3-terminal-jni
 BuildRequires:  jspecify
 BuildRequires:  maven-resolver-api
 BuildRequires:  maven-resolver-connector-basic
@@ -101,8 +96,7 @@ BuildRequires:  mvn(org.apache.maven:maven-parent:pom:) >= 50
 Requires:       %{name}-lib = %{version}-%{release}
 Requires(post): aaa_base
 Requires(postun): aaa_base
-# maven-lib cannot be noarch because of the position of jline-native.jar
-#BuildArch:      noarch
+BuildArch:      noarch
 
 %description
 Maven is a software project management and comprehension tool. Based on the
@@ -135,10 +129,6 @@ Requires:       httpcomponents-core
 Requires:       j2objc-annotations
 Requires:       jakarta-inject
 Requires:       jcl-over-slf4j
-Requires:       jline3-jansi-core
-Requires:       jline3-native
-Requires:       jline3-terminal
-Requires:       jline3-terminal-jni
 Requires:       jspecify
 Requires:       maven-resolver-api
 Requires:       maven-resolver-connector-basic
@@ -176,23 +166,12 @@ Core part of Apache Maven that can be used as a library.
 %package        javadoc
 Summary:        API documentation for %{name}
 Group:          Documentation/HTML
-BuildArch:      noarch
 
 %description    javadoc
 %{summary}.
 
 %prep
-%setup -q -n apache-maven-%{version} -a10
-
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal >= 4.1}%{!?pkg_vcmp:0}
-%patch -P 7 -p1
-%endif
+%autosetup -n apache-maven-%{version} -a10 -p1
 
 # not really used during build, but a precaution
 find -name '*.jar' -not -path '*/test/*' -delete
@@ -222,9 +201,9 @@ sed -i "s/distributionName=.*/distributionName=Apache\ Maven/" `find -name build
 
 %{mvn_package} :apache-maven __noinstall
 
-%pom_remove_dep :jline-terminal-ffm maven-jline
-%pom_remove_dep :jline-terminal-ffm apache-maven
 %pom_remove_dep -r :logback-classic
+
+%pom_change_dep -r :jakarta.annotation-api javax.annotation:javax.annotation-api
 
 %pom_xpath_remove pom:parent/pom:relativePath
 
@@ -239,8 +218,6 @@ build-jar-repository -s lib \
     commons-cli \
     guice/google-guice \
     jakarta-inject \
-    jline3/jansi-core \
-    jline3/jline-terminal \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \
     maven-resolver/maven-resolver-impl \
@@ -321,10 +298,6 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     httpcomponents/httpcore \
     j2objc-annotations \
     jakarta-inject \
-    jline3/jansi-core \
-    jline3/jline-native \
-    jline3/jline-terminal \
-    jline3/jline-terminal-jni \
     jspecify \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-connector-basic \

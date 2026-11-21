@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Nov 17 15:50:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.8.1:
+  * Revert "typing: Loosen types for Opt.type"
+  * reno: Update master for unmaintained/2025.1
+  * ruff: Enable RUF rules
+  * typing: Loosen types for Opt.type
+  * trivial: Move attribute docs inline
+  * typing: Misc typing improvements
+  * typing: Make Opt generic
+  * typing: Make ConfigType generic
+  * trivial: Reindent docstrings
+  * Fix wrong return type in comments
+  * Fix missing dependency on pbr
+  * Make docs more reproducible
+  * Simplify coverage command options
+  * Do not generate bytecode in tests
+  * Install coverage only when needed
+  * Use pyproject.toml to maintain coverage options
+  * Declare Python 3.15 support
+  * Fix mypy errors caused by testscenarios 0.7.0
+  * Update master for stable/2026.2
+  * trivial: Remove errant space from deprecation warning
+
+-------------------------------------------------------------------
 Tue Sep  1 21:35:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.7.0:

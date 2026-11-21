@@ -391,4 +391,14 @@
     <comment></comment>
     <requestid>1364319</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3af55b2fb1b6ba3bac102b67e70d7465</srcmd5>
+    <version>0.20.0</version>
+    <time>1795103867</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1398713 from darix
+
+- update to 0.20.0</comment>
+    <requestid>1398714</requestid>
+  </revision>
 </revisionlist>

@@ -23,4 +23,36 @@
     <comment>Update python-uncalled-for to 0.4.1. No functional change: only the license metadata is now explicit (same MIT license); src/tests byte-identical to 0.4.0.</comment>
     <requestid>1383993</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b7e8e478aa035b562c27f47a2bfabb6f</srcmd5>
+    <version>0.4.2</version>
+    <time>1793818088</time>
+    <user>anag_factory</user>
+    <comment>Forward python-uncalled-for 0.4.2 to Factory</comment>
+    <requestid>1394954</requestid>
+  </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4e852d37d70f1e5c9aef7bb51e8588c3</srcmd5>
+    <version>0.6.0</version>
+    <time>1793991490</time>
+    <user>anag_factory</user>
+    <comment>Update python-uncalled-for to 0.6.0: Annotated dependency support, Provided default.</comment>
+    <requestid>1395825</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7aab808dec90c51925eb040e02e478a7</srcmd5>
+    <version>0.6.1</version>
+    <time>1794411018</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.6.1</comment>
+    <requestid>1396879</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65f0590ed3c04e36e505d8a9d83bc992</srcmd5>
+    <version>0.6.2</version>
+    <time>1795103767</time>
+    <user>anag_factory</user>
+    <comment>Update python-uncalled-for to 0.6.2: hold cached functions weakly, fix unbounded growth</comment>
+    <requestid>1398595</requestid>
+  </revision>
 </revisionlist>

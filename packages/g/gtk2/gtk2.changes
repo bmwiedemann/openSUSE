@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 17 09:35:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rework automake-1.17.patch to no longer check for specific automake versions:
+  it's getting boring to run after them without actual need to fix anything.
+- Update version dependencies according to configure.ac.
+
+-------------------------------------------------------------------
 Tue Sep 29 09:00:12 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Drop obsolete -fstack-protector from CFLAGS (predates distro
@@ -97,7 +104,7 @@ Tue Nov 28 11:52:33 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Aug 15 19:13:13 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- avoid bashism in baselibs postscript (bsc#1195391) 
+- avoid bashism in baselibs postscript (bsc#1195391)
 
 -------------------------------------------------------------------
 Thu Aug 11 16:25:30 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>

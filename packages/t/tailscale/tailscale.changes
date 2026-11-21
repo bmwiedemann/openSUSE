@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Sun Nov 15 21:34:11 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop ProtectHome from tailscaled.service, it is breaking
+  tailscale SSH.
+
+-------------------------------------------------------------------
+Thu Nov 12 23:46:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.104.7:
+  - Go is updated to Go 1.27.4, to explicitly resolve an issue in
+    TLS ClientHello where some middleboxes break connections to the
+    Tailscale control plane.
+
+-------------------------------------------------------------------
+Wed Nov 11 00:46:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.104.6:
+  - 40ca33161 ipn/ipnlocal,ipn/localapi: fix flaky TestResumeIPNBus
+  - c3689d183 ipn,client/local: let IPN bus watchers be suspended
+    instead of disconnected
+  - 8bdbef52c go.mod: fix duplicate handshake response in
+    wireguard-go (#22221) (#22271)
+  - 56199fe8f wgengine/magicsock: retry UDP reads on EADDRNOTAVAIL
+
+-------------------------------------------------------------------
+Tue Nov  3 00:40:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.104.5:
+  - Connectivity stalls affecting Tailscale SSH, Tailscale Serve,
+    and tsnet on lossy networks are resolved.
+  - Tailscale SSH sessions no longer disconnect when a check mode
+    approval expires.
+  - An issue that could cause Tailscale SSH restarts to hang or
+    background tasks to terminate is resolved.
+
+-------------------------------------------------------------------
+Thu Oct 29 14:54:03 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Ship the Apache-2.0 license text, the NOTICE files of linked
+  Apache-2.0 components (aws-sdk-go-v2, smithy-go, go-iptables,
+  go-yaml v2) and the freetype FTL/GPL texts via %license
+- Extend the License tag to cover the linked third-party code
+
+-------------------------------------------------------------------
+Wed Oct 28 10:02:14 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.104.4:
+  - Fixed: Tailscale SSH performs Unix socket forwarding on behalf
+    of the authenticated user rather than as root, preventing
+    authorized peers from using local and remote forwarding to
+    reach root-only Unix sockets such as the Docker socket or the
+    tailscaled local API. This fix addresses a security
+    vulnerability described in TS-2026-014.
+  - Fixed: Tailscale SSH bounds the memory used for session
+    handling and releases it when the peer disconnects, preventing
+    denial of service through unbounded memory growth in tailscaled
+    from continuous window-change messages and environment variable
+    appends. This fix addresses a security vulnerability described
+    in TS-2026-015.
+  - Fixed: Tailscale Serve restricts TCP forwards to Unix socket
+    backends and revalidates backend paths on each connection,
+    preventing access to privileged Unix sockets such as the
+    tailscaled local API socket. This fix addresses a security
+    vulnerability described in TS-2026-016.
+  - Fixed: Tailscale Serve derives per-request capabilities from
+    the request context rather than from a context shared across
+    all HTTP/2 streams, preventing Tailscale-App-Capabilities
+    values from one mount from being sent with requests for
+    another. This fix addresses a security vulnerability described
+    in TS-2026-017.
+
+  Detailed changes
+  - 199bafac8 net/netmon,net/netns: cache Windows default interface
+    indices
+  - 7faa0a9d6 ipn/ipnlocal: check the tailscaled socket on every
+    serve unix dial
+  - 83b325785 ssh/tailssh: parse UIDs consistently in isRootUser()
+  - 21b7a44c4 ipn/ipnlocal: refuse serving TCP to the tailscaled
+    socket (#21966)
+  - 1fb2bb81e derp/derphttp: bound response body read on non-101
+    upgrade response (#21980)
+  - 116c1d207 ssh/tailssh: release reverse-forward cancellation
+    callbacks
+  - 5d9906d40 ssh/tailssh: set $LOGNAME to same value as $USER in
+    incubator
+  - baefbd5b7 ssh/tailssh: give delegated action fetches one
+    timeout owner
+  - 2cbe0aacb ssh/tailssh: name the monitor for its connection-wide
+    role
+  - 637efe259 ssh/tailssh: clarify lifecycle and protocol comments
+  - 5919a9d1e ssh/tailssh: register connections atomically with
+    shutdown
+  - 342ebd6f9 ssh/tailssh: dial TCP forwards as the bound user
+  - 028f06144 ssh/tailssh: retain the latest session window size
+  - 19523b1c2 ssh/tailssh: relay Unix forward payloads as the bound
+    user
+  - 28da43186 ssh/tailssh: enforce recording failure before
+    notifying control
+  - 31358352e ssh/tailssh: initialize username hint exclusions
+  - d036eda8f ssh/tailssh: enforce SSH policy at the connection
+    level
+  - 64b25e655 go.mod: bump gliderssh for window resize fix
+  - c001879eb ssh/tailssh: launch sessions via the monitor
+  - 4adc3c051 ssh/tailssh: route SSH forwarding through the
+    privileged monitor
+  - da7cdd36f ssh/tailssh: add user-credential forwarding children
+    and monitor dial/listen ops
+  - 4947a2f3d ssh/tailssh: add monitor RPC codec and SCM_RIGHTS fd
+    passing
+  - 92bc90add go.mod: update gliderssh for resource exhaustion
+    fixes
+  - 930da8d73 tsnet: authorize ListenSSH peers, fix PTY emulation
+    and session queue bound
+  - 532e32ed8 ssh/tailssh: drain the sftp test helper's stderr
+    copier
+  - d3357d49f go.mod: update gliderssh to remove data race on
+    timeouts
+  - d090b5ab6 ipn/ipnlocal: fix serve app caps leaking across
+    mounts (#21931)
+  - 420cd436c ssh/tailssh: record sftp sessions and honor recording
+    failure policy
+  - 3f43695e3 ssh/tailssh: unify defaultPathForUser to use
+    isRootUser (#21928)
+  - 90e1ac67b ssh/tailssh: fix off-by-one and clamp c2n SSH
+    username hint cap
+  - 93856e28a ssh/tailssh: validate accepted env values, deny
+    GLIBC_TUNABLES, cap names
+  - 4f7d3cee7 ssh/tailssh: refuse direct-exec fallback for non-root
+    users as root
+  - 0284e166c ssh/tailssh: hand the agent forwarding dir to the
+    user, remove it on session end
+  - b9684f847 ssh/tailssh: pin rejection-banner content to
+    policy-derived facts
+  - 8b27acf17 ssh/tailssh: write private host keys with 0600
+    permissions
+  - 37b870582 ssh/tailssh: treat numerically-zero uids as root in
+    isRootUser
+  - 0ab8931ef util/osuser: validate 'id' input, reject corrupt
+    getent passwd output
+  - 851c99cae ssh/tailssh: extend dangerous env var denylist,
+    re-check child-side
+  - b47604dca ssh/tailssh: make acceptEnv pattern matching linear
+    time
+  - 338bcaffd ssh/tailssh: record the raw client command in session
+    recordings
+  - 7d1b43695 wgengine/magicsock: ensure discoKey nodeKey match
+    (#21956) (#21964)
+
+-------------------------------------------------------------------
 Wed Oct 21 07:29:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.104.2:

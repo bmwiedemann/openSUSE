@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Nov 14 07:48:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 1.12.0:
+  * daemon/IPC hardening: cap concurrent plug-in processes
+    per client uid, rate-limit per-uid plug-in forks, add
+    auth-gated registration deadline, throttle logs for
+    refused connections, reap exited plug-ins promptly and
+    add systemd resource limits for the lsmd service
+  * libsg: validate sense-data format on REQUEST SENSE reads
+    and zero the caller buffer before VPD and LOG SENSE reads
+  * libsas: return NO_SUPPORT when the device reports no SAS
+    phy info instead of reporting a library bug
+  * bash completion: harden against hostile values, no longer
+    fail under `set -u`
+  * treewide: use canonical /run/lsm paths (UDS default now
+    /run/lsm/ipc)
+  * targetd: drop Python 2 SSL compat, cache the SSL context
+  * packaging: restore home dir for the sysusers account
+- Drop move_to_run.patch (adopted upstream, tree now uses
+  /run/lsm throughout; the remaining hunk touched only the
+  unused SysV init script)
+- Spec cleanup: convert ledmon-devel and python3-devel to
+  pkgconfig() providers, drop the unneeded python3-embed
+
+-------------------------------------------------------------------
 Sun Sep 20 19:41:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 1.11.0:

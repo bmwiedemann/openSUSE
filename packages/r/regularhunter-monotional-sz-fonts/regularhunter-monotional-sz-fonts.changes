@@ -1,40 +1,46 @@
 -------------------------------------------------------------------
-Wed Dec  3 01:57:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Sat Nov 14 18:12:42 UTC 2026 - Hunter Wardlaw <wardlawhunter@opensuse.org>
+
+- Update to 3.0:
+  * Full Vietnamese support thanks to Dinh Quoc Han
+
+-------------------------------------------------------------------
+Wed Dec  3 01:57:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Add missing license and copyright notices
 
 -------------------------------------------------------------------
-Wed Dec  3 01:45:58 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Wed Dec  3 01:45:58 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 2.10:
   * Rescale % glyph to 104% of original size
 
 -------------------------------------------------------------------
-Fri Jul 11 07:27:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Jul 11 07:27:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 2.9:
   * Revert scaling of % glyph
 
 -------------------------------------------------------------------
-Fri Jun 27 01:31:30 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Jun 27 01:31:30 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 2.8:
   * Align ` % ` and ` ~ ` to integer coordinates
   * Scale ` % ` glyph to 104% of original size 
 
 -------------------------------------------------------------------
-Wed Jun 25 22:12:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Wed Jun 25 22:12:59 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update to 2.7:
   * Rework % glyph for all fonts
 
 -------------------------------------------------------------------
-Fri Jun 20 19:29:16 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Jun 20 19:29:16 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update readme
 
 -------------------------------------------------------------------
-Mon Jun 16 19:11:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Mon Jun 16 19:11:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
 - Update license type in spec file
 - Remove invalid Recommends in spec file
@@ -42,7 +48,7 @@ Mon Jun 16 19:11:26 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * Correct thickness of regular and bold-italic figuredash
 
 -------------------------------------------------------------------
-Fri Jun 13 18:51:18 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
+Fri Jun 13 18:51:18 UTC 2025 - Hunter Wardlaw <wardlawhunter@opensuse.org>
 
  - Add slashed zero (SZ) version of regularhunter-monotional-fonts
 

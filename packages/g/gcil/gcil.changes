@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Nov  8 09:45:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.3.0:
+  * Features
+    - cli, menus: implement '--presets' to preselect jobs in menu
+      (e2928df)
+    - mise: avoid '--path' if already the default 'mise use'
+      configuration (3e152f0)
+    - updates: show 'mise use' update command if running from
+      'mise' (117b2ab)
+    - updates: show 'mise use' update in the 'mise' configuration
+      of the tool (255cf86)
+  * Bug Fixes
+    - themes: resolve yellow color support on light theme UI
+      (4e0d170)
+  * Documentation
+    - mkdocs: exclude generated pages from
+      'git-revision-date-localized' (6dd18c8)
+    - readme, prepare: link 'pipeline' badges to GitLab CI
+      pipelines page (330fe4a)
+  * Cleanups
+    - cliff: migrate 'cliff.toml' to 'conf/git-cliff/' folder
+      (60c051e)
+    - mise: create 'menu:gcil' task for 'gcil' use cases (45dfb35)
+    - mise: update 'changelog' task to generate with 'git-cliff'
+      (56c9af6)
+    - mise: remove 'gcil' task in favor of 'menu:gcil' (c0c0a91)
+    - pre-commit: migrate to 'pre-commit-crocodile' 8.4.0 (43fa2e7)
+    - pre-commit: migrate to 'pre-commit-crocodile' 9.0.0 (e5e136b)
+  * Build
+    - pages: install 'git-cliff' 2.14.1 through 'mise' from
+      'extrepo' (7918741)
+
+-------------------------------------------------------------------
 Sun Sep 20 07:01:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.2.0:

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:53:57 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update commonmark-pandoc to version 0.3.0.2.
+  ## 0.3.0.2
+
+    * Fix class attribute so that it is split on spaces and multiple
+      classes added to pandoc Attr.
+
+  ## 0.3.0.1
+
+    * Keep task-list checkbox attached under source positions.
+      With sourcepos enabled, an item's first Plain/Para has already been
+      wrapped in a Div (wrapper="1") by addBlockAttrs before taskList runs,
+      so toTaskListItem's Plain/Para patterns never matched and the
+      checkbox was emitted as a separate Plain block preceding the item
+      contents. Recognize the wrapper Div and insert the checkbox into
+      the Plain/Para inside it.
+
+    * Use B.text for resolved entities. B.str put whitespace inside Str
+      nodes for entities like &#32; and &#10;, violating pandoc AST
+      conventions; B.text produces proper Space/SoftBreak elements.
+
+    * Remove redundant illegalCodePoint check.
+
+    * Don't duplicate classes and keys in `addToPandocAttr`.
+      Matches the HTML backend's incorporateAttribute, which never
+      produces duplicate classes or attribute keys.
+
+    * Make the wrapper `data-pos` suppression robust. Don't rely on the
+      wrapper marker being the first entry in the key-value list.
+
+-------------------------------------------------------------------
 Sun May 31 14:58:19 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update commonmark-pandoc to version 0.3.

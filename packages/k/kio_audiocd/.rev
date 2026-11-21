@@ -1412,4 +1412,12 @@
     <comment>- Drop the obsolete libkcompactdisc dependency</comment>
     <requestid>1394286</requestid>
   </revision>
+  <revision rev="178" vrev="1">
+    <srcmd5>39305e41f1fba8d9369ec4fbf05b55ac</srcmd5>
+    <version>26.08.3</version>
+    <time>1793989833</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.08.3 (forwarded request 1394965 from krop)</comment>
+    <requestid>1395282</requestid>
+  </revision>
 </revisionlist>

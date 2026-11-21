@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 09:24:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Fix build for Leap 16.1
+
+-------------------------------------------------------------------
+Fri Nov  6 07:26:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * gst: Always set the smart resize and crop when configuring.
+  * helpers: buffer: Add the missing <string> include.
+
+-------------------------------------------------------------------
 Thu Sep 10 08:15:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.0

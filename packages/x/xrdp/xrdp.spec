@@ -58,12 +58,18 @@ Patch1005:      xrdp-fix-old-gcc-error.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
+%if 0%{?suse_version} > 1500
+BuildRequires:  check-devel
+%endif
 BuildRequires:  fdupes
 BuildRequires:  imlib2-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libavahi-devel
+%if 0%{?suse_version} > 1500
+BuildRequires:  libcmocka-devel
+%endif
 BuildRequires:  libtool
 BuildRequires:  nasm
 BuildRequires:  openssl-devel
@@ -118,11 +124,22 @@ CFLAGS="$RPM_OPT_FLAGS -D_FILE_OFFSET_BITS=64" \
 %endif
    --enable-vsock \
    --enable-fuse \
+%if 0%{?suse_version} > 1500
+   --enable-pixman \
+   --enable-tests
+%else
    --enable-pixman
+%endif
 make %{?_smp_mflags} V=1
+
+%check
+%if 0%{?suse_version} > 1500
+make %{?_smp_mflags} check
+%endif
 
 %install
 make %{?_smp_mflags} DESTDIR=%{buildroot} install
+rm -f %{buildroot}%{_bindir}/paintertest
 find %{buildroot} -name '*.a' -delete
 find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_fillupdir}

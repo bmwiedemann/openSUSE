@@ -81,21 +81,11 @@
   <target name="plexus"
           depends="compile"
           description="Generate Plexus component.xml">
-    <mkdir dir="${build.outputDir}/META-INF/plexus"/>
-    <pathconvert property="classpath.string" pathsep=":">
-      <path refid="build.classpath"/>
-    </pathconvert>
-    <exec executable="plexus-metadata-generator" failonerror="true">
-      <env key="CLASSPATH" value="${build.outputDir}:${classpath.string}"/>
-      <arg value="-s"/>
-      <arg value="${build.srcDir}"/>
-      <arg value="-c"/>
-      <arg value="${build.outputDir}"/>
-      <arg value="-m"/>
-      <arg value="${build.outputDir}/META-INF/plexus"/>
-      <arg value="-o"/>
-      <arg value="${build.outputDir}/META-INF/plexus/components.xml"/>
-    </exec>
+    <typedef resource="org/codehaus/plexus/metadata/ant/antlib.xml"/>
+    <plexus-metadata classesDirectory="${build.outputDir}">
+      <sourceDirectory location="${build.srcDir}"/>
+      <classpath refid="build.classpath"/>
+    </plexus-metadata>
   </target>
 
   <!-- ====================================================================== -->

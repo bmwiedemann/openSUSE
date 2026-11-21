@@ -369,6 +369,8 @@ Patch1019:      elf-origin-open-normalized.patch
 Patch1020:      power8-strncasecmp-overread.patch
 # PATCH-FIX-UPSTREAM realloc: Fix mmap non-mremap reallocation case (BZ #34697)
 Patch1021:      realloc-mmap-non-mremap.patch
+# PATCH-FIX-UPSTREAM intl: Restrict path traversal when using LANGUAGE env var (CVE-2026-84243, BZ #17142)
+Patch1022:      intl-restrict-path-traversal.patch
 %endif
 
 ###

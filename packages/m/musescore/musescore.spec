@@ -33,7 +33,7 @@
 %bcond_with    fdk_aac
 
 Name:           musescore
-Version:        4.7.5
+Version:        4.7.6
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:

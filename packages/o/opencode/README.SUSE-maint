@@ -218,8 +218,9 @@ The remaining two patches are unrelated to the network.
 
 opencode-relax-bun-version.patch carries the version skew instead. Upstream's
 build script fails unless bun satisfies a caret range around the version in
-the packageManager field: 2.2.5 pins bun@1.4.4 and Factory has 1.4.2, which
-does not satisfy ^1.4.4, so without the patch the check would fail the
+the packageManager field: 2.2.7 pins bun@1.4.4 and Factory has
+1.4.4, so the check passes and the patch stays a guard for the next
+skew. Without the patch a bun move would fail the
 build. The patch turns it into a warning because both versions float
 independently, a distribution ships one bun, and the check is upstream's
 convenience rather than a real incompatibility - the build
@@ -266,12 +267,18 @@ Licensing
 
 The dependency tree is compiled into the executable, so its licences are part
 of the binary and the License: tag has to cover all of them.
-As of 2.2.5, across the 346 shipped packages:
+As of 2.2.7, across the 346 shipped packages:
 
-    MIT 191, Apache-2.0 67, ISC 65, BlueOak-1.0.0 9, BSD-2-Clause 8,
-    BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
-
-No copyleft, no proprietary packages. The retraced keep list names 349
+    MIT 190, Apache-2.0 66, ISC 65, BlueOak-1.0.0 9, BSD-2-Clause 8,
+    BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1,
+    plus the two @opentui/core-linux-* 0.8.3 entries declaring
+    MIT AND LGPL-2.1-or-later (was MIT at 0.8.0; opentui 0.8.3
+    decodes video in native code via FFmpeg, built from source in
+    its own package). Their prebuilt .so files are deleted from
+    the tree and the runtime loads the opentui package's build,
+    whose own License tag carries the LGPL grant, so no copyleft
+    ships here and there are no proprietary packages. The retraced
+    keep list names 349
 entries; the tarball holds two fewer because opencode_vendor strips the
 @opencode/pty-linux-* entries after pruning (both MIT, superseded by the
 from-source pty build). Two declarations are inconsistent and neither
@@ -295,8 +302,8 @@ subpath packages at the same depth as its own manifest - zod's v3/v4/mini,
 solid-js's h/html/store/universal/web, effect's ai-docs, diff's esm/cjs, and
 tslib's modules - and those manifests carry no name, no version and no license
 field. Counting the first package.json found per entry therefore reports
-dozens of unlicensed packages that are not packages at all (435 files for
-348 packages at 2.2.5); take the manifest
+dozens of unlicensed packages that are not packages at all (434 files for
+348 packages at 2.2.7); take the manifest
 whose name matches the entry instead.
 Separately, poe-oauth 0.0.8 (no license field, no LICENSE file in the npm
 tarball, MIT granted by the root LICENSE of github.com/poe-platform/poe-code)
@@ -304,7 +311,7 @@ left the closure after 1.18.32 and is no longer shipped; if it comes back the
 note applies again.
 
 One package that would otherwise be here is deliberately absent.
-@anthropic-ai/claude-agent-sdk 0.3.301, new in the v2.2.0..v2.2.5 range for
+@anthropic-ai/claude-agent-sdk 0.3.301, new in the v2.2.0..v2.2.7 range for
 the Claude Agent provider, declares "SEE LICENSE IN README.md" and ships a
 proprietary Anthropic LICENSE.md (all rights reserved, Commercial Terms;
 the README grants nothing). opencode-externalize-claude-agent-sdk.patch
@@ -324,7 +331,7 @@ one of these ways:
 
   - Embedded, built here from source: the pty helper behind the shell
     tool's persistent terminals. %build compiles packages/process-daemon
-    0.4.0 (Source20, MIT) with `cargo build --release --offline --locked`
+    0.5.0 (Source20, MIT) with `cargo build --release --offline --locked`
     against its locked cargo closure (Source21, from the cargo_vendor
     service in _service) and exports the result as OPENCODE_PTY_BIN, which
     packages/cli/script/build.ts embeds as its bun file-table entry (the
@@ -439,12 +446,22 @@ tree-sitter-bash / tree-sitter-powershell runtime requirements are retired
 as of 2.2.5. If upstream ever goes back to a wasm parser, that patch wants
 its placeholders re-added to the spec.
 
-One module is still the npm file: web-tree-sitter's tree-sitter.wasm
-(205 KB, MIT), used by @opentui/core's highlighter. Its build needs
-emscripten (MAIN_MODULE dynamic linking plus generated JavaScript glue),
-which the distribution does not have. It is declared as
-bundled(web-tree-sitter). Retiring it means either packaging emscripten or
-giving the highlighter the same native treatment as the shell parser.
+One module used to be the npm file; it no longer is. web-tree-sitter's
+tree-sitter.wasm (MIT), the runtime @opentui/core's highlighter loads,
+is compiled from the tree-sitter 0.25.10 sources (new Source30) with
+emscripten in %%build, and the tree-sitter.js/.cjs bundles loading it
+are rebundled from its TS sources with bun the way upstream's
+script/build.js does (node platform, keepNames, fs external). The glue
+and the wasm come from the same build; the npm prebuilts (wasm, both
+bundles, their maps, lib/tree-sitter.cjs) are stripped from the vendor
+tarball at tarball time, and %%build installs the rebuilt files over
+the same package-root paths, so
+nothing prebuilt ships. emscripten 6's metadce drops the main module's
+env.__stack_pointer export, which the grammar side modules fail to link
+against, so the build passes EXPORT_ALL (+18 bytes; verified: the
+rebuilt runtime loads the distribution's tree-sitter-bash-wasm and
+parses through it). %%check loads every system grammar through this
+runtime, so it is the acceptance test for the from-source build.
 
 %check reads bun's embedded-file table out of the executable and asserts it
 lists exactly watcher.node, the grammar modules (the five plus tsx since

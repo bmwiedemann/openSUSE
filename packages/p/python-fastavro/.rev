@@ -40,4 +40,18 @@
   * Publish wheels for Windows ARM64 (@Harishmcw)</comment>
     <requestid>1360762</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2694d9d925507d57ea0edc1b67a146a</srcmd5>
+    <version>1.13.1</version>
+    <time>1794236626</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.13.1:
+  * Match reader named schema reference with inline writer schema
+  * Remove support for Python 3.9 and 3.10
+  * Raise SchemaParseException for a malformed record field
+  * Raise EOFError on truncated primitives instead of
+    TypeError/struct.error
+  * Release Python 3.15 wheels</comment>
+    <requestid>1396173</requestid>
+  </revision>
 </revisionlist>

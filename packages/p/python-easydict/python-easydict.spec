@@ -18,14 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-easydict
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        Access dict values as attributes (works recursively)
 License:        LGPL-3.0-only
 URL:            https://github.com/makinacorpus/easydict
 Source:         https://files.pythonhosted.org/packages/source/e/easydict/easydict-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,6 +42,8 @@ for Python dicts.
 %autosetup -p1 -n easydict-%{version}
 
 %build
+# sdist ships no .git; pin the tagged version for setuptools-scm.
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
@@ -51,9 +54,9 @@ for Python dicts.
 # Upstream ships no pytest suite; CI runs doctest on the module.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import doctest, easydict; r = doctest.testmod(easydict); raise SystemExit(r.failed)"
 
-%files %{python_files}
+%files %python_files
 %license LICENSE
-%doc README.rst CHANGES
+%doc README.rst
 %{python_sitelib}/easydict
 %{python_sitelib}/easydict-%{version}.dist-info
 

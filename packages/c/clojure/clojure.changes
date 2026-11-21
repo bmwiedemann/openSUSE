@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:03:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.7:
+  * CLJ-2993 - AFunction can be used to craft a serialized object that runs
+    x arbitrary code on deserialization (GHSA-x4c4-68gp-vrhc)
+
+-------------------------------------------------------------------
 Thu Sep  3 07:55:49 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.6:

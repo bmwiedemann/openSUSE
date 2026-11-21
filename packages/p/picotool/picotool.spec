@@ -16,18 +16,23 @@
 #
 
 
-%define sdk_version 2.1.1
+%define sdk_version 2.3.1
 Name:           picotool
-Version:        2.1.1
+Version:        2.3.1
 Release:        0
 Summary:        Tool to inspect RP2040 binaries
 License:        BSD-3-Clause
-Group:          Development/Tools/Other
 URL:            https://github.com/raspberrypi/picotool
 Source0:        https://github.com/raspberrypi/picotool/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/raspberrypi/pico-sdk/archive/%{sdk_version}.tar.gz#/pico-sdk-%{sdk_version}.tar.gz
+# PATCH-FIX-OPENSUSE install-firmware-to-libdir.patch -- install device
+# firmware ELF blobs to libdir instead of datadir (arch-dependent files
+# do not belong in usr-share) and search that dir at runtime
+Patch0:         install-firmware-to-libdir.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
+# Keep the plain -devel name here: the pkgconfig form adds an
+# extra pkgconfig provider dep for no benefit
 BuildRequires:  libusb-1_0-devel
 
 %description
@@ -50,6 +55,7 @@ sed -i 's#set(INSTALL_CONFIGDIR lib/cmake/picotool)#set(INSTALL_CONFIGDIR ${CMAK
 %license LICENSE.TXT
 %{_bindir}/picotool
 %{_libdir}/cmake/picotool
+%{_libdir}/picotool
 %{_datadir}/picotool
 
 %changelog

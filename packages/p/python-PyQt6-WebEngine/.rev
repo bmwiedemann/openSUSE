@@ -166,4 +166,22 @@
     <comment> (forwarded request 1350683 from alarrosa)</comment>
     <requestid>1350693</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e01c438a0e2e31331c6411423169f88a</srcmd5>
+    <version>6.140.1</version>
+    <time>1795022997</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.140.1 
+  * `.pyi` type stub files now pass flake8-pyi.
+- QtPdf moved to a separate package
+
+- Drop obsolete 'Group' tag
+- Temporarily drop URL from 'Source'. Upstream switched to 6.140.1
+  which breaks the import test.
+
+- Update to 6.140.0
+  - The package now includes the QtPdf and QtPdfWidgets modules from PyQt6.
+  - Added support Qt WebEngine v6.140 based on Qt v6.12.</comment>
+    <requestid>1397732</requestid>
+  </revision>
 </revisionlist>

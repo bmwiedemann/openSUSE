@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  2 17:37:19 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to 0.2.0
+  * mouse: add custom pointer acceleration profiles (requires 
+    labwc >= 0.20.3)
+  * behaviour: add raiseOnFocusDelay and onbutton scroll method
+  * about: add wlroots version
+  * Add format-xml helper
+
+-------------------------------------------------------------------
 Mon Jun  1 15:09:49 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 0.1.0 Release

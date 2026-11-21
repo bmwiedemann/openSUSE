@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:41:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.60.1 (via 1.60.0):
+  * New oi-kit operations: SkillOperation (Skills extension
+    dropped), executable commands with SlashCommandOperation,
+    bang command and steering operations; reusable turn limits
+  * New declarative providers: Cortecs, Onysoft; Dutch
+    translation
+  * Provider fixes: Ollama think tags in XML tool calls, OpenAI
+    tool_choice auto, MiniMax-M3.1 adaptive thinking, Vercel
+    gateway refresh, Bedrock truncation, compaction
+    scratchpad drop for Claude
+  * Scheduler validates cron; restore AGENT and GOOSE_TERMINAL;
+    request logs and temp dirs private; no retry on 400s
+    rejecting thinking; closed stdout pipe on export handled
+  * Remove chat mode and the goose review subcommand; platform
+    extensions split from MCP runtime; tool hooks from goose
+    run loop
+  * Raise MSRV to 1.95.0 for rustyline 19 (spec floor bumped)
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Refresh the vendored dependencies (1097 crates vendored, zip
+  9.6.0 -> 9.7.3)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+- Rebase goose-system-libdbus.patch for lru 0.19
+
+-------------------------------------------------------------------
+Mon Nov 16 20:42:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.59.2:
+  * Databricks provider: drop thinking blocks bound to a
+    different prefix
+- Refresh the vendored dependencies (1105 crates vendored)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+
+-------------------------------------------------------------------
+Sun Nov 15 07:53:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.59.1:
+  * Anthropic: use adaptive thinking for Claude Fable 5.2
+  * Databricks: give Gemini tool calls unique ids
+- Refresh the vendored dependencies (1105 crates vendored)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+
+-------------------------------------------------------------------
+Wed Nov 11 20:02:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.59.0 (via 1.58.1 and 1.58.0):
+  * New declarative providers: AIHubMix, RouterPlex, Lemonade
+  * Context window report and viewer; thinking collapsed by
+    default; opt-in context relevance operation
+  * goose-agent (GDK): stop, approval and tool hook operations;
+    completed delegates resume with a follow-up
+  * Live voice: configurable and per-start voice instructions,
+    configurable GPT-Live endpoint, model and key
+  * Session list filters by client tags (ACP); current session
+    ID in /status; failed manual compaction reports an error;
+    compaction prompt reworded for Opus
+  * Provider fixes: Bedrock routing and inference fallback,
+    OpenRouter variant suffixes and context-overflow detection,
+    LiteLLM vision lookup, Databricks token refresh and system
+    prompt routing, Retry-After handling, Gemini thinking level
+  * Scheduler honours recipe settings; desktop agent starts once
+    after a fork; voice WebSockets use system trust
+  * zstd 0.14.3 for RUSTSEC advisories; jsonwebtoken, ACP
+    client-delegated tools and tool-specific titles removed
+  * CVE-2026-115905, CVE-2026-115906, CVE-2026-115908,
+    CVE-2026-115909: vulnerable zip 8.6.0 copy no longer
+    linked into the shipped binary (only zip 9.5.1 remains)
+    (boo#1287926)
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Refresh the vendored dependencies (1103 crates vendored);
+  re-derive the License tag from the new graph, unchanged
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+
+-------------------------------------------------------------------
+Wed Nov  4 14:19:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Strip Windows-only prebuilt objects from the vendored
+  crates (aws-lc-sys prebuilt-nasm MSVC objects and ring
+  pregenerated Windows objects, 43 files with their
+  .cargo-checksum.json entries) to comply with the
+  no-prebuilt-binaries policy; only test fixtures remain,
+  covered by Source-Binary-Exception lines.
+
+-------------------------------------------------------------------
 Sat Oct 31 06:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.57.0:

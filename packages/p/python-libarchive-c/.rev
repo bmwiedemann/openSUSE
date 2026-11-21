@@ -110,4 +110,13 @@
     and new methods `get_stored_digest` and `set_stored_digest`.</comment>
     <requestid>1343421</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d5c4141c50599a0fbdaf1f5220fc3729</srcmd5>
+    <version>5.3</version>
+    <time>1794838470</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-libarchive-3.8.10.patch:
+  * Support changes required by libarchive 3.8.10.</comment>
+    <requestid>1397815</requestid>
+  </revision>
 </revisionlist>

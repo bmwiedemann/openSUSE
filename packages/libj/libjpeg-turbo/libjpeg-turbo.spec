@@ -39,7 +39,7 @@
 %endif
 %define libver   %{major}.%{minor}.%{micro}
 Name:           %{flavor}
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        A SIMD-accelerated library for manipulating JPEG image files
 License:        BSD-3-Clause

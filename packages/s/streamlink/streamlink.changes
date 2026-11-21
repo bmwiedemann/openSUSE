@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 13 09:30:02 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 8.6.3:
+  + Fixed: --retry-streams and --retry-max in external/continuous HTTP output
+    mode when re-fetching
+  + Tests: fixed race-conditions in HLS tests
+- remove link to keyserver
+
+-------------------------------------------------------------------
 Sat Oct 17 16:46:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.6.2:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  9 07:55:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have the main pattern recommend opensuse-welcome. This used to be pulled in
+  by the various X-related patterns (IIRC last via games), which was cleaned
+  up. As we have no underlying pattern for graphical systems anymore, desktops
+  need to pull it in directly.
+
+-------------------------------------------------------------------
 Sun Oct 18 18:11:37 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Drop the Tumbleweed-only Recommends on yast2-control-center-qt and

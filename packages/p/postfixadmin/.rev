@@ -494,4 +494,23 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
     https://github.com/postfixadmin/postfixadmin/releases/tag/postfixadmin-3.3.15 (forwarded request 1235062 from cboltz)</comment>
     <requestid>1235064</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>1508725c3d3e172b3ef7bb24ade0de62</srcmd5>
+    <version>4.0.7</version>
+    <time>1795023146</time>
+    <user>anag_factory</user>
+    <comment>- update to PostfixAdmin 4.0.7
+  - security fixes (including CVE-2026-127178 aka boo#1290587)
+  - fix missing texts for non-english languages
+  - some other minor fixes, see CHANGELOG.TXT for all details
+
+- update to PostfixAdmin 4.0.6
+  - MFA/TOTP Support
+  - OpenDKIM domain key handling
+  - Remove the dependency on 'doveadm pw'
+  - dark theme
+  - lots of small improvements and fixes
+  - see CHANGELOG.TXT for all the details (forwarded request 1398410 from cboltz)</comment>
+    <requestid>1398411</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Nov 12 07:57:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 20261111:
+  * Add `gid1` element to identify MVNOs
+  * Add emergency number information for FI, IL, IR, NL, RU
+  * New providers:
+    + Ae: Webbing
+    + Be: Neibo
+    + Bo: Entel, Tido, Viva
+    + Br: Webbing
+    + Ca: Kodoo
+    + Fr: Webbing, Lebara
+    + Gb: iD Mobile
+    + Gi: Gibtelcom
+    + Hk: Webbing
+    + It: Webbing
+    + Nl: Simyo, Webbing
+    + No: Happybytes, Saga Mobil
+    + Pl: Webbing
+    + Tj: Beeline TJ, Megafon, Tcell, Babilon Mobile
+    + Us: Webbing
+  * Updated providers:
+    + At: Drei, Lycamobile
+    + Be: Telavox, Telenet
+    + Ca: Telus
+    + De: Congstar, WinSIM
+    + Fi: Telia
+    + Fr: Free, Lycamobile
+    + Il: Webbing
+    + It: CoopVoce
+    + Lt: Omnitel
+    + Nl: KPN NL, Webbing
+    + No: Ice, OneCall, MyCall, Telavox, Telia
+    + Ro: Vodafone
+    + Ru: Beeline
+    + Se: Telavox
+    + Us: US Mobile
+  * Removed providres:
+    + No: Altibox, Chess, Network Norway, Phonero, Ludo Mobil, TDC, Tele2,
+      Telipol, Ventelo
+
+-------------------------------------------------------------------
 Mon Mar 23 08:02:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -23,7 +65,7 @@ Thu May  2 12:34:14 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 - Replace configure/make/make_install macros by the meson
   equivalents meson/meson_build/meson_install.
 - Enable test suite.
-- BuildRequire libxml2-tools, needed by the tests. 
+- BuildRequire libxml2-tools, needed by the tests.
 
 -------------------------------------------------------------------
 Thu May 02 12:34:13 UTC 2024 - dimstar@opensuse.org

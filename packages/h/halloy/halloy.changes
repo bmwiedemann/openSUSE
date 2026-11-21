@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Nov  6 14:28:43 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2026.10:
+Added:
+  * SQLite history storage, with automatic migration of existing
+    gzip history as buffers are used and loading of history in
+    windows.
+  * Search buffer to search messages across all servers, channels
+    and queries, opened from the command bar, sidebar menu,
+    a nickname's context menu, the search key binding or /search
+  * Added buffer.text_input.upload_long_paste to automatically use
+    filehost in case pasted text is too long
+  * Pane title bar button and shortcut to scroll to the backlog
+    divider
+  * Condensed message gained support for summary via
+    buffer.server_messages.condense.format = "summary"
+  * Pressing Tab after /topic  fills in the current channel
+    topic for editing
+  * Highlight matches can be optionally named via the name property
+  * Notification and highlights matches sound property now accept
+    an array of sounds, in which case they'll be picked at random
+  * Right-clickable text in the server buffer now offers a context
+    menu
+  * Added Gopher(+s) / Gemini protocol schemes
+    (make links clickable)
+  * Added support for IPv6 literal links
+  * Focus mode can be entered with focus_down, focusing the
+    top-most visible message in the buffer
+  * Pressing Tab in the config editor inserts an indent, set by
+    config_editor.indent
+    ("tab" by default, or a positive integer from 1 to 8)
+  * Sidebar typing indicators for queries
+  * buffer.close.query option "close-buffer"
+    (previous option "close" renamed to "close-pane")
+  * Setting runtime.smooth_scrolling to control whether
+    smooth scrolling is used
+  * Setting servers.<name>.who_poll_in_flight_limit to control
+    the number of WHO requests sent at once when cap
+    no-implicit-names acked
+  * Update to Unicode 18.0 emojis
+Fixed:
+  * Colored emojis are now preferred over outline ones
+  * Crash when right clicking a message in the server buffer
+  * Config editor crash when caret is outside the window bounds
+  * Scroll position being lost when showing the typing indicator
+    with buffer.typing.style = "popped"
+  * Send a message with enter when autocomplete tooltip is
+    not visible (i.e. don't have to press enter twice when just
+    autocompleted a nickname)
+  * Message drafts for sent messages sometimes being restored
+    after restart (instead of being cleared)
+  * ZNC-service style nicks (e.g. *status, *grep, etc) are not
+    automatically routed to the server buffer
+  * Normalize short frame delays (<=10ms) to 100ms for animated
+    gifs
+  * Lost connections taking minutes to detect after changing
+    networks, or after waking from sleep on macOS and Linux
+  * Reconnect attempts running out, and autoconnect turning off,
+    while there is no network connection
+  * Connections closed by the server not being detected until the
+    next ping timeout
+  * WebSocket connections not being closed cleanly on disconnect
+Changed:
+  * Saved chat history is no longer limited to 10,000 messages per
+    buffer
+  * Your own join/part is shown in the channel buffer
+  * buffer.server_messages.change_host.enabled is now false by
+    default
+  * Recent nick autocomplete keeps last-seen across nick changes,
+    and sorts your own nick last
+  * Tooltips for IRC commands can be dismissed with Esc
+  * By default, the no-implicit-names IRCv3 capability is added
+    to servers.<name>.do_not_request
+  * Further limit number of WHO requests sent when
+    no-implicit-names is enabled
+
+-------------------------------------------------------------------
 Thu Oct  1 21:27:44 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2026.9:

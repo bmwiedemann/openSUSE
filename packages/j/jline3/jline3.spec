@@ -32,23 +32,23 @@ JLine 3.x is an evolution of JLine 2.x.
 %bcond_with ssh
 %bcond_with juniversalchardet
 Name:           jline3
-Version:        3.30.17
+Version:        4.7.0
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://github.com/jline/jline3
-Source0:        %{url}/archive/refs/tags/jline-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
 Source100:      Load-native-library-system-wide-place.patch.in
 Patch0:         0001-Remove-optional-dependency-on-universalchardet.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jansi
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jna
 BuildRequires:  jsr-305
+BuildRequires:  picocli
 %if %{with juniversalchardet}
 BuildRequires:  juniversalchardet
 %endif
@@ -102,13 +102,6 @@ BuildArch:      noarch
 This package contains the command registry, object printer and widget
 implementations.
 
-%package curses
-Summary:        JLine Curses
-BuildArch:      noarch
-
-%description curses
-%{desc}
-
 %package jansi
 Summary:        Jansi Bundle
 
@@ -129,6 +122,24 @@ Summary:        JLine Native Library
 %{desc}
 
 This package contains the native library.
+
+%package picocli
+Summary:        JLine Picocli
+BuildArch:      noarch
+
+%description picocli
+%{desc}
+
+This package contains the JLine Picocli integration module.
+
+%package prompt
+Summary:        JLine Prompt
+BuildArch:      noarch
+
+%description prompt
+%{desc}
+
+This package contains API for creating interactive console prompts.
 
 %package reader
 Summary:        JLine Reader
@@ -163,14 +174,14 @@ BuildArch:      noarch
 This package contains the helpers for using jline with Mina SSHD.
 %endif
 
-%if %{with ffm}
-%package terminal-ffm
-Summary:        JLine FFM Terminal
+%package shell
+Summary:        JLine Shell
 BuildArch:      noarch
 
-%description terminal-ffm
+%description shell
 %{desc}
-%endif
+
+This package contains the jline shell.
 
 %package style
 Summary:        JLine Style
@@ -181,14 +192,26 @@ BuildArch:      noarch
 
 This package contains the styling api.
 
-%package terminal-jna
-Summary:        JLine JNA Terminal
+%if %{with ffm}
+%package terminal-ffm
+Summary:        JLine FFM Terminal
 BuildArch:      noarch
 
-%description terminal-jna
+%description terminal-ffm
 %{desc}
 
-This package contains terminal implementations leveraging the JNA library.
+This package contains terminal implementations leverating the
+Foreign Function Memory (FFM) API introduced in JDK 22
+%endif
+
+%package terminal-jansi
+Summary:        JLine JANSI Terminal
+BuildArch:      noarch
+
+%description terminal-jansi
+%{desc}
+
+This package contains terminal implementations leveraging the Jansi library.
 
 %package terminal-jni
 Summary:        JLine JNI Terminal
@@ -201,21 +224,14 @@ This package contains terminal implementations leveraging the JNI library.
 
 %package terminal
 Summary:        JLine Terminal
+Obsoletes:      %{name}-curses
+Obsoletes:      %{name}-terminal-jna
 BuildArch:      noarch
 
 %description terminal
 %{desc}
 
 This package contains the Terminal api and implementations.
-
-%package terminal-jansi
-Summary:        JLine JANSI Terminal
-BuildArch:      noarch
-
-%description terminal-jansi
-%{desc}
-
-This package contains terminal implementations leveraging the Jansi library.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -225,11 +241,13 @@ BuildArch:      noarch
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-jline-%{version} -a1
+%setup -q -a1
 %if %{without juniversalchardet}
 %patch -P 0 -p1
 %pom_remove_dep -r :juniversalchardet . jline
 %endif
+
+%pom_xpath_inject pom:project/pom:properties '<nisse.jgit.dynamicVersion>%{version}</nisse.jgit.dynamicVersion>'
 
 sed "s;@SYSTEMLIBRARYPATH@;%{_libdir}/%{name}/;g" < %{SOURCE100} | patch -p1
 
@@ -258,7 +276,6 @@ sed -i /-Werror/d $(find -name pom.xml)
 # Unnecessary plugins for an rpm build
 %pom_remove_plugin :maven-enforcer-plugin
 %pom_remove_plugin :spotless-maven-plugin
-%pom_remove_plugin :maven-release-plugin
 %pom_remove_plugin :maven-deploy-plugin
 %pom_remove_plugin :native-image-maven-plugin
 %pom_remove_plugin :maven-source-plugin
@@ -280,26 +297,26 @@ sed -i /-Werror/d $(find -name pom.xml)
 mkdir -p jline/src/main/java
 mkdir -p jline/src/main/resources
 for module in \
-    jansi-core \
-    builtins \
-    console \
     native \
+    terminal \
+%if %{with ffm}
+    terminal-ffm \
+%endif
+    terminal-jni \
     reader \
+    builtins \
+    shell \
+    console \
 %if %{with ssh}
     remote-ssh \
 %endif
     remote-telnet \
     style \
-    terminal \
-%if %{with ffm}
-    terminal-ffm \
-%endif
-    terminal-jansi \
-    terminal-jna \
-    terminal-jni; do
+    jansi-core; do
   if [ -d ${module}/src/main/java ]; then
     cp -r ${module}/src/main/java/* jline/src/main/java/
   fi
+  find jline/src/main/java/ -name module-info.java -print -delete
   if [ -d ${module}/src/main/resources ]; then
     cp -r ${module}/src/main/resources/* jline/src/main/resources/
   fi
@@ -308,13 +325,14 @@ done
 mkdir -p jansi/src/main/java
 mkdir -p jansi/src/main/resources
 for module in \
-    jansi-core \
     native \
     terminal \
-    terminal-jni; do
+    terminal-jni \
+    jansi-core; do
   if [ -d ${module}/src/main/java ]; then
     cp -r ${module}/src/main/java/* jansi/src/main/java/
   fi
+  find jansi/src/main/java/ -name module-info.java -print -delete
   if [ -d ${module}/src/main/resources ]; then
     cp -r ${module}/src/main/resources/* jansi/src/main/resources/
   fi
@@ -324,8 +342,8 @@ done
 mkdir -p lib
 build-jar-repository -s lib \
     jansi/jansi \
-    jna/jna \
-    jsr-305
+    jsr-305 \
+    picocli/picocli
 %if %{with juniversalchardet}
   build-jar-repository -s lib \
     juniversalchardet/juniversalchardet
@@ -347,10 +365,14 @@ gcc -Wall %{?build_cflags} %{?optflags} -fPIC -fvisibility=hidden -shared \
 
 ant package javadoc
 %if %{with ssh}
-  ant -f remote-ssh package javadoc
+  pushd remote-ssh
+    ant package javadoc
+  popd
 %endif
 %if %{with ffm}
-  ant -f terminal-ffm package javadoc
+  pushd terminal-ffm
+    ant -v package javadoc
+  popd
 %endif
 
 %install
@@ -366,18 +388,19 @@ for i in \
   builtins \
   console \
   console-ui \
-  curses reader \
+  reader \
 %if %{with ssh}
   remote-ssh \
 %endif
   remote-telnet \
   style \
+  shell \
+  prompt \
+  picocli \
   terminal \
 %if %{with ffm}
   terminal-ffm \
 %endif
-  terminal-jansi \
-  terminal-jna \
   terminal-jni; do
     install -pm 0644 ${i}/target/jline-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/jline-${i}.jar
 done
@@ -396,19 +419,20 @@ for i in \
   builtins \
   console \
   console-ui \
-  curses reader \
+  reader \
   native \
 %if %{with ssh}
   remote-ssh \
 %endif
   remote-telnet \
   style \
+  shell \
+  prompt \
+  picocli \
   terminal \
 %if %{with ffm}
   terminal-ffm \
 %endif
-  terminal-jansi \
-  terminal-jna \
   terminal-jni; do
     %{mvn_install_pom} ${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/jline-${i}.pom
     %add_maven_depmap %{name}/jline-${i}.pom %{name}/jline-${i}.jar -f ${i}
@@ -420,7 +444,7 @@ for i in \
   builtins \
   console \
   console-ui \
-  curses reader \
+  reader \
   jansi \
   jansi-core \
   jline \
@@ -430,12 +454,13 @@ for i in \
 %endif
   remote-telnet \
   style \
+  shell \
+  prompt \
+  picocli \
   terminal \
 %if %{with ffm}
   terminal-ffm \
 %endif
-  terminal-jansi \
-  terminal-jna \
   terminal-jni; do
     cp -r ${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/${i}
 done
@@ -464,11 +489,14 @@ install -p -m 755 libjlinenative.so %{buildroot}%{_libdir}/%{name}/
 %files console-ui -f .mfiles-console-ui
 %license LICENSE.txt
 
-%files curses -f .mfiles-curses
-%license LICENSE.txt
-
 %files native -f .mfiles-native
 %{_libdir}/%{name}
+%license LICENSE.txt
+
+%files picocli -f .mfiles-picocli
+%license LICENSE.txt
+
+%files prompt -f .mfiles-prompt
 %license LICENSE.txt
 
 %files reader -f .mfiles-reader
@@ -487,16 +515,13 @@ install -p -m 755 libjlinenative.so %{buildroot}%{_libdir}/%{name}/
 %files remote-telnet -f .mfiles-remote-telnet
 %license LICENSE.txt
 
+%files shell -f .mfiles-shell
+%license LICENSE.txt
+
 %files style -f .mfiles-style
 %license LICENSE.txt
 
 %files terminal -f .mfiles-terminal
-%license LICENSE.txt
-
-%files terminal-jansi -f .mfiles-terminal-jansi
-%license LICENSE.txt
-
-%files terminal-jna -f .mfiles-terminal-jna
 %license LICENSE.txt
 
 %files terminal-jni -f .mfiles-terminal-jni

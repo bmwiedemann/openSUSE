@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 04 19:31:05 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.72:
+  * upload: add --ignore-remote-commits
+  * docs: add Repology links for distro package versions
+  * docs: release: update release process to match current practice
+  * docs: release: remove stale Project References table
+- add python3-base as build requirement: fix tests in leap 16.0
+
+-------------------------------------------------------------------
+Thu Oct 29 16:50:21 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.71:
+  * style: use `import git_refs` everywhere
+  * upload: suppress git push progress when quiet or non-TTY
+  * tests: e2e: add tests for more `repo init` options
+  * tests: e2e: add tests for sync failures
+  * tests: e2e: add tests for manifest groups
+  * tests: e2e: add tests for partial clones & the Android setup
+  * tests: e2e: add tests for network-only & local-only syncs
+  * tests: e2e: add tests for init, sync & common workflows
+  * tests: e2e: fix harness on Windows, CI & inside git checkouts
+  * style: use `import git_command` everywhere
+  * style: use `import repo_logging` everywhere
+  * style: use `import repo_trace` everywhere
+  * style: use `import ctypes` everywhere
+  * style: use `import error` everywhere
+  * tests: e2e: add pytest fixtures & `e2e` marker
+  * tests: e2e: add a client to run repo against the local server
+  * tests: e2e: add a local smart HTTP git server
+  * tests: e2e: add helpers to create bare git repos
+  * tests: fail skipped tests in CQ
+  * config: add subcommand to manage ~/.repoconfig/config
+  * project: accept v3 git bundles in _IsValidBundle
+  * sync, init: support repo.smartsync config and --head alias
+
+-------------------------------------------------------------------
 Tue Oct 20 19:26:22 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.70:
