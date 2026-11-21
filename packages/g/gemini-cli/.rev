@@ -1309,4 +1309,41 @@
   * fix(vscode): eliminate barrel import bundle bloat and</comment>
     <requestid>1398578</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>0c2148d4856c1f82a2cb80f50fcc6740</srcmd5>
+    <version>0.70.0</version>
+    <time>1795294080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.70.0:
+  * test(cli): remove redundant lowercase restart test in
+    AdminSettingsChangedDialog
+  * fix(cli): preserve Unicode prompts and strip ANSI fragments
+    in session previews
+  * fix(cli): preserve selected worktree across authentication
+    restarts
+  * fix(core): preserve interrupted placeholder after empty model
+    responses to tool turns
+  * fix(cli): apply default in ${VAR:-default} when variable is
+    set but empty
+  * fix(core): scale undici bodyTimeout when request timeout
+    exceeds 300s default
+  * fix(core,cli): report accurate output token limits in models
+    list
+  * fix(cli): restore workspace directories only after resumeChat
+    succeeds
+  * fix(core,cli): scope foreground retry status to active main
+    prompt and current model policy
+  * fix(cli): initialize auth capabilities and deduplicate
+    options when listing models
+  * fix(cli): skip system MCP servers with insecure command
+    permissions
+  * refactor(core): use re2js for linear-time policy argsPattern
+    evaluation
+  * chore(deps): update workspace dependencies and sandbox
+    runtime packages
+  * fix(cli): disclose canonical link path and default consent
+    prompt to no
+  * fix(cli): detect local git clone from CLI path instead of cwd</comment>
+    <requestid>1399641</requestid>
+  </revision>
 </revisionlist>
