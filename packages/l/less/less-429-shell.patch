@@ -4,11 +4,11 @@
  lsystem.c  |    4 ++--
  3 files changed, 4 insertions(+), 4 deletions(-)
 
-Index: less-676/filename.c
+Index: less-710/filename.c
 ===================================================================
---- less-676.orig/filename.c	2025-04-16 21:56:56.000000000 +0200
-+++ less-676/filename.c	2025-04-25 13:37:10.333952009 +0200
-@@ -553,7 +553,7 @@
+--- less-710.orig/filename.c
++++ less-710/filename.c
+@@ -587,7 +587,7 @@ static FILE * shellcmd(constant char *cm
  #if HAVE_SHELL
  	constant char *shell;
  
@@ -16,12 +16,12 @@ Index: less-676/filename.c
 +	shell = lgetenv("LESSSHELL");
  	if (!isnullenv(shell))
  	{
- 		char *scmd;
-Index: less-676/less.hlp
+ 		constant char *copt = shell_coption();
+Index: less-710/less.hlp
 ===================================================================
---- less-676.orig/less.hlp	2025-04-16 21:56:56.000000000 +0200
-+++ less-676/less.hlp	2025-04-25 13:37:10.334552439 +0200
-@@ -113,7 +113,7 @@
+--- less-710.orig/less.hlp
++++ less-710/less.hlp
+@@ -117,7 +117,7 @@
    ___<_n_a_m_e_>             Display the setting of an option, by name.
    +_c_m_d                 Execute the less cmd each time a new file is examined.
  
@@ -29,12 +29,12 @@ Index: less-676/less.hlp
 +  !_c_o_m_m_a_n_d             Execute the shell command with $LESSSHELL.
    #_c_o_m_m_a_n_d             Execute the shell command, expanded like a prompt.
    |XX_c_o_m_m_a_n_d            Pipe file between current pos & mark XX to shell command.
-   s _f_i_l_e               Save input to a file.
-Index: less-676/lsystem.c
+   ||XXYY_c_o_m_m_a_n_d          Pipe file between mark XX and mark YY to shell command.
+Index: less-710/lsystem.c
 ===================================================================
---- less-676.orig/lsystem.c	2025-04-16 21:56:56.000000000 +0200
-+++ less-676/lsystem.c	2025-04-25 13:37:10.334851222 +0200
-@@ -120,13 +120,13 @@
+--- less-710.orig/lsystem.c
++++ less-710/lsystem.c
+@@ -125,13 +125,13 @@ public void lsystem(constant char *cmd,
  
  	/*
  	 * Pass the command to the system to be executed.

@@ -23,7 +23,7 @@
 %define use_usretc 1
 %endif
 Name:           less
-Version:        704
+Version:        710
 Release:        0
 Summary:        Text File Browser and Pager Similar to more
 License:        BSD-2-Clause OR GPL-3.0-or-later
@@ -33,7 +33,6 @@ Source:         https://www.greenwoodsoftware.com/less/less-%{version}.tar.gz
 Source1:        README.SUSE
 Source2:        lessopen.sh
 Source3:        lessclose.sh
-Source4:        lesskey.src
 Source5:        https://www.greenwoodsoftware.com/less/less-%{version}.sig#/%{name}-%{version}.tar.gz.sig
 # https://www.greenwoodsoftware.com/less/pubkey.asc
 Source6:        %{name}.keyring
@@ -54,7 +53,7 @@ start an editor at any time from within less.
 
 %prep
 %autosetup -p1
-cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} .
+cp -p %{SOURCE1} %{SOURCE2} %{SOURCE3} .
 
 %build
 export CFLAGS="%{optflags} -fPIE"
@@ -70,11 +69,6 @@ perl mkhelp.pl < less.hlp > help.c
 %install
 %make_install
 #
-# lesskey
-install -m 755 -d %{buildroot}/%{_distconfdir}
-install -m 644 lesskey.src %{buildroot}/%{_distconfdir}/lesskey
-%{buildroot}%{_bindir}/lesskey -o %{buildroot}%{_distconfdir}/lesskey.bin %{buildroot}%{_distconfdir}/lesskey
-#
 # preprocessor
 install -m 755 lessopen.sh lessclose.sh %{buildroot}/%{_bindir}
 chmod -x LICENSE COPYING NEWS README.SUSE
@@ -84,12 +78,9 @@ chmod -x LICENSE COPYING NEWS README.SUSE
 %doc NEWS README.SUSE
 %{_mandir}/man1/less.1%{?ext_man}
 %{_mandir}/man1/lessecho.1%{?ext_man}
-%{_mandir}/man1/lesskey.1%{?ext_man}
-%{_distconfdir}/lesskey
-%{_distconfdir}/lesskey.bin
+%{_mandir}/man5/lesskey.5%{?ext_man}
 %{_bindir}/less
 %{_bindir}/lessclose.sh
-%{_bindir}/lesskey
 %{_bindir}/lessopen.sh
 %{_libexecdir}/lessecho
 %{_libexecdir}/less-osc8-open

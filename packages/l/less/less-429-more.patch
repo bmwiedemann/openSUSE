@@ -2,11 +2,11 @@
  option.c |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: less-676/option.c
+Index: less-710/option.c
 ===================================================================
---- less-676.orig/option.c	2025-04-16 21:56:56.000000000 +0200
-+++ less-676/option.c	2025-04-25 13:37:40.675778807 +0200
-@@ -169,6 +169,10 @@
+--- less-710.orig/option.c
++++ less-710/option.c
+@@ -168,6 +168,10 @@ public void scan_option(constant char *s
  			s--;
  			optc = 'z';
  			break;
