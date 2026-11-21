@@ -20,5 +20,5 @@ prepare_webassets:
 		--rm \
 		--pull=always \
 		-v .:/data/:Z \
-		registry.opensuse.org/opensuse/tumbleweed:20261111 \
+		registry.opensuse.org/opensuse/tumbleweed:20261119 \
 		bash /data/prepare_webassets.sh $(NAME) nodejs24

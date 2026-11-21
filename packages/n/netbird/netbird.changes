@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Nov 21 00:35:49 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to v0.83.2:
+  * [client] Fall back to the system hostname when the device name
+    is empty (#8553)
+  * [infrastructure] Bump installer Traefik image to v3.7.18
+    (#8606)
+
+-------------------------------------------------------------------
 Fri Nov 13 22:36:22 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Refresh service-install-change.patch
