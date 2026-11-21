@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/kisli/vmime, https://github.com/grommunio/wmime
+Upstream-Name: wmime
+Upstream-Contact: Vincent Richard <vincent@vmime.org>
+
+Files: *
+License: GPL-3 with OpenSSL exception
+Copyright: (c) 2003 till present, Vincent Richard <vincent@vmime.org>
+
+License: Licenses can be found in /usr/share/common-licenses
+

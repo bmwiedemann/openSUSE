@@ -23,8 +23,8 @@
 %endif
 
 Name:           wmime
-%define lname	libwmime3
-Version:        1.2.0
+%define lname	libwmime4
+Version:        1.3.0
 Release:        0
 Summary:        Library for working with RFC 5322, MIME messages and IMAP/POP/SMTP
 License:        GPL-3.0-or-later
@@ -33,7 +33,6 @@ URL:            https://github.com/grommunio/wmime/
 Source:         https://github.com/grommunio/wmime/releases/download/wmime-%version/wmime-%version.tar.zst
 Source2:        https://github.com/grommunio/wmime/releases/download/wmime-%version/wmime-%version.tar.asc
 Patch1:         nodate.patch
-Patch2:         i387.patch
 BuildRequires:  cmake >= 2.8.3
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} >= 1600
@@ -123,7 +122,8 @@ cd -
 	-DCMAKE_CXX_FLAGS:STRING="%optflags" \
 	-DCMAKE_C_FLAGS_RELWITHDEBINFO:STRING="%optflags" \
 	-DCMAKE_C_FLAGS:STRING="%optflags" \
-	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF
+	-DVMIME_BUILD_DOCUMENTATION:BOOL=OFF \
+	-DVMIME_CHARSETCONV_LIB=iconv
 %cmake_build
 
 %install

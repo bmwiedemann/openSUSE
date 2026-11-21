@@ -7,16 +7,16 @@ Subject: [PATCH] src: avoid __DATE__ and __TIME__
  src/vmime/base.cpp |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: vmime/src/vmime/base.cpp
+Index: wmime-1.3.0/src/vmime/base.cpp
 ===================================================================
---- vmime.orig/src/vmime/base.cpp
-+++ vmime/src/vmime/base.cpp
-@@ -75,7 +75,7 @@ const string libname() { return (VMIME_P
+--- wmime-1.3.0.orig/src/vmime/base.cpp
++++ wmime-1.3.0/src/vmime/base.cpp
+@@ -74,7 +74,7 @@ string libname() { return (VMIME_PACKAGE
    *
    * @return library version
    */
--const string libversion() { return (VMIME_VERSION " (" __DATE__ " " __TIME__ ")"); }
-+const string libversion() { return (VMIME_VERSION " (_""_DATE_""_ causes unnecessary rebuilds - avoid)"); }
+-string libversion() { return (VMIME_VERSION " (" __DATE__ " " __TIME__ ")"); }
++string libversion() { return VMIME_VERSION; }
  
  /** Return the library API version (eg: "6:1:6").
    *
