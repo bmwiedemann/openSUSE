@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 20 20:33:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.0:
+  * `verify_server` supports Sentinel v2's `POST
+    /v2/verify/signature`. Pass the ID and secret of a `restricted`
+    or `full` API key as `api_key` and `secret`: they are sent as
+    HTTP Basic credentials and `secret` is left out of the body.
+    `api_key` without `secret` raises `ValueError`.
+  * `ServerSignaturePayload` carries the optional `apiKey` and
+    `id` fields (`api_key`, `id`) and keeps them in `to_dict`,
+    so a payload object passed to `verify_server` still names
+    its signing key.
+  * `verify_server` no longer retries `4xx` responses (e.g.
+    `401`/`403` for missing or wrong credentials, `429`); they
+    return `verified=False` at once.
+  * `verify_server` returns `reason='INVALID_RESPONSE'` (after
+    retrying) instead of raising when a `2xx` response body is not
+    a JSON object.
+
+-------------------------------------------------------------------
 Sun Oct 25 11:58:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.0:
