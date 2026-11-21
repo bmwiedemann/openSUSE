@@ -29,6 +29,8 @@ Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{versio
 Patch0:         reproducible.patch
 # PATCH-FIX-OPENSUSE uhd-cmake-protobuf-config.patch -- use protobuf CONFIG mode on Linux to prevent target redefinition conflict with gRPC
 Patch1:         uhd-cmake-protobuf-config.patch
+# PATCH-FIX-UPSTREAM uhd-add-missing-log_add_impl_hpp.patch -- install missing log_add_impl.hpp header
+Patch2:         uhd-add-missing-log_add_impl_hpp.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  docutils
 BuildRequires:  doxygen

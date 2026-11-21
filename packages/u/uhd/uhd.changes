@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 12:37:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add uhd-add-missing-log_add_impl_hpp.patch: install missing
+  log_add_impl.hpp header to fix build of soapy-uhd and osmo-trx
+  (upstream commit 7a446376).
+
+-------------------------------------------------------------------
 Sat Oct 31 15:28:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 4.11.0.0:
