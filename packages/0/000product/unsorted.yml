@@ -13050,8 +13050,8 @@ unsorted:
   - libclxclient3 
   - libcm1 
   - libcm256cc1 
-  - libcmark-gfm-extensions0_29_0_gfm_13 
-  - libcmark-gfm0_29_0_gfm_13 
+  - libcmark-gfm-extensions0_29_0_gfm_14 
+  - libcmark-gfm0_29_0_gfm_14 
   - libcmh0 
   - libcmis-c-0_6-6 
   - libcmis-c-devel 
@@ -13117,7 +13117,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_49 
+  - libcpp-httplib0_64 
   - libcpptrace1 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -15257,7 +15257,7 @@ unsorted:
   - libmwaw-devel 
   - libmwaw-devel-doc 
   - libmwaw-tools 
-  - libmxml1 
+  - libmxml4_2 
   - libmygpo-qt5-1 
   - libmygpo-qt5-devel 
   - libmygpo-qt6-devel 
@@ -17534,7 +17534,7 @@ unsorted:
   - libwmf-gnome 
   - libwmf-gnome-32bit 
   - libwmf-tools 
-  - libwmime3 
+  - libwmime4 
   - libwnck-devel 
   - libwnck-tools 
   - libwoff2common1_0_2 
@@ -19187,6 +19187,7 @@ unsorted:
   - mcp-server-snapper 
   - mcp-server-snapper-testsuite 
   - mcp-server-suseconnect 
+  - mcp-server-susedoc 
   - mcp-server-systemd 
   - mcp-server-systemd-gatekeeper 
   - mcp-server-systemd-testsuite 
