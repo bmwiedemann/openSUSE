@@ -106,4 +106,15 @@
   * Add `store_intermediate_errors` option (default true,</comment>
     <requestid>1392647</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>72ac1181d6bc603709c9f6996de2715f</srcmd5>
+    <version>3.5.4</version>
+    <time>1795432972</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.5.4:
+  * Fix possible hang if worker holding the stop flag was killed
+    while holding it.
+  * Lots of refactoring / cleanup.</comment>
+    <requestid>1399680</requestid>
+  </revision>
 </revisionlist>

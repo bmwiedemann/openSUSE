@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:40:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.4:
+  * Fix possible hang if worker holding the stop flag was killed
+    while holding it.
+  * Lots of refactoring / cleanup.
+
+-------------------------------------------------------------------
 Mon Oct 26 08:03:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.3:

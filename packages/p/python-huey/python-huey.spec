@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huey
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        A little task queue for Python
 License:        MIT
