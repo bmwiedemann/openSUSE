@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Nov 19 08:22:00 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Fix i586 build: do not build the LLVM RISCV backend, as its
+  GlobalISel instruction selector exceeds the 3 GB address space of a
+  32-bit compiler process.
+
+-------------------------------------------------------------------
+Fri Nov 13 06:33:15 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to rust1.100.0
+- Release notes can be found externally: https://github.com/rust-lang/rust/releases/tag/1.100.0
