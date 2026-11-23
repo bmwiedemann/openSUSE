@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 19 11:32:37 CET 2026 - Michael Schroeder <mls@suse.de>
+
+- Fix off-by-one error in poptStuffArgs()
+  [bsc#1273548] [CVE-2026-18739]
+  new patch: stuffargs.diff
+- fix reallocation in poptConfigFileToString()
+  [bsc#1277758] [CVE-2026-18743]
+  new patch: configfiletostringalloc.diff
+- fix various buffer overflows in popt --help printing
+  [bsc#1274048] [CVE-2026-18839]
+  new patch: popthelp.diff
+
+-------------------------------------------------------------------
 Wed Mar 18 12:08:59 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add popt-libc-updates2.patch to fix const correctness preventing

@@ -28,6 +28,9 @@ Source0:        http://ftp.rpm.org/popt/releases/popt-1.x/popt-%{version}.tar.gz
 Source2:        baselibs.conf
 Patch0:         popt-libc-updates.patch
 Patch1:         popt-libc-updates2.patch
+Patch2:         configfiletostringalloc.diff
+Patch3:         stuffargs.diff
+Patch4:         popthelp.diff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 #!BuildIgnore:  rpmlint-Factory

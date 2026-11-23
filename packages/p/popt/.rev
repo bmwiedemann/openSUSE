@@ -342,4 +342,12 @@ New spdx.org license list now contains an official entry for X11 (forwarded requ
   build with new glibc (forwarded request 1340894 from rguenther)</comment>
     <requestid>1340908</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>ed50abc35433b4857ef0a0bb72ae7515</srcmd5>
+    <version>1.19</version>
+    <time>1795432747</time>
+    <user>anag_factory</user>
+    <comment>Fix CVEs</comment>
+    <requestid>1398939</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,192 @@
+--- a/src/popthelp.c	2022-01-05 10:46:29.000000000 +0000
++++ b/src/popthelp.c	2026-11-20 09:13:25.282279419 +0000
+@@ -197,79 +197,60 @@ getArgDescrip(const struct poptOption *
+ 
+ /**
+  * Display default value for an option.
+- * @param lineLength	display positions remaining
+  * @param opt		option(s)
+  * @param translation_domain	translation domain
+  * @return
+  */
+ static char *
+-singleOptionDefaultValue(size_t lineLength,
++singleOptionDefaultValue(
+ 		const struct poptOption * opt,
+ 		/* FIX: i18n macros disabled with lclint */
+ 		const char * translation_domain)
+ {
+     const char * defstr = D_(translation_domain, "default");
+-    char * le = malloc(4*lineLength + 1);
+-    char * l = le;
++    char * l = NULL;
+ 
+-    if (le == NULL) return NULL;	/* XXX can't happen */
+-    *le = '\0';
+-    *le++ = '(';
+-    le = stpcpy(le, defstr);
+-    *le++ = ':';
+-    *le++ = ' ';
+   if (opt->arg) {	/* XXX programmer error */
+     poptArg arg = { .ptr = opt->arg };
+     switch (poptArgType(opt)) {
+     case POPT_ARG_VAL:
+     case POPT_ARG_INT:
+-	le += sprintf(le, "%d", arg.intp[0]);
++	POPT_asprintf(&l, "(%s: %d)", defstr, arg.intp[0]);
+ 	break;
+     case POPT_ARG_SHORT:
+-	le += sprintf(le, "%hd", arg.shortp[0]);
++	POPT_asprintf(&l, "(%s: %hd)", defstr, arg.shortp[0]);
+ 	break;
+     case POPT_ARG_LONG:
+-	le += sprintf(le, "%ld", arg.longp[0]);
++	POPT_asprintf(&l, "(%s: %ld)", defstr, arg.longp[0]);
+ 	break;
+     case POPT_ARG_LONGLONG:
+-	le += sprintf(le, "%lld", arg.longlongp[0]);
++	POPT_asprintf(&l, "(%s: %lld)", defstr, arg.longlongp[0]);
+ 	break;
+     case POPT_ARG_FLOAT:
+     {	double aDouble = (double) arg.floatp[0];
+-	le += sprintf(le, "%g", aDouble);
++	POPT_asprintf(&l, "(%s: %g)", defstr, aDouble);
+     }	break;
+     case POPT_ARG_DOUBLE:
+-	le += sprintf(le, "%g", arg.doublep[0]);
++	POPT_asprintf(&l, "(%s: %g)", defstr, arg.doublep[0]);
+ 	break;
+     case POPT_ARG_MAINCALL:
+-	le += sprintf(le, "%p", opt->arg);
++	POPT_asprintf(&l, "(%s: %p)", defstr, opt->arg);
+ 	break;
+     case POPT_ARG_ARGV:
+-	le += sprintf(le, "%p", opt->arg);
++	POPT_asprintf(&l, "(%s: %p)", defstr, opt->arg);
+ 	break;
+     case POPT_ARG_STRING:
+-    {	const char * s = arg.argv[0];
+-	if (s == NULL)
+-	    le = stpcpy(le, "null");
+-	else {
+-	    size_t limit = 4*lineLength - (le - l) - sizeof("\"\")");
+-	    size_t slen;
+-	    *le++ = '"';
+-	    strncpy(le, s, limit); le[limit] = '\0'; le += (slen = strlen(le));
+-	    if (slen == limit && s[limit])
+-		le[-1] = le[-2] = le[-3] = '.';
+-	    *le++ = '"';
+-	}
+-    }	break;
++	if (arg.argv[0])
++	    POPT_asprintf(&l, "(%s: \"%s\")", defstr, arg.argv[0]);
++	else
++	    POPT_asprintf(&l, "(%s: %s)", defstr, "null");
++	break;
+     case POPT_ARG_NONE:
+     default:
+-	l = _free(l);
+ 	return NULL;
+ 	break;
+     }
+   }
+-    *le++ = ')';
+-    *le = '\0';
+ 
+     return l;
+ }
+@@ -286,7 +267,9 @@ static void singleOptionHelp(FILE * fp,
+ 		const char * translation_domain)
+ {
+     size_t maxLeftCol = columns->cur;
+-    size_t indentLength = maxLeftCol + 5;
++    size_t indentLength = maxLeftCol + 5 < columns->max ?
++			maxLeftCol + 5 :
++			columns->max - (maxLeftCol % columns->max) - 1;
+     size_t lineLength = columns->max - indentLength;
+     const char * help = D_(translation_domain, opt->descrip);
+     const char * argDescrip = getArgDescrip(opt, translation_domain);
+@@ -347,7 +330,7 @@ static void singleOptionHelp(FILE * fp,
+ 
+ 	/* Choose type of output */
+ 	if (F_ISSET(opt, SHOW_DEFAULT)) {
+-	    defs = singleOptionDefaultValue(lineLength, opt, translation_domain);
++	    defs = singleOptionDefaultValue(opt, translation_domain);
+ 	    if (defs) {
+ 		char * t = malloc((help ? strlen(help) : 0) +
+ 				strlen(defs) + sizeof(" "));
+--- a/src/poptint.c	2022-08-24 06:30:21.000000000 +0000
++++ b/src/poptint.c	2026-11-20 09:08:39.706718310 +0000
+@@ -192,3 +192,41 @@ POPT_fprintf (FILE * stream, const char
+ }
+ 
+ #endif	/* !defined(POPT_fprintf) */
++
++int POPT_vasprintf(char **strp, const char *fmt, va_list ap)
++{
++    char * p = NULL;
++    va_list aq;
++
++    if (strp == NULL)
++	return -1;
++
++    va_copy(aq, ap);
++    int n = vsnprintf(NULL, 0, fmt, aq);
++    va_end(aq);
++
++    if (n >= 0) {
++	size_t nb = (size_t)n + 1;
++	if ((p = malloc(nb))) {
++	    va_copy(aq, ap);
++	    n = vsnprintf(p, nb, fmt, aq);
++	    va_end(aq);
++	} else {
++	    n = -1;
++	}
++    }
++    *strp = p;
++
++    return n;
++}
++
++int POPT_asprintf(char **strp, const char *fmt, ...)
++{
++    va_list ap;
++
++    va_start(ap, fmt);
++    int n = POPT_vasprintf(strp, fmt, ap);
++    va_end(ap);
++
++    return n;
++}
+--- a/src/poptint.h	2022-08-24 06:30:21.000000000 +0000
++++ b/src/poptint.h	2026-11-20 09:08:39.706718310 +0000
+@@ -10,6 +10,7 @@
+ #define H_POPTINT
+ 
+ #include <stdint.h>
++#include <stdarg.h>
+ 
+ /**
+  * Wrapper to free(3), hides const compilation noise, permit NULL, return NULL.
+@@ -134,6 +135,9 @@ int   POPT_fprintf (FILE* stream, const
+ const char *POPT_prev_char (const char *str);
+ const char *POPT_next_char (const char *str);
+ 
++int POPT_vasprintf(char **strp, const char *fmt, va_list ap);
++int POPT_asprintf(char **strp, const char *fmt, ...);
++
+ #endif
+ 
+ #if defined(ENABLE_NLS) && defined(HAVE_LIBINTL_H)
+--- a/tests/testit.sh	2026-11-20 09:13:51.438239220 +0000
++++ b/tests/testit.sh	2026-11-20 09:15:04.398127091 +0000
+@@ -150,7 +150,7 @@ Usage: test1 [OPTION...]
+       --lstr=STRING               POPT_ARG_STRING: \"123456789...\" (default:
+                                   \"This tests default strings and exceeds the
+                                   ... limit.
+-                                  123456789+123456789+123456789+123456789+123456789+ 123456789+123456789+123456789+123456789+123456789+ 1234567...\")
++                                  123456789+123456789+123456789+123456789+123456789+ 123456789+123456789+123456789+123456789+123456789+ 123456789+123456789+123456789+123456789+123456789+ 123456789+123456789+123456789+123456789+123456789+ \")
+ 
+ arg for cb2
+   -c, --cb2=STRING                Test argument callbacks
