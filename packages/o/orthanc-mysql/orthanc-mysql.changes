@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 20 13:39:33 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- minzip-devel added
+
+-------------------------------------------------------------------
+Wed Sep 23 07:43:39 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- check on SLE15 added for gcc13
+
+-------------------------------------------------------------------
 Fri Apr 17 07:22:33 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - mysql.patch added to fix build error

@@ -32,7 +32,11 @@ Patch1:         mysql.patch
 
 BuildRequires:  cmake
 BuildRequires:  e2fsprogs-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_date_time-devel >= 1.66
@@ -43,6 +47,7 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libcurl-devel
 BuildRequires:  libmysqld-devel
+BuildRequires:  minizip-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
@@ -61,7 +66,10 @@ MySQL/mariadb Database plugin for Orthanc, replaces SQLite database
 %autosetup -p1 -n OrthancMySQL-%{version}
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake ../MySQL \
        -DALLOW_DOWNLOADS=ON \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
