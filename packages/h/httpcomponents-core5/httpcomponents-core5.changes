@@ -1,0 +1,115 @@
+-------------------------------------------------------------------
+Sat Nov 21 18:38:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite to build with ant as a _multibuild package
+
+-------------------------------------------------------------------
+Fri Nov 20 17:34:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.5
+  * Notable changes
+    + Improved connection and async IOSession pool implementations
+    + HTTP/2: RFC 9113/7541 conformance, rapid reset and control
+      frame overhead protection, limit on pending requests per
+      connection
+    + Added QUERY method, Structured Field Values (RFC 9651) and
+      Digest Fields (RFC 9530) support
+    + SSLContexts respect SSL/TLS system properties by default
+    + Fixed premature termination of incomplete chunked messages
+      in the classic transport
+
+-------------------------------------------------------------------
+Thu Aug 13 15:05:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.4.3
+  * Notable changes in the 5.4.x series:
+    + Security: Sets finite defaults for incoming HTTP/1 messages
+      to mitigate Denial of Service (DoS) header attacks by setting
+      a maximum line length of 8,192 bytes and maximum header
+      count of 100 by default.
+    + RFC Conformance: Support for RFC 9218 (Extensible Prioritization
+      Scheme for HTTP) and improved compliance to RFC 9113 (HTTP/2).
+    + Sockets: Support for Unix domain sockets for both classic
+      and asynchronous transports.
+    + Connection Pool: Introduced experimental OFFLOCK lock-free,
+      route-segmented connection pool (RouteSegmentedConnPool).
+    + Redesigned the classic over async API bridge.
+    + Default 5-second TCP keep-alive enabled by default to
+      optimize connection reuse.
+    + Fixed regression in backpressure handling of async TLS
+      sessions.
+    + Fixed a deadlock in LaxConnPool where expired connection
+      cleanup failed to update the number of available connections.
+    + Corrected a latency regression in async transport where
+      TCP_NODELAY failed to be set correctly.
+    + Fixed a memory leak in the HTTP/2 stream priority.
+
+-------------------------------------------------------------------
+Thu May 23 06:19:07 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v5.2.4
+  * This is a maintenance release that corrects a major defect
+    discovered since release 5.2.3 that can lead to an H2
+    connection failing at runtime with the message "Frame size
+    exceeds maximum" when executing requests with an enclosed
+    message body and the remote endpoint having negotiated a
+    maximum frame size larger than the protocol default (16KB).
+  * Change Log
+    + HTTPCORE-762: H2 protocol handler incorrectly determines the
+      maximum frame size for outgoing frames in case the remote
+      endpoint negotiated a max frame size larger than the protocol
+      default.
+- Update to v5.2.3
+  * This is a maintenance release that corrects several defects
+    discovered since release 5.2.2 including a major defect that
+    can cause non-blocking character-based consumers to enter an
+    invalid state and stop processing incoming data.
+  * Change Log
+    + HTTPCORE-757: AbstractCharDataConsumer fails to correctly
+      handle incomplete UTF8 encoded data split across multiple
+      data packets.
+    + Support SOCKS5 with username/password authentication
+    + Non-blocking protocol handler to filter out non-printable
+      ASCII and non-ASCII characters from HTTP headers by default.
+      This makes the behavior of the non-blocking transport
+      consistent with that of the blocking one (#416).
+    + HTTPCORE-754: StrictConnPool fails to correctly handle
+      infinite request timeout.
+    + HTTPCORE-753: Fixed race condition in the IOSession#close
+      method.
+- Update to v5.2.2
+  * This is a maintenance release that corrects several defects
+    discovered since release 5.2.1 including a major defect that
+    can cause HTTP/2 connections allocate excessive amount of
+    memory for their output frame buffer if the opposite endpoint
+    transmits a high value of MAX_FRAME_SIZE in its settings.
+  * Change Log
+    + HTTPCORE-752: I/O reactor fails to initialize socket timeout
+      for TLS connections correctly resulting in infinite (no
+      timeout) by default.
+    +  HTTPCORE-751: H2 protocol handler always resizes the output
+      frame buffer to the remove MAX_FRAME_SIZE instead of doing so
+      only then the remote MAX_FRAME_SIZE is lesser than the
+      current MAX_FRAME_SIZE (partially reverts HTTPCORE-707).
+    + HTTPCORE-750: Fixed a defect causing AbstractIOSessionPool to
+      create multiple connections under high load at initialization
+      time due to a race condition.
+    + Handle UnsupportedOperationException in
+      getApplicationProtocol.
+    + HTTPCORE-742: BasicHttpRequest#setUri does not correctly
+      reset internal state.
+    + HTTPCORE-733: BasicAsyncEntityProducer sends an extra
+      trailing 0 with UTF-8 encoded content
+    + Do not duplicate the HttpMessage instance variable slot in
+      subclasses of AbstractMessageWrapper.
+
+-------------------------------------------------------------------
+Thu Jun  1 07:51:58 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Set BuildArch to noarch
+- Apply spec-cleaner
+
+-------------------------------------------------------------------
+Wed May 31 08:12:34 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 5.2.1
