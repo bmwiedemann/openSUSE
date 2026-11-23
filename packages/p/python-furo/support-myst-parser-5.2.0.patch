@@ -1,0 +1,10 @@
+--- a/src/furo/sphinxext.py
++++ b/src/furo/sphinxext.py
+@@ -85,7 +85,7 @@ class _FuroDemoDirective(SphinxDirective):
+         self.assert_has_content()
+ 
+         container = nodes.container()
+-        transated_content = _translate_into_tab_demo(self.block_text)
++        transated_content = _translate_into_tab_demo("\n".join(self.content))
+         self.state.nested_parse(transated_content, 0, container)
+         return [container]

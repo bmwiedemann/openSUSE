@@ -49,4 +49,13 @@ Fix missing Source OBS error.</comment>
   * Use the modern Saas Modules</comment>
     <requestid>1325688</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7bcdfa4387a715d4f61fd3a5fdeb1be9</srcmd5>
+    <version>2025.12.19</version>
+    <time>1795442057</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-myst-parser-5.2.0.patch:
+  * Support changes required by myst-parser 5.2.0+.</comment>
+    <requestid>1399819</requestid>
+  </revision>
 </revisionlist>

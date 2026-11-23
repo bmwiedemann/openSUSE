@@ -53,6 +53,8 @@ Source1:        furo-%{version}-vendor.tar.xz
 Source2:        furo-%{version}-vendor-licenses.txt
 # Run without any arguments from this directory with the fresh Source0
 Source99:       prepare_vendor.sh
+# PATCH-FIX-OPENSUSE Support myst-parser 5.2.0+
+Patch0:         support-myst-parser-5.2.0.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module doc}
 BuildRequires:  %{python_module myst-parser}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 01:16:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-myst-parser-5.2.0.patch:
+  * Support changes required by myst-parser 5.2.0+.
+
+-------------------------------------------------------------------
 Wed Jan  7 03:14:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2025.12.19:
