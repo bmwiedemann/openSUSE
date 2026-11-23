@@ -24,7 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Amusements/Games/Logic
 URL:            https://gitlab.gnome.org/GNOME/hitori
 Source0:        https://download.gnome.org/sources/hitori/44/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-UPSTREAM glgo#GNOME/hitori#20
+Patch0:         hitori-desktop.patch
 BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -34,7 +35,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.4
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.15.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
 
 %description
 Hitori is played with a grid of squares or cells, and each cell contains a number.

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:39:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Fri Nov 20 07:52:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add hitori-desktop.patch: Fix desktop file translations.
+
+-------------------------------------------------------------------
 Fri Mar  3 15:15:52 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 44.0:

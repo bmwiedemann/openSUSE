@@ -258,4 +258,15 @@
     <comment></comment>
     <requestid>1069278</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>b1ec9170b0e00a45adb16e8c71442ac7</srcmd5>
+    <version>44.0</version>
+    <time>1795442064</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+
+- Add hitori-desktop.patch: Fix desktop file translations.</comment>
+    <requestid>1399910</requestid>
+  </revision>
 </revisionlist>
