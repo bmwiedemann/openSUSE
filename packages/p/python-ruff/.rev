@@ -3794,4 +3794,12 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
     <comment>Update to 0.17.5</comment>
     <requestid>1397543</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>f0ecb93b334f653263a4955224485bc1</srcmd5>
+    <version>0.17.6</version>
+    <time>1795432861</time>
+    <user>anag_factory</user>
+    <comment>Update python-ruff to 0.17.6: TC010 fix, bug fixes, rule updates, re-vendored (zip 9.8.0), rust &gt;= 1.98.</comment>
+    <requestid>1398898</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 20 06:26:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.17.6:
+  * Preview: fix for runtime-string-union (TC010)
+  * Bug fixes: parenthesized duplicates (B033, RUF068);
+    assigned-more-than-once false negative (F823);
+    modified-in-loop false positives (PLR1733, PLR1736);
+    useless-finally inline try fix (RUF072);
+    relative imports from __future__
+  * Rule changes: SIM208 avoids redundant bool wrappers;
+    F841 ignores __traceback_hide__
+  * Performance: direct in-memory notebook decoding,
+    short-circuit qualified-name checks, streamed JSON
+    diagnostics
+- Require rust >= 1.98 (upstream MSRV); re-vendored Rust
+  dependencies (vendored zip 9.5.1 -> 9.8.0); licence set
+  unchanged (MIT AND MPL-2.0)
+
+-------------------------------------------------------------------
 Sat Nov 14 07:48:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.17.5:
