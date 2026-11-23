@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 20 16:09:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.9.1:
+  * fix a build regressions on a platform other than GNU/Linux
+
+-------------------------------------------------------------------
+Wed Nov 18 17:50:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.9.0:
+  * New set of functions for DER and BER parsing
+  * New function ksba_cms_get_recp_ident
+  * New function ksba_cms_verbosity
+  * Support for ML-DSA as specified by RFC-9881
+  * Allow CMS signature creation and verification with ML-DSA
+  * Support for reading and writing Composite ML-KEM
+  * Improve the internal function _ksba_asn_expand_tree by using
+    cache table
+  * Fix an assertion failure in parsing an OCSP response
+  * Fix a use-after-free in the OCSP parser when used incorrectly
+  * Fix an OOB-read in the DN->String conversion for UCS4 and UCS2
+    encodings
+  * Fix the space at end case in the DN->String escaping. Overhaul
+    the entire parser
+- drop libksba-1.8.1-fgrep-warning.patch, included upstream
+
+-------------------------------------------------------------------
 Tue Sep  1 00:19:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.8.1:
