@@ -16,14 +16,14 @@
 #
 
 Name:           python-comfyui-workflow-templates
-Version:        0.11.112
+Version:        0.11.114
 Release:        0
 Summary:        ComfyUI workflow templates meta package
 License:        MIT
 URL:            https://github.com/Comfy-Org/workflow_templates
 Source0:        https://files.pythonhosted.org/packages/source/c/comfyui_workflow_templates/comfyui_workflow_templates-%{version}.tar.gz
-BuildRequires:  %{python_module comfyui-workflow-templates-core >= 0.3.359}
-BuildRequires:  %{python_module comfyui-workflow-templates-json >= 0.1.94}
+BuildRequires:  %{python_module comfyui-workflow-templates-core >= 0.3.404}
+BuildRequires:  %{python_module comfyui-workflow-templates-json >= 0.1.139}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-api >= 0.3.84}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-01 >= 0.1.47}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-02 >= 0.1.4}
@@ -43,8 +43,8 @@ BuildRequires:  python-rpm-macros
 # not this shim's. A floor therefore expresses exactly what is required here,
 # while '=' additionally forbids the harmless newer direction and makes this
 # package uninstallable on every independent bundle release.
-Requires:       python-comfyui-workflow-templates-core >= 0.3.359
-Requires:       python-comfyui-workflow-templates-json >= 0.1.94
+Requires:       python-comfyui-workflow-templates-core >= 0.3.404
+Requires:       python-comfyui-workflow-templates-json >= 0.1.139
 Requires:       python-comfyui-workflow-templates-media-api >= 0.3.84
 Requires:       python-comfyui-workflow-templates-media-assets-01 >= 0.1.47
 Requires:       python-comfyui-workflow-templates-media-assets-02 >= 0.1.4

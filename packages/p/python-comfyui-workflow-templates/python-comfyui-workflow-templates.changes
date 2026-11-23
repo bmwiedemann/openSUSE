@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.114:
+  * Tracks upstream releases: pins move to core 0.3.404,
+    json 0.1.139 and media-assets-02 0.1.36; the shim ships
+    no manifest and its code is unchanged, so the RPM keeps
+    floors instead of the upstream == pins (core/json floors
+    raised to the new siblings)
+  * Content delta rides the bundles: HeyGen Decision 1 gate +
+    pick template, widget-value fixes in 29 workflows and the
+    Ideogram 4.6 precise-edit fix, index refreshes, recorded
+    in those packages
+
+-------------------------------------------------------------------
 Fri Nov 20 06:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.112:

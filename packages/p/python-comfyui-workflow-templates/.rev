@@ -424,4 +424,14 @@ its own request first.</comment>
 - Stage with sr#1398899 (json) and sr#1398900 (core).</comment>
     <requestid>1398901</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1c0d29306ce4fd2193708c4f1fdbdf70</srcmd5>
+    <version>0.11.114</version>
+    <time>1795433025</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates to 0.11.114: pins core 0.3.404/json 0.1.139.
+- Needs sr#1399726 (json 0.1.139)
+- Needs sr#1399735 (core 0.3.404)</comment>
+    <requestid>1399736</requestid>
+  </revision>
 </revisionlist>
