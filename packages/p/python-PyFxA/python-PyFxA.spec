@@ -24,7 +24,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-PyFxA
-Version:        0.8.2
+Version:        0.9.0
 Release:        0
 Summary:        Firefox Accounts client library for Python
 License:        MPL-2.0
@@ -34,7 +34,6 @@ Source:         https://files.pythonhosted.org/packages/source/P/PyFxA/pyfxa-%{v
 BuildRequires:  %{python_module PyJWT}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module hawkauthlib}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyotp}
@@ -47,7 +46,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyJWT
 Requires:       python-cryptography
-Requires:       python-hawkauthlib
 Requires:       python-requests >= 2.4.2
 %if %{with libalternatives}
 Requires:       alts

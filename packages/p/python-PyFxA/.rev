@@ -169,4 +169,41 @@
     ``FXA_RUN_LIVE_TESTS=1``)</comment>
     <requestid>1355107</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f6a5852a565fa21e32d668ac582adda4</srcmd5>
+    <version>0.9.0</version>
+    <time>1795433178</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.0:
+  * Move TOTP management to the /mfa/totp/* routes. /totp/destroy
+    was removed and /totp/create is being retired.
+  * Session.totp_create and totp_delete now take an MFA token from
+    the mfa_request_otp and mfa_verify_otp helpers; setup ends
+    with totp_setup_verify and totp_setup_complete.
+  * BearerTokenAuth now raises TrustError for non-loopback
+    http:// URLs, as FxA token auth does. This also affects
+    fxa.profile calls.
+  * Move password reset to /password/forgot/send_otp and
+    /password/forgot/verify_otp. The old send_code, resend_code
+    and status routes are gone.
+  * Client.send_reset_code now takes only service and returns a
+    PasswordForgotToken, with token and uid set by verify_code.
+  * Remove PasswordForgotToken.get_status,
+    Client.resend_reset_code and Client.get_reset_code_status; add
+    Client.verify_reset_otp.
+  * /password/change/start now requires a verified session token.
+  * Client.change_password now requires session_token and returns
+    the server response. start_password_change,
+    finish_password_change and finish_password_change_v2 also
+    require a session token.
+  * Session.change_password and Session.finish_password_change
+    switch to the server-issued session.
+  * A v2 login of a v1 account now signs in with v1 credentials
+    and upgrades via password change.
+  * Client.create_account no longer accepts preVerified or
+    preVerifyToken. The auth server no longer supports
+    preVerifyToken and ignores preVerified.
+  * fxa --create-user now verifies the new account with the</comment>
+    <requestid>1399805</requestid>
+  </revision>
 </revisionlist>
