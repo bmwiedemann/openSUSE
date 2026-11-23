@@ -752,4 +752,12 @@
 - Enable riscv64; modernize deps to pkgconfig(); curate changelog</comment>
     <requestid>1356948</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0bc4ed2dd714104474bed2027feb0c4b</srcmd5>
+    <version>6.27.0</version>
+    <time>1795433223</time>
+    <user>anag_factory</user>
+    <comment>Update xmrig to 6.27.0: ARM64/RISC-V RandomX JIT gains, ARMv9 detection, FCMP++ stressnet v3, DaemonClient fixes, OpenSSL 4.0 support.</comment>
+    <requestid>1399855</requestid>
+  </revision>
 </revisionlist>

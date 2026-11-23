@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:31:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.27.0:
+  * ARM64 RandomX JIT optimizations, including Group E register
+    conversion and reduced JIT cache invalidation
+  * ARM64 RandomX JIT dataset prefetch and non-temporal loads
+  * RISC-V: 2.5% faster dataset init and RVV AES kernels with
+    unit-stride loads
+  * Fix ISUB_R in the ARM and RISC-V JIT compilers
+  * Add ARMv9 CPU detection and optimized build flags
+  * Fix madvise usage and add MADV_COLLAPSE support on Linux
+  * Update FCMP++ block template layout and solo mining code
+    for beta stressnet v3
+  * DaemonClient: check TLS fingerprint, use SOCKS5 if configured
+    and fix socket leak when ZMQ connect fails
+  * Fix build with OpenSSL 4.0 and with OpenSSL 3 built without
+    deprecated APIs
+- Fix obs_scm exclude to match dotfiles only, the previous
+  pattern excluded everything with the current service
+
+-------------------------------------------------------------------
 Wed Jun 03 11:17:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.26.0:

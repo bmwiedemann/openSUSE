@@ -17,11 +17,12 @@
 
 
 Name:           xmrig
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
 URL:            https://xmrig.com/
+# Source-Binary-Exception: xmrig-*.obscpio:*/bin/WinRing0/* -- other-platform: Windows driver unused on Linux
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xmrig.service
 #PATCH-FIX-SUSE correct-opencl-file.patch nopeinomicon@posteo.net -- Sets correct location/name for libOpenCL.so.1 used for OpenCL mode
