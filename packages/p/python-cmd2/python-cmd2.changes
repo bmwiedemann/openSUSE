@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 20 21:24:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.3:
+  * Security: Fix shell command injection through file names in
+    the `edit` command and `Cmd.run_editor()`. Raise ValueError on
+    Windows if paths contain double quotes.
+  * Fix `ppaged()` to print output directly when the configured
+    pager cannot be run, caching failed commands per session.
+  * Handle `BrokenPipeError` quietly in `cmd2` consoles (e.g.,
+    when piped to `head`) and introduce `ConsoleBrokenPipeError`.
+  * Fix tab completion and `get_exes_in_path()` for paths
+    containing square brackets (`[`, `]`), `*`, and `?`.
+  * Quote shell-special characters (`*`, `?`, `(`, `&`, `$`) in
+    tab completion matches passed to a shell.
+  * Allow `get_exes_in_path()`, `find_editor()`, and command
+    completion to traverse symlinked `PATH` directories.
+  * Fix `find_editor()` on Windows to locate `edit.exe`.
+  * Add `rich_progress.py` and `textual_tty_toolbar.py` examples
+    and related documentation.
+
+-------------------------------------------------------------------
 Tue Nov 17 13:59:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.1:

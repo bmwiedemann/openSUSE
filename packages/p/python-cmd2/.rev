@@ -861,4 +861,28 @@
     This covers `history -o` and `history -e` without a</comment>
     <requestid>1398199</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>03c2b1de24abec67da3722081c83a4e5</srcmd5>
+    <version>4.4.3</version>
+    <time>1795432821</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.3:
+  * Security: Fix shell command injection through file names in
+    the `edit` command and `Cmd.run_editor()`. Raise ValueError on
+    Windows if paths contain double quotes.
+  * Fix `ppaged()` to print output directly when the configured
+    pager cannot be run, caching failed commands per session.
+  * Handle `BrokenPipeError` quietly in `cmd2` consoles (e.g.,
+    when piped to `head`) and introduce `ConsoleBrokenPipeError`.
+  * Fix tab completion and `get_exes_in_path()` for paths
+    containing square brackets (`[`, `]`), `*`, and `?`.
+  * Quote shell-special characters (`*`, `?`, `(`, `&amp;`, `$`) in
+    tab completion matches passed to a shell.
+  * Allow `get_exes_in_path()`, `find_editor()`, and command
+    completion to traverse symlinked `PATH` directories.
+  * Fix `find_editor()` on Windows to locate `edit.exe`.
+  * Add `rich_progress.py` and `textual_tty_toolbar.py` examples
+    and related documentation.</comment>
+    <requestid>1399559</requestid>
+  </revision>
 </revisionlist>
