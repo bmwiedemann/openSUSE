@@ -117,6 +117,7 @@ install -D -m 0644 %{SOURCE6} %{buildroot}%{_prefix}/lib/tmpfiles.d/alloy.conf
 %post
 %fillup_only
 %service_add_post %{name}.service
+%tmpfiles_create %{name}.tmpfiles
 
 %preun
 %service_del_preun %{name}.service

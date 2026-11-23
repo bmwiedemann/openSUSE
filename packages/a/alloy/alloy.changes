@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 20 12:00:53 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Trigger creation of /var/lib/alloy directory in %post phase
+
+-------------------------------------------------------------------
 Mon Nov 16 06:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.22.0:
