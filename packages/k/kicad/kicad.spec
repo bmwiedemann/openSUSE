@@ -217,6 +217,8 @@ MALLOC_PERTURB_=0 %ctest --tests-regex 'qa_spice'
 %{_datadir}/icons/hicolor/*/mimetypes/application-x-*
 %{_datadir}/icons/hicolor/*/apps/*.*
 %{_datadir}/bash-completion/completions/kicad-cli
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_kicad-cli
 
 %files lang -f %{name}.lang
