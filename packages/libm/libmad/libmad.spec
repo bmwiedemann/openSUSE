@@ -30,6 +30,8 @@ Source:         https://codeberg.org/tenacityteam/libmad/archive/%{version}.tar.
 Source1000:     baselibs.conf
 # PATCH-FIX-UPSTREAM Really fix build on arm
 Patch:          https://codeberg.org/tenacityteam/libmad/commit/9dd96b40c5caf76fd1c6ef9dcc80ba330eb57a79.patch
+# PATCH-FIX-UPSTREAM Do not export a static library we do not ship - https://codeberg.org/tenacityteam/libmad/pulls/48
+Patch:          libmad-static-option.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -76,12 +78,11 @@ develop applications with libmad.
 %autosetup -p1 -n libmad
 
 %build
-%cmake -DOPTIMIZE=ACCURACY
+%cmake -DOPTIMIZE=ACCURACY -DBUILD_STATIC_LIBS=OFF
 %cmake_build
 
 %install
 %cmake_install
-find %{buildroot} -name "*.a" -delete
 
 %ldconfig_scriptlets -n %{libname}
 

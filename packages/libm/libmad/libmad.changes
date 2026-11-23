@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:18:58 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add libmad-static-option.patch to fix dangling mad::mad-static
+  target in madTargets.cmake to fix find_package(mad)
+
+-------------------------------------------------------------------
 Fri Oct 16 01:46:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.16.5:
