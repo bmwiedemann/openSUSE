@@ -2,7 +2,7 @@
 # spec file for package orthanc
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2019-2026 Dr. Axel Braun
+# Copyright (c) 2019-2026 Dr. Axel Braun <DocB@opensus.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           orthanc
-Version:        1.13.0
+Version:        1.13.1
 Release:        0
 Summary:        RESTful DICOM server for healthcare and medical research
 License:        GPL-3.0-or-later
@@ -68,6 +68,7 @@ BuildRequires:  libboost_system-devel >= 1.66
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  protobuf-devel
 #Workaround for boo#1180359
+BuildRequires:  minizip-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -172,6 +173,8 @@ export CXX=g++-13
     -DUNIT_TESTS_WITH_HTTP_CONNEXIONS=OFF \
     -DORTHANC_FRAMEWORK_ADDITIONAL_LIBRARIES=boost_program_options \
     -DBoost_NO_BOOST_CMAKE=ON
+
+## fallback for DCMTK changes: -DDCMTK_DICTIONARY_DIR=/usr/share/dcmtk-3.7.2
 
 %cmake_build %{?_smp_mflags}
 
