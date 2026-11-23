@@ -174,4 +174,12 @@ Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <comment>Update to 1.2.23 (needs prebuilt &gt;= 1.1.3, filed as SR1398596)</comment>
     <requestid>1398807</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>e5cee1f970649457a45cb581864e173b</srcmd5>
+    <version>1.2.24</version>
+    <time>1795433046</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.24: handle REMOVE_ALL_MESSAGES, fix None-checkpoint replay TypeError</comment>
+    <requestid>1399723</requestid>
+  </revision>
 </revisionlist>

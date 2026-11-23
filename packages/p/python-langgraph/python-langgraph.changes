@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:38:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.24:
+  * Handle REMOVE_ALL_MESSAGES in _messages_delta_reducer,
+    clearing state and earlier batch writes instead of
+    silently ignoring the sentinel
+  * Start a DeltaChannel empty from a None checkpoint like
+    MISSING, fixing a TypeError on replay when the blob
+    is stored as null
+
+-------------------------------------------------------------------
 Thu Nov 19 07:28:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.23:
