@@ -17,7 +17,7 @@
 
 
 Name:           grisbi
-Version:        3.92.0
+Version:        3.92.1
 Release:        0
 Summary:        Personal Accounting Application
 License:        GPL-2.0-or-later

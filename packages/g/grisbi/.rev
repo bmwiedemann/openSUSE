@@ -262,4 +262,14 @@
 - No longer reference sha256 file: upstream does not provide it anymore.</comment>
     <requestid>1384578</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>860ff165ef7e866489c5bb8f82fc150e</srcmd5>
+    <version>3.92.1</version>
+    <time>1795442064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.92.1:
+  * Linux: add Wayland support
+  * Bug fixes</comment>
+    <requestid>1399907</requestid>
+  </revision>
 </revisionlist>
