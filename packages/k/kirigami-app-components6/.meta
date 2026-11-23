@@ -2,5 +2,6 @@
   <title>Kirigami addons and modules</title>
   <description>Kirigami addons and modules necessary to do a full featured KDE application,
 such as integration with configurable keyboard shortcuts and standard actions.</description>
+  <devel project="KDE:Frameworks" package="kirigami-app-components6"/>
   <url>https://invent.kde.org/libraries/kirigami-app-components</url>
 </package>

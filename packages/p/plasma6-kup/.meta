@@ -6,5 +6,6 @@
 - A small program running in the background for monitoring and running the schedule plans
 - A KIO worker for accessing bup archives
 - A file browsing application for bup archives</description>
+  <devel project="KDE:Frameworks" package="plasma6-kup"/>
   <url>https://invent.kde.org/plasma/kup</url>
 </package>

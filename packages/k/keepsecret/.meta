@@ -7,5 +7,6 @@ or KeepassXC.
 When the service is running (or is dbus activated) this app will automatically
 find and use it, showing all the secret colletions and the secrets contained
 within.</description>
+  <devel project="KDE:Applications" package="keepsecret"/>
   <url>https://apps.kde.org/keepsecret/</url>
 </package>

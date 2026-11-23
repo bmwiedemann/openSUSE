@@ -6,5 +6,6 @@ number of variables of arbitrary names, decimal and symbolic constants, basic
 unary and binary operators, and elementary mathematical functions. In addition
 to parsing and evaluation, libmatheval can also compute symbolic derivatives
 and output expressions to strings.</description>
+  <devel project="devel:libraries:c_c++" package="libmatheval"/>
   <url>https://www.gnu.org/software/libmatheval/</url>
 </package>

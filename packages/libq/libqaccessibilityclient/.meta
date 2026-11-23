@@ -3,6 +3,6 @@
   <description>This library is used when writing accessibility clients such as screen readers.
 
 </description>
-  <devel project="KDE:Frameworks5" package="libqaccessibilityclient"/>
+  <devel project="KDE:Frameworks" package="libqaccessibilityclient"/>
   <url>https://www.kde.org</url>
 </package>
