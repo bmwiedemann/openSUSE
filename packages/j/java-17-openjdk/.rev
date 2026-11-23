@@ -439,4 +439,12 @@
     <comment>A proper fix for debug symbols/jmod size</comment>
     <requestid>1398543</requestid>
   </revision>
+  <revision rev="56" vrev="3">
+    <srcmd5>a9ab1010265a8b674488640a6944d326</srcmd5>
+    <version>17.0.21.1</version>
+    <time>1795442920</time>
+    <user>anag_factory</user>
+    <comment>fix typo in bug number</comment>
+    <requestid>1399945</requestid>
+  </revision>
 </revisionlist>
