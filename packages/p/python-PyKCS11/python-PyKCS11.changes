@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:03:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.21:
+  * getMechanismList(): do not return mechanism 0x1D (debug
+    code
+
+-------------------------------------------------------------------
 Fri Aug 28 20:42:47 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.5.19:
