@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:45:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add license
+
+-------------------------------------------------------------------
+Fri Nov 20 15:32:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.3
+  * Make the parser reentrant and thread-safe; no state is shared
+    between parses
+  * Fix REM keywords being matched anywhere in a REM line
+  * Fix keywords without a value swallowing the next line
+  * Fix a line of unknown characters making the whole parse fail
+  * Fix unbalanced quotes swallowing the following lines
+  * Accept unquoted text values containing spaces
+  * Fix integer overflow/truncation in numbers and INDEX numbers
+  * Ignore INDEX lines with invalid times instead of storing -1
+  * Fix tracks past 99 overwriting track 99
+  * Fix out-of-bounds write in the REPLAYGAIN scanner rule
+
+-------------------------------------------------------------------
 Wed Oct 11 02:33:47 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.3.0
