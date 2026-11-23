@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:38:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.139 (templates grow 710 to 711):
+  * Adds the HeyGen Decision 1 gate-and-pick template JSON
+    and refreshes 15 search indexes
+  * Re-saves 19 existing templates with the widget values the
+    frontend expects; the Ideogram 4.6 precise edit node
+    drops two extra widget values
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Fri Nov 20 06:27:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.138 (templates grow 707 to 710):
