@@ -62,7 +62,7 @@ dos2unix Copying.txt
 %build
 cd src
 %ifarch x86_64
-%make_build build ARCH=x86-64
+%make_build build ARCH=x86-64-universal
 %else
 %ifarch %{power_64}
 %make_build build ARCH=ppc-64

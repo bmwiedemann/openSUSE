@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 22 11:32:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use the upstream x86-64 runtime-dispatch binary on x86_64:
+  build with ARCH=x86-64-universal, so the shipped binary selects
+  the best available x86-64 code path (SSE4.1, AVX2, BMI2,
+  AVX-512, ...) at runtime instead of the baseline x86-64 build.
+
+-------------------------------------------------------------------
 Sun Oct 18 09:20:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 19:
