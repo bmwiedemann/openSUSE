@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov  9 12:11:56 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Move /etc/sysconfig/postgresql from server to main package,
+  because it is needed for the "alts" mechanism (bsc#1284974).
+
+-------------------------------------------------------------------
+Fri Jun 12 19:41:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Bump major to 19
+
+-------------------------------------------------------------------
 Fri Apr 10 13:55:24 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Get rid of update-alternatives and support immutable mode.

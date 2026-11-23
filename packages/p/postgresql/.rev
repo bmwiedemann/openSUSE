@@ -647,4 +647,15 @@
     <comment></comment>
     <requestid>1353820</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>25ff9ab40b0790d9a439f379a64d3920</srcmd5>
+    <version>19</version>
+    <time>1795432838</time>
+    <user>anag_factory</user>
+    <comment>- Move /etc/sysconfig/postgresql from server to main package,
+  because it is needed for the &quot;alts&quot; mechanism (bsc#1284974).
+
+- Bump major to 19</comment>
+    <requestid>1397157</requestid>
+  </revision>
 </revisionlist>

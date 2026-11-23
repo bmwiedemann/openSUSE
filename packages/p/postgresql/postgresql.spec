@@ -16,7 +16,7 @@
 #
 
 
-%define pgmajor 18
+%define pgmajor 19
 
 # SLE-12
 %if 0%{?sle_version} >= 120200 && 0%{?sle_version} < 150000
@@ -502,10 +502,12 @@ fi
 fi
 %endif
 
-%post server
+%post
 if [ -x /bin/fillup ]; then
     %fillup_only -n postgresql
 fi
+
+%post server
 %if %{with systemd}
 if test -x /usr/bin/systemctl; then
 PROFILE="/var/lib/pgsql/.bash_profile"
@@ -565,6 +567,7 @@ fi
 %defattr(-,root,root,-)
 %doc README.SUSE
 %dir /usr/share/postgresql
+%{_fillupdir}/sysconfig.postgresql
 /usr/share/postgresql/install-alternatives
 %if %{with alts}
 /usr/share/postgresql/pg_alts
@@ -588,7 +591,6 @@ fi
 %config %fwdir/%fwname
 %endif
 
-%{_fillupdir}/sysconfig.postgresql
 /usr/sbin/rcpostgresql
 %if %{with systemd}
 %_tmpfilesdir/postgresql.conf
