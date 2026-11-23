@@ -4117,7 +4117,7 @@
     <package name="which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wicked" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
     <package name="wicked-service" supportstatus="unsupported"/> <!-- reason: dvd:wicked -->
-    <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="wireless-regdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="wireplumber" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="wireplumber-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="wireplumber-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

@@ -1339,7 +1339,7 @@
     <package name="libzypp-plugin-appdata" supportstatus="unsupported"/> <!-- reason: opensuse_microos_desktop:expansion -->
     <package name="live-langset-data" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="login_defs" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-runtime_podman -->
-    <package name="logrotate" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-runtime_podman -->
+    <package name="logrotate" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-alt_onlyDVD -->
     <package name="lvm2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-onlyDVD -->
     <package name="makedumpfile" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-runtime_podman -->
     <package name="man-online" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-containers-runtime_podman -->
