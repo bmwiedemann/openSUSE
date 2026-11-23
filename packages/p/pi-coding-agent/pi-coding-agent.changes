@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:48:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.0:
+  * New models GPT-6.2 Astra and GPT-6.2 Sol on openai, azure and
+    openai-codex providers; Sol is now the default there
+  * New Qwen qwen4-max-preview, deepseek-v4.1-flash variants with
+    per-plan keys; transcript notice for dropped reasoning items
+  * Changed Qwen gateways, find patterns relative to search dir,
+    llama.cpp default port 9931, Anthropic threads on by default
+  * Breaking for extensions: render returns readonly string array,
+    copy before mutating; retired deepseek-v3.2 and v4-flash
+  * Fixed AbortError exits, MCP tools dropped on resume, find with
+    ./ prefix, bash long-line output, plus many TUI and provider
+    fixes; see upstream release notes for the full list
+  * Undici stays at 8.12.4, already carried in the vendored tree
+- Refresh the vendored node_modules 1.5.2 -> 1.6.0: the seven
+  @earendil-works packages move to 1.6.0 with @aws-sdk, @smithy,
+  openai, google and other bumps riding along. The dev and
+  optional platform addons stay out, and the pi-tui 1.6.0 tarball
+  is repacked without its prebuilt .node files, so the payload is
+  still built from source throughout
+  * graceful-fs 4.2.11 -> 4.2.12 changes ISC to BlueOak-1.0.0;
+    the licence union is unchanged
+- Drop the obsolete undici 8.12.4 pin: upstream 1.6.0 already
+  requires it, so the offline install no longer needs overriding
+
+-------------------------------------------------------------------
 Fri Nov 20 11:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Vendored-dependency security refresh: undici 8.12.3 -> 8.12.4.

@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Minimal terminal coding agent
 # Legal-Review-Notice: pi itself is MIT. The 122 vendored dependencies are
-# MIT (59), Apache-2.0 (38), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (3),
+# MIT (59), Apache-2.0 (38), BSD-3-Clause (13), ISC (6), BlueOak-1.0.0 (4),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
 # - The QuickJS runtime is built from Source20/21 (MIT quickjs-wasi 3.6.2,
@@ -155,10 +155,6 @@ cp -p %{SOURCE10} npm-shrinkwrap.json
 # test suite, so drop the devDependencies; the --omit=dev install below then
 # has nothing to reconcile.
 npm pkg delete devDependencies
-
-# The packaged 1.5.2 pins undici 8.12.3 (boo#1290296 & co.); pin the
-# vendored 8.12.4 here so the offline npm install does not re-resolve.
-npm pkg set dependencies.undici=8.12.4
 
 %build
 cd %{name}
