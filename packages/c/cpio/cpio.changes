@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 17 18:26:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2026-126820.patch (CVE-2026-126820 bsc#1290469)
+- add CVE-2026-126831.patch (CVE-2026-126831 bsc#1290470)
+
+-------------------------------------------------------------------
 Mon Oct 26 10:48:01 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Remove the leftover update-alternatives %post fragment and its
@@ -158,13 +164,13 @@ Fri Oct 16 08:49:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 Fri Sep 11 11:45:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add cpio-revert-CVE-2015-1197-fix.patch as recommended by upstream
-  to fix https://lists.gnu.org/archive/html/bug-cpio/2019-11/msg00016.html 
+  to fix https://lists.gnu.org/archive/html/bug-cpio/2019-11/msg00016.html
 
 -------------------------------------------------------------------
 Sat Aug 15 16:18:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.13:
-  * CVE-2015-1197, CVE-2016-2037, CVE-2019-14866 
+  * CVE-2015-1197, CVE-2016-2037, CVE-2019-14866
 - remove patches (upstream):
   cpio-2.12-out_of_bounds_write.patch, cpio-2.12-CVE-2019-14866.patch,
   cpio-2.12-util.c_no_return_in_nonvoid_fnc.patch,
@@ -176,15 +182,15 @@ Sun Mar 29 20:54:38 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 - starting with GCC 10, the default of '-fcommon' option will
   change to '-fno-common'. Because cpio build fails with
   'fno-common', add '-fcommon' option to optflags as a temporary
-  workaround for this problem till it's properly fixed [bsc#1160870] 
+  workaround for this problem till it's properly fixed [bsc#1160870]
 
 -------------------------------------------------------------------
 Mon Nov  4 15:53:41 UTC 2019 - Kristyna Streitova <kstreitova@suse.com>
 
 - add cpio-2.12-CVE-2019-14866.patch to fix a security issue where
   cpio does not properly validate the values written in the header
-  of a TAR file through the to_oct() function [bsc#1155199] 
-  [CVE-2019-14866] 
+  of a TAR file through the to_oct() function [bsc#1155199]
+  [CVE-2019-14866]
 
 -------------------------------------------------------------------
 Thu Sep 19 11:50:42 UTC 2019 - Ludwig Nussel <lnussel@suse.de>
@@ -209,8 +215,8 @@ Fri Sep 14 08:33:28 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 -------------------------------------------------------------------
 Tue Apr 11 10:06:17 UTC 2017 - kstreitova@suse.com
 
-- modify cpio-2.12-out_of_bounds_write.patch to fix a regression 
-  causing cpio to crash for tar and ustar archive types 
+- modify cpio-2.12-out_of_bounds_write.patch to fix a regression
+  causing cpio to crash for tar and ustar archive types
   [bsc#1028410]
 
 -------------------------------------------------------------------
@@ -253,7 +259,7 @@ Thu Mar  3 07:19:03 UTC 2016 - svalx@svalx.net
 
 - Disable mt building: this binary from mt_st package offers
   advanced capabilities with the same functionality.
-- Enable rmt building: 'dump' package no longer include it, besides 
+- Enable rmt building: 'dump' package no longer include it, besides
   cpio code base for rmt is more fresh.
 - Reflect those changes in the package description.
 
@@ -355,7 +361,7 @@ Thu Feb  2 13:31:13 UTC 2012 - rschweikert@suse.com
 -------------------------------------------------------------------
 Mon Jan  2 17:27:13 UTC 2012 - vcizek@suse.cz
 
-- added autoconf to BuildRequires 
+- added autoconf to BuildRequires
 
 -------------------------------------------------------------------
 Thu Dec  1 11:21:00 UTC 2011 - coolo@suse.com
@@ -380,7 +386,7 @@ Tue Aug 31 09:37:05 UTC 2010 - aj@suse.de
 -------------------------------------------------------------------
 Tue Aug 10 14:48:32 UTC 2010 - puzel@novell.com
 
-- add cpio-pattern-file-sigsegv.patch (bnc#629860) 
+- add cpio-pattern-file-sigsegv.patch (bnc#629860)
 
 -------------------------------------------------------------------
 Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
@@ -393,10 +399,10 @@ Fri Mar 12 16:34:39 UTC 2010 - mseben@novell.com
 - updated to 2.11
   * Fix mt build.
   * In copy-in mode, if directory attributes do not permit writing to it,
-    setting them is delayed until the end of run. This allows to 
+    setting them is delayed until the end of run. This allows to
 	correctly extract files in such directories.
-  * In copy-in mode, permissions of a directory are restored if it 
-    appears in the file list after files in it (e.g. in listings 
+  * In copy-in mode, permissions of a directory are restored if it
+    appears in the file list after files in it (e.g. in listings
 	produced by find . -depth). This fixes debian bug #458079.
   * Fix possible memory overflow in the rmt client code (CVE-2010-0624).
 - deprecated heap_overflow_in_rtapelib.patch,chmodRaceC.patch and
@@ -405,13 +411,13 @@ Fri Mar 12 16:34:39 UTC 2010 - mseben@novell.com
 -------------------------------------------------------------------
 Wed Mar  3 09:29:23 UTC 2010 - mseben@novell.com
 
-- added heap_overflow_in_rtapelib.patch fix possible heap overflow in 
+- added heap_overflow_in_rtapelib.patch fix possible heap overflow in
   rtapelib.c (bnc#579475)
 
 -------------------------------------------------------------------
 Sat Dec 26 11:51:46 CET 2009 - jengelh@medozas.de
 
-- enable parallel build 
+- enable parallel build
 
 -------------------------------------------------------------------
 Tue Nov  3 19:09:11 UTC 2009 - coolo@novell.com
@@ -482,7 +488,7 @@ Fri Jun 27 16:28:34 CEST 2008 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Apr 11 12:55:08 CEST 2008 - lmichnovic@suse.cz
 
-- adjusted eof-handling.patch to check for 'end-of-file' and 
+- adjusted eof-handling.patch to check for 'end-of-file' and
   'end-of-data' marker when detecting reel change. [bnc#371077]
 
 -------------------------------------------------------------------
@@ -500,13 +506,13 @@ Thu Mar 13 19:03:41 CET 2008 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Thu Mar 13 18:55:59 CET 2008 - lmichnovic@suse.cz
 
-- applying upstream patch cpio-2.9-dir_perm.patch which fixes 
+- applying upstream patch cpio-2.9-dir_perm.patch which fixes
   incorrect directory permissions after archive extraction
 
 -------------------------------------------------------------------
 Thu Nov 29 15:49:49 CET 2007 - lmichnovic@suse.cz
 
-- removed unused m4 macro gl_LONG_LONG (*m4_macro.patch) 
+- removed unused m4 macro gl_LONG_LONG (*m4_macro.patch)
 
 -------------------------------------------------------------------
 Wed Nov  7 15:30:30 CET 2007 - lmichnovic@suse.cz
@@ -538,13 +544,13 @@ Mon Aug 20 18:11:29 CEST 2007 - lmichnovic@suse.cz
 -------------------------------------------------------------------
 Fri Aug 17 10:31:21 CEST 2007 - lmichnovic@suse.cz
 
-- upstream fix: use of alloca can cause stack overflow 
+- upstream fix: use of alloca can cause stack overflow
   (paxlib-owl-alloca.patch)
 
 -------------------------------------------------------------------
 Tue Aug 14 10:39:41 CEST 2007 - lmichnovic@suse.cz
 
-- CAN-2005-1111 is not fixed completely in 2.9 (chmodRaceC.patch) 
+- CAN-2005-1111 is not fixed completely in 2.9 (chmodRaceC.patch)
   based on fedora patch
 
 -------------------------------------------------------------------
@@ -567,24 +573,24 @@ Fri Jul 20 11:01:31 CEST 2007 - lmichnovic@suse.cz
     not specified in the archive (debian bug #430053). (This bug
     is only in version 2.8)
   * 2.8:
-    * Option --owner can be used in copy-out mode, allowing 
-    to uniformly override the ownership of the files being added 
+    * Option --owner can be used in copy-out mode, allowing
+    to uniformly override the ownership of the files being added
     to the archive.
-    * Bugfixes: 
-    - Symlinks were handled incorrectly in copy-out mode. (This 
+    * Bugfixes:
+    - Symlinks were handled incorrectly in copy-out mode. (This
       bug was only in version 2.7)
     - Fix handling of large files. {obsoletes lfs.patch}
           o Fix setting the file permissions in copy-out mode.
           o Fix CAN-2005-1111 {obsoletes chmodRaceC.patch}
-  * 2.7: 
+  * 2.7:
     * Improved error checking and diagnostics
     * Fixed CAN-1999-1572 {obsoletes writeOutHeaderBufferOverflow.patch}
     * Allow to use --sparse in both copy-in and copy-pass.
-    * Fix bug that eventually caused copying out the same 
+    * Fix bug that eventually caused copying out the same
       hard-linked file several times to archive.
     * Fix several LFS-related issues. {obsoletes lfs.patch}
     * Fix Debian bug #335580.
-  - obsoletes *dirTraversal.patch implemented with option 
+  - obsoletes *dirTraversal.patch implemented with option
     --no-absolute-pathnames; option --absolute-pathnames is still possible
   - obsoletes *checksum.patch, fix_umask.patch, sparse.patch
 - using lang macro
@@ -613,7 +619,7 @@ Wed Jan 25 21:30:02 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Dec  6 15:24:09 CET 2005  - fehr@suse.de
 
-- add cpio-2.6-chmodRaceC.patch and cpio-2.6-dirTraversal.patch to 
+- add cpio-2.6-chmodRaceC.patch and cpio-2.6-dirTraversal.patch to
   fix bug #80226
 - add cpio-2.6-writeOutHeaderBufferOverflow.patch to fix #133454
 - add cpio-2.6-checksum.patch fix wrong checksum on 64bit archs
@@ -632,7 +638,7 @@ Thu Jun 30 18:59:02 CEST 2005 - fehr@suse.de
 -------------------------------------------------------------------
 Wed May  4 15:04:04 CEST 2005 - ro@suse.de
 
-- properly detect lstat in configure 
+- properly detect lstat in configure
 
 -------------------------------------------------------------------
 Wed Apr 27 12:17:58 CEST 2005 - snwint@suse.de
@@ -652,7 +658,7 @@ Mon Jan 24 12:19:31 CET 2005 - fehr@suse.de
 -------------------------------------------------------------------
 Mon Jan 19 12:44:15 CET 2004 - ro@suse.de
 
-- fix build as user 
+- fix build as user
 
 -------------------------------------------------------------------
 Sun Jan 11 11:04:05 CET 2004 - adrian@suse.de
@@ -672,12 +678,12 @@ Tue Apr 15 16:47:28 CEST 2003 - coolo@suse.de
 -------------------------------------------------------------------
 Fri Feb  7 15:19:46 CET 2003  - fehr@suse.de
 
-- Use %install_info macro 
+- Use %install_info macro
 
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Tue Aug 13 21:29:02 CEST 2002 - mfabian@suse.de

@@ -50,6 +50,10 @@ Patch12:        CVE-2026-66485.patch
 # PATCH-FIX-UPSTREAM CVE-2026-66486.patch bsc#1274858 antonio.teixeira@suse.com
 # CVE-2026-66486: terminal control sequence injection via crafted archive member names
 Patch13:        CVE-2026-66486.patch
+# PATCH-FIX-UPSTREAM CVE-2026-126820 bsc#1290469
+Patch14:        CVE-2026-126820.patch
+# PATCH-FIX-UPSTREAM CVE-2026-126831 bsc#1290470
+Patch15:        CVE-2026-126831.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  automake
 BuildRequires:  makeinfo
