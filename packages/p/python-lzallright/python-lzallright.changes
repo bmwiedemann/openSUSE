@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 22 10:54:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * Reimplemented the C++ lzokay based code in Safe Rust.
+    Building no longer needs a C++ toolchain. The codec is also
+    published as the separately versioned `lzallright` Rust
+    crate; see its changelog for details.
+  * Updated PyO3 to 0.29; MSRV is bumped to 1.83
+  * Minimum supported Python version is now 3.11. Free-threaded
+    wheels are built for 3.14t. x86_64 macOS wheels are no longer
+    published.
+  * Published wheels are now built with Profile-Guided
+    Optimization, trained on the benchmark corpus.
+  * Compressing empty input now produces a valid LZO stream;
+    previously it could not be decompressed.
+  * Inputs other than `bytes` are copied before the GIL is
+    released. Writing to the source buffer during compression or
+    decompression, for example through the `bytearray` behind a
+    read-only `memoryview`, could previously corrupt the result.
+
+-------------------------------------------------------------------
 Thu May  7 06:33:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.2.6)
