@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:07:06 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.9.1
+  Bugfixes
+  * subtitle selection based on preferred language
+  * seekbar popup label being wider than the preview
+  * updating metadata from playlist
+  * crash on open due to incorrect content in playlist.json
+    file responsible for restoring playlists
+  * dropping files containing # when parsing playlists
+  * screenshot osd showing error message
+  * youtube urls whose metadata was not resolved before the app
+    closed, were not resuming metadata fetching when the app was
+    reopened
+
+-------------------------------------------------------------------
 Sun Nov  1 06:22:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.9.0
