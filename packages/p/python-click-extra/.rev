@@ -489,4 +489,41 @@ update to 6.1.0</comment>
     <comment>1</comment>
     <requestid>1397904</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>15c2bf34b86093c4df701ad55453a0e7</srcmd5>
+    <version>10.3.1</version>
+    <time>1795433207</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.3.1:
+  * End a crash of the click-extra CLI with a bug report (except under
+    wrap and refresh-directives)
+  * Fix ctx.meta sharing between a group and a subcommand with its own
+    --version option
+  * Fix tracebacks from :mirror: or mirror-src blocks naming the wrong
+    source line
+
+- update to 10.3.0:
+  * Breaking: Raise the Click floor to 8.5.1, dropping the shims
+    for the spec of hidden options and the envvar of error hints.
+  * Breaking: Raise the myst-parser floor of the sphinx extra to
+    5.2.0, dropping the shim for the content_offset that older
+    releases over-counted.
+  * Breaking: DependencyMatrixGroup gains a trailing last_date
+    field, so it no longer unpacks into four values.
+  * Deprecated: The tabs-vertical class of sphinx-design tab-sets
+    now logs a click_extra.tabs_vertical warning and stops working
+    in 11.0.0. Set the :orientation: vertical option of
+    sphinx-design 0.8.0 instead.
+  * Deprecated: ERASE_IN_LINE, PARTIAL_CSI_RE,
+    SELECT_GRAPHIC_RENDITION and TerminalScreen of
+    click_extra.capture.recording now warn and stop resolving in
+    11.0.0. Import TerminalScreen from click_extra.capture.terminal
+    instead.
+  * Add a report_url argument to @command and @group: an error the
+    CLI has no rule for then ends the run with a bug report to
+    paste into an issue.
+  * Add log_report(), which logs a bug report of the same shape
+    without ending the run, and describe_error(), compact_frames()</comment>
+    <requestid>1399826</requestid>
+  </revision>
 </revisionlist>

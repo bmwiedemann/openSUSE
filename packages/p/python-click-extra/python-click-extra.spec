@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        10.2.0
+Version:        10.3.1
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v10.2.0/pyproject.toml
-BuildRequires:  %{python_module click >= 8.5}
+BuildRequires:  %{python_module click >= 8.5.1}
 BuildRequires:  %{python_module cloup >= 4}
 BuildRequires:  %{python_module extra-platforms >= 14}
 BuildRequires:  %{python_module tabulate >= 0.10}
@@ -55,8 +55,9 @@ BuildRequires:  git-core
 # /SECTION
 # SECTION test requirements
 BuildRequires:  %{python_module Sphinx >= 8.0}
+BuildRequires:  %{python_module curses}
 BuildRequires:  %{python_module jsonschema >= 4.18}
-BuildRequires:  %{python_module myst-parser >= 5.1}
+BuildRequires:  %{python_module myst-parser >= 5.2}
 BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-httpserver >= 1.1.0}
 BuildRequires:  %{python_module pytest-randomly >= 4.0.0}
@@ -64,7 +65,7 @@ BuildRequires:  %{python_module requests >= 2.34}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 8.5
+Requires:       python-click >= 8.5.1
 Requires:       python-cloup >= 4
 Requires:       python-extra-platforms >= 14
 Requires:       python-tabulate >= 0.10
@@ -104,17 +105,6 @@ IGNORED_CHECKS+=" or test_debug_output or (test_integrated_verbosity_options and
 IGNORED_CHECKS+=" or test_integrated_color_option or test_conf_file_overrides_defaults"
 IGNORED_CHECKS+=" or test_context_meta or test_required_command"
 IGNORED_CHECKS+=" or test_no_option_leaks_between_subcommands or test_unset_conf_debug_message"
-# table rendering with emojis involves extra spaces
-IGNORED_CHECKS+=" or test_all_table_rendering"
-IGNORED_CHECKS+=" or test_conf_default_path"
-IGNORED_CHECKS+=" or test_integrated_show_params_option"
-#
-IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.STR-False-result0]"
-IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.NAME-True-result2]"
-IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Status-ChoiceSource.VALUE-True-result3]"
-IGNORED_CHECKS+=" or test_enum_choice_show_aliases[Color-ChoiceSource.NAME-True-result4]"
-# Broken with Click 8.4+
-IGNORED_CHECKS+=" or test_command_listing_is_not_cut_by_an_abbreviation"
 # Broken with extra-platforms 13.10+
 IGNORED_CHECKS+=" or test_screen_drawn_with_color"
 # the screen names the build host, which can widen it past 80 columns
@@ -122,12 +112,15 @@ IGNORED_CHECKS+=" or test_screen_fits_an_eighty_column_terminal"
 # timing tests, which fail on a loaded build host
 IGNORED_CHECKS+=" or test_startup_time_stays_within_a_ratio_of_click or test_sigterm_shows_the_cursor_again"
 # writing TOML needs tomlrt, which is not packaged
+IGNORED_CHECKS+=" or (test_all_table_rendering and toml)"
 IGNORED_CHECKS+=" or test_export_config or test_serialize_toml or test_serialize_roundtrip"
 IGNORED_CHECKS+=" or test_serialize_strips_none or test_show_params_native_types"
 IGNORED_CHECKS+=" or test_introspection_flags_load_config_first or test_markup_strips_ansi_by_default"
 IGNORED_CHECKS+=" or (test_standalone_no_color_rendering and toml)"
 IGNORED_CHECKS+=" or (test_standalone_table_rendering and toml)"
 IGNORED_CHECKS+=" or (test_max_column_widths and toml)"
+# Broken with cloup <= 4.0.0
+IGNORED_CHECKS+=" or test_no_heavy_dependency_ballast_on_startup"
 
 %pytest --import-mode=importlib -m "not network" -k "not (${IGNORED_CHECKS})"
 
