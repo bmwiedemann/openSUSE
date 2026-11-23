@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:56:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.3.1:
+  * Fix a regression in 2.3.0
+- includes changes from 2.3.0:
+  * New constants GPGME_PK_MLKEM, GPGME_PK_MLDSA, and
+    GPGME_PK_DLTHM. Add mappings for algos used by backends
+  * Fix a double free in the status line read code
+    CVE-2026-129975 boo#1291147
+
+-------------------------------------------------------------------
 Thu Sep  3 05:56:18 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.2.0:

@@ -990,4 +990,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment>gpgme 2.2.0 (forwarded request 1375525 from AndreasStieger)</comment>
     <requestid>1375527</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>842cd4edac6216f990563f52efd83219</srcmd5>
+    <version>2.3.1</version>
+    <time>1795432778</time>
+    <user>anag_factory</user>
+    <comment>gpgme 2.3.1 CVE-2026-129975 boo#1291147 (forwarded request 1399467 from AndreasStieger)</comment>
+    <requestid>1399469</requestid>
+  </revision>
 </revisionlist>
