@@ -36,20 +36,20 @@ Do what upstream could not do, and provide some proper verdefs in the .v files.
 for SDL2 which released more often than ffmpeg. -jengelh]
 
 ---
- libavcodec/libavcodec.v       |  203 ++++++++++++
+ libavcodec/libavcodec.v       |  236 +++++++++++++-
  libavdevice/libavdevice.v     |   34 +-
- libavfilter/libavfilter.v     |   86 +++++
- libavformat/libavformat.v     |  176 ++++++++++-
- libavutil/libavutil.v         |  658 +++++++++++++++++++++++++++++++++++++++++-
+ libavfilter/libavfilter.v     |   91 +++++
+ libavformat/libavformat.v     |  186 ++++++++++-
+ libavutil/libavutil.v         |  700 +++++++++++++++++++++++++++++++++++++++++-
  libswresample/libswresample.v |   42 ++
  libswscale/libswscale.v       |   59 +++
- 7 files changed, 1216 insertions(+), 42 deletions(-)
+ 7 files changed, 1306 insertions(+), 42 deletions(-)
 
-Index: ffmpeg-9.0.2/libavcodec/libavcodec.v
+Index: ffmpeg-9.1/libavcodec/libavcodec.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libavcodec/libavcodec.v
-+++ ffmpeg-9.0.2/libavcodec/libavcodec.v
-@@ -1,9 +1,196 @@
+--- ffmpeg-9.1.orig/libavcodec/libavcodec.v
++++ ffmpeg-9.1/libavcodec/libavcodec.v
+@@ -1,9 +1,229 @@
 -LIBAVCODEC_MAJOR {
 -    global:
 -        av_*;
@@ -243,6 +243,39 @@ Index: ffmpeg-9.0.2/libavcodec/libavcodec.v
 +	av_vdpau_get_surface_parameters;
 +} LIBAVCODEC_63;
 +
++LIBAVCODEC_63.4 {
++global:
++	av_bsf_graph_alloc;
++	av_bsf_graph_alloc_filter;
++	av_bsf_graph_config;
++	av_bsf_graph_create_filter;
++	av_bsf_graph_free;
++	av_bsf_graph_get_filter;
++	av_bsf_graph_source_needs_input;
++	av_bsf_init_dict;
++	av_bsf_init_str;
++	av_bsf_link;
++	av_bsf_pad_get_codec_ids;
++	av_bsf_pad_get_name;
++	av_bsf_sink_get_packet;
++	av_bsf_sink_get_parameters;
++	av_bsf_sink_get_time_base;
++	av_bsf_source_add_packet;
++	av_bsf_source_close;
++	av_bsf_source_get_status;
++	av_bsf_source_parameters_set;
++} LIBAVCODEC_63;
++
++LIBAVCODEC_63.8 {
++global:
++	avcodec_encode_reconfigure;
++} LIBAVCODEC_63.4;
++
++LIBAVCODEC_63.14 {
++global:
++	avpriv_mpegaudio_decode_header2;
++} LIBAVCODEC_63.8;
++
 +LIBAVCODEC_UNTRACKED {
 +global:
 +	av_*;
@@ -254,10 +287,10 @@ Index: ffmpeg-9.0.2/libavcodec/libavcodec.v
 +local:
 +	*;
 +} LIBAVCODEC_63;
-Index: ffmpeg-9.0.2/libavdevice/libavdevice.v
+Index: ffmpeg-9.1/libavdevice/libavdevice.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libavdevice/libavdevice.v
-+++ ffmpeg-9.0.2/libavdevice/libavdevice.v
+--- ffmpeg-9.1.orig/libavdevice/libavdevice.v
++++ ffmpeg-9.1/libavdevice/libavdevice.v
 @@ -1,7 +1,29 @@
 -LIBAVDEVICE_MAJOR {
 -    global:
@@ -294,11 +327,11 @@ Index: ffmpeg-9.0.2/libavdevice/libavdevice.v
 +local:
 +	*;
 +} LIBAVDEVICE_63;
-Index: ffmpeg-9.0.2/libavfilter/libavfilter.v
+Index: ffmpeg-9.1/libavfilter/libavfilter.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libavfilter/libavfilter.v
-+++ ffmpeg-9.0.2/libavfilter/libavfilter.v
-@@ -1,7 +1,81 @@
+--- ffmpeg-9.1.orig/libavfilter/libavfilter.v
++++ ffmpeg-9.1/libavfilter/libavfilter.v
+@@ -1,7 +1,86 @@
 -LIBAVFILTER_MAJOR {
 -    global:
 -        avfilter_*;
@@ -376,6 +409,11 @@ Index: ffmpeg-9.0.2/libavfilter/libavfilter.v
 +	avfilter_version;
  };
 +
++LIBAVFILTER_12.5 {
++global:
++	av_buffersink_get_chroma_location;
++} LIBAVFILTER_12;
++
 +LIBAVFILTER_UNTRACKED {
 +global:
 +	avfilter_*;
@@ -386,11 +424,11 @@ Index: ffmpeg-9.0.2/libavfilter/libavfilter.v
 +local:
 +	*;
 +} LIBAVFILTER_12;
-Index: ffmpeg-9.0.2/libavformat/libavformat.v
+Index: ffmpeg-9.1/libavformat/libavformat.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libavformat/libavformat.v
-+++ ffmpeg-9.0.2/libavformat/libavformat.v
-@@ -1,6 +1,172 @@
+--- ffmpeg-9.1.orig/libavformat/libavformat.v
++++ ffmpeg-9.1/libavformat/libavformat.v
+@@ -1,6 +1,182 @@
 -LIBAVFORMAT_MAJOR {
 -    global:
 -        av*;
@@ -557,6 +595,16 @@ Index: ffmpeg-9.0.2/libavformat/libavformat.v
 +	avpriv_update_cur_dts;
  };
 +
++LIBAVFORMAT_63.10 {
++global:
++	avformat_stream_group_add_stream_group;
++} LIBAVFORMAT_63;
++
++LIBAVFORMAT_63.11 {
++global:
++	avio_open_dir2;
++} LIBAVFORMAT_63.10;
++
 +LIBAVFORMAT_UNTRACKED {
 +global:
 +	av_*;
@@ -568,11 +616,11 @@ Index: ffmpeg-9.0.2/libavformat/libavformat.v
 +local:
 +	*;
 +} LIBAVFORMAT_63;
-Index: ffmpeg-9.0.2/libavutil/libavutil.v
+Index: ffmpeg-9.1/libavutil/libavutil.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libavutil/libavutil.v
-+++ ffmpeg-9.0.2/libavutil/libavutil.v
-@@ -1,6 +1,654 @@
+--- ffmpeg-9.1.orig/libavutil/libavutil.v
++++ ffmpeg-9.1/libavutil/libavutil.v
+@@ -1,6 +1,696 @@
 -LIBAVUTIL_MAJOR {
 -    global:
 -        av*;
@@ -1222,6 +1270,48 @@ Index: ffmpeg-9.0.2/libavutil/libavutil.v
 +	av_vk_get_optional_instance_extensions;
 +} LIBAVUTIL_61;
 +
++LIBAVUTIL_61.3 {
++global:
++	av_downmix_matrix_alloc;
++	av_downmix_matrix_coeff;
++} LIBAVUTIL_61;
++
++LIBAVUTIL_61.6 {
++global:
++	avpriv_slicethread_create2;
++	avpriv_slicethread_execute2;
++} LIBAVUTIL_61.3;
++
++LIBAVUTIL_61.8 {
++global:
++	av_file_map_shared;
++	av_file_unmap_shared;
++} LIBAVUTIL_61.6;
++
++LIBAVUTIL_61.10 {
++global:
++	av_gain_map_channels_identical;
++	av_gain_map_params_alloc;
++	av_gain_map_params_create_side_data;
++	av_gain_map_params_validate;
++} LIBAVUTIL_61.8;
++
++LIBAVUTIL_61.14 {
++global:
++	av_gain_map_params_from_iso21496;
++	av_gain_map_params_to_iso21496;
++} LIBAVUTIL_61.10;
++
++LIBAVUTIL_61.15 {
++global:
++	av_encryption_init_info_append_side_data;
++} LIBAVUTIL_61.14;
++
++LIBAVUTIL_61.16 {
++global:
++	av_hwframe_get_transfer_buffer;
++} LIBAVUTIL_61.15;
++
 +LIBAVUTIL_UNTRACKED {
 +global:
 +	av_*;
@@ -1232,10 +1322,10 @@ Index: ffmpeg-9.0.2/libavutil/libavutil.v
 +local:
 +	*;
 +} LIBAVUTIL_61;
-Index: ffmpeg-9.0.2/libswresample/libswresample.v
+Index: ffmpeg-9.1/libswresample/libswresample.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libswresample/libswresample.v
-+++ ffmpeg-9.0.2/libswresample/libswresample.v
+--- ffmpeg-9.1.orig/libswresample/libswresample.v
++++ ffmpeg-9.1/libswresample/libswresample.v
 @@ -1,7 +1,37 @@
 -LIBSWRESAMPLE_MAJOR {
 -    global:
@@ -1280,10 +1370,10 @@ Index: ffmpeg-9.0.2/libswresample/libswresample.v
 +local:
 +	*;
 +} LIBSWRESAMPLE_7;
-Index: ffmpeg-9.0.2/libswscale/libswscale.v
+Index: ffmpeg-9.1/libswscale/libswscale.v
 ===================================================================
---- ffmpeg-9.0.2.orig/libswscale/libswscale.v
-+++ ffmpeg-9.0.2/libswscale/libswscale.v
+--- ffmpeg-9.1.orig/libswscale/libswscale.v
++++ ffmpeg-9.1/libswscale/libswscale.v
 @@ -1,7 +1,54 @@
 -LIBSWSCALE_MAJOR {
 -    global:

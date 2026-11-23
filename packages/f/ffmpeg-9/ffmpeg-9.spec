@@ -99,7 +99,7 @@
 %define _upper_reject 10
 
 Name:           ffmpeg-9
-Version:        9.0.2
+Version:        9.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -115,14 +115,12 @@ Source6:        ffmpeg-dlopen-headers.tar.xz
 Source92:       ffmpeg_get_dlopen_headers.sh
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-9.keyring
 Source99:       baselibs.conf
-Patch1:         ffmpeg-arm6l.diff
 Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
-Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
 BuildRequires:  c++_compiler
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
@@ -805,7 +803,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-9
 Name:           ffmpeg-9-mini
-Version:        9.0.2
+Version:        9.1
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -815,13 +813,11 @@ Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
 Source3:        ffmpeg-9-rpmlintrc
 Source98:       http://ffmpeg.org/ffmpeg-devel.asc#/ffmpeg-9.keyring
-Patch1:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
-Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

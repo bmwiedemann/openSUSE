@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 20 13:21:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.1
+  * Added shader-based GPU encoding for the royalty-free Advanced
+    Professional Video (APV) codec
+  * Introduces the vf_fruc_vulkan filter for hardware-accelerated
+    Frame Rate Up-Conversion (frame interpolation) on supported
+    NVIDIA GPUs.
+  * Overhauled native AAC encoder. Improves bitrate control and bit
+    allocation while resolving Perceptual Noise Substitution (PNS)
+    stereo-imaging and Temporal Noise Shaping artifacts.
+  * xHE-AAC encoding on select build configurations.
+- Delete ffmpeg-arm6l.diff (obsolete),
+  0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch (merged)
+
+-------------------------------------------------------------------
 Mon Oct 12 10:56:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Enable RealAudio Lossless, RealVideo 3.0 and 4.0 decoders.
