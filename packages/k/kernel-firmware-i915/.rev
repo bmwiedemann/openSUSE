@@ -296,4 +296,19 @@ After this PR, there will be a delete request for kernel-firmware.
 - Update aliases from 7.3-rc1</comment>
     <requestid>1394983</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>c44c07ddc592199c9dff5262796242dd</srcmd5>
+    <version>20261120</version>
+    <time>1795432793</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261120 (git commit f9919c7a5892):
+  * i915: Xe3p_LPD DMC v2.44
+
+- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * xe: Add GuC 70.83.0 for CRI and NVL-P
+  * xe: Update GUC to v70.83.0 for DG2, MTL, LNL, BMG, PTL, NVL-S/U/H
+  * i915: Update GUC to v70.83.0 for DG2, MTL
+  * i915: Update GUC to v70.49.5 for TGL, ADL-P, DG1</comment>
+    <requestid>1399492</requestid>
+  </revision>
 </revisionlist>

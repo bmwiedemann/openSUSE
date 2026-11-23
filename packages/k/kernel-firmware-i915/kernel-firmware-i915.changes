@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:18:06 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261120 (git commit f9919c7a5892):
+  * i915: Xe3p_LPD DMC v2.44
+
+-------------------------------------------------------------------
+Mon Nov 16 08:47:18 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * xe: Add GuC 70.83.0 for CRI and NVL-P
+  * xe: Update GUC to v70.83.0 for DG2, MTL, LNL, BMG, PTL, NVL-S/U/H
+  * i915: Update GUC to v70.83.0 for DG2, MTL
+  * i915: Update GUC to v70.49.5 for TGL, ADL-P, DG1
+
+-------------------------------------------------------------------
 Mon Nov  2 07:19:21 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20261031 (git commit bda6eccc3a8f):
