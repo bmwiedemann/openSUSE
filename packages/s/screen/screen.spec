@@ -90,7 +90,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 mkdir -p %{buildroot}%{_prefix}/lib
 mkdir -p %{buildroot}%{_tmpfilesdir}
 mkdir -p %{buildroot}%{rundir}/screens
-chmod 755 %{buildroot}%{rundir}/screens
+chmod 1777 %{buildroot}%{rundir}/screens
 install -m 644 screenrc %{buildroot}%{_sysconfdir}/screenrc
 install -m 644 %{SOURCE1} %{buildroot}%{_tmpfilesdir}
 %if 0%{?suse_version} > 1500
@@ -105,6 +105,13 @@ install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/pam.d/screen
 make tests/test-winmsgbuf tests/test-winmsgcond
 ./tests/test-winmsgbuf
 ./tests/test-winmsgcond
+# boo#1289023: non-setuid screen 5.x only accepts a 777 socket dir, so
+# tmpfiles.d ships 1777 (sticky keeps users' socket dirs apart). SCREENDIR
+# bypasses the compiled-in dir, but still exercises listing as non-root.
+mkdir -p .check-screens && chmod 1777 .check-screens
+SCREENDIR=$PWD/.check-screens ./screen-%{version} -ls >ls.out 2>&1 || :
+if grep -q "must have mode" ls.out; then echo "socket dir rejected:"; cat ls.out; exit 1; fi
+grep -q "^d /run/screens 1777 " %{SOURCE1}
 
 %files
 %config %{_sysconfdir}/screenrc

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov  3 11:21:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix boo#1289023: ship /run/screens mode 1777 in tmpfiles.d.
+  Non-setuid screen 5.x requires a 777 socket dir; the sticky
+  bit keeps user socket dirs apart. Add a %check guard.
+
+-------------------------------------------------------------------
 Sun Oct 18 11:01:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.0.2 (major 5.x release):
