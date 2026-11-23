@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-h5netcdf
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
 Summary:        A Python library to use netCDF4 files via h5py
 License:        BSD-3-Clause
@@ -32,11 +32,13 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-h5py
+Requires:       python-numpy
 Requires:       python-packaging
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module netCDF4}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest}
 # /SECTION
