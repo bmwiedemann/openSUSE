@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.60.1
+Version:        1.60.2
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: the tag below covers the whole linked set (the shipped

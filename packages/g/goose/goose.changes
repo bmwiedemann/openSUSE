@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:51:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.60.2:
+  * Add Gemini 4 Neon to the model catalog
+  * Send thinking levels to Gemini 4 and later, including xhigh
+- Refresh the vendored dependencies (1102 crates vendored, zip
+  9.7.3 -> 9.8.1)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+
+-------------------------------------------------------------------
 Thu Nov 19 07:41:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.60.1 (via 1.60.0):
