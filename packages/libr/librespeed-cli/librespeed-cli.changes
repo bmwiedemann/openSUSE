@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 16:12:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.15:
+  * fix: fail the run when no selected server answers (#153).
+  * feat: report the negotiated TLS version and cipher (#149).
+  * build(deps): bump golang from 1.26-alpine to 1.27-alpine (#150).
+  * fix: start the progress clock with the test window (#148).
+  * feat: name the distribution in the User-Agent (#147).
+  * fix: recover the client IP address and organisation from current
+    backends (#146).
+  * feat: add --json-stream for machine-readable progress (#145).
+
+-------------------------------------------------------------------
 Thu Aug 20 10:12:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.14:

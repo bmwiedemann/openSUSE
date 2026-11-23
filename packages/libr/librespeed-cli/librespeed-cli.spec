@@ -18,7 +18,7 @@
 
 %define sname speedtest-cli
 Name:           librespeed-cli
-Version:        1.0.14
+Version:        1.0.15
 Release:        0
 Summary:        Command line client for LibreSpeed
 License:        LGPL-3.0-only
