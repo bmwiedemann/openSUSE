@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Mon Nov  9 21:30:33 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Shorten the Summary to fit the rpmlint length limit
+
+-------------------------------------------------------------------
+Mon Nov  9 21:27:27 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Initial packaging
+- Describe the package purpose in the description
+- Add rich-click and click as test dependencies for the CLI tests
+

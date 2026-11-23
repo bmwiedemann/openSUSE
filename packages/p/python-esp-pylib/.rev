@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a48bb8aa72254d8dba426b3ded38783</srcmd5>
+    <version>1.2.1</version>
+    <time>1795433199</time>
+    <user>anag_factory</user>
+    <comment>- Shorten the Summary to fit the rpmlint length limit
+- Initial packaging
+- Describe the package purpose in the description
+- Add rich-click and click as test dependencies for the CLI tests</comment>
+    <requestid>1399813</requestid>
+  </revision>
+</revisionlist>
