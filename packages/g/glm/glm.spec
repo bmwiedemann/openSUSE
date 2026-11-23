@@ -1,7 +1,7 @@
 #
 # spec file for package glm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%global _default_patch_fuzz 1
+
 Name:           glm
-Version:        1.0.1
+Version:        1.0.3
 Release:        0
 Summary:        Header only C++ mathematics library for graphics
 License:        GPL-2.0-only AND MIT
@@ -90,13 +92,13 @@ This package provides the documentation for GLM library.
 %ctest
 
 %files devel
+%license copying.txt
 %{_includedir}/glm
 %{_datadir}/cmake/%{name}
 %{_datadir}/pkgconfig/%{name}.pc
 
 %files doc
-# See https://github.com/g-truc/glm/blob/master/manual.md#-licenses for license details
-%license readme.md
+%license copying.txt
 %doc doc/api
 %doc manual.md readme.md
 
