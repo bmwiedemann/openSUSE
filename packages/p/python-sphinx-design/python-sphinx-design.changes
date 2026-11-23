@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 23 01:39:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8.0:
+  * Drop Python 3.9/3.10 and Sphinx < 7.2; support Python 3.14 and
+    Sphinx 7.2-9
+  * Update Material Design Icons and Octicons (v19.8.0 to v19.42.0),
+    and allow flit_core < 5
+  * Generate stylesheet as plain CSS without Sass (deriving hover
+    shades via color-mix()), and serve static assets only for HTML
+  * Add accordion, aside, steps/step, and vertical tab-set directives
+  * Add card-header/card-footer directives and :header:/:footer:
+    options; deprecate ^^^ and +++ card separators (design.card_legacy)
+  * Add link-new-tab on cards and new-tab on button-link/button-ref
+  * Add badge tooltips via ; tooltip suffix and :tooltip: role option
+  * Add FontAwesome v6 roles, sd_fontawesome_source/cdn_url/version,
+    and "fontawesome5" mode for sd_fontawesome_latex
+  * Persist tab selections in localStorage (sd_tabs_storage_prefix),
+    open tabs from URL hash fragments, and sync tabs on keyboard/drag
+  * Support line blocks in button-link/button-ref and preserve button
+    styling/links across gettext translations
+  * Add sphinx_design.testing.normalize_doctree_xml helper and remove
+    private sphinx_design._compat.findall
+  * Restore :focus-visible rings, add aria-controls on tab labels,
+    and adjust tab hover opacity
+  * Validate sd_* settings in one typed config (design.config)
+  * Fix tab-set non-tab children, comments/targets inside grids/
+    carousels/tabs, and multi-word ref targets in buttons and cards
+  * Fix icon SVG leakage into toctree/search, article-info spacing,
+    sd-card-text class handling, and spurious _sphinx_design_static
+- Drop patch regenerate-snippets-docutils-0.22.patch, no longer required.
+
+-------------------------------------------------------------------
 Mon Nov 24 04:19:48 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch regenerate-snippets-docutils-0.22.patch:

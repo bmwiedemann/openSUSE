@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinx-design
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sphinx-design
-Version:        0.6.1
+Version:        0.8.0
 Release:        0
 Summary:        A sphinx extension for designing beautiful, view size responsive web components
 License:        MIT
 URL:            https://github.com/executablebooks/sphinx-design
 Source:         https://github.com/executablebooks/sphinx-design/archive/refs/tags/v%{version}.tar.gz#/sphinx-design-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Regenerate snippets with docutils 0.22
-Patch0:         regenerate-snippets-docutils-0.22.patch
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module Sphinx >= 6}
+BuildRequires:  %{python_module Sphinx >= 7.2}
+BuildRequires:  %{python_module Sphinx-latex}
 BuildRequires:  %{python_module defusedxml}
-BuildRequires:  %{python_module myst-parser >= 2}
+BuildRequires:  %{python_module myst-parser >= 4}
 BuildRequires:  %{python_module pytest-regressions}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module rcssmin}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-Sphinx >= 6
-Suggests:       python-myst-parser >= 2
+Requires:       python-Sphinx >= 7.2
+Suggests:       python-myst-parser >= 4
 Suggests:       python-defusedxml
 Suggests:       python-furo >= 2024.7.18
 Suggests:       python-pydata-sphinx-theme >= 0.15.2
