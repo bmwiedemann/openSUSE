@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 22 19:42:51 UTC 2026 - Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
+
+- Update to version 1.1.2:
+  * Version bump to 1.1.2
+  * Keep MYRLYN_DEL_KEY in the myrlyn-sudo environment
+  * Added a dialog for expired repo GPG keys
+  * Clean repo caches after deleting a GPG key
+  * Refactored GPG key code
+  * Successfully delete GPG key from RPM DB
+  * Enable text copy from GPG key dialog
+  * Try to delete expired GPG key
+  * Check for expired GPG keys
+  * Fixed long-standing naming bug (that nobody ever noticed)
+  * Use bold, not underlined for field caption
+  * Small help text fixes
+  * Create designer form ui on the stack, not heap
+  * Removed unneeded include
+  * Use an honest pointer, not one hidden behind an artificial smart pointer class
+  * Report locking process's PID and name if zypp is locked
+
+-------------------------------------------------------------------
 Fri Nov 13 11:56:49 UTC 2026 - Stefan Hundhammer <Stefan.Hundhammer@gmx.de>
 
 - Update to version 1.1.1:
