@@ -17,23 +17,24 @@
 
 
 Name:           python-bitstring
-Version:        4.4.0
+Version:        5.0.0
 Release:        0
 Summary:        Python module for the construction, analysis and modification of binary data
 License:        MIT
 URL:            https://github.com/scott-griffiths/bitstring
 Source:         https://github.com/scott-griffiths/bitstring/archive/%{version}.tar.gz#/bitstring-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-bitarray >= 3.0
-BuildRequires:  %{python_module bitarray >= 3.0}
+Requires:       python-tibs >= 2.0.2
 BuildRequires:  %{python_module gfloat}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pytest-benchmark}
+BuildRequires:  %{python_module tibs >= 2.0.2}
 BuildArch:      noarch
 %python_subpackages
 

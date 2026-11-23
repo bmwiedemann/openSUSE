@@ -102,4 +102,41 @@
     <comment></comment>
     <requestid>1341976</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>505a011a24f09891055de8117b74819a</srcmd5>
+    <version>5.0.0</version>
+    <time>1795433197</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.0:
+  * Drop Python 3.8-3.10 support (minimum Python 3.11)
+  * Replace the bitarray backend with the tibs (&gt;= 2.0.2) Rust core,
+    removing bitarray, BITSTRING_USE_RUST_CORE, and using_rust_core
+  * Add the Reader class and remove ConstBitStream and BitStream
+  * Add from_tibs()/to_tibs(), to_mutable()/to_immutable(), and
+    to_bools(), plus pickling/deepcopy for Array, Reader, and Dtype
+  * Add explicit Bits/Array constructors (from_string, from_dtype,
+    from_bytes, from_bools, from_zeros, from_ones, from_joined)
+  * Remove integer/length-only/bytes=/filename= constructors, len/
+    length properties, and LSB0 mode (bitstring.options.lsb0)
+  * Remove python -m bitstring CLI, bitstring.options, and Error/
+    ByteAlignError/InterpretError/CreationError (ReadError -&gt; ValueError)
+  * Remove native-endian dtypes, single-letter b/o/h aliases, unsuffixed
+    MXFP dtypes, and Dtype scale; rename Dtype.build/parse to pack/unpack
+  * Change find()/rfind() to return int | None, pack() to return Bits,
+    and BitArray.insert()/overwrite() to take position first
+  * Restrict Array() to iterables, make Array.from_file() a classmethod,
+    add __slots__ to Array, and raise ValueError on bool(non_empty_array)
+  * Reject floats in integer/bool dtypes, zero-length u/i dtypes, and
+    non-int lengths in from_zeros/from_ones/Dtype
+  * Support compact struct codes (e.g. '&gt;h') everywhere dtypes are used
+    and make short dtype names (u, i, f, ube, ule, ...) canonical
+  * Round bfloat to nearest-even and narrow floats directly from float
+  * Make bytealigned keyword-only in search/split/replace and clamp
+    out-of-range start/end indices
+  * Fix Array in-place dtype promotion, equality comparisons, trailing
+    bits on bitwise ops, and negative-index insert
+  * Fix repeated-group infinite loop on non-numeric counts, silent
+    unknown-kwarg bugs, slice assignment with negative step, and byteswap</comment>
+    <requestid>1399812</requestid>
+  </revision>
 </revisionlist>
