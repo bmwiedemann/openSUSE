@@ -534,4 +534,30 @@ After this PR, there will be a delete request for kernel-firmware.
   * Bluetooth: btusb: Add firmware for Qualcomm multi-subsystem QCC2072</comment>
     <requestid>1396918</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a2953c48794eee55419782cd7f823738</srcmd5>
+    <version>20261119</version>
+    <time>1795432786</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261119 (git commit acaf0f3190bc):
+  * linux-firmware: Update firmware file for Intel BlazaruFmpArl core
+  * linux-firmware: Update firmware file for Intel ScorpiusGfp core
+  * linux-firmware: Update firmware file for Intel BlazariFmp core
+  * linux-firmware: Update firmware file for Intel Magnetar core
+  * linux-firmware: Update firmware file for Intel BlazaruHrpGfp core
+  * linux-firmware: Update firmware file for Intel Solar core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel Scorpius2 core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+  * Bluetooth: btusb: Update Qualcomm WCN685x 2.0 firmware to 2.0.0-00634
+  * Bluetooth: btusb: Update Qualcomm QCC2072 firmware to ORNE.1.1.0.c1-00038
+
+- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * qca: QCA61x4 USB: Link 00000201 firmware to the 00000200 files
+  * qca: QCA61x4 USB: Replace duplicate NVM files with links
+  * qca: QCC2072: Replace duplicate firmware files with links
+  * QCA: Update Bluetooth firmware for QCC2072 UART interface: 1.1.0-00355 to 1.1.0-00391</comment>
+    <requestid>1399490</requestid>
+  </revision>
 </revisionlist>
