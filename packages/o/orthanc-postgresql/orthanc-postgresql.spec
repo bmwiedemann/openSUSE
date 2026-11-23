@@ -46,6 +46,7 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 %endif
 BuildRequires:  libboost_thread-devel >= 1.66
+BuildRequires:  minizip-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
