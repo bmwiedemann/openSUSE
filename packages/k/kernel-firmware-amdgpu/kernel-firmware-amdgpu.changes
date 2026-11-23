@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Nov 19 13:36:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261119 (git commit acaf0f3190bc):
+  * amdgpu: Add compatibility links for GC 11.7.1 IMU firmware
+  * amdgpu: Add compatibility links for GC 11.7.0 IMU firmware
+  * amdgpu: add alternate-signed VPE 2.0.0 firmware
+  * amdgpu: add VPE 2.0.0 firmware
+  * amdgpu: add alternate-signed VCN 5.3.0 firmware
+  * amdgpu: add VCN 5.3.0 firmware
+  * amdgpu: add alternate-signed SDMA 6.1.4 firmware
+  * amdgpu: add SDMA 6.1.4 firmware
+  * amdgpu: add alternate-signed PSP 15.0.9 TOC firmware
+  * amdgpu: add PSP 15.0.9 TOC firmware
+  * amdgpu: add alternate-signed PSP 15.0.9 TA firmware
+  * amdgpu: add PSP 15.0.9 TA firmware
+  * amdgpu: add alternate-signed PSP 15.0.0 TOC firmware
+  * amdgpu: add PSP 15.0.0 TOC firmware
+  * amdgpu: add alternate-signed PSP 15.0.0 TA firmware
+  * amdgpu: add PSP 15.0.0 TA firmware
+  * amdgpu: add alternate-signed GC 11.7.1 RLC firmware
+  * amdgpu: add GC 11.7.1 RLC firmware
+  * amdgpu: add alternate-signed GC 11.7.1 PFP firmware
+  * amdgpu: add GC 11.7.1 PFP firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MES 2 firmware
+  * amdgpu: add GC 11.7.1 MES 2 firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MES1 firmware
+  * amdgpu: add GC 11.7.1 MES1 firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MEC firmware
+  * amdgpu: add GC 11.7.1 MEC firmware
+  * amdgpu: add alternate-signed GC 11.7.1 ME firmware
+  * amdgpu: add GC 11.7.1 ME firmware
+  * amdgpu: add alternate-signed GC 11.7.0 RLC firmware
+  * amdgpu: add GC 11.7.0 RLC firmware
+  * amdgpu: add alternate-signed GC 11.7.0 PFP firmware
+  * amdgpu: add GC 11.7.0 PFP firmware
+  * amdgpu: add alternate-signed GC 11.7.0 MES 2 firmware
+  * amdgpu: add GC 11.7.0 MES 2 firmware
+  * amdgpu: add alternate-signed GC 11.7.0 MES1 firmware
+  * amdgpu: add GC 11.7.0 MES1 firmware
+  * amdgpu: add alternate-signed GC 11.7.0 MEC firmware
+  * amdgpu: add GC 11.7.0 MEC firmware
+  * amdgpu: add alternate-signed GC 11.7.0 ME firmware
+  * amdgpu: add GC 11.7.0 ME firmware
+  * amdgpu: add alternate-signed DCN 4.2 DMCUB firmware
+  * amdgpu: add DCN 4.2 DMCUB firmware
+  * amdgpu: update pre-production firmware
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
 Mon Nov  2 07:18:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20261031 (git commit bda6eccc3a8f):

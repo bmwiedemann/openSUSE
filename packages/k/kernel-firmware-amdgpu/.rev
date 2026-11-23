@@ -863,4 +863,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update PSP 14.0.3 firmware</comment>
     <requestid>1394977</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4237f4cc0430c7968a37ec145ba2d168</srcmd5>
+    <version>20261119</version>
+    <time>1795432782</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261119 (git commit acaf0f3190bc):
+  * amdgpu: Add compatibility links for GC 11.7.1 IMU firmware
+  * amdgpu: Add compatibility links for GC 11.7.0 IMU firmware
+  * amdgpu: add alternate-signed VPE 2.0.0 firmware
+  * amdgpu: add VPE 2.0.0 firmware
+  * amdgpu: add alternate-signed VCN 5.3.0 firmware
+  * amdgpu: add VCN 5.3.0 firmware
+  * amdgpu: add alternate-signed SDMA 6.1.4 firmware
+  * amdgpu: add SDMA 6.1.4 firmware
+  * amdgpu: add alternate-signed PSP 15.0.9 TOC firmware
+  * amdgpu: add PSP 15.0.9 TOC firmware
+  * amdgpu: add alternate-signed PSP 15.0.9 TA firmware
+  * amdgpu: add PSP 15.0.9 TA firmware
+  * amdgpu: add alternate-signed PSP 15.0.0 TOC firmware
+  * amdgpu: add PSP 15.0.0 TOC firmware
+  * amdgpu: add alternate-signed PSP 15.0.0 TA firmware
+  * amdgpu: add PSP 15.0.0 TA firmware
+  * amdgpu: add alternate-signed GC 11.7.1 RLC firmware
+  * amdgpu: add GC 11.7.1 RLC firmware
+  * amdgpu: add alternate-signed GC 11.7.1 PFP firmware
+  * amdgpu: add GC 11.7.1 PFP firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MES 2 firmware
+  * amdgpu: add GC 11.7.1 MES 2 firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MES1 firmware
+  * amdgpu: add GC 11.7.1 MES1 firmware
+  * amdgpu: add alternate-signed GC 11.7.1 MEC firmware
+  * amdgpu: add GC 11.7.1 MEC firmware
+  * amdgpu: add alternate-signed GC 11.7.1 ME firmware
+  * amdgpu: add GC 11.7.1 ME firmware
+  * amdgpu: add alternate-signed GC 11.7.0 RLC firmware</comment>
+    <requestid>1399489</requestid>
+  </revision>
 </revisionlist>
