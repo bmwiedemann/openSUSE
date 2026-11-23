@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Sun Nov 22 17:08:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Rewrite to build with ant
+
+-------------------------------------------------------------------
+Fri Nov 20 17:43:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.6.5
+  * Changes
+    + Fixed async Brotli decompression hang with large input buffers
+    + HTTPCLIENT-2433: prevent concurrent HTTP/2 request body replay
+    + HTTPCLIENT-2432: fixed connection-pool leak in
+      ResponseEntityProxy#cleanup() when #disconnectEndpoint throws
+    + Decode punycode public suffixes in PublicSuffixMatcher#verify
+    + HTTP cache: treat malformed delta-seconds as absent, fix
+      neverCache1_1ResponsesWithQueryString handling, remove invalid
+      request version check, fix resource leak on error in
+      AsyncCachingExec
+
+-------------------------------------------------------------------
+Thu Aug 13 12:00:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 5.6.4:
+  * Release 5.6.4
+    + SSL Parameter Fix: This maintenance release fixes SSL parameter
+      application in the async TLS upgrade strategy
+    + BearerScheme to reject control characters in bearer token
+  * Release 5.6.3
+    + Fixes a resource management defect in the content decompression
+      protocol handler of the classic transport
+    + ContentCompressionExec fails to close the underlying response
+      stream in case of an unexpected runtime or protocol exception
+      (bsc#1273163, CVE-2026-64607)
+    + Do not call the backend when an only-if-cached request cannot
+      be served from cache (RFC 9111 5.2.1.7)
+    + Include the request scheme in redirect same-authority check
+    + Escape quotes and strip line breaks in RFC 7578 multipart
+      parameters
+    + HTTPCLIENT-2426: Do not wrap a discarded (null) response body
+      in a content decoder
+  * Release 5.6.2
+    + Upgraded HttpCore to version 5.4.3
+    + HTTPCLIENT-2422: Restore lazy content decompression. Defer
+      construction of the decompression stream until the response
+      content is actually read
+  * Release 5.6.1
+    + Disables experimental SCRAM auth scheme by default and fixes
+      SCRAM final response handling
+    + Fix SCRAM final response handling
+    + Auth challenge parsing code improvement
+    + Corrected async message exchange cancellation logic in
+      InternalHttpAsyncExecRuntime
+    + HTTPCLIENT-2417: Honor TlsConfig attachment in async connect path
+    + HTTPCLIENT-2414: Fix Basic auth cache scoping across path prefixes
+    + HTTPCLIENT-2415: Normalize CookieOrigin path for cookie matching
+    + DefaultManagedHttpClientConnection: Restore original socket timeout
+  * Release 5.6.0
+    + Adds several features such as transport content decompression and
+      content compression for the async transport, support for Unix sockets,
+      experimental support for SCRAM-SHA-256 authentication scheme, and
+      Micrometer/OTel observations & metrics
+    + Unix domain socket support
+    + Support for pluggable content codecs via Commons-Compress in the
+      classic transport
+    + Support for transparent content decompression and content compression
+      with deflate, gzip, zstd, and brotli codecs in the async transport
+    + Micrometer/OTel observations & metrics
+    + Off-lock connection disposal by the classic pooling connection
+      manager
+    + SCRAM-SHA-256 authentication scheme (RFC 7804)
+    + Request Priority support (RFC 9218)
+    + OFFLOCK connection pool concurrency policy
+    + Five-second TCP keep-alive is now enabled by default
+  * Release 5.5.0
+    + Improved conformance to RFC 7616 (HTTP Digest Access Authentication)
+    + The connection pool implementation acts as a caching facade in
+      front of a standard managed connection pool and shares already
+      leased connections to multiplex message exchanges over active
+      HTTP/2 connections
+    + Extended Auth API and improved authentication protocol logic to
+      support mutual authentication
+    + The Classic API facade now acts as a compatibility bridge between
+      the classic I/O client services and the asynchronous message transport
+- Rediff patch:
+  * httpcomponents-client5-conscrypt.patch
+
+-------------------------------------------------------------------
+Thu May 23 06:27:46 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v5.3.1
+  * This is a maintenance release that fixes several minor defects
+    and a regression in the Fluent module causing the response body
+    truncation discovered since release 5.3
+  * Change Log
+    + Restored backwards-compatible #createSocket calls in
+    + HTTPCLIENT-2315: Client builders fail to apply system
+      properties to the default connection manager
+    + HTTPCLIENT-2314: Handle gracefully a failure of DnsResolver
+      to return a list of resolved addresses (#533)
+    + HTTPCLIENT-2314: Throw ConnectionShutdownException in case of
+      pooled connection having been closed or discarded instead of
+      plain IllegalStateException
+    + HTTPCLIENT-2312: Fixed response body truncation in the fluent
+      API (#521)
+    + HTTPCLIENT-2313: Fixed NullPointerException in
+      PoolingHttpClientConnectionManager when debug logging is
+      enabled
+- Update to v5.3
+  * This is the first GA release in the 5.3 release series. This
+    release finalizes the 5.3 APIs and also includes all bug fixes
+    from the 5.2 release branch
+  * The 5.3 release series introduces support for the Bearer
+    authentication scheme (RFC 6750) and deprecates NTLM and
+    GSS-based experimental authentication schemes in favor of Basic
+    / Bearer authentication with TLS
+  * Notable changes and features included in the 5.3 series:
+    + Introduction of the Bearer authentication scheme
+    + Deprecation of the NTLM authentication scheme
+    + Deprecation of the GSS-based experimental authentication
+      schemes
+    + Support for load distribution across multiple proxies
+  * Change Log
+    + HTTPCLIENT-2310: Async Connect exec handler incorrectly pipes
+      CONNECT requests through the main request protocol chain
+    + Upgraded HttpCore to version 5.2.4
+    + SEE OTHER redirect handling fix
+    + HTTPCLIENT-2305: SSLConnectionSocketFactory allows
+      Socket.connect() to be decorated (#499)
+    + Add security warning to TrustStrategy implementations
+      documentation (#490)
+    + More consistent handling of OperationTimeoutException in
+      MemcachedHttpCacheStorage
+    + Document exec chain behavior when automatic retries are
+      enabled. (#480)
+    + HTTPCLIENT-2291: Fixed inconsistency in behavior between the
+      class and async implementation of the request re-execution
+      The async request retry exec will now restart request
+      execution from itself instead of from the very beginning of
+      the execution chain
+- Update to v5.3-ALPHA1
+  * This is the first release in the 5.3 release series that
+    introduces support for the Bearer authentication scheme (RFC
+    6750) and deprecates NTLM and GSS-based experimental
+    authentication schemes in favor of Basic / Bearer
+    authentication with TLS
+  * Change Log
+    + GSS-based experimental authentication schemes deprecated and
+      disabled by default
+    + NTLM scheme deprecated and disabled by default
+    + Added linear and exponential BackoffManager implementations
+    + Improved AIMDBackoffManager
+    + Added DistributedProxySelector with support for load
+      distribution across multiple proxies
+    + Support for preamble and epilogue in multipart entities
+    + HttpResponseException to include response message content (up
+      to 256 bytes)
+    + Workaround for URL quoting issue with LLv6 host literals
+    + Bearer auth scheme support (RFC 6750)
+    + Credentials interface should be able to represent different
+      types of user credentials including token-based with no
+      password
+    + Connection settings `timeToLive` and
+      `validateAfterInactivity` set to zero to always close or
+      validate connections being leased
+    + Digest authentication scheme to omit the algorithm in the
+      authentication response if it has not been explicitly set in
+      the authentication challenge, as per RFC 7616
+    + HTTPCLIENT-2271: Do not optimize the path component of the
+      resolved URI by default
+    + Pass HttpContext to SSLConnectionSocketFactory#prepareSocket
+      method (#404)
+
+-------------------------------------------------------------------
+Wed Feb 21 10:44:54 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN
+
+-------------------------------------------------------------------
+Thu Jun  1 07:56:24 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Set BuildArch to noarch
+- Apply spec-cleaner
+- Rename patch:
+  + httpcomponents-client5-conscript.patch ->
+    httpcomponents-client5-conscrypt.patch
+
+-------------------------------------------------------------------
+Wed May 31 10:19:55 UTC 2023 - Fridrich Strba <fstrba@suse.com>
+
+- Initial packaging with version 5.2.1
