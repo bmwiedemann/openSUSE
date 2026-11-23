@@ -480,4 +480,13 @@ could not be forwarded to Factory (incl. the recent gcc14 fixes) (forwarded requ
   * sensor,control: Fix the check of the get_id() function returns</comment>
     <requestid>1349201</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>1fbbfacbfee9b476f49176dab8079ca5</srcmd5>
+    <version>2.0.37.13+git.1181df8</version>
+    <time>1795433132</time>
+    <user>anag_factory</user>
+    <comment>- Add OpenIPMI-swig-python3.patch: define compatibility macros for
+  PyInt and PyString in Python 3.13+ to fix SWIG wrapper build.</comment>
+    <requestid>1399760</requestid>
+  </revision>
 </revisionlist>

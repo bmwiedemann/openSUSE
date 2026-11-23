@@ -47,6 +47,8 @@ Patch2:         openipmi-tinfo.patch
 Patch3:         OpenIMPI-add-libncurses.patch
 Patch4:         fix_dia_version_detection.patch
 Patch5:         use_python3_shebang
+# PATCH-FIX-UPSTREAM OpenIPMI-swig-python3.patch -- define legacy PyInt/PyString aliases for Python 3.13+
+Patch6:         OpenIPMI-swig-python3.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  gd-devel
 BuildRequires:  gdbm-devel

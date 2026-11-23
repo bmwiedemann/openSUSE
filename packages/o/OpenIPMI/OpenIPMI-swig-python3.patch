@@ -1,0 +1,23 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 18 Nov 2026 10:58:25 +0000
+Subject: Define PyInt and PyString compatibility macros for Python 3.13+
+Upstream: pending (upstream repo lacks Python 3 definitions when SWIG drops legacy shims)
+
+SWIG 4.3+ eliminated internal legacy Python 2 compatibility shims
+(such as PyString_FromString and PyInt_FromLong).
+OpenIPMI_lang.i already defines PyInt_AS_LONG for PY_VERSION_HEX >= 0x03000000,
+so add the remaining missing aliases alongside it.
+
+--- a/swig/python/OpenIPMI_lang.i
++++ b/swig/python/OpenIPMI_lang.i
+@@ -442,6 +442,10 @@
+   return s;
+ }
+ #define PyInt_AS_LONG PyLong_AS_LONG
++#define PyInt_FromLong PyLong_FromLong
++#define PyInt_Check PyLong_Check
++#define PyInt_AsLong PyLong_AsLong
++#define PyString_FromString PyUnicode_FromString
+ #define OI_PyString_Check PyUnicode_Check
+ #else
+ #define OI_PI_FromStringAndSize PyString_FromStringAndSize

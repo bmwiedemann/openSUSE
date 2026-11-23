@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 10:58:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add OpenIPMI-swig-python3.patch: define compatibility macros for
+  PyInt and PyString in Python 3.13+ to fix SWIG wrapper build.
+
+-------------------------------------------------------------------
 Fri Apr 24 18:19:02 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to version 2.0.37.13+git.1181df8:
