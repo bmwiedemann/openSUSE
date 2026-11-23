@@ -74,6 +74,8 @@ Patch9:         crypto-policies-Disable-umac-128-in-DEFAULT-FUTURE-and-BSI-opens
 # PATCH-FIX-OPENSUSE configure-python-interpreter.patch mcepl@suse.com
 # make the Python version configurable
 Patch10:        configure-python-interpreter.patch
+#
+Patch11:        0001-CNSA-1.0-support.patch
 BuildRequires:  %{python}-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc
@@ -202,7 +204,7 @@ find %{buildroot} -type f -name 'fips-setup-helper' -print -delete
 find %{buildroot} -type f -name 'fips-crypto-policy-overlay*' -print -delete
 
 # Create back-end configs for mounting with read-only /etc/
-for d in LEGACY DEFAULT FUTURE FIPS BSI ; do
+for d in LEGACY DEFAULT FUTURE FIPS BSI CNSA-1.0 ; do
     mkdir -p -m 755 %{buildroot}%{_datarootdir}/crypto-policies/back-ends/$d
     for f in %{buildroot}%{_datarootdir}/crypto-policies/$d/* ; do
         ln $f %{buildroot}%{_datarootdir}/crypto-policies/back-ends/$d/$(basename $f .txt).config
@@ -328,6 +330,7 @@ end
 %{_datarootdir}/crypto-policies/FUTURE
 %{_datarootdir}/crypto-policies/FIPS
 %{_datarootdir}/crypto-policies/BSI
+%{_datarootdir}/crypto-policies/CNSA-1.0
 %{_datarootdir}/crypto-policies/EMPTY
 %{_datarootdir}/crypto-policies/back-ends
 %{_datarootdir}/crypto-policies/default-config

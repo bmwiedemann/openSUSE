@@ -1,0 +1,534 @@
+From 59535076e2db9b105fc9e89f423fec8da20c4f3c Mon Sep 17 00:00:00 2001
+From: Marcus Meissner <marcus@jet.franken.de>
+Date: Thu, 3 Sep 2026 10:45:43 +0200
+Subject: [PATCH] CNSA 1.0 support
+
+Not AI authored.
+---
+ crypto-policies.7.txt                    |  23 +++++
+ policies/CNSA-1.0.pol                    | 103 +++++++++++++++++++++++
+ tests/outputs/CNSA-1.0-bind.txt          |  17 ++++
+ tests/outputs/CNSA-1.0-gnutls.txt        |  44 ++++++++++
+ tests/outputs/CNSA-1.0-java.txt          |   4 +
+ tests/outputs/CNSA-1.0-krb5.txt          |   3 +
+ tests/outputs/CNSA-1.0-libreswan.txt     |   4 +
+ tests/outputs/CNSA-1.0-libssh.txt        |   4 +
+ tests/outputs/CNSA-1.0-nss.txt           |   8 ++
+ tests/outputs/CNSA-1.0-openssh.txt       |   7 ++
+ tests/outputs/CNSA-1.0-opensshserver.txt |   8 ++
+ tests/outputs/CNSA-1.0-openssl_fips.txt  |   4 +
+ tests/outputs/CNSA-1.0-opensslcnf.txt    |  17 ++++
+ tests/outputs/CNSA-1.0-rpm-sequoia.txt   |  76 +++++++++++++++++
+ tests/outputs/CNSA-1.0-sequoia.txt       |  76 +++++++++++++++++
+ 15 files changed, 398 insertions(+)
+ create mode 100644 policies/CNSA-1.0.pol
+ create mode 100644 tests/outputs/CNSA-1.0-bind.txt
+ create mode 100644 tests/outputs/CNSA-1.0-gnutls.txt
+ create mode 100644 tests/outputs/CNSA-1.0-java.txt
+ create mode 100644 tests/outputs/CNSA-1.0-krb5.txt
+ create mode 100644 tests/outputs/CNSA-1.0-libreswan.txt
+ create mode 100644 tests/outputs/CNSA-1.0-libssh.txt
+ create mode 100644 tests/outputs/CNSA-1.0-nss.txt
+ create mode 100644 tests/outputs/CNSA-1.0-openssh.txt
+ create mode 100644 tests/outputs/CNSA-1.0-opensshserver.txt
+ create mode 100644 tests/outputs/CNSA-1.0-openssl_fips.txt
+ create mode 100644 tests/outputs/CNSA-1.0-opensslcnf.txt
+ create mode 100644 tests/outputs/CNSA-1.0-rpm-sequoia.txt
+ create mode 100644 tests/outputs/CNSA-1.0-sequoia.txt
+
+diff --git a/crypto-policies.7.txt b/crypto-policies.7.txt
+index 1022a15..342d15e 100644
+--- a/crypto-policies.7.txt
++++ b/crypto-policies.7.txt
+@@ -211,6 +211,29 @@ PROVIDED POLICIES
+   * *RSA* params size: >= 2048
+   * *TLS* protocols: *TLS* >= 1.2, *DTLS* >= 1.2
+ 
++*CNSA-1.0*::
++  A policy implementing the NSA Commercial National Security Algorithm Suite 1.0.
++  This policy is designed for protecting National Security Systems information
++  up to the TOP SECRET level. It provides a strict, high-security baseline
++  suitable for government and defense applications.
++  This policy provides at least 128-bit security and is more restrictive than
++  *FIPS*.
++
++  Note: CNSA 2.0 with post-quantum algorithms is the recommended successor,
++  but CNSA 1.0 remains valid during the transition period through 2030.
++
++  * MACs: *HMAC* with *SHA-384* (prefered) or *SHA-512*, AEAD
++  * Curves: P-384 and P-521 only (no Bernstein curves, no hybrid PQC)
++  * Signature algorithms: *ECDSA* with P-384+ and *SHA-384* (prefered) or *SHA-512*,
++    *RSA* >= 3072-bit with *SHA-384* or better (no *DSA*, no *EdDSA*, no ML-DSA)
++  * *TLS* Ciphers: *AES-256-GCM* only
++  * non-TLS Ciphers: *AES-256* (*GCM*, *CTR*, *CCM*)
++  * key exchange: *ECDHE* with P-384+, *DHE* >= 3072-bit, *RSA* 3072-bit or 4096-bit
++  * *DH* params size: >= 3072-bit
++  * *RSA* params size: >= 3072-bit
++  * *TLS* protocols: *TLS* >= 1.2, *DTLS* >= 1.2
++  * *Kerberos*: allowing legacy ciphers, as otherwise no kerberos cipher would be available
++
+ *EMPTY*::
+   All cryptographic algorithms are disabled (used for debugging only, do not
+   use).
+diff --git a/policies/CNSA-1.0.pol b/policies/CNSA-1.0.pol
+new file mode 100644
+index 0000000..f8975c4
+--- /dev/null
++++ b/policies/CNSA-1.0.pol
+@@ -0,0 +1,103 @@
++# CNSA 1.0 profile
++#
++# Primary Sources:
++# - https://media.defense.gov/2021/Oct/15/2002874275/-1/-1/0/CNSA_WORKSHEET_20211015.PDF
++# - https://www.niap-ccevs.org/technical-decisions/TD0980
++# RFCs:
++# RFC 9151 Commercial National Security Algorithm (CNSA) Suite Profile for TLS and DTLS 1.2 and 1.3
++# 	https://www.rfc-editor.org/rfc/rfc9151.html
++# - enc: AES GCM
++# - signature: ECSDA p384, RSA 3072 or 4096bit
++# - kex: ECDH (NIST P384 only), DH (3072 or 4096 modulus), RSA (3072 or 4096 bit, TLS 1.2 only)
++# - rsa schemes: pkcs 1.5 must, pss should
++# - ffgroups: 3072 and 4096 only
++# However compat statement:
++# "A CNSA (D)TLS client that offers interoperability with servers that
++#  are not CNSA compliant MAY offer additional cipher suites, but any
++#  additional cipher suites MUST appear after the CNSA cipher suites in
++#  the ClientHello message.
++#  A CNSA (D)TLS server MUST accept one of the CNSA Suites above
++#  if they are offered in the ClientHello message before accepting a
++#  non-CNSA-compliant suite."
++#
++# RFC 9206 Commercial National Security Algorithm (CNSA) Suite Cryptography for Internet Protocol
++# 	https://www.rfc-editor.org/rfc/rfc9206.html
++# enc: AES GCM only
++# signature: ECDSA (P384 only), RSA (3072 or larger)
++# kex: ECDH (P384 only), DH (3072 MODP, 4096 MODP groups)
++# hash: SHA384, however for PRF can be PRF-HMAC-SHA-512
++#
++# RFC 9212 Commercial National Security Algorithm (CNSA) Suite Cryptography for Secure Shell (SSH)
++# 	https://www.rfc-editor.org/rfc/rfc9212.html
++# - kex: ecdh-sha2-nistp384, diffie-hellman-group15-sha512, diffie-hellman-group16-sha512
++# - pubkey: ecdsa-sha2-nistp384, rsa-sha2-512
++# - enc algs: AEAD_AES_256_GCM
++# - macs: AEAD_AES_256_GCM
++#
++# RFC 8755 Using Commercial National Security Algorithm Suite Algorithms in Secure/Multipurpose Internet Mail Extensions
++# 	https://www.rfc-editor.org/rfc/rfc8755.html
++# - crypto policies does not cover S/MIME yet
++# RFC 8756 Commercial National Security Algorithm (CNSA) Suite Profile of Certificate Management over CMS
++# 	https://www.rfc-editor.org/rfc/rfc8756.html
++# cryptographic parameters:
++# - rsa keypairs: 3072, 4096 bit only
++# - hash: id-sha384 only
++# - hmac: HMAC-SHA384 only
++# - signature: sha384WithRSAEncryption, or ecdsa-with-sha384, or id-RSASSA-PSS (RSA 3072, 4096 bit only)
++#
++# RFC 8603 Commercial National Security Algorithm (CNSA) Suite Certificate and Certificate Revocation List (CRL) Profile
++#
++# MACs: only SHA2-384 (listed explicitly) and SHA2-512 (allowed)
++# AES: only 256 (no 128)
++# Curves: NIST P384 only
++# Signature algorithms: with SHA-384 hash or SHA-512 (no DSA)
++# TLS Ciphers: >= 256-bit key, >= 256-bit block (AES, including AES-CBC)
++# non-TLS Ciphers: as TLS Ciphers
++# key exchange: ECDHE, RSA, DHE (no DHE-DSS)
++# DH params size: >= 3072
++# RSA params size: >= 3072
++# TLS protocols: TLS >= 1.2, DTLS >= 1.2
++
++mac = AEAD HMAC-SHA2-384 HMAC-SHA2-512
++mac@Kerberos = HMAC-SHA2-384 AEAD HMAC-SHA2-512
++mac@SSH = HMAC-SHA2-384
++
++group = SECP384R1 FFDHE-3072 FFDHE-4096
++
++hash = SHA2-384 SHA2-512
++
++sign = ECDSA-SHA2-384 \
++       ECDSA-SHA2-512 \
++       RSA-PSS-SHA2-384 \
++       RSA-PSS-SHA2-512 \
++       RSA-PSS-RSAE-SHA2-384 \
++       RSA-PSS-RSAE-SHA2-512 \
++       RSA-SHA2-384 \
++       RSA-SHA2-512 \
++
++cipher = AES-256-GCM
++
++# cfb for compat only
++cipher@{sequoia,RPM} = AES-256-GCM AES-256-CFB
++
++# 'RSA' is intentionally before DHE ciphersuites, as the DHE ciphersuites have
++# interoperability issues in TLS.
++key_exchange = KEM-ECDH ECDHE RSA DHE DHE-RSA PSK DHE-PSK ECDHE-PSK RSA-PSK ECDHE-GSS DHE-GSS
++
++protocol@TLS = TLS1.3 TLS1.2 DTLS1.2
++protocol@IKE = IKEv2
++
++# not really CNSA 1.0 compliant, but otherwis krb5 has no encryption type left
++cipher@Kerberos = AES-256-CBC
++
++# Parameter sizes
++min_dh_size = 3072
++min_dsa_size = 3072
++min_rsa_size = 3072
++
++# GnuTLS only for now
++sha1_in_certs = 0
++
++arbitrary_dh_groups = 1
++ssh_certs = 1
++etm@SSH = DISABLE_ETM
+diff --git a/tests/outputs/CNSA-1.0-bind.txt b/tests/outputs/CNSA-1.0-bind.txt
+new file mode 100644
+index 0000000..b470906
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-bind.txt
+@@ -0,0 +1,17 @@
++disable-algorithms "." {
++RSAMD5;
++RSASHA1;
++NSEC3RSASHA1;
++DSA;
++NSEC3DSA;
++RSASHA256;
++ECDSAP256SHA256;
++ED25519;
++ED448;
++ECCGOST;
++};
++disable-ds-digests "." {
++SHA-256;
++SHA-1;
++GOST;
++};
+diff --git a/tests/outputs/CNSA-1.0-gnutls.txt b/tests/outputs/CNSA-1.0-gnutls.txt
+new file mode 100644
+index 0000000..d159a86
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-gnutls.txt
+@@ -0,0 +1,44 @@
++[global]
++override-mode = allowlist
++
++[overrides]
++secure-hash = SHA384
++secure-hash = SHA512
++tls-enabled-mac = AEAD
++tls-enabled-mac = SHA512
++tls-enabled-group = GROUP-SECP384R1
++tls-enabled-group = GROUP-FFDHE3072
++tls-enabled-group = GROUP-FFDHE4096
++secure-sig = ECDSA-SHA384
++secure-sig = ECDSA-SECP384R1-SHA384
++secure-sig = ECDSA-SHA512
++secure-sig = ECDSA-SECP521R1-SHA512
++secure-sig = RSA-PSS-SHA384
++secure-sig = RSA-PSS-SHA512
++secure-sig = RSA-PSS-RSAE-SHA384
++secure-sig = RSA-PSS-RSAE-SHA512
++secure-sig = RSA-SHA384
++secure-sig = RSA-SHA512
++secure-sig-for-cert = ECDSA-SHA384
++secure-sig-for-cert = ECDSA-SECP384R1-SHA384
++secure-sig-for-cert = ECDSA-SHA512
++secure-sig-for-cert = ECDSA-SECP521R1-SHA512
++secure-sig-for-cert = RSA-PSS-SHA384
++secure-sig-for-cert = RSA-PSS-SHA512
++secure-sig-for-cert = RSA-PSS-RSAE-SHA384
++secure-sig-for-cert = RSA-PSS-RSAE-SHA512
++secure-sig-for-cert = RSA-SHA384
++secure-sig-for-cert = RSA-SHA512
++enabled-curve = SECP384R1
++tls-enabled-cipher = AES-256-GCM
++tls-enabled-kx = ECDHE-RSA
++tls-enabled-kx = ECDHE-ECDSA
++tls-enabled-kx = RSA
++tls-enabled-kx = DHE-RSA
++enabled-version = TLS1.3
++enabled-version = TLS1.2
++enabled-version = DTLS1.2
++min-verification-profile = high
++
++[priorities]
++SYSTEM=NONE
+diff --git a/tests/outputs/CNSA-1.0-java.txt b/tests/outputs/CNSA-1.0-java.txt
+new file mode 100644
+index 0000000..fe10acf
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-java.txt
+@@ -0,0 +1,4 @@
++jdk.certpath.disabledAlgorithms=MD2, MD5withDSA, MD5withECDSA, RIPEMD160withRSA, RIPEMD160withECDSA, RIPEMD160withRSAandMGF1, MD5withRSA, SHA1withRSA, SHA1withDSA, SHA1withECDSA, SHA224withRSA, SHA224withDSA, SHA224withECDSA, SHA256withRSA, SHA256withDSA, SHA256withECDSA, SHA384withDSA, SHA512withDSA, Ed25519, Ed448, SHA1withRSAandMGF1, SHA224withRSAandMGF1, SHA256withRSAandMGF1, RSA keySize < 3072, DSA keySize < 3072, DH keySize < 3072, EC keySize < 256, SHA256, SHA3-256, SHA3-384, SHA3-512, SHA224, SHA1, MD5
++jdk.tls.disabledAlgorithms=MD2, MD5withDSA, MD5withECDSA, RIPEMD160withRSA, RIPEMD160withECDSA, RIPEMD160withRSAandMGF1, MD5withRSA, SHA1withRSA, SHA1withDSA, SHA1withECDSA, SHA224withRSA, SHA224withDSA, SHA224withECDSA, SHA256withRSA, SHA256withDSA, SHA256withECDSA, SHA384withDSA, SHA512withDSA, Ed25519, Ed448, SHA1withRSAandMGF1, SHA224withRSAandMGF1, SHA256withRSAandMGF1, RSA keySize < 3072, DSA keySize < 3072, DH keySize < 3072, EC keySize < 256, include jdk.disabled.namedCurves, TLSv1.1, TLSv1, SSLv3, SSLv2, DTLSv1.0, DHE_DSS, RSA_EXPORT, DHE_DSS_EXPORT, DHE_RSA_EXPORT, DH_DSS_EXPORT, DH_RSA_EXPORT, DH_anon, ECDH_anon, DH_RSA, DH_DSS, ECDH, AES_256_CCM, AES_128_GCM, AES_128_CCM, CHACHA20_POLY1305, AES_256_CBC, AES_128_CBC, 3DES_EDE_CBC, DES_CBC, RC4_40, RC4_128, DES40_CBC, RC2, anon, NULL, HmacSHA1, HmacSHA256, HmacMD5
++jdk.disabled.namedCurves=x25519, secp256r1, secp521r1, x448, ffdhe2048, ffdhe6144, ffdhe8192, brainpoolP256r1, brainpoolP384r1, brainpoolP512r1, secp112r1, secp112r2, secp128r1, secp128r2, secp160k1, secp160r1, secp160r2, secp192k1, secp192r1, secp224k1, secp224r1, secp256k1, sect113r1, sect113r2, sect131r1, sect131r2, sect163k1, sect163r1, sect163r2, sect193r1, sect193r2, sect233k1, sect233r1, sect239k1, sect283k1, sect283r1, sect409k1, sect409r1, sect571k1, sect571r1, X9.62 c2tnb191v1, X9.62 c2tnb191v2, X9.62 c2tnb191v3, X9.62 c2tnb239v1, X9.62 c2tnb239v2, X9.62 c2tnb239v3, X9.62 c2tnb359v1, X9.62 c2tnb431r1, X9.62 prime192v2, X9.62 prime192v3, X9.62 prime239v1, X9.62 prime239v2, X9.62 prime239v3, brainpoolP320r1
++jdk.tls.legacyAlgorithms=
+diff --git a/tests/outputs/CNSA-1.0-krb5.txt b/tests/outputs/CNSA-1.0-krb5.txt
+new file mode 100644
+index 0000000..0e21b29
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-krb5.txt
+@@ -0,0 +1,3 @@
++[libdefaults]
++permitted_enctypes = aes256-cts-hmac-sha384-192
++pkinit_dh_min_bits=4096
+diff --git a/tests/outputs/CNSA-1.0-libreswan.txt b/tests/outputs/CNSA-1.0-libreswan.txt
+new file mode 100644
+index 0000000..b3a283f
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-libreswan.txt
+@@ -0,0 +1,4 @@
++conn %default
++	ike=aes_gcm256-sha2_512-dh20+dh15+dh16
++	esp=aes_gcm256
++	authby=ecdsa-sha2_384,ecdsa-sha2_512,rsa-sha2_384,rsa-sha2_512
+diff --git a/tests/outputs/CNSA-1.0-libssh.txt b/tests/outputs/CNSA-1.0-libssh.txt
+new file mode 100644
+index 0000000..60545a4
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-libssh.txt
+@@ -0,0 +1,4 @@
++Ciphers aes256-gcm@openssh.com
++KexAlgorithms ecdh-sha2-nistp384,diffie-hellman-group16-sha512
++HostKeyAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++PubkeyAcceptedKeyTypes ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
+diff --git a/tests/outputs/CNSA-1.0-nss.txt b/tests/outputs/CNSA-1.0-nss.txt
+new file mode 100644
+index 0000000..fd4c487
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-nss.txt
+@@ -0,0 +1,8 @@
++library=p11-kit-proxy.so
++name=p11-kit-proxy
++
++
++library=
++name=Policy
++NSS=flags=policyOnly,moduleDB
++config="disallow=ALL allow=HMAC-SHA384:HMAC-SHA512:SECP384R1:aes256-gcm:SHA384:SHA512:ECDHE-RSA/ssl-key-exchange:ECDHE-ECDSA/ssl-key-exchange:RSA/ssl-key-exchange:DHE-RSA/ssl-key-exchange:RSA-PKCS/smime-key-exchange:RSA-OAEP/smime-key-exchange:ECDSA:RSA-PSS:RSA-PKCS:tls-version-min=tls1.2:dtls-version-min=dtls1.2:DH-MIN=3072:DSA-MIN=3072:RSA-MIN=3072"
+diff --git a/tests/outputs/CNSA-1.0-openssh.txt b/tests/outputs/CNSA-1.0-openssh.txt
+new file mode 100644
+index 0000000..cca2fe9
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-openssh.txt
+@@ -0,0 +1,7 @@
++Ciphers aes256-gcm@openssh.com
++GSSAPIKexAlgorithms gss-group16-sha512-
++KexAlgorithms ecdh-sha2-nistp384,diffie-hellman-group16-sha512
++PubkeyAcceptedAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++HostbasedAcceptedAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++CASignatureAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512
++RequiredRSASize 3072
+diff --git a/tests/outputs/CNSA-1.0-opensshserver.txt b/tests/outputs/CNSA-1.0-opensshserver.txt
+new file mode 100644
+index 0000000..6471d3e
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-opensshserver.txt
+@@ -0,0 +1,8 @@
++Ciphers aes256-gcm@openssh.com
++GSSAPIKexAlgorithms gss-group16-sha512-
++KexAlgorithms ecdh-sha2-nistp384,diffie-hellman-group16-sha512
++HostKeyAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++PubkeyAcceptedAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++HostbasedAcceptedAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp384-cert-v01@openssh.com,ecdsa-sha2-nistp521,ecdsa-sha2-nistp521-cert-v01@openssh.com,rsa-sha2-512,rsa-sha2-512-cert-v01@openssh.com
++CASignatureAlgorithms ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,rsa-sha2-512
++RequiredRSASize 3072
+diff --git a/tests/outputs/CNSA-1.0-openssl_fips.txt b/tests/outputs/CNSA-1.0-openssl_fips.txt
+new file mode 100644
+index 0000000..c69d6e1
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-openssl_fips.txt
+@@ -0,0 +1,4 @@
++
++[fips_sect]
++tls1-prf-ems-check = 1
++activate = 1
+diff --git a/tests/outputs/CNSA-1.0-opensslcnf.txt b/tests/outputs/CNSA-1.0-opensslcnf.txt
+new file mode 100644
+index 0000000..c959573
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-opensslcnf.txt
+@@ -0,0 +1,17 @@
++CipherString = @SECLEVEL=3:kEECDH:kRSA:kEDH:kPSK:kDHEPSK:kECDHEPSK:kRSAPSK:-aDSS:-AES128:-CHACHA20:-SHA256:-3DES:!DES:!RC4:!RC2:!IDEA:-SEED:!eNULL:!aNULL:-CBC:-AESCCM:-SHA1:!MD5:-SHA384:-CAMELLIA:-ARIA:-AESCCM8
++Ciphersuites = TLS_AES_256_GCM_SHA384
++TLS.MinProtocol = TLSv1.2
++TLS.MaxProtocol = TLSv1.3
++DTLS.MinProtocol = DTLSv1.2
++DTLS.MaxProtocol = DTLSv1.2
++SignatureAlgorithms = ?ECDSA+SHA384:?ECDSA+SHA512:?rsa_pss_pss_sha384:?rsa_pss_pss_sha512:?rsa_pss_rsae_sha384:?rsa_pss_rsae_sha512:?RSA+SHA384:?RSA+SHA512
++Groups = *?secp384r1:?ffdhe3072:?ffdhe4096
++
++[req]
++default_bits = 3072
++
++[openssl_init]
++alg_section = evp_properties
++
++[evp_properties]
++rh-allow-sha1-signatures = no
+diff --git a/tests/outputs/CNSA-1.0-rpm-sequoia.txt b/tests/outputs/CNSA-1.0-rpm-sequoia.txt
+new file mode 100644
+index 0000000..8e7e940
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-rpm-sequoia.txt
+@@ -0,0 +1,76 @@
++[hash_algorithms]
++ignore_invalid = [ "sha3-256", "sha3-512" ]
++md5.collision_resistance = "never"
++md5.second_preimage_resistance = "never"
++sha1.collision_resistance = "never"
++sha1.second_preimage_resistance = "never"
++ripemd160.collision_resistance = "never"
++ripemd160.second_preimage_resistance = "never"
++sha224.collision_resistance = "never"
++sha224.second_preimage_resistance = "never"
++sha256.collision_resistance = "never"
++sha256.second_preimage_resistance = "never"
++sha384.collision_resistance = "always"
++sha384.second_preimage_resistance = "always"
++sha512.collision_resistance = "always"
++sha512.second_preimage_resistance = "always"
++sha3-256.collision_resistance = "never"
++sha3-256.second_preimage_resistance = "never"
++sha3-512.collision_resistance = "never"
++sha3-512.second_preimage_resistance = "never"
++default_disposition = "never"
++
++[symmetric_algorithms]
++idea = "never"
++tripledes = "never"
++cast5 = "never"
++blowfish = "never"
++aes128 = "never"
++aes192 = "never"
++aes256 = "always"
++twofish = "never"
++camellia128 = "never"
++camellia192 = "never"
++camellia256 = "never"
++default_disposition = "never"
++
++[asymmetric_algorithms]
++ignore_invalid = [ "x25519", "x448", "mlkem768-x25519", "mlkem1024-x448", "ed25519", "ed448", "eddsa", "mldsa65-ed25519", "mldsa87-ed448", "slhdsa128s", "slhdsa128f", "slhdsa256s" ]
++rsa1024 = "never"
++rsa2048 = "never"
++rsa3072 = "always"
++rsa4096 = "always"
++dsa1024 = "never"
++dsa2048 = "never"
++dsa3072 = "never"
++dsa4096 = "never"
++nistp256 = "never"
++nistp384 = "always"
++nistp521 = "never"
++cv25519 = "never"
++x25519 = "never"
++x448 = "never"
++mlkem768-x25519 = "never"
++mlkem1024-x448 = "never"
++ed25519 = "never"
++eddsa = "never"
++ed448 = "never"
++mldsa65-ed25519 = "never"
++mldsa87-ed448 = "never"
++slhdsa128s = "never"
++slhdsa128f = "never"
++slhdsa256s = "never"
++elgamal1024 = "never"
++elgamal2048 = "never"
++elgamal3072 = "never"
++elgamal4096 = "never"
++brainpoolp256 = "never"
++brainpoolp512 = "never"
++default_disposition = "never"
++
++[aead_algorithms]
++default_disposition = "never"
++ignore_invalid = [ "gcm" ]
++eax = "never"
++ocb = "never"
++gcm = "always"
+diff --git a/tests/outputs/CNSA-1.0-sequoia.txt b/tests/outputs/CNSA-1.0-sequoia.txt
+new file mode 100644
+index 0000000..8e7e940
+--- /dev/null
++++ b/tests/outputs/CNSA-1.0-sequoia.txt
+@@ -0,0 +1,76 @@
++[hash_algorithms]
++ignore_invalid = [ "sha3-256", "sha3-512" ]
++md5.collision_resistance = "never"
++md5.second_preimage_resistance = "never"
++sha1.collision_resistance = "never"
++sha1.second_preimage_resistance = "never"
++ripemd160.collision_resistance = "never"
++ripemd160.second_preimage_resistance = "never"
++sha224.collision_resistance = "never"
++sha224.second_preimage_resistance = "never"
++sha256.collision_resistance = "never"
++sha256.second_preimage_resistance = "never"
++sha384.collision_resistance = "always"
++sha384.second_preimage_resistance = "always"
++sha512.collision_resistance = "always"
++sha512.second_preimage_resistance = "always"
++sha3-256.collision_resistance = "never"
++sha3-256.second_preimage_resistance = "never"
++sha3-512.collision_resistance = "never"
++sha3-512.second_preimage_resistance = "never"
++default_disposition = "never"
++
++[symmetric_algorithms]
++idea = "never"
++tripledes = "never"
++cast5 = "never"
++blowfish = "never"
++aes128 = "never"
++aes192 = "never"
++aes256 = "always"
++twofish = "never"
++camellia128 = "never"
++camellia192 = "never"
++camellia256 = "never"
++default_disposition = "never"
++
++[asymmetric_algorithms]
++ignore_invalid = [ "x25519", "x448", "mlkem768-x25519", "mlkem1024-x448", "ed25519", "ed448", "eddsa", "mldsa65-ed25519", "mldsa87-ed448", "slhdsa128s", "slhdsa128f", "slhdsa256s" ]
++rsa1024 = "never"
++rsa2048 = "never"
++rsa3072 = "always"
++rsa4096 = "always"
++dsa1024 = "never"
++dsa2048 = "never"
++dsa3072 = "never"
++dsa4096 = "never"
++nistp256 = "never"
++nistp384 = "always"
++nistp521 = "never"
++cv25519 = "never"
++x25519 = "never"
++x448 = "never"
++mlkem768-x25519 = "never"
++mlkem1024-x448 = "never"
++ed25519 = "never"
++eddsa = "never"
++ed448 = "never"
++mldsa65-ed25519 = "never"
++mldsa87-ed448 = "never"
++slhdsa128s = "never"
++slhdsa128f = "never"
++slhdsa256s = "never"
++elgamal1024 = "never"
++elgamal2048 = "never"
++elgamal3072 = "never"
++elgamal4096 = "never"
++brainpoolp256 = "never"
++brainpoolp512 = "never"
++default_disposition = "never"
++
++[aead_algorithms]
++default_disposition = "never"
++ignore_invalid = [ "gcm" ]
++eax = "never"
++ocb = "never"
++gcm = "always"
+-- 
+2.56.0
+
