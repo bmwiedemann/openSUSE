@@ -16,24 +16,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# git revision
+# git revisions
 %global vc_gitrev   bd654de8a3e275178908fe824d29f58c70baaae5
-
+# vendored markdown module for vdoc
+%global md_gitrev   55292d1aa5dc2ba79d53e3430306755a56d91b6b
 # custom paths and variables
 %global vflags      -cc gcc -d dynamic_boehm
-%global vexe_root   %{_libexecdir}/%{name}
-%global vexe        %{vexe_root}/%{name}
-
 Name:           vlang
 Version:        0.5.2
 Release:        0
+%global vexe_root   %{_libexecdir}/%{name}
+%global vexe        %{vexe_root}/%{name}
 Summary:        The V Programming Language
 License:        MIT AND BSD-2-Clause
 URL:            https://vlang.io/
 Source0:        https://github.com/%{name}/v/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/vc/raw/%{vc_gitrev}/v.c
 # Vdoc requires markdown module
-Source2:        https://github.com/vlang/markdown/archive/refs/heads/master.tar.gz#/markdown.tar.gz
+Source2:        https://github.com/vlang/markdown/archive/%{md_gitrev}/markdown-%{md_gitrev}.tar.gz#/markdown.tar.gz
 Source99:       vlang-rpmlintrc
 Patch1:         0001-Link-to-distro-provided-mbedtls.patch
 Patch2:         0002-Disable-vdoc-testing.patch
@@ -41,6 +41,7 @@ Patch3:         0003-Unbundle-cJSON-and-zstd.patch
 Patch4:         0004-Fix-cJSON_GetErrorPos-undefined-reference.patch
 Patch5:         0005-Force-system-libgc-on-Linux.patch
 Patch6:         0006-net-urllib-reject-backslashes.patch
+Patch7:         0007-verify-https-certificates-by-default.patch
 
 BuildRequires:  (c_compiler or gcc)
 BuildRequires:  diffutils
@@ -52,14 +53,14 @@ BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libzstd)
-BuildRequires:  mbedtls-3-devel
+BuildRequires:  (mbedtls-devel >= 3 with mbedtls-devel < 4)
 # For vshare tool
 BuildRequires:  pkgconfig(x11)
 Requires:       pkgconfig(sqlite3)
 Requires:       pkgconfig(bdw-gc)
 Requires:       pkgconfig(libcjson)
 Requires:       pkgconfig(libzstd)
-Requires:       mbedtls-3-devel
+Requires:       (mbedtls-devel >= 3 with mbedtls-devel < 4)
 
 %description
 V is a statically typed compiled programming language inspired

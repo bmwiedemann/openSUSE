@@ -1,0 +1,308 @@
+From: eris <250676896+uaaw@users.noreply.github.com>
+Subject: Verify HTTPS server certificates by default
+Upstream: https://github.com/vlang/v/commit/40774847a949722f5d090706c050b806ceeacfd1
+References: CVE-2026-82509 bsc#1290354
+
+Backported to V 0.5.2; omit files introduced after this release.
+
+--- a/vlib/net/http/http.v
++++ b/vlib/net/http/http.v
+@@ -29,7 +29,7 @@
+ 	read_timeout  i64        = 30 * time.second // timeout for reading the response; applies to plain http and to direct https requests
+ 	write_timeout i64        = 30 * time.second // timeout for writing the request; applies to plain http (write timeouts are not enforced on the SSL write path yet)
+ 
+-	validate                 bool   // set this to true, if you want to stop requests, when their certificates are found to be invalid
++	validate                 bool = true // abort on an invalid certificate; false skips it, except HTTP/3 which always verifies
+ 	verify                   string // the path to a rootca.pem file, containing trusted CA certificate(s)
+ 	cert                     string // the path to a cert.pem file, containing client certificate(s) for the request
+ 	cert_key                 string // the path to a key.pem file, containing private keys for the client certificate(s)
+--- a/vlib/net/http/http_proxy.v
++++ b/vlib/net/http/http_proxy.v
+@@ -162,7 +162,7 @@
+ 	s := req.build_request_headers_with(method, host_name, port,
+ 		'${host.scheme}://${host_name}${port_part}${path}', data, header)
+ 	if host.scheme == 'https' {
+-		mut client := pr.ssl_dial('${host_name}:${port}')!
++		mut client := pr.ssl_dial('${host_name}:${port}', req)!
+ 
+ 		$if windows {
+ 			return error('Windows Not SUPPORTED') // TODO: windows ssl
+@@ -200,16 +200,23 @@
+ 	return pr.connect_tcp(host)!
+ }
+ 
+-fn (pr &HttpProxy) ssl_dial(host string) !&ssl.SSLConn {
++// request_ssl_connect_config copies the certificate fields a direct HTTPS dial sends.
++// The proxy path must use this, or it accepts a certificate the direct dial rejects.
++fn request_ssl_connect_config(req &Request) ssl.SSLConnectConfig {
++	return ssl.SSLConnectConfig{
++		verify:                 req.verify
++		cert:                   req.cert
++		cert_key:               req.cert_key
++		validate:               req.validate
++		in_memory_verification: req.in_memory_verification
++	}
++}
++
++fn (pr &HttpProxy) ssl_dial(host string, req &Request) !&ssl.SSLConn {
++	tls_config := request_ssl_connect_config(req)
+ 	if pr.scheme in ['http', 'https'] {
+ 		mut tcp := pr.connect_tcp(host)!
+-		mut ssl_conn := ssl.new_ssl_conn(
+-			verify:                 ''
+-			cert:                   ''
+-			cert_key:               ''
+-			validate:               false
+-			in_memory_verification: false
+-		)!
++		mut ssl_conn := ssl.new_ssl_conn(tls_config)!
+ 		ssl_conn.connect(mut tcp, host.all_before_last(':')) or {
+ 			tcp.close() or {}
+ 			return err
+@@ -217,7 +224,7 @@
+ 		ssl_conn.owns_socket = true
+ 		return ssl_conn
+ 	} else if pr.scheme == 'socks5' {
+-		return socks.socks5_ssl_dial(pr.host, host, pr.username, pr.password)!
++		return socks.socks5_ssl_dial(pr.host, host, pr.username, pr.password, tls_config)!
+ 	} else {
+ 		return error('http_proxy ssl_dial: invalid proxy scheme')
+ 	}
+--- a/vlib/net/http/http_proxy_test.v
++++ b/vlib/net/http/http_proxy_test.v
+@@ -24,6 +24,30 @@
+ const proxy_https_test_key_path = @VEXEROOT +
+ 	'/vlib/net/websocket/tests/autobahn/fuzzing_server_wss/config/server.key'
+ 
++fn test_request_ssl_connect_config_copies_the_request_tls_fields() {
++	checking := Request{
++		validate:               true
++		verify:                 'ca.pem'
++		cert:                   'cert.pem'
++		cert_key:               'key.pem'
++		in_memory_verification: true
++	}
++	got := request_ssl_connect_config(checking)
++	assert got.validate
++	assert got.verify == 'ca.pem'
++	assert got.cert == 'cert.pem'
++	assert got.cert_key == 'key.pem'
++	assert got.in_memory_verification
++	skipped := request_ssl_connect_config(Request{
++		validate: false
++	})
++	assert !skipped.validate
++	assert skipped.verify == ''
++	assert skipped.cert == ''
++	assert skipped.cert_key == ''
++	assert !skipped.in_memory_verification
++}
++
+ fn test_proxy_fields() ? {
+ 	sample_proxy := new_http_proxy(sample_proxy_url)!
+ 	sample_auth_proxy := new_http_proxy(sample_auth_proxy_url)!
+@@ -195,6 +219,88 @@
+ 	return .data
+ }
+ 
++// start_https_proxy_untrusted_target serves the autobahn cert for two attempts.
++// A client that aborts the handshake makes accept fail; that attempt is skipped.
++fn start_https_proxy_untrusted_target() !(int, chan bool) {
++	ready := chan int{cap: 1}
++	done := chan bool{cap: 1}
++	spawn fn [ready, done] () {
++		mut port_listener := net.listen_tcp(.ip, '127.0.0.1:0') or { panic(err) }
++		port := int((port_listener.addr() or { panic(err) }).port() or { panic(err) })
++		port_listener.close() or {}
++		mut listener := mbedtls.new_ssl_listener('127.0.0.1:${port}', mbedtls.SSLConnectConfig{
++			cert:     proxy_https_test_cert_path
++			cert_key: proxy_https_test_key_path
++			validate: false
++		}) or { panic(err) }
++		ready <- port
++		defer {
++			listener.shutdown() or {}
++			done <- true
++		}
++		for _ in 0 .. 2 {
++			mut conn := listener.accept() or { continue }
++			handle_https_proxy_test_target_connection(mut conn)
++		}
++	}()
++	return <-ready, done
++}
++
++// drain_https_proxy_test_accepts unblocks start_https_proxy_test_server, which
++// accepts a fixed number of connections. A refused dial means the listener is done.
++fn drain_https_proxy_test_accepts(proxy_port int) {
++	for _ in 0 .. proxy_https_request_count {
++		mut extra := net.dial_tcp('127.0.0.1:${proxy_port}') or { return }
++		extra.close() or {}
++	}
++}
++
++fn test_https_proxy_default_validate_rejects_untrusted_certificate() ! {
++	$if tinyc {
++		// TinyCC hangs in the bundled mbedtls handshake path on linux CI.
++		return
++	}
++	target_port, target_done := start_https_proxy_untrusted_target()!
++	proxy_port, proxy_done := start_https_proxy_test_server(target_port)!
++	proxy := new_http_proxy('http://127.0.0.1:${proxy_port}')!
++	url := 'https://127.0.0.1:${target_port}/'
++	mut rejected := true
++	if _ := fetch(
++		method:      .get
++		url:         url
++		proxy:       proxy
++		max_retries: 1
++	) {
++		rejected = false
++	}
++	accepted := fetch(
++		method:      .get
++		url:         url
++		proxy:       proxy
++		validate:    false
++		max_retries: 1
++	) or {
++		finish_https_proxy_certificate_test(proxy_port, target_port, proxy_done, target_done)
++		return err
++	}
++	finish_https_proxy_certificate_test(proxy_port, target_port, proxy_done, target_done)
++	assert rejected, 'default validate must reject the untrusted certificate'
++	assert accepted.status_code == 200
++	assert accepted.body == 'ok'
++}
++
++fn finish_https_proxy_certificate_test(proxy_port int, target_port int, proxy_done chan bool, target_done chan bool) {
++	drain_https_proxy_test_accepts(proxy_port)
++	// A rejected dial may not reach the target. Plain connects unblock a leftover
++	// accept. This is not a CA check: the autobahn cert has no IP SAN.
++	for _ in 0 .. 2 {
++		mut extra := net.dial_tcp('127.0.0.1:${target_port}') or { break }
++		extra.close() or {}
++	}
++	_ = <-target_done
++	_ = <-proxy_done
++}
++
+ fn test_https_proxy_requests_do_not_leak_sockets() ! {
+ 	$if windows {
+ 		return
+--- a/vlib/net/http/request.v
++++ b/vlib/net/http/request.v
+@@ -39,7 +39,7 @@
+ 	read_timeout  i64 = 30 * time.second
+ 	write_timeout i64 = 30 * time.second
+ 
+-	validate                 bool // when true, certificate failures will stop further processing
++	validate                 bool = true // abort on an invalid certificate; false skips it, except HTTP/3 which always verifies
+ 	verify                   string
+ 	cert                     string
+ 	cert_key                 string
+--- a/vlib/net/http/server_tls_test.v
++++ b/vlib/net/http/server_tls_test.v
+@@ -100,6 +100,58 @@
+ 	assert resp.body == 'tls hello /hello'
+ }
+ 
++fn test_default_fetch_rejects_the_untrusted_server_certificate() {
++	assert http.FetchConfig{}.validate
++	assert http.Request{}.validate
++	$if use_openssl ? {
++		eprintln('skipping: TLS server not implemented for -d use_openssl yet')
++		return
++	}
++	port := pick_port() or {
++		assert false, 'pick_port: ${err}'
++		return
++	}
++	mut srv := &http.Server{
++		addr:                   '127.0.0.1:${port}'
++		cert:                   server_tls_cert
++		cert_key:               server_tls_key
++		in_memory_verification: true
++		accept_timeout:         time.second
++		handler:                EchoHandler{}
++		show_startup_message:   false
++	}
++	t := spawn srv.listen_and_serve()
++	srv.wait_till_running() or {
++		srv.close()
++		t.wait()
++		assert false, 'server failed to start: ${err}'
++		return
++	}
++	defer {
++		srv.close()
++		t.wait()
++	}
++	time.sleep(50 * time.millisecond)
++
++	// One attempt: a rejected certificate is an error, not a reason to retry the handshake.
++	if resp := http.fetch(
++		url:         'https://127.0.0.1:${port}/hello'
++		max_retries: 1
++	) {
++		assert false, 'untrusted certificate was accepted: ${resp.status_code} ${resp.body}'
++		return
++	}
++	resp := http.fetch(
++		url:      'https://127.0.0.1:${port}/hello'
++		validate: false
++	) or {
++		assert false, 'fetch with the check skipped failed: ${err}'
++		return
++	}
++	assert resp.status_code == 200
++	assert resp.body == 'tls hello /hello'
++}
++
+ fn test_server_tls_stop() {
+ 	$if use_openssl ? {
+ 		eprintln('skipping: TLS server not implemented for -d use_openssl yet')
+--- a/vlib/net/mbedtls/mbedtls_concurrent_large_response_test.v
++++ b/vlib/net/mbedtls/mbedtls_concurrent_large_response_test.v
+@@ -108,10 +108,17 @@
+ 	expected_body := concurrent_large_response_body()
+ 	server := spawn serve_chunked_html_response(mut listener, expected_body)
+ 
+-	body := http.get_text('https://127.0.0.1:${port}/chunked')
++	resp := http.fetch(
++		url:      'https://127.0.0.1:${port}/chunked'
++		validate: false
++	) or {
++		server.wait()
++		assert false, 'fetch failed: ${err}'
++		return
++	}
+ 	server.wait()
+ 
+-	assert body == expected_body
++	assert resp.body == expected_body
+ }
+ 
+ fn concurrent_large_response_body() string {
+--- a/vlib/net/socks/socks5.v
++++ b/vlib/net/socks/socks5.v
+@@ -23,15 +23,10 @@
+ 	return &socks_conn
+ }
+ 
+-// socks5_ssl_dial create new instance of &ssl.SSLConn
+-pub fn socks5_ssl_dial(proxy_url string, host string, username string, password string) !&ssl.SSLConn {
+-	mut ssl_conn := ssl.new_ssl_conn(
+-		verify:                 ''
+-		cert:                   ''
+-		cert_key:               ''
+-		validate:               false
+-		in_memory_verification: false
+-	)!
++// socks5_ssl_dial dials `host` through the SOCKS5 proxy and wraps the socket in TLS.
++// Omitting `config` accepts any server certificate; pass the caller's TLS fields to check it.
++pub fn socks5_ssl_dial(proxy_url string, host string, username string, password string, config ssl.SSLConnectConfig) !&ssl.SSLConn {
++	mut ssl_conn := ssl.new_ssl_conn(config)!
+ 	mut con := socks5_dial(proxy_url, host, username, password)!
+ 	ssl_conn.connect(mut con, host.all_before_last(':')) or {
+ 		con.close() or {}

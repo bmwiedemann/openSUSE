@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:28:09 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to use a versioned vendored markdown module instead
+  of tracking the master branch.
+
+-------------------------------------------------------------------
+Sat Nov 14 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Accept mbedtls-devel version 3 under either distribution package
+  name, allowing dependency resolution on openSUSE Leap.
+
+-------------------------------------------------------------------
+Fri Nov 13 00:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- CVE-2026-82509: vlang: TLS certificate validation bypass allows
+  on-path attackers to intercept HTTPS traffic (bco#1290354).
+  Verify server certificates by default, including through HTTP
+  CONNECT and SOCKS proxies; validate: false explicitly opts out.
+  * 0007-verify-https-certificates-by-default.patch
+
+-------------------------------------------------------------------
 Sat Sep  5 02:15:14 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Replace %jobs to make it bit-reproducible (boo#1237231)
@@ -55,12 +76,14 @@ Sat May 30 10:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 - Improve packaging:
   * Unbundle cJSON and zstd via 0003-Unbundle-cJSON-and-zstd.patch.
   * Fix undefined reference to cJSON_GetErrorPos when using system
-    libcjson via 0004-Fix-cJSON_GetErrorPos-undefined-reference.patch.
+    libcjson via
+    0004-Fix-cJSON_GetErrorPos-undefined-reference.patch.
   * Force use of system libgc on Linux via
     0005-Force-system-libgc-on-Linux.patch.
   * Enable vdoc by adding vlang/markdown as a dependency.
   * Improve wrapper script to respect existing VFLAGS.
-  * Build intermediate stages without LTO to speed up bootstrapping.
+  * Build intermediate stages without LTO to speed up
+    bootstrapping.
 
 -------------------------------------------------------------------
 Tue Apr 14 23:04:28 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
@@ -128,10 +151,12 @@ Sun Sep 21 23:55:48 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
   * Remove deprecations made before 2024-11-06
   * Add a deprecation note for any arg, prevent any from being
     used as map key,value or array type (#24277)
-  * Improvents/fixes to Checker, Parser, Comptime, Compiler internals,
+  * Improvents/fixes to Checker, Parser, Comptime, Compiler
+    internals,
     Standard library, Web, ORM and Database drivers
   * Native, C and JavaScript backend changes
-- See https://github.com/vlang/v/releases/tag/0.4.11 for full details
+- Full details:
+  https://github.com/vlang/v/releases/tag/0.4.11
 - add fix-already-unsafe.patch to fix compilation error
 
 -------------------------------------------------------------------
