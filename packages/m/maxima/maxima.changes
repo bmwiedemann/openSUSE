@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:48:55 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Build ECL backend
+
+-------------------------------------------------------------------
 Sun Aug 23 05:44:53 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Compress the manpages with `gzip -n9` so that the build time does

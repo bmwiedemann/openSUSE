@@ -23,8 +23,9 @@
 %bcond_without sbcl
 %endif
 
-# clisp available for oS, cmucl and gcl are not
+# clisp, ecl available for oS, cmucl and gcl are not
 %bcond_without clisp
+%bcond_without ecl
 %bcond_with cmucl
 %bcond_with gcl
 
@@ -65,6 +66,9 @@ ExcludeArch:    ppc64 ppc64le
 
 %if %{with clisp}
 BuildRequires:  clisp >= 2.34.0
+%endif
+%if %{with ecl}
+BuildRequires:  ecl
 %endif
 %if %{with cmucl}
 BuildRequires:  cmucl
@@ -110,6 +114,17 @@ Provides:       maxima_exec = %{version}
 
 %description exec-clisp
 Maxima compiled with Common Lisp.
+%endif
+
+%if %{with ecl}
+%package        exec-ecl
+Summary:        Maxima compiled with ecl
+Requires:       ecl
+Supplements:    (maxima and ecl)
+Provides:       maxima_exec = %{version}
+
+%description exec-ecl
+Maxima compiled with embedded Common Lisp.
 %endif
 
 %if %{with cmucl}
@@ -164,8 +179,11 @@ Provides translations for the %{name} package.
 %autosetup -p1
 
 %build
+# the build system fails for ecl if there is a leading space in LDFLAGS
+export LDFLAGS="-flto=auto"
 %configure  %{?with_sbcl:--enable-sbcl} \
             %{?with_cmucl:--enable-cmucl} \
+            %{?with_ecl:--enable-ecl} \
             %{?with_gcl:--enable-gcl} \
             %{?with_clisp:--enable-clisp} \
             --enable-syntax-highlighting \
@@ -182,6 +200,8 @@ Provides translations for the %{name} package.
 
 %install
 %make_install install-info
+ecl_libdir=$(echo /usr/lib64/ecl-*)
+install -Dm644 src/binary-ecl/maxima.fas -t %{buildroot}/${ecl_libdir}
 
 # Remove unnecessary hashbang
 sed -Ei '1{\@^#!/bin/sh@d}' %{buildroot}%{_datadir}/maxima/%{version}/share/translators/m2mj/antlr4
@@ -217,6 +237,9 @@ gzip -n9 %{buildroot}%{_mandir}/*/man1/maxima.1
 %{_libdir}/maxima/%{version}
 %if %{with clisp}
 %exclude %{_libdir}/maxima/%{version}/binary-clisp
+%endif
+%if %{with ecl}
+%exclude %{_libdir}/maxima/%{version}/binary-ecl
 %endif
 %if %{with sbcl}
 %exclude %{_libdir}/maxima/%{version}/binary-sbcl
@@ -255,6 +278,12 @@ gzip -n9 %{buildroot}%{_mandir}/*/man1/maxima.1
 %if %{with clisp}
 %files exec-clisp
 %{_libdir}/maxima/%{version}/binary-clisp/
+%endif
+
+%if %{with ecl}
+%files exec-ecl
+%{_libdir}/maxima/%{version}/binary-ecl
+%{_libdir}/ecl-*/maxima.fas
 %endif
 
 %if %{with cmucl}
