@@ -62,38 +62,33 @@ environment and that gets resolved by this commit:
 [  123s] tests/test_tutorial/test_subcommands/test_tutorial003.py:146: AssertionError
 
 ---
- .../test_subcommands/test_tutorial001.py           |  5 ++++-
- .../test_subcommands/test_tutorial003.py           |  5 ++++-
- tests/test_types_file.py                           | 14 ++++++++++++++
- 3 files changed, 22 insertions(+), 2 deletions(-)
-
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial001.py b/tests/test_tutorial/test_subcommands/test_tutorial001.py
-index 4e8b23e..0b40ab7 100644
+index 6b228bd..b5a208e 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial001.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial001.py
 @@ -87,7 +87,10 @@ def test_scripts(mod):
-     from docs_src.subcommands.tutorial001_py310 import items, users
+     from docs_src.subcommands.tutorial001 import items, users
  
      env = os.environ.copy()
--    env["PYTHONPATH"] = ":".join(list(tutorial001_py310.__path__))
+-    env["PYTHONPATH"] = ":".join(list(tutorial001.__path__))
 +    env["PYTHONPATH"] = ":".join(
-+        list(tutorial001_py310.__path__)
++        list(tutorial001.__path__)
 +        + ([env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
 +    )
  
      for module in [mod, items, users]:
          result = subprocess.run(
 diff --git a/tests/test_tutorial/test_subcommands/test_tutorial003.py b/tests/test_tutorial/test_subcommands/test_tutorial003.py
-index 30b4352..756e582 100644
+index 631cc0c..a95fcb0 100644
 --- a/tests/test_tutorial/test_subcommands/test_tutorial003.py
 +++ b/tests/test_tutorial/test_subcommands/test_tutorial003.py
 @@ -166,7 +166,10 @@ def test_scripts(mod):
      )
  
      env = os.environ.copy()
--    env["PYTHONPATH"] = ":".join(list(tutorial003_py310.__path__))
+-    env["PYTHONPATH"] = ":".join(list(tutorial003.__path__))
 +    env["PYTHONPATH"] = ":".join(
-+        list(tutorial003_py310.__path__)
++        list(tutorial003.__path__)
 +        + ([env["PYTHONPATH"]] if "PYTHONPATH" in env else [])
 +    )
  

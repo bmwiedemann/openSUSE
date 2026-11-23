@@ -25,7 +25,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-typer
-Version:        0.29.0
+Version:        0.29.2
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -33,22 +33,22 @@ URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Patch1:         set-proper-pythonpath-for-tutorial-script-tests.patch
 Patch2:         set-proper-pythonpath-for-file-argument-tests.patch
-BuildRequires:  %{python_module annotated-doc}
-BuildRequires:  %{python_module coverage}
+BuildRequires:  %{python_module annotated-doc >= 0.0.2}
+BuildRequires:  %{python_module coverage >= 7.13}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 2.5.3}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module shellingham}
+BuildRequires:  %{python_module rich >= 13.8.0}
+BuildRequires:  %{python_module shellingham >= 1.3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Work around Python dependency not being auto-added as there are no modules provided
 Requires:       %{plainpython}(abi) = %{python_version}
-Requires:       python-annotated-doc
-Requires:       python-pydantic
-Requires:       python-rich
-Requires:       python-shellingham
+Requires:       python-annotated-doc >= 0.0.2
+Requires:       python-pydantic >= 2.5.3
+Requires:       python-rich >= 13.8.0
+Requires:       python-shellingham >= 1.3.0
 # both packages provide /usr/bin/typer
 Conflicts:      erlang
 Provides:       python-typer-slim = %{version}

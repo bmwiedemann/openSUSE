@@ -645,4 +645,18 @@
   in the place it would be installed to.</comment>
     <requestid>1396462</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a4b75cfc2a73ef3bb2ce514e65c23f48</srcmd5>
+    <version>0.29.2</version>
+    <time>1795432826</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.29.2
+  * Drop support for Python 3.10.
+
+- Udpate to 0.29.1
+  * Support for Python 3.15.
+
+- Make minimum dependency versions explicit.</comment>
+    <requestid>1399616</requestid>
+  </revision>
 </revisionlist>
