@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Nov 23 05:58:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.7.0:
+  * katapult: fix cleanup (#3397)
+  * namecheap: improve clean up value (#3395)
+  * Add DNS provider for Gyro (#3370)
+  * gandiv5: remove useless lock (#3394)
+  * gandiv5: use verification record endpoint (#3391)
+  * chore: update dependencies (#3390)
+  * feat: Add DNS provider for TotalUptime (#3383)
+  * chore: improve ACME error parsing (#3388)
+  * chore(cli): factorize sleep functions (#3387)
+  * feat(cli): randomize the dynamic renewal period (#3386)
+  * Add DNS provider for Domain Chief (#3352)
+  * tests: add more tests on certcrypto (#3377)
+  * Add DNS provider for EdgeCDN-X (#3381)
+  * Add DNS provider for NameOcean (#3376)
+  * fix: malformed Forwarded header (#3374)
+  * netcupv1: fix subdomain parsing (#3367)
+  * feat: support ML-DSA (#3365)
+  * chore: update to github.com/go-jose/go-jose/v4@v4.1.9 (#3363)
+  * chore: use errors.AsType (#3362)
+  * chore: update pebble to v2.10.2 (#3361)
+  * feat: improve ACME server errors management (#3360)
+  * versio: provider deprecation (#3359)
+  * chore: refactor some DNS clients to oauth2 style (#3357)
+  * refactor(cloudru): oauth2 style (#3354)
+  * chore: minor changes (#3353)
+  * chore: refactor some DNS clients to oauth2 style (#3350)
+  * openprovider: migrate from v1beta to v1 (#3349)
+  * chore: homogenization of API clients (#3348)
+  * chore: homogeneous deprecation label in the doc
+  * chore: fix build badge
+  * chore: improve log with duration (#3345)
+  * Add DNS provider for DonDominio/MrDomain (#3342)
+  * chore: cleaning and TTL (#3344)
+  * fix: retries nonce based on number of calls (#3343)
+  * Add DNS provider for Com Laude (#2886)
+  * mythicbeasts: rewrite token management (#3337)
+  * curanet: rewrite tests related to oauth (#3336)
+  * Detach v5.6.0
+
+-------------------------------------------------------------------
 Thu Oct 29 05:57:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.6.0:
