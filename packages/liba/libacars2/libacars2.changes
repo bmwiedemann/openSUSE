@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:17:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * Message reassembly status is now exposed in the JSON output.
+  * Fixed three memory safety issues.
+    + out-of-bounds read in BASE64 decoder.
+    + memory leak when decoding too short MIAM PDUs.
+    + signed integer overflow in MIAM CORE CRC reconstruction.
+  * Mention the non-printable characters in text output caveat in
+    the programming guide.
+  * A few minor bugfixes and improvements.
+
+-------------------------------------------------------------------
 Sun Nov  2 11:03:36 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.1
