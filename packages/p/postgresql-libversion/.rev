@@ -49,4 +49,12 @@
     <comment>- Disable pg13</comment>
     <requestid>1351153</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>a2683331749ee5be8e78f5093dbf314d</srcmd5>
+    <version>2.0.1</version>
+    <time>1795432985</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 19</comment>
+    <requestid>1399572</requestid>
+  </revision>
 </revisionlist>
