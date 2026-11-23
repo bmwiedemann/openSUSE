@@ -317,4 +317,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * amd_pmf: Add AMD PMF TA Firmware v4 for 1AH_M80H</comment>
     <requestid>1396922</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>42aac058b15d8145c02e3e0a318d532e</srcmd5>
+    <version>20261119</version>
+    <time>1795432799</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261119 (git commit acaf0f3190bc):
+  * amd_pmf: Update AMD PMF TA Firmware for 1AH_M80H</comment>
+    <requestid>1399494</requestid>
+  </revision>
 </revisionlist>
