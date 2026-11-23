@@ -242,4 +242,12 @@
     <comment>Update pg_cron to 1.6.8</comment>
     <requestid>1385516</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>2862bf3fd0bb9b7c891a4c9593ddcfcd</srcmd5>
+    <version>1.6.8</version>
+    <time>1795432993</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 19</comment>
+    <requestid>1399576</requestid>
+  </revision>
 </revisionlist>
