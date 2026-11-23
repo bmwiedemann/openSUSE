@@ -22,7 +22,7 @@
 %global build_rustflags "-C" "linker=clang" "-C" "link-arg=-fuse-ld=%{_bindir}/mold" "-C" "debuginfo=1" "-C" "incremental=false" "-C" "strip=none"
 %global appid dev.zed.Zed
 Name:           zed
-Version:        1.28.1
+Version:        1.29.2
 Release:        0
 Summary:        A high-performance, multiplayer code editor
 # The zed and cli crates are GPL-3.0-or-later. The rest of the tag is the
@@ -33,7 +33,7 @@ Summary:        A high-performance, multiplayer code editor
 # on. MPL-2.0 covers 12 linked crates (the five symphonia 0.5.5 crates,
 # cssparser 0.36.0, cssparser-macros, dtoa-short, nucleo-matcher,
 # selectors 0.37.0, option-ext, yawc); cbindgen, dwrote, mdbook, cssparser
-# 0.37.0, nvim-rs and webpki-roots 0.26.8 are vendored but not linked. The
+# 0.37.0, nvim-rs and webpki-roots 0.26.11 are vendored but not linked. The
 # webpki-roots that does link is 1.0.10, whose license is CDLA-Permissive-2.0,
 # not MPL-2.0.
 # OFL-1.1 is the IBM Plex Sans and Lilex faces embedded in the binary. nvim-rs

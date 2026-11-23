@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Nov 19 07:53:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.29.2 (from 1.28.1):
+  * 1.29.1: Git branch mode listing files changed since a base
+    branch; bookmark picker; configurable Git date formats and
+    commit-view expansion; Claude Fable 5.2 and Mythos 5.2 for
+    Anthropic BYOK; toggle for automatic agent thread titles
+  * 1.29.1 fixes: file finder absolute-path search, agent copy
+    button, read-only toggle, split-diff crash, WebP animation,
+    Vim :s operators, SSH worktree and CLI fixes, and Helix
+    clipboard behaviour restored to pre-1.28 default
+  * 1.29.2: official Snap package for Linux
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Nov 12 20:19:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.1:

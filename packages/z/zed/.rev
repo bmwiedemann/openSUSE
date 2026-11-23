@@ -31,4 +31,12 @@
     <comment>Update zed to 1.28.1: Git auto-fetch and resizable Refs column, wheel font zoom, faster NVIDIA startup</comment>
     <requestid>1397194</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>33ffbd44314589dee606379bf17f5940</srcmd5>
+    <version>1.29.2</version>
+    <time>1795433059</time>
+    <user>anag_factory</user>
+    <comment>Update zed to 1.29.2: branch-mode listing, bookmarks, date formats, Fable/Mythos 5.2, Snap</comment>
+    <requestid>1399724</requestid>
+  </revision>
 </revisionlist>
