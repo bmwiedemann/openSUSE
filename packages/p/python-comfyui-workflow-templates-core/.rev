@@ -412,4 +412,13 @@ checksums. Data only, no code or dependency change.</comment>
 - Needs sr#1398899 (json 0.1.138) first.</comment>
     <requestid>1398900</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e09918ef5c8fa225d2da30d7086b4b94</srcmd5>
+    <version>0.3.404</version>
+    <time>1795433022</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.404: manifest 710-&gt;711, HeyGen decision entry, json floor bump.
+- Needs sr#1399726 (json 0.1.139, floor &gt;=0.1.139)</comment>
+    <requestid>1399735</requestid>
+  </revision>
 </revisionlist>

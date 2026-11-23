@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.404 (manifest grows 710 to 711):
+  * Adds 1 entry, owned by media-assets-02: HeyGen decision
+    scoring (api_heygen_decision_1)
+  * Refreshes 19 template JSONs and 15 search indexes; the new
+    and refreshed template JSONs hash-match json 0.1.139
+    (index hashes are rewritten when the json sdist is built
+    and match no published build)
+  * Raise the json floor to >= 0.1.139: the new and refreshed
+    JSONs ship only there
+- No code change: loader.py is byte-identical and the sdist
+  still declares no runtime requirements
+- The new preview lives in media-assets-02 past the packaged
+  0.1.9, so that entry stays preview-less until that
+  separately-maintained bundle updates; the floor is left
+  alone rather than made unresolvable
+
+-------------------------------------------------------------------
 Fri Nov 20 06:27:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.403 (manifest grows 707 to 710):
