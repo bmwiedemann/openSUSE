@@ -7,4 +7,12 @@
     <comment>Update yara-x to 1.23.0 and add yr(1) man page</comment>
     <requestid>1397968</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>56b57a36bd0fe45f3d70842bc173e393</srcmd5>
+    <version>1.24.0</version>
+    <time>1795433156</time>
+    <user>anag_factory</user>
+    <comment>Update yara-x to 1.24.0 (adds upstream cli/man/*.1 man pages, security fix for include path traversal aae52cc, refreshes vendor.tar.zst, and fixes %check %{arm} macro for armv7hl). Assisted-by: Antigravity (Gemini)</comment>
+    <requestid>1399785</requestid>
+  </revision>
 </revisionlist>

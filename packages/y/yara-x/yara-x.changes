@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Nov 21 13:10:00 UTC 2026 - Javier Ramirez <javilinux@gmail.com>
+
+- Update to version 1.24.0:
+  * Add generated man pages for yr and its subcommands under
+    cli/man/ (a3d3f31).
+  * Add has_string, has_method, and has_class functions with
+    YARA-compatible overloads to the dex module (e55460d).
+  * Share compiled regular expressions and regexp sets across
+    Scanner instances in Rules (#665).
+  * Multiple performance and memory usage improvements in the
+    scanner, FastVM, and dotnet and dex modules.
+  * Increase MAX_FUNC_INSTRS from 100,000 to 300,000 (3533f81).
+  * BUGFIX: Restrict include directives to regular files inside
+    configured include directories to prevent path traversal
+    (aae52cc).
+  * BUGFIX: Eliminate terminal flickering during yr scan by
+    replacing indicatif with a lightweight synchronized terminal
+    renderer (6b592e0).
+  * BUGFIX: Fix 0 of them / contiguous 0 of (...) matching (#848),
+    non_matching_rules() length (#846), module symbol leaking
+    (#872), DEX index alignment (#885), and rsa pkcs1v15
+    compatibility (#866).
+- Drop local yr.1 man page and install upstream cli/man/*.1 pages.
+- Refresh vendor.tar.zst.
+- Assisted-by: Antigravity (Gemini)
+
+-------------------------------------------------------------------
 Mon Nov 16 15:13:53 UTC 2026 - Javier Ramirez <javilinux@gmail.com>
 
 - Fix build failure (E0432) by updating vendor tarball with full crate features (including rsa::Pkcs1v15Sign)

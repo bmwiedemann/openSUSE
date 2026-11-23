@@ -17,7 +17,7 @@
 
 
 Name:           yara-x
-Version:        1.23.0
+Version:        1.24.0
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause
@@ -25,7 +25,6 @@ Group:          System/Filesystems
 URL:            https://virustotal.github.io/yara-x/
 Source:         %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-Source2:        yr.1
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  rust >= 1.78.0
@@ -53,11 +52,12 @@ install -Dm 0755 target/release/yr %{buildroot}%{_bindir}/yr
 install -d %{buildroot}%{_datadir}/bash-completion/completions/
 ./target/release/yr completion bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
-# install man page
-install -D -m 0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/yr.1
+# install upstream man pages
+install -d %{buildroot}%{_mandir}/man1
+install -m 0644 cli/man/*.1 %{buildroot}%{_mandir}/man1/
 
 %check
-%ifnarch armv7l
+%ifnarch %{arm}
 %{cargo_test}
 %else
 %{cargo_test} || true
@@ -68,6 +68,6 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_mandir}/man1/yr.1
 %doc README.md
 %{_bindir}/yr
 %{_datadir}/bash-completion/completions/%{name}
-%{_mandir}/man1/yr.1%{?ext_man}
+%{_mandir}/man1/yr*.1%{?ext_man}
 
 %changelog
