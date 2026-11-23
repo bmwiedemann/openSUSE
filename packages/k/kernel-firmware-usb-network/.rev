@@ -58,4 +58,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * aic: Add AIC8800D80 Bluetooth and Wi-Fi firmware</comment>
     <requestid>1394994</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2d6bcd42743ac448bf86dd7b4ea09efd</srcmd5>
+    <version>20261114</version>
+    <time>1795432809</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * aic: Add AIC8800D80N Wi-Fi firmware and user configurations</comment>
+    <requestid>1399497</requestid>
+  </revision>
 </revisionlist>
