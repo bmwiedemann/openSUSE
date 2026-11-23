@@ -1,0 +1,1043 @@
+-------------------------------------------------------------------
+Tue Nov 17 13:43:45 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 19.0.
+  * https://www.postgresql.org/docs/19/release-19.html
+
+-------------------------------------------------------------------
+Thu Nov 12 16:02:19 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1290237: Update to 19~rc2:
+  * CVE-2026-6460: Add defenses against problems caused by altering
+    composite types concurrently with operations on data of those
+    types
+  * CVE-2026-116306: Cope with concurrent rowtype changes in
+    ExecEvalFieldStore[De]Form()
+  * CVE-2026-116329: Guard against malicious alteration of a table
+    while a statistics import function is running on it
+  * CVE-2026-16237: Enforce view row visibility in INSERT ... ON
+    CONFLICT
+  * CVE-2026-120146: Align REASSIGN OWNED's caller-privilege checks
+    with ALTER ... OWNER TO's checks
+  * CVE-2026-116310: Fix use-after-free in COPY FROM ON_ERROR
+    reporting
+  * CVE-2026-116332: Disallow closing a portal that is still being
+    set up
+  * CVE-2026-120143: Forcibly close portals associated with
+    transition tables at the end of the trigger function
+  * CVE-2026-116304: Fix race condition leading to use-after-free
+    in shared tupledesc management
+  * CVE-2026-120152: Fix use-after-free in pg_show_all_settings()
+  * CVE-2026-120150: Fix use-after-free in expanded-record domain
+    constraint checking
+  * CVE-2026-116328: Prevent memory corruption after a large
+    allocation in a generation memory context is freed
+  * CVE-2026-116315: Fix buffer overrun in tsvector_delete()
+  * CVE-2026-116317: Fix buffer overrun in ts_rank_cd()
+  * CVE-2026-116321: Prevent construction of invalid name values
+    via element assignment
+  * CVE-2026-116327: Treat application of a leaky function to a
+    CaseTestExpr or internal Param node as leaky
+  * CVE-2026-116331: Don't generate an index-based plan for an
+    aggregate whose input and output types don't match
+  * CVE-2026-116322: Delay processing of cancel request packets
+    until it's safe to handle them
+  * CVE-2026-116312: Avoid inserting the wrong tuple into a trigger
+    transition table in a MERGE that does an INSERT followed by an
+    UPDATE
+  * CVE-2026-116335: Check that commutator and negator operator
+    pairs return the same data type
+  * CVE-2026-116336: Prevent functions in index predicates and
+    expressions from breaking REINDEX CONCURRENTLY by manipulating
+    the indexes
+  * CVE-2026-6467: Prevent corrupting a newly-installed extension
+    by renaming its target schema during CREATE EXTENSION or by
+    installing it into a temporary schema
+  * CVE-2026-120153: Reject more unsafe names in extension script
+    substitutions
+  * CVE-2026-116303: Check EXECUTE privilege before calling cast
+    functions within to_json() and other conversion-to-JSON code
+  * CVE-2026-116311: Prevent DROP OWNED BY from changing row-level
+    security policies on tables that the current user does not own
+  * CVE-2026-116316: Disallow security-restricted operations from
+    creating types in temporary schemas
+  * CVE-2026-120149: Avoid out-of-bounds accesses in FDW batch
+    inserts
+  * CVE-2026-116333: Avoid out-of-bounds reads in parallel btree
+    scans with array keys
+  * CVE-2026-120144: Replace the type cache's in_progress_list
+    mechanism with something simpler and safer
+  * CVE-2026-120148: Refuse to create extended statistics on
+    expressions of transient types
+  * CVE-2026-120145: Reject system catalogs as logical replication
+    targets
+  * CVE-2026-120154: Check ON CONFLICT target row against RLS
+    policies before applying user quals
+  * CVE-2026-14661: Validate all connection options in replication
+    subscriptions and contrib/dblink
+  * CVE-2026-120142: Handle dropped columns safely while comparing
+    row types
+  * CVE-2026-18447: Disallow declaring SQL functions as returning
+    type "any"
+  * CVE-2026-120139: Harden more memory-size calculations against
+    integer overflow
+  * CVE-2026-120141: Fix type confusion in set-returning functions
+    that return RECORD, when materialized in a query's target list
+  * CVE-2026-120151: Cope with concurrent rowtype changes in
+    PL/pgSQL record field assignment
+  * CVE-2026-116326: Support tied Perl objects in PL/Perl and
+    associated contrib modules
+  * CVE-2026-116309: Fix type confusion in PL/Perl's
+    get_perl_array_ref()
+  * CVE-2026-116320: Fix use-after-free in scans of Perl arrays and
+    hashes
+  * CVE-2026-116319: Fix use-after-free in
+    plperl_return_next_internal()
+  * CVE-2026-116307: In PL/Perl, fix use-after-free triggered by
+    releasing a prepared query that is being executed
+  * CVE-2026-116323: Fix use-after-free hazards in re-entrant use
+    of PL/Tcl
+  * CVE-2026-120147: Reject re-entrant use of contrib/dblink
+  * CVE-2026-116308: In contrib/dict_int, return NULL for zero-
+    length tokens
+  * CVE-2026-116325: Ensure that reindexdb correctly quotes index
+    names it is dealing with
+  * CVE-2026-116313: Use fully-qualified operator names in vacuumdb
+  * CVE-2026-116318: Ensure that pg_dump quotes the names of NOT
+    NULL constraints
+  * CVE-2026-116330: Make the \[un]restrict commands functional in
+    pg_dump's tar-format output
+  * CVE-2026-116314: Harden pg_restore against corrupt archive
+    files
+  * CVE-2026-16240: Fix use of externally-controlled format string
+    in pg_basebackup
+  * CVE-2026-6464: Ensure that psql counts all the COPY FROM STDIN
+    commands appearing in a multi-query command string
+
+-------------------------------------------------------------------
+Fri Oct 16 09:02:08 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Sync spec file with postgresql18:
+  * Require libicu-devel from the server-devel package when
+    building with ICU support.
+  * Use LLVM 15 on SLE-15 up to SP5 and LLVM 17 on SP6 and SP7.
+- Let genlists also collect translations that don't belong to a
+  binary and use it for the postgresql-regress translations.
+
+-------------------------------------------------------------------
+Fri Oct 16 08:30:00 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 19~rc1:
+  https://www.postgresql.org/about/news/p-3409/
+  * Several fixes for REPACK (CONCURRENTLY), pg_plan_advice,
+    planner optimizations that rely on expression nullability,
+    automatic enablement of logical replication with
+    wal_level=replica, and parallel autovacuum.
+  * Fix postgres_fdw statistics import to run as the owner of the
+    foreign table instead of the user running ANALYZE.
+  * Fix COPY (query) TO ... (FORMAT json) to use the query's
+    column names as JSON keys.
+- Changes in 19~beta4:
+  https://www.postgresql.org/about/news/p-3386/
+  * Revert SQL/PGQ (property graph query) support, online
+    enabling/disabling of data checksums, FOR PORTION OF temporal
+    updates/deletes, and ALTER TABLE ... MERGE/SPLIT PARTITIONS.
+  * Remove pg_get_role_ddl(), pg_get_tablespace_ddl(), and
+    pg_get_database_ddl().
+  * Revert forcing LC_COLLATE to C in the postmaster process.
+  * Several fixes for REPACK, WAIT FOR, CREATE PUBLICATION ...
+    EXCEPT, logical replication, foreign key check performance
+    improvements, autovacuum scoring, and the COPY FROM SIMD
+    optimization.
+
+-------------------------------------------------------------------
+Tue Aug 25 11:56:59 UTC 2026 - Reinhard Max <max@suse.com>
+
+- llvmjit-devel: require the main clang and llvm packages again
+  instead of their -devel packages.
+
+-------------------------------------------------------------------
+Wed Aug 19 11:00:44 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Let llvmjit-devel require the llc and clang binaries to fix
+  build of extensions on SLE-16.1 and newer.
+
+-------------------------------------------------------------------
+Sat Aug 15 14:43:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19~beta3
+  https://www.postgresql.org/about/news/postgresql-186-1711-1615-1519-1424-and-19-beta-3-released-3365/
+
+  Security Fixes:
+  - bsc#1275046, CVE-2026-6464: psql COPY FROM STDIN early failure
+    processes data lines as psql commands (CVSS v3.1: 8.1)
+  - bsc#1275044, CVE-2026-6469: ALTER TABLE ALTER TYPE resets
+    extended statistics ownership (CVSS v3.1: 3.8)
+  - bsc#1275043, CVE-2026-6470: Fails to check type USAGE privilege
+    (CVSS v3.1: 4.3)
+  - bsc#1275042, CVE-2026-6471: Logical decoding can dlopen
+    arbitrary file (CVSS v3.1: 7.2)
+  - bsc#1275001, CVE-2026-14662: tsvector and tsquery undersize
+    allocations, via integer wraparound (CVSS v3.1: 8.8)
+  - bsc#1275002, CVE-2026-14663: pgcrypto, for OpenSSL-disabled
+    ciphers, silently encrypts to and decrypts from cleartext (CVSS
+    v3.1: 6.5)
+  - bsc#1275068, CVE-2026-14664: Regexp heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275067, CVE-2026-14666: Row security caching disregards
+    role modifications (CVSS v3.1: 4.2)
+  - bsc#1275066, CVE-2026-14668: ctid type confusion in selectivity
+    estimator discloses derivative of arbitrary read (CVSS v3.1:
+    8.1)
+  - bsc#1275065, CVE-2026-14669: to_char heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275064, CVE-2026-14670: plperl tied object heap buffer
+    overflow executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275063, CVE-2026-14671: refint plan cache type confusion
+    executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275062, CVE-2026-14672: Observable response discrepancy
+    with non-default scram_iterations provides user existence
+    oracle (CVSS v3.1: 5.3)
+  - bsc#1275061, CVE-2026-14673: amcheck does not clear untrusted
+    search path (CVSS v3.1: 3.8)
+  - bsc#1275060, CVE-2026-14676: pg_stat_statements heap buffer
+    overflow executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275059, CVE-2026-14677: 32-bit pltcl and plperl undersize
+    allocations, via integer wraparound (CVSS v3.1: 8.8)
+  - bsc#1275058, CVE-2026-14678: pg_trgm picksplit reads past end
+    of buffer (CVSS v3.1: 4.3)
+  - bsc#1275057, CVE-2026-14679: Stack buffer overflow in argument
+    match writes 0x0 and 0x1 to server memory (CVSS v3.1: 8.2)
+  - bsc#1275056, CVE-2026-14680: Type confusion via "internal"
+    arguments (CVSS v3.1: 8.8)
+  - bsc#1275055, CVE-2026-14681: Improper enforcement of GSSAPI
+    encryption when coupled with SSL (CVSS v3.1: 4.2)
+  - bsc#1275054, CVE-2026-15741: Expression deparse allows SQL
+    injection via EXTRACT argument (CVSS v3.1: 8.8)
+  - bsc#1275053, CVE-2026-15742: fuzzystrmatch writes
+    effectively-arbitrary addresses, via integer wraparound (CVSS
+    v3.1: 8.8)
+  - bsc#1275052, CVE-2026-16238: Type confusion in
+    pg_restore_attribute_stats() executes arbitrary code (CVSS
+    v3.1: 8.8)
+  - bsc#1275051, CVE-2026-16239: Type confusion in cursor CLOSE +
+    DECLARE executes arbitrary code (CVSS v3.1: 8.8)
+  - bsc#1275050, CVE-2026-16241: ECPG integer underflow can crash
+    the client (CVSS v3.1: 3.8)
+  - bsc#1275049, CVE-2026-18024: ascii() function reads past end of
+    buffer (CVSS v3.1: 4.3)
+  - bsc#1275048, CVE-2026-18408: psql \unrestrict lets superuser of
+    pg_dump origin server execute arbitrary code in psql client
+    (CVSS v3.1: 8.8)
+  - bsc#1275047, CVE-2026-19385: pg_dump heap buffer overflow
+    executes arbitrary code (CVSS v3.1: 8.8)
+
+-------------------------------------------------------------------
+Mon Jul 20 12:08:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 19~beta2
+  https://www.postgresql.org/about/news/postgresql-19-beta-2-released-3350/
+
+-------------------------------------------------------------------
+Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require clang/llvm-devel metapackages instead of directly
+  requiring the latest version. With clang migrating away from
+  update-alternatives, the versioned packages no longer provide the
+  /usr/bin/clang symlink, which will now be contained in the
+  metapackage only. If older LLVM versions are required, the
+  compiler binary has to be provided via CLANG=clang-<N>.
+
+-------------------------------------------------------------------
+Fri Jun 12 20:10:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump packaging level to 19
+
+-------------------------------------------------------------------
+Fri Jun 12 19:42:33 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fork off for 19~beta1
+  https://www.postgresql.org/about/news/postgresql-19-beta-1-released-3313/
+- refresh postgresql-conf.patch
+
+-------------------------------------------------------------------
+Wed May 13 08:09:50 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 18.4:
+  * bsc#1265172, CVE-2026-6472: ensure the user has CREATE
+    privilege on the schema specified
+  * bsc#1265173, CVE-2026-6473: integer overflows in
+    memory-allocation calculations
+  * bsc#1265174, CVE-2026-6474: Guard against malicious time zone
+    names
+  * bsc#1265175, CVE-2026-6475: Prevent path traversal in
+    pg_basebackup and pg_rewind
+  * bsc#1265176, CVE-2026-6476: Properly quote subscription names
+    in pg_createsubscriber
+  * bsc#1265177, CVE-2026-6477: Mark PQfn() as unsafe, and avoid
+    using it within libpq
+  * bsc#1265178, CVE-2026-6478: Use timing-safe string comparisons
+    in authentication code
+  * bsc#1265179, CVE-2026-6479: Prevent unbounded recursion while
+    processing startup packets
+  * bsc#1265180, CVE-2026-6575: Detect faulty input when restoring
+    attribute MCV statistics
+  * bsc#1265181, CVE-2026-6637: Prevent SQL injection and buffer
+    overruns in contrib/spi
+  * bsc#1265182, CVE-2026-6638: Properly quote object names in
+    logical replication origin checks
+  * https://www.postgresql.org/docs/release/18.4/
+
+-------------------------------------------------------------------
+Thu Apr 30 12:56:04 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1263804: After dropping update-alternatives we have to
+  package /usr/bin/pg_config as an actual symlink, not %ghost.
+- Fix spelling of build conditionals.
+
+-------------------------------------------------------------------
+Thu Mar 26 13:10:01 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Get rid of update-alternatives for openSUSE/SLE 16.0 and newer
+  to support immutable systems and transactional updates.
+  (jsc#PED-14820)
+
+-------------------------------------------------------------------
+Tue Feb 24 11:33:18 UTC 2026 - Reinhard Max <max@suse.com>
+
+- bsc#1258754: Update to 18.3 to fix two regressions in 18.2:
+  * https://www.postgresql.org/docs/release/18.3/
+  * The substring() function raises an error "invalid byte sequence
+    for encoding" on non-ASCII text values if the source of
+    that value is a database column.
+  * A standby may halt and return an error "could not access status
+    of transaction".
+
+-------------------------------------------------------------------
+Wed Feb 11 16:46:11 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 18.2:
+  * https://www.postgresql.org/about/news/p-3235/
+  * https://www.postgresql.org/docs/release/18.2/
+  * bsc#1258008, CVE-2026-2003: Guard against unexpected
+    dimensions of oidvector/int2vector
+  * bsc#1258009, CVE-2026-2004: Harden selectivity estimators
+    against being attached to operators that accept unexpected
+    data types.
+  * bsc#1258010, CVE-2026-2005: Fix buffer overrun in
+    contrib/pgcrypto's PGP decryption functions.
+  * bsc#1258011, CVE-2026-2006: Fix inadequate validation of
+    multibyte character lengths.
+  * bsc#1258012, CVE-2026-2007: Harden contrib/pg_trgm against
+    changes in string lowercasing behavior.
+  * obsoletes llvm-21-aarch64.patch
+- Disown /var/lib/pgsql to support transactional updates.
+
+-------------------------------------------------------------------
+Tue Dec  9 08:23:44 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64 with upstream commit 0dceba2:
+  * llvm-21-aarch64.patch
+
+-------------------------------------------------------------------
+Mon Nov 24 16:22:39 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Fix build with uring for post SLE15 code streams.
+
+-------------------------------------------------------------------
+Fri Nov 14 11:22:23 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Use %product_libs_llvm_ver to determine the LLVM version.
+- Remove conditionals for obsolete PostgreSQL releases.
+
+-------------------------------------------------------------------
+Wed Nov 12 15:08:05 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 18.1:
+  * https://www.postgresql.org/about/news/p-3171/
+  * https://www.postgresql.org/docs/release/18.1/
+  * bsc#1253332, CVE-2025-12817: Missing check for CREATE
+    privileges on the schema in CREATE STATISTICS allowed table
+    owners to create statistics in any schema, potentially leading
+    to unexpected naming conflicts.
+  * bsc#1253333, CVE-2025-12818: Several places in libpq were not
+    sufficiently careful about computing the required size of a
+    memory allocation. Sufficiently large inputs could cause
+    integer overflow, resulting in an undersized buffer, which
+    would then lead to writing past the end of the buffer.
+
+-------------------------------------------------------------------
+Thu Sep 25 16:32:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- pg_config --libs returns -lnuma so we need to require it.
+
+-------------------------------------------------------------------
+Tue Sep 23 14:43:36 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 18.0.
+  * https://www.postgresql.org/about/news/p-3142/
+  * https://www.postgresql.org/docs/18/release-18.html
+
+-------------------------------------------------------------------
+Thu Sep  4 14:54:17 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Update to 18 RC1.
+  * https://www.postgresql.org/about/news/p-3130/
+
+-------------------------------------------------------------------
+Tue Aug 19 07:36:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- move libpq-oauth into the libpq5  package. it is a plugin that
+  will be loaded via dlopen() if libpq encounters an oauth workflow
+  during a connection.
+
+-------------------------------------------------------------------
+Mon Aug 18 22:33:51 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- In the symlinking loop for *.so files only handle symlinks and
+  not also files.
+  This allows us to enable oauth support
+
+-------------------------------------------------------------------
+Mon Aug 18 22:07:26 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable liburing and libnuma support
+- prepare oauth support. but it creates broken symlinks at the
+  moment
+
+-------------------------------------------------------------------
+Thu Aug 14 19:42:37 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 18~beta3
+  * https://www.postgresql.org/about/news/p-3118/
+
+  Security Issues
+  * CVE-2025-8713: PostgreSQL optimizer statistics can expose
+    sampled data within a view, partition, or child table
+    (boo#1248120)
+  * CVE-2025-8714: PostgreSQL pg_dump lets superuser of origin
+    server execute arbitrary code in psql client (boo#1248122)
+  * CVE-2025-8715: PostgreSQL pg_dump newline in object name
+    executes arbitrary code in psql client and in restore target
+    server (boo#1248119)
+
+-------------------------------------------------------------------
+Wed Jul 23 01:47:53 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 18~beta2
+  https://www.postgresql.org/about/news/p-3103/
+
+-------------------------------------------------------------------
+Fri May  9 20:38:31 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fork package for postgresql 18
+  https://www.postgresql.org/about/news/p-3070/
+
+-------------------------------------------------------------------
+Fri May  9 09:51:40 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.5:
+  * bsc#1242931, CVE-2025-4207: postgresql: PostgreSQL GB18030
+    encoding validation can read one byte past end of allocation
+    for text that fails validation.
+  * https://www.postgresql.org/docs/release/17.5/
+  * https://www.postgresql.org/about/news/p-3072/
+- Add postresql-pg_config_paths.patch to Fix a race condition
+  while generating pg_config_paths.h.
+
+-------------------------------------------------------------------
+Tue Feb 18 11:36:44 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.4:
+  * Improve behavior of libpq's quoting functions:
+    The changes made for CVE-2025-1094 had one serious oversight:
+    PQescapeLiteral() and PQescapeIdentifier() failed to honor
+    their string length parameter, instead always reading to the
+    input string's trailing null. This resulted in including
+    unwanted text in the output, if the caller intended to
+    truncate the string via the length parameter. With very bad
+    luck it could cause a crash due to reading off the end of
+    memory.
+    In addition, modify all these quoting functions so that when
+    invalid encoding is detected, an invalid sequence is
+    substituted for just the first byte of the presumed
+    character, not all of it. This reduces the risk of problems
+    if a calling application performs additional processing on
+    the quoted string.
+  * Fix small memory leak in pg_createsubscriber.
+  * https://www.postgresql.org/docs/release/17.4/
+  * https://www.postgresql.org/about/news/p-3018/
+
+-------------------------------------------------------------------
+Tue Feb 11 12:02:37 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.3:
+  * bsc#1237093, CVE-2025-1094: Harden PQescapeString and allied
+    functions against invalidly-encoded input strings.
+  * obsoletes postgresql-tzdata2025a.patch
+  * https://www.postgresql.org/docs/release/17.3/
+  * https://www.postgresql.org/about/news/-3015/
+
+-------------------------------------------------------------------
+Wed Jan 29 10:20:21 UTC 2025 - JS <obs.coke518@passinbox.com>
+
+- Apply postgresql-tzdata2025a.patch regardless of
+  whether LLVM JIT is enabled
+
+-------------------------------------------------------------------
+Tue Jan 28 12:23:29 UTC 2025 - Reinhard Max <max@suse.com>
+
+- Fix build, add postgresql-tzdata2025a.patch
+
+-------------------------------------------------------------------
+Thu Dec 26 07:51:33 UTC 2024 - JS <obs.coke518@passinbox.com>
+
+- Disable LLVM JIT on loongarch64
+
+-------------------------------------------------------------------
+Tue Nov 19 14:46:02 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.2:
+  * Repair ABI break for extensions that work with struct
+    ResultRelInfo.
+  * Restore functionality of ALTER {ROLE|DATABASE} SET role.
+  * Fix cases where a logical replication slot's restart_lsn could
+    go backwards.
+  * Avoid deleting still-needed WAL files during pg_rewind.
+  * Fix race conditions associated with dropping shared statistics
+    entries.
+  * Count index scans in contrib/bloom indexes in the statistics
+    views, such as the pg_stat_user_indexes.idx_scan counter.
+  * Fix crash when checking to see if an index's opclass options
+    have changed.
+  * Avoid assertion failure caused by disconnected NFA sub-graphs
+    in regular expression parsing.
+  * https://www.postgresql.org/about/news/p-2965/
+  * https://www.postgresql.org/docs/release/17.2/
+
+-------------------------------------------------------------------
+Wed Nov 13 11:26:00 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.1:
+  * CVE-2024-10976, bsc#1233323: Ensure cached plans are marked as
+    dependent on the calling role when RLS applies to a
+    non-top-level table reference.
+  * CVE-2024-10977, bsc#1233325: Make libpq discard error messages
+    received during SSL or GSS protocol negotiation.
+  * CVE-2024-10978, bsc#1233326: Fix unintended interactions
+    between SET SESSION AUTHORIZATION and SET ROLE
+  * CVE-2024-10979, bsc#1233327: Prevent trusted PL/Perl code from
+    changing environment variables.
+  * obsoletes postgresql17-jsonb_jsonpath.patch
+  * https://www.postgresql.org/about/news/p-2955/
+  * https://www.postgresql.org/docs/release/17.1/
+
+-------------------------------------------------------------------
+Mon Nov  4 13:38:28 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Add postgresql17-jsonb_jsonpath.patch as a temporary build fix.
+
+-------------------------------------------------------------------
+Mon Oct  7 08:50:46 UTC 2024 - Fabian Vogt <fvogt@suse.com>
+
+- Use cmake(LLVM) < instead of <= to also allow building against
+  LLVM 18.1 and newer 18.x versions
+
+-------------------------------------------------------------------
+Thu Sep 26 13:20:36 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17.0:
+  * New memory management system for VACUUM, which reduces memory
+    consumption and can improve overall vacuuming performance.
+  * New SQL/JSON capabilities, including constructors, identity
+    functions, and the JSON_TABLE() function, which converts JSON
+    data into a table representation.
+  * Various query performance improvements, including for
+    sequential reads using streaming I/O, write throughput under
+    high concurrency, and searches over multiple values in a btree
+    index.
+  * Logical replication enhancements, including:
+    + Failover control
+    + pg_createsubscriber, a utility that creates logical replicas
+      from physical standbys
+    + pg_upgrade now preserves replication slots on both publishers
+      and subscribers
+  * New client-side connection option, sslnegotiation=direct, that
+    performs a direct TLS handshake to avoid a round-trip
+    negotiation.
+  * pg_basebackup now supports incremental backup.
+  * COPY adds a new option, ON_ERROR ignore, that allows a copy
+    operation to continue in the event of an error.
+  * https://www.postgresql.org/about/news/p-2936/
+  * https://www.postgresql.org/docs/17/release-17.html
+
+-------------------------------------------------------------------
+Sat Sep  7 09:27:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 17rc1
+  https://www.postgresql.org/about/news/postgresql-17-rc1-released-2926/
+
+-------------------------------------------------------------------
+Sat Aug 10 14:03:10 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 17beta3 (bsc#1229013):
+  * bsc#1229013, CVE-2024-7348 PostgreSQL relation replacement
+    during pg_dump executes arbitrary SQL
+  * https://www.postgresql.org/about/news/p-2910/
+
+-------------------------------------------------------------------
+Wed Jun 26 15:15:46 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17beta2.
+
+-------------------------------------------------------------------
+Mon May 27 10:54:18 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 17beta1.
+- Allow LLVM <= 18
+
+-------------------------------------------------------------------
+Mon May  6 10:35:35 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Prepare for PostgreSQL 17.
+- Make sure all compilation and doc generation happens in %build.
+
+-------------------------------------------------------------------
+Tue Mar 12 22:48:41 UTC 2024 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require LLVM <= 17 for now, because LLVM 18 doesn't seem to work.
+
+-------------------------------------------------------------------
+Thu Mar  7 15:04:40 UTC 2024 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Remove constraints file because improved memory usage for s390x
+
+-------------------------------------------------------------------
+Thu Feb 29 14:36:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Thu Feb  8 13:22:49 UTC 2024 - Reinhard Max <max@suse.com>
+
+- Upgrade to 16.2:
+  * bsc#1219679, CVE-2024-0985: Tighten security restrictions
+    within REFRESH MATERIALIZED VIEW CONCURRENTLY.
+    One step of a concurrent refresh command was run under weak
+    security restrictions. If a materialized view's owner could
+    persuade a superuser or other high-privileged user to perform a
+    concurrent refresh on that view, the view's owner could control
+    code executed with the privileges of the user running REFRESH.
+    Fix things so that all user-determined code is run as the
+    view's owner, as expected
+  * If you use GIN indexes, you may need to reindex after updating
+    to this release.
+  * LLVM 18 is now supported.
+  * https://www.postgresql.org/docs/release/16.2/
+
+-------------------------------------------------------------------
+Wed Nov  8 14:09:29 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Upgrade to 16.1:
+  * bsc#1216962, CVE-2023-5868: Fix handling of unknown-type
+    arguments in DISTINCT "any" aggregate functions. This error led
+    to a text-type value being interpreted as an unknown-type value
+    (that is, a zero-terminated string) at runtime. This could
+    result in disclosure of server memory following the text value.
+  * bsc#1216961, CVE-2023-5869: Detect integer overflow while
+    computing new array dimensions. When assigning new elements to
+    array subscripts that are outside the current array bounds, an
+    undetected integer overflow could occur in edge cases. Memory
+    stomps that are potentially exploitable for arbitrary code
+    execution are possible, and so is disclosure of server memory.
+  * bsc#1216960, CVE-2023-5870: Prevent the pg_signal_backend role
+    from signalling background workers and autovacuum processes.
+    The documentation says that pg_signal_backend cannot issue
+    signals to superuser-owned processes. It was able to signal
+    these background  processes, though, because they advertise a
+    role OID of zero. Treat that as indicating superuser ownership.
+    The security implications of cancelling one of these process
+    types are fairly small so far as the core code goes (we'll just
+    start another one), but extensions might add background workers
+    that are more vulnerable.
+    Also ensure that the is_superuser parameter is set correctly in
+    such processes. No specific security consequences are known for
+    that oversight, but it might be significant for some extensions.
+  * Add support for LLVM 16 and 17
+  * https://www.postgresql.org/docs/16/release-16-1.html
+  
+-------------------------------------------------------------------
+Tue Oct 31 10:57:13 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216734: Revert the last change and make the devel package
+  independend of all other subpackages except for the libs.
+
+-------------------------------------------------------------------
+Tue Oct 10 12:49:02 UTC 2023 - Reinhard Max <max@suse.com>
+
+- boo#1216022: Call install-alternatives from the devel subpackage
+  as well, otherwise the symlink for ecpg might be missing.
+
+-------------------------------------------------------------------
+Mon Sep 18 15:24:14 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Also buildignore the postgresql*-implementation symbols: this is
+  needed in order to bootstrap when no postgresql version currently
+  has valid symbols provided. Once the packages are built, OBS
+  could translate this to the pgname-* packages and accept the
+  ignores; during bootstrap though, there is nothing providing the
+  symbol and the existing buildignores do not suffice.
+
+-------------------------------------------------------------------
+Thu Sep 14 12:14:36 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Upgrade to 16.0:
+  * https://www.postgresql.org/about/news/2715
+  * https://www.postgresql.org/docs/16/release-16.html
+
+-------------------------------------------------------------------
+Mon Sep  4 23:52:24 UTC 2023 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 16rc1:
+  * https://www.postgresql.org/about/news/2702/
+
+-------------------------------------------------------------------
+Thu Aug 10 15:18:58 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Upgrade too v16beta3.
+
+-------------------------------------------------------------------
+Mon Aug  7 13:08:04 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Copy postgresql15 to postgresql16 and upgrade to v16beta2.
+- Don't create a unix domain socket under /tmp anymore.
+
+-------------------------------------------------------------------
+Fri May 26 11:48:38 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Restore the independence of mini builds from the main build after
+  the -mini name change from April 4, 2023.
+- Adjust icu handling to prepare for PostgreSQL 16.
+
+-------------------------------------------------------------------
+Mon May 15 14:20:25 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Overhaul postgresql-README.SUSE and move it from the binary
+  package to the noarch wrapper package.
+- Change the unix domain socket location from /var/run to /run.
+
+-------------------------------------------------------------------
+Tue May  9 11:07:48 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 15.3:
+  * bsc#1211228, CVE-2023-2454:
+    Prevent CREATE SCHEMA from defeating changes in search_path
+  * bsc#1211229, CVE-2023-2455: Enforce row-level security
+    policies correctly after inlining a set-returning function
+  * https://www.postgresql.org/about/news/2637/
+  * https://www.postgresql.org/docs/15/release-15-3.html
+
+-------------------------------------------------------------------
+Tue Apr 18 09:05:09 UTC 2023 - Reinhard Max <max@suse.com>
+
+- bsc#1210303: Stop using the obsolete internal %_restart_on_update
+  macro and drop support for sysv init to simplify the scriptlets.
+
+-------------------------------------------------------------------
+Tue Apr  4 10:57:41 UTC 2023 - Fabian Vogt <fvogt@suse.com>
+
+- Include -mini in Name: to avoid conflicts in the source package
+  name and OBS internal dependency tracking.
+
+-------------------------------------------------------------------
+Thu Feb  9 11:38:35 UTC 2023 - Reinhard Max <max@suse.com>
+
+- Update to 15.2:
+  * CVE-2022-41862, bsc#1208102: memory leak in libpq
+  * https://www.postgresql.org/about/news/2592/
+  * https://www.postgresql.org/docs/15/release-15-2.html
+- Bump latest_supported_llvm_ver to 15.
+
+-------------------------------------------------------------------
+Thu Nov 10 14:35:02 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15.1:
+  * https://www.postgresql.org/about/news/2543/
+  * https://www.postgresql.org/docs/15/release-15-1.html
+
+-------------------------------------------------------------------
+Thu Oct 13 14:03:27 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15.0:
+  * https://www.postgresql.org/about/news/p-2526/ 
+  * https://www.postgresql.org/docs/15/release-15.html
+- Move pg_upgrade from *-contrib to *-server.
+- Drop support for the 9.x versioning scheme.
+
+-------------------------------------------------------------------
+Thu Oct  6 13:20:57 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15~rc2
+  * https://www.postgresql.org/about/news/p-2521/
+  * Reverting the "optimized order of GROUP BY keys" feature.
+
+-------------------------------------------------------------------
+Fri Sep 30 10:43:09 UTC 2022 - Fabian Vogt <fvogt@suse.com>
+
+- Fix source URLs
+
+-------------------------------------------------------------------
+Thu Sep 29 14:02:38 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15~rc1
+  https://www.postgresql.org/about/news/p-2516/
+
+-------------------------------------------------------------------
+Thu Sep 22 21:26:36 UTC 2022 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Create mechanism to specify the latest supported LLVM version.
+  Automatically pin to that version if the distribution has a newer
+  unsupported default version.
+
+-------------------------------------------------------------------
+Mon Sep 12 09:25:30 UTC 2022 - Andreas Schwab <schwab@suse.de>
+
+- Disable LLVM JIT on riscv64
+
+-------------------------------------------------------------------
+Thu Sep  8 13:37:01 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15~beta4
+  https://www.postgresql.org/about/news/p-2507/
+
+-------------------------------------------------------------------
+Mon Sep  5 09:20:34 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Update to 15~beta3
+  https://www.postgresql.org/about/news/p-2496/
+
+-------------------------------------------------------------------
+Sat May 21 20:48:45 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- use %version requires for the contrib package for now as
+  15~beta1 is actually smaller than 15.
+
+-------------------------------------------------------------------
+Sat May 21 15:25:26 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add proper conditionals for lz4 and zstd
+
+-------------------------------------------------------------------
+Sat May 21 15:07:19 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 15~beta1 
+  https://www.postgresql.org/about/news/postgresql-15-beta-1-released-2453/
+  https://www.postgresql.org/docs/15/release-15.html
+- Refreshed patches to apply cleanly again:
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
+  postgresql-conf.patch
+  postgresql-llvm-optional.patch
+  postgresql-plperl-keep-rpath.patch
+  postgresql-testsuite-keep-results-file.patch
+  postgresql-var-run-socket.patch
+- Add buildrequires for lz4 and zstd support
+
+-------------------------------------------------------------------
+Sat May 21 14:39:42 UTC 2022 - Marcus Rueckert <mrueckert@suse.de>
+
+- fork package for postgresql 15
+
+-------------------------------------------------------------------
+Thu May 12 10:33:20 UTC 2022 - Reinhard Max <max@suse.com>
+
+- Upgrade to 14.3:
+  * bsc#1199475, CVE-2022-1552: Confine additional operations
+    within "security restricted operation" sandboxes.
+  * https://www.postgresql.org/docs/14/release-14-3.html
+
+-------------------------------------------------------------------
+Wed Apr 13 12:17:48 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1198166: Pin to llvm13 until the next patchlevel update.
+
+-------------------------------------------------------------------
+Tue Feb  8 14:01:56 UTC 2022 - Reinhard Max <max@suse.com>
+
+- bsc#1195680: Upgrade to 14.2:
+  * https://www.postgresql.org/docs/14/release-14-2.html
+  * Reindexing might be needed after applying this upgrade, so
+    please read the release notes carefully.
+
+-------------------------------------------------------------------
+Sat Dec 11 17:27:53 UTC 2021 - Sarah Kriesch <ada.lovelace@gmx.de>
+
+- boo#1190740: Add constraints file with 12GB of memory for s390x
+  as a workaround
+
+-------------------------------------------------------------------
+Thu Nov 25 11:02:15 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Add a llvmjit-devel subpackage to pull in the right versions
+  of clang and llvm for building extensions.
+- Fix some mistakes in the interdependencies between the
+  implementation packages and their noarch counterpart.
+- Update the BuildIgnore section.
+
+-------------------------------------------------------------------
+Wed Nov 10 16:56:57 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1192516: Upgrade to 14.1
+  * Make the server reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23214).
+  * Make libpq reject extraneous data after an SSL or GSS
+    encryption handshake (CVE-2021-23222).
+  * https://www.postgresql.org/docs/14/release-14-1.html
+
+-------------------------------------------------------------------
+Wed Oct 20 15:21:53 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1191782: Let rpmlint ignore shlib-policy-name-error.
+
+-------------------------------------------------------------------
+Tue Oct  5 11:34:50 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Remove postgresql-testsuite-int8.sql.patch, because its purpose
+  is unclear. This affects only the test subpackage.
+
+-------------------------------------------------------------------
+Thu Sep 30 17:28:37 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 14.0
+  https://www.postgresql.org/about/news/postgresql-14-released-2318/
+  https://www.postgresql.org/docs/14/release-14.html
+
+-------------------------------------------------------------------
+Mon Sep 27 14:04:01 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Let genlists skip non-existing binaries to avoid lots of version
+  conditionals in the file lists.
+
+-------------------------------------------------------------------
+Sat Sep 25 00:34:52 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 14~rc1
+  https://www.postgresql.org/about/news/postgresql-14-rc-1-released-2309/
+  https://www.postgresql.org/docs/14/release-14.html
+  https://wiki.postgresql.org/wiki/PostgreSQL_14_Open_Items
+
+-------------------------------------------------------------------
+Fri Jun 25 01:45:20 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 14~beta2
+  https://www.postgresql.org/about/news/postgresql-14-beta-2-released-2249/
+  https://www.postgresql.org/docs/14/release-14.html
+  https://wiki.postgresql.org/wiki/PostgreSQL_14_Open_Items
+
+-------------------------------------------------------------------
+Fri May 21 22:48:32 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to 14~beta1
+  https://www.postgresql.org/about/news/postgresql-14-beta-1-released-2213/
+  https://www.postgresql.org/docs/14/release-14.html
+  https://wiki.postgresql.org/wiki/PostgreSQL_14_Open_Items
+- disable postgresql-testsuite-int8.sql.patch:
+  it seems it is not needed anymore, need to be double checked.
+
+-------------------------------------------------------------------
+Wed May 19 15:24:24 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1185952: llvm12 breaks PostgreSQL 11 and 12 on s390x.
+  Use llvm11 as a workaround.
+
+-------------------------------------------------------------------
+Tue May 11 13:50:14 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 13.3:
+  * https://www.postgresql.org/docs/13/release-13-3.html
+  * CVE-2021-32027, bsc#1185924:
+    Prevent integer overflows in array subscripting calculations.
+  * CVE-2021-32028, bsc#1185925: Fix mishandling of “junk”
+    columns in INSERT ... ON CONFLICT ... UPDATE target lists.
+  * CVE-2021-32029, bsc#1185926: Fix possibly-incorrect
+    computation of UPDATE ... RETURNING
+    "pg_psql_temporary_savepoint" does not exist”.
+
+- Don't use %_stop_on_removal, because it was meant to be private
+  and got removed from openSUSE. %_restart_on_update is also
+  private, but still supported and needed for now (bsc#1183168).
+
+-------------------------------------------------------------------
+Mon Mar 15 19:29:39 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Re-enable build of the llvmjit subpackage on SLE, but it will
+  only be delivered on PackageHub for now (boo#1183118).
+
+-------------------------------------------------------------------
+Tue Mar  9 13:52:19 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Remove leftover PreReq on chkconfig, we stopped using it long
+  time ago.
+
+-------------------------------------------------------------------
+Fri Feb 19 15:30:08 UTC 2021 - Reinhard Max <max@suse.com>
+
+- boo#1179945: Disable icu for PostgreSQL 10 (and older) on TW.
+
+-------------------------------------------------------------------
+Wed Feb 10 13:16:32 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 13.2:
+  * https://www.postgresql.org/docs/13/release-13-2.html
+  * Updating stored views and reindexing might be needed after
+    applying this update.
+  * CVE-2021-3393, bsc#1182040: Fix information leakage in
+    constraint-violation error messages.
+  * CVE-2021-20229, bsc#1182039: Fix failure to check per-column
+    SELECT privileges in some join queries.
+  * Obsoletes postgresql-icu68.patch.
+
+-------------------------------------------------------------------
+Mon Dec 14 16:19:05 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add postgresql-icu68.patch: fix build with ICU 68
+
+-------------------------------------------------------------------
+Fri Nov 20 11:51:37 UTC 2020 - Reinhard Max <max@suse.com>
+
+- bsc#1178961: %ghost the symlinks to pg_config and ecpg.
+- boo#1179765: BuildRequire libpq5 and libecpg6 when not building
+  them to avoid dangling symlinks in the devel package.
+
+-------------------------------------------------------------------
+Wed Nov 11 11:36:01 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Upgrade to version 13.1:
+  * CVE-2020-25695, bsc#1178666: Block DECLARE CURSOR ... WITH HOLD
+    and firing of deferred triggers within index expressions and
+    materialized view queries.
+  * CVE-2020-25694, bsc#1178667:
+    a) Fix usage of complex connection-string parameters in pg_dump,
+    pg_restore, clusterdb, reindexdb, and vacuumdb.
+    b) When psql's \connect command re-uses connection parameters,
+    ensure that all non-overridden parameters from a previous
+    connection string are re-used.
+  * CVE-2020-25696, bsc#1178668: Prevent psql's \gset command from
+    modifying specially-treated variables.
+  * Fix recently-added timetz test case so it works when the USA
+    is not observing daylight savings time.
+    (obsoletes postgresql-timetz.patch)
+  * https://www.postgresql.org/about/news/2111/
+  * https://www.postgresql.org/docs/13/release-13-1.html
+
+-------------------------------------------------------------------
+Tue Nov  3 13:54:38 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Fix a DST problem in the test suite: postgresql-timetz.patch
+  https://postgr.es/m/16689-57701daa23b377bf@postgresql.org
+
+-------------------------------------------------------------------
+Fri Sep 25 06:57:55 UTC 2020 - Reinhard Max <max@suse.com>
+
+- Initial packaging of PostgreSQL 13:
+  * https://www.postgresql.org/about/news/2077/
+  * https://www.postgresql.org/docs/13/release-13.html

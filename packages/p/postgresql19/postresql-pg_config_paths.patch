@@ -1,0 +1,37 @@
+Index: src/port/Makefile
+===================================================================
+--- src/port/Makefile.orig
++++ src/port/Makefile
+@@ -137,18 +137,20 @@ path_srv.o: path.c pg_config_paths.h
+ # because many of these values come from makefiles and are not
+ # available to configure.
+ pg_config_paths.h: $(top_builddir)/src/Makefile.global
+-	echo "#define PGBINDIR \"$(bindir)\"" >$@
+-	echo "#define PGSHAREDIR \"$(datadir)\"" >>$@
+-	echo "#define SYSCONFDIR \"$(sysconfdir)\"" >>$@
+-	echo "#define INCLUDEDIR \"$(includedir)\"" >>$@
+-	echo "#define PKGINCLUDEDIR \"$(pkgincludedir)\"" >>$@
+-	echo "#define INCLUDEDIRSERVER \"$(includedir_server)\"" >>$@
+-	echo "#define LIBDIR \"$(libdir)\"" >>$@
+-	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$@
+-	echo "#define LOCALEDIR \"$(localedir)\"" >>$@
+-	echo "#define DOCDIR \"$(docdir)\"" >>$@
+-	echo "#define HTMLDIR \"$(htmldir)\"" >>$@
+-	echo "#define MANDIR \"$(mandir)\"" >>$@
++	T=`mktemp -p .`; \
++	echo "#define PGBINDIR \"$(bindir)\"" >>$$T; \
++	echo "#define PGSHAREDIR \"$(datadir)\"" >>$$T; \
++	echo "#define SYSCONFDIR \"$(sysconfdir)\"" >>$$T; \
++	echo "#define INCLUDEDIR \"$(includedir)\"" >>$$T; \
++	echo "#define PKGINCLUDEDIR \"$(pkgincludedir)\"" >>$$T; \
++	echo "#define INCLUDEDIRSERVER \"$(includedir_server)\"" >>$$T; \
++	echo "#define LIBDIR \"$(libdir)\"" >>$$T; \
++	echo "#define PKGLIBDIR \"$(pkglibdir)\"" >>$$T; \
++	echo "#define LOCALEDIR \"$(localedir)\"" >>$$T; \
++	echo "#define DOCDIR \"$(docdir)\"" >>$$T; \
++	echo "#define HTMLDIR \"$(htmldir)\"" >>$$T; \
++	echo "#define MANDIR \"$(mandir)\"" >>$$T; \
++	mv $$T $@
+ 
+ clean distclean:
+ 	rm -f libpgport.a libpgport_shlib.a libpgport_srv.a
