@@ -16,7 +16,7 @@
 #
 
 
-%define mversion 2025.0
+%define mversion 2026.0
 %bcond_with hsi
 %bcond_without system_flann
 %bcond_without lapack
@@ -27,7 +27,7 @@
 %bcond_with egl
 %endif
 Name:           hugin
-Version:        %{mversion}.1
+Version:        %{mversion}.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
 License:        GPL-2.0-or-later
@@ -35,8 +35,6 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         https://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
-# hg changeset 8991:5dad0e83e6c5
-Patch1:         hugin-cmake-vigra.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  OpenEXR-devel
 BuildRequires:  cmake >= 3.1.0

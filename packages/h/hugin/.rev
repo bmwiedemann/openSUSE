@@ -727,4 +727,13 @@
   * hugin-cmake-vigra.patch</comment>
     <requestid>1393011</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>daf15a698a7a7f1934787471980af87c</srcmd5>
+    <version>2026.0.0</version>
+    <time>1795442060</time>
+    <user>anag_factory</user>
+    <comment>* Update to version 2026.0.0.
+* Drop hugin-cmake-vigra.patch: incorporated upstream. (forwarded request 1399861 from badshah400)</comment>
+    <requestid>1399876</requestid>
+  </revision>
 </revisionlist>
