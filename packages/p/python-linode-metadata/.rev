@@ -34,4 +34,24 @@
   * Add @linode/dx-sdets to CODEOWNERS</comment>
     <requestid>1350571</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>40ff14f41fed3de1de0bc8661717ba4b</srcmd5>
+    <version>0.4.0</version>
+    <time>1795432950</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.0:
+  * support gzipped user-data decoding
+  * Add community contribution and hotfix labels
+  * Add security release label
+  * Add project guidelines and coding conventions to AGENTS.md
+  * update license from BSD-3-Clause to Apache-2.0 in
+    pyproject.toml
+  * Bump pypa/gh-action-pypi-publish from 1.13.0 to 1.14.0
+  * Bump actions/dependency-review-action from 4 to 5
+  * Bump actions/github-script from 8 to 9
+  * Bump actions/checkout from 6 to 7
+  * Bump actions/setup-python from 6 to 7
+  * Bump pypa/gh-action-pypi-publish from 1.14.0 to 1.14.2</comment>
+    <requestid>1399672</requestid>
+  </revision>
 </revisionlist>

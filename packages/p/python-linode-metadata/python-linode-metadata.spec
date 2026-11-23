@@ -17,10 +17,10 @@
 
 
 Name:           python-linode-metadata
-Version:        0.3.5
+Version:        0.4.0
 Release:        0
 Summary:        A client to interact with the Linode Metadata service in Python
-License:        BSD-3-Clause
+License:        Apache-2.0
 URL:            https://github.com/linode/py-metadata
 Source:         https://files.pythonhosted.org/packages/source/l/linode-metadata/linode_metadata-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
