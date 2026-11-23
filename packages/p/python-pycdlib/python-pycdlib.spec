@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-pycdlib
-Version:        1.16.0
+Version:        1.22.0
 Release:        0
 Summary:        Pure python ISO manipulation library
 License:        LGPL-2.1-only

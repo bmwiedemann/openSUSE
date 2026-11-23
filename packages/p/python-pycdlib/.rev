@@ -60,4 +60,41 @@
     struct unpacking, dot-dot lookup, and UDF CRC computation</comment>
     <requestid>1353268</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>90a71c7e23af9c327769aa9e15a26ff0</srcmd5>
+    <version>1.22.0</version>
+    <time>1795433138</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.22.0:
+  * Fix a potential infinite loop in UDF File Entry parsing
+  * Fix a potential infinite loop in ISO directory record parsing
+  * Fix a couple of issues when adding in Rock Ridge Continuation
+    Entries
+  * Improve test coverage up to 98%
+  * Make sure to reshuffle_extents() in get_file_byte_extents()
+    if necessary so users get the actual ISO offset
+  * Minor performance improvements when writing ISOs out
+  * Big cleanup of the El Torito handling to be easier to read,
+    more performant, and handle more cases gracefully
+  * Clamp reads so that they can't be larger than the remaining
+    size of the ISO and make huge virtual memory allocations
+  * Support 512 and 1024 byte logical block sizes
+  * Allow in-place modification by Rock Ridge, Joliet, or UDF
+    path
+  * In pycdlib-extract-files, ensure that a Rock Ridge ISO with
+    symlinks can't write outside of the current directory
+  * Deprecate the following methods: get_and_write(),
+    get_and_write_fp(), add_joliet_directory(),
+    rm_joliet_directory(), list_dir(), get_entry(),
+    modify_file_in_place()
+  * Add in a new update_file_contents{_fp}() method to update
+    file data for an entry
+  * Add a new InPlaceEditor context manager that allows immediate
+    updates to a file entry with some restrictions (replacement
+    for modify_file_in_place())
+  * Pass custom vol_ident labels through UDF
+  * Add new API to get a tuple list of file sizes and offsets
+  * Fix a bug when removing El Torito from certain ISOs</comment>
+    <requestid>1399772</requestid>
+  </revision>
 </revisionlist>

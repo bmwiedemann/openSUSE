@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:06:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.22.0:
+  * Fix a potential infinite loop in UDF File Entry parsing
+  * Fix a potential infinite loop in ISO directory record parsing
+  * Fix a couple of issues when adding in Rock Ridge Continuation
+    Entries
+  * Improve test coverage up to 98%
+  * Make sure to reshuffle_extents() in get_file_byte_extents()
+    if necessary so users get the actual ISO offset
+  * Minor performance improvements when writing ISOs out
+  * Big cleanup of the El Torito handling to be easier to read,
+    more performant, and handle more cases gracefully
+  * Clamp reads so that they can't be larger than the remaining
+    size of the ISO and make huge virtual memory allocations
+  * Support 512 and 1024 byte logical block sizes
+  * Allow in-place modification by Rock Ridge, Joliet, or UDF
+    path
+  * In pycdlib-extract-files, ensure that a Rock Ridge ISO with
+    symlinks can't write outside of the current directory
+  * Deprecate the following methods: get_and_write(),
+    get_and_write_fp(), add_joliet_directory(),
+    rm_joliet_directory(), list_dir(), get_entry(),
+    modify_file_in_place()
+  * Add in a new update_file_contents{_fp}() method to update
+    file data for an entry
+  * Add a new InPlaceEditor context manager that allows immediate
+    updates to a file entry with some restrictions (replacement
+    for modify_file_in_place())
+  * Pass custom vol_ident labels through UDF
+  * Add new API to get a tuple list of file sizes and offsets
+  * Fix a bug when removing El Torito from certain ISOs
+  * Various performance improvements.
+
+-------------------------------------------------------------------
 Fri May 15 05:55:14 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.16.0:
@@ -70,7 +105,7 @@ Thu Jan 19 17:47:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Relax restrictions on dates hundredthsofseconds
   * Fix MBR boot code sector size
   * More UDF cleanups
-  
+
 -------------------------------------------------------------------
 Sun Jul 18 15:41:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
@@ -118,7 +153,7 @@ Sun Jul 18 15:41:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * APIs removed:
     None
   * APIs deprecated:
-    None 
+    None
 
 -------------------------------------------------------------------
 Fri Jul 12 04:34:57 PM UTC 2019 - John Vandenberg <jayvdb@gmail.com>
