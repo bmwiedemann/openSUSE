@@ -20,7 +20,7 @@
 %global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
 Name:           %{base_name}%{?maven_version_suffix}
-Version:        3.10.1
+Version:        3.10.2
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0

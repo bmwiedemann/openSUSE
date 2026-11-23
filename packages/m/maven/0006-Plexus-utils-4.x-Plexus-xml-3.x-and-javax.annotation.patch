@@ -79,9 +79,9 @@ index 81eaa9e4e4..1514a0c18b 100644
      <plexusVersion>2.2.0</plexusVersion>
      <plexusInterpolationVersion>1.30.0</plexusInterpolationVersion>
      <!-- Blocked by 3.4.0+ changes, see MNG-7710, downgrade from parent 4.0.1 -->
--    <version.plexus-utils>3.6.2</version.plexus-utils>
-+    <version.plexus-utils>4.0.2</version.plexus-utils>
-+    <version.plexus-xml>3.0.2</version.plexus-xml>
+-    <version.plexus-utils>3.6.4</version.plexus-utils>
++    <version.plexus-utils>4.2.0</version.plexus-utils>
++    <version.plexus-xml>3.1.1</version.plexus-xml>
      <guiceVersion>5.1.0</guiceVersion>
      <guavaVersion>33.8.0-jre</guavaVersion>
      <guavafailureaccessVersion>1.0.3</guavafailureaccessVersion>
