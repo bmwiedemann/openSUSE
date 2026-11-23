@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:25:17 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 6.0.1:
+  * fix: stop deriving `ImageOS` from runs-on labels (#1419)
+  * fix: repair free-disk-space build on illumos, Solaris, NetBSD and OpenBSD (#1416)
+  * fix: misc improvements (#1415)
+  * fix: honor zero and empty values for fetch backoff and idle cleanup (#1418)
+  * fix: support `cache-mode` and make low-trust runs cache read-only (#1412)
+  * fix: stop host teardown from deleting a workdir it never created (#1409)
+  * fix: align common behaviour with GitHub's runner (#1413)
+  * fix: keep composite post steps in their own step scope (#1410)
+
+-------------------------------------------------------------------
 Wed Nov 11 10:55:17 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 6.0.0:
