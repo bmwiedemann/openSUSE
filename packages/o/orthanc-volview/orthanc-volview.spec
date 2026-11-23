@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-volview
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023-2025 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -44,6 +44,7 @@ BuildRequires:  libboost_regex-devel >= 1.66
 BuildRequires:  libboost_system-devel >= 1.66
 %endif
 BuildRequires:  libboost_thread-devel >= 1.66
+BuildRequires:  minizip-devel
 BuildRequires:  openssl-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
