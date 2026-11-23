@@ -1025,4 +1025,12 @@ See SR#946556</comment>
     <comment>Submit rust 1.99</comment>
     <requestid>1383887</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>2c9b5b6272943a278f047097d74155f4</srcmd5>
+    <version>1.100.0</version>
+    <time>1795432844</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1398322</requestid>
+  </revision>
 </revisionlist>
