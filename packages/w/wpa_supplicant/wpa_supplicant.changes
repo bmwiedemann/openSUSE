@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Nov 10 08:40:00 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add D-Bus-Drop-leftover-allow-send_interface-for-root.patch:
+  drop the send_interface allow rule left over from upstream commit
+  df9e2c2a55ee to fix the rpmlint
+  dbus-policy-allow-without-destination error
+
+-------------------------------------------------------------------
+Thu Nov  5 08:35:04 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Log to the journal by default instead of /var/log/wpa_supplicant.log,
+  needs CONFIG_DEBUG_SYSLOG=y in config (bsc#1236494)
+- Drop the ineffective "-c /etc/wpa_supplicant/wpa_supplicant.conf"
+  from wpa_supplicant.service and the D-Bus activation files.
+  Without -i, wpa_supplicant ignores it when started with -u;
+  wpa_supplicant@.service keeps it.
+- Drop fi.epitest.hostap.WPASupplicant.service (wicked does not
+  use it since 0.6.66)
+- Drop the logrotate config and the logrotate dependency, nothing
+  writes /var/log/wpa_supplicant.log by default anymore
+- Replace the packaged dbus-fi.w1.wpa_supplicant1.service symlink
+  with Alias= in wpa_supplicant.service (equal to upstream).
+  The alias now only exists while wpa_supplicant.service is
+  enabled. D-Bus activation is not affected, it uses
+  wpa_supplicant.service. Services or scripts which use
+  dbus-fi.w1.wpa_supplicant1.service directly need to run
+  "systemctl enable wpa_supplicant.service" after this update.
+- Fix /run/wpa_supplicant being listed twice in %files
+
+-------------------------------------------------------------------
+Sun Oct 18 15:50:05 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Recommend wireless-regdb so the kernel can load the regulatory
+  database and use the correct country domain instead of the
+  restrictive world domain; since crda was dropped from Factory
+  nothing pulled the package in, so fresh installs never got it
+  (cfg80211: failed to load regulatory.db)
+- Drop the readline-devel BuildRequires: the shipped build
+  config disables CONFIG_READLINE and nothing in the build
+  uses readline
+- Use the make_build macro for the main and eapol_test builds,
+  keeping the explicit CFLAGS optflags assignment in front of
+  it: the assignment is load-bearing for this Makefile, without
+  it the compiles fall back to the Makefile defaults (verified
+  in the build log)
+- Correct the License tag to BSD-3-Clause: upstream has
+  distributed under the BSD option only since 2012 (see
+  COPYING), the GPL v2 option is no longer used and was
+  GPL-2.0-only, never -or-later
+- Add the systemd hardening block to wpa_supplicant@.service
+  so the template unit carries the same directives as
+  wpa_supplicant.service
+
+-------------------------------------------------------------------
 Mon Aug 17 12:22:02 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to v2.12:

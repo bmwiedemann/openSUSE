@@ -20,13 +20,11 @@ Name:           wpa_supplicant
 Version:        2.12
 Release:        0
 Summary:        WPA supplicant implementation
-License:        BSD-3-Clause AND GPL-2.0-or-later
+License:        BSD-3-Clause
 URL:            https://w1.fi/wpa_supplicant
 Source0:        https://w1.fi/releases/%{name}-%{version}.tar.gz
 Source1:        config
 Source2:        %{name}.conf
-Source3:        fi.epitest.hostap.WPASupplicant.service
-Source4:        logrotate.wpa_supplicant
 Source5:        fi.w1.wpa_supplicant1.service
 Source6:        wpa_supplicant.service
 Source7:        wpa_supplicant@.service
@@ -41,8 +39,9 @@ Patch5:         wpa_supplicant-dump-certificate-as-PEM-in-debug-mode.diff
 Patch6:         Revert-Mark-authorization-completed-on-driver-indica.patch
 # UPSTREAM-FIX fix https://w1.fi/security/2026-5
 Patch7:         RADIUS-Fix-Message-Authenticator-attribute-validatio.patch
+# Leftover from upstream df9e2c2a55ee, flagged by rpmlint
+Patch8:         D-Bus-Drop-leftover-allow-send_interface-for-root.patch
 BuildRequires:  pkgconfig
-BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
@@ -50,7 +49,7 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(openssl)
-Requires:       logrotate
+Recommends:     wireless-regdb
 
 %description
 wpa_supplicant is an implementation of the WPA Supplicant component,
@@ -73,11 +72,11 @@ cp %{SOURCE1} wpa_supplicant/.config
 
 %build
 cd wpa_supplicant
-CFLAGS="%{optflags}" make V=1 %{?_smp_mflags}
-CFLAGS="%{optflags}" make V=1 %{?_smp_mflags} eapol_test
+CFLAGS="%{optflags}" %make_build
+CFLAGS="%{optflags}" %make_build eapol_test
 cd wpa_gui-qt4
-%qmake6
-make %{?_smp_mflags}
+%{qmake6}
+%make_build
 
 %install
 install -d %{buildroot}/%{_sbindir}
@@ -91,15 +90,7 @@ install -d %{buildroot}/%{_sysconfdir}/%{name}
 install -m 0600 %{SOURCE2} %{buildroot}/%{_sysconfdir}/%{name}
 sed 's-@RUNSTATEDIR@-%{_rundir}-g' -i %{buildroot}/%{_sysconfdir}/%{name}/%{name}.conf
 install -d %{buildroot}/%{_datadir}/dbus-1/system-services
-install -m 0644 %{SOURCE3} %{buildroot}/%{_datadir}/dbus-1/system-services
 install -m 0644 %{SOURCE5} %{buildroot}/%{_datadir}/dbus-1/system-services
-%if 0%{?suse_version} > 1500
-install -d %{buildroot}/%{_distconfdir}/logrotate.d/
-install -m 644 %{SOURCE4} %{buildroot}/%{_distconfdir}/logrotate.d/wpa_supplicant
-%else
-install -d %{buildroot}/%{_sysconfdir}/logrotate.d/
-install -m 644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/logrotate.d/wpa_supplicant
-%endif
 install -d %{buildroot}/%{_rundir}/%{name}
 install -d %{buildroot}%{_mandir}/man{5,8}
 install -m 0644 wpa_supplicant/doc/docbook/*.8 %{buildroot}%{_mandir}/man8
@@ -115,26 +106,9 @@ ln -s service %{buildroot}/%{_sbindir}/rcwpa_supplicant
 %endif
 # avoid spurious dependency on /usr/bin/python
 chmod -x wpa_supplicant/examples/*.py
-# dbus auto activation boo#966535
-ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.epitest.hostap.WPASupplicant.service
-ln -s wpa_supplicant.service %{buildroot}%{_unitdir}/dbus-fi.w1.wpa_supplicant1.service
 
 %pre
 %service_add_pre wpa_supplicant.service
-%if 0%{?suse_version} > 1500
-# Prepare for migration to /usr/etc; save any old .rpmsave
-for i in logrotate.d/wpa_supplicant ; do
-   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
-done
-%endif
-
-%if 0%{?suse_version} > 1500
-%posttrans
-# Migration to /usr/etc, restore just created .rpmsave
-for i in logrotate.d/wpa_supplicant ; do
-   test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
-done
-%endif
 
 %post
 %service_add_post wpa_supplicant.service
@@ -158,17 +132,9 @@ done
 %{_datadir}/dbus-1/system.d/%{name}.conf
 %{_datadir}/dbus-1/system-services
 %config %{_sysconfdir}/%{name}/%{name}.conf
-%if 0%{?suse_version} > 1500
-%{_distconfdir}/logrotate.d/wpa_supplicant
-%else
-%config(noreplace) %{_sysconfdir}/logrotate.d/wpa_supplicant
-%endif
-%dir %{_rundir}/%{name}
-%ghost %{_rundir}/%{name}
+%ghost %dir %{_rundir}/%{name}
 %{_unitdir}/wpa_supplicant.service
 %{_unitdir}/wpa_supplicant@.service
-%{_unitdir}/dbus-fi.epitest.hostap.WPASupplicant.service
-%{_unitdir}/dbus-fi.w1.wpa_supplicant1.service
 %dir %{_sysconfdir}/%{name}
 %{_mandir}/man8/*
 %exclude %{_mandir}/man8/wpa_gui.*

@@ -5,9 +5,20 @@ Requires=sys-subsystem-net-devices-%I.device
 After=sys-subsystem-net-devices-%I.device
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=read-only
+ProtectHostname=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions
 Type=dbus
 BusName=fi.w1.wpa_supplicant1
-ExecStart=/usr/sbin/wpa_supplicant -i%i -c /etc/wpa_supplicant/wpa_supplicant.conf -u -t -f /var/log/wpa_supplicant.log
+ExecStart=/usr/sbin/wpa_supplicant -i%i -c /etc/wpa_supplicant/wpa_supplicant.conf -u -s
 
 [Install]
 WantedBy=multi-user.target

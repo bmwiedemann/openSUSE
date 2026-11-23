@@ -1,0 +1,23 @@
+From: Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+Subject: [PATCH] D-Bus: Drop leftover <allow send_interface="..."/> for root
+
+Commit df9e2c2a55ee removed <deny send_interface="fi.w1.wpa_supplicant1"/>
+from the default context but kept the matching allow rule for root, which
+has had no purpose since.
+
+Fixes: df9e2c2a55ee ("D-Bus: Don't do <deny send_interface="..." /> in dbus service file")
+
+---
+ wpa_supplicant/dbus/dbus-wpa_supplicant.conf |    1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
++++ b/wpa_supplicant/dbus/dbus-wpa_supplicant.conf
+@@ -6,7 +6,6 @@
+                 <allow own="fi.w1.wpa_supplicant1"/>
+ 
+                 <allow send_destination="fi.w1.wpa_supplicant1"/>
+-                <allow send_interface="fi.w1.wpa_supplicant1"/>
+                 <allow receive_sender="fi.w1.wpa_supplicant1" receive_type="signal"/>
+         </policy>
+         <policy context="default">

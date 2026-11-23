@@ -15,10 +15,11 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
+# end of automatic additions
 Type=dbus
 BusName=fi.w1.wpa_supplicant1
-ExecStart=/usr/sbin/wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -u -t -f /var/log/wpa_supplicant.log
+ExecStart=/usr/sbin/wpa_supplicant -u -s
 
 [Install]
 WantedBy=multi-user.target
+Alias=dbus-fi.w1.wpa_supplicant1.service
