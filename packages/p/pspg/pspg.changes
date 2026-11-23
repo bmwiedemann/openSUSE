@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov  2 23:14:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.9.1:
+  - fix possible crash on correct input data
+
+-------------------------------------------------------------------
 Fri Oct 23 08:26:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.9.0:

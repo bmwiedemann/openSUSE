@@ -17,7 +17,7 @@
 
 
 Name:           pspg
-Version:        5.9.0
+Version:        5.9.1
 Release:        0
 Summary:        Pager for PostgreSQL, MariaDB, Percona, and MySQL
 License:        BSD-2-Clause

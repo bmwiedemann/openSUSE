@@ -57,4 +57,12 @@
     <comment>Update to 5.9.0</comment>
     <requestid>1392006</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1d4fd8c0402469aaa424055d8ba29946</srcmd5>
+    <version>5.9.1</version>
+    <time>1795442911</time>
+    <user>anag_factory</user>
+    <comment>Update pspg to 5.9.1: fix possible crash on correct input data.</comment>
+    <requestid>1399721</requestid>
+  </revision>
 </revisionlist>
