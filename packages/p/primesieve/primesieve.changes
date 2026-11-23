@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 15 13:17:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primesieve-12.18
+- multiarch_arm_sve.cmake: Disable ARM SVE runtime dispatching for GCC < 14 due to miscompilation
+- RiemannR.cpp: Use max() instead of infinity() for -ffast-math compatibility
+- actions.lock: Lock GitHub Actions to exact commits to prevent supply chain attacks
+
+-------------------------------------------------------------------
 Sat Nov 07 15:44:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primesieve-12.17

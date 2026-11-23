@@ -225,4 +225,12 @@ Re-submission due to declined Request 1381304 (https://build.opensuse.org/reques
     <comment>Update to primesieve-12.17</comment>
     <requestid>1396127</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>6a1e21cf93713a58e68d4398d624d5e3</srcmd5>
+    <version>12.18</version>
+    <time>1795442069</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1399917</requestid>
+  </revision>
 </revisionlist>
