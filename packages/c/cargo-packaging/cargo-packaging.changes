@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 08:27:36 UTC 2026 - Xiaoguang Wang <xwang@suse.com>
+
+- Fix build with Rust 1.100: Cargo's new build-dir layout places
+  generated shell completions under
+  target/release/build/rust-rpm-prov/completions. Install them from
+  whichever layout is present so older Cargo versions still work.
+
+-------------------------------------------------------------------
 Tue Jun 23 04:03:45 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.5.0+0:

@@ -147,4 +147,15 @@ provides from elf metadata of vendored deps
     <comment></comment>
     <requestid>1361239</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>ffa2ef546d5203e00021c3521fb6a078</srcmd5>
+    <version>1.5.0+0</version>
+    <time>1795432872</time>
+    <user>anag_factory</user>
+    <comment>- Fix build with Rust 1.100: Cargo's new build-dir layout places
+  generated shell completions under
+  target/release/build/rust-rpm-prov/completions. Install them from
+  whichever layout is present so older Cargo versions still work.</comment>
+    <requestid>1398948</requestid>
+  </revision>
 </revisionlist>

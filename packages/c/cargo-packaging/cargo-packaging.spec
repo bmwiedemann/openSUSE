@@ -51,8 +51,14 @@ install -D -p -m 0644 -t %{buildroot}%{_rpmconfigdir}/macros.d %{_builddir}/%{na
 
 install -D -p -m 0755 -t %{buildroot}%{_rpmconfigdir} %{_builddir}/%{name}-%{version}/target/release/rust-rpm-prov
 
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/_rust-rpm-prov
-install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d %{_builddir}/%{name}-%{version}/target/release/build/completions/rust-rpm-prov.bash
+# Cargo 1.100 changed its build-dir layout. Completions used to be in
+# target/release/build/completions, but are now in
+# target/release/build/rust-rpm-prov/completions.
+completions=%{_builddir}/%{name}-%{version}/target/release/build/completions
+[ -d "$completions" ] || completions=%{_builddir}/%{name}-%{version}/target/release/build/rust-rpm-prov/completions
+
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/zsh_completion.d "$completions/_rust-rpm-prov"
+install -D -p -m 0755 -t %{buildroot}%{_sysconfdir}/bash_completion.d "$completions/rust-rpm-prov.bash"
 
 %files
 
