@@ -327,4 +327,12 @@
     <comment>1</comment>
     <requestid>1393243</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>25d5cb78b6886b723a7399d11f99d270</srcmd5>
+    <version>2.10.1</version>
+    <time>1795433249</time>
+    <user>anag_factory</user>
+    <comment>update to 2.10.1 (forwarded request 1399848 from ojkastl_buildservice)</comment>
+    <requestid>1399886</requestid>
+  </revision>
 </revisionlist>

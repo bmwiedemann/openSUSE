@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:14:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.10.1:
+  Flux v2.10.1 is a patch release that fixes credential caching
+  across the controllers, so changes to the
+  credential.auth.fluxcd.io/username and
+  gcp.auth.fluxcd.io/workload-identity-provider ServiceAccount
+  annotations take effect on the next reconcile instead of
+  continuing to use the previously cached authenticator until it
+  expires or the controller restarts. It also resolves the default
+  decryption ServiceAccount lazily for Kustomizations that only use
+  Age or PGP keys, restores authentication to registries whose
+  token service runs on a private address and after same-host HTTP
+  to HTTPS redirects by updating ORAS to v2.7.0, and fixes Git
+  checkouts that deleted the target of a relative symlink or got
+  permanently stuck when the push branch removed a file that
+  relative symlinks point to. Users are encouraged to upgrade for
+  the best experience.
+  * Components changelog
+    - source-controller v1.10.2
+    - kustomize-controller v1.10.2
+    - notification-controller v1.10.1
+    - helm-controller v1.7.2
+    - image-reflector-controller v1.3.1
+    - image-automation-controller v1.3.1
+  * CLI changelog
+    - [release/v2.10.x] Strip credentials from the push artifact
+      source URL in #6179
+    - [release/v2.10.x] Reject partial basic auth in secret
+      commands in #6185
+    - [release/v2.10.x] Paginate resource listing in flux migrate
+      in #6196
+    - [release/v2.10.x] Prevent infinite loop on flux migrate in
+      #6205
+    - [release/v2.10.x] Fix resolve-symlinks for read-only
+      directories in #6207
+    - [release/v2.10.x] Fix panic on unreadable kustomization file
+      in #6208
+    - [release/v2.10.x] Update toolkit components in #6210
+    - [release/v2.10.x] Fix panic decoding short Helm release
+      storage in tree in #6211
+    - [release/v2.10.x] Allow colons in --registry-creds password
+      in #6212
+    - [release/v2.10.x] Fix --team parsing in bootstrap commands in
+      #6213
+
+-------------------------------------------------------------------
 Tue Oct 27 15:06:34 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 2.10.0:
