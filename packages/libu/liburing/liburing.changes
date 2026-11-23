@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:56:40 UTC 2026 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Add 0001-test-sqpoll-disable-exit-pass-real-output-pointers-t.patch
+  to fix tests for kernel 7.4
+
+-------------------------------------------------------------------
 Thu Nov  5 06:19:35 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch

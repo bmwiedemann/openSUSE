@@ -338,4 +338,13 @@
   * sqpoll-exec.t, thread-exit.t: flaky on 7.3</comment>
     <requestid>1395083</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>33aae89caddb60673f6ce90596bc6494</srcmd5>
+    <version>2.15</version>
+    <time>1795432851</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-test-sqpoll-disable-exit-pass-real-output-pointers-t.patch
+  to fix tests for kernel 7.4</comment>
+    <requestid>1398841</requestid>
+  </revision>
 </revisionlist>

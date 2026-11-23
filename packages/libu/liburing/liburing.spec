@@ -29,7 +29,8 @@ URL:            https://github.com/axboe/liburing
 Source0:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz
 Source1:        https://brick.kernel.dk/snaps/%{name}-%{version}.tar.gz.asc
 Source2:        https://git.kernel.org/pub/scm/docs/kernel/pgpkeys.git/plain/keys/F7D358FB2971E0A6.asc#/%{name}.keyring
-Patch:          0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch
+Patch0:         0001-test-waitid-accept-ETIME-for-a-fired-linked-timeout.patch
+Patch1:         0001-test-sqpoll-disable-exit-pass-real-output-pointers-t.patch
 BuildRequires:  bash
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

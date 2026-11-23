@@ -1,0 +1,47 @@
+From 2ffb54892358920e18ceb7aee375dc75263b6e43 Mon Sep 17 00:00:00 2001
+From: Manohar Paturi <manoharpaturi777@gmail.com>
+Date: Thu, 12 Nov 2026 08:04:49 +0530
+Subject: [PATCH liburing] test/sqpoll-disable-exit: pass real output pointers
+ to the setup helper
+
+syz_io_uring_setup() stores the mapped ring and SQEs pointers through
+its last two arguments, but execute_one() passes NULL for both, so every
+forked iteration crashes on a NULL write right after the first mmap().
+The reproduction therefore never reaches the exit path it is meant to
+exercise, and the run spams crashes (and core dumps, where enabled) for
+all 100 iterations.
+
+Hand it the addresses of local variables instead, so the setup runs to
+completion like the original syzkaller program.
+
+Fixes: https://github.com/axboe/liburing/issues/1632
+Signed-off-by: Manohar Paturi <manoharpaturi777@gmail.com>
+---
+ test/sqpoll-disable-exit.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/test/sqpoll-disable-exit.c b/test/sqpoll-disable-exit.c
+index bc4c2fbc..7dc376c8 100644
+--- a/test/sqpoll-disable-exit.c
++++ b/test/sqpoll-disable-exit.c
+@@ -178,6 +178,7 @@ static void loop(void)
+ 
+ void execute_one(void)
+ {
++  void *ring_ptr, *sqes_ptr;
+   *(uint32_t*)0x20000044 = 0;
+   *(uint32_t*)0x20000048 = 0x42;
+   *(uint32_t*)0x2000004c = 0;
+@@ -186,7 +187,8 @@ void execute_one(void)
+   *(uint32_t*)0x2000005c = 0;
+   *(uint32_t*)0x20000060 = 0;
+   *(uint32_t*)0x20000064 = 0;
+-  syz_io_uring_setup(0x74bc, 0x20000040, 0x20ffb000, 0x20ffc000, 0, 0);
++  syz_io_uring_setup(0x74bc, 0x20000040, 0x20ffb000, 0x20ffc000,
++                     (long)(uintptr_t)&ring_ptr, (long)(uintptr_t)&sqes_ptr);
+ }
+ int main(void)
+ {
+-- 
+2.56.0
+
