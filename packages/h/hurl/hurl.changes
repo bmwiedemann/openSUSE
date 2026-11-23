@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:18:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 8.1.0
+  Enhancements:
+  * Add --no-header option to remove specific HTTP header.
+  * Add --fail-with-body option to output response body when there
+    are errors.
+  * Add no jsonpath coercion option.
+  * Add --proxy-header option to send header exclusively to a
+    proxy.
+  * Add --http2-prior-knowledge command line option to use HTTP/2
+    without HTTP/1.1 Upgrade.
+  * Re-export Input struct from hurl_core to hurl.
+  * Add --tls-max option.
+  * Skip suggestion fo very long keyword #5360
+  * Add --tls-min option to set the minimum allowed TLS version.
+  * Add Hurl config file.
+  Bugs Fixed:
+  * Fix misleading error message for not-equal predicate.
+  * Fix variable option values starting with a number or boolean.
+  * Fix recorded headers when connecting to proxy with CONNECT.
+  * Fix Hurl debug curl command when request binary body contains
+    NUL char.
+  * Fix parsing exponent in JSONPath expr.
+  * Add explicit nesting limit to JSONPath expression parsing.
+  * Fix hurlfmt panic when importing curl commands without a URL.
+  * Fix crash when receiving non UTF-8 server cookie.
+  * Fix crash for bad @cookie_storage_set comment (experimental
+    feature) #5348.
+  * Parse finite float in JSONPath.
+  * Escape curl command from --curl option and --verbose log.
+  Security Issues Fixed:
+  * Fix CVE-2026-63481 stripping cookie from Cookies section when
+    redirecting to a different host #5118
+  * Fix escaping headers values in HTML report #5228
+  * Fix symlinks escaping file root #5289
+  * Fix credentials leaking using --header and following
+    redirection #5310
+  * Add explicit nesting limit to JSON Body parsing #5317
+  * Fix escaping capture name in HTML report #5346
+- Add patch:
+  * hurl-lower-rust-version-dependency.patch
+
+-------------------------------------------------------------------
+Thu Nov 19 19:43:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Package hurlfmt, manpages and completions.
+
+-------------------------------------------------------------------
 Wed May  6 19:30:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.0.1:

@@ -17,14 +17,15 @@
 
 
 Name:           hurl
-Version:        8.0.1
+Version:        8.1.0
 Release:        0
 Summary:        Run and test HTTP requests with plain text
 License:        Apache-2.0
 URL:            https://github.com/Orange-OpenSource/hurl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.95.0
+Patch0:         hurl-lower-rust-version-dependency.patch
+BuildRequires:  cargo >= 1.98
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  libxml2-devel
@@ -55,6 +56,16 @@ mkdir -p .cargo
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -m 0755 %{_builddir}/%{name}-%{version}/target/release/hurlfmt %{buildroot}%{_bindir}/hurlfmt
+
+install -D -m 0644 docs/manual/hurl.1 %{buildroot}%{_mandir}/man1/hurl.1
+install -D -m 0644 docs/manual/hurlfmt.1 %{buildroot}%{_mandir}/man1/hurlfmt.1
+install -D -m 0644 completions/hurl.bash %{buildroot}/%{_datadir}/bash-completion/completions/hurl
+install -D -m 0644 completions/hurlfmt.bash %{buildroot}/%{_datadir}/bash-completion/completions/hurlfmt
+install -D -m 0644 completions/hurl.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/hurl.fish
+install -D -m 0644 completions/hurlfmt.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/hurlfmt.fish
+install -D -m 0644 completions/_hurl %{buildroot}/%{_datadir}/zsh/site-functions/_hurl
+install -D -m 0644 completions/_hurlfmt %{buildroot}/%{_datadir}/zsh/site-functions/_hurlfmt
 
 %check
 # start a local HTTP server for the tests
@@ -83,5 +94,19 @@ python3 unix_socket/server.py > build/server-unix-socket.log 2>&1 &
 %doc README.md
 %license LICENSE
 %{_bindir}/hurl
+%{_bindir}/hurlfmt
+%{_mandir}/man1/hurl.1%{?ext_man}
+%{_mandir}/man1/hurlfmt.1%{?ext_man}
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/hurl
+%{_datadir}/bash-completion/completions/hurlfmt
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/hurl.fish
+%{_datadir}/fish/vendor_completions.d/hurlfmt.fish
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_hurl
+%{_datadir}/zsh/site-functions/_hurlfmt
 
 %changelog

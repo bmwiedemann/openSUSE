@@ -1,0 +1,26 @@
+diff --git a/packages/hurl/Cargo.toml b/packages/hurl/Cargo.toml
+index 954b0304b2..2dd66f06a5 100644
+--- a/packages/hurl/Cargo.toml
++++ b/packages/hurl/Cargo.toml
+@@ -8,7 +8,7 @@ description = "Hurl, run and test HTTP requests"
+ documentation = "https://hurl.dev"
+ homepage = "https://hurl.dev"
+ repository = "https://github.com/Orange-OpenSource/hurl"
+-rust-version = "1.99.1"
++rust-version = "1.98"
+ 
+ [lib]
+ name = "hurl"
+diff --git a/packages/hurlfmt/Cargo.toml b/packages/hurlfmt/Cargo.toml
+index a1879f4e41..17620c059c 100644
+--- a/packages/hurlfmt/Cargo.toml
++++ b/packages/hurlfmt/Cargo.toml
+@@ -8,7 +8,7 @@ description = "Format Hurl files"
+ documentation = "https://hurl.dev"
+ homepage = "https://hurl.dev"
+ repository = "https://github.com/Orange-OpenSource/hurl"
+-rust-version = "1.99.1"
++rust-version = "1.98"
+ 
+ [dependencies]
+ base64 = "0.23.1"
