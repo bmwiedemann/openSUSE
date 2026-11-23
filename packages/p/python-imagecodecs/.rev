@@ -299,4 +299,41 @@
     <comment>Add CVE and bug references</comment>
     <requestid>1394577</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>707405ea35b3af7070504dd7aa1cf9ed</srcmd5>
+    <version>2026.11.11</version>
+    <time>1795433204</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.11.11:
+  * Rename JPEG8 codec to JPEG (deprecate JPEG8 alias), imread/imwrite
+    codec to imagecodec, and imread return_codec to info (breaking)
+  * Remove LJPEG fallback in jpeg_encode/decode, Python bz2 fallback,
+    RGB565 in JPEG/MOZJPEG, and planar auto-detection in jpeg2k/htj2k
+  * Reject read-only output arrays in decoders, return 1D uint8/byte
+    views of out, and use exact output size for int out in encoders
+  * Make mozjpeg_decode an alias of jpeg_decode and move Brunsli JPEG
+    transcoding to brunsli_encode_jpeg/decode_jpeg (breaking)
+  * Convert CIELab to RGB in jpeg2k_decode, derive jpeg2k_encode
+    colorspace/samples, and reject bitspersample &gt; 26 (breaking)
+  * Change BLOSC2/B2ND params/enums to match python-blosc2, disable
+    b2nd_decode threading, and add more BLOSC2/B2ND filters/codecs
+  * Change packints to big-endian, webp_encode to lossy when level set,
+    htj2k_encode resolutions, ISAL speed to 0, and Jpegxl lossless
+  * Switch BMP, PCX, and TGA codecs to thread-safe C libraries, and try
+    APNG for PNG in imread
+  * Add iminfo and codec info functions, imagecodecs.typing module, and
+    JpegCodec for zarr-extensions
+  * Add jpeg_transcode/jpeg_merge, jpeg_decode scale, iccprofile/alpha/
+    colorspace/planar/pixelformat/hc/byteorder/wavpack options
+  * Add displayp3, rec2020, sgray profiles and named curves to
+    cms_profile; reject unused whitepoint/primaries args
+  * Support negative index in AVIF/HEIF/APNG/EXR, non-native byte order
+    across array codecs, LERC noData (lerc_decode_4D), and multi-GZIP
+  * Support 16-bit gray/RGB and gray-alpha in spng_decode, 15/16-bit
+    colormaps/RTL in tga_decode, and interruptible zopfli_encode
+  * Fix &gt;4 GB silent truncation/checksums, concatenated LZMA/BZ2, and
+    truncation in LZMA/LZ4F/LZ4H5/BZ2/SZIP/AEC/JPEGXR/JPEGXS/LJPEG
+  * Fix crashes, OOB reads/writes, heap overflows, and infinite loops</comment>
+    <requestid>1399823</requestid>
+  </revision>
 </revisionlist>

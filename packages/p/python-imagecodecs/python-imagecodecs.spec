@@ -19,7 +19,6 @@
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
-%global skip_python311 1
 %bcond_without test
 %else
 %define psuffix %{nil}
@@ -27,15 +26,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-imagecodecs%{psuffix}
-Version:        2026.10.10
+Version:        2026.11.11
 Release:        0
 Summary:        Image transformation, compression, and decompression codecs
 License:        BSD-3-Clause
 URL:            https://github.com/cgohlke/imagecodecs/
 Source0:        https://files.pythonhosted.org/packages/source/i/imagecodecs/imagecodecs-%{version}.tar.gz
 Source1:        imagecodecs_distributor_setup.py
-# PATCH-FIX-OPENSUSE Remove h5lookup tests that cause failed assertions
-Patch0:         no-length-assertion-aborts.patch
 BuildRequires:  %{python_module Cython >= 3.1.0}
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module numpy-devel >= 2.1}

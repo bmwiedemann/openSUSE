@@ -24,6 +24,7 @@ def customize_build(EXTENSIONS, OPTIONS):
     del EXTENSIONS['jpegxs']   # jxs not available in Factory
     del EXTENSIONS['sz3']      # SZ3c not available in Factory
     del EXTENSIONS['ultrahdr'] # uhdr not available in Factory
+    del EXTENSIONS['jpegli']  # not in Factory
 
     EXTENSIONS['avif']['libraries'] = [
         'avif',
@@ -43,5 +44,5 @@ def customize_build(EXTENSIONS, OPTIONS):
     EXTENSIONS['exr']['include_dirs'].append(includedir +  'OpenEXR')
     EXTENSIONS['zopfli']['include_dirs'].append(includedir +  'zopfli')
     EXTENSIONS['lzham']['libraries'] = ['lzhamdll']
-    # gh#gohlke/imagecodecs#111
-    EXTENSIONS['jpeg8']['sources'] = []
+    # use libjpeg-turbo 3
+    EXTENSIONS['jpeg']['sources'] = []
