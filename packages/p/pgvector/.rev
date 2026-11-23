@@ -71,4 +71,12 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
     can lead to arbitrary code execution.</comment>
     <requestid>1382585</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>59316c38424434e9b2b499344043e6cd</srcmd5>
+    <version>0.8.7</version>
+    <time>1795432996</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 19</comment>
+    <requestid>1399686</requestid>
+  </revision>
 </revisionlist>
