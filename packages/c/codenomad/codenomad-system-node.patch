@@ -24,7 +24,7 @@ satisfies the 24.x pin.
 +++ b/packages/tauri-app/src-tauri/src/managed_node.rs	2026-10-30 16:29:51.181672814 +0100
 @@ -2,6 +2,17 @@
  use std::path::{Path, PathBuf};
- 
+
  pub fn resolve_bundled_node_binary() -> anyhow::Result<String> {
 +    // Distro build: prefer the system Node.js over a downloaded bundle.
 +    if let Ok(env_binary) = std::env::var("NODE_BINARY") {
@@ -39,32 +39,61 @@ satisfies the 24.x pin.
 +    }
      let relative_binary = binary_relative_path();
      let platform_dir = platform_dir_name()?;
- 
---- a/scripts/smoke-packaged-resources.cjs	2026-10-30 17:26:33.163232014 +0100
-+++ b/scripts/smoke-packaged-resources.cjs	2026-10-30 17:26:33.167232463 +0100
-@@ -70,9 +70,12 @@
+
+--- a/scripts/smoke-packaged-resources.cjs
++++ b/scripts/smoke-packaged-resources.cjs
+@@ -72,11 +72,15 @@
    const remoteTunnel = path.join(serverRoot, "dist", "remote-control", "tunnel-runtime.js")
    // The web app's icon, which also names Tauri's notifications on Windows.
    const appIcon = path.join(serverRoot, "public", "pwa-192x192.png")
--  const node = nodeBinary(resourcesRoot, target)
+-  const node = electron ? path.resolve(electron) : nodeBinary(resourcesRoot, target)
 +  // Distro build: no downloaded bundle on OBS; smoke the system Node.js
 +  // that the Rust backend resolves at runtime (see managed_node.rs).
-+  const bundledNode = nodeBinary(resourcesRoot, target)
-+  const node = fs.existsSync(bundledNode) ? bundledNode : "/usr/bin/node"
- 
--  for (const requiredPath of [node, entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")]) {
-+  for (const requiredPath of [entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")]) {
++  const bundledNode = electron ? path.resolve(electron) : nodeBinary(resourcesRoot, target)
++  const node = electron ? bundledNode : (fs.existsSync(bundledNode) ? bundledNode : "/usr/bin/node")
+   const npm = electron ? path.join(resourcesRoot, "node", target, "npm", "bin", "npm-cli.js")
+     : path.join(resourcesRoot, "node", target, target.startsWith("win32-") ? "node_modules" : "lib/node_modules", "npm", "bin", "npm-cli.js")
++  const usingSystemNode = !electron && node === "/usr/bin/node"
+
+-  for (const requiredPath of [npm, node, entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")]) {
++  for (const requiredPath of (usingSystemNode ? [node, entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")] : [npm, node, entrypoint, remoteTunnel, appIcon, path.join(serverRoot, "node_modules")])) {
      if (!fs.existsSync(requiredPath)) throw new Error(`Missing packaged runtime path: ${requiredPath}`)
    }
- 
-@@ -89,7 +92,9 @@
+
+@@ -86,8 +90,10 @@
    }
- 
-   const version = run(node, ["--version"], { stdio: "pipe", encoding: "utf8" }).stdout.trim()
--  if (version !== MANAGED_NODE_VERSION) {
+
+   const npmRoot = path.dirname(path.dirname(npm))
+-  const npmVersion = JSON.parse(fs.readFileSync(path.join(npmRoot, "package.json"), "utf8")).version
+-  if (npmVersion !== NPM_VERSION) throw new Error(`Bundled npm ${npmVersion} does not match the ${NPM_VERSION} pin`)
++  if (!usingSystemNode) {
++    const npmVersion = JSON.parse(fs.readFileSync(path.join(npmRoot, "package.json"), "utf8")).version
++    if (npmVersion !== NPM_VERSION) throw new Error(`Bundled npm ${npmVersion} does not match the ${NPM_VERSION} pin`)
++  }
+
+   console.log(`packaged server static checks ok for ${target}`)
+   if (electron && fs.existsSync(nodeBinary(resourcesRoot, target))) throw new Error("Electron resources contain a redundant Node executable")
+@@ -100,14 +106,18 @@
+   // The Electron backend's runtime variables: the server must load without app.asar.
+   const env = electron ? { ...process.env, ELECTRON_RUN_AS_NODE: "1", ELECTRON_NO_ASAR: "1" } : process.env
+   const version = run(node, ["--version"], { stdio: "pipe", encoding: "utf8", env }).stdout.trim()
+-  if (!electron && version !== MANAGED_NODE_VERSION) {
 +  // Distro build: the system Node floats ahead of the pinned LTS (Factory
 +  // has a newer 24.x); require the same major instead of the exact pin.
-+  if (version.split(".")[0] !== MANAGED_NODE_VERSION.split(".")[0]) {
++  if (!electron && (usingSystemNode ? version.split(".")[0] !== MANAGED_NODE_VERSION.split(".")[0] : version !== MANAGED_NODE_VERSION)) {
      throw new Error(`Packaged Node version ${version} does not match ${MANAGED_NODE_VERSION}`)
    }
-   console.log(`packaged Node version ok: ${version}`)
+   console.log(`${electron ? "Electron's integrated" : "packaged"} Node version ok: ${version}`)
+-  // npm only warns about an unsupported engine; the server runtime's Node must satisfy it.
+-  const engine = checkNpmEngine(npmRoot, version.replace(/^v/, ""), "the server runtime")
+-  console.log(`bundled npm ${NPM_VERSION} engine ok: ${version} satisfies ${engine}`)
+-  run(node, [npm, "--version"], { env })
++  if (!usingSystemNode) {
++    // npm only warns about an unsupported engine; the server runtime's Node must satisfy it.
++    const engine = checkNpmEngine(npmRoot, version.replace(/^v/, ""), "the server runtime")
++    console.log(`bundled npm ${NPM_VERSION} engine ok: ${version} satisfies ${engine}`)
++    run(node, [npm, "--version"], { env })
++  }
+   run(node, [entrypoint, "--version"], { env })
+
+   const importScript = [

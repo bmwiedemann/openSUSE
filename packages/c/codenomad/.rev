@@ -31,4 +31,12 @@
     <comment>.</comment>
     <requestid>1399456</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>13ad8f51f8896ab6cd54c41283a41ab6</srcmd5>
+    <version>1.1.0</version>
+    <time>1795433077</time>
+    <user>anag_factory</user>
+    <comment>Update codenomad to 1.1.0: design agent, Tauri 2.12, Node 24.22, 6 undici CVEs fixed</comment>
+    <requestid>1399744</requestid>
+  </revision>
 </revisionlist>
