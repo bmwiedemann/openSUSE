@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 11:00:48 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.6.4:
+ * docs: sync manual with actual features
+ * vmcard: remove dead inline-actions code, move modal state fetch to worker
+ * vmcard: absolute/log-scaled sparklines with CPU/mem percent labels
+ * vmcard: add invisible separator rows between card sections
+ * vmcard: show first IPv4 on status row and use server display names
+ * ui: use IEC power symbol for the shutdown quick action
+ * fix two threading issues (_handle_connect_button VMActionsModal)
+
+-------------------------------------------------------------------
 Thu Nov 19 16:44:50 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - version 3.6.3:
