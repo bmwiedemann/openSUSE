@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Sun Nov 22 20:51:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.3.1
+  - Incompatible changes
+    - Dynamic configuration: dynamic scores and actions moved to
+      dynconf. The legacy dynamic configuration file and Redis hash
+      are imported once, and the file is renamed afterwards. The
+      dynamic_conf plugin is now a stub for the dynconf Redis
+      backend. A threshold in override.d wins over a dynamic one,
+      and a dynamic one wins over local.d
+    - Time intervals: lua_util parses intervals strictly. "500ms"
+      now means milliseconds, and "1 d" and "1D" both mean a day.
+      Unknown units and trailing text are rejected
+    - URL order: URL hash sets are seeded with a random value per
+      process, so unsorted task urls come out in a different order
+      in each process
+  - Features
+    - dynconf: a new framework for runtime overrides of plugin
+      options, with Redis and file backends. By default the file
+      backend serves actions, scores and symbols. Scalar options of
+      chartable, dkim and fuzzy_check are dynamic, and so are the
+      runtime options of 41 Lua plugins. rspamadm configdump
+      --dynamic and new controller endpoints dump, set, reset and
+      reload overrides
+    - Symbol profiling: symcache times selected symbols and groups
+      precisely on every scan. The timings are read through
+      rspamd_config:register_profiled_symbols() and
+      task:get_symbols_profile(). The new lua_task_profile library
+      samples per-scan symbol run times, and the clickhouse plugin
+      stores the samples in new Profile columns (schema version 13)
+    - DKIM: beyond max_sigs, up to extra_aligned_sigs (2 by
+      default) signatures aligned with From are checked.
+      DKIM_SIGS_TRUNCATED is added when signatures are left
+      unchecked
+    - RBL: new hash_format = "rbase32" (RFC 4648 base32), and
+      selector_hash = false for selectors that already return a
+      hash. max_dns_requests caps DNS requests per message for each
+      rule. When work is dropped, a <SYMBOL>_LIMIT symbol with a
+      zero score is added
+    - Version and WebUI: --version, rspamd_version() and the
+      controller stat reply show the release base and the git
+      distance from it. The WebUI uses Bootstrap 5.3.9
+  - Bug fixes
+    - Critical: the RPM package creates the _rspamd user on RHEL
+      again. Fresh EL8/9/10 installs had no such user
+    - DKIM, SPF and phishing: one unresolved signature no longer
+      hides every DKIM result. Before this, an untrusted signature
+      with trusted_only or a d= label over 63 octets suppressed all
+      DKIM symbols. A key request that cannot be sent is a
+      temporary error unless the name is invalid. SPF reports a
+      malformed domain as none, not as a DNS failure, so a spoofed
+      sender now gets the DMARC reject policy instead of
+      DMARC_DNSFAIL. A link that displays the DMARC-authenticated
+      From domain scores as PHISHING_OWN_DOMAIN instead of
+      PHISHING. This does not apply to shared_domains (freemail) or
+      strict domains
+    - Randomness: forked workers reseed math.random and the fast
+      PRNG. Before this, all workers drew the same random
+      sequences. libottery seeds from getrandom/getentropy first
+      and never from RDRAND alone, and a failed reinit no longer
+      leaves it usable. After a refill it wipes the bytes it
+      actually handed out; up to 40 bytes of a returned key used to
+      stay in the state
+    - Scanners: clamav treats a reply without a verdict as a
+      failure. A database reload used to let the message pass as
+      scanned. savapi, spamassassin, oletools, fprot, avast, razor,
+      pyzor, dcc and sophos no longer treat error or unrecognised
+      replies as clean
+      - Lua TCP, SMTP and timers: lua_tcp fixes:
+      - use-after-free on error callbacks, closing sessions and
+        stale handles
+      - aborts on empty write handlers, and a callback called by
+        mistake on a failed connect
+    - timeouts for sync operations, draining decrypted TLS data,
+      and starttls failures reported only through the handlers
+    - lua_smtp calls the completion callback once on an immediate
+      failure. Callbacks of task:add_timer and ev_base:add_timer
+      run on a callback thread, and a timer that returns a new
+      interval is re-armed. Before this, the worker aborted or
+      timers stopped firing
+    - Lua API and runtime: Lua stack and memory errors are fixed in
+      the task, config, util, mempool, map, trie, html, upstream
+      and ucl APIs. Stack errors are also fixed in the Redis learn
+      cache, mime expression atoms, fuzzy learn, legacy autolearn
+      and classifier conditions. map:foreach now stops when the
+      callback returns true and returns the count. Trie callbacks
+      always get the end offset. Every section of the global config
+      table is imported; three of them used to abort rspamd.
+      Tracebacks keep the Lua error message with Lua 5.4.3 and
+      later. lua_mime compiles with Lua 5.5, and lua_shape keeps
+      false as a field default. rspamadm fixes the lua -P abort,
+      the exit status of a failing Lua command and thread reuse in
+      .exec
+    - Maps, parsing and rules: maps keep the expiry of each HTTP
+      backend and check all backends before a reread. Before this,
+      the first URL of a map could be fetched every few seconds
+      while the second was never fetched. Received parsing ignores
+      HELO address literals. In add_text_footer and
+      multipattern_text_replace, lua_mime keeps the line break
+      before MIME delimiters that follow verbatim parts. A repeated
+      url merges its flags into the earlier url object, and urls
+      repeated by an extracted part are kept. In
+      HTML_TINY_PIXEL_TRACKER, an image source that also appears in
+      the text no longer counts as image-only, and a zero in any
+      unit counts as zero
+    - Statistics, symcache and tools: bayes honours the
+      check_balance and min_balance autolearn options. symcache
+      reads the slow flag from the internal flags and decides
+      whether to time an item once, when the item starts. Before
+      this, callback items were timed on every task and slow-rule
+      notices were wrong. rbl no longer scores a symbol twice when
+      a final resolve_ip query merges into a query that already has
+      an answer. rspamc labels profile times as milliseconds
+
+-------------------------------------------------------------------
 Fri Nov 13 20:04:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.3.0

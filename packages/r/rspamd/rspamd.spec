@@ -70,7 +70,7 @@
 %define __builder ninja
 
 Name:           rspamd
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -600,6 +600,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_extras.lua
 %{_datadir}/rspamd/lualib/lua_feedback_parsers.lua
 %{_datadir}/rspamd/lualib/lua_crypto_addresses.lua
+%{_datadir}/rspamd/lualib/lua_task_profile.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -611,6 +612,13 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_content/pptx.lua
 %{_datadir}/rspamd/lualib/lua_content/svg.lua
 %{_datadir}/rspamd/lualib/lua_content/xlsx.lua
+
+%{_datadir}/rspamd/lualib/lua_dynconf.lua
+%dir %{_datadir}/rspamd/lualib/lua_dynconf/
+%{_datadir}/rspamd/lualib/lua_dynconf/file.lua
+%{_datadir}/rspamd/lualib/lua_dynconf/json.lua
+%{_datadir}/rspamd/lualib/lua_dynconf/legacy.lua
+%{_datadir}/rspamd/lualib/lua_dynconf/redis.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_ffi
 %{_datadir}/rspamd/lualib/lua_ffi/common.lua
