@@ -1,7 +1,77 @@
 -------------------------------------------------------------------
+Sun Nov 22 13:45:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.9:
+  * Use the C implementation of the wait functions on Windows
+    too. It was disabled because of an excessive CPU usage,
+    fixed in Psycopg 3.2.11 (#645).
+  * Fix binary dumping of Int4Range and other typed ranges and
+    multiranges (#1157).
+  * Fix dumping of Decimal 0 with large exponent (part of
+    #1414).
+  * Close the connection if the query cancellation following a
+    Ctrl-C or a task cancellation is interrupted again, instead
+    of leaving it stuck in ACTIVE state (#1435).
+  * Limit the memory used by COPY FROM if the server consumes
+    data slower than it is produced. Add a flush_threshold
+    parameter to copy.LibpqWriter to tune it (#1437).
+  * Don't wait on the event loop when the socket is already
+    writable, which made pipeline mode,
+    AsyncCursor.executemany() and AsyncCopy.write() on async
+    connections several times slower than on sync ones (#1468).
+  * Fix client-side quoting of negative zero floats and
+    decimals, which could produce a -- SQL comment (#1480).
+  * Raise DataError instead of ValueError registering a
+    composite whose name or attributes are not valid namedtuple
+    names, for instance Python keywords (#1482).
+  * Speed up the C implementation of the sync wait function, in
+    particular when the connection doesn't need to wait, for
+    instance at every Copy.write() (#1484).
+  * Don't replace the exception raised in a COPY block, for
+    instance an interruption, with an error terminating the
+    operation (#1486).
+  * Fix copy.QueuedLibpqWriter hanging forever, instead of
+    raising the error, if sending data to the server fails
+    while its queue is full (#1489).
+  * Performance improvements to lists dumping (#1490, #1491).
+  * 2.5x faster UUID loading in the C implementation (#1494).
+  * Reduce the size of the binary packages by about 15 to 40%,
+    depending on the platform.
+- update to 3.3.8:
+  * Revert the use of /etc/ssl as SSL directory in the binary
+    packages on Linux and macOS: it caused the system
+    openssl.cnf to be loaded, which could break connections,
+    for instance on FIPS-enabled systems (#1476).
+  * Fix the size of the binary packages on Linux x86_64,
+    increased in 3.3.7 by padding of the bundled libraries
+    (#1477).
+- update to 3.3.7:
+  * Fix segfault fetching arrays of strings or timestamps after
+    closing the connection (#1428).
+  * Fix Connection.cancel_safe() failing if the cancel
+    connection is not ready immediately, for instance on a slow
+    network (#1440).
+  * Fix reference cycles created adapting recursive types,
+    which kept data in memory until the next garbage collection
+    (#1443, #1462).
+  * Fix loading intervals with a very large number of hours in
+    text format, which could lose microseconds (#1446).
+  * Fix leak of adapters calling
+    psycopg.types.composite.register_composite() repeatedly
+    without custom make_object or make_sequence functions
+    (#1449).
+  * Roll back the transaction if entering a
+    Connection.transaction() block is interrupted, for instance
+    by a task cancellation (#1451).
+  * Quote array elements with Unicode white space, which
+    CockroachDB would otherwise strip from strings (#1465).
+  * Set the system SSL root certificate directory to /etc/ssl
+    in the binary packages on Linux and macOS.
+
+-------------------------------------------------------------------
 Mon Nov 16 05:14:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Skip an overflowing test on 32 bit. 
+- Skip an overflowing test on 32 bit.
 
 -------------------------------------------------------------------
 Sun Oct 25 17:30:56 UTC 2026 - Dirk Müller <dmueller@suse.com>

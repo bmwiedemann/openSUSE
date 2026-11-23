@@ -266,4 +266,41 @@
     <comment>- Skip an overflowing test on 32 bit.</comment>
     <requestid>1397824</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>67c37c8756b15a5bec7c634150059bfe</srcmd5>
+    <version>3.3.9</version>
+    <time>1795433142</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.9:
+  * Use the C implementation of the wait functions on Windows
+    too. It was disabled because of an excessive CPU usage,
+    fixed in Psycopg 3.2.11 (#645).
+  * Fix binary dumping of Int4Range and other typed ranges and
+    multiranges (#1157).
+  * Fix dumping of Decimal 0 with large exponent (part of
+    #1414).
+  * Close the connection if the query cancellation following a
+    Ctrl-C or a task cancellation is interrupted again, instead
+    of leaving it stuck in ACTIVE state (#1435).
+  * Limit the memory used by COPY FROM if the server consumes
+    data slower than it is produced. Add a flush_threshold
+    parameter to copy.LibpqWriter to tune it (#1437).
+  * Don't wait on the event loop when the socket is already
+    writable, which made pipeline mode,
+    AsyncCursor.executemany() and AsyncCopy.write() on async
+    connections several times slower than on sync ones (#1468).
+  * Fix client-side quoting of negative zero floats and
+    decimals, which could produce a -- SQL comment (#1480).
+  * Raise DataError instead of ValueError registering a
+    composite whose name or attributes are not valid namedtuple
+    names, for instance Python keywords (#1482).
+  * Speed up the C implementation of the sync wait function, in
+    particular when the connection doesn't need to wait, for
+    instance at every Copy.write() (#1484).
+  * Don't replace the exception raised in a COPY block, for
+    instance an interruption, with an error terminating the
+    operation (#1486).
+  * Fix copy.QueuedLibpqWriter hanging forever, instead of</comment>
+    <requestid>1399776</requestid>
+  </revision>
 </revisionlist>
