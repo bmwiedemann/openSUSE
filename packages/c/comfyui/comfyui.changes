@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:09:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.46.0:
+  * New nodes: LTX AlphaGen/SDR-HDR/Reframe/Upscale, MiniMax
+    H3 Image, split image channels, Camera Info mesh input,
+    Video Deflicker with Faster RAFT
+  * Qwen3-1.7B and SenseNova thinking support; embedded
+    tokenizers for pruned checkpoints; single-channel PNG
+  * Router moves: Wan, Krea, Luma and more partner nodes;
+    new Gemini, Anthropic Fable 5.2 and OpenRouter models
+  * Fixes: dynamic VRAM restore leak, apg cfg 1.0 output,
+    Concatenate Video frame-rate/audio, polling timeouts
+  * New --force-output-rerun flag; remove directml support;
+    CUDA-version warning
+  * Track upstream dependency floors: frontend-package 1.59.6,
+    workflow-templates 0.11.111, embedded-docs 0.5.17
+  * Rolls up 0.45.1, 0.45.2, 0.45.3, 0.45.4, 0.45.5 and
+    0.45.6 tags (partner nodes and workflow-template updates)
+  * Many more fixes and improvements; see upstream release
+    notes for the full list
+- Both patches still apply against the new sources
+
+-------------------------------------------------------------------
+Wed Nov 11 12:59:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.45.0:
+  * New model support: MiniMax-H3-image, WeVisOne-VL, UltraTex
+    texture rebaking, RelayVSR, SeedVR2 memory-adaptive slicing
+  * Qwen 3.x: video input, parallel-linear performance work,
+    repetition/presence penalties and a qwen fp8 crash fix
+  * Crash fixes: UNetSelfAttentionMultiply node, potential
+    database issue, pixel-space VAE error message
+  * New partner nodes: Pika H3 Flex and audio nodes, Tencent
+    HY LLM, Breeze TTS 2, Seedream 5.5, Kling 4.0 Flash,
+    GPT Image 2.6/3 with GIF and SVG, Gemini Omni Flash 1.2
+  * Qwen Image nodes move to Comfy Router; retired Grok image
+    model prices and tooltips updated
+  * Track upstream dependency floors: frontend-package 1.58.5,
+    workflow-templates 0.11.105, comfy-kitchen 0.2.41
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+  * Updates in 0.44.1 and 0.44.2 (tag-only releases with
+    partner nodes and workflow-template updates)
+- Both patches still apply against the new sources
+
+-------------------------------------------------------------------
 Wed Nov  4 11:37:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.44.0:

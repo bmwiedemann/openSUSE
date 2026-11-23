@@ -350,4 +350,12 @@ one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
     <comment>Forward comfyui 0.44.0 to Factory</comment>
     <requestid>1394951</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>45e2dfa0cdb5ec18573efc6238e875c6</srcmd5>
+    <version>0.46.0</version>
+    <time>1795433001</time>
+    <user>anag_factory</user>
+    <comment>Update comfyui to 0.46.0: LTX AlphaGen nodes, Qwen3-1.7B, router moves, VRAM fix.</comment>
+    <requestid>1399706</requestid>
+  </revision>
 </revisionlist>
