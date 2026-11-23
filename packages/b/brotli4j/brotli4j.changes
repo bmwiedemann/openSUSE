@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Fri Nov 20 16:26:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * brotli4j-no-netty.patch
+    + drop optional netty-buffer API to break the brotli4j/netty
+      build cycle
+
+-------------------------------------------------------------------
+Thu Aug 13 16:02:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v1.23.0
+  * Changes from v1.8.0 to v1.23.0:
+    + Synced with Brotli v1.1.0 and v1.2.0.
+    + Added support for s390x, riscv64, ppc64le, and armv7
+      architectures.
+    + Added JPMS support via a dedicated service module.
+    + Added system property "brotli4j.library.path" to load
+      from a custom path.
+    + Added native binary validation script and integration
+      checks.
+    + Added per-pull output cap to the decoder.
+    + Added utility method to determine maximum compressed
+      size.
+    + Prevented unintended garbage collection of raw data
+      in PreparedDictionaryImpl.
+    + Made several JNI methods and Encoder wrapper classes
+      public.
+    + Avoided array allocation in Encoder.Mode.of.
+    + Fixed decompression when using NIO ByteBuffers.
+    + Netty dependency upgrades.
+- Modified patch:
+  * brotli4j-loadlibrary.patch
+    + Adapt to upstream shared library loader changes in
+      v1.23.0.
+
+-------------------------------------------------------------------
+Fri May 29 16:38:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use system JAVA_HOME to find JNI libraries and includes
+
+-------------------------------------------------------------------
+Wed Feb 21 08:24:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Use %patch -P N instead of deprecated %patchN.
+
+-------------------------------------------------------------------
+Sun Nov 27 17:33:20 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.8.0
+  * Changes:
+    + Apple Silicon M1 support
+    + Dependencies upgrade
+
+-------------------------------------------------------------------
+Wed Apr 27 13:15:17 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v1.7.1
+  * Minor code improvements
+- Update to v1.7.0
+  * Use Netty Buffer API for Buffer pooling
+  * Avoid creating 'byte[]' copies on decompression which leads
+    to less garbage generation
+- Update patch brotli4j-loadlibrary.patch
+- Add build dependency on mvn(io.netty:netty-buffer) and add netty
+  to build classpath
+
+-------------------------------------------------------------------
+Mon Apr 25 09:01:41 UTC 2022 - Fridrich Strba <fstrba@suse.com>
+
+- Install the shared library into the file-system.
+- Change build to use ant in order to be able to have this package
+  relatively low in the build chain, since it has basically no
+  dependency
+- Added patch:
+  * brotli4j-loadlibrary.patch
+    + Do not use a convoluted way of finding the shared library,
+      since we know exactly where it is installed
+
+-------------------------------------------------------------------
+Sun Apr 24 09:09:11 UTC 2022 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v1.6.0

@@ -1,0 +1,52 @@
+--- Brotli4j-1.23.0/brotli4j/src/main/java/com/aayushatharva/brotli4j/Brotli4jLoader.java.orig	2026-08-13 18:00:14.534508199 +0200
++++ Brotli4j-1.23.0/brotli4j/src/main/java/com/aayushatharva/brotli4j/Brotli4jLoader.java	2026-08-13 18:00:25.636732561 +0200
+@@ -46,45 +46,10 @@
+             }
+         } else {
+             try {
+-                System.loadLibrary("brotli");
+-            } catch (Throwable t) {
+-                try {
+-                    String nativeLibName = System.mapLibraryName("brotli");
+-                    String platform = getPlatform();
+-                    String libPath = "/lib/" + platform + '/' + nativeLibName;
+-
+-                    File tempDir = new File(System.getProperty("java.io.tmpdir"), "com_aayushatharva_brotli4j_" + System.nanoTime());
+-                    tempDir.mkdir();
+-                    tempDir.deleteOnExit();
+-
+-                    File tempFile = new File(tempDir, nativeLibName);
+-
+-                    Class<?> loaderClassToUse = Brotli4jLoader.class; // Use this as a fallback for non-JPMS contexts
+-                    // In Java9+ with JPMS enabled, we need a class in the jar that contains the file to be able to access its content
+-                    ServiceLoader<BrotliNativeProvider> nativeProviders = ServiceLoader.load(BrotliNativeProvider.class, Brotli4jLoader.class.getClassLoader());
+-                    for (BrotliNativeProvider nativeProvider : nativeProviders) {
+-                        if (nativeProvider.platformName().equals(platform)) {
+-                            loaderClassToUse = nativeProvider.getClass();
+-                            break;
+-                        }
+-                    }
+-
+-                    // Copy the native library to a temporary file and load it
+-                    try (InputStream in = loaderClassToUse.getResourceAsStream(libPath)) {
+-
+-                        // If the library is not found, throw an exception.
+-                        if (in == null) {
+-                            throw new UnsatisfiedLinkError("Failed to find Brotli native library in classpath: " + libPath);
+-                        }
+-
+-                        Files.copy(in, tempFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+-                        System.load(tempFile.getAbsolutePath());
+-                    } finally {
+-                        tempFile.deleteOnExit();
+-                    }
+-                } catch (Throwable throwable) {
+-                    cause = throwable;
+-                }
++                String nativeLibPath = "@LIBDIR@/" + System.mapLibraryName("brotli");
++                System.load(nativeLibPath);
++            } catch (Throwable throwable) {
++                cause = throwable;
+             }
+         }
+ 

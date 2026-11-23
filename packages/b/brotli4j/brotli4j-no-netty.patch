@@ -1,0 +1,329 @@
+diff -ruN a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoder.java b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoder.java
+--- a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoder.java
++++ b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoder.java
+@@ -114,19 +114,19 @@
+                         decoder.push(0);
+                         // If decoder still needs input, this means that stream is truncated.
+                         if (decoder.getStatus() == DecoderJNI.Status.NEEDS_MORE_INPUT) {
+-                            return new DirectDecompress(decoder.getStatus(), null, null);
++                            return new DirectDecompress(decoder.getStatus(), null);
+                         }
+                         break;
+ 
+                     default:
+-                        return new DirectDecompress(decoder.getStatus(), null, null);
++                        return new DirectDecompress(decoder.getStatus(), null);
+                 }
+             }
+         } finally {
+             decoder.destroy();
+         }
+         if (output.size() == 1) {
+-            return new DirectDecompress(decoder.getStatus(), output.get(0), null);
++            return new DirectDecompress(decoder.getStatus(), output.get(0));
+         }
+         byte[] result = new byte[totalOutputSize];
+         int offset = 0;
+@@ -134,7 +134,7 @@
+             System.arraycopy(chunk, 0, result, offset, chunk.length);
+             offset += chunk.length;
+         }
+-        return new DirectDecompress(decoder.getStatus(), result, null);
++        return new DirectDecompress(decoder.getStatus(), result);
+     }
+ 
+     @Upstream
+diff -ruN a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoders.java b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoders.java
+--- a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoders.java
++++ b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/Decoders.java
+@@ -17,17 +17,12 @@
+ package com.aayushatharva.brotli4j.decoder;
+ 
+ import com.aayushatharva.brotli4j.common.annotations.Local;
+-import io.netty.buffer.ByteBuf;
+-import io.netty.buffer.PooledByteBufAllocator;
+ 
+ import java.io.IOException;
+ import java.nio.ByteBuffer;
+ 
+ /**
+- * Multiple decoding methods using Netty Buffer.
+- * Make sure to add it as dependency before using this class
+- *
+- * @see <a href="https://search.maven.org/artifact/io.netty/netty-buffer/">Netty Buffer</a>
++ * Multiple decoding methods using {@link ByteBuffer}.
+  */
+ @Local
+ public final class Decoders {
+@@ -42,51 +37,10 @@
+      */
+     @Local
+     public static DirectDecompress decompress(ByteBuffer compressed, ByteBuffer decompressed) throws IOException {
+-        ByteBuf src = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        ByteBuf dst = PooledByteBufAllocator.DEFAULT.buffer();
+-
+-        try {
+-            src.writeBytes(compressed);
+-            final DirectDecompress result = decompress(src, dst);
+-            dst.readBytes(decompressed);
+-            return result;
+-        } finally {
+-            src.release();
+-            dst.release();
+-        }
+-    }
+-
+-    /**
+-     * Decodes the given data buffer.
+-     *
+-     * @param compressed   {@link ByteBuf} source
+-     * @param decompressed {@link ByteBuf} destination
+-     * @return {@link DirectDecompress} instance
+-     * @throws IOException Thrown in case of error during encoding
+-     */
+-    @Local
+-    public static DirectDecompress decompress(ByteBuf compressed, ByteBuf decompressed) throws IOException {
+-        return decompress(compressed, decompressed, 0);
+-    }
+-
+-    /**
+-     * Decodes the given data buffer, failing if decompressed output would
+-     * exceed {@code maxOutputSize} bytes. Use to mitigate decompression bombs.
+-     *
+-     * @param compressed    {@link ByteBuf} source
+-     * @param decompressed  {@link ByteBuf} destination
+-     * @param maxOutputSize cap on total decompressed bytes; {@code 0} for no cap
+-     * @return {@link DirectDecompress} instance
+-     * @throws IOException If output exceeds {@code maxOutputSize}
+-     */
+-    @Local
+-    public static DirectDecompress decompress(ByteBuf compressed, ByteBuf decompressed, int maxOutputSize)
+-            throws IOException {
+-        int compressedBytes = compressed.readableBytes();
++        int compressedBytes = compressed.remaining();
+         DecoderJNI.Wrapper decoder = new DecoderJNI.Wrapper(compressedBytes);
+-        int totalOutputSize = 0;
+         try {
+-            decoder.getInputBuffer().put(compressed.nioBuffer());
++            decoder.getInputBuffer().put(compressed);
+             decoder.push(compressedBytes);
+             while (decoder.getStatus() != DecoderJNI.Status.DONE) {
+                 switch (decoder.getStatus()) {
+@@ -95,15 +49,7 @@
+                         break;
+ 
+                     case NEEDS_MORE_OUTPUT:
+-                        ByteBuffer buffer = maxOutputSize > 0
+-                                ? decoder.pull(Math.max(1, maxOutputSize - totalOutputSize))
+-                                : decoder.pull();
+-                        totalOutputSize += buffer.remaining();
+-                        decompressed.writeBytes(buffer);
+-                        if (maxOutputSize > 0 && totalOutputSize >= maxOutputSize
+-                                && decoder.getStatus() == DecoderJNI.Status.NEEDS_MORE_OUTPUT) {
+-                            throw new IOException("decompressed size exceeds maximum size " + maxOutputSize);
+-                        }
++                        decompressed.put(decoder.pull());
+                         break;
+ 
+                     case NEEDS_MORE_INPUT:
+@@ -111,17 +57,17 @@
+                         decoder.push(0);
+                         // If decoder still needs input, this means that stream is truncated.
+                         if (decoder.getStatus() == DecoderJNI.Status.NEEDS_MORE_INPUT) {
+-                            return new DirectDecompress(decoder.getStatus(), null, null);
++                            return new DirectDecompress(decoder.getStatus(), null);
+                         }
+                         break;
+ 
+                     default:
+-                        return new DirectDecompress(decoder.getStatus(), null, null);
++                        return new DirectDecompress(decoder.getStatus(), null);
+                 }
+             }
+         } finally {
+             decoder.destroy();
+         }
+-        return new DirectDecompress(decoder.getStatus(), null, decompressed);
++        return new DirectDecompress(decoder.getStatus(), null);
+     }
+ }
+diff -ruN a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/DirectDecompress.java b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/DirectDecompress.java
+--- a/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/DirectDecompress.java
++++ b/brotli4j/src/main/java/com/aayushatharva/brotli4j/decoder/DirectDecompress.java
+@@ -17,9 +17,6 @@
+ package com.aayushatharva.brotli4j.decoder;
+ 
+ import com.aayushatharva.brotli4j.common.annotations.Local;
+-import io.netty.buffer.ByteBuf;
+-import io.netty.buffer.ByteBufUtil;
+-import io.netty.buffer.Unpooled;
+ 
+ import java.io.IOException;
+ 
+@@ -29,13 +26,11 @@
+ @Local
+ public final class DirectDecompress {
+     private final DecoderJNI.Status resultStatus;
+-    private byte[] decompressedData;
+-    private ByteBuf byteBuf;
++    private final byte[] decompressedData;
+ 
+-    DirectDecompress(DecoderJNI.Status resultStatus, byte[] decompressedData, ByteBuf byteBuf) {
++    DirectDecompress(DecoderJNI.Status resultStatus, byte[] decompressedData) {
+         this.resultStatus = resultStatus;
+         this.decompressedData = decompressedData;
+-        this.byteBuf = byteBuf;
+     }
+ 
+     /**
+@@ -78,23 +73,6 @@
+      * @return {@code byte} array if decompression was successful else {@code null}
+      */
+     public byte[] getDecompressedData() {
+-        // If byte array is null but bytebuffer is not null
+-        // then convert bytebuffer to byte array and return.
+-        if (decompressedData == null && byteBuf != null) {
+-            this.decompressedData = ByteBufUtil.getBytes(byteBuf);
+-        }
+         return decompressedData;
+     }
+-
+-    /**
+-     * Get decompressed data.
+-     *
+-     * @return {@link ByteBuf} if decompression was successful else {@code null}
+-     */
+-    public ByteBuf getDecompressedDataByteBuf() {
+-        if (byteBuf == null && decompressedData != null) {
+-            this.byteBuf = Unpooled.wrappedBuffer(decompressedData);
+-        }
+-        return byteBuf;
+-    }
+ }
+diff -ruN a/brotli4j/src/main/java/com/aayushatharva/brotli4j/encoder/Encoders.java b/brotli4j/src/main/java/com/aayushatharva/brotli4j/encoder/Encoders.java
+--- a/brotli4j/src/main/java/com/aayushatharva/brotli4j/encoder/Encoders.java
++++ b/brotli4j/src/main/java/com/aayushatharva/brotli4j/encoder/Encoders.java
+@@ -17,56 +17,17 @@
+ package com.aayushatharva.brotli4j.encoder;
+ 
+ import com.aayushatharva.brotli4j.common.annotations.Local;
+-import io.netty.buffer.ByteBuf;
+-import io.netty.buffer.PooledByteBufAllocator;
+-import io.netty.buffer.Unpooled;
+-import io.netty.buffer.UnpooledDirectByteBuf;
+ 
+ import java.io.IOException;
+ import java.nio.ByteBuffer;
+ 
+ /**
+- * Multiple encoding methods using Netty Buffer
+- * Make sure to add it as dependency before using this class
+- *
+- * @see <a href="https://search.maven.org/artifact/io.netty/netty-buffer/">Netty Buffer</a>
++ * Multiple encoding methods using {@link ByteBuffer}.
+  */
+ @Local
+ public final class Encoders {
+ 
+     /**
+-     * Encodes the given {@link ByteBuf}
+-     *
+-     * @param src    {@link ByteBuf} source
+-     * @param pooled If set to {@code true} then this method will return
+-     *               {@code PooledDirectByteBuf} else {@link UnpooledDirectByteBuf}
+-     * @return If {@code pooled} is set to {@code true} then this method will return
+-     * {@code PooledDirectByteBuf} else {@link UnpooledDirectByteBuf}
+-     * @throws IOException Thrown in case of error during encoding
+-     */
+-    public static ByteBuf compress(ByteBuf src, boolean pooled) throws IOException {
+-        ByteBuf dst;
+-        if (pooled) {
+-            dst = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        } else {
+-            dst = Unpooled.directBuffer();
+-        }
+-        compress(src, dst);
+-        return dst;
+-    }
+-
+-    /**
+-     * Encodes the given {@link ByteBuf}
+-     *
+-     * @param src {@link ByteBuf} source
+-     * @param dst {@link ByteBuf} destination
+-     * @throws IOException Thrown in case of error during encoding
+-     */
+-    public static void compress(ByteBuf src, ByteBuf dst) throws IOException {
+-        compress(src, dst, Encoder.Parameters.DEFAULT);
+-    }
+-
+-    /**
+      * Encodes the given {@link ByteBuffer}
+      *
+      * @param src {@link ByteBuffer} source
+@@ -74,16 +35,7 @@
+      * @throws IOException Thrown in case of error during encoding
+      */
+     public static void compress(ByteBuffer src, ByteBuffer dst) throws IOException {
+-        ByteBuf srcBuf = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        ByteBuf dstBuf = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        try {
+-            srcBuf.writeBytes(src);
+-            compress(srcBuf, dstBuf, Encoder.Parameters.DEFAULT);
+-        } finally {
+-            dst.put(dstBuf.nioBuffer());
+-            srcBuf.release();
+-            dstBuf.release();
+-        }
++        compress(src, dst, Encoder.Parameters.DEFAULT);
+     }
+ 
+     /**
+@@ -95,43 +47,21 @@
+      * @throws IOException Thrown in case of error during encoding
+      */
+     public static void compress(ByteBuffer src, ByteBuffer dst, Encoder.Parameters params) throws IOException {
+-        ByteBuf srcBuf = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        ByteBuf dstBuf = PooledByteBufAllocator.DEFAULT.directBuffer();
+-        try {
+-            srcBuf.writeBytes(src);
+-            compress(srcBuf, dstBuf, params);
+-        } finally {
+-            dst.put(dstBuf.nioBuffer());
+-            srcBuf.release();
+-            dstBuf.release();
+-        }
+-    }
+-
+-    /**
+-     * Encodes the given {@link ByteBuf}
+-     *
+-     * @param src    {@link ByteBuffer} source
+-     * @param dst    {@link ByteBuffer} destination
+-     * @param params {@link Encoder.Parameters} instance
+-     * @throws IOException Thrown in case of error during encoding
+-     */
+-    public static void compress(ByteBuf src, ByteBuf dst, Encoder.Parameters params) throws IOException {
+-        int readableBytes = src.readableBytes();
++        int readableBytes = src.remaining();
+         if (readableBytes == 0) {
+-            dst.writeByte((byte) 6);
++            dst.put((byte) 6);
+             return;
+         }
+ 
+         EncoderJNI.Wrapper encoder = new EncoderJNI.Wrapper(readableBytes, params.quality(), params.lgwin(), params.mode());
+         try {
+-            encoder.getInputBuffer().put(src.nioBuffer());
++            encoder.getInputBuffer().put(src);
+             encoder.push(EncoderJNI.Operation.PROCESS, readableBytes);
+             while (true) {
+                 if (!encoder.isSuccess()) {
+                     throw new IOException("encoding failed");
+                 } else if (encoder.hasMoreOutput()) {
+-                    ByteBuffer buffer = encoder.pull();
+-                    dst.writeBytes(buffer);
++                    dst.put(encoder.pull());
+                 } else if (!encoder.isFinished()) {
+                     encoder.push(EncoderJNI.Operation.FINISH, 0);
+                 } else {
