@@ -17,7 +17,7 @@
 
 
 Name:           python-httpx-ws
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        WebSockets support for HTTPX
 License:        MIT
@@ -27,13 +27,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 4
+Requires:       python-anyio >= 4.10.0
 Requires:       python-httpcore >= 1.0.4
 Requires:       python-httpx >= 0.23.1
 Requires:       python-wsproto
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module anyio >= 4}
+BuildRequires:  %{python_module anyio >= 4.10.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module httpcore >= 1.0.4}
 BuildRequires:  %{python_module httpx >= 0.23.1}
@@ -74,6 +74,8 @@ donttest="$donttest or test_async_keepalive_ping"
 %pytest -k "not ($donttest)"
 
 %files %{python_files}
+%doc README.md CHANGELOG.md
+%license LICENSE
 %{python_sitelib}/httpx_ws
 %{python_sitelib}/httpx_ws-%{version}.dist-info
 
