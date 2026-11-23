@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Nov 20 09:05:13 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- cups-2.4.20-CVE-2026-107655.patch is
+  https://github.com/OpenPrinting/cups/commit/25d68309b1af89c4b003f27f56ab0f8e7a189ea3
+  backported to CUPS 2.4.20 to fix CVE-2026-107655
+  "Embedded job ticket comments can lead to a crash"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-58wv-9ffm-5w78
+  "An unauthenticated attacker permitted to submit jobs
+   to a shared printer queue can send a crafted
+   Internet Printing Protocol (IPP) request to crash the
+   print daemon, resulting in a temporary Denial of Service"
+  (bsc#1284911)
+- CUPS version 2.4.20 also fixes the following CVEs:
+  It seems the reason why those CVEs are not listed in the CUPS
+  release notes is that those CVEs came after the release date.
+  The GHSA IDs of those CVEs are listed in CHANGES.md
+  (cf. the below entry dated "Tue Oct  6").
+- CVE-2026-107886
+  "Double-free in cupsd class management via CUPS-Add-Modify-Class 
+   and CUPS-Delete-Class"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-pwg4-pv39-8c22
+  "OpenPrinting CUPS before 2.4.20 contains a double-free 
+   in printer-class management"
+  (bsc#1284798)
+- CVE-2026-107888
+  "NULL pointer dereference in cupsdCheckJobs crashes cupsd
+   after temporary printer deletion"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-qqm8-4q5h-jg55
+  "OpenPrinting CUPS before 2.4.20 contains a NULL pointer
+   dereference in cupsdCheckJobs() when a job marked
+   job-held-on-create refers to a temporary printer
+   that has been automatically deleted"
+  (bsc#1284799)
+- CVE-2026-107890
+  "Unauthenticated Denial of Service in cupsd via Repeated
+   IPP Group Tags"
+  https://github.com/OpenPrinting/cups/security/advisories/GHSA-wjc4-qhjr-5m5x
+  "OpenPrinting CUPS before 2.4.20 contains a NULL pointer
+   dereference caused by repeated IPP group tags
+   in job-creation requests"
+  (bsc#1284800)
+
+-------------------------------------------------------------------
 Wed Oct 14 11:08:33 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - fix_mailto_validation.patch is

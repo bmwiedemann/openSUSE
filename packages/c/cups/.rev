@@ -1441,4 +1441,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Typo fix in RPM changelog: CVE-2025-55480 -&gt; CVE-2026-55480</comment>
     <requestid>1387080</requestid>
   </revision>
+  <revision rev="189" vrev="3">
+    <srcmd5>b7428cb644ccf3e2498e9804fda76226</srcmd5>
+    <version>2.4.20</version>
+    <time>1795432885</time>
+    <user>anag_factory</user>
+    <comment>Fix for CVE-2026-107655 bsc#1284911 in CUPS 2.4.20 which also fixes CVE-2026-107886 bsc#1284798 and CVE-2026-107888 bsc#1284799 and CVE-2026-107890 bsc#1284800 (forwarded request 1398952 from jsmeix)</comment>
+    <requestid>1398953</requestid>
+  </revision>
 </revisionlist>

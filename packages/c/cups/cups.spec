@@ -117,6 +117,16 @@ Patch108:       downgrade-autoconf-requirement.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
+# Patch113 cups-2.4.20-CVE-2026-107655.patch is
+# https://github.com/OpenPrinting/cups/commit/25d68309b1af89c4b003f27f56ab0f8e7a189ea3
+# backported to CUPS 2.4.20 to fix CVE-2026-107655
+# "Embedded job ticket comments can lead to a crash"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-58wv-9ffm-5w78
+# "An unauthenticated attacker permitted to submit jobs to a shared printer queue
+#  can send a crafted Internet Printing Protocol (IPP) request to crash the print daemon,
+#  resulting in a temporary Denial of Service"
+# https://bugzilla.suse.com/show_bug.cgi?id=1284911
+Patch113:       cups-2.4.20-CVE-2026-107655.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -354,6 +364,16 @@ printer drivers for CUPS.
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 %patch -P 112 -b additional_policies.orig
+# Patch113 cups-2.4.20-CVE-2026-107655.patch is
+# https://github.com/OpenPrinting/cups/commit/25d68309b1af89c4b003f27f56ab0f8e7a189ea3
+# backported to CUPS 2.4.20 to fix CVE-2026-107655
+# "Embedded job ticket comments can lead to a crash"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-58wv-9ffm-5w78
+# "An unauthenticated attacker permitted to submit jobs to a shared printer queue
+#  can send a crafted Internet Printing Protocol (IPP) request to crash the print daemon,
+#  resulting in a temporary Denial of Service"
+# https://bugzilla.suse.com/show_bug.cgi?id=1284911
+%patch -P 113 -b CVE-2026-107655.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
