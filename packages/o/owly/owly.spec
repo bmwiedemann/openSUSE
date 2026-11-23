@@ -17,7 +17,7 @@
 
 
 Name:           owly
-Version:        0.4.2
+Version:        0.4.3
 Release:        0
 Summary:        AirDrop over AWDL for Linux Wi-Fi cards
 License:        MIT AND Apache-2.0 AND BSD-3-Clause AND ISC AND Unicode-3.0

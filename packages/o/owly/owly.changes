@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:45:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.3:
+  * Fix receiving multiple photos from iOS Photos.
+  * Browse now lists AWDL peers like send does, on an owlyd
+    lease, showing each receiver once.
+  * Transfer fixes: Apple client certificates, link shares,
+    DVZip fallback, idle-timeout restart, chunked upload
+    with real TotalBytes, 45s Ask timeout, optional
+    StatusCode and BLE contact-hash array.
+  * test-card: watch Wi-Fi for 1 minute, record per-report
+    mode and omdrop implementation; RTL8812BU works in
+    exclusive mode, Intel 3168 fails.
+
+-------------------------------------------------------------------
 Sat Oct 31 11:40:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.2 (still needs boo#1288451)
