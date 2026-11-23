@@ -202,4 +202,12 @@ also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <comment>Update python-transformers to 5.23.0: new models, exporter overhaul, audio slimming.</comment>
     <requestid>1397537</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a4a66591e3c1a11f4098850ae39242bd</srcmd5>
+    <version>5.24.0</version>
+    <time>1795433019</time>
+    <user>anag_factory</user>
+    <comment>Update python-transformers to 5.24.0: new models, cache rename, exporter trust_remote_code split.</comment>
+    <requestid>1399731</requestid>
+  </revision>
 </revisionlist>

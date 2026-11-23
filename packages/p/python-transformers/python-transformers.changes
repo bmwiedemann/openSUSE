@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.24.0:
+  * Add new models: Inkling 2 Mini looped MoE, Apertus 1.5
+    multimodal with WavTokenizer audio codec, NVIDIA Dory
+    looped LM, HY4-VL vision-language, Omnilingual ASR for
+    1600+ languages, Lara Mini MoE, SarvamMLA/SarvamMoE and
+    EXAONE Llama-compatible models
+  * Breaking: rename past_key_values/cache_params to cache
+    across forward, generate and outputs (old names work
+    with deprecation warning until 5.40.0/6.0.0); require
+    peft >= 0.22.0 for cache compatibility
+  * Unify generative multimodal outputs, drop deprecated
+    modeling_attn_mask_utils, add SDPA support to LayoutLMv3
+  * Fixes across cache, generation, continuous batching,
+    chat parsing, pipelines, vision and audio pipelines;
+    exporters load ONNX/OpenVINO/ExecuTorch without
+    trust_remote_code, pickled .pt2 now requires it
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
 Sat Nov 14 07:44:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.23.0:
