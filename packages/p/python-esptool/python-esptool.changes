@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov  9 16:23:19 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 5.6.0
+  * Updates flasher stub to v1.4.1 (via v1.4.0 and v1.2.2 in
+    earlier releases).
+  * Adds ESP32-H21 flasher stub support and accepts 64m and 32m
+    flash frequencies in the CLI.
+  * Adds Secure Debug Controller commands to esptool and espsecure,
+    plus an espefuse eFuse token dump.
+  * Updates eFuse definitions for ESP32-H21 (ECO3) and ESP32-H4
+    (V0.5), and adds ESP32-S31 ADC weight and calibration eFuse
+    fields.
+  * Improves chip identification (variant and embedded flash/PSRAM)
+    for ESP32-H2, ESP32-C5 and ESP32-C61.
+  * The bitstring dependency is replaced by a minimal local module,
+    and esptool now uses esp-pylib and rich_click.
+  * load-ram now warns on incompatible images, write-flash rejects
+    only incompatible bootloader images, and custom
+    --spi-connection pins are rejected on unsupported chips.
+  * Flash timeouts are more reliable: the default
+    erase_region_timeout_per_mb is raised to 40s and stub erase
+    work is budgeted in compressed flash timeouts.
+
+-------------------------------------------------------------------
 Mon Jun 29 20:53:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.1:

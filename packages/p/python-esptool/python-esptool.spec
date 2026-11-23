@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-esptool
-Version:        5.3.1
+Version:        5.6.0
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later
@@ -27,6 +27,7 @@ Source:         https://github.com/espressif/esptool/archive/v%{version}.tar.gz#
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module bitstring >= 3.1.6}
+BuildRequires:  %{python_module esp-pylib >= 1.0.0}
 BuildRequires:  %{python_module intelhex}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyelftools}
@@ -44,6 +45,7 @@ Requires:       python-PyYAML >= 5.1
 Requires:       python-bitstring >= 3.1.6
 Requires:       python-click
 Requires:       python-cryptography >= 43
+Requires:       python-esp-pylib >= 1.0.0
 Requires:       python-intelhex
 Requires:       python-pyserial >= 3.3
 Requires:       python-reedsolo >= 1.5.3
