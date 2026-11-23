@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 23 05:48:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.2:
+  * build: render each planned file from its own path (#2687)
+  * chore(deps): apko no longer pulls in an SDK that depends on
+    apko (#2684)
+  * docs: update code of conduct contact to conduct@chainguard.dev
+    (#2683)
+  * fix(auth): match EnvAuth on the request Host like the other
+    authenticators (#2628)
+  * build(deps): bump chainguard.dev/sdk from 0.1.499 to 0.1.503
+    (#2680)
+  * build(deps): bump google.golang.org/api from 0.314.0 to 0.315.0
+    (#2681)
+  * build(deps): bump google.golang.org/api from 0.311.0 to 0.314.0
+    (#2679)
+  * build(deps): bump chainguard.dev/sdk from 0.1.487 to 0.1.499
+    (#2678)
+  * build(deps): bump gopkg.in/ini.v1 from 1.67.3 to 1.68.0 (#2677)
+  * cpio: preserve TAR UID/GID when converting to CPIO (#2645)
+  * build(deps): bump chainguard.dev/sdk from 0.1.481 to 0.1.487
+    (#2671)
+  * build(deps): bump golang.org/x/term from 0.47.0 to 0.48.0
+    (#2672)
+
+-------------------------------------------------------------------
 Mon Nov 16 05:38:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.1:
