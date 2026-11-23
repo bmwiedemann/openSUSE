@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Oct 12 10:06:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 3.14.5
+- Update to 3.14.5 (CVE-2026-123817, bsc#1290061)
   * Added :class:`aiohttp.UploadTracker` for observing a client request's
     upload progress
   * Switched application/x-www-form-urlencoded parsing in 
