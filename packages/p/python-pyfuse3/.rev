@@ -183,4 +183,19 @@
     <comment>- Do not ship source files in binary packages.</comment>
     <requestid>1346346</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7c304d025d08d1fa6a3811a15d8dc65c</srcmd5>
+    <version>3.5.0</version>
+    <time>1795433148</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.5.0:
+  * Filesystems may now define an Operations.poll method to
+    support the epoll and select system calls.
+  * FileHandleT and InodeT are now plain aliases for int
+    instead of NewTypes, easing type annotations.
+  * Future releases will be signed with signify instead of GPG.
+
+  * Changed create handler to return a FileInfo struct to allow for</comment>
+    <requestid>1399782</requestid>
+  </revision>
 </revisionlist>
