@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langfuse
-Version:        5.0.4
+Version:        5.2.0
 Release:        0
 Summary:        A client library for accessing langfuse
 License:        MIT
@@ -30,11 +30,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-backoff >= 1.10.0
 Requires:       python-httpx >= 0.15.4
-Requires:       python-opentelemetry-api >= 1.33.1
-Requires:       python-opentelemetry-exporter-otlp-proto-http >= 1.33.1
-Requires:       python-opentelemetry-sdk >= 1.33.1
+Requires:       python-opentelemetry-api >= 1.45.0
+Requires:       python-opentelemetry-exporter-otlp-proto-http >= 1.45.0
+Requires:       python-opentelemetry-sdk >= 1.45.0
 Requires:       python-packaging >= 23.2
 Requires:       python-pydantic >= 2
+Requires:       python-typing-extensions >= 4.12.2
 Requires:       python-wrapt >= 1.14
 BuildArch:      noarch
 %python_subpackages

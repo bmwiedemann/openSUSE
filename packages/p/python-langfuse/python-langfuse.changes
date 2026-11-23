@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Nov 22 11:32:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * feat(api): update API spec from langfuse/langfuse 618aac2
+  * fix(batch-evaluation): keep paging past empty observation
+    pages
+  * fix(batch-evaluation): use a 60 s timeout for observation
+    page fetches
+  * test: follow observation cursors past empty pages
+  * docs: update observations pagination and batch evaluation
+    docs
+  * docs: fix get_prompt fetch_timeout_seconds unit
+  * feat: add iter_observation_pages helper for observations v2
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v5.1.0...v5.2.0
+- update to 5.1.0:
+  * fix(openai): preserve audio data in provider responses
+  * ci: skip live-provider tests on fork pull requests
+  * fix(langchain): deregister langfuse prompts when a chain run
+    errors
+  * ci(release): push releases with a short-lived GitHub App
+    token
+  * test: quarantine flaky live-provider tests
+  * fix: preserve explicit parent for child events
+  * ci: remove dependabot rebase workflow using personal access
+    token
+  * feat(api): add score metadata and provenance blob export
+    field groups
+  * test: replace retired gpt-3.5-turbo and o3-mini models in
+    tests
+  * fix(langchain): propagate root trace attributes to child runs
+    under ainvoke
+  * feat(api): move skills API to stable namespace
+  * feat(skills): add discovery and availability tracing
+  * fix(langchain): keep message names in generation input
+    the github-actions group
+  * refactor(skills): set skill availability through propagation
+    only
+  * fix(skills): return no skills when the skills directory
+    cannot be read
+
+-------------------------------------------------------------------
 Mon Oct 26 07:47:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.4:

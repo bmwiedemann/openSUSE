@@ -364,4 +364,41 @@
     exporter</comment>
     <requestid>1392638</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f59b0f7d448745d3215a1f9e8432859d</srcmd5>
+    <version>5.2.0</version>
+    <time>1795433106</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * feat(api): update API spec from langfuse/langfuse 618aac2
+  * fix(batch-evaluation): keep paging past empty observation
+    pages
+  * fix(batch-evaluation): use a 60 s timeout for observation
+    page fetches
+  * test: follow observation cursors past empty pages
+  * docs: update observations pagination and batch evaluation
+    docs
+  * docs: fix get_prompt fetch_timeout_seconds unit
+  * feat: add iter_observation_pages helper for observations v2
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v5.1.0...v5.2.0
+- update to 5.1.0:
+  * fix(openai): preserve audio data in provider responses
+  * ci: skip live-provider tests on fork pull requests
+  * fix(langchain): deregister langfuse prompts when a chain run
+    errors
+  * ci(release): push releases with a short-lived GitHub App
+    token
+  * test: quarantine flaky live-provider tests
+  * fix: preserve explicit parent for child events
+  * ci: remove dependabot rebase workflow using personal access
+    token
+  * feat(api): add score metadata and provenance blob export
+    field groups
+  * test: replace retired gpt-3.5-turbo and o3-mini models in
+    tests
+  * fix(langchain): propagate root trace attributes to child runs
+    under ainvoke</comment>
+    <requestid>1399750</requestid>
+  </revision>
 </revisionlist>
