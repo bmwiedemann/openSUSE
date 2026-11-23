@@ -27,6 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 #PATCH-FIX-OPENSUSE cherrytree-set-git-version.patch malcolmlewis@opensuse.org -- Set git version in help about.
 Patch0:         cherrytree-set-git-version.patch
 Patch1:         cherrytree-fix-metainfo-write.patch
+Patch2:         cherrytree-start-hidden.patch
 BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils

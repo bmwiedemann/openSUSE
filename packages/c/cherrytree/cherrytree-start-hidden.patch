@@ -1,0 +1,16 @@
+--- a/src/ct/ct_app.cc
++++ b/src/ct/ct_app.cc
+@@ -292,7 +292,12 @@
+             pAppWindow->get_ct_actions()->check_for_newer_version();
+         }
+         pAppWindow->maybe_show_start_dialog();
+-        present_main_window(pAppWindow);
++#if GTKMM_MAJOR_VERSION < 4 && !defined(GTKMM_DISABLE_DEPRECATED)
++        if (not pAppWindow->start_on_systray_is_active())
++#endif /* GTKMM_MAJOR_VERSION < 4 && !defined(GTKMM_DISABLE_DEPRECATED) */
++        {
++            present_main_window(pAppWindow);
++        }
+     }
+     else {
+         // start of the second instance

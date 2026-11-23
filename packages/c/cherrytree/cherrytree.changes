@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 18:00:37 UTC 2026 - PhobosK <phobosk@fastmail.fm>
+
+- Add cherrytree-start-hidden.patch: Backport upstream fix to prevent
+  the main window appearing when starting in the system tray.
+
+-------------------------------------------------------------------
 Mon Nov 09 05:43:30 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.7.3:

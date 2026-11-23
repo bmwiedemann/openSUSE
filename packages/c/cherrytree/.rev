@@ -1722,4 +1722,13 @@
 - Refresh patch with quilt.</comment>
     <requestid>1396858</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>1c5df28ee7fb0297a67082d2598a0436</srcmd5>
+    <version>1.7.3</version>
+    <time>1795442062</time>
+    <user>anag_factory</user>
+    <comment>- Add cherrytree-start-hidden.patch: Backport upstream fix to prevent
+  the main window appearing when starting in the system tray.</comment>
+    <requestid>1399902</requestid>
+  </revision>
 </revisionlist>
