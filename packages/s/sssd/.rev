@@ -1354,4 +1354,12 @@ goes in line with 946250</comment>
   0018-IDP-fix-user-matching-in-eval_access_token_buf.patch</comment>
     <requestid>1378788</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>e8c44e444e22b9a9a3506ece8410367b</srcmd5>
+    <version>2.13.2</version>
+    <time>1795432754</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.13.2</comment>
+    <requestid>1396912</requestid>
+  </revision>
 </revisionlist>

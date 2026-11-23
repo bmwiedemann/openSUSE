@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Mon Nov  9 13:01:18 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to release 2.13.2
+  * Fix denial of service via unprivileged autofs cache
+    invalidation; (bsc#1284317); (CVE-2026-104032)
+  * Fix denial of service due to out-of-bounds read during passkey
+    parsing; (bsc#1284315); (CVE-2026-104030)
+  * Fix denial of service via out-of-bounds read in PAM responder;
+    (bsc#1284265); (CVE-2026-104042)
+  * Fix denial of service via crafted passkey Kerberos
+    authentication request; (bsc#1284267); (CVE-2026-104044)
+  * Fix denial of service via responder connection retry loop
+    during file descriptor exhaustion; (bsc#1284465);
+    (CVE-2026-88252)
+  * Fix authorization bypass via cross-domain username collision
+    in HBAC evaluation; (bsc#1284467); (CVE-2026-104048)
+  * Fix denial of service via memory exhaustion in KCM responder;
+    (bsc#1284320); (CVE-2026-104035)
+  * Fix denial of service due to excessive memory preallocation;
+    (bsc#1284466); (CVE-2026-80048)
+  * Fix denial of service via unbounded negative cache growth;
+    (bsc#1284254); (CVE-2026-104041)
+  * Fix denial of service via unbounded memory consumption in IdP
+    pre-authentication requests; (bsc#1284469); (CVE-2026-104046)
+  * Fix information disclosure via unsanitized search filters in
+    Microsoft Entra ID lookups; (bsc#1284468); (CVE-2026-104047)
+  * Fail-open in LDAP ppolicy access check allows continued
+    authorization; (bsc#1282584); (CVE-2026-90462)
+  * Fix NULL pointer dereference in PAM responder; (bsc#1280362);
+    (CVE-2026-90995)
+  * Fix out-of-bounds read in PAM v1 parser; (bsc#1280361);
+    (CVE-2026-90994)
+  * Fix zero-length request body underflow in the NSS responder;
+    (bsc#1280363); (CVE-2026-90996)
+  * Fix out-of-bounds read in the NSS service request parsers;
+    (bsc#1280360); (CVE-2026-90463)
+  * Fix denial of service via missing SID extension in certificate
+    mapping; (bsc#1284323); (CVE-2026-104038)
+  * Fix denial of service due to out-of-bounds write in NFS idmap
+    plugin; (bsc#1284321); (CVE-2026-104036)
+  * Fix denial of service due to stale connection state reuse in
+    PAM GSSAPI responder; (bsc#1284324); (CVE-2026-104039)
+  * Fix access control bypass due to premature LDAP access rule
+    evaluation; (bsc#1284326); (CVE-2026-92821)
+  * Fix access control bypass due to improper LDAP shadow
+    expiration check; (bsc#1284318); (CVE-2026-104033)
+  * Fix denial of service via undersized packet parsing in NSS
+    responder; (bsc#1284266); (CVE-2026-104043)
+  * Fix denial of service via race condition in autofs responder;
+    (bsc#1284470); (CVE-2026-104045)
+  * Fix denial of service due to packet length underflow in autofs
+    responder; (bsc#1284322); (CVE-2026-104037)
+  * Fix denial of service due to out-of-bounds read in autofs
+    responder; (bsc#1284314); (CVE-2026-104029)
+  * Fix denial of service via memory exhaustion in autofs
+    responder; (bsc#1284316); (CVE-2026-104031)
+  * Fix NSS initgroups packet heap disclosure; (bsc#1273924);
+    (CVE-2026-68744)
+  * Fix unvalidated address lengths in NSS responder packet
+    parsing can cause a heap out-of-bounds read; (bsc#1273922);
+    (CVE-2026-68742)
+  * Fix PAM responder out-of-bounds read via unchecked
+    auth_token_length in protocol v1; (bsc#1273925);
+    (CVE-2026-68743)
+  * Fix use-after-free during p11_child processing in the PAM
+    responder; (bsc#1269807); (CVE-2026-12610)
+  * Fix GPO cache path traversal via unsanitized gPCFileSysPath;
+    (bsc#1270708); (CVE-2026-14476)
+  * Warn when a SUDO provider LDAP search falls back to root DN;
+    (bsc#1270709); (CVE-2026-14474)
+  * Fix IDP provider cross-user impersonation; (bsc#1279915);
+    (CVE-2026-87853)
+  * Added a polkit rule to grant the sssd user access to the
+    gnome-remote-desktop virtual PC/SC daemon (grd-pcscd), enabling
+    smartcard authentication over RDP sessions.
+  * SSSD now forwards the GDM_AUTH_SESSION_ID environment variable
+    from PAM clients to the p11_child and krb5_child processes,
+    enabling smartcard authentication in remote desktop sessions.
+  * New options `filter_uids` and `filter_gids` make SSSD skip the
+    LDAP search for the listed UIDs and GIDs and report that they
+    do not exist. They are comma-separated lists of values or
+    ranges, e.g. `filter_uids = 0-999, 1234, 2000-2099`.
+  * The PAM pre-auth indicator is now kept when a socket-activated
+    PAM responder exits on idle. Previously this silently disabled
+    Smartcard/passkey/configured prompting until restart.
+  * Fixed a 32-bit integer overflow in the Kerberos/KCM timestamp
+    handling. Timestamps are now treated as unsigned 32-bit values,
+    fixing credential cache and ticket expiry/renewal calculations
+    for dates after January 2038.
+  * Fixed a transient TLS handshake failure on an expiring
+    LDAP/StartTLS connection marking the backend offline instead of
+    reconnecting.
+  * Fixed a use-after-free crash in the PAM responder during
+    YubiKey / PKCS#11 authentication.
+  * Fixed the `id_provider = proxy` with `proxy_lib_name = files`
+    configuration returning `*` in the password field.
+  * Fixed a memory leak in sssd_nss and several other memory leaks
+    in the NSS, IPA, autofs and KCM code.
+  * Fixed build failure when building without the oidc_child.
+  * Many hardening fixes of the NSS, PAM, autofs, KCM and LDAP
+    request parsers, including path traversal in GPO
+    gPCFileSysPath handling.
+  * Configuration changes: the "gdm-password" service was removed
+    from the default `pam_p11_allowed_services` list, so it is no
+    longer offered Smartcard authentication by default. The
+    previous behavior can be restored by adding
+    `pam_p11_allowed_services = +gdm-password` to the [pam] section
+    of sssd.conf. The autofs responder now supports the
+    `allowed_uids` option, which defaults to "0".
+  * Many manual page fixes and improvements.
+- Delete jwk.patch and
+  0018-IDP-fix-user-matching-in-eval_access_token_buf.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Fri Sep 18 09:22:31 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Fix IDP provider cross-user impersonation; (bsc#1279915);
