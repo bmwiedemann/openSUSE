@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:18:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261120 (git commit f9919c7a5892):
+  * intel_vpu: Add NPU60xx firmware and update NPU37xx/40xx/50xx firmware
+
+-------------------------------------------------------------------
+Thu Nov 19 13:36:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261119 (git commit acaf0f3190bc):
+  * intel/ish: Link HP Panther Lake ISH firmware for ZBook 8 G2i 14
+
+-------------------------------------------------------------------
 Wed Nov  4 07:44:27 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20261104 (git commit 0cb5a7fb037e):

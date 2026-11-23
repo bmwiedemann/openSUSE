@@ -366,4 +366,16 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Add ISH firmware files for Intel Nova Lake-H/S platforms</comment>
     <requestid>1394984</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>bcb4608310c71b287b64ac6777e8ddc5</srcmd5>
+    <version>20261120</version>
+    <time>1795432796</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261120 (git commit f9919c7a5892):
+  * intel_vpu: Add NPU60xx firmware and update NPU37xx/40xx/50xx firmware
+
+- Update to version 20261119 (git commit acaf0f3190bc):
+  * intel/ish: Link HP Panther Lake ISH firmware for ZBook 8 G2i 14</comment>
+    <requestid>1399493</requestid>
+  </revision>
 </revisionlist>
