@@ -310,4 +310,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.59.11: backport fixes on core/1.59</comment>
     <requestid>1399603</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cf1dc1da704950b97f94d7bb0e943cb</srcmd5>
+    <version>1.59.13</version>
+    <time>1795433011</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.13: backport fixes on core/1.59 (node search, Save-As, chunk load, Safari modal).</comment>
+    <requestid>1399727</requestid>
+  </revision>
 </revisionlist>

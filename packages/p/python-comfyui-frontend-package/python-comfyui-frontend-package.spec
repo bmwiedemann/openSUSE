@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-frontend-package
-Version:        1.59.11
+Version:        1.59.13
 Release:        0
 Summary:        Official ComfyUI frontend as a Python package
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.13 (backport fixes only on core/1.59,
+  crosses 1.59.12):
+  * Node search no longer crashes on oversized queries; guard
+    returns text unhighlighted over 1024 chars
+  * Workflow: Save As or rename no longer replaces another open
+    tab; invalid JSON file reports a reason; null image entries
+    skipped in node output view URLs
+  * Loading: failed own-chunk load rejects instead of resolving
+    to undefined; modal checkVisibility fallback for Safari 17.3;
+    AbortSignal.timeout and throwIfAborted guards for old browsers
+  * Agent and Desktop: panel startup bounded to two activation
+    visits with Skip remembered; expected clipboard quota noise
+    suppressed
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
 Sat Nov 21 07:06:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.59.11 (backport fixes only on core/1.59):
