@@ -1,7 +1,7 @@
 #
 # spec file for package cabextract
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 Name:           cabextract
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        A Program to Extract Microsoft Cabinet Files
 License:        GPL-3.0-or-later
 Group:          System/Console
+#Git-Clone:     https://github.com/kyz/libmspack.git
 URL:            https://www.cabextract.org.uk/
 Source:         https://www.cabextract.org.uk/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libmspack) >= 0.8
+BuildRequires:  pkgconfig(libmspack) >= 0.12
 
 %description
 Cabinet (.CAB) files are a form of archive, which Microsoft uses to

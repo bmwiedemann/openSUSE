@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Nov 12 16:23:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12
+  Changes
+  * cabextract --fix now finds any "hidden" file entries in a CAB
+    file. There are two ways to look for file entries, normally
+    they point to the same place. cabextract --fix looks in both
+    places if they differ. If there appears to be any hidden files,
+    cabextract prints "WARNING; atypical files offset in header"
+  * cabextract now prints file headers warnings for all the regular
+    cabinets listed on the command line.
+  Security Fixes:
+  * An LZX uncompressed block header with invalid R0/R1/R2 values
+    followed by a verbatim/aligned block referencing them can make
+    cabextract write up to 2GB past the end of its history window.
+  * CAB sets where the first mergeable file has an invalid filename
+    (blank or over 256 chars), and salvage mode is enabled, causes
+    cabd_can_merge_folders to read already-freed memory.
+  * CAB MS-ZIP and Quantum match offsets greater than the number of
+    bytes already decoded makes cabextract read uninitialised memory
+    from its history window and write it as output.
+  * CAB files can "hide" entries (which other tools might see) using
+    an atypical FileOffset value. cabextract writes a warning on
+    finding this discrepancy and --fix finds the "hidden" entries.
+
+-------------------------------------------------------------------
 Tue Mar  7 19:51:48 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.11:
