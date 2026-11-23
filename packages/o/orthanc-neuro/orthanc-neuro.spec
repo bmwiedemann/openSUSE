@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-neuro
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022-2024 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,6 +49,7 @@ BuildRequires:  libboost_system-devel >= 1.66
 %endif
 BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
+BuildRequires:  minizip-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
 BuildRequires:  unzip

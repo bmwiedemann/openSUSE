@@ -39,4 +39,12 @@
     <comment>preparation for boost 1.89 (forwarded request 1303610 from DocB)</comment>
     <requestid>1304028</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>a7196b36fea790851a0dab58b1c24937</srcmd5>
+    <version>1.1</version>
+    <time>1795432922</time>
+    <user>anag_factory</user>
+    <comment>version update (forwarded request 1399474 from DocB)</comment>
+    <requestid>1399483</requestid>
+  </revision>
 </revisionlist>
