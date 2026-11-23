@@ -18,7 +18,7 @@
 
 
 Name:           dash
-Version:        0.5.13.5
+Version:        0.5.13.6
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause AND GPL-2.0-or-later
