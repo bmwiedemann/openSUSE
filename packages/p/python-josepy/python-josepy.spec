@@ -1,7 +1,7 @@
 #
 # spec file for package python-josepy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,18 +19,18 @@
 %define libname josepy
 %{?sle15_python_module_pythons}
 Name:           python-%{libname}
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        JOSE protocol implementation in Python
 License:        Apache-2.0
 URL:            https://github.com/certbot/josepy
 Source0:        https://files.pythonhosted.org/packages/source/j/%{libname}/%{libname}-%{version}.tar.gz
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module coverage >= 4.0}
 BuildRequires:  %{python_module cryptography >= 1.5}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 2.0.0}
+BuildRequires:  %{python_module poetry-core >= 2.2.0}
 BuildRequires:  %{python_module pytest >= 2.8.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -68,7 +68,7 @@ It is used by the certbot project. Formerly Let's Encrypt project.
 
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGELOG.rst CONTRIBUTING.md
+%doc CHANGELOG.rst
 %{python_sitelib}/%{libname}
 %{python_sitelib}/%{libname}-%{version}.dist-info
 # following the certbot-packaging guide, "jws" should not be packaged

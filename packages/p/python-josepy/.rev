@@ -169,4 +169,15 @@
 - Clean up {Build,}Requires.</comment>
     <requestid>1315904</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>267dd2f001414487bacbeb92a4a3bd62</srcmd5>
+    <version>2.3.0</version>
+    <time>1795432942</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.0:
+  * Dropped support for Python 3.9.
+  * Support for Python 3.10 has been deprecated and will be
+    removed in the next scheduled release.</comment>
+    <requestid>1399670</requestid>
+  </revision>
 </revisionlist>
