@@ -2,7 +2,7 @@
 Sun Nov 15 20:20:00 UTC 2026 - Dirk Mueller <dmueller@suse.com>
 
 - add redland-stack-overflow-fix.patch
-- add redland-raptor-stringbuffer-copy.patch:
+- add redland-raptor-stringbuffer-copy.patch (bsc#1286364):
   * Fix rdf_hash_test failure: raptor's stringbuffer copy API
     expects the full destination buffer size and rejects
     exact-length buffers, making librdf_hash_to_string() return an

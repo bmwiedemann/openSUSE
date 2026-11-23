@@ -313,4 +313,12 @@
     #0000132, #0000136 and #0000139.</comment>
     <requestid>1397795</requestid>
   </revision>
+  <revision rev="39" vrev="8">
+    <srcmd5>97e763a65d1f47e5fa87f9162d536480</srcmd5>
+    <version>1.0.17</version>
+    <time>1795432816</time>
+    <user>anag_factory</user>
+    <comment>- add redland-raptor-stringbuffer-copy.patch (bsc#1286364):</comment>
+    <requestid>1399523</requestid>
+  </revision>
 </revisionlist>
