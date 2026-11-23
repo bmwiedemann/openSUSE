@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:12:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.4:
+  * Bug fixes
+    - [v0.16] fix(policy): restrict downstreamResources through a
+      Policy allow-list in #6101
+    - [v0.16] Take the Go toolchain from the Rancher AppCo image in
+      the release workflow in #6040
+    - [v0.16] Raise inotify limit for the multi-cluster E2E job in
+      #6066
+    - [v0.16] Fix chart lint and unittest on newer runners in #6077
+    - [v0.16] Run the release job inside the Rancher CI image in
+      #6083
+    - [v0.16] Improve handling of images in E2E tests to stabilize
+      CI in #6105
+    - [v0.16] Wait for new leader after terminating pods in #6148
+  * Dependency bumps
+    - Update module golang.org/x/net to v0.62.0 [SECURITY]
+      (release/v0.16) in #6027
+    - Update Kubernetes dependencies to v0.36.6 (release/v0.16) in
+      #6081
+    - Update module github.com/klauspost/compress to v1.20.2
+      [SECURITY] (release/v0.16) in #6058
+    - Update dependency go to v1.26.11 (release/v0.16) in #6119
+    - Update go toolchain directive to v1.26.11 [SECURITY]
+      (release/v0.16) in #6113
+    - Update module golang.org/x/crypto to v0.59.0 [SECURITY]
+      (release/v0.16) in #6133
+    - Update module go.opentelemetry.io/otel/trace to v1.47.0
+      [SECURITY] (release/v0.16) in #6142
+
+-------------------------------------------------------------------
 Wed Oct 28 06:06:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.16.3:
