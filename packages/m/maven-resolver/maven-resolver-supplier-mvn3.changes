@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Nov 22 12:49:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.26
+  * New features and improvements
+    + Read the 1.9.x name of the trackingFilename key as a fallback
+    + Add HTTP 502 and 504 to retryable status codes
+  * Bug Fixes
+    + Close the discarded 412 response in the Jetty transport and
+      report transport properties once per transfer
+    + Fix #1989: fall back to stdout if SLF4J is unavailable when
+      logging
+    + Reject generate() on a closed signature generator
+    + Prune FileLockNamedLock thread entries and align the composite
+      unlock error
+    + Stop the IPC client from reconnecting after the factory shut
+      down
+    + Let the IPC named lock box an exclusive lock through a shared
+      step
+    + Let a session close quietly after the repository system shut
+      down
+    + Keep the last modified time when a move falls back to a stream
+      copy
+    + Tone down hard-link fallback log: WARN -> INFO, once per local
+      repo per session
+    + Make the session read-only flag volatile and fix its javadoc
+    + Restore the interrupt status when dependency collection is
+      interrupted
+    + Release the file lock before deleting a tracking file
+  * Documentation updates
+    + Rewrite the 1.x to 2.x upgrade guide and point deprecated API
+      at its replacements
+  * Maintenance
+    + Use @tempdir in DirectoryUtilsTest
+    + Drop redundant Surefire temp-dir workarounds
+    + Fix DirectoryUtilsTest assertions and test directory creation
+    + Create surefire-tmp before tests use it
+    + Test the depth semantics of the impl scope and optional
+      selectors
+    + Remove deprecation warnings from the main source sets
+    + Exclude Redisson 4.8.0+ updates for 1.9.x in Dependabot
+    + Move the HTTP test key material into SslTestSupport
+    + Extend ATR configuration in .asf.yaml
+    + MRESOLVER-2142: Probe random ports for the HTTP/3 test server
+  * Build
+    + Silence the obsolete Java 8 target warning
+    + Trim the CI matrix to 12 jobs and run a fail-fast job first
+  * Dependency updates
+    + build(deps): bump ch.qos.logback:logback-classic from 1.6.6 to
+      1.6.7
+    + deps: update p-u and p-x
+    + build(deps): bump maven3Version from 3.10.0 to 3.10.1
+    + build(deps): bump biz.aQute.bnd:bnd-maven-plugin from 7.4.0 to
+      7.5.0
+    + build(deps): bump version.bouncycastle from 1.86 to 1.87
+    + build(deps-dev): bump org.codehaus.mojo:exec-maven-plugin from
+      3.6.4 to 3.7.0
+    + build(deps): bump org.eclipse.jetty:jetty-bom from 12.1.14 to
+      12.1.15
+    + build(deps): bump version.sisu-maven-plugin from 1.1.1 to
+      1.1.2
+    + build(deps): bump org.codehaus.mojo:build-helper-maven-plugin
+      from 3.6.2 to 3.8.0
+    + build(deps): bump org.apache.commons:commons-lang3 from 3.21.0
+      to 3.22.0
+    + build(deps): bump com.github.siom79.japicmp
+      :japicmp-maven-plugin from 0.26.5 to 0.27.0
+    + build(deps): bump com.google.guava:guava from 33.7.2-jre to
+      33.8.0-jre
+
+-------------------------------------------------------------------
 Mon Nov  9 04:40:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0.25
