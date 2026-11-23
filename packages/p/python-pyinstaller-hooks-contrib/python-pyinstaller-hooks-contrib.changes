@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 22 21:56:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.10:
+  * Add hook for pymupdf to collect data files that were added in
+    pymupdf v2.0. (#1055)
+  * Fix webrtcvad metadata collection when the module is provided
+    by the webrtcvad-wheels distribution. (#1057)
+  * Update vtkmodules hooks for compatibility with vtk 9.7.1 and later. (#1060)
+  * Add a hook for dogpile.cache to collect its dynamically loaded
+    cache backends. (#1053)
+  * Update chardet hook for compatibility with chardet v7.7.0. (#1054)
+  * Update netCDF4 hook for compatibility with netCDF4 v1.7.5. (#1054)
+  * Update the imageio hook to collect distribution metadata,
+    fixing import failures in frozen applications with ImageIO
+    2.37.2 and newer. (#1050)
+
+-------------------------------------------------------------------
 Mon Jul  6 20:46:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6:
