@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov  2 09:36:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12.7
+  * Support `--pidfile` with `--monitor`.
+  * Don't run forever if `--stop-at-size` is active but the size is
+    zero or unknown.
+
+-------------------------------------------------------------------
 Sun Sep 20 01:22:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12
