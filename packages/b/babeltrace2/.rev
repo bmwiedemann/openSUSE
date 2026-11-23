@@ -55,4 +55,12 @@
     <comment>- Add BuildRequires on python3-setuptools, required for Python 3.12+. (forwarded request 1251620 from StevenK)</comment>
     <requestid>1265899</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6a3da63fe0d03c0a9b5cf18e7e320b2f</srcmd5>
+    <version>2.1.0</version>
+    <time>1795442055</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1399892</requestid>
+  </revision>
 </revisionlist>

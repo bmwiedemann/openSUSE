@@ -1,7 +1,7 @@
 #
 # spec file for package babeltrace2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,8 @@ URL:            https://babeltrace.org/
 Source:         https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2
 Source1:        https://efficios.com/files/babeltrace/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM babeltrace2-swig-py3.patch -- replace removed SWIG/Python 2 macros with standard Python 3 C API
+Patch0:         babeltrace2-swig-py3.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gcc-c++
@@ -71,7 +73,7 @@ The main format expected to be converted to/from is the
 Common Trace Format (CTF).
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export PYTHON="python3"

@@ -1,0 +1,31 @@
+--- a/src/bindings/python/bt2/bt2/native_bt.i	2026-11-16 16:02:59.864416378 +0100
++++ b/src/bindings/python/bt2/bt2/native_bt.i	2026-11-16 16:02:59.879003425 +0100
+@@ -73,7 +73,7 @@
+ %typemap(argout) (const char **) {
+ 	if (*$1) {
+ 		/* SWIG_AppendOutput() steals the created object */
+-		$result = SWIG_AppendOutput($result, SWIG_Python_str_FromChar(*$1));
++		$result = SWIG_AppendOutput($result, PyUnicode_FromString(*$1));
+ 	} else {
+ 		/* SWIG_AppendOutput() steals Py_None */
+ 		Py_INCREF(Py_None);
+--- a/src/bindings/python/bt2/bt2/native_bt_error.i.hpp	2026-11-16 16:02:59.866289738 +0100
++++ b/src/bindings/python/bt2/bt2/native_bt_error.i.hpp	2026-11-16 16:02:59.879137758 +0100
+@@ -19,7 +19,7 @@
+                               BT_COMMON_COLOR_WHEN_NEVER);
+     BT_ASSERT(error_cause_str);
+ 
+-    py_error_cause_str = PyString_FromString(error_cause_str);
++    py_error_cause_str = PyUnicode_FromString(error_cause_str);
+ 
+     g_free(error_cause_str);
+ 
+@@ -35,7 +35,7 @@
+                                 BT_COMMON_COLOR_WHEN_NEVER);
+     BT_ASSERT(error_str);
+ 
+-    py_error_str = PyString_FromString(error_str);
++    py_error_str = PyUnicode_FromString(error_str);
+ 
+     g_free(error_str);
+ 

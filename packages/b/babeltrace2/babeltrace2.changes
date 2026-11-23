@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 16 15:04:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add babeltrace2-swig-py3.patch: replace obsolete Python 2 calls
+  (PyString_FromString, SWIG_Python_str_FromChar) with Python 3
+  C API equivalents (PyUnicode_FromString).
+
+-------------------------------------------------------------------
 Mon Mar 10 04:00:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on python3-setuptools, required for Python 3.12+. 
