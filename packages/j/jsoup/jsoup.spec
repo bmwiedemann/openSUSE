@@ -17,7 +17,7 @@
 
 
 Name:           jsoup
-Version:        1.23.2
+Version:        1.24.1
 Release:        0
 Summary:        Java library for working with HTML
 License:        MIT

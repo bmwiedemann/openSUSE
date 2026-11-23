@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:08:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.24.1
+  * Changes
+    + Improvement: Added an opt-in Web query mode to align jsoup's
+      selectors with CSS and Web DOM standards. See the selector
+      migration guide for more details.
+      - Enable with System.setProperty("jsoup.queryMode", "web").
+        Queries return matching descendants only, can match
+        surrounding ancestors, and follow HTML/XML case rules.
+        Attribute ~= matches whitespace separated tokens instead of
+        regexes.
+      - You can jsoup.queryMode=check to help prepare for Web mode.
+        Selectors return legacy results and print differences to
+        stderr, with caller locations to help identify affected
+        code.
+      - Added :scope, :matchesAttr(name, regex), |= attribute
+        matching, and attribute case flags i and s. These work in
+        both legacy and Web modes, so queries can be updated before
+        switching modes.
+      - Web mode will become the default in 1.25.1 and the only mode
+        in 1.26.1.
+    + Improvement: Added support for parsing processing instructions
+      in HTML and XML, as ProcessingInstruction nodes. This supports
+      marker nodes such as <?marker name="country-options"?>,
+      matched by <template for="country-options"> in the HTML
+      Standard's new declarative streaming syntax. Processing
+      instructions can be selected with ::pi or ::pi(target), and
+      their data can be read and changed through the node's
+      attribute methods. Change: when using the XML parser, ordinary
+      <?target ...?> nodes are now represented by
+      ProcessingInstruction instead of XmlDeclaration; the
+      <?xml ...?> declaration remains an XmlDeclaration.
+    + Improvement: Added Parser.parseAttributes(String) to parse an
+      attribute fragment using that parser's settings.
+    + Improvement: :has() selectors with child and sibling
+      combinators now run faster by limiting the search to the parts
+      of the document where they can match. This particularly
+      improves selectors such as :has(> a), :has(+ dd), and
+      :has(+ div span).
+    + Improvement: SVG-specific tag and attribute names are now
+      automatically case corrected (e.g. pathlength becomes
+      pathLength) when parsing HTML.
+    + Improvement: Improved the HTML parse across document
+      boundaries by handling whitespace separately from subsequent
+      text. This better preserves the input's whitespace through
+      parse and serialize round-trips.
+    + Improvement: Improved HTML parsing performance for documents
+      with misplaced elements, and DOM update performance.
+    + Change: Removed APIs previously deprecated and scheduled for
+      removal in 1.24.1.
+    + Change: Response.bodyStream() now observes the configured max
+      body size and request timeout, consistent with the other
+      response body methods. The default max size is 2 MB. You can
+      configure that with maxBodySize(0) before executing the
+      request to disable the cap. Response.isTruncated() reports
+      when the decoded response content exceeded the configured
+      limit.
+    + Change: Query selector parsing now limits each query to 128
+      structural steps, counting combinators, node selectors, and
+      :has(), :is(), and :not() expressions together. More complex
+      queries throw SelectorParseException during parsing.
+    + Change: Attributes.equals() and hashCode() now exclude
+      internal attributes, such as source ranges and user data.
+    + Bugfix: Corrected :root to match the tree's root element in
+      both query modes. Previously, it matched the element the query
+      was called on. Use :scope to refer to that element.
+    + Bugfix: Standardized parser normalization of tag and attribute
+      names so that HTML comparisons use ASCII-only case folding,
+      and accepted control characters are preserved, aligning name
+      handling to the HTML and XML specs.
+    + Bugfix: Named character references without a semicolon before
+      - or _ now decode correctly in attribute values, matching HTML
+      and browser behavior (e.g., &copy- becomes ©-).
+    + Bugfix: Support downloads > 2GB via Response.bodyStream() when
+      maxBodySize(0) is configured.
+    + Bugfix: Updated table and table-fragment parsing to place
+      misnested content correctly per the HTML5 spec. For example,
+      <table><b><p>X</b> places the paragraph before the table.
+    + Bugfix: StreamParser now preserves its progress if you use the
+      same Parser to parse another document, or call
+      Element.append(String) on a streamed element. Previously,
+      these operations replaced the active parse state and prevented
+      streaming from continuing correctly.
+    + Bugfix: Updated the adoption-agency algorithm to match the
+      current HTML5 spec and to preserve formatting order when
+      recovering misnested elements.
+    + Bugfix: :has() now correctly matches sibling alternatives and
+      descendants of siblings. Given
+      <div id=a></div><div><span></span></div>, both
+      #a:has(+ div, > span) and #a:has(+ div span) select #a.
+    + Bugfix: Within node selectors, :not() now correctly applies
+      :contains() and :matches() to the node value. For example,
+      ::comment:not(:contains(foo)) excludes comments containing
+      foo.
+    + Bugfix: Updated <select> parsing to the current HTML spec,
+      retaining elements such as buttons and other markup that the
+      previous rules discarded.
+    + Bugfix: Template parsing now closes unclosed templates at EOF
+      and handles forms correctly in template documents and
+      fragments.
+    + Bugfix: Fixed handling of null characters and initial newlines
+      in HTML to better match the HTML spec, including pre, listing,
+      and textarea elements. Leading newlines in these elements'
+      text are preserved when saving and reparsing HTML.
+    + Bugfix: Fixed several HTML parsing edge cases across malformed
+      doctypes, misplaced text in tables, and whitespace in
+      framesets to match the HTML spec.
+    + Bugfix: If a HTML void element ends up with children (via DOM
+      manipulation), those are no longer serialized in html().
+    + Bugfix: Fixed a ConcurrentModificationException when emptying
+      and reading separate childless elements concurrently.
+    + Bugfix: Removed the old command, device, and menuitem tags, as
+      they are no longer in the HTML spec.
+    + Bugfix: Double-escaped script tags in body were being closed
+      too early.
+    + Bugfix: Node.before(Node) and Node.after(Node) now leave the
+      document unchanged when given the node itself, instead of
+      throwing a NullPointerException.
+    + Bugfix: Fixed HTML parse of <dialog>, <main>, and <search> so
+      their start and end tags close open paragraphs correctly.
+    + Bugfix: Updated the parse of malformed end tags such as
+      </ COMMENT > to match the spec (<!-- COMMENT -->).
+    + Bugfix: Source position tracking no longer impacts the
+      adoption algo when repeated HTML formatting tags are
+      reconstructed after a paragraph closes.
+    + Bugfix: Fixed fragment parsing to ignore <body> and <frameset>
+      start tags when the second open element is not body, matching
+      the HTML spec.
+    + Bugfix: Updated how the tokeniser handles malformed doctypes,
+      to remove duplicative tokens and error messages.
+    + Bugfix: Corrected HTML tokenisation of malformed comments such
+      as <!---x and incomplete start tags such as <p id=, and
+      improved their error reporting.
+    + Bugfix: Fixed FormElement.empty() retaining associations with
+      removed controls. If an input node removed by empty() was
+      subsequently inserted outside its original form, it could
+      incorrectly reappear in that form's elements() and formData()
+      results.
+
+-------------------------------------------------------------------
 Wed Aug 26 11:46:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.23.2

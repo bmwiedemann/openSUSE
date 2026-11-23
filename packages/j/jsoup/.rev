@@ -47,4 +47,12 @@
     <comment>1.23.2 with bsc#1275912, CVE-2026-75140</comment>
     <requestid>1375652</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>97f90e78578ca1eff41cf99e138045ec</srcmd5>
+    <version>1.24.1</version>
+    <time>1795442036</time>
+    <user>anag_factory</user>
+    <comment>1.24.1</comment>
+    <requestid>1399866</requestid>
+  </revision>
 </revisionlist>

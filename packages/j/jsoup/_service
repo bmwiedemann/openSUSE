@@ -2,7 +2,7 @@
 	<service name="tar_scm" mode="manual">
 		<param name="scm">git</param>
 		<param name="url">https://github.com/jhy/jsoup.git</param>
-		<param name="revision">jsoup-1.23.2</param>
+		<param name="revision">jsoup-1.24.1</param>
 		<param name="match-tag">jsoup-*</param>
 		<param name="versionformat">@PARENT_TAG@</param>
 		<param name="versionrewrite-pattern">jsoup-(.*)</param>
