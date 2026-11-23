@@ -19,4 +19,15 @@
     segments.</comment>
     <requestid>1362012</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>580bf87e19916ce4bebcb004de4c052a</srcmd5>
+    <version>0.16.0</version>
+    <time>1795432968</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.16.0:
+  * Fix HTTP normalization and protocol rewrites for generic Git
+    hosts.
+  * Pin ruff version to 0.15.22</comment>
+    <requestid>1399679</requestid>
+  </revision>
 </revisionlist>

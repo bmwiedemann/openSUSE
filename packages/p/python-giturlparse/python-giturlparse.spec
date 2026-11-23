@@ -17,7 +17,7 @@
 
 
 Name:           python-giturlparse
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        A Git URL parsing module (supports parsing and rewriting)
 License:        Apache-2.0

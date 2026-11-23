@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:39:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * Fix HTTP normalization and protocol rewrites for generic Git
+    hosts.
+  * Pin ruff version to 0.15.22
+
+-------------------------------------------------------------------
 Sat Jun 27 16:04:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.0:
