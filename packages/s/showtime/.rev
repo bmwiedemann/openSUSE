@@ -114,4 +114,13 @@
   + Updated translations.</comment>
     <requestid>1384579</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>426e2a4dcdf687bdd257d0224cfcc5e8</srcmd5>
+    <version>50.1.1</version>
+    <time>1795442068</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1.1:
+  * Various bug fixes</comment>
+    <requestid>1399914</requestid>
+  </revision>
 </revisionlist>
