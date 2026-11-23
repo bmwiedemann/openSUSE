@@ -563,4 +563,12 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.15.1: annotation queues, sandbox volumes, selective evaluate upload, thread stats.</comment>
     <requestid>1398896</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>c55e43f80f9a0d26bf900941104375b1</srcmd5>
+    <version>0.16.0</version>
+    <time>1795433015</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.16.0: cursor-paginated workspace secrets (breaking), tracing_context skip, feedback delete, run-rules backfill, robin verifiers.</comment>
+    <requestid>1399729</requestid>
+  </revision>
 </revisionlist>

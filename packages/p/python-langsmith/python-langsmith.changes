@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.0:
+  * Workspace secrets: cursor-paginated listing (breaking
+    change)
+  * SDK tracing_context can skip copying the parent tags
+    and metadata
+  * Feedback: delete feedback from Go
+  * Run-rules: return backfill_id on create, list every
+    outcomes page in backfill logs
+  * Robin: keep Terminal-Bench verifiers alive through a
+    dropped connection
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
 Fri Nov 20 06:25:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.15.1:
