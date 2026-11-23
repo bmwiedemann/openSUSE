@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Nov 20 07:53:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.3.3:
+  * Bug fix release. Keyboard focus lands on the token list again after
+    unlocking, so Up, Down and Enter work right away, and searching no longer
+    moves focus out of the search bar. There is no on-disk format change;
+    existing databases open unchanged.:
+    + FIX: after unlocking a database, or switching to another one from the
+      sidebar, keyboard focus stayed on the toolbar instead of the token list,
+      a regression from 5.3.0
+    + FIX: a search that matched nothing moved focus from the search bar to the
+      Clear Filters button, so Backspace did nothing and Space cleared the
+      search
+    + FIX: while the token list was being filled, the first token made the
+      window pick the "no results" page instead of the list
+    + TEST: the unlock sequence and a search that stops matching are replayed
+      against the real window
+
+-------------------------------------------------------------------
 Tue Nov  3 08:17:21 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.3.2:

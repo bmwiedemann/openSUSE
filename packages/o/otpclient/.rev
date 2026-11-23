@@ -841,4 +841,26 @@
 - Own %%{_datadir}/bash-completion/*, as already done for zsh and fish.</comment>
     <requestid>1394643</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>46e86a0c36f4896b06fda8ecde0f41fe</srcmd5>
+    <version>5.3.3</version>
+    <time>1795442065</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.3.3:
+  * Bug fix release. Keyboard focus lands on the token list again after
+    unlocking, so Up, Down and Enter work right away, and searching no longer
+    moves focus out of the search bar. There is no on-disk format change;
+    existing databases open unchanged.:
+    + FIX: after unlocking a database, or switching to another one from the
+      sidebar, keyboard focus stayed on the toolbar instead of the token list,
+      a regression from 5.3.0
+    + FIX: a search that matched nothing moved focus from the search bar to the
+      Clear Filters button, so Backspace did nothing and Space cleared the
+      search
+    + FIX: while the token list was being filled, the first token made the
+      window pick the &quot;no results&quot; page instead of the list
+    + TEST: the unlock sequence and a search that stops matching are replayed
+      against the real window</comment>
+    <requestid>1399912</requestid>
+  </revision>
 </revisionlist>
