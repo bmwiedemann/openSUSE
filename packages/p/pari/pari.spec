@@ -125,7 +125,6 @@ install -m0644 misc/gprc.dft %buildroot%_sysconfdir/gprc
 
 install -dm0755 %buildroot%_defaultdocdir/%name
 install -Dm0644 doc/*.pdf %buildroot%_defaultdocdir/%name
-rm -rf %buildroot%_datadir/%name/doc
 mv %buildroot%_datadir/%name/examples %buildroot%_defaultdocdir/%name
 
 %ldconfig_scriptlets -n %lname

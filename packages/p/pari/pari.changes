@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 21 18:57:41 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Fix gphelp by including /usr/share/pari/doc in pari-gp
+
+-------------------------------------------------------------------
 Tue Nov 17 12:05:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.19.1

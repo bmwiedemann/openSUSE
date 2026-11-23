@@ -343,4 +343,12 @@
     <comment>- Update to release 2.19.1</comment>
     <requestid>1398154</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>bfa3bb0fc0c6e8bc4e4dfecf9ec56757</srcmd5>
+    <version>2.19.1</version>
+    <time>1795432937</time>
+    <user>anag_factory</user>
+    <comment>- Fix gphelp by including /usr/share/pari/doc in pari-gp</comment>
+    <requestid>1399668</requestid>
+  </revision>
 </revisionlist>
