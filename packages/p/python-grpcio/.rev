@@ -721,4 +721,12 @@
   * Update gRPC repo roots</comment>
     <requestid>1392467</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>56c52c91a310c38e12eebabf611dc2ef</srcmd5>
+    <version>1.85.3</version>
+    <time>1795432829</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1399621</requestid>
+  </revision>
 </revisionlist>

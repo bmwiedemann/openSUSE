@@ -1,6 +1,7 @@
 #
 # spec file for package python-grpcio
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +20,7 @@
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.84.1
+Version:        1.85.3
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -31,6 +32,8 @@ Patch1:         xxhash-avoid-armv6-unaligned-access.patch
 # PATCH-FIX-SLE xxhash-ppc64le-gcc7.patch boo#1208794 alarrosa@suse.com -- fix build failure on ppc64le when using gcc 7
 Patch2:         xxhash-ppc64le-gcc7.patch
 Patch3:         fix-return-values.patch
+# PATCH-FIX_UPSTREAM https://github.com/grpc/grpc/pull/43935
+Patch4:         noweakca.patch
 BuildRequires:  %{python_module Cython >= 3.1.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
@@ -66,7 +69,11 @@ and server applications to communicate, and enables the building of
 connected systems.
 
 %prep
-%autosetup -p1 -n grpcio-%{version}
+%setup -n grpcio-%{version}
+%patch -P 1 -p1
+%patch -P 2 -p1
+%patch -P 3 -p1
+%patch -P 4
 
 %build
 %if 0%{?suse_version} < 1600

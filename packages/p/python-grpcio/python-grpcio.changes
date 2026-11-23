@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:55:21 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- update to 1.85.3
+  * Add noweakca.patch (bsc#1287631, bsc#1286261)
+  * Fixed a deadlock that could freeze the entire Python process when closing
+    a channel (synchronous API) while gRPC's background threads were running
+    Python callbacks (for example, call credentials plugins). (#43961)
+  
+
+-------------------------------------------------------------------
 Sun Oct 25 15:48:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.84.1:
