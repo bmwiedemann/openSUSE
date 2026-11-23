@@ -135,4 +135,12 @@
     <comment>Update graphifyy to 0.9.114: pipeline speed-ups, extractor fixes, skip sql/pascal tests needing optional grammars.</comment>
     <requestid>1399609</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>20c5b6c60af83b26b7197dccb6e54bff</srcmd5>
+    <version>0.9.115</version>
+    <time>1795433054</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.115: UNC gating security fix (GHSA-g6c9-j4vm-mwq4), path/python, rust/csharp/php, watch fixes, AST 51.</comment>
+    <requestid>1399730</requestid>
+  </revision>
 </revisionlist>

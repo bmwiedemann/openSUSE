@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:38:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.115:
+  * Security: indexing no longer stats corpus-chosen paths
+    outside the scan root; UNC gitdir/commondir and .sh source
+    paths refused before resolve, fixing forced-SMB-auth on
+    Windows (GHSA-g6c9-j4vm-mwq4); bash out-of-tree edges
+    dropped
+  * path: exact node id resolves before tier matching
+    (#5367); python cross-file from-import calls constrained
+    to the imported name and module (#5229)
+  * rust: colliding impl-block members get distinct salted ids
+    (#5380); C#: calls through a static member resolve through
+    its declared type (#5376); PHP member calls resolve in
+    remapped files and through inherits/trait chain, keeping
+    every call site (#5362)
+  * watch: hook rebuild reconciles corpus-only changes so the
+    graph no longer goes stale (#5331); oversized JSON reported
+    as skipped so unchanged updates short-circuit (#5131)
+  * AST cache schema bumped to 51; warm caches re-extract the
+    affected languages
+
+-------------------------------------------------------------------
 Sat Nov 21 07:26:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Skip 10 %check tests needing the optional tree-sitter-sql
