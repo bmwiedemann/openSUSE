@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Tue Jan 14 23:33:36 UTC 2025 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.1.10
+  * Bugfixes
+    + Fix GC nepotism with MpscLinkedQueue's poll logic. #7799
+    + Fix FlowableBlockingIterable.onNext to set the exception
+      before terminating to avoid losing it. #7789
+
+-------------------------------------------------------------------
+Wed Sep  4 18:56:49 UTC 2024 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.1.9
+  * Bugfixes
+    + Fix ScheduledRunnable's interruption logic if used from a
+      no-interrupt Schedulers.from. #7745
+  * Documentation
+    + Update the javadoc description of cast(). #7606
+    + Update How-To-Use-RxJava.md (d0038c9, 6d63111)
+    + Update Readme.md with reference to JavaFXScheduler.platform.
+      (f822ffb)
+    + Fix broken annotation links. #7652
+    + Update marbles for concatMap{Single|Maybe}[DelayError] #7698
+
+-------------------------------------------------------------------
+Thu Oct 26 07:36:32 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.1.8
+  * Bugfixes
+    + Fix ObservableSwitchMap NullPointerException due to cancel
+      race. (#7597)
+- Reproducible builds: use SOURCE_DATE_EPOCH for timestamp
+
+-------------------------------------------------------------------
+Fri Sep  8 14:42:58 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.1.7
+  * API changes
+    + Add onDropped callback for onBackpressureLatest. (#7542)
+    + Add onDropped callback to onBackpressureBuffer. (#7567)
+  * Documentation
+    + Change summary to caption, because summary is obsolete in
+      HTML5. (#7534)
+    + Try using https to access the reactive streams javadoc.
+      (#7535)
+    + Improve Javadoc of Disposable.
+  * Other
+    + Add minimum GitHub token permissions for workflows. (#7541)
+    + Create SECURITY.md (#7546)
+    + Add copyright and license to jar. (#7520)
+    + Convert CompletableOnErrorComplete$onError inner class to
+      static. (#7575)
+    + Allow null accumulator type in the collect(Collector)
+      operators. (#7590)
+
+-------------------------------------------------------------------
+Fri Jan 27 22:58:25 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Initial packaging with v3.1.6
