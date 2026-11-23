@@ -1,0 +1,14 @@
+<package name="omnidiff" project="openSUSE:Factory">
+  <title>Content-aware diffing tool</title>
+  <description>OmniDiff is a content-aware diff tool. Instead of aligning two files line by line, it
+parses code with tree-sitter and matches the two syntax trees, so a change is reported
+as what it structurally is - an insertion, a deletion, an update, or a move - rather
+than as whichever lines happened to line up. Pictures, archives, fonts, cursors,
+message catalogs and PDFs are diffed by what they hold: pixels, files, glyphs, frames,
+messages and pages.
+
+It runs as an interactive terminal UI, as a plain-text batch formatter, or as a JSON
+emitter for editor integrations, and it works as a git difftool backend and a
+Jujutsu (jj) diff formatter.</description>
+  <url>https://github.com/ivankovic/omnidiff</url>
+</package>
