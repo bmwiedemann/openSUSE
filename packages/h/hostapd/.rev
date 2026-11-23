@@ -532,4 +532,14 @@ ChangeLog for hostapd since 2.4:
     <comment>1</comment>
     <requestid>1394632</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>3ca7c2ec3e36b4a9f327ed005eeb1381</srcmd5>
+    <version>2.12</version>
+    <time>1795433255</time>
+    <user>anag_factory</user>
+    <comment>- Add RADIUS-Fix-Message-Authenticator-attribute-validatio.patch
+  https://w1.fi/security/2026-5
+</comment>
+    <requestid>1399894</requestid>
+  </revision>
 </revisionlist>

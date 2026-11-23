@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 09:09:26 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add RADIUS-Fix-Message-Authenticator-attribute-validatio.patch
+  https://w1.fi/security/2026-5
+
+-------------------------------------------------------------------
 Sun Oct 18 10:59:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.12:

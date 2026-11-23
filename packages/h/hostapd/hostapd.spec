@@ -30,6 +30,8 @@ Source2:        %{name}.keyring
 Source3:        config
 Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
+# UPSTREAM-FIX fix https://w1.fi/security/2026-5
+Patch1:         RADIUS-Fix-Message-Authenticator-attribute-validatio.patch
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0

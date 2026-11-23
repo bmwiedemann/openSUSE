@@ -1,0 +1,49 @@
+From aa02cfa569477f67f3915c8b9a83d1a7ca93693d Mon Sep 17 00:00:00 2001
+From: Jouni Malinen <jouni.malinen@oss.qualcomm.com>
+Date: Fri, 14 Aug 2026 11:20:34 +0300
+Subject: [PATCH] RADIUS: Fix Message-Authenticator attribute validation
+Reference: https://w1.fi/security/2026-5
+
+The length of the Message-Authenticator attribute was not verified to be
+sufficiently long to contain the HMAC-MD5 value before checking that
+value when checking it from received RADIUS messages. This could result
+in reading and writing 16 bytes beyond the end of the message buffer
+when processing a specifically constructed malformed message. The
+written part is a temporary zeroing followed by restoring the original
+contents and the main potential impact from this would be process
+termination.
+
+Discovered and reported by BreachX Zero Day Labs, using Typhon AI Mil
+v2. Contributing Researcher: Vivek Parikh.
+
+Signed-off-by: Jouni Malinen <jouni.malinen@oss.qualcomm.com>
+---
+ src/radius/radius.c |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/src/radius/radius.c
++++ b/src/radius/radius.c
+@@ -695,6 +695,11 @@ int radius_msg_verify_das_req(struct rad
+ 		return 0;
+ 	}
+ 
++	if (attr->length != sizeof(*attr) + MD5_MAC_LEN) {
++		wpa_printf(MSG_WARNING, "Invalid Message-Authenticator length");
++		return 1;
++	}
++
+ 	os_memcpy(orig, attr + 1, MD5_MAC_LEN);
+ 	os_memset(attr + 1, 0, MD5_MAC_LEN);
+ 	os_memcpy(orig_authenticator, msg->hdr->authenticator,
+@@ -993,6 +998,11 @@ int radius_msg_verify_msg_auth(struct ra
+ 		return 1;
+ 	}
+ 
++	if (attr->length != sizeof(*attr) + MD5_MAC_LEN) {
++		wpa_printf(MSG_INFO, "Invalid Message-Authenticator length");
++		return 1;
++	}
++
+ 	os_memcpy(orig, attr + 1, MD5_MAC_LEN);
+ 	os_memset(attr + 1, 0, MD5_MAC_LEN);
+ 	if (req_auth) {
