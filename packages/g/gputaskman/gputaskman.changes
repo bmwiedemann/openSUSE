@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:38:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.5:
+  * Report vLLM prompt and generation token rates from /metrics
+    (needs two probes in one session).
+  * Show version via --version, TUI subtitle and upgrade notes.
+  * Read Intel Xe package temperature from GPU hwmon labels and
+    label Intel clock charts as GT.
+  * Cap GGUF header strings instead of trusting claimed length.
+  * Resolve llama-server relative model_path and --log-file
+    against its cwd; show compressed graphics peaks without
+    counting them toward VRAM.
+  * Hide Microsoft Basic Render Driver adapters; keep same-name
+    adapters in separate summary runs.
+  * Harden attribution: report NVML process-list failures, keep
+    hidden NVML VRAM out of totals, avoid count-based container
+    PID matches and private DRM attribution without identity.
+  * Improve WSL/macOS handling: preserve unknown WSL counters,
+    fix PID-reuse ownership, keep probes on original listener,
+    mark failed Metal queries unavailable.
+  * Document TEXTUAL_THEME for TUI colors; hide Windows counter
+    notes on Linux and macOS compositors.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Sat Nov 21 07:06:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.4:
