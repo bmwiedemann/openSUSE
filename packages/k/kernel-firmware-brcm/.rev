@@ -104,4 +104,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: Link the Raspberry Pi 5B revD</comment>
     <requestid>1396919</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1dee575d1d66fd0d8b498b246a293ca0</srcmd5>
+    <version>20261114</version>
+    <time>1795432789</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * brcm: add AP6356S NVRAM link for graperain g3568-v2</comment>
+    <requestid>1399491</requestid>
+  </revision>
 </revisionlist>
