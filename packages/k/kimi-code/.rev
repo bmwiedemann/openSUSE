@@ -282,4 +282,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update kimi-code to 2.7.0: Bedrock providers, prompt prediction, Steer follow-up, /tasks, web --json.</comment>
     <requestid>1398892</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>ab7ec38a8263fa64e8d0219fa2e91ee8</srcmd5>
+    <version>2.7.2</version>
+    <time>1795433051</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 2.7.2: keep draft thinking effort after send, fix fork after steering, input composer, queued prompts.</comment>
+    <requestid>1399725</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.2 (crosses 2.7.1):
+  * Web: keep draft thinking effort after sending instead of
+    reverting to the model default, including config-derived
+    effort (#5170, #5191)
+  * Fix turn-specific fork failures after restoring sessions
+    with in-turn steering (#5165)
+  * Web: fix the input composer disappearing over insecure
+    HTTP (#5173)
+  * Keep queued prompts pending until background notification
+    turns finish (#5166)
+
+-------------------------------------------------------------------
 Fri Nov 20 06:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.7.0:
