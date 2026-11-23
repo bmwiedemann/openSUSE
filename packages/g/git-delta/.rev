@@ -199,4 +199,15 @@
   * Indicate submodule dirty state #2349</comment>
     <requestid>1398919</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>e3afa49d8ea9c3304184d6a00671f730</srcmd5>
+    <version>0.22.0</version>
+    <time>1795433237</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.22.0:
+  * fix: separate &quot;(binary file)&quot; suffix from filename in hyperlinks #2075
+  * difftastic TUI integration #2353
+  * tui config #2360</comment>
+    <requestid>1399865</requestid>
+  </revision>
 </revisionlist>
