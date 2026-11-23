@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:03:03 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 2.1.7
+  * [riscv64]
+    - Fix build with Linux 7.3 uppercase ISA extension IDs
+  * [UI]
+    - Mask raw terminal input to known key bits
+    - Do not process a key when stdin read fails or hangs up
+  * [CR]
+    - Fix some kernel collisions within FP registers (arm/riscv/powerpc)
+
+-------------------------------------------------------------------
 Sat Oct 17 18:19:17 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 2.1.5

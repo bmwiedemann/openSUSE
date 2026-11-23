@@ -500,4 +500,12 @@ There are 4 months worth of complicated commit, and I cannot go through them all
     <comment>Update to 2.1.5</comment>
     <requestid>1385845</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>46a32f0c80e493fbff56a1303475a679</srcmd5>
+    <version>2.1.7</version>
+    <time>1795433063</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.7</comment>
+    <requestid>1399717</requestid>
+  </revision>
 </revisionlist>

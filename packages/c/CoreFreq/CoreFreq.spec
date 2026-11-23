@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        2.1.5
+Version:        2.1.7
 Release:        0
 Summary:        CPU monitoring software for 64-bit processors
 License:        GPL-2.0-or-later
@@ -49,13 +49,6 @@ sed -i \
     -e 's/x86_spec_ctrl_base = Spec_Ctrl.value;/this_cpu_write(x86_spec_ctrl_current, Spec_Ctrl.value);/' \
     x86_64/corefreqk.c
 %endif
-
-# On aarch64, fix naming collisions between {FPSR,FPCR}_* enums defined in coretypes.h and macros with the same name defined in
-# /usr/src/linux-<version>-obj/arm64/default/arch/arm64/include/generated/asm/sysreg-defs.h
-# Append _ to problematic names
-sed -i \
-    -e 's/\b\(FPSR\|FPCR\)_[A-Z]*\b/&_/g' \
-    aarch64/{corefreq-cli.c,coretypes.h}
 
 %build
 # Userspace parts are flavor independent, build them once
