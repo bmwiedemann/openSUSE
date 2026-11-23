@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-beniget
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Module to extract semantic information about static Python code
 License:        BSD-3-Clause

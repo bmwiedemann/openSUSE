@@ -101,4 +101,13 @@
     delete</comment>
     <requestid>1370807</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>65d5877e93c7a684a9709c5f79796093</srcmd5>
+    <version>0.5.1</version>
+    <time>1795432819</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.5.1:
+  * correctly analyze lambda defaults</comment>
+    <requestid>1399558</requestid>
+  </revision>
 </revisionlist>
