@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sat Nov 21 01:03:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable pg 19
+
+-------------------------------------------------------------------
+Sat Nov 21 01:03:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 4.17.1+git0.542aed2:
+  * prepare for 4.17.1
+  * cast cache initalization calls fmgr_info function. This call requires some longer life memory context
+  * refactoring of cast cache entry initialization
+  * inalidate cached plan when some argtype is changed, correctly set an is_array flag in variable, when rebinded variable is not an array
+  * don't allow recursive usage of dbms_sql functions
+  * don't leave a check of sql identifier at end of double quote
+  * check if result column list for list_pipes srf function has expected types
+  * Discard DBMS_ALERT signals rolled back to a savepoint
+  * Mark the integer and text seed functions and initialize volatile in both installation and upgrade scripts
+  * Keep business-calendar reads out of immutable  expressions
+  * Forward autoflush in the polymorphic UTL_FILE wrapper
+  * Mark the session dependent plvsubst.string overloads STABLE
+  * ensure IMMUTABLE flag for all usage orafce_concat2 function plus necessary comments about possible risk
+  * Schema qualify the core function calls in SQL function  bodies
+  * Mark the timezone dependent timestamptz functions STABLE
+  * Qualify the references of sinh, cosh and last_day with pg_catalog
+  * Declare plvstr.instr and plvstr.substr parallel safe on  upgrade
+  * update regress tests
+  * Use source text bounds in the pre-15 regexp replacement backport
+  * Do not truncate the separator reported by plvlex.tokens
+  * A memory context reset callback is unregistered before it is executed, so it fires at most once.  execute() registered the callback only while it created the per-transaction context of the cursor, and reused the context by resetting it on every further execution.  The first reset therefore consumed the callback, and the end of the transaction destroyed the context without letting the cursor know.  The cursor kept a pointer to the freed context, and the next execution of the same cursor reset that pointer, which crashed the backend:
+  * Check the requested target type of every DBMS_SQL column value
+  * A cursor with defined columns opens a portal whose name is derived from the cursor id.  execute() never closed that portal, so the second execution of the same cursor tried to open a portal with a name that was still in use:
+  * regress tests for plvstr.swap
+  * Do not let plvstr.swap read a start position from the end of the string
+  * reimplement function dbms_pipe.__list_pipes() to return tuplestore instead tuple per call - it returns max MAX_PIPES rows, so using tuplestore is perfect solution
+  * Preserve string types and domain constraints in replacement triggers
+  * Make UTL_RAW.SUBSTR raise where Oracle raises
+  * Range check the dates next_day and last_day return
+  * Keep random range results finite and below the upper bound
+  * Ignore placeholders inside SQL comments in DBMS_SQL
+  * don't use package variable last_row_count for check if any specific cursor has a data. It cannot work safely when more cursors are used
+  * Advance by the delimiter character length rather than one character. This also preserves character positions for multibyte delimiters.
+  * Clear fractional seconds when rounding timestamps
+  * Avoid intermediate overflow in even-sized medians
+  * Honor collation when testing case-insensitive prefixes
+  * raise more correct error message after timeout
+  * Keep numeric remainder calculations in numeric
+  * Compute integer remainders without floating-point quotients
+  * check dates before any calculation
+  * fix formatting
+  * Keep uuid_generate_v4 as the selected GUID source
+  * Truncate AD centuries using one-based years
+  * Normalize BC month arithmetic without year-zero adjustments
+  * don't duplicate pg buildin code
+  * don't duplicate pg buildin code
+  * modernize plvstr.normalize function
+  * don't hold shmem_lockid in sleeping before a retry to create pipe
+  * Report an invalid file handle from utl_file.fclose
+  * Close both streams when utl_file.fcopy does not finish
+  * Treat undisplayable characters as zero width while padding
+  * Reject unresolved parent references in UTL_FILE paths
+  * correctly set isnull flag for returned array in dbms_sql.column_value
+  * Do not let plvstr.betwn read a position from the end of the string
+  * Normalize the end position independently in plvstr.betwn
+  * raise a error when shared memory is not locked in timeout in dbms_pipe_list_pipes
+  * the size of shared memory was 30kB. It can be too low for some reasons. This size is used as safe value that doesn't need a shared memory preallocation. When orafce is loaded by shared_preload_liraries, then 3MB of memory is preallocated
+  * more robust check DBMS_ASSERT.QUALIFIED_SQL_NAME. The previous code modified passed string, it is wrong - original string should be unchanged
+  * check possible overflow in column size in dbms_sql.define_column
+  * the size of produced string dbms_random.string cannot to accross 1GB
+  * don't run cycles with user input without CHECK_FOR_INTERRUPTS
+  * HeapTuple is already pointer
+  * dbms_sql - dynamic allocation of buffer for prefetched rows
+  * Validate the column position and the array size in dbms_sql
+  * fix regress tests
+  * Return 0 from oracle.regexp_instr() for a nonexistent capture group
+  * fix regress tests
+  * Do not let oracle.substrb() return an invalidly encoded string
+  * Make dbms_alert.waitone() consume only the requested alert
+  * text_eq() returns true when the two strings are equal, but dbms_alert_signal() tested it with "== 0", so the duplicate detection was exactly backwards: a signal was dropped when its event name differed from one already buffered in the transaction, and a genuine duplicate was queued twice
+  * enhance regress tests - still substr is buggy
+  * Return the computed value from the special cases of oracle.remainder()
+  * Fix out of range check in plvstr.rvrs()
+  * Fix version test for pg_mblen_range() and pg_mblen_cstr()
+  * don't crash when dbms_sql.column_value_f returns NULL
+  * check secure locality every time - we don't sanitize filename before joining with location (we do this after joining), and then we must to check secure locality in this case too
+  * Restrict USER_TABLES / USER_TAB_COLUMNS to the current schema
+  * fix broken merge
+  * fix meson.build
+  * utl_raw: implement the BIT_* operators in C
+  * Add hextoraw/rawtohex, empty_clob/empty_blob and from_tz functions
+  * try to force c11 build
+  * fix meson build
+  * PostgreSQL 19 did char2wchar static - copy this function to Orafce
+  * run tests on pg18 too
+  * try to force c11 build
+  * fix meson build
+  * PostgreSQL 19 did char2wchar static - copy this function to Orafce
+  * Add the UTL_RAW package
+  * run tests on pg18 too
+  * Add hextoraw/rawtohex, empty_clob/empty_blob and from_tz functions
+  * Update SECURITY.md
+  * prepare for 4.16.8
+  * add missing file
+  * Reverted patch will be postponed, because I want to release bugfix release without a necessity to upgrade Orafce
+  * Add hextoraw/rawtohex, empty_clob/empty_blob and from_tz functions
+  * Leave the exclusive scanner state at end of input The six <<EOF>> rules for the exclusive start conditions -- xc, xb, xh, xq/xe, xdolq and xd -- build a token out of the partial literal and return it, but never leave the state:
+  * protect pad functions against unfinished loop when third argument has zero display width
+  * utl_file.fcopy doesn't supports binary files. When the source file contains NUL chars, then the new file will be corrupted. The data between NUL and related new lines will be lost. This patch doesn't try to fix this behave. Just protect to read before reading buffer, when NUL char is first char in reading buffer.
+  * Guard dbms_pipe.next_item_type() against an empty input buffer next_item_type() was
+  * although varchar2 is not designed for multibytes chars, it can hold it, and then truncating should not to break multibyte character
+  * oracle.rpad and oracle.lpad can be cancelable
+  * use int instead unsigned char for counter of alert receivers
+  * replace obsolete pg_mblen with safe newer variants - mostly pg_mblen_range
+  * use correct size of available shared memory - the size of sh_memory_size is used already
+  * note about differences between Oracle and Orafce's rpad function (for special cases)
+  * correctly increments pipe unique id counter
+  * protect aganst reading template string after the end
+  * use consistentlu macros VARDATA_ANY and VARDATA_ANY_EXHDR
+  * fix possible crash when second argument of plvstr.rvrs is zero and third is MIN_INT
+  * use more correct size of packed fields
+  * fix possible crash of dbms_sql.describe_columns when parsed query don't returns table
+  * fix DBMS_ASSERT.SIMPLE_SQL_NAME - before the fix, last char of unquoted identifier was not checked
+  * don't track regression tests results
+  * fix check of month number
+  * fix check of column number validity
+  * Create SECURITY.md
+  * regexp.c: guard pg_re_flags against forks that hoist it into regex.h
+  * allow to use translation mode prefix in nls_date_format
+  * fix formatting
+  * fix formatting
+  * fix formatting
+  * fix formatting and remove dead code
+  * fix formatting
+  * fix formatting
+  * fix formatting
+  * fix formatting
+  * fix formatting
+  * fix formatting
+  * generate typedefs from objfiles
+  * remove postgres typedef.list - generated list will be used instead
+  * orafce uses BSD licence (0BSD)
+  * Add another alternative output for dbms_random test to make it pass on Big Endian machine.
+  * fix cppcheck's false alarms
+  * prepare for 4.16.7
+  * fix build
+  * prepare for 4.16.6
+  * fix possible int overflow
+  * remove logacy code - related <pg13
+  * Update README.msvc
+  * Update README.msvc
+  * fix build against pg19
+  * fix build and tests for current dev
+  * prepare for 4.16.5
+  * fix meson build - assert.c was renamed to dbms_assert.c
+  * prepare for 4.16.4
+  * test: add alternative expected output for dbms_random on macOS ARM
+  * update year in copyright
+  * remove obsolete code
+  * use PG_MODULE_MAGIC_EXT
+  * update year in copyright info
+  * remove obsolete (13-) code
+  * fix build after 17f446784d54da827f74c2acc0fa772a41b92354 - using custom header file named like system header file is a bad idea
+  * fix build of datafce.c against master
+  * fix example in meson readme
+  * prepare for 4.16.3
+  * add PGDLLEXPORT to months_between_timestamptz #304
+  * fix regress tests after e28d6381f5cb0d0f6ff1151662ed3525744299ff
+  * Oracle accepts return_opt value greater than 1 in regexp_instr
+
+-------------------------------------------------------------------
 Wed May  6 09:24:56 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable pg13

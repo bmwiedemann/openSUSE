@@ -274,4 +274,14 @@
     <comment>- Disable pg13</comment>
     <requestid>1351147</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>0f6dd1f192300cd5c5abc8789321cf52</srcmd5>
+    <version>4.17.1+git0.542aed2</version>
+    <time>1795432989</time>
+    <user>anag_factory</user>
+    <comment>- enable pg 19
+
+- Update to version 4.17.1+git0.542aed2:</comment>
+    <requestid>1399575</requestid>
+  </revision>
 </revisionlist>
