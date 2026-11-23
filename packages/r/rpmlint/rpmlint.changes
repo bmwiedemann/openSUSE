@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 16:24:07 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 2.10.0+git20261118.cf224387:
+  * systemd-tmpfiles: add s390-tools /var/log/ts-shell setgid dir (bsc#1290818)
+  * systemd-tmpfiles whitelist: rename screen dir (bsc#1289629)
+  * dbus-services: whitelist qsnapper 1.4.x changes digest (bsc#1288229)
+  * dbus-services: adjust fi.w2.wpa_supplicant1 digests (bsc#1289855)
+  * polkit-rules-whitelist: add sssd pcscd rule changes (bsc#1290195)
+
+-------------------------------------------------------------------
 Thu Nov 12 10:05:54 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.10.0+git20261112.acc4ace9:

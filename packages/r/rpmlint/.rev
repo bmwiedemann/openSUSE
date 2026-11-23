@@ -5921,4 +5921,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * dbus-services: add plasma6-login-manager(-kcm) (bsc#1260402, bsc#1260039)</comment>
     <requestid>1397059</requestid>
   </revision>
+  <revision rev="558" vrev="1">
+    <srcmd5>98168faf677a042f071070118d56032b</srcmd5>
+    <version>2.10.0+git20261118.cf224387</version>
+    <time>1795432759</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20261118.cf224387:
+  * systemd-tmpfiles: add s390-tools /var/log/ts-shell setgid dir (bsc#1290818)
+  * systemd-tmpfiles whitelist: rename screen dir (bsc#1289629)
+  * dbus-services: whitelist qsnapper 1.4.x changes digest (bsc#1288229)
+  * dbus-services: adjust fi.w2.wpa_supplicant1 digests (bsc#1289855)
+  * polkit-rules-whitelist: add sssd pcscd rule changes (bsc#1290195)</comment>
+    <requestid>1398793</requestid>
+  </revision>
 </revisionlist>
