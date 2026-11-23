@@ -328,4 +328,29 @@
     leaves between Qfactor=99 and 100. It is opt-in.</comment>
     <requestid>1398381</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>13908574a43af455d7027b231f823b75</srcmd5>
+    <version>0.29.1</version>
+    <time>1795448313</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.29.1:
+  * Decoder: a codestream without data for some of its tiles (one cut short lacks
+    every tile after the cut) gets the warning codestream has no data for tile
+    N — decoding it as empty for the first such tile of a decode, not for each
+    one. A codestream of 1.3 KB that declares 65280 tiles drew 65279 warnings,
+    more than 4 MB of text. is_truncated() reports such a decode as before.
+
+- Update to 0.29.0:
+  * Adds open_htj2k_transcode (experimental), which converts a JPEG 2000 Part 1
+    codestream to HTJ2K, and HTJ2K to Part 1, in the coefficient domain, and
+    fixes what fuzzing the decoder, the transcoder, JPIP, the command-line
+    tools and the image readers found: small inputs that kept the decoder busy
+    for minutes, made a JPIP server or the transcoder take gigabytes, or
+    crashed a command-line tool, and one decoding error on valid codestreams.
+    Images in many small tiles decode several times faster with more than one
+    thread. The fuzz targets are now part of the repository and of the test
+    suite.
+  * For details see https://github.com/osamu620/OpenHTJ2K/releases/tag/v0.29.0</comment>
+    <requestid>1399951</requestid>
+  </revision>
 </revisionlist>
