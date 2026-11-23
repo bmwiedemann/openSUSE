@@ -4165,7 +4165,7 @@ packagesets:
    - which # reason: dvd:patterns-base-console
    - wicked # reason: dvd:wicked
    - wicked-service # reason: dvd:wicked
-   - wireless-regdb # reason: dvd:patterns-base-console
+   - wireless-regdb # reason: dvd:patterns-gnome-gnome
    - wireplumber # reason: dvd:openSUSE-release
    - wireplumber-bash-completion # reason: dvd:patterns-base-console
    - wireplumber-lang # reason: dvd:openSUSE-release
@@ -5853,7 +5853,7 @@ packagesets:
    - libzypp-plugin-appdata # reason: opensuse_microos_desktop:expansion
    - live-langset-data # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - login_defs # reason: opensuse_microos:patterns-containers-runtime_podman
-   - logrotate # reason: opensuse_microos:patterns-containers-runtime_podman
+   - logrotate # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - lvm2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - makedumpfile # reason: opensuse_microos:patterns-containers-runtime_podman
    - man-online # reason: opensuse_microos:patterns-containers-runtime_podman

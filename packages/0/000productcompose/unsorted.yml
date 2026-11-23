@@ -1710,6 +1710,8 @@ unsorted:
   - brotli 
   - brotli-java 
   - brotli-java-javadoc 
+  - brotli4j 
+  - brotli4j-javadoc 
   - browserpass-native 
   - brp-check-suse 
   - brp-extract-translations 
@@ -2045,6 +2047,7 @@ unsorted:
   - cargo-credential-oo7 
   - cargo-packaging 
   - cargo-vendor-filterer 
+  - cargo1.100 
   - cargo1.84 
   - cargo1.85 
   - cargo1.86 
@@ -3312,10 +3315,6 @@ unsorted:
   - deluge-lang 
   - delve 
   - demumble 
-  - deno 
-  - deno-bash-completion 
-  - deno-fish-completion 
-  - deno-zsh-completion 
   - descent3 
   - deskflow 
   - desktop-translations-devel 
@@ -8898,8 +8897,15 @@ unsorted:
   - httpcomponents-client 
   - httpcomponents-client-cache 
   - httpcomponents-client-javadoc 
+  - httpcomponents-client5 
+  - httpcomponents-client5-cache 
+  - httpcomponents-client5-javadoc 
   - httpcomponents-core 
   - httpcomponents-core-javadoc 
+  - httpcomponents-core5 
+  - httpcomponents-core5-extras 
+  - httpcomponents-core5-extras-javadoc 
+  - httpcomponents-core5-javadoc 
   - httpcomponents-project 
   - httperf 
   - httpie 
@@ -19155,6 +19161,7 @@ unsorted:
   - mawk 
   - maxima 
   - maxima-exec-clisp 
+  - maxima-exec-ecl 
   - maxima-exec-sbcl 
   - maxima-lang 
   - maxima-xmaxima 
@@ -20986,6 +20993,7 @@ unsorted:
   - omniORB-devel 
   - omniORBpy 
   - omniORBpy-devel 
+  - omnidiff 
   - omnisharp-server 
   - omnispeak 
   - omping 
@@ -24004,7 +24012,6 @@ unsorted:
   - postgresql17-test 
   - postgresql17-timescaledb 
   - postgresql18-devel 
-  - postgresql18-devel-mini 
   - postgresql18-docs 
   - postgresql18-libversion 
   - postgresql18-llvmjit-devel 
@@ -24024,6 +24031,26 @@ unsorted:
   - postgresql18-server-devel 
   - postgresql18-test 
   - postgresql18-timescaledb 
+  - postgresql19 
+  - postgresql19-contrib 
+  - postgresql19-devel 
+  - postgresql19-devel-mini 
+  - postgresql19-docs 
+  - postgresql19-libversion 
+  - postgresql19-llvmjit 
+  - postgresql19-llvmjit-devel 
+  - postgresql19-orafce 
+  - postgresql19-pg_cron 
+  - postgresql19-pgagent 
+  - postgresql19-pgvector 
+  - postgresql19-plperl 
+  - postgresql19-plpython 
+  - postgresql19-plr 
+  - postgresql19-plr-doc 
+  - postgresql19-pltcl 
+  - postgresql19-server 
+  - postgresql19-server-devel 
+  - postgresql19-test 
   - postgrey 
   - postorius 
   - postorius-web 
@@ -24875,7 +24902,6 @@ unsorted:
   - python313-GooCalendar 
   - python313-GooseMPL 
   - python313-GridDataFormats 
-  - python313-HTTPolice 
   - python313-HeapDict 
   - python313-HepMC 
   - python313-IMAPClient 
@@ -25765,7 +25791,6 @@ unsorted:
   - python313-cangjie 
   - python313-canonicaljson 
   - python313-capturer 
-  - python313-case 
   - python313-cassandra-driver 
   - python313-cassowary 
   - python313-castellan 
@@ -26233,6 +26258,7 @@ unsorted:
   - python313-ephemeral-port-reserve 
   - python313-epubmerge 
   - python313-eradicate 
+  - python313-esp-pylib 
   - python313-espeak 
   - python313-esptool 
   - python313-et_xmlfile 
@@ -28481,6 +28507,7 @@ unsorted:
   - python313-three-merge 
   - python313-thrift 
   - python313-thriftpy2 
+  - python313-tibs 
   - python313-tifffile 
   - python313-tiktoken 
   - python313-time-machine 
@@ -28929,7 +28956,6 @@ unsorted:
   - python314-GooCalendar 
   - python314-GooseMPL 
   - python314-GridDataFormats 
-  - python314-HTTPolice 
   - python314-HeapDict 
   - python314-HepMC 
   - python314-IMAPClient 
@@ -29843,7 +29869,6 @@ unsorted:
   - python314-cangjie 
   - python314-canonicaljson 
   - python314-capturer 
-  - python314-case 
   - python314-cassandra-driver 
   - python314-cassowary 
   - python314-casttube 
@@ -30324,6 +30349,7 @@ unsorted:
   - python314-ephemeral-port-reserve 
   - python314-epubmerge 
   - python314-eradicate 
+  - python314-esp-pylib 
   - python314-espeak 
   - python314-esptool 
   - python314-et_xmlfile 
@@ -32630,6 +32656,7 @@ unsorted:
   - python314-three-merge 
   - python314-thrift 
   - python314-thriftpy2 
+  - python314-tibs 
   - python314-tifffile 
   - python314-tiktoken 
   - python314-time-machine 
@@ -33826,6 +33853,8 @@ unsorted:
   - re2-devel 
   - re2j 
   - re2j-javadoc 
+  - reactive-streams-jvm 
+  - reactive-streams-jvm-javadoc 
   - read-only-root-fs-volatile 
   - readcd 
   - readline-devel 
@@ -34616,6 +34645,8 @@ unsorted:
   - rust-grass 
   - rust-src 
   - rust-stakeholder 
+  - rust1.100 
+  - rust1.100-src 
   - rust1.84 
   - rust1.84-src 
   - rust1.85 
@@ -34653,6 +34684,8 @@ unsorted:
   - rustscan 
   - rustup 
   - rusty_v8 
+  - rxjava 
+  - rxjava-javadoc 
   - rxp 
   - rxp-devel 
   - rxtx-java 
