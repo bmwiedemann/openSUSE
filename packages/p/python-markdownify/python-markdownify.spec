@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-markdownify
-Version:        1.2.3
+Version:        1.2.4
 Release:        0
 Summary:        Convert HTML to markdown
 License:        MIT
