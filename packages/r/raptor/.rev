@@ -355,4 +355,17 @@ Updating to those licenses stated in the LICENSE.txt file (even though the LGPL-
     <comment>- add CVE-2025-71436.patch (CVE-2025-71436, bsc#1286364)</comment>
     <requestid>1386993</requestid>
   </revision>
+  <revision rev="48" vrev="7">
+    <srcmd5>fc6661897709028c36dd33f600721e50</srcmd5>
+    <version>2.0.16</version>
+    <time>1795432814</time>
+    <user>anag_factory</user>
+    <comment>- spec file cleanups:
+  * add LICENSE-2.0.txt to %license
+  * use %ldconfig_scriptlets and %make_build
+- refresh raptor-CVE-2024-57823.patch
+
+- update to 2.0.16 (bsc#1178903, CVE-2020-25713):</comment>
+    <requestid>1399517</requestid>
+  </revision>
 </revisionlist>

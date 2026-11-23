@@ -87,16 +87,13 @@ mv %{buildroot}%{_docdir}/raptor2 %{buildroot}%{_docdir}/raptor-devel
 rm -f %{buildroot}%{_libdir}/libraptor2.la
 
 %check
-export MALLOC_CHECK_=2
-make check
-unset MALLOC_CHECK_
+%make_build -j1 check
 
-%post -n libraptor2-0 -p /sbin/ldconfig
-%postun -n libraptor2-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libraptor2-0
 
 %files
-%license COPYING COPYING.LIB LICENSE.txt
-%doc AUTHORS ChangeLog NEWS README
+%license COPYING COPYING.LIB LICENSE.txt LICENSE-2.0.txt
+%doc ChangeLog NEWS README
 %{_bindir}/rapper
 %{_mandir}/man?/*
 

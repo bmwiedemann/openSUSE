@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 15 21:00:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- spec file cleanups:
+  * add LICENSE-2.0.txt to %license
+  * use %ldconfig_scriptlets and %make_build
+- refresh raptor-CVE-2024-57823.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 21:17:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add CVE-2025-71436.patch (CVE-2025-71436, bsc#1286364)
@@ -34,7 +42,7 @@ Thu May  4 09:59:20 UTC 2023 - David Anes <david.anes@suse.com>
 -------------------------------------------------------------------
 Tue Mar  7 12:23:30 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- update to 2.0.16:
+- update to 2.0.16 (bsc#1178903, CVE-2020-25713):
   * long list of accumulated bug, security and portability fixes
   * see https://librdf.org/raptor/RELEASE.html#rel2_0_16
 - drop
