@@ -111,4 +111,15 @@
     <comment>1</comment>
     <requestid>1398462</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b59ff5cdb75b333449f0ecf4cfd11e23</srcmd5>
+    <version>0.9.1</version>
+    <time>1795432772</time>
+    <user>anag_factory</user>
+    <comment>- remove cmake buildrequires
+- spec file cleanup
+
+- Replace references to /var/adm/fillup-templates with new</comment>
+    <requestid>1399461</requestid>
+  </revision>
 </revisionlist>

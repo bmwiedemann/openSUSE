@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:48:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove cmake buildrequires
+- spec file cleanup
+
+-------------------------------------------------------------------
 Tue Nov 17 00:05:42 UTC 2026 - Malcolm Lewis <malcolmlewis@opensuse.org>
 
 - Updated to version 0.9.1:
@@ -99,7 +105,7 @@ Sun Jan  6 10:35:59 UTC 2019 - Thomas Wagner <wagner-thomas@gmx.at>
 -------------------------------------------------------------------
 Thu Nov 23 13:45:54 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------

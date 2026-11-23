@@ -29,7 +29,6 @@ Source2:        sysconfig.iodine
 Source3:        iodined.service
 Source4:        sysconfig.iodined
 Source5:        system-user-iodined.conf
-BuildRequires:  cmake
 BuildRequires:  meson
 BuildRequires:  sysuser-tools
 BuildRequires:  zlib-devel
@@ -43,7 +42,7 @@ Requires(pre):  group(nobody)
 
 %description
 This software lets one tunnel IPv4 data through a DNS server. This
-can be usable in different situations where internet access is
+is usable in different situations where internet access is
 firewalled, but DNS queries are allowed.
 
 %prep
@@ -98,6 +97,6 @@ install -m 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 %{_sysusersdir}/system-user-iodined.conf
 %{_mandir}/man8/%{name}.8%{?ext_man}
 %{_mandir}/man8/%{name}d.8%{?ext_man}
-%attr(0700,iodined,nobody)/var/lib/iodined
+%dir %attr(0700,iodined,nobody) /var/lib/iodined
 
 %changelog
