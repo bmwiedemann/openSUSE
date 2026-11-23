@@ -288,4 +288,41 @@ the list of changes is still too long to enumerate here.
   the list of changes is still too long to enumerate here.</comment>
     <requestid>1384430</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>fd0cd5f805e79c637f5d0165a22f7f96</srcmd5>
+    <version>11.0.0</version>
+    <time>1795433241</time>
+    <user>anag_factory</user>
+    <comment>- Update to 11.0.0:
+  * New stable release.
+  * Introduce generational stack garbage collection
+    (controlled by the gc_generational flag).
+  * Introduce garbage collection of runtime procedures and
+    unreferenced empty modules (gc_code flag,
+    abolish_module/1).
+  * Introduce functor garbage collection for dynamically
+    created functors.
+  * Implement thread-local blobs and local sweep atom
+    reclamation.
+  * C pointers passed to Prolog are now pointer integers
+    (is_address/1).
+  * term_hash/2 and variant_sha1/2 hash numbers by value
+    consistently across platforms.
+  * Fast term reader and serialiser validate untrusted input
+    before term construction.
+  * JIT indexing and VM dispatch performance enhancements.
+  * Concurrency and race condition fixes in lock-free hash
+    tables, streams, mutexes, threads, and message queues.
+- Remove patches incorporated upstream:
+  * vmi-musttail-probe.patch (issue #1553 addressed upstream)
+  * normalize-blob-comparison.patch (PR #1556)
+  * answer-discard-synchronous-gc.patch (PR #1555)
+- Switch Source0 URL from devel to stable branch.
+
+- Fix architecture-dependent build and test failures:
+  * Add vmi-musttail-probe.patch: test a real indirect tail call
+    with the VM calling convention before enabling VMI functions,
+    fixing GCC 16 build failures on ppc64le and s390x.</comment>
+    <requestid>1399882</requestid>
+  </revision>
 </revisionlist>

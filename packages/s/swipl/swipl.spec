@@ -17,12 +17,12 @@
 
 
 Name:           swipl
-Version:        10.1.18
+Version:        11.0.0
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://www.swi-prolog.org
-Source0:        https://www.swi-prolog.org/download/devel/src/swipl-%{version}.tar.gz
+Source0:        https://www.swi-prolog.org/download/stable/src/swipl-%{version}.tar.gz
 Source98:       swipl-rpmlintrc
 # For SOURCE_DATE_EPOCH variable- reproducible builds
 Source99:       %{name}.changes
@@ -121,7 +121,8 @@ CTEST_OPT_ARGS+=" --exclude-regex 'swipl:transaction'"
 %ctest --verbose $CTEST_OPT_ARGS
 
 %files
-%license LICENSE README.md
+%license LICENSE
+%doc README.md
 %{_bindir}/pl
 %{_bindir}/swipl
 %{_bindir}/swipl-ld

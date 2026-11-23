@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Nov 23 07:35:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 11.0.0:
+  * New stable release.
+  * Introduce generational stack garbage collection
+    (controlled by the gc_generational flag).
+  * Introduce garbage collection of runtime procedures and
+    unreferenced empty modules (gc_code flag,
+    abolish_module/1).
+  * Introduce functor garbage collection for dynamically
+    created functors.
+  * Implement thread-local blobs and local sweep atom
+    reclamation.
+  * C pointers passed to Prolog are now pointer integers
+    (is_address/1).
+  * term_hash/2 and variant_sha1/2 hash numbers by value
+    consistently across platforms.
+  * Fast term reader and serialiser validate untrusted input
+    before term construction.
+  * JIT indexing and VM dispatch performance enhancements.
+  * Concurrency and race condition fixes in lock-free hash
+    tables, streams, mutexes, threads, and message queues.
+- Remove patches incorporated upstream:
+  * vmi-musttail-probe.patch (issue #1553 addressed upstream)
+  * normalize-blob-comparison.patch (PR #1556)
+  * answer-discard-synchronous-gc.patch (PR #1555)
+- Switch Source0 URL from devel to stable branch.
+
+-------------------------------------------------------------------
+Sun Oct 25 23:36:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix architecture-dependent build and test failures:
+  * Add vmi-musttail-probe.patch: test a real indirect tail call
+    with the VM calling convention before enabling VMI functions,
+    fixing GCC 16 build failures on ppc64le and s390x.
+  * Add normalize-blob-comparison.patch: normalize blob callback
+    results to -1, 0 or 1 before interpreting internal comparison
+    codes, fixing C++ blob ordering tests on s390x.
+  * Add answer-discard-synchronous-gc.patch: stop background GC
+    during atom-reclamation tests and restore its previous setting
+    in cleanup, keeping explicit collection synchronous.
+  Validated on s390x with 20 whole-file answer-discard test runs,
+  20 full tabling-suite runs, and all 98 normal CTest tests.
+
+-------------------------------------------------------------------
+Fri Oct 23 17:57:24 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 10.1.19:
+  * Reduce tabling and trie lookup overhead and memory use. Add the
+    experimental table_drop_intermediate flag to release intermediate
+    tables, and table_compile_threshold to control answer compilation.
+  * Fix missing answer propagation in monotonic subsumptive and abstract
+    tables, and type errors when calling completed shared moded tables.
+  * Fix trie crashes after deleting the last key, missed attributed
+    variables, and corruption of stored compound values on updates.
+  * Fix attributed-variable handling in term_minimal/2 and related
+    predicates, which could produce incorrect answers or corrupt stacks.
+  * Fix stale clauses remaining visible through indexes after make/0,
+    missed JIT indexes, and uninitialised variables in optimised code.
+  * Fix hangs in queue waits and thread_wait/2 with pending signals
+    inside sig_atomic/1 or cleanup handlers, and debugger crashes while
+    unwinding stack overflows.
+  * Correct recursive predicate timings in profile_data/1 and the GUI
+    profiler, and source mapping for optimised clauses in clause_info/4.
+  * Improve VM dispatch and reduce the memory used by saved terms.
+  * PceEmacs now reads xpce/emacs/init.pl in the user's configuration
+    directory, normally ~/.config/swi-prolog, instead of ~/.pceemacsrc.
+    It warns when the old file needs to be moved.
+  * Add an editable key-bindings browser, filterable grep hit lists,
+    font preferences, and keyboard navigation between IDE panes and tabs.
+    Regular-expression search and replace no longer match newlines with
+    dot or negated character classes by default.
+  * Extend XPCE vector drawing, SVG export, formatted text, image and
+    animation support, clipboard images, and touch and gamepad input.
+    Add GPU drawing, camera, audio and video APIs, with media format
+    support depending on the libraries available at build time.
+  * Fix XPCE crashes and hangs after child processes terminate, preserve
+    their exit status, and fix menu focus and image transparency issues.
+- Install README.md as documentation rather than as a license file.
+
+-------------------------------------------------------------------
 Mon Oct 12 18:05:13 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 10.1.18:
