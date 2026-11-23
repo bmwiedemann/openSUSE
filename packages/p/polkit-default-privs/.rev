@@ -2622,4 +2622,17 @@ for 12.3</comment>
   * profiles: add keepassxc self-auth action (bsc#1286643)</comment>
     <requestid>1397878</requestid>
   </revision>
+  <revision rev="281" vrev="1">
+    <srcmd5>58abbca0ca7b614d4a61aba6eb70c385</srcmd5>
+    <version>1550+20261119.9bb2921</version>
+    <time>1795432847</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20261119.9bb2921:
+  * profiles: add kcmplasmalogin theme configuration actions (bsc#1260039)
+  * profiles: fwupd: relax get-remotes/refresh-remotes (bsc#1290621)
+- Update to version 1550+20261116.1240e6d:
+  * profiles: whitelist qsnapper 1.4.x actions (bsc#1288229)
+</comment>
+    <requestid>1398815</requestid>
+  </revision>
 </revisionlist>

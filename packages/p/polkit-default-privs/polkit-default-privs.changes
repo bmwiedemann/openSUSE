@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 19 19:17:51 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20261119.9bb2921:
+  * profiles: add kcmplasmalogin theme configuration actions (bsc#1260039)
+  * profiles: fwupd: relax get-remotes/refresh-remotes (bsc#1290621)
+
+-------------------------------------------------------------------
+Wed Nov 18 10:09:42 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- Update to version 1550+20261116.1240e6d:
+  * profiles: whitelist qsnapper 1.4.x actions (bsc#1288229)
+
+-------------------------------------------------------------------
 Mon Nov 16 10:44:17 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 1550+20261111.e9efe0a:
