@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:31:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.6.3 and 4.6.4 (bugfix releases):
+  * 4.6.4: fix two medium-severity memory-safety advisories:
+    heap buffer underflow write in tcpedit user-DLT encoder
+    (GHSA-qqfw-8w7m-fmxx) and wild-pointer read/heap overflow
+    on Juniper frames with JUNIPER_FLAG_NO_L2
+    (GHSA-vvvj-v4jv-xqg8)
+  * 4.6.4: --fuzz-seed applies each edit once, not twice;
+    DLT_NULL captures recognised as IP; --dlt=user requires
+    --user-dlink; tcpcapinfo validates version and size; CIDR,
+    ARP, Juniper and alignment fixes
+  * 4.6.3: four OSS-Fuzz fragroute findings fixed (signed
+    overflow, packet-queue leak, hostname DNS lookup) plus
+    memory-safety fixes across tcpedit, tcpreplay, tcprewrite
+    and flow statistics, incl. AF_XDP heap over-read
+  * 4.6.3: tcpreplay-edit decodes each capture with its own
+    link type; musl CI and tcpedit fuzzer; big-endian and
+    older-gcc build fixes
+
+-------------------------------------------------------------------
 Mon Oct 26 19:26:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.6.2 (bugfix release):

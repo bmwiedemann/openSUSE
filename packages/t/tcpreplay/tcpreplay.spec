@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.6.2
+Version:        4.6.4
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -26,12 +26,12 @@ Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{versio
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  libdnet-devel
-BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tcpdump
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
+BuildRequires:  pkgconfig(libpcap)
 Requires:       tcpdump
 
 %description
