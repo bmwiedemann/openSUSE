@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:32:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.3:
+  * Add ascii mode
+  * Restore cleaner terminal after abnormal termination
+  * Improve responsive layout when scanning
+  * Close confirmation popup on successful unpair confirmation
+- Drop bluetui-0.8.2.tar.gz, add bluetui-0.8.3.tar.gz and refresh
+  vendor.tar.zst
+- Convert dbus-1-devel BuildRequires to pkgconfig(dbus-1)
+- Correct License to GPL-3.0-or-later AND MPL-2.0 for vendored
+  option-ext 0.2.0
+
+-------------------------------------------------------------------
 Fri Oct 23 15:23:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.8.2:

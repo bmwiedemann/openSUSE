@@ -79,4 +79,12 @@
     <comment>1</comment>
     <requestid>1392279</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2cbeba9be8288b01a43c4145121094ee</srcmd5>
+    <version>0.8.3</version>
+    <time>1795433220</time>
+    <user>anag_factory</user>
+    <comment>Update bluetui to 0.8.3: ascii mode, cleaner terminal restore, responsive scan layout, unpair popup fix.</comment>
+    <requestid>1399856</requestid>
+  </revision>
 </revisionlist>

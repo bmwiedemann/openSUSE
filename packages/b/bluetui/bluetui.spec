@@ -18,16 +18,24 @@
 
 
 Name:           bluetui
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        TUI for managing bluetooth devices
-License:        GPL-3.0-or-later
+# Legal-Review-Notice: option-ext is linked, not shipped separately
+# - MPL-2.0: option-ext 0.2.0 via dirs-sys/dirs on Linux; source in vendor.tar.zst
+License:        GPL-3.0-or-later AND MPL-2.0
 URL:            https://github.com/pythops/bluetui
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Stripped from vendor.tar.zst: wit-bindgen prebuilt src/rt/libwit_bindgen_cabi.a
+# and wasi-cli@*.wasm (wasm-only inputs; Linux build never uses them)
+# Source-Binary-Exception: vendor.tar.zst:vendor/winapi-*/lib/* -- other-platform: Windows import libraries for winapi crates, unused by Linux build
+# Source-Binary-Exception: vendor.tar.zst:vendor/wit-bindgen-*/src/rt/*.o -- other-platform: prebuilt CABI objects for wasm32-wasip2/wasip3 targets, unused by Linux build
+# Source-Binary-Exception: vendor.tar.zst:vendor/psm-*/src/arch/wasm32.o -- other-platform: wasm32 relocatable object psm uses only on wasm32 targets
 BuildRequires:  cargo-packaging
-BuildRequires:  dbus-1-devel
+BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.78.0
+BuildRequires:  pkgconfig(dbus-1)
 Requires:       bluez
 
 %description
