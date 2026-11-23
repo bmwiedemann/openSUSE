@@ -526,4 +526,25 @@ update to version 2.12.0
     <comment>- allow newer urllib3</comment>
     <requestid>1397199</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>efc59d35ddc99b48d90414963d1635c5</srcmd5>
+    <version>5.19.0</version>
+    <time>1795432946</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.19.0:
+  * typing: Temporarily ignore unused imports
+  * reno: Update master for unmaintained/2025.1
+  * typing: Remove unnecessary kwargs
+  * typing: Narrow type ignores
+  * typing: Align signature with upstream
+  * typing: Fix incorrect type
+  * Remove use of sphinxcontrib.apidoc
+  * Remove extras deps from test-requirements.txt
+  * Remove linter deps from test-requirements.txt
+  * discover: Handle key-manager microversion discovery
+    automatically
+  * typing: Accept Adapters in discover
+  * session: Retain ownership after closing connection pools</comment>
+    <requestid>1399674</requestid>
+  </revision>
 </revisionlist>

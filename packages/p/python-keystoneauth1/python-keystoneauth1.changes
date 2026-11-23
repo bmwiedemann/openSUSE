@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:27:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.19.0:
+  * typing: Temporarily ignore unused imports
+  * reno: Update master for unmaintained/2025.1
+  * typing: Remove unnecessary kwargs
+  * typing: Narrow type ignores
+  * typing: Align signature with upstream
+  * typing: Fix incorrect type
+  * Remove use of sphinxcontrib.apidoc
+  * Remove extras deps from test-requirements.txt
+  * Remove linter deps from test-requirements.txt
+  * discover: Handle key-manager microversion discovery
+    automatically
+  * typing: Accept Adapters in discover
+  * session: Retain ownership after closing connection pools
+
+-------------------------------------------------------------------
 Thu Nov 12 08:39:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - allow newer urllib3
