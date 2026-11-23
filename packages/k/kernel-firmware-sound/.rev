@@ -593,4 +593,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l63: Add firmware for Cirrus CS35L63 for various Dell laptops</comment>
     <requestid>1396925</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>9e1449cb70ffe95d05845e39da96eefe</srcmd5>
+    <version>20261120</version>
+    <time>1795432806</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261120 (git commit f9919c7a5892):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for some Dell products
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+
+- Update aliases for SOF AMD
+
+- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * linux-firmware: Add firmware for awinic AW88399 SmartK AMP
+  * cirrus: cs35l54: Add firmware for Cirrus Amps for an HP laptop
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for an ASUS laptop
+  * whence: add missing links for cs35l56 firmware files</comment>
+    <requestid>1399496</requestid>
+  </revision>
 </revisionlist>

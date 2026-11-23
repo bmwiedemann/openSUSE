@@ -119,6 +119,7 @@ snd_soc_x1e80100: of:N*T*Cqcom%2Cglymur-sndcard
 snd_soc_x1e80100: of:N*T*Cqcom%2Cglymur-sndcardC*
 snd_soc_x1e80100: of:N*T*Cqcom%2Cx1e80100-sndcard
 snd_soc_x1e80100: of:N*T*Cqcom%2Cx1e80100-sndcardC*
+snd_sof_amd_acp7x: pci:v00001022d000015E2sv*sd*bc*sc*i*
 snd_sof_mt8186: of:N*T*Cmediatek%2Cmt8186-dsp
 snd_sof_mt8186: of:N*T*Cmediatek%2Cmt8186-dspC*
 snd_sof_mt8186: of:N*T*Cmediatek%2Cmt8188-dsp

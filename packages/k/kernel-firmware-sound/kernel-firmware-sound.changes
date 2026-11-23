@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:18:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261120 (git commit f9919c7a5892):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for some Dell products
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+
+-------------------------------------------------------------------
+Thu Nov 19 13:44:28 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases for SOF AMD
+
+-------------------------------------------------------------------
+Mon Nov 16 08:47:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20261114 (git commit 2b2c1f39d7ae):
+  * linux-firmware: Add firmware for awinic AW88399 SmartK AMP
+  * cirrus: cs35l54: Add firmware for Cirrus Amps for an HP laptop
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for an ASUS laptop
+  * whence: add missing links for cs35l56 firmware files
+
+-------------------------------------------------------------------
 Wed Nov 11 08:06:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20261109 (git commit 69e51bb26f3f):
