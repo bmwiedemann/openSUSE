@@ -53,4 +53,24 @@
   * Update dependency messages to at-least v34</comment>
     <requestid>1372813</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ba380ff058aae790f38f9ffe6a26e169</srcmd5>
+    <version>43.0.0</version>
+    <time>1795432953</time>
+    <user>anag_factory</user>
+    <comment>- update to 43.0.0:
+  * [cpp] BREAKING CHANGE: Updated coding style, breaks includes,
+    class and member names.
+  * [cpp] Added benchmark target.
+  * [cpp] Added optional RE2 support as a regex engine backend.
+  * [Python] Dropped support for Python 3.10
+  * [Ruby] Move the version constant to `lib/gherkin/version.rb`.
+  * [Elixir] Bump minimum elixir version to 1.13
+  * Update dependency `messages` up to v35
+  * (i18n) Remove trailing space from Texan Rule keyword.
+  * [Ruby] Substitute example values into scenario outlines
+    literally, as the other implementations do, instead of
+    reading them as replacement patterns.</comment>
+    <requestid>1399673</requestid>
+  </revision>
 </revisionlist>

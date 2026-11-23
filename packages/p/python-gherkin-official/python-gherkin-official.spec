@@ -18,14 +18,14 @@
 
 # PyPi name
 Name:           python-gherkin-official
-Version:        42.0.1
+Version:        43.0.0
 Release:        0
 Summary:        Gherkin parser (official, by Cucumber team)
 License:        MIT
 URL:            https://github.com/cucumber/gherkin
 Source:         https://github.com/cucumber/gherkin/archive/refs/tags/v%{version}.tar.gz#/gherkin-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module uv-build >= 0.10.0}
+BuildRequires:  %{python_module uv-build >= 0.13.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module typing_extensions >= 4}
