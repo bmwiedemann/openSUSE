@@ -18,7 +18,7 @@
 
 
 Name:           bettercap
-Version:        2.41.7
+Version:        2.42.0
 Release:        0
 Summary:        Swiss army knife for network attacks and monitoring
 License:        GPL-3.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 # go.mod requires toolchains support (>= 1.21)
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(libnetfilter_queue)
 BuildRequires:  pkgconfig(libusb-1.0)
 Requires:       libnetfilter_queue1
@@ -57,29 +57,12 @@ go build \
 
 %install
 install -Dm 0755 bettercap %{buildroot}%{_bindir}/bettercap
-install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_datadir}/bettercap
-install -Dm 0644 bettercap.service  %{buildroot}%{_unitdir}/%{name}.service
-ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-
-%pre
-%service_add_pre %{name}.service
-
-%post
-%service_add_post %{name}.service
-
-%preun
-%service_del_preun %{name}.service
-
-%postun
-%service_del_postun %{name}.service
 
 %files
 %license LICENSE.md
 %doc README.md
 %{_bindir}/bettercap
-%{_unitdir}/%{name}.service
-%{_sbindir}/rc%{name}
 %dir %{_datadir}/bettercap
 
 %changelog

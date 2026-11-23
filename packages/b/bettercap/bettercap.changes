@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Sun Nov 22 07:22:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.42.0:
+  New Features
+  * new: ssh.proxy module — SSH MITM proxy with full-stack spoofing
+    caplet support.
+  * new(tls): 🛡️ Automatic eMudhra CAs support in all TLS proxies
+    (zeroconf, https, etc).
+  * new: ESSID and glob support for wifi.deauth and wifi.assoc
+  * new(tls): serve the full CA chain and allow configuring leaf
+    key size.
+  * new(dns_spoof): block_real option to drop forwarded DNS queries
+    on Linux.
+  * new(arp.spoof): arp.spoof.spoofed, arp.spoof.forwarding and
+    arp.spoof.interval parameters.
+  Fixes
+  * fix: prevent out-of-bounds panics in packet parsers.
+  * fix: net.sniff missing SNI when a TLS length byte is 0x0a.
+  * fix: net.sniff only starts net.recon for live captures
+    (fixes #1292).
+  * fix(wifi,ble): correct RSSI sort direction in wifi.show and
+    ble.show.
+  * fix: thread-safe access to WiFi station state (Frequency/RSSI/
+    LastSeen/Hostname/Alias/Encryption/Cipher/Authentication/WPS).
+  * fix: deadlock in wifi.recon clear / wifi.recon.channel clear,
+    and a dropped hop nudge.
+  * fix: Linux routing parser for localized netstat output and IPv6
+    pseudo-default routes.
+  * fix(arp.spoof): restore IP forwarding state on Stop
+    (fixes #1261).
+  * fix(ssh.proxy): exclude proxy IP from the firewall DNAT rule.
+  * fix(syn_scan): use net.JoinHostPort for IPv6-safe banner
+    grabbing.
+  * fix(session): return an error for a missing bool parameter.
+  * fix(session): keep the CPU profile file open until profiling
+    stops.
+  * fix(events.stream): don't close process stdout when stopped via
+    the API; close rotated output handles so Windows can clean up.
+  * fix(zerogod): format DNS question fields explicitly.
+  Improvements
+  * refactor: set the WiFi channel via direct nl80211 netlink
+    instead of forking iw on every hop.
+  * refactor(network): simplify Dot11Chan2Freq 5 GHz lookup and
+    Dot11Freq2Chan flow.
+  Miscellaneous
+  * build(deps): bump gopacket 1.6.1 → 1.7.2,
+    golang.org/x/net 0.51.0 → 0.55.0,
+    antchfx/xpath 1.3.4 → 1.3.6,
+    softprops/action-gh-release 2 → 3.0.4
+    docker/login-action 4.6.0 → 4.8.0
+    docker/setup-buildx-action 3 → 4
+    actions/setup-go 7.0.0 → 7.1.0
+  * chore: removed bettercap.service
+
+-------------------------------------------------------------------
 Mon May 11 09:50:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.41.7:
