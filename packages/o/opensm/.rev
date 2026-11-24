@@ -164,4 +164,12 @@
   issue with NDR switches (bsc#1258143)</comment>
     <requestid>1343642</requestid>
   </revision>
+  <revision rev="21" vrev="6">
+    <srcmd5>f0b3a8147e06ee3d5ae63094929b6e41</srcmd5>
+    <version>3.3.24</version>
+    <time>1795540014</time>
+    <user>anag_factory</user>
+    <comment>- Drop DefaultDependency=false (bsc#1284694)</comment>
+    <requestid>1400222</requestid>
+  </revision>
 </revisionlist>

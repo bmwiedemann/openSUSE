@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct 13 07:27:24 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Drop DefaultDependency=false (bsc#1284694)
+
+-------------------------------------------------------------------
 Wed Mar  4 13:12:57 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add opensm-osm_port_info_rcv.c-Re-query-PortInfo-with-extended-speeds-enabled.patch to fix
