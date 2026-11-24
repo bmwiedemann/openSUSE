@@ -21,7 +21,8 @@ Thu Oct 22 01:37:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
     CVE-2026-96638 (bsc#1286800), CVE-2026-96639 (bsc#1286799),
     CVE-2026-96640 (bsc#1286798), CVE-2026-96641 (bsc#1286797),
     CVE-2026-96642 (bsc#1286796), CVE-2026-96643 (bsc#1286795),
-    CVE-2026-96778 (bsc#1286793)
+    CVE-2026-96778 (bsc#1286793), CVE-2026-128066 (bsc#1290395),
+    CVE-2026-128067 (bsc#1290432)
   * Remove undocumented GifImagePlugin._save_netpbm
   * Remove ExifTags.IFD.Makernote
   * Drop support for Python 3.10

@@ -1034,4 +1034,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment>Add 11 new CVE and bug references.</comment>
     <requestid>1387214</requestid>
   </revision>
+  <revision rev="86" vrev="3">
+    <srcmd5>51ca52407462a074b6db8f7a31e2d6f5</srcmd5>
+    <version>13.0.0</version>
+    <time>1795519545</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1399992</requestid>
+  </revision>
 </revisionlist>
