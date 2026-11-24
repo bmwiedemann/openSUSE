@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 20 13:13:03 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.11:
+  * improving performance cutting get_req_headers() from ~22 to ~5
+    instructions per header-byte value (on x86-64)
+- add patch fixing tests libmicrohttpd-1.0.11-version-marco.patch
+
+-------------------------------------------------------------------
 Fri Aug  7 20:46:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.0.10:

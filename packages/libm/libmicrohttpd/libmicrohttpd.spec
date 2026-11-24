@@ -21,7 +21,7 @@
 %global sover   12
 %global libname %{name}%{sover}
 Name:           libmicrohttpd
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Small Embeddable HTTP Server Library
 # Some internal tests are licenced as GPL-3.0+ - they are only used in
@@ -35,6 +35,7 @@ Source1:        https://ftp.gnu.org/gnu/libmicrohttpd/%{name}-%{version}.tar.gz.
 Source2:        %{name}.keyring
 # PATCH-FIX-OPENSUSE bsc#1211301 Follow the system-wide crypto-policies
 Patch0:         libmicrohttpd-utilize-system-crypto-policy.patch
+Patch1:         libmicrohttpd-1.0.11-version-marco.patch
 BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
@@ -117,7 +118,7 @@ rm -v %{buildroot}%{_infodir}/%{name}_performance_data.png
 
 %files -n %{libname}
 %license COPYING
-%{_libdir}/%{name}.so.%{sover}*
+%{_libdir}/%{name}.so.%{sover}{,.*}
 
 %files devel
 %license COPYING
