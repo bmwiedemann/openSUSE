@@ -1,5 +1,0 @@
-<package name="ghc-void" project="openSUSE:Factory">
-  <title>A Haskell 98 logically uninhabited data type</title>
-  <description></description>
-  <devel project="devel:languages:haskell" package="ghc-void"/>
-</package>
