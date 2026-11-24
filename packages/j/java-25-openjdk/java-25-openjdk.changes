@@ -48,7 +48,7 @@ Sun Nov  8 12:46:18 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 - Disable native debug symbols embedded in modules, resulting in a
   huge java-25-openjdk-jmods package size and increasing jlink output
   size considerably if its --strip-debug command-line argument is not
-  used (bsc#12823588)
+  used (bsc#1282358)
 
 -------------------------------------------------------------------
 Thu Oct 29 07:36:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
