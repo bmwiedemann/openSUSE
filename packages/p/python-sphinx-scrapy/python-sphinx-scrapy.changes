@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:15:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.15.0:
+  * Use [dependency-groups].docs instead of docs/requirements.txt in the
+    docs tox environment and pin sphinx-scrapy to the tox plugin version
+  * Fail sphinx-scrapy build and the pre-commit hook if
+    docs/requirements.in or docs/requirements.txt still exists
+- Make Requires match reality.
+
+-------------------------------------------------------------------
 Mon Oct 26 07:09:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:

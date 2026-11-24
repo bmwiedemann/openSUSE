@@ -19,7 +19,7 @@
 # Enable libalternatives by default
 %bcond_without libalternatives
 Name:           python-sphinx-scrapy
-Version:        0.14.0
+Version:        0.15.0
 Release:        0
 Summary:        Sphinx extension for documentation in the Scrapy ecosystem
 License:        BSD-3-Clause
@@ -31,12 +31,14 @@ BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-Sphinx
+Requires:       python-Sphinx >= 8.0.0
+Requires:       python-docutils
 Requires:       python-packaging
-Requires:       python-sphinx-llms-txt
-Requires:       python-sphinx-markdown-builder
+Requires:       python-sphinx-design
+Requires:       python-sphinx-llm-friendly >= 0.5.1
 Requires:       python-sphinx-sitemap
 Requires:       python-sphinxcontrib-copybutton
+Requires:       python-sphinxcontrib-youtube
 BuildArch:      noarch
 %python_subpackages
 

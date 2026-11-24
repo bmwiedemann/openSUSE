@@ -88,4 +88,17 @@
     build -b html, which writes the Markdown pages, llms.txt and</comment>
     <requestid>1392631</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7b0193eafc57337fb641532fccf0f8f3</srcmd5>
+    <version>0.15.0</version>
+    <time>1795520473</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0:
+  * Use [dependency-groups].docs instead of docs/requirements.txt in the
+    docs tox environment and pin sphinx-scrapy to the tox plugin version
+  * Fail sphinx-scrapy build and the pre-commit hook if
+    docs/requirements.in or docs/requirements.txt still exists
+- Make Requires match reality.</comment>
+    <requestid>1400187</requestid>
+  </revision>
 </revisionlist>
