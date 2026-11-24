@@ -1256,4 +1256,41 @@ See https://bugzilla.opensuse.org/show_bug.cgi?id=1195398
   * Removed conversion for Garmin FIT DeviceIndex values</comment>
     <requestid>1356814</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>5aa8a3a166becb1d0a8502c64769d1a0</srcmd5>
+    <version>13.64</version>
+    <time>1795519414</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.64:
+  * Added a couple of new Nikon LensID's
+  * Decode Orientation from JXL codestream
+  * Decode another Canon tag (github #510)
+  * Decode a couple more tags from 70Mai videos
+  * More tweaks to the new Canon tag names/descriptions
+  * Patched to deal with improperly written Insta360 X6 Meta box and empty ItemList boxes in MP4 videos
+  * Patched &quot;Corrupted Insta360 trailer&quot; error when writing Insta360 X6 MP4 videos
+  * Fixed problem reading some M2TS videos (github #420)
+  * Fixed ValueConv warning that may occur when using the -v option while reading R3D images from newer RED models (github #443)
+  * Fixed a couple of minor issues with the new Red tags added in 13.62
+  * Fixed bug where reading back a file contaning IPTCDigest using the -stay_open feature after writing a file with IPTCDigest would result in an erroneous &quot;Bad Photoshop IRB resource&quot; warning (github #516)
+  * Fixed bug where new PhotoshopSettings were created in TIFF-format files with an appropriate format code instead of the improper code used by Adobe
+  * Fixed bug where -IPTCDigest=new could generate an incorrect digest when writing new IPTC to TIFF-format files (due to the padding which may be required due to the improper TIFF format used by Adobe for IPTC-NAA)
+
+- Update to 13.63:
+  * Decode more Pentax tags
+  * Changed name of one of the new Canon tags
+  * Fixed typo in new Mini tag name
+  * Fixed bug introduced in 13.62 when reading GIF extensions
+
+- Update to 13.62:
+  * Added read/write support for low-overhead mif3 SlimHEIF 'mini' metadata, including support for compressed EXIF and XMP (github #503)
+  * Added ability to delete C2PA metadata from GIF images (github #515)
+  * Decode more Canon tags (github #510, #511, #512)
+  * Decode more Red tags (github #443)
+  * Fixed crash introduced in 13.60 when trying to delete then recreate EXIF in a Xiaomi HEIC file (github #485)
+
+- Update to 13.61:
+  * Added a new Olympus CameraType (github #502)</comment>
+    <requestid>1399972</requestid>
+  </revision>
 </revisionlist>
