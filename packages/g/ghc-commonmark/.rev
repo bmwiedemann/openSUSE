@@ -167,4 +167,12 @@
     <comment>version update</comment>
     <requestid>1397766</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>fc0b0c608cf29131c6267b39e0ae7ddc</srcmd5>
+    <version>0.3.2</version>
+    <time>1795519627</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399110</requestid>
+  </revision>
 </revisionlist>
