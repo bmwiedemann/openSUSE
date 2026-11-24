@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 24 05:57:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.3:
+  * build(deps): bump github.com/klauspost/compress from 1.20.3 to
+    1.20.5 (#2691)
+  * build(deps): bump chainguard.dev/sdk from 0.2.2 to 0.2.9
+    (#2692)
+  * build(deps): bump google.golang.org/api from 0.315.0 to 0.316.0
+    (#2693)
+  * build(deps): bump the codeql group with 2 updates (#2689)
+
+-------------------------------------------------------------------
 Mon Nov 23 05:48:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.5.2:
