@@ -233,4 +233,19 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385448</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>887c283e50e4f57befa09e033220cbf6</srcmd5>
+    <version>1.7.1</version>
+    <time>1795519397</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.1:
+  * Don't remove map layer source when already deferring, avoids a crash
+  * Copy returned color for path layers, fixes bindings getting layer colors
+    (avoid double-freeing)
+  * Allow new swipes already coasting, fixes some crashes
+  * Annotate all functions/macros/types since 1.0
+  * Add version macros to be able to hide/show symbols depending on the API
+    version</comment>
+    <requestid>1399911</requestid>
+  </revision>
 </revisionlist>

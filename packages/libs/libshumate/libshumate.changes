@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 21 12:28:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.7.1:
+  * Don't remove map layer source when already deferring, avoids a crash
+  * Copy returned color for path layers, fixes bindings getting layer colors
+    (avoid double-freeing)
+  * Allow new swipes already coasting, fixes some crashes
+  * Annotate all functions/macros/types since 1.0
+  * Add version macros to be able to hide/show symbols depending on the API
+    version
+
+-------------------------------------------------------------------
 Wed Sep 30 16:31:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to meson.build.
