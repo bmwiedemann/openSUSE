@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 22 18:49:42 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.70.3:
+  * Improvements
+    - Auto-detection of Theme Hospital folder for Steam users
+      on Windows
+  * Bug fixes
+    - Crash with subtitles after some random announcements played
+      on non-english localisations
+
+-------------------------------------------------------------------
 Sun Nov  8 15:40:55 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.70.2:
