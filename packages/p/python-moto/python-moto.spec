@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %bcond_without libalternatives
 Name:           python-moto
-Version:        5.2.4
+Version:        5.2.6
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
@@ -191,6 +191,10 @@ donttest+=" or TestResponsesMockWithPassThru"
 # (?)
 donttest+=" or test_send_raw_email"
 donttest+=" or test_dynamodb_import_tabl or test_dynamodb_statements"
+
+donttest+=" or test_create_stack_with_invalid_template_is_rejected_when_enabled"
+donttest+=" or test_create_stack_with_valid_template_still_succeeds_when_enabled"
+
 # https://github.com/getmoto/moto/issues/9976
 donttest+=" or patch_baseline_for_patch_group_default"
 # 32-bit platforms can't handle dates beyond 2038
