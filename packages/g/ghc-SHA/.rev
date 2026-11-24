@@ -94,4 +94,12 @@ dep of pandoc</comment>
     <comment>update for ghc-9.4.4</comment>
     <requestid>1076036</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>1dc00344ebd44afd6033e25a5f043e2a</srcmd5>
+    <version>1.6.4.4</version>
+    <time>1795519524</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399047</requestid>
+  </revision>
 </revisionlist>
