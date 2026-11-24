@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:57:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.03.00
+  Fixes:
+  * cpustat: handle negative return from
+    sysconf(_SC_NPROCESSORS_ONLN).
+- Update to version 0.02.21
+  * cpustat: cater for incorrect ordering of cpus being parsed, fix
+    potential overflow.
+- Update to version 0.02.20
+  * Check for array bounds limit while parsing pid length string.
+- Update to version 0.02.18
+  * Manual: Fix spelling mistake "paricular" -> "particular".
+  * Fix spelling mistake: threashold -> threashold.
+  * cpustat: ensure pointer info is NULL.
+- Update to version 0.02.17
+  * Don't emit newline in quiet mode, e.g.  cpustat  -Dqg  1 10.
+- Update to version 0.02.16
+  * Makefile, rename email address, add copyright, bump version.
+  * cpustat.c: Update copyright and email address.
+  * Rename README to README.md
+  * manual: update date, author email and copyright.
+
+-------------------------------------------------------------------
 Mon Jun 28 13:30:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.15

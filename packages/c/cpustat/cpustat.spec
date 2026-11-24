@@ -1,8 +1,8 @@
 #
 # spec file for package cpustat
 #
-# Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           cpustat
-Version:        0.02.15
+Version:        0.03.00
 Release:        0
 Summary:        Periodic cpu utilization statistics
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/cpustat/
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.xz
+URL:            https://github.com/ColinIanKing/cpustat
+Source:         https://github.com/ColinIanKing/cpustat/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  ncurses-devel
 
 %description
@@ -58,7 +58,7 @@ export CFLAGS="%{optflags}"
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_sbindir}/cpustat
 %{_mandir}/man8/cpustat.8%{?ext_man}
 
