@@ -122,4 +122,18 @@
     `close_notify`.</comment>
     <requestid>1392460</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0bab12451a146ba8f447c00698b5e56e</srcmd5>
+    <version>2.16.2</version>
+    <time>1795519365</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.16.2:
+  * Recheck the HTTP/2 flow control window after acquiring the
+    read lock. Concurrent uploads on one connection could stall
+    until the read timeout once the window was exhausted.
+  * Raise `LocalProtocolError` instead of `IndexError` when an
+    HTTP/2 request sent directly to a connection has no `Host`
+    header.</comment>
+    <requestid>1399742</requestid>
+  </revision>
 </revisionlist>

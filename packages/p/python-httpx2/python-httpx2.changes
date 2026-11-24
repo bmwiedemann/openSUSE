@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Nov 22 10:47:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.2:
+  * Recheck the HTTP/2 flow control window after acquiring the
+    read lock. Concurrent uploads on one connection could stall
+    until the read timeout once the window was exhausted.
+  * Raise `LocalProtocolError` instead of `IndexError` when an
+    HTTP/2 request sent directly to a connection has no `Host`
+    header.
+
+-------------------------------------------------------------------
 Sun Oct 25 14:53:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.16.0:
