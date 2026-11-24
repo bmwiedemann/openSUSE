@@ -143,4 +143,12 @@
     <comment>Update graphifyy to 0.9.115: UNC gating security fix (GHSA-g6c9-j4vm-mwq4), path/python, rust/csharp/php, watch fixes, AST 51.</comment>
     <requestid>1399730</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3277add8ca7d60bcad1803322b4493b2</srcmd5>
+    <version>0.9.118</version>
+    <time>1795520486</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.118: extractor fixes, Svelte/media, MCP, query/export, cluster perf.</comment>
+    <requestid>1400211</requestid>
+  </revision>
 </revisionlist>

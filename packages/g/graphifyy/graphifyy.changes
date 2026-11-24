@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:28:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.118 (folds the 0.9.116/0.9.117 trains):
+  * C#, C, ObjC and Go extractor fixes: contextual-keyword
+    names no longer drop the file, struct-callback guesses
+    dropped, colliding ObjC methods get distinct ids, Go
+    struct fields scoped to their package
+  * Svelte imports resolve through export-star barrels; audio
+    and video files reported instead of silently skipped
+  * MCP server loads graph.json off the event loop; section
+    retry uses its own graph caches; missing clustered reports
+    regenerated
+  * Query demotes image nodes like docs; export honors the
+    filesystem NAME_MAX; wiki exports include incoming edges;
+    .graphifyrc parses demote_docs settings
+  * Cluster overlap counting is linear with identical results;
+    AST cache schema bumped 51 to 53
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Sun Nov 22 09:38:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.115:
