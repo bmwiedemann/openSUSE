@@ -489,4 +489,26 @@ Update to 5.3.4</comment>
   * Update messaging spec #1095</comment>
     <requestid>1338104</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b289c9b569e80b8998ea2c50140cddc4</srcmd5>
+    <version>8.10.0</version>
+    <time>1795519360</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.10.0:
+  * Support curve encryption over IPC too
+  * Preserve Curve key bytes in `KernelManager.client`
+  * Fix mypy checks on CI
+  * Correct `kernel_dirs` help text to describe first-wins
+    precedence
+  * Align `supported_encryption` format with JEP in docs
+  * Use org-level security policy
+  * Add ZMQ Curve for transport encryption
+  * Temporarily pin Python to 3.14 in pre-releases test
+  * CI: fix testing of nbconvert
+  * Update pre-commit, and fix issues
+  * Remove `3.14t` testing until `msgpack` supports it
+  * Log environment information for docs build on CI, update
+    comment on workaround</comment>
+    <requestid>1399683</requestid>
+  </revision>
 </revisionlist>

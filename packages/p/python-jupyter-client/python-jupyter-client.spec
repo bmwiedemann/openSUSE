@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jupyter-client%{psuffix}
-Version:        8.8.0
+Version:        8.10.0
 Release:        0
 Summary:        Jupyter protocol implementation and client libraries
 License:        BSD-3-Clause
@@ -45,6 +45,7 @@ Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-pyzmq >= 25.0
 Requires:       python-tornado >= 6.4.1
 Requires:       python-traitlets >= 5.3
+Requires:       python-typing-extensions >= 4.13.0
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-jupyter_client = %{version}-%{release}

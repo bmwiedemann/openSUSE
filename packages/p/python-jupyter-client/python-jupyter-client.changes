@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:49:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.10.0:
+  * Support curve encryption over IPC too
+  * Preserve Curve key bytes in `KernelManager.client`
+  * Fix mypy checks on CI
+  * Correct `kernel_dirs` help text to describe first-wins
+    precedence
+  * Align `supported_encryption` format with JEP in docs
+  * Use org-level security policy
+  * Add ZMQ Curve for transport encryption
+  * Temporarily pin Python to 3.14 in pre-releases test
+  * CI: fix testing of nbconvert
+  * Update pre-commit, and fix issues
+  * Remove `3.14t` testing until `msgpack` supports it
+  * Log environment information for docs build on CI, update
+    comment on workaround
+
+-------------------------------------------------------------------
 Tue Mar 10 21:59:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.8.0:
