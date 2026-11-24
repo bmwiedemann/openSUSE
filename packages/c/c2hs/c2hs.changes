@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:51:39 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Nov 17 23:17:56 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update c2hs to version 0.28.8 revision 3.

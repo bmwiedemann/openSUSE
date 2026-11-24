@@ -1,7 +1,7 @@
 #
 # spec file for package c2hs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with ghc_prof
 %bcond_with tests
 Name:           c2hs
 Version:        0.28.8
@@ -27,40 +28,44 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/3.cabal#/%{name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-dlist-devel
-BuildRequires:  ghc-dlist-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-language-c-devel
-BuildRequires:  ghc-language-c-prof
 BuildRequires:  ghc-pretty-devel
-BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-dlist-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-language-c-prof
+BuildRequires:  ghc-pretty-prof
+BuildRequires:  ghc-process-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-shelly-devel
-BuildRequires:  ghc-shelly-prof
 BuildRequires:  ghc-test-framework-devel
 BuildRequires:  ghc-test-framework-hunit-devel
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-transformers-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-HUnit-prof
+BuildRequires:  ghc-shelly-prof
 BuildRequires:  ghc-test-framework-hunit-prof
 BuildRequires:  ghc-test-framework-prof
-BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
+%endif
 %endif
 
 %description
@@ -71,7 +76,7 @@ hand (or using hsc2hs), this ensures that C functions are imported with the
 correct Haskell types.
 
 %prep
-%autosetup
+%autosetup -p1
 cp -p %{SOURCE1} %{name}.cabal
 chmod a-x {README,AUTHORS,ChangeLog,ChangeLog.old}
 
