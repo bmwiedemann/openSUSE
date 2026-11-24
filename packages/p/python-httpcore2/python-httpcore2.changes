@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 22 10:45:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.16.2:
+  * No changes since `2.16.1`. Version bumped to stay in lockstep
+    with `httpx2`.
+  * Recheck the HTTP/2 flow control window after acquiring the
+    read lock. Concurrent uploads on one connection could stall
+    until the read timeout once the window was exhausted.
+  * Raise `LocalProtocolError` instead of `IndexError` when an
+    HTTP/2 request sent directly to a connection has no `Host`
+    header.
+
+-------------------------------------------------------------------
 Sun Nov 15 23:53:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing Requires on ca-certificates-mozilla, because 2.15.1+ now

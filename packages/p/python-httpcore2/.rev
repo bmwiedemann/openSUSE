@@ -96,4 +96,20 @@
   eagerly loads CA certificates, and blows up if none are found.</comment>
     <requestid>1397809</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>273c57daff22b33fb57f70933ec28458</srcmd5>
+    <version>2.16.2</version>
+    <time>1795519364</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.16.2:
+  * No changes since `2.16.1`. Version bumped to stay in lockstep
+    with `httpx2`.
+  * Recheck the HTTP/2 flow control window after acquiring the
+    read lock. Concurrent uploads on one connection could stall
+    until the read timeout once the window was exhausted.
+  * Raise `LocalProtocolError` instead of `IndexError` when an
+    HTTP/2 request sent directly to a connection has no `Host`
+    header.</comment>
+    <requestid>1399741</requestid>
+  </revision>
 </revisionlist>
