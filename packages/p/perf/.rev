@@ -758,4 +758,13 @@
 - add %check with some basic tests</comment>
     <requestid>1394663</requestid>
   </revision>
+  <revision rev="88" vrev="97">
+    <srcmd5>7ba2d672587dffc25d5391b9e79f0bb0</srcmd5>
+    <version>MACRO</version>
+    <time>1795520478</time>
+    <user>anag_factory</user>
+    <comment>- Enable numa support on riscv64
+- Avoid failing cpuid test in qemu emulation</comment>
+    <requestid>1400186</requestid>
+  </revision>
 </revisionlist>

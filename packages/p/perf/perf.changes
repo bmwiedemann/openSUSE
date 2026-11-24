@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 19 12:22:28 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable numa support on riscv64
+- Avoid failing cpuid test in qemu emulation
+
+-------------------------------------------------------------------
 Tue Nov  3 08:52:40 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - support kernel 7.4 (gtk4 finally)

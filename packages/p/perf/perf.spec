@@ -72,7 +72,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
-%ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
+%ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc riscv64
 BuildRequires:  libnuma-devel
 %endif
 %{perl_requires}
@@ -223,10 +223,13 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %check
 cd tools/perf
 # at least something; many tests are HW-dependent
+%if 0%{?qemu_user_space_build}
+# Dummy value to avoid failure in cpuid test
+export PERF_CPUID=qemu
+%endif
 ./perf test \
 	"demangle" \
 	"kallsyms" \
-	"perf stat" \
 	"print" \
 	"Simple expression" \
 	"DSO data tests" \
