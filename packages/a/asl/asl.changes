@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 24 05:45:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld317
+  Bugfix
+  * Detect & report invalid multi-character instruction attribute
+    on 68K.
+  * Nameless symbols used inside macros no longer interfere with
+    nameless symbols used outside macros.
+  Addition
+  * Allow C-style hex constants while no explicit target is set.
+  Change
+  * IF statement arguments that cannot be evaluated are now assumed
+    to be false instead of true.
+
+-------------------------------------------------------------------
 Sun Nov  8 07:37:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 142-bld316
