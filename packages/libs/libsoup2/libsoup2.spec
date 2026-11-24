@@ -132,6 +132,12 @@ Patch51:        libsoup2-CVE-2026-102557.patch
 Patch52:        libsoup2-CVE-2026-15713.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-103399.patch bsc#1283831 mgorse@suse.com -- server: Close the connection after an early response to Expect: 100-continue.
 Patch53:        libsoup2-CVE-2026-103399.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-66339-2.patch bsc#1273156 mgorse@suse.com -- auth-manager: Pass cached proxy credentials only within the same origin.
+Patch54:        libsoup2-CVE-2026-66339-2.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-66337.patch bsc#1273158 mgorse@suse.com -- filter-input-stream: Fix underflow when less data than the boundary is buffered.
+Patch55:        libsoup2-CVE-2026-66337.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-3099.patch bsc#1258781 mgorse@suse.com -- auth-domain-digest: Check nonce validity.
+Patch56:        libsoup2-CVE-2026-3099.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

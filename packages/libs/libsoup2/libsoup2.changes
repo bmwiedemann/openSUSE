@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Nov 20 19:57:36 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add libsoup2-CVE-2026-66339-2.patch: Pass cached proxy
+  credentials only within the same origin (bsc#1273156
+  CVE-2026-66339).
+- CVE-2026-66337: heap buffer overread via integer underflow in
+  `soup_filter_input_stream_read_until()` (bsc#1273158)
+  * libsoup2-CVE-2026-66337.patch
+- CVE-2026-3099: failure to track issued nonces or enforce the
+  incrementing nonce-count attribute required by the Digest Auth
+  standard can lead to authentication bypass and replay attacks
+  (bsc#1258781)
+  * libsoup2-CVE-2026-3099.patch
+
+-------------------------------------------------------------------
 Mon Oct 12 19:09:21 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - CVE-2026-103399: incomplete request body draining in HTTP/1.x
