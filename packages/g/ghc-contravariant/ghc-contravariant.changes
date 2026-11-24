@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:40 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sat Jan 10 19:55:00 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update contravariant to version 1.5.6.
