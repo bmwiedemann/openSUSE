@@ -18,7 +18,7 @@
 
 %define somajor 2
 Name:           flex
-Version:        2.6.16
+Version:        2.7.4
 Release:        0
 Summary:        Fast Lexical Analyzer Generator
 License:        BSD-3-Clause

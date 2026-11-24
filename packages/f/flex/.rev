@@ -330,4 +330,12 @@
 - Addresses dimstar comment: file dep takes gettext-runtime-mini.</comment>
     <requestid>1398929</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>bd3c81509e639e98fe2d395348d37f99</srcmd5>
+    <version>2.7.4</version>
+    <time>1795519420</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1399871</requestid>
+  </revision>
 </revisionlist>
