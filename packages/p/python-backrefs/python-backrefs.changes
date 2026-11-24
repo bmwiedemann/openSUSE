@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:43:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.3:
+  * NEW: `bre`: Add the binary properties `Any`,
+    `Assigned`, and `ASCII`, which UTS #18 requires
+    but the Unicode Character Database does not
+    define. `ASCII` was previously only available as
+    an alias of the `Basic_Latin` block.
+  * NEW: `bre`: Allow an initial `Is` on General
+    Category values (`p{IsLu}` or `p{gc=IsLu}`) and
+    on property names (`p{IsGC=Lu}` or
+    `p{IsAlphabetic=Yes}`), as Unicode allows, per
+    UAX #44.
+  * FIX: `bre`: Fix the inverse of the `No_Block`
+    block property (`P{No_Block}`) not including the
+    Supplementary Private Use Area blocks (`U+F0000`
+    to `U+10FFFF`).
+  * FIX: `bre`: Fix negated Unicode properties and
+    POSIX classes (`P{Lu}`, `p{^Lu}`,
+    `[[:^upper:]]`) matching both cases of the
+    characters in the property when using
+    `IGNORECASE`. Character sets that contain negated
+    properties are now expressed as alternatives
+    (`[aP{Lu}]` becomes `(?:[a]|[^...])`).
+  * FIX: `bre`: Fix an error when negating a binary
+    property alias that has a value (`P{Alpha=No}`).
+- update to 8.2.1:
+  * FIX: Reject compiled replace templates from
+    another search pattern in compiled search
+    objects, matching module-level substitutions and
+    preventing incorrect capture references.
+  * FIX: `bre`: Fix a `-` after a POSIX class in a
+    character set sometimes forming a range
+    (`[[:blank:]-z]`).
+  * FIX: `bre`: Fix an escaped `-` before a POSIX or
+    Unicode class in a character set being turned
+    into a range operator (`[-p{N}]`).
+  * FIX: `bre`: Fix `^` being treated as a negation
+    when it follows properties in a character set
+    that match nothing, such as `p{Han}` in a byte
+    string (`[p{Han}^a]`).
+  * FIX: `bre`: Fix ranges in byte string character
+    sets with a named character beyond the byte range
+    (`[a-N{CJK UNIFIED IDEOGRAPH-4E00}]`). They now
+    match Regex: a range that ends beyond the byte
+    range includes everything up to `xff`, and a
+    range that starts beyond it matches nothing, or
+    is an error if it is reversed.
+  * FIX: `bre`: Fix a literal `^` after the negating
+    `^` in a character set (`[^^]`) causing an
+    unterminated character set error.
+  * FIX: `bregex`: Fix finding the end of character
+    sets, which could cause false errors or wrongly
+    handle what follows a set (such as `R`, groups,
+    or verbose comments). Character sets now follow
+    Regex's own rules: POSIX classes are recognized
+    in byte strings, and with qualified names or
+    values (`[[:script=latin:]]`).
+  * In V1, a `]` directly after a set operator is a
+    literal (`[w--]]`).
+  * A literal `^` after the negating `^` (`[^^]`) no
+    longer causes an unterminated character set
+    error.
+  * FIX: `bregex`: POSIX classes in character sets
+    are no longer rewritten before being passed to
+    Regex.
+- update to 8.2:
+  * NEW: Drop Python 3.10.
+  * FIX: Fix error in replace templates when casing
+    a character escape gives two characters
+    (`CxdfE`).
+  * FIX: Fix wrong text or errors when case
+    conversion of a `x` escape exceeds the byte
+    range in replace templates.
+  * FIX: Fix an empty format specification (`{1:}`)
+    raising an error in format replace templates.
+  * FIX: Fix Unicode properties, such as general
+    category `p{L}` and `p{Bidi_Class=L}`, not
+    matching ideographs, Hangul syllables, and other
+    characters Unicode defines as ranges.
+  * FIX: Fix `g<...>` references in replace templates
+    silently dropping invalid characters in a group
+    name instead of raising an error.
+  * FIX: Fix `p{...}` Unicode properties rejecting
+    the canonical dotted value form (e.g. `Age=1.1`),
+    which previously only worked through the alias
+    form (e.g. `V1_1`).
+  * FIX: Fix issue where Unicode properties within
+    character classes (e.g. `[x[:property:]]`) were
+    incorrectly detected with `[x[l]]`
+    (@rahul05ranjan).
+  * FIX: Fix an undefined Unicode name in `N{...}`
+    raising a `KeyError` instead of `PatternError`
+- update to 8.1:
+  * NEW: Add official support for Python 3.15.
+- update to 8.0:
+  * NEW: Backrefs will preemptively fail, raising a
+    `PatternError`, if parsing and finding an
+    unterminated character set (`[]`) or an
+    unterminated subpattern (`()`). Both `re` and
+    `regex` already do this (`re` just issues a
+    warning on Python 3.10), but `backrefs` will now
+    terminate parsing early instead of waiting for
+    the underlying regular expression parsers to
+    catch it after the fact. This will occur even on
+    Python 3.10. If Python 3.10 behavior is
+    required, please use Backrefs `7.0` until
+    migration is possible.
+  * NEW: Backrefs will now raise a `PatternError` in
+    `bre` if global flag syntax is not used at the
+    start of the pattern. Python `re` already does
+    this, except on Python 3.10 where a warning is
+    raised. Backrefs will now do this in `bre`, even
+    on Python 3.10, to prevent backtracking in
+    Backrefs' parser when global flags are redefined.
+    If the old behavior is required, please use
+    `7.0` until migration is possible.
+  * NEW: Backrefs will now raise a `PatternError` in
+    `bregex` if a global flag is not used at the
+    start of the pattern. This does not affect
+    inline flags that use the global syntax (e.g.
+    `(?i)`) as `regex` allows this to be scoped to
+    subpatterns (`(...)`) and affects the pattern
+    after its insertion whether in a subpattern or
+    outside a subpattern. While regex doesn't
+    specifically restrict global flag insertion,
+    only the last instance takes effect, Backrefs
+    requires these global flags to be declared at
+    the beginning of the pattern to prevent
+    backtracking when parsing the pattern. If the
+    old behavior is required, please use `7.0`
+    until migration is possible.
+  * NEW: Various `ValueError` and `SyntaxError` that
+    used to be raised by the `bre` or `bregex`
+    parser are now raised as
+    `backrefs.util.PatternError`.
+  * FIX: Fixes in `bregex` related to `regex`
+    handling of inline flags using global syntax.
+
+-------------------------------------------------------------------
 Sun May  3 17:58:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.0:

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-backrefs
-Version:        7.0
+Version:        8.3
 Release:        0
 Summary:        A wrapper around re and regex that adds additional back references
 License:        MIT
