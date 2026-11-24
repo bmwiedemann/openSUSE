@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:07:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.4:
+  * Test and fix python 3.15
+  * drop Python 3.7 support
+- drop support-python-315.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Jul 10 02:42:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-315.patch:

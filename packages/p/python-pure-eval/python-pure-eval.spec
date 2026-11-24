@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pure-eval
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Safely evaluate AST nodes without side effects
 License:        MIT
 URL:            https://github.com/alexmojaki/pure_eval
 Source:         https://files.pythonhosted.org/packages/source/p/pure_eval/pure_eval-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#alexmojaki/pure_eval#24
-Patch0:         support-python-315.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 44}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
