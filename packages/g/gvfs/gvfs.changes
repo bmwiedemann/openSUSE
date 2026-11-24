@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Nov 22 20:11:39 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Enable the upstream unit tests: build with -Dunit_tests=true and
+  run them in %check with meson test.
+
+-------------------------------------------------------------------
 Wed Sep 30 16:32:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update version dependencies according to meson.build.

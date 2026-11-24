@@ -1736,4 +1736,13 @@ New stable rel</comment>
     <comment>Push GNOME 51.1</comment>
     <requestid>1385443</requestid>
   </revision>
+  <revision rev="214" vrev="2">
+    <srcmd5>0c7d266ff78af5fa3ded38f8445a606d</srcmd5>
+    <version>1.62.0</version>
+    <time>1795519396</time>
+    <user>anag_factory</user>
+    <comment>- Enable the upstream unit tests: build with -Dunit_tests=true and
+  run them in %check with meson test.</comment>
+    <requestid>1399909</requestid>
+  </revision>
 </revisionlist>

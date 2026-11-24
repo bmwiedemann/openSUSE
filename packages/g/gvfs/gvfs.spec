@@ -221,6 +221,7 @@ cp %{SOURCE1} .
         -Donedrive=%[%{with onedrive} ? "true" : "false" ] \
         -Dafp=true \
         -Darchive=true \
+        -Dunit_tests=true \
 	%{nil}
 %meson_build
 
@@ -233,6 +234,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 # Rename daemon/trashlib/COPYING
 mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
+
+%check
+%meson_test
 
 %post
 %{glib2_gio_module_post}
