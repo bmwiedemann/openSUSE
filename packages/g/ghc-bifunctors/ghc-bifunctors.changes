@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:11 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Jan 11 02:48:25 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update bifunctors to version 5.6.3 revision 1.
