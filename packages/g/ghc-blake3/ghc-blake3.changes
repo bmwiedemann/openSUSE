@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:13 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Nov  9 20:20:51 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Disable SIMD on non-x86_64 architectures to make the build
