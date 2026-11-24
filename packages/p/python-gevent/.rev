@@ -947,4 +947,31 @@
     This also fixes gevent.util.format_run_info(), which renders</comment>
     <requestid>1372808</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>f8f639128925efd7067713fd1b209096</srcmd5>
+    <version>26.9.0</version>
+    <time>1795519368</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.9.0:
+  * Fix :class:`gevent.event.AsyncResult` re-raising an exception
+    with a traceback that kept growing by the frames of every
+    previous :meth:`~gevent.event.AsyncResult.get` call, instead
+    of starting fresh from the traceback captured when
+    :meth:`~gevent.event.AsyncResult.set_exception` was called.
+    See :issue:`1946`.
+  * Make gevent's file objects properly report the full mode
+    string. Previously a 'b' or 't' suffix could be missing. See
+    :issue:`2039`.
+  * ThreadPool workers no longer call the profile and trace
+    setters when no hooks are configured. This matches
+    threading.Thread and avoids unnecessary PEP 578 audit events
+    and thread coordination. See :issue:`2206`.
+  * An exception while preparing a ThreadPool worker to run a
+    task, such as an audit hook rejecting sys.setprofile(), no
+    longer leaves the caller blocked or leaks a pool slot. The
+    exception is raised in the greenlet waiting on apply() or
+    spawn(), and the failed worker is replaced if other tasks are
+    waiting. See :issue:`2207`.</comment>
+    <requestid>1399752</requestid>
+  </revision>
 </revisionlist>
