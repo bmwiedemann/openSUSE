@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:51:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Dec 10 04:29:36 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update alsa-mixer to version 0.3.0.1.
