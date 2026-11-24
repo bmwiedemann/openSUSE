@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:03:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.1:
+  * chore(deps): update goreleaser/goreleaser docker tag to v2.20.3
+- Update to version 0.8.0:
+  * build: ensure that packagers can override `main.version`
+  * fix: allow specifying `LOG_LEVEL`
+  * chore(deps): update golang:1.27 docker digest to 205c763
+  * chore(deps): update golang:1.27 docker digest to fe517ac
+  * chore(deps): update go
+  * fix(deps): update module charm.land/log/v2 to v2.0.1
+  * chore(deps): update goreleaser/goreleaser docker tag to v2.19.0
+  * fix(deps): update module charm.land/bubbletea/v2 to v2.1.0
+  * chore(renovate): don't auto-bump `go` directive
+  * Revert "chore(deps): update go"
+  * chore(deps): update go
+  * fixup! chore(renovate): group v2 Charm packages
+  * chore(renovate): group v2 Charm packages
+  * chore(renovate): use `go-app` preset
+
+-------------------------------------------------------------------
 Fri Aug 28 12:38:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.0:

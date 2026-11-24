@@ -17,7 +17,7 @@
 
 
 Name:           renovate-pretty-log
-Version:        0.7.0
+Version:        0.8.1
 Release:        0
 Summary:        Two utilities for exploring Renovate debug log files
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  go1.27 >= 1.27.4
 BuildRequires:  zsh
 
 %description
@@ -60,6 +60,7 @@ install -D -m 0755 bin/renovate-pretty-log-tui %{buildroot}/%{_bindir}/renovate-
 %check
 %{buildroot}/%{_bindir}/renovate-pretty-log --help
 %{buildroot}/%{_bindir}/renovate-pretty-log-tui --help
+
 %files
 %doc README.md
 %license LICENSE
