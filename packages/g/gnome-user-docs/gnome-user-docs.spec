@@ -18,7 +18,7 @@
 
 Name:           gnome-user-docs
 ###FIXME### Make the buildsuite work, check again with beta/RC releases
-Version:        51.0
+Version:        51.2
 Release:        0
 Summary:        GNOME Desktop Documentation
 License:        CC-BY-3.0
