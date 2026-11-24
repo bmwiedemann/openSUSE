@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Nov 24 07:04:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.172.0:
+  * Follow thread links from search results and
+    transcripts; Tab-completes slash-command arguments
+  * Task-group navigation in the agent command center,
+    lazy-start optional stdio MCP servers and per-tool
+    approval reviewers
+  * App-server setup/sign-in offers Amazon Bedrock
+    Runtime; openai-docs skill covers GPT-6.2 Astra
+    and Sol migration
+  * exec resume restores sandbox permissions and
+    working directories; remote sessions keep paths
+    across platforms; provider errors and spend-limit
+    scope surface as they arrive
+  * Queued child-agent replies survive a parent
+    interrupt; PageUp/PageDown in long answer lists;
+    late Cloud replies update in place
+  * Code Mode uses gRPC for all host connections
+    (code_mode_host_grpc is deprecated)
+  * Rebased codex-drop-v8-code-mode.patch (upstream
+    moved the tokio-tungstenite/tungstenite git revs);
+    licence re-derived, tag unchanged; strip the
+    mxc-sdk WSL-only NuGet fallback, declare its two
+    Windows telemetry DLLs other-platform
+
+-------------------------------------------------------------------
 Sat Nov 21 07:19:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.171.0:

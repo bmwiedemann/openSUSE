@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.171.0
+Version:        0.172.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -136,6 +136,12 @@ Summary:        OpenAI Codex coding agent for the terminal
 # - 0.171.0: 796 crates (795 tallied) - Apache 556, MIT 180, 0BSD 2
 #   for managed/smoltcp via linux-sandbox; tag gains 0BSD.
 # - MPL-2.0 still 12, self_cell elects Apache, aws-lc-sys 0.45.0.
+# - 0.172.0: 802 third-party crates in the codex-cli closure (801
+#   tallied, aws-lc-sys itemised separately as before).
+# - New electors are all Apache-2.0 (ureq 3.3.0 chain via mxc-sdk
+#   1.1.0, second der/pem-rfc7468 copies): tag unchanged by this bump.
+# - Newly linked webpki-root-certs is CDLA-Permissive-2.0, already
+#   carried; gix-commitgraph stays 0.41.0 (boo#1290404 still open).
 License:        Apache-2.0 AND MIT AND Unicode-3.0 AND MPL-2.0 AND ISC AND BSD-3-Clause AND Zlib AND BSD-2-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND bzip2-1.0.6 AND 0BSD
 URL:            https://github.com/openai/codex
 Source0:        https://github.com/openai/codex/archive/refs/tags/rust-v%{version}.tar.gz#/codex-rust-v%{version}.tar.gz
@@ -151,6 +157,7 @@ Source1:        vendor.tar.zst
 # Repack strip: the mxc-sdk WSL-only NuGet fallback (build/wslc_common/*.nupkg)
 # is removed with its .cargo-checksum.json key; the Linux build never reads it.
 # Source-Binary-Exception: vendor.tar.zst:vendor/async-compression-*/tests/artifacts/*.zst -- test-data: dictionary-compressed fixtures read by async-compression decode tests, never executed
+# Source-Binary-Exception: vendor.tar.zst:vendor/mxc-sdk-*/resources/telemetry-component/* -- other-platform: Windows telemetry DLLs for ARM64/x64, unused on Linux
 # PATCH-FIX-OPENSUSE codex-drop-v8-code-mode.patch mpluskal@suse.com -- drop the workspace members whose v8 dependency downloads a prebuilt library at build time
 Patch0:         codex-drop-v8-code-mode.patch
 # PATCH-FIX-OPENSUSE codex-no-startup-update-check.patch mpluskal@suse.com -- distribution policy: do not probe github.com for updates on startup

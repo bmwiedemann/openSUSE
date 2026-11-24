@@ -589,4 +589,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update openai-codex to 0.171.0: TUI workspace default, Sol/Astra models, undo/redo, exec --remote, WebRTC/OTLP fixes, licence gains 0BSD.</comment>
     <requestid>1399632</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f4ffe79403245b6b924620d26c67b23e</srcmd5>
+    <version>0.172.0</version>
+    <time>1795540019</time>
+    <user>anag_factory</user>
+    <comment>Update openai-codex to 0.172.0: thread links, task-group navigation, Bedrock setup, gRPC code mode.</comment>
+    <requestid>1400275</requestid>
+  </revision>
 </revisionlist>
