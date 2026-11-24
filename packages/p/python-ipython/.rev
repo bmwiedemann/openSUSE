@@ -1679,4 +1679,24 @@
     <comment></comment>
     <requestid>1332449</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>dbbe55d0ccf60bb4c260d3d3e60873e7</srcmd5>
+    <version>9.18.1</version>
+    <time>1795519356</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.18.1:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-18-1
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-18
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-17
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-16
+- update to 9.15.0 (CVE-2025-30167):
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-15
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-14
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-13
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-12
+- update to 9.11.0:
+  * https://ipython.readthedocs.io/en/stable/whatsnew/version9.html#ipython-9-11
+</comment>
+    <requestid>1398966</requestid>
+  </revision>
 </revisionlist>

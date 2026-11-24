@@ -33,29 +33,29 @@
 %bcond_with localtest
 %{?sle15_python_module_pythons}
 Name:           python-ipython%{psuffix}
-Version:        9.10.0
+Version:        9.18.1
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
 URL:            https://github.com/ipython/ipython
 Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools >= 80.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
 # requires the full stdlib including sqlite3
 Requires:       python
-Requires:       python-decorator
-Requires:       python-ipython-pygments-lexers
-Requires:       python-jedi >= 0.16
-Requires:       python-matplotlib-inline
-Requires:       python-pexpect >= 4.3
-Requires:       python-pygments >= 2.4.0
-Requires:       python-stack-data
+Requires:       python-ipython-pygments-lexers >= 1.0.0
+Requires:       python-jedi >= 0.18.2
+Requires:       python-matplotlib-inline >= 0.1.6
+Requires:       python-pexpect > 4.6
+Requires:       python-psutil >= 7
+Requires:       python-pygments >= 2.14.0
+Requires:       python-stack-data >= 0.6.0
 Requires:       python-traitlets >= 5.13.0
 Requires:       (python-prompt_toolkit >= 3.0.41 with python-prompt_toolkit < 3.1)
 %if 0%{python_version_nodots} < 312
@@ -83,14 +83,15 @@ Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipython = %{version}}
-BuildRequires:  %{python_module matplotlib}
-BuildRequires:  %{python_module numpy >= 1.23}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module matplotlib > 3.9}
+BuildRequires:  %{python_module numpy >= 2.0}
+BuildRequires:  %{python_module packaging >= 23.0.0}
+BuildRequires:  %{python_module pandas > 2.1}
 BuildRequires:  %{python_module pickleshare}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module testpath}
-BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module pytest >= 7.0.0}
+BuildRequires:  %{python_module pytest-asyncio >= 1.0.0}
+BuildRequires:  %{python_module testpath >= 0.2}
+BuildRequires:  %{python_module trio >= 0.22.0}
 %endif
 %if %{with localtest}
 BuildRequires:  %{python_module nbformat}
