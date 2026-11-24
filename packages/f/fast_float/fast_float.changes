@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Nov 22 08:17:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.4.0
+  * Add FASTFLOAT_ROUNDS_TO_NEAREST to skip the rounding-mode
+    check.
+  * Avoid zero-filling bigint buffers in the slow path
+    (C++26 [[indeterminate]]).
+
+-------------------------------------------------------------------
 Mon Nov  2 10:04:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.3.3

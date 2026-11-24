@@ -119,4 +119,12 @@
     <comment>- Update to release 8.3.3</comment>
     <requestid>1394425</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c1367eba7577febd3ad0f1f2357b06f2</srcmd5>
+    <version>8.4.0</version>
+    <time>1795519362</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.4.0</comment>
+    <requestid>1399718</requestid>
+  </revision>
 </revisionlist>
