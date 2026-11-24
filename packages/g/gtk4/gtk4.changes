@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 23 07:22:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.24.2:
+  * Bugs fixed:
+    + GNOME/nautilus#3614 Double clicking a file that's slightly off screen
+      doesn't open it
+    + Segfaults when using wintab
+    + GTK crashes on launch with floating point exception when wl_output with
+      refresh=0 is encountered
+    + Wayland: freeing a GtkMediaFile makes GStreamer eglTerminate() GDK's
+      EGLDisplay (4.24.1 regression)
+    + Critical when loading SVG
+    + CSS parsing: use-after-free in gtk_css_parser_end_block_prelude() and
+      three more memory-safety bugs
+    + Fix the testsuite and stroke bounds
+    + Fix various issues
+    + Declare sysprof counters as G_GNUC_UNUSED
+    + Nodeparser: Don't crash when someone puts text inside a fill/stroke
+    + Assorted backports for 4.24
+    + Backport gsk(opacity): use original value if opaque region hasn't changed
+    + Backport store-callback-4-24
+    + Gsk: skip unnecessary copy/paste replay
+    + Testsuite: Drop the repeat-snap compare test
+    + Backports of assorted css memeory fixes
+  * Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Fri Oct  2 06:08:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 4.24.1:

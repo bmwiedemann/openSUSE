@@ -28,7 +28,7 @@
 %endif
 
 Name:           gtk4
-Version:        4.24.1
+Version:        4.24.2
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
@@ -92,9 +92,9 @@ BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
-BuildRequires:  pkgconfig(pango) >= 1.55.0
-BuildRequires:  pkgconfig(pangocairo) >= 1.14.0
-BuildRequires:  pkgconfig(pangoft2) >= pango_major_req.pango_minor_req
+BuildRequires:  pkgconfig(pango) >= 1.58
+BuildRequires:  pkgconfig(pangocairo) >= 1.58
+BuildRequires:  pkgconfig(pangoft2) >= 1.58
 BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(wayland-client) >= 1.24.0
 BuildRequires:  pkgconfig(wayland-cursor) >= 1.9.91
