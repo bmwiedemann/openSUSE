@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpointer
-Version:        3.5
+Version:        3.12
 Release:        0
 Summary:        Module to identify specific nodes in a JSON document
 License:        BSD-3-Clause
@@ -77,6 +77,7 @@ A module to identify specific nodes in a JSON document (according to draft 08).
 %license LICENSE.txt
 %python_alternative %{_bindir}/jsonpointer
 %{python_sitelib}/jsonpointer.py
+%{python_sitelib}/jsonpointer-stubs
 %pycache_only %{python_sitelib}/__pycache__/jsonpointer.*.pyc
 %{python_sitelib}/jsonpointer-%{version}.dist-info
 

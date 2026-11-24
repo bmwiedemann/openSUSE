@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:39:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.12:
+  * Stop using the deprecated argparse.FileType in the CLI
+  * Trim the Sphinx configuration to the settings in use
+  * Pin Sphinx for reproducible documentation builds
+  * Use SPDX identifier for __license__
+  * Deprecate pairwise() in favour of itertools.pairwise()
+  * Ship everything needed to test and build docs from the sdist
+  * Update GitHub Actions to current major versions
+  * Update the tested Python versions
+  * Exit with status 130 when the CLI is interrupted
+  * Keep the original error when join() rejects a suffix
+  * Clean up broken, outdated and redundant bits across the
+    project
+  * **Full Changelog**: https://github.com/stefankoegl/python-
+    json-pointer/compare/v3.11...v3.12
+- update to 3.11:
+  * Allow reflected equality for non-pointer objects
+- update to 3.10:
+  * Don't trigger __missing__ when resolving missing mapping
+    members
+  * **Full Changelog**: https://github.com/stefankoegl/python-
+    json-pointer/compare/v3.9...v3.10
+- update to 3.9:
+  * Test RFC 6901 escaped tilde decoding order
+  * Wrap sequence append type errors in JsonPointerException
+- update to 3.8:
+  * Add type hints via a jsonpointer-stubs package
+  * Check that documentation examples run and produce the
+    expected output
+  * **Full Changelog**: https://github.com/stefankoegl/python-
+    json-pointer/compare/v3.7...v3.8
+- update to 3.7:
+  * Extend CI: package build, docs build, PyPy, Windows/macOS,
+    lint CLI
+  * Report pointer file decoding errors through argparse
+- update to 3.6:
+  * Clarify the direction of pointer containment checks
+  * Close owned CLI input files after reading
+
+-------------------------------------------------------------------
 Mon Oct 26 08:08:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5:
