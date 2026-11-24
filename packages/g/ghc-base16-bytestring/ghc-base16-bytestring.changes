@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:07 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Oct  4 14:05:26 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update base16-bytestring to version 1.0.2.0 revision 1.
