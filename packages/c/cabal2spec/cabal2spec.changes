@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 18 21:46:26 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update cabal2spec to version 2.9.0.
+  Upstream added a new change log file in this release. With no
+  previous version to compare against, the automatic updater cannot
+  reliable determine the relevante entries for this release.
+
+-------------------------------------------------------------------
 Sun Nov 15 15:40:33 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update cabal2spec to version 2.8.2.
