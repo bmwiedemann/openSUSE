@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 19 14:28:37 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.870.0 (3.87)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+
+  3.87      2026-11-18
+      - Retain entity values across stringification callbacks (GH#72)
+        (Yves Orton)
+
+-------------------------------------------------------------------
 Sun Sep 20 09:51:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.860.0 (3.86)

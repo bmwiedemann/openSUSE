@@ -365,4 +365,16 @@ _______________________________________________________________________________<
         value that string had when the call began (GH#69) (Paul Johnson)</comment>
     <requestid>1395151</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8bc65a3a98b1a36cc0f621c0b4261799</srcmd5>
+    <version>3.870.0</version>
+    <time>1795519416</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.870.0 (3.87)
+   see /usr/share/doc/packages/perl-HTML-Parser/Changes
+  3.87      2026-11-18
+      - Retain entity values across stringification callbacks (GH#72)
+        (Yves Orton)</comment>
+    <requestid>1399976</requestid>
+  </revision>
 </revisionlist>
