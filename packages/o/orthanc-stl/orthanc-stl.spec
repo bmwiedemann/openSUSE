@@ -16,12 +16,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           orthanc-stl
 Summary:        Plugin to provide support for DICOM STL in Orthanc
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        1.2
+Version:        1.4
 Release:        0
 URL:            http://orthanc-server.com
 Source0:        https://orthanc.uclouvain.be/downloads/sources/%{name}/OrthancSTL-%{version}.tar.gz
@@ -31,11 +30,14 @@ Source3:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL
 Source4:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL/three-84.js.gz
 Source5:        https://orthanc.uclouvain.be/downloads/third-party-downloads/STL/Online3DViewer-0.12.0.tar.gz
 Source6:        https://orthanc.uclouvain.be/downloads/linux-standard-base/%{name}/%{version}/dist.zip
-Patch0:         math.diff
 
 BuildRequires:  cmake
 BuildRequires:  dcmtk-devel
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  googletest-devel
 BuildRequires:  jsoncpp-devel
 BuildRequires:  libboost_atomic-devel >= 1.66
@@ -49,13 +51,12 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
+BuildRequires:  minizip-devel
 BuildRequires:  unzip
 BuildRequires:  vtk-devel
 BuildRequires:  zlib-devel
 
 Requires:       orthanc
-
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 plugin to provide support for DICOM STL in Orthanc (Encapsulated 3D Manufacturing Model IODs)
@@ -77,7 +78,10 @@ unzip %{S:6} -d JavaScriptLibraries
 sed -i 's/\(find_package([^)]* \)system\(.*\)/\1\2/g' CMakeLists.txt
 
 %build
-
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} > 150200
+export CC=gcc-13
+export CXX=g++-13
+%endif
 %cmake .. \
        -DALLOW_DOWNLOADS=OFF \
        -DUSE_SYSTEM_GOOGLE_TEST=ON \
