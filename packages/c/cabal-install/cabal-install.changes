@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 19 19:57:50 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update cabal-install to version 3.16.0.0 revision 5.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:04:49 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Drop obsolete Cabal-absolute-datadir.patch.
