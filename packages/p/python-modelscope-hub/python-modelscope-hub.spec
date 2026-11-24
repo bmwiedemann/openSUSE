@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
@@ -98,7 +98,9 @@ export PYTHONPATH=.
 # tests/test_download_corruption.py needs
 # tests/download_corruption_harness.py, present in upstream git but
 # missing from the sdist, so its import fails however it is invoked.
-%pytest -m "not remote" --ignore tests/test_download_corruption.py --deselect tests/test_agent_plugin.py::test_log_execution_records_the_build_before_import --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
+# 0.7.2 kernels ref tests miss the _require_hf skip guard and need the
+# optional huggingface_hub/kernels stack, unavailable in the offline build.
+%pytest -m "not remote" --ignore tests/test_download_corruption.py --deselect tests/test_agent_plugin.py::test_log_execution_records_the_build_before_import --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry --deselect tests/test_kernels.py::test_list_repo_refs_uses_real_commit_when_exposed --deselect tests/test_kernels.py::test_list_repo_refs_synthetic_v1_inherits_master_commit
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope_hub"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/modelscope-%{$python_bin_suffix} --help
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/ms-hub-%{$python_bin_suffix} --help
@@ -109,7 +111,7 @@ export PYTHONPATH=.
 %python_libalternatives_reset_alternative modelscope-hub
 %python_libalternatives_reset_alternative ms-hub
 
-%files %python_files
+%files %{python_files}
 %license LICENSE
 %doc README.md
 %python_alternative %{_bindir}/modelscope

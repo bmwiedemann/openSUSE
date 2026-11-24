@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:15:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.7.2:
+  * Snapshot downloads now send one snapshot-identifier per
+    task instead of a fresh UUID per file request
+  * Standalone file downloads omit the header so the dataset
+    service applies per-file counting
+  * Resumed report-mode tasks reuse the identifier; rerun
+    after COMPLETE starts a new task
+  * Cached dataset meta files are checked before calling the
+    repo endpoint, no longer costing a counted request
+  * Use real commit hashes as ref targets when the platform
+    exposes them; add lock_kernels API and ms-hub kernels
+    lock for ModelScope-resolved kernels.lock
+- Skip two kernels ref tests needing the optional huggingface_hub
+  stack, unavailable in the offline build.
+
+-------------------------------------------------------------------
 Wed Nov 11 13:10:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.7.1:

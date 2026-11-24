@@ -229,4 +229,12 @@ source_validator clean.</comment>
     <comment>Update to 0.7.1 (supersedes 0.7.0)</comment>
     <requestid>1396901</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2eae6d5c824e0d947c8a640a2ca55ae6</srcmd5>
+    <version>0.7.2</version>
+    <time>1795540020</time>
+    <user>anag_factory</user>
+    <comment>Update python-modelscope-hub to 0.7.2: snapshot task identifiers, cached dataset meta, real commit refs, kernels lock API.</comment>
+    <requestid>1400305</requestid>
+  </revision>
 </revisionlist>
