@@ -277,4 +277,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344690</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8762435a035a4468e075090e161d4038</srcmd5>
+    <version>2.17</version>
+    <time>1795519376</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.17:
+  * added support for
+    DateTimePatternGenerator.getDefaultHourCycle() and enums
+  * added missing wrappers for UDateFormatField
+  * added support for ICU 79.1</comment>
+    <requestid>1399771</requestid>
+  </revision>
 </revisionlist>
