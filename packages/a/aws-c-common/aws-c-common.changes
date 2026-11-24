@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 23 14:28:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.5
+  - Updating macOS runner by @rakshil14-2 in (#1308)
+  - Fix LTO build failure caused by signature mismatch in AVX2
+    base64 encoder by @sfod in (#1309)
+  - Helper script update by @TingDaoK in (#1310)
+  - Windows build failure by @TingDaoK in (#1311)
+- Update GitHub issue reference for s390x
+
+-------------------------------------------------------------------
 Sun Nov  1 21:09:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:

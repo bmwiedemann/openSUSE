@@ -20,7 +20,7 @@
 %define library_pkg 1_0
 %define library_soversion 1
 Name:           aws-c-common
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
@@ -30,7 +30,7 @@ Source0:        https://github.com/awslabs/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  ninja
-# https://github.com/awslabs/aws-c-common/issues/1175
+# Testsuite hangs on s390x: https://github.com/awslabs/aws-c-common/issues/1314
 ExcludeArch:    s390x
 
 %description
