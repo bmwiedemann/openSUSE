@@ -18,7 +18,7 @@
 
 %define shlib lib%{name}-1-3
 Name:           gspell
-Version:        1.14.5
+Version:        1.14.6
 Release:        0
 Summary:        A spell checker library for GTK+ applications
 License:        LGPL-2.1-or-later
@@ -29,7 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  gtk-doc >= 1.25
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(enchant-2) >= 2.1.3
+BuildRequires:  pkgconfig(enchant-2) >= 2.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.42.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20

@@ -317,4 +317,14 @@
 - Initial package.</comment>
     <requestid>1381078</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>43c515ebdca3720d3cdffffc96a0c1f3</srcmd5>
+    <version>1.14.6</version>
+    <time>1795519395</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.6:
+  * Updated translations.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1399908</requestid>
+  </revision>
 </revisionlist>
