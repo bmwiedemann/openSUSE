@@ -17,13 +17,13 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        3.5.0
+Version:        4.2.1
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
 URL:            https://github.com/jupyter-server/jupyter_ydoc
 # Versioned sdist
-Source0:        https://files.pythonhosted.org/packages/source/j/jupyter-ydoc/jupyter_ydoc-%{version}.tar.gz
+Source0:        https://files.pythonhosted.org/packages/source/j/jupyter_ydoc/jupyter_ydoc-%{version}.tar.gz
 # unversioned, but tests
 Source1:        https://github.com/jupyter-server/jupyter_ydoc/archive/refs/tags/v%{version}.tar.gz#/jupyter_ydoc-%{version}-gh.tar.gz
 Source2:        node_modules.tar.xz
@@ -35,22 +35,23 @@ Source3:        create_node_modules.sh
 # - Update brace-expansion bsc#1257850
 # - Update ws bsc#1268933
 Patch0:         update-js-deps.patch
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       (python-anyio >= 4.12.1 with python-anyio < 5)
-Requires:       (python-pycrdt >= 0.10.1 with python-pycrdt < 0.13)
+Requires:       (python-pycrdt >= 0.14.0 with python-pycrdt < 0.15)
 Provides:       python-jupyter_ydoc = %{version}-%{release}
 BuildArch:      noarch
 # SECTION test
-BuildRequires:  %{python_module httpx-ws >= 0.5.2}
 BuildRequires:  %{python_module anyio >= 4.12.1 with %python-anyio < 5}
+BuildRequires:  %{python_module httpx-ws >= 0.5.2}
 BuildRequires:  %{python_module hypercorn >= 0.16}
-BuildRequires:  %{python_module pycrdt >= 0.10.1 with %python-pycrdt < 0.13}
-BuildRequires:  %{python_module pycrdt-websocket >= 0.16.0 with %python-pycrdt-websocket < 0.17}
+BuildRequires:  %{python_module pycrdt >= 0.14.0 with %python-pycrdt < 0.15}
+BuildRequires:  %{python_module pycrdt-websocket >= 0.16.3 with %python-pycrdt-websocket < 0.17}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  nodejs
 BuildRequires:  procps

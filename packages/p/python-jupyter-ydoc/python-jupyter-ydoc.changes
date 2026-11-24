@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:59:48 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 4.2.1:
+  * Serialize notebook JSON with a deterministic key order
+  * Emit state changes after content observers finish
+- Release 4.2.0:
+  * Add granular notebook cell source updates
+  * Drop Python 3.10 and require Python >= 3.11
+- Release 4.1.1:
+  * Add optional finish event to aset_progressively
+- Release 4.1.0:
+  * Stream notebook loading with delayed large outputs
+- Release 4.0.0:
+  * Set dirty state on document change, a breaking API change
+  * Bump pycrdt to v0.14.0
+- Require pycrdt >= 0.14.0 and pycrdt-websocket >= 0.16.3, add
+  pytest-timeout for the tests
+- Refresh node_modules and update update-js-deps.patch to the new
+  package.json (bsc#1257850, bsc#1268933)
+- Strip prebuilt native addons and wasm blobs from
+  node_modules.tar.xz
+
+-------------------------------------------------------------------
 Fri Jun 26 06:40:19 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 3.5.0:

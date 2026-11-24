@@ -1,7 +1,7 @@
-Index: jupyter_ydoc-3.5.0/package.json
+Index: jupyter_ydoc-4.2.1/package.json
 ===================================================================
---- jupyter_ydoc-3.5.0.orig/package.json
-+++ jupyter_ydoc-3.5.0/package.json
+--- jupyter_ydoc-4.2.1.orig/package.json
++++ jupyter_ydoc-4.2.1/package.json
 @@ -11,5 +11,9 @@
      "build": "cd javascript && yarn run build",
      "test": "cd javascript && yarn run build:test && yarn run test"
