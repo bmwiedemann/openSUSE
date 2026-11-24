@@ -1,0 +1,58 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Subject: [PATCH] Fix bundled Python packaging on 32-bit x86 and s390x
+
+external/python3/ExternalPackage_python3.mk hand-derives two platform tuples
+and lacks branches for s390x and 32-bit x86 in both:
+
+1. SOABI, used for python3_EXTENSION_MODULE_SUFFIX (the .so existence check).
+   Only AARCH64 and POWERPC64 are handled; CPUNAME=INTEL and CPUNAME=S390X
+   fall through to the x86_64 default, so the build looks for e.g.
+   array.cpython-312-x86_64-linux-gnu.so while Python emits the -i386- or
+   -s390x- suffixed file.
+
+2. The generated _sysconfigdata file under LO_lib/. powerpc64le and aarch64
+   have explicit branches; every other platform uses the HOST_PLATFORM
+   fallback, which only strips a "-pc" vendor. s390x's HOST_PLATFORM is
+   s390x-ibm-linux-gnu, so the "-pc" substitution is a no-op and the build
+   requests _sysconfigdata__linux_s390x-ibm-linux-gnu.py, whereas CPython
+   generates it as _sysconfigdata__linux_s390x-linux-gnu.py (its MULTIARCH
+   carries no vendor field). The build aborts with
+   "file ..._sysconfigdata__linux_s390x-ibm-linux-gnu.py does not exist in
+   the tarball."
+
+Add the missing INTEL and S390X SOABI branches, and an explicit s390x
+sysconfigdata branch mirroring the existing aarch64 one.
+
+--- a/external/python3/ExternalPackage_python3.mk	2026-05-24 13:36:45.713158620 +0000
++++ b/external/python3/ExternalPackage_python3.mk	2026-05-24 13:36:59.353830700 +0000
+@@ -70,6 +70,10 @@
+ SOABI=-aarch64-linux-gnu
+ else ifeq ($(CPUNAME),POWERPC64)
+ SOABI=-powerpc64le-linux-gnu
++else ifeq ($(CPUNAME),S390X)
++SOABI=-s390x-linux-gnu
++else ifeq ($(CPUNAME),INTEL)
++SOABI=-i386-linux-gnu
+ else
+ SOABI=-x86_64-linux-gnu
+ endif
+@@ -163,6 +167,11 @@
+         LO_lib/_sysconfigdata_$(if $(ENABLE_DBGUTIL),d)_linux_aarch64-linux-gnu.py \
+ ))
+ else
++ifeq ($(HOST_PLATFORM),s390x-ibm-linux-gnu)
++$(eval $(call gb_ExternalPackage_add_files,python3,$(LIBO_BIN_FOLDER)/python-core-$(PYTHON_VERSION)/lib,\
++        LO_lib/_sysconfigdata_$(if $(ENABLE_DBGUTIL),d)_linux_s390x-linux-gnu.py \
++))
++else
+ # note: python configure overrides config.guess with something that doesn't
+ # put -pc in its linux platform triplets, so filter that...
+ ifneq ($(OS),WNT)
+@@ -177,6 +186,7 @@
+ endif
+ endif
+ endif
++endif
+ endif
+ 
+ 

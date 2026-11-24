@@ -1,4 +1,262 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:28:45 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Declare the SLE-only patches unconditionally, so that source_validator sees them
+
+-------------------------------------------------------------------
+Thu Nov 19 12:15:57 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Refresh fontconfig-python36.patch for 26.8.3.1
+- Update the bundled libraries to the versions in 26.8.3.1's download.lst
+- Byte-compile the Python files without %py3_compile, which SLE 15's python3 no longer provides
+- Fix bugs and CVEs with the 26.8.3.1 release:
+  * bsc#1290627 CVE-2026-100101
+  * bsc#1290628 CVE-2026-101351
+  * bsc#1290629 CVE-2026-101352
+  * bsc#1290630 CVE-2026-101353
+  * bsc#1290631 CVE-2026-101892
+  * bsc#1290632 CVE-2026-101929
+  * bsc#1290633 CVE-2026-101930
+  * bsc#1290634 CVE-2026-101933
+  * bsc#1290635 CVE-2026-104007
+  * bsc#1290636 CVE-2026-104692
+  * bsc#1290637 CVE-2026-104920
+  * bsc#1290638 CVE-2026-104933
+  * bsc#1290640 CVE-2026-108169
+  * bsc#1290641 CVE-2026-18563
+  * bsc#1290642 CVE-2026-18564
+  * bsc#1290643 CVE-2026-18565
+  * bsc#1290644 CVE-2026-18566
+  * bsc#1290645 CVE-2026-84234
+  * bsc#1290646 CVE-2026-84443
+  * bsc#1290647 CVE-2026-87932
+  * bsc#1290648 CVE-2026-97892
+  * bsc#1290649 CVE-2026-97894
+  * bsc#1290650 CVE-2026-97999
+  * bsc#1290651 CVE-2026-98100
+
+-------------------------------------------------------------------
+Tue Nov 10 17:01:16 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.8.3.1:
+  * cool#15754 do not paint a master's picture placeholder
+    on slides
+  * tdf#91400 LibreOffice doesn’t use system font since
+    OS X 10.10+ 
+  * tdf#116727 EDITING: Undo while Clone Formatting leads to text
+    having double font size (see comment 4)
+  * tdf#143449 Cursor doesn't blink in comment box
+  * tdf#144299 SheetCellRanges service SEARCHING FOR STYLE cant
+    FindAll or ReplaceAll if .Count=1 / simple SheetCellRange
+    also can't.
+  * tdf#163206 Impress list bullets are not centered / drifting
+  * tdf#165714 Font Preview Display Issue When Selecting a Table
+    in LibreOffice Writer's Paragraph Style Settings
+  * tdf#167028 [FormControls-TableControl] BorderColor cannot be
+    set directly with a Macro, without setPropertyValue 
+  * tdf#168166 Wrong merged cells when copying a table from HTML
+    that includes colspan/rowspan
+  * tdf#169252 Draw/Impress: Crash on copy, paste and click
+    comment
+  * tdf#171018 Digital Signature of a document with a
+    X.509 certificate is not working
+  * tdf#171416 The order of Link and Text fields was changed in
+    Hyperlink dialog. Link should be before Text.
+  * tdf#171555 NON-BREAKING HYPHEN U+2011 fails to render after
+    update from 25.8.4.2 (AARCH64) via
+    LibreOffice_26.2.2_MacOS_aarch64.dmg
+  * tdf#171730 Pick a Color dialog: slider head doesn't update
+    when users selects the color component radio button
+  * tdf#172128 Resetting style inheritance introduced by
+    Bug 89826 can cause reverse style inheritance
+  * tdf#172282 Menu bar color is ignored in KDE Plasma
+  * tdf#172565 EDITING: Libre Office Impress crashes when text
+    copied from website and pasted to notes as Unformatted text
+  * tdf#172956 Other paragraph styles except the current one,
+    from text, can not be selected and edited using sidebar
+    (only gtk3 bug)
+  * tdf#172966 Sending attachment to Thunderbird fails
+  * tdf#173297 don't let python change locale when initializing
+    pyuno
+  * tdf#173342 use the macOS system UI font 
+  * tdf#173357 sw/sectfrm: Don't dereference potentially
+  * tdf#173370 EDITING: Crash when pasting into the Notes as
+    plain-text
+  * tdf#173462 revert "lsan: fix clipboard leak"
+  * tdf#173510 svx: prevent another crash when table style deselected
+  * tdf#173547 Kurdish (Latin/Hawar) alphabetical sorting does
+    not follow the Kurdish alphabet order 
+  * tdf#173562 shell: fix PropVariantClear on an uninitialized
+    PROPVARIANT
+  * tdf#173579 fix collator func loading to make at least Japanese
+    collators work 
+  * tdf#173626 Hang when editing default table style
+  * tdf#173698 revert "sw: RTF import: fix signedness of
+    cell counter..."
+  * tdf#173712 FILEOPEN PPTX: numbered list with startAt on every
+    paragraph shows "2. 2. 2." instead of "2. 3. 4."
+  * tdf#173739 Fallback of icon themes should take dark UI
+    into account
+  * tdf#173801 Navigator loop with groupshape in footer 
+    (continuous CPU consumption) since 26.8
+  * tdf#173808 Text decoratived with "Long Dash (Bold)" may appear
+    as "Long Dash" by "Automatic spell checking, CJK or
+    multi-line" (win/gen)
+  * tdf#173810 Input line does not show sometimes the content of
+    formula - it just shows an empty input line
+  * tdf#173876 TEXTBEFORE and TEXTAFTER behave differently than
+    the Excel version
+  * tdf#173887 sw: don't apply table style to toolbar's
+    inserted table
+  * tdf#173902 Crash in SwSectionFrame::IsEndnoteAtMyEnd() when
+    inserting a section around a nested section whose leading
+    frame has been emptied
+  * tdf#173936 FEATURE REQUEST: Bring back the "None" style
+    for tables
+  * tdf#173993 macOS Sonoma x86 + Xcode 16.2 FP precision fails
+    testTdf128206 but other platforms pass
+  * tdf#174010 Calc: Words remain underlined after being added to
+    the spelling dictionary
+  * tdf#174093 Libreoffice Calc crashes when you rearrange 'Data'
+    in the Column Fields of a pivot table
+  * tdf#174172 FILEOPEN: valid non-Zip64 package > 2 GiB reported
+    as corrupt (central directory offset read as signed 32-bit) 
+  * tdf#174211 Lines copied from Draw/Impress into Writer change
+    width to 0
+  * tdf#174243 OOXML Document Theme dialog is just too tall in UI
+    should be reduced to fit the count of themes
+
+-------------------------------------------------------------------
+Thu Oct 22 18:06:29 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.8.2.2:
+  * ofz#528260798 out-of-memory
+  * tdf#106359 Support for Web Query (.iqy) files
+  * tdf#144175 Remove strings from l10n in html export
+  * tdf#150754 GtkCheckMenuItem shows no check mark on macOS
+    (GtkRadioMenuItem does)
+  * tdf#154463 AutoCorrect (multiple characters => 1 character)
+    in Text Form Field crashes Writer
+  * tdf#162752 Writer freezes when entering the menu
+    "Character..." of a rich text or plain text control element
+    while it is fully selected
+  * tdf#167472 Issues with some template names
+  * tdf#168461 I am receiving error when calling
+    Libre Office 25.8.1.1, (PYTHONHOME var?)
+  * tdf#168910 White lines across the image when scrolling
+  * tdf#169219 Frame with relative size and anchored to page
+    changes size when opening properties.
+  * tdf#169387 Error after upgrading LibreOffice (PYTHONHOME var?)
+  * tdf#169697 Can't hear audio in presentations anymore (Windows)
+  * tdf#170177 Add options to limit hyphenation 1) if it is too
+    close to the right constituent boundary and 2) only at
+    constituent boundaries
+  * tdf#170653 Transition names disappear until selected
+  * tdf#170842 Crash in inspecting a database range with
+    Development Tools
+  * tdf#171555 NON-BREAKING HYPHEN U+2011 fails to render after
+    update from 25.8.4.2 (AARCH64)
+    via LibreOffice_26.2.2_MacOS_aarch64.dmg
+  * tdf#172918 Inserting an audio file (mp3 for example) and
+    starting the presentation not playing the audio file
+  * tdf#173273 Crash in: SalInstanceTreeView::
+    get_children_on_demand(weld::TreeIter const &)
+  * tdf#173348 sw: Fix unwanted underflow after line containing
+    only spaces
+  * tdf#173418 With RTL UI, Custom Color dialog picker rectangle
+    is horizontally mirrored when clicking to select colors
+  * tdf#173510 Unable to create a table without a table style
+  * tdf#173541 Units are expressed in different measurement unit
+    in Navigator in Properties
+  * tdf#173578 Color picker increased spacing / padding around
+    swatches expands the selection grid too wide
+  * tdf#173585 findAll() with SearchAttributes crashes Writer
+  * tdf#173608 EDITING REGRESSION: Relative sheet reference
+    handled as absolute reference when copying sheet since 26.8.0
+  * tdf#173623 a11y: "activate" action of color palette items
+    ignores which item was activated (gtk3)
+  * tdf#173646 fix some issues in sc/notebookbar_compact
+  * tdf#173695 New color picker does not adjust height when
+    selecting a different color palette
+  * tdf#173759 WRITER - Image proportions change when image anchor
+    is changed after rotation
+  * tdf#173803 soffice.bin instead of the program name and
+    incorrect opening of the pinned application in Task Manager
+    (Linux X11 + qt6/kf6 only)
+  * tdf#173818 The "Letter spacing" label in the edit styles
+    dialog sometimes has the wrong enabled state
+  * tdf#173819 The "paragraph composer" and "split compound words"
+    checkboxes are sometimes left in an indeterminate state
+  * tdf#173869 FILEOPEN: Compound File Binary version 4
+    (4096-byte sectors) rejected - PPT/DOC fail to load, XLS opens
+    as garbage text
+  * tdf#173885 Impress crash when scrolling through slides, if
+    playback of an inserted media
+  * tdf#173917 CRASH on startup (SIGABRT): insertThreadId() aborts
+    on macOS 27.0.x because pthread_threadid_np returns thread IDs
+    larger than UINT32_MAX
+  * tdf#173964 avoid out-of-bounds access in isRootDir
+  * tdf#174015 lingucomponent: fix special hyphenation regression
+- Update bundled pdfium to 8073 as required by the new download.lst.
+- fix building for Leap 16
+
+-------------------------------------------------------------------
+Mon Oct 19 09:30:34 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add skia-skcms-powerpc-musttail.patch: fix building skia with GCC 15+
+  on ppc64le.
+- Fix the SLE 15 gcc14 pin, which the %elif from the previous change
+  dropped (SLE 15's rpm 4.14 has no %elif).
+
+-------------------------------------------------------------------
+Mon Oct 19 00:02:36 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Improve compatibility in spec file between Leap 16, SLE and openSUSE:Factory.
+- Increase required disk build size to 50GB, and memory to 8GB.
+
+-------------------------------------------------------------------
+Thu Oct  8 19:58:50 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Make every library in download.lst switchable between the system
+  copy and the bundled tarball.
+- Package a bundled Firebird in base-drivers-firebird.
+- Build with the versioned gcc14 packages where the default compiler
+  is older than that (SLE 15 ships gcc 7; LibreOffice 26.8 needs at
+  least 13). The minimum is set once, in min_gcc_version in the spec.
+- Add python3-soabi.patch: fix the bundled Python's extension module
+  and _sysconfigdata names on s390x and 32-bit x86. Only applied, and
+  configure only gets generic GNU --build/--host triplets, when Python
+  is bundled.
+- Add fontconfig-python36.patch: the bundled fontconfig 2.18.3 calls
+  sys.stdout.reconfigure(), which needs Python 3.7; SLE 15 builds
+  with Python 3.6. Only applied when fontconfig is bundled.
+- Add lxml-install-xml2-config.patch: the bundled lxml's install step
+  looked for a system xml2-config, which does not exist when libxml2
+  is bundled as well. Only applied when lxml is bundled.
+- Add nss-s390x-use-64.patch: build the bundled NSS as 64-bit on s390x.
+- Delete unused files, stale versions Tumbleweed no longer builds
+  with (the SLE package carries the current download.lst ones):
+  * 8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
+  * boost_1_89_0.tar.xz
+  * curl-8.14.1.tar.xz
+  * fontconfig-2.17.1.tar.xz
+  * freetype-2.13.3.tar.xz
+  * gpgme-1.24.3.tar.bz2
+  * graphite2-minimal-1.3.14.tgz
+  * harfbuzz-11.4.3.tar.xz
+  * icu4c-77_1-data.zip
+  * icu4c-77_1-src.tgz
+  * libassuan-3.0.2.tar.bz2
+  * libcmis-0.6.2.tar.xz
+  * libgpg-error-1.55.tar.bz2
+  * meson-1.8.0.tar.gz
+  * odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
+  * phc-winner-argon2-20190702.tar.gz
+  * poppler-25.09.0.tar.xz
+  * poppler-data-0.4.12.tar.gz
+  * tiff-4.7.0.tar.xz
+
+-------------------------------------------------------------------
 Fri Sep 25 13:44:47 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 26.8.1.1:

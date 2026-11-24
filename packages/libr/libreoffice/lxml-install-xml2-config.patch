@@ -1,0 +1,25 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Subject: [PATCH] lxml: point setup.py install at the internal libxml2/libxslt too
+
+Only "setup.py build" is told where the internal xml2-config/xslt-config
+live. lxml reads those options on every invocation, and without them
+"setup.py install" falls back to pkg-config and then xml2-config on PATH.
+With an internal Python and an internal libxml2/libxslt, and no libxml2
+development package installed, that fails:
+
+  Error: Please make sure the libxml2 and libxslt development packages are installed.
+
+Pass the same options to the install step. No change with a system
+libxml2/libxslt, where both expand to nothing.
+
+--- a/external/lxml/ExternalProject_lxml.mk
++++ b/external/lxml/ExternalProject_lxml.mk
+@@ -38,6 +38,8 @@
+ 		rm -fr install && \
+ 		mkdir install && \
+ 		$(lxml_PYTHON) -Wi setup.py install \
++			$(if $(SYSTEM_LIBXML),,--with-xml2-config=$(gb_UnpackedTarball_workdir)/libxml2/xml2-config) \
++			$(if $(SYSTEM_LIBXSLT),,--with-xslt-config=$(gb_UnpackedTarball_workdir)/libxslt/xslt-config) \
+ 			--install-lib install \
+ 	)
+ 	$(call gb_Trace_EndRange,lxml,EXTERNAL)

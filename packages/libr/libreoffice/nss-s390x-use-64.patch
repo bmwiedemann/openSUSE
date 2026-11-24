@@ -1,0 +1,23 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Subject: [PATCH] nss: build the internal NSS as 64-bit on s390x
+
+USE_64=1 is passed for X86_64, AARCH64 and POWERPC64 only, so on s390x NSS
+and NSPR are configured as a 32-bit build and freebl fails its own size_t
+check:
+
+  drbg.c:617: PR_STATIC_ASSERT(sizeof(size_t) <= 4);
+  prtypes.h:543: error: size of array 'arg' is negative
+
+Pass USE_64=1 for S390X as well. CPU_ARCH needs no override: NSS's
+coreconf/Linux.mk already takes it from uname -m (s390x).
+
+--- a/external/nss/ExternalProject_nss.mk
++++ b/external/nss/ExternalProject_nss.mk
+@@ -58,6 +58,7 @@
+ 		$(if $(filter ANDROID FREEBSD LINUX MACOSX,$(OS)),$(if $(filter X86_64,$(CPUNAME)),USE_64=1 CPU_ARCH=x86_64)) \
+ 		$(if $(filter AARCH64,$(CPUNAME)),USE_64=1 CPU_ARCH=aarch64) \
+ 		$(if $(filter POWERPC64,$(CPUNAME)),USE_64=1 CPU_ARCH=ppc64le) \
++		$(if $(filter S390X,$(CPUNAME)),USE_64=1) \
+ 		$(if $(filter MACOSX,$(OS)),\
+ 			MACOS_SDK_DIR=$(MACOSX_SDK_PATH) \
+ 			NSS_USE_SYSTEM_SQLITE=1) \

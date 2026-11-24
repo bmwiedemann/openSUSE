@@ -3909,4 +3909,41 @@ Petr</comment>
     <comment>1</comment>
     <requestid>1381706</requestid>
   </revision>
+  <revision rev="327" vrev="1">
+    <srcmd5>e811cda37584197cc1c11732238f2cfb</srcmd5>
+    <version>26.8.3.1</version>
+    <time>1795519389</time>
+    <user>anag_factory</user>
+    <comment>- Declare the SLE-only patches unconditionally, so that source_validator sees them
+
+- Refresh fontconfig-python36.patch for 26.8.3.1
+- Update the bundled libraries to the versions in 26.8.3.1's download.lst
+- Byte-compile the Python files without %py3_compile, which SLE 15's python3 no longer provides
+- Fix bugs and CVEs with the 26.8.3.1 release:
+  * bsc#1290627 CVE-2026-100101
+  * bsc#1290628 CVE-2026-101351
+  * bsc#1290629 CVE-2026-101352
+  * bsc#1290630 CVE-2026-101353
+  * bsc#1290631 CVE-2026-101892
+  * bsc#1290632 CVE-2026-101929
+  * bsc#1290633 CVE-2026-101930
+  * bsc#1290634 CVE-2026-101933
+  * bsc#1290635 CVE-2026-104007
+  * bsc#1290636 CVE-2026-104692
+  * bsc#1290637 CVE-2026-104920
+  * bsc#1290638 CVE-2026-104933
+  * bsc#1290640 CVE-2026-108169
+  * bsc#1290641 CVE-2026-18563
+  * bsc#1290642 CVE-2026-18564
+  * bsc#1290643 CVE-2026-18565
+  * bsc#1290644 CVE-2026-18566
+  * bsc#1290645 CVE-2026-84234
+  * bsc#1290646 CVE-2026-84443
+  * bsc#1290647 CVE-2026-87932
+  * bsc#1290648 CVE-2026-97892
+  * bsc#1290649 CVE-2026-97894
+  * bsc#1290650 CVE-2026-97999
+  * bsc#1290651 CVE-2026-98100</comment>
+    <requestid>1399854</requestid>
+  </revision>
 </revisionlist>

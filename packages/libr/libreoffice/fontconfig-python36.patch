@@ -1,0 +1,43 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Subject: [PATCH] Build the bundled fontconfig with Python 3.6
+
+fontconfig 2.18.3 generates fcgenericfamily.gperf with fc-genericfamily.py,
+which calls sys.stdout.reconfigure() whenever stdout is not UTF-8 (the C
+locale of a package build). reconfigure() only exists since Python 3.7; SLE
+15 has 3.6, so the bundled fontconfig fails with
+
+  AttributeError: '_io.TextIOWrapper' object has no attribute 'reconfigure'
+
+The build passes -o and the script opens that file as UTF-8 itself, so the
+call can simply be skipped where it is unavailable.
+
+--- a/external/fontconfig/UnpackedTarball_fontconfig.mk
++++ b/external/fontconfig/UnpackedTarball_fontconfig.mk
+@@ -17,6 +17,7 @@
+ 	external/fontconfig/fontconfig-2.12.1.patch.1 \
+ 	external/fontconfig/nowarnnoconfig.patch.1 \
+ 	external/fontconfig/apple-xlocale.patch.1 \
++	external/fontconfig/python36-no-reconfigure.patch.1 \
+ ))
+ 
+ ifneq ($(OS),MACOSX)
+--- a/external/fontconfig/python36-no-reconfigure.patch.1
++++ b/external/fontconfig/python36-no-reconfigure.patch.1
+@@ -0,0 +1,17 @@
++fc-genericfamily.py: do not call sys.stdout.reconfigure() where it does not
++exist. It needs Python >= 3.7, and SLE 15 builds with Python 3.6.
++
++--- a/fc-genericfamily/fc-genericfamily.py
+++++ b/fc-genericfamily/fc-genericfamily.py
++@@ -142,8 +142,9 @@
++ 
++ 
++ def main():
++-    # Ensure stdout uses UTF-8 encoding
++-    if sys.stdout.encoding != 'utf-8':
+++    # Ensure stdout uses UTF-8 encoding (reconfigure() needs Python >= 3.7;
+++    # only matters for "-o -", files are opened as UTF-8 below)
+++    if sys.stdout.encoding != 'utf-8' and hasattr(sys.stdout, 'reconfigure'):
++         sys.stdout.reconfigure(encoding='utf-8')
++ 
++     parser = argparse.ArgumentParser(

@@ -1,0 +1,47 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Subject: [PATCH] skia: build skcms with GCC >= 15 on ppc64le
+
+skcms forces guaranteed tail calls ([[clang::musttail]]) between its
+pipeline stages whenever the compiler knows the attribute. For clang it
+excludes __powerpc__, for GCC only __riscv. GCC 15 gained the attribute,
+and on ppc64le it cannot honour it for skcms's indirect calls (the TOC has
+to be restored after the call), which is a hard error:
+
+  skcms/src/Transform_inl.h:818:71: error: cannot tail-call: target is not
+  able to optimize the call into a sibling call
+
+Exclude __powerpc__ for GCC too. The attribute is only a performance hint
+to skcms; without it the calls are ordinary calls.
+
+--- a/external/skia/UnpackedTarball_skia.mk
++++ b/external/skia/UnpackedTarball_skia.mk
+@@ -43,6 +43,7 @@
+     msvc-unknown-attributes.patch.1 \
+ 	fix-semaphore-include.patch.1 \
+ 	fix-xputimage-depth.patch.1 \
++	skcms-gcc-powerpc-no-musttail.patch.1 \
+ 
+ ifneq ($(MSYSTEM),)
+ # use binary flag so patch from git-bash won't choke on mixed line-endings in patches
+--- a/external/skia/skcms-gcc-powerpc-no-musttail.patch.1
++++ b/external/skia/skcms-gcc-powerpc-no-musttail.patch.1
+@@ -0,0 +1,19 @@
++skcms: do not force [[clang::musttail]] with GCC on powerpc. GCC >= 15 has the
++attribute, but cannot turn skcms's indirect stage calls into sibling calls
++there; the clang branch already excludes __powerpc__.
++
++--- a/modules/skcms/src/skcms_internals.h
+++++ b/modules/skcms/src/skcms_internals.h
++@@ -59,7 +59,11 @@
++     #elif defined(__GNUC__) && !defined(SKCMS_HAS_MUSTTAIL)
++         // GCC on riscv64 does not support our tail call functions
++         // cf. https://gcc.gnu.org/bugzilla/show_bug.cgi?id=121784
++-        #if __has_cpp_attribute(clang::musttail) && !defined(__riscv)
+++        // Nor on powerpc64: the stages are called indirectly and the TOC has to
+++        // be restored afterwards, so GCC cannot turn them into sibling calls
+++        // ("cannot tail-call: target is not able to optimize the call into a
+++        // sibling call"). The clang branch above excludes __powerpc__ as well.
+++        #if __has_cpp_attribute(clang::musttail) && !defined(__riscv) && !defined(__powerpc__)
++             #define SKCMS_HAS_MUSTTAIL 1
++         #else
++             #define SKCMS_HAS_MUSTTAIL 0
