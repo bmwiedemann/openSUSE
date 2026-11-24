@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Aug 21 12:26:14 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update servant-server to version 0.20.3.0 revision 5.

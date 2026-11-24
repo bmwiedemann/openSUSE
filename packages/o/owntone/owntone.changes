@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:28:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(mxml) BuildRequires: this was no longer used since version
+  28.10, when the code was migrated to libxml-2.
+
+-------------------------------------------------------------------
 Mon Oct 19 11:34:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Create owntone system user/group via sysusers.d instead of legacy

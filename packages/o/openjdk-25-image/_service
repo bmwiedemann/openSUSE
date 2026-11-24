@@ -2,7 +2,12 @@
   <service mode="buildtime" name="docker_label_helper"/>
   <service mode="buildtime" name="kiwi_metainfo_helper"/>
   <service mode="buildtime" name="replace_using_package_version">
-    <param name="file">Dockerfile</param>
+    <param name="file">Dockerfile.base</param>
+    <param name="regex">%%java_version%%</param>
+    <param name="package">java-25-openjdk</param>
+  </service>
+  <service mode="buildtime" name="replace_using_package_version">
+    <param name="file">Dockerfile.micro</param>
     <param name="regex">%%java_version%%</param>
     <param name="package">java-25-openjdk</param>
   </service>

@@ -16,9 +16,9 @@
 #
 
 
-%define c_lib   libf3d3
+%define c_lib   libf3d4
 Name:           f3d
-Version:        3.5.0
+Version:        4.0.1
 Release:        0
 Summary:        Fast and minimalist 3D viewer
 License:        BSD-3-Clause
@@ -164,11 +164,16 @@ install -Dm644 plugins/occt/configs/config.d/10_occt.json %{buildroot}%{_sysconf
 %dir %{_sysconfdir}/f3d/config.d
 %config %{_sysconfdir}/f3d/config.d/*.json
 %{_libdir}/libvtkext.so
+%{_datadir}/f3d
+%{_datadir}/mime/packages/*.xml
 
 %files devel
 %doc README.md
 %license LICENSE.md THIRD_PARTY_LICENSES.md
 %{_libdir}/lib%{name}.so
+%{_includedir}/f3d
+%{_libdir}/cmake/f3d*
+/usr/lib64/pkgconfig/f3d.pc
 
 %files -n %{c_lib}
 %{_libdir}/lib%{name}.so.*

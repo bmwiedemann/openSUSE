@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent-sqlite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,73 +17,78 @@
 
 
 %global pkg_name persistent-sqlite
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
+Name:           ghc-%pkg_name
 Version:        2.13.3.1
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Backend for the persistent library using sqlite3
 License:        MIT
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-conduit-devel
-BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-microlens-th-devel
-BuildRequires:  ghc-microlens-th-prof
 BuildRequires:  ghc-monad-logger-devel
-BuildRequires:  ghc-monad-logger-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-persistent-devel
-BuildRequires:  ghc-persistent-prof
 BuildRequires:  ghc-resource-pool-devel
-BuildRequires:  ghc-resource-pool-prof
 BuildRequires:  ghc-resourcet-devel
-BuildRequires:  ghc-resourcet-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unliftio-core-devel
-BuildRequires:  ghc-unliftio-core-prof
 BuildRequires:  ghc-unordered-containers-devel
-BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  glibc-devel
-BuildRequires:  sqlite-devel
+BuildRequires:  sqlite3-devel
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-conduit-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-microlens-th-prof
+BuildRequires:  ghc-monad-logger-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-persistent-prof
+BuildRequires:  ghc-resource-pool-prof
+BuildRequires:  ghc-resourcet-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unliftio-core-prof
+BuildRequires:  ghc-unordered-containers-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-exceptions-devel
-BuildRequires:  ghc-exceptions-prof
 BuildRequires:  ghc-fast-logger-devel
-BuildRequires:  ghc-fast-logger-prof
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-microlens-devel
-BuildRequires:  ghc-microlens-prof
 BuildRequires:  ghc-persistent-test-devel
-BuildRequires:  ghc-persistent-test-prof
 BuildRequires:  ghc-system-fileio-devel
-BuildRequires:  ghc-system-fileio-prof
 BuildRequires:  ghc-system-filepath-devel
-BuildRequires:  ghc-system-filepath-prof
 BuildRequires:  ghc-temporary-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-HUnit-prof
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-exceptions-prof
+BuildRequires:  ghc-fast-logger-prof
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-microlens-prof
+BuildRequires:  ghc-persistent-test-prof
+BuildRequires:  ghc-system-fileio-prof
+BuildRequires:  ghc-system-filepath-prof
 BuildRequires:  ghc-temporary-prof
+%endif
 %endif
 
 %description
@@ -95,6 +100,7 @@ Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
 Requires:       glibc-devel
+Requires:       sqlite3-devel
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -102,27 +108,30 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development
 files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
-%define cabal_configure_options -f+systemlib
+%define cabal_configure_options -fsystemlib
 %ghc_lib_build
 
 %install
@@ -143,9 +152,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-isocline
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,26 +17,29 @@
 
 
 %global pkg_name isocline
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        1.0.9
+Name:           ghc-%pkg_name
+Version:        1.1.0
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        A portable alternative to GNU Readline
 License:        MIT
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 Patch01:        dont-install-example-exe.patch
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-text-prof
+%endif
 
 %description
 ![logo](https://raw.githubusercontent.com/daanx/isocline/main/doc/isocline-inline.svg)
@@ -44,7 +47,7 @@ A Haskell wrapper around the [Isocline C
 library](https://github.com/daanx/isocline#readme) which can provide an
 alternative to GNU Readline. (The Isocline library is included whole and there
 are no runtime dependencies). Please see the
-[readme](https://github.com/daanx/isocline/haskell#readme) on GitHub for more
+[readme](https://github.com/daanx/isocline#readme) on GitHub for more
 information.
 
 %package devel
@@ -57,31 +60,34 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 
 %check
 %cabal_test
@@ -97,9 +103,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files devel -f %{name}-devel.files
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

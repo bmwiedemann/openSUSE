@@ -19,7 +19,7 @@
 %define www_base %{_datadir}/hawk
 
 Name:           hawk-apiserver
-Version:        0.8.0+git.1794489643.2e2ae4a
+Version:        0.8.32+git.1795178162.ad4da17
 Release:        0
 Summary:        Web server and API provider for Hawk
 License:        GPL-3.0-or-later

@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 19 14:57:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add cabal-tweak-dep-ver-ignore-whitespace.patch:
+  * Ignore whitespace around the operators of the old constraint, so
+    that '< 1.2' matches "<1.2" as well as "<  1.2".
+  * Match the old constraint only as complete tokens: '< 1.2' no longer
+    matches "< 1.20" or "< 1.2.1", and '>= 1.2' no longer matches
+    "^>= 1.2".
+  * Match a constraint that directly follows the package name, as in
+    "base<5".
+  * Insert the new constraint literally, so that "&" and "/" work.
+  * Quote the old constraint, so that "*" is no longer expanded against
+    file names in the current directory.
+
+-------------------------------------------------------------------
+Wed Nov 18 09:29:38 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Add dont-enable-profiling-by-default.patch: macros.ghc-suse defined
+  with_ghc_prof as 0, but %{with ghc_prof} only checks whether the macro
+  is defined, so profiling was enabled rather than disabled. Leave the
+  macro undefined instead.
+
+-------------------------------------------------------------------
+Thu Dec  4 19:13:06 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Disable building of profiling library variants by default.
+
+-------------------------------------------------------------------
 Thu Aug 28 20:59:11 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 2.9.2

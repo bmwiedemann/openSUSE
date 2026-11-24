@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Apr 17 20:14:22 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add retry at version 0.9.3.1.

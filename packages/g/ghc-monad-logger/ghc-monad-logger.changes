@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:14 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Mar 10 08:59:44 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update monad-logger to version 0.3.42.

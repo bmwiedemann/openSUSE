@@ -16,16 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global ghc_ver 9.12.4
+%global ghc_ver 9.14.0.20251128
 
 Name:           hadrian
 Version:        0.1.0.0
 Release:        0
-Summary:        GHC Hadrian buildsystem tool 
+Summary:        GHC Hadrian buildsystem tool
 License:        BSD-3-Clause
 URL:            https://gitlab.haskell.org/ghc/ghc
-Source:         ghc-%{ghc_ver}-src.tar.xz 
-Source1:        9_10_1-bootstrap-sources.tar.gz 
+Source:         ghc-%{ghc_ver}-src.tar.xz
+Source1:        9_10_1-bootstrap-sources.tar.gz
 BuildRequires:  ghc-bootstrap
 BuildRequires:  python3
 # This package is not meant to be used outside OBS

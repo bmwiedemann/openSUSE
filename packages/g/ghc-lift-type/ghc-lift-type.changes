@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Tue Jul 23 00:03:37 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update lift-type to version 0.1.2.0.

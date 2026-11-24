@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-metakernel
-Version:        1.0.0
+Version:        1.0.7
 Release:        0
 Summary:        Metakernel for Jupyter
 License:        BSD-3-Clause
@@ -43,7 +43,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module comm >= 0.1.3}
 BuildRequires:  %{python_module ipykernel >= 6.22.0}
-BuildRequires:  %{python_module ipython >= 9.0}
+BuildRequires:  %{python_module ipython >= 9.16}
 BuildRequires:  %{python_module ipywidgets >= 8.0.5}
 BuildRequires:  %{python_module jupyter-core >= 5.3.1}
 BuildRequires:  %{python_module jupyter_kernel_test >= 0.6.0}

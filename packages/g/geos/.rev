@@ -806,4 +806,12 @@ Local aarch64 build green, 535/535 ctest, rpmlint 0 errors / 0 badness.</comment
     <comment>1</comment>
     <requestid>1384310</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7f1083a7a0bfe61ff0295bdaf9c1b33d</srcmd5>
+    <version>3.15.1</version>
+    <time>1795520452</time>
+    <user>anag_factory</user>
+    <comment>Update geos to 3.15.1: C++ SONAME 3.15.0-&gt;3.15.1 (libgeos3_15_1), C API libgeos_c1 unchanged, arc/curve and RelateNG fixes.</comment>
+    <requestid>1400205</requestid>
+  </revision>
 </revisionlist>

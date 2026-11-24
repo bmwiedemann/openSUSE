@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:16 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Aug  2 08:09:16 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update strict to version 0.5.1 revision 1.

@@ -25,6 +25,9 @@ License:        GPL-3.0-or-later
 URL:            https://fedoraproject.org/wiki/Haskell_SIG
 # source gets updated with osc service dr
 Source0:        %{name}-%{version}.tar.xz
+# Defining with_ghc_prof to 0 enables profiling because %%{with} only checks definedness.
+Patch0:         dont-enable-profiling-by-default.patch
+Patch1:         cabal-tweak-dep-ver-ignore-whitespace.patch
 BuildRequires:  xz
 Requires:       rpm
 Requires:       chrpath
@@ -48,7 +51,7 @@ Extra macros used for subpackaging of Haskell libraries,
 for example in ghc and haskell-platform.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 echo no build stage needed

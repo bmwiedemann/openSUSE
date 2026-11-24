@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:45:22 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 7.3.0 (7.003)
+   see /usr/share/doc/packages/perl-Sereal-Encoder/Changes
+
+  7.003
+      * Restore compilation on Perl builds without a U64 typedef,
+        including reported 32-bit and older-Perl configurations.
+      * Correct a false native long-double declaration test failure on
+        older x86 macOS Perls.
+
+  7.002
+      * Add an opt-in paranoid preset that requires a checksum key, uses
+        IEEE double output, refuses objects by default, rejects unknown
+        options, and limits recursion to 2048. Explicit constructor
+        options can override each default.
+      * Add allow_classes, refuse_objects and track_classes for object
+        policy and per-class counts. Permit genuine Regexp objects through
+        refuse_objects; croak_on_bless still rejects them.
+      * Add allow_unsigned as an explicit checksum-policy opt-out. Lower
+        the normal recursion limit from 10000 to 8192, or 4096 on Cygwin.
+        Document the preset's precision and callback implications.
+      * Traverse XPerl hash storage through its entry API.
+      * Balance custom-op result references on Perl builds with
+        PERL_RC_STACK.
+      * Fix native floating-point declaration tests on older FreeBSD and
+        macOS Perls. Make the magical-array child test portable on Windows.
+
+-------------------------------------------------------------------
 Fri Nov  6 11:38:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 7.1.0 (7.001)

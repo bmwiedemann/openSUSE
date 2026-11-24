@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:58:53 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.8.32+git.1795176173.4a100c7:
+  * ver0.8.32: Dev: implement /cib/hacluster/users/{id}/edit batch menu
+  *            Dev: implement /cib/hacluster/users batch menu
+  * ver0.8.31: Dev: implement /cib/hacluster/roles/{id}/edit batch menu
+  *            Dev: implement /cib/hacluster/roles batch menu
+  * ver0.8.30: Dev: implement /cib/hacluster/crm_config/edit batch menu
+  * ver0.8.29: Dev: implement /cib/hacluster/config/edit batch menu
+  * ver0.8.28: Dev: implement /cib/hacluster/fencing/edit batch menu
+  * ver0.8.27: Dev: implement /cib/hacluster/primitives/{id}/edit batch menu
+  * ver0.8.26: Dev: implement /cib/hacluster/orders/{id}/edit?flash=... batch menu
+  *            Dev: implement /cib/hacluster/orders/new batch menu
+  * ver0.8.25: Dev: add Create|Rename|Delete buttons to the Edit Location menu
+  *            Dev: implement /cib/hacluster/colocations/{id}/edit batch menu
+  *            Dev: implement /cib/hacluster/colocations/new batch menu
+  * ver0.8.24: Dev: implement /cib/hacluster/constraints/types batch menu
+  *            Dev: add Create|Rename|Delete buttons to the Edit Location menu
+  *            Dev: implement /cib/hacluster/locations/{locationID}/edit?flash={created|updated}
+  *            Dev: implement /cib/hacluster/locations/new menu
+  * ver0.8.23: Dev: implement /cib/hacluster/alerts/{alertID}/edit?flash={created|updated}
+  *            Dev: implement /cib/hacluster/alerts/new batch menu
+  * ver0.8.22: Dev: implement /cib/hacluster/tags/{tagID}/edit?flash={created|updated}
+  *            Dev: implement /cib/hacluster/tags/new batch menu
+  * ver0.8.21: Dev: implement /cib/hacluster/clones/new batch menu
+  * ver0.8.20: Dev: implement /cib/hacluster/groups/new batch menu
+  * ver0.8.19: Dev: implement /cib/hacluster/primitives/new batch menu
+  *            Dev: update Add Resource menus descriptions
+  * ver0.8.18: Dev: implement /cib/hacluster/resources/types batch menu
+  * ver0.8.17: Dev: implement /cib/hacluster/commands batch menu
+  * ver0.8.16: Dev: implement /cib/hacluster batch menu
+  * ver0.8.15: Dev: implement /cib/live/wizards/vmware menu
+  * ver0.8.14: Dev: implement /cib/live/wizards/fence-virsh menu
+  * ver0.8.13: Dev: implement /cib/live/profile/edit menu
+  * ver0.8.12: Dev: implement /cib/live/fencing/edit menu
+  * ver0.8.11: Dev: implement /cib/live/orders/{id}/edit menu
+  * ver0.8.10: Dev: implement /cib/live/groups/{groupID}/edit menu
+  * ver0.8.9: Dev: implement /cib/live/users/{id}/edit menu
+  * ver0.8.8: Dev: implement /cib/live/roles/new menu
+  * ver0.8.7: Dev: implement Edit Configuration top buttons Show|XML|Graph
+  * ver0.8.6: Dev: impelement /cib/live/alerts/{alertID}/edit menu
+  * ver0.8.4: Dev: implement /cib/live/tags/{tagID}/edit menu
+  * ver0.8.3: Dev: implement /cib/live/users/new menu
+  *           Dev: implement /cib/live/users menu
+  * ver0.8.2: Dev: implement /cib/live/roles/{roleID}/edit menu
+  * ver0.8.2: Dev: implement /cib/live/roles menu
+  * ver0.8.1: Dev: implement /cib/live/crm_config/edit menu
+
+-------------------------------------------------------------------
 Tue Nov 17 07:45:22 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Version 0.8.0+git.1794489643.2e2ae4a:

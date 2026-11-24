@@ -1,7 +1,7 @@
 #
 # spec file for package hledger-interest
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with ghc_prof
 %bcond_with tests
 Name:           hledger-interest
 Version:        2.0.0
@@ -26,32 +27,36 @@ URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
-BuildRequires:  ghc-Decimal-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-hledger-lib-devel
-BuildRequires:  ghc-hledger-lib-prof
 BuildRequires:  ghc-megaparsec-devel
-BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-Decimal-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-hledger-lib-prof
+BuildRequires:  ghc-megaparsec-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
-BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-typed-process-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-typed-process-devel
 BuildRequires:  ghc-typed-process-prof
+%endif
 %endif
 
 %description
@@ -75,22 +80,22 @@ Payment after year end > Assets:Bank EUR -100.00 > Liabilities:Loan > >
 2024-03-31 Payment > Assets:Bank EUR -100.00 > Liabilities:Loan > > 2024-04-01
 Unrelated transaction > Assets:Bank EUR -10.00 > Expenses:Other
 
-With 5% annual interest and actual-day counting, crediting interest to the loan
+With 5%% annual interest and actual-day counting, crediting interest to the loan
 account compounds it. The following command prints only the generated interest
 postings; its output is checked by the 'annual-act' golden test:
 
 > $ hledger-interest --file=tests/fixtures/boundaries.journal
 --source=Expenses:Interest --target=Liabilities:Loan --act --annual=0.05
---quiet Liabilities:Loan > 2023-02-28 5% interest for EUR -10000.00 over 28
+--quiet Liabilities:Loan > 2023-02-28 5%% interest for EUR -10000.00 over 28
 days > Liabilities:Loan EUR -38.36 > Expenses:Interest EUR 38.36 > > 2023-03-31
-5% interest for EUR -9938.36 over 31 days > Liabilities:Loan EUR -42.20 >
-Expenses:Interest EUR 42.20 > > 2023-07-01 5% interest for EUR -9880.56 over 92
+5%% interest for EUR -9938.36 over 31 days > Liabilities:Loan EUR -42.20 >
+Expenses:Interest EUR 42.20 > > 2023-07-01 5%% interest for EUR -9880.56 over 92
 days > Liabilities:Loan EUR -124.52 > Expenses:Interest EUR 124.52 > >
-2023-12-31 5% interest for EUR -9855.08 over 183 days > Liabilities:Loan EUR
--247.05 > Expenses:Interest EUR 247.05 > > 2024-01-15 5% interest for EUR
+2023-12-31 5%% interest for EUR -9855.08 over 183 days > Liabilities:Loan EUR
+-247.05 > Expenses:Interest EUR 247.05 > > 2024-01-15 5%% interest for EUR
 -10102.13 over 15 days > Liabilities:Loan EUR -20.70 > Expenses:Interest EUR
-20.70 > > 2024-02-29 5% interest for EUR -10022.84 over 45 days >
-Liabilities:Loan EUR -61.62 > Expenses:Interest EUR 61.62 > > 2024-03-31 5%
+20.70 > > 2024-02-29 5%% interest for EUR -10022.84 over 45 days >
+Liabilities:Loan EUR -61.62 > Expenses:Interest EUR 61.62 > > 2024-03-31 5%%
 interest for EUR -9984.45 over 31 days > Liabilities:Loan EUR -42.28 >
 Expenses:Interest EUR 42.28
 
@@ -117,13 +122,13 @@ use '30/360' day counting convention > --30E-360 use '30E/360' day counting
 convention > --30E-360isda use '30E/360isda' day counting convention >
 --constant=RATE fixed annual interest rate > --annual=RATE alias for --constant
 > --schedule=SCHEDULE annualized rates and their effective dates; > rates are
-fractions: 0.05 means 5% per year > syntax: '[(Date1,Rate1),(Date2,Rate2),...]'
+fractions: 0.05 means 5%% per year > syntax: '[(Date1,Rate1),(Date2,Rate2),...]'
 > --schedule-file=PATH read a schedule from a text file; > one date and rate
-per line, starting in column 1; > rates: 0.05 or 5%; hledger comments allowed >
+per line, starting in column 1; > rates: 0.05 or 5%%; hledger comments allowed >
 --annual-schedule=SCHEDULE alias for --schedule.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_bin_build

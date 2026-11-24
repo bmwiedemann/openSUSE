@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-directory-ospath-streaming
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,40 +17,45 @@
 
 
 %global pkg_name directory-ospath-streaming
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        0.2.2
+Name:           ghc-%pkg_name
+Version:        0.3
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Stream directory entries in constant memory in vanilla IO
 License:        Apache-2.0
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%pkg_name-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-atomic-counter-devel
-BuildRequires:  ghc-atomic-counter-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-os-string-devel
-BuildRequires:  ghc-os-string-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-atomic-counter-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-os-string-prof
+BuildRequires:  ghc-unix-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
+%endif
 %endif
 
 %description
@@ -74,25 +79,28 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library
 development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -p1 -n %pkg_name-%{version}
+cp -p %{SOURCE1} %pkg_name.cabal
 
 %build
 %ghc_lib_build
@@ -115,9 +123,11 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %files devel -f %{name}-devel.files
 %doc Changelog.md Readme.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

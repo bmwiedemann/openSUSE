@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 18:54:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.3
+  * Fixed compatibility issue with cmake versions prior to 3.26
+
+-------------------------------------------------------------------
 Sun Nov 22 14:17:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.2

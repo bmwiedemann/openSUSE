@@ -662,4 +662,12 @@ texmath changes:
     <comment>version update</comment>
     <requestid>1397783</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>a3681918d7b2be9388a05c4049acfb86</srcmd5>
+    <version>0.13.3.5</version>
+    <time>1795520308</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399440</requestid>
+  </revision>
 </revisionlist>

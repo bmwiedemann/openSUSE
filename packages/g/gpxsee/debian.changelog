@@ -1,3 +1,12 @@
+gpxsee (16.20) stable; urgency=low
+
+  * Improved Mapsforge maps performance and style.
+  * Added a "back to the calling process" button when launched from
+    an intent on Android.
+  * Video playback fixes on Android.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Mon, 23 Nov 2026 23:24:04 +0100
+
 gpxsee (16.18) stable; urgency=low
 
   * Directory listing now takes a geologically-short time on

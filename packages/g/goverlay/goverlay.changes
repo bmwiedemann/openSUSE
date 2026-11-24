@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Tue Nov 24 03:38:05 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 2.0:
+  * chore(release): prepare 2.0
+  * ci(packaging): add aarch64 Qt6 deb, rpm and appimage builds
+  * fix(optiscaler): persist captured shortcut key immediately (Refs #475)
+  * feat(pascube): open user or run URL on benchmark submission
+  * feat(bgmod): add heuristic launcher vs game executable detection (Refs #472)
+  * fix(tweaks): keep missing dependency banner reachable on click and hover (fixes #473)
+  * fix(mangohud): isolate Steam Flatpak global config and sync profile switches
+  * feat(dlss-nr): update UI controls and INI schema for 0.0.9
+  * feat(dlss-nr): support 0.0.9 layout, RDNA3/4 sources, and About links
+  * release: bump version to 2.0.0 RC3
+  * fix(bgmod): locate bgmod-splash in libexec and fallback paths inside Flatpak
+  * fix(reshade): heal missing core headers on startup when runtime is already installed
+  * fix(flatpak): fix launch splash, vkSumi implicit layer path, and ReShade headers
+  * feat(pascube): recalibrate Xbox Series X, PS5 Pro, and Switch 2 references
+  * feat(pascube): calibrate hardware comparison with PasCubeDB medians
+  * fix(reshade): check Proton prefix existence before protontricks and surface error output
+  * fix(reshade): detect graphics API, automate d3dcompiler_47 setup, and fix duplicate shader paths (fixes #470)
+  * fix: deploy ReShade32.dll for 32-bit game executables
+  * release: bump version to 2.0.0 RC2
+  * feat(ui): add Bottles tab to Apply Configuration dialog
+  * feat(pasplot): integrate PasPlot tab into MangoHud with Resume view and chip pills
+  * fix(bgmod): preserve command-line arguments across self-update execv (fixes #467)
+  * fix(optiscaler): preserve global branch and reflex settings on startup (fixes #463)
+  * feat(home,about): add DLSS-NR credits and enhance Home libraries version detection
+  * feat(ui): add dock save pulse, unhide cachyos low-latency tweaks, and refine hardware insights
+  * feat(tweaks): add Controllers category, GE/ZLUDA tweaks, and Proton release-notes auditor
+  * feat(ui): replace MangoHud custom preset with config popup and hide Korthos low latency tweaks
+  * ci(release): support pre-release tags and preserve existing release notes
+  * feat(ui): modernize component setup wizard, filter FSR versions, and silence DLSS-NR startup warning
+  * fix(flatpak): fix reshade search paths, vkbasalt container crash, vksumi config and splash screen on bazzite
+  * feat(pascube): display hardware-isolated performance deltas across distros, drivers and kernels on slide 5
+  * fix(bgmod): resolve Flatpak runtime paths for ReShade, DLSS-NR and Vulkan layers
+  * fix(pascube): correct nickname attribution, silicon lottery binning and kernel comparison
+  * release: bump version to 2.0.0 RC1, fix Flatpak Steam Deck modules and PasCube dynamic hardware introspection
+  * feat(pascube): declutter results overlay with full-height slides and bottom pagination
+  * feat(pascube): redesign community insights slides 3 to 6
+  * feat(pascube): refine results slideshow insights, explicit baselines, and dual silicon/efficiency metrics
+  * feat(pascube): add community insights carousel and interactive slides
+  * feat(pascube): redesign benchmark results screen layout and hardware comparison
+  * feat(pascube): modernize action buttons and remove idle specs pill
+  * feat(pascube): enlarge typography for benchmark phases, live sensors and hardware specs
+  * feat(pascube): implement cyber dark studio and anisotropic floor reflection
+  * feat(pascube): modernize idle cube shader and enlarge hardware specs font
+  * fix(tweaks): hide legacy customenvEdit in modern MD3 layout
+  * fix(profiles): prevent upscaler profile leakage across games and support clean uninstall
+  * perf(ui): debounce auto-save and optimize optiscaler toggle responsiveness
+  * feat(games): reorder card menu, add set cover url option and subitem icons
+  * fix(optiscaler): fix HelixSR 3.1 runtime deployment and startup fatal error
+  * feat(optiscaler): add custom FSR 4 build import flow (closes #447)
+  * feat(ui): redesign toast notifications with vibrant accent styling and fix duplicate triggers
+  * feat(optiscaler): migrate bleeding-edge to official OptiScaler nightlies and inherit fakenvapi from stable cache
+  * feat(mako,helixsr,lsfg-vk): support MAKO 4.6 headroom, HelixSR 3.1 detection, and multi-tier lsfg-vk fallback
+  * chore(openspec): archive cleanup-orphaned-fields-and-dead-stubs
+  * refactor(core): purge orphaned form fields, empty stubs, unused units, and dead comment blocks
+  * chore(openspec): archive cleanup-dead-code-legacy-stubs
+  * refactor(core): purge dead procedures, obsolete stubs and legacy TGroupBox handlers
+  * fix(ui): remove orphan anchors left by purged legacy groupboxes
+  * chore(openspec): archive purge-remaining-legacy-containers
+  * refactor(ui): purge remaining legacy containers in vkbasalt, optiscaler and tweaks
+  * fix(ui): restore visibility of active controls in modern cards
+  * chore(openspec): archive purge-mangohud-legacy-containers
+  * refactor(ui): purge mangohud performance and extras legacy containers
+  * chore(openspec): archive purge-legacy-ui-dead-controls
+  * refactor(ui): purge legacy dead controls and obsolete containers
+  * feat(ui): add missing dependency banner and automate vkbasalt setup
+  * docs(openspec): archive completed changes and update specs
+  * feat(upscalers): set default method to none and hide options sections when disabled
+  * fix(lsfg-vk): opt-in layer manifest patching and launch env update (#449)
+  * fix(lsfg-vk): use browser user-agent to bypass http 403 block on builds server
+  * feat: add modular first-run component setup and user layer removal
+  * feat(games): persist custom covers across restarts for Steam and non-Steam games (ref #446)
+  * feat(ui): update dock pill and dialog title from Finish to Apply
+  * feat(games): enhance non-steam covers discovery, local providers, and custom art (ref #446)
+  * test(mangohud): add regression test for issue 363 hex color and load resilience
+  * fix(mangohud): restore load color gradient for presets and use cyan for goverlay theme
+  * fix(optiscaler,mangohud): align reflex template semantics and harden color parsing
+  * fix(mangohud): sync blacklist in real-time and modernize dialog (ref #448)
+  * fix(bgmod): handle launcher case, wine override delimiter, proxy conflict check, and redact log credentials (ref #445)
+  * feat(mangohud): add ON/OFF pill button and disabled state for vkNemu controls
+  * feat(performance): clean Rate Control layout and homogenize input heights across tab
+  * feat(mangohud): modernize performance tab with 3 modular cards, row-based telemetry and stacked vkNemu layout
+  * feat(mangohud): adopt 6 independent cards in visual tab and enrich canvas controls
+  * feat(mangohud): adaptive row for flow & grid card and centered column stepper
+  * fix: skip shared libraries when discovering the native game binary
+  * feat(mangohud): modernize screen placement monitor with interactive vector canvas
+  * feat(mangohud): modernize visual tab layout, add HUD mini-bars and fix format pills auto-save
+  * feat(mangohud): redesign Extras tab modules, dynamic vertical reflow, and PasPlot action layout
+  * feat(mangohud): paint selected pill option in cyan and apply pills to 1% low and curve buttons
+  * feat(mangohud): separate memory metrics into dedicated card and enable dynamic resize
+  * feat(mangohud): convert metric format buttons into segmented dual-pills
+  * feat(mangohud): remove legacy header icons and fix storage section label
+  * feat(mangohud): adopt minimalist typography for metrics sub-card headers
+  * feat(mangohud): isolate subsystem colors to vertical accent badges with white titles
+  * feat(mangohud): modernize sub-card headers with accent badges and semantic colors
+  * feat(mangohud): refine metric color swatches to 20x20 chips with tooltips and modern button styling
+  * feat(mangohud): rebalance metrics sub-cards into symmetrical 2-column grid
+  * feat(mangohud): integrate HUD name and color controls into card headers
+  * feat(mangohud): redesign metrics tab into modular thematic sub-cards
+  * feat(vknemu): add interactive state flow diagram and compact layout
+  * feat(mangohud): redesign fps limiters and color thresholds layout
+  * fix(bgmod): verify payload size before deleting unbacked DLLs (#445)
+  * fix(vknemu): match height of wake input combobox with delay spin edit
+  * fix(bgmod): prevent leftover cleanup from deleting native DLLs and third-party mods (#445)
+  * feat(vknemu): reorganize dependencies card into 2 columns on home tab
+  * feat(vknemu): add vkNemu to home tab libraries card with 2-column layout
+  * fix(vknemu): export vknemu environment in bgmod and ensure layer binary permissions
+  * fix(vknemu): fix startup re-download loop and 64-bit package resolution
+  * feat(vknemu): add vkNemu idle frame limiter layer support and UI controls
+  * fix(dlss-nr): fix RDNA4 detection, download, and runtime deployment
+  * fix(splash): ensure full branding logo is always displayed across all machines
+  * feat: add top border and Wayland dragging to changelog, and DLSS-NR missing dependency banner
+  * fix(ui): eliminate duplicate progress bar percentages and fix dlss-nr status
+  * feat(helixsr): support upstream HelixSR v2.0.0 and reorganize UI controls
+  * feat(dlss-nr): add asynchronous model extraction with UI progress bar tracking
+  * fix(optiscaler): restore Reflex/Antilag visibility and align HelixSR controls in 4th column
+  * feat(optiscaler): add DLSS-NR upscaler support with advanced settings and clean UI
+  * fix(shell): use POSIX quoting for paths with apostrophes (ref #441)
+  * feat(optiscaler): retain spoof dlss toggle visibility in helixsr mode
+  * feat(pasplot): add benchmark renaming and full-card click selection
+  * feat(pasplot): modernize UI and UX with KPI cards, segmented dock, and owner-draw run cards
+  * feat(pasplot): add native MangoHud benchmark viewer and per-game CSV log organization
+  * fix(helixsr): add robust wine validation and prefix cleanup during compilation
+  * feat(vksumi): auto-download/update on startup, status cards font harmonization and color grading layout polish
+  * refactor(mangohud): move text_outline toggle back to visual hud bar
+  * feat(upstream): sync controls for vkSumi, HelixSR, MangoHud font outline and AFMF syntax
+  * fix(lossless): fix AFMF syntax for log and block SAD, decouple MAKO v4.5.0 scaling
+  * feat(pascube): modernize benchmark overlay layout, telemetry HUD and shaders
+  * feat(vksumi): rename tab caption to Color Grading
+  * feat(tweaks): split launch arguments into dedicated arguments sub-tab
+  * feat(about,home): add HelixSR to libraries and author credits in about tab
+  * feat(optiscaler): migrate OptiPatcher check and update to startup splash
+  * fix(optiscaler): fix Native DLSS toggle vertical spacing and caption clipping
+  * feat(logging): centralize HelixSR, AFMF, and all tool diagnostic logs
+  * fix(runtimes): prevent accidental update downgrades and add Atom feed fallback
+  * feat(optiscaler): add HelixSR Freeware License dialog and distribution
+  * fix(optiscaler): resolve HelixSR startup verification and remove obsolete FSR4VK
+  * feat(icons): modernize HelixSR logo to match OptiScaler and DLSS Enabler design
+  * feat(upscaler): add HelixSR upscaler method with embedded compilation progress
+  * Revert "fix(ui): unarm TBitBtn paint path and ensure Qt native theme contrast (ref #423)"
+  * fix(ui): unarm TBitBtn paint path and ensure Qt native theme contrast (ref #423)
+  * fix(flatpak): prevent Intel CPU power dialog loop and guard config load (ref: #436)
+  * fix(ui): improve button contrast and about tabs on KDE themes (ref #423)
+  * feat(optiscaler): ensure FSR4VK runtime and assets are synchronized on profile save
+  * feat(optiscaler): add FSR4VK channel support and hide menu scale combo
+  * test(logic): fix multicall coreutils and headless splash test fixtures for nix
+  * style(ui): standardize sleek modern 6px scrollbars across all tabs
+  * style(ui): use thematic cyan for version labels in software status cards
+  * chore: bump version to 1.9.5 and channel to git
+  * feat(games): implement rounded corners for game cards
+  * feat(games): polish action button transparency, top cover gradient and empty state
+  * feat(ui): polish home status tab cards and about screen styling
+  * feat(sidebar): polish navigation rail cards, continuous divider and toggle alignment
+  * feat(tweaks): polish active count pill badges and empty state styling
+  * feat(upscalers): polish optiscaler card styling, section titles and label contrast
+  * feat(vkbasalt): polish post processing card themes, edit styling and section labels
+  * feat(mangohud): polish extras sub-tab styling and section titles
+  * fix(mangohud): use standard white text for metrics section titles
+  * fix(mangohud): restore original section title colors in metrics tab
+  * feat(mangohud): polish metrics sub-tab name edits and section styling
+  * feat(mangohud): polish performance sub-tab filters labels and edit styling
+  * feat(mangohud): polish visual sub-tab cards and slider labels
+  * feat(mangohud): modernize preset cards with rounded corners and glow highlights
+  * feat(ui): implement modern floating action dock and tweaks md3 improvements
+  * ci: reduce artifact retention and clean up temporary build artifacts
+
+-------------------------------------------------------------------
 Sun Oct 18 06:12:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.4:

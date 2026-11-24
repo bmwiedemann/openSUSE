@@ -1,7 +1,7 @@
 #
 # spec file for package hledger
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 %global pkg_name hledger
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           %{pkg_name}
+Name:           %pkg_name
 Version:        1.52.4
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
@@ -29,91 +30,93 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Decimal-devel
-BuildRequires:  ghc-Decimal-prof
 BuildRequires:  ghc-Diff-devel
-BuildRequires:  ghc-Diff-prof
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-ansi-terminal-devel
-BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cmdargs-devel
-BuildRequires:  ghc-cmdargs-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-data-default-devel
-BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-githash-devel
-BuildRequires:  ghc-githash-prof
 BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-haskeline-devel
-BuildRequires:  ghc-haskeline-prof
 BuildRequires:  ghc-hledger-lib-devel
-BuildRequires:  ghc-hledger-lib-prof
 BuildRequires:  ghc-http-client-devel
-BuildRequires:  ghc-http-client-prof
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-lucid-devel
-BuildRequires:  ghc-lucid-prof
 BuildRequires:  ghc-math-functions-devel
-BuildRequires:  ghc-math-functions-prof
 BuildRequires:  ghc-megaparsec-devel
-BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-microlens-devel
-BuildRequires:  ghc-microlens-prof
 BuildRequires:  ghc-modern-uri-devel
-BuildRequires:  ghc-modern-uri-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-tdfa-devel
-BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-req-devel
-BuildRequires:  ghc-req-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-safe-devel
-BuildRequires:  ghc-safe-prof
 BuildRequires:  ghc-shakespeare-devel
-BuildRequires:  ghc-shakespeare-prof
 BuildRequires:  ghc-split-devel
-BuildRequires:  ghc-split-prof
 BuildRequires:  ghc-tabular-devel
-BuildRequires:  ghc-tabular-prof
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-temporary-devel
-BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-text-ansi-devel
-BuildRequires:  ghc-text-ansi-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-timeit-devel
-BuildRequires:  ghc-timeit-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unordered-containers-devel
-BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  ghc-utf8-string-devel
-BuildRequires:  ghc-utf8-string-prof
 BuildRequires:  ghc-utility-ht-devel
-BuildRequires:  ghc-utility-ht-prof
 BuildRequires:  ghc-wizards-devel
-BuildRequires:  ghc-wizards-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-Decimal-prof
+BuildRequires:  ghc-Diff-prof
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-ansi-terminal-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-cmdargs-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-data-default-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-extra-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-githash-prof
+BuildRequires:  ghc-hashable-prof
+BuildRequires:  ghc-haskeline-prof
+BuildRequires:  ghc-hledger-lib-prof
+BuildRequires:  ghc-http-client-prof
+BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-lucid-prof
+BuildRequires:  ghc-math-functions-prof
+BuildRequires:  ghc-megaparsec-prof
+BuildRequires:  ghc-microlens-prof
+BuildRequires:  ghc-modern-uri-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-regex-tdfa-prof
+BuildRequires:  ghc-req-prof
+BuildRequires:  ghc-safe-prof
+BuildRequires:  ghc-shakespeare-prof
+BuildRequires:  ghc-split-prof
+BuildRequires:  ghc-tabular-prof
+BuildRequires:  ghc-tasty-prof
+BuildRequires:  ghc-temporary-prof
+BuildRequires:  ghc-text-ansi-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-timeit-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unordered-containers-prof
+BuildRequires:  ghc-utf8-string-prof
+BuildRequires:  ghc-utility-ht-prof
+BuildRequires:  ghc-wizards-prof
+%endif
 
 %description
 The command-line interface for the hledger accounting system. Its basic
@@ -142,31 +145,34 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 
 install -Dm644 embeddedfiles/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -Dm644 embeddedfiles/%{name}.info %{buildroot}%{_infodir}/%{name}.info
@@ -193,9 +199,11 @@ install -Dm644 embeddedfiles/%{name}.info %{buildroot}%{_infodir}/%{name}.info
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc CHANGES.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

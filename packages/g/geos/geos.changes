@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:29:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.15.1:
+  * C++ SONAME 3.15.0 -> 3.15.1, libgeos3_15_0 renamed to
+    libgeos3_15_1; C API SONAME unchanged at 1, libgeos_c1 kept
+  * Arc and curve fixes: arc noding with endpoint intersections
+    and degenerate arcs, CircularArc classification and copy
+    assignment, CompoundCurve and CircularString update handling
+  * GeometrySplitter now handles MultiSurface inputs,
+    CurvePolygon with linear rings only, and CompoundCurve with
+    Z/M coordinates
+  * Fix RelateNG crashes on empty polygons and repeated points,
+    and PreparedPolygonContains errors including infinite
+    recursion with curved inputs
+  * Robustness fixes for GEOSGridIntersectionFractions, distance
+    and envelope calculations; WKBWriter keeps SRID flag after a
+    failed write; GEOSProject rejects invalid input
+
+-------------------------------------------------------------------
 Mon Oct 12 12:00:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Replace shared-dir glob %{_includedir}/* with explicit header paths

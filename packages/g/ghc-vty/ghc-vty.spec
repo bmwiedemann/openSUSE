@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vty
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,47 +17,50 @@
 
 
 %global pkg_name vty
-%global pkgver %{pkg_name}-%{version}
-Name:           ghc-%{pkg_name}
+%bcond_with ghc_prof
+Name:           ghc-%pkg_name
 Version:        6.7
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-binary-devel
-BuildRequires:  ghc-binary-prof
 BuildRequires:  ghc-blaze-builder-devel
-BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-mtl-devel
+BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-parsec-devel
+BuildRequires:  ghc-rpm-macros >= 2.9.2
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-utf8-string-devel
+BuildRequires:  ghc-vector-devel
+ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-binary-prof
+BuildRequires:  ghc-blaze-builder-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-microlens-mtl-prof
 BuildRequires:  ghc-microlens-prof
-BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-prof
-BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof
-BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-utf8-string-prof
-BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
-ExcludeArch:    %{ix86}
+%endif
 
 %description
 Vty is terminal GUI library in the niche of ncurses. It is intended to be easy
@@ -82,24 +85,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -119,9 +125,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc AUTHORS CHANGELOG.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

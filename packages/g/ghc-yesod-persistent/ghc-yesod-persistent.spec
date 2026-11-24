@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-persistent
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,44 +17,50 @@
 
 
 %global pkg_name yesod-persistent
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
+Name:           ghc-%pkg_name
 Version:        1.6.0.9
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Some helpers for using Persistent from Yesod
 License:        MIT
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch0:         dont-depend-on-obsolete-persistent-template.patch
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-blaze-builder-devel
-BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-conduit-devel
-BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-persistent-devel
-BuildRequires:  ghc-persistent-prof
+BuildRequires:  ghc-persistent-template-devel
 BuildRequires:  ghc-resource-pool-devel
-BuildRequires:  ghc-resource-pool-prof
 BuildRequires:  ghc-resourcet-devel
-BuildRequires:  ghc-resourcet-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-yesod-core-devel
-BuildRequires:  ghc-yesod-core-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-blaze-builder-prof
+BuildRequires:  ghc-conduit-prof
+BuildRequires:  ghc-persistent-prof
+BuildRequires:  ghc-persistent-template-prof
+BuildRequires:  ghc-resource-pool-prof
+BuildRequires:  ghc-resourcet-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-yesod-core-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-persistent-sqlite-devel
-BuildRequires:  ghc-persistent-sqlite-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-wai-extra-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-persistent-sqlite-prof
+BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-wai-extra-prof
+%endif
 %endif
 
 %description
@@ -72,24 +78,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 This package provides the Haskell %{pkg_name} library development
 files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version} -p1
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -112,9 +121,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

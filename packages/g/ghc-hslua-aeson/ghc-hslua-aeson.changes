@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Nov 11 19:27:56 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hslua-aeson to version 2.3.2.1.

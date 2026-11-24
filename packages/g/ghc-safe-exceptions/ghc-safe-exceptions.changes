@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sat Oct 14 09:07:51 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update safe-exceptions to version 0.1.7.4 revision 1.

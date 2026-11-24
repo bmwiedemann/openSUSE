@@ -17,6 +17,7 @@
 
 
 Name:           python-griffelib
+# Must be upgraded in lockstep with griffecli and griffe
 Version:        2.4.1
 Release:        0
 Summary:        Signatures for entire Python programs (library)
@@ -31,15 +32,25 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
+BuildRequires:  git
 BuildRequires:  python-rpm-macros
 Suggests:       python-pip >= 24.0
 Suggests:       python-platformdirs >= 4.2
 Suggests:       python-wheel >= 0.42
+# SECTION test requirements
+BuildRequires:  %{python_module pytest-gitconfig}
+BuildRequires:  %{python_module jsonschema >= 4.18}
+BuildRequires:  %{python_module pytest-randomly}
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
 %description
-This is the library for griffe package.
+Griffelib is the core library behind Griffe. It extracts the structure,
+frame, and skeleton of Python programs using static and dynamic analysis,
+allowing tools like mkdocstrings to generate API documentation and detect
+breaking API changes between versions.
 
 %prep
 %autosetup -p1 -n griffelib-%{version}
@@ -53,6 +64,9 @@ sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %files %{python_files}
 %doc CHANGELOG.md README.md

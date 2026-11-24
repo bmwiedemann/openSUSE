@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Nov 24 02:49:59 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch restore-grpc-logging-propagation.patch:
+  * Solve test isolation failures by restoring logging propagation.
+
+-------------------------------------------------------------------
+Thu Sep 24 17:05:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.14.1
+  * **storage:** resolve reST link target mismatch in README and
+    add long_description_content_type (#18210)
+- from version 3.14.0
+  * **storage:** expose metadata parameter in asyncio gRPC calls (#17634)
+  * **storage:** expose object_metadata on AsyncMultiRangeDownloader (#17411)
+  * **storage:** add retry support for finalize and close in
+    AsyncAppendableObjectWriter (#17733)
+  * **storage:** ensure bidi-gRPC stream is cleaned up on open failure
+    and close (#18119)
+  * **storage:** resume bidi reads after idle-stream aborts (#18061)
+  * use lowercase x-goog-api-client header (#18064)
+  * correct typos and grammar in README (#16535)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+
+-------------------------------------------------------------------
 Fri Aug 14 07:21:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.13.1

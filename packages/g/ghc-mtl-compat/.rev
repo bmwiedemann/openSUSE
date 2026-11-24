@@ -7,4 +7,12 @@
     <comment>new submission</comment>
     <requestid>1296428</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>95b4b00d801469f986c0754ae9da2b13</srcmd5>
+    <version>0.2.2</version>
+    <time>1795519917</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399259</requestid>
+  </revision>
 </revisionlist>

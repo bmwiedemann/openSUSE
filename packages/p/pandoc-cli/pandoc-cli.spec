@@ -1,7 +1,7 @@
 #
 # spec file for package pandoc-cli
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with ghc_prof
 Name:           pandoc-cli
 Version:        3.14
 Release:        0
@@ -25,40 +26,42 @@ URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-hslua-cli-devel
-BuildRequires:  ghc-hslua-cli-prof
 BuildRequires:  ghc-pandoc-devel
 BuildRequires:  ghc-pandoc-lua-engine-devel
-BuildRequires:  ghc-pandoc-lua-engine-prof
-BuildRequires:  ghc-pandoc-prof
 BuildRequires:  ghc-pandoc-server-devel
-BuildRequires:  ghc-pandoc-server-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-safe-devel
-BuildRequires:  ghc-safe-prof
 BuildRequires:  ghc-temporary-devel
-BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-wai-extra-devel
-BuildRequires:  ghc-wai-extra-prof
 BuildRequires:  ghc-warp-devel
-BuildRequires:  ghc-warp-prof
 Requires:       pandoc-data = %{version}
 Provides:       pandoc = %{version}
 Obsoletes:      pandoc < 3
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-hslua-cli-prof
+BuildRequires:  ghc-pandoc-lua-engine-prof
+BuildRequires:  ghc-pandoc-prof
+BuildRequires:  ghc-pandoc-server-prof
+BuildRequires:  ghc-safe-prof
+BuildRequires:  ghc-temporary-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-wai-extra-prof
+BuildRequires:  ghc-warp-prof
+%endif
 
 %description
 Pandoc-cli provides a command-line executable that uses the pandoc library to
 convert between markup formats.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%define cabal_configure_options -f+lua -f+server
+%define cabal_configure_options -flua -fserver
 %ghc_bin_build
 
 %install

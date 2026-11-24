@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:20 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Jan  7 11:58:01 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update generics-sop to version 0.5.1.4 revision 3.

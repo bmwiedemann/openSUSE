@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Nov 22 12:30:00 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 275:
+  * chat history of the Playground and of Help is stored in IndexedDB instead
+    of a single localStorage key, so pasted images no longer fill the quota and
+    throw the history away; Chat gained a History menu and a settings tab
+  * the Playground parameters (temperature, top P, min P, top K, max tokens)
+    can be switched off one at a time, and v275 starts them switched off so a
+    fresh Playground sends no sampler overrides at all; that fixes engines with
+    stricter ranges, such as ninfer rejecting top_k above 20
+  * Playground layout fixes for long messages and image previews
+  * body filters are now applied only to POSTs that are not websocket
+    upgrades; the /v1/realtime upgrade used to get a body injected that
+    llama-server read as websocket frames and crashed on
+  * an alias equal to its own model ID is rejected when the configuration is
+    loaded and the model picker does not list the row twice anymore
+  * upstream packaging: the Makefile builds from a release tarball without a
+    git checkout
+- packaging: the binary is built with cgo and as a position independent
+  executable (CGO_ENABLED=1, -buildmode=pie).
+- packaging: GOEXPERIMENT=nodwarf5 and no -trimpath, so that the -debugsource
+  package is not empty: debugedit cannot rewrite Go's DWARF5 line
+  tables and -trimpath records paths that are not on disk.
+
+-------------------------------------------------------------------
+Mon Nov 16 22:06:51 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Initial package

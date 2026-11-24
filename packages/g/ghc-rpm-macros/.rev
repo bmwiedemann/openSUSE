@@ -469,4 +469,12 @@ Fix macros to generate file permissions</comment>
     <comment>version update</comment>
     <requestid>1302178</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>1122c0bed8582c81060489e68ad04823</srcmd5>
+    <version>2.9.2</version>
+    <time>1795520024</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399308</requestid>
+  </revision>
 </revisionlist>

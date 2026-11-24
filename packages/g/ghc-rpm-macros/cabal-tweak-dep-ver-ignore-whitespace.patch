@@ -1,0 +1,93 @@
+--- a/cabal-tweak-dep-ver
++++ b/cabal-tweak-dep-ver
+@@ -1,8 +1,24 @@
+ #!/bin/sh
++#
++# Usage: cabal-tweak-dep-ver dep old new
++#
++# Replace the version constraint OLD on dependency DEP with NEW in the .cabal
++# file in the current directory, e.g.
++#
++#   cabal-tweak-dep-ver base '< 4.22' '< 5'
++#
++# Whitespace in OLD is not significant: '< 4.22' matches "<4.22" as well as
++# "<  4.22", because Cabal ignores whitespace around the operators of a
++# version range. OLD must match complete tokens of the constraint: '< 1.2'
++# does not match "< 1.20" or "< 1.2.1", and '>= 1.2' does not match
++# "^>= 1.2". NEW is inserted literally.
++#
++# The script fails if OLD does not occur in the constraint on DEP, so that a
++# change in the upstream .cabal file doesn't go unnoticed.
+ 
+ set -e +x
+ 
+-function fail {
++fail() {
+     echo "$0: $1" >&2
+     exit 1
+ }
+@@ -14,23 +30,57 @@
+ fi
+ 
+ DEP=$1
+-OLD=$(echo $2 | sed -e "s/*/\\\\*/g" -e "s/\./\\\\./g")
+ NEW=$3
+ 
++# OLD with all whitespace removed. Fail if nothing is left.
++OLDTEXT=$(printf '%s\n' "$2" | tr -d '[:space:]')
++if [ -z "$OLDTEXT" ]; then
++    fail "$USAGE"
++fi
++
++# Turn OLD into a regular expression (BRE) that matches it literally, except
++# that any amount of whitespace is allowed before and after every operator.
++# The operators are first marked with \x01, then the text is escaped, then the
++# markers are replaced.
++OLD=$(printf '%s\n' "$OLDTEXT" | sed \
++    -e 's/\(&&\|||\|[<>=^]\{1,\}\)/\x01&\x01/g' \
++    -e 's/[][\.*^$/]/\\&/g' \
++    -e 's/\x01/[[:space:]]*/g')
++
++# Characters that must not immediately precede or follow the match, because
++# they would make the match part of a longer token: if OLD starts with an
++# operator, an operator character must not precede it ('>=' in '^>='); if it
++# starts with a version number, a digit or a dot must not precede it ('4.22'
++# in '14.22'). A version at the end must not be followed by a digit or dot.
++case $OLDTEXT in
++    [\<\>=^]*) EXCL='<>=^'; EMPTY='\|' ;;
++    *)         EXCL='0-9.';  EMPTY= ;;
++esac
++
++# The name of the dependency, followed by the text between the name and OLD.
++# That text is empty (only if OLD starts with an operator, as in "base<5"),
++# or it starts with a character that cannot be part of a package name and
++# ends with a character from outside EXCL. It cannot contain a comma, so the
++# match stays within the constraint on DEP.
++BREAK='[^[:alnum:]-]'
++PRE="$BREAK$DEP\\($EMPTY[^[:alnum:]$EXCL-]\\|$BREAK[^,]*[^,$EXCL]\\)"
++POST='\([^0-9.]\|$\)'
++
++# NEW escaped for use in the replacement part of the sed command.
++NEWREPL=$(printf '%s\n' "$NEW" | sed -e 's/[\/&]/\\&/g')
++
+ CABALFILE=$(ls *.cabal)
+ 
+ if [ $(echo $CABALFILE | wc -w) -ne 1 ]; then
+    fail "There needs to be one .cabal file in the current dir!"
+ fi
+ 
+-BREAK=[^[:alnum:]-]
+-
+-if ! grep -q "$BREAK$DEP$BREAK[^,]*$OLD" $CABALFILE; then
+-   fail "$CABALFILE does not match: $DEP $OLD"
++if ! grep -q -e "\\($PRE\\)$OLD$POST" "$CABALFILE"; then
++   fail "$CABALFILE does not match: $DEP $2"
+ fi
+ 
+-if [ ! -f $CABALFILE.orig ]; then
++if [ ! -f "$CABALFILE.orig" ]; then
+     BACKUP=.orig
+ fi
+ 
+-sed -i$BACKUP -e "s/\($BREAK$DEP$BREAK[^,]*\)$OLD/\1$NEW/g" $CABALFILE
++sed -i$BACKUP -e "s/\\($PRE\\)$OLD$POST/\\1$NEWREPL\\3/g" "$CABALFILE"

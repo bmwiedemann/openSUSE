@@ -1,7 +1,7 @@
 #
 # spec file for package hledger-ui
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,11 @@
 
 
 %global pkg_name hledger-ui
-%global pkgver %{pkg_name}-%{version}
-Name:           %{pkg_name}
+%bcond_with ghc_prof
+Name:           %pkg_name
 Version:        1.52.4
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Terminal interface for the hledger accounting system
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
@@ -29,69 +30,71 @@ Source1:        https://hackage.haskell.org/package/%{name}-%{version}/revision/
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-ansi-terminal-devel
-BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-brick-devel
-BuildRequires:  ghc-brick-prof
 BuildRequires:  ghc-cmdargs-devel
-BuildRequires:  ghc-cmdargs-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-data-default-devel
-BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-doclayout-devel
-BuildRequires:  ghc-doclayout-prof
 BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-fsnotify-devel
-BuildRequires:  ghc-fsnotify-prof
 BuildRequires:  ghc-githash-devel
-BuildRequires:  ghc-githash-prof
 BuildRequires:  ghc-hledger-devel
 BuildRequires:  ghc-hledger-lib-devel
-BuildRequires:  ghc-hledger-lib-prof
-BuildRequires:  ghc-hledger-prof
 BuildRequires:  ghc-megaparsec-devel
-BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-microlens-devel
 BuildRequires:  ghc-microlens-platform-devel
+BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-process-devel
+BuildRequires:  ghc-rpm-macros >= 2.9.2
+BuildRequires:  ghc-safe-devel
+BuildRequires:  ghc-split-devel
+BuildRequires:  ghc-stm-devel
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-zipper-devel
+BuildRequires:  ghc-time-devel
+BuildRequires:  ghc-transformers-devel
+BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vty-crossplatform-devel
+BuildRequires:  ghc-vty-devel
+ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-ansi-terminal-prof
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-brick-prof
+BuildRequires:  ghc-cmdargs-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-data-default-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-doclayout-prof
+BuildRequires:  ghc-extra-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-fsnotify-prof
+BuildRequires:  ghc-githash-prof
+BuildRequires:  ghc-hledger-lib-prof
+BuildRequires:  ghc-hledger-prof
+BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-microlens-platform-prof
 BuildRequires:  ghc-microlens-prof
-BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
-BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-safe-devel
 BuildRequires:  ghc-safe-prof
-BuildRequires:  ghc-split-devel
 BuildRequires:  ghc-split-prof
-BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-stm-prof
-BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-text-zipper-devel
 BuildRequires:  ghc-text-zipper-prof
-BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
-BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
-BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
-BuildRequires:  ghc-vector-devel
 BuildRequires:  ghc-vector-prof
-BuildRequires:  ghc-vty-crossplatform-devel
 BuildRequires:  ghc-vty-crossplatform-prof
-BuildRequires:  ghc-vty-devel
 BuildRequires:  ghc-vty-prof
-ExcludeArch:    %{ix86}
+%endif
 
 %description
 A simple terminal user interface for the hledger accounting system. It can be a
@@ -119,24 +122,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 cp -p %{SOURCE1} %{name}.cabal
 
 %build
@@ -144,7 +150,7 @@ cp -p %{SOURCE1} %{name}.cabal
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 
 install -Dm644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 install -Dm644 %{name}.info %{buildroot}%{_infodir}/%{name}.info
@@ -168,9 +174,11 @@ install -Dm644 %{name}.info %{buildroot}%{_infodir}/%{name}.info
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc CHANGES.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

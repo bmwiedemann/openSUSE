@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:56:04 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Jun 17 10:59:00 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update vector to version 0.13.2.0 revision 5.

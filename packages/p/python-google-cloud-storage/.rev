@@ -456,4 +456,28 @@
   * populate the `persisted_data_checksums` field with object checksums on write (forwarded request 1371164 from glaubitz)</comment>
     <requestid>1371218</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0754dd1c3b50891f02c68e6c59aa5246</srcmd5>
+    <version>3.14.1</version>
+    <time>1795520411</time>
+    <user>anag_factory</user>
+    <comment>- Add patch restore-grpc-logging-propagation.patch:
+  * Solve test isolation failures by restoring logging propagation.
+
+- Update to 3.14.1
+  * **storage:** resolve reST link target mismatch in README and
+    add long_description_content_type (#18210)
+- from version 3.14.0
+  * **storage:** expose metadata parameter in asyncio gRPC calls (#17634)
+  * **storage:** expose object_metadata on AsyncMultiRangeDownloader (#17411)
+  * **storage:** add retry support for finalize and close in
+    AsyncAppendableObjectWriter (#17733)
+  * **storage:** ensure bidi-gRPC stream is cleaned up on open failure
+    and close (#18119)
+  * **storage:** resume bidi reads after idle-stream aborts (#18061)
+  * use lowercase x-goog-api-client header (#18064)
+  * correct typos and grammar in README (#16535)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)</comment>
+    <requestid>1400074</requestid>
+  </revision>
 </revisionlist>

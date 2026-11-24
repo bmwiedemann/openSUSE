@@ -131,4 +131,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1249336</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>75aaa3c670c09681828c43d6a930e371</srcmd5>
+    <version>0.4.2</version>
+    <time>1795519778</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399188</requestid>
+  </revision>
 </revisionlist>

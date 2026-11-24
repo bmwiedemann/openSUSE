@@ -180,4 +180,12 @@ See: http://lists.opensuse.org/archive/opensuse-factory/2014-03/msg00332.html</c
     <comment>version update</comment>
     <requestid>1188637</requestid>
   </revision>
+  <revision rev="23" vrev="6">
+    <srcmd5>20515c1f40f50802e5d6a4856b5f5a56</srcmd5>
+    <version>1.0</version>
+    <time>1795519710</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399153</requestid>
+  </revision>
 </revisionlist>

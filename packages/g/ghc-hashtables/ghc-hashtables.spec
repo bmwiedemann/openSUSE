@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hashtables
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,42 @@
 
 
 %global pkg_name hashtables
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
+Name:           ghc-%pkg_name
 Version:        1.4.2
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Mutable hash tables in the ST monad
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-hashable-prof
 BuildRequires:  ghc-primitive-devel
-BuildRequires:  ghc-primitive-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-vector-devel
-BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-hashable-prof
+BuildRequires:  ghc-primitive-prof
+BuildRequires:  ghc-vector-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-mwc-random-devel
-BuildRequires:  ghc-mwc-random-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-mwc-random-prof
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
+%endif
 %endif
 
 %description
@@ -65,7 +70,7 @@ This package currently contains three hash table implementations:
 introduced by Pagh and Rodler in 2001 (see
 <http://en.wikipedia.org/wiki/Cuckoo_hashing>). Cuckoo hashing has worst-case
 /O(1)/ lookups and can reach a high "load factor", in which the table can
-perform acceptably well even when approaching 90% full. Randomized testing
+perform acceptably well even when approaching 90%% full. Randomized testing
 shows this implementation of cuckoo hashing to be slightly faster on insert and
 slightly slower on lookup than "Data.HashTable.ST.Basic", while being more
 space efficient by about a half-word per key-value mapping. Cuckoo hashing,
@@ -134,24 +139,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -174,9 +182,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc README.md changelog.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

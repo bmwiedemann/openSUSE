@@ -28,7 +28,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-storage%{pkg_suffix}
-Version:        3.13.1
+Version:        3.14.1
 Release:        0
 Summary:        Google Cloud Storage API python client library
 License:        Apache-2.0
@@ -37,6 +37,8 @@ Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-st
 # PATCH-FIX-UPSTREAM demock.patch gh#googleapis/python-storage#770 mcepl@suse.com
 # Don’t use external mock package
 Patch1:         demock.patch
+# PATCH-FIX-OPENSUSE Restore logging propagation in gprc tests to avoid test isolation failures
+Patch2:         restore-grpc-logging-propagation.patch
 BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
 BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module pip}

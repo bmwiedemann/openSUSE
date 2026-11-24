@@ -2,10 +2,10 @@
  pyproject.toml |   17 ++++++++---------
  1 file changed, 8 insertions(+), 9 deletions(-)
 
-Index: griffecli-2.0.2/pyproject.toml
+Index: griffecli-2.4.1/pyproject.toml
 ===================================================================
---- griffecli-2.0.2.orig/pyproject.toml	2020-02-02 01:00:00.000000000 +0100
-+++ griffecli-2.0.2/pyproject.toml	2026-04-01 20:16:20.178381350 +0200
+--- griffecli-2.4.1.orig/pyproject.toml
++++ griffecli-2.4.1/pyproject.toml
 @@ -1,18 +1,19 @@
  [build-system]
  # pdm-backend is left here as a dependency of the version discovery script currently in use.
@@ -21,33 +21,14 @@ Index: griffecli-2.0.2/pyproject.toml
  authors = [{name = "Timothée Mazzucotelli", email = "dev@pawamoy.fr"}]
  license = "ISC"
  license-files = ["LICENSE"]
- requires-python = ">=3.10"
+ requires-python = ">=3.11"
  keywords = ["api", "signature", "breaking-changes", "static-analysis", "dynamic-analysis"]
 -dynamic = ["version", "dependencies"]
 +dynamic = ["dependencies"]
  classifiers = [
      "Development Status :: 5 - Production/Stable",
      "Intended Audience :: Developers",
-@@ -35,13 +36,15 @@
-     "Topic :: Utilities",
-     "Typing :: Typed",
- ]
-+dependencies = [
-+    # Version is controlled by the RPM SPEC, not here
-+    "griffelib",
-+    "colorama >= 0.4",
-+]
- 
- [project.scripts]
- griffecli = "griffecli:main"
- 
--[tool.uv-dynamic-versioning]
--pattern = '(?P<base>\d+\.\d+\.\d+)'
--
- [tool.hatch.version]
- source = "code"
- path = "../../scripts/get_version.py"
-@@ -52,10 +55,6 @@
+@@ -62,10 +63,6 @@ expression = "get_version()"
  "../../LICENSE" = "LICENSE"
  "../../README.md" = "README.md"
  

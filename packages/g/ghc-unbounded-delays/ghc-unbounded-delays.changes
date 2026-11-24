@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:54 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Tue Nov 24 15:31:13 UTC 2020 - Peter Simons <psimons@suse.com>
 
 - Add unbounded-delays at version 0.1.1.1.

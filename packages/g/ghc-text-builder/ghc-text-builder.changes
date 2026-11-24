@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:34 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Jan  2 12:43:16 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Add text-builder at version 1.0.0.5.

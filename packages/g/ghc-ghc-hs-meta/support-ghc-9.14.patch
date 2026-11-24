@@ -1,0 +1,124 @@
+From 5cf5705f3e47da79fb5580ec63c00d125cf4554a Mon Sep 17 00:00:00 2001
+From: Li-yao Xia <lysxia@gmail.com>
+Date: Sat, 29 Aug 2026 17:19:46 +0200
+Subject: [PATCH] Update for GHC 9.14
+
+---
+ ghc-hs-meta.cabal                      |  9 +++++----
+ src/Language/Haskell/Meta/Settings.hs  | 10 ++++++++++
+ src/Language/Haskell/Meta/Translate.hs | 16 ++++++++++++++--
+ 3 files changed, 29 insertions(+), 6 deletions(-)
+
+diff --git a/ghc-hs-meta.cabal b/ghc-hs-meta.cabal
+index 5dfcd22..ed718ee 100644
+--- a/ghc-hs-meta.cabal
++++ b/ghc-hs-meta.cabal
+@@ -21,6 +21,7 @@ tested-with:
+   ghc ==9.8.4
+   ghc ==9.10.1
+   ghc ==9.12.1
++  ghc ==9.14.1
+ 
+ extra-source-files:
+   CHANGELOG.md
+@@ -41,11 +42,11 @@ library
+ 
+   ghc-options: -Wall
+   build-depends:
+-    base >=4.14 && <4.22,
++    base >=4.14 && <4.23,
+     bytestring >=0.10 && <0.13,
+-    ghc >=8.10.7 && <9.13,
+-    ghc-boot >=8.10.7 && <9.13,
+-    template-haskell >=2.16.0 && <2.24,
++    ghc >=8.10.7 && <9.15,
++    ghc-boot >=8.10.7 && <9.15,
++    template-haskell >=2.16.0 && <2.25,
+ 
+   default-language: Haskell2010
+ 
+diff --git a/src/Language/Haskell/Meta/Settings.hs b/src/Language/Haskell/Meta/Settings.hs
+index 5b84a83..bc7a002 100644
+--- a/src/Language/Haskell/Meta/Settings.hs
++++ b/src/Language/Haskell/Meta/Settings.hs
+@@ -9,6 +9,10 @@ module Language.Haskell.Meta.Settings (baseDynFlags) where
+ 
+ {- ORMOLU_DISABLE -}
+ 
++#if MIN_VERSION_ghc(9, 14, 0)
++import GHC.Unit.Types (stringToUnitId)
++#endif
++
+ #if MIN_VERSION_ghc(9,0,0)
+ import GHC.Settings.Config
+ import GHC.Driver.Session
+@@ -98,6 +102,9 @@ fakeSettings = Settings
+   , sTargetPlatform=platform
+   , sPlatformMisc=platformMisc
+   , sToolSettings=toolSettings
++#if MIN_VERSION_ghc(9, 14, 0)
++  , sUnitSettings=unitSettings
++#endif
+   }
+ #elif MIN_VERSION_ghc(8, 10, 0)
+   { sGhcNameVersion=ghcNameVersion
+@@ -168,6 +175,9 @@ fakeSettings = Settings
+     platformConstants =
+       PlatformConstants{pc_DYNAMIC_BY_DEFAULT=False,pc_WORD_SIZE=8}
+ #endif
++#if MIN_VERSION_ghc(9, 14, 0)
++    unitSettings = UnitSettings { unitSettings_baseUnitId = stringToUnitId "" }
++#endif
+ 
+ #if MIN_VERSION_ghc(9, 6, 0)
+ applyFakeLlvmConfig :: a -> a
+diff --git a/src/Language/Haskell/Meta/Translate.hs b/src/Language/Haskell/Meta/Translate.hs
+index 4bd1bdc..734cc83 100644
+--- a/src/Language/Haskell/Meta/Translate.hs
++++ b/src/Language/Haskell/Meta/Translate.hs
+@@ -16,6 +16,9 @@ import GHC.Hs.Types (HsWildCardBndrs (..), HsType (..), HsImplicitBndrs (HsIB, h
+ import HsTypes (HsWildCardBndrs (..), HsType (..), HsImplicitBndrs (HsIB), hsib_body)
+ #endif
+ 
++#if MIN_VERSION_ghc(9,13,0)
++import Language.Haskell.Syntax.Extension (dataConCantHappen)
++#endif
+ #if MIN_VERSION_ghc(9,6,0)
+ import Language.Haskell.Syntax.Basic (FieldLabelString (..))
+ #endif
+@@ -87,8 +90,12 @@ toLit (HsIntPrim _ i) = TH.IntPrimL i
+ toLit (HsWordPrim _ i) = TH.WordPrimL i
+ toLit (HsInt64Prim _ i) = TH.IntegerL i
+ toLit (HsWord64Prim _ i) = TH.WordPrimL i
++#if MIN_VERSION_ghc(9,13,0)
++toLit (XLit x) = dataConCantHappen x
++#else
+ toLit (HsInteger _ i _) = TH.IntegerL i
+ toLit (HsRat _ f _) = TH.FloatPrimL (fl_value f)
++#endif
+ toLit (HsFloatPrim _ f) = TH.FloatPrimL (fl_value f)
+ toLit (HsDoublePrim _ f) = TH.DoublePrimL (fl_value f)
+ #if MIN_VERSION_ghc(9,12,0)
+@@ -141,7 +148,10 @@ toExp _ (Expr.HsVar _ n) =
+         then TH.ConE (toName n')
+         else TH.VarE (toName n')
+ 
+-#if MIN_VERSION_ghc(9,0,0)
++#if MIN_VERSION_ghc(9,13,0)
++toExp _ (Expr.HsHole (HoleVar (L _ n))) = TH.UnboundVarE (TH.mkName . occNameString . occName $ n)
++toExp _ (Expr.HsHole HoleError) = error "HoleError"
++#elif MIN_VERSION_ghc(9,0,0)
+ toExp _ (Expr.HsUnboundVar _ n)              = TH.UnboundVarE (TH.mkName . occNameString . occName $ n)
+ #else
+ toExp _ (Expr.HsUnboundVar _ n)              = TH.UnboundVarE (TH.mkName . occNameString . Expr.unboundVarOcc $ n)
+@@ -180,7 +190,9 @@ toExp d (Expr.NegApp _ e _)
+   = TH.AppE (TH.VarE 'negate) (toExp d . unLoc $ e)
+ 
+ -- NOTE: for lambda, there is only one match
+-#if MIN_VERSION_ghc(9,12,0)
++#if MIN_VERSION_ghc(9,14,0)
++toExp d (Expr.HsLam _ LamSingle (Expr.MG _ (unLoc -> (map unLoc -> [Expr.Match _ _ (map unLoc . unLoc -> ps) (Expr.GRHSs _ ((unLoc -> Expr.GRHS _ _ (unLoc -> e)) NonEmpty.:| []) _)]))))
++#elif MIN_VERSION_ghc(9,12,0)
+ toExp d (Expr.HsLam _ LamSingle (Expr.MG _ (unLoc -> (map unLoc -> [Expr.Match _ _ (map unLoc . unLoc -> ps) (Expr.GRHSs _ [unLoc -> Expr.GRHS _ _ (unLoc -> e)] _)]))))
+ #elif MIN_VERSION_ghc(9,10,0)
+ toExp d (Expr.HsLam _ LamSingle (Expr.MG _ (unLoc -> (map unLoc -> [Expr.Match _ _ (map unLoc -> ps) (Expr.GRHSs _ [unLoc -> Expr.GRHS _ _ (unLoc -> e)] _)]))))

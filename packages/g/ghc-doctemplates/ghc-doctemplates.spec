@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-doctemplates
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,60 @@
 
 
 %global pkg_name doctemplates
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
+Name:           ghc-%pkg_name
 Version:        0.11.1
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Pandoc-style document templates
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-doclayout-devel
-BuildRequires:  ghc-doclayout-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-parsec-devel
-BuildRequires:  ghc-parsec-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-safe-devel
-BuildRequires:  ghc-safe-prof
 BuildRequires:  ghc-scientific-devel
-BuildRequires:  ghc-scientific-prof
 BuildRequires:  ghc-text-conversions-devel
-BuildRequires:  ghc-text-conversions-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-vector-devel
-BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-doclayout-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-parsec-prof
+BuildRequires:  ghc-safe-prof
+BuildRequires:  ghc-scientific-prof
+BuildRequires:  ghc-text-conversions-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-vector-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-Glob-devel
-BuildRequires:  ghc-Glob-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
-BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-temporary-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-Glob-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
+%endif
 %endif
 
 %description
@@ -84,24 +89,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -124,9 +132,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc README.md changelog.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

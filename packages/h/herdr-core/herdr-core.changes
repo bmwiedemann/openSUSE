@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Mon Nov 23 06:15:31 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+- Initial package: herdr-core, the core that keeps agent and build terminals
+  alive across windows and SSH connections, with the hc command line.
+- Sources are taken from the v0.1.21 tag with obs_scm (the vendor/ghostty
+  submodule included); the Rust crates are vendored with
+  obs-cargo-vendor-standard-service and the Zig packages with vendor-zig.sh,
+  so the build needs no network.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct 25 08:43:41 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls-session-manager to version 0.1.2.
+  ## 0.1.2
+
+  * Require tls >= 2.4.13 and build the tests with `defaultSessionData`.
+    [#607](https://github.com/haskell-tls/hs-tls/pull/607)
+
+-------------------------------------------------------------------
 Sat Oct 24 02:22:18 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tls-session-manager to version 0.1.1.

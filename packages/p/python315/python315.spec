@@ -230,6 +230,12 @@ Patch43:        skip-test_array_alignment.patch
 # PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
 # improve testing of the presence of IPPROTO_UDPLITE support
 Patch49:        test_UDPLITE_support.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-reject-null-bytes-getaddrinfo.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port (GH-160899)
+Patch50:        CVE-2026-116566-reject-null-bytes-getaddrinfo.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-http-client-content-length.patch bsc#1288328 mcepl@suse.com
+# validate http.client Content-Length and chunk-size (GH-150752)
+Patch51:        CVE-2026-103995-http-client-content-length.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

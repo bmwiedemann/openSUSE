@@ -1,0 +1,1152 @@
+cabal-version:      3.0
+name:               crypton
+version:            2.2.7
+x-revision: 1
+-- crypton's own code is BSD-3-Clause.  The parts of
+-- cbits/aes/gcm_fused_x86.c that follow picotls's fusion are MIT, and the
+-- vendored s2n-bignum assembly in cbits/s2n is taken under ISC, and the
+-- constant-time AES and GHASH in cbits/bearssl are BearSSL's under MIT;
+-- each has its licence beside it, and they are listed below.  The CRYPTOGAMS
+-- assembly in cbits/asm is taken under its BSD-3-Clause option, and the
+-- AArch64 multiply-accumulate loop in cbits/crypton_bignum.h follows Go's,
+-- which is BSD-3-Clause too; the first term already covers both.
+license:            BSD-3-Clause AND MIT AND ISC
+license-files:
+    LICENSE
+    cbits/LICENSE.go
+    cbits/aes/LICENSE.fusion
+    cbits/asm/LICENSE.cryptogams
+    cbits/s2n/LICENSE
+    cbits/bearssl/LICENSE
+    cbits/mlkem/LICENSE
+    cbits/mldsa/LICENSE
+copyright:
+    2006-2022 Vincent Hanquez <vincent@snarc.org> and contributors,
+    2023-2026 Kazu Yamamoto <kazu@iij.ad.jp>
+
+maintainer:         Kazu Yamamoto <kazu@iij.ad.jp>
+author:             Vincent Hanquez <vincent@snarc.org>
+stability:          experimental
+tested-with:
+    ghc ==9.2.8 || ==9.4.8 || ==9.6.7 || ==9.8.4 || ==9.10.2 || ==9.12.4 || ==9.14.1
+
+homepage:           https://github.com/kazu-yamamoto/crypton
+bug-reports:        https://github.com/kazu-yamamoto/crypton/issues
+synopsis:           Cryptography Primitives
+description:        `crypton` is a low-level cryptography library.
+                    To achieve high performance, it utilizes C and assembly
+                    language to define FFI bindings, structuring them
+                    in a way that makes them easy to use.
+
+category:           Cryptography
+build-type:         Simple
+extra-source-files:
+    cbits/*.h
+    cbits/aes/*.h
+    cbits/curve25519/*.h
+    cbits/aes/armv8_impl.c
+    cbits/aes/x86ni_impl.c
+    cbits/asm/README.md
+    cbits/asm/aesni-gcm-x86_64.pl
+    cbits/asm/arm-xlate.pl
+    cbits/asm/aesp8-ppc.pl
+    cbits/asm/ghashp8-ppc.pl
+    cbits/asm/ppc-xlate.pl
+    cbits/asm/arm_arch.h
+    cbits/asm/chacha-armv8.pl
+    cbits/asm/chacha-x86_64.pl
+    cbits/asm/generate.sh
+    cbits/asm/keccak1600-armv8.pl
+    cbits/asm/keccak1600-x86_64.pl
+    cbits/asm/poly1305-armv8.pl
+    cbits/asm/poly1305-x86_64.pl
+    cbits/asm/sha1-armv8.pl
+    cbits/asm/sha512-armv8.pl
+    cbits/asm/sha512-x86_64.pl
+    cbits/asm/x86_64-xlate.pl
+    cbits/chacha_sse_impl.c
+    cbits/argon2/*.c
+    cbits/argon2/*.h
+    cbits/blake2/ref/*.h
+    cbits/blake2/sse/*.h
+    cbits/crypton_hash_prefix.c
+    cbits/crypton_mont.py
+    cbits/crypton_powm_ifma.py
+    cbits/mlkem/*.S
+    cbits/mlkem/*.c
+    cbits/mlkem/*.h
+    cbits/mlkem/*.md
+    cbits/mlkem/*.sh
+    cbits/mlkem/COMMIT
+    cbits/mlkem/LICENSE
+    cbits/mlkem/src/*.c
+    cbits/mlkem/src/*.h
+    cbits/mlkem/src/*.inc
+    cbits/mlkem/src/fips202/*.c
+    cbits/mlkem/src/fips202/*.h
+    cbits/mlkem/src/fips202/native/*.h
+    cbits/mlkem/src/fips202/native/aarch64/*.h
+    cbits/mlkem/src/fips202/native/aarch64/src/*.S
+    cbits/mlkem/src/fips202/native/aarch64/src/*.c
+    cbits/mlkem/src/fips202/native/aarch64/src/*.h
+    cbits/mlkem/src/fips202/native/x86_64/*.h
+    cbits/mlkem/src/fips202/native/x86_64/src/*.S
+    cbits/mlkem/src/fips202/native/x86_64/src/*.c
+    cbits/mlkem/src/fips202/native/x86_64/src/*.h
+    cbits/mlkem/src/native/*.h
+    cbits/mlkem/src/native/aarch64/*.h
+    cbits/mlkem/src/native/aarch64/*.md
+    cbits/mlkem/src/native/aarch64/src/*.S
+    cbits/mlkem/src/native/aarch64/src/*.c
+    cbits/mlkem/src/native/aarch64/src/*.h
+    cbits/mlkem/src/native/x86_64/*.h
+    cbits/mlkem/src/native/x86_64/*.md
+    cbits/mlkem/src/native/x86_64/src/*.S
+    cbits/mlkem/src/native/x86_64/src/*.c
+    cbits/mlkem/src/native/x86_64/src/*.h
+    cbits/mldsa/*.S
+    cbits/mldsa/*.c
+    cbits/mldsa/*.h
+    cbits/mldsa/*.md
+    cbits/mldsa/*.sh
+    cbits/mldsa/COMMIT
+    cbits/mldsa/LICENSE
+    cbits/mldsa/src/*.c
+    cbits/mldsa/src/*.h
+    cbits/mldsa/src/*.inc
+    cbits/mldsa/src/fips202/*.c
+    cbits/mldsa/src/fips202/*.h
+    cbits/mldsa/src/fips202/native/*.h
+    cbits/mldsa/src/fips202/native/aarch64/*.h
+    cbits/mldsa/src/fips202/native/aarch64/src/*.S
+    cbits/mldsa/src/fips202/native/aarch64/src/*.c
+    cbits/mldsa/src/fips202/native/aarch64/src/*.h
+    cbits/mldsa/src/fips202/native/x86_64/*.h
+    cbits/mldsa/src/fips202/native/x86_64/src/*.S
+    cbits/mldsa/src/fips202/native/x86_64/src/*.c
+    cbits/mldsa/src/fips202/native/x86_64/src/*.h
+    cbits/mldsa/src/native/*.h
+    cbits/mldsa/src/native/aarch64/*.h
+    cbits/mldsa/src/native/aarch64/src/*.S
+    cbits/mldsa/src/native/aarch64/src/*.c
+    cbits/mldsa/src/native/aarch64/src/*.h
+    cbits/mldsa/src/native/x86_64/*.h
+    cbits/mldsa/src/native/x86_64/src/*.S
+    cbits/mldsa/src/native/x86_64/src/*.c
+    cbits/mldsa/src/native/x86_64/src/*.h
+    cbits/decaf/ed448goldilocks/decaf.c
+    cbits/decaf/ed448goldilocks/decaf_tables.c
+    cbits/decaf/include/*.h
+    cbits/decaf/include/arch_32/*.h
+    cbits/decaf/include/arch_ref64/*.h
+    cbits/decaf/include/decaf/*.h
+    cbits/decaf/p448/*.h
+    cbits/decaf/p448/arch_32/*.h
+    cbits/decaf/p448/arch_ref64/*.h
+    cbits/ed25519/*.h
+    cbits/include32/p256/*.h
+    cbits/include64/p256/*.h
+    cbits/s2n/COMMIT
+    cbits/s2n/README.md
+    cbits/s2n/arm/*.S
+    cbits/p256/*.h
+    cbits/p256/gen_base_table.py
+    cbits/s2n/import.sh
+    cbits/s2n/include/*.h
+    cbits/s2n/x86_att/*.S
+    cbits/s2n/x86_att/*.h
+    cbits/bearssl/README.md
+    cbits/bearssl/VERSION
+    cbits/bearssl/import.sh
+    cbits/bearssl/inner.h
+    cbits/tests/*.c
+    cbits/tests/ct/*.c
+    cbits/tests/ct/*.h
+    cbits/tests/ct/known.txt
+    cbits/tests/ct/README
+    cbits/tests/ct/run.sh
+    cbits/tests/endian/*.c
+    cbits/tests/endian/README
+    cbits/tests/endian/run.sh
+    cbits/tests/endian/vectors.txt
+    cbits/tests/fuzz/*.c
+    cbits/tests/fuzz/*.h
+    cbits/tests/fuzz/README
+    cbits/tests/fuzz/corpus/*.bin
+    cbits/tests/fuzz/run.sh
+    cbits/tests/perf/*.c
+    cbits/tests/perf/floors.txt
+    cbits/tests/perf/run.sh
+    cbits/tests/scrub/*.c
+    cbits/tests/scrub/README
+    cbits/tests/scrub/known.txt
+    cbits/tests/scrub/run.sh
+    cbits/tests/sysdrg/*.c
+    cbits/tests/sysdrg/run.sh
+    cbits/tests/width/*.c
+    cbits/tests/width/run.sh
+    tests/*.hs
+    tests/tutorial/extract.awk
+    tests/tutorial/run.sh
+
+extra-doc-files:
+    CHANGELOG.md
+    README.md
+
+source-repository head
+    type:     git
+    location: https://github.com/kazu-yamamoto/crypton
+
+flag support_aesni
+    description:
+        allow compilation with AESNI on system and architecture that supports it
+
+    manual:      True
+
+flag support_pclmuldq
+    description:
+        Allow compilation with pclmuldq on architecture that supports it
+
+    manual:      True
+
+flag support_sse
+    description:
+        Use SSE optimized version of (BLAKE2, ARGON2) on i386.  x86-64 takes
+        them anyway; every other architecture has no SSE to offer and ignores
+        this flag, rather than failing to compile the sources.
+
+    default:     False
+    manual:      True
+
+flag support_s2n_bignum
+    description:
+        Use the vendored s2n-bignum assembly for the NIST prime curves on
+        x86-64 and AArch64. See cbits/s2n/README.md.
+
+    default:     True
+    manual:      True
+
+flag integer-gmp
+    description: Whether or not to use GMP for some functions
+    manual:      True
+
+flag support_deepseq
+    description: add deepseq instances for cryptographic types
+    manual:      True
+
+flag old_toolchain_inliner
+    description:
+        use -fgnu89-inline to workaround an old compiler / linker / glibc issue.
+
+    default:     False
+    manual:      True
+
+flag check_alignment
+    description:
+        extra check on alignment in C layers, which cause lowlevel assert errors. for debugging only.
+
+    default:     False
+    manual:      True
+
+flag use_target_attributes
+    description:
+        use GCC / clang function attributes for the code that needs instruction set extensions. Turned off, that code is left out and the portable C is used instead.
+
+    manual:      True
+
+library
+    exposed-modules:
+        Crypto.Cipher.AES
+        Crypto.Cipher.AES.GCM
+        Crypto.Cipher.AESGCMSIV
+        Crypto.Cipher.Blowfish
+        Crypto.Cipher.Camellia
+        Crypto.Cipher.CAST5
+        Crypto.Cipher.ChaCha
+        Crypto.Cipher.ChaCha.Poly1305
+        Crypto.Cipher.ChaChaPoly1305
+        Crypto.Cipher.DES
+        Crypto.Cipher.RC4
+        Crypto.Cipher.Salsa
+        Crypto.Cipher.TripleDES
+        Crypto.Cipher.Twofish
+        Crypto.Cipher.Types
+        Crypto.Cipher.Utils
+        Crypto.Cipher.XSalsa
+        Crypto.ConstructHash.MiyaguchiPreneel
+        Crypto.Data.AFIS
+        Crypto.Data.Padding
+        Crypto.ECC
+        Crypto.ECC.Edwards25519
+        Crypto.Debug
+        Crypto.Error
+        Crypto.Hash
+        Crypto.Hash.Algorithms
+        Crypto.Hash.IO
+        Crypto.KEM
+        Crypto.KDF.Argon2
+        Crypto.KDF.BCrypt
+        Crypto.KDF.BCryptPBKDF
+        Crypto.KDF.HKDF
+        Crypto.KDF.PBKDF2
+        Crypto.KDF.Scrypt
+        Crypto.MAC.CMAC
+        Crypto.MAC.HMAC
+        Crypto.MAC.KeyedBlake2
+        Crypto.MAC.KMAC
+        Crypto.MAC.Poly1305
+        Crypto.Number.Basic
+        Crypto.Number.F2m
+        Crypto.Number.Generate
+        Crypto.Number.ModArithmetic
+        Crypto.Number.Nat
+        Crypto.Number.Prime
+        Crypto.Number.Serialize
+        Crypto.Number.Serialize.Internal
+        Crypto.Number.Serialize.Internal.LE
+        Crypto.Number.Serialize.LE
+        Crypto.OTP
+        Crypto.PubKey.Curve25519
+        Crypto.PubKey.Curve448
+        Crypto.PubKey.DH
+        Crypto.PubKey.DSA
+        Crypto.PubKey.ECC.DH
+        Crypto.PubKey.ECC.ECDSA
+        Crypto.PubKey.ECC.Generate
+        Crypto.PubKey.ECC.P256
+        Crypto.PubKey.ECC.Prim
+        Crypto.PubKey.ECC.Types
+        Crypto.PubKey.ECDSA
+        Crypto.PubKey.ECIES
+        Crypto.PubKey.ElGamal
+        Crypto.PubKey.Ed25519
+        Crypto.PubKey.Ed448
+        Crypto.PubKey.EdDSA
+        Crypto.PubKey.MLKEM
+        Crypto.PubKey.MLDSA
+        Crypto.PubKey.MaskGenFunction
+        Crypto.PubKey.Rabin.Basic
+        Crypto.PubKey.Rabin.Modified
+        Crypto.PubKey.Rabin.OAEP
+        Crypto.PubKey.Rabin.RW
+        Crypto.PubKey.Rabin.Types
+        Crypto.PubKey.RSA
+        Crypto.PubKey.RSA.Blinded
+        Crypto.PubKey.RSA.OAEP
+        Crypto.PubKey.RSA.PKCS15
+        Crypto.PubKey.RSA.Prim
+        Crypto.PubKey.RSA.PSS
+        Crypto.PubKey.RSA.Types
+        Crypto.Random
+        Crypto.Random.Entropy
+        Crypto.Random.Entropy.Unsafe
+        Crypto.Random.EntropyPool
+        Crypto.Random.Types
+        Crypto.System.CPU
+        Crypto.Tutorial
+
+    -- -O3 over -O2, which is what GHC passes: measured on x86-64, AES-128-GCM
+    -- 3455 to 3708 MB/s, AES-128-OCB 2187 to 2484, a P-256 base point
+    -- multiplication 71.0 to 59.8 us and SHA-256 312 to 318, with ChaCha20,
+    -- Poly1305, SHA-1 and MD5 within a couple of per cent either way; on Apple
+    -- silicon the same P-256 multiplication goes from 26.0 to 24.3 us.  The
+    -- code that must not branch on a secret does not: the masked selections in
+    -- the curve and field code compile to no conditional jumps at either
+    -- level, and what -O3 adds in cbits/crypton_powm.c is loop control over
+    -- limb counts, which are public.
+    cc-options:       -std=gnu99 -O3
+    c-sources:
+        cbits/curve25519/x25519.c
+        cbits/crypton_modinv.c
+        cbits/argon2/argon2.c
+        cbits/crypton_blake2b.c
+        cbits/crypton_blake2bp.c
+        cbits/crypton_blake2s.c
+        cbits/crypton_blake2sp.c
+        cbits/crypton_blowfish.c
+        cbits/crypton_camellia.c
+        cbits/crypton_chacha.c
+        cbits/crypton_chachapoly.c
+        cbits/crypton_cpu.c
+        cbits/crypton_sysdrg.c
+        cbits/crypton_sysrandom.c
+        -- BearSSL's constant-time AES and GHASH, which cbits/aes/generic.c
+        -- and cbits/aes/gf.c are written on top of.  Unconditional because
+        -- those two are: every one of the three AES branches below names
+        -- them, accelerated or not.
+        cbits/bearssl/aes_ct64.c
+        cbits/bearssl/aes_ct64_dec.c
+        cbits/bearssl/aes_ct64_enc.c
+        cbits/bearssl/dec32le.c
+        cbits/bearssl/ghash_ctmul64.c
+        cbits/crypton_des.c
+        cbits/crypton_ecc.c
+        cbits/crypton_f2m.c
+        cbits/crypton_md2.c
+        cbits/crypton_memxor.c
+        cbits/crypton_md4.c
+        cbits/crypton_md5.c
+        cbits/crypton_pbkdf2.c
+        cbits/crypton_poly1305.c
+        cbits/crypton_powm.c
+        cbits/crypton_powm_ifma.c
+        cbits/crypton_rc4.c
+        cbits/crypton_ripemd.c
+        cbits/crypton_salsa.c
+        cbits/crypton_scrypt.c
+        cbits/crypton_sha1.c
+        cbits/crypton_sha256.c
+        cbits/crypton_sha3.c
+        cbits/crypton_sha512.c
+        cbits/crypton_skein256.c
+        cbits/crypton_skein512.c
+        cbits/crypton_tiger.c
+        cbits/crypton_whirlpool.c
+        cbits/crypton_xsalsa.c
+        cbits/ed25519/ed25519.c
+        cbits/ed25519/ed25519_s2n.c
+        cbits/p256/p256.c
+        cbits/p256/p256_ec.c
+
+    other-modules:
+        Crypto.Number.ModArithmetic.Pub
+        Crypto.PubKey.RSA.Blinded.Internal
+        Crypto.Cipher.AES.Primitive
+        Crypto.Cipher.Blowfish.Primitive
+        Crypto.Cipher.Camellia.Primitive
+        Crypto.Cipher.CAST5.Primitive
+        Crypto.Cipher.DES.Primitive
+        Crypto.Cipher.Twofish.Primitive
+        Crypto.Cipher.Types.AEAD
+        Crypto.Cipher.Types.Base
+        Crypto.Cipher.Types.Block
+        Crypto.Cipher.Types.GF
+        Crypto.Cipher.Types.Stream
+        Crypto.Cipher.Types.Utils
+        Crypto.ECC.Simple.Prim
+        Crypto.ECC.Simple.Types
+        Crypto.Error.Types
+        Crypto.Hash.Blake2
+        Crypto.Hash.Blake2b
+        Crypto.Hash.Blake2bp
+        Crypto.Hash.Blake2s
+        Crypto.Hash.Blake2sp
+        Crypto.Hash.Keccak
+        Crypto.Hash.MD2
+        Crypto.Hash.MD4
+        Crypto.Hash.MD5
+        Crypto.Hash.RIPEMD160
+        Crypto.Hash.SHA1
+        Crypto.Hash.SHA224
+        Crypto.Hash.SHA256
+        Crypto.Hash.SHA3
+        Crypto.Hash.SHA384
+        Crypto.Hash.SHA512
+        Crypto.Hash.SHA512t
+        Crypto.Hash.SHAKE
+        Crypto.Hash.Skein256
+        Crypto.Hash.Skein512
+        Crypto.Hash.Tiger
+        Crypto.Hash.Types
+        Crypto.Hash.Whirlpool
+        Crypto.Internal.Builder
+        Crypto.Internal.ByteArray
+        Crypto.Internal.Compat
+        Crypto.Internal.CompatPrim
+        Crypto.Internal.DeepSeq
+        Crypto.Internal.ECC
+        Crypto.Internal.Endian
+        Crypto.Internal.Imports
+        Crypto.Internal.Poly1305
+        Crypto.Internal.Nat
+        Crypto.Internal.WordArray
+        Crypto.Internal.Words
+        Crypto.Number.Compat
+        Crypto.PubKey.Internal
+        Crypto.Random.ChaChaDRG
+        Crypto.Random.Entropy.Backend
+        Crypto.Random.Entropy.Source
+        Crypto.Random.HmacDRG
+        Crypto.Random.Probabilistic
+        Crypto.Random.SysDRG
+        Crypto.Random.SystemDRG
+
+    default-language: Haskell2010
+    include-dirs:
+        cbits cbits/ed25519 cbits/decaf/include cbits/decaf/p448
+        cbits/argon2
+
+    ghc-options:      -Wall -fwarn-tabs -optc-O3
+    build-depends:
+        base >=4.13 && <5,
+        bytestring <0.13,
+        primitive >=0.9 && <0.10,
+        deepseq <1.6,
+        base16 >=1.0 && <2.1,
+        text <2.2,
+        ram >=0.20.1 && <0.23
+
+    if flag(old_toolchain_inliner)
+        cc-options: -fgnu89-inline
+
+    if ((((((((arch(x86_64) || arch(aarch64)) || arch(loongarch64)) || arch(ppc64le)) || arch(riscv64)) || arch(s390x)) || arch(alpha)) || arch(ppc64)) || arch(sparc64))
+        include-dirs: cbits/include64
+
+    else
+        include-dirs: cbits/include32
+
+    if ((((((((arch(x86_64) || arch(aarch64)) || arch(loongarch64)) || arch(ppc64le)) || arch(riscv64)) || arch(s390x)) || arch(alpha)) || arch(ppc64)) || arch(sparc64))
+        c-sources:
+            cbits/decaf/ed448goldilocks/decaf_all.c
+            cbits/decaf/ed448goldilocks/eddsa.c
+            cbits/decaf/ed448goldilocks/scalar.c
+            cbits/decaf/p448/arch_ref64/f_impl.c
+            cbits/decaf/p448/f_arithmetic.c
+            cbits/decaf/p448/f_generic.c
+            cbits/decaf/utils.c
+
+        include-dirs: cbits/decaf/include/arch_ref64 cbits/decaf/p448/arch_ref64
+
+        -- decaf sizes its field limbs from the arch directory just chosen and
+        -- its scalar limbs from a separate macro that cbits/decaf/include/
+        -- decaf/common.h works out from the compiler, by asking after
+        -- __x86_64__ and the width of uint_fast32_t.  The two answers need
+        -- not agree: on Apple Silicon uint_fast32_t is four bytes, so the
+        -- same aarch64 CPU takes 64-bit field limbs and 32-bit scalar limbs,
+        -- where on Linux it takes 64-bit for both.  Ed448 signing pays 5.5%
+        -- for that (20.69 us against 19.56 on an M4).  The architecture is
+        -- already decided here, so decide this with it.
+        cc-options: -DCRYPTON_DECAF_WORD_BITS=64
+
+    else
+        c-sources:
+            cbits/decaf/ed448goldilocks/decaf_all.c
+            cbits/decaf/ed448goldilocks/eddsa.c
+            cbits/decaf/ed448goldilocks/scalar.c
+            cbits/decaf/p448/arch_32/f_impl.c
+            cbits/decaf/p448/f_arithmetic.c
+            cbits/decaf/p448/f_generic.c
+            cbits/decaf/utils.c
+
+        include-dirs: cbits/decaf/include/arch_32 cbits/decaf/p448/arch_32
+        cc-options: -DCRYPTON_DECAF_WORD_BITS=32
+
+    if ((((((((arch(x86_64) || arch(aarch64)) || arch(loongarch64)) || arch(ppc64le)) || arch(riscv64)) || arch(s390x)) || arch(alpha)) || arch(ppc64)) || arch(sparc64))
+        c-sources: cbits/curve25519/curve25519-donna-c64.c
+
+    else
+        c-sources: cbits/curve25519/curve25519-donna.c
+
+    if (((((arch(i386) || arch(x86_64)) || arch(loongarch64)) || arch(ppc64le)) || arch(riscv64)) || arch(alpha))
+        cpp-options: -DARCH_IS_LITTLE_ENDIAN
+
+    if arch(i386)
+        cpp-options: -DARCH_X86
+
+    if arch(x86_64)
+        cpp-options: -DARCH_X86_64
+
+    -- SSE2 is part of the x86-64 baseline, so this needs no flag and no
+    -- runtime check; i386 keeps the scalar code.
+    if arch(x86_64)
+        cc-options:
+            -DWITH_X86_SSE2 -DWITH_X86_AVX2
+        c-sources:
+            cbits/chacha_avx2.c
+            cbits/chacha_sse2.c
+
+        -- The SHA extensions are not part of the baseline.  Without the
+        -- attributes the only way to reach them is -msha for the whole
+        -- component, which lets the compiler emit them in every file, so
+        -- the path is left out instead.
+        if flag(use_target_attributes)
+            cc-options: -DWITH_X86_SHA_NI
+            c-sources:  cbits/sha1_x86.c
+
+        -- Poly1305, ChaCha20 and the SHA-2 pair from CRYPTOGAMS,
+        -- hand-scheduled.  Poly1305
+        -- there has paths for AVX and AVX2 where the C here has only the
+        -- second, and replaces it entirely; ChaCha20 there is ahead of the
+        -- C from one block up, having vector code for lengths the C takes
+        -- a block at a time.  What either has beyond AVX2 is not asked
+        -- for: no machine here can run it, and a path nothing has executed
+        -- is not worth the few per cent.  See cbits/asm/README.md.
+        cc-options:
+            -DWITH_X86_POLY1305_ASM -DWITH_X86_CHACHA_ASM
+            -DWITH_X86_SHA256_ASM -DWITH_X86_SHA512_ASM -DWITH_X86_SHA3_ASM
+
+        if os(osx)
+            asm-sources:
+                cbits/asm/chacha-x86_64-macosx.S
+                cbits/asm/keccak1600-x86_64-macosx.S
+                cbits/asm/poly1305-x86_64-macosx.S
+                cbits/asm/sha256-x86_64-macosx.S
+                cbits/asm/sha512-x86_64-macosx.S
+
+        elif os(windows)
+            asm-sources:
+                cbits/asm/chacha-x86_64-mingw64.S
+                cbits/asm/keccak1600-x86_64-mingw64.S
+                cbits/asm/poly1305-x86_64-mingw64.S
+                cbits/asm/sha256-x86_64-mingw64.S
+                cbits/asm/sha512-x86_64-mingw64.S
+
+        else
+            asm-sources:
+                cbits/asm/chacha-x86_64-elf.S
+                cbits/asm/keccak1600-x86_64-elf.S
+                cbits/asm/poly1305-x86_64-elf.S
+                cbits/asm/sha256-x86_64-elf.S
+                cbits/asm/sha512-x86_64-elf.S
+
+    -- AWS's s2n-bignum: hand-written, formally verified, constant-time
+    -- assembly for the NIST prime curves, two and a half to three times
+    -- faster than the C it replaces here.  Apache-2.0 OR ISC OR MIT-0, so
+    -- unlike OpenSSL's and BoringSSL's ecp_nistz256 it can be used.  Both
+    -- variants of each routine are built and chosen between in
+    -- cbits/p256/p256_s2n.c -- see cbits/s2n/README.md for why the question
+    -- is a different one on the two architectures.
+    --
+    -- On Windows, x86-64 only.  The vendored files carry the ELF directives
+    -- .type and .size, which neither of Windows' assemblers accepts, and
+    -- assume the System V calling convention unless WINDOWS_ABI is set;
+    -- cbits/s2n/x86_att/_internal_s2n_bignum_x86_att.h, which every one of
+    -- them reaches first, empties the first and sets the second on _WIN32,
+    -- so the vendored files themselves stay as upstream wrote them.  The
+    -- AArch64 files have the same directives and no such header yet, and no
+    -- runner to check one, so Windows on ARM keeps the C.
+    if flag(support_s2n_bignum) && (arch(x86_64) || (arch(aarch64) && !os(windows)))
+        cc-options:   -DCRYPTON_S2N_BIGNUM
+        include-dirs: cbits/s2n/include
+        c-sources:
+            cbits/crypton_ecc_s2n.c
+            cbits/p256/p256_base_table.c
+            cbits/p256/p256_s2n.c
+            cbits/p256/p256_verify.c
+            cbits/p256/p256_wnaf_table.c
+
+        if arch(aarch64)
+            asm-sources:
+                cbits/s2n/arm/bignum_deamont_p384.S
+                cbits/s2n/arm/bignum_montifier.S
+                cbits/s2n/arm/bignum_modinv.S
+                cbits/s2n/arm/curve25519_x25519.S
+                cbits/s2n/arm/curve25519_x25519_alt.S
+                cbits/s2n/arm/curve25519_x25519base.S
+                cbits/s2n/arm/curve25519_x25519base_alt.S
+                cbits/s2n/arm/edwards25519_encode.S
+                cbits/s2n/arm/edwards25519_scalarmulbase.S
+                cbits/s2n/arm/edwards25519_scalarmulbase_alt.S
+                cbits/s2n/arm/bignum_inv_p521.S
+                cbits/s2n/arm/bignum_montinv_p384.S
+                cbits/s2n/arm/bignum_montmul_p384.S
+                cbits/s2n/arm/bignum_montmul_p384_alt.S
+                cbits/s2n/arm/bignum_montsqr_p384.S
+                cbits/s2n/arm/bignum_montsqr_p384_alt.S
+                cbits/s2n/arm/bignum_mul_p521.S
+                cbits/s2n/arm/bignum_mul_p521_alt.S
+                cbits/s2n/arm/bignum_sqr_p521.S
+                cbits/s2n/arm/bignum_sqr_p521_alt.S
+                cbits/s2n/arm/bignum_tomont_p384.S
+                cbits/s2n/arm/bignum_demont_p256.S
+                cbits/s2n/arm/bignum_neg_p256.S
+                cbits/s2n/arm/bignum_tomont_p256.S
+                cbits/s2n/arm/p256_montjadd.S
+                cbits/s2n/arm/p256_montjadd_alt.S
+                cbits/s2n/arm/p256_montjdouble.S
+                cbits/s2n/arm/p256_montjdouble_alt.S
+                cbits/s2n/arm/p256_montjmixadd.S
+                cbits/s2n/arm/p256_montjmixadd_alt.S
+                cbits/s2n/arm/p256_scalarmul.S
+                cbits/s2n/arm/p256_scalarmul_alt.S
+                cbits/s2n/arm/p256_scalarmulbase.S
+                cbits/s2n/arm/p256_scalarmulbase_alt.S
+                cbits/s2n/arm/p384_montjscalarmul.S
+                cbits/s2n/arm/p384_montjscalarmul_alt.S
+                cbits/s2n/arm/p521_jscalarmul.S
+                cbits/s2n/arm/p521_jscalarmul_alt.S
+
+        else
+            asm-sources:
+                cbits/s2n/x86_att/bignum_deamont_p384.S
+                cbits/s2n/x86_att/bignum_modinv.S
+                cbits/s2n/x86_att/curve25519_x25519.S
+                cbits/s2n/x86_att/curve25519_x25519_alt.S
+                cbits/s2n/x86_att/curve25519_x25519base.S
+                cbits/s2n/x86_att/curve25519_x25519base_alt.S
+                cbits/s2n/x86_att/edwards25519_encode.S
+                cbits/s2n/x86_att/edwards25519_scalarmulbase.S
+                cbits/s2n/x86_att/edwards25519_scalarmulbase_alt.S
+                cbits/s2n/x86_att/bignum_deamont_p384_alt.S
+                cbits/s2n/x86_att/bignum_inv_p521.S
+                cbits/s2n/x86_att/bignum_montinv_p384.S
+                cbits/s2n/x86_att/bignum_montmul_p384.S
+                cbits/s2n/x86_att/bignum_montmul_p384_alt.S
+                cbits/s2n/x86_att/bignum_montsqr_p384.S
+                cbits/s2n/x86_att/bignum_montsqr_p384_alt.S
+                cbits/s2n/x86_att/bignum_mul_p521.S
+                cbits/s2n/x86_att/bignum_mul_p521_alt.S
+                cbits/s2n/x86_att/bignum_sqr_p521.S
+                cbits/s2n/x86_att/bignum_sqr_p521_alt.S
+                cbits/s2n/x86_att/bignum_tomont_p384.S
+                cbits/s2n/x86_att/bignum_tomont_p384_alt.S
+                cbits/s2n/x86_att/bignum_demont_p256.S
+                cbits/s2n/x86_att/bignum_demont_p256_alt.S
+                cbits/s2n/x86_att/bignum_neg_p256.S
+                cbits/s2n/x86_att/bignum_tomont_p256.S
+                cbits/s2n/x86_att/bignum_tomont_p256_alt.S
+                cbits/s2n/x86_att/p256_montjadd.S
+                cbits/s2n/x86_att/p256_montjadd_alt.S
+                cbits/s2n/x86_att/p256_montjdouble.S
+                cbits/s2n/x86_att/p256_montjdouble_alt.S
+                cbits/s2n/x86_att/p256_montjmixadd.S
+                cbits/s2n/x86_att/p256_montjmixadd_alt.S
+                cbits/s2n/x86_att/p256_scalarmul.S
+                cbits/s2n/x86_att/p256_scalarmul_alt.S
+                cbits/s2n/x86_att/p256_scalarmulbase.S
+                cbits/s2n/x86_att/p256_scalarmulbase_alt.S
+
+            asm-sources:
+                cbits/s2n/x86_att/bignum_montifier.S
+                cbits/s2n/x86_att/p384_montjscalarmul.S
+                cbits/s2n/x86_att/p384_montjscalarmul_alt.S
+                cbits/s2n/x86_att/p521_jscalarmul.S
+                cbits/s2n/x86_att/p521_jscalarmul_alt.S
+
+            -- Modular exponentiation at RSA sizes, x86-64 only: on AArch64
+            -- crypton's C measures faster than these, so nothing is taken
+            -- for it.  All of them want ADX, which the run-time check in
+            -- cbits/crypton_powm.c asks about before using any.
+            -- Not on macOS: Apple's assembler reads $0 in bignum_emontredc_8n's
+            -- macros as a macro argument and rejects the file.
+            if !os(osx)
+                asm-sources:
+                    cbits/s2n/x86_att/bignum_emontredc_8n.S
+                    cbits/s2n/x86_att/bignum_mul.S
+                    cbits/s2n/x86_att/bignum_sqr.S
+                    cbits/s2n/x86_att/bignum_kmul_16_32.S
+                    cbits/s2n/x86_att/bignum_kmul_32_64.S
+                    cbits/s2n/x86_att/bignum_ksqr_16_32.S
+                    cbits/s2n/x86_att/bignum_ksqr_32_64.S
+                    cbits/s2n/x86_att/bignum_sqr_8_16.S
+                    cbits/s2n/x86_att/bignum_mul_8_16.S
+
+    -- The PQ Code Package's mlkem-native and mldsa-native, vendored under
+    -- cbits/mlkem and cbits/mldsa.  Apache-2.0 OR ISC OR MIT, the same
+    -- three-way form as s2n-bignum above, and by the same authors, so
+    -- crypton takes them on the same terms.  The portable C is built
+    -- everywhere; the hand-written backends are added below where the
+    -- architecture has them.
+    --
+    -- Each wrapper includes its amalgamation once per parameter set, which
+    -- is how one build offers all three.  See cbits/mlkem/crypton_mlkem.c.
+    c-sources:
+        cbits/mlkem/crypton_mlkem.c
+        cbits/mldsa/crypton_mldsa.c
+    include-dirs:
+        cbits/mlkem
+        cbits/mldsa
+
+    -- Windows is left out of the backends for the reason s2n-bignum is:
+    -- the x86-64 assembly is written for the SysV ABI -- upstream guards
+    -- its own backend header on that -- and the AArch64 files carry ELF and
+    -- Mach-O directives and nothing for COFF.  Windows gets the portable C,
+    -- which is the same code every other architecture gets.
+    if ((arch(x86_64) || arch(aarch64)) && !os(windows))
+        cc-options:
+            -DCRYPTON_MLKEM_NATIVE_BACKEND -DCRYPTON_MLDSA_NATIVE_BACKEND
+        asm-options:
+            -DCRYPTON_MLKEM_NATIVE_BACKEND -DCRYPTON_MLDSA_NATIVE_BACKEND
+        asm-sources:
+            cbits/mlkem/crypton_mlkem_asm.S
+            cbits/mldsa/crypton_mldsa_asm.S
+
+        -- What the two packages' own build systems pass for the x86-64
+        -- backend, and only for the assembly: cc-options in a conditional
+        -- are the component's, not the block's, so -mavx2 here would raise
+        -- the baseline of every C file in the library -- Ed25519, Argon2,
+        -- P-256 and the rest -- and gcc would vectorise code that asks for
+        -- no such thing, with nothing to check at runtime.  The backends'
+        -- own AVX2 is all in the .S.  AArch64 needs nothing beyond the
+        -- baseline for the arithmetic, and takes the armv8.4 Keccak only
+        -- where the compiler's own baseline has SHA-3, as on Apple's.
+        if arch(x86_64)
+            asm-options: -mavx2 -mbmi2
+
+    -- Without the attributes, as for SHA-NI above: -march for the whole
+    -- component would let the compiler emit the extensions anywhere.
+    if ((flag(support_aesni) && flag(use_target_attributes)) && arch(aarch64))
+        cc-options: -DWITH_ARMV8_CRYPTO
+        c-sources:
+            cbits/aes/generic.c
+            cbits/aes/gf.c
+            cbits/aes/armv8.c
+            cbits/crypton_aes.c
+
+    -- The same instructions, reached from AArch32.  cbits/aes/armv8.c needs
+    -- nothing changed to compile here: every intrinsic it uses exists in both
+    -- execution states, including the PMULL2 it takes through
+    -- vmull_high_p64, which the compiler lowers to a pair of VMULL.P64.  What
+    -- differs is how the operating system reports the instructions --
+    -- AArch32 has filled AT_HWCAP with older features and puts these in
+    -- AT_HWCAP2 -- which cbits/crypton_cpu.c now asks for.
+    --
+    -- -mfpu is passed whatever use_target_attributes says, unlike the branch
+    -- above, which is left out without it.  AArch32 names an FPU rather than an architecture extension and
+    -- the two compilers spell the function attribute for it differently; a
+    -- global option is safe here, since a compiler emits these instructions
+    -- where an intrinsic asks for them and nowhere else.
+    --
+    -- A soft-float ARM that cannot take -mfpu fails loudly at the first C
+    -- file rather than quietly, and -f-support_aesni is the way out.
+    if (flag(support_aesni) && arch(arm))
+        cc-options: -DWITH_ARMV8_CRYPTO -mfpu=crypto-neon-fp-armv8
+        c-sources:
+            cbits/aes/generic.c
+            cbits/aes/gf.c
+            cbits/aes/armv8.c
+            cbits/crypton_aes.c
+
+    -- POWER8's vector AES and vector carry-less multiply, through the
+    -- CRYPTOGAMS assembly in cbits/asm.  No cc-options beyond the define:
+    -- cbits/aes/ppc8.c calls that assembly rather than using intrinsics of
+    -- its own, and the assembly says .machine "any", so the assembler takes
+    -- the instructions without being told about the processor.
+    --
+    -- Little-endian only.  The generator emits a big-endian flavour from the
+    -- same source, and it is not checked in: nothing here has been able to
+    -- run it, and an AES path that has never been executed is not one to
+    -- ship.  cbits/asm/generate.sh says what adding it would take.
+    if (flag(support_aesni) && arch(ppc64le))
+        cc-options: -DWITH_PPC8_CRYPTO
+        c-sources:
+            cbits/aes/generic.c
+            cbits/aes/gf.c
+            cbits/aes/ppc8.c
+            cbits/crypton_aes.c
+
+        asm-sources:
+            cbits/asm/aesp8-ppc-linux64le.S
+            cbits/asm/ghashp8-ppc-linux64le.S
+
+    if arch(aarch64)
+        cc-options: -DWITH_ARMV8_NEON
+        c-sources:  cbits/chacha_neon.c
+
+        -- The SHA instructions are extensions; left out without the
+        -- attributes, as AES is above.
+        if flag(use_target_attributes)
+            cc-options:
+                -DWITH_ARMV8_SHA1 -DWITH_ARMV8_SHA2 -DWITH_ARMV8_SHA3
+                -DWITH_ARMV8_SHA512
+            c-sources:
+                cbits/sha1_armv8.c
+                cbits/sha256_armv8.c
+                cbits/sha3_armv8.c
+                cbits/sha512_armv8.c
+
+        -- ChaCha20, Poly1305 and SHA-256 from CRYPTOGAMS.  ChaCha20 there runs a
+        -- fifth block through the
+        -- general registers alongside four in the vector ones -- eight
+        -- and six above 512 bytes.  The vector registers hold four states
+        -- and no more, so the rest of the parallelism has to come from the
+        -- integer side, which is a matter of naming registers and so
+        -- cannot be written in C; Poly1305 there is the whole of the
+        -- arithmetic, hand-scheduled, and replaces both the C loops;
+        -- the SHA-1, SHA-256 and Keccak there use the same instructions
+        -- as the intrinsics do but schedule them across a run of blocks
+        -- rather than one at a time.  See
+        -- cbits/asm/README.md.  Windows on AArch64 is left out: the object
+        -- format is neither of these two.
+        if !os(windows)
+            cc-options:
+                -DWITH_ARMV8_CHACHA_ASM -DWITH_ARMV8_POLY1305_ASM
+                -DWITH_ARMV8_SHA1_ASM -DWITH_ARMV8_SHA256_ASM
+                -DWITH_ARMV8_SHA3_ASM
+
+            if os(osx)
+                asm-sources:
+                    cbits/asm/chacha-armv8-ios64.S
+                    cbits/asm/poly1305-armv8-ios64.S
+                    cbits/asm/keccak1600-armv8-ios64.S
+                    cbits/asm/sha1-armv8-ios64.S
+                    cbits/asm/sha256-armv8-ios64.S
+
+            else
+                asm-sources:
+                    cbits/asm/chacha-armv8-linux64.S
+                    cbits/asm/poly1305-armv8-linux64.S
+                    cbits/asm/keccak1600-armv8-linux64.S
+                    cbits/asm/sha1-armv8-linux64.S
+                    cbits/asm/sha256-armv8-linux64.S
+
+    -- No operating system condition.  The processor is asked with cpuid,
+    -- which no kernel is involved in, and crypton_cpu.h turns USE_AESNI on
+    -- from __i386__ or __x86_64__ alone -- so nothing here was ever decided
+    -- by which system it is.  The list that used to stand here named linux,
+    -- freebsd and osx when it arrived from cipher-aes in 2014 and gained
+    -- windows later, each time because someone wanted that one system; it
+    -- was never a statement that the rest could not do this.  What it did
+    -- instead was send OpenBSD, NetBSD, DragonFly, Solaris and illumos down
+    -- the table-driven fallback on processors that have had AES-NI since
+    -- 2010.  The object format still has a say further down, where the GCM
+    -- assembly is chosen, and there ELF is the default.
+    --
+    -- Without the attributes it is left out, as SHA-NI is above.
+    if ((flag(support_aesni) && flag(use_target_attributes)) && (arch(i386) || arch(x86_64)))
+        cc-options: -DWITH_AESNI
+        c-sources:
+            cbits/aes/generic.c
+            cbits/aes/gf.c
+            cbits/aes/x86ni.c
+            cbits/crypton_aes.c
+
+        if flag(support_pclmuldq)
+            cc-options: -DWITH_PCLMUL
+
+            -- AES-GCM from CRYPTOGAMS, which interleaves the counter-mode
+            -- rounds with the multiplies of the block before at
+            -- instruction granularity.  The two do not want the same
+            -- execution ports, so held against each other they cost about
+            -- what the rounds alone cost; written in C the compiler sinks
+            -- every multiply to the end of the group instead.  See
+            -- cbits/asm/README.md.  The assembly is x86-64 only, and is
+            -- checked in per object format since it comes from a
+            -- generator.
+            if arch(x86_64)
+                cc-options: -DWITH_X86_GCM_ASM -DWITH_GCM_FUSED
+                c-sources:
+                    cbits/aes/gcm_fused_x86.c
+                    -- AES-GCM in the 256-bit form of the same two
+                    -- instructions, two blocks to each, which is worth
+                    -- twice the throughput where the processor has them --
+                    -- Zen 3 and Ice Lake onwards.  Nothing to borrow: the
+                    -- wide AES-GCM in OpenSSL and BoringSSL is Apache-2.0,
+                    -- s2n-bignum has no GCM, and the assembly above is
+                    -- 128-bit throughout.  crypton_cpu.c asks the
+                    -- processor before any of it runs.
+                    cbits/aes/gcm_vaes_x86.c
+                    -- and the 512-bit form, four blocks to each, which Ice
+                    -- Lake and Zen 4 onwards have.  Same story about
+                    -- borrowing, and the same run-time question -- with
+                    -- three more bits of XCR0 in it, since these need the
+                    -- operating system to save the AVX-512 state.
+                    cbits/aes/gcm_vaes512_x86.c
+                    cbits/aes/gcm_x86_asm.c
+
+                if os(osx)
+                    asm-sources: cbits/asm/aesni-gcm-x86_64-macosx.S
+
+                elif os(windows)
+                    asm-sources: cbits/asm/aesni-gcm-x86_64-mingw64.S
+
+                else
+                    asm-sources: cbits/asm/aesni-gcm-x86_64-elf.S
+
+    -- Neither of the two branches above.  This was an `else`, which pairs with
+    -- the x86 `if` alone and so fired on AArch64 as well, where the ARMv8
+    -- branch had already named every file it names.  Cabal drops the repeats,
+    -- so nothing was built twice, but the line read as the fallback for a
+    -- platform with no AES instructions and was not one.
+    if !((((flag(support_aesni) && flag(use_target_attributes)) && arch(aarch64)) || (flag(support_aesni) && arch(arm))) || ((flag(support_aesni) && flag(use_target_attributes)) && (arch(i386) || arch(x86_64))) || (flag(support_aesni) && arch(ppc64le)))
+        c-sources:
+            cbits/aes/generic.c
+            cbits/aes/gf.c
+            cbits/crypton_aes.c
+
+    if (arch(x86_64) || (flag(support_sse) && arch(i386)))
+        c-sources:
+            cbits/blake2/sse/blake2b.c
+            cbits/blake2/sse/blake2bp.c
+            cbits/blake2/sse/blake2s.c
+            cbits/blake2/sse/blake2sp.c
+
+        include-dirs: cbits/blake2/sse
+
+    else
+        c-sources:
+            cbits/blake2/ref/blake2b-ref.c
+            cbits/blake2/ref/blake2bp-ref.c
+            cbits/blake2/ref/blake2s-ref.c
+            cbits/blake2/ref/blake2sp-ref.c
+
+        include-dirs: cbits/blake2/ref
+
+    if (arch(x86_64) || (flag(support_sse) && arch(i386)))
+        cpp-options: -DSUPPORT_SSE
+
+        if arch(i386)
+            cc-options: -msse2
+
+    if os(windows)
+        cpp-options:     -DWINDOWS
+        other-modules:   Crypto.Random.Entropy.Windows
+        extra-libraries: advapi32
+        build-depends:   Win32 <2.15
+
+    else
+        other-modules:
+            Crypto.Random.Entropy.SysRandom
+            Crypto.Random.Entropy.Unix
+
+    if (impl(ghc >=0) && flag(integer-gmp))
+        build-depends: integer-gmp <1.2
+
+    if flag(support_deepseq)
+        cpp-options:   -DWITH_DEEPSEQ_SUPPORT
+        build-depends: deepseq
+
+    if flag(check_alignment)
+        cc-options: -DWITH_ASSERT_ALIGNMENT
+
+    if flag(use_target_attributes)
+        cc-options: -DWITH_TARGET_ATTRIBUTES
+
+    if os(ios)
+        cpp-options: -DINSECURE_ENTROPY
+
+test-suite test-crypton
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs
+    hs-source-dirs:   tests
+    other-modules:
+        AFISSpec
+        BlockCipher
+        BlockCipher.AES.CBC
+        BlockCipher.AES.CCM
+        BlockCipher.AES.CTR
+        BlockCipher.AES.ECB
+        BlockCipher.AES.GCM
+        BlockCipher.AES.GCMLong
+        BlockCipher.AES.OCB3
+        BlockCipher.AES.XTS
+        BlockCipher.AESGCMSIVSpec
+        BlockCipher.AESSpec
+        BlockCipher.BlowfishSpec
+        BlockCipher.CamelliaSpec
+        BlockCipher.CAST5Spec
+        BlockCipher.DESSpec
+        BlockCipher.ModesSpec
+        BlockCipher.TripleDESSpec
+        BlockCipher.TwofishSpec
+        ConstructHash.MiyaguchiPreneelSpec
+        Curve25519Spec
+        Curve448Spec
+        ECC.Edwards25519Spec
+        ECCSpec
+        ECDSASpec
+        Ed25519Spec
+        Ed448Spec
+        EdDSASpec
+        HashSpec
+        Imports
+        KDF.Argon2Spec
+        KDF.BCryptPBKDFSpec
+        KDF.BCryptSpec
+        KDF.HKDFSpec
+        KDF.PBKDF2Spec
+        KDF.ScryptSpec
+        MAC.Blake2Spec
+        MAC.CMACSpec
+        MAC.HMACSpec
+        MAC.KMACSpec
+        MAC.Poly1305Spec
+        MAC.Poly1305Vectors
+        Number.F2mSpec
+        NumberSpec
+        OTPSpec
+        PaddingSpec
+        PubKey.DHSpec
+        PubKey.DSASpec
+        PubKey.ECCSpec
+        PubKey.ECDSASpec
+        PubKey.MLKEMSpec
+        PubKey.MLKEMVectors
+        PubKey.MLDSASpec
+        PubKey.MLDSAVectors
+        PubKey.ElGamalSpec
+        PubKey.MGF1Spec
+        PubKey.OAEPSpec
+        PubKey.P256Spec
+        PubKey.PSSSpec
+        PubKey.RabinSpec
+        PubKey.SecrecySpec
+        PubKey.RSASpec
+        EntropySpec
+        RuntimeSpec
+        SysDRGSpec
+        StreamCipher.ChaChaPoly1305Spec
+        StreamCipher.ChaChaSpec
+        StreamCipher.RC4Spec
+        StreamCipher.SalsaSpec
+        StreamCipher.XSalsaSpec
+        Utils
+
+    build-depends:
+        base >=4.13 && <5,
+        bytestring,
+        QuickCheck,
+        crypton,
+        hspec,
+        ram
+
+    build-tool-depends: hspec-discover:hspec-discover
+
+    default-language: Haskell2010
+    ghc-options:
+        -Wall -fno-warn-orphans -fno-warn-missing-signatures -rtsopts
+        -threaded "-with-rtsopts=-N2"
+
+-- The generator behind MonadRandom and a fork made from Haskell.  Its own
+-- executables because the suite above runs with -N2, where GHC does not
+-- support forkProcess, and because the answer may differ between the
+-- threaded runtime and the one without it -- so it is built for both.
+-- Not on Windows, which has no fork and no unix package.
+test-suite test-forkprocess-threaded
+    type:             exitcode-stdio-1.0
+    main-is:          ForkProcess.hs
+    hs-source-dirs:   tests/forkprocess
+    default-language: Haskell2010
+    ghc-options:
+        -Wall -rtsopts -threaded "-with-rtsopts=-N1"
+
+    if os(windows)
+        buildable: False
+    else
+        build-depends:
+            base >=4.13 && <5,
+            bytestring,
+            crypton,
+            unix
+
+test-suite test-forkprocess-unthreaded
+    type:             exitcode-stdio-1.0
+    main-is:          ForkProcess.hs
+    hs-source-dirs:   tests/forkprocess
+    default-language: Haskell2010
+    ghc-options:      -Wall -rtsopts
+
+    if os(windows)
+        buildable: False
+    else
+        build-depends:
+            base >=4.13 && <5,
+            bytestring,
+            crypton,
+            unix
+
+benchmark bench-crypton
+    type:             exitcode-stdio-1.0
+    main-is:          Bench.hs
+    hs-source-dirs:   benchs
+    other-modules:    Number.F2m
+    default-language: Haskell2010
+    ghc-options:      -Wall -fno-warn-missing-signatures
+    build-depends:
+        base >=4.13 && <5,
+        bytestring,
+        crypton,
+        deepseq,
+        ram,
+        random,
+        tasty-bench

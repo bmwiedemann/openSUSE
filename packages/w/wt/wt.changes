@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 23 14:40:44 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Add missing libharu-devel and specific libboost- to Requierd of wt-devel
+- Drop unused BR, like doxygen
+- Modernize build dependencies using pkgconfig
+
+-------------------------------------------------------------------
+Mon Nov 23 12:18:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop mxml-devel Requires from wt-devel: mxml was replaced by rapidxml back in
+  2010 (version 3.1.1).
+
+-------------------------------------------------------------------
 Sat Apr 11 20:34:00 UTC 2026 - Gemini CLI <gemini@suse.com>
 
 - Update to 4.12.6:

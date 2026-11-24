@@ -265,4 +265,12 @@
     <comment>cosmetic change</comment>
     <requestid>1130934</requestid>
   </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>2b7b86ff783b3d16f954015f7bb1a5e2</srcmd5>
+    <version>1.3.0</version>
+    <time>1795520020</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399306</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.18.2
+Version:        4.20.1
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -26,8 +26,9 @@ URL:            https://github.com/mongodb/mongo-python-driver
 Source:         https://files.pythonhosted.org/packages/source/p/pymongo/pymongo-%{version}.tar.gz
 # PATCH-FIX-SUSE: upstream does not care about 32bit
 Patch0:         mongodb-skip-test.patch
-BuildRequires:  %{python_module devel >= 3.10}
-BuildRequires:  %{python_module dnspython >= 2.6.1}
+BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module dnspython >= 2.7.0}
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module numpy}
@@ -40,9 +41,9 @@ BuildRequires:  python-rpm-macros
 Suggests:       mongodb
 %endif
 %if 0%{?python_version_nodots} < 314
-Requires:       python-backports.zstd
+Suggests:       python-backports.zstd
 %endif
-Requires:       python-dnspython >= 2.6.1
+Requires:       python-dnspython >= 2.7.0
 # Same namespace, different implementation (https://github.com/py-bson/bson)
 Conflicts:      python-bson
 %python_subpackages
@@ -59,13 +60,20 @@ implementation on top of pymongo.
 
 %build
 export CFLAGS="%{optflags}"
-%pyproject_wheel
+%{python_expand #
+# hatch_build.py runs an in-place build_ext and globs *all* built shared
+# objects; remove artifacts between flavor builds
+rm -fv bson/*.so pymongo/*.so
+$python -m build -wn -o build .
+}
 
 %install
 %pyproject_install
+%{python_expand #
 # do we really need C sources installed?
-%python_expand rm -v %{buildroot}%{$python_sitearch}/bson/*.{c,h}
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+find %{buildroot}%{$python_sitearch} \( -name '*.c' -o -name '*.h' \) -print -delete
+%fdupes %{buildroot}%{$python_sitearch}
+}
 
 %check
 # tests rely on working DNS which is not available during build

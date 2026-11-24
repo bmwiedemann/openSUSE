@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tls
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,73 +17,77 @@
 
 
 %global pkg_name tls
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        2.4.6
+Name:           ghc-%pkg_name
+Version:        2.5.3
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%pkg_name-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-bytestring-devel
-BuildRequires:  ghc-base16-bytestring-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cereal-devel
-BuildRequires:  ghc-cereal-prof
 BuildRequires:  ghc-crypton-asn1-encoding-devel
-BuildRequires:  ghc-crypton-asn1-encoding-prof
 BuildRequires:  ghc-crypton-asn1-types-devel
-BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-devel
-BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-crypton-x509-devel
-BuildRequires:  ghc-crypton-x509-prof
 BuildRequires:  ghc-crypton-x509-store-devel
-BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-crypton-x509-validation-devel
-BuildRequires:  ghc-crypton-x509-validation-prof
 BuildRequires:  ghc-data-default-devel
-BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-ech-config-devel
-BuildRequires:  ghc-ech-config-prof
 BuildRequires:  ghc-hpke-devel
-BuildRequires:  ghc-hpke-prof
-BuildRequires:  ghc-mlkem-devel
-BuildRequires:  ghc-mlkem-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
-BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-ram-devel
-BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-serialise-devel
-BuildRequires:  ghc-serialise-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-time-devel
-BuildRequires:  ghc-unix-time-prof
 BuildRequires:  ghc-zlib-devel
-BuildRequires:  ghc-zlib-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base16-bytestring-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-cereal-prof
+BuildRequires:  ghc-crypton-asn1-encoding-prof
+BuildRequires:  ghc-crypton-asn1-types-prof
+BuildRequires:  ghc-crypton-prof
+BuildRequires:  ghc-crypton-x509-prof
+BuildRequires:  ghc-crypton-x509-store-prof
+BuildRequires:  ghc-crypton-x509-validation-prof
+BuildRequires:  ghc-data-default-prof
+BuildRequires:  ghc-ech-config-prof
+BuildRequires:  ghc-hpke-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-network-prof
+BuildRequires:  ghc-ram-prof
+BuildRequires:  ghc-random-prof
+BuildRequires:  ghc-serialise-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unix-time-prof
+BuildRequires:  ghc-zlib-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base64-bytestring-devel
-BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-time-hourglass-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base64-bytestring-prof
+BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-time-hourglass-prof
+%endif
 %endif
 
 %description
@@ -99,24 +103,28 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
+cp -p %{SOURCE1} %pkg_name.cabal
 
 %build
 %ghc_lib_build
@@ -139,9 +147,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

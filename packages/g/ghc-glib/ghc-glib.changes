@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Tue Jun  9 13:33:11 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Apply "adapt-to-rts-api-change-in-ghc-9.12.x.patch" to fix a

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Nov 24 00:25:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.20.1:
+  * Fix getMore commands in load-balanced mode not retrying on retryable
+    overload errors
+  * Fix cancelled async commands missing a correlating CommandFailedEvent
+    before CancelledError propagates
+  * Sanitize parsing error messages (CVE-2026-129927, bsc#1291084)
+  * Improve credential validation
+  * Report detected coding agents in client.env.agent handshake metadata
+  * Remove beta PREFIXPREVIEW, SUFFIXPREVIEW, and SUBSTRINGPREVIEW query
+    types in favor of PREFIX, SUFFIX, and SUBSTRING
+  * Remove deprecated text_opts parameter of encrypt() and TextOpts class
+    in favor of string_opts and StringOpts
+  * Align C extension and pure-Python BSON decoders for non-16-byte UUID
+    subtypes 3 and 4
+  * Fix MongoClient(maxPoolSize=0, minPoolSize>0) raising ValueError by
+    treating maxPoolSize=0 as unlimited
+  * Reject 24-character ObjectId strings containing whitespace with
+    InvalidId and return False from ObjectId.is_valid()
+  * Fix Cursor and AsyncCursor let type annotation to Optional[Mapping]
+  * Disable TLS session reuse on Python 3.11 due to a CPython memory leak
+  * Fix AsyncMongoClient failing to recover when a replica set member
+    removes itself from the topology
+  * Fix signed integer overflow in C extension BSON buffer growth past
+    1GiB
+  * Add support for Python 3.15
+  * Drop support for Python 3.9 and 3.10 (Python 3.11+ now required)
+  * Remove support for PyPy
+  * Remove deprecated Algorithm.RANGEPREVIEW and QueryType.RANGEPREVIEW
+  * Add support for running synchronous and asynchronous clients in
+    subinterpreters (Python 3.14+)
+  * Add HTTP proxy support for KMS requests via kms_connect_callback,
+    HTTPProxyKMSConnect, and AsyncHTTPProxyKMSConnect
+  * Add srv_host_validator callback argument to MongoClient and
+    AsyncMongoClient
+  * Allow srvAllowedHostsSuffix to be a single reserved label (e.g.,
+    localhost, test, internal)
+  * Fix synchronous client deadlock under gevent when a greenlet is
+    killed while returning a connection to the pool
+  * Compare full DriverInfo for append_metadata() deduplication and
+    reject '|' delimiters in DriverInfo fields
+  * Fix driver.name and driver.version '|' alignment and 512-byte
+    truncation in handshake metadata
+  * Fix SRV polling failing to update topology when one returned host is
+    invalid
+  * Fix C extension BSON decoder accepting documents whose element data
+    overlaps the document terminator
+  * Fix pure-Python decode_all() accepting trailing partial documents
+    instead of raising InvalidBSON
+- Use -m build to build the module so we can clean up between builds.
+
+-------------------------------------------------------------------
 Tue Sep 29 05:57:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 4.18.2 (bsc#1282827, bsc#1282845, bsc#1282844):

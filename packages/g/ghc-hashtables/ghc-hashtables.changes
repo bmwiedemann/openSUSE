@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:27 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Thu Jan 23 03:41:55 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update hashtables to version 1.4.2.

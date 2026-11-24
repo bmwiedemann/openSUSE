@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.9.4
+Version:        2.0
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later

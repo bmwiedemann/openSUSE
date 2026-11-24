@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-persistent
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,93 +17,98 @@
 
 
 %global pkg_name persistent
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        2.17.1.0
+Name:           ghc-%pkg_name
+Version:        2.18.1.0
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-attoparsec-aeson-devel
-BuildRequires:  ghc-attoparsec-aeson-prof
 BuildRequires:  ghc-attoparsec-devel
-BuildRequires:  ghc-attoparsec-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base64-bytestring-devel
-BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-blaze-html-devel
-BuildRequires:  ghc-blaze-html-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-conduit-devel
-BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-fast-logger-devel
-BuildRequires:  ghc-fast-logger-prof
 BuildRequires:  ghc-http-api-data-devel
-BuildRequires:  ghc-http-api-data-prof
 BuildRequires:  ghc-lift-type-devel
-BuildRequires:  ghc-lift-type-prof
 BuildRequires:  ghc-megaparsec-devel
-BuildRequires:  ghc-megaparsec-prof
 BuildRequires:  ghc-monad-logger-devel
-BuildRequires:  ghc-monad-logger-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-path-pieces-devel
-BuildRequires:  ghc-path-pieces-prof
 BuildRequires:  ghc-replace-megaparsec-devel
-BuildRequires:  ghc-replace-megaparsec-prof
 BuildRequires:  ghc-resource-pool-devel
-BuildRequires:  ghc-resource-pool-prof
 BuildRequires:  ghc-resourcet-devel
-BuildRequires:  ghc-resourcet-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-scientific-devel
-BuildRequires:  ghc-scientific-prof
 BuildRequires:  ghc-semigroupoids-devel
-BuildRequires:  ghc-semigroupoids-prof
 BuildRequires:  ghc-silently-devel
-BuildRequires:  ghc-silently-prof
 BuildRequires:  ghc-template-haskell-devel
-BuildRequires:  ghc-template-haskell-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-th-lift-instances-devel
-BuildRequires:  ghc-th-lift-instances-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unliftio-core-devel
-BuildRequires:  ghc-unliftio-core-prof
 BuildRequires:  ghc-unliftio-devel
-BuildRequires:  ghc-unliftio-prof
 BuildRequires:  ghc-unordered-containers-devel
-BuildRequires:  ghc-unordered-containers-prof
 BuildRequires:  ghc-vault-devel
-BuildRequires:  ghc-vault-prof
 BuildRequires:  ghc-vector-devel
-BuildRequires:  ghc-vector-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-attoparsec-aeson-prof
+BuildRequires:  ghc-attoparsec-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base64-bytestring-prof
+BuildRequires:  ghc-blaze-html-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-conduit-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-fast-logger-prof
+BuildRequires:  ghc-http-api-data-prof
+BuildRequires:  ghc-lift-type-prof
+BuildRequires:  ghc-megaparsec-prof
+BuildRequires:  ghc-monad-logger-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-path-pieces-prof
+BuildRequires:  ghc-replace-megaparsec-prof
+BuildRequires:  ghc-resource-pool-prof
+BuildRequires:  ghc-resourcet-prof
+BuildRequires:  ghc-scientific-prof
+BuildRequires:  ghc-semigroupoids-prof
+BuildRequires:  ghc-silently-prof
+BuildRequires:  ghc-template-haskell-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-th-lift-instances-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unliftio-core-prof
+BuildRequires:  ghc-unliftio-prof
+BuildRequires:  ghc-unordered-containers-prof
+BuildRequires:  ghc-vault-prof
+BuildRequires:  ghc-vector-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-quickcheck-instances-devel
-BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-shakespeare-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-quickcheck-instances-prof
 BuildRequires:  ghc-shakespeare-prof
+%endif
 %endif
 
 %description
@@ -120,24 +125,28 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
+cabal-tweak-dep-ver template-haskell '<2.24' '<2.25'
 
 %build
 %ghc_lib_build
@@ -160,9 +169,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

@@ -1092,4 +1092,41 @@
     as `/dev/zero`, window logos and background images must now be regular files.</comment>
     <requestid>1398838</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>b55aebf4adf89947db9074329163fb44</srcmd5>
+    <version>0.51.1</version>
+    <time>1795520389</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.51.1:
+  * A new `clear_bell_indicators` action to clear the bell indicators of all
+    windows, or windows matching an expression, without needing to focus them.
+    This also dismisses system attention requests on macOS and X11 (#10916)
+    - https://sw.kovidgoyal.net/kitty/actions/#action-clear_bell_indicators
+  * Launch wrapper: Allow the wrapper to keep windows created with
+    `launch --hold` open itself, so that the shell runs inside the wrapper,
+    via a new hold field in LaunchContext and a new LaunchPrefix return type.
+    Fix the wrapper not being used for programs run in an already running
+    panel or quick access terminal in single instance mode (#10901, #10900)
+    - https://sw.kovidgoyal.net/kitty/launch/#launch-wrapper
+    - https://sw.kovidgoyal.net/kitty/launch/#cmdoption-launch-hold
+  * launch: Run the program by name instead of resolving it to a full path
+    first, so that wrappers look it up in their own `PATH` and the program sees
+    itself invoked by name, as when run from a shell. Programs found only via
+    `exe_search_path` are still run via their full path (#10914)
+    - https://sw.kovidgoyal.net/kitty/launch/
+    - https://sw.kovidgoyal.net/kitty/glossary/#envvar-PATH
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.exe_search_path
+  * `window_title_template`: Add `{window}` with the window id, working
+    directory and size (#10905)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.window_title_template
+  * Window drag and drop: In layouts that can only reorder windows, such as
+    Tall and Grid, highlight the whole target window and have the dropped
+    window take its place. In the Splits layout, dropping onto the side of a
+    window that the dragged window is already on now swaps them (#10908)
+  * Security: Fix programs running in a window being able to inject arbitrary
+    commands into saved session files via line breaks in the working directory
+    or user variables. Fix a malicious remote drop source in the dnd kitten
+    or sender in the file transfer protocol being able to write files outside</comment>
+    <requestid>1400062</requestid>
+  </revision>
 </revisionlist>

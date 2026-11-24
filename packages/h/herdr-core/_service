@@ -1,0 +1,30 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/herdrdev/herdr-core.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/v0.1.21</param>
+    <!-- vendor/ghostty is the Ghostty checkout that crates/ghostty-vt builds
+         libghostty-vt from; the build needs it, so it goes into the tarball -->
+    <param name="submodules">enable</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">herdr-core</param>
+    <param name="compression">zst</param>
+    <!-- build exactly what upstream's Cargo.lock pins: the tree is only tested
+         against it -->
+    <param name="update">false</param>
+    <param name="respect-lockfile">true</param>
+    <!-- upstream's vendor/ holds the Ghostty submodule, not crates, so the
+         crates go to vendor-crates/ instead of over it -->
+    <param name="tag">crates</param>
+  </service>
+</services>

@@ -1,4 +1,185 @@
 -------------------------------------------------------------------
+Fri Nov  6 06:59:56 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.4.21.
+  ## 3.4.21
+
+  Requires network 3.2.12.
+
+  * `setUnsafeClose` closes connections with network's `unsafeClose` and
+    `unsafeGracefulClose`.  Off by default, since a `responseRaw`
+    application may leave threads on the socket.
+  * The listening socket is closed with `unsafeClose` once the accept loop
+    has ended.
+  * Sends use network's `sendAllWith` on every platform, so the timeout
+    reaches a send on Windows too.
+  * An HTTP/2 connection which ends normally is no longer reported to
+    `settingsOnException` as http2's `ConnectionIsClosed`; the default
+    printed it for every such connection.
+
+  ## 3.4.20
+
+  * Building with GHC 9.0 again.
+    [#1161](https://github.com/yesodweb/wai/issues/1161)
+
+  ## 3.4.19
+
+  * Security: `Host` is validated.  A HTTP/1.1 request without one, and any
+    request with more than one, is refused: a router reading the first and an
+    application reading `requestHeaderHost` could disagree about which host a
+    request was for.
+    [#1152](https://github.com/yesodweb/wai/issues/1152)
+  * Security: a `Range` which does not begin inside the file is answered 416,
+    rather than dropping the connection with no answer at all.
+    [#1153](https://github.com/yesodweb/wai/issues/1153)
+  * Security: `packIntegral` counts its digits by division.  The `Double`
+    logarithm it used was one short from 10^15 up, and the last digit was
+    written before the buffer.
+    [#1154](https://github.com/yesodweb/wai/issues/1154)
+  * Security: the HTTP/2 connection a GOAWAY for weak TLS ends is no longer
+    served afterwards, and that GOAWAY now follows the SETTINGS frame which
+    RFC 9113 has a server send first.
+    [#1155](https://github.com/yesodweb/wai/issues/1155)
+  * Security: the HTTP/2 `response` continuation is not called a second time
+    when an application throws after its response has gone out.
+    [#1156](https://github.com/yesodweb/wai/issues/1156)
+  * `InvalidRequest` gains `BadHost`.
+    [#1152](https://github.com/yesodweb/wai/issues/1152)
+  * Validate field names with a lookup table.
+    [#1157](https://github.com/yesodweb/wai/issues/1157)
+
+  ## 3.4.18
+
+  `Internal` gains `Listener (..)`, `noListener`, `makeListener`,
+  `AcceptStopped (..)` and `runSettingsConnectionMakerSecureWith`.  Requires
+  network 3.2.10, recv 0.1.3 and time-manager 0.5.
+
+  * Event poll for accept loop.
+    [#1123](https://github.com/yesodweb/wai/pull/1123)
+  * Give up on the accept and the receive rather than interrupt them.
+    [#1143](https://github.com/yesodweb/wai/pull/1143)
+  * recv: a receive the caller can give up on.
+    [#1142](https://github.com/yesodweb/wai/pull/1142)
+  * warp: let the thread manager own the connections.
+    [#1128](https://github.com/yesodweb/wai/pull/1128)
+
+  ## 3.4.17
+
+  * Security: `Transfer-Encoding` is read as the comma separated list RFC 9112
+    defines, and a framing warp and a proxy could read differently is refused.
+    [#1147](https://github.com/yesodweb/wai/issues/1147)
+  * Security: a `Content-Length` must be digits which fit in an `Int` and
+    repeated ones must agree.
+    [#1148](https://github.com/yesodweb/wai/issues/1148)
+  * Security: a header field name must be a non-empty token, which also refuses
+    obs-fold continuation lines.
+    [#1149](https://github.com/yesodweb/wai/issues/1149)
+  * Security: a bare CR or a NUL in a header field line is refused.
+    [#1151](https://github.com/yesodweb/wai/issues/1151)
+  * Security: the chunked body parser keeps to RFC 9112: chunk sizes, the CRLF
+    after a chunk, size lines split over several reads, and the trailer section.
+    [#1150](https://github.com/yesodweb/wai/issues/1150)
+  * warp: a chunked request body cut off mid-chunk reaches the application as
+    complete.
+    [#1129](https://github.com/yesodweb/wai/issues/1129)
+  * `InvalidRequest` gains `UnsupportedTransferEncoding`, `AmbiguousBodyLength`,
+    `BadFieldName`, `BadHeaderLine` and `BadChunkedBody`, one for each of the
+    five above.
+  * Allow time-manager 0.5.
+
+  ## 3.4.16
+
+  * Graceful shutdown no longer stops while a connection it accepted is
+    unserved. The connection counter it waits on is now raised when the accept
+    loop accepts a connection rather than when the thread serving it is
+    scheduled, closing a window in which an accepted connection was invisible
+    to the shutdown.
+    [#1104](https://github.com/yesodweb/wai/pull/1104).
+  * Slight performance increase by not blocking on receiving a request if the
+    socket already has bytes waiting. (using `receiveNoWait` from `recv-0.1.2`)
+    [#1107](https://github.com/yesodweb/wai/pull/1107).
+  * Reviewed when to introduce memory barriers when handling `IORef`s.
+    Documented most usage and introduced memory barriers in situations that might
+    possibly be used in more than one thread.
+    [#1112](https://github.com/yesodweb/wai/pull/1112).
+  * Add `setOnConnectionException` and `getOnConnectionException` to expose the
+    peer for exceptions escaping connection workers, including TLS setup failures
+    before a request exists. The existing exception observer remains the default.
+    [#1114](https://github.com/yesodweb/wai/pull/1114)
+    (fixes [#1113](https://github.com/yesodweb/wai/issues/1113))
+
+  ## 3.4.15
+
+  * Support `103 Early Hints` over HTTP/2: the HTTP/2 handler installs
+    `requestSendEarlyHints`, so a WAI application can emit informational responses
+    ahead of the final response.
+    [#1085](https://github.com/yesodweb/wai/pull/1085).
+  * Rework keep alive logic for HTTP/1.X so connections won't be automatically
+    closed on HEAD requests anymore. Should conform more to spec in general.
+    Should also reliably close connection when user created `Response` headers
+    contain a `Connection: close` entry (HTTP/1.1).
+    [#1086](https://github.com/yesodweb/wai/pull/1086)
+  * Replace multiline header value support with sanitizing newlines and NUL bytes
+    with spaces. (as per RFC 9110 section 5.5)
+    [#1086](https://github.com/yesodweb/wai/pull/1086)
+  * Size for responses in `Maybe Integer` argument of `settingsLogger` now
+    consistently and always gives amount of bytes of the sent raw __message body__.
+    It will only be `Nothing` when using `responseRaw` (mostly used for websockets)
+    [#1086](https://github.com/yesodweb/wai/pull/1086)
+      * `responseFile`: no change, gives size of file (part)
+      * `responseBuilder/responseLBS`:
+          * included the status and header lines, now fixed
+          * large `ByteString` chunks would not get counted, now fixed
+      * `responseStream`: now counts bytes of body sent
+      * `responseRaw`: will always be `Nothing`
+  * Rework internal indexed headers to records for performance and to remove
+    dependencies on `array`.
+    [#1092](https://github.com/yesodweb/wai/pull/1092) [#1093](https://github.com/yesodweb/wai/pull/1093)
+
+  ## 3.4.14
+
+  * Important bugfix to not deadlock on empty file descriptors if the cause of
+    the file descriptor exhaustion is outside of the server's control.
+    (i.e. the server does not have any running connections and can't use a file
+    descriptor to create the next connection)
+    [#1084](https://github.com/yesodweb/wai/pull/1084)
+
+  ## 3.4.13.1
+
+  * Bugfix to fall back to "blocking `recv`" when on Windows systems and when
+    using `network < 3.2.2`.
+    [#1077](https://github.com/yesodweb/wai/pull/1077)
+
+  ## 3.4.13
+
+  * Change graceful shutdown logic to stop accepting data from idle connections,
+    but to wait for busy `Application`s, adding `Connection: close` headers to
+    responses if the server is shutting down.
+    This should make sure the server doesn't wait for idle keep-alive connections.
+  * Expose a broader way to access internal state like the open connection `Counter`
+    and whether the server is currently `ShuttingDown` or not.
+    Users can use `makeSettingsAndServerState` to get a `ServerState` while
+    making `defaultSettings`.
+    [#1071](https://github.com/yesodweb/wai/pull/1071)
+
+  ## 3.4.12
+
+  * Respond with `Connection: close` header if connection is to be closed after a request.
+    [#958](https://github.com/yesodweb/wai/pull/958)
+
+  ## 3.4.11
+
+  * Expose a way to access the open connection `Counter` with `makeSettingsAndCounter`,
+    and `getCount` to be able to monitor the current open connections.
+  * Added getter function to get the open connection counter from the `Settings` with
+    `getOpenConnectionCounter`.
+    [#1050](https://github.com/yesodweb/wai/pull/1050)
+
+  ## 3.4.10
+
+  * Using newest dependencies
+
+-------------------------------------------------------------------
 Sat Sep 13 19:29:59 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.4.9.

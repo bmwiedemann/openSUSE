@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        5.14.3
+Version:        6.0.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -90,9 +90,9 @@ Summary:        Apache configuration for %{name}
 Group:          Productivity/Networking/Web/Utilities
 BuildRequires:  apache2
 Requires:       apache2
-Requires:       mod_php_any >= 7.2.5
+Requires:       mod_php_any >= 8.1.0
 Recommends:     apache2-mod_geoip
-Supplements:    packageand(apache2:%name)
+Supplements:    (apache2 and %name)
 
 %description apache
 This subpackage contains the Apache configuration files
@@ -234,7 +234,6 @@ fi
 %attr(0644,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/piwik.js
 %attr(0644,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/js/piwik.min.js
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/console
-%attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/cron/archive.sh
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/misc/log-analytics/import_logs.py
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/pear/archive_tar/sync-php4
 %attr(0770,%{apache_user},%{apache_group}) %{apache_serverroot}/%{name}/vendor/wikimedia/less.php/bin/lessc

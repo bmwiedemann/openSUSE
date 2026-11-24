@@ -341,4 +341,12 @@ are simple additions, filling out missing functionality.</comment>
     <comment>version update</comment>
     <requestid>1321134</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>a9b8b9899464075f1a7b2883694dff2c</srcmd5>
+    <version>1.8.1</version>
+    <time>1795519744</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399167</requestid>
+  </revision>
 </revisionlist>

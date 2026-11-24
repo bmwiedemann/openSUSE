@@ -18,10 +18,10 @@
 
 %define shlib lib%{name}0
 %define v_maj 0
-%define v_min 8
-%define v_pat 10
+%define v_min 9
+%define v_pat 0
 Name:           davix
-Version:        0.8.10
+Version:        0.9.0
 Release:        0
 Summary:        File management over HTTP-based protocols
 License:        LGPL-2.1-or-later
@@ -34,10 +34,10 @@ BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  cmake(GTest)
-BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(gsoapssl++)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(uuid)
 
@@ -70,13 +70,13 @@ This package provides the headers and sources needed for developing
 applications using davix.
 
 %package tests
-Summary:        Test suite for %{name}
+Summary:        Test suite for davix
 Requires:       %{shlib} = %{version}
 
 %description tests
-The %{name}-tests package contains test executables that can be used
-to verify the functionality of the installed %{name} package.
-These are the same tests run during the package build (%check section).
+The davix-tests package contains test executables that can be used
+to verify the functionality of the installed davix package.
+These are the same tests run during the package build (check section).
 
 %prep
 %autosetup -p1
@@ -122,7 +122,7 @@ rm -fr %{buildroot}%{_datadir}/doc/davix
 
 %files devel
 %{_libdir}/*.so
-%{_includedir}/*
+%{_includedir}/davix/
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/libdavix.3%{?ext_man}
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:45 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Jan  1 17:36:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update cryptohash-md5 to version 0.11.101.0 revision 6.

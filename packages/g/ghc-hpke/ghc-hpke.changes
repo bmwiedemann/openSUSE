@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Tue Oct 27 08:04:58 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hpke to version 0.4.0.
+  ## 0.4.0
+
+  * **Breaking**: `nEnc` and `nTag` return `Maybe Int`, with `Nothing` for an
+    identifier they do not know, rather than `0`.
+  * `seal` is safe to call from several threads: each call takes its own
+    sequence number, so no two share a nonce.  `open` is serialized.
+  * `seal` and `open` throw `MessageLimitReachedError` before the sequence
+    number would wrap, as RFC 9180 section 5.2 requires.
+  * AEAD tags are compared in constant time.
+  * A ChaCha20-Poly1305 decryption failure is an `OpenError`, not a
+    `SealError`.
+  * `Show` of an unknown `KDF_ID` or `KEM_ID` uses the type's name.
+  * The lower bound on base moves to 4.9.
+
+  ## 0.3.0
+
+  * A receiver authenticates a sender by its **public** key.  `setupBaseR`,
+    `setupPSKR` and `setupR` took the sender's secret key for the
+    authenticated modes and derived the public one from it; RFC 9180 section
+    4.1 is `AuthDecap(enc, skR, pkS)`, and a receiver has only the public one.
+    As it stood, `mode_auth` and `mode_auth_psk` could not be used by a real
+    receiver.  **Breaking**: those three now take a `Maybe EncodedPublicKey`.
+  * DHKEM is an instance of crypton's `Crypto.KEM.KEM`, in the new
+    `Crypto.HPKE.DHKEM`, with one type per suite RFC 9180 registers.
+    `setupS` and `setupR` go through the class rather than reaching for the
+    group directly.
+  * `toPublicKey` gives the public key that goes with a secret key, for the
+    `KEM_ID` named.
+  * The lower bound on crypton moves to 2.1.8, which is where `Crypto.KEM` is.
+
+  ## 0.2.1
+
+  * `Show EncodedSecretKey` no longer prints the key.  `Show` is what `print`,
+    a message built with `error`, an exception and a test framework's failure
+    output all reach for, so it is the instance a key travels on when nobody
+    meant to send it anywhere; it now renders `<secret>`, and
+    `Crypto.Debug.debugShow` returns the hexadecimal it used to.
+    `EncodedPublicKey` is unchanged.
+    [#2](https://github.com/kazu-yamamoto/hpke/pull/2)
+  * The lower bound on crypton moves to 2.0, which is where `Crypto.Debug` is.
+
+  ## 0.2.0
+
+  * Breaking change: `exportS` and `exportR` return `Either HPKEError Key`
+    rather than `Key`.  RFC 9180 section 5.3 allows an export of at most
+    `255 * Nh` octets and the length is the caller's to choose, so the refusal
+    now has somewhere to go.  Nothing was total here before -- a length beyond
+    65535 did not fit the two octets `LabeledExpand` writes it into, and
+    crypton raised -- and from crypton 2.0.0 the shorter limit raises as well.
+  * Breaking change: `HPKEError` gains `ExportError`, which is what the above
+    reports.  It is appended, so the existing constructors are where they
+    were, but an exhaustive `case` without a wildcard will warn.
+  * Supporting crypton 2.0.
+
+-------------------------------------------------------------------
 Fri Mar 10 23:54:11 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hpke to version 0.1.0.

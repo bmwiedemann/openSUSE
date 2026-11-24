@@ -44,4 +44,17 @@
   1.2	kraih Tue May 22 14:00:00 CEST 2026</comment>
     <requestid>1393995</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1b364ed2f2f01b940180ec4bf9a9b97a</srcmd5>
+    <version>2.40.0</version>
+    <time>1795520334</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.40.0 (2.04)
+   see /usr/share/doc/packages/perl-File-Unpack2/Changes
+  2.04	kraih Thu Nov 19 11:40:00 CET 2026
+    - Fixed tarballs with directories lacking write or search permission (such as
+      npm's pngjs-5.0.0.tgz) failing to unpack when their members are not in
+      tree order.</comment>
+    <requestid>1399975</requestid>
+  </revision>
 </revisionlist>

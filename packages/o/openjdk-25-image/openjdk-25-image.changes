@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 23 22:17:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- split into -base/-micro variants
+
+-------------------------------------------------------------------
 Thu Jun 18 17:22:43 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - only clean specific files in /run

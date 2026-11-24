@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 15 23:37:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tar to version 0.7.2.0.
+  ## 0.7.2.0 Bodigrim <andrew.lelechenko@gmail.com> July 2026
+
+    * Allow writing entries with strings containing the entire set of Latin-1 encoding,
+      so that at least we can write any entry we can read.
+
+  ## 0.7.1.0 Bodigrim <andrew.lelechenko@gmail.com> April 2026
+
+    * Support long file paths and symlinks in PAX format.
+    * Export `writeEntry`, `writeEntry'` and `writeTrailer`.
+
+  ## 0.7.0.0 Bodigrim <andrew.lelechenko@gmail.com> September 2025
+
+    This release fixes a long-standing issue with exhaustion of file handles
+    (thanks to Oleg Grenrus).
+
+    * Extend `GenEntries` with yet another type argument for file contents.
+    * Add `write' :: [GenEntry OsPath TarPath LinkTarget] -> IO LazyByteString`.
+    * Add `pack' :: FilePath -> [FilePath] -> IO [GenEntry OsPath TarPath LinkTarget]`.
+
+-------------------------------------------------------------------
 Wed Oct  8 23:27:01 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update tar to version 0.6.4.0 revision 4.

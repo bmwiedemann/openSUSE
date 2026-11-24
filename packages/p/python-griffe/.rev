@@ -7,4 +7,32 @@
     <comment>Required by python-mistral-vibe</comment>
     <requestid>1347736</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9160ca5f2f1295e0701ce09c4841d817</srcmd5>
+    <version>2.4.1</version>
+    <time>1795520424</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.1:
+  * Load symbols gated behing `__getattr__` during dynamic
+    analysis (3faeeb1 by Timothée Mazzucotelli).
+  * Stop checking attribute values (0670d03 by Timothée
+    Mazzucotelli). Issue-506
+  * Expose `reference_path` in addition to `canonical_path`
+    (2f6b419 by Timothée Mazzucotelli). Issue-448
+  * Preserve standalone named expression parentheses (dc6300d by
+    Alperen). PR-488, Co-authored-by: Timothée Mazzucotelli
+    &lt;dev@pawamoy.fr&gt;
+  * Propagate `public` value to inherited members (aliases)
+    (8b94205 by Timothée Mazzucotelli). Issue-495, PR-503, Co-
+    authored-by: Sydney Duckworth
+    &lt;sydduckworth@users.noreply.github.com&gt;
+  * Prune function bodies from source before building AST
+    (657ce96 by Timothée Mazzucotelli). PR-489
+  * This requires the `griffe[faster]` extra. Griffe is fast by
+    default so this performance improvement will only be
+    noticeable in projects with *a lot of Python code*.
+- Refresh patch static-version.patch
+- Remove multibuild, this no longer ships tests (they have moved)</comment>
+    <requestid>1400080</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:02 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Sep 22 14:51:38 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update setlocale to version 1.0.0.10 revision 7.

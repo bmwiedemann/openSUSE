@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:15:46 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-validation to version 1.10.3.
+  ## 1.10.3
+
+  MD2 and MD5 signatures are rejected, and certification paths are built
+  with backtracking.
+
+  * Harden certificate validation
+    [#44](https://github.com/kazu-yamamoto/crypton-certificate/pull/44)
+  * Accept and encode valid structures in crypton-x509
+    [#46](https://github.com/kazu-yamamoto/crypton-certificate/pull/46)
+  * Build certification paths with backtracking and implement CRL distribution points
+    [#48](https://github.com/kazu-yamamoto/crypton-certificate/pull/48)
+  * Small fixes for EC keys, RSA verification and EKU
+    [#50](https://github.com/kazu-yamamoto/crypton-certificate/pull/50)
+
+  ## 1.10.2
+
+  * Fix host name validation with iPAddress SANs: an IP address is
+    matched only against iPAddress SANs and the CN is not used if the
+    SubjectAltName extension is present, even without dNSName.
+  * An IP address is no longer matched against the CN of a certificate
+    without SubjectAltName.
+
+  ## 1.10.1
+
+  * Fix name constraint bypasses: constraints are accumulated per RFC
+    5280, apply to the leaf even if self-issued and to the CN used as a
+    host name, dNSName matching is case-insensitive, and iPAddress,
+    rfc822Name, URI and directoryName constraints are enforced.
+  * Undecodable NameConstraints, BasicConstraints, KeyUsage,
+    ExtendedKeyUsage and SubjectAltName extensions fail validation
+    instead of being ignored.
+  * Reject degenerate DSA parameters and oversized RSA keys before
+    verifying signatures.
+  * Limit the chain depth to 20 CA certificates.
+
+  ## 1.10.0
+
+  * Verify ML-DSA signatures
+    [#35](https://github.com/kazu-yamamoto/crypton-certificate/pull/35)
+  * Follow the breaking change in `crypton-x509` 1.10.0
+    [#35](https://github.com/kazu-yamamoto/crypton-certificate/pull/35)
+
+-------------------------------------------------------------------
 Fri Sep 25 12:51:51 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-validation to version 1.9.1 revision 3.

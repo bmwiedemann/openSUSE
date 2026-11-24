@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-tasty-rerun
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,38 +17,41 @@
 
 
 %global pkg_name tasty-rerun
-%global pkgver %{pkg_name}-%{version}
-Name:           ghc-%{pkg_name}
+%bcond_with ghc_prof
+Name:           ghc-%pkg_name
 Version:        1.1.20
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Rerun only tests which failed in a previous test run
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/4.cabal#/%{pkg_name}.cabal
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%pkg_name-%{version}/revision/4.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-optparse-applicative-devel
-BuildRequires:  ghc-optparse-applicative-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-split-devel
-BuildRequires:  ghc-split-prof
 BuildRequires:  ghc-stm-devel
-BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-tagged-devel
-BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-optparse-applicative-prof
+BuildRequires:  ghc-split-prof
+BuildRequires:  ghc-stm-prof
+BuildRequires:  ghc-tagged-prof
+BuildRequires:  ghc-tasty-prof
+BuildRequires:  ghc-transformers-prof
+%endif
 
 %description
 This ingredient for the <https://hackage.haskell.org/package/tasty tasty>
@@ -66,25 +69,28 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -p1 -n %pkg_name-%{version}
+cp -p %{SOURCE1} %pkg_name.cabal
 
 %build
 %ghc_lib_build
@@ -104,9 +110,11 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %files devel -f %{name}-devel.files
 %doc Changelog.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

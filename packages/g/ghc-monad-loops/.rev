@@ -90,4 +90,12 @@ I am sorry, I apparently missed that change in my previous submission sr#623812.
     <comment>update for ghc-9.4.4</comment>
     <requestid>1075964</requestid>
   </revision>
+  <revision rev="12" vrev="12">
+    <srcmd5>fa492bfec4c6d4dfee56f03a5e5ddaf5</srcmd5>
+    <version>0.4.3</version>
+    <time>1795519909</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399256</requestid>
+  </revision>
 </revisionlist>

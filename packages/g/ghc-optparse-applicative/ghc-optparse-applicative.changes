@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:26 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Jun  5 08:56:11 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update optparse-applicative to version 0.19.0.0 revision 1.

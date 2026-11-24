@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:56:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- drop obsolete "dont-depend-on-obsolete-persistent-template.patch"
+
+-------------------------------------------------------------------
 Tue Jun 16 20:33:49 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update yesod-persistent to version 1.6.0.9.

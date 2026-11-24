@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton-x509
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,48 +17,52 @@
 
 
 %global pkg_name crypton-x509
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        1.9.1
+Name:           ghc-%pkg_name
+Version:        1.10.3
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        X509 reader and writer
 License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/2.cabal#/%{pkg_name}.cabal
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-crypton-asn1-encoding-devel
-BuildRequires:  ghc-crypton-asn1-encoding-prof
 BuildRequires:  ghc-crypton-asn1-parse-devel
-BuildRequires:  ghc-crypton-asn1-parse-prof
 BuildRequires:  ghc-crypton-asn1-types-devel
-BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-devel
 BuildRequires:  ghc-crypton-pem-devel
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-rpm-macros >= 2.9.2
+BuildRequires:  ghc-time-hourglass-devel
+BuildRequires:  ghc-transformers-devel
+ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-asn1-encoding-prof
+BuildRequires:  ghc-crypton-asn1-parse-prof
+BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-pem-prof
 BuildRequires:  ghc-crypton-prof
-BuildRequires:  ghc-ram-devel
 BuildRequires:  ghc-ram-prof
-BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-time-hourglass-devel
 BuildRequires:  ghc-time-hourglass-prof
-BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-transformers-prof
-ExcludeArch:    %{ix86}
+%endif
 %if %{with tests}
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-prof
+%endif
 %endif
 
 %description
@@ -74,25 +78,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -115,9 +121,11 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

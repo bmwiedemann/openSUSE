@@ -1,7 +1,7 @@
 #
 # spec file for package happy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,31 +16,31 @@
 #
 
 
+%bcond_with ghc_prof
 %bcond_with tests
 Name:           happy
-Version:        2.1.7
+Version:        2.2
 Release:        0
 Summary:        Happy is a parser generator for Haskell
 License:        BSD-2-Clause
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-happy-lib-devel
-BuildRequires:  ghc-happy-lib-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-rpm-macros
-Requires:       ghc-happy-lib-templates
+BuildRequires:  ghc-rpm-macros >= 2.9.2
+# happy reads its code templates from the data files of happy-lib at run-time.
+Requires:       happy-data = %{version}
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-happy-lib-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-process-devel
+%if %{with ghc_prof}
 BuildRequires:  ghc-process-prof
+%endif
 %endif
 
 %description
@@ -49,7 +49,7 @@ Happy generates Haskell code to parse the grammar. Happy works in a similar way
 to the 'yacc' tool for C.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %define cabal_configure_options -f-bootstrap

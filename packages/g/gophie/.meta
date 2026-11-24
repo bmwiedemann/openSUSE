@@ -1,0 +1,7 @@
+<package name="gophie" project="openSUSE:Factory">
+  <title>A modern Gopher client</title>
+  <description>A modern, graphical, cross-platform Gopher browser.
+Browse Gopherspace (RFC 1436 &amp; RFC 4266) with menus, text files,
+inline images, full-text search, and an integrated download manager.</description>
+  <url>https://gophie.org/</url>
+</package>

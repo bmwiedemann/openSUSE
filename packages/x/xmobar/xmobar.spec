@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 %global pkg_name xmobar
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           %{pkg_name}
+Name:           %pkg_name
 Version:        0.51.1
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
@@ -29,91 +30,89 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
-BuildRequires:  ghc-X11-prof
-BuildRequires:  ghc-X11-xft-devel
-BuildRequires:  ghc-X11-xft-prof
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-alsa-core-devel
-BuildRequires:  ghc-alsa-core-prof
 BuildRequires:  ghc-alsa-mixer-devel
-BuildRequires:  ghc-alsa-mixer-prof
 BuildRequires:  ghc-async-devel
-BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cairo-devel
-BuildRequires:  ghc-cairo-prof
+BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-colour-devel
-BuildRequires:  ghc-colour-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-dbus-devel
-BuildRequires:  ghc-dbus-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-extra-devel
-BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hinotify-devel
-BuildRequires:  ghc-hinotify-prof
 BuildRequires:  ghc-http-client-tls-devel
-BuildRequires:  ghc-http-client-tls-prof
 BuildRequires:  ghc-http-conduit-devel
-BuildRequires:  ghc-http-conduit-prof
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-http-types-prof
-BuildRequires:  ghc-iwlib-devel
-BuildRequires:  ghc-iwlib-prof
 BuildRequires:  ghc-libmpd-devel
-BuildRequires:  ghc-libmpd-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-netlink-devel
-BuildRequires:  ghc-netlink-prof
 BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-pango-devel
-BuildRequires:  ghc-pango-prof
 BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-parsec-numbers-devel
-BuildRequires:  ghc-parsec-numbers-prof
-BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-compat-devel
-BuildRequires:  ghc-regex-compat-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-stm-devel
-BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
-BuildRequires:  ghc-timezone-olson-devel
-BuildRequires:  ghc-timezone-olson-prof
-BuildRequires:  ghc-timezone-series-devel
-BuildRequires:  ghc-timezone-series-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-utf8-string-devel
-BuildRequires:  ghc-utf8-string-prof
 BuildRequires:  ghc-vector-devel
-BuildRequires:  ghc-vector-prof
 BuildRequires:  libXpm-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-X11-prof
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-alsa-core-prof
+BuildRequires:  ghc-alsa-mixer-prof
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-cairo-prof
+BuildRequires:  ghc-cereal-prof
+BuildRequires:  ghc-colour-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-dbus-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-extra-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-hinotify-prof
+BuildRequires:  ghc-http-client-tls-prof
+BuildRequires:  ghc-http-conduit-prof
+BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-libmpd-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-netlink-prof
+BuildRequires:  ghc-old-locale-prof
+BuildRequires:  ghc-pango-prof
+BuildRequires:  ghc-parsec-numbers-prof
+BuildRequires:  ghc-parsec-prof
+BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-regex-compat-prof
+BuildRequires:  ghc-stm-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unix-prof
+BuildRequires:  ghc-utf8-string-prof
+BuildRequires:  ghc-vector-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-regex-tdfa-devel
-BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-temporary-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-temporary-prof
+%endif
 %endif
 
 %description
@@ -132,6 +131,7 @@ This package provides the Haskell %{name} shared library.
 Summary:        Haskell %{name} library development files
 Requires:       ghc-%{name} = %{version}-%{release}
 Requires:       ghc-compiler = %{ghc_version}
+Requires:       libXpm-devel
 Requires:       libXrandr-devel
 Requires:       libXrender-devel
 Requires(post): ghc-compiler = %{ghc_version}
@@ -140,32 +140,36 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
+cabal-tweak-dep-ver base '<4.22' '<5'
 
 %build
-%define cabal_configure_options -f+all_extensions
+%define cabal_configure_options -f-with_datezone -fwith_alsa -fwith_dbus -fwith_inotify -fwith_mpd -fwith_mpris -fwith_nl80211 -fwith_weather -fwith_xpm
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 
 %check
 %cabal_test
@@ -187,9 +191,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc changelog.md doc readme.org
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license license
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

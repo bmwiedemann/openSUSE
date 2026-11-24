@@ -2,10 +2,10 @@
  pyproject.toml |   15 ++-------------
  1 file changed, 2 insertions(+), 13 deletions(-)
 
-Index: griffe-2.0.2/pyproject.toml
+Index: griffe-2.4.1/pyproject.toml
 ===================================================================
---- griffe-2.0.2.orig/pyproject.toml	2026-04-01 21:09:19.864531682 +0200
-+++ griffe-2.0.2/pyproject.toml	2026-04-01 21:10:19.842943519 +0200
+--- griffe-2.4.1.orig/pyproject.toml
++++ griffe-2.4.1/pyproject.toml
 @@ -1,11 +1,12 @@
  [build-system]
  # pdm-backend is left here as a dependency of the version discovery script currently in use.
@@ -20,7 +20,7 @@ Index: griffe-2.0.2/pyproject.toml
  description = "Signatures for entire Python programs. Extract the structure, the frame, the skeleton of your project, to generate API documentation or find breaking changes in your API."
  authors = [{name = "Timothée Mazzucotelli", email = "dev@pawamoy.fr"}]
  license = "ISC"
-@@ -50,23 +51,11 @@
+@@ -50,25 +51,11 @@ Funding = "https://github.com/sponsors/p
  [project.scripts]
  griffe = "griffecli:main"
  
@@ -38,6 +38,8 @@ Index: griffe-2.0.2/pyproject.toml
 -dependencies = ["griffelib=={{version}}", "griffecli=={{version}}"]
 -
 -[tool.hatch.metadata.hooks.uv-dynamic-versioning.optional-dependencies]
+-# The 'faster' extra re-exports griffelib[faster].
+-faster = ["griffelib[faster]=={{version}}"]
 -# The 'pypi' extra re-exports griffelib[pypi] for backward compatibility.
 -pypi = ["griffelib[pypi]=={{version}}"]
 -

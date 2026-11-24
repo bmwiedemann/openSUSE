@@ -306,4 +306,38 @@
   * REPLWrapper args parameter added to support executable paths</comment>
     <requestid>1346112</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>19d453380f64257369332e8bab1ed632</srcmd5>
+    <version>1.0.7</version>
+    <time>1795520323</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.7:
+  * Fix two child-process leaks in REPLWrapper (#475). A failed
+    startup left the spawned child running with nothing able to
+    reach it, and terminating a PopenSpawn child left its three
+    pipes open.
+  * Extend the cursor_start fix to magic get_completions
+  * Fix path tab completion erasing the line when the cursor is
+    on / or -
+  * Fix sdist test collection failure for dragon.py
+  * Process backspaces in output to fix a test on groff-1.23.0
+- update to 1.0.6:
+  * PR: #476
+- update to 1.0.5:
+  * Fix two child-process leaks in REPLWrapper
+  * ## Maintenance and upkeep improvements
+- update to 1.0.4:
+  * fix: extend cursor_start fix to magic get_completions (issue
+    #432 follow-up)
+- update to 1.0.3:
+  * Fix path tab completion erasing line when cursor is on / or -
+  * Set PYTHON_BASIC_REPL=&quot;1&quot; for two new test
+  * Fix CI skip conditions in tests.yml
+  * Add test-manual recipe and graceful kernel shutdown on exit
+- update to 1.0.2:
+  * Fix sdist test collection failure for dragon.py
+- update to 1.0.1:
+  * Process backspaces in output to fix test on groff-1.23.0</comment>
+    <requestid>1399671</requestid>
+  </revision>
 </revisionlist>

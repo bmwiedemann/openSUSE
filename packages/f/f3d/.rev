@@ -266,4 +266,41 @@
   * UI improvements</comment>
     <requestid>1344955</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>950e862c485864a41934a1ea1cc765c0</srcmd5>
+    <version>4.0.1</version>
+    <time>1795520340</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.1:
+  * Fixed USD streaming
+  * Fixed a crash when the event loop is triggered before a first rendering
+  * Fixed missing includes in video headers
+
+- Update to 4.0.0:
+  * BREAKING: Major release, deprecated CLI options have been removed, some CLI
+    options and interactions have been reworked: https://f3d.app/docs/user/MIGRATION
+  * BREAKING: Removed support for F3D_PLUGINS_PATH env var in favor of --plugins-path CLI option
+  * BREAKING: Added an advanced animation bar which is shown by default
+  * BREAKING: Removed all cycle_* commands in favor of the new cycle libf3d provided command
+  * BREAKING: Improved the jump_to_* commands with new jump_to_frame_relative and jump_to_key_frame_relative commands
+  * BREAKING: Reworked the coloring interactions
+  * BREAKING: Reworked many default interactions, removing niche ones and improving current ones
+  * Added support for loading and saving statefile though dedicated CLI options and interactive binds
+  * Added support for saving statefile to clipboard using Ctrl+C bind
+  * Added support for saving and restoring window size and position
+  * Added support for outputting animation to video using --video-output CLI option
+  * Added a --normal-glyphs-scale CLI option to control the size of normal glyphs
+  * Added a grid reflection and a --grid-reflection=&lt;strength&gt; CLI option to control it
+  * Added a --grid-opacity CLI option to control the opacity of the grid
+  * Added keyframe control for non-full-scene file formats (eg: VTKHDF)
+  * Added a distinction between unsupported extension and unsupported content
+  * Added --skip-content-check CLI option to skip the content check when loading a file
+  * Added a --no-cache CLI option to disable caching
+  * Added FreeCAD format (.FCstd) support in occt plugin
+  * Added .amf support to assimp plugin
+  * Added support for old .dxf file format in assimp plugin
+  * Added armature support to assimp formats (.fbx and others)
+  * Added support for displaying multiple animations for assimp formats</comment>
+    <requestid>1399988</requestid>
+  </revision>
 </revisionlist>

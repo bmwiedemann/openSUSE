@@ -7,4 +7,12 @@
     <comment>add new dependency of git-annex</comment>
     <requestid>1171765</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2e3d4db442bd6552ad8852354ad15ee1</srcmd5>
+    <version>0.1.1.1</version>
+    <time>1795520194</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399383</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Wed Aug 14 10:22:14 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update terminal-size to version 0.3.4 revision 1.

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun May 10 17:20:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update some to version 1.1.
+  # 1.1
+
+  - Add `EqP` as a superclass of `GEq`, and `OrdP` as a superclass of `GCompare`.
+  - Relax `Eq` and `Ord` instances of `Some` to require just `EqP` and `OrdP`.
+
+-------------------------------------------------------------------
 Wed Feb 11 11:49:50 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update some to version 1.0.6 revision 3.

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jan 14 23:05:56 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update persistent to version 2.18.1.0.
+  # 2.18.1.0
+  * [#1616](https://github.com/yesodweb/persistent/pull/1616)
+    * Allow overriding the default cascade option for foreign keys.
+  * [#1608](https://github.com/yesodweb/persistent/pull/1608)
+    * Improves documentation on getBy with nullable fields
+    * Updates the warning text present when you try to make a Unique field that is nullable
+
+  # 2.18.0.0
+
+  * [#1610](https://github.com/yesodweb/persistent/pull/1610)
+    * Added `NoAction` as a `CascadeAction`
+
+-------------------------------------------------------------------
 Wed Jul  9 17:45:02 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update persistent to version 2.17.1.0.

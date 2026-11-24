@@ -19,7 +19,7 @@
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           ripgrep
-Version:        15.2.0
+Version:        16.0.0
 Release:        0
 Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense

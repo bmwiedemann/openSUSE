@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 24 03:49:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.1:
+  * Load symbols gated behing `__getattr__` during dynamic
+    analysis (3faeeb1 by Timothée Mazzucotelli).
+  * Stop checking attribute values (0670d03 by Timothée
+    Mazzucotelli). Issue-506
+  * Expose `reference_path` in addition to `canonical_path`
+    (2f6b419 by Timothée Mazzucotelli). Issue-448
+  * Preserve standalone named expression parentheses (dc6300d by
+    Alperen). PR-488, Co-authored-by: Timothée Mazzucotelli
+    <dev@pawamoy.fr>
+  * Propagate `public` value to inherited members (aliases)
+    (8b94205 by Timothée Mazzucotelli). Issue-495, PR-503, Co-
+    authored-by: Sydney Duckworth
+    <sydduckworth@users.noreply.github.com>
+  * Prune function bodies from source before building AST
+    (657ce96 by Timothée Mazzucotelli). PR-489
+  * This requires the `griffe[faster]` extra. Griffe is fast by
+    default so this performance improvement will only be
+    noticeable in projects with *a lot of Python code*.
+- Refresh patch static-version.patch
+- Run the testsuite, since a portion of it is here now.
+- Rewrite Description, remove rpmlint filter.
+
+-------------------------------------------------------------------
 Mon Apr 13 23:29:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Restore build for Python 3.14.

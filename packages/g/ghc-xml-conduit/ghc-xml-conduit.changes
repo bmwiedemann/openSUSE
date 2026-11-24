@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:56:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Tue Nov 25 20:24:41 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update xml-conduit to version 1.10.1.0.

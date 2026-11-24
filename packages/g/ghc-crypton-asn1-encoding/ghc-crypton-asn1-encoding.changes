@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:47 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Aug  1 23:07:06 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Add crypton-asn1-encoding at version 0.10.0.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:47 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Mar  2 15:03:46 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update regex-compat to version 0.95.2.2.

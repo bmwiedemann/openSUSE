@@ -57,4 +57,12 @@
   0002-Use-fq_nmod_mat_entry-instead-of-row-pointer-take-2-.patch</comment>
     <requestid>1286065</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>876dea317d251341fdc06e7b02be2086</srcmd5>
+    <version>4.4.1</version>
+    <time>1795520386</time>
+    <user>anag_factory</user>
+    <comment>- Enhance versioned-pkglibdir.patch:</comment>
+    <requestid>1400055</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package texmath
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,63 @@
 
 
 %global pkg_name texmath
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           %{pkg_name}
+Name:           %pkg_name
 Version:        0.13.3.5
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Conversion between math formats
 License:        GPL-2.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
+BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pandoc-types-devel
-BuildRequires:  ghc-pandoc-types-prof
-BuildRequires:  ghc-parsec-devel
-BuildRequires:  ghc-parsec-prof
-BuildRequires:  ghc-pretty-show-devel
-BuildRequires:  ghc-pretty-show-prof
-BuildRequires:  ghc-rpm-macros
-BuildRequires:  ghc-split-devel
-BuildRequires:  ghc-split-prof
-BuildRequires:  ghc-syb-devel
-BuildRequires:  ghc-syb-prof
-BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
-BuildRequires:  ghc-typst-symbols-devel
-BuildRequires:  ghc-typst-symbols-prof
-BuildRequires:  ghc-xml-devel
-BuildRequires:  ghc-xml-prof
-ExcludeArch:    %{ix86}
-%if %{with tests}
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
-BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
-BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-containers-devel
+BuildRequires:  ghc-mtl-devel
+BuildRequires:  ghc-network-uri-devel
+BuildRequires:  ghc-pandoc-types-devel
+BuildRequires:  ghc-parsec-devel
 BuildRequires:  ghc-pretty-show-devel
+BuildRequires:  ghc-rpm-macros >= 2.9.2
+BuildRequires:  ghc-split-devel
+BuildRequires:  ghc-syb-devel
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-typst-symbols-devel
+BuildRequires:  ghc-xml-devel
+ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-network-uri-prof
+BuildRequires:  ghc-pandoc-types-prof
+BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-pretty-show-prof
+BuildRequires:  ghc-split-prof
+BuildRequires:  ghc-syb-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-typst-symbols-prof
+BuildRequires:  ghc-xml-prof
+%endif
+%if %{with tests}
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-tagged-devel
-BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-golden-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-tagged-prof
 BuildRequires:  ghc-tasty-golden-prof
 BuildRequires:  ghc-tasty-prof
+%endif
 %endif
 
 %description
@@ -105,31 +113,35 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%define cabal_configure_options -f+executable
+%define cabal_configure_options -f-server -fexecutable
 %ghc_lib_build
 
 %install
 %ghc_lib_install
+%ghc_fix_rpath %pkg_name-%{version}
 
 %check
 %cabal_test
@@ -143,7 +155,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files
 %license LICENSE
 %doc README.md changelog.md
-%{_bindir}/texmath
+%{_bindir}/%{name}
 
 %files -n ghc-%{name} -f ghc-%{name}.files
 %license LICENSE
@@ -151,9 +163,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc README.md changelog.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

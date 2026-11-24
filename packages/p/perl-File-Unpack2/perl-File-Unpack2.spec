@@ -18,10 +18,10 @@
 
 %define cpan_name File-Unpack2
 Name:           perl-File-Unpack2
-Version:        2.30.0
+Version:        2.40.0
 Release:        0
-# 2.03 -> normalize -> 2.30.0
-%define cpan_version 2.03
+# 2.04 -> normalize -> 2.40.0
+%define cpan_version 2.04
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Aggressively unpack any archive, recursively, by mime type
 URL:            https://metacpan.org/release/%{cpan_name}

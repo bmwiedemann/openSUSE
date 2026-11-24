@@ -1,7 +1,7 @@
 #
 # spec file for package python-griffecli
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_without libalternatives
 Name:           python-griffecli
-Version:        2.0.2
+# Must be upgraded in lockstep with griffelib and griffe
+Version:        2.4.1
 Release:        0
 Summary:        Signatures for Python programs (CLI module)
 License:        ISC
@@ -27,7 +29,7 @@ Source99:       python-griffecli.rpmlintrc
 # PATCH-FEATURE-OPENSUSE static-version.patch mcepl@suse.com
 # Don't use uv-dynamic-versioning, just set it statically
 Patch0:         static-version.patch
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
@@ -39,13 +41,17 @@ Requires:       python-colorama >= 0.4
 Requires:       python-griffelib = %{version}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module colorama >= 0.4}
 BuildRequires:  %{python_module griffelib == %{version}}
 # /SECTION
 %python_subpackages
 
 %description
-CLI module for the project Griffe.
+Griffecli is the command line interface for Griffe. It extracts the
+structure, frame, and skeleton of Python programs using static and dynamic
+analysis, allowing tools like mkdocstrings to generate API documentation and
+detect breaking API changes between versions.
 
 %prep
 %autosetup -p1 -n griffecli-%{version}
@@ -60,6 +66,9 @@ sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/griffecli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest
 
 %post
 %python_install_alternative griffecli

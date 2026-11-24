@@ -33,26 +33,25 @@ BuildRequires:  GraphicsMagick-devel
 BuildRequires:  Mesa-devel
 BuildRequires:  apache-rpm-macros
 BuildRequires:  cmake
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
-BuildRequires:  glu-devel
-BuildRequires:  graphviz
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libharu-devel
-BuildRequires:  libpng-devel
 BuildRequires:  mysql-devel
-BuildRequires:  pango-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-BuildRequires:  zlib-devel
 BuildRequires:  cmake(Qt6Core)
+BuildRequires:  pkgconfig(glew)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(zlib)
 Requires:       FastCGI
 Requires:       openssl
 Recommends:     %{name}-dbo = %{version}
@@ -100,12 +99,12 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-dbo = %{version}
 Requires:       %{name}-dbo-mysql = %{version}
 Requires:       %{name}-dbo-postgres = %{version}
-Requires:       FastCGI-devel
-Requires:       Xerces-c-devel
-Requires:       boost-devel >= 1.34.1
 Requires:       cmake
-Requires:       mxml-devel >= 2.3
+Requires:       libboost_filesystem-devel
+Requires:       libboost_program_options-devel
+Requires:       libboost_thread-devel
 Requires:       pkgconfig(openssl)
+Recommends:     libharu-devel
 
 %description devel
 Development files for the Wt library.

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:58 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Jun  2 07:53:28 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update unliftio-core to version 0.2.1.0 revision 4.

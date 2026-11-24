@@ -1,0 +1,26 @@
+Index: google_cloud_storage-3.14.1/tests/unit/asyncio/test_async_grpc_client.py
+===================================================================
+--- google_cloud_storage-3.14.1.orig/tests/unit/asyncio/test_async_grpc_client.py
++++ google_cloud_storage-3.14.1/tests/unit/asyncio/test_async_grpc_client.py
+@@ -13,6 +13,7 @@
+ # limitations under the License.
+ 
+ from unittest import mock
++import logging
+ 
+ import pytest
+ from google.api_core import client_info as client_info_lib
+@@ -24,6 +25,13 @@ from google.cloud.storage import __versi
+ from google.cloud.storage.asyncio import async_grpc_client
+ 
+ 
++@pytest.fixture(autouse=True)
++def _restore_google_logger_propagation():
++    yield
++    # StorageAsyncClient disables google logger propagation.
++    logging.getLogger("google").propagate = True
++
++
+ def _make_credentials(spec=None):
+     if spec is None:
+         return mock.Mock(spec=auth_credentials.Credentials)

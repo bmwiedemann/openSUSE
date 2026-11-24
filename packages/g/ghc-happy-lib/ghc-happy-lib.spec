@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-happy-lib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,28 +17,32 @@
 
 
 %global pkg_name happy-lib
-%global pkgver %{pkg_name}-%{version}
-Name:           ghc-%{pkg_name}
-Version:        2.1.7
+%bcond_with ghc_prof
+Name:           ghc-%pkg_name
+Version:        2.2
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Happy is a parser generator for Haskell implemented using this library
 License:        BSD-2-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
+Requires:       happy-data = %{version}
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-transformers-prof
+%endif
 
 %description
 Happy is a parser generator for Haskell. Given a grammar specification in BNF,
@@ -72,31 +76,36 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package templates
-Summary:        Shared datafiles needed at run-time by both ghc-happy-lib and happy
+%package -n happy-data
+Summary:        Code templates used by the Happy parser generator
 BuildArch:      noarch
 
-%description templates
-Shared datafiles that are required by both ghc-happy-lib and happy at run-time.
+%description -n happy-data
+This package provides the code templates that the Happy parser generator
+copies into the parsers it generates. They are needed by the happy executable
+and by programs that use the %{pkg_name} library.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -113,17 +122,19 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 
-%files templates
-%dir %{_datadir}/%{pkg_name}-%{version}
-%{_datadir}/%{pkg_name}-%{version}/GLR_Base.hs
-%{_datadir}/%{pkg_name}-%{version}/GLR_Lib.hs
-%{_datadir}/%{pkg_name}-%{version}/HappyTemplate.hs
+%files -n happy-data
+%dir %{_datadir}/%pkg_name-%{version}
+%{_datadir}/%pkg_name-%{version}/GLR_Base.hs
+%{_datadir}/%pkg_name-%{version}/GLR_Lib.hs
+%{_datadir}/%pkg_name-%{version}/HappyTemplate.hs
 
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

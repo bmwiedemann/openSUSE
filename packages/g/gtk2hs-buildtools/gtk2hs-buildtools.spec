@@ -1,7 +1,7 @@
 #
 # spec file for package gtk2hs-buildtools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,11 @@
 
 
 %global pkg_name gtk2hs-buildtools
-%global pkgver %{pkg_name}-%{version}
-Name:           %{pkg_name}
+%bcond_with ghc_prof
+Name:           %pkg_name
 Version:        0.13.12.0
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Tools to build the Gtk2Hs suite of User Interface libraries
 License:        GPL-2.0-only
 URL:            https://hackage.haskell.org/package/%{name}
@@ -28,28 +29,30 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  alex
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-Cabal-prof
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hashtables-devel
-BuildRequires:  ghc-hashtables-prof
 BuildRequires:  ghc-pretty-devel
-BuildRequires:  ghc-pretty-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  happy
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-Cabal-prof
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-hashtables-prof
+BuildRequires:  ghc-pretty-prof
+BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-random-prof
+%endif
 
 %description
 This package provides a set of helper programs necessary to build the Gtk2Hs
@@ -76,31 +79,34 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 
 %post -n ghc-%{name}-devel
 %ghc_pkg_recache
@@ -125,9 +131,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license COPYING
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

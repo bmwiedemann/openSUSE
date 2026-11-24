@@ -315,4 +315,16 @@
     <comment>- switch to sysuser for user/group setup</comment>
     <requestid>1144187</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>cb4d419895c6f0fe2cd4de0c3d4bfecb</srcmd5>
+    <version>0.7.2</version>
+    <time>1795520373</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1322874 from mnhauke
+
+- Update to version 0.7.2
+  * See https://github.com/dehydrated-io/dehydrated/releases/tag/v0.7.2
+- Update URL</comment>
+    <requestid>1400033</requestid>
+  </revision>
 </revisionlist>

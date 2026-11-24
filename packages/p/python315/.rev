@@ -522,4 +522,20 @@ covered).</comment>
     <comment>update to 3.15.2</comment>
     <requestid>1393663</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>80c327e71c4b7ed5e27b6b6d7d1e05bb</srcmd5>
+    <version>3.15.2</version>
+    <time>1795520397</time>
+    <user>anag_factory</user>
+    <comment>Two fixes (CVE-2026-103995 and CVE-2026-116566)
+
+- CVE-2026-103995: validate http.client Content-Length and
+  chunk-size (GH-150752) (bsc#1288328)
+  CVE-2026-103995-http-client-content-length.patch
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo()
+  host and port (GH-160899) (bsc#1289106)
+  CVE-2026-116566-reject-null-bytes-getaddrinfo.patch</comment>
+    <requestid>1400065</requestid>
+  </revision>
 </revisionlist>

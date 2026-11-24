@@ -7,4 +7,12 @@
     <comment>new dependency for pandoc</comment>
     <requestid>1255883</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>7c2219016c6ece11c23db583f422c71c</srcmd5>
+    <version>0.9.3.1</version>
+    <time>1795520022</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399307</requestid>
+  </revision>
 </revisionlist>

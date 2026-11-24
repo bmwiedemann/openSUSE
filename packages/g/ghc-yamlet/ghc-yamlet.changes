@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 17 10:46:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update yamlet to version 1.0.0.2.
+  # yamlet-1.0.0.2 (2026-11-17)
+  * A `FromYaml` instance derived via `GenericYaml` for a type with named fields,
+    and a `ToYaml` instance for a record, compile faster with optimization, more
+    so for a type with more fields.
+  * `parseFieldMaybe` is faster, and so is a `ToYaml` instance derived via
+    `GenericYaml` with `omitNullFields`.
+
+-------------------------------------------------------------------
 Mon Oct 12 05:37:22 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Add yamlet at version 1.0.0.1.

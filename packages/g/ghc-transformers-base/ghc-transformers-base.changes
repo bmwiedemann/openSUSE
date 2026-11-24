@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:49 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Mar  9 18:21:02 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update transformers-base to version 0.4.6.1.

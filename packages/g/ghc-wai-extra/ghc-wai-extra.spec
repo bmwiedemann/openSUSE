@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-wai-extra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,79 +17,84 @@
 
 
 %global pkg_name wai-extra
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
+Name:           ghc-%pkg_name
 Version:        3.1.18
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Provides some basic WAI handlers and middleware
 License:        MIT
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-ansi-terminal-devel
-BuildRequires:  ghc-ansi-terminal-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base64-bytestring-devel
-BuildRequires:  ghc-base64-bytestring-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-call-stack-devel
-BuildRequires:  ghc-call-stack-prof
 BuildRequires:  ghc-case-insensitive-devel
-BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-cookie-devel
-BuildRequires:  ghc-cookie-prof
 BuildRequires:  ghc-data-default-devel
-BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-fast-logger-devel
-BuildRequires:  ghc-fast-logger-prof
 BuildRequires:  ghc-http-types-devel
-BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-iproute-devel
-BuildRequires:  ghc-iproute-prof
 BuildRequires:  ghc-network-devel
-BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-resourcet-devel
-BuildRequires:  ghc-resourcet-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-streaming-commons-devel
-BuildRequires:  ghc-streaming-commons-prof
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-vault-devel
-BuildRequires:  ghc-vault-prof
 BuildRequires:  ghc-wai-devel
 BuildRequires:  ghc-wai-logger-devel
+BuildRequires:  ghc-warp-devel
+BuildRequires:  ghc-word8-devel
+ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-HUnit-prof
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-ansi-terminal-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base64-bytestring-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-call-stack-prof
+BuildRequires:  ghc-case-insensitive-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-cookie-prof
+BuildRequires:  ghc-data-default-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-fast-logger-prof
+BuildRequires:  ghc-http-types-prof
+BuildRequires:  ghc-iproute-prof
+BuildRequires:  ghc-network-prof
+BuildRequires:  ghc-resourcet-prof
+BuildRequires:  ghc-streaming-commons-prof
+BuildRequires:  ghc-text-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unix-prof
+BuildRequires:  ghc-vault-prof
 BuildRequires:  ghc-wai-logger-prof
 BuildRequires:  ghc-wai-prof
-BuildRequires:  ghc-warp-devel
 BuildRequires:  ghc-warp-prof
-BuildRequires:  ghc-word8-devel
 BuildRequires:  ghc-word8-prof
-ExcludeArch:    %{ix86}
+%endif
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
-BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-temporary-devel
-BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-zlib-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-temporary-prof
 BuildRequires:  ghc-zlib-prof
+%endif
 %endif
 
 %description
@@ -176,24 +181,27 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
 
 %build
 %ghc_lib_build
@@ -216,9 +224,11 @@ This package provides the Haskell %{pkg_name} profiling library.
 %files devel -f %{name}-devel.files
 %doc ChangeLog.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

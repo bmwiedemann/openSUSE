@@ -1,7 +1,7 @@
 #
 # spec file for package dehydrated
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,12 +53,13 @@
 %endif
 
 Name:           dehydrated
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A client for signing certificates with an ACME server
 License:        MIT
-URL:            https://github.com/lukas2511/dehydrated
-Source0:        %{name}-%{version}.tar.gz
+URL:            https://dehydrated.io/
+Source0:        https://github.com/dehydrated-io/dehydrated/releases/download/v%{version}/dehydrated-%{version}.tar.gz
+Source99:       https://github.com/dehydrated-io/dehydrated/releases/download/v%{version}/dehydrated-%{version}.tar.gz.asc
 Source1:        acme-challenge.conf.apache.in
 Source2:        acme-challenge.conf.nginx.in
 Source4:        dehydrated.cron.in
@@ -101,9 +102,9 @@ BuildRequires:  generic-logos-httpd
 BuildRequires:  shadow
 %endif
 %if %{with systemd}
-BuildRequires:  pkgconfig(systemd)
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %sysusers_requires
 %else #with_systemd

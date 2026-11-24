@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-crypton
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,71 +17,51 @@
 
 
 %global pkg_name crypton
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           ghc-%{pkg_name}
-Version:        1.1.5
+Name:           ghc-%pkg_name
+Version:        2.2.7
 Release:        0
-Summary:        Cryptography Primitives sink
-License:        BSD-3-Clause
-URL:            https://hackage.haskell.org/package/%{pkg_name}
-Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+%global pkgver %pkg_name-%{version}
+Summary:        Cryptography Primitives
+License:        BSD-3-Clause AND MIT AND ISC
+URL:            https://hackage.haskell.org/package/%pkg_name
+Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
+Source1:        https://hackage.haskell.org/package/%pkg_name-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-devel
-BuildRequires:  ghc-base16-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-primitive-devel
-BuildRequires:  ghc-primitive-prof
 BuildRequires:  ghc-ram-devel
-BuildRequires:  ghc-ram-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-text-devel
-BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base16-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-primitive-prof
+BuildRequires:  ghc-ram-prof
+BuildRequires:  ghc-text-prof
+%endif
 %if %{with tests}
-BuildRequires:  ghc-tasty-devel
-BuildRequires:  ghc-tasty-hunit-devel
-BuildRequires:  ghc-tasty-hunit-prof
-BuildRequires:  ghc-tasty-kat-devel
-BuildRequires:  ghc-tasty-kat-prof
-BuildRequires:  ghc-tasty-prof
-BuildRequires:  ghc-tasty-quickcheck-devel
-BuildRequires:  ghc-tasty-quickcheck-prof
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-unix-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-unix-prof
+%endif
 %endif
 
 %description
-A repository of cryptographic primitives.
-
-* Symmetric ciphers: AES, DES, 3DES, CAST5, Blowfish, Twofish, Camellia, RC4,
-Salsa, XSalsa, ChaCha.
-
-* Hash: SHA1, SHA2, SHA3, SHAKE, MD2, MD4, MD5, Keccak, Skein, Ripemd, Tiger,
-Whirlpool, Blake2
-
-* MAC: HMAC, KMAC, Poly1305
-
-* Asymmetric crypto: DSA, RSA, DH, ECDH, ECDSA, ECC, Curve25519, Curve448,
-Ed25519, Ed448
-
-* Key Derivation Function: PBKDF2, Scrypt, HKDF, Argon2, BCrypt, BCryptPBKDF
-
-* Cryptographic Random generation: System Entropy, Deterministic Random
-Generator
-
-* Data related: Anti-Forensic Information Splitter (AFIS)
-
-If anything cryptographic related is missing from here, submit a pull request
-to have it added. This package strives to be a cryptographic kitchen sink that
-provides cryptography for everyone.
-
-Evaluate the security related to your requirements before using.
-
-Read "Crypto.Tutorial" for a quick start guide.
+`crypton` is a low-level cryptography library. To achieve high performance, it
+utilizes C and assembly language to define FFI bindings, structuring them in a
+way that makes them easy to use.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
@@ -93,24 +73,28 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description devel
 This package provides the Haskell %{pkg_name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -p1 -n %pkg_name-%{version}
+cp -p %{SOURCE1} %pkg_name.cabal
 
 %build
 %ghc_lib_build
@@ -129,13 +113,29 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %files -f %{name}.files
 %license LICENSE
+%license cbits/LICENSE.go
+%license cbits/aes/LICENSE.fusion
+%license cbits/asm/LICENSE.cryptogams
+%license cbits/s2n/LICENSE
+%license cbits/bearssl/LICENSE
+%license cbits/mlkem/LICENSE
+%license cbits/mldsa/LICENSE
 
 %files devel -f %{name}-devel.files
 %doc CHANGELOG.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
+%license cbits/LICENSE.go
+%license cbits/aes/LICENSE.fusion
+%license cbits/asm/LICENSE.cryptogams
+%license cbits/s2n/LICENSE
+%license cbits/bearssl/LICENSE
+%license cbits/mlkem/LICENSE
+%license cbits/mldsa/LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

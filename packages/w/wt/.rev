@@ -433,4 +433,17 @@ This release includes a backward-incompatible change and deprecates many functio
 - Refined missing_libs.patch for 4.12.6</comment>
     <requestid>1346116</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>0c7fdc159f453bcdc9c46a482a1bc342</srcmd5>
+    <version>4.12.6</version>
+    <time>1795520337</time>
+    <user>anag_factory</user>
+    <comment>- Add missing libharu-devel and specific libboost- to Requierd of wt-devel
+- Drop unused BR, like doxygen
+- Modernize build dependencies using pkgconfig
+
+- Drop mxml-devel Requires from wt-devel: mxml was replaced by rapidxml back in
+  2010 (version 3.1.1).</comment>
+    <requestid>1399982</requestid>
+  </revision>
 </revisionlist>

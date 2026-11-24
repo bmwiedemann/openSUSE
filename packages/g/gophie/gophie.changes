@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Mon Nov 23 18:15:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1:
+  * integrated icon patch from mnhauke: https://build.opensuse.org/projects/home:mnhauke/packages/gophie/files/gophie-icon.patch
+- Drop patch:
+  * gophie-icon.patch (fixed upstream).
+
+-------------------------------------------------------------------
+Sun Nov 22 18:17:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.0:
+  * Switch to the rust based rewrite.
+- Add patch:
+  * gophie-icon.patch
+
+-------------------------------------------------------------------
+Wed May 18 12:31:43 UTC 2022 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 1.1

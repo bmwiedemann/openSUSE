@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct 29 08:15:04 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update http-semantics to version 0.4.2.
+  ## 0.4.2
+
+  * `defaultReadNWith` is `defaultReadN` with an `STM` action beside each
+    receive.  When it fires the read answers with the empty string, which is
+    what `ReadN` already means by end of input, so a reader blocked in it can
+    be given up on without closing the socket under it or throwing into it --
+    neither of which works everywhere.
+
+  ## 0.4.1
+
+  * Add `auxSendInformational` to the server `Aux` for sending 1xx informational
+    responses (e.g. 103 Early Hints) ahead of the final response.
+
+  ## 0.4.0
+
+  * This version is idential to v0.3.1 which includes breaking changes
+    and thus is deprecated.
+
+  ## 0.3.1
+
+  * Adding defaultAux and auxSendPing for client.
+  * Adding defaultAux for server.
+
+-------------------------------------------------------------------
 Tue Oct 22 23:53:42 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update http-semantics to version 0.3.0.

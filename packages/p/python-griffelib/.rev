@@ -33,4 +33,13 @@
     noticeable in projects with *a lot of Python code*.</comment>
     <requestid>1399563</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e492d11c1255987670014caec34beb1e</srcmd5>
+    <version>2.4.1</version>
+    <time>1795520426</time>
+    <user>anag_factory</user>
+    <comment>- Run the testsuite, since a portion of it is here now.
+- Rewrite Description.</comment>
+    <requestid>1400081</requestid>
+  </revision>
 </revisionlist>

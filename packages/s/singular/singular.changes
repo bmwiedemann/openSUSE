@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 23 12:16:43 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Enhance versioned-pkglibdir.patch:
+  * Fix ProcDir (SINGULAR_PROCS_DIR) so dynamic modules like
+    p_Procs_FieldIndep.so can be located.
+  * Fall back to SINGULAR_DEFAULT_DIR and DATA_DIR for RootDir
+    and DataDir when Singular is executed from libexecdir, so
+    libraries (standard.lib), help, and index files can be found.
+  * Add DATA_DIR fallback to SearchPath for singular/LIB and factory.
+
+-------------------------------------------------------------------
 Mon Jun 16 10:13:11 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Resolve FTBFS with flint 3.3.x:

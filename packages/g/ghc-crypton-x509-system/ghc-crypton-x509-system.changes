@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:15:45 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-system to version 1.10.1.
+  ## 1.10.1
+
+  The system store contains only the certificates that the OS trusts for
+  TLS: the trust settings on macOS, and the Disallowed store and the
+  enhanced key usage property on Windows.
+
+  * macOS: load TLS anchors according to trust settings
+    [#37](https://github.com/kazu-yamamoto/crypton-certificate/pull/37)
+  * Fix trust store loading
+    [#38](https://github.com/kazu-yamamoto/crypton-certificate/pull/38)
+  * Windows: exclude disallowed roots and roots not enabled for TLS
+    [#45](https://github.com/kazu-yamamoto/crypton-certificate/pull/45)
+
+  ## 1.10.0
+
+  * Follow the breaking change in `crypton-x509` 1.10.0
+    [#35](https://github.com/kazu-yamamoto/crypton-certificate/pull/35)
+
+-------------------------------------------------------------------
 Sat Mar  7 03:33:56 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-system to version 1.9.0.

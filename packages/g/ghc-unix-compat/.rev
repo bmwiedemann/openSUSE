@@ -258,4 +258,12 @@ available, portable implementations are used.</comment>
     <comment>version update</comment>
     <requestid>1302179</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7a07740f9c33447de8144d9e5e05fb7c</srcmd5>
+    <version>0.7.4.1</version>
+    <time>1795520204</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399388</requestid>
+  </revision>
 </revisionlist>

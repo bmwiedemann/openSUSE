@@ -1,7 +1,7 @@
 #
 # spec file for package xmonad
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 %global pkg_name xmonad
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_with tests
-Name:           %{pkg_name}
+Name:           %pkg_name
 Version:        0.18.1
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        A tiling window manager
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{name}
@@ -30,30 +31,18 @@ Source10:       xmonad.desktop
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-X11-devel
-BuildRequires:  ghc-X11-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-data-default-class-devel
-BuildRequires:  ghc-data-default-class-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-setlocale-devel
-BuildRequires:  ghc-setlocale-prof
 BuildRequires:  ghc-time-devel
-BuildRequires:  ghc-time-prof
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xinerama)
@@ -63,11 +52,27 @@ Suggests:       ghc-xmonad-devel
 # That rely on the prsence of 'a WM', but do not care which one it is
 Provides:       windowmanager
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-X11-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-data-default-class-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-setlocale-prof
+BuildRequires:  ghc-time-prof
+BuildRequires:  ghc-transformers-prof
+BuildRequires:  ghc-unix-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-quickcheck-classes-devel
+%if %{with ghc_prof}
+BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-quickcheck-classes-prof
+%endif
 %endif
 
 %description
@@ -96,31 +101,34 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 install -m0644 -D man/xmonad.1 %{buildroot}%{_mandir}/man1/xmonad.1
 gzip %{buildroot}%{_mandir}/man1/xmonad.1
 %define desktop_src %{buildroot}%{_datadir}/xsessions/xmonad.desktop
@@ -149,9 +157,11 @@ install -m0644 -D %{SOURCE10} %{desktop_src}
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc CHANGES.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog

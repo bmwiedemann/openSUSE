@@ -59,7 +59,6 @@ BuildRequires:  pkgconfig(libevent) >= 2.0.0
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libwebsockets) > 2.0.2
-BuildRequires:  pkgconfig(mxml)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.5.0
 BuildRequires:  pkgconfig(zlib)

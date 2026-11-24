@@ -5,7 +5,7 @@ cabal-version: 3.0
 name:
   directory-ospath-streaming
 version:
-  0.2.2
+  0.3
 x-revision: 1
 synopsis:
   Stream directory entries in constant memory in vanilla IO
@@ -40,6 +40,7 @@ tested-with:
   , GHC == 9.6
   , GHC == 9.8
   , GHC == 9.10
+  , GHC == 9.12
 
 build-type:
   Simple

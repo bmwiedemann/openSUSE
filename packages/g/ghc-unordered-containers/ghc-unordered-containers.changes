@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:59 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Sun Dec 28 19:02:34 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update unordered-containers to version 0.2.21 revision 2.

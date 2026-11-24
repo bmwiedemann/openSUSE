@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Nov 23 14:04:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.8
+  Security
+  * SMB IPC$ pipe name used as a filesystem path
+    (GHSA-p6c9-h3f7-xq9f, Critical).
+  * X-Forwarded-For spoofing bypasses the IP whitelist
+    (GHSA-6vcx-pgmj-8c8g, Critical).
+  Content destruction under --no-delete / --upload-only
+  * FTP REST + STOR overwrites files in place
+    (GHSA-qwpj-g46h-59wx, High).
+  * --upload-only does not protect existing files over FTP and
+    SFTP (GHSA-c3p2-6762-cf9j, High).
+  * Recursive delete destroys protected subtrees
+    (GHSA-rf62-vgq5-ggq5, High).
+  * Fixed temp path <name>~ clobbers files on upload
+    (GHSA-5q79-f559-j56x, Medium).
+  * SMB ADS null-sink escapes the share
+    (GHSA-4wmw-c376-phcm, Medium).
+  Per-folder .goshs ACL bypasses
+  * Nested folder upload ignores sub-directory ACLs
+    (GHSA-625w-3rc8-3c3h, High).
+  * Rename moves a subtree out of its .goshs scope
+    (GHSA-95fx-g5c4-6f8f, Medium).
+  * Blocked folders ("name/") exposed outside the HTTP listing
+    (GHSA-5v54-7vcp-2f4h, Medium).
+  * Windows trailing-dot / 8.3 names bypass the block list
+    (GHSA-wh5w-m4vw-7mjm, Medium).
+  * Trailing-dot .goshs alias overwrites the ACL file
+    (GHSA-8v6q-gvgc-m3vq, Medium).
+  Web UI
+  * Stored XSS via chat reaction emoji (GHSA-hwm6-6mhm-83f5, High).
+  New Features
+  * Run without the HTTP server (#351): -nh / --no-http, or
+    "http_server": false.
+  Bug Fixes
+  * mDNS advertisement never stayed on.
+  * Copy buttons broken over plain HTTP (#319).
+  * Wrong Content-Type for files without an extension (#342).
+
+-------------------------------------------------------------------
 Mon Sep 28 12:11:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.7

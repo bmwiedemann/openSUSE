@@ -1,0 +1,15 @@
+--- a/macros.ghc-suse
++++ b/macros.ghc-suse
+@@ -25,8 +25,10 @@
+ # enable library documentation in doc subpkgs
+ %with_haddock 1
+ 
+-# enable prof packages
+-%with_ghc_prof 0
++# Profiling libraries are disabled by default. Do not define with_ghc_prof
++# here: %%{with ghc_prof} tests only whether the macro is defined, so even a
++# value of 0 would enable profiling. Build with "--with ghc_prof" or define
++# "%%with_ghc_prof 1" in the project config to enable it.
+ 
+ # %%{?_smp_ncpus_max:--jobs=%%{?_smp_ncpus_max}}
+ %ghc_smp_mflags %{?_smp_mflags}

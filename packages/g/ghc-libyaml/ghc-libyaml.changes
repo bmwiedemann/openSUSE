@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:54:00 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Dec 16 07:55:41 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Use prettier Cabal flag specification; no functional change.

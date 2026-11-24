@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 13:44:45 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795441465.39dc1745:
+  * refactor: use storage wording in check_df error
+  * docs: document the cleanup dry-run switch
+
+-------------------------------------------------------------------
+Sat Nov 21 05:07:58 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795237662.a0b5f8fa:
+  * chore(deps): Dependency cron 2026-11-21
+
+-------------------------------------------------------------------
+Fri Nov 20 20:57:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795208246.249c48c2:
+  * fix(overview): Avoid displaying wrong cookie info when creating comment
+  * test: Fix test for command output
+  * fix(run_cmd): Output only if there is any warning
+
+-------------------------------------------------------------------
 Fri Nov 20 16:09:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795190948.0362803c:

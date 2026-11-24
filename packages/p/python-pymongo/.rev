@@ -683,4 +683,41 @@
     ending in .sock. (CVE-2026-96747)</comment>
     <requestid>1381302</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0c6bb43ef79450ad70e2a73b4ed8d5df</srcmd5>
+    <version>4.20.1</version>
+    <time>1795520407</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.20.1:
+  * Fix getMore commands in load-balanced mode not retrying on retryable
+    overload errors
+  * Fix cancelled async commands missing a correlating CommandFailedEvent
+    before CancelledError propagates
+  * Sanitize parsing error messages (CVE-2026-129927, bsc#1291084)
+  * Improve credential validation
+  * Report detected coding agents in client.env.agent handshake metadata
+  * Remove beta PREFIXPREVIEW, SUFFIXPREVIEW, and SUBSTRINGPREVIEW query
+    types in favor of PREFIX, SUFFIX, and SUBSTRING
+  * Remove deprecated text_opts parameter of encrypt() and TextOpts class
+    in favor of string_opts and StringOpts
+  * Align C extension and pure-Python BSON decoders for non-16-byte UUID
+    subtypes 3 and 4
+  * Fix MongoClient(maxPoolSize=0, minPoolSize&gt;0) raising ValueError by
+    treating maxPoolSize=0 as unlimited
+  * Reject 24-character ObjectId strings containing whitespace with
+    InvalidId and return False from ObjectId.is_valid()
+  * Fix Cursor and AsyncCursor let type annotation to Optional[Mapping]
+  * Disable TLS session reuse on Python 3.11 due to a CPython memory leak
+  * Fix AsyncMongoClient failing to recover when a replica set member
+    removes itself from the topology
+  * Fix signed integer overflow in C extension BSON buffer growth past
+    1GiB
+  * Add support for Python 3.15
+  * Drop support for Python 3.9 and 3.10 (Python 3.11+ now required)
+  * Remove support for PyPy
+  * Remove deprecated Algorithm.RANGEPREVIEW and QueryType.RANGEPREVIEW
+  * Add support for running synchronous and asynchronous clients in
+    subinterpreters (Python 3.14+)</comment>
+    <requestid>1400073</requestid>
+  </revision>
 </revisionlist>

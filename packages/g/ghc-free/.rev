@@ -250,4 +250,12 @@ languages.</comment>
     <comment>version update</comment>
     <requestid>1358367</requestid>
   </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>935730bc62b38700342682843a384694</srcmd5>
+    <version>5.2</version>
+    <time>1795519755</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399174</requestid>
+  </revision>
 </revisionlist>

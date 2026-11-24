@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:11 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Thu May 26 08:07:51 UTC 2011 - Peter Simons <psimons@suse.com>
 
 - Add erf at version 2.0.0.0.

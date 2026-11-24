@@ -1,11 +1,23 @@
 From: Jan Engelhardt <jengelh@inai.de>
 Date: 2025-03-14 19:58:42.309411313 +0100
 
-diff --git resources/feResource.cc resources/feResource.cc
+diff --git a/resources/feResource.cc b/resources/feResource.cc
 index 0a93363fd..ccf8b9009 100644
 --- a/resources/feResource.cc
-+++ a/resources/feResource.cc
-@@ -56,7 +56,7 @@ VAR feResourceConfig_s feResourceConfigs[] =
++++ b/resources/feResource.cc
+@@ -45,9 +45,11 @@ VAR feResourceConfig_s feResourceConfigs[] =
+    "%D/singular/LIB;"
+    "%r/share/singular/LIB;"
+    "%b/../share/singular/LIB;"
++   DATA_DIR "/singular/LIB;"
+    // gftables:
+    "%D/factory;"
+    "%r/share/factory;"
++   DATA_DIR "/factory;"
+    "%b/LIB;"
+    "%b/../LIB;" // not installed, shared is in .libs/Singular
+    "%b/../factory;"
+@@ -56,7 +58,7 @@ VAR feResourceConfig_s feResourceConfigs[] =
     "%b/MOD;"
     "%b/../MOD;" // Singular in .libs/Singular
     "%r/lib/singular/MOD;"
@@ -14,3 +26,53 @@ index 0a93363fd..ccf8b9009 100644
     "%b;"
     "%b/..", // Singular in .libs/Singular
     (char *)""},
+@@ -68,7 +70,7 @@ VAR feResourceConfig_s feResourceConfigs[] =
+      "%b/../MOD;" // Singular in .libs/Singular
+      "%b/..;" // Singular in .libs/Singular, programs in .
+      "%r/lib/singular/MOD;"
+-     LIB_DIR "/singular/MOD;"   /*debian: -> /usr/lib/singular/MOD */
++     LIB_DIR "/singular-" PACKAGE_VERSION "/MOD;"   /*debian: -> /usr/lib/singular/MOD */
+      ,(char *)""},
+   {"RootDir",   'r',    feResDir,   "SINGULAR_ROOT_DIR",    "%b/..",                (char *)""},
+   {"DataDir",   'D',    feResDir,   "SINGULAR_DATA_DIR",    "%b/../share/",          (char *)""},
+@@ -309,6 +311,40 @@ static char* feInitResource(feResourceConfig config, int warn)
+       if (executable != NULL) *executable = '\0';
+     }
+   }
++  else if (config->id == 'r')
++  {
++    char test_path[MAXPATHLEN];
++    char* b = feResource('b');
++    if (b != NULL)
++    {
++      snprintf(test_path, sizeof(test_path), "%s/../share/singular", b);
++      if (access(test_path, X_OK) != 0)
++      {
++        strcpy(value, SINGULAR_DEFAULT_DIR);
++      }
++    }
++    else
++    {
++      strcpy(value, SINGULAR_DEFAULT_DIR);
++    }
++  }
++  else if (config->id == 'D')
++  {
++    char test_path[MAXPATHLEN];
++    char* b = feResource('b');
++    if (b != NULL)
++    {
++      snprintf(test_path, sizeof(test_path), "%s/../share/singular", b);
++      if (access(test_path, X_OK) != 0)
++      {
++        strcpy(value, DATA_DIR);
++      }
++    }
++    else
++    {
++      strcpy(value, DATA_DIR);
++    }
++  }
+ 
+ #ifdef RESOURCE_DEBUG
+   printf("value:%s\n", value);

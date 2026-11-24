@@ -16,16 +16,9 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define psuffix -test
-%bcond_without test
-%else
-%define psuffix %{nil}
-%bcond_with test
-%endif
-Name:           python-griffe%{psuffix}
-Version:        2.0.2
+Name:           python-griffe
+# Must be upgraded in lockstep with griffelib and griffecli
+Version:        2.4.1
 Release:        0
 Summary:        Signatures for entire Python programs
 License:        ISC
@@ -34,30 +27,17 @@ Source0:        https://files.pythonhosted.org/packages/source/g/griffe/griffe-%
 # PATCH-FEATURE-OPENSUSE static-version.patch mcepl@suse.com
 # Don't use uv-dynamic-versioning, just set it statically
 Patch0:         static-version.patch
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module jsonschema}
-BuildRequires:  %{python_module mkdocstrings >= 0.29}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module tomli >= 2.0 if %python-base < 3.11}
 BuildRequires:  fdupes
-BuildRequires:  git
 BuildRequires:  python-rpm-macros
-Requires:       python-griffe-inherited-docstrings
 Requires:       python-griffecli = %{version}
 Requires:       python-griffelib = %{version}
-Requires:       python-jsonschema
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
-%if %{with test}
-# SECTION test requirements
-BuildRequires:  %{python_module griffecli == %{version}}
-BuildRequires:  %{python_module griffe-inherited-docstrings}
-BuildRequires:  %{python_module griffelib == %{version}}
-BuildRequires:  %{python_module pytest-gitconfig}
-BuildRequires:  %{python_module pytest-randomly}
-BuildRequires:  %{python_module pytest}
-# /SECTION
-%endif
 %python_subpackages
 #    "duty>=1.6",
 #    "griffe-inherited-docstrings>=1.1.2",
@@ -96,24 +76,14 @@ griffe."
 sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
 
 %build
-%if %{without test}
 %pyproject_wheel
-%endif
 
 %install
-%if %{without test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/griffe
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%endif
 
-%if %{with test}
-%check
-# Upstream sdist omits the workspace `packages/` tree, but this test assumes
-# a checkout layout and fails with FileNotFoundError on OBS.
-# gh#mkdocstrings/griffe#452
-%pytest -k 'not test_meson_python_file_handling'
-%endif
+# Tests now run in griffelib and griffecli
 
 %post
 %python_install_alternative griffe
@@ -121,12 +91,10 @@ sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
 %postun
 %python_uninstall_alternative griffe
 
-%if %{without test}
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE LICENSE
+%license LICENSE
 %python_alternative %{_bindir}/griffe
 %{python_sitelib}/griffe-%{version}.dist-info
-%endif
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:53:18 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Apr 20 13:54:17 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update filepath-bytestring to version 1.5.2.0.5.

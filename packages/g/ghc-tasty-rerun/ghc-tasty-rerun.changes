@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:55:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Mon Sep 28 20:12:55 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tasty-rerun to version 1.1.20 revision 4.
