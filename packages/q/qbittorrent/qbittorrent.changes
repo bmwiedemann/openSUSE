@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 24 09:55:15 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.3.1
+  Bug fixes:
+  * Don't try to obtain pieces info when no metadata is available
+  * Add mnemonic for Plugins menu item
+  * Preserve encoded plus signs in HTTP queries
+  * Treat a lockfile that names our own PID as stale
+  * Correctly update item-by-path mapping on folder renamed
+  * Use system theme fallback icon for Open Destination Folder
+    button
+  * Fix content layout isn't applied on deduplicated filenames
+  * Save search session after restoring it
+  * Allow renaming files with invalid names
+  * Ensure that recently queued jobs are performed before
+    shutdown
+  * Adopt "producer-consumer" pattern in file-based resume data
+    storage
+  * Fix WebTorrent trackers are rejected from magnet links
+  * Fix performance statistics time units
+  Web UI:
+  * Preserve web seed URLs when editing
+  * Let search plugins download their own results
+  * Insert translated strings as text instead of HTML
+  Web API:
+  * Fix torrent ID changed event is unhandled
+  * Preserve metadata source URI encoding
+
+-------------------------------------------------------------------
 Tue Oct 20 13:13:33 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.3.0

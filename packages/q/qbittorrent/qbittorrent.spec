@@ -22,7 +22,7 @@
 %endif
 
 Name:           qbittorrent
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
