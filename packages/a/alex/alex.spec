@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%bcond_with ghc_prof
 %bcond_without tests
 Name:           alex
 Version:        3.5.4.2
@@ -26,18 +27,22 @@ URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-directory-prof
+%endif
 %if %{with tests}
 BuildRequires:  ghc-process-devel
+%if %{with ghc_prof}
 BuildRequires:  ghc-process-prof
+%endif
 %endif
 
 %description
@@ -47,7 +52,7 @@ module containing code for scanning text efficiently. It is similar to the tool
 lex or flex for C/C++.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %ghc_bin_build
