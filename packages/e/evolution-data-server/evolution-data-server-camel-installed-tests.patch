@@ -1,0 +1,45 @@
+From: Zoltan Balogh <zbalogh@suse.com>
+Subject: Camel: fix installed tests on an installed system
+References: bsc#1290886
+
+The Camel installed tests fail on an installed system for two reasons:
+
+1. camel_test_provider_init() always loads the provider modules from
+   CAMEL_BUILD_DIR, a build-tree path that does not exist after
+   installation. In installed mode the providers are discoverable
+   through CAMEL_PROVIDERDIR, so initialise the provider registry and
+   let Camel load the requested module lazily.
+
+2. camel_test_get_data_file() reads the test data from
+   INSTALLED_TEST_DIR/data, but src/camel/tests/data is never
+   installed. Install it alongside the test binaries.
+
+--- a/src/camel/tests/CMakeLists.txt
++++ b/src/camel/tests/CMakeLists.txt
+@@ -96,3 +96,10 @@
+ 
+ add_camel_tests(TESTS ON)
+ add_camel_tests(TESTS_SKIP OFF)
++
++if(ENABLE_INSTALLED_TESTS)
++	file(GLOB DATA_FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/*)
++	install(FILES ${DATA_FILES}
++		DESTINATION ${INSTALLED_TESTS_EXEC_DIR}/data
++	)
++endif(ENABLE_INSTALLED_TESTS)
+--- a/src/camel/tests/lib/camel-test-provider.c
++++ b/src/camel/tests/lib/camel-test-provider.c
+@@ -13,6 +13,13 @@
+ 	gint i;
+ 	GError *error = NULL;
+ 
++	/* Installed tests load providers from CAMEL_PROVIDERDIR, which is
++	   where camel_provider_init() looks by default. */
++	if (g_getenv ("TEST_INSTALLED_SERVICES") != NULL) {
++		camel_provider_init ();
++		return;
++	}
++
+ 	for (i = 0; i < argc; i++) {
+ 		name = g_strdup_printf ("libcamel%s."G_MODULE_SUFFIX, argv[i]);
+ 		path = g_build_filename (CAMEL_BUILD_DIR, "providers", argv[i], name, NULL);

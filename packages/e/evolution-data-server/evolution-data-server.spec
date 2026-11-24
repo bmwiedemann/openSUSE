@@ -39,6 +39,8 @@ License:        LGPL-2.0-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Apps/Evolution
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM bsc#1290886 -- zbalogh@suse.com
+Patch0:         evolution-data-server-camel-installed-tests.patch
 
 BuildRequires:  cmake >= 3.15
 BuildRequires:  db-devel

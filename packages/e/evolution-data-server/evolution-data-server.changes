@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 19 08:37:52 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Add evolution-data-server-camel-installed-tests.patch: fix Camel
+  installed tests that read build-tree paths and fail on installed
+  systems (bsc#1290886).
+
+-------------------------------------------------------------------
 Fri Oct  9 09:42:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.62.1:
