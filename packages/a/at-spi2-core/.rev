@@ -2886,4 +2886,20 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385389</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>cebccdaa3af3b50a6319e4930b438648</srcmd5>
+    <version>2.62.2</version>
+    <time>1795519391</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.62.2:
+  * libatspi:
+    + Don't crash when a direct connection fails before the root is known.
+    + Notify when an AtspiEventListener's callback is no longer valid.
+  * Bus: Send SIGTERM only to the launcher when the unit stops device-x11.
+  * device-x11:
+    + Report each key once while using the raw key fallback.
+    + Don't crash in finalize when the display couldn't be opened.
+    + Resume keyboard input after handling a synchronous key grab.</comment>
+    <requestid>1399901</requestid>
+  </revision>
 </revisionlist>

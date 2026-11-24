@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Nov 22 18:29:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.2:
+  * libatspi:
+    + Don't crash when a direct connection fails before the root is known.
+    + Notify when an AtspiEventListener's callback is no longer valid.
+  * Bus: Send SIGTERM only to the launcher when the unit stops device-x11.
+  * device-x11:
+    + Report each key once while using the raw key fallback.
+    + Don't crash in finalize when the display couldn't be opened.
+    + Resume keyboard input after handling a synchronous key grab.
+
+-------------------------------------------------------------------
 Sat Oct 10 16:04:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.62.1:
