@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 24 05:57:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.10:
+  * SECURITY ADVISORIES:
+    - Upgrade Go toolchain to 1.27.4 to address GO-2026-6859, an
+      HTTP/1 server crash due to a MaxBytesReader header race.
+      (#4831)
+  * BUG FIXES:
+    - Overriding resources for indexed modules now works correctly
+      during tofu test. (#4859)
+    - Fix symbol libraries preventing plan when used in modules.
+      (#4816
+    - Fix symbol libraries crash when uninitialized. (#4861)
+
+-------------------------------------------------------------------
 Fri Nov 06 08:06:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.9:
