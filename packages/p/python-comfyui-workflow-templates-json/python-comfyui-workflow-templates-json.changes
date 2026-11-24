@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:31:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.143 (templates grow 711 to 716, crosses
+  0.1.141 and 0.1.142; 0.1.140 was never published):
+  * Adds 5 templates: UltraTex texture-a-3D-model, MiniMax
+    H3 character swap, SenseNova U1.6 image edit and text
+    to image, and RMBG 3.0 background removal
+  * 0.1.142 fixes the SenseNova image-edit context length
+    (max_length 4096 to 8192); 0.1.143 fixes SenseNova
+    text-to-image link order and widget values; each
+    refreshes 14 search indexes
+  * 0.1.141 re-saves 160 existing templates with the model
+    description headings the frontend expects (Model Links,
+    Alternative Repos) and refreshes 15 search indexes;
+    MiniMax H3 workflows now default to 16 megapixels
+    (were 4), and MOSS-Image text-to-image moves to the
+    TextGenerateV2 node
+- No code or dependency change: the sdist still declares no
+  runtime requirements
+
+-------------------------------------------------------------------
 Sun Nov 22 09:38:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.139 (templates grow 710 to 711):

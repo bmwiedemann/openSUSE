@@ -381,4 +381,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
     <comment>Update python-comfyui-workflow-templates-json to 0.1.139: +1 HeyGen template JSON, 15 index refreshes, 19 re-saves.</comment>
     <requestid>1399726</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b1cfa525fda5754fac89dcea40469455</srcmd5>
+    <version>0.1.143</version>
+    <time>1795520500</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.143: 5 new templates, SenseNova fixes, 716 total.</comment>
+    <requestid>1400206</requestid>
+  </revision>
 </revisionlist>
