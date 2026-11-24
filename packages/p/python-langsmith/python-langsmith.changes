@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:29:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.1:
+  * CLI: expose sandbox memory, lifecycle, snapshot, volume
+    and file options
+  * SDKs: post thread feedback from the Python and JS
+    clients
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
 Sun Nov 22 09:39:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.0:

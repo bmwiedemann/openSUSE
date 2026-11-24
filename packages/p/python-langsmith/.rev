@@ -571,4 +571,12 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.16.0: cursor-paginated workspace secrets (breaking), tracing_context skip, feedback delete, run-rules backfill, robin verifiers.</comment>
     <requestid>1399729</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>07d84e94a0d04fb0fc5773a4a2858c26</srcmd5>
+    <version>0.16.1</version>
+    <time>1795520498</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.16.1: CLI sandbox memory/lifecycle/snapshot/volume/file options, thread feedback in Python and JS SDKs.</comment>
+    <requestid>1400203</requestid>
+  </revision>
 </revisionlist>
