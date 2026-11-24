@@ -142,4 +142,12 @@ This fixes gh-4.</comment>
     <comment>version update</comment>
     <requestid>1098947</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>680d58e61bf874995cba4c1ce9529002</srcmd5>
+    <version>1.2.1.0</version>
+    <time>1795519578</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399077</requestid>
+  </revision>
 </revisionlist>
