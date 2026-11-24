@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Nov 14 18:45:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix the spec file, which did not parse at all: the conditional
+  around the scriptlets was never closed.
+- Define the libalternatives build conditional (as lua54 does).
+  It was used but never defined, so the package always took the
+  update-alternatives branch while requiring alts and lacking the
+  update-alternatives scriptlet dependencies.
+- Link readline directly. With the plain linux target lua.c tries
+  to dlopen "libreadline.so", which only readline-devel provides,
+  so the interactive interpreter ran without line editing.
+- Drop the test flavour. The check section of the main build now
+  runs the upstream test suite against the staged installation in
+  the build root and verifies that the compiled-in search paths
+  match INSTALL_LMOD and INSTALL_CMOD in lua5.5.pc.
+- Remove the unused BuildRequires on lua-macros.
+
+-------------------------------------------------------------------
+Sat Oct 24 15:25:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Support update-alternatives when libalternatives is disabled,
+  including command and man page links and registration scriptlets.
+- Ignore lua55 during dependency resolution to allow building
+  without an already installed copy of the package.
+
+-------------------------------------------------------------------
 Wed Dec 31 01:57:43 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add libdir-luaconf.patch making it possible for the build

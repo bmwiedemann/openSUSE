@@ -1,6 +1,6 @@
 ---
- testes/main.lua |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ testes/main.lua |    4 +++-
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 Index: lua-5.5.0/testes/main.lua
 ===================================================================
@@ -15,3 +15,6 @@ Index: lua-5.5.0/testes/main.lua
    end
  end
  
+@@ -182,1 +182,1 @@
+-  RUN('env -i lua %s > %s', prog, out)
++  RUN('env -i LD_LIBRARY_PATH="$LD_LIBRARY_PATH" lua %s > %s', prog, out)
