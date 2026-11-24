@@ -226,4 +226,14 @@
     <comment>- Use adapted suse_version for 16.1 (jsc#PED-15772)</comment>
     <requestid>1346427</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>157c344daf0ae5f4199fd86815d2a439</srcmd5>
+    <version>16.2</version>
+    <time>1795519354</time>
+    <user>anag_factory</user>
+    <comment>- NodeJS 26 no longer provides corepack, so drop it here too
+
+- Update TW and SLFO to 26.</comment>
+    <requestid>1399922</requestid>
+  </revision>
 </revisionlist>

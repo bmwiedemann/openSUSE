@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov 23 10:09:39 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- NodeJS 26 no longer provides corepack, so drop it here too
+
+-------------------------------------------------------------------
+Thu Nov  5 14:53:06 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update TW and SLFO to 26.
+
+-------------------------------------------------------------------
 Mon Apr 13 12:02:39 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Use adapted suse_version for 16.1 (jsc#PED-15772)

@@ -16,7 +16,7 @@
 #
 
 
-%define NODEJS_CURRENT  24
+%define NODEJS_CURRENT  26
 
 %if 0%{?suse_version} > 1500 || 0%{?fedora_version}
 %bcond_without libalternatives
@@ -73,13 +73,18 @@
 %define default_node_ver 24
 %endif
 
+%if 0%{?suse_version} == 1620
+# 16.2
+%define default_node_ver 26
+%endif
+
 # TW
 %if 0%{?suse_version} >= 1699
-%define default_node_ver 24
+%define default_node_ver 26
 %endif
 
 Name:           nodejs-common
-Version:        6.1
+Version:        16.2
 Release:        0
 Summary:        Common files for the NodeJS ecosystem
 License:        MIT
@@ -137,6 +142,7 @@ Provides:       nodejs-devel = %default_node_ver
 Depends on the most current and up-to-date version of nodejs for
 the current architecture and codestream.
 
+%if %{default_node_ver} <= 24
 %package -n corepack-default
 Summary:        Default version of corepack
 Group:          Development/Languages/NodeJS
@@ -147,6 +153,7 @@ Provides:       corepack = %default_node_ver
 %description -n corepack-default
 Depends on the corepack version associated with the current default
 version of nodejs for the current architecture and codestream.
+%endif
 
 %prep
 
@@ -160,14 +167,18 @@ echo "Default Node version: " %{default_node_ver}
 install -D -m 0755 node %{buildroot}%{_bindir}/node
 ln node %{buildroot}%{_bindir}/npm
 ln node %{buildroot}%{_bindir}/npx
+%if %{default_node_ver} <= 24
 ln node %{buildroot}%{_bindir}/corepack
+%endif
 
 %files
 %license LICENSE
 %{_bindir}/node
 %{_bindir}/npm
 %{_bindir}/npx
+%if %{default_node_ver} <= 24
 %{_bindir}/corepack
+%endif
 
 %files -n nodejs-default
 
@@ -175,6 +186,8 @@ ln node %{buildroot}%{_bindir}/corepack
 
 %files -n nodejs-devel-default
 
+%if %{default_node_ver} <= 24
 %files -n corepack-default
+%endif
 
 %changelog
