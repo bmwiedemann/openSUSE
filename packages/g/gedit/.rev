@@ -1352,4 +1352,15 @@ Pushing GNOME 45.rc packages</comment>
     <comment>- Add gedit-desktop-translation.patch: Fix invalid desktop file translation.</comment>
     <requestid>1398425</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>aedf5a6c293e1665b0080dc200a49c2e</srcmd5>
+    <version>51.1</version>
+    <time>1795519409</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.1:
+  * Fix a translation issue for the *.desktop file.
+  * Updated translations.
+- Drop gedit-desktop-translation.patch: fixed upstream.</comment>
+    <requestid>1399952</requestid>
+  </revision>
 </revisionlist>

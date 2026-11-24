@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 23 09:47:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1:
+  * Fix a translation issue for the *.desktop file.
+  * Updated translations.
+- Drop gedit-desktop-translation.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Wed Nov 18 12:52:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add gedit-desktop-translation.patch: Fix invalid desktop file translation.

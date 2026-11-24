@@ -18,7 +18,7 @@
 
 %define api_ver 51
 Name:           gedit
-Version:        51.0
+Version:        51.1
 Release:        0
 Summary:        UTF-8 text editor
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ URL:            https://gedit-text-editor.org
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE gedit-desktop.patch -- Adds more MIME types.
 Patch0:         gedit-desktop.patch
-# PATCH-FIX-UPSTREAM glgo#World/gedit#656 -- Fix invalid desktop file translations
-Patch1:         gedit-desktop-translation.patch
 BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
