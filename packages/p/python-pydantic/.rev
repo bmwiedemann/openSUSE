@@ -744,4 +744,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1387224</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>68648d04327ae80c8df9946c63bd312a</srcmd5>
+    <version>2.14.4</version>
+    <time>1795519381</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.4:
+  * Bump jiter to v0.19.0, fixing memory issues introduced by
+    the previous jiter release
+  * Don't mark subclasses of @deprecated classes as deprecated
+    in JSON Schema
+  * Cache UTC TzInfo instance
+  * Skip schema deduplication for alternatives with a single
+    schema
+  * Exclude InitVar fields from the serialization JSON schema
+  * Fix more issues about GC tracking in pydantic-core
+  * Fix validation constraints leaking into the Decimal JSON
+    Schema
+  * Fix model signature when a field alias is the name used for
+    extra kwargs
+  * Fix display of Callable parameters in type representations
+  * Respect validation-time strict=True for complex
+  * Fill missing type alias arguments from type parameter
+    defaults
+- update to 2.14.3:
+  * Improve schema generation for fixed type handlers
+  * Skip general schema dispatch for builtin scalars
+  * Skip annotation handler setup when annotations are empty
+  * Fix quadratic serialization time with per-index
+    include/exclude on sequences
+  * Avoid type lookups when checking for None during
+    serialization
+  * Improve performance of model, dict serialization and type
+    inference during serialization
+  * Avoid cloning the field name when using the default value
+    during validation</comment>
+    <requestid>1399815</requestid>
+  </revision>
 </revisionlist>

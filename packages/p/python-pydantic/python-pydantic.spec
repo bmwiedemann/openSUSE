@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic%{psuffix}
-Version:        2.14.1
+Version:        2.14.4
 Release:        0
 Summary:        Data validation and settings management using python type hinting
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic-core = 2.50.1}
+BuildRequires:  %{python_module pydantic-core = 2.50.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
@@ -62,7 +62,7 @@ BuildRequires:  %{python_module rich}
 BuildRequires:  %{python_module time-machine}
 %endif
 Requires:       python-annotated-types >= 0.6.0
-Requires:       python-pydantic-core = 2.50.1
+Requires:       python-pydantic-core = 2.50.5
 Requires:       python-typing-extensions >= 4.16.0
 Requires:       python-typing-inspection >= 0.4.4
 Recommends:     python-email-validator >= 2.0
