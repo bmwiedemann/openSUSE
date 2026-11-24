@@ -1,0 +1,25 @@
+Index: node-v26.12.1/deps/v8/src/regexp/gen-regexp-special-case.cc
+===================================================================
+--- node-v26.12.1.orig/deps/v8/src/regexp/gen-regexp-special-case.cc
++++ node-v26.12.1/deps/v8/src/regexp/gen-regexp-special-case.cc
+@@ -76,6 +76,10 @@ void PrintSpecial(std::ofstream& out) {
+         if (c == i) {
+           continue;
+         }
++        if (c >= static_cast<UChar32>(kNonBmpStart)) {
++          class_has_non_matching_canonical_char = true;
++          continue;
++        }
+         UChar32 other_canonical = RegExpCaseFolding::Canonicalize(c);
+         if (canonical == other_canonical) {
+           class_has_matching_canonical_char = true;
+@@ -116,6 +120,9 @@ void PrintSpecial(std::ofstream& out) {
+       for (int32_t j = 0; j < current.getRangeCount(); j++) {
+         for (UChar32 c2 = current.getRangeStart(j);
+              c2 <= current.getRangeEnd(j); c2++) {
++          if (c2 >= static_cast<UChar32>(kNonBmpStart)) {
++            continue;
++          }
+           CHECK_EQ(canonical, RegExpCaseFolding::Canonicalize(c2));
+         }
+       }

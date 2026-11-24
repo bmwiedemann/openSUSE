@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs26
-Version:        26.12.0
+Version:        26.13.1
 Release:        0
 
 # Double DWZ memory limits
@@ -87,7 +87,7 @@ ExclusiveArch do_not_build
 %bcond_without intree_nghttp2
 %endif
 
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1950
 %bcond_with    intree_brotli
 %else
 %bcond_without intree_brotli
@@ -122,7 +122,9 @@ Patch1:         v8-i586.patch
 Patch2:         no-rpath.patch
 Patch3:         fix_ci_tests.patch
 Patch5:         icu_781.patch
+Patch6:         icu_791.patch
 Patch7:         npm-line-truncation.patch
+Patch8:         ffi_32bit.patch
 
 ## Patches specific to SUSE and openSUSE
 # PATCH-FIX-OPENSUSE -- set correct path for dtrace if it is built
@@ -223,7 +225,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.34.8
+Provides:       bundled(libcares2) = 1.34.9
 %endif
 
 %if %node_version_number >= 22
@@ -294,7 +296,7 @@ ExclusiveArch:  not_buildable
 
 ## BEGIN NON-NPM PROVIDES ##
 %if %{with intree_brotli}
-Provides:       bundled(brotli) = 1.2.0
+Provides:       bundled(brotli) = 1.2.1
 %else
 BuildRequires:  pkgconfig(libbrotlidec)
 %endif
@@ -303,15 +305,16 @@ BuildRequires:  pkgconfig(libbrotlidec)
 Provides:       bundled(LIEF) = 1.0.0
 Provides:       bundled(ada) = 4.0.0
 Provides:       bundled(libuv) = 1.52.1
-Provides:       bundled(llhttp) = 9.4.3
+Provides:       bundled(llhttp) = 9.4.4
 Provides:       bundled(merve) = 1.2.2
 Provides:       bundled(nghttp3) = 1.18.0
 Provides:       bundled(ngtcp2) = 1.25.0
+Provides:       bundled(node-@perseveranza-pets/milo) = 0.9.0
 Provides:       bundled(node-acorn) = 8.19.0
 Provides:       bundled(node-acorn-walk) = 8.3.5
 Provides:       bundled(node-amaro) = 1.1.11
 Provides:       bundled(node-minimatch) = 10.2.6
-Provides:       bundled(node-undici) = 8.11.2
+Provides:       bundled(node-undici) = 8.12.4
 Provides:       bundled(simdjson) = 5.0.3
 Provides:       bundled(uvwasi) = 0.0.23
 Provides:       bundled(v8) = 14.6.202.34

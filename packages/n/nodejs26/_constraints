@@ -29,4 +29,8 @@
       </physicalmemory>
     </hardware>
   </overwrite>
+  <overwrite>
+     <conditions><arch>s390x</arch></conditions>
+     <hardware><cpu><flag>vxe2</flag></cpu></hardware>
+  </overwrite>
 </constraints>

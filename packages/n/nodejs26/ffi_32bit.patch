@@ -1,0 +1,76 @@
+--- a/test/ffi/fixture_library/ffi_test_library.c
++++ b/test/ffi/fixture_library/ffi_test_library.c
+@@ -199,7 +199,7 @@ FFI_EXPORT uint64_t sum_buffer(const uin
+   }
+ 
+   size_t sum = 0;
+-  for (size_t i = 0; i < length; i++) {
++  for (size_t i = 0; i < (size_t)length; i++) {
+     sum += buffer[i];
+   }
+   return sum;
+@@ -409,8 +409,8 @@ FFI_EXPORT int32_t divide_i32(int32_t a,
+   return a / b;
+ }
+ 
+-FFI_EXPORT void* allocate_memory(size_t size) {
+-  return malloc(size);
++FFI_EXPORT void* allocate_memory(uint64_t size) {
++  return malloc((size_t)size);
+ }
+ 
+ FFI_EXPORT void deallocate_memory(void* ptr) {
+@@ -489,7 +489,7 @@ FFI_EXPORT const char* CONSTANT_STRING =
+ 
+ // Array/pointer indexing.
+ 
+-FFI_EXPORT int32_t array_get_i32(const int32_t* arr, size_t index) {
++FFI_EXPORT int32_t array_get_i32(const int32_t* arr, uint64_t index) {
+   if (!arr) {
+     return 0;
+   }
+@@ -497,7 +497,7 @@ FFI_EXPORT int32_t array_get_i32(const i
+   return arr[index];
+ }
+ 
+-FFI_EXPORT void array_set_i32(int32_t* arr, size_t index, int32_t value) {
++FFI_EXPORT void array_set_i32(int32_t* arr, uint64_t index, int32_t value) {
+   if (!arr) {
+     return;
+   }
+@@ -505,7 +505,7 @@ FFI_EXPORT void array_set_i32(int32_t* a
+   arr[index] = value;
+ }
+ 
+-FFI_EXPORT double array_get_f64(const double* arr, size_t index) {
++FFI_EXPORT double array_get_f64(const double* arr, uint64_t index) {
+   if (!arr) {
+     return 0.0;
+   }
+@@ -513,7 +513,7 @@ FFI_EXPORT double array_get_f64(const do
+   return arr[index];
+ }
+ 
+-FFI_EXPORT void array_set_f64(double* arr, size_t index, double value) {
++FFI_EXPORT void array_set_f64(double* arr, uint64_t index, double value) {
+   if (!arr) {
+     return;
+   }
+--- a/test/ffi/test-ffi-shared-buffer.js
++++ b/test/ffi/test-ffi-shared-buffer.js
+@@ -536,12 +536,13 @@ test('pointer fast-path range check: [0,
+     identity_pointer: { return: 'pointer', arguments: ['pointer'] },
+   });
+   try {
++    const maxPointer = (1n << BigInt(common.bits)) - 1n;
+     assert.strictEqual(functions.identity_pointer(0n), 0n);
+-    assert.strictEqual(functions.identity_pointer((1n << 64n) - 1n), (1n << 64n) - 1n);
++    assert.strictEqual(functions.identity_pointer(maxPointer), maxPointer);
+ 
+     const expect = { code: 'ERR_INVALID_ARG_VALUE' };
+     assert.throws(() => functions.identity_pointer(-1n), expect);
+-    assert.throws(() => functions.identity_pointer(1n << 64n), expect);
++    assert.throws(() => functions.identity_pointer(maxPointer + 1n), expect);
+   } finally {
+     lib.close();
+   }
