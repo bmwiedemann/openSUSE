@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:50:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Upate to version 773
+  * Spiraldrive dreamcast (#481).
+  * More patched plextors.
+  * The disc made me do it (#453).
+  * Prevent LBA overflow during % display (#472).
+  * Fix SS when using OmniDrive or partial Kreon SS (#471).
+  * More NEC drives.
+
+-------------------------------------------------------------------
 Sun Oct 25 11:08:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 768
