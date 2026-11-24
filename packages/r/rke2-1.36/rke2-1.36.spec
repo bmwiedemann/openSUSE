@@ -31,7 +31,7 @@
 %define min_required_golang_minor_version 1.26.10
 
 Name:           rke2-1.36
-Version:        1.36.6+rke2r1
+Version:        1.36.6+rke2r2
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
