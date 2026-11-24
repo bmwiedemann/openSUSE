@@ -17,7 +17,7 @@
 
 
 Name:           tilth
-Version:        0.13.0
+Version:        0.15.0
 Release:        0
 Summary:        Tree-sitter indexed code lookups for humans and AI agents
 # Legal-Review-Notice: upstream is MIT; the remaining tags come from crates
@@ -31,8 +31,8 @@ Summary:        Tree-sitter indexed code lookups for humans and AI agents
 # build host and are not linked into the target binary.
 # Windows/WASI/Redox-only crates are not built and impose nothing.
 License:        Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib
-URL:            https://github.com/jahala/tilth
-Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://crates.io/crates/tilth
+Source0:        https://crates.io/api/v1/crates/%{name}/%{version}/download#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 # Stripped from vendor.tar.zst after re-vendoring: wit-bindgen's prebuilt
 # src/rt/libwit_bindgen_cabi.a and wasi-cli@*.wasm (wasm-only inputs; the
@@ -99,9 +99,9 @@ $BIN --completions fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{na
 $BIN --completions zsh > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
-# Upstream tests share process-global env vars, so run them serially:
-# parallel runs fail flakily (TILTH_FULL_SIZE_CAP=100 leaks across tests)
-%{cargo_test} -- --test-threads=1
+# Upstream tests share env vars, so run serially; skips: workspace layout absent from crates.io tarball,
+# timing flakes on slow builders (e.g. 16.1 aarch64)
+%{cargo_test} -- --test-threads=1 --skip only_the_runner_starts_git --skip a_command_past_its_deadline_is_stopped --skip a_git_line_out_of_time_is_left_out
 
 %files
 %license LICENSE

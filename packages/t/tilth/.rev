@@ -35,4 +35,12 @@ Green on x86_64 and aarch64 across Tumbleweed, Slowroll and Leap
     <comment>Update to 0.13.0</comment>
     <requestid>1396896</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c91decb778bdc51c1b6e91f6f393d27f</srcmd5>
+    <version>0.15.0</version>
+    <time>1795520513</time>
+    <user>anag_factory</user>
+    <comment>Update tilth to 0.15.0: qualified search, central Config, Query cache, diff expand</comment>
+    <requestid>1400213</requestid>
+  </revision>
 </revisionlist>

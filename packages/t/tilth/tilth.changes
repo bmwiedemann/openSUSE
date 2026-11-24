@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 21 07:11:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.15.0 (skips 0.14.0, no separate update staged):
+  * v0.14.0: qualified-name search (Type::method,
+    Self::/self./this., module/package qualifier) with stable
+    deterministic counts
+  * v0.14.0: callers qualified by type and reusable as target,
+    10 of N sites plus rest count (--full raises to 100); deps
+    "Used by" lists callers and importers, also through
+    re-exports (--full lists all)
+  * v0.14.0: stricter scope handling (non-directory --scope refused
+    with close-dir hint; MCP falls back to root); drop memmap2 for
+    grep-matcher
+  * v0.15.0: central Config (one env/workdir read, flags
+    override vars) and one git runner (pins
+    quotePath/diff.suppressBlankEmpty, --end-of-options hardening)
+  * v0.15.0: diff --expand shows changed lines of first N symbols;
+    MCP keeps root as value (no chdir, NO_ROOT when missing);
+    compiled tree-sitter Query cache for parallel walks
+- Switch Source0 to crates.io: upstream GitHub repo returns 404 for
+  all tags (including 0.13.0); re-strip wit-bindgen's wasm-only .a
+  and .wasm after re-vendoring as before
+- Skip three %check tests: only_the_runner_starts_git needs the
+  workspace layout (crates/tilth-core/src) absent from the
+  crates.io tarball; a_command_past_its_deadline_is_stopped and
+  a_git_line_out_of_time_is_left_out are timing-sensitive (fail
+  on slow builders, e.g. 16.1 aarch64)
+
+-------------------------------------------------------------------
 Wed Nov 11 13:00:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.0:
