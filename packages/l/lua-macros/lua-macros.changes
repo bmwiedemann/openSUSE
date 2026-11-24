@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Nov 14 18:46:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Derive %%lua_version from %%flavor (lua51 … lua55, luajit)
+  instead of asking the unversioned lua interpreter. lua is an
+  alternative and can point to a different interpreter than the
+  flavor being built, e.g. lua54 in a luajit build. The
+  interpreter is still asked for packages without a Lua flavor,
+  with %%lua_version_default as the last resort instead of
+  printing nil.
+
+-------------------------------------------------------------------
 Wed Jul 22 13:01:55 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix build on SLE15

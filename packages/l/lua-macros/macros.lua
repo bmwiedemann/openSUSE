@@ -2,11 +2,21 @@
 
 # The major.minor version of Lua
 %lua_version %{lua:
-local f = io.popen("lua -e 'print(_VERSION)'")
-local output = f:read("*a")
-f:close()
-local ver = output:match("Lua (%d%.%d)")
-print(ver)
+local flavor = rpm.expand("%{?flavor}")
+local major, minor = flavor:match("^lua(%d)(%d)$")
+local ver
+if major then
+  ver = major .. "." .. minor
+elseif flavor == "luajit" then
+  ver = "5.1"
+else
+  local f = io.popen("lua -e 'print(_VERSION)' 2>/dev/null")
+  if f then
+    ver = f:read("*a"):match("Lua (%d%.%d)")
+    f:close()
+  end
+end
+print(ver or rpm.expand("%{lua_version_default}"))
 }
 %lua_version_nodots %{lua:
   local ver = rpm.expand("%{lua_version}")
