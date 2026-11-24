@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Thu Dec 12 03:39:20 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update attoparsec to version 0.14.4 revision 6.
