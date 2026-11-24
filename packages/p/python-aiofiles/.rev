@@ -77,4 +77,19 @@
     <comment></comment>
     <requestid>1207158</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d112915db23bc18b7d6c2ec3f6152cf</srcmd5>
+    <version>25.1.0</version>
+    <time>1795519387</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1398973 from jbaier_cz
+
+- Update to 25.1.0:
+    * Switch to uv and add Python 3.14 support.
+    * Add ruff formatter and linter.
+    * Drop Python 3.8 support. If you require it, use version 24.1.0.
+  - Add hatch-vcs build requirement and drop poetry-core, which
+    upstream no longer uses</comment>
+    <requestid>1399889</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Nov 20 11:37:37 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- Update to 25.1.0:
+  * Switch to uv and add Python 3.14 support.
+  * Add ruff formatter and linter.
+  * Drop Python 3.8 support. If you require it, use version 24.1.0.
+- Add hatch-vcs build requirement and drop poetry-core, which
+  upstream no longer uses
+
+-------------------------------------------------------------------
 Fri Oct 11 09:56:34 UTC 2024 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 24.1.0

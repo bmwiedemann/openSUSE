@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiofiles
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiofiles
-Version:        24.1.0
+Version:        25.1.0
 Release:        0
 Summary:        File support for asyncio
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/Tinche/aiofiles
 Source:         https://github.com/Tinche/aiofiles/archive/v%{version}.tar.gz#/aiofiles-%{version}.tar.gz
+BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -44,6 +43,7 @@ aiofiles: file support for asyncio
 %autosetup -p1 -n aiofiles-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
