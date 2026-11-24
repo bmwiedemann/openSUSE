@@ -1,7 +1,7 @@
 #
 # spec file for package ShellCheck
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,12 @@
 
 
 %global pkg_name ShellCheck
-%global pkgver %{pkg_name}-%{version}
+%bcond_with ghc_prof
 %bcond_without tests
-Name:           %{pkg_name}
+Name:           %pkg_name
 Version:        0.11.0
 Release:        0
+%global pkgver %pkg_name-%{version}
 Summary:        Shell script analysis tool
 License:        GPL-3.0-or-later
 URL:            https://hackage.haskell.org/package/%{name}
@@ -29,41 +30,43 @@ Source0:        https://hackage.haskell.org/package/%{name}-%{version}/%{name}-%
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
-BuildRequires:  ghc-Diff-prof
 BuildRequires:  ghc-QuickCheck-devel
-BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-aeson-devel
-BuildRequires:  ghc-aeson-prof
 BuildRequires:  ghc-array-devel
-BuildRequires:  ghc-array-prof
 BuildRequires:  ghc-base-devel
-BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
-BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
-BuildRequires:  ghc-containers-prof
 BuildRequires:  ghc-deepseq-devel
-BuildRequires:  ghc-deepseq-prof
 BuildRequires:  ghc-directory-devel
-BuildRequires:  ghc-directory-prof
 BuildRequires:  ghc-fgl-devel
-BuildRequires:  ghc-fgl-prof
 BuildRequires:  ghc-filepath-devel
-BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
-BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-parsec-devel
-BuildRequires:  ghc-parsec-prof
 BuildRequires:  ghc-process-devel
-BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-regex-tdfa-devel
-BuildRequires:  ghc-regex-tdfa-prof
-BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-transformers-devel
-BuildRequires:  ghc-transformers-prof
 BuildRequires:  pandoc-cli
 Provides:       shellcheck = %{version}-%{release}
 ExcludeArch:    %{ix86}
+%if %{with ghc_prof}
+BuildRequires:  ghc-Diff-prof
+BuildRequires:  ghc-QuickCheck-prof
+BuildRequires:  ghc-aeson-prof
+BuildRequires:  ghc-array-prof
+BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-prof
+BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-deepseq-prof
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-fgl-prof
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-mtl-prof
+BuildRequires:  ghc-parsec-prof
+BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-regex-tdfa-prof
+BuildRequires:  ghc-transformers-prof
+%endif
 
 %description
 The goals of ShellCheck are:
@@ -93,32 +96,36 @@ Requires(postun): ghc-compiler = %{ghc_version}
 %description -n ghc-%{name}-devel
 This package provides the Haskell %{name} library development files.
 
-%package -n ghc-%{pkg_name}-doc
+%package -n ghc-%pkg_name-doc
 Summary:        Haskell %{pkg_name} library documentation
 Requires:       ghc-filesystem
 BuildArch:      noarch
 
-%description -n ghc-%{pkg_name}-doc
+%description -n ghc-%pkg_name-doc
 This package provides the Haskell %{pkg_name} library documentation.
 
-%package -n ghc-%{pkg_name}-prof
+%if %{with ghc_prof}
+%package -n ghc-%pkg_name-prof
 Summary:        Haskell %{pkg_name} profiling library
-Requires:       ghc-%{pkg_name}-devel = %{version}-%{release}
-Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
+Requires:       ghc-%pkg_name-devel = %{version}-%{release}
+Supplements:    (ghc-%pkg_name-devel and ghc-prof)
 
-%description -n ghc-%{pkg_name}-prof
+%description -n ghc-%pkg_name-prof
 This package provides the Haskell %{pkg_name} profiling library.
+%endif
+
 
 %prep
-%autosetup
+%autosetup -p1
 cabal-tweak-dep-ver Diff '< 1.1' '< 3'
+cabal-tweak-dep-ver QuickCheck '< 2.17' '< 2.20'
 
 %build
 %ghc_lib_build
 
 %install
 %ghc_lib_install
-%ghc_fix_rpath %{pkg_name}-%{version}
+%ghc_fix_rpath %pkg_name-%{version}
 pandoc -s -f markdown-smart -t man shellcheck.1.md -o shellcheck.1
 install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 
@@ -143,9 +150,11 @@ install -Dpm 0644 shellcheck.1 %{buildroot}%{_mandir}/man1/shellcheck.1
 %files -n ghc-%{name}-devel -f ghc-%{name}-devel.files
 %doc CHANGELOG.md README.md
 
-%files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
+%files -n ghc-%pkg_name-doc -f ghc-%pkg_name-doc.files
 %license LICENSE
 
-%files -n ghc-%{pkg_name}-prof -f ghc-%{pkg_name}-prof.files
+%if %{with ghc_prof}
+%files -n ghc-%pkg_name-prof -f ghc-%pkg_name-prof.files
+%endif
 
 %changelog
