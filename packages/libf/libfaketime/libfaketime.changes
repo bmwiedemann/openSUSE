@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:20:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.14
+  * Added the wrapper's --freeze mode, which resolves user-friendly
+    date syntax once and then uses the resulting absolute timestamp.
+  * Fixed glibc >= 2.33 stat-entry-point coverage so stat64,
+    lstat64, fstat64, and fstatat64 expose one consistent virtual
+    timestamp model.  This prevents mixed real and faked metadata
+    from invalidating timestamp based caches such as Python
+    bytecode caches.
+  * Improved glibc time64 helper selection and linker compatibility,
+    including a dedicated helper version map and lld build coverage.
+  * Hardened initialization, descriptor ownership, and flock-based
+    locking for current and legacy glibc loaders, including safer
+    behaviour after descriptor closure and loader re-entry.
+  * Made FAKETIME_XRESET rate transitions safe for concurrent
+    readers and documented the wall-clock transition contract.
+- Drop patch:
+  * remove-NULL-contract-tests.patch (merged upstream).
+  
+-------------------------------------------------------------------
 Tue Sep 15 14:55:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.13:

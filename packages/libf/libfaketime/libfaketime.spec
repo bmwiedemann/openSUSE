@@ -16,17 +16,13 @@
 #
 
 
-# LTO: fixed upstream after 0.9.13, gh#wolfcw/libfaketime#557
-%define _lto_cflags %{nil}
 Name:           libfaketime
-Version:        0.9.13
+Version:        0.9.14
 Release:        0
 Summary:        FakeTime Preload Library
 License:        GPL-2.0-only
 URL:            https://github.com/wolfcw/libfaketime
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM remove-NULL-contract-tests.patch gh#wolfcw/libfaketime#555
-Patch0:         remove-NULL-contract-tests.patch
 BuildRequires:  bash
 BuildRequires:  gcc
 BuildRequires:  make
