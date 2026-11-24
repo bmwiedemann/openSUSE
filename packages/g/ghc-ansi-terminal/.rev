@@ -242,4 +242,12 @@ supported as a compiler.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325193</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>94473f4cd4f05ac0ffa7a72e970c0776</srcmd5>
+    <version>1.1.5</version>
+    <time>1795519542</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399056</requestid>
+  </revision>
 </revisionlist>
