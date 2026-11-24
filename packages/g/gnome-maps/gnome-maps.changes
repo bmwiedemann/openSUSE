@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Nov 21 12:30:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.3:
+  * Changes since 51.2:
+    + Improve prioritization of place labels. This avoids cases where smaller
+      town labels obscures more important cities in some cases
+    + Fix updating the accuracy circle for the user location marker. Avoid
+      showing the accuracy circle when hiding the location marker and then
+      zooming in or out
+  * Updated translations.
+
+-------------------------------------------------------------------
 Sun Oct 11 19:47:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 51.2:

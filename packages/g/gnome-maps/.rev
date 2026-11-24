@@ -1020,4 +1020,19 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385424</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>c6e9ab28fd7226d92e22c6dbee481c81</srcmd5>
+    <version>51.3</version>
+    <time>1795519392</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.3:
+  * Changes since 51.2:
+    + Improve prioritization of place labels. This avoids cases where smaller
+      town labels obscures more important cities in some cases
+    + Fix updating the accuracy circle for the user location marker. Avoid
+      showing the accuracy circle when hiding the location marker and then
+      zooming in or out
+  * Updated translations.</comment>
+    <requestid>1399904</requestid>
+  </revision>
 </revisionlist>
