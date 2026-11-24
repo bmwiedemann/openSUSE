@@ -39,6 +39,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  plib-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  zsh
 # Required for screensaver inhibition
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(freetype2)

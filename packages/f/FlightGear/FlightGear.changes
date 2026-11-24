@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 17 08:49:58 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- BuildRequire zsh to fix build
+
+-------------------------------------------------------------------
 Fri Aug 21 14:50:16 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 2024.1.7
