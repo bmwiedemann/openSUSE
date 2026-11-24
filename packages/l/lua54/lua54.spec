@@ -16,13 +16,6 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
-%define name_ext -test
-%define debug_package %{nil}
-%else
-%define name_ext %{nil}
-%endif
 %define major_version 5.4
 %define libname liblua5_4-5
 %if 0%{?suse_version} > 1500
@@ -30,7 +23,7 @@
 %else
 %bcond_with libalternatives
 %endif
-Name:           lua54%{name_ext}
+Name:           lua54
 Version:        5.4.8
 Release:        0
 Summary:        Small Embeddable Language with Procedural Syntax
@@ -50,6 +43,10 @@ Patch3:         main_test.patch
 Patch6:         shared_link.patch
 # PATCH-FIX-UPSTREAM inspect errno only after failure
 Patch8:         execresult.patch
+# PATCH-FIX-UPSTREAM libdir-luaconf.patch mcepl@suse.com
+# Make the build system controlled only by the command line arguments
+# (no need to modify src/luaconf.h "manually")
+Patch9:         libdir-luaconf.patch
 Patch100:       upstream1.patch
 Provides:       lua = %{version}
 Obsoletes:      lua < %{version}
@@ -63,16 +60,11 @@ Requires:       lua-interpreter
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-%if "%{flavor}" == "test"
-BuildRequires:  lua54
-BuildRequires:  lua54-devel
-%else
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 # Ensure we can build without $self
 #!BuildIgnore:  lua54
-%endif
 
 %description
 Lua is a programming language originally designed for extending
@@ -88,6 +80,7 @@ of C functions, written in ANSI C.
 
 %package devel
 Summary:        Development files for lua
+License:        MIT
 Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
@@ -107,6 +100,7 @@ application.
 
 %package -n %{libname}
 Summary:        The Lua integration library
+License:        MIT
 Group:          System/Libraries
 Provides:       liblua5_4 = %{version}-%{release}
 Obsoletes:      liblua5_4 < %{version}-%{release}
@@ -133,6 +127,7 @@ of C functions, written in ANSI C.
 
 %package doc
 Summary:        Documentation for Lua, a small embeddable language
+License:        MIT
 Group:          Documentation/HTML
 BuildArch:      noarch
 %if 0%{?suse_version} > 1315
@@ -157,17 +152,19 @@ mv lua-%{version}-tests testes
 %autopatch -p1
 
 # manpage
-%if "%{flavor}" != "test"
 cat doc/lua.1  | sed 's/TH LUA 1/TH LUA%{major_version} 1/' > doc/lua%{major_version}.1
 cat doc/luac.1 | sed 's/TH LUAC 1/TH LUAC%{major_version} 1/' > doc/luac%{major_version}.1
-%endif
 
 %build
-%if "%{flavor}" != "test"
-sed -i -e "s@lib/lua/@%{_lib}/lua/@g" src/luaconf.h
+MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE"
+# libdir-luaconf.patch turns the bare path into a C string
+MYCFLAGS="${MYCFLAGS} -DLUA_CDIR=\"%{_libdir}/lua/%{major_version}/\""
+export MYCFLAGS
+# Lua 5.4 links readline only with the linux-readline target
 %make_build linux-readline -C src \
     CC="cc" LIBDIR="%{_libdir}" \
-    MYCFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE -fPIC -DLUA_COMPAT_MODULE" \
+    LDFLAGS="-lm" \
+    MYCFLAGS="${MYCFLAGS}" \
     V=%{major_version} \
     LIBTOOL="libtool --quiet"
 
@@ -228,19 +225,35 @@ ln -s %{_libdir}/liblua%{major_version}.so.%{major_version}.0 %{buildroot}%{_lib
 # We don’t create alternatives for -devel content, just conflict those
 ln -s %{_libdir}/liblua%{major_version}.so %{buildroot}%{_libdir}/liblua.so
 ln -s %{_libdir}/pkgconfig/lua%{major_version}.pc %{buildroot}%{_libdir}/pkgconfig/lua.pc
-%endif  # flavor != "test"
 
 %check
-%if "%{flavor}" == "test"
+# Test the staged installation in %%{buildroot}, not the build tree.
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+lua_bin=%{buildroot}%{_bindir}/lua%{major_version}
+# The compiled-in search paths must match the module directories that
+# lua*-devel announces via pkg-config (used by %%lua_archdir and
+# %%lua_noarchdir). -E ignores LUA_PATH, LUA_CPATH and LUA_INIT.
+lua_pc="env PKG_CONFIG_PATH=%{buildroot}%{_libdir}/pkgconfig pkg-config lua%{major_version}"
+lmod=$($lua_pc --variable=INSTALL_LMOD)
+cmod=$($lua_pc --variable=INSTALL_CMOD)
+test "$lmod" = "%{_datadir}/lua/%{major_version}"
+test "$cmod" = "%{_libdir}/lua/%{major_version}"
+"$lua_bin" -E - "$lmod" "$cmod" <<'EOF'
+local lmod, cmod = ...
+assert(package.path:find(lmod .. "/?.lua", 1, true),
+       "package.path misses " .. lmod .. ": " .. package.path)
+assert(package.cpath:find(cmod .. "/?.so", 1, true),
+       "package.cpath misses " .. cmod .. ": " .. package.cpath)
+EOF
+# The upstream test suite, with C test modules built against the staged
+# headers
 cd testes
 pushd libs
-%make_build all LUA_DIR=%{_includedir}/lua%{major_version}
+%make_build all LUA_DIR=%{buildroot}%{_includedir}/lua%{major_version}
 cp *.so ..
 popd
-LD_LIBRARY_PATH=%{_libdir} %{_bindir}/lua%{major_version} all.lua
-%endif
+"$lua_bin" all.lua
 
-%if "%{flavor}" != "test"
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
@@ -258,9 +271,6 @@ if [ "$1" = 0 ] ; then
 fi
 %endif
 
-%endif  # flavor != "test"
-
-%if "%{flavor}" != "test"
 %files
 %doc README
 %dir %{_libdir}/lua
@@ -304,6 +314,5 @@ fi
 
 %files doc
 %doc doc/*
-%endif  # flavor != "test"
 
 %changelog

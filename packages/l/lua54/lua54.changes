@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Nov 14 18:43:51 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add libdir-luaconf.patch (backported from lua55, bsc#1290489).
+  Without it src/luaconf.h silently overrode the LUA_CDIR passed
+  in MYCFLAGS, so the interpreter searched for C modules in
+  /usr/lib/lua/5.4 instead of the library directory
+  (/usr/lib64/lua/5.4 on 64-bit architectures) and could not find
+  modules like lpeg. The previous entry also named the 5.5
+  directory by mistake.
+- Build with the linux-readline target again; the plain linux
+  target of Lua 5.4 builds the interpreter without readline.
+- Drop the test flavour. The test build conditional was never
+  defined, so the flavour did not run any tests. The check
+  section of the main build now runs the upstream test suite
+  against the staged installation in the build root and verifies
+  that the compiled-in search paths match INSTALL_LMOD and
+  INSTALL_CMOD in lua5.4.pc.
+- Remove the unused BuildRequires on lua-macros.
+
+-------------------------------------------------------------------
+Sat Oct 24 15:29:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add lua-macros to the build requirements and declare the MIT
+  license explicitly for the devel, library and doc subpackages.
+- Switch to the linux build target, link explicitly against libm
+  and set LUA_CDIR through MYCFLAGS instead of editing luaconf.h.
+  The configured C module directory is %{_libdir}/lua/5.5/.
+
+-------------------------------------------------------------------
 Thu Oct 16 15:54:49 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Clean up of the SPEC file.
