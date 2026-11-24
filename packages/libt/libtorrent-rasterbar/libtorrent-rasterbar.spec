@@ -17,19 +17,21 @@
 
 
 %define _name   libtorrent
-%define libver  2_0
-%define sover   2.0
+%define libver  2_1
+%define sover   2.1
 %define _legacy 1
 %bcond_with     examples
 %bcond_with     tests
 Name:           libtorrent-rasterbar
-Version:        2.0.15
+Version:        2.1.3
 Release:        0
 Summary:        A C++ implementation of the BitTorrent protocol
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://libtorrent.org/
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE libtorrent-rasterbar-use_system_datachannel.patch
+Patch0:         libtorrent-rasterbar-use_system_datachannel.patch
 BuildRequires:  cmake >= 3.12.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -47,6 +49,7 @@ BuildRequires:  libboost_system1_75_0-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+BuildRequires:  cmake(LibDataChannel)
 BuildRequires:  pkgconfig(openssl) >= 1.1.1
 
 %description
@@ -131,6 +134,7 @@ sed -e 's|#!/usr/bin/env python3|#!%__python3|' \
 %if %{with examples}
    -Dbuild_examples=ON \
 %endif
+   -DSYSTEM_LIBDATACHANNEL=ON \
    -Dpython-bindings=ON \
    -Dpython-egg-info=ON \
    -Dboost-python-module-name=python3 \
