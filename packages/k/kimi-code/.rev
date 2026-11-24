@@ -290,4 +290,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
     <comment>Update kimi-code to 2.7.2: keep draft thinking effort after send, fix fork after steering, input composer, queued prompts.</comment>
     <requestid>1399725</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f68c5c8d72414b274814c7f002a82538</srcmd5>
+    <version>2.7.3</version>
+    <time>1795520484</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 2.7.3: opt-in conversation/reply feedback, session-model recovery, MCP OAuth probes.</comment>
+    <requestid>1400202</requestid>
+  </revision>
 </revisionlist>

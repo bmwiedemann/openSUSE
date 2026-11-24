@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:29:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.3:
+  * Desktop: opt-in feedback for conversations and replies, also
+    via /feedback in kimi web (#5150, #5300, #5303)
+  * Recover sessions whose model became unavailable, including
+    replacing the session model (#5212)
+  * MCP: detect OAuth with targeted probes and show pending browser
+    authorization (#5197, #5246)
+
+-------------------------------------------------------------------
 Sun Nov 22 09:39:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.7.2 (crosses 2.7.1):
