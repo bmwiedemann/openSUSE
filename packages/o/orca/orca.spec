@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Wnck\\)
 
 Name:           orca
-Version:        51.1
+Version:        51.2
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
@@ -85,7 +85,7 @@ braille, and/or magnification.
 
 %files
 %license COPYING
-%doc AUTHORS ChangeLog MAINTAINERS NEWS TODO
+%doc AUTHORS CONTRIBUTING.md MAINTAINERS NEWS README.md
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/orca
 %{_sysconfdir}/xdg/autostart/orca-autostart.desktop

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Nov 22 08:49:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.2:
+  * Extensions:
+    + Let package extensions import their own modules.
+    + Add a hook for region changes.
+    + Apply the sound volume setting to sound files (not just tones).
+  * Web:
+    + Present checked state of checkable tree items.
+    + Keep native disclosure summaries in browse mode.
+    + Improve structural navigation responsiveness with giant documents.
+    + Fix Say All stopping due to our triggering expansion and popups.
+    + Fix Ctrl+End descending into objects it shouldn't.
+    + Prevent stale page-loading events from interrupting speech.
+    + Add click-ancestor to the list of "tryable" clickable actions.
+  * Braille:
+    + Fix several display bugs.
+    + Fix performance issue resulting from refreshes due to frequent terminal
+      updates.
+  * General:
+    + Fix several bugs related to applying and saving preferences.
+    + Fix multiple "chattiness" issues.
+    + Fix several issues related to text-selection presentation.
+    + Fix several issues related to reporting selection in file managers.
+    + Fix several issues related to terminal presentation.
+    + Add missing present-formula binding for laptop layout.
+    + Fix presentation of top-level popup menus in Qt applications.
+    + Improve presentation related to trees and GUI tables.
+    + Fix presentations of selection change events from non-showing menus in
+      combo boxes.
+    + Fix stale caret context in non-web documents.
+    + Defer showing preferences from SIGUSR1 to an idle callback to prevent
+      hang.
+    + Fix issue causing the wrong script to be loaded at startup.
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Oct 14 08:24:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 51.1:
