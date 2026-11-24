@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.7.0
-%define orig_version   153.7.0
+%define mainver        %major.8.0
+%define orig_version   153.8.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -164,7 +164,7 @@ BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %if 0%{?suse_version} >= 1610
 %define clang_version   21
 %else
-%define clang_version   19
+%define clang_version   21
 %endif
 BuildRequires:  clang%{clang_version}-devel
 # Because of reasons, clang-tools is not versioned and leads often
