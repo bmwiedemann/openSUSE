@@ -1,6 +1,6 @@
-cabal-version: 2.2
+cabal-version: 3.6
 name:          cabal-install-solver
-version:       3.14.1.0
+version:       3.16.0.0
 x-revision: 1
 synopsis:      The solver component of cabal-install
 description:
@@ -12,7 +12,7 @@ license:       BSD-3-Clause
 license-file:  LICENSE
 author:        Cabal Development Team (see AUTHORS file)
 maintainer:    Cabal Development Team <cabal-devel@haskell.org>
-copyright:     2003-2024, Cabal Development Team
+copyright:     2003-2025, Cabal Development Team
 category:      Distribution
 build-type:    Simple
 extra-doc-files:
@@ -39,7 +39,7 @@ library
   hs-source-dirs:   src-assertion
   ghc-options:
     -Wall -Wcompat -Wnoncanonical-monad-instances
-    -fwarn-tabs -fwarn-incomplete-uni-patterns
+    -Wtabs -Wincomplete-uni-patterns
 
   if impl(ghc < 8.8)
     ghc-options: -Wnoncanonical-monadfail-instances
@@ -102,9 +102,9 @@ library
     , array         >=0.4      && <0.6
     , base          >=4.13     && <4.23
     , bytestring    >=0.10.6.0 && <0.13
-    , Cabal         ^>=3.14
-    , Cabal-syntax  ^>=3.14
-    , containers    >=0.5.6.2  && <0.8
+    , Cabal         ^>=3.16
+    , Cabal-syntax  ^>=3.16
+    , containers    >=0.5.6.2  && <0.9
     , edit-distance ^>= 0.2.2
     , directory     >= 1.3.7.0  && < 1.4
     , filepath      ^>=1.4.0.0 || ^>=1.5.0.0
@@ -119,7 +119,8 @@ library
 
   if flag(debug-tracetree)
     cpp-options:   -DDEBUG_TRACETREE
-    build-depends: tracetree ^>=0.1
+    build-depends:
+      , tracetree ^>=0.1
 
 Test-Suite unit-tests
    default-language: Haskell2010
