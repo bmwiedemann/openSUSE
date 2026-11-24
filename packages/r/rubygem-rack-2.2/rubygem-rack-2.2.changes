@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 23 15:28:32 UTC 2026 - Dario Leidi <dleidi@suse.com>
+
+- Update to version 2.2.25
+
+  * [CVE-2026-125110] Rack: Rack::Static header_rules bypass via dot-segment normalization mismatch
+  * [CVE-2026-125108] Multipart boundary guard skips a leading empty or quoted `boundary` parameter, allowing parser differentials and WAF bypass 
+  * [CVE-2026-125111] Multipart parser retains parsed data in its scan buffer, allowing denial of service via memory exhaustion. 
+
+-------------------------------------------------------------------
 Wed Apr  8 11:26:29 UTC 2026 - Saray Cabrera Padron <scabrerapadron@suse.de>
 
 - Update to version 2.2.23

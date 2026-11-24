@@ -1,6 +1,7 @@
 #
 # spec file for package rubygem-rack-2.2
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +25,7 @@
 #
 
 Name:           rubygem-rack-2.2
-Version:        2.2.23
+Version:        2.2.25
 Release:        0
 %define mod_name rack
 %define mod_full_name %{mod_name}-%{version}
