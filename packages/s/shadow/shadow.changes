@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 23 07:41:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.20.4:
+  Security fixes:
+  * new[ug]idmap(1) (bsc#1290538)
+    + Use openat2(2) to avoid following symlinks and bind mounts.
+    + Drop fd:N.
+  Regression fixes:
+  * lib/nscd.h
+    + Fix build error due to wrong type. Regression introduced in 4.20.3.
+  * chfn(1)
+    + Restore an error message that was accidentally made unreachable. Regression introduced in 4.20.0.
+  * chpasswd(8)
+    + Respect chroot/prefix when reading </etc/login.defs>. Regression introduced in 4.12.
+  * groupmod(8)
+    + Fix wrong database name in syslog(3) message. Regression introduced in 4.1.3.
+
+-------------------------------------------------------------------
 Thu Sep 24 06:17:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.20.3:
