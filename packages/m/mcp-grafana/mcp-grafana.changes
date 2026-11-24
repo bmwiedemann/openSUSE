@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:19:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.0:
+  * Notebooks tools for Grafana 13.3 notebooks preview: list,
+    search, get, render as PDF, create, update and delete
+  * AWS X-Ray tools in opt-in `xray` category and Azure Monitor
+    tools in opt-in `azuremonitor` category
+  * `render_grafana_app` gains `query_datasource` source with
+    Grafana visualization Renderer for MCP Apps hosts
+  * Empty Prometheus and Loki results name the likely cause with
+    a stable `hints.reason`
+  * New `--config` YAML file for tool selection,
+    `--enable-write-tools` keep list, per-user
+    `--require-user-credentials` mode, `--log-tool-calls` and
+    `--server-auth-header`
+  * Prometheus enforced matchers, opt-in TSDB cardinality check,
+    `--dashboard-schema=v2` handling and Loki `format: loki`
+    output
+  * Fix time ranges with only an end time, alerting routing,
+    rules and contact-point fixes, library panel queries and
+    CloudWatch series merging; bad arguments return clear
+    errors instead of panics
+  * Breaking: `alerting_rules_read` returns `{rules, truncated,
+    next_cursor}` and `query_cloudwatch` nests results under
+    `series`; default `--grafana-timeout` rises from 10s to 30s
+  * Build with Go 1.26.11 and refreshed `golang.org/x/crypto`
+
+-------------------------------------------------------------------
 Wed Nov 11 15:15:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package for version 2.3.0

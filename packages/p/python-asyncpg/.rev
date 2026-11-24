@@ -218,4 +218,12 @@
 - drop skip-dsn_ipv6_multi_host-parse-test.patch (obsolete)</comment>
     <requestid>1349395</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cdd693f2ee1d1864bc14f6f8fdf1a7a9</srcmd5>
+    <version>0.32.0</version>
+    <time>1795527675</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400268</requestid>
+  </revision>
 </revisionlist>

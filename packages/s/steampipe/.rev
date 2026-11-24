@@ -479,4 +479,17 @@
   * Harden GitHub Actions: pin actions to SHAs and set explicit permissions (#4965) (forwarded request 1398086 from ph03nix)</comment>
     <requestid>1398173</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>7e88c2f86d5ba9330bc2274a1908acf6</srcmd5>
+    <version>2.5.1</version>
+    <time>1795536179</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.1:
+  * v2.5.1
+  * service status crashes when only the plugin manager is running closes #5161 (#5162)
+  * Share the query cache size limit between plugins by connection count closes #5093 (#5094)
+  * Remove the workflow that adds issues to the unused tracker board (#5157)
+  * Restore the steampipe query assertion in the duplicate connection name test (#5153) (forwarded request 1400264 from ph03nix)</comment>
+    <requestid>1400280</requestid>
+  </revision>
 </revisionlist>

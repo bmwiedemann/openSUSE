@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
@@ -24,13 +23,14 @@
 %{?sle15_python_module_pythons}
 %define skip_python311 1
 Name:           python-cysignals
-Version:        1.12.6
+Version:        1.13.1
 Release:        0
 Summary:        Interrupt and signal handling for Cython
 License:        GPL-3.0-only
 URL:            https://github.com/sagemath/cysignals
 Source:         https://files.pythonhosted.org/packages/source/c/cysignals/cysignals-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3.1.4}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module build >= 1.3.0}
 BuildRequires:  %{python_module meson-python >= 0.18.0}
 BuildRequires:  %{python_module pip}
@@ -63,6 +63,13 @@ code like the following cannot be interrupted in Cython::
 The cysignals package provides mechanisms to handle interrupts (and
 other signals and errors) in Cython code.
 
+%package devel
+Summary:        Development files for %{name}
+Requires:       %{name} = %{version}
+
+%description devel
+This package contains header files for %{name}.
+
 %prep
 %autosetup -p1 -n cysignals-%{version}
 
@@ -91,5 +98,11 @@ other signals and errors) in Cython code.
 %python_alternative %{_bindir}/cysignals-CSI
 %{python_sitearch}/cysignals
 %{python_sitearch}/cysignals-%{version}.dist-info
+%exclude %{python_sitearch}/cysignals/*.pc
+%exclude %{python_sitearch}/cysignals/*.h
+
+%files %{python_files devel}
+%{python_sitearch}/cysignals/*.pc
+%{python_sitearch}/cysignals/*.h
 
 %changelog

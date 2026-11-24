@@ -31,6 +31,7 @@ Source1:        https://github.com/strophe/%{name}/releases/download/%{version}/
 # "Releases are signed with the GPG key with ID F8ADC1F9A68A7AFF0E2C89E4391A5EFC2D1709DE"
 Source2:        %{name}.keyring
 Patch0:         libstrophe-0.14.0-gcc15.patch
+Patch1:         CVE-2026-112063.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libssl)

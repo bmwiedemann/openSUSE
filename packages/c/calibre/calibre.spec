@@ -23,7 +23,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           calibre
-Version:        9.17.0
+Version:        9.19.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -51,8 +51,6 @@ Source100:      %{name}-rpmlintrc
 Patch2:         %{name}-setup.install.py.diff
 # PATCH-FIX-OPENSUSE: disabling Autoupdate Searcher
 Patch3:         %{name}-no-update.diff
-# PATCH-FIX-OPENSUSE: disbale piper because since 8.8.0 calibre needs onnxruntime which is not in openSUSE.
-Patch4:         %{name}-disable_piper.patch
 ExclusiveArch:  aarch64 x86_64 riscv64
 BuildRequires:  cmake >= 3.27.6
 BuildRequires:  fdupes
@@ -125,7 +123,6 @@ BuildRequires:  pkgconfig(glib-2.0) >= 2.88.1
 BuildRequires:  pkgconfig(gpg-error) >= 1.51
 BuildRequires:  pkgconfig(hunspell) >= 1.7.2
 BuildRequires:  pkgconfig(icu-i18n) >= 78.1
-# upstream use 7.1
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -144,6 +141,7 @@ BuildRequires:  pkgconfig(libopenjp2) >= 2.5.2
 # upstream use: pkgconfig(libpng16) >= 1.6.57
 BuildRequires:  pkgconfig(libpng16) >= 1.6.44
 BuildRequires:  pkgconfig(libavif) >= 1.0.4
+BuildRequires:  pkgconfig(libonnxruntime) >= 1.30.0
 BuildRequires:  pkgconfig(libtiff-4) >= 4.7.1
 BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.30
 BuildRequires:  pkgconfig(libwebp) >= 1.6.0
@@ -187,6 +185,8 @@ BuildRequires:  %{python_module ifaddr >= 0.2.0}
 BuildRequires:  %{python_module inflate64 >= 1.0.4}
 BuildRequires:  %{python_module jaconv >= 0.4.1}
 BuildRequires:  %{python_module jeepney >= 0.9.0}
+BuildRequires:  %{python_module kovidgoyal-langtool >= 1.3.0}
+BuildRequires:  %{python_module kovidgoyal-langtool-devel >= 1.3.0}
 BuildRequires:  %{python_module lxml >= 6.0.2}
 BuildRequires:  %{python_module lxml_html_clean >= 0.4.4}
 BuildRequires:  %{python_module mechanize >= 0.4.10}
@@ -279,6 +279,7 @@ Requires:       %{python_flavor}-ifaddr >= 0.2.0
 Requires:       %{python_flavor}-inflate64 >= 1.0.4
 Requires:       %{python_flavor}-jaconv >= 0.4.1
 Requires:       %{python_flavor}-jeepney >= 0.9.0
+Requires:       %{python_flavor}-kovidgoyal-langtool >= 1.3.0
 Requires:       %{python_flavor}-lxml >= 6.0.2
 Requires:       %{python_flavor}-lxml_html_clean >= 0.4.4
 Requires:       %{python_flavor}-mechanize >= 0.4.10
@@ -324,7 +325,6 @@ into ebooks for convenient reading.
 %setup -q -a5 -a6
 %patch -P 2 -p1
 %patch -P 3 -p1 -b .no-update
-%patch -P 4 -p1
 
 # dos2unix newline conversion
 sed -i 's/\r//' src/calibre/web/feeds/recipes/*
@@ -446,6 +446,8 @@ TEST_EXCLUDE=(
     --exclude-test-name test_import_of_all_python_modules # rise up build error because of pykakasi and piper
     --exclude-test-name test_qt                      # rise up build errror because of cwebp
     --exclude-test-name test_speech_dispatcher       # rise up build error because of python-speechd
+    --exclude-test-name test_langtool                # calibre want static linked
+
 %endif
 %if 0%{?qemu_user_space_build}
     --exclude-test-name test_recipe_browser_webengine # sandbox not supported

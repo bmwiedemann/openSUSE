@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 16 13:15:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add budgie-screensaver-drop-gnome-rr.patch: drop usage of
+  gnome-rr which was removed in gnome-desktop 51.0+.
+
+-------------------------------------------------------------------
 Thu Feb  1 12:44:09 UTC 2024 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move autostart back to %_distconfdir as aaa_base is fixed

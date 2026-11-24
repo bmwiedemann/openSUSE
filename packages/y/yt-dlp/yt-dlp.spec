@@ -28,7 +28,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2026.10.26
+Version:        2026.11.23
 %define ejsver  0.8.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
@@ -89,9 +89,11 @@ The direct Python interface into yt-dlp.
 # remove shebang
 find . -type f -name "*.py" -exec sed -i '/^#!/d' {} +
 
-# fix Leap 15.6 build w.r.t. python-hatchling
-sed -e '/3\.14/d' -e '/^license\-files/d' \
+# fix Leap 16.0 build w.r.t python-trove-classifiers
+%if 0%{?suse_version} == 1600
+sed -e '/Programming Language :: Python :: 3.15/d' \
     -i pyproject.toml
+%endif
 
 %build
 rm -f youtube-dl yt-dlp

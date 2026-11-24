@@ -1,7 +1,7 @@
 #
 # spec file for package python-blurb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-blurb
-Version:        2.0.0
+Version:        2.3.0
 Release:        0
 Summary:        Command-line tool to manage CPython Misc/NEWS.d entries
 License:        BSD-3-Clause
@@ -42,13 +42,12 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Command-line tool to manage CPython Misc/NEWS.d entries.
+blurb is a command-line tool for CPython core development. It splits the
+Misc/NEWS changelog into one file per change under Misc/NEWS.d, so that
+concurrent commits no longer conflict on the same file.
 
 %prep
 %autosetup -p1 -n blurb-%{version}
-
-sed -i '1{\,^#!%{_bindir}/env python,d}' src/blurb/blurb.py
-chmod -x src/blurb/blurb.py
 
 %build
 %pyproject_wheel

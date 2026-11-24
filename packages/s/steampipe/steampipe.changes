@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:49:03 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.5.1:
+  * v2.5.1
+  * service status crashes when only the plugin manager is running closes #5161 (#5162)
+  * Share the query cache size limit between plugins by connection count closes #5093 (#5094)
+  * Remove the workflow that adds issues to the unused tracker board (#5157)
+  * Restore the steampipe query assertion in the duplicate connection name test (#5153)
+
+-------------------------------------------------------------------
 Tue Nov 17 07:50:49 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.5.0:

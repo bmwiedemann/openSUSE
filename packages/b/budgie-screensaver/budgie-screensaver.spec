@@ -29,6 +29,8 @@ Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-screensaver
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         gnome-screensaver-suse-pam.patch
+# PATCH-FIX-UPSTREAM budgie-screensaver-drop-gnome-rr.patch -- drop deprecated gnome-rr header and calls
+Patch1:         budgie-screensaver-drop-gnome-rr.patch
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pam-devel

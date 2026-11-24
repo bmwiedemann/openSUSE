@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov  9 20:29:58 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.19.1
+  * Fix an AssertionError in stack-size computation on Python 3.14
+    for code containing several async for loops with try blocks.
+
+-------------------------------------------------------------------
 Mon Aug 24 01:14:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.19.0:

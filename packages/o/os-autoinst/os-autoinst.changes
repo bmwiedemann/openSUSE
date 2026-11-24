@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Nov 24 11:30:02 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795519790.ff2dbdc:
+  * feat: Allow running more tests with `/tmp` inaccessible
+
+-------------------------------------------------------------------
 Fri Nov 20 16:51:39 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795193489.c9da151:

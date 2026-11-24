@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Nov  9 14:47:46 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.32.0
+  * Adds support for Python 3.15 and PostgreSQL 19.
+  * Pool `min_size` is now a maintained connection floor, and the
+    new `init_size` sets how many connections open at startup
+    (defaults to `min_size`)
+  * SCRAM password derivation is faster, using
+    `hashlib.pbkdf2_hmac()`.
+  * Direct TLS now requires `sslmode=require`, `verify-ca` or
+    `verify-full`, or an explicit `SSLContext`.
+  * SSL startup retries now match libpq, with better SSL rejection
+    diagnostics, and password errors are preserved during SSL
+    fallback.
+  * Fixes a pool deadlock on release after a protocol abort
+  * Fixes `target_session_attrs` cleanup so an unresponsive
+    rejected host can't delay the selected connection
+  * Other fixes: server error kept when the connection closes
+    mid-operation, COPY cleanup on generator errors, cursors in
+    explicit `BEGIN` transactions
+- Fix the unterminated macro in %install that broke spec parsing
+- Deselect the racy test_full_reconnect_on_node_change_role in
+  %check
+
+-------------------------------------------------------------------
 Sun Apr 26 14:23:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.31.0:

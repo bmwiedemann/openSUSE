@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Wed Nov 18 21:26:00 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 17.0.2:
+  - Security bug fixes
+    - PR: search for authorized SSH public keys by exact check.
+      When Forgejo's internal SSH server is in-use
+      ([server].START_SSH_SERVER = true), the content of public SSH
+      keys was checked against the database with a SQL LIKE
+      operation. In SQLite installations, this LIKE operation is
+      case-insensitive. This would allow a malicious actor to
+      retrieve the public key of a target user, craft a private key
+      that used any public key that matched the target public key
+      (case insensitively), and access Forgejo with that key.
+      Standard ssh access would not be possible as the private key
+      would not pass OpenSSH's validity checks, but a crafted
+      application could be built to access Forgejo and bypass this
+      restriction. The computational complexity of crafting such a
+      public key takes less than one minute on a modern desktop.
+      The issue has been addressed by changing the database search
+      to an exact fingerprint key match (a performance enhancement
+      due to an existing DB index), and following up with an exact
+      key content confirmation as well.
+    - PR: check email activation in MakeEmailAddressPrimary.
+      Forgejo's web UI has a capability to mark an email address as
+      the primary address of a user. The UI restricted this to
+      occurring on email addresses that were verified, but the
+      backend POST endpoint did not validate that check. In marking
+      an unverified email address as the primary email for an
+      account, it is possible to trick an external service relying
+      on Forgejo as an authentication source into granting access
+      to an unexpected external account. The issue has been fixed
+      by validating the email address is validated before marking
+      it as a primary email. Thanks to Jaeyong Lee
+      jay@glendalab.com for reporting this risk and providing a
+      patch.
+    - PR: require tree/parent/author/committer in git object to be
+      parsed in positional order. Forgejo reads git commits and
+      parses them in order to understand the structure of the
+      commit, and its relation to other objects in the repository.
+      While git requires that the tree, parents, author, and
+      committer of the commit are headers in a specific positional
+      order, Forgejo allowed these headers to parsed in any
+      arbitrary header. A crafted commit could cause Forgejo to
+      present the commit incorrectly to users, including displaying
+      an incorrect diff. The issue has been fixed by parsing git
+      commits with positional awareness for these critical headers.
+    - PR: require repo code reader unit for /tree-list and /find UI
+      endpoints. The /tree-list HTTP endpoint was missing a
+      security check that prevented users without code reader
+      access from interacting with the endpoint. This endpoint can
+      be used to retrieve the files that are present in a
+      repository, leaking file presence information to users who
+      were not authorized to read it. The missing security check
+      was added to the endpoint.
+    - PR: implement authorization reducers in /activities/feeds and
+      /heatmap APIs. These APIs were accessible with repo-specific
+      access tokens and public-only access tokens, and data from
+      resources outside of those restrictions would be accessible.
+      This was fixed by implementing authorization reducers in
+      these API calls, filtering the repositories accessible when
+      necessary.
+  - Localization
+    - PR: i18n: translations update from Codeberg Translate
+  - Bug fixes
+    - PR (backported): fix(gitdiff): include old renamed/copied
+      files
+    - PR (backported): fix: pull_request_target actions when
+      merging PRs do not provide secrets
+    - PR (backported): fix: prevent Record has changed since last
+      read in table 'package_version' for concurrent container
+      uploads
+    - PR (backported): fix: populate 'access' table for explicit
+      access grants to read public repositories
+  - Security changes without a feature or bug label
+    - PR (backported): packages(debian): use pault.ag/go/debian/deb
+      to parse .deb files
+  - Other changes without a feature or bug label
+    - PR (backported): perf: reuse the already open git repo when
+      looking up funding config
+    - PR (backported): perf: do not terminate CatFileBatch[Check]
+      subprocess on git.ErrNotExist errors
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR (backported): fix(actions): don't duplicate the sub-path
+      in ACTIONS_ID_TOKEN_REQUEST_URL
+    - PR (backported): forgery: allow setting options when creating
+      an organization
+    - PR (backported): forgery: allow setting team units when
+      creating a team
+    - PR: Update go toolchain directive to v1.26.11 (v17.0/forgejo)
+    - PR (backported): ci: skip security job when the PR does not
+      change Go dependencies
+    - PR (backported): fix: replace blakesmith/ar with cfo mirror
+      to suppress govulncheck error
+    - PR: Update dependency minimatch to v11 [SECURITY]
+      (v17.0/forgejo)
+    - PR: Update github.com/andybalholm/brotli (indirect) to v1.2.7
+      [SECURITY] (v17.0/forgejo) - autoclosed
+    - PR: Update module github.com/klauspost/compress to v1.20.2
+      [SECURITY] (v17.0/forgejo)
+    - PR (backported): forgery: populate LatestSha when FilesInit
+      is specified
+    - PR (backported): git(config): replace regexp escaping with
+      --fixed-value flag
+    - PR: Update module golang.org/x/net to v0.62.0 [SECURITY]
+      (v17.0/forgejo)
+
+-------------------------------------------------------------------
+Mon Oct 26 20:12:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 17.0.1:
+  - Security bug fixes
+    - PR: pull_request_review Actions can be triggered and run as
+      trusted from arbitrary commits. When a review is submitted to
+      Forgejo on a PR, the commit_id is never validated. This can
+      allow someone to submit a review on a pull request that was
+      authored by a trusted author, but, provide a malicious review
+      commit_id, and run a workflow from an arbitrary commit
+      (including one from a forked pull request). The fix is to
+      align the forgejo.ref variable with the PR reference
+      (refs/pull/%d/head), not the commit that the review was
+      submitted on. This is consistent with GitHub's behaviour
+      (https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#pull_request_review).
+    - PR: consider visibility of users fetching watched and starred
+      repositories
+    - PR: nuget-based access token authentication does not respect
+      token scopes. Authenticating via X-NuGet-ApiKey with an
+      access token does not respect the access token's scopes. This
+      authentication mechanism is limited to the package APIs,
+      which does limit the scope of abuse to allowing an access
+      token to access packages even if it doesn't have package
+      scope access. The issue has been fixed by fixing the missing
+      scope return value to the authentication system, and
+      reviewing other authentication methods for similar gaps.
+    - PR (backported): fix(ui): prevent command substitution in CLI
+      instructions
+    - PR (backported): fix: avoid type confusion when checking
+      project access
+  - User Interface bug fixes
+    - PR (backported): fix: stop showing invalid commit statuses in
+      the dashboard
+  - Bug fixes
+    - PR (backported): git(mirror): silently ignore non-agit PR
+      deletion instead of failing
+    - PR (backported): fix: when last step of an Action is skipped,
+      post step logs aren't available
+    - PR (backported): git(mirror): properly handle all
+      refs/pull/... deletion cases
+    - PR (backported): git(config): fix configUnsetAll
+      receive.hideRefs
+    - PR (backported): feat: use invitee language when sending
+      invite email
+    - PR (backported): fix: interpret blank lines in description of
+      Debian packages
+    - PR (backported): fix: don't attempt to transfer Actions logs
+      to storage when already transferred
+    - PR (backported): fix: workflows running from a trusted PR
+      base sometimes has secrets omitted
+  - Included for completeness but not user-facing (chores, etc.)
+    - PR (backported): ci: only run current forgejo version
+      end-to-end tests
+    - PR: Revert "fix: server-side if evaluation should use typed
+      interpretation of workflow inputs (#14940)"
+    - PR (backported): fix: server-side if evaluation should use
+      typed interpretation of workflow inputs
+    - PR: Update dependency happy-dom to v21 [SECURITY]
+      (v17.0/forgejo)
+    - PR (backported): fix: intermittent integration test failures
+      in authorized integrations
+    - PR: Update go toolchain directive to v1.26.10 [SECURITY]
+      (v17.0/forgejo)
+
+-------------------------------------------------------------------
 Thu Oct 15 17:06:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - refreshed custom-app.ini.patch

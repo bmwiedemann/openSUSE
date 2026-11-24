@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Mon Nov 23 15:28:27 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- CVE-2026-112063: Fix buffer overflow in SCRAM_Hi (bsc#1285921)
+  Add CVE-2026-112063.patch
+
+-------------------------------------------------------------------
 Mon Jul 21 22:14:40 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- fix gcc15 build, add libstrophe-0.14.0-gcc15.patch from upstream
-- add upstream signing key
-- do not bootstrap during build, and other spec file tweaks
+- Fix gcc15 build, add libstrophe-0.14.0-gcc15.patch from upstream
+- Add upstream signing key
+- Do not bootstrap during build, and other spec file tweaks
 
 -------------------------------------------------------------------
 Thu Mar 13 14:15:02 UTC 2025 - Michael Vetter <mvetter@suse.com>

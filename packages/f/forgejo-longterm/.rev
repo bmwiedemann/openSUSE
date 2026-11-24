@@ -262,4 +262,12 @@
     <comment>Update to 15.0.11 (forwarded request 1393132 from computersalat)</comment>
     <requestid>1397308</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>229c5b9f585c1171dcbddca84c354c12</srcmd5>
+    <version>15.0.12</version>
+    <time>1795536184</time>
+    <user>anag_factory</user>
+    <comment>Update to 15.0.12 (forwarded request 1398523 from computersalat)</comment>
+    <requestid>1400284</requestid>
+  </revision>
 </revisionlist>

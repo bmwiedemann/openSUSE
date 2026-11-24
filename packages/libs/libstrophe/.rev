@@ -312,4 +312,17 @@
 - do not bootstrap during build, and other spec file tweaks</comment>
     <requestid>1299229</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>64bdd976a66871a8e66972723f25a0c3</srcmd5>
+    <version>0.14.0</version>
+    <time>1795536165</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-112063: Fix buffer overflow in SCRAM_Hi (bsc#1285921)
+  Add CVE-2026-112063.patch
+
+- Fix gcc15 build, add libstrophe-0.14.0-gcc15.patch from upstream
+- Add upstream signing key
+- Do not bootstrap during build, and other spec file tweaks</comment>
+    <requestid>1400227</requestid>
+  </revision>
 </revisionlist>

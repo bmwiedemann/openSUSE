@@ -350,4 +350,12 @@
   * fix-CVE-2026-126497.patch</comment>
     <requestid>1397069</requestid>
   </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>7b3191fc146c06e023bc50c6ca6e9f04</srcmd5>
+    <version>2.2.1.6</version>
+    <time>1795536237</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-135294.patch [boo#1291643]</comment>
+    <requestid>1400326</requestid>
+  </revision>
 </revisionlist>

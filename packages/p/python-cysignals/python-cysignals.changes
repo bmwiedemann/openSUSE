@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Nov 21 16:27:14 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Add -devel subpackage
+
+-------------------------------------------------------------------
+Sat Nov 21 11:43:27 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.13.1
+  * Update cibuildwheel action by @vincentmacri in #256
+  * Bump version in meson.build to 1.13.1 by @vincentmacri in #257
+  * Better fix for when CFLAGS includes -D_FORTIFY_SOURCE by @tornaria in #226
+  * include Python.h first by @cxzhong in #246
+  * Add cysignals.pc.in to generate pc file automatcially by @cxzhong in #247
+  * CI: exercise Darwin 27 runner in macOS matrices by @dimpase in #252
+  * Bump to Python 3.15 by @vincentmacri in #251
+  * Bump pytest from 8.4.2 to 9.0.3 by @dependabot[bot] in #253
+  * Bump pygments from 2.19.2 to 2.20.0 by @dependabot[bot] in #250
+  * Rebuild cysignals before Meson CI tests by @dimpase in #254
+  * Bump filelock from 3.20.0 to 3.20.3 by @dependabot[bot] in #249
+  * Bump wheel from 0.45.1 to 0.46.2 by @dependabot[bot] in #248
+  * Fix -Wunterminated-string-initialization warning in ulong_to_str by @cxzhong in #245
+  * Free-threading Python support by @cxzhong (and @dimpase) in #255
+
+-------------------------------------------------------------------
 Fri May 15 13:54:23 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix build

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 24 14:51:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add CVE-2026-135294.patch [boo#1291643]
+
+-------------------------------------------------------------------
 Thu Nov 12 08:59:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-126497: heap OOB write in bundled libdxfrw

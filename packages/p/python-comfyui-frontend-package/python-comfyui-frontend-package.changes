@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:16:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.14 (backport fixes only on core/1.59):
+  * Agent: a switch to Auto is honored for the rest of a running
+    turn; Desktop is asked to flash its window while the agent
+    waits on the user
+  * Subgraph: removing a slot now disconnects every link (fixes
+    prompt-build SlotIndexError and rewired survivors); load-time
+    link prunes tagged as load, not local edits
+  * Loading: a preload error event with no error no longer throws
+    in the listener; node library typeahead no longer throws
+    reading 'label'
+  * Imports: fit the view on the nodes after an API JSON or A1111
+    import instead of leaving an empty-looking tab
+  * Open on Cloud: empty workflows are explained; workflows whose
+    inputs arrive through links are checked
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+
+-------------------------------------------------------------------
 Sun Nov 22 09:39:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.59.13 (backport fixes only on core/1.59,

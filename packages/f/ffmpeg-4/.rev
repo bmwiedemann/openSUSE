@@ -929,4 +929,12 @@ minus ffmpeg-4-CVE-2026-75141.patch</comment>
     <comment></comment>
     <requestid>1382587</requestid>
   </revision>
+  <revision rev="102" vrev="7">
+    <srcmd5>6c63963ca233a36c22cf07662165a64e</srcmd5>
+    <version>4.4.8</version>
+    <time>1795536240</time>
+    <user>anag_factory</user>
+    <comment>fwd https://src.opensuse.org/jengelh/ffmpeg-4/pulls/39 from qzhao</comment>
+    <requestid>1400335</requestid>
+  </revision>
 </revisionlist>

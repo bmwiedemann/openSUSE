@@ -1,7 +1,7 @@
 #
 # spec file for package muparser
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,11 @@ Source:         https://github.com/beltoforion/muparser/archive/v%version.tar.gz
 Patch0:         muparser-abiversion.diff
 Source1:        baselibs.conf
 BuildRequires:  cmake
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 
@@ -60,6 +64,9 @@ precalculating constant parts of the expression.
 %autosetup -p1
 
 %build
+%if 0%{?suse_version} && 0%{?suse_version} < 1600
+export CC=gcc-13 CXX=g++-13
+%endif
 %cmake -DCMAKE_INSTALL_PREFIX="%_prefix"
 %cmake_build
 

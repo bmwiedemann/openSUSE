@@ -7,4 +7,12 @@
     <comment>🤖: initial submission of openjdk-27-image</comment>
     <requestid>1400013</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b4fb9b51962e4478411b27cdb61b0581</srcmd5>
+    <version>unknown</version>
+    <time>1795531492</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1400289</requestid>
+  </revision>
 </revisionlist>

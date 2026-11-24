@@ -58,4 +58,12 @@ Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <comment>Update bun-pty to 0.6.1: fix pre-onData output loss, repo moved to sursatech</comment>
     <requestid>1398007</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1c05f6b10ecd2ab98dd1553068e4c150</srcmd5>
+    <version>0.6.2</version>
+    <time>1795536220</time>
+    <user>anag_factory</user>
+    <comment>Update bun-pty to 0.6.2: FreeBSD x64 support, no Rust changes.</comment>
+    <requestid>1400297</requestid>
+  </revision>
 </revisionlist>

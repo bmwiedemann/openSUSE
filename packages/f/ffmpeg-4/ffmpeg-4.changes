@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Oct 27 09:52:41 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90816: avformat/hlsproto: derive the target duration
+  when EXT-X-TARGETDURATION is missing. (bsc#1280755)
+  * fix-CVE-2026-90816-part04.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 09:34:37 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90816: avformat/hlsproto: reject NaN and out of range
+  EXTINF. (bsc#1280755)
+  * fix-CVE-2026-90816-part03.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 08:30:29 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90816: avformat/hlsproto: reject out of range
+  EXT-X-TARGETDURATION. (bsc#1280755)
+  * fix-CVE-2026-90816-part02.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 08:30:29 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90816: avformat/hlsproto: clamp EXTINF and target
+  duration to a 1ms minimum. (bsc#1280755)
+  * fix-CVE-2026-90816-part01.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 08:30:29 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90815: avfilter/vf_convolution: don't assume frame is
+  multiple of 16 pixels wide. (bsc#1280754)
+  * fix-CVE-2026-90815-part02.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 07:22:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2026-90815: avfilter/vf_convolution: Use avpriv_mirror.
+  (bsc#1280754)
+  * fix-CVE-2026-90815-part01.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 06:51:11 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- ffmpeg-4-CVE-2026-65705-part02-24c322f.patch: 
+  avfilter/vf_floodfill: size the point stack for the current frame.
+  (bsc#1272761)
+  * fix-CVE-2026-65705.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 06:22:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2024-36615: lavc/vp9: Fix regression introduced in 0ba05857.
+  (bsc#1234017)
+  * fix-CVE-2024-36615-part02.patch
+
+-------------------------------------------------------------------
+Tue Oct 27 05:44:56 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- CVE-2024-36615: avcodec/vp9: Fix race when attaching side-data
+  for show-existing frame. (bsc#1234017)
+  * fix-CVE-2024-36615-part01.patch
+
+-------------------------------------------------------------------
 Mon Sep 21 02:44:56 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2026-75141.patch:
@@ -71,9 +135,17 @@ Wed Aug 14 09:44:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
   (CVE-2026-70632, bsc#1274289)
 
 -------------------------------------------------------------------
+Wed Aug 14 08:27:50 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70631-part02-ad89cd9.patch:
+  Backport ad89cd9 from upstream, avcodec/tiff: clear the separated
+  intermediate buffer.
+  (CVE-2026-70631, bsc#1274287)
+
+-------------------------------------------------------------------
 Wed Aug 14 08:27:41 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-4-CVE-2026-70631.patch:
+- Add ffmpeg-4-CVE-2026-70631-part01-3c287af.patch:
   Backport 3c287af3 from upstream, avcodec/tiff: reject inflate
   output shorter than the strip.
   (CVE-2026-70631, bsc#1274287)
@@ -103,9 +175,17 @@ Wed Aug 14 06:52:11 UTC 2026 - Cliff Zhao <qzhao@suse.com>
   (CVE-2026-70628, bsc#1274268)
 
 -------------------------------------------------------------------
+Wed Aug 14 06:28:40 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-66036-part02-ca9aa7e.patch:
+  Backport ca9aa7e from upstream, avfilter/vf_hqdn3d: forget the
+  configured width when the buffers are freed.
+  (CVE-2026-66036, bsc#1272763)
+
+-------------------------------------------------------------------
 Wed Aug 14 06:28:33 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-4-CVE-2026-66036.patch:
+- Add ffmpeg-4-CVE-2026-66036-part01-b3c7ebc.patch:
   Backport 62294b6a from upstream, avfilter/vf_hqdn3d: support
   dynamic frame sizes.
   (CVE-2026-66036, bsc#1272763)
@@ -113,7 +193,7 @@ Wed Aug 14 06:28:33 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 -------------------------------------------------------------------
 Wed Aug 14 05:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-4-CVE-2026-66036-shim01.patch
+- Add ffmpeg-4-CVE-2026-66036-shim01-e3d0c71.patch:
   Backport e3d0c719 from upstream, avfilter/vf_hqdn3d: reject
   unsupported frame parameter changes. This patch is for facilitate
   ffmpeg-CVE-2026-66036.patch.
@@ -130,7 +210,7 @@ Wed Aug 14 05:31:22 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 -------------------------------------------------------------------
 Wed Aug 14 04:56:09 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
-- Add ffmpeg-4-CVE-2026-65705.patch:
+- Add ffmpeg-4-CVE-2026-65705-part01-30a5227.patch:
   Backport 30a52276 from upstream, avfilter/vf_floodfill: remove
   unneeded variables.
   (CVE-2026-65705, bsc#1272761)
@@ -232,6 +312,10 @@ Fri May 22 17:28:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2026-38348, bsc#1277368)
   * avcodec/ppc/vp8dsp_altivec: Fix out-of-bounds access.
     (CVE-2024-35367, bsc#1234029)
+- CVE-2026-52296: avcodec/wmaenc: Fix missing padding in ex/tradata
+  (bsc#1280752)
+- CVE-2026-38344: swscale/utils: initialize chroma when luma switched to cascade
+  (bsc#1277309)
 - Drop patches fixed upstream:
   * ffmpeg-4-CVE-2024-35368.patch
   * ffmpeg-4-CVE-2024-36618.patch

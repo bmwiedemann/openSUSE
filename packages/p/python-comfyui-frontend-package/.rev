@@ -318,4 +318,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.59.13: backport fixes on core/1.59 (node search, Save-As, chunk load, Safari modal).</comment>
     <requestid>1399727</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>da79e81362737b37ea6b5e107c54bd8e</srcmd5>
+    <version>1.59.14</version>
+    <time>1795536225</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.14: backport fixes on core/1.59 (agent Auto switch, subgraph links, preload, imports).</comment>
+    <requestid>1400301</requestid>
+  </revision>
 </revisionlist>

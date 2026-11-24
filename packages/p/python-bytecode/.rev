@@ -177,4 +177,12 @@
   * Add support for Python 3.15 (tested against Python 3.15 rc)</comment>
     <requestid>1373284</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2bae06b13ec043abcf33a93a15bca9e2</srcmd5>
+    <version>0.19.1</version>
+    <time>1795527678</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400270</requestid>
+  </revision>
 </revisionlist>

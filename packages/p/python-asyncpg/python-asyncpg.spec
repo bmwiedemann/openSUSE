@@ -18,16 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncpg
-Version:        0.31.0
+Version:        0.32.0
 Release:        0
 Summary:        Python asyncio PosgtreSQL driver
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/asyncpg
 Source:         https://files.pythonhosted.org/packages/source/a/asyncpg/asyncpg-%{version}.tar.gz
-BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module Cython >= 3.2.1}
 BuildRequires:  %{python_module async_timeout if %python-base < 3.11}
 BuildRequires:  %{python_module devel >= 3.6}
 BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module packaging >= 24.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 3.7.4.3 if %python-base < 3.8}
@@ -65,9 +66,8 @@ PostgreSQL and Python/asyncio with clean implementation
 
 %install
 %pyproject_install
-%{python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand find %{buildroot}%{$python_sitearch} -name '*.[ch]' -delete
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 # Needed to avoid asyncpg.cluster.ClusterError:
@@ -81,6 +81,9 @@ donttest="test_timetz_encoding"
 # fails because ssl_user doesn't have permission to create tables
 # permission denied for schema public
 donttest+=" or test_executemany_uvloop_ssl_issue_700"
+# race with the server restart in the build chroot: raises
+# ConnectionDoesNotExistError instead of one of the accepted errors
+donttest+=" or test_full_reconnect_on_node_change_role"
 
 mv asyncpg .asyncpg
 %pytest_arch -rs -k "not ($donttest)"

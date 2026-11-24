@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov  9 14:39:37 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.0.10
+  * Fix comprehension loop variables leaking into the symbol
+    table(#156, Fixes: from exgcdwu)
+  * Reject assignment to unsafe attribute, including all "dunder"
+    attributes
+  * Update security advisory guidelines in SECURITY.md
+  * Fix typo raising exception where node is not defined
+  * Use ndarray.reshape instead of assigning to ndarray.shape to
+    avoid NumPy deprecation.
+  * Add some testing of implemented/non-implemented nodes
+  * Update docs to use breeze theme
+
+-------------------------------------------------------------------
 Fri Jul 31 16:44:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.9 (bsc#1273147, CVE-2026-55244):

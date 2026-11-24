@@ -3444,4 +3444,14 @@ Think &quot;osc service runall download_files&quot; are buggy!
     <comment>1</comment>
     <requestid>1392012</requestid>
   </revision>
+  <revision rev="362" vrev="1">
+    <srcmd5>7cf85f9d772b45e950d5332d03198638</srcmd5>
+    <version>9.19.0</version>
+    <time>1795536170</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.19.0
+
+And please accept request for python-kovidgoyal-langtool in devel:languages:python also. This new package is need to build calibre in version 9.19.0</comment>
+    <requestid>1399657</requestid>
+  </revision>
 </revisionlist>

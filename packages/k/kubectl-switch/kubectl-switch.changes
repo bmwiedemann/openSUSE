@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:07:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.41:
+  * Bug Fixes
+    - d22922e: fix(go): update charm.land/bubbles/v2
+      (v2.2.1 → v2.2.2)
+
+-------------------------------------------------------------------
 Mon Nov 23 05:59:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.40:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Nov 22 10:14:29 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.3
+  Bug Fixes:
+  * Stop the getfullargspec cache from keeping dead callables
+    alive
+
+-------------------------------------------------------------------
 Tue Nov 10 17:20:50 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.0.2

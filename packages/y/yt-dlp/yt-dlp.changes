@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Nov 24 07:48:24 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2026.11.23
+  * utils: find_xpath_attr: Support quotes in attribute
+    values
+  * utils: random_user_agent: Bump version range
+    145-151 => 151-157
+  * arte: Fix subtitles extraction
+  * drtv: Fix extractor
+  * drtv: Fix timestamp extraction
+  * duoplay: Fix extractor
+  * facebook: Detect age-restricted content
+  * facebook: Improve error messages
+  * la7play.it: Fix extractor
+  * screenrec: Fix extractor
+  * servus: Fix extractor
+  * thechosen: Support URLs with non-numeric IDs
+  * twitter: Rework broadcast extraction
+  * spaces: Fix extractor
+  * youtube: Add ios_producer player client
+  * youtube: Apply temporary STS workaround
+  * youtube: Do not truncate post-live streams
+  * youtube: Fix web_embedded client policies and deprioritize
+  * youtube: Fix live adaptive formats with dashy extractor-arg
+  * youtube: Fix post-live fragment generation
+  * youtube: Improve post_live status information
+  * youtube: Temporarily remove web from default clients
+  * youtube: Use tv as default player_js_variant
+  * misc: Use ini_options table for pytest config
+  * docs: Add new site support policy
+  * docs: Add student project policy
+  * docs: Add third party license for c-ares
+
+-------------------------------------------------------------------
 Mon Oct 26 22:35:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.10.26

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:16:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.2:
+  * Added FreeBSD x64 support (#55): the npm package ships
+    a prebuilt librust_pty_freebsd.so, built on FreeBSD 15.0;
+    bun build --compile --target=bun-freebsd-x64 embeds it
+  * FreeBSD ARM64 has no prebuilt library yet; build from
+    source with bun run build, or point BUN_PTY_LIB at it
+  * No Rust changes: same vendored crates and same eight
+    dlsym entry points, so no consumer rebuild is needed
+
+-------------------------------------------------------------------
 Mon Nov 16 20:33:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6.1:

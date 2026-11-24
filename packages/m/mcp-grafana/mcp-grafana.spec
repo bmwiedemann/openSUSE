@@ -17,7 +17,7 @@
 
 
 Name:           mcp-grafana
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        MCP server for Grafana
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT AND MPL-2.0

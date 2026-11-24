@@ -36,6 +36,7 @@ Patch4:         librecad-no-date.diff
 Patch6:         librecad-install.diff
 Patch7:         librecad-plugindir.diff
 Patch8:         fix-CVE-2026-126497.patch
+Patch9:         CVE-2026-135294.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libboost_headers-devel

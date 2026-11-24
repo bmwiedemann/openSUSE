@@ -1,0 +1,88 @@
+--- a/src/gs-fade.c
++++ b/src/gs-fade.c
+@@ -43,7 +43,7 @@
+ 
+ #define GNOME_DESKTOP_USE_UNSTABLE_API
+ 
+-#include <libgnome-desktop/gnome-rr.h>
++/* #include <libgnome-desktop/gnome-rr.h> */
+ 
+ /* XFree86 4.x+ Gamma fading */
+ 
+@@ -74,7 +74,7 @@
+ 	/* one per crtc in randr mode */
+ 	struct GSGammaInfo *info;
+ 	/* one per screen in theory */
+-	GnomeRRScreen      *rrscreen;
++	/* GnomeRRScreen      *rrscreen; */
+ #ifdef HAVE_XF86VMODE_GAMMA
+ 	/* one per screen also */
+ 	XF86VidModeGamma    vmg;
+@@ -462,6 +462,7 @@
+ 
+ /* Xrandr support */
+ 
++#if 0
+ static gboolean xrandr_fade_setup (GSFade *fade, int screen_idx)
+ {
+ 	struct GSFadeScreenPrivate *screen_priv;
+@@ -580,42 +581,13 @@
+ 	return TRUE;
+ }
+ 
++#endif
++
+ static void
+ check_randr_extension (GSFade *fade, int screen_idx)
+ {
+-	GdkScreen *screen = gdk_screen_get_default ();
+-	struct GSFadeScreenPrivate *screen_priv;
+-	GnomeRRCrtc **crtcs;
+-	GnomeRRCrtc *crtc;
+-	gboolean res;
+-	int gamma_size;
+-
+-	screen_priv = &fade->priv->screen_priv[screen_idx];
+-
+-	screen_priv->rrscreen = gnome_rr_screen_new (screen,
+-						     NULL);
+-	if (!screen_priv->rrscreen) {
+-		screen_priv->fade_type = FADE_TYPE_NONE;
+-		return;
+-	}
+-
+-	crtcs = gnome_rr_screen_list_crtcs (screen_priv->rrscreen);
+-
+-	while (*crtcs)
+-	{
+-		crtc = *crtcs;
+-		res = gnome_rr_crtc_get_gamma (crtc, &gamma_size, NULL, NULL, NULL);
+-		if (res == FALSE || gamma_size == 0) {
+-			screen_priv->fade_type = FADE_TYPE_NONE;
+-			return;
+-		}
+-		crtcs++;
+-	}
+-
+-	screen_priv->fade_type = FADE_TYPE_XRANDR;
+-	screen_priv->fade_setup = xrandr_fade_setup;
+-	screen_priv->fade_finish = screen_fade_finish;
+-	screen_priv->fade_set_alpha_gamma = xrandr_fade_set_alpha_gamma;
++	struct GSFadeScreenPrivate *screen_priv = &fade->priv->screen_priv[screen_idx];
++	screen_priv->fade_type = FADE_TYPE_NONE;
+ }
+ 
+ static gboolean
+@@ -937,11 +909,7 @@
+ 		fade->priv->screen_priv[i].fade_finish(fade, i);
+ 
+ 	if (fade->priv->screen_priv) {
+-		for (i = 0; i < fade->priv->num_screens; i++) {
+-			if (!fade->priv->screen_priv[i].rrscreen)
+-				continue;
+-			g_object_unref (fade->priv->screen_priv[i].rrscreen);
+-		}
++/* unref rrscreen removed */
+ 
+ 		g_free (fade->priv->screen_priv);
+ 		fade->priv->screen_priv = NULL;

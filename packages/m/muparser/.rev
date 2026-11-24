@@ -131,4 +131,12 @@
     <comment>- Update to release 2.3.5</comment>
     <requestid>1244560</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>2a37eaac7a9dfdb634bd2fde9b454ab2</srcmd5>
+    <version>2.3.5</version>
+    <time>1795536243</time>
+    <user>anag_factory</user>
+    <comment>- Pick a modern gcc-c++ on SUSE 15.x</comment>
+    <requestid>1400329</requestid>
+  </revision>
 </revisionlist>

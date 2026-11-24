@@ -1,4 +1,739 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:05:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.7:
+  ktop v0.7.6 introduces a dedicated [3] Events tab for live,
+  cluster- and namespace-wide Kubernetes Event monitoring, adds a
+  floating Event Detail modal with full untruncated messages and
+  cross-tab object inspection, exposes normalized events in --noui
+  JSON/JSONL snapshots, and refines top-level tab navigation with <
+  / > shortcuts.
+  Operators can switch directly to [3] Events (via key 3, < / >,
+  --page=events, or ui.default_page: events), filter down to
+  Warnings (w), pause live updates during event storms (f) while
+  tracking incoming event deltas, open any event in a floating
+  modal to read full word-wrapped messages, inspect raw Event YAML
+  (v), or jump directly to the involved Pod, Node, Deployment,
+  StatefulSet, DaemonSet, or Job (g).
+  * Standalone [3] Events Page & Floating Event Detail Modal
+    (views/events, application, ui, config, cmd)
+    - Cluster-Wide Chronological Event Stream
+      - Problem / Context: Events were previously visible only
+        inside single-object detail views (Node Detail, Pod Detail,
+        and Workload Detail), providing no cluster- or
+        namespace-wide feed for cross-resource warnings such as
+        scheduling failures, image pull errors, mount failures, or
+        eviction cascades.
+      - Technical Implementation: Added the views/events package
+        (views/events/page.go, views/events/summary.go,
+        views/events/detail_modal.go) and registered [3] Events
+        (application.PageEvents) in application/tui/app.go. Added
+        "events" to config.ValidPages (config/config.go) and
+        updated --page in cmd/ktop.go. Added ui.EventsContext and
+        ui.EventDetailModalContext in ui/footer_context.go.
+      - Behavioral Notes:
+        - Single-line Summary bar displays Events, Warnings,
+          Normal, top firing Reason (prioritizing Warning reasons
+          when present), and active stream badges (ALL | WARNINGS
+          ONLY, LIVE | PAUSED (+N new)).
+        - Table columns: LAST SEEN | TYPE | REASON | OBJECT | NS |
+          COUNT | MESSAGE using ui.TableController for column
+          sorting, / substring filtering, and y clipboard copy.
+        - Key w toggles Warnings-only filtering; key f
+          freezes/resumes live table updates while tracking new
+          event arrivals in the summary bar. Both keys are
+          suppressed while editing / filter input.
+        - Syncs automatically with the global namespace filter
+          shared across Overview and Workloads.
+    - Floating Event Detail Modal & Cross-Tab Object Jump
+      - Problem / Context: Single-line event table rows truncate
+        long Kubernetes event messages and require manual
+        navigation to inspect the affected workload, pod, or node.
+      - Technical Implementation: Implemented events.DetailModal
+        (views/events/detail_modal.go) on ui.OverlayFrame, showing
+        normalized metadata (Type, Reason, Object, Count, First
+        Seen, Last Seen, Source, Event Name) above a scrollable,
+        word-wrapped full message view. Added
+        Application.JumpToObject(kind, namespace, name) and
+        application.IsInspectableObjectKind(kind) in
+        application/app_ctrl.go.
+      - Behavioral Notes:
+        - Pressing Enter on an event opens the floating Event
+          Detail modal (ESC / q closes and restores table focus; y
+          copies the full message; v opens raw Event YAML via
+          k8s.FormatObjectYAML).
+        - Pressing g jumps to the involved resource when
+          inspectable: Pod opens the shared floating Pod Inspector
+          modal over [3] Events, Node switches to [1] Overview and
+          opens Node Detail, and
+          Deployment/StatefulSet/DaemonSet/Job switches to [2]
+          Workloads and opens Workload Detail. Missing or
+          already-deleted objects display a warning toast instead
+          of opening an empty view.
+  * Normalized Event Model, Informer Controller & --noui Snapshot
+    (views/model, k8s, internal/snapshot, collector)
+    - Unified core/v1 and events.k8s.io/v1 Event Normalization
+      - Problem / Context: Controllers emitting events.k8s.io/v1
+        events populate Series.LastObservedTime, Series.Count,
+        EventTime, and ReportingController rather than legacy
+        LastTimestamp, Count, and Source.Component, causing
+        incomplete counts or misordered timelines.
+      - Technical Implementation: Added views/model/event_model.go
+        (EventModel, EventsSummary, EventsSnapshot, NewEventModel,
+        EventLastTimestamp, EventFirstTimestamp, EventCount,
+        EventSource, ComputeEventsSummary, SortEventModelsBy).
+        Added k8s/events_controller.go (SetEventsRefreshFunc,
+        GetEventsSnapshot, HasObject) backed by the existing shared
+        coreInformers.Events() informer with no additional API
+        watch or RBAC requirement. Updated sortEventsByTime in
+        k8s/client_funcs.go to use model.EventLastTimestamp.
+      - APIs / Signatures:
+
+        snap, err := ctrl.GetEventsSnapshot(ctx, k8s.AllNamespaces, k8s.DefaultTUIEventsLimit)
+        exists := ctrl.HasObject("Pod", "default", "api-0")
+
+    - events Field in internal/snapshot and Headless --noui Output
+      - Problem / Context: Headless --noui JSON/JSONL reports
+        previously omitted cluster event summaries and recent event
+        records.
+      - Technical Implementation: Added EventsData,
+        EventsSummaryData, and EventData (json:"events,omitempty")
+        to snapshot.Snapshot with deep-copy support in
+        Snapshot.Clone() (internal/snapshot/snapshot.go) and
+        conversion helpers (eventsDataFromModel, ToEventsSnapshot)
+        in internal/snapshot/builder.go. Populated
+        BuildInput.Events in collector/k8s_provider.go (bounded by
+        k8s.DefaultSnapshotEventsLimit) and propagated Events onto
+        collector.Aggregate (collector/collector.go).
+      - APIs / Signatures:
+
+        {
+          "events": {
+            "summary": {
+              "total": 12,
+              "warning_count": 2,
+              "normal_count": 10,
+              "top_reason": "BackOff",
+              "top_reason_count": 2
+            },
+            "items": []
+          }
+        }
+
+  * Tab Navigation & Help Overlay Refinement (application, ui, docs)
+    - < / > Page Navigation & Clearer Help Labels
+      - Problem / Context: Square-bracket page navigation ([ / ])
+        rendered ambiguously in the keyboard shortcuts help overlay
+        (1-3 / [ / ]).
+      - Technical Implementation: Replaced [ / ] global
+        page-switching bindings with < (PrevPage) and > (NextPage)
+        in application/app_ctrl.go. Updated ui/help_modal.go to
+        display separate Keys 1-3 and < or > lines, escaped key
+        labels via tview.Escape, and updated docs/guide.md,
+        docs/cli.md, and docs/noui.md.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI flags, kubectl ktop plugin usage,
+      ~/.ktop/config.yaml configurations, and --noui JSON/JSONL
+      consumers (events is an additive omitempty field).
+    - Behavioral Changes: Sequential previous/next tab navigation
+      now uses < and > (Shift+, / Shift+.) instead of [ and ].
+      Direct numeric tab switching (1–3) is unchanged.
+    - Migration Actions: None required.
+- Update to version 0.7.6:
+  ktop v0.7.7 adds auto-discovered kube-state-metrics (KSM)
+  governance telemetry, built-in Kubernetes Component SLIs
+  (/metrics/slis) and Kubelet probe counters (/metrics/probes),
+  lock-free joins into both the interactive TUI and headless --noui
+  JSON/JSONL snapshots, and an always-visible Overview Cluster
+  Summary layout for terminals of 45 rows or fewer.
+  Operators gain live visibility into control-plane and kubelet
+  healthcheck SLIs (incorporated into cluster health_score when
+  explicitly unhealthy), failing readiness/liveness/startup probes,
+  HPA scaling ceilings, PDB disruption budgets, ResourceQuota
+  utilization, CronJob schedules, pod disruption reasons, and DRA
+  ResourceClaim associations—with silent degradation when KSM or
+  SLI endpoints are absent or RBAC-restricted.
+  * Auto-Discovered kube-state-metrics (KSM) Enrichment
+    (metrics/ksm, config, cmd)
+    - Streaming Allowlist Parser & Service-Proxy Discovery
+      - Problem / Context: Cluster governance state—such as HPA
+        scaling limits, PDB zero-disruption budgets, ResourceQuota
+        saturation, CronJob schedule timestamps, pod disruption
+        reasons, and DRA ResourceClaim mappings—was not surfaced in
+        ktop without manually inspecting multiple API resources.
+      - Technical Implementation: Added metrics/ksm
+        (metrics/ksm/types.go, metrics/ksm/parser.go,
+        metrics/ksm/collector.go) with a line-by-line streaming
+        allowlist parser (ParseStream) that skips non-allowlisted
+        series before label parsing and extracts:
+        - kube_horizontalpodautoscaler_* (info, spec_min_replicas,
+          spec_max_replicas, status_current_replicas,
+          status_desired_replicas, status_condition)
+        - kube_poddisruptionbudget_status_* (current_healthy,
+          desired_healthy, expected_pods, pod_disruptions_allowed)
+        - kube_resourcequota (hard, used, computed UsedPct)
+        - kube_cronjob_* (spec_suspend, status_active,
+          status_last_schedule_time, next_schedule_time)
+        - kube_pod_status_disruption_reason and
+          kube_pod_resourceclaim_info
+      - Added config.NormalizeKSMMode (config/config.go),
+        metrics.ksm_mode / metrics.ksm_endpoint config keys, and
+        --ksm (auto default, off) / --ksm-endpoint CLI flags
+        (cmd/ktop.go).
+      - APIs / Signatures:
+
+        # Default auto-discovery via API-server service proxy (degrades silently when absent)
+        ktop
+
+        # Disable KSM discovery
+        ktop --ksm=off
+
+        # Explicit service proxy or direct HTTP URL override
+        ktop --ksm-endpoint=monitoring/kube-state-metrics:8080
+        ktop --ksm-endpoint=http://127.0.0.1:8080/metrics
+
+      - Behavioral Notes: Auto-discovery scans kube-system,
+        monitoring, observability, prometheus, and the configured
+        namespace for matching kube-state-metrics services and
+        streams /metrics through the Kubernetes API server service
+        proxy with zero port-forwarding. Missing or RBAC-forbidden
+        services degrade silently without blocking startup.
+  * Component SLIs (/metrics/slis) & Kubelet Probes
+    (/metrics/probes) (metrics/sli, views/model, k8s)
+    - Control-Plane & Kubelet SLI Scraping with health_score
+      Integration
+      - Problem / Context: API reachability alone could not detect
+        internal component degradation (such as failing etcd
+        readiness checks or kubelet syncloop failures) or
+        containers experiencing repeated probe failures.
+      - Technical Implementation: Added metrics/sli
+        (metrics/sli/types.go, metrics/sli/parser.go,
+        metrics/sli/collector.go) scraping GET /metrics/slis on the
+        API server and nodes/{node}/proxy/metrics/slis +
+        nodes/{node}/proxy/metrics/probes across nodes with bounded
+        concurrency and atomic lock-free Latest() snapshots.
+        Updated model.CalculateHealthScore
+        (views/model/summary_model.go) and
+        Controller.BuildClusterSummary (k8s/summary_controller.go).
+      - Behavioral Notes:
+        - When /metrics/slis is reachable and explicitly reports
+          failing checks (kubernetes_healthcheck == 0),
+          CalculateHealthScore deducts 15 points per unhealthy
+          component (capped at 30).
+        - When /metrics/slis is unavailable or RBAC-forbidden, ktop
+          applies zero penalty to health_score.
+        - Kubelet prober_probe_total counters aggregate
+          per-container Readiness, Liveness, and Startup failure
+          counts per pod.
+  * Snapshot Join, Overview Layout & Detail Surfacing
+    (internal/snapshot, collector, views/overview, views/workloads,
+    views/pod, docs)
+    - Lock-Free Snapshot & --noui Schema Extensions
+      - Technical Implementation: Added optional Governance
+        *GovernanceData (json:"governance,omitempty") and SLIs
+        *SLIData (json:"slis,omitempty") to snapshot.Snapshot
+        (internal/snapshot/snapshot.go,
+        internal/snapshot/builder.go) and collector.Aggregate
+        (collector/collector.go), plus pod-level disruption_reason,
+        resource_claims, and failing_probes fields and SLI/KSM
+        rollup counts on SummaryData. Updated
+        K8sSnapshotProvider.WaitReady (collector/k8s_provider.go)
+        with a bounded best-effort initial KSM/SLI scrape so
+        single-shot ktop --noui captures them immediately.
+    - Overview Cluster Summary & Detail Panel Surfacing
+      - Problem / Context: On terminals with 45 rows or fewer,
+        Overview's Cluster Summary previously hid both the top
+        resource stats row and bottom enhanced stats row, leaving
+        only sparklines visible.
+      - Technical Implementation:
+        - Updated views/overview/summary_panel.go and
+          views/overview/main_panel.go to keep the full Cluster
+          Summary visible below 45 rows using compact 1-row
+          borderless stats lines (summaryHeight = 9 in Prometheus
+          mode / 8 in non-Prometheus mode, trimming 3 rows from the
+          flex Pods table).
+        - Added SLIs: OK|<N> fail, Probes: <N> fail, and KSM:
+          OK|<alerts> status badges to the bottom Cluster Summary
+          line under the sparklines.
+        - Surfaced HPA and PDB rows in Workload Detail
+          (views/workloads/detail.go, k8s/workloads_controller.go),
+          and failing Probes, Disrupt, and DRA Claims lines in Pod
+          Detail (views/pod/detail.go,
+          views/overview/main_panel.go).
+        - Documented --ksm, --ksm-endpoint, governance, and slis in
+          docs/cli.md and docs/noui.md.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI flags, kubectl ktop plugin usage,
+      ~/.ktop/config.yaml configurations, and --noui JSON/JSONL
+      consumers (governance, slis, and new summary/pod fields are
+      additive omitempty fields).
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required. Clusters without
+      kube-state-metrics or /metrics/slis access continue operating
+      with no configuration changes and zero health_score penalty.
+
+-------------------------------------------------------------------
+Mon Nov 23 06:01:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.5:
+  ktop v0.7.5 aligns Kubernetes client and metrics support with
+  Kubernetes v1.35–v1.37 (k8s.io/* v0.37.2), unifies workload state
+  into the core snapshot and headless --noui JSON/JSONL schema,
+  extracts shared UI-agnostic telemetry, log streaming, and YAML
+  helpers, and adds full-object Node YAML inspection parity.
+  Clusters running Kubernetes v1.37 now negotiate the GA
+  metrics.k8s.io/v1 API with automatic v1beta1 fallback, pods using
+  Pod-Level Resources (pod.Spec.Resources) or In-Place Pod Vertical
+  Scaling (AllocatedResources and
+  PodResizePending/PodResizeInProgress conditions) report accurate
+  effective budgets and resize states in both the TUI and --noui
+  output, and operators inspecting nodes in Node Detail can press v
+  to open a scrollable YAML modal.
+  * Kubernetes v1.35–v1.37 Client, Metrics, and Pod Resource
+    Support (k8s, metrics/k8s, views/model, views/pod,
+    internal/snapshot)
+    - k8s.io/* v0.37.2 Upgrade & metrics.k8s.io/v1 GA Negotiation
+      - Problem / Context: Previous releases pinned k8s.io/*
+        dependencies to v0.35.0 and queried only
+        metrics.k8s.io/v1beta1, missing the GA metrics.k8s.io/v1
+        API introduced in Kubernetes v1.37 and newer client-go
+        WatchList semantics.
+      - Technical Implementation: Upgraded k8s.io/api,
+        k8s.io/apimachinery, k8s.io/cli-runtime, k8s.io/client-go,
+        and k8s.io/metrics to v0.37.2 in go.mod. Added
+        Client.MetricsAPIVersion() in k8s/client.go to discover
+        metrics.k8s.io/v1 and fall back to metrics.k8s.io/v1beta1.
+        Updated MetricsServerSource in
+        metrics/k8s/metrics_server_source.go with MetricsV1()
+        queries (convertNodeMetricsV1, convertPodMetricsV1),
+        automatic NotFound downgrade to MetricsV1beta1(), and
+        accurate SourceInfo.Version reporting ("v1" or "v1beta1").
+      - APIs / Signatures:
+
+        apiVersion := client.MetricsAPIVersion() // "v1", "v1beta1", or ""
+
+    - Pod-Level Resources & In-Place Pod Vertical Scaling
+      - Problem / Context: Pod CPU and memory totals previously
+        summed only per-container Spec.Containers[*].Resources,
+        omitting pod-level budgets (pod.Spec.Resources) and
+        in-place vertical resize allocations
+        (ContainerStatus.AllocatedResources /
+        ContainerStatus.Resources), and leaving PodResizePending /
+        PodResizeInProgress conditions invisible.
+      - Technical Implementation: Added GetEffectiveResources() and
+        GetPodResizeStatus() in views/model/pod_model.go and
+        views/model/pod_detail_data.go, updated
+        GetPodContainerSummary() and GetConditions() health
+        mapping, surfaced ResizeStatus
+        (json:"resize_status,omitempty") on snapshot.PodData in
+        internal/snapshot/snapshot.go and
+        internal/snapshot/builder.go, and updated
+        views/pod/detail.go to display pod-level resource headers
+        ((pod-level)) and active resize status (Pending, Deferred,
+        Infeasible, InProgress).
+      - Behavioral Notes:
+        - When pod.Spec.Resources defines a pod-level CPU or memory
+          request/limit, ktop displays that effective pod budget
+          instead of double-counting container specs.
+        - When a container has AllocatedResources or
+          Status.Resources from an in-place resize, active
+          requests/limits reflect the live allocated values rather
+          than stale spec values.
+        - PodResizePending with reason Infeasible or Deferred
+          surfaces as an unhealthy condition in Pod Detail and
+          populates resize_status in --noui JSON/JSONL snapshots.
+  * Unified Workloads Snapshot & Shared Runtime Helpers
+    (internal/snapshot, collector, internal/history, k8s, ui,
+    views/container)
+    - Workloads in internal/snapshot and --noui JSON/JSONL Output
+      - Problem / Context: Workload inventories (Deployments,
+        StatefulSets, DaemonSets, Jobs) were previously fetched
+        only inside the interactive Workloads view and were absent
+        from snapshot.Snapshot and --noui JSON/JSONL outputs.
+      - Technical Implementation: Added WorkloadsData,
+        DeploymentData, StatefulSetData, DaemonSetData, and JobData
+        to snapshot.Snapshot (json:"workloads,omitempty") with
+        deep-copy support in Snapshot.Clone()
+        (internal/snapshot/snapshot.go) and conversion helpers
+        (ToWorkloadsSnapshot) in internal/snapshot/builder.go.
+        Wired ctrl.GetWorkloadsSnapshot(ctx) in
+        collector/k8s_provider.go and added Workloads
+        *snapshot.WorkloadsData (json:"workloads,omitempty") to
+        collector.Aggregate (collector/collector.go).
+      - APIs / Signatures:
+
+        {
+          "workloads": {
+            "deployments": [{ "namespace": "default", "name": "api", "desired": 3, "ready": 3, "available": 3 }],
+            "statefulsets": [],
+            "daemonsets": [],
+            "jobs": []
+          }
+        }
+
+    - Renderer-Agnostic History Store, Log Streamer, and
+      Secret-Redacting YAML Formatter
+      - Problem / Context: Rolling telemetry buffers, container log
+        streaming cancellation, and YAML serialization with
+        metadata.managedFields stripping lived inside individual
+        TUI views, duplicating logic and coupling non-UI mechanics
+        to tview.
+      - Technical Implementation:
+        - Added internal/history.Store (internal/history/store.go),
+          a thread-safe bounded sample store fed by
+          Store.PushSnapshot(*snapshot.Snapshot) with windowed
+          slice extraction (WindowSlice) and top-N node chart
+          series extraction (Extract).
+        - Added k8s.LogStreamer (k8s/log_streamer.go), managing a
+          single cancellable container log stream via Start / Stop
+          callbacks; updated views/container/detail.go to delegate
+          stream lifecycle management to k8s.LogStreamer.
+        - Added k8s.FormatObjectYAML(obj any) (string, error)
+          (k8s/yaml.go), which strips metadata.managedFields and
+          redacts Secret.data and Secret.stringData values to
+          <redacted> without mutating source objects; updated
+          ui/yaml_modal.go and views/container/spec.go to delegate
+          to it.
+      - APIs / Signatures:
+
+        yamlText, err := k8s.FormatObjectYAML(obj)
+
+        store := history.NewStore(history.DefaultMaxSamples)
+        store.PushSnapshot(snap)
+        series := store.Extract(15*time.Minute, 5)
+
+  * Node Detail YAML Inspection & Reliability (views/node,
+    views/overview, ui, docs, tests)
+    - Node YAML Modal Parity
+      - Problem / Context: Workloads and Pod detail views supported
+        full-object YAML inspection via v, whereas Node Detail had
+        no YAML inspection action.
+      - Technical Implementation: Added
+        DetailPanel.SetOnShowYAML(func(*corev1.Node)) and [v] key
+        handling (suppressed while filtering the pods table) in
+        views/node/detail.go, wired centered ui.NewYAMLModal
+        presentation with focus restoration in
+        views/overview/main_panel.go, and added the [v] yaml hint
+        to NodeDetailContext in ui/footer_context.go.
+    - Headless E2E WatchList & Timing Hardening
+      - Problem / Context: client-go v0.37.2 SharedInformer
+        defaults to WatchList (sendInitialEvents=true) and expects
+        an initial-events BOOKMARK before marking caches synced;
+        additionally, parallel test runs could trigger watch
+        transitions before initial sync completed.
+      - Technical Implementation: Updated mock API server handlers
+        in tests/headless_e2e_test.go to emit ADDED + BOOKMARK
+        (k8s.io/initial-events-end: "true") on
+        sendInitialEvents=true requests and synchronized
+        watch-transition test setup on initial BOOKMARK completion.
+        Updated docs/noui.md with the new workloads and pod
+        resize_status schema fields.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI flags, kubectl ktop plugin usage,
+      ~/.ktop/config.yaml configurations, and --noui JSON/JSONL
+      consumers (workloads and resize_status are additive omitempty
+      fields).
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required. Builds from source require
+      Go 1.27.0+ per go.mod (k8s.io/* v0.37.2).
+- Update to version 0.7.4:
+  ktop v0.7.4 refines the Workloads experience and introduces a
+  shared floating Pod / Container / YAML Inspector modal,
+  streamlining multi-page navigation and aligning table telemetry
+  and colors across Overview and Workloads.
+  Workloads tables now display aggregated live CPU and MEM usage
+  directly across Deployments, StatefulSets, and DaemonSets,
+  workload detail subpages provide richer rollout metadata with
+  full-object YAML inspection, and drilling into pods or container
+  logs from Overview, Node Detail, or Workload Detail opens in a
+  single transparent-margin modal frame that keeps the cluster
+  header, tabs, parent edges, and footer visible around it.
+  * Shared Floating Pod / Container / YAML Inspector Modal (ui,
+    views/overview, views/pod, views/container, application)
+    - Transparent-Margin Overlay Frame & Single-Modal Leaf
+      Inspection
+      - Problem / Context: Opening Pod Detail, Container Logs, and
+        Container Spec from Overview, Node Detail, and Workload
+        Detail previously replaced the entire viewport across 4–5
+        stack levels, hiding parent context and allowing circular
+        Pod -> Node -> Pod navigation loops.
+      - Technical Implementation: Added ui.OverlayFrame in
+        ui/overlay.go to position floating modals within outer
+        margins without clearing underlying cells, keeping the top
+        Cluster Header, TabFrame tabs and breadcrumbs, parent page
+        edges, and bottom Context Footer visible. Hosted
+        views/pod.DetailPanel, views/container.DetailPanel, and
+        inline YAML views inside a single modal-backed *tview.Pages
+        (pod-inspector) in views/overview/main_panel.go, tracked
+        separately from the underlying page state in
+        views/overview/view_state.go. Updated
+        Application.NavigateToPodDetail and
+        Application.NavigateToContainerLogs in
+        application/app_ctrl.go to delegate to the shared modal
+        without pushing onto NavigationStack, capping full-screen
+        drill-down depth at 1 subpage (Node Detail or <Kind>
+        Detail).
+      - APIs / Signatures:
+
+        overlay := ui.NewOverlayFrame(inspectorPages, 4, 3, 3, 3)
+        box, textView := ui.NewYAMLBox(ui.YAMLModalConfig{
+            Title:   "Pod YAML: default/api-0",
+            Content: yamlText,
+            OnClose: onClose,
+        })
+
+      - Behavioral Notes:
+        - Pressing Enter on any pod row in Overview, Node Detail,
+          or Workload Detail opens the floating Pod Inspector modal
+          (v switches inline to Pod YAML, Enter on a container
+          switches inline to Container Logs, s on Container Detail
+          switches inline to Container Spec YAML).
+        - ESC unwinds cleanly inside the modal (YAML -> Container
+          Logs -> Pod Detail -> Close Modal) and restores focus and
+          footer context directly to the active parent table behind
+          it (views/container/detail.go, views/node/detail.go,
+          application/app_ctrl.go).
+        - Added Controller.GetPod fallback in
+          views/overview/main_panel.go and nil-safe metrics
+          handling in model.NewPodModel (views/model/pod_model.go)
+          so opening a pod from --page=workloads succeeds even
+          before Overview's pod cache populates.
+  * Workloads Table Telemetry, Layout & Color Alignment
+    (views/workloads, views/model, k8s, ui)
+    - Live Aggregated CPU & MEM Columns and Compact Single-Line
+      Summary
+      - Problem / Context: Workloads tables previously showed
+        duplicate replica columns (UP, AVAIL, DESIRED, CURRENT)
+        alongside a request-only EFF column that rendered n/a
+        whenever pods omitted resources.requests, and used a
+        two-row summary header duplicating the top-bar namespace
+        display.
+      - Technical Implementation: Added model.WorkloadUsage and
+        model.ComputePodsUsage in views/model/workload_model.go
+        (populated in k8s/workloads_controller.go) to sum live CPU
+        and memory usage across each workload's active owned pods,
+        with CPU (c) and MEM (e) sort support. Standardized
+        Deployments, StatefulSets, and DaemonSets onto a unified
+        7-column layout (NS | NAME | READY | CPU | MEM | AGE |
+        STATUS) with ready/desired ratios in READY, and collapsed
+        views/workloads/summary.go into a single-line Summary bar
+        without Namespace.
+      - Behavioral Notes: Aligned Workloads colors with Overview in
+        views/workloads/summary.go, views/workloads/page.go, and
+        ui/theme.go: Summary labels and separators use DataPrimary,
+        live CPU and MEM values use DataSecondary on healthy rows,
+        READY and AGE inherit rowColor, and Scaled 0 maps to
+        StatusMuted so scaled-to-zero deployments recede visually
+        as idle.
+  * Redesigned Workload Detail Subpage & Full-Object YAML Modal
+    (views/workloads, k8s, ui)
+    - Kind-Specific Detail Subpages & Scrollable ui.YAMLModal
+      - Problem / Context: Workload detail subpages used a generic
+        Workload Detail heading, crowded replica counts into a
+        single parenthetical string, devoted 4 vertical rows to
+        request-ratio sparklines, and omitted key rollout fields
+        (container images, revision, active ReplicaSet, strategy
+        parameters, and full YAML).
+      - Technical Implementation: Added ui.YAMLModal,
+        ui.FormatObjectYAML (marshaling typed Kubernetes objects
+        with apiVersion/kind preserved and metadata.managedFields
+        stripped), and shared ui.HighlightYAML in ui/yaml_modal.go
+        (reused by views/container/spec.go). Enriched
+        model.WorkloadDetailData (views/model/workload_model.go,
+        k8s/workloads_controller.go) and redesigned
+        views/workloads/detail.go:
+        - Kind-specific section headers (Deployments > <name>,
+          StatefulSets > <name>, DaemonSets > <name>, Jobs >
+          <name>) and detail panel titles (Deployment Detail,
+          StatefulSet Detail, DaemonSet Detail, Job Detail).
+        - Single-line Info bar with separate replica/job counters
+          (Status, Desired, Ready, Updated, Available, Unavailable,
+          PAUSED, Age).
+        - Removed detail sparklines and unused aggregatePodHistory
+          queries, replacing them with live used / req / lim CPU
+          and memory totals, rollout strategy details, revision and
+          active ReplicaSet, container images, generation lag
+          highlights, and unhealthy condition messages.
+        - Made <Kind> Detail active on entry (Tab cycles Detail ->
+          Owned Pods -> Events) so pressing Enter opens the full
+          object YAML in ui.YAMLModal (↑↓/j/k, PgUp/PgDn, g/G, y
+          copy, Esc/q close). Replaced the redundant NAMESPACE
+          column in Owned Pods with NODE.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI flags, kubectl ktop plugin usage, --noui
+      JSON/JSONL output schemas, and ~/.ktop/config.yaml
+      configurations.
+    - Deprecations & Retractions: Removed the circular n (Pod ->
+      Node) jump inside the Pod Inspector modal to keep modal
+      navigation bounded.
+    - Migration Actions: None required.
+- Update to version 0.7.3:
+  ktop v0.7.3 introduces the Workloads top-level page ([2]
+  Workloads), providing real-time visibility into Deployments,
+  StatefulSets, DaemonSets, and Jobs alongside a dedicated Workload
+  Detail drill-down view, workload resource efficiency scoring
+  (EFF), and --page=workloads startup support.
+  This release also upgrades the multi-page navigation chrome with
+  a bordered ui.TabFrame container that renders zero-gap themed tab
+  pills and right-aligned drill-down breadcrumbs along its top
+  border, refines tab color contrast across Dark, Light, ANSI, and
+  Monochrome themes, and streamlines Tab focus cycling on both
+  Overview and Workloads pages.
+  * Workloads Informer Controller & Efficiency View Models (k8s,
+    views/model)
+    - Dedicated Workload Informer Snapshot & Pod Ownership
+      Resolution
+      - Problem / Context: ktop previously surfaced cluster state
+        through Nodes and Pods without aggregating controller-level
+        workload health, replica status, job completion state, or
+        pod-to-workload ownership chains.
+      - Technical Implementation: Added k8s/workloads_controller.go
+        and views/model/workload_model.go to watch apps/v1
+        (Deployment, StatefulSet, DaemonSet, ReplicaSet) and
+        batch/v1 (Job) objects through Kubernetes shared informers,
+        resolve owned pods via OwnerReferences (including
+        Deployment -> ReplicaSet -> Pod indirection), and build
+        immutable model.WorkloadsSnapshot updates. Added
+        ClientController.SetWorkloadsRefreshFunc and deferred
+        workload startup handling in k8s/client_controller.go so
+        informer callbacks register reliably regardless of page
+        initialization order. Extracted shared GetEventsForObject
+        and workload object getters in k8s/client_funcs.go.
+      - APIs / Signatures:
+
+        snap, err := client.Controller().GetWorkloadsSnapshot(ctx)
+        detail, err := client.Controller().GetWorkloadDetail(ctx, kind, namespace, name)
+
+      - Behavioral Notes: Workloads snapshots honor the active
+        cluster namespace filter (--namespace or header / filter),
+        expose per-kind summary counts (model.WorkloadSummary), and
+        compute workload health statuses (Healthy, Progressing,
+        Degraded, Scaled to 0, Complete, Running, Failed).
+    - Resource Request Efficiency Scoring (EFF)
+      - Problem / Context: Operators inspecting controller fleets
+        need a quick indicator of over-provisioned or unrequested
+        CPU/memory allocations across owned pods.
+      - Technical Implementation: Implemented
+        model.ComputeWorkloadEfficiency in
+        views/model/workload_model.go and ui.FormatEfficiencyCell
+        in ui/format.go to compare live pod CPU/memory usage
+        against pod requests and classify workloads into efficiency
+        bands (Optimal, Underutilized, Over-provisioned, No
+        Requests, No Metrics).
+      - Behavioral Notes: Efficiency cells degrade gracefully when
+        metrics are unavailable or pods omit resource requests, and
+        use semantic theme colors (or plain text labels in
+        monochrome / $NO_COLOR mode).
+  * Workloads Page & Workload Detail View (views/workloads,
+    application, ui)
+    - 2-Column Workloads Dashboard ([2] Workloads)
+      - Problem / Context: Monitoring four workload controller
+        types simultaneously requires balanced screen density
+        without horizontal column overflow.
+      - Technical Implementation: Added views/workloads/page.go,
+        views/workloads/summary.go, and views/workloads/table.go
+        implementing the [2] Workloads page registered in
+        application/tui/app.go. The layout pairs a compact Workload
+        Summary header with an equal 2-column × 2-row tview.Grid
+        (Deployments and DaemonSets on the left; StatefulSets and
+        Jobs on the right), column sorting (</> or header hotkeys),
+        inline filtering (/), and clipboard copy (y).
+      - Behavioral Notes: NAME columns expand to use available
+        width while compact metadata columns (NS, READY, UP, AVAIL,
+        AGE, EFF, STATUS) stay tightly sized.
+    - Workload Detail Drill-Down & Cross-View Navigation
+      - Problem / Context: Investigating an unhealthy or
+        inefficient Deployment, StatefulSet, DaemonSet, or Job
+        requires inspecting controller metadata, live resource
+        sparklines, recent Kubernetes events, and owned pods in one
+        view.
+      - Technical Implementation: Added views/workloads/detail.go
+        and application.PageWorkloadDetail routing in
+        application/navigation.go, application/page_registry.go,
+        and application/app_ctrl.go. Selecting any workload row
+        (Enter) opens Workload Detail with controller metadata,
+        labels/annotations, live CPU/Memory/Network/Disk
+        sparklines, owned pods, and workload-scoped Kubernetes
+        events. Pressing Enter on an owned pod drills further into
+        Pod Detail and Container Logs with full breadcrumb tracking
+        (Workloads › deploy/<ns>/<name> › pod/<ns>/<pod>) and ESC
+        stack unwinding.
+      - Behavioral Notes: Added ui.WorkloadsContext and
+        ui.WorkloadDetailContext in ui/footer_context.go, workload
+        status styling in ui/theme.go, and Workloads keybindings in
+        ui/help_modal.go.
+  * Bordered Tab Frame, Tab Theme Contrast & Navigation Polish (ui,
+    application, config)
+    - Bordered ui.TabFrame Container with Top-Border Tabs and
+      Breadcrumbs
+       - Problem / Context: Top-level page tabs previously floated
+         on a separate borderless row above the page panels,
+         leaving no visual frame tying active page content to its
+         selected tab.
+       - Technical Implementation: Added ui.TabFrame in
+         ui/tab_bar.go wrapping p.pages in application/app_ui.go
+         inside a single-line bordered box (Palette.BorderNormal).
+         Contiguous zero-gap tab pills render directly along the
+         top border line on the left, while drill-down breadcrumbs
+         render right-aligned on the same border row. Updated
+         ExtraLarge panel height calculation in
+         views/overview/main_panel.go for the frame borders.
+       - APIs / Signatures:
+
+         frame := ui.NewTabFrame(pages)
+         frame.SetTabs([]ui.TabItem{
+             {ID: "overview", Title: "Overview", Key: '1'},
+             {ID: "workloads", Title: "Workloads", Key: '2'},
+         })
+         frame.SetActive(1)
+         frame.SetBreadcrumb("Workloads › deploy/default/api")
+
+       - Behavioral Notes: TabFrame renders its outer frame with
+         single-line borders while inner tables retain focus
+         borders, and delegates Focus, Blur, HasFocus,
+         InputHandler, and MouseHandler directly to the active
+         page.
+    - Dedicated Active/Inactive Tab Palette Tokens & Streamlined
+      Tab Cycling
+      - Technical Implementation: Added TabActiveFg, TabActiveBg,
+        TabInactiveFg, and TabInactiveBg tokens to
+        ui/theme/palette.go and tuned Dark, Light, ANSI, and
+        Monochrome presets in ui/theme/builtins.go for clear
+        active/inactive separation and readability. Removed
+        non-interactive Summary boxes (Cluster Summary and Workload
+        Summary) from the Tab focus cycle in
+        views/overview/main_panel.go, views/workloads/page.go, and
+        application/tui/app.go so Tab cycles directly across
+        interactive panels (Header -> Nodes -> Pods on Overview;
+        Header -> Deployments -> StatefulSets -> DaemonSets -> Jobs
+        on Workloads).
+    - Startup Page Configuration (--page=workloads) & Diverse Load
+      Test Harness
+      - Technical Implementation: Added workloads to
+        config.ValidPages (config/config.go) and updated CLI flag
+        help (cmd/ktop.go), allowing startup directly on Workloads
+        via ktop --page=workloads or ui.default_page: workloads in
+        ~/.ktop/config.yaml. Expanded
+        hack/load-test/deploy-load.sh,
+        hack/load-test/cleanup-load.sh, and
+        hack/load-test/README.md to provision diverse Deployments
+        (including over-provisioned and scaled-to-zero examples),
+        StatefulSets, DaemonSets, Jobs, and CronJobs for local
+        verification.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing ktop CLI invocations, kubectl ktop plugin usage,
+      --noui JSON/JSONL output schemas, and ~/.ktop/config.yaml
+      configurations. Existing installations without
+      ui.default_page continue opening on overview.
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required.
+
+-------------------------------------------------------------------
 Wed Nov 18 05:56:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.2:

@@ -371,4 +371,18 @@
   + Performance optimizations</comment>
     <requestid>1379906</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>05ad0f79d9018ba45347ac6a32ee71eb</srcmd5>
+    <version>2.8.2</version>
+    <time>1795536218</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.2:
+  * Fixes CVE-2026-111600, CVE-2026-104813, boo#1291602, boo#1291603
+  * Check that protobuf messages follow the REAPI spec
+  * Fixes for symlink handling
+  * Fix env export for `bst source checkout --include-build-scripts`
+  * Fix extra empty lines
+  * Fix reading of action result with latest buildbox-run</comment>
+    <requestid>1400298</requestid>
+  </revision>
 </revisionlist>

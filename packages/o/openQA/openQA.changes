@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Nov 24 11:37:31 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795520239.e4d21551:
+  * fix(cacheservice): report downloading on retry
+  * fix(tasks): delay retry on termination signals
+
+-------------------------------------------------------------------
+Mon Nov 23 20:57:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795465603.f6eb1d74:
+  * chore(deps): bump azure/setup-helm (#8152)
+  * fix(apparmor): allow webui access to fixed assets
+
+-------------------------------------------------------------------
 Mon Nov 23 13:44:45 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795441465.39dc1745:
