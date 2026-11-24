@@ -251,4 +251,21 @@
 </comment>
     <requestid>1352654</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>694ebdc3de41307888a27ed90bb8a5f6</srcmd5>
+    <version>3.13.0</version>
+    <time>1795519388</time>
+    <user>anag_factory</user>
+    <comment>- fix license list
+
+- update to 3.13.0:
+  * Serialize new Python 3.15 built-in type `frozendict`
+    identical to `dict` (PEP 814).
+  * Serialization implementation substantially rewritten.
+  * Publish PyPI wheels for Python 3.15. For Python 3.15 and
+    later, `manylinux_2_39` (2024) is targeted instead of
+    `manylinux_2_17` (2012).
+  * No longer publish PyPI wheels for ppc64le and s390x.</comment>
+    <requestid>1399987</requestid>
+  </revision>
 </revisionlist>

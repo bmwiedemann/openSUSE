@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-orjson
-Version:        3.11.9
+Version:        3.13.0
 Release:        0
 Summary:        Fast, correct Python JSON library supporting dataclasses, datetimes, and numpy
 License:        (Apache-2.0 OR MIT) AND MPL-2.0
@@ -36,19 +36,17 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # TODO: de-vendor yyjson in include/yyjson
 # BuildRequires: yyjson-devel
-
 # SECTION test requirements
 BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
+BuildRequires:  timezone
 %ifarch x86_64
 BuildRequires:  %{python_module pendulum}
 BuildRequires:  %{python_module psutil}
 %endif
-
-BuildRequires:  timezone
 # /SECTION
 %python_subpackages
 
@@ -68,12 +66,12 @@ It benchmarks as the fastest Python library for JSON.
 
 %check
 donttest="bydefaultnothingfails"
-%ifarch %ix86 %arm32
+%ifarch %{ix86} %{arm32}
 # test_numpy_array_d1_uintp and test_numpy_array_d1_intp fail on 32bit
 donttest="$donttest or test_numpy_array_d1_intp or test_numpy_array_d1_uintp"
 %endif
 %ifarch ppc64le
-# test_memory_loads_keys occasionally fails on crashes on ppc64le
+# test_memory_loads_keys occasionally fails (crashes) on ppc64le
 donttest="$donttest or test_memory_loads_keys"
 %endif
 
@@ -81,7 +79,7 @@ donttest="$donttest or test_memory_loads_keys"
 
 %files %{python_files}
 %doc README.md CHANGELOG.md
-%license LICENSE-APACHE LICENSE-MIT
+%license LICENSE-APACHE LICENSE-MIT LICENSE-MPL-2.0
 %{python_sitearch}/orjson
 %{python_sitearch}/orjson-%{version}.dist-info
 
