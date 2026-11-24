@@ -795,4 +795,13 @@
 - Update version dependencies according to meson.build.</comment>
     <requestid>1398620</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>333fc30dc60a8b625c923e8b2758462a</srcmd5>
+    <version>50.0</version>
+    <time>1795519413</time>
+    <user>anag_factory</user>
+    <comment>- Add AppStream and desktop-file-utils BuildRequires: Test metainfo and
+  manually check desktop file during build.</comment>
+    <requestid>1399970</requestid>
+  </revision>
 </revisionlist>

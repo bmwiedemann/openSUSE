@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 17:32:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add AppStream and desktop-file-utils BuildRequires: Test metainfo and
+  manually check desktop file during build.
+
+-------------------------------------------------------------------
 Wed Nov 18 15:03:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add simple-scan-desktop.patch: Fix desktop file translations

@@ -26,6 +26,9 @@ URL:            https://gitlab.gnome.org/GNOME/simple-scan
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM glgo#GNOME/simple-scan#605
 Patch0:         simple-scan-desktop.patch
+
+BuildRequires:  AppStream
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -72,6 +75,7 @@ interface is well tested.
 
 %check
 %meson_test
+desktop-file-validate %{buildroot}/%{_datadir}/applications/org.gnome.SimpleScan.desktop
 
 %files
 %license COPYING
