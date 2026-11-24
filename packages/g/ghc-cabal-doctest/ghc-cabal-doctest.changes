@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Nov 19 20:52:22 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update build for ghc-rpm-macros >= 2.9.2.
+
+-------------------------------------------------------------------
 Fri Sep 18 12:42:02 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update cabal-doctest to version 1.0.13.
