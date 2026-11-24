@@ -7,4 +7,21 @@
     <comment>Needed by writerperfect</comment>
     <requestid>313604</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f6cf5ef353b098f11c606b8224bf0890</srcmd5>
+    <version>0.04</version>
+    <time>1795519383</time>
+    <user>anag_factory</user>
+    <comment>- Set the libeot.pc version to 0.04: 0.0.4 sorts below 0.01 and breaks &quot;libeot &gt;= 0.01&quot; checks
+
+- spec cleaner run
+- list license with library package (required by the license)
+
+- version update to 0.0.4
+  * fixes for malformed fonts, and Coverity Scan cleanups
+  * make version more semver like
+  * various fixes over more than a decade
+- fixes CVE-2026-132999 [bsc#1290943]</comment>
+    <requestid>1399820</requestid>
+  </revision>
 </revisionlist>

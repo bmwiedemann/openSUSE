@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:38:01 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Set the libeot.pc version to 0.04: 0.0.4 sorts below 0.01 and breaks "libeot >= 0.01" checks
+
+-------------------------------------------------------------------
+Sat Nov 21 13:21:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- spec cleaner run
+- list license with library package (required by the license)
+
+-------------------------------------------------------------------
+Fri Nov 20 07:49:55 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.0.4
+  * fixes for malformed fonts, and Coverity Scan cleanups
+  * make version more semver like
+  * various fixes over more than a decade
+- fixes CVE-2026-132999 [bsc#1290943]
+
+-------------------------------------------------------------------
 Wed Jun 24 18:17:20 UTC 2015 - tchvatal@suse.com
 
 - Initial commit, used by writerperfect
