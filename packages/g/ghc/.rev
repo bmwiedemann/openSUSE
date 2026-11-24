@@ -1215,4 +1215,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>version update</comment>
     <requestid>1358318</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>1ee1206f5ec971982091ab395c10a61a</srcmd5>
+    <version>9.14.1</version>
+    <time>1795519503</time>
+    <user>anag_factory</user>
+    <comment>update for ghc-9.14.1</comment>
+    <requestid>1399034</requestid>
+  </revision>
 </revisionlist>
