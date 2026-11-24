@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:07:17 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.10
+  * CVE-2026-130469: RTSE protocol dissector crash. (bsc#1291151)
+  * CVE-2026-130468: NBAP protocol dissector crash. (bsc#1291152)
+  * CVE-2026-130467: PEAK CAN TRC file parser crash when built with older versions of GLib. (bsc#1291153)
+  * CVE-2026-130466: ERF file parser crash. (bsc#1291154)
+  * CVE-2026-130465: Ascend file parser large loop. (bsc#1291155)
+  * CVE-2026-130464: MsgPack and NNTP protocol dissector crashes. (bsc#1291156)
+  * CVE-2026-130463: Android Logcat file parser crash. (bsc#1291157)
+  * CVE-2026-130462: Multiple protocol dissector and file parser hangs. (bsc#1291158)
+  * CVE-2026-130461: IEEE 1609.2 protocol dissector crash. (bsc#1291159)
+  * CVE-2026-130460: Multiple protocol dissector crashes. (bsc#1291160)
+  * CVE-2026-130459: Tektronix K12xx file parser large loop. (bsc#1291161)
+  * CVE-2026-130458: IrDA protocol dissector crash. (bsc#1291162)
+  * CVE-2026-130457: Matter protocol dissector crash. (bsc#1291163)
+  * CVE-2026-130456: ERF file parser crash. (bsc#1291164)
+  * CVE-2026-130455: Kafka protocol dissector infinite loop. (bsc#1291165)
+  * CVE-2026-130454: IEEE 1905 protocol dissector crash. (bsc#1291166)
+  * CVE-2026-130453: OpenWire protocol dissector crash. (bsc#1291167)
+  * CVE-2026-130452: USB-PTP protocol dissector crash. (bsc#1291168)
+  * CVE-2026-130451: Multiple protocol dissector infinite loops. (bsc#1291169)
+  * CVE-2026-130450: Multiple protocol dissector crashes. (bsc#1291170)
+  * CVE-2026-130449: TLS protocol dissector memory leak. (bsc#1291171)
+  * CVE-2026-130448: Exported PDU protocol dissector crash. (bsc#1291172)
+  * CVE-2026-130447: Exported PDU protocol dissector crash. (bsc#1291173)
+  * CVE-2026-130446: ACN protocol dissector crash. (bsc#1291174)
+  * CVE-2026-130445: Multiple protocol dissector crashes and infinite loops, and memory leaks. (bsc#1291175)
+  * CVE-2026-130442: Multiple protocol dissector crashes. (bsc#1291176)
+  * CVE-2026-130443: Multiple protocol dissector crashes. (bsc#1291177)
+  * CVE-2026-130440: Multiple protocol dissector crashes. (bsc#1291178)
+  * CVE-2026-130439: Multiple protocol dissector crashes. (bsc#1291179)
+  * CVE-2026-130441: Dissection engine crash. (bsc#1291180)
+  * CVE-2026-130438: Multiple protocol dissector crashes. (bsc#1291181)
+  * CVE-2026-130444: PROFINET protocol dissector crash. (bsc#1291182)
+  * CVE-2026-130437: Multiple protocol dissector crashes. (bsc#1291183)
+  * CVE-2026-130436: Multiple protocol dissector memory leaks. (bsc#1291184)
+  * CVE-2026-130435: SDP protocol dissector crash. (bsc#1291185)
+  * CVE-2026-130434: Protocol dissector crashes. (bsc#1291186)
+  * SCTP protocol dissector heap disclosure.
+  * iLBC audio codec crash.
+  * AMR audio codec crash.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.10.html
+
+-------------------------------------------------------------------
 Thu Sep 24 08:07:03 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.9
