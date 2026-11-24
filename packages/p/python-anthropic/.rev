@@ -404,4 +404,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 2.12.0: image_dimensions_too_large error code, Bedrock user-profile-ID body fix, billing-policy docs.</comment>
     <requestid>1399596</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>aec45d34a01498dfc6675f372c1cea26</srcmd5>
+    <version>2.13.0</version>
+    <time>1795520475</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.13.0: Message Batches error code, Admin external storage, Opus 4.5 deprecation.</comment>
+    <requestid>1400204</requestid>
+  </revision>
 </revisionlist>
