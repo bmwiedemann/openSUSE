@@ -18,7 +18,7 @@
 
 %define unitname radiusd
 Name:           freeradius-server
-Version:        3.2.8
+Version:        3.2.10
 Release:        0
 
 # Disable FreeTDS on SLE12. We never shipped it enabled with FreeTDS.
@@ -556,6 +556,7 @@ done
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/detail
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/detail.log
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/digest
+%config(missingok) %{_sysconfdir}/raddb/mods-enabled/dpsk
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/dynamic_clients
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/eap
 %config(missingok) %{_sysconfdir}/raddb/mods-enabled/echo
