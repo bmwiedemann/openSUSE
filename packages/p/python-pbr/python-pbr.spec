@@ -1,7 +1,7 @@
 #
 # spec file for package python-pbr
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pbr%{psuffix}
-Version:        7.0.3
+Version:        7.1.3
 Release:        0
 Summary:        Python Build Reasonableness
 License:        Apache-2.0
@@ -123,7 +123,7 @@ exclude+="test_handling_of_whitespace_in_data_files"
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS ChangeLog CONTRIBUTING.rst README.rst
+%doc ChangeLog README.rst
 %python_alternative %{_bindir}/pbr
 %{python_sitelib}/pbr
 %{python_sitelib}/pbr-%{version}.dist-info

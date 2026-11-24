@@ -885,4 +885,31 @@
   * Pin zuul ansible, pyperclip versions</comment>
     <requestid>1318338</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>91a5e5994b8c7b53acdcf2d9ef8739a8</srcmd5>
+    <version>7.1.3</version>
+    <time>1795519380</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.1.3:
+  * Insist on Python 3.11 for pyproject.toml-only projects
+  * Only provide PEP-660 entry points on setuptools &gt;= 64.0.0
+  * Fix hook ordering race that drops subpackages from wheels
+  * Move pyproject.toml to the top of usage docs
+  * Docs and release note for setup.cfg/py removal
+  * Use PEP 508 inline markers for wheel builds
+  * Add support for local version as defined in PEP 440
+  * Add testing on resolute 3.15 (dev)
+  * Add python 3.14 support and testing
+  * functional tests: extend PYTHONPATH rather than replace it
+  * Hook in LocalSDist override
+  * Convert CapturedSubprocess, Venv fixtures to context managers
+  * Remove need for setup.cfg, setup.py
+  * Remove more unused code
+  * Avoid warning about setup.py deprecation
+  * Fix misspelled tests_require in REMOVED_KEYWORDS
+  * Fix tests
+  * Drop Jammy testing
+  * Add classifiers for latest Python</comment>
+    <requestid>1399804</requestid>
+  </revision>
 </revisionlist>
