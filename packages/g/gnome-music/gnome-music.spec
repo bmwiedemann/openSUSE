@@ -17,18 +17,15 @@
 
 
 Name:           gnome-music
-Version:        50.0
+Version:        51.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM efda5de2d24f01141c5e291ae4267663a8e34831.patch - localsearchwrapper: Fix Tsparql import for type checking
-Patch0:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/efda5de2d24f01141c5e291ae4267663a8e34831.patch
-# PATCH-FIX-UPSTREAM acde5b9fa0955d901c61d980e48e790843b67ed0.patch - application: Add missing gi.require_version on `GstAudio`
-Patch1:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/acde5b9fa0955d901c61d980e48e790843b67ed0.patch
 
+BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  itstool
@@ -44,14 +41,16 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.13
 BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.12
-BuildRequires:  pkgconfig(gtk4) >= 4.10.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.5.beta
+BuildRequires:  pkgconfig(gtk4) >= 4.16.0
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-3.0)
 BuildRequires:  pkgconfig(pango) >= 1.44.0
-BuildRequires:  pkgconfig(py3cairo) >= 1.14
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.47.0
+BuildRequires:  pkgconfig(py3cairo) >= 1.14.0
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.54.0
 BuildRequires:  pkgconfig(tracker-sparql-3.0) >= 2.99.3
+BuildRequires:  pkgconfig(glycin-2) >= 2.0.0
+BuildRequires:  pkgconfig(glycin-gtk4-2) >= 2.0.0
 Requires:       dbus-1-python3
 # gnome-music requires grilo-plugin-tracker to interact with tracker and find files (bsc#1083659)
 Requires:       grilo-plugin-tracker

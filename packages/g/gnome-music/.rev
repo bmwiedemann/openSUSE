@@ -783,4 +783,36 @@
   needed.</comment>
     <requestid>1364084</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>2f279d680fed604e84a6cee53fe97815</srcmd5>
+    <version>51.0</version>
+    <time>1795519394</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.0:
+  * Dependencies:
+    + The UI has been ported to Blueprint. `blueprint-compiler` is now a
+      requirement for building Music
+    + GdkPixbuf has been replaced with Glycin
+  * Features:
+    + The album views gained a link to the album artist
+    + The artist views gained a link to each album
+    + Priority for background tasks has been reduced to
+      `GLib.PRIORITY_DEFAULT_IDLE`, keeping the UI reactive during startup
+    + The previous button is now also enabled for the first track
+  * Bugs fixed:
+    + Fixed play/pause breaking with newer Python versions
+    + Fixed album duration being stuck at 1 minute
+    + Rewinding the current track now properly updates the position scale, even
+      when paused
+    + The &quot;Insufficiently Tagged&quot; smart playlist no longer lists duplicate
+      entries for the same track
+    + Fixed a race when updating smart playlists leading to duplicate entries
+  * Updated translations.
+- Update version dependencies according to meson.build.
+- Drop acde5b9fa0955d901c61d980e48e790843b67ed0.patch: fixed upstream.
+- Drop efda5de2d24f01141c5e291ae4267663a8e34831.patch: fixed upstream.
+- Add blueprint-compiler, pkgconfig(glycin-2) and pkgconfig(glycin-gtk4-2)
+  BuildRequires following upstream changes.</comment>
+    <requestid>1399905</requestid>
+  </revision>
 </revisionlist>
