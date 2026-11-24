@@ -17,7 +17,7 @@
 
 
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.404
+Version:        0.3.408
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
@@ -30,9 +30,9 @@ BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# Floors, not upstream == pins: new JSONs ship only in json 0.1.136-0.1.139.
+# Floors, not upstream == pins: new JSONs ship only in json 0.1.141-0.1.143.
 # New previews need media-assets-02 past 0.1.9, so that floor stays.
-Requires:       python-comfyui-workflow-templates-json >= 0.1.139
+Requires:       python-comfyui-workflow-templates-json >= 0.1.143
 Requires:       python-comfyui-workflow-templates-media-assets-02 >= 0.1.9
 BuildArch:      noarch
 %python_subpackages

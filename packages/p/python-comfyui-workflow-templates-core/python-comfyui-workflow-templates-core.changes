@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:32:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.408 (manifest grows 711 to 716, crosses
+  0.3.406 and 0.3.407; 0.3.405 was never published):
+  * Adds 5 entries, all owned by the new media-assets-03
+    bundle: UltraTex texture-a-3D-model, MiniMax H3
+    character swap, SenseNova U1.6 edit and text-to-image,
+    RMBG 3.0 background removal
+  * Refreshes 175 template asset hashes and 15 search
+    indexes; the new and refreshed template JSONs
+    hash-match json 0.1.141 through 0.1.143 (index
+    hashes are rewritten when the json sdist is built and
+    match no published build)
+  * Raise the json floor to >= 0.1.143: the new and
+    refreshed JSONs ship only there
+- Code change: loader.py gains the media-assets-03 bundle
+  mapping; the sdist still declares no runtime requirements
+- The 5 new previews live in media-assets-03 0.1.2, not yet
+  packaged here, so those entries stay preview-less until
+  that separately-maintained bundle lands; no new Requires
+  is added rather than made unresolvable
+
+-------------------------------------------------------------------
 Sun Nov 22 09:39:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.404 (manifest grows 710 to 711):

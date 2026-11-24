@@ -421,4 +421,13 @@ checksums. Data only, no code or dependency change.</comment>
 - Needs sr#1399726 (json 0.1.139, floor &gt;=0.1.139)</comment>
     <requestid>1399735</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>31d6ffc1ff0fe67dbcf1899ce1bfbeee</srcmd5>
+    <version>0.3.408</version>
+    <time>1795520502</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.408: +5 templates, json floor &gt;=0.1.143.
+- Needs sr#1400206 (json 0.1.143) first.</comment>
+    <requestid>1400207</requestid>
+  </revision>
 </revisionlist>
