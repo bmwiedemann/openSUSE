@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpath-ng
-Version:        1.13.0
+Version:        1.16.0
 Release:        0
 Summary:        JSONPath for Python
 License:        Apache-2.0

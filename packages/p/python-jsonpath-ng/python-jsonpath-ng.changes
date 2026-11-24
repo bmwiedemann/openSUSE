@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Sat Nov 21 21:33:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.0:
+  * Parse an unquoted * to the new Wildcard() node. $.*, $[*],
+    and $..* used to parse to Fields('*') or Slice(). Code that
+    compares or inspects these parsed expressions must be
+    updated. The results of finding, updating, and filtering are
+    unchanged. This change can only affect code that first parses
+    a JSONPath string containing an unquoted wildcard character
+    (*) and then interacts with the resulting AST.
+  * Add a Wildcard node that selects every child of an object or
+    array.
+  * Treat a quoted * as a field name, not as a wildcard. Given an
+    object like {"*": "multiply", "/": "divide"},
+    parse("$['*']").find(data) will now correctly return only
+    ["multiply"].
+  * Fix empty slices acting like wildcards that select member
+    values of objects. RFC 9535 says that a slice selects nothing
+    from a value that is not an array. Given {"x": 1},
+    parse("$[:]").find(data) now correctly returns []. The same
+    applies to updating and filtering. This may break code that
+    relied on [:] or [::] selecting object members. Use [*] to
+    select the members of an object.
+  * Deprecate interpreting Fields('*') as a wildcard. Fields('*')
+    continues to incorrectly act like a wildcard, but in version
+    2.0.0 it will select only a field named *. Replace usages
+    with Wildcard().
+  * Deprecate interpreting Slice() with no parameters as a
+    wildcard. Slice() continues to incorrectly select member
+    values of an object, but in version 2.0.0 it will select
+    nothing from an object. Replace usages with Wildcard().
+  * Add Sphinx documentation, configured to build on Read the
+    Docs.
+  * Fix the JSON syntax of two README examples.
+  * Remove several v1.5.0 changelog items that were duplicated
+    from v1.4.3.
+  * Fix the sub and split extensions taking quadratic time to
+    reject malformed definitions.
+  * Relicense the CLI code under the Apache 2.0 license.
+    Relicensing is allowed under the terms of the previous
+    license.
+  * Make the CLI print matches as valid JSONL. Previously the
+    output was simply Python repr() output, so {"json": true} was
+    output as {'json': True} and could not be re-parsed as JSON.
+  * Support running the CLI via python -m jsonpath_ng.
+  * Fix the sub example in the README, which had too many
+    backslashes.
+  * Fix parsing in executables created by PyInstaller.
+    (:issue:`320`) Since v1.10.0, PLY tables have been pre-
+    generated to improve performance. However, PLY imports pre-
+    generated modules via dynamic string lookups, while
+    PyInstaller finds modules to bundle based on import
+    statements. This made the PLY tables invisible to PyInstaller
+    when freezing an app, and resulted in ModuleNotFoundError
+    runtime failures when the app ran. The pre-generated tables
+    are now explicitly imported.
+  * Deprecate parsing unquoted words as comparison operands in
+    filter selectors. Support for parsing unquoted strings will
+    be removed in version 2.0.0. For example: foo in $[?@.a ==
+    foo] is now deprecated. Replace usages with a quoted string,
+    like $[?@.a == 'foo'].
+  * Remove a deprecated | suggestion from the README.
+
+-------------------------------------------------------------------
 Mon Oct 26 07:10:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.13.0:

@@ -174,4 +174,41 @@
     incorrectly match. Note that this also means that simpler</comment>
     <requestid>1392632</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ce6a92386a81aa7b31cdfd3f9891283f</srcmd5>
+    <version>1.16.0</version>
+    <time>1795519357</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.16.0:
+  * Parse an unquoted * to the new Wildcard() node. $.*, $[*],
+    and $..* used to parse to Fields('*') or Slice(). Code that
+    compares or inspects these parsed expressions must be
+    updated. The results of finding, updating, and filtering are
+    unchanged. This change can only affect code that first parses
+    a JSONPath string containing an unquoted wildcard character
+    (*) and then interacts with the resulting AST.
+  * Add a Wildcard node that selects every child of an object or
+    array.
+  * Treat a quoted * as a field name, not as a wildcard. Given an
+    object like {&quot;*&quot;: &quot;multiply&quot;, &quot;/&quot;: &quot;divide&quot;},
+    parse(&quot;$['*']&quot;).find(data) will now correctly return only
+    [&quot;multiply&quot;].
+  * Fix empty slices acting like wildcards that select member
+    values of objects. RFC 9535 says that a slice selects nothing
+    from a value that is not an array. Given {&quot;x&quot;: 1},
+    parse(&quot;$[:]&quot;).find(data) now correctly returns []. The same
+    applies to updating and filtering. This may break code that
+    relied on [:] or [::] selecting object members. Use [*] to
+    select the members of an object.
+  * Deprecate interpreting Fields('*') as a wildcard. Fields('*')
+    continues to incorrectly act like a wildcard, but in version
+    2.0.0 it will select only a field named *. Replace usages
+    with Wildcard().
+  * Deprecate interpreting Slice() with no parameters as a
+    wildcard. Slice() continues to incorrectly select member
+    values of an object, but in version 2.0.0 it will select
+    nothing from an object. Replace usages with Wildcard().
+  * Add Sphinx documentation, configured to build on Read the</comment>
+    <requestid>1399677</requestid>
+  </revision>
 </revisionlist>
