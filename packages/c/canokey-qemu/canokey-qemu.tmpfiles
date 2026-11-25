@@ -1,0 +1,2 @@
+# State files of virtual CanoKeys used by libvirt-managed QEMU guests
+d /var/lib/libvirt/qemu/canokey 0750 qemu qemu -

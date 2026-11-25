@@ -1,0 +1,2 @@
+  # CanoKey QEMU state files, see /usr/share/doc/packages/canokey-qemu-libvirt/README.SUSE
+  owner /var/lib/libvirt/qemu/canokey/*.canokey rwk,

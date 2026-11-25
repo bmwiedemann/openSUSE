@@ -1,0 +1,72 @@
+--- a/canokey-core/interfaces/NFC/fm.c
++++ b/canokey-core/interfaces/NFC/fm.c
+@@ -23,6 +23,11 @@
+   return FM_STATUS_OK;
+ #elif NFC_CHIP == NFC_CHIP_FM11NT
+   return fm11nt_read(reg, buf, len);
++#else
++  (void)reg;
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 
+@@ -36,6 +41,11 @@
+   return FM_STATUS_OK;
+ #elif NFC_CHIP == NFC_CHIP_FM11NT
+   return fm11nt_write(reg, buf, len);
++#else
++  (void)reg;
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 
+@@ -50,6 +60,11 @@
+   return FM_STATUS_OK;
+ #elif NFC_CHIP == NFC_CHIP_FM11NT
+   return fm11nt_read(addr, buf, len);
++#else
++  (void)addr;
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 
+@@ -74,6 +89,11 @@
+   const bool ret = fm11nt_write(addr, buf, len);
+   device_delay(10);
+   return ret;
++#else
++  (void)addr;
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 
+@@ -87,6 +107,10 @@
+   return FM_STATUS_OK;
+ #elif NFC_CHIP == NFC_CHIP_FM11NT
+   return fm11nt_read(FM_REG_FIFO_ACCESS, buf, len);
++#else
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 
+@@ -100,6 +124,10 @@
+   return FM_STATUS_OK;
+ #elif NFC_CHIP == NFC_CHIP_FM11NT
+   return fm11nt_write(FM_REG_FIFO_ACCESS, buf, len);
++#else
++  (void)buf;
++  (void)len;
++  return FM_STATUS_NACK;
+ #endif
+ }
+ 

@@ -1,0 +1,43 @@
+Using a virtual CanoKey with libvirt / virt-manager
+===================================================
+
+libvirt has no native CanoKey device, so it is attached with libvirt's QEMU
+command-line passthrough. This package provides the directory
+/var/lib/libvirt/qemu/canokey/ for the state files. Confined QEMU processes can
+use it: the SELinux policy already allows it, and this package adds the
+AppArmor rule.
+
+Edit the domain (virsh edit <vm>, or the XML tab in virt-manager):
+
+1. Add the QEMU namespace to the <domain> element:
+
+   <domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
+
+2. Add, just before </domain>:
+
+   <qemu:commandline>
+     <qemu:arg value='-device'/>
+     <qemu:arg value='{"driver":"canokey","id":"canokey0","file":"/var/lib/libvirt/qemu/canokey/VMNAME.canokey","bus":"usb.0"}'/>
+   </qemu:commandline>
+
+   Replace VMNAME. The file name must end in .canokey. The file is created on
+   the first start of the guest and keeps the key state (FIDO2 credentials,
+   PINs, OpenPGP and PIV keys). Delete it to get a factory-new key.
+
+Notes:
+
+- Use the JSON syntax shown above. libvirt creates its own devices with JSON
+  -device options, which QEMU processes after plain "-device canokey,..."
+  options, so the plain form fails with "Bus 'usb.0' not found".
+- The guest needs a USB controller with the alias "usb" (the default qemu-xhci
+  controller created by virt-manager has it).
+- The virtual key reports user presence without a touch, so it cannot be used
+  to test touch prompts.
+- This is a testing tool: the key material is stored unencrypted in the state
+  file, and all guests running as the qemu user can access every state file in
+  the directory.
+- State files created by canokey-qemu builds before 2026 (libcanokey-qemu.so.0)
+  can be opened, but credentials registered with those builds no longer work:
+  neither FIDO2 resident credentials nor the non-resident credentials used by
+  e.g. systemd-cryptenroll are recognized. Re-enroll them, or start with a new
+  state file.

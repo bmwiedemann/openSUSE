@@ -17,17 +17,25 @@
 
 
 Name:           canokey-qemu
-Version:        0.0+git20230606.151568c
+Version:        0.0+git20260324.41044ec
 Release:        0
 Summary:        Library for CanoKey support in QEMU
 License:        Apache-2.0
 URL:            https://github.com/canokeys/canokey-qemu
 Source:         %{name}-%{version}.tar
+Source1:        README.SUSE
+Source2:        canokey-qemu.apparmor
+Source3:        canokey-qemu.tmpfiles
 Patch0:         canokey-git.diff
 Patch1:         canokey-core-static.diff
-Patch2:         mbedtls-fix-building-with-GCC-16.patch
+# PATCH-FIX-UPSTREAM part of canokey-core c50b625d and e4a756d6
+Patch2:         canokey-core-fm-return-type.patch
 BuildRequires:  cmake
 BuildRequires:  glibc-devel-static
+BuildRequires:  python3
+BuildRequires:  python3-Jinja2
+BuildRequires:  python3-jsonschema
+BuildRequires:  systemd-rpm-macros
 
 %description
 CanoKey is an open-source secure key with supports of U2F / FIDO2 with Ed25519
@@ -45,6 +53,18 @@ CanoKey is an open-source secure key with supports of U2F / FIDO2 with Ed25519
 and HMAC-secret, OpenPGP Card V3.4 with RSA4096, Ed25519 and more 2,
 PIV (NIST SP 800-73-4), HOTP / TOTP, NDEF.
 
+%package libvirt
+Summary:        Use a virtual CanoKey in libvirt-managed QEMU guests
+Requires:       %{name} = %{version}
+Supplements:    (%{name} and libvirt-daemon-driver-qemu)
+Requires:       system-user-qemu
+BuildArch:      noarch
+
+%description libvirt
+State directory, and an AppArmor rule for it, that let QEMU guests started by
+libvirt (virt-manager) use a virtual CanoKey, attached with libvirt's QEMU
+command-line passthrough. See README.SUSE for the domain XML.
+
 %prep
 %autosetup -p1
 cp canokey-core/virt-card/git-rev.h.in canokey-core/virt-card/git-rev.h
@@ -61,9 +81,15 @@ echo "%version" >> canokey-core/virt-card/git-rev.h
 
 %install
 %cmake_install
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu.d/canokey-qemu
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/canokey-qemu.conf
+cp %{SOURCE1} .
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+%post libvirt
+%tmpfiles_create %{_tmpfilesdir}/canokey-qemu.conf
 
 %files devel
 %{_libdir}/libcanokey-qemu.so
@@ -73,6 +99,14 @@ echo "%version" >> canokey-core/virt-card/git-rev.h
 %files
 %license LICENSE
 %doc README.md
-%{_libdir}/libcanokey-qemu.so.0
+%{_libdir}/libcanokey-qemu.so.1
+
+%files libvirt
+%doc README.SUSE
+%dir %{_sysconfdir}/apparmor.d
+%dir %{_sysconfdir}/apparmor.d/abstractions
+%dir %{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu.d
+%config(noreplace) %{_sysconfdir}/apparmor.d/abstractions/libvirt-qemu.d/canokey-qemu
+%{_tmpfilesdir}/canokey-qemu.conf
 
 %changelog

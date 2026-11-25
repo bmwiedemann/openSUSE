@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:47:43 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0+git20260324.41044ec:
+  * Add warning on compatibility
+  * CMake: enable dumb dongle option for core
+  * Add dummy Init_Done callback for new canokey-core
+  * doc: add CI badge in README
+  * chore: fix review comments by Copilot
+  * ci: add GitHub Actions build workflow
+  * fix: update device_loop() call to match current canokey-core API
+  * docs: remove outdated Mac mbedtls patching instructions
+  * build: modernize CMakeLists.txt and update library paths
+  * deps: update canokey-core to latest snapshot
+- Drop mbedtls-fix-building-with-GCC-16.patch, mbedtls was replaced
+  by TF-PSA-Crypto
+- Refresh canokey-git.diff and canokey-core-static.diff
+- Add BuildRequires python3, python3-Jinja2 and python3-jsonschema,
+  needed to generate the CTAP GetInfo data and TF-PSA-Crypto code
+- Add canokey-core-fm-return-type.patch, return an error from the
+  NFC chip functions when no chip is selected (-Werror=return-type)
+- Library soname is now libcanokey-qemu.so.1. FIDO2 credentials
+  registered with the old version (resident and non-resident, e.g.
+  systemd-cryptenroll slots) do not work with the new one and must
+  be enrolled again
+- Add the canokey-qemu-libvirt subpackage: a state directory
+  /var/lib/libvirt/qemu/canokey, an AppArmor rule for it,
+  and README.SUSE describing how to attach the key to a libvirt guest
+
+-------------------------------------------------------------------
 Thu Mar  5 11:59:26 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix more GCC 16 failures (still in bsc#1256957)
