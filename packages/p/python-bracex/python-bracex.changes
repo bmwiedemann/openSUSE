@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 24 23:47:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.2.4:
+  * Add support for Python 3.15 and drop Python 3.10 support
+  * Keep numeric sequences literal when the start-to-end distance
+    overflows a signed 64-bit integer
+  * Keep trailing unescaped backslashes (e.g. {a,b}\) like Bash 5.3
+  * Match Bash 5.3 for invalid groups containing top-level ..
+  * Keep numeric sequences with non-ASCII digits literal and expand
+    sequences with unary + signs (including zero-padding) like Bash
+  * Preserve initial empty brace groups after valid expansions and fix
+    ${...} ending brace groups early
+  * Fix invalid sequences like {1..a} splitting at later commas and
+    commas dropped or added when rebuilding invalid brace groups
+  * Fix off-by-one limit-checking division and large range truncation
+    compared to Bash
+- List directories explicitly in %files.
+
+-------------------------------------------------------------------
 Thu Aug 20 09:04:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.1:

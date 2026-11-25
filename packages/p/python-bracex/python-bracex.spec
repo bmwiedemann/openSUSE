@@ -18,16 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bracex
-Version:        3.0.1
+Version:        3.2.4
 Release:        0
 Summary:        Bash style brace expander
 License:        MIT
 URL:            https://github.com/facelessuser/bracex
 Source:         https://files.pythonhosted.org/packages/source/b/bracex/bracex-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -52,6 +52,7 @@ Bash style brace expander.
 %files %{python_files}
 %doc README.md
 %license LICENSE.md
-%{python_sitelib}/bracex*
+%{python_sitelib}/bracex
+%{python_sitelib}/bracex-%{version}.dist-info
 
 %changelog
