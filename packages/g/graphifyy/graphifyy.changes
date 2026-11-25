@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:56:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.119:
+  * serve: query, path, explain, affected and benchmark run
+    again on a core install without the [mcp] extra (#5320)
+  * python: calls shadowed by lambda or function parameters no
+    longer bind to module-level definitions (#5417, #5418)
+  * go: locals shadowing import names resolve as locals; same-
+    named packages across directories stay distinct (#5409)
+  * cobol: GO TO (incl. DEPENDING ON) emits calls edges so
+    jump-only paragraphs are no longer orphaned (#5423)
+  * wiki links cross-references by node ID; affected reverse
+    traversal fixed on undirected graphs (#5437)
+  * query skips provably-absent terms with identical results
+    (#5429); file-label disambiguation is now near-linear
+  * AST cache schema bumped 53 to 55; Python, Go and COBOL
+    re-extract on the first build after upgrading
+
+-------------------------------------------------------------------
 Tue Nov 24 06:28:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.118 (folds the 0.9.116/0.9.117 trains):

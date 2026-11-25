@@ -151,4 +151,12 @@
     <comment>Update graphifyy to 0.9.118: extractor fixes, Svelte/media, MCP, query/export, cluster perf.</comment>
     <requestid>1400211</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>c361b5d0ae4b86e43cb50e7a642e7598</srcmd5>
+    <version>0.9.119</version>
+    <time>1795619661</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.119: extractor fixes (python/go/cobol), serve on core install, query/export perf.</comment>
+    <requestid>1400530</requestid>
+  </revision>
 </revisionlist>
