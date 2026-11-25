@@ -18,7 +18,7 @@
 
 %define lname	libcdirectory1
 Name:           libcdirectory
-Version:        20260703
+Version:        20261030
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
