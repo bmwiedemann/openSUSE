@@ -70,14 +70,8 @@ BuildRequires:  pkgconfig(udev) >= 257
 BuildRequires:  pkgconfig(uuid)
 
 Requires:       libudisks2-%{soversion} = %{version}
-# For LUKS devices
-Requires:       cryptsetup
 # Needed to pull in the system bus daemon
 Requires:       dbus-service
-# For mkfs.vfat
-Requires:       dosfstools
-# For mkfs.ext3, mkfs.ext3, e2label
-Requires:       e2fsprogs
 # For ejecting removable disks
 Requires:       eject
 # sgdisk is called by udisksd to modify the partition tables... thus a needed tool.
@@ -97,10 +91,16 @@ Requires:       libblockdev-swap >= %{libblockdev_version}
 Requires:       udev >= 208
 # For mount, umount, mkswap
 Requires:       util-linux
-# For mkfs.xfs, xfs_admin
-Requires:       xfsprogs
+Requires:       libudisks2-%{soversion}_btrfs
 
-Recommends:     libudisks2-%{soversion}_btrfs
+# For mkfs.xfs, xfs_admin
+Recommends:     xfsprogs
+# For LUKS devices
+Recommends:     cryptsetup
+# For mkfs.vfat
+Recommends:     dosfstools
+# For mkfs.ext3, mkfs.ext3, e2label
+Recommends:     e2fsprogs
 
 # Drop deprecated modules from end users' systems upon system upgrade
 Obsoletes:      libudisks2-0_vdo <= 2.9.4
