@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Oct 26 08:27:00 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
-- Update to 3.10.4 (CVE-2026-81726, bsc#1285312, CVE-2026-109956, bsc#1278146):
+- Update to 3.10.4 (CVE-2026-81726, bsc#1285312, CVE-2026-109956, bsc#1278146, CVE-2026-128134, bsc#1290512):
 
   This release routes every file path, archive, download, URL fetch
   and external program through one sandbox that keeps reads and writes
