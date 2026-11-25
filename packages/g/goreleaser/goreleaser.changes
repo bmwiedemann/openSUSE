@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:53:21 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.20.3:
+  * perf(ko): copy images to secondary repositories with a single pusher (#7324)
+  * fix(nix): add arm archives without goarm to the url and sha maps (#7323)
+  * fix(gitea): do not duplicate release assets on reruns (#7329)
+  * chore: auto-update generated files (#7331)
+  * fix(deno): expose Go arch in the .Arch template field (#7322)
+  * test(git): skip TestUnsafeTagVersion on windows (#7334)
+  * Merge commit from fork
+  * docs(ko): explain that KO_DOCKER_REPO replaces the repositories (#7327)
+  * fix(aur): only emit license in PKGBUILD when set (#7328)
+  * chore: auto-update generated files (#7330)
+  * fix(aur): install a binary built in a subdirectory into /usr/bin (#7315)
+  * fix(archive): use the base name of the binary in formats: [binary] (#7320)
+  * chore: auto-update generated files (#7321)
+  * chore(deps): bump the gomod group with 10 updates (#7319)
+  * ci(deps): bump the actions group with 2 updates (#7318)
+  * chore(deps): bump anchore/syft from v1.57.0 to v1.57.1 in the docker group across 1 directory (#7317)
+  * fix(ci): use GitHub App identity for generated commits (#7314)
+  * test(snapcraft): add unit tests for linuxArch (#7311)
+  * chore: auto-update generated files (#7313)
+  * chore(deps): resolve govulncheck vulnerabilities (#7310)
+  * chore: auto-update generated files (#7309)
+  * docs: update
+
+-------------------------------------------------------------------
+Mon Nov 16 14:58:36 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.20.2:
+  * chore(deps): update nfpm to v2.49.0 (#7307)
+  * fix(checksums): do not fail split checksums without artifacts (#7306)
+  * fix(telegram): use an HTML-escaped default message with parse_mode HTML (#7285)
+  * sec: redact Git publication and SBOM credentials (#7303)
+  * fix(redact): avoid empty writes for buffered secret prefixes (#7301)
+  * ci(release): skip snapcraft when installation fails (#7305)
+  * ci: skip Snapcraft integration test when installation fails (#7304)
+  * chore: auto-update generated files (#7302)
+  * ci(generate): use GitHub App token instead of PAT (#7298)
+  * chore: auto-update generated files (#7297)
+  * ci(deps): update GitHub Actions across workflows
+  * chore(deps): update Go dependencies
+  * chore(deps): update syft
+  * chore(deps): update Go to 1.27.4 (#7296)
+  * refactor(ko): simplify template handling (#7277)
+  * fix(ko): prefer remote base images and don't cache failed lookups (#7275)
+  * fix(aur): install every binary of the archive in the default package (#7284)
+  * sec(srpm): reject RPM macros in package versions (#7295)
+  * fix(mcp): retry publish when package version is not yet visible (#7283)
+  * sec: redact hook and chocolatey secrets from logs (#7293)
+  * sec(git): redact URL credentials from diagnostics (#7294)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#7286)
+  * docs: .ArtifactPath is not always an absolute path (#7289)
+  * chore(deps): bump the gomod group with 5 updates (#7287)
+  * test(nix): make TestRunPipe error assertions actually check the error (#7291)
+  * ci(deps): bump the actions group with 7 updates (#7288)
+  * fix(client): defer SSH private-key expansion until publishing (#7273)
+  * ci: fix goreleaser:test:rpm on Fedora 45, which rejects unsigned rpms (#7281)
+  * fix(ko): accept '..' as main path (#7279)
+  * fix(docs): remove duplicate prebuilt redirects
+  * docs: update
+  * docs: update
+  * chore: auto-update generated files (#7274)
+
+-------------------------------------------------------------------
 Thu Nov 05 08:35:13 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.20.0:
