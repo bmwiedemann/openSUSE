@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:59:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.9:
+  * Install the C headers via cargo cinstall; ship them in the
+    devel package under the private include/z_rs subdir
+  * Fix undefined behaviour when an Inflate or Deflate handle
+    is dropped
+  * Fix buffered bit alignment and a NULL-pointer slice in
+    inflateSync
+  * Preserve the configured window size in inflate
+  * Reset the pending output cursor when resetting deflate
+  * Mask ignored value bits in deflatePrime
+  * Account for distance code bits in inflateMark
+  * Let total_in/total_out counters wrap past 4 GiB on 32-bit
+    targets
+  * Performance improvements in crc32, deflate matching and runtime
+    dispatch, including an aarch64-specific deflate_quick speedup
+  * Support no_std builds and add an altivec feature for PowerPC
+
+-------------------------------------------------------------------
 Wed Sep 16 07:27:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.6.8:

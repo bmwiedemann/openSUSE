@@ -21,13 +21,15 @@
 # so the library is libz_rs.so.1.3.0 with an soname of libz_rs.so.1.
 %define sover 1
 Name:           zlib-rs
-Version:        0.6.8
+Version:        0.6.9
 Release:        0
 Summary:        Memory-safe zlib implementation written in Rust
 License:        Zlib
 URL:            https://github.com/trifectatechfoundation/zlib-rs
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# Source-Binary-Exception: zlib-rs-*.obscpio:*/libz-rs-sys/src/test-data/magic-only.gz -- test-data: 2-byte gzip-magic error-path fixture the inflate tests read
+# Source-Binary-Exception: zlib-rs-*.obscpio:*/test-libz-rs-sys/src/test-data/blow_up_the_stack_2.gz -- test-data: gzip stack-usage corpus the tests read, too large for a scanner to expand
 BuildRequires:  cargo-c >= 0.10.12
 BuildRequires:  cargo-packaging
 # MSRV declared by the workspace (rust-version = "1.75").
@@ -55,9 +57,8 @@ This package provides the shared library.
 %package devel
 Summary:        Development files for zlib-rs
 Requires:       libz_rs%{sover} = %{version}
-# The library is API-compatible with zlib and deliberately ships no headers of
-# its own, so that it cannot collide with zlib-devel; build against the system
-# zlib.h and link with -lz_rs.
+# The headers ship in a private subdir, so they cannot collide with
+# zlib-devel; consumers can also build against the system zlib.h.
 Requires:       pkgconfig(zlib)
 
 %description devel
@@ -125,6 +126,7 @@ cmp Cargo.toml roundtrip.toml
 %files devel
 %license LICENSE
 %doc README.md
+%{_includedir}/z_rs/
 %{_libdir}/libz_rs.so
 %{_libdir}/pkgconfig/libz_rs.pc
 

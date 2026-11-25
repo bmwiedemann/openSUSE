@@ -25,4 +25,12 @@ with zlib-devel.</comment>
   * Add Deflate from config constructor</comment>
     <requestid>1378280</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9417c70e3d25b413436d8068aa448317</srcmd5>
+    <version>0.6.9</version>
+    <time>1795619650</time>
+    <user>anag_factory</user>
+    <comment>Update zlib-rs to 0.6.9: ship C headers in devel under include/z_rs, fix inflate/deflate handling, faster crc32/deflate, no_std and altivec support.</comment>
+    <requestid>1400520</requestid>
+  </revision>
 </revisionlist>
