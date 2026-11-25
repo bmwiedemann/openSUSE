@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Nov 25 05:47:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.6.3:
+  * fix(cli): clean up temporary files in InteractiveEdit
+    (cherry-pick #31191 for 3.6) (#31233)
+  * chore(deps): Bump github.com/klauspost/compress to v1.20.2
+    (#31168)
+  * fix: security fixes for 7 advisories (cherry-pick for 3.6)
+    (#31237)
+  * Security fixes
+    - HIGH: Repository create with upsert overwrites existing
+      repositories without the update permission
+      (GHSA-mfgm-4p7x-3ccr)
+    - HIGH: A single unauthenticated request crashes the API server
+      (GHSA-w7rw-fg89-2cjf)
+    - HIGH: Helm chart home link allows stored XSS in the
+      application details view (GHSA-rxm8-qc6h-3c8h)
+    - HIGH: ApplicationSet delete API ignores the allowed
+      ApplicationSet namespaces (GHSA-rvmf-gjc9-wjgq)
+    - MODERATE: Bitbucket Cloud webhook sends stored repository
+      credentials to a host taken from the webhook payload
+      (GHSA-q4f6-wc8m-r246)
+    - MODERATE: Helm release name is evaluated as a template,
+      disclosing repo-server environment variables
+      (GHSA-v2hj-322q-6cg4)
+    - MODERATE: Generated Dex configuration containing SSO secrets
+      is written world-readable (GHSA-8cfq-7w4v-ggm3)
+
+-------------------------------------------------------------------
 Thu Nov 19 05:50:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.6.2:
