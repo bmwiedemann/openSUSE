@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 25 05:46:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.3:
+  * 2.2.3: better handling for signals
+  * deps: November 2026 (#1650)
+  * docs: update supported versions in security policy (#1649)
+  * chore: update JSON schema with title and description (#1608)
+  * fix: give each stdin consumer an independent reader (#1622)
+  * fix: stop hooks on SIGTERM and SIGHUP like on SIGINT (#1615)
+  * deps: November 2026 (#1636)
+  * deps: bump Go to 1.27.4 (#1634)
+  * feat: add LEFTHOOK_NO_AUTO_INSTALL env (#1592)
+  * fix(filter): do not duplicate files matched by several glob
+    patterns (#1630)
+  * pkg(pypi): tag linux wheels as musllinux compatible (#1605)
+  * refactor(config): migrate to
+    github.com/go-viper/mapstructure/v2 (#1546)
+  * packaging: publish npm packages in different actions (#1598)
+
+-------------------------------------------------------------------
 Wed Oct 14 04:47:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.2:
