@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.18.4
+Version:        1.18.6
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -68,8 +68,8 @@ BuildRequires:  pkgconfig(appstream) >= 0.12.0
 BuildRequires:  pkgconfig(dconf) >= 0.26
 BuildRequires:  pkgconfig(fuse3) >= 3.1.1
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.46
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.46
 BuildRequires:  pkgconfig(glib-2.0) >= 2.46
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.40.0
 BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0) >= 1.40.0

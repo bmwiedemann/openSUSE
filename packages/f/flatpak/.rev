@@ -1289,4 +1289,20 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   + Internal changes:</comment>
     <requestid>1381311</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>1f1abe5450cf7177f6b6db1655cbec5b</srcmd5>
+    <version>1.18.6</version>
+    <time>1795619518</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.6:
+  * Security fixes:
+    + Prevent a compromised or malicious app/runtime/extension with extra-data
+      from creating setuid root files on the host system when installed
+      (CVE-2026-133842, GHSA-p4mw-6jfq-r82r)
+    + Prevent a compromised or malicious app from escaping the sandbox by
+      manipulating file descriptor passing via flatpak-portal (CVE-2026-133845,
+      GHSA-5jrj-948r-2wx6)
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1400339</requestid>
+  </revision>
 </revisionlist>
