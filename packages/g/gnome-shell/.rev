@@ -2782,4 +2782,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Push GNOME 51.1</comment>
     <requestid>1385429</requestid>
   </revision>
+  <revision rev="296" vrev="2">
+    <srcmd5>1eee73363d86e536523effa638b08745</srcmd5>
+    <version>51.1</version>
+    <time>1795619497</time>
+    <user>anag_factory</user>
+    <comment>- Pull in xdg-desktop-portal-gtk and xdg-desktop-portal-gnome by default:
+  Add xdg-desktop-portal-gtk and xdg-desktop-portal-gnome Recommends. Needed
+  for sandboxing and UI decorations.</comment>
+    <requestid>1400238</requestid>
+  </revision>
 </revisionlist>

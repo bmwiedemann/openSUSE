@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 13 20:36:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pull in xdg-desktop-portal-gtk and xdg-desktop-portal-gnome by default:
+  Add xdg-desktop-portal-gtk and xdg-desktop-portal-gnome Recommends. Needed
+  for sandboxing and UI decorations.
+
+-------------------------------------------------------------------
 Wed Oct 14 12:03:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 51.1:

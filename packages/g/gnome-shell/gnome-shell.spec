@@ -145,6 +145,9 @@ Recommends:     gnome-clocks
 Provides:       dbus(org.freedesktop.Notifications)
 # gnome-shell-browser-plugin dropped in 3.31.4
 Obsoletes:      gnome-shell-browser-plugin <= %{version}
+# Pull in xdg-desktop-portal-gtk and xdg-desktop-portal-gnome by default
+Recommends:     xdg-desktop-portal-gtk
+Recommends:     xdg-desktop-portal-gnome
 
 %description
 The GNOME Shell redefines user interactions with the GNOME desktop. In
