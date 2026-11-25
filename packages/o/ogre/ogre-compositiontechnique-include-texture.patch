@@ -1,0 +1,18 @@
+From: Bernhard Wiedemann <bwiedemann@suse.com>
+Subject: [PATCH] Main: CompositionTechnique - include OgreTexture.h for TextureType
+Date: 2026-11-18
+
+TextureDefinition uses TextureType and TEX_TYPE_2D, but the header
+only got them transitively. Since 14, OgreCompositorManager.h alone
+no longer compiles.
+
+--- a/OgreMain/include/OgreCompositionTechnique.h
++++ b/OgreMain/include/OgreCompositionTechnique.h
+@@ -30,6 +30,7 @@
+ 
+ #include "OgrePrerequisites.h"
+ #include "OgrePixelFormat.h"
++#include "OgreTexture.h"
+ #include "OgreHeaderPrefix.h"
+ 
+ namespace Ogre {

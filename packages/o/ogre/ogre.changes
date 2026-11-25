@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 18 06:55:23 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add ogre-compositiontechnique-include-texture.patch: fix
+  OgreCompositorManager.h not compiling on its own
+- Add /usr/share/OGRE/Media symlink to the versioned media dir
+
+-------------------------------------------------------------------
 Sun Oct 18 09:26:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 14.6.1:

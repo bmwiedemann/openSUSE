@@ -47,6 +47,8 @@ Patch1:         fix-sse-detection.patch
 Patch2:         swig-3-cpp11.patch
 # PATCH-FIX-UPSTREAM fix-glslang-plugin-compilation.patch -- include glslang Types.h
 Patch3:         fix-glslang-plugin-compilation.patch
+# PATCH-FIX-UPSTREAM ogre-compositiontechnique-include-texture.patch -- make OgreCompositorManager.h self-contained
+Patch4:         ogre-compositiontechnique-include-texture.patch
 BuildRequires:  cmake >= 3.13
 BuildRequires:  dos2unix
 BuildRequires:  doxygen
@@ -480,6 +482,9 @@ ln -s -f %{_sysconfdir}/alternatives/ogre %{buildroot}%{_datadir}/OGRE-%{sover}/
 # Fix file and directory permissions
 find %{buildroot}%{_datadir}/OGRE-%{sover}/ -type f -exec chmod 0644 \{\} +
 find %{buildroot}%{_datadir}/OGRE-%{sover}/ -type d -exec chmod 0755 \{\} +
+# keep the pre-14 media path working for consumers that hardcode it
+mkdir -p %{buildroot}%{_datadir}/OGRE
+ln -s ../OGRE-%{sover}/Media %{buildroot}%{_datadir}/OGRE/Media
 # Remove duplicates
 %fdupes %{buildroot}%{_includedir}/OGRE
 %fdupes %{buildroot}%{_datadir}
@@ -521,6 +526,8 @@ fi
 %{_datadir}/OGRE-%{sover}/Media/RTShaderLib
 %{_datadir}/OGRE-%{sover}/Media/packs/SdkTrays.zip
 %{_datadir}/OGRE-%{sover}/Media/packs/profiler.zip
+%dir %{_datadir}/OGRE
+%{_datadir}/OGRE/Media
 
 %if %{with mono}
 %files mono
