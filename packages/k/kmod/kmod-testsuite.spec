@@ -22,7 +22,7 @@
 
 Name:           kmod-testsuite
 %define lname	libkmod2
-Version:        34.3
+Version:        34.4
 Release:        0
 Summary:        Testsuite of the kmod package
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -30,6 +30,7 @@ Group:          System/Kernel
 URL:            https://www.kernel.org/pub/linux/utils/kernel/kmod/
 #Git-Web:	http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 #Git-Clone:	git://git.kernel.org/pub/scm/utils/kernel/kmod/kmod
+#Announce:      https://lore.kernel.org/linux-modules/
 Source:         https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.xz
 Source2:        https://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-%version.tar.sign
 Source3:        kmod.keyring
@@ -40,7 +41,6 @@ Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         Revert-build-check-for-__xstat-declarations.patch
-Patch8:         riscv-hwprobe.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  kernel-default-devel
 BuildRequires:  libopenssl-devel >= 1.1.0

@@ -836,4 +836,12 @@ This addition of patch not mentioned in changelog should have been rejected by t
 new try</comment>
     <requestid>1394923</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>b3910c60ccbd8ee9ee095e7d14e10483</srcmd5>
+    <version>34.4</version>
+    <time>1795619488</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 34.4</comment>
+    <requestid>1400310</requestid>
+  </revision>
 </revisionlist>
