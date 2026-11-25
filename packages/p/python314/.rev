@@ -3055,4 +3055,20 @@ jsc#PED-15851</comment>
       closing bracket follows the opening brace of an f-string or</comment>
     <requestid>1397632</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f255a0d413015c8a2b17743059d7a847</srcmd5>
+    <version>3.14.10</version>
+    <time>1795619523</time>
+    <user>anag_factory</user>
+    <comment>Two fixes (CVE-2026-103995 and CVE-2026-116566)
+
+- CVE-2026-103995: gh-150751: validate http.client
+  Content-Length and chunk-size (bsc#1288328)
+   CVE-2026-103995-http-client-length.patch
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo()
+  host and port (bsc#1289106)
+   CVE-2026-116566-getaddrinfo-null-bytes.patch</comment>
+    <requestid>1400066</requestid>
+  </revision>
 </revisionlist>

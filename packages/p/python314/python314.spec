@@ -237,6 +237,12 @@ Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-OPENSUSE bsc1260884-llvm21-support.patch bsc#1260884 mcepl@suse.com
 # update JIT builds to use LLVM 21
 Patch57:        bsc1260884-llvm21-support.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-getaddrinfo-null-bytes.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port
+Patch58:        CVE-2026-116566-getaddrinfo-null-bytes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-http-client-length.patch bsc#1288328 mcepl@suse.com
+# gh-150751: validate http.client Content-Length and chunk-size
+Patch59:        CVE-2026-103995-http-client-length.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
