@@ -163,4 +163,12 @@
     <comment></comment>
     <requestid>1298108</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4019ef7dfc1e16e76852f02e0067852b</srcmd5>
+    <version>20250305.1</version>
+    <time>1795619539</time>
+    <user>anag_factory</user>
+    <comment>- No longer recommend deprecated yast for default installations. (forwarded request 1397311 from dimstar)</comment>
+    <requestid>1400379</requestid>
+  </revision>
 </revisionlist>

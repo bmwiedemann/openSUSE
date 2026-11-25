@@ -60,7 +60,6 @@ Recommends:     MozillaFirefox
 # Recommend openSUSE favourited packages
 Recommends:     gnome-terminal
 Recommends:     nautilus
-Recommends:     yast2-control-center
 Supplements:    (budgie-desktop and branding-%{nsuffix})
 Conflicts:      budgie-desktop-branding
 Provides:       budgie-desktop-branding = %{version}

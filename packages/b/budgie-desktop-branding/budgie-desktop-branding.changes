@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 13 10:50:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend deprecated yast for default installations.
+
+-------------------------------------------------------------------
 Thu Aug  7 07:59:16 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Use Requires: distribution-logos-branding-SLE for Backports/SLE build
