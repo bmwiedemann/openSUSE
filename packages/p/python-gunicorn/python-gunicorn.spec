@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-gunicorn%{psuffix}
-Version:        25.3.0
+Version:        27.0.1
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
@@ -44,13 +44,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
-Requires:       (python-importlib_metadata if python-base < 3.8)
-Suggests:       python-evenlet
-Suggests:       python-gevent
+Suggests:       python-gevent >= 24.10.1
 Suggests:       python-gthread
-Suggests:       python-h2
+Suggests:       python-h2 >= 4.4.1
 Suggests:       python-setproctitle
-Suggests:       python-tornado
+Suggests:       python-tornado >= 6.5.7
 BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
@@ -60,10 +58,8 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 %if %{with test}
-BuildRequires:  %{python_module eventlet}
-BuildRequires:  %{python_module gevent >= 1.4}
+BuildRequires:  %{python_module gevent >= 24.10.1}
 BuildRequires:  %{python_module gunicorn}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:06:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 27.0.1 (CVE-2026-134821, bsc#1291340)
+  * Eventlet worker removed: The eventlet worker class has been dropped. Migrate
+    to gevent, gthread, or tornado.
+  * New end-to-end compatibility test harness covering Starlette, FastAPI, Litestar,
+    Quart, Sanic, and BlackSheep.
+  * 134 additional ASGI unit tests covering protocol semantics, lifespan, websockets,
+    and chunked framing.
+  * Breaking: HTTP/1.1 Request-Target Validation (RFC 9112)
+  * Header Field Hardening (RFC 9110)
+  * Request Smuggling Hardening
+  * Enforce proxy_allow_ips and tighten v1/v2 parsing in the ASGI callback parser.
+  * Glob patterns in reload_extra_files
+  * Dependency floors raised past known advisories
+  * Cleartext HTTP/2 (h2c): http2_cleartext accepts prior-knowledge, upgrade, both or off.
+  * bound lines that never get their CRLF
+
+-------------------------------------------------------------------
 Fri Mar 27 11:39:22 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Package gunicornc
