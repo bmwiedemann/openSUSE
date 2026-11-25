@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/libgovirt
 Source0:        https://download.gnome.org/sources/libgovirt/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         https://gitlab.gnome.org/GNOME/libgovirt/-/merge_requests/22.patch
 
 BuildRequires:  gobject-introspection-devel >= 1.30.0
 BuildRequires:  intltool

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 12:19:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Re-commit 22.patch based on most recent version.
+
+-------------------------------------------------------------------
+Tue Nov 24 16:24:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 22.patch: move closure annotations from userdata to callback.
+
+-------------------------------------------------------------------
 Wed Feb 11 08:07:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.11:

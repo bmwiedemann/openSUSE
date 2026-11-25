@@ -1,0 +1,102 @@
+From 982e5fdae0901d0686190e0c38d641a150c3e5e9 Mon Sep 17 00:00:00 2001
+From: Paolo Bonzini <pbonzini@redhat.com>
+Date: Tue, 24 Nov 2026 11:31:32 +0100
+Subject: [PATCH] move closure annotations from userdata to callback
+
+---
+ govirt/meson.build              | 1 +
+ govirt/ovirt-collection.c       | 4 ++--
+ govirt/ovirt-proxy-deprecated.c | 4 ++--
+ govirt/ovirt-proxy-private.h    | 7 +++++++
+ govirt/ovirt-proxy.c            | 8 ++++----
+ 5 files changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/govirt/meson.build b/govirt/meson.build
+index b75d1e1..467da20 100644
+--- a/govirt/meson.build
++++ b/govirt/meson.build
+@@ -110,6 +110,7 @@ govirt_introspection_sources = [
+ 
+ gnome.generate_gir(govirt_lib,
+                    build_by_default : true,
++                   fatal_warnings : true,
+                    sources : govirt_introspection_sources,
+                    namespace : 'GoVirt',
+                    nsversion : '1.0',
+diff --git a/govirt/ovirt-collection.c b/govirt/ovirt-collection.c
+index 7e62329..2d486f1 100644
+--- a/govirt/ovirt-collection.c
++++ b/govirt/ovirt-collection.c
+@@ -423,8 +423,8 @@ static gboolean ovirt_collection_fetch_async_cb(OvirtProxy* proxy,
+  * ovirt_collection_fetch_async:
+  * @collection: a #OvirtCollection
+  * @proxy: a #OvirtProxy
+- * @callback: (scope async): completion callback
+- * @user_data: (closure): opaque data for callback
++ * @callback: (scope async) (closure user_data): completion callback
++ * @user_data: opaque data for callback
+  */
+ void ovirt_collection_fetch_async(OvirtCollection *collection,
+                                   OvirtProxy *proxy,
+diff --git a/govirt/ovirt-proxy-deprecated.c b/govirt/ovirt-proxy-deprecated.c
+index b7412d4..056b46e 100644
+--- a/govirt/ovirt-proxy-deprecated.c
++++ b/govirt/ovirt-proxy-deprecated.c
+@@ -82,8 +82,8 @@ static void fetch_api_async_cb(GObject *source_object,
+ /**
+  * ovirt_proxy_fetch_vms_async:
+  * @proxy: a #OvirtProxy
+- * @callback: (scope async): completion callback
+- * @user_data: (closure): opaque data for callback
++ * @callback: (scope async) (closure user_data): completion callback
++ * @user_data: opaque data for callback
+  */
+ void ovirt_proxy_fetch_vms_async(OvirtProxy *proxy,
+                                  GCancellable *cancellable,
+diff --git a/govirt/ovirt-proxy-private.h b/govirt/ovirt-proxy-private.h
+index 7bc8dd0..e500828 100644
+--- a/govirt/ovirt-proxy-private.h
++++ b/govirt/ovirt-proxy-private.h
+@@ -50,6 +50,13 @@ struct _OvirtProxyPrivate {
+ RestXmlNode *ovirt_proxy_get_collection_xml(OvirtProxy *proxy,
+                                             const char *href,
+                                             GError **error);
++/**
++ * OvirtProxyGetCollectionAsyncCb:
++ * @proxy: the proxy
++ * @root_node: the root node
++ * @user_data: (closure): completion callback
++ * @error: error that was encountered
++ */
+ typedef gboolean (*OvirtProxyGetCollectionAsyncCb)(OvirtProxy* proxy,
+                                                    RestXmlNode *root_node,
+                                                    gpointer user_data,
+diff --git a/govirt/ovirt-proxy.c b/govirt/ovirt-proxy.c
+index 45407e8..9bd69d7 100644
+--- a/govirt/ovirt-proxy.c
++++ b/govirt/ovirt-proxy.c
+@@ -342,8 +342,8 @@ end:
+ /**
+  * ovirt_proxy_get_collection_xml_async:
+  * @proxy: a #OvirtProxy
+- * @callback: (scope async): completion callback
+- * @user_data: (closure): opaque data for callback
++ * @callback: (scope async) (closure user_data): completion callback
++ * @user_data: opaque data for callback
+  */
+ void ovirt_proxy_get_collection_xml_async(OvirtProxy *proxy,
+                                           const char *href,
+@@ -1160,8 +1160,8 @@ static gboolean fetch_api_async_cb(OvirtProxy* proxy,
+ /**
+  * ovirt_proxy_fetch_api_async:
+  * @proxy: a #OvirtProxy
+- * @callback: (scope async): completion callback
+- * @user_data: (closure): opaque data for callback
++ * @callback: (scope async) (closure user_data): completion callback
++ * @user_data: opaque data for callback
+  */
+ void ovirt_proxy_fetch_api_async(OvirtProxy *proxy,
+                                  GCancellable *cancellable,
+-- 
+GitLab
+

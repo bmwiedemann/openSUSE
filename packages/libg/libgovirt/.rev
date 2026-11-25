@@ -147,4 +147,15 @@
     <comment></comment>
     <requestid>1332554</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>66a7720c73b42790b46f5a6412f8beea</srcmd5>
+    <version>0.3.11</version>
+    <time>1795619677</time>
+    <user>anag_factory</user>
+    <comment>- Re-commit 22.patch based on most recent version.
+
+
+- Add 22.patch: move closure annotations from userdata to callback.</comment>
+    <requestid>1400567</requestid>
+  </revision>
 </revisionlist>
