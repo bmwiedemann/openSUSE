@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        6.2.0
+Version:        6.2.1
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -375,7 +375,5 @@ done
 
 %files zypp-config
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck.d/transactional-update.check
-
-%check
 
 %changelog

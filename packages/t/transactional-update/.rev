@@ -1685,4 +1685,17 @@ Also requires https://build.opensuse.org/request/show/1167142.</comment>
 - Remove some outdated dependencies</comment>
     <requestid>1393649</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>0f64711242d412ec9fde0d29ed7cbfa5</srcmd5>
+    <version>6.2.1</version>
+    <time>1795619474</time>
+    <user>anag_factory</user>
+    <comment>Removed the accidental submission of the RPM %check section - the unit tests don't work within OBS yet...
+
+- Version 6.2.1
+  * t-u: Fix automatic update selection with single-hyphen [bsc#1289270]
+  * sync-etc-state: Apply the mode of copied directories
+  * configure: declare minimum version of libeconf required</comment>
+    <requestid>1400011</requestid>
+  </revision>
 </revisionlist>
