@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-oras
-Version:        0.2.43
+Version:        0.2.44
 Release:        0
 Summary:        OCI Registry as Storage Python SDK
 License:        Apache-2.0

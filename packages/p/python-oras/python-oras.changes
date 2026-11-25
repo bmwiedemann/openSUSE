@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 18 08:21:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.2.44:
+  * If failed to get credential - inform on what input, and use
+    stdout if no stderr in #221
+  * [tributors] contributors/update-2026-08-21 in #251
+  * docs: replace references to the removed client.remote attribute
+    in #258
+  * fix: make login() username and password optional in #257
+  * [tributors] contributors/update-2026-09-29 in #263
+  * Fix temporary archive cleanup when pulling directories in #254
+  * [tributors] contributors/update-2026-10-02 in #264
+  * fix: raise an informative error for a non-JSON manifest
+    response in #268
+
+-------------------------------------------------------------------
 Mon Aug 10 05:56:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.2.43:
