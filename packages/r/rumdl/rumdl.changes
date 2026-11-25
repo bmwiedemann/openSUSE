@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov 25 06:03:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.6:
+  * Added
+    - MD034: add opt-in CJK punctuation handling (df36147)
+    - MD057: check inline links inside HTML comments behind
+      html-comments (074bb03)
+  * Fixed
+    - Respect blank and exclusion-only include patterns when
+      updating the language server workspace index.
+    - MD034: preserve protected URLs with CJK punctuation (4559341)
+    - MD061: pick the longest term with valid boundaries (b6c662e)
+    - MD061: report a term that extends an earlier listed term
+      (ee42482)
+    - schema: type MD072 custom key order (9127bf1)
+    - schema: support both kebab case and snake case for MD072
+      options (8713325)
+    - tables: read a delimiter row inside a code span as code
+      (0c0a233)
+    - MD077: keep the fix from turning paragraph text into a block
+      (d97c8e0)
+    - tables: detect a table whose header row opens with a code
+      span (6c441a5)
+    - tables: keep the list context across a lazy continuation line
+      (61c894e)
+    - MD077: align a continuation line that opens with a code span
+      (94766cc)
+    - deps: refresh Rust dependencies for v0.3.6 (c75c611)
+  * Performance
+    - lsp: convert the ranges of a quick fix in one pass (5fbdd19)
+    - tables: scan a lazy line without walking every open list
+      level (cbeb9c0)
+  * Security
+    - Update url to 2.5.9 to address RUSTSEC-2026-0592.
+
+-------------------------------------------------------------------
 Thu Nov 19 06:03:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.5:
