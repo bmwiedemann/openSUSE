@@ -17,7 +17,7 @@
 
 
 Name:           git-repo
-Version:        2.72
+Version:        2.74
 Release:        0
 Summary:        The Multiple Git Repository Tool
 License:        Apache-2.0
@@ -29,6 +29,7 @@ BuildRequires:  gpg2
 BuildRequires:  python3-base
 # requires pytest monkeypatch
 BuildRequires:  python3-pytest >= 8.3.4
+BuildRequires:  python3-pytest-xdist
 BuildRequires:  python3-flake8
 BuildRequires:  tree
 # /SECTION

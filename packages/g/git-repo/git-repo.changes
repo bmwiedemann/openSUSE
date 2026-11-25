@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Nov 17 20:03:40 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.74:
+  * repo: bump launcher version to 2.74
+  * init, sync: support per-branch smart sync branch config
+  * sync: sort interleaved sync slowest-first
+  * sync: add --force-jobs flag to override manifest sync-j-max
+  * project: avoid git spawns in custom fetch ref checks
+  * project: only unset core.bare when it is true
+  * git_config, project: coalesce SetString writes in BatchWrites
+  * sync: warm init.templateDir cache for sync workers
+  * sync: trim preciousObjects work
+  * pyrefly: initial support
+  * typing: fix various errors caught by pyrefly
+  * project: fix invalid logger call
+  * project: fix Project.HasChanges API mismatches
+  * pytest: only keep temp dirs of failed tests
+  * tests: switch to mock.patch.object
+  * run_tests: turn into multicall program
+  * git_refs, project: read files-backend refs in Python
+  * sync: handle smart sync when the manifest checkout has no branch
+  * style: use `from subcmds import sync` everywhere
+  * style: use `import hooks` everywhere
+  * pytest: enable xdist usage
+  * run_tests: regen uv.lock
+  * flake8: fix warnings with newer versions
+  * git_command: move _GetBasicEnv to module level
+  * sync: remove obsolete projects before interleaved checkouts
+  * style: use `import command` everywhere
+  * tests: delete buggy git_command tests
+  * style: use `import main` everywhere
+  * style: use `import subcmds` everywhere
+  * style: use `import command` in unittests
+- Add python-pytest-xdist as BuildRequires for the tests
+
+-------------------------------------------------------------------
+Thu Nov 12 21:02:15 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.73:
+  * style: use `import progress` everywhere
+  * style: use `import wrapper` everywhere
+  * style: use `import git_trace2_event_log_base` everywhere
+  * style: use `import git_trace2_event_log` everywhere
+  * style: use `import git_superproject` everywhere
+  * style: use `import event_log` everywhere
+  * style: use `import manifest_xml` everywhere
+  * sync: don't read target tree after reprojectcmd
+  * sync: verify fetchcmd postconditions without reading objects
+  * sync: skip shallow bloat check when using fetchcmd
+  * style: use `import git_config` everywhere
+  * Adding sparse checkout functionality
+  * style: use `import color` everywhere
+  * style: use `import test_manifest_xml` everywhere
+  * style: use `import pager` everywhere
+  * style: use `import editor` everywhere
+  * style: use `import io` everywhere
+  * style: use `import collections` everywhere
+  * style: use `import urllib.xxx` everywhere
+  * style: use `import types` everywhere
+  * flake8: enable flake8-import-restrictions
+  * flake8: fix nested import checks
+  * event_log: only record events when --event-log is specified
+  * git_refs, project: skip redundant git calls on unborn HEAD and warm refs
+  * git_config, project: keep config cache coherent and skip init templates
+  * project: trace fetchcmd and reprojectcmd executions
+
+-------------------------------------------------------------------
 Wed Nov 04 19:31:05 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.72:
