@@ -2113,4 +2113,20 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
     (gh#python/cpython#87720).</comment>
     <requestid>1397639</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>44f2eb357e02546ca530d44bcdf79472</srcmd5>
+    <version>3.11.18</version>
+    <time>1795619529</time>
+    <user>anag_factory</user>
+    <comment>Two fixes (CVE-2026-103995 and CVE-2026-116566)
+
+- CVE-2026-103995: Validate http.client Content-Length and
+  chunk-size (bsc#1288328)
+  CVE-2026-103995-validate-http.client-Content-Length-chunk-size.patch
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo() host
+  and port (bsc#1289106)
+  CVE-2026-116566-getaddrinfo-null-bytes.patch</comment>
+    <requestid>1400215</requestid>
+  </revision>
 </revisionlist>

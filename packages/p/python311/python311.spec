@@ -206,6 +206,12 @@ Patch51:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch58:        bsc1263083-http-cookies-atob-utf8.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-getaddrinfo-null-bytes.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port
+Patch59:        CVE-2026-116566-getaddrinfo-null-bytes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-validate-http.client-Content-Length-chunk-size.patch bsc#1288328 mcepl@suse.com
+# Validate http.client Content-Length and chunk-size
+Patch60:        CVE-2026-103995-validate-http.client-Content-Length-chunk-size.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
