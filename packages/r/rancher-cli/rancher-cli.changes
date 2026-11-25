@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 25 05:59:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.4:
+  * Update Rancher refs to v2.15.4 (#836)
+  * Update Kubernetes dependencies to v0.36.6 (#825)
+  * Update go toolchain directive to v1.26.11 [SECURITY] (#804)
+  * Update dependency go to v1.26.11 (#805)
+  * [v2.15] enable immutable releases (#794)
+  * Update module golang.org/x/net to v0.62.0 [SECURITY] (#787)
+  * Update dependency go to v1.26.10 (#679)
+
+-------------------------------------------------------------------
 Fri Oct 30 05:56:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.15.3:
