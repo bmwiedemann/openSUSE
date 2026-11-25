@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 03:54:41 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Build with Rust 1.100: refresh bun-vendor-1.4.5.tar.zst for
+  -Zbuild-std, raise the Rust floor, and add
+  bun-rust-allocator-ext.patch for allocator_ext APIs
+
+-------------------------------------------------------------------
 Thu Nov 19 15:41:24 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to 1.4.5:

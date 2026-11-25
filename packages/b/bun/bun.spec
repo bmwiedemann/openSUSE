@@ -137,6 +137,8 @@ Patch4:         bun-system-libs.patch
 Patch5:         bun-rust-type-info.patch
 # std::sync::Once has no Default implementation in the shipped Rust compiler.
 Patch6:         bun-rust-once-default.patch
+# PATCH-FIX-OPENSUSE bun-rust-allocator-ext.patch neyfua@proton.me -- use allocator_ext for Rust 1.100's remaining allocator APIs
+Patch7:         bun-rust-allocator-ext.patch
 BuildRequires:  cargo
 # LLVM 23.1.x: upstream pins 23.1.1 (scripts/build/ci-images/spec.ts) and
 # scripts/build/tools.ts accepts the same major.minor, so the distribution's
@@ -151,9 +153,6 @@ BuildRequires:  git-core
 BuildRequires:  lld23
 BuildRequires:  llvm23
 BuildRequires:  ninja
-%ifarch x86_64
-BuildRequires:  nasm
-%endif
 # The build driver runs on Node, and 1.4.4 refuses anything below 25
 # (scripts/build/configure.ts): the codegen scripts gate on import.meta.main,
 # and upstream set the floor at the release after the one that added it rather
@@ -165,12 +164,9 @@ BuildRequires:  nodejs26
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-# Not a floor upstream states - upstream pins a nightly - but 1.4.4 needs it
-# twice over: the build refuses a clang whose LLVM major differs from rustc's
-# own (scripts/build/config.ts), and rust 1.99 is the first release whose
-# bundled LLVM is 23, to go with the distribution's clang23. An older
-# compiler fails deep in the workspace instead of here.
-BuildRequires:  rust >= 1.99
+# Not an upstream floor, but 1.4.5 needs Rust 1.100: LLVM 23 for clang23,
+# and allocator_ext after allocator_api's partial stabilization (Patch7).
+BuildRequires:  rust >= 1.100
 # 1.4.4 builds the standard library from source in every profile
 # (scripts/build/rust.ts), which needs the rust-src component.
 BuildRequires:  rust-src
@@ -228,6 +224,9 @@ Provides:       bundled(zlib-ng)
 # Upstream supports linux-x64 and linux-arm64 only, and Bun can only be built
 # where an upstream bootstrap binary is published for the same architecture.
 ExclusiveArch:  x86_64 aarch64
+%ifarch x86_64
+BuildRequires:  nasm
+%endif
 %if %{with webkit_source}
 # JavaScriptCore's own build system.
 BuildRequires:  ruby
