@@ -17,11 +17,10 @@
 
 
 Name:           fuzzel
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        A Wayland-native application launcher, similar to rofi's drun mode
 License:        MIT
-Group:          System/X11/Utilities
 URL:            https://codeberg.org/dnkl/fuzzel
 Source:         https://codeberg.org/dnkl/fuzzel/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://codeberg.org/dnkl/fuzzel/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
@@ -31,14 +30,14 @@ BuildRequires:  meson >= 0.58
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  resvg-devel
-BuildRequires:  scdoc
-BuildRequires:  pkgconfig(fcft) <  4.0.0
+BuildRequires:  pkgconfig(fcft) < 4.0.0
 BuildRequires:  pkgconfig(fcft) >= 3.0.0
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(scdoc)
 BuildRequires:  pkgconfig(tllist) >= 1.0.1
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
-BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(xkbcommon)
 %if 0%{?sle_version} >= 150400
@@ -55,20 +54,18 @@ A Wayland-native application launcher, similar to rofi's drun mode.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       %{name}
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 
 %description    zsh-completion
 Zsh command-line completion support for %{name}
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       %{name}
 Requires:       fish
+Supplements:    (%{name} and fish)
 
 %description    fish-completion
 Fish command-line completion support for %{name}.

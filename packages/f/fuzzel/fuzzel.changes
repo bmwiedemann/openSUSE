@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:34:34 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.15.0:
+  * Add --override option to override any fuzzel.ini option.
+  * Add IME support via text-input-unstable-v3.
+  * Support the TryExec key in .desktop files.
+  * Application mode shows the window before all .desktop files
+    are loaded.
+  * Fix crash with image-size-ratio=0.
+  * Fix first entry not hover-able; clicking an entry selects it.
+  * Use pkg-config for resvg when it is available.
+  * Require wayland-protocols 1.41.
+  * Include 1.14.1 fixes: segfault on icon index.theme comments,
+    fzf-mode sorting regression from 1.14.0, crash rendering --mesg
+    with ligatures, startup flicker on some compositors.
+- Spec cleanup: drop Group tags, use pkgconfig(scdoc).
+
+-------------------------------------------------------------------
 Fri Feb 13 14:12:24 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Disable cairo and use resvg
