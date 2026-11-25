@@ -1,0 +1,17 @@
+Index: GPaste-51.3/tests/ui/test-daemon-presence.c
+===================================================================
+--- GPaste-51.3.orig/tests/ui/test-daemon-presence.c
++++ GPaste-51.3/tests/ui/test-daemon-presence.c
+@@ -527,6 +527,12 @@ wait_for_presence (GPasteClient        *
+ static void
+ test_pinned_filter_star (void)
+ {
++    if (!have_display)
++    {
++        g_test_skip ("A private Xvfb display is required");
++        return;
++    }
++
+     g_autoptr (GtkWidget) header = g_object_ref_sink (g_paste_ui_header_new ());
+     GtkToggleButton *button = g_paste_ui_header_get_favourites_button (ADW_HEADER_BAR (header));
+     GtkImage *star = GTK_IMAGE (gtk_button_get_child (GTK_BUTTON (button)));

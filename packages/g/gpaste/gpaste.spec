@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(Clutter|St\\)
 %global alt_name GPaste
 Name:           gpaste
-Version:        51.2
+Version:        51.3
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
@@ -28,7 +28,7 @@ Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 Source0:        %{alt_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
-Patch0:         https://github.com/Keruspe/GPaste/commit/126bb51.patch
+Patch0:         gpaste-test-without-X.patch
 
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
@@ -72,20 +72,20 @@ GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
 
-%package -n libgpaste-daemon3
+%package -n libgpaste-daemon4
 Summary:        Library for managing clipboard history
 Group:          System/Libraries
 
-%description -n libgpaste-daemon3
+%description -n libgpaste-daemon4
 GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
 
-%package -n libgpaste-gtk4-2
+%package -n libgpaste-gtk4-3
 Summary:        Library for managing clipboard history
 Group:          System/Libraries
 
-%description -n libgpaste-gtk4-2
+%description -n libgpaste-gtk4-3
 GPaste is a clipboard management daemon with DBus interface.
 
 This package provides a library for managing clipboard history.
@@ -132,8 +132,8 @@ managing clipboard history.
 %package devel
 Summary:        Development files for the gpaste clipboard history manager
 Group:          Development/Libraries/GNOME
-Requires:       libgpaste-gtk4-2 = %{version}
-Requires:       libgpaste-daemon3 = %{version}
+Requires:       libgpaste-gtk4-3 = %{version}
+Requires:       libgpaste-daemon4 = %{version}
 Requires:       libgpaste-3-2 = %{version}
 Requires:       typelib-1_0-GPaste-3 = %{version}
 Requires:       typelib-1_0-GPasteDaemon-1 = %{version}
@@ -189,8 +189,8 @@ desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=A
 %meson_test
 
 %ldconfig_scriptlets -n libgpaste-3-2
-%ldconfig_scriptlets -n libgpaste-daemon3
-%ldconfig_scriptlets -n libgpaste-gtk4-2
+%ldconfig_scriptlets -n libgpaste-daemon4
+%ldconfig_scriptlets -n libgpaste-gtk4-3
 
 %files
 %license COPYING
@@ -222,10 +222,10 @@ desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=A
 %files -n libgpaste-3-2
 %{_libdir}/libgpaste-3.so.*
 
-%files -n libgpaste-daemon3
+%files -n libgpaste-daemon4
 %{_libdir}/libgpaste-daemon.so.*
 
-%files -n libgpaste-gtk4-2
+%files -n libgpaste-gtk4-3
 %{_libdir}/libgpaste-gtk4.so.*
 
 %files -n typelib-1_0-GPaste-3
