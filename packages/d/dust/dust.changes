@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 25 12:23:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 1.2.8:
+  * version: increment version
+  * deps: cargo update
+  * fix: reject invalid regexes in --ignore-all-in-file
+  * Prevent panic when --ignore-all-in-file fails to read
+  * chore: remove redundant homepage
+  * Fix -x / --limit-filesystem on Windows
+  * fix: don't panic on non-UTF-8 names in json output
+  * fix(config): reject min-size values that overflow
+  * fix: only-dir with duplicate top level names
+  * test: only-dir with duplicate top level names
+
+-------------------------------------------------------------------
 Mon Nov 09 09:49:29 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 1.2.7:

@@ -223,4 +223,22 @@
   * Update sysinfo dependency to version 0.39</comment>
     <requestid>1396292</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>504d03c55f4706fab8102f8ca928d19d</srcmd5>
+    <version>1.2.8</version>
+    <time>1795626153</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.8:
+  * version: increment version
+  * deps: cargo update
+  * fix: reject invalid regexes in --ignore-all-in-file
+  * Prevent panic when --ignore-all-in-file fails to read
+  * chore: remove redundant homepage
+  * Fix -x / --limit-filesystem on Windows
+  * fix: don't panic on non-UTF-8 names in json output
+  * fix(config): reject min-size values that overflow
+  * fix: only-dir with duplicate top level names
+  * test: only-dir with duplicate top level names</comment>
+    <requestid>1400568</requestid>
+  </revision>
 </revisionlist>
