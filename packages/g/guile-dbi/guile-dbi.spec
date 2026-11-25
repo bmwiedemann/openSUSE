@@ -17,24 +17,21 @@
 
 
 Name:           guile-dbi
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        Guile interface to SQL databases
 License:        GPL-2.0-or-later
 URL:            https://github.com/opencog/guile-dbi
 Source0:        https://github.com/opencog/guile-dbi/archive/guile-dbi-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM guile-dbi-doc-subdirs.patch https://github.com/opencog/guile-dbi/pull/35
-# TAB-indented conditional SUBDIRS append is misparsed by make as a recipe
-Patch0:         guile-dbi-doc-subdirs.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(guile-3.0)
 BuildRequires:  texinfo
+BuildRequires:  pkgconfig(guile-3.0)
 Requires:       guile
 Requires:       libguile-dbi4 = %{version}-%{release}
 
@@ -49,7 +46,6 @@ as separate build trees.
 
 %package -n libguile-dbi4
 Summary:        Guile DBI runtime library
-License:        GPL-2.0-or-later
 
 %description -n libguile-dbi4
 Runtime C library for guile-dbi, the Guile scheme interface to SQL
@@ -57,7 +53,6 @@ databases. The scheme module in the main package loads it at run time.
 
 %package devel
 Summary:        Development files for guile-dbi
-License:        GPL-2.0-or-later
 Requires:       libguile-dbi4 = %{version}-%{release}
 Requires:       libltdl-devel
 Requires:       pkgconfig(guile-3.0)
@@ -83,7 +78,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
-
 %post -n libguile-dbi4 -p /sbin/ldconfig
 %postun -n libguile-dbi4 -p /sbin/ldconfig
 

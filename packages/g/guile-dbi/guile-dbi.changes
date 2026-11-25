@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Nov 22 09:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.3.0:
+  * Add dbi-affected-rows API with affected_rows support in
+    MySQL, PostgreSQL and SQLite3 back ends, with tests.
+  * PostgreSQL back end: add pgvector read support and fix
+    NaN/Infinity float handling in query results.
+  * Fix MySQL getrow handling of SQL NULL.
+  * Make dbi-open and dbi-close thread-safe.
+  * Add dbi-conn-reset to reset connection handles.
+  * Fix makeinfo documentation build.
+  * Drop old unused ChangeLogs in subdirectories.
+- Drop guile-dbi-doc-subdirs.patch: merged upstream (PR #35).
+
+-------------------------------------------------------------------
 Tue Nov 10 18:17:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package (version 3.2.0), DBI database abstraction for GNU
