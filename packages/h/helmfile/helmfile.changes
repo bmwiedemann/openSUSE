@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 25 13:31:43 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.5:
+  * build(deps): bump golang.org/x/term from 0.47.0 to 0.48.0 by
+    @dependabot[bot] in #2896
+  * fix: stringify non-string map keys in values files by @lbarrosby
+    in #2899
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.16 to 1.33.17 by @dependabot[bot] in #2897
+  * refactor: extract sync uninstall and chart lock helpers by
+    @ViktorBystrov72 in #2898
+  * build(deps): bump github.com/helmfile/vals from 0.51.0 to 0.51.1
+    by @dependabot[bot] in #2904
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.17 to 1.33.18 by @dependabot[bot] in #2901
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.114.9 to 1.114.10 by @dependabot[bot] in #2900
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.18 to 1.33.19 by @dependabot[bot] in #2905
+  * chore: bump Helm v4 to v4.3.2 by @yxxhero in #2903
+
+-------------------------------------------------------------------
 Sat Nov 14 09:47:40 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.8.4:
