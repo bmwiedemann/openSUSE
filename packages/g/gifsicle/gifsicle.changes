@@ -1,3 +1,11 @@
+Tue Nov 24 16:18:54 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- Update to version 1.99:
+  * Multithreaded resizing (-j) gives the same results as single-threaded resizing.
+  * Resizing no longer writes invalid pixels when a frames transparent color is
+      the only color in its colormap.
+  * Count transparent pixels correctly.
+
 -------------------------------------------------------------------
 Sun Oct 18 05:56:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 

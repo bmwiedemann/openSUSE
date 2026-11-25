@@ -21,7 +21,7 @@
 BuildRequires:  perl-Time-HiRes
 %endif
 Name:           gifsicle
-Version:        1.98
+Version:        1.99
 Release:        0
 Summary:        Creating and editing GIF images and animations
 License:        GPL-2.0-only
