@@ -1,4 +1,286 @@
 -------------------------------------------------------------------
+Sat Nov 21 23:23:24 UTC 2026 - Ricardo Branco <rbranco@suse.com>
+
+- Update to version 1.31:
+  * NEWS: tag 1.31
+  * criu: refuse external mount keys that CRIU cannot read back
+  * linux: do not defer the read-only remount of bind and cgroup mounts
+  * criu: do not bind mount read-only sources while preparing the restore
+  * linux: resolve the remount target through the pre-pivot procfs
+  * criu: handle the devices of a container with a user namespace
+  * linux: do not hide the configured devices with a user namespace
+  * tests/runc-integration-skip.txt: update a comment
+  * cgroup: do not ignore limits of a rootless container without cgroup
+  * tests: skip runc specific tests by tag
+  * libocispec: update to 65e2c08
+  * container: correctly report error after run_poststop_hooks failure
+  * tests: enable runc lazy pages integration test
+  * ci: run workflows for merge queue
+  * cgroup: warn about a rootless container without cgroup and pidns
+  * tests: add checkpoint/restore tests with lazy pages and page server
+  * container: signal init on kill --all without a cgroup
+  * checkpoint, restore: add lazy pages support
+  * libcrun: check struct_size in checkpoint and restore
+  * rpm: drop protobuf-c-devel from BuildRequires
+  * libcrun: add and use xstrndup
+  * ci: build artifacts for each architecture in parallel
+  * release.sh: allow to build a subset of architectures
+  * nix: build libcap without Go bindings and PAM module
+  * flake.lock: update
+  * release.sh: bump nix image to 2.35.4
+  * nix: do not patch shebangs of the whole source tree
+  * ci: disable setup-go cache for runc integration tests
+  * ci: do not use the nix cache when building artifacts for a tag
+  * build(deps): bump the codeql-action group across 1 directory with 2 updates
+  * tests/podman: run e2e tests in parallel, without coverage
+  * tests/containerd: bump containerd to v2.3.7
+  * tests: remove the cri-o test
+  * tests: do not install weak dependencies in Fedora images
+  * tests/containerd: do not install CNI plugins and cri-tools
+  * tests/containerd: simplify the image build
+  * tests/wasmedge-build: use Rust from Fedora
+  * tests/wasmedge-build: do not update the system
+  * tests/system-blake3: do not enable universe
+  * tests: install git-core instead of git in Fedora and CentOS images
+  * tests/wasmedge-build: fix buildah build on Fedora 45
+  * tests/cppcheck: fix builddep on Fedora 45
+  * cgroup-utils.h: remove extra empty line
+  * ci: run Test and Artifact on push to main and tags only
+  * ci: pin the runc version for the runc integration tests
+  * tests: skip the runc SIGTTIN/SIGTTOU test
+  * krun: do not leak the error when the sev/awsnitro device is missing
+  * cgroup: remove unused libcrun_migrate_all_pids_to_cgroup
+  * wasmedge: check that plugin symbols were found before use
+  * criu: check for criu_set_log_file error
+  * error: do not use errno after success
+  * container: remove unused variable custom_handler
+  * utils: remove unused write_file_at
+  * status: report errno on mkdir failure
+  * wasmtime: fix wasmtime_wat2wasm call arguments
+  * ebpf: fix retry loop in read_all_progs
+  * linux: do not remount / after setns(OPEN_TREE_NAMESPACE)
+  * linux: keep the rootfs mount flags with a read-only rootfs
+  * linux: do not remount the rootfs bind mount
+  * wasmedge: fix trailing space in plugin mount path
+  * tests/runc-integration-skip.txt: skip new seccomp kill test
+  * tests/runc-integration-skip.txt: explain some systemd failures
+  * tests/runc-integration-skip.txt: enable tests fixed in runc
+  * CONTRIBUTING.md: clarify AI-generated contributions
+  * exec: use the container oomScoreAdj as default
+  * linux: apply the exec process oomScoreAdj
+  * chroot_realpath: do not add a separator after expanding a symlink
+  * build(deps): bump zizmorcore/zizmor-action from 0.7.1 to 0.8.0
+  * crun: make --cgroup-manager errors compatible with runc
+  * crun: ignore LISTEN_FDS meant for another process
+  * container: unmount the rootfs on delete without a mount namespace
+  * linux: do the container mounts without a mount namespace
+  * container: reject some configurations without a mount namespace
+  * ci: check that all man pages are up to date
+  * ci: do not run autogen.sh on the host for container tests
+  * Do not lose the terminal output when the container exits
+  * build: do not regenerate the man pages during the build
+  * tests: add /crun to git safe.directory in all containers
+  * tests, oci-validation: do not install runtime-tools
+  * tests/clang-format: run without configure
+  * krun.1: regenerate from krun.1.md
+  * Makefile.am: move the C files list to build-aux/c-files.sh
+  * ci: move codespell and ruff out of the Test matrix
+  * ci: run shellcheck and shfmt without configure
+  * Makefile.am: move the shell scripts list to build-aux/sh-files.sh
+  * tests/runc-integration-skip.txt: skip new runc validation tests
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.4 to 0.7.1
+  * build(deps): bump the codeql-action group with 2 updates
+  * ci: require CRIU support
+  * configure: make --enable-criu fail without libcriu
+  * ci: install libcriu-dev
+  * container: delete: drop EINVAL check after kill
+  * linux: treat ENOENT/EINVAL from pidfd_open as ESRCH
+  * github: add Total Success gating job
+  * docs: drop dead OpenShift 3.11 link
+  * tests/test_mounts: import libmount lazily
+  * tests/test_mounts: skip mount-propagation-shared on a known issue
+  * tests/test_mounts: do not create the overlay layers in /tmp
+  * tests/test_mounts: do not exec into the nested userns
+  * tests/test_mounts: make the rootfs accessible in the userns tests
+  * linux: create the `mounts add` destinations as the container root
+  * tests/test_mounts: skip mounts add/remove tests without openat2
+  * tests/init: fix leaking a child in check-feature idmapped-mounts
+  * tests: add hugetlb limits test
+  * cgroup: set hugetlb reservation limits
+  * tests: make wait_for_state less crun-specific
+  * tests/test_delete: fix a race in test_delete_exited_*main_thread
+  * cgroup: do not use O_CREAT when writing cgroup files
+  * cgroup: move write_cgroup_file to cgroup-internal.h
+  * build: regenerate git-version.h when HEAD changes
+  * cgroup: walk the sub-cgroup tree without recursion
+  * cgroup: do not kill by pid from rmdir_all_fd()
+  * status: remove the state directory without recursion
+  * cgroup: destroy the precreated cgroup on early failures
+  * exec: refuse to join a frozen sub-cgroup of the container
+  * cgroup: do not trust cgroup.kill alone in cgroup_killall_path
+  * tests/test_oci_features: fix comparison of features
+  * mount_flags: ignore iversion, noiversion, silent and loud
+  * tests/test_oci_features: don't duplicate mountOptions
+  * linux: refuse a mount namespace not owned by the container userns
+  * linux: create `mounts add` file systems in the container namespaces
+  * linux: do not follow symlinks in `mounts remove`
+  * linux: keep nosymfollow and the atime flags on the remount retry
+  * status: never store a process start time of 0
+  * criu: restore the configured flags for the external mounts
+  * seccomp: do not run exec without a configured filter
+  * restore: generate the seccomp.bpf file again
+  * restore: do not depend on the proxy process once the container runs
+  * restore: configure the cgroup before CRIU resumes the container
+  * container: do not leave a restored container behind on errors
+  * criu: save the external descriptors before the restore
+  * container: fix error message typo
+  * linux: join an existing PID namespace only after pivot_root
+  * criu: fix append_paths error handling
+  * linux: define MS_NOSYMFOLLOW if missing
+  * krun: do not open the files the image ships at the krun paths
+  * utils: add read_all_fd_with_max_size()
+  * tests: check a mount target symlink is not resolved from the host
+  * tests: move TAP helpers to tests/tap.h
+  * tests: print TAP plan at the end of C unit tests
+  * terminal: stop busy looping when the pty is hung up
+  * exec, restore: do not share the session keyring of the caller
+  * exec: reopen /dev/null from the container
+  * exec: do not treat an EOF on the sync socket as a go-ahead
+  * exec: validate the container pid before joining its namespaces
+  * tests/test_devices: return -1 on failure
+  * tests/test_devices: do not use bare except
+  * linux: resolve the tmpfs mount point inside the rootfs
+  * utils: do not loop in waitpid_ignore_stopped() when nothing is reported
+  * linux: close the host root fd before pivot_root
+  * build(deps): bump the codeql-action group with 2 updates
+  * dependabot: group github/codeql-action updates
+  * linux: remove superfluous code nesting
+  * linux: make host /sys submounts read-only in sysfs_userns_fallback
+  * container: fail delete if the cgroup cannot be destroyed
+  * build(deps): bump actions/download-artifact from 8.0.1 to 8.0.2
+  * build(deps): bump actions/upload-artifact from 7.0.1 to 7.0.2
+  * container: erase the initial environment before an in process handler
+  * linux: drop the capabilities also when the handler does not exec
+  * ebpf: a deny rule must match any of the requested accesses
+  * status: do not treat a zombie thread group leader as stopped
+  * utils: do not follow a mount target symlink from the host root
+  * linux: set the init non-dumpable before joining any namespace
+  * linux: close the cgroup dirfd in the child process
+  * terminal: open the pty slave through TIOCGPTPEER
+  * utils: bound the openat2 EAGAIN retries in safe_openat
+  * linux: make the notify socket mount private
+  * seccomp: do not cache a truncated BPF filter
+  * linux: refuse uid/gid -1 before setresuid/setresgid
+  * container: do not forward signals to a reaped process
+  * linux: do not remount bind mounts without mount flag options
+  * utils: do not block on a FIFO in the rootfs
+  * krun: Remount /proc before starting passt, if the PID namespace was detached
+  * tests: only pass --config when needed
+  * tests/krun-build: drop -Wno-error=comment
+  * utils: reject invalid padding in base64_decode
+  * krun: document privileged port limitation with passt networking
+  * krun: add architecture and networking documentation
+  * linux: fail if additionalGids cannot be set
+  * THREAT_MODEL.md: new file
+  * .oss-scanner: add files needed for anthropics/oss-scanner
+  * linux: reject duplicate rlimit entries
+  * linux: verify device inodes before using them
+  * build(deps): bump uraimo/run-on-arch-action from 3.2.0 to 3.2.1
+  * libcrun: check def for NULL before reading annotations
+  * ci: add concurrency limits
+  * ci: add zizmor job
+  * dependabot: add cooldown
+  * ci: set read-only default token permissions
+  * ci: do not persist checkout credentials
+  * ci: pin actions to commit hashes
+  * ci: add actionlint job
+  * ci: fix issues found by actionlint
+  * tests/podman: simplify Dockerfile
+  * tests, podman: bump to 6.1
+  * hooks: use "created" status for startContainer hooks
+  * hooks: pass correct pid and bundle to in-container hooks
+  * cgroup: handle threaded cgroups when reading pids
+  * tests/runc-integration-skip.txt: document some skips
+  * tests/runc-integration-skip.txt: enable exec tests
+  * exec: apply the memory policy
+  * exec: inherit rlimits, I/O priority and scheduler from config
+  * linux: set the scheduler for the exec process itself
+  * python: port to the public libcrun API
+  * lua: port to the public libcrun API
+  * build: link the crun binary dynamically against libcrun
+  * crun: port the binary to the public libcrun API
+  * libcrun: add public umbrella header libcrun.h and restrict exports
+  * libcrun: load handlers in the context and expose feature tags
+  * libcrun: add checkpoint/restore support
+  * libcrun: add state-directory accessor
+  * libcrun: add container list iterator
+  * libcrun: add status load and accessors
+  * libcrun: support merging the environment in JSON exec
+  * libcrun: add listen-fds, args and preserve-fds context accessors
+  * libcrun: add JSON container-list API
+  * libcrun: add features JSON API
+  * libcrun: route error warnings through the log handler
+  * libcrun: add clean error-report and logging-init wrappers
+  * libcrun: drop def parameter from libcrun_container_delete
+  * libcrun: add JSON spec and state APIs
+  * libcrun: add JSON exec API
+  * libcrun: add container introspection accessors
+  * libcrun: add context constructor and setters
+  * libcrun: add error accessors
+  * linux: make init non-dumpable only with CAP_SYS_PTRACE
+  * cgroup: check the memory usage before any update
+  * utils: create the target of dangling symlinks on the way
+  * linux: open bind mount sources inside the rootfs at mount time
+  * linux: reuse the masking tmpfs for masked directories
+  * linux: skip duplicate masked paths
+  * linux: do not add mode=1755 to bind mounts
+  * linux: create mount targets with mode 0755
+  * linux: fix clearing atime modes with mount_setattr
+  * tests/runc-integration-skip.txt: enable namespace tests
+  * linux: join PID and time namespaces after joining the userns
+  * container: treat an empty namespace path as unset
+  * linux: open timens_offsets before switching to the userns ids
+  * Set HOME from passwd if it is empty
+  * tests/test_namespaces: make two tests check their result
+  * tests: drop redundant user namespace mappings
+  * linux: reject absolute sysctl paths
+  * tests/runc-integration-skip.txt: enable some update tests
+  * update: remove the swap limit along with the memory one
+  * update: add --cpu-burst and --cpu-idle
+  * update: parse memory sizes, validate numeric values
+  * update: allow options after the container ID
+  * tests: poststop hooks must run when createRuntime fails
+  * container: run poststop hooks when the creation fails
+  * cgroup-systemd: let cpu.weight from the unified map override shares
+  * run, create: resolve relative --pid-file against the current directory
+  * cgroup: reset cpu.idle when setting the CPU weight
+  * tests/runc-integration-skip.txt: update for systemd fixes
+  * cgroup-systemd: convert the swap limit for MemorySwapMax
+  * cgroup-systemd: support resources.cpu.idle
+  * cgroup-systemd: honor cpu.max and cpuset from the unified map
+  * cgroup: handle CPU quota and period set separately
+  * cgroup-systemd: always pass *Sec properties as uint64
+  * Handle non-pollable stdin and stdout with a terminal
+  * terminal: do not fail to set raw mode if stdin is not a tty
+  * linux: keep locked flags of bind mount sources with userns
+  * Close inherited fds early in run, create, and exec
+  * container: add libcrun_load_process_from_file
+  * container: do not re-read the config file
+  * utils: fix NULL dereference in mark_or_close_fds_ge_than
+  * tests/tests_libcrun_ring_buffer: fix tests for large pagesize
+  * Do not translate NL to CR-NL on the container terminal
+  * terminal: fix bogus masks in libcrun_set_raw
+  * release: add suggestion on how to upload signatures
+  * ci: add ruff job
+  * tests/test_resources: remove duplicate json import
+  * tests: fix undefined names in failure messages
+  * tests/test_terminal: fix console-socket test
+  * tests/test_namespaces: remove duplicate tests
+  * tests: do not skip user namespace tests on errors
+  * ci: make the home directory accessible for userns tests as root
+  * ci: run runc integration tests against crun
+
+-------------------------------------------------------------------
 Thu Oct 15 04:48:54 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Update to version 1.30.1:
