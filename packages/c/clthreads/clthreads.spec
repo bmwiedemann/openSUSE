@@ -37,6 +37,7 @@ Group:          System/Libraries
 URL:            https://kokkinizita.linuxaudio.org/linuxaudio/
 Source:         https://kokkinizita.linuxaudio.org/linuxaudio/downloads/%{name}-%{version}.tar.xz
 Patch0:         fix-build.patch
+Patch1:         reproducible.patch
 BuildRequires:  gcc-c++
 
 %description
