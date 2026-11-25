@@ -27,7 +27,7 @@
 %bcond_with     malcontent
 
 Name:           gnome-control-center
-Version:        51.1
+Version:        51.2.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -37,8 +37,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        libgxdp-0.gitmodule.tar.xz
 Source99:       %{name}-rpmlintrc
 
-# PATCH-FIX-UPSTREAM libgnome-volume-control-Avoid-NULL-deref.patch xwang@suse.com bsc#1278300 glgo#GNOME/libgnome-volume-control!38 -- Avoid NULL deref when card has no active profile
-Patch1:         libgnome-volume-control-Avoid-NULL-deref.patch
 
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-system-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.

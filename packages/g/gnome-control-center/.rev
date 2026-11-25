@@ -2582,4 +2582,29 @@ New stable rel</comment>
     <comment>Push GNOME 51.1</comment>
     <requestid>1385418</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>53492814b5eb2e5e4505abe6a320b825</srcmd5>
+    <version>51.2.1</version>
+    <time>1795619505</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.2.1:
+  * power: Hide devices upower can no longer reach
+  * Revert &quot;power: Don't plot a charge level for unreachable devices&quot;
+  * Updated translations.
+- Drop libgnome-volume-control-Avoid-NULL-deref.patch: fixed upstream.
+
+- Update to version 51.2:
+  * Apps:
+    + Populate list of panels correctly when parental control fails
+    + Load parental controls settings asynchronously
+  * Global Shortcuts: Don't reject non-conformant app-ids (same for binding and
+    configuring shortcuts)
+  * Mobile Networks: Allow panel window size to shrink below 500px height
+  * Notifications: Don't hide &quot;GNOME Software&quot; and other system components from
+    the list
+  * Power: Don't show a charge level for unreacheable devices
+  * Thunderbolt: Restore backend service detection functionality
+  * Updated translations.</comment>
+    <requestid>1400244</requestid>
+  </revision>
 </revisionlist>
