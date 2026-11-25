@@ -288,4 +288,14 @@
   * settings: save the postpone unit #918</comment>
     <requestid>1398382</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2fa12fcf6ad0a7964000333ea72aa29b</srcmd5>
+    <version>3.6.2</version>
+    <time>1795619629</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.6.2:
+  * Update README with latest version note for Debian
+  * Update translations</comment>
+    <requestid>1400498</requestid>
+  </revision>
 </revisionlist>
