@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Nov 25 01:27:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.2:
+  * Add Python 3.14 support (GIL-enabled CPython builds)
+  * Support Pillow 12.x and require ffpyplayer>=4.5.4 for media/full extras
+    on Python 3.14
+  * Remove obsolete Python 2 `long` usage from Cython sources
+  * Remove obsolete AST workaround from KV f-string dependency parsing for
+    Python 3.14
+  * Correctly resolve nested attribute names in KV f-string bindings
+  * Move `CodeInput` cursor-offset return outside `finally` to avoid a
+    Python 3.14 SyntaxWarning
+  * Replace external httpbin requests with local HTTP/HTTPS servers in
+    `UrlRequest` tests
+  * Fix async test collection and fixture declarations
+  * Unload sounds after each audio test to release native resources
+- Dropped patches, merged upstream:
+  * pytest_compatibility.patch
+  * py314.patch
+- Modify patch support-Cython-3.1.patch, based on a different commit.
+
+-------------------------------------------------------------------
 Wed Sep 23 02:20:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-Cython-3.1.patch:

@@ -26,19 +26,15 @@
 %endif
 %define plainpython python
 Name:           python-Kivy
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Hardware-accelerated multitouch application library
 License:        Apache-2.0 AND MIT AND LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-3.0-only AND BSD-3-Clause
 URL:            https://kivy.org/
 Source:         https://github.com/kivy/kivy/archive/%{version}.tar.gz#/kivy-%{version}.tar.gz
 Source99:       python-Kivy.rpmlintrc
-# PATCH-FIX-UPSTREAM pytest_compatibility.patch based on PR 9245
-Patch0:         pytest_compatibility.patch
-# PATCH-FIX-UPSTREAM https://github.com/kivy/kivy/pull/9157 lang/parser.py: Remove Python 3.6 abstract syntax tree workaround
-Patch1:         py314.patch
-# PATCH-FIX-UPSTREAM https://github.com/kivy/kivy/pull/9056
-Patch2:         support-Cython-3.1.patch
+# PATCH-FIX-UPSTREAM One tiny part of gh#kivy/kivy#8610
+Patch0:         support-Cython-3.1.patch
 BuildRequires:  %{mypython}-Sphinx
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}

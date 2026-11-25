@@ -594,4 +594,29 @@
 - Remove upper pin on Cython.</comment>
     <requestid>1379781</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>75176840897b7980741d793f3b4aadab</srcmd5>
+    <version>2.3.2</version>
+    <time>1795619585</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.2:
+  * Add Python 3.14 support (GIL-enabled CPython builds)
+  * Support Pillow 12.x and require ffpyplayer&gt;=4.5.4 for media/full extras
+    on Python 3.14
+  * Remove obsolete Python 2 `long` usage from Cython sources
+  * Remove obsolete AST workaround from KV f-string dependency parsing for
+    Python 3.14
+  * Correctly resolve nested attribute names in KV f-string bindings
+  * Move `CodeInput` cursor-offset return outside `finally` to avoid a
+    Python 3.14 SyntaxWarning
+  * Replace external httpbin requests with local HTTP/HTTPS servers in
+    `UrlRequest` tests
+  * Fix async test collection and fixture declarations
+  * Unload sounds after each audio test to release native resources
+- Dropped patches, merged upstream:
+  * pytest_compatibility.patch
+  * py314.patch
+- Modify patch support-Cython-3.1.patch, based on a different commit.</comment>
+    <requestid>1400431</requestid>
+  </revision>
 </revisionlist>
