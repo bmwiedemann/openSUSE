@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:45:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795538728.d4232cc:
+  * fix: Avoid crashes due to blocking on one thread too less
+  * feat: Extend error handling and tests of signal blocking
+
+-------------------------------------------------------------------
 Tue Nov 24 11:30:02 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795519790.ff2dbdc:
