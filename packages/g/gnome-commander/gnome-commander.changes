@@ -1,4 +1,153 @@
 -------------------------------------------------------------------
+Wed Nov 11 21:32:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.2.3+5:
+  * This release includes the following features and changes:
+  * New plugin interface:
+    + The interface is documented.
+    + New built-in plugins have similar but not identical functionality to the
+      old ones.
+    + Built-in plugins are enabled automatically, user-installed plugins in
+      ~/.config/gnome-commander/plugins have to be enabled.
+    + Plugins can be written in any programming language.
+    + Python-based plugins can import plugin_helper module that makes
+      implementation simpler.
+    + Context menu scripts are a plugin now. Also, new special comment
+      #single-file:true indicates that the script should always be run for each
+      file separately.
+    + Main menu actions of plugins can be assigned a keyboard shortcut via
+      Keyboard Shortcuts dialog.
+    + Placing the mouse pointer above the file name in Plugins dialog will show
+      the full path to the plugin.
+  * Various improvements to the internal viewer:
+    + Made all files show up as different tabs within a single viewer window
+    + Made case-insensitive search work with non-ASCII letters
+    + Remember window’s maximized state (AndriiC)
+    + Scroll automatically during selection if the mouse cursor moves out of
+      the text
+    + Search defaults to the selected text
+    + Handle selection via double-click (word) or tripple-click (line)
+    + Search only continues from the selection if that selection is visible
+    + Improved guessing of preferable display mode when file is opened
+    + Implemented extending selection via Shift+Click
+    + Implemented extending selection via keyboard (e.g. Shift+Left or
+      Shift+Page Down)
+    + Pressing Escape will close the search bar even if it isn’t focused.
+    + Added support for Ctrl+Left and Ctrl+Right keyboard shortcuts for faster
+      horizontal navigation
+    + Line length in unwrapped Text mode has been restricted to 4096 characters
+      to improve performance
+    + Made newline characters visible when they are selected
+    + Roughly factor 10 search performance improvement
+    + When opening viewer from the Search dialog, the search match is
+      immediately selected
+    + Fixed handling of newlines in Text mode with CP437 encoding
+  * Improvements to handling of removable devices:
+    + Eject devices when possible instead of merely unmounting them
+    + Fixed recognizing device removal
+    + Added support for MTP devices like smartphones
+    + Made sure selected connection reflects navigation in and out of a device
+      mount directory
+  * Other features and changes:
+    + Portable builds
+    + Added new “Copy File Paths” and “Copy File URIs” actions, their keyboard
+      shortcuts can now be configured separately from “Copy File Names”.
+    + Improved file column management, allowing to reset column widths and
+      apply current settings to all tabs
+    + File icon size is set automatically according to font size, the unused
+      icon size and scale quality settings have been removed.
+    + Keep selected file on directory reload
+    + Made navigating back to a directory and switching to a different
+      directory then produce the expected navigation history
+    + Quick Search is closed when current directory changes
+    + When “Rename” action is chosen on file name conflict, renaming keeps file
+      extension now
+    + Keyboard shortcuts can now be assigned to bookmarks via Keyboard
+      Shortcuts dialog.
+    + Made displaying directory changes (files added, removed, renamed) more
+      consistent and a whole lot faster
+    + Open new file list tabs next to the current tab
+    + Renaming files will now offer the usual actions if this name already
+      exists. Renaming files into a different directory is possible as well.
+    + Display a message when a command running in embedded terminal is done
+    + Made screen readers say whether a file is selected
+    + Added configurable Ctrl+Shift+F10 and Ctrl+Menu keyboard shortcuts to
+      open file list header pop-up. Made Shift+F10 and Menu keyboard shortcuts
+      configurable as well.
+    + Copy File in Current Directory action will now select the new file
+    + Improved interoperability of Drag & Drop with other applications
+    + Starting Quick Search via non-ASCII letters is possible now.
+    + Pressing Escape will close Quick Search even if it isn’t focused.
+    + Special file permissions like suid are now displayed in all the relevant
+      places, they are left unchanged when file permissions are modified
+    + Made Search dialog’s content search work without reading entire files
+      into memory
+    + When main menu isn’t visible its contents are accessible via a button in
+      the title bar
+    + Started migrating the code to a new component framework to improve
+      maintainability and reliability
+    + Added hex search to Search dialog’s content search
+    + Listing a large directory no longer hangs Gnome Commander and can now be
+      aborted
+    + Temporary network connections now show up in all device lists as long as
+      they are open.
+    + Added keyboard mnemonics to some main menu items that didn’t have any.
+  * This release fixes the following bugs:
+    + Allowed cancelling file transfers in the middle of a file
+    + Spell “KiB” correctly
+    + Only reload the destination of copy/move operation if it is a remote
+      directory
+    + Made file context menu in Advanced Rename dialog apply to the file being
+      right-clicked
+    + Made Ctrl+Tab/Ctrl+Shift+Tab switch tabs in File Properties dialog
+    + Fixed inconsistent updates when multiple directories are removed
+    + Made sure clicking device buttons doesn’t leave input focus there
+    + Made sure middle-clicking .. opens a new tab (regression in Gnome
+      Commander 2.0)
+    + Made closing duplicate tabs not leave unnecessary duplicates of locked
+      tabs around
+    + Cd command on a locked tab was affecting current tab instead of opening a
+      new one
+    + Running cd dir on command line will no longer change input focus
+    + Navigation to a bookmark with a quoted name like 'test' was failing
+    + Removed “case-sensitive sorting” option which wasn’t really working
+    + Made sure the Bookmarks submenu of the main menu updates on connection or
+      bookmark changes
+    + Made file icon update when the file changes
+    + Do not attempt to calculate size of .. directory
+    + Pressing Enter on a file will no longer run command line, only when
+      command line is focused
+    + Fixed display of selected item in the search results list
+    + Fixed embedded terminal actions (Copy/Paste/Select All)
+    + Command line history wouldn’t open if some commands are very long
+    + Do not allow renaming ..
+    + Pressing Delete in a text field in the Search dialog no longer suggests
+      deleting a file
+    + Fixed crash when copying files to a read-only file system and choosing
+      “Replace All”
+    + Fixed input focus issues when closing a submenu of the file context menu
+    + Changes to format options apply immediately now
+    + Fixed internal viewer displaying and copying newlines as dots in ASCII
+      mode
+    + Do not display file permissions for ..
+    + Display file’s context menu when right-clicking its icon
+    + Moving up in internal viewer while in wrapped text mode wouldn’t reach
+      start of file
+    + Corrected mouse selection in internal viewer’s Fixed Width mode when tab
+      characters are present
+    + Display selected tab characters with correct width in internal viewer’s
+      Text mode
+    + Made search result selection in internal viewer work with invalid UTF-8
+      correctly
+    + Resolved keyboard mnemonics conflict in the File menu between “Search”
+      and “Create Symbolic Link”
+    + New or updated docs: hu (Balázs Úr), kk (Baurzhan Muftakhidinov), ru
+      (Sergej A.), sv
+  * Updated translations.
+- Disable update of vendored dependencies, it currently breaks the build if we
+  do.
+
+-------------------------------------------------------------------
 Sat Jun 13 10:13:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.0.3:
@@ -55,7 +204,7 @@ Sun May 17 13:44:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
   + Added embedded terminal to display output of commands run by
     Gnome Commander. The new “Hide Command Line Output When
     Inactive” in “View” menu hides the terminal automatically when
-    inactive.  
+    inactive.
   + Redesigned Quick Search functionality:
     - Filtering the file list is now possible as well. The default
       mode can be configured in the Options dialog.
@@ -1171,7 +1320,7 @@ Thu Mar  6 02:39:24 CET 2008 - jpr@suse.de
 Bug fixes:
  * bgo #345314 (cursor not staying on file while renaming)
  * bgo #353889 (disappearing files after failed move (F6))
- * bgos #346286, #424447, #447882, #467058 (crash when using regex 
+ * bgos #346286, #424447, #447882, #467058 (crash when using regex
    in renaming tool)
  * bgos #365227 and #446361 (build issues on Solaris)
  * bgo #424159 (column sort problem)
@@ -1193,13 +1342,13 @@ Bug fixes:
  * Build fixes
 
 New features:
- * Support for APE, FLAC and Vorbis metatags in advanced file 
+ * Support for APE, FLAC and Vorbis metatags in advanced file
    rename templates
  * Support for Exif makernotes metatags in advanced file rename
    templates
  * Support for file metatags in advanced file rename templates
  * Metadata tags in file properties dialog
- * Use the GNOME authentication manager for user's security 
+ * Use the GNOME authentication manager for user's security
    credentials
  * Open terminal in the current directory
  * Default GNOME theme icons for home, SMB and FTP locations
@@ -1208,9 +1357,9 @@ New features:
  * Updated help docs
  * Updated translations
  * New key bindings:
-      CTRL+LEFT/RIGHT Copying the current working directory from 
+      CTRL+LEFT/RIGHT Copying the current working directory from
       		      the active filelist to the inactive one
-      CTRL+N          Open new connection to remote server (replaces 
+      CTRL+N          Open new connection to remote server (replaces
       		      the old CTRL+G)
 - Remove gnome-command-desktop.patch, it was upstreamed
 - Remove no language sed, its no longer needed
@@ -1230,7 +1379,7 @@ Wed Aug  8 17:21:20 CEST 2007 - maw@suse.de
 Mon Aug  6 11:35:42 CEST 2007 - thoenig@suse.de
 
 - update to 1.2.4 (skipped 1.2.2 and 1.2.3)
-- drop obsolete patch gnome-commander-compiler-warning.patch 
+- drop obsolete patch gnome-commander-compiler-warning.patch
 - Changes:
     * Support for python plugins
     * New python plugins:
@@ -1264,7 +1413,7 @@ Mon Aug  6 11:35:42 CEST 2007 - thoenig@suse.de
 -------------------------------------------------------------------
 Mon Jan  8 00:20:25 CET 2007 - ro@suse.de
 
-- GNOME moved to /usr 
+- GNOME moved to /usr
 
 -------------------------------------------------------------------
 Tue Dec 26 12:53:24 CST 2006 - maw@suse.de
@@ -1299,7 +1448,7 @@ Tue Oct 17 22:24:30 CEST 2006 - jhargadon@suse.de
 - Updated help docs
 - New or updated translations
 - New key bindings:
-      CTRL+SHIFT+H   Toggle hidden files on/off 
+      CTRL+SHIFT+H   Toggle hidden files on/off
 
 -------------------------------------------------------------------
 Fri Oct 13 15:27:51 CEST 2006 - danw@suse.de
@@ -1309,7 +1458,7 @@ Fri Oct 13 15:27:51 CEST 2006 - danw@suse.de
 -------------------------------------------------------------------
 Fri Oct 13 00:24:33 CEST 2006 - ro@suse.de
 
-- added gnome-doc-utils-devel to buildreq 
+- added gnome-doc-utils-devel to buildreq
 
 -------------------------------------------------------------------
 Tue Sep  5 14:37:12 CEST 2006 - anosek@suse.cz
@@ -1324,9 +1473,9 @@ Fri Sep  1 22:42:38 CEST 2006 - jhargadon@suse.de
 - Fixed problem with the lack of gnome menu entry
 - Fixed a crash when viewing SMB connections
 - Fixed problem #309877 (strange artifacts with horizontal scrolling)
-- Fixed problem #332258 (left/right start directory parameter) 
+- Fixed problem #332258 (left/right start directory parameter)
 - Fixed problem #336649 (permission numbers presentation)
-- Fixed problem with crashes when using broken or non-matching regex 
+- Fixed problem with crashes when using broken or non-matching regex
   pattern in advrename
 - Monitoring of mounted volumes
 - Rewritten internal viewer

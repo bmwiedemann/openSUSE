@@ -17,7 +17,7 @@
 
 
 Name:           gnome-commander
-Version:        2.0.3
+Version:        2.2.3+5
 Release:        0
 Summary:        A file manager for the GNOME desktop environment
 License:        GPL-2.0-or-later
@@ -90,17 +90,15 @@ appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/*.metainfo.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.%{name}.gschema.xml
-%{_datadir}/pixmaps/%{name}
-%{_libdir}/%{name}
-%{_libdir}/libgcmd.so
-%{_libdir}/girepository-1.0/GnomeCmd-1.0.typelib
 %{_mandir}/man1/%{name}.1%{ext_man}
-%{_datadir}/icons/hicolor/scalable/apps/gnome-commander-internal-viewer.svg
-%{_datadir}/icons/hicolor/scalable/apps/gnome-commander-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/gnome-commander.svg
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/icons
-%{_datadir}/gir-1.0/GnomeCmd-1.0.gir
+%dir %{_datadir}/%{name}/plugins
+%{_datadir}/%{name}/plugins/archives.py
+%{_datadir}/%{name}/plugins/document-metadata.py
+%{_datadir}/%{name}/plugins/image-metadata.py
+%{_datadir}/%{name}/plugins/multimedia-metadata.py
+%{_datadir}/%{name}/plugins/plugin_helper.py
 
 %files lang -f %{name}.lang
 

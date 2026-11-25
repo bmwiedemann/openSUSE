@@ -285,4 +285,156 @@
       searching for a single character backwards</comment>
     <requestid>1360020</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>a4ec832f0960eb234ad9c64933be238b</srcmd5>
+    <version>2.2.3+5</version>
+    <time>1795619672</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.2.3+5:
+  * This release includes the following features and changes:
+  * New plugin interface:
+    + The interface is documented.
+    + New built-in plugins have similar but not identical functionality to the
+      old ones.
+    + Built-in plugins are enabled automatically, user-installed plugins in
+      ~/.config/gnome-commander/plugins have to be enabled.
+    + Plugins can be written in any programming language.
+    + Python-based plugins can import plugin_helper module that makes
+      implementation simpler.
+    + Context menu scripts are a plugin now. Also, new special comment
+      #single-file:true indicates that the script should always be run for each
+      file separately.
+    + Main menu actions of plugins can be assigned a keyboard shortcut via
+      Keyboard Shortcuts dialog.
+    + Placing the mouse pointer above the file name in Plugins dialog will show
+      the full path to the plugin.
+  * Various improvements to the internal viewer:
+    + Made all files show up as different tabs within a single viewer window
+    + Made case-insensitive search work with non-ASCII letters
+    + Remember window’s maximized state (AndriiC)
+    + Scroll automatically during selection if the mouse cursor moves out of
+      the text
+    + Search defaults to the selected text
+    + Handle selection via double-click (word) or tripple-click (line)
+    + Search only continues from the selection if that selection is visible
+    + Improved guessing of preferable display mode when file is opened
+    + Implemented extending selection via Shift+Click
+    + Implemented extending selection via keyboard (e.g. Shift+Left or
+      Shift+Page Down)
+    + Pressing Escape will close the search bar even if it isn’t focused.
+    + Added support for Ctrl+Left and Ctrl+Right keyboard shortcuts for faster
+      horizontal navigation
+    + Line length in unwrapped Text mode has been restricted to 4096 characters
+      to improve performance
+    + Made newline characters visible when they are selected
+    + Roughly factor 10 search performance improvement
+    + When opening viewer from the Search dialog, the search match is
+      immediately selected
+    + Fixed handling of newlines in Text mode with CP437 encoding
+  * Improvements to handling of removable devices:
+    + Eject devices when possible instead of merely unmounting them
+    + Fixed recognizing device removal
+    + Added support for MTP devices like smartphones
+    + Made sure selected connection reflects navigation in and out of a device
+      mount directory
+  * Other features and changes:
+    + Portable builds
+    + Added new “Copy File Paths” and “Copy File URIs” actions, their keyboard
+      shortcuts can now be configured separately from “Copy File Names”.
+    + Improved file column management, allowing to reset column widths and
+      apply current settings to all tabs
+    + File icon size is set automatically according to font size, the unused
+      icon size and scale quality settings have been removed.
+    + Keep selected file on directory reload
+    + Made navigating back to a directory and switching to a different
+      directory then produce the expected navigation history
+    + Quick Search is closed when current directory changes
+    + When “Rename” action is chosen on file name conflict, renaming keeps file
+      extension now
+    + Keyboard shortcuts can now be assigned to bookmarks via Keyboard
+      Shortcuts dialog.
+    + Made displaying directory changes (files added, removed, renamed) more
+      consistent and a whole lot faster
+    + Open new file list tabs next to the current tab
+    + Renaming files will now offer the usual actions if this name already
+      exists. Renaming files into a different directory is possible as well.
+    + Display a message when a command running in embedded terminal is done
+    + Made screen readers say whether a file is selected
+    + Added configurable Ctrl+Shift+F10 and Ctrl+Menu keyboard shortcuts to
+      open file list header pop-up. Made Shift+F10 and Menu keyboard shortcuts
+      configurable as well.
+    + Copy File in Current Directory action will now select the new file
+    + Improved interoperability of Drag &amp; Drop with other applications
+    + Starting Quick Search via non-ASCII letters is possible now.
+    + Pressing Escape will close Quick Search even if it isn’t focused.
+    + Special file permissions like suid are now displayed in all the relevant
+      places, they are left unchanged when file permissions are modified
+    + Made Search dialog’s content search work without reading entire files
+      into memory
+    + When main menu isn’t visible its contents are accessible via a button in
+      the title bar
+    + Started migrating the code to a new component framework to improve
+      maintainability and reliability
+    + Added hex search to Search dialog’s content search
+    + Listing a large directory no longer hangs Gnome Commander and can now be
+      aborted
+    + Temporary network connections now show up in all device lists as long as
+      they are open.
+    + Added keyboard mnemonics to some main menu items that didn’t have any.
+  * This release fixes the following bugs:
+    + Allowed cancelling file transfers in the middle of a file
+    + Spell “KiB” correctly
+    + Only reload the destination of copy/move operation if it is a remote
+      directory
+    + Made file context menu in Advanced Rename dialog apply to the file being
+      right-clicked
+    + Made Ctrl+Tab/Ctrl+Shift+Tab switch tabs in File Properties dialog
+    + Fixed inconsistent updates when multiple directories are removed
+    + Made sure clicking device buttons doesn’t leave input focus there
+    + Made sure middle-clicking .. opens a new tab (regression in Gnome
+      Commander 2.0)
+    + Made closing duplicate tabs not leave unnecessary duplicates of locked
+      tabs around
+    + Cd command on a locked tab was affecting current tab instead of opening a
+      new one
+    + Running cd dir on command line will no longer change input focus
+    + Navigation to a bookmark with a quoted name like 'test' was failing
+    + Removed “case-sensitive sorting” option which wasn’t really working
+    + Made sure the Bookmarks submenu of the main menu updates on connection or
+      bookmark changes
+    + Made file icon update when the file changes
+    + Do not attempt to calculate size of .. directory
+    + Pressing Enter on a file will no longer run command line, only when
+      command line is focused
+    + Fixed display of selected item in the search results list
+    + Fixed embedded terminal actions (Copy/Paste/Select All)
+    + Command line history wouldn’t open if some commands are very long
+    + Do not allow renaming ..
+    + Pressing Delete in a text field in the Search dialog no longer suggests
+      deleting a file
+    + Fixed crash when copying files to a read-only file system and choosing
+      “Replace All”
+    + Fixed input focus issues when closing a submenu of the file context menu
+    + Changes to format options apply immediately now
+    + Fixed internal viewer displaying and copying newlines as dots in ASCII
+      mode
+    + Do not display file permissions for ..
+    + Display file’s context menu when right-clicking its icon
+    + Moving up in internal viewer while in wrapped text mode wouldn’t reach
+      start of file
+    + Corrected mouse selection in internal viewer’s Fixed Width mode when tab
+      characters are present
+    + Display selected tab characters with correct width in internal viewer’s
+      Text mode
+    + Made search result selection in internal viewer work with invalid UTF-8
+      correctly
+    + Resolved keyboard mnemonics conflict in the File menu between “Search”
+      and “Create Symbolic Link”
+    + New or updated docs: hu (Balázs Úr), kk (Baurzhan Muftakhidinov), ru
+      (Sergej A.), sv
+  * Updated translations.
+- Disable update of vendored dependencies, it currently breaks the build if we
+  do.</comment>
+    <requestid>1400551</requestid>
+  </revision>
 </revisionlist>
