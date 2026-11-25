@@ -18,7 +18,7 @@
 
 %define extra_version %{nil}
 Name:           systemd-default-settings
-Version:        0.11
+Version:        1.0
 Release:        0
 Summary:        Generic SUSE Customization of systemd defaults
 License:        GPL-2.0-or-later
@@ -88,18 +88,10 @@ them better suited for SLE-Micro distributions.
 %install
 %make_install
 
-# Convert early drop-ins into regular ones on Factory (1699) and ALP (1600). The
-# removal of early drop-ins happens on these 2 distros only. SLE15/Leap15 (1500)
-# still relies one them.
-%if 0%{?suse_version} >= 1600
-find %{buildroot} -name __\*.conf -exec rename '.conf.d/__' '.conf.d/' {} \;
-%endif
-
-find %{buildroot} -name \*.d -type d -printf "%%%%dir /%%P\n" >SUSE.list
-find %{buildroot} -name \*-defaults-SUSE.conf -printf "/%%P\n" >>SUSE.list
-find %{buildroot} -name \*-defaults-SLE.conf -printf "/%%P\n" >SLE.list
-find %{buildroot} -name \*-defaults-openSUSE.conf -printf "/%%P\n" >openSUSE.list
-find %{buildroot} -name \*-defaults-SLE-Micro.conf -printf "/%%P\n" >SLE-Micro.list
+make -s list-base >SUSE.list
+for b in SLE openSUSE SLE-Micro; do
+	make -s list-branding BRANDING=$b >$b.list
+done
 
 %post
 # Reloading PID1 is probably not enough as some changes will require
@@ -114,8 +106,8 @@ find %{buildroot} -name \*-defaults-SLE-Micro.conf -printf "/%%P\n" >SLE-Micro.l
 
 %files branding-openSUSE -f openSUSE.list
 
-%files branding-upstream
+%files branding-SLE-Micro -f SLE-Micro.list
 
-%files branding-SLE-Micro -f SLE.list -f SLE-Micro.list
+%files branding-upstream
 
 %changelog

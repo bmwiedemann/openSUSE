@@ -123,4 +123,14 @@
   843143f SLE: drop the udevd drop-in, it has never been effective</comment>
     <requestid>1397956</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cec771064057e76c23ed37684f27b785</srcmd5>
+    <version>1.0</version>
+    <time>1795619476</time>
+    <user>anag_factory</user>
+    <comment>- Import 1.0
+  cf50bb4 Convert early drop-ins into regular ones
+  18788e5 Makefile: describe brandings as layers and add list targets</comment>
+    <requestid>1400018</requestid>
+  </revision>
 </revisionlist>

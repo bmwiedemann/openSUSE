@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:55:20 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import 1.0
+
+  cf50bb4 Convert early drop-ins into regular ones
+  18788e5 Makefile: describe brandings as layers and add list targets
+
+-------------------------------------------------------------------
 Tue Nov 10 14:17:45 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
 
 - Use boolean Supplements and plain Conflicts for the branding
