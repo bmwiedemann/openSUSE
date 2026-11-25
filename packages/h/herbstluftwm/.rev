@@ -360,4 +360,12 @@ herbstluftwm.x86_64: E: summary-not-capitalized (Badness: 63) C a manual tiling 
     'bottomright'</comment>
     <requestid>1344921</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fb9142943c5a54a05bf9188edc7a0b05</srcmd5>
+    <version>0.9.6</version>
+    <time>1795619689</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400575</requestid>
+  </revision>
 </revisionlist>

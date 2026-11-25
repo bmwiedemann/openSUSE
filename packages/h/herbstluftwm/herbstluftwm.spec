@@ -138,6 +138,8 @@ rm -f %{buildroot}%{_datadir}/doc/%{name}/{INSTALL,NEWS,LICENSE}
 %{_datadir}/doc/%{name}/examples/
 
 %files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_herbstclient
 
 %files bash-completion
