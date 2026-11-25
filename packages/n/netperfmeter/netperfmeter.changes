@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 19:49:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.16
+  * Further build system improvements.
+  * Fix FD leak.
+
+-------------------------------------------------------------------
 Sat Nov 21 13:54:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.16
