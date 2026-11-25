@@ -17,10 +17,10 @@
 #
 
 
-%global unversion 2_10_0
+%global unversion 2_11_0
 %define sover 1
 Name:           expat
-Version:        2.10.0
+Version:        2.11.0
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -33,13 +33,6 @@ Source3:        %{name}faq.html
 # https://www.gentoo.org/inside-gentoo/developers/index.html#sping
 # https://github.com/libexpat/libexpat/issues/537#issuecomment-1003796884
 Source4:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3176ef7db2367f1fca4f306b1f9b0e909af37285#/expat.keyring
-# CVE-2026-124317 [bsc#1290472], out-of-bounds read in the unknown encoding decoder
-Patch0:         expat-CVE-2026-124317-01.patch
-Patch1:         expat-CVE-2026-124317-02.patch
-# CVE-2026-128241 [bsc#1290473], symlink following in xmlwf -d mode, files created with mode 0666
-Patch2:         expat-CVE-2026-128241-01.patch
-Patch3:         expat-CVE-2026-128241-02.patch
-Patch4:         expat-CVE-2026-124317-test-reproducer.patch
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 

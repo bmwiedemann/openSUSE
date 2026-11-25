@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Nov 24 08:14:16 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 2.11.0:
+  * Security fixes:
+    * CVE-2026-124317, bsc#1290472: out-of-bounds read in the unknown
+      encoding decoder functions unknown_toUtf8 and unknown_toUtf16
+    * CVE-2026-128241, bsc#1290473: xmlwf follows a symbolic link in
+      -d output mode, and it creates output files with mode 0666
+    * CVE-2026-134703, bsc#1291452: the UTF-16 endianness converter
+      checks the wrong unit when a window ends with a high surrogate, so
+      malformed UTF-16 input could reach the character data and default
+      handlers
+    * Restore -fno-strict-aliasing for both GCC and Clang >= 20
+      (bsc#1291473)
+  * drop the patches, fixed upstream:
+    * expat-CVE-2026-124317-01.patch
+    * expat-CVE-2026-124317-02.patch
+    * expat-CVE-2026-124317-test-reproducer.patch
+    * expat-CVE-2026-128241-01.patch
+    * expat-CVE-2026-128241-02.patch
+  * Bug fixes:
+    * Initialize m_idAttIndex in parserInit
+    * Make eventPtr independent from s in the initial error parse
+    * Advance m_eventPtr to m_bufferPtr when possible
+    * Ensure healthy m_eventPtr and m_positionPtr pairing after the
+      final parse
+    * Ensure non-NULL m_eventPtr for non-error calls to XML_Parse with
+      XML_CONTEXT_BYTES == 0
+    * Be robust towards handler reset
+    * Fix three name character false positives: U+00AA, U+00B5, U+00BA
+    * xmlwf: Reject zero read buffer size, and reject empty, negative
+      and whitespace-starting values for -b and -g
+  * New features:
+    * New size_t based parsing functions: XML_GetBuffer64, XML_Parse64,
+      XML_ParseBuffer64
+    * XML 1.0r5 name character set
+    * Internal size limits beyond INT_MAX
+    * No internal buffer on the first parse call per parser instance
+  * Library version bumped from 14:1:13 to 15:0:14
+
+-------------------------------------------------------------------
 Tue Nov 17 11:47:19 UTC 2026 - David Anes <david.anes@suse.com>
 
 - security patches for 2.10.0:
