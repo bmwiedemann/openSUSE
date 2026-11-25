@@ -19,29 +19,35 @@
 %bcond_without check
 %define  sover  3
 Name:           tomlplusplus
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        TOML config file parser and serializer for C++17
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/marzer/tomlplusplus
 Source0:        https://github.com/marzer/tomlplusplus/archive/refs/tags/v%{version}.tar.gz
+
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.61.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 %if %{with check}
-BuildRequires:  Catch2-2-devel
-#pkgconfig(catch2)
+BuildRequires:  pkgconfig(catch2) >= 3.0.0
 %endif
 
 %description
 toml++ is a TOML config parser and serializer for C++.
 
+%package examples
+Summary:        Example programs for %{name}
+
+%description examples
+This package contains example programs built with %{name}. They
+demonstrate parsing TOML documents, reporting parse errors,
+generating and merging TOML data, and converting TOML to JSON.
+
 %package -n lib%{name}%{sover}
 Summary:        TOML config file parser and serializer for C++17
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 toml++ is a TOML config parser and serializer for C++.
@@ -55,7 +61,6 @@ toml++ is a TOML config parser and serializer for C++.
 
 %package devel
 Summary:        Development libraries and header files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{sover} = %{version}-%{release}
 
 %description devel
@@ -63,14 +68,24 @@ This package contains libraries and header files for developing
 applications that use %{name}.
 
 %prep
-%autosetup -p1
+%autosetup -C -p1
+
+%conf
+%meson \
+  -Dbuild_examples=true \
+  -Dbuild_lib=true \
+%if %{with check}
+  -Dbuild_tests=true \
+%endif
 
 %build
-%meson
 %meson_build
 
 %install
 %meson_install
+for example in error_printer simple_parser toml_generator toml_merger toml_to_json_transcoder; do
+  mv %{buildroot}%{_bindir}/$example %{buildroot}%{_bindir}/toml++_$example
+done
 
 %if %{with check}
 %check
@@ -78,6 +93,9 @@ applications that use %{name}.
 %endif
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
+
+%files examples
+%{_bindir}/toml++_*
 
 %files -n lib%{name}%{sover}
 %{_libdir}/lib%{name}.so.%{sover}*

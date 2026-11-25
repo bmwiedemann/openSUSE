@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Tue Nov 24 23:03:23 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 3.5.1
+  * No code changes, patch bump only to address a git tag snafu
+- Updates from 3.4.0 -> 3.5.0
+  * Highlights:
+    - Support for TOML v1.1.0
+    - Support for C++20 std::chrono types
+    - C++20 module support with import tomlplusplus;
+    - Faster parsing and formatting
+    - Faster compiles and smaller binaries
+    - Floats print in their shortest round-trip form with every compiler
+    - Many fixes for crashes and undefined behaviour
+    - Meson users: a default Meson build is now header-only. This is a bugfix
+      for a regression that was accidentally introduced in v3.4.0 where the
+      default became a shared library build, despite the documentation stating
+      otherwise. If you want to keep shared library builds, you must specify
+      -Dbuild_lib=true.
+  * Bugs fixed:
+    - Fixed assertion failure when parsing some incomplete date-times
+      (gh#marzer/tomlplusplus#313)
+    - Fixed is_homogeneous() overloads with first_nonmatch outparam being
+      broken in optimized builds (gh#marzer/tomlplusplus#231)
+    - Fixed unclear error message when parsing integers that would overflow
+      (gh#marzer/tomlplusplus#224)
+    - Fixed CMake install target installing meson.build files
+      (gh#marzer/tomlplusplus#236)
+    - Fixed "unresolved symbol" error with nvc++ (gh#marzer/tomlplusplus#220)
+    - Fixed stack overflow when parsing deeply nested dotted keys
+      (gh#marzer/tomlplusplus#242)
+    - Fixed assertion failure when parsing some malformed documents
+      (gh#marzer/tomlplusplus#321)
+    - Fixed a number of bugs when parsing long values with underscores
+    - Fixed assertion failure when parsing table headers starting with [[[
+      (gh#marzer/tomlplusplus#301)
+    - Fixed redefinition errors showing the wrong text for quoted keys
+      (gh#marzer/tomlplusplus#300)
+    - Fixed undefined behaviour when parsing some non-ASCII characters
+      (gh#marzer/tomlplusplus#295)
+    - Fixed undefined behaviour in toml_formatter with fractional floats
+      (gh#marzer/tomlplusplus#276)
+    - Fixed downcasts in the node hierarchy that used reinterpret_cast
+      (gh#marzer/tomlplusplus#299)
+    - Fixed parse_error not being exported from shared libraries
+      (gh#marzer/tomlplusplus#316)
+    - Fixed build error with MSYS2 (gh#marzer/tomlplusplus#264)
+    - Fixed missing #include in date_time.hpp (gh#marzer/tomlplusplus#298)
+    - Fixed Clang 20 deprecation warning about literal operators
+      (gh#marzer/tomlplusplus#263)
+    - Fixed C++26 deprecation warning about std::is_trivial
+      (gh#marzer/tomlplusplus#270)
+    - Fixed compiler warnings with TOML_FLOAT_CHARCONV on some toolchains
+    - Fixed MSVC warning C4702 (unreachable code) from the parser
+      (gh#marzer/tomlplusplus#307)
+    - Fixed out-of-bounds read in path::subpath() (gh#marzer/tomlplusplus#319)
+    - Fixed undefined behaviour when adding a toml::path to itself
+    - Fixed some multi-line strings not round-tripping
+      (gh#marzer/tomlplusplus#323)
+    - Fixed some parse errors reporting the wrong position
+    - Fixed some misleading parse error messages
+    - Fixed times with very long fractional seconds failing to parse
+    - Fixed leap seconds failing to parse
+    - Fixed line-ending backslashes trimming non-ASCII spaces
+    - Fixed very small floats failing to parse with MSVC or libc++
+    - Fixed floats printing differently on different compilers
+      (gh#marzer/tomlplusplus#179)
+    - Fixed yaml_formatter writing numbers that YAML 1.1 loaders read as
+      strings
+    - Fixed floats changing value with a non-default rounding mode
+    - Fixed SIGFPE when parsing out-of-range floats with FP traps enabled
+    - Fixed out-of-memory handling when parsing or printing floats
+    - Fixed some hexadecimal floats parsing to the wrong value
+      (TOML_ENABLE_UNRELEASED_FEATURES)
+    - Fixed toml::parse() returning an empty table for non-seekable streams
+    - Fixed toml::parse() crashing or succeeding on a failed stream
+    - Fixed invalid UTF-8 or a failed read hiding an earlier parse error
+    - Fixed toml::parse() failing on streams that throw on failbit or eofbit
+    - Fixed toml::parse() not compiling with a string literal source path
+    - Fixed toml::parse_file() succeeding on a directory or a failed read
+    - Fixed slow parsing of documents with many tables
+    - Fixed a default-constructed toml::key leaving its source region
+      uninitialised
+    - Fixed use-after-free when assigning between nested tables or arrays
+    - Fixed null-pointer dereference when inserting a toml::array into itself
+    - Fixed toml::table asserting when built from an empty initialiser list
+    - Fixed toml::array::insert() not compiling for some integer arguments
+    - Fixed comparing a toml::array with a std::vector<bool> not compiling
+    - Fixed node_view<node> == node_view<const node> not compiling on GCC 11
+    - Fixed exception-safety bugs in toml::path_component
+    - Fixed some explicit conversions of toml::value rvalues not compiling
+    - Fixed the toml::value(val, flags) constructor not compiling
+    - Fixed undefined behaviour when converting out-of-range floats to integers
+    - Fixed conversions to __float128 and _Float16 rejecting most numbers
+    - Fixed formatters asserting on a failed parse_result without exceptions
+    - Fixed formatters dropping a trailing incomplete UTF-8 sequence
+    - Fixed undefined behaviour in toml_formatter with some numeric arrays
+    - Fixed toml_formatter emitting leading blank lines when reused
+    - Fixed keys containing U+1680 or U+FEFF formatting as bare keys
+      (TOML_ENABLE_UNRELEASED_FEATURES)
+    - Fixed bare keys starting with U+180E or U+FEFF failing to parse
+      (TOML_ENABLE_UNRELEASED_FEATURES)
+    - Fixed json_formatter emitting invalid JSON with some format flags
+    - Fixed yaml_formatter emitting incorrect YAML in some cases
+    - Fixed for_each() not compiling with MSVC in C++17 mode
+      (gh#marzer/tomlplusplus#219)
+    - Fixed warnings when compiling with Clang and -ffinite-math-only
+      (gh#marzer/tomlplusplus#241)
+    - Fixed spurious nesting depth errors with MSVC and the C++20 module
+      (gh#marzer/tomlplusplus#288)
+    - Fixed linker errors with the JSON and YAML formatters in a MinGW DLL
+    - Fixed TOML_INCLUDE_WINDOWS_H failing with MinGW on case-sensitive
+      filesystems
+    - Fixed a Clang -Wabsolute-value warning with MinGW
+    - Fixed the formatters not escaping some control characters
+    - Fixed crashes when parsing with mixed TOML_EXCEPTIONS settings
+    - Fixed stack overflow when destroying deeply nested tables
+    - Fixed use-after-free when assigning or appending a toml::path's own key
+      to it
+    - Fixed insert_or_assign() leaving toml::table iterators dangling
+    - Fixed inserting a toml::inserter of a null node_view adding a null node
+    - Fixed undefined behaviour when parsing a file with an empty UTF-8 path
+    - Fixed a toml::value losing its source region when assigned to itself
+    - Fixed value() and value_or() not compiling for some scoped enums
+    - Fixed emplace() and emplace_back() not compiling with string literals
+    - Fixed wrong results when comparing an integer toml::value with a float
+    - Fixed long parse errors ending in an incomplete UTF-8 sequence
+    - Fixed some parse errors quoting a control character without escaping it
+    - Fixed some table headers silently redefining a dotted-key table
+    - Fixed toml::parse_file() failing to open pipes and FIFOs
+    - Fixed using namespace toml; leaking into the TOML_IMPLEMENTATION file
+    - Fixed toml_formatter wrapping some arrays at the wrong width
+    - Fixed some user-defined strings being cut off at the first NUL
+  * Additions:
+    - Added support for TOML v1.1.0 (gh#marzer/tomlplusplus#289)
+    - Added toml::get_line() (gh#marzer/tomlplusplus#255),
+      (gh#marzer/tomlplusplus#256), (gh#marzer/tomlplusplus#258)
+    - Added toml::format_flags::force_multi_line_arrays
+      (gh#marzer/tomlplusplus#282)
+    - Added support for user-defined string types (gh#marzer/tomlplusplus#306)
+    - Added support for C++20 std::chrono types (gh#marzer/tomlplusplus#291),
+      (gh#marzer/tomlplusplus#322)
+    - Added C++20 module support with import tomlplusplus;
+      (gh#marzer/tomlplusplus#266), (gh#marzer/tomlplusplus#267),
+      (gh#marzer/tomlplusplus#273), (gh#marzer/tomlplusplus#303)
+    - Added TOML_ENABLE_CHRONO config
+    - Added TOML_DISABLE_CONDITIONAL_NOEXCEPT_LAMBDA config
+      (gh#marzer/tomlplusplus#247)
+    - Added TOML_DISABLE_NOEXCEPT_NOEXCEPT config (gh#marzer/tomlplusplus#271)
+    - Added IWYU pragmas to toml++/toml.hpp (gh#marzer/tomlplusplus#277)
+  * Changes:
+    - Printing a source_region also shows its end position
+      (gh#marzer/tomlplusplus#244)
+    - Improvements to parsing and formatting speed
+    - Improvements to float parsing
+    - Improvements to compile speed and binary size
+    - Improvements to array::flatten() speed on large arrays
+    - Improvements to array::prune() speed on large arrays
+    - Lowered the default of TOML_MAX_NESTED_VALUES from 256 to 128
+      (gh#marzer/tomlplusplus#293)
+    - TOML_MAX_NESTED_VALUES now limits the nesting depth of tables too
+    - TOML_INT_CHARCONV no longer has any effect
+    - Changed the wording of some parse error messages
+  * Removals:
+    - Removed the Visual Studio solution and project files
+    - Removed the parse_benchmark example
+
+-------------------------------------------------------------------
 Wed Dec  6 05:09:20 UTC 2023 - Shawn Dunn <sfalken@opensuse.org>
 
 - Initial commit
