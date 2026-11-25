@@ -1,7 +1,7 @@
 #
 # spec file for package watson
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,32 @@
 #
 
 
-%{!?python_sitelib: %global python_sitelib %(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%define pythons %{primary_python}
 Name:           watson
-Version:        2.1.0
+Version:        3.0.1
 Release:        0
 Summary:        CLI time tracker
 License:        MIT
-Group:          Productivity/Office/Organizers
-URL:            https://github.com/TailorDev/Watson
-Source:         https://github.com/TailorDev/Watson/archive/%{version}.tar.gz
-BuildRequires:  python3-setuptools
-Requires:       python3-arrow >= 1.0.0
-Requires:       python3-click
-Requires:       python3-click-didyoumean
-Requires:       python3-requests
+URL:            https://github.com/jmaupetit/Watson
+Source:         https://github.com/jmaupetit/Watson/archive/refs/tags/v%{version}.tar.gz
+BuildRequires:  %{python_module arrow >= 1.4.0}
+BuildRequires:  %{python_module click >= 8.3.1}
+BuildRequires:  %{python_module click-didyoumean >= 0.3.1}
+BuildRequires:  %{python_module colorama >= 0.4.6}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-datafiles}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests >= 2.32.5}
+BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       %{primary_python}-arrow >= 1.4.0
+Requires:       %{primary_python}-click >= 8.3.1
+Requires:       %{primary_python}-click-didyoumean >= 0.3.1
+Requires:       %{primary_python}-colorama >= 0.4.6
+Requires:       %{primary_python}-requests >= 2.32.5
 BuildArch:      noarch
 
 %description
@@ -38,9 +50,9 @@ It generates reports for clients.
 
 %package bash-completion
 Summary:        Bash completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
-Supplements:    (%{name} and bash)
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -48,7 +60,6 @@ Bash command line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -58,7 +69,6 @@ Fish command line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
@@ -67,33 +77,40 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}.
 
 %prep
-%autosetup -n Watson-%{version}
+%autosetup -p1 -n Watson-%{version}
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
+%pyproject_install
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/watson
 install -D -m 0644 watson.zsh-completion %{buildroot}%{_datadir}/zsh/site-functions/_watson
-mkdir -p %{buildroot}%{_datadir}%{_datadir}/fish/vendor_completions.d/
 install -D -m 0644 watson.fish %{buildroot}%{_datadir}/fish/vendor_completions.d/watson.fish
-install -D -m 0644 watson.completion  %{buildroot}%{_datadir}/bash-completion/completions/watson
+install -D -m 0644 watson.completion %{buildroot}%{_datadir}/bash-completion/completions/watson
+%fdupes %{buildroot}%{python_sitelib}
+
+%check
+%pytest
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.rst
+%doc CHANGELOG.md README.md
 %{_bindir}/watson
-%{python_sitelib}/*
+%{python_sitelib}/watson
+%{python_sitelib}/td_watson-%{version}.dist-info
 
 %files bash-completion
-%{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/watson
 
 %files fish-completion
-%dir %{_datadir}/fish/
-%{_datadir}/fish/vendor_completions.d/
+%dir %{_datadir}/fish
+%dir %{_datadir}/fish/vendor_completions.d
+%{_datadir}/fish/vendor_completions.d/watson.fish
 
 %files zsh-completion
-%dir %{_datadir}/zsh/
-%{_datadir}/zsh/site-functions/
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_watson
 
 %changelog

@@ -105,4 +105,28 @@
   * Watson is now compatible with Click 8+</comment>
     <requestid>978953</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a563d8a687a9840c2cc2a7b80409b0b8</srcmd5>
+    <version>3.0.1</version>
+    <time>1795619641</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.1:
+  * Fix shell completion crash with Click 8+.
+- Changes from 3.0.0:
+  * Drop Python 3.10 support (minimal version is now 3.11).
+  * Switch build system to hatchling / pyproject.toml.
+  * Set a 30-second timeout for backend synchronization
+    requests.
+  * Read Watson version from installed package metadata.
+  * Fix wrong local time offset for dates in a different DST
+    period than now (arrow 1.4+).
+  * Fix Bash and Zsh completions broken since Click 8.
+  * Command examples in help messages being re-wrapped by
+    Click.
+- Switch to pyproject macros
+- Use %define pythons %{primary_python}.
+- Add %check section running %pytest.
+- Drop obsolete distutils macro and Group tags.</comment>
+    <requestid>1400508</requestid>
+  </revision>
 </revisionlist>
