@@ -205,4 +205,12 @@ Built green on aarch64 and x86_64, both flavors.</comment>
 - Reasoning-parser defaults to none; Responses API item status.</comment>
     <requestid>1396068</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>19d9e6f5879823b1a985c25389d29d89</srcmd5>
+    <version>0.34.0</version>
+    <time>1795619658</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.34.0</comment>
+    <requestid>1400525</requestid>
+  </revision>
 </revisionlist>

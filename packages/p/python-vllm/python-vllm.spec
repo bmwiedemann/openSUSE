@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.33.0
+Version:        0.34.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -68,10 +68,8 @@ Source12:       https://github.com/ARM-software/ComputeLibrary/archive/refs/tags
 Patch0:         vllm-relax-cpu-requirements.patch
 # PATCH-FIX-OPENSUSE vllm-cpu-disable-rust-frontend.patch -- do not build the ~575-crate Rust frontend (unvendorable offline; runtime-optional)
 Patch1:         vllm-cpu-disable-rust-frontend.patch
-# PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
-Patch2:         vllm-thinking-budget-scan-cursor.patch
-# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-10-18, rebased onto 0.33.0) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
-Patch3:         fix-CVE-2026-105922.patch
+# PATCH-FIX-UPSTREAM fix-CVE-2026-105922.patch https://github.com/vllm-project/vllm/pull/57762 (open/unmerged as of 2026-11-17, MRV2 half ported onto 0.34.0, MRV1 hunk dropped) -- CVE-2026-105922: treat prompt-embedding positions as invalid token IDs so penalty kernels do not index stale CPU token buffer contents
+Patch2:         fix-CVE-2026-105922.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
 BuildRequires:  %{python_module cachetools}
@@ -127,8 +125,8 @@ Requires:       python-compressed-tensors >= 0.17.1
 Requires:       python-depyf >= 0.20.0
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
-Requires:       python-filelock >= 3.20.3
-Requires:       python-huggingface-hub >= 1.31.0
+Requires:       python-filelock >= 4.2.4
+Requires:       python-huggingface-hub >= 2.0.0
 Requires:       python-ijson
 Requires:       python-jsonschema >= 4.23.0
 Requires:       python-lark >= 1.2.2
@@ -142,7 +140,7 @@ Requires:       python-lm-format-enforcer >= 0.11.3
 # uninstallable, so keep it unversioned: mcp is imported lazily and solely by
 # the optional "--tool-server" integration, the one feature that needs 2.x.
 Requires:       python-mcp
-Requires:       python-mistral-common >= 1.11.6
+Requires:       python-mistral-common >= 1.13.0
 Requires:       python-model-hosting-container-standards >= 0.1.14
 Requires:       python-msgspec
 Requires:       python-multidict >= 6.9.1
@@ -157,9 +155,9 @@ Requires:       python-openai >= 2.25.0
 # the RPM cannot satisfy.
 Requires:       python-openai-harmony >= 0.0.3
 Requires:       python-opencv >= 4.13.0
-Requires:       python-opentelemetry-api >= 1.27.0
-Requires:       python-opentelemetry-exporter-otlp >= 1.27.0
-Requires:       python-opentelemetry-sdk >= 1.27.0
+Requires:       python-opentelemetry-api >= 1.45.1
+Requires:       python-opentelemetry-exporter-otlp >= 1.45.1
+Requires:       python-opentelemetry-sdk >= 1.45.1
 Requires:       python-opentelemetry-semantic-conventions-ai >= 0.4.1
 # vllm/entrypoints/serve/utils/api_utils.py imports orjson at module top.
 Requires:       python-orjson >= 3.11.6
@@ -186,6 +184,7 @@ Requires:       python-setproctitle
 Requires:       python-six >= 1.16.0
 Requires:       python-starlette >= 1.0.1
 Requires:       python-tiktoken >= 0.6.0
+# Upstream asks >= 0.23.3 for huggingface_hub 2; Factory carries 0.23.2.
 Requires:       python-tokenizers >= 0.23.2
 # The default flavour is pure Python and only uses torch's Python API.  The cpu
 # flavour additionally links the compiled kernels against libtorch, and that
@@ -195,6 +194,7 @@ Requires:       python-tokenizers >= 0.23.2
 # there and only makes the package uninstallable until it is bumped by hand.
 Requires:       python-torch >= 2.12.0
 Requires:       python-tqdm
+# Upstream caps <5.23.0; Factory has 5.23.0, strip cap like fastapi.
 Requires:       python-transformers >= 5.16.1
 Requires:       python-typing_extensions >= 4.10
 Requires:       python-watchfiles
@@ -256,7 +256,7 @@ tar -xf %{SOURCE11} -C ..
 %endif
 
 # Build against whatever torch the build root provides instead of upstream's
-# exact 2.13.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
+# exact 2.14.0 pin, via vLLM's own helper.  Strips torch/torchvision/torchaudio
 # pins from requirements/*.txt and pyproject.toml.
 %python_expand $python tools/use_existing_torch.py --prefix
 

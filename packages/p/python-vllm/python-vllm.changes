@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Nov 17 16:42:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.34.0:
+  * New models: Mistral Large 4, MiniMax-M3.1-Flash,
+    Nemotron-3.5-Transcribe, Ripple-65B, ZAYA1 and more
+  * Extensible KV cache on by default: sizes cache from
+    memory free after warmup; larger cache, more throughput
+  * Model Runner V1 removed: Model Runner V2 is the only
+    GPU runner; remove VLLM_USE_V2_MODEL_RUNNER=0
+  * Performance: up to 1.95x decode (Step5 NVFP4), 1.6x
+    throughput (GLM-5.3-Flash), faster long-prompt TTFT
+  * Breaking: default block size 64, gpu_memory_utilization
+    1.0, ROCm 7.2 gone, huggingface_hub>=2.0.0 required
+  * Removed: QuTLASS/fp_quant, Marlin W4A8, Keye-VL models
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Drop vllm-thinking-budget-scan-cursor.patch: obsolete,
+  upstream MRV2 rewrite carries cursor via cached_scan_pos
+- Port fix-CVE-2026-105922.patch to Model Runner V2
+  (CVE-2026-105922, boo#1284365): mask prompt-embed zeros
+  in the penalties bincount; CUDA test carried-not-run
+- Dependency floors follow upstream: huggingface_hub>=2.0.0,
+  filelock>=4.2.4, mistral-common>=1.13.0,
+  opentelemetry-*>=1.45.1; tokenizers stays 0.23.2 as Factory
+  lags upstream 0.23.3; transformers keeps no upper bound
+  though upstream caps <5.23.0 and Factory has 5.23.0
+- Torch stays 2.14.0, matching Factory; no 2.15 fallout
+
+-------------------------------------------------------------------
 Wed Nov  4 11:41:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.33.0:
