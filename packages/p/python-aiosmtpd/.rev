@@ -189,4 +189,12 @@
   * Do not use typing.ByteString.</comment>
     <requestid>1375262</requestid>
   </revision>
+  <revision rev="21" vrev="7">
+    <srcmd5>cc7ec5ea0e97ee0288b81c8d5484bab0</srcmd5>
+    <version>1.4.6</version>
+    <time>1795619592</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1400439</requestid>
+  </revision>
 </revisionlist>

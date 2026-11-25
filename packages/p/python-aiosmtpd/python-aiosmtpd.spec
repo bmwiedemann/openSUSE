@@ -25,14 +25,14 @@ Summary:        SMTP server based on asyncio
 License:        Apache-2.0
 URL:            https://aiosmtpd.readthedocs.io/
 Source:         https://github.com/aio-libs/aiosmtpd/archive/v%{version}.tar.gz#/aiosmtpd-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#aio-libs/aiosmtpd#473
-Patch0:         support-python-313.patch
 # PATCH-FIX-OPENSUSE Use inspect.iscorountine
-Patch1:         support-python-314.patch
+Patch0:         support-python-314.patch
 # PATCH-FIX-UPSTREAM aiosmtpd-pr557-pkg_resources.patch gh#aio-libs/aiosmtpd#557
-Patch2:         aiosmtpd-pr557-pkg_resources.patch
+Patch1:         aiosmtpd-pr557-pkg_resources.patch
 # PATCH-FIX-UPSTREAM gh#aio-libs/aiosmtpd#575
-Patch3:         do-not-use-typing-bytestring.patch
+Patch2:         do-not-use-typing-bytestring.patch
+# PATCH-FIX-UPSTREAM Based on gh#aio-libs/aiosmtpd#592
+Patch3:         disable-socket-cleanup.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

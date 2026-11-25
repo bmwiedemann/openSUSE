@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 18 02:37:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Replace patch support-python-313.patch with disable-socket-cleanup.patch,
+  which solves the same problem in a better way.
+
+-------------------------------------------------------------------
 Wed Sep  2 02:56:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch do-not-use-typing-bytestring.patch:

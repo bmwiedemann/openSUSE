@@ -1,0 +1,67 @@
+From 3ed6df07b61d0b120d34a7d06748d8c8df430bda Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?P=C4=93teris=20Caune?= <cuu508@gmail.com>
+Date: Sat, 9 May 2026 13:37:48 +0300
+Subject: [PATCH 1/5] Update UnixSocketMixin to disable socket cleanup on Py >=
+ 3.13
+
+Starting from Python 3.13, the unix listener automatically cleans up
+its socket from the filesystem on shutdown. This can be disabled by
+passing in cleanup_socket=False. I think it makes sense for aiosmtpd
+to do that, to keep the shutdown behavior consistent between Python versions.
+
+This change fixes the only failing test on Python 3.13:
+
+aiosmtpd/tests/test_server.py::TestUnthreaded::test_unixsocket
+---
+ aiosmtpd/controller.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+Index: aiosmtpd-1.4.6/aiosmtpd/controller.py
+===================================================================
+--- aiosmtpd-1.4.6.orig/aiosmtpd/controller.py
++++ aiosmtpd-1.4.6/aiosmtpd/controller.py
+@@ -5,6 +5,7 @@ import asyncio
+ import errno
+ import os
+ import ssl
++import sys
+ import threading
+ import time
+ from abc import ABCMeta, abstractmethod
+@@ -450,6 +451,20 @@ class UnixSocketMixin(BaseController, me
+         Does NOT actually start the protocol object itself;
+         _factory_invoker() is only called upon fist connection attempt.
+         """
++        if sys.version_info >= (3, 13, 0):
++            # Starting from python 3.13, the unix listener automatically
++            # cleans up its socket from the filesystem on shutdown. This can
++            # be disabled by passing in cleanup_socket=False. We do that here to keep
++            # the shutdown behavior consistent between Python versions.
++            return self.loop.create_unix_server(
++                self._factory_invoker,
++                path=self.unix_socket,
++                ssl=self.ssl_context,
++                # Silence mypy warning as cleanup_socket is not yet annotated in
++                # typeshed: https://github.com/python/typeshed/issues/15742
++                cleanup_socket=False,  # type: ignore[call-arg]
++            )
++
+         return self.loop.create_unix_server(
+             self._factory_invoker,
+             path=self.unix_socket,
+Index: aiosmtpd-1.4.6/aiosmtpd/tests/test_server.py
+===================================================================
+--- aiosmtpd-1.4.6.orig/aiosmtpd/tests/test_server.py
++++ aiosmtpd-1.4.6/aiosmtpd/tests/test_server.py
+@@ -300,7 +300,10 @@ class TestController:
+             cont.stop()
+ 
+     def test_testconn_raises(self, mocker: MockFixture):
+-        mocker.patch("socket.socket.recv", side_effect=RuntimeError("MockError"))
++        mocker.patch(
++            "aiosmtpd.controller.create_connection",
++            side_effect=RuntimeError("MockError"),
++        )
+         cont = Controller(Sink(), hostname="")
+         try:
+             with pytest.raises(RuntimeError, match="MockError"):
