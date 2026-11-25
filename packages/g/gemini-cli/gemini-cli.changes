@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 25 10:33:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.71.1:
+  * fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420
+    to patch version v0.71.0 and create version 0.71.1
+- update to 0.71.0:
+  * Changelog for v0.70.0-preview.0
+  * chore(release): bump version to
+    0.71.0-nightly.20261118.g615d6bc8c
+  * Changelog for v0.69.0
+  * fix(core,cli): parse PowerShell commands asynchronously to
+    prevent UI spinner freeze
+  * chore(gcp): push development worker to private artifact
+    registry
+
+-------------------------------------------------------------------
 Sat Nov 21 13:59:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.70.0:

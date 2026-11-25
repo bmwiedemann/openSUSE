@@ -1346,4 +1346,23 @@
   * fix(cli): detect local git clone from CLI path instead of cwd</comment>
     <requestid>1399641</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>681af1787a3f20dbf5c73990653210a2</srcmd5>
+    <version>0.71.1</version>
+    <time>1795625868</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.71.1:
+  * fix(patch): cherry-pick aafdfdf to release/v0.71.0-pr-30420
+    to patch version v0.71.0 and create version 0.71.1
+- update to 0.71.0:
+  * Changelog for v0.70.0-preview.0
+  * chore(release): bump version to
+    0.71.0-nightly.20261118.g615d6bc8c
+  * Changelog for v0.69.0
+  * fix(core,cli): parse PowerShell commands asynchronously to
+    prevent UI spinner freeze
+  * chore(gcp): push development worker to private artifact
+    registry</comment>
+    <requestid>1400574</requestid>
+  </revision>
 </revisionlist>
