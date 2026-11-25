@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 23 13:45:30 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Enable the upstream unit tests on Tumbleweed and newer: build with
+  -DBUILD_TESTING=ON and run ctest in %check, with LD_LIBRARY_PATH
+  pointing at the installed build libraries. 187 tests run and pass.
+- Exclude 1 of 188 tests: TestGdiBitBlt is an exhaustive but still
+  unimplemented ROP matrix that exceeds the CTest timeout.
+
+-------------------------------------------------------------------
 Tue Apr 14 09:09:38 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Update freerdp-3-macro:

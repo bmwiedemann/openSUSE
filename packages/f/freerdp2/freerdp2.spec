@@ -259,6 +259,9 @@ fi
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_INSTALL_LIBDIR=%{_lib} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+%if 0%{?suse_version} > 1500
+        -DBUILD_TESTING=ON \
+%endif
         -DCMAKE_EXE_LINKER_FLAGS="-pie" \
         -DWITH_ALSA=ON \
         -DWITH_CAIRO=ON \
@@ -336,6 +339,16 @@ mv %{buildroot}%{_mandir}/man1/winpr-hash.1 %{buildroot}%{_mandir}/man1/winpr2-h
 mv %{buildroot}%{_mandir}/man1/winpr-makecert.1 %{buildroot}%{_mandir}/man1/winpr2-makecert.1
 mv %{buildroot}%{_mandir}/man7/wlog.7 %{buildroot}%{_mandir}/man7/wlog2.7
 mv %{buildroot}%{_bindir}/freerdp-proxy %{buildroot}%{_bindir}/%{name}-proxy
+
+%if 0%{?suse_version} > 1500
+%check
+export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
+# TestGdiBitBlt is an exhaustive, still unimplemented ROP matrix (it ends
+# with "TODO Test not implemented"). It prints thousands of dumps and
+# exceeds the CTest timeout, so run the rest of the suite without it.
+cd build
+ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} -E '^TestGdiBitBlt$'
+%endif
 
 %post   -n libfreerdp%{libfreerdp_package} -p /sbin/ldconfig
 %postun -n libfreerdp%{libfreerdp_package} -p /sbin/ldconfig
