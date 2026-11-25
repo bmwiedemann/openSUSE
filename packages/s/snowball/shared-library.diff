@@ -9,27 +9,29 @@ Forwarded: https://github.com/snowballstem/snowball/pull/42
 
 Index: snowball-3.1.1/GNUmakefile
 ===================================================================
---- snowball-3.1.1.orig/GNUmakefile
-+++ snowball-3.1.1/GNUmakefile
-@@ -131,6 +131,8 @@ ICONV ?= iconv
+diff --git a/GNUmakefile b/GNUmakefile
+index 0ec11ae..ed9917c 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -152,6 +152,8 @@ ICONV ?= iconv
  STEMMING_DATA ?= ../snowball-data
  STEMMING_DATA_ABS := $(abspath $(STEMMING_DATA))
- 
+
 +STEMWORDS=LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH) ./stemwords$(EXEEXT)
 +
  # Keep one in $(THIN_FACTOR) entries from gzipped vocabularies.
  THIN_FACTOR ?= 3
- 
-@@ -316,7 +318,7 @@ CPPFLAGS?=
- 
+
+@@ -337,7 +339,7 @@ CPPFLAGS?=
+
  INCLUDES=-Iinclude
- 
+
 -all: snowball$(EXEEXT) libstemmer.a stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
 +all: snowball$(EXEEXT) libstemmer.a libstemmer.so stemwords$(EXEEXT) $(C_OTHER_SOURCES) $(C_OTHER_HEADERS) $(C_OTHER_OBJECTS)
- 
+
  algorithms.mk: GNUmakefile libstemmer/mkalgorithms.pl $(MODULES)
  	libstemmer/mkalgorithms.pl algorithms.mk $(MODULES)
-@@ -377,7 +379,7 @@ $(COMPILER_OBJECTS): $(COMPILER_HEADERS)
+@@ -398,7 +400,7 @@ $(COMPILER_OBJECTS): $(COMPILER_HEADERS)
  # each target language section.
  CLEANFILES := $(COMPILER_OBJECTS) $(RUNTIME_OBJECTS) \
  	      $(LIBSTEMMER_OBJECTS) $(LIBSTEMMER_UTF8_OBJECTS) $(STEMWORDS_OBJECTS) snowball$(EXEEXT) \
@@ -38,62 +40,62 @@ Index: snowball-3.1.1/GNUmakefile
                libstemmer/modules.h \
                libstemmer/modules_utf8.h \
  	      stemtest$(EXEEXT) $(STEMTEST_OBJECTS) \
-@@ -426,17 +428,25 @@ libstemmer/libstemmer.o: libstemmer/modu
+@@ -447,17 +449,25 @@ libstemmer/libstemmer.o: libstemmer/modules.h $(C_LIB_HEADERS)
  libstemmer.a: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
- 	$(AR) $(ARFLAGS) $@ $^
- 
+ 	$(AR) $(ARFLAGS_)$@ $^
+
 +libstemmer.so: libstemmer/libstemmer.o $(RUNTIME_OBJECTS) $(C_LIB_OBJECTS)
 +	$(CC) $(CFLAGS) -shared $(LDFLAGS) \
-+	      -Wl,--version-script=debian/libstemmer.ver,-soname,libstemmer.so.0d \
-+	      -o $@.0d.0.0 ${^:%=.shared/%}
-+	ln -s $@.0d.0.0 $@.0d
-+	ln -s $@.0d.0.0 $@
++		-Wl,--version-script=debian/libstemmer.ver,-soname,libstemmer.so.1d \
++		-o $@.1d.0.0 ${^:%=.shared/%}
++	ln -s $@.1d.0.0 $@.1d
++	ln -s $@.1d.0.0 $@
 +	$(AR) -crs ${@:.so=.a} $^
 +
  examples/%.o: examples/%.c
- 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
- 
+ 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c $(o_for_obj) $@ $<
+
 -stemwords$(EXEEXT): $(STEMWORDS_OBJECTS) libstemmer.a
--	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(o_for_exe) $@ $^
 +stemwords$(EXEEXT): $(STEMWORDS_OBJECTS) libstemmer.so
 +	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(STEMWORDS_OBJECTS) -L. -lstemmer
- 
+
  tests/%.o: tests/%.c
- 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
- 
+ 	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c $(o_for_obj) $@ $<
+
 -stemtest$(EXEEXT): $(STEMTEST_OBJECTS) libstemmer.a
--	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(o_for_exe) $@ $^
 +stemtest$(EXEEXT): $(STEMTEST_OBJECTS) libstemmer.so
 +	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(STEMTEST_OBJECTS) -L. -lstemmer
- 
+
  $(c_src_dir)/stem_UTF_8_%.c $(c_src_dir)/stem_UTF_8_%.h: $(ALGORITHMS)/%.sbl snowball$(EXEEXT)
  	@mkdir -p $(c_src_dir)
-@@ -455,7 +465,6 @@ $(c_src_dir)/stem_ISO_8859_2_%.c $(c_src
+@@ -476,7 +486,6 @@ $(c_src_dir)/stem_ISO_8859_2_%.c $(c_src_dir)/stem_ISO_8859_2_%.h: $(ALGORITHMS)
  	$(SNOWBALL_COMPILE) charsets/ISO-8859-2.sbl $< -o $@ -eprefix $*_ISO_8859_2_ -r ../runtime
- 
+
  $(c_src_dir)/stem_%.o: $(c_src_dir)/stem_%.c $(c_src_dir)/stem_%.h
--	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c -o $@ $<
- 
+-	$(CC) $(CFLAGS) $(INCLUDES) $(CPPFLAGS) -c $(o_for_obj) $@ $<
+
  # C++
- 
-@@ -824,7 +833,7 @@ check_compilertest: tests/compilertest
+
+@@ -853,7 +862,7 @@ check_compilertest: tests/compilertest
  	cd tests && ./compilertest
- 
+
  check_stemtest: stemtest$(EXEEXT)
 -	./stemtest
 +	LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH) ./stemtest
- 
+
  check_utf8: $(libstemmer_algorithms:%=check_utf8_%)
- 
-@@ -997,6 +1006,11 @@ CLEANFILES += $(go_src_main_dir)/stemwor
- 
+
+@@ -1026,6 +1035,11 @@ CLEANFILES += $(go_src_main_dir)/stemwords/algorithms.go
+
  .PHONY: java check_java do_check_java
- 
+
 +%.o: %.c
 +	@mkdir -p $(shell dirname ${@:%=.shared/%})
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -c -fPIC -o ${@:%=.shared/%} $<
 +	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
 +
  .SUFFIXES: .class .java
- 
+
  java: $(JAVA_CLASSES) $(JAVA_RUNTIME_CLASSES)

@@ -52,4 +52,274 @@
     <comment>Push GNOME 51.1</comment>
     <requestid>1385463</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02951d15096eeb07e8bed915fabb5a15</srcmd5>
+    <version>3.2.0</version>
+    <time>1795619499</time>
+    <user>anag_factory</user>
+    <comment>- Rebase shared-library.diff.
+
+
+- Update to version 3.2.0:
+  * Compiler changes:
+    + Bug fixes:
+      - Stop rejecting `-&gt;` and `=&gt;` inside `reverse`.  These operations are
+        both safe as they modify a string variable not the working string.
+      - Fix detection of read errors for piped input which were effectively
+        being ignored.  Bug introduced in 3.1.0.
+      - The coverage counts for among functions were one too low.
+      - Drop use of `restrict` in compiler source as it seems it isn't
+        supported by MSVC 2019 and earlier.
+    + Compiler command-line options:
+      - Change how `-coverage` reports among functions.  If the string matched
+        we used to always report a string match, and additionally either
+        &quot;func-f&quot; or &quot;func-t&quot; depending what the function signalled.  Now we
+        only report one thing - if the string matches but the function signals
+        f we report &quot;func-f&quot;; if the string matches and the function signals t
+        we report a string match.  This gives a report that seems clearer, and
+        requires logging and collating less data.
+    + Diagnostics:
+      - Report an &quot;info&quot; diagnostic when we don't localise a variable into a
+        recursive routine.
+      - Fix spurious extra output of variable name on a line by itself after an
+        &quot;info&quot; diagnostic saying we couldn't localise it.
+      - Routine &quot;not reachable&quot; warnings are now reported at the definition
+        which seems a better location than the declaration.
+    + Optimisations:
+      - Grow large symbol strings exponentially, like we already do for byte
+        strings.
+      - Eliminate some unnecessary copying when growing strings during
+        compilation.
+    + Code quality:
+      - Fix compiler memory leak when an unreachable routine contains an
+        `among`.
+  * Generic code generation changes:
+    + Optimisations:
+      - Improve variable localisation machinery, and fix some contrived cases
+        it was getting wrong.  All variables which are only used in one
+        function after inlining in the shipped stemmers are now successfully
+        localised.
+      - Extend inlining to all calls to routines which consists of a single
+        non-compound Snowball command.  The target language code generated for
+        such commands should be comparable in size to the target language code
+        to call a routine, and inlining may enable other optimisations
+        (variable localisation and folding `not` into integer tests, for
+        example).
+      - Inline any non-recursive routine which is only used once (where that
+        use is not as an among function).  When there's only one use this
+        should if anything reduce the code size, and for target languages which
+        don't inline themselves it eliminates the overhead of a call.  It may
+        also enable more variables to be localised.
+      - Normalise comparison with an integer literal so we merge equivalent
+        among actions such as this example from arabic.sbl: [substring] among (
+        // [...] '{a}{n}' '{w}{n}' '{y}{n}' ($(len &gt; 5) delete) // present
+        '{t}{m}{a}' ($(len &gt;= 6) delete) )
+      - Check for identical amongs and merge their tables.  There are several
+        instances of this in tamil.sbl.
+    + Code quality:
+      - The Snowball manual says: For any string, the slice ends should be
+        assumed to be unset until they are set with the two commands `[` and
+        `]`. For many target languages, we actually initialise the slice ends
+        (either because the target language requires doing so, or because the
+        author of that generator thought it cleaner to do so, or perhaps just
+        followed an existing target language generator which did this). In
+        these situations, what the slice is set to does not matter since the
+        Snowball language doesn't define values, so we now simply set both the
+        slice start and end to 0 which is slightly simpler than the previous
+        setting of the slice end to the length of the string.
+  * Ada:
+    + Bug fixes:
+      - Generate valid Ada code for a Snowball routine/variable name which
+        contains `__`.
+      - Fix code generated for `=&gt;`.  We deprecated `=&gt;` in 3.0.0, but ideally
+        we should generate code for it which actually compiles, and it was easy
+        to fix.
+    + Code quality:
+      - Use consistent case for `Debug()` helper function name. C -
+  * See also C/C++ section for changes affecting both C and C++.:
+    + Optimisations:
+      - We now statically check if errors from a command are possible, and if
+        not avoid generating extra code to propagate errors.
+      - Reduce the work done when creating a stemmer.  We now memset() the
+        whole allocation to zero which also takes care of initialising
+        non-localised integer and boolean variables to 0.  If there's only one
+        string variable we now skip pre-initialising it to NULL before we try
+        to allocate it (this preallocation is done to facilitate cleaning up if
+        we fail after partially allocating, but with only one string variable
+        this can't happen).  We could skip this entirely if we know the
+        implementation uses all-zero-bits in memory representation for NULL
+        pointers, which all modern platforms seem to but the C standard doesn't
+        guarantee.  However none of the current stemmers use more than one
+        string variable, so we now always avoid the overhead in practice.
+      - If an algorithm doesn't have any non-localised Snowball variables, then
+        its create_env() will just be `return SN_new_env(sizeof(struct
+        SN_env));` so create a common implementation of that (named
+        SN_new_env_no_vars) which we #define create_env to in the header.  This
+        reduces code size for 31 of the 38 stemmers we currently ship.
+      - If an algorithm doesn't use strings then its close_env() only needs to
+        call `SN_delete_env()`.  Both take the same parameters and return void,
+        so we now `#define` the close_env function to `SN_delete_env` in the
+        header which reduces code size and eliminates a small runtime overhead
+        for closing a stemmer.  35 of the 38 stemmers we currently ship benefit
+        from this.
+      - Use a more sensible initial string size.  We were allocating only
+        enough space for a single character which meant we'd have to reallocate
+        as soon as we stem a word.
+      - Use putc() in debug() helper to write single characters.
+    + Code quality:
+      - Limit generated internal C identifier lengths.  C90 only guarantees 31
+        significant initial characters in an internal identifier.  C99 raised
+        this to 63, and modern implementations are likely to have a high limit
+        or not impose one, but it is easy to instead generate a short
+        identifier using a number when the Snowball name is long.
+      - The code now compiles cleanly with MSVC with warning level `-W3` (which
+        is apparently the default warning level when using the IDE). C++
+  * See also C/C++ section for changes affecting both C and C++.:
+    + Bug fixes:
+      - Generate valid C++ code for a Snowball routine/variable name which
+        contains `__`.
+    + Code quality:
+      - Fix location of comment which should be at the start of the generated
+        C++ stemmer source but was actually after all the generated header
+        includes.
+    + Documentation:
+      - Remove -c from C++ stemwords help.  We don't support specifying the
+        character set in the C++ version.
+    + Other changes:
+      - Support generating wide-character stemmers which take and return
+        std::wstring and work in wchar_t.  To use: make SNOWBALL_WIDE=1 clean
+        make SNOWBALL_WIDE=1 cxx make SNOWBALL_WIDE=1 check_cxx See #267
+  * C/C++:
+    + Optimisations:
+      - Snowball `among` is now implemented as a state-machine.  This gives a
+        better theoretical performance (the new implementation is O in the
+        number of cases instead of O(log(n)), and is also faster for the
+        current stemmers in benchmarks. The generated among tables are smaller
+        than those for the existing implementation. The generated among tables
+        are now just arrays of unsigned short, so require no dynamic load-time
+        relocations if Snowball-generated C/C++ code is included in a shared
+        library. Among gating functions are now called by generated code, which
+        means the C/C++ compiler can inline them and optimise better. The
+        Snowball generated code for non-widechars now needs to know the
+        endianness of the platform it is being built on.  The runtime code
+        includes checks that should automatically detect this for GCC, clang
+        and MSVC.  If the code can't determine the endianness it will #error at
+        C/C++ compile-time.  In this case, if your platform has the POSIX
+        endian.h header then you can define HAVE_ENDIAN_H.  Otherwise you'll
+        need to define either SNOWBALL_BIGENDIAN or SNOWBALL_LITTLEENDIAN.
+      - We now combine Snowball string literals which are identical to or a
+        substring of another literal, or where the end of one literal can be
+        overlapped with the start of another.  This reduces the size of the
+        string data, which should improve CPU cache utilisation.  Fixes #262.
+    + Documentation:
+      - Libstemmer_c_README: Document that libstemmer aims to support C90.
+    + Other changes:
+      - Flush stdout after each debug() call.  The debug command (`?`) is not
+        performance sensitive, and it can be confusing if its output is delayed
+        by buffering.
+  * C:
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Dart:
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Go:
+    + Other changes:
+      - Properly implement Snowball debug command (`?`).
+  * Java:
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Javascript:
+    + Code quality:
+      - Improve JSDoc TypeScript annotations.  Closes #300, reported by
+        alex-kinokon.
+      - Replace most @ts-expect-error annotations with JSDoc cast annotations.
+        A cast is better as it is more targetted, and also more
+        self-documenting.
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Pascal:
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * PHP:
+    + Code quality:
+      - Emit minimum length Unicode escapes.
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Python:
+    + Documentation:
+      - Libstemmer_python_README: Note that Python 3.8 is the oldest version we
+        CI test with.
+      - Libstemmer_python_README: Fix typo.
+    + Other changes:
+      - Include classifier for pt_BR since we document that our Portuguese
+        stemmer &quot;aims to work with both European Portuguese and Brazilian
+        Portuguese&quot;.
+      - Support Snowball debug command (`?`).
+  * Rust:
+    + Code quality:
+      - Emit minimum length Unicode escapes.
+    + Other changes:
+      - Support Snowball debug command (`?`).
+  * Zig:
+    + Other changes:
+      - Properly implement Snowball debug command (`?`).
+  * Snowball Language Changes: Handle `&lt;-` in an arithmetic expression more
+    gracefully.  In this context, the symbol `&lt;-` isn't meaningful, so we now
+    interpret it as `&lt;` followed by `-`.  Examples such as `$x&lt;-1` now parse
+    the same way as `$x &lt; -1` instead of giving a syntax error.
+  * New stemming algorithms:
+    + Add stemmer for Early Modern English.  This is a variant of the English
+      stemmer which was previously only described on the website, but seems
+      sufficiently useful to include in the distribution.  Fixes #261.  The
+      merged version includes some additional rules:
+      - Remove th'-, t'-
+      - Replace o'vr- with over-
+      - Replace -e'er with -ever
+      - Remove -edst (suggested by E. Timothy Uy in 2012!)
+      - Remove -'d, -'dly, -'dst, -'st, -'t
+      - Replace -'n, -'nd with -en
+      - Replace -'r, -'rous with -er
+      - Replace -'ri with -eri
+      - Replace -'li with -ili
+      - Replace -lie with -ly
+      - Normalise `æ` and `œ` and long-s.  These ligatures appear in texts from
+        this era significantly more than in modern English.  (Including `œ`
+        here means there's not an iso-8859-1 version of this stemmer.)
+    + Add Ukrainian stemmer from Dmitry Prudnikov.
+  * Behavioural changes to existing algorithms:
+    + French:
+      - Remove z'- which is a colloquial, non-standard elision (for &quot;vous&quot;),
+        and also a prefix used to represent a non-standard liaison within a
+        plural noun phrase, or eye dialect for a standard liaison.
+        https://en.wiktionary.org/wiki/z%27#French
+  * Build system:
+    + `make clean_runtime_tests` now first runs `make clean` for smoother
+      switching to runtime test mode.
+    + The build system now supports MSVC better.  If CC matches `*cl` then it
+      uses Microsoft's `LIB` instead of `ar`, and Microsoft's non-standard
+      `-Fo:` and `-Fe:` instead of `-o` (which avoids lots of deprecation
+      warnings). Extensions `.o` and `.a` are still used (which triggers
+      warnings from MSVC).
+    + C++: Add missing dependency for runtime code.
+    + C/C++: Rename utilities.{c,cxx} to snowball_runtime.{c,cxx} to matches
+      the header snowball_runtime.h which contains the prototypes for the
+      external functions here.
+    + Modules.txt: Fix alphabetical ordering of entries.
+  * Libstemmer:
+    + Fix incorrect ISO 639-2/B code &quot;pers&quot; for Persian.  This should be &quot;per&quot;
+      (these codes are all 3 letters long).
+    + Reduce load time relocations in libstemmer by using a suitably sized
+      char[] array in struct stemmer_encoding instead of const char*.
+    + Eliminate sentinel NULL entry at end of encodings array.  We know the
+      length of the encodings list at compile time, so use that to limit
+      iteration.
+  * Testsuite:
+    + Expand runtime test coverage.  Partly addresses #301.
+    + Add runtime test coverage for `?` (debug command).
+    + Fix compilation errors in stemtest.c, and actually run stemtest.
+      Regression introduced in v3.1.0.  Fixes #295, reported by Duncan Bellamy.
+  * Documentation: NEWS: Removed unused subheading in old entry.</comment>
+    <requestid>1400239</requestid>
+  </revision>
 </revisionlist>
