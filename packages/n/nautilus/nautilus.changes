@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Nov 23 22:35:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.2:
+  * Bugfixes:
+    + Use file-chooser portal directly
+    + Create thumbnails from Recent
+    + Only offer to open gnome-disks for block devices
+    + Avoid unnecessary scrolling in compress dialog
+    + Skip free space checks for merges on the same file system
+    + Follow initial symlink when starting a deep count
+    + Update file chooser view on filter changes
+    + Accept activated files in file chooser directly
+    + Handle SIGINT
+    + Ensure trash does not link to other files
+    + Improve image properties speed on external locations
+    + Treat webp and jpeg xl as pictures for search
+    + Keep underscores in history menu labels
+    + Don't open folders on hover while scrolling
+    + Don't name a skipped file in the progress status
+    + Don't accept empty archive names when compressing
+    + Make access and creation times optional in search
+    + Fix selection on deleting last item
+    + Use correct date with date range search
+    + Keep prior focus when closing location entry with button
+    + Fix critical warning when unmounting onedrive
+    + Fix stack buffer overflow when dropping text
+    + Fix crash when a file chooser portal is the active window
+    + Fix crash on middle-click in the path bar of the file chooser
+    + Fix use-after-free when opening a regular file location
+    + Don't offer to delete folder contents when undoing a folder copy
+    + Fix wrong location when navigating from a non-search location
+    + Don't abort deep counts when files disappear
+    + Fix invalid UTF-8 names in the trash notification
+    + Fix swapped owner and group undo labels
+    + Fix swapped source and destination icons in the conflict dialog
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Oct 12 11:00:21 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 51.1:
