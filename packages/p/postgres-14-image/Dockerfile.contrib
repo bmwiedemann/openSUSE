@@ -18,7 +18,7 @@
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%-contrib-%RELEASE%
 #!BuildTag: opensuse/postgres:%%pg_patch_version%%-contrib
 #!BuildTag: opensuse/postgres:14-contrib
-#!BuildTag: opensuse/postgres:%%pg_minor_version%%
+#!BuildTag: opensuse/postgres:%%pg_minor_version%%-contrib
 #!BcntSyncTag: postgres-14-image
 
 #!FilterBaseContainerPkgs
