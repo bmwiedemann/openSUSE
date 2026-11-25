@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Nov 23 18:37:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 21.0.0
+  https://www.qt.io/blog/qt-creator-21-released
+- Rebase patches
+
+-------------------------------------------------------------------
 Tue Oct 13 18:35:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Pick Debian patch to fix build on 32bit archs

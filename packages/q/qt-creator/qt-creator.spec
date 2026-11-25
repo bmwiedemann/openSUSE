@@ -1,7 +1,7 @@
 #
 # spec file for package qt-creator
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 20.0.2
-%define short_version 20.0
+%define real_version 21.0.0
+%define short_version 21.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        20.0.2
+Version:        21.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -65,9 +65,9 @@ Patch12:        0001-Disable-some-plugins.patch
 Patch13:        32bit_build_fix.patch
 ##
 BuildRequires:  cmake
-BuildRequires:  clang-devel >= 10.0
-BuildRequires:  llvm-devel
+BuildRequires:  clang-devel >= 14.0
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.8
 BuildRequires:  cmake(yaml-cpp)
@@ -203,7 +203,7 @@ DESTDIR=%{buildroot} cmake --install build --component Devel
 rm -r %{buildroot}%{_datadir}/qtcreator/scripts
 
 # Already packaged
-rm %{buildroot}%{_datadir}/qtcreator/{HACKING,LICENSE.GPL3-EXCEPT,README.md}
+rm %{buildroot}%{_datadir}/qtcreator/{BUILDING.md,CONTRIBUTING.md,HACKING,LICENSE.GPL3-EXCEPT,README.md}
 
 # Broken and useless for most users
 rm %{buildroot}%{_bindir}/qtcreator.sh
@@ -221,8 +221,6 @@ cp -a doc/qtcreator/* %{buildroot}%{qtc_docdir}/qtcreator/
 
 # Source Code Pro is packaged independently
 rm -r %{buildroot}%{_datadir}/qtcreator/fonts
-
-rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 
 %ldconfig_scriptlets
 
@@ -244,6 +242,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_datadir}/qtcreator/generic-highlighter/
 %{_datadir}/qtcreator/glsl/
 %{_datadir}/qtcreator/indexer_preincludes/
+%{_datadir}/qtcreator/harmonyos/
 %{_datadir}/qtcreator/jsonschemas/
 %{_datadir}/qtcreator/lua-lupdate/
 %{_datadir}/qtcreator/lua-plugins/
@@ -264,10 +263,7 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %{_libexecdir}/qtcreator/buildoutputparser
 %{_libexecdir}/qtcreator/cpaster
 %{_libexecdir}/qtcreator/dlwrapper
-%{_libexecdir}/qtcreator/perf2text
-%{_libexecdir}/qtcreator/perfparser
 %{_libexecdir}/qtcreator/qmlpuppet*
-%{_libexecdir}/qtcreator/qmltraceviewer
 %{_libexecdir}/qtcreator/qtc-askpass
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtpromaker

@@ -522,4 +522,12 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
   * 32bit_build_fix.patch</comment>
     <requestid>1384852</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>90f3df2a4b87e6b6b1e50b73a0b0522f</srcmd5>
+    <version>21.0.0</version>
+    <time>1795619546</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400405</requestid>
+  </revision>
 </revisionlist>
