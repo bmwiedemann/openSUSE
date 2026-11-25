@@ -680,4 +680,12 @@
     <comment></comment>
     <requestid>1369104</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>9086e329464939e2870f14b2173d4bd6</srcmd5>
+    <version>1.61</version>
+    <time>1795619471</time>
+    <user>anag_factory</user>
+    <comment>sychronize changelog with SLFO:Main</comment>
+    <requestid>1400001</requestid>
+  </revision>
 </revisionlist>

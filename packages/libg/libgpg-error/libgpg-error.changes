@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov 23 16:27:07 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Synchronize openSUSE:Factory with SLFO:Main. This makes
+  libgpg-error-Fix-out-of-bounds-read-in-vfnameconcat.patch
+  obsolete; it's included in 1.61.
+
+- Upstream has published a new libgpg-error-1.61.tar.bz2.sig.
+
+-------------------------------------------------------------------
 Thu Jul 30 07:47:10 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build on 32-bit arm:
   * libgpg-error-fix-armv7.patch
+
+-------------------------------------------------------------------
+Mon Jul 20 16:03:30 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix:
+  * Fix out-of-bounds read in vfnameconcat. (bsc#1263078)
+  * src/stringutils.c (_gpgrt_vfnameconcat): Use the correct value
+    for the trailing slash check.
+  * Add libgpg-error-Fix-out-of-bounds-read-in-vfnameconcat.patch
 
 -------------------------------------------------------------------
 Sun May 10 10:05:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -40,6 +58,14 @@ Sun Dec 14 08:47:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.58:
   * fixes for platforms other than GNU/Linux
+  * New src/gpg-error.c (main): New command "fconcat".
+  * Rename src/spawn-posix.c (struct gpgrt_spawn_actions): Rename the field to
+    ENVP.
+  * argparse: Use SYSCONFDIR for /etc.
+  * Update translations for Portugese, German
+  * src/estream.c (parse_mode): Fix parsing of "share". Set sysopen
+    flag.
+  * syscfg: Add 64-bit Android arch.
 
 -------------------------------------------------------------------
 Wed Dec 10 14:52:41 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
@@ -478,7 +504,7 @@ Thu Apr 19 14:12:03 UTC 2018 - astieger@suse.com
 -------------------------------------------------------------------
 Wed Apr 11 08:51:39 UTC 2018 - kbabioch@suse.com
 
-- Cleaned up spec file with spec-cleaner 
+- Cleaned up spec file with spec-cleaner
 
 -------------------------------------------------------------------
 Wed Apr 11 08:48:50 UTC 2018 - kbabioch@suse.com
@@ -507,7 +533,7 @@ Tue Mar 13 14:28:52 UTC 2018 - kbabioch@suse.com
   * The new files gpgrt.m4 and gpgrt-config are now installed. They can
     be used instead of gpg-error.m4 and gpg-error-config.
   * New logging functions similar to those used by GnuPG.
-  * New helper functions for platform abstraction. 
+  * New helper functions for platform abstraction.
   * Interface changes
 
 -------------------------------------------------------------------
@@ -718,7 +744,7 @@ Wed Oct 15 19:43:20 UTC 2014 - andreas.stieger@gmx.de
    gpgrt_pending                    NEW.
    gpgrt_pending_unlocked           NEW.
 - Build with --enable-build-timestamp=no to prevent unneccessary
-  rebuilds of dependent packages  
+  rebuilds of dependent packages
 - add required spec for introducted info page
 
 -------------------------------------------------------------------
@@ -843,7 +869,7 @@ Sun Oct  2 18:04:00 UTC 2011 - crrodriguez@opensuse.org
 -------------------------------------------------------------------
 Fri Dec  3 11:53:24 UTC 2010 - puzel@novell.com
 
-- update to version 1.9 
+- update to version 1.9
  * New function gpg_err_deinit.
  * Interface changes relative to the 1.8 release:
    GPG_ERR_MISSING_KEY           NEW
@@ -860,7 +886,7 @@ Sun Oct 31 12:37:02 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Tue Aug 17 11:41:23 UTC 2010 - puzel@novell.com
 
-- update to version 1.8 
+- update to version 1.8
  * New option --list for gpg-error.
  * Interface changes relative to the 1.7 release:
    GPG_ERR_NOT_ENABLED           NEW
@@ -892,7 +918,7 @@ Mon Jun  1 11:41:02 CEST 2009 - puzel@suse.cz
 Fri Feb 20 03:00:44 CET 2009 - crrodriguez@suse.de
 
 - remove static libraries, there is no reason to use them as
-  shared libraries live in /%{_lib} 
+  shared libraries live in /%{_lib}
 
 -------------------------------------------------------------------
 Thu Jan 29 10:57:01 CET 2009 - olh@suse.de
@@ -924,7 +950,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Wed Nov 21 18:21:11 CET 2007 - mkoenig@suse.de
 
-- update to version 1.6 
+- update to version 1.6
   * Minor build system fixes
   * gpg-error has a new option --version
   * Interface changes relative to the 1.4 release:
@@ -942,7 +968,7 @@ Wed Dec 13 12:37:00 CET 2006 - mkoenig@suse.de
 -------------------------------------------------------------------
 Tue Dec  5 18:47:06 CET 2006 - mkoenig@suse.de
 
-- move shared lib to /%_lib 
+- move shared lib to /%_lib
 
 -------------------------------------------------------------------
 Tue Sep 19 16:23:09 CEST 2006 - mkoenig@suse.de
@@ -958,7 +984,7 @@ Tue Sep 19 16:23:09 CEST 2006 - mkoenig@suse.de
 Thu Jul 13 09:55:21 CEST 2006 - mskibbe@suse.de
 
 - add autoreconf --force ( includes the missing -fPIC option while
-  build ) 
+  build )
 
 -------------------------------------------------------------------
 Wed Jul 12 11:14:55 CEST 2006 - mskibbe@suse.de
@@ -993,7 +1019,7 @@ Mon Sep 27 14:37:55 CEST 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Mon Jul 19 13:31:55 CEST 2004 - hvogel@suse.de
 
-- correct nld_build if statement 
+- correct nld_build if statement
 
 -------------------------------------------------------------------
 Wed Jul 14 10:20:45 CEST 2004 - adrian@suse.de
@@ -1014,5 +1040,4 @@ Wed May 19 15:03:17 CEST 2004 - hvogel@suse.de
 -------------------------------------------------------------------
 Tue Feb 17 21:13:31 CET 2004 - hvogel@suse.de
 
-- initial package, version 0.6 
-
+- initial package, version 0.6
