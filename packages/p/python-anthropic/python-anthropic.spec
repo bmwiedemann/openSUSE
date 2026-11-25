@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 # Legal-Review-Notice: ships vendored httpx_aiohttp (BSD-3-Clause)
@@ -88,7 +88,7 @@ cp -a src/anthropic/_vendor/httpx_aiohttp/LICENSE httpx_aiohttp.LICENSE
 # is too strict for an offline subset build).
 %pytest -o addopts="" -W default --noconftest tests/test_models.py tests/test_qs.py tests/test_required_args.py tests/test_extract_files.py tests/test_utils
 
-%files %{python_files}
+%files %python_files
 %license LICENSE httpx_aiohttp.LICENSE
 %doc README.md MIGRATION.md
 %{python_sitelib}/anthropic

@@ -412,4 +412,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update python-anthropic to 2.13.0: Message Batches error code, Admin external storage, Opus 4.5 deprecation.</comment>
     <requestid>1400204</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0ce26c90ea65d44ce4967032f323c7ee</srcmd5>
+    <version>2.14.0</version>
+    <time>1795619653</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic to 2.14.0: Google-managed data controls, proxy/trust_env fix, enum docs.</comment>
+    <requestid>1400521</requestid>
+  </revision>
 </revisionlist>

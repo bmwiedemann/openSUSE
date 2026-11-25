@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:55:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.14.0:
+  * API: add Google-managed data controls for Google Cloud
+    projects and user profiles; add support for compliance review
+    cases, notices, and items
+  * Fix client to honor proxy and trust_env when proxy variables
+    are set: an explicit proxy= is now used for every request and
+    the variables are not read, matching plain httpx2 behavior
+  * Docs: show what enum values mean; drop the provisional naming
+    note from the Google Cloud client README
+
+-------------------------------------------------------------------
 Tue Nov 24 06:28:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.13.0:
