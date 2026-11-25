@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 24 21:33:02 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated ada to 4.1.1
+  * https://github.com/ada-url/ada/releases/tag/v4.1.1
+- Updated tg_owt to git20261122
+  * No changes provides.
+- Updated td to git20261123
+  * No changes provides.
+- Updated telegram-desktop to 7.4.6
+  * Added twidget-vendor-7.4.6.tar.xz to build twidget.
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.4.6
+
+-------------------------------------------------------------------
 Fri Nov 13 20:42:18 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated telegram-desktop to 7.4.4
