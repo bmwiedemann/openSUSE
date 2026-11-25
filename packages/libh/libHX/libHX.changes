@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Nov 24 20:57:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- install a license file
+
+-------------------------------------------------------------------
+Thu Nov 19 00:20:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.6
+  * socket: reinstate SO_DOMAIN/SO_PROTOCOL checks for Linux
+    when exercising socket takeover from environment.
+
+-------------------------------------------------------------------
 Thu Oct 29 08:40:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.5
@@ -545,7 +557,7 @@ Mon Jul 27 11:10:51 CEST 2009 - mc@novell.com
   - string: fixed number of fields and trailing NULL in HX_split4
   - string: add HX_basename_exact
   - HXproc now knows about HXPROC_NULL_*, which can be used to discard I/O
-  - HXproc: expressly prohibit HXPROC_STD* for HXproc_run_sync 
+  - HXproc: expressly prohibit HXPROC_STD* for HXproc_run_sync
 
 -------------------------------------------------------------------
 Mon May 11 11:18:17 CEST 2009 - mc@suse.de
@@ -562,13 +574,13 @@ Wed Feb 18 12:22:28 CET 2009 - mc@suse.de
 
 - update to version 2.5
   * a lot of new features and fixes
-    see /usr/share/doc/packages/libHX/changelog.txt for details 
+    see /usr/share/doc/packages/libHX/changelog.txt for details
   * move lib back to /usr/lib/
 
 -------------------------------------------------------------------
 Thu Jan 29 15:38:19 CET 2009 - crrodriguez@suse.de
 
-- move .so symlinks to %%{_libdir} 
+- move .so symlinks to %%{_libdir}
 - fix -devel package dependencies
 
 -------------------------------------------------------------------
@@ -580,14 +592,14 @@ Wed Oct 22 16:17:19 CEST 2008 - mrueckert@suse.de
 Thu Sep 25 14:54:25 CEST 2008 - mc@suse.de
 
 - pointer was not automatically updated after hmc_trunc()
-- make code resistant to memory allocation failure 
+- make code resistant to memory allocation failure
 
 -------------------------------------------------------------------
 Fri Sep  5 09:56:48 CEST 2008 - mc@suse.de
 
 - update to version 1.23
   - code cleanup: misc.h has been split off libHX.h
-  - add defs.h 
+  - add defs.h
 - move libs to /lib[64] (required for pam_mount)
 
 -------------------------------------------------------------------
@@ -633,18 +645,18 @@ Mon Apr  7 11:39:23 CEST 2008 - mc@suse.de
 Wed Apr  2 18:06:43 CEST 2008 - mc@suse.de
 
 - version 1.10.2
-  * bugfixes 
+  * bugfixes
 
 -------------------------------------------------------------------
 Mon Oct  8 15:03:07 CEST 2007 - mc@suse.de
 
 - version 1.10.1
   * Fix output of line-wrapped help text
-  * fix tarball 
+  * fix tarball
 - package pkgconfig file
 
 -------------------------------------------------------------------
 Thu Jul 12 11:27:47 CEST 2007 - mc@suse.de
 
-- initial release 1.10.0 
+- initial release 1.10.0
 

@@ -1,7 +1,7 @@
 Format: 1.0
 Source: libhx
 Architecture: any
-Version: 5.5
+Version: 5.6
 DEBTRANSFORM-RELEASE: 1
 Maintainer: openSUSE <opensuse@opensuse.xz>
 Homepage: https://opensuse.org/

@@ -18,7 +18,7 @@
 
 Name:           libHX
 %define lname   libHX43
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Collection of routines for C and C++ programming
 License:        LGPL-2.1-or-later
@@ -80,6 +80,7 @@ install -pm0644 doc/* "$b/%_docdir/%name"
 %ldconfig_scriptlets -n %lname
 
 %files -n %lname
+%license COPYING
 %_libdir/libHX*.so.43*
 
 %files devel

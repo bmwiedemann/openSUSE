@@ -701,4 +701,13 @@ Try submission again, hoping that the service validator is updated on the server
     <comment>- Update to release 5.5</comment>
     <requestid>1393582</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>19d524cce2041d4bc918893ae2d7d5e0</srcmd5>
+    <version>5.6</version>
+    <time>1795619521</time>
+    <user>anag_factory</user>
+    <comment>- install a license file
+- Update to release 5.6</comment>
+    <requestid>1400403</requestid>
+  </revision>
 </revisionlist>
