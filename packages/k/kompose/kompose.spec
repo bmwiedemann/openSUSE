@@ -17,7 +17,7 @@
 
 
 Name:           kompose
-Version:        1.38.0
+Version:        1.39.0
 Release:        0
 Summary:        Go from Docker Compose to Kubernetes
 License:        Apache-2.0
@@ -29,7 +29,7 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  python3-PyYAML
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.24
 
 %description
 kompose is a tool to help users who are familiar with docker-compose move to

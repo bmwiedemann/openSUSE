@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Nov 25 05:47:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.39.0:
+  * transformer: keep raw bytes in ConfigMap binaryData (#2143)
+  * go.mod: require openshift/api by commit so go install works
+    (#2129)
+  * transformer: don't panic on volume name plus access mode
+    (#2128)
+  * add integration tests
+  * fix of bug #1897
+  * fix: recurse checkIsEmptyDir with correct path and nested
+    result (#2102)
+  * fix: do not emit duplicate PVC artifacts for StatefulSets
+
+-------------------------------------------------------------------
 Fri Jan 16 06:14:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.38.0:
