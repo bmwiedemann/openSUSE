@@ -245,6 +245,12 @@ Patch53:        test_UDPLITE_support.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-pop3-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in POP3 commands
 Patch55:        CVE-2025-15366-pop3-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-socket-getaddrinfo-null-bytes.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port
+Patch56:        CVE-2026-116566-socket-getaddrinfo-null-bytes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-http-client-framing.patch bsc#1288328 mcepl@suse.com
+# gh-150751: validate http.client Content-Length and chunk-size
+Patch57:        CVE-2026-103995-http-client-framing.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

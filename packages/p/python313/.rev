@@ -1488,4 +1488,20 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
     - gh-157579: Fix a race condition in the cleanup of</comment>
     <requestid>1397638</requestid>
   </revision>
+  <revision rev="50" vrev="2">
+    <srcmd5>bfdcb77710a888824be001aaa72c4c11</srcmd5>
+    <version>3.13.18</version>
+    <time>1795619526</time>
+    <user>anag_factory</user>
+    <comment>Two fixes (CVE-2026-103995 and CVE-2026-116566)
+
+- CVE-2026-103995: gh-150751: validate http.client
+  Content-Length and chunk-size (bsc#1288328)
+  CVE-2026-103995-http-client-framing.patch
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo()
+  host and port (bsc#1289106)
+  CVE-2026-116566-socket-getaddrinfo-null-bytes.patch</comment>
+    <requestid>1400209</requestid>
+  </revision>
 </revisionlist>
