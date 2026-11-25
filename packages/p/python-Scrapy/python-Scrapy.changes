@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Nov 24 23:34:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.20.0:
+  * Drop Python 3.10 and PyPy support; add Python 3.15 support and fix
+    PEP 649 NameError on Python 3.14
+  * Require aiodns >= 3.3.0, aioftp >= 0.26.1, aiohttp >= 3.13.3,
+    brotli >= 1.2.0, formerly >= 0.1.0, frostwork >= 0.2.2, and
+  * Require backports.zstd >= 1.3.0 (< 3.14), platformdirs >= 2.0.0;
+    drop charset-normalizer and raise Twisted/w3lib/lxml/etc. floors
+  * Add optional extras for optional dependencies and switch
+    HttpxDownloadHandler to httpx2
+  * Security: limit response memory by default and cap
+    HttpCompressionMiddleware decompression ratios
+  * Security: scope http_auth_domain/proxy credentials, use HTTPS in
+    S3FilesStore, and harden LxmlLinkExtractor
+  * Add browser-like detection of response encodings, base URLs, and
+    meta refresh redirects (powered by frostwork)
+  * Allow awaiting Request objects directly to get their response
+  * Deprecate non-asyncio Twisted reactors
+  * Add RemoteControl HTTP inspection/control extension
+  * Add experimental aiohttp-based download handler (default without
+    reactor) and experimental FTP/FTPS download handler
+  * Make Twisted HTTP/2 download handler non-experimental and add
+    HTTP2_MAX_FRAME_SIZE
+  * Add MetaCopyDetectionMiddleware and JsonValidationMiddleware
+  * Add SQLite-backed scheduler queues and DiskDupeFilter
+  * Add genrequest and complete CLI commands, ipdb for --pdb, and
+    %(spider)s/LOG_COLOR/LOG_LEVELS/LOG_ROOT_FORMATTER logging options
+  * Add DOWNLOAD_HANDLERS_BY_NAME, DOWNLOAD_DELAY_JITTER, FEED_MODE,
+    REDIRECT_HTTP_CODES, STICKY_META_KEYS, and HTTPCACHE_SCOPE
+  * Add body_file/delay/depth_reset/proxy_headers/skip_dupefilter_once
+    meta keys, Request.id, Request.to_curl(), and TextResponse.base_url
+  * Add robots_parsed and spider_state_* signals, event loop lag
+    monitor, and Response.follow_redirect()/Response.to_dict()
+  * Support FTPS feed storage, inferred FEEDS format, item_processor,
+    async MediaPipeline.item_completed(), and Spider.start() contracts
+  * Raise RuntimeError on uninitialized Crawler attributes and export
+    item fields in declaration order
+  * Limit open connections in HTTP handlers, reuse connections, and
+    support SSLKEYLOGFILE and emoji domains
+  * Remove deprecated zope.interface runtime usage, MEMDEBUG_NOTIFY,
+    md5sum(), xmliter(), CaselessDict, and METAREFRESH_IGNORE_TAGS
+  * Fix HttpCacheMiddleware, CookiesMiddleware, OffsiteMiddleware,
+    RedirectMiddleware, SitemapSpider, CrawlSpider, and jobdir bugs
+  * Fix Headers UTF-8/default handling, Item copy.copy(), asyncio
+    reactor/shell/telnet bugs, and crawl shutdown hangs
+- Switch to Pypi tarball, drop _service and _servicedata.
+- Add patch no-sphinx-reredicts.patch:
+  * Do not require sphinx_reredicts, it isn't packaged.
+
+-------------------------------------------------------------------
 Tue Jul 14 14:26:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to version 2.17.0+git7:

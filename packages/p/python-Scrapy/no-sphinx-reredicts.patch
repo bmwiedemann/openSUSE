@@ -1,0 +1,12 @@
+Index: scrapy-2.20.0/docs/conf.py
+===================================================================
+--- scrapy-2.20.0.orig/docs/conf.py
++++ scrapy-2.20.0/docs/conf.py
+@@ -31,7 +31,6 @@ extensions = [
+     "sphinx_scrapy",
+     "scrapyfixautodoc",  # Must be after "sphinx.ext.autodoc"
+     "sphinx.ext.coverage",
+-    "sphinx_reredirects",
+     "sphinx_rtd_dark_mode",
+ ]
+ 
