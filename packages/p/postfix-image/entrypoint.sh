@@ -334,6 +334,14 @@ configure_postfix() {
     if [ "${VIRTUAL_MBOX}" -eq "1" ]; then
         setup_vhosts
     fi
+    if [ -n "${MESSAGE_SIZE_LIMIT}" ]; then
+        set_config_value "message_size_limit" "${MESSAGE_SIZE_LIMIT}"
+        # mailbox_size_limit must be 0 (unlimited) or >= message_size_limit,
+        # else postfix refuses to start. Default to unlimited unless overridden.
+        set_config_value "mailbox_size_limit" "${MAILBOX_SIZE_LIMIT:-0}"
+    elif [ -n "${MAILBOX_SIZE_LIMIT}" ]; then
+        set_config_value "mailbox_size_limit" "${MAILBOX_SIZE_LIMIT}"
+    fi
     if [ -n "${MYDESTINATION}" ]; then
 	set_config_value "mydestination" "${MYDESTINATION}"
     else
