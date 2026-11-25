@@ -42,4 +42,13 @@
 - Rewrite Description.</comment>
     <requestid>1400081</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>705d8af86a7e80fef63ad2f029082f30</srcmd5>
+    <version>2.4.1</version>
+    <time>1795619589</time>
+    <user>anag_factory</user>
+    <comment>- Make use of uv-dynamic-versioning, set via environment variable.
+- Drop patch static-version.patch.</comment>
+    <requestid>1400436</requestid>
+  </revision>
 </revisionlist>

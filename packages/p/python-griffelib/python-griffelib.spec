@@ -24,13 +24,11 @@ Summary:        Signatures for entire Python programs (library)
 License:        ISC
 URL:            https://mkdocstrings.github.io/griffe/
 Source0:        https://files.pythonhosted.org/packages/source/g/griffelib/griffelib-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE static-version.patch mcepl@suse.com
-# Don't use uv-dynamic-versioning, just set it statically
-Patch0:         static-version.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module uv-dynamic-versioning}
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
@@ -55,10 +53,8 @@ breaking API changes between versions.
 %prep
 %autosetup -p1 -n griffelib-%{version}
 
-# set the version
-sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
-
 %build
+export UV_DYNAMIC_VERSIONING_BYPASS="%{version}"
 %pyproject_wheel
 
 %install
