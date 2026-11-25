@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Nov 17 12:01:29 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
 Tue Oct 20 07:56:20 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Add Channel Binding support for GSSAPI/GSS-SPNEGO; (bsc#1229655);
@@ -13,7 +18,7 @@ Thu Oct  8 12:06:21 UTC 2026 - Peter Varkoly <varkoly@suse.com>
 
 - Fix heap-based buffer overflow in DIGEST-MD5 add_to_challenge():
   buffer size was not recomputed after quoting expanded the value,
-  allowing a malicious server to overflow the client heap. 
+  allowing a malicious server to overflow the client heap.
   (bsc#1284687) CVE-2026-107161
   * add cyrus-sasl-digestmd5-quote-overflow.patch
 

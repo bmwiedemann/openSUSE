@@ -170,23 +170,12 @@ or server side to provide authentication. See RFC 2222 for more
 information.
 
 %prep
-%setup -q -n cyrus-sasl-%{version} -a 1
+%autosetup -a 1 -p1
 if [ -e %{_builddir}/%{name}-%{version}/dlcompat-*/ ]
 then
     echo "dlcompat contains potential legal risks."
     rm -rf %{_builddir}/%{name}-%{version}/dlcompat-*
 fi
-%patch -P 0
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

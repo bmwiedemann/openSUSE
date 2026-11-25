@@ -81,18 +81,7 @@ Conflicts:      cyrus-sasl-sqlauxprop-bdb
 The SQL auxprop plugin supports PostgreSQL and MySQL
 
 %prep
-%setup -n cyrus-sasl-%{version} -a 1
-%patch -P 0
-%patch -P 5 -p1
-%patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
-%patch -P 10 -p1
-%patch -P 11 -p1
-%patch -P 12 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
+%autosetup -a 1 -p1 -n cyrus-sasl-%{version}
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

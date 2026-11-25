@@ -1,7 +1,7 @@
-Index: m4/cyrus.m4
+Index: a/m4/cyrus.m4
 ===================================================================
---- m4/cyrus.m4.orig
-+++ m4/cyrus.m4
+--- a/m4/cyrus.m4.orig
++++ a/m4/cyrus.m4
 @@ -36,7 +36,7 @@ AC_DEFUN([CMU_GUESS_RUNPATH_SWITCH], [
      SAVE_LDFLAGS="${LDFLAGS}"
      LDFLAGS="-R /usr/lib"
@@ -11,10 +11,10 @@ Index: m4/cyrus.m4
      AC_TRY_LINK([],[],[andrew_cv_runpath_switch="-Wl,-rpath,"],
      [andrew_cv_runpath_switch="none"])
      ])
-Index: Makefile.am
+Index: a/Makefile.am
 ===================================================================
---- Makefile.am.orig
-+++ Makefile.am
+--- a/Makefile.am.orig
++++ a/Makefile.am
 @@ -44,6 +44,7 @@ ACLOCAL_AMFLAGS = -I m4
  #
  ################################################################
@@ -23,10 +23,10 @@ Index: Makefile.am
  if SASLAUTHD
  SAD = saslauthd
  else
-Index: sasldb/Makefile.am
+Index: a/sasldb/Makefile.am
 ===================================================================
---- sasldb/Makefile.am.orig
-+++ sasldb/Makefile.am
+--- a/sasldb/Makefile.am.orig
++++ a/sasldb/Makefile.am
 @@ -57,3 +57,9 @@ EXTRA_libsasldb_la_SOURCES = $(extra_com
  libsasldb_la_DEPENDENCIES = $(SASL_DB_BACKEND)
  libsasldb_la_LIBADD = $(SASL_DB_BACKEND) $(SASL_DB_LIB)
@@ -37,10 +37,10 @@ Index: sasldb/Makefile.am
 +db_berkeley.lo: db_berkeley.o
 +allockey.lo: allockey.o
 +
-Index: saslauthd/Makefile.am
+Index: a/saslauthd/Makefile.am
 ===================================================================
---- saslauthd/Makefile.am.orig
-+++ saslauthd/Makefile.am
+--- a/saslauthd/Makefile.am.orig
++++ a/saslauthd/Makefile.am
 @@ -1,4 +1,5 @@
  AUTOMAKE_OPTIONS = 1.7
 +ACLOCAL_AMFLAGS=-I ../config -I ../cmulocal
