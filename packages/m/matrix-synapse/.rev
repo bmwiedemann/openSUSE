@@ -2000,4 +2000,14 @@ Switch [Service] Type=notify</comment>
 - Update to 1.165.0</comment>
     <requestid>1396612</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>1c380daf0c06c322fb2b19045c5d760d</srcmd5>
+    <version>1.166.0</version>
+    <time>1795619535</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1400362 from darix
+
+- Update to 1.166.0</comment>
+    <requestid>1400363</requestid>
+  </revision>
 </revisionlist>
