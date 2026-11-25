@@ -1771,4 +1771,16 @@
     <comment>Fixed changelog.</comment>
     <requestid>1398537</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>509b3293bf82676f2d16651432b88091</srcmd5>
+    <version>1.31.10</version>
+    <time>1795619478</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.31.10 (boo#1291441)
+  - Security: when using the &quot;ssl_early_data&quot; directive a client
+    might cause excessive CPU usage (CVE-2026-132779).
+  - Bugfix: nginx might hog CPU if SSL connections to backends were
+    used.</comment>
+    <requestid>1400023</requestid>
+  </revision>
 </revisionlist>

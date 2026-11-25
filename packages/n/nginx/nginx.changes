@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 23 16:37:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.31.10 (boo#1291441)
+  - Security: when using the "ssl_early_data" directive a client
+    might cause excessive CPU usage (CVE-2026-132779).
+  - Bugfix: nginx might hog CPU if SSL connections to backends were
+    used.
+
+-------------------------------------------------------------------
 Wed Nov 18 16:29:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.31.9 ( boo#1290867 boo#1290868 boo#1290871
