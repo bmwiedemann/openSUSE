@@ -26,7 +26,7 @@
 # NOTE: Appears there are no .pc files in qt6
 #%%(pkg-config --modversion Qt6Core)
 Name:           shotcut
-Version:        26.9.27
+Version:        26.11.15
 Release:        0
 Summary:        Video and audio editor and creator
 License:        GPL-3.0-or-later
@@ -34,6 +34,7 @@ Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://www.shotcut.org/
 Source:         https://github.com/mltframework/shotcut/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libebur128-devel >= 1.2.6
@@ -72,11 +73,6 @@ Requires:       melt7
 Requires:       qt6-sql-sqlite = %{qt6version}
 Recommends:     lame
 ExclusiveArch:  ppc64 ppc64le x86_64
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
 # NOTE: Can't find a matching package suspect it's merged into another package
 #Requires:       libqt6-qtgraphicaleffects >= %%{qt6version}
 # This is already pulled in by rpm
@@ -103,9 +99,6 @@ find . \
 %cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
        -DCMAKE_BUILD_TYPE=Release \
        -DSHOTCUT_VERSION=%{version} \
-%if 0%{?suse_version} == 1500
-       -DCMAKE_CXX_COMPILER:FILEPATH=%{_bindir}/g++-13 \
-%endif
        -DDEFINES+=SHOTCUT_NOUPGRADE
 %cmake_build
 
@@ -137,14 +130,6 @@ popd
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-edl/rebuild.sh
 chmod 0755 %{buildroot}/%{_datadir}/%{name}/qml/export-chapters/rebuild.sh
 %fdupes -s %{buildroot}/%{_datadir}
-
-%post
-%mime_database_post
-%desktop_database_post
-
-%postun
-%mime_database_postun
-%desktop_database_postun
 
 %files
 %doc README.md
