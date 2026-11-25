@@ -18,14 +18,14 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.60.2
+Version:        1.61.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: the tag below covers the whole linked set (the shipped
 # binary statically links its vendored Rust dependencies), derived as:
 # - "cargo tree --offline -p goose-cli -e normal --no-default-features
-#   --features %%{goose_features}" over the vendored tree (1103 crates vendored).
-# - Linked: 459 third-party crates plus the nine goose workspace crates (the
+#   --features %%{goose_features}" over the vendored tree (1102 crates vendored).
+# - Linked: 460 third-party crates plus the nine goose workspace crates (the
 #   code-mode, local-inference and cuda branches are not built).
 # - The cudaforge git dependency is unused (only the cuda branch needs it).
 # - Elections: Apache-2.0 where offered else MIT; no other "OR" adds an id:
@@ -41,12 +41,9 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # Upstream removed Nostr session sharing in this release (the goose/nostr
 # feature and session/nostr_share.rs are gone), so the bitcoin_hashes/secp256k1
 # crates that carried the previous CC0-1.0 entry left the linked graph with it.
-# BSD-2-Clause is elected by no crate -- zerocopy names it only as the branch
-# of a choice that is not taken. It comes from the bundled oniguruma instead:
-# onig_sys compiles the oniguruma 6.9.10 C sources into the binary while its
-# own manifest declares only MIT, and the two-clause BSD terms are in
-# vendor-crates/onig_sys-*/oniguruma/COPYING, installed as %%license
-# LICENSE.oniguruma.
+# - BSD-2-Clause: zstd-sys (BSD-3-Clause AND BSD-2-Clause) and the bundled
+#   oniguruma (onig_sys declares only MIT; text in oniguruma/COPYING).
+# - zerocopy names BSD-2-Clause only as an untaken choice branch.
 # MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;
 # the two texts are additionally installed as %%license files.
@@ -98,9 +95,9 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.6
 # (pulled in by rustls) has no system-library mode at all. Declare them so the
 # bundled CVE surface is visible to the distribution.
 Provides:       bundled(aws-lc) = 5.12.0
-Provides:       bundled(libzstd) = 1.5.7
+Provides:       bundled(libzstd) = 1.6.0
 Provides:       bundled(oniguruma) = 6.9.10
-Provides:       bundled(sqlite3) = 3.51.3
+Provides:       bundled(sqlite3) = 3.54.1
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 25 10:32:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.61.0:
+  * New declarative providers: llmman (Ollama-compatible)
+    and amazee.ai
+  * Import MCP's server.json into goose config; new MCP extension
+    and compaction operations for goose-agent
+  * Treat all headers as secret in mcpServers configs over ACP;
+    show the provider before the model on the model button
+  * Make tool approval optional for execution
+  * End TTFT on the first text, thinking or tool call; recover from
+    thinking-only provider turns instead of ending silently
+  * Time out stalled Databricks OAuth token requests;
+    resolve Ollama Cloud model context windows from the daemon
+  * Reject non-image attachments on external backends;
+    forward images in tool results for chatgpt_codex
+  * Strip terminal controls from assistant markdown; error when an
+    edit is a no-op; cap tree line counts to avoid OOM on procfs
+  * Override vulnerable yaml, brace-expansion, js-yaml
+    and picomatch in /ui
+- Refresh the vendored dependencies (1102 crates vendored,
+  zip 9.8.1 -> 9.8.2)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+- Bundled libraries: sqlite 3.51.3 -> 3.54.1, zstd 1.5.7 -> 1.6.0
+
+-------------------------------------------------------------------
 Sun Nov 22 09:51:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.60.2:
