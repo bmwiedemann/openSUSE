@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Nov 25 05:46:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.132.0:
+  * Features
+    - feat(api): detect more coding agents (a741841c)
+    - feat(api): send the organization ID as an HTTP header
+      (2df91a2f)
+    - feat(commands): token args shell completion (4be3f3cb)
+    - feat(df): trust the proxy despite a local Bundler ssl_ca_cert
+      (03f632c3)
+    - feat(minder): add glab minder command via binarymgr (linux)
+      (fe055d06)
+    - feat(minder): prepare to split agent sessions
+    - feat(minder): sync Cursor sessions from the Cursor stop and
+      sessionEnd hooks (c5683745)
+    - feat(minder): upload only agent activity from after setup
+      (80ead1ab)
+    - feat(mr): add --skip-ci to mr merge (032be95c)
+    - feat(mr): selectively fill title or description on update
+      (edf492f8)
+    - feat(mr): show conflicts in plain-text view (eae796f5)
+    - feat(stack): support merge request description templates
+      (1339650f)
+  * Bug Fixes
+    - fix(binarymgr): bound registry lookups and stamp failed
+      update checks (e57ffbf9)
+    - fix(config): skip local config when git rev-parse fails
+      (3b637a14)
+    - fix(df): harden the proxy's policy checks and shutdown
+      (f407f204)
+    - fix(df): keep npm and Yarn cafile settings from distrusting
+      the proxy (5288ccf1)
+    - fix(df): keep the system CAs in the proxy CA bundle
+      (f0242b18)
+    - fix(df): say git is required when the project can't be found
+      (dc617d5b)
+    - fix(df): trust the proxy through PIP_CERT for poetry
+      (05b9d962)
+    - fix(df): use pip's --proxy as the upstream proxy (22b69d1a)
+    - fix(glrepo): keep www. prefix on self-managed hostnames
+      (00d19ef7)
+    - fix(job artifact): drop special mode bits when extracting
+      artifacts (4a13b2ca)
+    - fix(minder): mention and uninstall the local session records
+      (99724442)
+    - fix(minder): report discovered sessions without a GitLab
+      remote (6a1ed625)
+    - fix(minder): stop syncing an open session once its hooks are
+      removed (e619495e)
+    - fix(mr note): keep positional argument order in help usage
+      (fdcb94ea)
+    - fix(mr): make --wip an alias for --draft (42f8f0e5)
+    - fix(template): Load templates from the --repo project
+      (e6b98c6b)
+    - fix(token): missing newline after revoke result message
+      (2b61d9e9)
+  * Documentation
+    - docs(minder): write down the consent rules for glab minder
+      setup (c7d46375)
+    - docs: improve description of the default type (d29f8e83)
+  * Maintenance
+    - chore(docs): exclude Argo translation templates from Markdown
+      linters (6c07b832)
+    - chore(duo): install ruby in Duo agent sessions (81ab1c1b)
+    - chore(govern): derive audit event IDs with SHA-256 instead of
+      SHA-1 (9170d4bd)
+    - chore(release): collapse Go module bumps in the Slack
+      announcement (bb9f91e6)
+    - chore: Remove gitlab-bot approvals (e67e160f)
+    - chore: bump builder container image to Hugo 0.166.0 for
+      documentation (d37ef5ab)
+    - chore: restore repository suffix to environment URL for
+      documentation (99d8524c)
+    - refactor(ci): simplify job dedupe in ci view (6df81bae)
+    - refactor(cmdutils): share ParseID helper so invalid-ID errors
+      name rejected value (454d41ca)
+    - refactor(minder): resolve a folder's GitLab project in gaig
+      (4b813c9a)
+    - refactor(minder): share secret redaction across glab minder
+      commands (1464443f)
+    - refactor: route unauthenticated client through Factory
+      (ae8f3841)
+    - refactor: simplify and micro-optimize group override handling
+      (c9423749)
+  * Dependencies
+    - chore(deps): update dependency markdownlint-cli2 to v0.24.1
+      (23ca8f59)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/protos/gen/go/gitlab/autoflow to
+      v0.1.17 (f9a5071b)
+    - chore(deps): update module golang.org/x/crypto to v0.59.0
+      (5a82ab0f)
+  * Others
+    - test(ci): cover the pipeline creator in view header
+      (eaf311ce)
+    - test(cmdtest): default to an executor that fails clearly
+      (0bb0f480)
+    - test: share relative-year output normalization (befa13e9)
+
+-------------------------------------------------------------------
 Wed Nov 18 05:46:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.131.0:
