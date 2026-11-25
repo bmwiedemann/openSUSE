@@ -1482,4 +1482,12 @@
     + Fix wrong database name in syslog(3) message. Regression introduced in 4.1.3.</comment>
     <requestid>1399868</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>af14e0b1bc62653b82d23ae89b8601d7</srcmd5>
+    <version>4.20.4</version>
+    <time>1795625861</time>
+    <user>anag_factory</user>
+    <comment>  * new[ug]idmap(1) (bsc#1290538, CVE-2026-135901)</comment>
+    <requestid>1400539</requestid>
+  </revision>
 </revisionlist>

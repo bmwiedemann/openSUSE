@@ -3,7 +3,7 @@ Mon Nov 23 07:41:19 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.20.4:
   Security fixes:
-  * new[ug]idmap(1) (bsc#1290538)
+  * new[ug]idmap(1) (bsc#1290538, CVE-2026-135901)
     + Use openat2(2) to avoid following symlinks and bind mounts.
     + Drop fd:N.
   Regression fixes:
