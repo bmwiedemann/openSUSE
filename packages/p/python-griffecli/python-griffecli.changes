@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 01:52:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Make use of uv-dynamic-versioning, set via environment variable.
+- Drop patch static-version.patch.
+
+-------------------------------------------------------------------
 Tue Nov 24 03:49:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.1:

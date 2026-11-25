@@ -36,4 +36,13 @@
 - Rewrite Description, remove rpmlint filter.</comment>
     <requestid>1400082</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e67f1afc270603c6a68189519e561704</srcmd5>
+    <version>2.4.1</version>
+    <time>1795619590</time>
+    <user>anag_factory</user>
+    <comment>- Make use of uv-dynamic-versioning, set via environment variable.
+- Drop patch static-version.patch.</comment>
+    <requestid>1400437</requestid>
+  </revision>
 </revisionlist>
