@@ -104,6 +104,7 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/distrobox/distrobox.conf
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/*x*/
 %dir %{_datadir}/icons/hicolor/*x*/apps/
+%dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions/
 %{_datadir}/icons/hicolor/*/apps/terminal-distrobox-icon.png
 %{_datadir}/icons/hicolor/scalable/apps/terminal-distrobox-icon.svg
