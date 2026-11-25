@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:47:56 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-134019: Remote code execution via auto-unpickled HDF5
+  attributes (bsc#1291666)
+  * CVE-2026-134019.patch
+
+-------------------------------------------------------------------
 Mon Sep 14 12:35:16 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.11.1:

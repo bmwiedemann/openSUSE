@@ -31,17 +31,14 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py311"
-%define skip_python311 1
-%endif
-%if "%{flavor}" != "test-py312"
-%define skip_python312 1
-%endif
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
 %if "%{flavor}" != "test-py314"
 %define skip_python314 1
+%endif
+%if "%{flavor}" != "test-py315"
+%define skip_python315 1
 %endif
 # Skip all empty test flavors: last one is for sle15_python_module_pythons
 %if "%{shrink:%pythons}" == "" || ( "%pythons" == "python311" && 0%{?skip_python311} )
@@ -60,6 +57,8 @@ Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%
 # TODO: devendor hdf5-blosc2
 # PATCH-FIX-UPSTREAM blosc2-3-compat.patch https://github.com/Blosc/HDF5-Blosc2/pull/3
 Patch0:         blosc2-3-compat.patch
+# PATCH-FIX-UPSTREAM CVE-2026-134019.patch bsc#1291666 https://github.com/PyTables/PyTables/commit/8ae7154191676c2ab12ba36450972d0be77efde3
+Patch1:         CVE-2026-134019.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
