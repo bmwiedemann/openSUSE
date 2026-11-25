@@ -3427,4 +3427,12 @@ licence set is unchanged. Both flavors build green on aarch64.</comment>
     <comment>Update to 0.13.9</comment>
     <requestid>1398473</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>ebedcf45df8bc757c84a2dc4dd375739</srcmd5>
+    <version>0.13.10</version>
+    <time>1795619669</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.13.10: ZIP size-obfuscation fix, lock validation, refreshed interpreters.</comment>
+    <requestid>1400544</requestid>
+  </revision>
 </revisionlist>

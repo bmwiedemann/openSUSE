@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:36:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.10 (upstream release 2026-11-24):
+  * Security: fix ZIP payload obfuscation through conflicting
+    compressed sizes (GHSA-vjvj-3m3f-fgmm): reject wheels whose
+    ZIP data descriptor and central directory disagree
+  * Enhancements: validate dependency requirements in uv.lock
+    match the locked versions, explain why --locked rejects it,
+    report missing package entries; proxy indexes with reversible
+    artifact URLs (preview)
+  * Python: refreshed managed CPython 3.11-3.16 and GraalPy
+    3.13.0 (build 25.6.5) interpreters
+  * Fixes: refresh cached interpreter info on libc, macOS
+    version or pyvenv.cfg changes; uv sync --no-install-package
+    skips packages without a compatible distribution; ignore
+    unreachable wheels before requiring hashes; avoid reusing
+    yanked pins with unsatisfiable markers
+  * Update the bundled Mozilla certificates via
+    webpki-root-certs 1.0.12
+  * Re-vendor: dependency refresh, no new copyleft in the
+    linked graph (licence tag unchanged)
+  * Spec cleanup to satisfy spec-cleaner 1.3.2
+
+-------------------------------------------------------------------
 Tue Nov 17 16:39:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.9 (upstream release 2026-11-17):
