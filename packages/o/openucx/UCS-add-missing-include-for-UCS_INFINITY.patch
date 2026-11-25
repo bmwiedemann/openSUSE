@@ -1,4 +1,4 @@
-commit c0995f475cb75f9b071e8cafe5151d8496fbd83d
+commit 0b58df2e3fd1152b8afc9ee27502e9e009d73759
 Author: Nicolas Morey <nmorey@suse.com>
 Date:   Mon Jul 6 11:12:51 2026 +0200
 
@@ -6,8 +6,8 @@ Date:   Mon Jul 6 11:12:51 2026 +0200
     
     Signed-off-by: Nicolas Morey <nmorey@suse.com>
 
-diff --git a/src/ucs/time/time.h b/src/ucs/time/time.h
-index 2ec162f31a30..dedb8f543466 100644
+diff --git src/ucs/time/time.h src/ucs/time/time.h
+index f257a3655102..e4d5d2d2c1b7 100644
 --- src/ucs/time/time.h
 +++ src/ucs/time/time.h
 @@ -8,6 +8,7 @@
@@ -16,5 +16,5 @@ index 2ec162f31a30..dedb8f543466 100644
  #include <ucs/arch/cpu.h>
 +#include <ucs/sys/math.h>
  #include <ucs/time/time_def.h>
+ #include <ucs/sys/math.h>
  #include <sys/time.h>
- #include <limits.h>

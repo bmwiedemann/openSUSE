@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -33,9 +33,7 @@ Source:         https://github.com/openucx/ucx/releases/download/v%version%{?ver
 Source100:      README.md
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
-Patch3:         UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
-Patch4:         UCT-SELF-Fix-config-type-for-num_devices.patch
-Patch5:         UCS-add-missing-include-for-UCS_INFINITY.patch
+Patch3:         UCS-add-missing-include-for-UCS_INFINITY.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
@@ -185,6 +183,8 @@ mv %buildroot/%_datadir/ucx  %buildroot/%_datadir/openucx
 # io_demo should not be in %{bindir} and more likely in %{libexec}
 mkdir -p %buildroot/%_libexecdir/%{name}/
 mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
+# Remove license as we package them using %license after
+rm -f %{buildroot}/%{_docdir}/openucx/LICENSE %{buildroot}/%{_docdir}/openucx/THIRD_PARTY_NOTICES
 
 %files tools
 %defattr(-,root,root)
@@ -197,6 +197,7 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 %dir %{_sysconfdir}/ucx/
 %config %{_sysconfdir}/ucx/ucx.conf
 %license LICENSE
+%license THIRD_PARTY_NOTICES
 %doc NEWS
 
 %files -n libucm0

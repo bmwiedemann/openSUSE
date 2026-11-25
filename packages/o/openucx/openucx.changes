@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Nov 23 12:58:58 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v1.23.0
+  - UCP
+    - Increased the maximum number of transport resources to 255
+    - Set default rendezvous fragment size for Vera Rubin platforms
+    - Allowed 32 memory domains per component by default on Vera Rubin platforms
+    - Added topology-aware GPU-to-NIC assignment in UCP contexts on supported platforms,
+      configured by UCX_GPU_NIC_ASSIGNMENT_MODE
+    - Applied GPU-NIC assignment to RMA and rendezvous lane selection
+    - Excluded DPU devices from GPU-NIC assignment
+    - Improved GPU-NIC load distribution by spreading equal-bandwidth GPU assignments across NICs
+    - Increased default UCX_DISTANCE_BW for Vera Rubin platforms
+    - Made RMA PUT and GET rendezvous protocols a fallback for zcopy
+    - Improved small SGL PUT performance by splitting batches across multiple lanes
+    - Added device name filter for worker address query
+    - Improved UCX_SINGLE_NET_DEVICE selection by matching NICs to the local device ordinal
+    - Added probe-gated recovery of failed lanes using auxiliary endpoint checks
+    - Added opt-in intra-node CUDA staging policy for tag rendezvous (UCX_RNDV_PIPELINE_SHM_CUDA_STAGING_FORCE)
+    - Added fault-tolerance recovery that rebuilds failed lanes via LANES_ADDR exchange
+    - Added zero-copy and active-message based software emulation protocols for SGL PUT
+    - Widened protocol bitmap to support more than 64 protocols
+    - Added logging of git branch, revision, and configuration flags
+  - UCT
+    - Added uct_ep_get_sgl_zcopy API
+    - Added UCT support to extract and purge outstanding operations for failover recovery
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added AArch64 ST64B BlueFlame copy mode for MLX5
+    - Added UCX_IB_AH_CACHE_TTL to configure the address handle cache TTL
+    - Added multi-channel D2P support with per-endpoint DPA addresses and doorbell control flag
+    - Exposed the GDAKI device-affinity matrix for use by external transports
+    - UCX_IB_PCI_RELAXED_ORDERING=yes now requires all memory keys to use relaxed ordering and
+      omits strict-order companion keys
+    - Added SGL PUT zcopy support to MLX5 RC transport
+    - Added ConnectX-10 device support
+    - Added RoCE fabric plane detection for GDAKI GPU-to-HCA assignment,
+      enabled by default through UCX_IB_GDA_FABRIC_DETECT
+    - Enabled GDAKI to use VMM fabric allocations when available with cuMemAlloc fallback
+    - Improved GDAKI endpoint initialization by removing a redundant CUDA buffer initialization
+  - UCS
+    - Added ucs_array_for_each_index utility
+    - Added PCI vendor and device IDs to topology information
+  - Tools
+    - Added perftest failover endpoint-failure mode and fault-tolerance CI coverage
+    - Added data validation mode to perftest ping-pong tests, including CUDA and IOV datatypes
+  - Documentation
+    - Added third-party license and attribution notices
+    - Clarified the difference between IOV and SGL datatypes in UCP API documentation
+  - Bugfixes: See NEWS.md for the whole list
+- Drop patches merged upstream:
+  - UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
+  - UCT-SELF-Fix-config-type-for-num_devices.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 09:16:46 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to v1.22.0
