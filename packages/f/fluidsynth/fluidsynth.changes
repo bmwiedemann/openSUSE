@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Nov 22 14:09:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.3
+  * Fix CVE-2026-111123 (#1900, #1901, GHSA-xx3f-mq9p-5prg).
+  * Fix a heap-based buffer overflow vulnerability when rendering
+    crafted MIDI files (#1917, GHSA-g4r7-g73m-843m).
+  * Fix a regression introduced in 2.6.0 that might have cause a
+    div-by-zero when rendering certain MIDI files at low sample
+    rates (#1917).
+  * Fix a build issue with clang 23 when LADSPA support was
+    enabled (#1898).
+  * Fix several quirks related to sostenuto (#1904, #1905, #1908).
+  * Fix Failed to set thread to high priority error (#1907).
+  * Fix handling of finished voices after reducing polyphony
+    (#1909).
+  * Fix stack use-after-scope in channelsmode shell command (#1913).
+  * Preserve LFO direction during frequency updates (#1310).
+  * Fix several memory leaks (#1916).
+  * Minor performance improvements (#1902, #1910).
+
+-------------------------------------------------------------------
 Sun Nov  1 12:49:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.2
