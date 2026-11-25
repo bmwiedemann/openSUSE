@@ -27,7 +27,7 @@
 %bcond_with     glade_support
 
 Name:           vte
-Version:        0.84.1
+Version:        0.84.2
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -60,13 +60,13 @@ BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.72.0
 BuildRequires:  pkgconfig(gnutls) >= 3.2.7
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 %if %{with gtk4_support}
 BuildRequires:  pkgconfig(gtk4) >= 4.14.0
 %endif
 BuildRequires:  pkgconfig(liblz4) >= 1.9
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.21
-BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libsystemd) >= 220
 BuildRequires:  pkgconfig(pango) >= 1.22.0
 BuildRequires:  pkgconfig(simdutf) >= 6.2.0
 BuildRequires:  pkgconfig(vapigen) >= 0.24

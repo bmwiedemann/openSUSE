@@ -1464,4 +1464,312 @@ New upstream release</comment>
   * app: Add preset option</comment>
     <requestid>1369841</requestid>
   </revision>
+  <revision rev="177" vrev="1">
+    <srcmd5>0e72f2e85aadd0a9f5a0aa994cf5cabc</srcmd5>
+    <version>0.84.2</version>
+    <time>1795619503</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.84.2:
+  * widget:
+    + Use correct data type
+    + Update the scrollbar position when mapping the widget
+  * ring: Fix rewrapping TAB characters that don't fit in a row
+  * app: Make progress icon go clockwise
+  * lib: Avoid a potential division by zero
+  * vte.sh: Use two-level escaping for backslash characters in prompts
+  * a11y: gtk4: Allow optional out params to be nullptr
+  * gtk4: reuse unchanged background textures
+- Update version dependencies according to meson.build.
+
+
+old: openSUSE:Factory/vte
+new: GNOME:Factory/vte rev 342
+Index: _scmsync.obsinfo
+===================================================================
+--- _scmsync.obsinfo (revision 176)
++++ _scmsync.obsinfo (revision 342)
+@@ -1,5 +1,6 @@
+-mtime: 1785655608
+-commit: f8257ab66d8c3d0e5013ea83c660242a8a38460f8f15b2f1624fc8730e5d03ac
++mtime: 1795434754
++commit: fa3bfc4e09af3782eb33be84e5dab34fc2e9751acf632e058da7105df538cf0b
+ url: https://src.opensuse.org/GNOME/vte
+-revision: f8257ab66d8c3d0e5013ea83c660242a8a38460f8f15b2f1624fc8730e5d03ac
++revision: fa3bfc4e09af3782eb33be84e5dab34fc2e9751acf632e058da7105df538cf0b
++trackingbranch: factory
+ projectscmsync: https://src.opensuse.org/GNOME/_ObsPrj
+Index: _service
+===================================================================
+--- _service (revision 176)
++++ _service (revision 342)
+@@ -5,7 +5,7 @@
+     &lt;param name=&quot;scm&quot;&gt;git&lt;/param&gt;
+     &lt;param name=&quot;versionformat&quot;&gt;@PARENT_TAG@&lt;/param&gt;
+     &lt;param name=&quot;changesgenerate&quot;&gt;enable&lt;/param&gt;
+-    &lt;param name=&quot;revision&quot;&gt;0.84.1&lt;/param&gt;
++    &lt;param name=&quot;revision&quot;&gt;0.84.2&lt;/param&gt;
+     &lt;param name=&quot;exclude&quot;&gt;doc/vttest.*&lt;/param&gt;
+   &lt;/service&gt;
+   &lt;service name=&quot;tar&quot; mode=&quot;manual&quot;/&gt;
+Index: _servicedata
+===================================================================
+--- _servicedata (revision 176)
++++ _servicedata (revision 342)
+@@ -1,4 +1,4 @@
+ &lt;servicedata&gt;
+ &lt;service name=&quot;tar_scm&quot;&gt;
+                 &lt;param name=&quot;url&quot;&gt;https://gitlab.gnome.org/GNOME/vte.git&lt;/param&gt;
+-              &lt;param name=&quot;changesrevision&quot;&gt;f2223e45d7f04c5383c59e76772501f0ed4215bc&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
++              &lt;param name=&quot;changesrevision&quot;&gt;6e8f399d97844a08100e815b1ca15253c3865f1e&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
+Index: build.specials.obscpio
+===================================================================
+--- build.specials.obscpio (revision 176)
++++ build.specials.obscpio (revision 342)
+Binary files build.specials.obscpio (revision 176) and build.specials.obscpio (revision 342) differ
+Index: vte.changes
+===================================================================
+--- vte.changes (revision 176)
++++ vte.changes (revision 342)
+@@ -1,4 +1,19 @@
+ -------------------------------------------------------------------
++Mon Nov 23 11:47:29 UTC 2026 - Bjørn Lie &lt;bjorn.lie@gmail.com&gt;
++
++- Update to version 0.84.2:
++  * widget:
++    + Use correct data type
++    + Update the scrollbar position when mapping the widget
++  * ring: Fix rewrapping TAB characters that don't fit in a row
++  * app: Make progress icon go clockwise
++  * lib: Avoid a potential division by zero
++  * vte.sh: Use two-level escaping for backslash characters in prompts
++  * a11y: gtk4: Allow optional out params to be nullptr
++  * gtk4: reuse unchanged background textures
++- Update version dependencies according to meson.build.
++
++-------------------------------------------------------------------
+ Sun Aug  2 07:22:24 UTC 2026 - Bjørn Lie &lt;bjorn.lie@gmail.com&gt;
+ 
+ - Update to version 0.84.1:
+@@ -3548,7 +3563,7 @@
+ Tue Sep 23 12:00:05 EST 2008 - mboman@suse.de
+ 
+ - Update to version 0.17.4:
+-  + Translation updates 
++  + Translation updates
+ 
+ -------------------------------------------------------------------
+ Tue Sep  9 10:58:28 CDT 2008 - maw@suse.de
+@@ -3591,7 +3606,7 @@
+ -------------------------------------------------------------------
+ Thu May  1 16:06:31 CEST 2008 - jpr@suse.de
+ 
+-- Remove vte-0.16.6-dont-disable-all-deprecateds.patch, the 
++- Remove vte-0.16.6-dont-disable-all-deprecateds.patch, the
+   deprecation is handled in the configure stage now and is off by
+   default.
+ 
+@@ -3656,10 +3671,10 @@
+ - s#%run_ldconfig#/sbin/ldconfig# in %post and %postun.
+ 
+ -------------------------------------------------------------------
+-Wed Aug  1 22:13:32 CEST 2007 - mauro@suse.de 
++Wed Aug  1 22:13:32 CEST 2007 - mauro@suse.de
+ 
+ - Update to version 0.16.8
+-- Fixed missing documentation in the tarball. 
++- Fixed missing documentation in the tarball.
+ - Bugfixes for #337252, #448259, #449809, #450745.
+ 
+ -------------------------------------------------------------------
+@@ -3758,7 +3773,7 @@
+ -------------------------------------------------------------------
+ Tue Sep 26 00:08:22 CEST 2006 - jhargadon@suse.de
+ 
+-- added %py_requires to the specfile for bug #207923 
++- added %py_requires to the specfile for bug #207923
+ 
+ -------------------------------------------------------------------
+ Wed Sep  6 15:05:20 CEST 2006 - anosek@suse.cz
+@@ -3778,7 +3793,7 @@
+ 
+ - update to version 0.13.6
+ - Bug 351696 – crash on Terminal, check -&gt;window before setting
+-  icon/window title 
++  icon/window title
+ - Bug 350623 – Accessible text getTextAtOffset is broken
+ 
+ -------------------------------------------------------------------
+@@ -3794,7 +3809,7 @@
+ - Bug 25290 – Small UI tweak to select-by-word
+ - Bug 311855 – Race in vte leads to blocking of input.
+ - Bug 339529 – gnome-terminal (vte) crashes when detatched window is
+-  closed 
++  closed
+ - Bug 331803 – style needs to be attached/detached to the window on
+   realize/unrealize
+ - Bug 339448 – selection doesn't respect hard newlines
+@@ -3811,7 +3826,7 @@
+ -------------------------------------------------------------------
+ Wed Aug 16 02:27:34 CEST 2006 - ro@suse.de
+ 
+-- added python-gobject2-devel to BuildRequires 
++- added python-gobject2-devel to BuildRequires
+ 
+ -------------------------------------------------------------------
+ Fri Jan 27 02:31:22 CET 2006 - mls@suse.de
+@@ -3836,39 +3851,39 @@
+ -------------------------------------------------------------------
+ Tue Aug 23 21:35:37 CEST 2005 - gekker@suse.de
+ 
+-- Update to version 0.11.15 
++- Update to version 0.11.15
+ 
+ -------------------------------------------------------------------
+ Thu Aug 11 18:48:42 CEST 2005 - gekker@suse.de
+ 
+-- Update to version 0.11.14 
++- Update to version 0.11.14
+ 
+ -------------------------------------------------------------------
+ Wed Jun 22 03:44:23 CEST 2005 - gekker@suse.de
+ 
+-- Update to version 0.11.13 
++- Update to version 0.11.13
+ 
+ -------------------------------------------------------------------
+ Wed Mar 16 05:36:13 CET 2005 - gekker@suse.de
+ 
+-- Remove .desktop file, it is just a test tool, not for menus 
++- Remove .desktop file, it is just a test tool, not for menus
+ 
+ -------------------------------------------------------------------
+ Mon Mar  7 13:21:23 CET 2005 - gekker@suse.de
+ 
+-- add vte-memory-background.patch 
++- add vte-memory-background.patch
+ 
+ -------------------------------------------------------------------
+ Thu Mar  3 22:31:45 CET 2005 - gekker@suse.de
+ 
+-- update to 0.11.12 
++- update to 0.11.12
+ 
+ -------------------------------------------------------------------
+ Tue Dec 21 01:05:25 CET 2004 - gekker@suse.de
+ 
+ - Update to version 0.11.11
+ - Rework patches so they apply
+-- Change spec file so it can find the libs 
++- Change spec file so it can find the libs
+ 
+ -------------------------------------------------------------------
+ Mon Nov 22 11:56:36 CET 2004 - ro@suse.de
+@@ -3890,7 +3905,7 @@
+ -------------------------------------------------------------------
+ Tue Oct 19 17:43:51 CEST 2004 - ro@suse.de
+ 
+-- use special permissions files to build on PLUS 
++- use special permissions files to build on PLUS
+ 
+ -------------------------------------------------------------------
+ Tue Oct 12 16:34:12 CEST 2004 - sbrabec@suse.cz
+@@ -3901,7 +3916,7 @@
+ Wed Sep 22 17:37:12 CEST 2004 - hhetter@suse.de
+ 
+ - don't do pwd as command when nothing else was given
+-  (#45813) 
++  (#45813)
+ 
+ -------------------------------------------------------------------
+ Wed May 19 15:26:47 CEST 2004 - ro@suse.de
+@@ -3922,13 +3937,13 @@
+ Wed Aug  6 17:28:23 CEST 2003 - ro@suse.de
+ 
+ - don't define GTK_DISABLE_DEPRECATED since python-gtk includes
+-  still use/support some old features 
++  still use/support some old features
+ 
+ -------------------------------------------------------------------
+ Fri Jul 25 00:53:23 CEST 2003 - hhetter@suse.de
+ 
+ - really prefix to /opt/gnome
+-- move python stuff to /usr 
++- move python stuff to /usr
+ - %_lib fixes
+ 
+ -------------------------------------------------------------------
+@@ -3965,15 +3980,15 @@
+ -------------------------------------------------------------------
+ Fri Feb  7 12:09:51 CET 2003 - hhetter@suse.de
+ 
+-- updated to version 0.10.17 [GNOME 2.2.0] 
++- updated to version 0.10.17 [GNOME 2.2.0]
+ 
+ -------------------------------------------------------------------
+ Tue Jan 21 01:38:03 CET 2003 - ro@suse.de
+ 
+-- lib64 fix 
++- lib64 fix
+ 
+ -------------------------------------------------------------------
+ Thu Jan 16 14:26:14 CET 2003 - hhetter@suse.de
+ 
+-- initial SuSE package 
++- initial SuSE package
+ 
+Index: vte.obsinfo
+===================================================================
+--- vte.obsinfo (revision 176)
++++ vte.obsinfo (revision 342)
+@@ -1,4 +1,4 @@
+ name: vte
+-version: 0.84.1
+-mtime: 1784398642
+-commit: f2223e45d7f04c5383c59e76772501f0ed4215bc
++version: 0.84.2
++mtime: 1794869228
++commit: 6e8f399d97844a08100e815b1ca15253c3865f1e
+Index: vte.spec
+===================================================================
+--- vte.spec (revision 176)
++++ vte.spec (revision 342)
+@@ -27,7 +27,7 @@
+ %bcond_with     glade_support
+ 
+ Name:           vte
+-Version:        0.84.1
++Version:        0.84.2
+ Release:        0
+ Summary:        Terminal Emulator Library
+ License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
+@@ -60,13 +60,13 @@
+ BuildRequires:  pkgconfig(glib-2.0) &gt;= 2.72.0
+ BuildRequires:  pkgconfig(gnutls) &gt;= 3.2.7
+ BuildRequires:  pkgconfig(gobject-2.0)
+-BuildRequires:  pkgconfig(gtk+-3.0) &gt;= 3.16.0
++BuildRequires:  pkgconfig(gtk+-3.0) &gt;= 3.24.0
+ %if %{with gtk4_support}
+ BuildRequires:  pkgconfig(gtk4) &gt;= 4.14.0
+ %endif
+ BuildRequires:  pkgconfig(liblz4) &gt;= 1.9
+ BuildRequires:  pkgconfig(libpcre2-8) &gt;= 10.21
+-BuildRequires:  pkgconfig(libsystemd)
++BuildRequires:  pkgconfig(libsystemd) &gt;= 220
+ BuildRequires:  pkgconfig(pango) &gt;= 1.22.0
+ BuildRequires:  pkgconfig(simdutf) &gt;= 6.2.0
+ BuildRequires:  pkgconfig(vapigen) &gt;= 0.24
+Index: vte-0.84.2.tar.xz
+===================================================================
+--- vte-0.84.2.tar.xz (added)
++++ vte-0.84.2.tar.xz (revision 342)
+Binary file vte-0.84.2.tar.xz (revision 342) added
+Index: vte-0.84.1.tar.xz
+===================================================================
+--- vte-0.84.1.tar.xz (revision 176)
++++ vte-0.84.1.tar.xz (deleted)
+Binary file vte-0.84.1.tar.xz (revision 176) deleted</comment>
+    <requestid>1400242</requestid>
+  </revision>
 </revisionlist>
