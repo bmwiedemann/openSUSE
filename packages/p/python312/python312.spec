@@ -219,6 +219,12 @@ Patch73:        support-sphinx-9.patch
 Patch80:        bsc1263083-http-cookies-atob-utf8.patch
 # PATCH-FIX-OPENSUSE: Accept socket resets in the TLS 1.3 client-cert test
 Patch81:        test_ssl_tls13_connection_reset.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-getaddrinfo-null-bytes.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port
+Patch82:        CVE-2026-116566-getaddrinfo-null-bytes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-http-framing-validation.patch bsc#1288328 mcepl@suse.com
+# Validate http.client Content-Length and chunk-size per RFC 9112
+Patch83:        CVE-2026-103995-http-framing-validation.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Nov 23 11:45:31 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-103995: Validate http.client Content-Length and
+  chunk-size per RFC 9112 (bsc#1288328)
+  CVE-2026-103995-http-framing-validation.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 14:19:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo() host
+  and port (bsc#1289106)
+  CVE-2026-116566-getaddrinfo-null-bytes.patch
+
+-------------------------------------------------------------------
 Fri Nov  6 22:31:28 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add test_ssl_tls13_connection_reset.patch make the test accept

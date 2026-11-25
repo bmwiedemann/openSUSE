@@ -2288,4 +2288,20 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   connection resets in TLS 1.3 SSL test</comment>
     <requestid>1397116</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>9f598d55dd3b5971d2675ec15ed6ef8c</srcmd5>
+    <version>3.12.16</version>
+    <time>1795619527</time>
+    <user>anag_factory</user>
+    <comment>Two fixes (CVE-2026-103995 and CVE-2026-116566)
+
+- CVE-2026-103995: Validate http.client Content-Length and
+  chunk-size per RFC 9112 (bsc#1288328)
+  CVE-2026-103995-http-framing-validation.patch
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo() host
+  and port (bsc#1289106)
+  CVE-2026-116566-getaddrinfo-null-bytes.patch</comment>
+    <requestid>1400212</requestid>
+  </revision>
 </revisionlist>
