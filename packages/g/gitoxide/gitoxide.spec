@@ -17,7 +17,7 @@
 
 
 Name:           gitoxide
-Version:        0.61.0
+Version:        0.62.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
 # Legal-Review-Notice: gitoxide itself is "Apache-2.0 OR MIT", but the
@@ -38,11 +38,18 @@ License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/GitoxideLabs/gitoxide
 Source0:        https://github.com/GitoxideLabs/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Source-Binary-Exception: vendor.tar.zst:vendor/winapi-*/lib/* -- other-platform: Windows import libraries for GNU Windows targets
+# Source-Binary-Exception: vendor.tar.zst:vendor/windows_*/lib/* -- other-platform: Windows import libraries for MSVC and gnullvm targets
+# Source-Binary-Exception: vendor.tar.zst:vendor/aws-lc-sys-*/builder/prebuilt-nasm/* -- other-platform: Windows COFF objects, the Linux build assembles the .S sources
+# Source-Binary-Exception: vendor.tar.zst:vendor/ring-*/pregenerated/* -- other-platform: Windows COFF objects, the Linux build assembles the .S sources
+# Source-Binary-Exception: vendor.tar.zst:vendor/lzma-sys-*/xz-*/tests/** -- test-data: xz compression test vectors only read by the lzma tests
+# vendor.tar.zst drops vendor/rawzip-*/assets/**, test-only fixtures the
+# Linux build never uses (keys dropped from .cargo-checksum.json).
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-# Upstream Cargo.toml: rust-version = "1.88" (edition 2024)
-BuildRequires:  rust >= 1.88
+# Upstream Cargo.toml: rust-version = "1.95" (edition 2024)
+BuildRequires:  rust >= 1.95
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_arches}
 
@@ -57,7 +64,7 @@ and unsurprising developer experience.
 %{cargo_build}
 
 %install
-%cargo_install
+%{cargo_install}
 
 %check
 %{cargo_test}

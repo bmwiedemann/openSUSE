@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:33:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.62.0:
+  * Require Rust 1.91 for the CLI tooling (gitoxide, gix-tix,
+    internal-tools); the gix library stays on Rust 1.88. The
+    shipped Cargo.toml declares rust-version 1.95, so the spec
+    now builds with rust >= 1.95
+  * Add --repo-trust flag (full/reduced/force-full/force-reduced)
+    and print the effective trust level in gix env
+  * Add gix notify, gix watch and self-spawning gix fsmonitor:
+    filesystem notifications, worktree invalidation and a
+    Git-compatible filesystem-monitor daemon
+  * Plumbing crates use standard std::error::Error compatible
+    error types, with more consistent handling and greatly
+    improved tracing of all commands
+  * Vendored crates refreshed past their advisory floors:
+    libz-sys 1.1.33 (RUSTSEC-2026-0418, RUSTSEC-2026-0544,
+    CVE-2026-85091 alias) and pulldown-cmark 0.13.6
+    (RUSTSEC-2026-0414, RUSTSEC-2026-0433)
+- Refresh the vendored dependencies. The linked graph still
+  carries MPL-2.0 only (uluru, option-ext); the License tag is
+  unchanged.
+- Declare the Windows-only vendored objects other-platform
+  (winapi/windows import libraries, ring and aws-lc-sys prebuilt
+  objects, lzma test vectors as test-data) and drop rawzip's
+  unused test assets from vendor.tar.zst.
+
+-------------------------------------------------------------------
 Fri Oct 23 08:34:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.61.0:
