@@ -18,24 +18,23 @@
 
 
 Name:           NetworkManager-iodine
-Version:        1.2.0
+%define _name   network-manager-iodine
+Version:        1.4.0
 Release:        0
 Summary:        NetworkManager VPN support for iodine
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://honk.sigxcpu.org/piki/projects/network-manager-iodine/
-Source0:        http://download.gnome.org/sources/NetworkManager-iodine/1.2/%{name}-%{version}.tar.xz
+Source0:        %{_name}-%{version}.tar.xz
 Source1:        system-user-nm-iodine.conf
-# PATCH-FIX-UPSTREAM NetworkManager-iodine-pkgconf-2.1.0.patch glgo#GNOME/network-manager-iodine!5
-Patch0:         NetworkManager-iodine-pkgconf-2.1.0.patch
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
-BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.4
+BuildRequires:  pkgconfig(gtk4) >= 4.0
 BuildRequires:  pkgconfig(libnm) >= 1.1.0
-BuildRequires:  pkgconfig(libnma) >= 1.1.0
-BuildRequires:  pkgconfig(libsecret-1)
+BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.38
+BuildRequires:  pkgconfig(libsecret-1) >= 0.18
 Requires:       NetworkManager >= 1.1.0
 Requires:       iodine >= 0.6.0rc1
 Supplements:    (NetworkManager and iodine)
@@ -62,7 +61,7 @@ firewalled but DNS traffic is still allowed.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 autoreconf -fiv -I /usr/share/gettext/m4
@@ -87,12 +86,13 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS NEWS
 %{_sysusersdir}/%{name}.conf
 %{_libdir}/NetworkManager/libnm-vpn-plugin-iodine.so
+%{_libdir}/NetworkManager/libnm-iodine-properties.so
 %{_vpnservicedir}/nm-iodine-service.name
 %{_libexecdir}/nm-iodine-service
 %{_datadir}/dbus-1/system.d/nm-iodine-service.conf
 
 %files -n NetworkManager-applet-iodine
-%{_datadir}/appdata/network-manager-iodine.appdata.xml
+%{_datadir}/appdata/network-manager-iodine.metainfo.xml
 %{_datadir}/gnome-vpn-properties/
 %{_libexecdir}/nm-iodine-auth-dialog
 

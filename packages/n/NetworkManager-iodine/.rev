@@ -113,4 +113,22 @@
     <comment>Fix typo (forwarded request 1293427 from iznogood)</comment>
     <requestid>1293455</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>6cc24669cdb3eabe32fa6238d0b4f88c</srcmd5>
+    <version>1.4.0</version>
+    <time>1795619507</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * Fix command injection (CVE-2026-91837)
+  * Switch to GTK4
+  * Build system and other cleanups
+  + Updated translations.
+- Update version dependencies according to meson.build.
+- Drop NetworkManager-iodine-pkgconf-2.1.0.patch: fixed upstream.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4) and
+  pkgconfig(libnma) with pkgconfig(libna-gtk4): Follow upstreams port to GTK4.
+
+- Convert package _service, for easier upgrades.</comment>
+    <requestid>1400255</requestid>
+  </revision>
 </revisionlist>

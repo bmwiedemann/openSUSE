@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Nov 24 08:45:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0:
+  * Fix command injection (CVE-2026-91837)
+  * Switch to GTK4
+  * Build system and other cleanups
+  + Updated translations.
+- Update version dependencies according to meson.build.
+- Drop NetworkManager-iodine-pkgconf-2.1.0.patch: fixed upstream.
+- Replace pkgconfig(gtk+-3.0) BuildRequires with pkgconfig(gtk4) and
+  pkgconfig(libnma) with pkgconfig(libna-gtk4): Follow upstreams port to GTK4.
+
+-------------------------------------------------------------------
+Tue Nov 24 08:42:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Convert package _service, for easier upgrades.
+
+-------------------------------------------------------------------
 Fri Jul 11 10:07:02 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Work with newer gettext-runtime. In gettext 0.24.1 the m4 files
