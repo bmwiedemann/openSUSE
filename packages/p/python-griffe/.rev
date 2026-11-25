@@ -35,4 +35,13 @@
 - Remove multibuild, this no longer ships tests (they have moved)</comment>
     <requestid>1400080</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d0ca402a9a5aa3bb4011c1ef9848114e</srcmd5>
+    <version>2.4.1</version>
+    <time>1795619586</time>
+    <user>anag_factory</user>
+    <comment>- Make use of uv-dynamic-versioning, set via environment variable.
+- Drop patch static-version.patch.</comment>
+    <requestid>1400435</requestid>
+  </revision>
 </revisionlist>

@@ -24,13 +24,11 @@ Summary:        Signatures for entire Python programs
 License:        ISC
 URL:            https://mkdocstrings.github.io/griffe
 Source0:        https://files.pythonhosted.org/packages/source/g/griffe/griffe-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE static-version.patch mcepl@suse.com
-# Don't use uv-dynamic-versioning, just set it statically
-Patch0:         static-version.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module uv-dynamic-versioning}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-griffecli = %{version}
@@ -39,26 +37,6 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
-#    "duty>=1.6",
-#    "griffe-inherited-docstrings>=1.1.2",
-#    "pysource-codegen>=0.7",
-#    "pysource-minimize>=0.10",
-#    "ty>=0.0.14",
-#    "types-markdown>=3.6",
-#    "types-pyyaml>=6.0",
-#    "code2flow>=2.5",
-#    "markdown-callouts>=0.4",
-#    "markdown-exec[ansi]>=1.8",
-#    "mkdocs>=1.6",
-#    "mkdocs-coverage>=1.0",
-#    "mkdocs-gen-files>=0.5",
-#    "mkdocs-git-revision-date-localized-plugin>=1.2",
-#    "mkdocs-llmstxt>=0.2",
-#    "mkdocs-material>=9.5",
-#    "mkdocs-minify-plugin>=0.8",
-#    "mkdocs-section-index>=0.3",
-#    "mkdocs-redirects>=1.2",
-#    "pydeps>=1.12",
 
 %description
 Signatures for entire Python programs. Extract the structure, the frame,
@@ -72,10 +50,8 @@ griffe."
 %prep
 %autosetup -p1 -n griffe-%{version}
 
-# set the version
-sed -i -e '/^version =/s/@VERSION@/%{version}/' pyproject.toml
-
 %build
+export UV_DYNAMIC_VERSIONING_BYPASS="%{version}"
 %pyproject_wheel
 
 %install
