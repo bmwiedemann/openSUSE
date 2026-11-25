@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.21.4
+Version:        7.1.1
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Nov 24 10:14:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 7.1.1
+  * SEC: Limit inline image size for known-size fallback path
+  * SEC: Optimize memory usage of ASCIIHexDecode whitespace removal
+  * SEC: Limit the overall page label size before employing a fallback
+  * SEC: Restrict cross-reference stream work/memory
+  * List image identifiers only once when iterating over page images
+  * Index named destinations when appending a document
+  * Decode PDFDocEncoding strings with str.translate instead of
+    per-character concatenation
+  * Reject zero-step slices in PageRange
+  * Label a page that lies between the /Limits of two page label kids
+- Update to 7.1.0
+  * Deprecate passing a boolean to remove_images
+  * Make add_outline_item keyword-only
+  * Do not decode streams to find identical objects
+  * Speed up the pure-Python RC4 used without a crypto library
+  * Skip per-character direction checks for left-to-right text
+    in extract_text()
+- Update to 7.0.1
+  * SEC: Determine image buffer sizes using the actual bytes per pixel
+  * Don't parse content streams without text operators in extract_text()
+  * Decode UTF-8 text strings
+  * Fix page reference lookup for hierarchical page trees in PdfWriter
+  * Copy the operations in ContentStream.replicate()
+  * Deal with more rendering intents for inline images
+- Update to 7.0.0 (fixes CVE-2026-134367, bsc#1291474, CVE-2026-134364,
+  bsc#1291475, CVE-2026-134366, bsc#1291476)
+  * SEC: Make file identifiers non-deterministic
+  * SEC: Block not strictly increasing offsets in object streams
+  * SEC: Limit XFA form decoding work
+  * SEC: Apply image size limits more strictly
+  * Cleanup deprecations for the next major release
+  * Remove support for cryptography<43
+  * Drop support for Python 3.9
+  * Allow setting border color for rectangle annotations
+  * Speed up LZW decoding for clear table markers
+  * Build right-to-left text runs with a single join
+  * Read every page label number tree once for all pages
+  * Decode the PNG Up predictor a row at a time
+  * Fix cloning of objects that require constructor arguments
+  * Serialize XMP packets without an XML declaration
+  * Generate Symbol and ZapfDingbats encodings from Adobe sources
+
+-------------------------------------------------------------------
 Fri Oct 30 15:11:39 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.21.4 (CVE-2026-119203, bsc#1288941, CVE-2026-119204, bsc#1288942,
