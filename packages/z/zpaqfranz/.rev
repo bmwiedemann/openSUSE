@@ -282,4 +282,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update zpaqfranz to 65.21: JSON output and version command, x date/size filters, -ifexist file, -timer</comment>
     <requestid>1398610</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8753cc725512adc0b833f40e3e8a9e62</srcmd5>
+    <version>65.23</version>
+    <time>1795619647</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.23: new -m8l default, per-kind -compress, faster multi-version restore.</comment>
+    <requestid>1400518</requestid>
+  </revision>
 </revisionlist>

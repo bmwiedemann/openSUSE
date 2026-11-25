@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.23:
+  * Faster restore of images with many versions: the new
+    cache keeps only pieces still to write (199 GB in 24
+    versions: from about 65 minutes to under 10)
+  * A hard link added later joins its group again instead
+    of coming back as a copy (issue 377); -nojit is
+    honored on x86 again (issue 376)
+  * Hashes of zeros from pre-65.1 archives warn instead of
+    failing; `a -touch` rewrites them (issue 375)
+  * -tar on Windows keeps security, hard links and extended
+    attributes; `a` no longer fails on WindowsApps aliases
+- Update to 65.22:
+  * New default -m8l (zstd with long distance matching):
+    3 to 5% smaller archives in the same time; new -xl
+    (-m86l) level for VMs, disk images and big files
+  * New -compress: a method per kind of file (text, exe,
+    packed, media) or extension, optionally by size
+  * The last line of `a` reports WRITTEN and ARCHIVE sizes;
+    pp and p also check CRC-32
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec cleanup (spec-cleaner pass)
+
+-------------------------------------------------------------------
 Thu Nov 19 07:29:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.21:
