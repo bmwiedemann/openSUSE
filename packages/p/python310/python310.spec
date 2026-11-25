@@ -230,9 +230,21 @@ Patch56:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch63:        bsc1263083-http-cookies-atob-utf8.patch
-# PATCH-FIX-UPSTREAM CVE-2026-115557-distrust-emudhra-ca-keys.patch bsc#1287357 Matej Cepl <mcepl@suse.com>
+# PATCH-FIX-UPSTREAM CVE-2026-115557-distrust-emudhra-ca-keys.patch bsc#1287357 mcepl@suse.com
 # Distrust compromised eMudhra intermediate CA keys
 Patch64:        CVE-2026-115557-distrust-emudhra-ca-keys.patch
+# PATCH-FIX-UPSTREAM CVE-2026-116566-getaddrinfo-null-bytes.patch bsc#1289106 mcepl@suse.com
+# Reject null bytes in socket.getaddrinfo() host and port
+Patch65:        CVE-2026-116566-getaddrinfo-null-bytes.patch
+# PATCH-FIX-UPSTREAM CVE-2026-19553-validate-wrap_bio-parameters.patch bsc#1283826 mcepl@suse.com
+# Validate SSLContext.wrap_bio() parameters like wrap_socket()
+Patch66:        CVE-2026-19553-validate-wrap_bio-parameters.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103995-http-client-content-length-chunk-size.patch bsc#1288328 mcepl@suse.com
+# Validate http.client Content-Length and chunk-size
+Patch67:        CVE-2026-103995-http-client-content-length-chunk-size.patch
+# PATCH-FIX-UPSTREAM CVE-2026-114583-tarfile-reject-link-at-destination.patch bsc#1288258 mcepl@suse.com
+# Reject links replacing the destination in tarfile.tar_filter
+Patch68:        CVE-2026-114583-tarfile-reject-link-at-destination.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

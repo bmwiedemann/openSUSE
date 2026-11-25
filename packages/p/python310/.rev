@@ -1544,4 +1544,17 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
     <comment>CVE-2026-115557: Distrust compromised eMudhra intermediate CA keys (bsc#1287357)</comment>
     <requestid>1396358</requestid>
   </revision>
+  <revision rev="87" vrev="4">
+    <srcmd5>c6e3ebcf7b06d8c5baa4ef6694a6cccd</srcmd5>
+    <version>3.10.22</version>
+    <time>1795619576</time>
+    <user>anag_factory</user>
+    <comment>Fix for multiple CVEs (CVE-2026-114583, CVE-2026-103995, CVE-2026-19553, and CVE-2026-116566)
+
+- CVE-2026-114583: Reject links replacing the destination in tarfile.tar_filter (bsc#1288258)
+- CVE-2026-103995: Validate http.client Content-Length and chunk-size (bsc#1288328)
+- CVE-2026-19553: Validate SSLContext.wrap_bio() parameters like wrap_socket() (bsc#1283826)
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo() host and port (bsc#1289106)</comment>
+    <requestid>1400419</requestid>
+  </revision>
 </revisionlist>

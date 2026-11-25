@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Nov 23 17:37:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-114583: Reject links replacing the destination in
+  tarfile.tar_filter (bsc#1288258)
+   CVE-2026-114583-tarfile-reject-link-at-destination.patch
+
+-------------------------------------------------------------------
+Mon Nov 23 11:58:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-103995: Validate http.client Content-Length
+  and chunk-size (bsc#1288328)
+   CVE-2026-103995-http-client-content-length-chunk-size.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 16:57:59 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-19553: Validate SSLContext.wrap_bio() parameters
+  like wrap_socket() (bsc#1283826)
+   CVE-2026-19553-validate-wrap_bio-parameters.patch
+
+-------------------------------------------------------------------
+Fri Nov 20 14:42:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-116566: Reject null bytes in socket.getaddrinfo()
+  host and port (bsc#1289106)
+   CVE-2026-116566-getaddrinfo-null-bytes.patch
+
+-------------------------------------------------------------------
 Fri Nov  6 19:38:08 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-115557: Distrust compromised eMudhra
