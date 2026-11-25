@@ -217,6 +217,7 @@
     <package name="calendarsupport" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="canberra-gtk-play" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="canokey-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="canokey-qemu-libvirt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="cantarell-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="catfish" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="catfish-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2600,7 +2601,7 @@
     <package name="libsigc-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsigc-3_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsignon-qt6-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libsimdutf38" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libsimdutf39" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libslang2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libslirp0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libslp1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_install_wf -->
@@ -4138,8 +4139,8 @@
     <package name="xdelta3" supportstatus="unsupported"/> <!-- reason: dvd:xdelta3 -->
     <package name="xdg-dbus-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="xdg-desktop-portal-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="xdg-desktop-portal-gnome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="xdg-desktop-portal-gnome" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xdg-desktop-portal-gnome-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-gtk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-gtk-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xdg-desktop-portal-kde6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->

@@ -6319,7 +6319,6 @@ unsorted:
   - ghc-template-haskell-lift 
   - ghc-template-haskell-lift-devel 
   - ghc-template-haskell-lift-doc 
-  - ghc-template-haskell-lift-prof 
   - ghc-template-haskell-quasiquoter 
   - ghc-template-haskell-quasiquoter-devel 
   - ghc-template-haskell-quasiquoter-doc 
@@ -13513,8 +13512,8 @@ unsorted:
   - libgovirt-lang 
   - libgovirt2 
   - libgpaste-3-2 
-  - libgpaste-daemon3 
-  - libgpaste-gtk4-2 
+  - libgpaste-daemon4 
+  - libgpaste-gtk4-3 
   - libgpg-error-devel 
   - libgpg-error-devel-32bit 
   - libgpgme45-32bit 
@@ -27731,8 +27730,6 @@ unsorted:
   - python313-sphinx-jsonschema 
   - python313-sphinx-last-updated-by-git 
   - python313-sphinx-llm-friendly 
-  - python313-sphinx-llms-txt 
-  - python313-sphinx-markdown-builder 
   - python313-sphinx-notfound-page 
   - python313-sphinx-qt-documentation 
   - python313-sphinx-removed-in 
@@ -31888,8 +31885,6 @@ unsorted:
   - python314-sphinx-jsonschema 
   - python314-sphinx-last-updated-by-git 
   - python314-sphinx-llm-friendly 
-  - python314-sphinx-llms-txt 
-  - python314-sphinx-markdown-builder 
   - python314-sphinx-notfound-page 
   - python314-sphinx-qt-documentation 
   - python314-sphinx-removed-in 
@@ -45527,6 +45522,7 @@ unsorted:
   - tomcat11-webapps 
   - toml11-devel 
   - tomlplusplus-devel 
+  - tomlplusplus-examples 
   - tomoe 
   - tomoe-devel 
   - tomoe-doc 
@@ -47543,6 +47539,7 @@ unsorted:
   - xpr 
   - xpra 
   - xpra-html5 
+  - xpra-lang 
   - xprintidle 
   - xpumanager 
   - xquarto 

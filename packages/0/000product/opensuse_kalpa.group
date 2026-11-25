@@ -79,10 +79,7 @@
     <package name="cpio" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cpp16" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="cracklib" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="cracklib-dict-full" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="crypto-policies" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="cryptsetup" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cups" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cups-client" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="cups-config" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -118,7 +115,6 @@
     <package name="dosfstools" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="dracut" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="dracut-transactional-update" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="e2fsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="efibootmgr" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="elfutils" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="envsubst" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -692,6 +688,7 @@
     <package name="libavif16" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libavutil60" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libb2-1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libbd_btrfs3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbd_crypto3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbd_fs3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libbd_loop3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -738,7 +735,6 @@
     <package name="libconfig15" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcontainers-common" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcontainers-default-policy" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libcups2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1026,7 +1022,6 @@
     <package name="libpsl5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpulse-mainloop-glib0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpxbackend-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libpython3_13-1_0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libqaccessibilityclient-qt6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1124,12 +1119,12 @@
     <package name="libudev1" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libudfread3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libudisks2-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
+    <package name="libudisks2-0_btrfs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libunibreak6" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libunistring5" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libunwind8" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libupnp22" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libupower-glib3" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="liburcu8" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="liburing2" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libusb-1_0-0" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="libusbmuxd-2_0-7" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
@@ -1523,7 +1518,6 @@
     <package name="xdm" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="xdpyinfo" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="xen-libs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
-    <package name="xfsprogs" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="xkbcomp" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="xkeyboard-config" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
     <package name="xmessage" supportstatus="unsupported"/> <!-- reason: opensuse_kalpa:patterns-kalpa-base -->
