@@ -31,7 +31,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.5.6
+Version:        7.0
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -147,6 +147,8 @@ desktop as regular programs, managed by your regular window manager.
 Sessions can be accessed over SSH, or password protected over plain TCP sockets.
 Xpra is usable over reasonably slow links and does its best to adapt to changing
 network bandwidth constraints.
+
+%lang_package
 
 %prep
 #%%setup -q
@@ -353,6 +355,7 @@ done
 %{_datadir}/applications/xpra-launcher.desktop
 %{_datadir}/applications/xpra-shadow.desktop
 %{_datadir}/applications/xpra.desktop
+%{_datadir}/bash-completion/completions/xpra
 %{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org/*
 %{_datadir}/metainfo/xpra.appdata.xml
 %{_datadir}/pixmaps/xpra-mdns.png
@@ -377,5 +380,11 @@ done
 %{_unitdir}/xpra-encoder.socket
 %ghost %dir %attr(1775,-,xpra) %{_rundir}/xpra
 %ghost %dir %attr(1700,-,xpra) %{_rundir}/xpra/proxy
+
+%files lang
+%dir %{_datadir}/xpra/locales
+%dir %{_datadir}/xpra/locales/{de,en,fr,it,ja,ko,pt,th,zh_CN}
+%dir %{_datadir}/xpra/locales/{de,en,fr,it,ja,ko,pt,th,zh_CN}/LC_MESSAGES
+%{_datadir}/xpra/locales/{de,en,fr,it,ja,ko,pt,th,zh_CN}/LC_MESSAGES/messages.mo
 
 %changelog

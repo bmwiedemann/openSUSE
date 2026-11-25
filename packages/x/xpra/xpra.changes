@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Tue Nov 17 20:36:31 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 7.0:
+  * 🔧 Platforms, build and packaging:
+    - new macOS event API
+    - new macOS screen capture backend
+    - setup scripts for pycuda
+    - automatic RPM package scripts
+    - MS Windows session lock prevented OpenGL acceleration
+    - MS Windows OpenGL module
+    - MSYS2 switch to UCRT64
+    - stable, native MS Windows client backend
+    - new kitty terminal rendering backend
+    - macOS notarization
+    - podman pods: xpra-apps, AlmaLinux and RockyLinux
+    - podman 'secure' pod, seccomp and landlock in containers
+    - openh264 as a private library
+  * 🖧 Network:
+    - WSL transport
+    - zero copy network reception
+    - optional AsyncSSH client backend
+    - proxy registration
+    - automatic session proxying
+    - simplified mDNS for multiple addresses
+    - use TCP_INFO to drive batch delay
+    - asyncio loop exit fix
+    - longer session connection timeout for ssh sessions
+    - serialized SSL socket access
+    - ProxyJump support with paramiko ssh backend
+    - support remote UNC named-pipe URLs
+    - much improved RFB support
+    - prefixed packets
+    - document current protocol
+    - protocol versioning
+    - easier vsock connections, endpoints exposed via mDNS
+    - attach to sessions by name
+    - attach-urls option
+    - start sessions via ssh to ssh
+    - paramiko ssh agent forwarding handler
+    - basic RDP handling
+  * 🛡️ Security:
+    - unexpected image formats could reach Pillow through window, icon, webcam and MS Windows clipboard data
+    - unnecessary GdkPixbuf image decoders exposed to untrusted image data
+    - stricter peer data validation
+    - validate notifications
+    - SMS 2FA, email 2FA
+    - seccomp hardening
+    - landlock support
+    - process level protections: prevent ptrace / core dumps
+    - honour encodings restrictions in all subsystems
+    - restrict Gdk Pixbuf loaders
+    - codec hardening
+    - http digest authentication
+    - scram authentication
+    - http origin validation
+    - rate-limit authentication requests
+    - mmap tightening
+    - OAuth authentication
+    - notify authentication
+    - macOS and MS Windows process hardening
+    - file transfer hardening
+  * 🌈 Encodings:
+    - explicit image wrapper locking
+    - zstd stream compression
+    - oneVPL codecs
+    - libde265 encoder
+    - libva encoder and decoder
+    - openjph codecs
+    - macOS VideoToolbox encoder and decoder
+    - MSWindows MediaFoundation encoder
+    - MS Windows DXGI screen capture
+    - AMF encoder tuning
+    - native MS Windows DirectShow webcam backend
+    - native macOS CoreMedia webcam backend
+    - YUV422 support with vp9
+    - tune encoders using window content-type
+    - colorspace synchronization in video bitstream
+    - paint YUV420P10
+    - convert SVG icons to PNG
+    - remove GStreamer video codecs
+    - dav1d AV1 decoder, including 10-bit
+    - 10-bit support for aom and vp9
+    - openh264 threading and quality / speed tuning
+    - re-enable scroll encoding
+    - match more x264 tunes to content-types
+    - lossless grayscale avif
+    - remove opencv webcam backend
+  * NVENC / CUDA:
+    - arm64 support on MSWindows
+    - nvdec h264 video decoding
+    - split colorspace selection from encoder
+    - suspend + resume handling
+    - remove deprecated presets
+    - NV12 box scaling filter
+  * 📋 Clipboard:
+    - rate limiting
+    - send multiple formats per message
+    - loop detection
+    - macOS and MS Windows clients PRIMARY synchronization
+    - avoid unnecessary macOS JPEG targets and safely convert transparent clipboard images
+    - support for URIs on MS Windows
+    - macOS support for more images, PDF, etc
+    - WebP, BMP, RTF and structured UTF-8 formats
+    - CF_HTML support on MS Windows
+  * 🔊 Audio:
+    - available signal
+    - keepalive
+    - audio-sink=pipewire
+    - sink and device options in system tray, saved
+    - follow changes to the system audio device on macOS
+    - use loopback for MS Windows shadow server audio capture
+  * *️⃣ Keyboard:
+    - dismiss stuck popup windows with Control+Escape
+    - untranslated keyboard
+    - keymap handling improvements and on-demand keysym mapping
+    - correct MS Windows keyboard layout mapping
+    - MS Windows native client: keyboard shortcuts, system menu, grabs, dark title bar
+    - tray menu entries for key combinations intercepted locally
+  * Wayland:
+    - Wayland sessions could be misdetected after startup environment changes
+    - client keyboard layout and variant lists accepted invalid or excessive entries
+    - dmabuf image wrapper and GPU support for applications
+    - scaled subsurfaces
+    - per-window and per-monitor colourspace metadata
+    - Wayland clients can capture the outputs
+    - wlroots 0.20 support
+    - proper cursor support
+    - install the client's keymap, including every client's layout
+    - expose content types, opaque regions and client PIDs
+    - normalized scroll events
+    - popups follow their parent when it is repositioned
+    - bell forwarding via xdg-system-bell
+    - window shapes
+    - frame callback pacing, video encodings for opaque buffers
+    - native clipboard support
+    - automatic display assignment, GTK-free Wayland servers
+    - xpra-server-wayland packages for Ubuntu Resolute and Debian Sid, package split
+  * ✨ Features:
+    - sharing=combine: give each client its own area of the virtual display
+    - sharing=sync and focus synchronization
+    - expand server for MS Windows
+    - virtual monitors for MS Windows shadow servers
+    - shadow-device using parsec virtual displays
+    - attention request forwarding
+    - gsettings synchronization
+    - native pipewire frame capture
+    - synchronize window stacking order
+    - better VNC client support including rate control
+    - basic bash shell completion
+    - localized menus and dialogs
+    - fully modular subsystems, also for client
+    - GTK-free shadow servers
+    - monitor relative coordinates
+    - per-client readonly sessions
+    - dbus=wait and dbus=keep options
+    - replace dbus notifications
+    - mmap option accepts a list of paths
+    - _GTK_WORKAREAS
+    - full size cursors on MS Windows
+    - macOS shadow cursor, RFB cursor
+  * Fixes:
+    - avoid repeated pointer position updates when the pointer is unchanged
+    - prevent stale focus and mapped state after server-requested minimization
+    - ordered conf.d files
+    - do not map new windows whilst the MS Windows client session is locked
+    - macOS global menu no longer causes sticky refresh issues
+  * Testing:
+    - client-server "loopback" tests
+    - improved test coverage
+    - codec benchmarks and signal-to-noise tests
+    - container smoke tests
+    - client pixel and window integration tests
+    - Wayland client integration tests
+    - stricter type annotations
+
+-------------------------------------------------------------------
 Fri Nov  6 19:16:38 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.5.6:
