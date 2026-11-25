@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Nov  9 20:25:05 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.5.29:
+  * Run lint from 3.9 to 3.14
+  * replace ContextVar with threading.local
+- Update to 1.5.28:
+  * Fix AttributeError on reads from file objects without a fileno
+  * Fix compatibility with Python 3.15
+  * Support Python 3.15.0rc2
+- Update to 1.5.27:
+  * Fix false positive for os.sendfile via asyncio sock_sendfile
+    path
+  * Test Python 3.14 in CI
+  * Restore blocker patches after activation and context failures
+  * Avoid source inspection in blocking-call wrappers
+  * Add test that blockbuster_skip is task-local
+  * Add exemptions for coverage with branch measurement
+- Run only the tests directory in check, as benchmarks need
+  pytest-benchmark
+
+-------------------------------------------------------------------
 Mon Aug 31 05:12:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update patch support-python-315.patch:

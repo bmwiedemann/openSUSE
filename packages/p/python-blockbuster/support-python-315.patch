@@ -1,24 +1,18 @@
-Index: blockbuster-1.5.26/tests/test_blockbuster.py
+Subject: Allow linecache getline and getlines from the frozen linecache module
+Description: Python 3.15 runs linecache from a frozen module, so the
+ blocking calls made by getline and getlines must be allowed there as well.
+Upstream: not yet reported
+
+Index: b/blockbuster/blockbuster.py
 ===================================================================
---- blockbuster-1.5.26.orig/tests/test_blockbuster.py
-+++ blockbuster-1.5.26/tests/test_blockbuster.py
-@@ -357,6 +357,7 @@ async def test_os_listdir() -> None:
- 
- 
- @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires Python 3.9+")
-+@pytest.mark.skipif(sys.version_info >= (3, 15), reason="broken with Python 3.15+")
- async def test_os_scandir() -> None:
-     with os.scandir(tempfile.tempdir) as files, pytest.raises(
-         BlockingError, match="Blocking call to ScandirIterator.__next__"
-Index: blockbuster-1.5.26/blockbuster/blockbuster.py
-===================================================================
---- blockbuster-1.5.26.orig/blockbuster/blockbuster.py
-+++ blockbuster-1.5.26/blockbuster/blockbuster.py
-@@ -293,6 +293,7 @@ def _get_os_wrapped_functions(
+--- a/blockbuster/blockbuster.py
++++ b/blockbuster/blockbuster.py
+@@ -310,7 +310,7 @@
          can_block_functions=[
              ("<frozen importlib._bootstrap>", {"_find_and_load"}),
              ("linecache.py", {"checkcache", "updatecache"}),
+-            ("<frozen linecache>", {"checkcache", "updatecache"}),
 +            ("<frozen linecache>", {"checkcache", "updatecache", "getline", "getlines"}),
              ("coverage/control.py", {"_should_trace"}),
+             ("coverage/python.py", {"get_python_source"}),
              ("asyncio/unix_events.py", {"create_unix_server", "_stop_serving"}),
-         ],

@@ -17,7 +17,7 @@
 
 
 Name:           python-blockbuster
-Version:        1.5.26
+Version:        1.5.29
 Release:        0
 Summary:        Utility to detect blocking calls in the async event loop
 License:        Apache-2.0
@@ -71,7 +71,8 @@ Notes:
 
 %check
 # test_ssl_socket needs internet connection
-%pytest -k "not test_ssl_socket"
+# benchmarks/ needs pytest-benchmark; only collect the real tests
+%pytest tests/ -k "not test_ssl_socket"
 
 %files %{python_files}
 %doc README.md
