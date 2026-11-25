@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Nov 24 07:27:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 9.5.0:
+  * Validate_utf8: stop early on invalid input
+  * Fix unused-code warnings and RVV build errors in reduced-feature builds;
+    enforce in CI on all architectures
+  * Use the SIMD ASCII tail in convert_valid_utf8_to_*
+  * Icelake base64: count trailing whitespace as read in only_full_chunks mode
+  * Mark large stack buffers as indeterminate for C++26
+  * Base64: fast path for fixed-length lines (icelake, arm64)
+  * Document that UTF-8 length functions give a safe buffer size on invalid
+    input
+  * X86: avoid cache-line-split loads in validation and length functions
+  * Assert that invalid UTF-8 conversions do not write past the length bound
+  * Arm64: fix utf8_length_from_utf16 on a trailing lone high surrogate
+  * Document the Latin-1 and UTF-16-to-UTF-8 output bounds; fix _with_errors
+    count wording
+  * Arm64: count UTF-16 length from UTF-8 without movemasks
+  * Arm64: cheaper surrogate handling in
+    utf8_length_from_utf16_with_replacement
+  * Make the 12-byte ASCII fast path reachable in UTF-8 to UTF-16/UTF-32
+    kernels
+  * Stop the plain UTF-8 conversions near the first error
+  * Convert mixed 1-byte/2-byte UTF-8 to Latin-1 without the 12-byte loop
+  * Faster replacement when UTF-8 errors are dense
+  * Tests: make trailing_lone_high_surrogate endian-aware
+- Update lib_ver to 39.0.0 and so_ver to 39: follow upstream
+  changes.
+
+-------------------------------------------------------------------
 Mon Nov 16 09:07:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 9.4.0:
