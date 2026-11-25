@@ -78,7 +78,7 @@
 %global debug_package %{nil}
 
 Name:           openshell
-Version:        0.1.8
+Version:        0.1.10
 # Release carries the revision of this spec file
 Release:        0
 Summary:        Sandboxed runtime for autonomous AI agents
@@ -87,8 +87,8 @@ Summary:        Sandboxed runtime for autonomous AI agents
 # parts of AWS-LC (aws-lc-sys) look missing from upstream's list.
 License:        Apache-2.0 AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND MIT AND Unicode-3.0 AND Zlib
 Group:          System/Management
-URL:            https://github.com/NVIDIA/OpenShell
-Source0:        https://github.com/NVIDIA/OpenShell/archive/refs/tags/v%{version}.tar.gz#/OpenShell-%{version}.tar.gz
+URL:            https://github.com/ai-openshell/openshell
+Source0:        https://github.com/ai-openshell/openshell/archive/refs/tags/v%{version}.tar.gz#/openshell-%{version}.tar.gz
 # cargo_vendor service output: vendor/, .cargo/config.toml and Cargo.lock
 Source1:        vendor.tar.gz
 # Example systemd drop-in: cgroup controller delegation for user sessions,
@@ -207,7 +207,7 @@ openshell-supervisor-image package). TLS trust comes from the system
 certificate store of whatever root filesystem the binary runs in.
 
 %prep
-%setup -q -n OpenShell-%{version}
+%setup -q -n openshell-%{version}
 # vendored crates, the matching .cargo/config.toml and the lock file
 tar xzf %{SOURCE1}
 # distro cargo ignores rust-toolchain.toml; a rustup-managed one must not see it
@@ -288,7 +288,7 @@ install -d %{buildroot}%{_userunitdir}
 cat > %{buildroot}%{_userunitdir}/%{name}-gateway.service << 'EOF'
 [Unit]
 Description=OpenShell Gateway (user)
-Documentation=https://github.com/NVIDIA/OpenShell
+Documentation=https://github.com/ai-openshell/openshell
 After=podman.socket
 Wants=podman.socket
 

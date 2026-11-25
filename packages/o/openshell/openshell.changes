@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Tue Nov 24 17:08:07 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.1.10
+  * Upgrade Notes
+    - Application URLs now come from the supervisor application
+      origin, separate from the gateway connection. Gateway-mediated
+      application routing can be turned off with `enable_gateway_service_routing`
+      (default `true`). Users of the app listener must replace
+      `domain` with `base_url`, deploy matching gateway, driver and
+      supervisor images, and recreate existing dedicated sandbox
+      pods with the new supervisor image.
+    - Repository references and links now point to `ai-openshell/openshell`
+      after the repository transfer.
+  * Bug Fixes
+    - Sandboxed workloads can now set their own CPU affinity, nice
+      value and resource limits, signal themselves and queue signals,
+      like in a plain container. Calls targeting processes outside
+      the workload's own thread group are still denied.
+    - HTTP clients (including JSON-RPC and MCP) are now promptly
+      notified when an upstream closes an idle connection. Proxy
+      failures before a response starts now return `502 Bad Gateway`
+      with a request ID.
+    - Request inspection and authorization now use the protocol
+      chosen by the matching route, so overlapping routes and RPC/MCP
+      requests get the right decision.
+    - Clients that cache DNS answers can open new connections after
+      a policy DNS mapping expires; the destination is refreshed
+      and re-checked before connecting.
+    - Restarting a sandbox no longer sometimes marks it as `Error`
+      (`ContainerExited`) while it is still starting.
+    - On multi-replica gateways, attaching to a sandbox whose main
+      process has finished no longer fails with `sandbox is not
+      ready`.
+    - Sandbox create/start/restart/delete operations no longer
+      serialize across the whole fleet during SSH identity setup,
+      and lock holders can no longer exhaust the gateway's database
+      connections.
+    - Application streams no longer close early when serving authority
+      is renewed ahead of its deadline.
+    - Gateway replicas can now reach each other on IPv6 clusters.
+    - Transparent egress to an allowed IPv6 address no longer closes
+      without a response.
+    - Bundled SQLite updated to address RUSTSEC-2026-0459.
+  * Features
+    - Docker gateways can give new workspaces persistent `/sandbox`
+      storage and update a stopped sandbox's image without changing
+      its sandbox ID (requires sandbox updates to be enabled on the
+      gateway; existing workspaces are unchanged).
+    - Providers can mint and rotate GitHub App installation tokens
+      with a defined repository and permission scope, so long-running
+      workloads keep access without seeing the app's private key.
+    - Workspace secrets allow storing a shared secret once and
+      referencing it from the refresh settings of multiple providers.
+      Disabled unless the gateway sets `enable_workspace_secrets`.
+    - OAuth refresh providers accept `token_endpoint_auth_method=client_secret_basic`
+      and `resource=<uri>`. Defaults are unchanged.
+    - Credential `path_template` values can end in `/`, so one token
+      can cover every method under an API path (e.g. `/bot{credential}/`).
+    - AKS deployments can use Entra workload identity for external
+      Azure PostgreSQL instead of a stored database password.
+    - Gateway metrics can be sent to an OTLP collector by setting
+      `enabled = true` under `[openshell.gateway.otlp.metrics]`.
+      Prometheus scraping continues to work alongside it.
+    - Gateway audit records now name the resources each change
+      touched (workspaces, sandboxes, providers, credential keys,
+      settings, draft policy chunks, exec channels, port forwards,
+      SSH sessions), flag no-op and replayed changes, and include
+      the error reason when a change fails. Set `capture_setting_values
+      = true` or `capture_exec_command = true` under
+      `[openshell.gateway.audit]` to also record setting values or
+      exec arguments.
+    - Policy DNS answers AAAA queries on IPv6-only supervisor
+      namespaces (`policy_dns_ipv6_egress`, `auto` by default), and
+      SSRF checks treat a NAT64 address as the embedded IPv4 address.
+    - Network and HTTP events show the actual process behind each
+      sandbox connection instead of pid 0.
+    - Sandbox startup traces show the time spent connecting to the
+      boundary as a separate span.
+
+-------------------------------------------------------------------
+Wed Nov 18 16:18:53 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update openshell to v0.1.9:
+  These are the user-visible changes:
+  * Breaking changes and upgrade notes
+    - Go SDK moved: it now lives at `github.com/ai-openshell/sdk-go`.
+      The old path has been deprecated since v0.1.8.
+    - Network policy: wildcard endpoints no longer allow private
+      IP literals by themselves.
+    - Postgres migration: the gateway migration builds indexes that
+      block table writes. On large deployments, plan the upgrade
+      around that.
+    - Middleware selectors: selectors can no longer include a port,
+      and validation now rejects them if they do.
+    - HTTP middleware: new streaming hooks were added. `EvaluateHttpRequest`
+      and `HttpResponsePreReturn` are deprecated and will be removed
+      in v0.2.0.
+  * New features
+    - Sandbox startup timeouts can be set by operators:
+      `provisioning_repair_window_seconds`, `runtime_bootstrap_grace_seconds`
+      and `sandbox_attach_request_timeout_seconds`.
+    - New CLI flag `openshell sandbox create --timeout <SECONDS>`
+      controls how long to wait for provisioning.
+    - Workspace commands can print as a table, JSON or YAML with
+      `-o/--output table|json|yaml`.
+    - Request ID header: HTTP responses include `X-OpenShell-Request-ID`,
+      which links to OCSF records and traces.
+    - ServiceDiscovery service: a new `openshell.v1.ServiceDiscovery`
+      service lets you discover service routes.
+    - Supervisor placement: shared supervisors are spread evenly
+      across gateway replicas, with new placement metrics.
+    - Delete records: gateway delete records now say which workspace
+      and resource were deleted.
+    - Grafana: a monitoring mixin provides operational dashboards.
+  * Bug fixes
+    - Long-running sandboxes no longer exit when the connection
+      drops a second or later time.
+    - Dedicated supervisors shut down cleanly within 8 seconds of
+      SIGTERM.
+    - Idle `exec` sessions no longer block new control connections.
+    - Stopped sandboxes keep their state when driver updates arrive
+      late.
+    - Multi-replica gateways free the memory of deleted sandboxes.
+    - Gateway and driver logs only use ANSI colors when writing to
+      a terminal.
+    - The TUI workspace shortcut cycles through the actual workspaces.
+    - `rule history` shows the full timestamp.
+    - Security updates: russh 0.65.1, the hickory-proto DNS parser
+      and rustix memory-safety patches.
+  * Other
+    - Security docs now cover L7 audit mode and sandbox runtime
+      protections in more depth.
+    - The rest is internal: more end-to-end, CDI (Docker/Podman)
+      and Jaeger trace tests, development process tooling, and
+      dependency updates.
+
+-------------------------------------------------------------------
 Wed Nov 11 20:10:22 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Prepare for configuation of the SUSE registry in the gateway
@@ -29,9 +166,7 @@ Wed Nov 11 09:20:20 UTC 2026 - Matthias Eckermann <mge@suse.com>
       separate repo.
   * User visible changes:
     - Stability: deleted sandboxes no longer leak memory, so repeated
-      create/delete cycles no longer end in an OOM kill. Kubernetes sandbox
-      deletion is faster, and stopped sandboxes no longer flip back to
-      "provisioning".
+      create/delete cycles no longer end in an OOM kill.
     - CLI:
       - openshell sandbox download now works on busybox-based images.
       - policy update --add-endpoint accepts allow-encoded-slash.

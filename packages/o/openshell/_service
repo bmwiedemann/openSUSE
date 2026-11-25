@@ -2,7 +2,7 @@
 <services>
   <service name="download_files" mode="manual" />
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">OpenShell-*.tar.gz</param>
+    <param name="srctar">openshell-*.tar.gz</param>
     <param name="method">vendor</param>
     <param name="update">true</param>
     <param name="compression">gz</param>

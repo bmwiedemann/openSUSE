@@ -46,4 +46,43 @@ in other words, it is fully portable and hardware independent.</comment>
       - openshell sandbox download now works on busybox-based images.</comment>
     <requestid>1397257</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6e99c005cbb550964c6e6c77a034897f</srcmd5>
+    <version>0.1.10</version>
+    <time>1795619644</time>
+    <user>anag_factory</user>
+    <comment>- Fixed older changelogs to remove entries irrelevant to the package
+  since certain features are not supported (yet).
+- Update to version 0.1.10
+  * Upgrade Notes
+    - Application URLs now come from the supervisor application
+      origin, separate from the gateway connection. Gateway-mediated
+      application routing can be turned off with `enable_gateway_service_routing`
+      (default `true`). Users of the app listener must replace
+      `domain` with `base_url`, deploy matching gateway, driver and
+      supervisor images, and recreate existing dedicated sandbox
+      pods with the new supervisor image.
+    - Repository references and links now point to `ai-openshell/openshell`
+      after the repository transfer.
+  * Bug Fixes
+    - Sandboxed workloads can now set their own CPU affinity, nice
+      value and resource limits, signal themselves and queue signals,
+      like in a plain container. Calls targeting processes outside
+      the workload's own thread group are still denied.
+    - HTTP clients (including JSON-RPC and MCP) are now promptly
+      notified when an upstream closes an idle connection. Proxy
+      failures before a response starts now return `502 Bad Gateway`
+      with a request ID.
+    - Request inspection and authorization now use the protocol
+      chosen by the matching route, so overlapping routes and RPC/MCP
+      requests get the right decision.
+    - Clients that cache DNS answers can open new connections after
+      a policy DNS mapping expires; the destination is refreshed
+      and re-checked before connecting.
+    - Restarting a sandbox no longer sometimes marks it as `Error`
+      (`ContainerExited`) while it is still starting.
+    - On multi-replica gateways, attaching to a sandbox whose main
+      process has finished no longer fails with `sandbox is not</comment>
+    <requestid>1400512</requestid>
+  </revision>
 </revisionlist>
