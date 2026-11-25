@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:44:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 2.6.0
+  This is a stable release. Here are the major user-facing changes:
+  - New web interface for cluster administration (#1562)
+  - Helm chart published as an OCI artifact (#1618)
+  - Garage v1.x is EoL and will not receive any further updates
+  - A blog post will be published soon with necessary details
+    concerning all of these points.
+
+  Other changes in this release are as follows.
+
+  - Security:
+    - s3: add missing quota check in copyobject (#1621, #1627)
+    - s3 api: use try_insert() in postobject to avoid panic (#1622,
+      #1626)
+  - Bug fix:
+    - s3 api: fix listobjects when startafter is before prefix
+      (#1596, #1608)
+    - s3 api: more robust putobject cancellation handling (#1604,
+      #1620)
+    - s3 api: return 501 unimplemented before permission check
+      (#1600, #1607)
+    - fix(s3): ignore unsigned checksum query params in presigned
+      URLs (#1236, #1599)
+    - net: add connection timeouts (#1183, #1624)
+    - crdt: fix wrong merge operator for CancellingOption (#1612)
+  - Improvements:
+    - block: discard compressed blocks when they are bigger than
+      original (#1359, #1623, #1628)
+    - resync: return queue len from ram instead of querying db
+      (#1588, #1619)
+    - s3: stop ListMultipartUploads scan at end of prefix (#1560,
+      #1561)
+    - test(s3): clean up hand-built SigV4 signing into
+      CustomRequester (#1602)
+    - db: set sqlite pragma journal_size_limit to 1G (#1594, #1605)
+  - Build:
+    - update cargo deps + optimize build process in CI (#1630)
+  - Kubernetes:
+    - ci: helm: fix check_version_bump() fetch of target version
+      (#1631)
+    - feat(helm): add support for topology spread constraints
+      (#1572)
+    - helm: add topologySpreadConstraints (#1208)
+  - Documentation and ecosystem:
+    - governance: update communication channels after move to Zulip
+      (#1597)
+    - doc: Add abandonment warning for minio-client (#1598)
+
+-------------------------------------------------------------------
 Sat Oct 24 15:26:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.5.0
