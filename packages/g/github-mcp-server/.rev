@@ -263,4 +263,12 @@ Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
     <comment>Update github-mcp-server to 2.2.0: Skills, agent automations, hide_secret, nil/overflow fixes.</comment>
     <requestid>1398230</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>3ecd85021a4b13c445bec0bb077916ce</srcmd5>
+    <version>2.3.0</version>
+    <time>1795619656</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 2.3.0: security alert tools, PR artifact tools, Go 1.27.4.</comment>
+    <requestid>1400522</requestid>
+  </revision>
 </revisionlist>

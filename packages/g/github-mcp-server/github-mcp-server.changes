@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:57:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.0:
+  * New security product update tools: Dependabot, code scanning
+    and secret scanning alert updates
+  * Experimental pull request artifact tools to create, read,
+    update and delete attachments
+  * Accept the swift ecosystem in list_global_security_advisories
+  * Keep automation confirmation on delete only and tighten tool
+    schemas
+  * Complete pull request content paths from the PR head
+  * Build with Go 1.27.4
+- Vendored modules: chi 5.4.0 -> 5.5.0, pflag 1.0.10 -> 1.1.0,
+  yaml 3.0.5 -> 3.0.6, oauth2 0.37.0 -> 0.38.0; licence set
+  unchanged (MIT, BSD-3-Clause, Apache-2.0 only)
+
+-------------------------------------------------------------------
 Tue Nov 17 16:39:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.2.0:
