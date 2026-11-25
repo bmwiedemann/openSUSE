@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source2:        socat-test-dhparam
 Patch1:         socat-ignore-tests-failure-boo1078346.patch
 # PATCH-FIX-UPSTREAM fix race in socat-chain.sh with passive SSL-L (test 530)
 Patch2:         socat-chain-ssl-l-race.patch
+# PATCH-FIX-UPSTREAM fix test failures when deprecated fgrep is not command
+Patch3:         socat-1.8.1.3-fgrep.patch
 BuildRequires:  iputils
 BuildRequires:  net-tools
 BuildRequires:  openssl-devel

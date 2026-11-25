@@ -507,4 +507,14 @@ See README (forwarded request 157221 from babelworx)</comment>
 - Add socat-chain-ssl-l-race.patch</comment>
     <requestid>1386768</requestid>
   </revision>
+  <revision rev="54" vrev="4">
+    <srcmd5>cabae792c5c4ba96ea7b8bea1a947f70</srcmd5>
+    <version>1.8.1.3</version>
+    <time>1795619515</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1399611 from AndreasStieger
+
+fix failures when legacy fgrep is not a command</comment>
+    <requestid>1400319</requestid>
+  </revision>
 </revisionlist>
