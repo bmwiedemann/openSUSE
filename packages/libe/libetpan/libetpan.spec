@@ -1,7 +1,7 @@
 #
 # spec file for package libetpan
 #
-# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %bcond_with     libetpan_fsanitize
-%define sover 26
+%define sover 27
 Name:           libetpan
-Version:        1.10.1
+Version:        2.0.1
 Release:        0
 Summary:        Mail Handling Library
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source0:        %name-%version.tar.xz
 Patch0:         %name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  db-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(gpg-error)
@@ -83,7 +82,7 @@ diff -u "$_"~ "$_" && exit 123
 %endif
 %configure \
 	--without-curl \
-	--without-expat \
+	--disable-db \
 	--with-gnutls \
 	--enable-ipv6 \
 	--without-openssl \
