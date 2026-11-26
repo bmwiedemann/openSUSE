@@ -32,7 +32,7 @@
 %endif
 %bcond_without split_plugins
 Name:           rabbitmq-server
-Version:        4.2.9
+Version:        4.3.8
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -64,7 +64,7 @@ BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
 BuildRequires:  pkgconfig(systemd)
-Requires:       erlang >= 26.2
+Requires:       erlang >= 27
 Requires:       erlang-epmd
 Requires:       logrotate
 Requires:       rabbitmq-server-plugins

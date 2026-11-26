@@ -959,4 +959,12 @@ The new default is much safer and will reduce the effect application channel lea
   * fix-CVE-2025-30219.patch</comment>
     <requestid>1376041</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>c10d188bdb6ac54115265b1d937c0050</srcmd5>
+    <version>4.3.8</version>
+    <time>1795704864</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1400675</requestid>
+  </revision>
 </revisionlist>
