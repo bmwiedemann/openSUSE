@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyvmomi
-Version:        9.1.0.0
+Version:        9.1.2.0
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0

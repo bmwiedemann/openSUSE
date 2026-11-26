@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Nov 24 19:03:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.1.2.0
+  * Updated bindings and type hints with support for the new vSphere
+    9.1.2 APIs. For details, refer to the API reference guide.
+  * New features of vSphere 9.1.2 based on REST APIs are available
+    via the VMware Cloud Foundation SDK for Python.
+
+-------------------------------------------------------------------
 Tue Jun 23 05:58:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.1.0.0
