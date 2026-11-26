@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:22:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.8:
+  Security:
+  * stanza_router: Ensure stanza events are always fired on the correct host
+  * mod_auth_ldap: Always fail empty passwords
+  * stanza_router: reject stanzas to hosts with mod_s2s disabled
+  * MUC: Use correct actor when kicking on reserved nick conflict
+  * MUC: Strip muc#user elements from messages
+  * net.http: Normalize URI scheme, fixes #2018
+  * net.http.parser: Error on sink write failure
+  * net.http.parser: Avoid responding twice to some HTTP requests
+  * net.http.server: Ensure finish_cb() is always called on socket disconnection
+  * MUC: Reject mediated invites from unaffiliated non-occupants
+  * util.xmppstream: Initialize SAX handlers with max_elements
+  * util.xmppstream: Discard data and callbacks after a stream reset
+  * util.xmppstream: More robust processing of stream aborts
+  * util.xmppstream: More accurate byte accounting for stanza size limits
+  * util.xmppstream: Preserve max_elements if not explicitly set
+  * util.rsm: Strictly validate integers
+  * MUC: Forbid unaffiliated non-occupant MAM queries by default
+  * mod_tokenauth: Apply role (if any) from OAuth token to SASL-authed sessions
+  * mod_invites, mod_invites_register: Use new ‘allowed_username’ field for recording username restriction
+  * mod_invites, mod_invites_register: Restrict concurrent invite use
+  * mod_legacyauth: Run password through saslprep and reject empty/invalid passwords
+  * mod_pep: Don’t send notifications to contacts that no longer have permission to be subscribed
+  * mod_invites, mod_invites_register: Prevent reuse of valid invitations by the same session
+  * mod_http_file_share: Enforce valid content type in slot requests
+  * mod_component: Apply (component|s2s)_max_child_elements to component streams
+  * mod_bosh: Apply c2s_max_child_elements to BOSH streams
+  * mod_http_file_share: Limit data written to sink based on slot request
+  * MUC: Don’t relay arbitrary child elements in mediated invites/declines
+  Fixes and improvements:
+  * sessionmanager, mod_c2s: Update session.data on resumption
+  * rostermanager: Clear pre-approvals on unsubscribed, trigger roster push when needed
+  * net.server_epoll: Fix set_sslctx() so reloaded Direct TLS certificates take effect
+  * net.websocket: Release connection and input state on disconnect
+  * util.datamanager: Don’t leave hole in array after removing callback
+  * util.ip: Fix public/private classification of IPv4-mapped addresses
+  * util.ip: Fix public/private classification of IPv6 unique local addresses
+  * util.xmppstream: Reject data containing NUL bytes
+  * mod_saslauth: Preserve automatic channel binding across connections
+  * mod_invites: :use(): only clear per-user subscription for roster invites
+  * mod_muc_mam: Return error on invalid RSM fields
+  * mod_mam: Return error on invalid RSM fields
+  * mod_csi, mod_csi_simple: Preserve CSI state across resumption
+  * mod_storage_sql: Don’t generate invalid SQL on empty IDs query
+  Minor changes:
+  * util.async: Preserve false return values from waited-for promises
+  * util.crypto: Fix type of generated P-256 keys
+  * util.dataforms: Consistently treat missing type as text-single
+  * rostermanager: Clear pre-approval flag when an incoming subscription is approved
+  * util.xmppstream, mod_c2s: Stop parsing on a non-stanza element in jabber:client
+  * util.encodings: Sync UTF-8 decoder with Lua 5.5.1
+  * util.stanza: Add support for parsing xs:boolean and xs:int
+  * util.pluginloader: Fix traceback when last plugin candidate is rejected (e.g. by metadata requirements)
+  * util.sasl.scram: Cleanly reject invalid/malformed client proofs
+  * util.poll: Discard cached events for deleted registrations
+  * util.queue: Limit size of default preallocation
+  * mod_presence: Don’t pass synthetic rejection through outbound processing
+  * mod_dialback: Reject dialback requests for hosts with s2s disabled
+  * mod_presence: Don’t send unsubscribed to pending in contacts on roster item removal
+  * mod_presence: Fix rejection of pending subscription requests on account deletion
+  * mod_s2s: Rewrite oversized iq type=result into errors
+  * mod_s2s: Return truthy error when dropping an oversized stanza
+  * mod_roster: Preserve pre-approvals on roster edits
+  * mod_storage_memory: Reject invalid RSM limit
+  * mod_storage_sql: Reject invalid RSM limit
+  * mod_presence: Fix order of unsubscribed processing to match RFC and our own comments
+  * mod_register_ibr: Fire event on registration failure
+  * mod_presence: Respond with unsubscribed when contact unsubscribes (RFC 6121 A.3.2)
+  * mod_presence: Only route outbound subscribed if contact is pending in (MUST per RFC 6121 A.2.3)
+  * mod_presence: Send unavailable in the right direction
+  * mod_presence: Send unsubscription from bare JID on roster removal
+  * mod_presence: Send unavailable presence when a contact unsubscribes (RFC 6121 3.3.3 step 3)
+  * util.xmppstream: Stop parsing when the root element is not a stream header
+
+-------------------------------------------------------------------
 Fri Sep 25 05:54:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.7:

@@ -912,4 +912,41 @@
   * See https://blog.prosody.im/prosody-13.0.7-released</comment>
     <requestid>1380331</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8168109f60a373acc2cbfa1fa6a38f58</srcmd5>
+    <version>13.0.8</version>
+    <time>1795704903</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.8:
+  Security:
+  * stanza_router: Ensure stanza events are always fired on the correct host
+  * mod_auth_ldap: Always fail empty passwords
+  * stanza_router: reject stanzas to hosts with mod_s2s disabled
+  * MUC: Use correct actor when kicking on reserved nick conflict
+  * MUC: Strip muc#user elements from messages
+  * net.http: Normalize URI scheme, fixes #2018
+  * net.http.parser: Error on sink write failure
+  * net.http.parser: Avoid responding twice to some HTTP requests
+  * net.http.server: Ensure finish_cb() is always called on socket disconnection
+  * MUC: Reject mediated invites from unaffiliated non-occupants
+  * util.xmppstream: Initialize SAX handlers with max_elements
+  * util.xmppstream: Discard data and callbacks after a stream reset
+  * util.xmppstream: More robust processing of stream aborts
+  * util.xmppstream: More accurate byte accounting for stanza size limits
+  * util.xmppstream: Preserve max_elements if not explicitly set
+  * util.rsm: Strictly validate integers
+  * MUC: Forbid unaffiliated non-occupant MAM queries by default
+  * mod_tokenauth: Apply role (if any) from OAuth token to SASL-authed sessions
+  * mod_invites, mod_invites_register: Use new ‘allowed_username’ field for recording username restriction
+  * mod_invites, mod_invites_register: Restrict concurrent invite use
+  * mod_legacyauth: Run password through saslprep and reject empty/invalid passwords
+  * mod_pep: Don’t send notifications to contacts that no longer have permission to be subscribed
+  * mod_invites, mod_invites_register: Prevent reuse of valid invitations by the same session
+  * mod_http_file_share: Enforce valid content type in slot requests
+  * mod_component: Apply (component|s2s)_max_child_elements to component streams
+  * mod_bosh: Apply c2s_max_child_elements to BOSH streams
+  * mod_http_file_share: Limit data written to sink based on slot request
+  * MUC: Don’t relay arbitrary child elements in mediated invites/declines</comment>
+    <requestid>1400757</requestid>
+  </revision>
 </revisionlist>
