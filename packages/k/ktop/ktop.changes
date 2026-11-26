@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:35:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.8:
+  ktop v0.7.8 resolves unbounded memory growth and scrape-time heap
+  spikes in the built-in Prometheus metrics collector (#176), fixes
+  ~/.ktop/config.yaml Prometheus configuration loading, and updates
+  Prometheus and CLI memory-tuning documentation.
+  * Prometheus Store & Ring Buffer Memory Fixes (prom)
+    - Lazy Ring Buffer Allocation (prom/ring_buffer.go): RingBuffer
+      now allocates backing storage lazily starting at 16 slots and
+      doubles up to its configured capacity rather than
+      pre-allocating MaxSamples (10,000 × 24 bytes = 240 KB)
+      immediately per series. Clear() zeroes backing elements to
+      avoid retaining references.
+      - Retention-Bounded Per-Series Capacity (prom/storage.go):
+        InMemoryStore bounds effective per-series ring buffer
+        capacity to what RetentionTime / ScrapeInterval (+
+        headroom) can produce, clamped to MaxSamples, preventing
+        long-running active series from growing to 10,000 slots
+        over extended uptime.
+      - Metadata & Stale Series Reclamation (prom/storage.go,
+        prom/controller.go):
+        - Removed the unbounded stringHandles map and delegated
+          InternString directly to unique.Make(s).Value() so
+          interned strings for deleted pods, containers, and cgroup
+          paths are eligible for garbage collection.
+        - Rebuilt labelNames and labelValues and compacted heavily
+          shrunk per-metric series maps during
+          cleanupExpiredSamples.
+        - Capped the periodic cleanup interval to at most 2 minutes
+          so expired series are reclaimed promptly.
+      - Reduced Query Allocations (prom/storage.go): Added
+        QueryLatestPerSeries for single-sample lookups and
+        batch-allocated MetricSample slices in QueryRangePerSeries.
+  * Streaming Scrape Filtering & cAdvisor Cardinality Reduction
+    (prom/scraper.go)
+    - Stream-Filtered Parsing: scrapeTarget streams responses via
+      req.Stream and filters Prometheus exposition lines against
+      DefaultMetricAllowlist before invoking expfmt.TextParser,
+      avoiding protobuf DTO allocation for non-allowlisted metric
+      families.
+    - Bounded Node Concurrency: scrapeAllTargets caps concurrent
+      node scrapes at 6 to bound peak heap usage on multi-node
+      clusters.
+    - cAdvisor Series Filtering: Drops unqueried cAdvisor series
+      during ingestion—including non-root/non-pod systemd and slice
+      cgroups (/system.slice/*, /kubepods.slice), pause containers
+      (container="POD"), per-core pod CPU series, pod-level network
+      series, and non-workload CFS/PSI series—while preserving all
+      queried node (id="/", including cgroups v1 per-core CPU
+      fallback) and pod/container series (including static-pod
+      container="" memory fallback).
+  * Refresh Allocation & Config Wiring Fixes (metrics/prom, k8s,
+    views/node, cmd, docs)
+    - Latest-Sample Memory Lookups (metrics/prom/prom_source.go):
+      GetAllPodMetrics and queryLatestSumFiltered use
+      QueryLatestPerSeries for working-set memory instead of
+      scanning 5-minute ranges on every 3-second pod refresh.
+    - Informer Read Without Deep Copy (k8s/pods_controller.go):
+      GetPodModels reads node allocatable resources directly from
+      the node informer lister without deep-copying full Node
+      objects.
+    - Reusable Node Info Header (views/node/detail.go): Reuses a
+      single tview.TextView in drawInfoHeader across refreshes.
+    - Config File Prometheus Settings (cmd/ktop.go): Applied
+      metrics.scrape_interval, metrics.retention,
+      metrics.max_samples, and metrics.components from
+      ~/.ktop/config.yaml when not overridden by CLI flags.
+    - Documentation (docs/prometheus.md, docs/cli.md): Updated
+      default --prometheus-scrape-interval documentation to 5s and
+      added a Memory Tuning guide covering CLI flags,
+      ~/.ktop/config.yaml, --ksm=off,
+      --metrics-source=metrics-server, and GOMEMLIMIT.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully backward compatible with
+      existing CLI flags, kubectl ktop plugin usage,
+      ~/.ktop/config.yaml files, and --noui JSON/JSONL output.
+    - Deprecations & Retractions: None.
+    - Migration Actions: None required. Existing
+      ~/.ktop/config.yaml files with max_samples: 10000 benefit
+      automatically from lazy ring-buffer allocation and
+      retention-bounded per-series caps.
+
+-------------------------------------------------------------------
 Tue Nov 24 10:05:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.7:
