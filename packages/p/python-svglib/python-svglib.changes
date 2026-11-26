@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:54:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.4.0
+  * <textPath> is now supported: text follows the <path> named by its href
+    or xlink:href, with startOffset (a length or a percentage) and
+    text-anchor, and styled <tspan> children. ReportLab can't draw text along
+    a path, so each glyph is placed and rotated individually, at the point of the
+    path under its midpoint; glyphs beyond the end of the path are dropped. Only
+    paths of the same document can be followed, and side, method, spacing
+    and per-glyph dx/dy/rotate are not supported
+  * The plain opacity property is now supported, as a presentation attribute,
+    in style attributes and in <style> rules, including percentages. Opacity
+    composes down the tree, so a shape at 0.5 inside a group at 0.5 is drawn at
+    0.25. It is applied per shape, so overlapping shapes inside a translucent
+    group show through each other, and images are not affected
+  * he CSS font shorthand is now expanded into font-style, font-weight,
+    font-size and font-family, in style attributes and in <style> rules.
+    Invalid shorthands are ignored
+  * Dropped support for Python 3.9 (and PyPy 3.9). pip 26.2.2, the new
+    minimum safe version, requires Python 3.10 or newer. requires-python is now
+    >=3.10, the 3.9 classifier is gone, and CI no longer tests 3.9 or PyPy 3.9.
+  * A style attribute or <style> rule whose value contains a colon or a
+    semicolon, such as cursor: url(http://example.com/c.cur), auto or a data
+    URL, no longer makes svg2rlg() fail with ValueError or truncates the
+    value. Declarations are now parsed with tinycss2, malformed ones are
+    skipped, and !important and comments are no longer part of the value
+  * baseline-shift on text is now also read from style attributes and
+    <style> rules, and a percentage is taken relative to the font size instead
+    of being used as a length in user units. A value on an enclosing <g> does
+    not affect the text, as the property is not inherited
+  * stroke-dasharray values that SVG calls invalid (any negative length, or a
+    list that sums to zero) no longer produce an invalid PDF dash pattern and
+    raise ValueError while rendering; they give a solid line. none no longer
+    relies on a swallowed exception, and an odd number of values is repeated once
+    to make it even, as the specification requires
+- Update 2.3.3
+  * The limit on <use> expansions added in 2.3.1 counted expansions, not their
+    size. Each expansion copies and renders the whole element it refers to, so
+    a few kilobytes of nested <use> groups with a large group at the bottom
+    could still take minutes and gigabytes to render (CWE-400,
+    GHSA-xpfm-fw4h-qxwv, an incomplete fix of GHSA-555j-qj3j-c8jv). The elements
+    copied by all expansions of a document, external SVGs included, are now
+    limited too (MAX_USE_CLONED_ELEMENTS, 20,000); once it is spent the
+    remaining <use> elements are skipped and an error is logged.
+- Update to 2.3.2
+  * A long run of digits in the arguments of a path arc command (A or a)
+    could make parsing take exponential time, so a tiny SVG could block a
+    process for minutes or longer (CWE-1333, CWE-400, GHSA-249c-7rgc-f52h).
+    Arc arguments are now read one token at a time, without regex backtracking.
+    Parsing of a malformed arc stops at the first argument that does not fit.
+  * Accept explicit plus signs on arc rotation and endpoints, and tab, carriage
+    return and line feed separators in transform arguments, as allowed by SVG
+  * svg2rlg() no longer unpacks a .svgz file to a sibling .svg file, which
+    overwrote an existing file of that name and then deleted it. The compressed
+    data is now read as a stream
+  * A <use> that refers to itself, or to a cycle of elements that each <use>
+    the next one, no longer crashes with RecursionError. The offending <use>
+    is skipped and an error is logged, as already done for cyclic references
+    between external files
+- Update to 2.3.1 (fixes CVE-2026-132275, bsc#1291604)
+  * Rendering an SVG could be made to take exponential time and memory through
+    nested <use> elements, where each level references a group containing many
+    <use> elements of the previous level (CWE-400, GHSA-555j-qj3j-c8jv).
+    renderUse() now stops after MAX_USE_EXPANSIONS (10,000) expansions per
+    document, logs one error and skips the remaining <use> elements. The budget
+    is shared with the renderers of external SVG files, so referencing many
+    external files does not reset it.
+- full changelog: https://github.com/deeplook/svglib/blob/main/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Nov 28 13:07:57 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.6.0

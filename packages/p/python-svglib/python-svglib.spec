@@ -1,7 +1,7 @@
 #
 # spec file for package python-svglib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-svglib
-Version:        1.6.0
+Version:        2.4.0
 Release:        0
 Summary:        Python library for reading and converting SVG
 License:        LGPL-3.0-only
@@ -75,7 +76,7 @@ install -Dm0644 svg2pdf.1 %{buildroot}%{_mandir}/man1/svg2pdf.1
 %python_uninstall_alternative svg2pdf
 
 %files %{python_files}
-%doc CHANGELOG.rst README.rst
+%doc CHANGELOG.md README.md
 %license LICENSE.txt
 %python_alternative %{_bindir}/svg2pdf
 %python_alternative %{_mandir}/man1/svg2pdf.1%{ext_man}
