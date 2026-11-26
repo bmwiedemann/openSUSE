@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 13 09:53:45 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Security fix for CVE-2026-84503 (bsc#1289577): the git module built
+  its git commands as strings, so values taken from the repository or
+  the task (remote, branch, ref and submodule names) were split again
+  on whitespace and could reach git as extra arguments. Pass every
+  command to run_command as an argument list instead.
+  Backport of gh#ansible/ansible#87762 (commit 5186cff1).
+  * add ansible-core-CVE-2026-84503.patch
+- Security fix for CVE-2026-105929 (bsc#1289573): ansible-galaxy role
+  install accepted a role name that resolves outside the configured
+  roles directory, so a requirements file could make it create or
+  replace a directory elsewhere. Such a name is now an error.
+  Backport of gh#ansible/ansible#87749 (commit 9795c1b5).
+  * add ansible-core-CVE-2026-105929.patch
+
+-------------------------------------------------------------------
 Fri Nov  6 08:46:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.20:

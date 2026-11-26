@@ -63,6 +63,10 @@ Patch3:         suse-distribution-fix.patch
 Patch4:         ansible-core-CVE-2026-16493.patch
 # CVE-2026-89091 (bsc#1284847)
 Patch5:         ansible-core-CVE-2026-89091.patch
+# PATCH-FIX-UPSTREAM ansible-core-CVE-2026-84503.patch bsc#1289577 CVE-2026-84503 -- gh#ansible/ansible#87762
+Patch6:         ansible-core-CVE-2026-84503.patch
+# PATCH-FIX-UPSTREAM ansible-core-CVE-2026-105929.patch bsc#1289573 CVE-2026-105929 -- gh#ansible/ansible#87749
+Patch7:         ansible-core-CVE-2026-105929.patch
 BuildArch:      noarch
 
 Provides:       ansible-core = %{version}
