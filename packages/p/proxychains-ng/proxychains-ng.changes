@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 17:12:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.18
+  * fix freeaddrinfo prototype.
+  * new --fat-binary-m2 configure option.
+  * fix getaddrinfo crash with node+hints=0 .
+  * fix socks5 parsing on big endian.
+  * fix MT race in strict chain.
+  * support for unix domain sockets as first proxy.
+  * fix http connect for ipv6 targets.
+  * several minor correctness fixes.
+
+-------------------------------------------------------------------
 Sun Apr  7 09:02:59 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.17:
