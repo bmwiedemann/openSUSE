@@ -103,6 +103,25 @@ ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rcregistry
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}-registry.conf
 
+%if 0%{?suse_version} > 1500
+%check
+export CGO_ENABLED=1 GO111MODULE=auto
+# TestHTTPChecker queries public internet hosts, there is no network in the
+# build environment. find() in the in-memory driver walks one level too deep
+# when the last component repeats its parent (upstream PR #4996, merged after
+# 3.1.2), so the three tests that build such paths fail at random.
+skip='^TestHTTPChecker$|^TestInMemoryDriverSuite/(TestDeleteOnlyDeletesSubpaths|TestDeleteFolder|TestMoveNonexistent)$'
+%ifarch s390x
+# registry/handlers does not finish within the OBS build time limit on the
+# s390x workers (it hit the 10m go test timeout on other s390x builds).
+packages=$(go list ./... | grep -v '/registry/handlers$')
+%else
+packages=./...
+%endif
+go test -mod=vendor -tags %{buildtags} -test.short -count=1 -v \
+    -skip "$skip" $packages
+%endif
+
 %pre registry -f registry.pre
 %service_add_pre registry.service
 

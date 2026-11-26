@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Nov 23 20:39:07 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Run the upstream unit tests in %check with go test -test.short.
+  -test.short omits the two 5 GB WriteReadLargeStreams cases.
+  TestHTTPChecker needs internet access and is skipped.
+  Skip TestDeleteOnlyDeletesSubpaths, TestDeleteFolder and
+  TestMoveNonexistent in the in-memory driver: find() walks one level
+  too deep when the last path component repeats its parent (upstream
+  PR #4996, merged after 3.1.2). On s390x skip the registry/handlers
+  package, which hits the 10m go test timeout on the slow s390x
+  workers (the TW/s390x build was also cut at the 46m build limit).
+
+-------------------------------------------------------------------
 Thu Nov 19 07:21:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
