@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:42:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.7:
+  * Update module sigs.k8s.io/controller-runtime to v0.25.3 (#1285)
+  * Update dependency vite to v6.4.6 (#1282)
+  * Update dependency vite to v6.4.6 (#1280)
+  * Update dependency vite to v8.3.8 (#1277)
+  * Update dependency vite to v8.3.7 (#1275)
+  * Update dependency vite to v8.3.6 (#1273)
+  * Update dependency vite to v8 (#1271)
+  * docs: update documentation from template (#1269)
+  * Update all non-major dependencies to v0.37.2 (#1267)
+
+-------------------------------------------------------------------
 Thu Nov 05 15:04:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.2.6:
