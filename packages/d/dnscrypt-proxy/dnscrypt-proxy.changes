@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 25 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to version 2.1.21
+  * Changed the default network probe and fallback bootstrap address to
+    "8.8.8.8:53". The example bootstrap list now uses Google and Cloudflare.
+  * Wildcard UDP listeners now reply from the address that received the query
+    on platforms that support UDP packet information
+  * Fixed IPv6 relay selection for wildcard Anonymized DNSCrypt routes
+  * Cloaking now creates PTR records for all IPv6 addresses of a cloaked name
+  * Forwarded replies with a mismatched DNS question are rejected instead of
+    falling back to regular resolvers
+  * NetAPI compromised domains list added to the blocklist generator
+
+-------------------------------------------------------------------
 Sun Oct 25 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to version 2.1.20

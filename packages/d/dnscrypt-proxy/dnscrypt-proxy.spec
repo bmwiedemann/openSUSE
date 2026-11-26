@@ -25,7 +25,7 @@
 %define services    %{name}.socket %{name}.service %{name}-resolvconf.service
 
 Name:           dnscrypt-proxy
-Version:        2.1.20
+Version:        2.1.21
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
@@ -153,7 +153,7 @@ cp %{SOURCE6} %{name}.socket.conf
 %service_del_postun %{services}
 
 %files
-%doc ChangeLog README.md README.openSUSE %{name}.socket.conf %{name}.toml.default
+%doc ChangeLog README.md README.openSUSE AI-POLICY.md %{name}.socket.conf %{name}.toml.default
 %doc %{name}/example-*
 %config(noreplace) %attr(-,root,%{user_group}) %{config_dir}/%{name}.toml
 %config %attr(-,root,%{user_group}) %{config_dir}/%{name}.toml.default
