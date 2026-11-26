@@ -218,4 +218,13 @@
     <comment>- Add configure-fix-fPIC-on-aarch64.patch to fix -fPIC on aarch64</comment>
     <requestid>1316643</requestid>
   </revision>
+  <revision rev="23" vrev="11">
+    <srcmd5>9f5a9e3603c63f4b7d8eec5d3bf0dbba</srcmd5>
+    <version>3.5</version>
+    <time>1795704909</time>
+    <user>anag_factory</user>
+    <comment>- Remove mvapich 2 and 3 builds
+- Add build for mvapich 4 and 5</comment>
+    <requestid>1400775</requestid>
+  </revision>
 </revisionlist>

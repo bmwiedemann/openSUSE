@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 15:45:44 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Remove mvapich 2 and 3 builds
+- Add build for mvapich 4 and 5
+
+-------------------------------------------------------------------
 Mon Nov  3 16:41:06 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add configure-fix-fPIC-on-aarch64.patch to fix -fPIC on aarch64
