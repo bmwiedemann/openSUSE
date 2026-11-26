@@ -21,6 +21,13 @@
 %else
 %bcond_with     remmina_kwallet
 %endif
+
+%if 0%{?suse_version} >= 1699
+%bcond_without  remmina_sso_mib
+%else
+%bcond_with     remmina_sso_mib
+%endif
+
 Name:           remmina
 Version:        1.4.44
 Release:        0
@@ -80,6 +87,9 @@ BuildRequires:  cmake(KF5Wallet)
 %endif
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(wayland-client)
+%endif
+%if %{with remmina_sso_mib}
+BuildRequires:  pkgconfig(sso-mib)
 %endif
 
 %description
@@ -213,6 +223,12 @@ export CFLAGS="$CFLAGS -fPIC"
 %else
 	-DWITH_KF5WALLET=OFF \
 %endif
+%if %{with remmina_sso_mib}
+	-DWITH_SSO_MIB=ON \
+%else
+	-DWITH_SSO_MIB=OFF \
+%endif
+	-DWITH_RDP_AUTH_AAD=ON \
 	-DWITH_APPINDICATOR=ON \
 	%{nil}
 
