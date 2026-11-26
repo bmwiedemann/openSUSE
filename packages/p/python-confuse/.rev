@@ -60,4 +60,31 @@
     <comment></comment>
     <requestid>1342385</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>33a41f6158e096ae079e77aad1ea3539</srcmd5>
+    <version>2.3.1</version>
+    <time>1795704931</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1400581 from dspinella
+
+- Update to 2.3.1:
+    * Return None for empty strings in as_optional_path(), while
+      preserving support for bytes paths and filename validation
+      errors for invalid types.
+  - Update to 2.3.0:
+    * Add an as_optional_path accessor for optional path
+      configuration values.
+  - Update to 2.2.1:
+    * Require typing_extensions on older Python versions (and use
+      typing on newer versions).
+    * Narrow Path template shorthand handling to concrete
+      pathlib.Path values for more accurate type checking.
+    * Fix confuse.Path which now points to confuse.templates.Path
+      instead of pathlib.Path.
+  - Run the test suite with pytest, which the upstream tests are
+    written for
+  - Describe the package in its description instead of repeating the
+    summary</comment>
+    <requestid>1400846</requestid>
+  </revision>
 </revisionlist>

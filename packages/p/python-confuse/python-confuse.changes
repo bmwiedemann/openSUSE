@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:44:23 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.3.1:
+  * Return None for empty strings in as_optional_path(), while
+    preserving support for bytes paths and filename validation
+    errors for invalid types.
+- Update to 2.3.0:
+  * Add an as_optional_path accessor for optional path
+    configuration values.
+- Update to 2.2.1:
+  * Require typing_extensions on older Python versions (and use
+    typing on newer versions).
+  * Narrow Path template shorthand handling to concrete
+    pathlib.Path values for more accurate type checking.
+  * Fix confuse.Path which now points to confuse.templates.Path
+    instead of pathlib.Path.
+- Run the test suite with pytest, which the upstream tests are
+  written for
+- Describe the package in its description instead of repeating the
+  summary
+
+-------------------------------------------------------------------
 Tue Mar 24 21:06:07 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 2.2.0

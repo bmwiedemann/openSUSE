@@ -16,27 +16,32 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-confuse
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        Painless YAML configuration
 License:        MIT
 URL:            https://github.com/beetbox/confuse
 Source:         https://github.com/beetbox/confuse/archive/refs/tags/v%{version}.tar.gz#/confuse-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
-BuildRequires:  %{python_module typing-extensions}
+# the test suite imports pytest (pytest.raises) in most modules
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing-extensions}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
+# upstream pyproject.toml asks for typing_extensions only for python_version < 3.13
+Requires:       (python-typing_extensions >= 4.4 if python-base < 3.13)
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Painless YAML configuration.
+Confuse is a configuration library for Python that reads YAML files. It handles
+defaults, overrides, type checking, command-line and environment variable
+integration, and standard OS-specific configuration locations.
 
 %prep
 %setup -q -n confuse-%{version}
@@ -49,7 +54,8 @@ Painless YAML configuration.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+# upstream tests are written for pytest (pytest.raises with match=)
+%pytest -v
 
 %files %{python_files}
 %doc README.rst
