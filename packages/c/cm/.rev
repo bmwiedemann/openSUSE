@@ -63,4 +63,12 @@
     <comment>- Update to release 0.4.4</comment>
     <requestid>1304254</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d953edcad83fe771461674d165ee8217</srcmd5>
+    <version>0.4.4</version>
+    <time>1795704830</time>
+    <user>anag_factory</user>
+    <comment>- Set -std=gnu99 mode</comment>
+    <requestid>1400612</requestid>
+  </revision>
 </revisionlist>

@@ -29,7 +29,6 @@ Source2:        http://www.multiprecision.org/downloads/%name-%version.tar.gz.as
 Source3:        %name.keyring
 BuildRequires:  flint-devel >= 3
 BuildRequires:  gmp-devel >= 4.3.2
-BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  mpc-devel >= 1
 BuildRequires:  mpfr-devel >= 3
@@ -72,7 +71,8 @@ It includes libraries that can be called from within a C program.
 %autosetup -p1
 
 %build
-autoreconf -fi
+%set_build_flags
+export CFLAGS="$CFLAGS -std=gnu99" # upgrade from c99
 %configure --disable-static
 %make_build
 
