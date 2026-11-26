@@ -24,10 +24,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
-%define distversion 2.4
 Name:           python-jupyter-server-ydoc%{psuffix}
-Version:        2.4.0
+Version:        3.0.4
 Release:        0
 Summary:        Jupyter server extension integrating collaborative shared models
 License:        BSD-3-Clause
@@ -43,10 +41,10 @@ Requires:       jupyter-server-ydoc = %{version}
 Requires:       python-jsonschema >= 4.18.0
 Requires:       python-jupyter_events >= 0.11.0
 Requires:       python-pycrdt
-Requires:       (python-jupyter_server >= 2.15.0 with python-jupyter_server < 3.0)
+Requires:       (python-jupyter_server >= 2.19.0 with python-jupyter_server < 3.0)
 Requires:       (python-jupyter_server_fileid >= 0.7.0 with python-jupyter_server_fileid < 1)
-Requires:       (python-jupyter_ydoc >= 3.0.3 with python-jupyter_ydoc < 4)
-Requires:       (python-pycrdt-websocket >= 0.16.0 with python-pycrdt-websocket < 0.17)
+Requires:       (python-jupyter_ydoc >= 4.1.1 with python-jupyter_ydoc < 5)
+Requires:       (python-pycrdt-websocket >= 0.16.4 with python-pycrdt-websocket < 0.17)
 Provides:       python-jupyter_server_ydoc = %{version}-%{release}
 BuildArch:      noarch
 %if %{with test}
@@ -63,7 +61,7 @@ The collaborative shared models are used for both:
 
 %package -n jupyter-server-ydoc
 Summary:        Jupyter server extension integrating collaborative shared models
-Requires:       python3dist(jupyter-server-ydoc) = %{distversion}
+Requires:       python3dist(jupyter-server-ydoc) = %{version}
 Suggests:       python3-jupyter-server-ydoc = %{version}
 
 %description -n jupyter-server-ydoc
@@ -78,13 +76,13 @@ This package provides the common jupyter configuration file.
 %package test
 Summary:        The jupyter_server_ydoc[test] extra
 Requires:       python-anyio
+Requires:       python-coverage
 Requires:       python-dirty-equals
-Requires:       python-httpx-ws >= 0.5.2
+Requires:       python-httpx-ws >= 0.9.0
 Requires:       python-jupyter-server-fileid
-Requires:       python-jupyter-server-test >= 2.15
+Requires:       python-jupyter-server-test >= 2.19
 Requires:       python-jupyter-server-ydoc = %{version}
 Requires:       python-pytest >= 7.0
-Requires:       (python-importlib_metadata >= 4.8.3 if python-base < 3.10)
 
 %description test
 Metapackage for the jupyter_server_ydoc[test] extra requirements

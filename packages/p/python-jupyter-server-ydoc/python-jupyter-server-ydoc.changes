@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:16:52 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update to 3.0.4
+  * New subpackage version for jupyter-collaboration 5.0.4
+  * Sync the test extra with upstream: add coverage, require
+    httpx-ws >= 0.9.0 and drop the obsolete importlib_metadata
+    conditional
+  * Fix the version requirement of the jupyter-server-ydoc
+    metapackage
+- Update to 3.0.3
+  * New subpackage version for jupyter-collaboration 5.0.3
+  * Pass errorReason to the client
+- Update to 3.0.2
+  * New subpackage version for jupyter-collaboration 5.0.2
+  * Fix file rename
+- Update to 3.0.1
+  * New subpackage version for jupyter-collaboration 5.0.1
+  * Fix file rename
+- Update to 3.0.0
+  * New subpackage version for jupyter-collaboration 5.0.0
+  * Use jupyter-ydoc v4
+  * Require jupyter-server >= 2.19.0 and pycrdt-websocket >= 0.16.4
+  * GHSA-8w8w-78q2-76qw: authentication and authorization checks
+    for the RTC timeline handler; the WebSocket and undo/redo
+    handlers get the same checks
+  * Configurable session_store_path
+  * Start serving WebSocket after document initialization
+- Update to 2.4.2
+  * GHSA-8w8w-78q2-76qw: authentication and authorization checks
+    for the RTC timeline handler; the WebSocket and undo/redo
+    handlers get the same checks
+- Update to 2.4.1
+  * Do not crash on out of band change when the room is
+    disconnected and ystore deleted (or no-op)
+  * Reduce noisy monitor logs
+
+-------------------------------------------------------------------
 Thu May 28 01:49:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.0
