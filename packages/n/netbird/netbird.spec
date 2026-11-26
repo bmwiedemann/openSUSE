@@ -199,14 +199,14 @@ BuildArch:      noarch
 Zsh command line completion support for %{name}-management.
 
 %package signal-bash-completion
-Summary:        Bash Completion for %{name}-management
+Summary:        Bash Completion for %{name}-signal
 Requires:       %{name}-signal
 Requires:       bash-completion
 Supplements:    (%{name}-signal and bash-completion)
 BuildArch:      noarch
 
 %description signal-bash-completion
-Bash command line completion support for %{name}-management.
+Bash command line completion support for %{name}-signal
 
 %package signal-fish-completion
 Summary:        Fish Completion for %{name}-signal
@@ -473,6 +473,7 @@ go test -skip "${disable}" ./client/...
 
 %if %{with netbird_ui}
 %files ui
+%license LICENSE
 %{_bindir}/%{name}-ui
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/256x256/apps/%{name}*.png

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 21 20:08:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix description for signal bash completion
+
+-------------------------------------------------------------------
 Sat Nov 21 00:35:49 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to v0.83.2:
@@ -41,7 +46,7 @@ Fri Nov 13 19:36:23 UTC 2026 - Holden Fried <holden@opensuse.org>
   Maintainer comment:
   - Lots of formatting and links to new documentation in this
     version. Highly recommend visiting the upstream release notes
-    for details: 
+    for details:
     * https://github.com/netbirdio/netbird/releases/tag/v0.83.0
 
   ⚠️ Breaking changes: profile ownership and daemon access
