@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:46:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.4:
+  * Update module sigs.k8s.io/controller-runtime to v0.25.3 (#499)
+  * Update module helm.sh/helm/v3 to v4 (#476)
+  * Update all non-major dependencies (#492)
+  * Update module gopkg.in/yaml.v2 to v3 (#475)
+  * docs: update documentation from template (#495)
+
+-------------------------------------------------------------------
 Thu Nov 05 14:15:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.3:
