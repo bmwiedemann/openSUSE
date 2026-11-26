@@ -27,11 +27,9 @@ URL:            http://www.multiprecision.org/cmh/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 #Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
-BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel >= 5
-BuildRequires:  libtool
 BuildRequires:  mpc-devel >= 1
 BuildRequires:  mpfr-devel >= 3
 BuildRequires:  mpfrcx-devel >= 0.4.2
@@ -75,7 +73,8 @@ This subpackage provides the development headers for libcmh.
 %autosetup -p1
 
 %build
-autoreconf -fi
+%set_build_flags
+export CFLAGS="$CFLAGS -std=gnu99" # upgrade from c99
 %configure --disable-static
 %make_build
 
