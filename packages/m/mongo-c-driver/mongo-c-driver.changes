@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:18:16 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.10
+  libbson
+  * No changes since 2.5.9. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  * Fix improper validation of OCSP responder authorization.
+    CVE-2026-135224.
+  * Fix incorrect AWS credential selection when a process-wide
+    credential cache is populated. CVE-2026-135222.
+  * Fix possible abort or invalid memory access when handling
+    malformed server replies. CVE-2026-135134.
+
+-------------------------------------------------------------------
 Fri Nov 20 16:03:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.9
