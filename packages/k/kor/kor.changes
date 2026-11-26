@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:53:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.1:
+  * chore(chart): Bump version and appVersion in Chart.yaml (#655)
+  * fix(configmaps): Remove duplicate envFromContainerCM variable
+    (#654)
+  * feat(chart): Support `priorityClassName` for CRON job/exporter
+    (#651)
+  * fix(secrets): treat secrets referenced by CSI PersistentVolumes
+    as used (#648)
+  * fix(rolebindings): look up ServiceAccount subjects in their own
+    namespace (#652)
+  * fix(configmaps): count references from ephemeral containers
+    (#650)
+  * fix(configmaps): stop counting init container mount names as
+    ConfigMaps (#647)
+
+-------------------------------------------------------------------
 Thu Nov 12 05:33:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.0:
