@@ -68,4 +68,12 @@ Also, includes a changelog entry pointing to the mitigation steps suggested by t
     <comment>Monthly Patch Release – Oct, 2026: Update to version 1.36.6</comment>
     <requestid>1393285</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87f8807619f53fe6895a6acec7b3315d</srcmd5>
+    <version>1.36.7</version>
+    <time>1795704920</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Nov, 2026: Update to version 1.36.7</comment>
+    <requestid>1400810</requestid>
+  </revision>
 </revisionlist>
