@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sat Nov 21 13:18:14 UTC 2026 - Ilham Setiawan <ilhamsetiawan2000@gmail.com>
+
+- Initial package lazysql 0.7.0:
+  * Terminal UI database client written in Go (PostgreSQL, MySQL,
+    SQLite, MSSQL, ClickHouse)
+  * Go modules vendored with go_modules
+  * Built without a telemetry endpoint, so telemetry stays off

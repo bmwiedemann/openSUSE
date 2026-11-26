@@ -1,0 +1,6 @@
+<package name="lazysql" project="openSUSE:Factory">
+  <title>Terminal UI database management tool</title>
+  <description>LazySQL is a terminal user interface for managing databases, inspired by
+Lazygit. It supports PostgreSQL, MySQL, SQLite, MSSQL and ClickHouse and
+lets you browse tables, edit rows and run queries from the keyboard.</description>
+</package>
