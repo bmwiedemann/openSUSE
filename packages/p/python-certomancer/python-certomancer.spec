@@ -24,24 +24,25 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-certomancer
-Version:        0.14.0
+Version:        0.16.0
 Release:        0
 Summary:        PKI testing tool
 License:        MIT
 URL:            https://github.com/MatthiasValvekens/certomancer
 Source:         https://github.com/MatthiasValvekens/certomancer/archive/refs/tags/v%{version}.tar.gz#/certomancer-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 67.4}
-BuildRequires:  %{python_module setuptools-scm}
+BuildRequires:  %{python_module setuptools >= 80.9.0}
+BuildRequires:  %{python_module setuptools-scm >= 8.3.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module asn1crypto >= 1.5}
+BuildRequires:  %{python_module aiohttp >= 3.9}
 BuildRequires:  %{python_module Jinja2 >= 2.11.3}
 BuildRequires:  %{python_module PyYAML >= 5.4.1}
 BuildRequires:  %{python_module Werkzeug}
+BuildRequires:  %{python_module asn1crypto >= 1.5}
 BuildRequires:  %{python_module click >= 7.1.2}
-BuildRequires:  %{python_module cryptography >= 3.4.7}
+BuildRequires:  %{python_module cryptography >= 49.0.0}
 BuildRequires:  %{python_module freezegun >= 1.1.0}
 BuildRequires:  %{python_module pyhanko-certvalidator >= 0.26.5}
 BuildRequires:  %{python_module pytest-asyncio >= 0.26.0}
@@ -50,15 +51,13 @@ BuildRequires:  %{python_module python-dateutil >= 2.8.1}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests-mock >= 1.8.0}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module tzlocal >= 2.1}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-PyYAML >= 5.4.1
 Requires:       python-asn1crypto >= 1.5
 Requires:       python-click >= 7.1.2
-Requires:       python-cryptography >= 3.4.7
+Requires:       python-cryptography >= 49.0.0
 Requires:       python-python-dateutil >= 2.8.1
-Requires:       python-tzlocal >= 2.1
 Suggests:       python-Werkzeug >= 2.2.3
 Suggests:       python-Jinja2 >= 2.11.3
 Suggests:       python-python-pkcs11 >= 0.7.0
@@ -76,7 +75,10 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-PKI testing tool
+Certomancer builds and deploys PKI test configurations from a simple
+declarative configuration file. It provisions CRL, OCSP and time stamping
+services, so that software which depends on a PKI can be tested against
+realistic certificates.
 
 %prep
 %autosetup -p1 -n certomancer-%{version}

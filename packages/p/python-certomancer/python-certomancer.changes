@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:14:15 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.16.0:
+  * No changes could be found
+- Update to 0.15.1:
+  * Allow a custom app in `AsyncIllusionist.serving_session`
+- Update to 0.15.0:
+  * Add `aiohttp` support for Animator and Illusionist
+
+-------------------------------------------------------------------
 Wed Apr 22 14:42:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.0
