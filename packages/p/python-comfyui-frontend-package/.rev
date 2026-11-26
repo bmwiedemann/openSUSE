@@ -326,4 +326,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update python-comfyui-frontend-package to 1.59.14: backport fixes on core/1.59 (agent Auto switch, subgraph links, preload, imports).</comment>
     <requestid>1400301</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e037f77ac0e63671cca79b34ec4bb60f</srcmd5>
+    <version>1.59.15</version>
+    <time>1795704817</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-frontend-package to 1.59.15: backport fixes on core/1.59.</comment>
+    <requestid>1400523</requestid>
+  </revision>
 </revisionlist>

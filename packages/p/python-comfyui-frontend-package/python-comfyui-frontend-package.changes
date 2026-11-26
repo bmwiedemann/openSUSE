@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:56:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.59.15 (backport fixes only on core/1.59):
+  * Subgraph: prune links saved with a negative target slot
+    on load; strip reserved incarnation from minted
+    subgraph definitions
+  * Agent: drop a restored round's live thinking after a
+    reload; wait for the events socket instead of giving
+    up a doc subscribe; quiet on a new local user's first
+    session; plain canvas selection sent as context; node
+    picking framed below the selection-mode banner;
+    sign-in awaited before saving consent
+  * Loading and errors: execution errors without a
+    traceback now render; loadApiJson without a file name
+    opens a new workflow instead of throwing; MP4/MOV
+    workflow metadata read when moov sits past the first
+    64 MiB; unanswered capability reads kept out of Sentry
+  * Open on Cloud: upload missing models; confirmation
+    required before checking Cloud compatibility
+  * Deploy: keep the video preview until playback advances
+  * Vendored DOMPurify stays 3.4.13; setup.py byte-identical,
+    so still no RPM Requires
+  * Spec cleanup: braceless python_files macro form
+    (spec-cleaner no-diff)
+
+-------------------------------------------------------------------
 Tue Nov 24 13:16:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.59.14 (backport fixes only on core/1.59):
