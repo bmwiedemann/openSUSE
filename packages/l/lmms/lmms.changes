@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov 23 12:23:20 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop pkgconfig(mxml) BuildRequires: lmms is not linked against mxml.
+
+-------------------------------------------------------------------
 Wed Jul  2 16:13:11 UTC 2025 - Torsten Duwe <duwe@suse.com>
 
 - Change spec file test for obsolete suse versions into test for

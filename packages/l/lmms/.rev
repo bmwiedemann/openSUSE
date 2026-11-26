@@ -462,4 +462,12 @@ Require: filesystem</comment>
   x86, and depend those plugins on it</comment>
     <requestid>1290194</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>a7611308f38a5895bd02b017a90079fe</srcmd5>
+    <version>1.3.0~git2024.09.21</version>
+    <time>1795704906</time>
+    <user>anag_factory</user>
+    <comment>- Drop pkgconfig(mxml) BuildRequires: lmms is not linked against mxml.</comment>
+    <requestid>1400772</requestid>
+  </revision>
 </revisionlist>
