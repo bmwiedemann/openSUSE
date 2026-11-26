@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 19:59:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use autoreconf -fi instead of broken manual autoconf/aclocal
+  order to fix AM_JOBSERVER substitution with Automake 1.20.
+- Add BuildRequires: libtool (required by autoreconf).
+- Add nco-flex-yyunput.patch: Change (void)yyunput(X,Y) to
+  (void)yyunput(X) for compatibility with Flex 2.6.5+ (commit
+  be82ad2d).
+
+-------------------------------------------------------------------
 Fri Oct 23 14:45:11 UTC 2026 - Andrea Manzini <ilmanzo@gmail.com>
 
 - Update to version 5.4.1:

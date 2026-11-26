@@ -38,6 +38,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/nco/nco/
 Source0:        https://github.com/nco/nco/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM be82ad2d63946f8efcd0b24a6f07d4059674c483 Change (void)yyunput(X,Y) to (void)yyunput(X) for Flex 2.6.5+
+Patch0:         nco-flex-yyunput.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  flex
@@ -45,6 +47,7 @@ BuildRequires:  gawk
 BuildRequires:  gcc-c++
 BuildRequires:  libaec-devel
 BuildRequires:  libsz2-devel
+BuildRequires:  libtool
 BuildRequires:  netcdf
 BuildRequires:  pkgconfig
 BuildRequires:  texinfo
@@ -119,14 +122,12 @@ in the netCDF and HDF formats.
 This package contains the documentation for %{name}.
 
 %prep
-%autosetup
+%autosetup -p1
 # We need to enable the valarray check, so the c++ binding library gets build
 sed -i 's|# AC_CXX_HAVE_VALARRAY|AC_CXX_HAVE_VALARRAY|' configure.ac
 
 %build
-autoconf
-aclocal
-automake --foreign
+autoreconf -fi
 %configure \
     --disable-static \
     --prefix=%{_prefix} \

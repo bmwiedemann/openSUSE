@@ -1,0 +1,22 @@
+From be82ad2d63946f8efcd0b24a6f07d4059674c483 Mon Sep 17 00:00:00 2001
+From: Charlie Zender <zender@uci.edu>
+Date: Mon, 23 Nov 2026 08:41:42 -0800
+Subject: [PATCH] Change (void)yyunput(X,Y) to (void)yyunput(X) for Flex 2.6.5+
+
+Flex 2.6.5+ defines unput as a 1-argument macro yyunput(c, yytext_ptr),
+so calling yyunput with 2 arguments fails compilation.
+---
+ src/nco/ncap_lex.l | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/nco/ncap_lex.l
++++ b/src/nco/ncap_lex.l
+@@ -817,7 +817,7 @@ M_PI {return NAMED_CONSTANT;}
+   
+   if(0){ /* Remove some compiler warning messages CEWI */
+     /* Following two statements remove "defined but not used" messages in ncap_lex.c (lex.yy.c) */
+-    (void)yyunput((int)0,(char *)NULL);
++    (void)yyunput((int)0);
+     /*    (void)yy_flex_realloc((void *)NULL,(size_t)NULL);*/
+     /* Remove warnings which only occur on SGI IRIX cc */
+     yy_full_match=yy_full_match+0;
