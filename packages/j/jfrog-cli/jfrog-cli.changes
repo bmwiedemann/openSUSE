@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:48:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.134.0:
+  No changes in: gofrog, jfrog-client-go
+  * New Features
+    - [build-info-go] RTECO-2751 - Select the Maven and Gradle
+      build-info extractor version at run time #440
+    - [jfrog-cli-artifactory] Add Kiro as a built-in skills agent
+      #610
+    - [jfrog-cli-artifactory] RTECO-2751 - Use the newest allowed
+      build-info extractor version in jf mvn and jf gradle #612
+    - [jfrog-cli-core] RTECO-2751 - Look up the newest allowed
+      build-info extractor version #1636
+    - [jfrog-cli-security] XRAY-171808 - Support waiver request
+      flow in npm debug report jf ca flow #955
+  * Bug Fixes
+    - [jfrog-cli] RTECO-2334 - Fix Conan build info artifact
+      collection for references with user/channel #3760
+    - [jfrog-cli-security] XRAY-163145 - Dont exclude root name
+      #934
+    - [jfrog-cli-security] XRAY-166562 - Check yarn scoped
+      registries match jf c server before s… #951
+    - [jfrog-cli-security] XRAY-158520 - Honour mvn profile and
+      plugin dep ensuring correct result #954
+    - [jfrog-cli-security] XRAY-170058 - Supports requirements file
+      flag in jf ca #952
+    - [jfrog-cli-security] XRAY-171777 - Improve npm debug parser
+      in npm debug jf ca flow #958
+  * Internal Changes
+    - [jfrog-cli-security] Update to Go 1.26.11 and update deps
+      #965
+  * Other Changes
+    - [jfrog-cli-artifactory] RTECO-2755 - nuget: warn instead of
+      failing when the default deployment repo is hidden #611
+    - [jfrog-cli-security] XRAY-167265 - jf ca Poetry cache #945
+    - [jfrog-cli-security] XRAY-169343 - Parse the new
+      all-versions-blocked message for npm and PyPI #950
+
+-------------------------------------------------------------------
 Tue Nov 17 05:48:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.133.0:

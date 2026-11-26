@@ -19,7 +19,7 @@
 %define executable_name jf
 
 Name:           jfrog-cli
-Version:        2.133.0
+Version:        2.134.0
 Release:        0
 Summary:        A client that automates access to JFrog products
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.10
+BuildRequires:  go1.26 >= 1.26.11
 BuildRequires:  zsh
 Provides:       %{executable_name} = %{version}
 
