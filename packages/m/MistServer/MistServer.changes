@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:41:27 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 3.13
+  - 3.13 changelog:
+    * Feature: TS-based outputs can now remap the MPEG-TS stream PIDs: see documentation for details
+    * Feature: Streams now have a UUID that is (re)generated whenever the DTSH header is (re)created. This means the UUID changes if something about the stream content has changed (e.g. new distinct incoming push, file changed on disk, etc). This UUID is sent to triggers as a HTTP header and environment variable, and used to improve DTSC protocol replication reliability
+    * Feature: Added a new cache system that allows caching data on disk to improve loading times. Currently, supports caching TS-based HLS segments for output and caching DTSC pull protocol VoD stream media data. Directory is configurable (defaults to "off") and can be limited to either a given size or a percentage of the filesystem it's on
+    * Feature: Support for DTSC VoD pull input
+    * Feature: Stream-wide statistics are now split into input stats and output stats (while also remaining available mixed, as before)
+    * Feature: Statistics now include packets recovered by FEC, round trip time and protocol latency (if available, currently only fully implemented in MPEG-TS SRT input/output)
+    * Improvement: You can now send a USR2 signal to MistInBuffer and it will print status information about the live media ingest to the log
+    * Improvement: Web interface no longer causes the browser to lag when handling large amounts of log messages
+    * Improvement: Web interface no longer always appends "/api" to the URL, instead auto-detects when that's needed
+    * Improvement: Live input buffers in pull input mode (rather than push input) now immediately shut down when their corresponding pulling process shuts down (instead of timing out eventually)
+    * Improvement: VoD inputs now detect when their shared memory data is externally deleted and shut down cleanly in that case (allowing for a restart, to recover from the deleted data)
+    * Improvement: FLV analyser now prints more details (optional hex dumps of packets, byte offsets, and unknown packet types)
+    * Improvement: Inputs that got shut down by a OS-level signal now print what signal it was
+    * Improvement: TS SRT pull input now recovers more reliably if it crashes
+    * Improvement: SRT protocol statistics now match most users' expectations in terms of meaning (packets lost and sent/received counts now only track unique packets)
+    * Improvement: The web interface connected clients overview now shows both data up and data down, rather than only one of them (API unchanged)
+    * Bugfix: Fixed processes outputting to a different stream than the source not keeping the output stream active
+    * Bugfix: Fixed some process track timing problems
+    * Bugfix: Fixed handling of child processes for MistIn processes
+    * Bugfix: Fixed MP4 VisualSampleEntry with a zero-sized box inside it causing an infinite loop
+    * Bugfix: Live input crash recovery handler now ensures the stream is fully shut down before attempting recovery
+    * Bugfix: Fixed outgoing connected listening SRT pushes preventing a restart of the socket listener, if it shuts down for any reason
+    * Bugfix: The CONN_OPEN trigger now works for listening SRT push inputs
+    * Bugfix: Fixed TS TCP output and push input
+    * Bugfix: Fixed IPv4 subnet matching in IPv6 mode (previously matched all IPv4 addresses in IPv6 if any subnet was set). This mostly affected the trusted proxies list
+  - 3.12 changelog:
+    * Feature: Support for live HTTP PUT MPEG2-TS and MKV push input
+    * Feature: Support for HLS HTTP PUT push input, in raw mode (with support in TSDemux for demuxing it as well, if TS-based)
+    * Feature: TLS (HTTPS) support on the API port, if a certificate and key file are configured
+    * Feature: Added a new admin API that allows accessing the playback outputs while bypassing the access control and session systems, the default admin web interface now uses this system for the preview page
+    * Feature: Support for the de-facto standard SSLKEYLOGFILE environment variable on all (d)TLS connection types
+    * Feature: TLS (DTSCS) support on the DTSC port, if a certificate and key file are configured
+    * Feature: Added support for templates in the admin web interface
+    * Improvement: libsrt can now optionally be patched to detect "shutdown" events (properly detect clean remote disconnect)
+    * Improvement: CMAF and HLS support library rewrites; much more stable DASH/CMAF output, including fixed LL-HLS support
+    * Improvement: Added "noinput" GET param / push param: this will prevent a boot-up of the source stream if not already live
+    * Improvement: Controller API port now handles favicon requests, and responds with 404 to .well_known requests (instead of serving the web interface code, as it normally would have)
+    * Improvement: Updated built-in versions of dashjs, hlsjs and videojs, improved timestamp handling for videojs and hlsjs
+    * Improvement: More robust (and faster!) handling of connector start/stop, better error reporting for connector status
+    * Improvement: DTSC pull is now event-loop-based, and handles changing origin locations more directly when used with the load balancer, as well as handling shutdown commands properly mid boot-up
+    * Improvement: librist subproject now works out of the box again
+    * Improvement: libsrt patch for shutdown detection is now optional (disabled by default if a system libsrt version without it is present, enabled otherwise - can be enforced with the new SRTSHUTDOWN=true build flag)
+    * Improvement: Default SRT sockets to maxbw=0 (automatic) instead of maxbw=-1 (infinite)
+    * Improvement: Implement handling PES-level padding in TS parser (as opposed to merely packet-level padding)
+    * Improvement: Local-only UDP API will now ignore UDP packets that don't start with a curly brace character
+    * Bugfix: DTSC metadata can now use/contain double/float numbers properly
+    * Bugfix: Various bugfixes for the admin web interface
+    * Bugfix: Fixed SRT nostreamid option
+    * Bugfix: Fixed small memory leak in internal Process library
+    * Bugfix: Fixed Util::ResizeablePointer comparing contents correctly (indirectly fixes a socket destination comparison issue)
+    * Bugfix: Prevent .html output height from growing beyond viewport size (should remove the scrollbar that was sometimes visible)
+    * Bugfix: Several bugfixes to the built-in player
+    * Bugfix: Fix child processes that were meant to be shut down on exit, not always shutting down on exit
+    * Bugfix: Fixed nostreamtext option in HTTP output
+    * Bugfix: Listening sockets no longer shut down already-established connections on reload
+    * Bugfix: Prevent automatic switching of RTSP UDP socket destinations when there was an explicit destination set already
+    * Bugfix: Fixed initialization error in effective frame rate calculator
+    * Bugfix: Fix CONN_OPEN re-triggering when streamname was sanitized
+
+-------------------------------------------------------------------
 Wed Jul 22 22:34:01 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 3.11.1

@@ -17,7 +17,7 @@
 
 
 Name:           MistServer
-Version:        3.11.1
+Version:        3.13
 Release:        0
 Summary:        Internet streaming media toolkit
 License:        Unlicense
@@ -25,8 +25,8 @@ URL:            https://github.com/DDVTECH/mistserver
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        mistserver.sysuser
-BuildRequires:  c++_compiler
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  group(video)
 BuildRequires:  mbedtls-3-devel
 BuildRequires:  meson
@@ -58,9 +58,9 @@ Development files for %{name}.
 
 %build
 
-# Libraries are not versioned, version on RPM side
-echo "V_%{version} { global: *; };" > /tmp/z.sym
-export LDFLAGS="$LDFLAGS -Wl,--version-script=/tmp/z.sym"
+# # Libraries are not versioned, version on RPM side
+# echo "V_%{version} { global: *; };" > /tmp/z.sym
+# export LDFLAGS="$LDFLAGS -Wl,--version-script=/tmp/z.sym"
 
 # Disable warnings caused by certain upstream coding practices
 # to make it possible to focus on other and future warnings
@@ -166,6 +166,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistOutTS
 %{_bindir}/MistOutTSRIST
 %{_bindir}/MistOutTSSRT
+%{_bindir}/MistOutForward
 %{_bindir}/MistOutWAV
 %{_bindir}/MistOutWebRTC
 %{_bindir}/MistProcComposer
@@ -175,6 +176,7 @@ install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/mistserver.conf
 %{_bindir}/MistSession
 %{_bindir}/MistTranslateH264
 %{_bindir}/MistUtilAMF
+%{_bindir}/MistUtilCache
 %{_bindir}/MistUtilCertbot
 %{_bindir}/MistUtilHealth
 %{_bindir}/MistUtilLog
