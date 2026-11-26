@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:25:50 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.09 - 2026-11-25
+
+- NEW FEATURE: TkRemind: Add a new "Save Options and Resize" button in
+  the Options dialog.  This asks TkRemind to resize the main calendar
+  window and is useful if you have changed fonts or font sizes.
+
+- NEW FEATURE: remind: Add the "addmonths()" function and its inverse,
+  "mondiff()"
+
+- CHANGE: Silence the plethora of (IMO) unwarranted warnings that new
+  versions of groff emit during "make test"
+
+- TESTS: Add a regression test to test for the double-free bug fixed
+  in 06.03.07.
+
+- DOCUMENTATION: Remove obsolete mailing address for the Free Software
+  Foundation
+
+- BUG FIXES: TkRemind: Fix many bugs related to the font-setting
+  dialogs
+
+* VERSION 06.03.07 - 2026-11-20
+
+- BUG FIX: remind: Fix bug that yielded a double-free followed by a crash
+  if Remind is run with the "-z" option and a reminder has a time zone
+  specified.  Thanks to Mark (unknown last name) for reporting this.
+
+-------------------------------------------------------------------
 Tue Oct  6 08:29:55 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.03.06 - 2026-10-05

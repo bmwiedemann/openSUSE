@@ -1315,4 +1315,29 @@
   tree can be relocated if desired.</comment>
     <requestid>1382720</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>398b7a8dc9f664c626b3fdae04f3e0ec</srcmd5>
+    <version>6.3.9</version>
+    <time>1795704833</time>
+    <user>anag_factory</user>
+    <comment>- VERSION 06.03.09 - 2026-11-25
+- NEW FEATURE: TkRemind: Add a new &quot;Save Options and Resize&quot; button in
+  the Options dialog.  This asks TkRemind to resize the main calendar
+  window and is useful if you have changed fonts or font sizes.
+- NEW FEATURE: remind: Add the &quot;addmonths()&quot; function and its inverse,
+  &quot;mondiff()&quot;
+- CHANGE: Silence the plethora of (IMO) unwarranted warnings that new
+  versions of groff emit during &quot;make test&quot;
+- TESTS: Add a regression test to test for the double-free bug fixed
+  in 06.03.07.
+- DOCUMENTATION: Remove obsolete mailing address for the Free Software
+  Foundation
+- BUG FIXES: TkRemind: Fix many bugs related to the font-setting
+  dialogs
+* VERSION 06.03.07 - 2026-11-20
+- BUG FIX: remind: Fix bug that yielded a double-free followed by a crash
+  if Remind is run with the &quot;-z&quot; option and a reminder has a time zone
+  specified.  Thanks to Mark (unknown last name) for reporting this.</comment>
+    <requestid>1400617</requestid>
+  </revision>
 </revisionlist>
