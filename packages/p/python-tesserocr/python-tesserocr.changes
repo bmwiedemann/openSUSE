@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 04:44:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.0:
+  * Test LSTM choice wrapping independently of OCR scores
+  * Support free-threaded Python with cooperative signal cancellation
+  * Return None from GetChoiceIterator when not positioned on a word
+  * Replace conditional compilation with tempita
+
+-------------------------------------------------------------------
 Wed Sep 23 01:26:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.11.0:

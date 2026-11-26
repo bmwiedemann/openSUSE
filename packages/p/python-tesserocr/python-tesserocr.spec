@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tesserocr
-Version:        2.11.0
+Version:        2.13.0
 Release:        0
 Summary:        A Python wrapper around tesseract-ocr
 License:        MIT
@@ -26,7 +26,6 @@ URL:            https://github.com/sirfz/tesserocr
 Source:         https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module cysignals}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -40,7 +39,6 @@ BuildRequires:  tesseract-ocr-traineddata-english
 BuildRequires:  tesseract-ocr-traineddata-orientation_and_script_detection
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(tesseract)
-Requires:       python-cysignals
 Requires:       tesseract-ocr-traineddata-english
 Requires:       tesseract-ocr-traineddata-orientation_and_script_detection
 Recommends:     python-Pillow
@@ -68,11 +66,8 @@ GIL while processing an image in tesseract.
 %check
 mv tesserocr tesserocr-do-not-use
 export TESSDATA_PREFIX=%{_datadir}/tessdata
-# test_LSTM_choices failure: https://github.com/sirfz/tesserocr/issues/214
-# https://github.com/sirfz/tesserocr/issues/295
-donttest="test_LSTM_choices"
-donttest+=" or test_detect_os"
-donttest+=" or test_init"
+# https://github.com/sirfz/tesserocr/issues/358
+donttest+="test_detect_os or test_init"
 %pytest_arch -k "not ($donttest)"
 mv tesserocr-do-not-use tesserocr
 
