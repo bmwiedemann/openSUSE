@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Nov 23 15:10:45 UTC 2026 - Dave Plater <davejplater@gmail.com>
+
+- Remove BuildRequires for pkgconfig(mxml) carla doesn't use it
+  to build.
+
+-------------------------------------------------------------------
 Sat Oct 17 16:50:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5.10:

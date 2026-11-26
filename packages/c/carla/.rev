@@ -337,4 +337,14 @@
 </comment>
     <requestid>1385848</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>e59abc4ac6c876d0d9b904c0e894eb11</srcmd5>
+    <version>2.5.10</version>
+    <time>1795704915</time>
+    <user>anag_factory</user>
+    <comment>- Remove BuildRequires for pkgconfig(mxml) carla doesn't use it
+  to build.
+</comment>
+    <requestid>1400797</requestid>
+  </revision>
 </revisionlist>
