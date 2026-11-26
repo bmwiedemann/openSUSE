@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Nov 24 17:17:25 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.4.2:
+  * Avoid failed seeks in static image content
+- Changes in version 2.4.1:
+  * Add canonical audio MIME types
+  * Fix unit tests with ffmpeg 9
+- Changes in version 2.4.0:
+  * Properly decode HDR videos
+  * Add a protocol restriction option
+  * Avoid terminal esacpe sequences in the stderr output
+  * Fix decoding of interlaced PNG
+  * More accurate seeking: actual frame at timestamp will be
+    created instead of the closest keyframe
+  * Bump required C++ standard to 17
+
+-------------------------------------------------------------------
 Sat Oct 17 16:47:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.3.1:

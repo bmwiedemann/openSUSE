@@ -18,9 +18,9 @@
 #
 
 
-%define soname  4
+%define soname  5
 Name:           ffmpegthumbnailer
-Version:        2.3.1
+Version:        2.4.2
 Release:        0
 Summary:        Video thumbnailer that can be used by file managers
 License:        GPL-2.0-or-later
