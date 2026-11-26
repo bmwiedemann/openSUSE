@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Nov 23 06:03:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.0:
+  * Features
+    - Colorize kubectl cordon output in #392
+    - Colorize kubectl taint output in #393
+    - Colorize kubectl replace output in #400
+    - Colorize kubectl set output in #401
+    - Colorize kubectl auth commands in #388
+    - Colorize kubectl autoscale and kubectl certificate
+      approve/deny output in #407
+    - Colorize kubectl rollout status finished message in #408
+    - Colorize kubectl rollout history as a table in #398
+    - Colorize Last State of init containers in kubectl describe in
+      #390
+    - Colorize pruned resources in kubectl apply --prune in #397
+  * Fixes
+    - Skip global flag values when detecting the subcommand in #370
+    - Recognize bundled watch flags when choosing pager in #378
+    - Match -o json and -o yaml case-insensitively like kubectl in
+      #386
+    - Keep coloring YAML block scalars across blank lines in #387
+    - Handle YAML block scalars in sequence items and with |2-
+      headers in #389
+    - Honor =false on --no-headers, --watch, --follow and
+      --interactive in #385
+    - Pick the right printer for kubectl api-resources -o
+      name/json/yaml in #391
+    - Do not colorize the kubectl completion script in #402
+    - Honor the quoted string color in log output in #399
+    - Do not color table rows of only numbers as headers in #406
+  * Documentation
+    - docs: fix typos in config schema description, README and
+      comments in #383
+  * Dependencies
+    - Bump github.com/xo/terminfo from 1.0.0 to 1.2.0 in #366
+    - Bump the github-actions group with 5 updates in #367
+    - Bump codecov/codecov-action from 7.1.0 to 7.1.1 in the
+      github-actions group in #368
+    - Bump the github-actions group with 2 updates in #376
+    - Bump github.com/mattn/go-colorable from 0.1.15 to 0.1.16 in
+      #375
+    - Bump k8s.io/apimachinery from 0.37.0 to 0.37.1 in #371
+    - Bump github.com/gookit/color from 1.6.1 to 1.6.2 in #379
+    - Bump goreleaser/goreleaser-action from 7.2.3 to 7.3.0 in the
+      github-actions group in #380
+    - Bump zizmorcore/zizmor-action from 0.6.4 to 0.7.1 in the
+      github-actions group in #382
+    - Bump github.com/gookit/color from 1.6.2 to 1.6.3 in #381
+    - Update Go from 1.26.6 to 1.27.2 in #377
+    - Bump the github-actions group with 2 updates in #384
+    - build(deps): bump github.com/xo/terminfo from 1.2.0 to 1.3.0
+      in #394
+    - build(deps): bump zizmorcore/zizmor-action from 0.8.0 to
+      0.8.1 in the github-actions group in #396
+    - build(deps): bump k8s.io/apimachinery from 0.37.1 to 0.37.2
+      in #395
+    - build(deps): bump docker/login-action from 4.7.0 to 4.8.0 in
+      the github-actions group in #405
+    - build(deps): bump github.com/xo/terminfo from 1.3.0 to 1.3.1
+      in #404
+
+-------------------------------------------------------------------
 Sun Sep 20 07:31:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.8.0:

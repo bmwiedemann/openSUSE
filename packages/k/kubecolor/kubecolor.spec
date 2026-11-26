@@ -17,14 +17,14 @@
 
 
 Name:           kubecolor
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Colorize your kubectl output
 License:        MIT
 URL:            https://kubecolor.github.io/
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.gz
-BuildRequires:  go1.26 >= 1.26.1
+BuildRequires:  go1.27 >= 1.27.2
 Requires:       kubernetes-client-provider
 
 %description
