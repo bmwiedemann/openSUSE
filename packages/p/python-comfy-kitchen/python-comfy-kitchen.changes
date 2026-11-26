@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Nov 24 06:29:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.42:
+  * Eager sol_attn: keys/values may be longer than queries
+    (Tk >= T) with q_offset prefix support and per-key bias
+    sized to Tk
+  * Eager INT8: resident tiled weights via weight_tiled and
+    tiled embedding dequantize path
+  * Eager W3A8/W5A8 weight formats alongside W4A8/W6A8 with
+    plane-layout checks and codebook handling
+  * Remainder of the release is CUDA and HIP kernel work
+    (sparse attention, quantization, mesh ops), not compiled
+    in this CPU-only build
+
+-------------------------------------------------------------------
 Sat Nov 21 07:50:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add BuildRequires: python-torch-devel (workaround:

@@ -170,4 +170,12 @@ dependency change, no CVE.</comment>
 - Needs to land before the comfyui 0.46.0 update (waiting, runtime consumer).</comment>
     <requestid>1399648</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d2022987cb2c0ee01de1ade4e3c49dcb</srcmd5>
+    <version>0.2.42</version>
+    <time>1795704818</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfy-kitchen to 0.2.42: eager sol_attn Tk, INT8 tiled, W3A8-W5A8</comment>
+    <requestid>1400541</requestid>
+  </revision>
 </revisionlist>
