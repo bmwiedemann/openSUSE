@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Tue Nov 24 13:23:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package a2a-serve 0.1.0 (first upstream release):
+  * Serve opencode, Claude Code, or any ACP coding agent as
+    a sandboxed A2A agent, one per project directory
+  * Config in .a2a/config.yaml, secrets handling, Docker
+    sandbox, and `a2a-serve doctor --fix`
+  * MCP servers and skills, recipes, schedules, encrypted
+    backups, and shell completion
+  * Approvals from client, chat, or inspector; identities
+    with pairing codes; Google email sign-in
+  * Networks over Tailscale, relays, or public URL;
+    Telegram, Discord, email; voice via OpenAI, Gemini
+  * Agent-to-agent calls and webhook nodes with
+    server-held credentials
+- Ship the single upstream binary a2a-serve (no sidecar
+  in v0.1.0; it appears only on main later)
+- Re-gzip vendored tailscale htmx assets (upstream misses
+  gzip trailer; JS bytes unchanged, now scanner-clean)
+

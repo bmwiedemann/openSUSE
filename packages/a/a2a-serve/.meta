@@ -1,0 +1,9 @@
+<package name="a2a-serve" project="openSUSE:Factory">
+  <title>Serve a coding agent over A2A from its project directory</title>
+  <description>Turn opencode, Claude Code, or any ACP coding agent into a sandboxed A2A
+agent that people, messengers, and other agents can call. Run one agent
+per project directory, with Docker sandboxing, pairing-code identities,
+Tailscale and relay networking, Telegram/Discord/email messengers, voice,
+schedules, backups, and recipes.</description>
+  <url>https://github.com/a2aproject/a2a-serve</url>
+</package>
