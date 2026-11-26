@@ -311,4 +311,12 @@ Single upstream bug fix; no dependency or packaging changes.
     <comment>Update python-cyclopts to 5.5.2: negative positionals with **kwargs, config reload, negative durations.</comment>
     <requestid>1398003</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>2412c57614aac2abf851a02c1ff67333</srcmd5>
+    <version>5.5.3</version>
+    <time>1795704816</time>
+    <user>anag_factory</user>
+    <comment>Update python-cyclopts to 5.5.3: bare collection aliases, Any coercion, Email/URL newline, config error, completion, doc links.</comment>
+    <requestid>1400524</requestid>
+  </revision>
 </revisionlist>

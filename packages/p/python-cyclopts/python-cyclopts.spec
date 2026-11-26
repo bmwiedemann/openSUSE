@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-cyclopts
-Version:        5.5.2
+Version:        5.5.3
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0
@@ -68,7 +68,7 @@ argument/sub-command resolution.
 %pre
 %python_libalternatives_reset_alternative cyclopts
 
-%files %{python_files}
+%files %python_files
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/cyclopts
