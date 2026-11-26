@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:06:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.7:
+  * chore(deps): bump library/node from 26.13.0 to 26.13.1 (#8082)
+  * chore(deps): bump the go-patch group across 1 directory with 4
+    updates (#8086)
+  * chore(deps): bump the go-minor group with 5 updates (#8087)
+  * chore(backport release-1.12): docs: update copy promotion step
+    behaviour and configuration (#8068)
+
+-------------------------------------------------------------------
 Tue Nov 17 05:50:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.6:
