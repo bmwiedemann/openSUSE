@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:42:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.24.6:
+  * Update module sigs.k8s.io/controller-runtime to v0.25.3 (#635)
+  * Update module helm.sh/helm/v3 to v4 (#610)
+  * Update all non-major dependencies (#612)
+  * docs: update documentation from template (#631)
+
+-------------------------------------------------------------------
 Thu Nov 05 15:04:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.24.5:
