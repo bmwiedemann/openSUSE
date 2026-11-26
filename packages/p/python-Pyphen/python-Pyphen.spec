@@ -1,7 +1,7 @@
 #
 # spec file for package python-Pyphen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Pyphen
-Version:        0.17.2
+Version:        0.18.1
 Release:        0
 Summary:        Pure Python module to hyphenate text
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MPL-1.1
@@ -48,6 +48,9 @@ This module is a fork of python-hyphenator, written by Wilbert Berendsen.
 
 %install
 %pyproject_install
+# The sdist ships pyphen/__init__.py with the executable bit but no shebang,
+# and rpmlint reports script-without-shebang for it in each flavor.
+%python_expand chmod -x %{buildroot}%{$python_sitelib}/pyphen/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check

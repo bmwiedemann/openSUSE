@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov  6 17:04:54 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.18.1:
+  * Include documentation and tests in source tarball
+- Update to 0.18.0:
+  * Support Python 3.14, drop Python 3.9 support.
+  * Update Spanish, Hungarian, Lithuanian and Danish dictionaries.
+  * Include init method in Pyphen API documentation.
+- Install pyphen/__init__.py without the executable bit, as it has
+  no shebang
+
+-------------------------------------------------------------------
 Thu Feb  6 11:47:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.17.2
