@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:10:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795626606.295f3489:
+  * feat(ui): Allow changing appearance without login
+  * feat(ui): Keep appearance settings in long-lived cookies
+  * chore(deps): Dependency cron 2026-11-25
+  * fix(rest): map format to _format without rewriting the request URL
+  * fix(auth): hash the client-serialized query for API signatures
+  * test: Allow running `t/40-script_…git-refspec.t` under `landrun`
+  * feat: Allow running fullstack tests in confined test environment
+  * fix: keep screenshot links in dry-run cleanup
+
+-------------------------------------------------------------------
 Tue Nov 24 11:37:31 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795520239.e4d21551:
