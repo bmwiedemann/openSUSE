@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>1364228</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06a9265f98a68d511693b8d88c7b36fe</srcmd5>
+    <version>8.0.5.2</version>
+    <time>1795714333</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.0.5.2:
+  https://rubyonrails.org/2026/11/4/Rails-8.0.5.2-and-8.1.4.1-have-been-released</comment>
+    <requestid>1400834</requestid>
+  </revision>
 </revisionlist>
