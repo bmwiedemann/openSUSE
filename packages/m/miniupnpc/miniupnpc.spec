@@ -18,7 +18,7 @@
 
 %define soname 21
 Name:           miniupnpc
-Version:        2.3.3
+Version:        2.3.5
 Release:        0
 Summary:        Universal Plug'n'Play (UPnP) Client
 License:        BSD-3-Clause

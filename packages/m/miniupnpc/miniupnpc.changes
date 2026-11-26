@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 23 19:44:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.5
+  * there was a packaging error with miniupnpc-2.3.4.tar.gz.
+- Update to version 2.3.4
+  * minissdpc.c: fix deduping of devices.
+  * support C23 / glibc 2.43 strstr/strchr returning const char * .
+  * fix: build_absolute_url if if_indextoname() returns NULL.
+  * Use `poll()` where possible + Fix `FD_SET` crash bug.
+  * fix build with C++ compilers.
+
+-------------------------------------------------------------------
 Sun Mar 22 11:32:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Use cmake instead of autotools
