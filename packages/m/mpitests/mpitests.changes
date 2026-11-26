@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 16:48:55 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable mpitests build for mvapich5
+- Drop mvapich 2 and 3 builds
+
+-------------------------------------------------------------------
 Sun Nov  9 12:35:42 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Enable mpitests build for mvapich4

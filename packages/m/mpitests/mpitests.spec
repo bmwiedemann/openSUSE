@@ -82,10 +82,6 @@ Requires:       mpitests = %{version}
 %endif
 ExcludeArch:    %{arm}  %ix86
 
-%if "%{flavor}" == "mvapich2-psm2"
-ExclusiveArch:  x86_64
-%endif
-
 %if "%{flavor}" == "openmpi4"
 ExcludeArch:    ppc64
 %endif

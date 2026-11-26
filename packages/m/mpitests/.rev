@@ -198,4 +198,13 @@
     <comment>- Enable mpitests build for mvapich4</comment>
     <requestid>1316687</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>fd44a0b56bf5633b005c85863834c54e</srcmd5>
+    <version>3.2</version>
+    <time>1795704910</time>
+    <user>anag_factory</user>
+    <comment>- Enable mpitests build for mvapich5
+- Drop mvapich 2 and 3 builds</comment>
+    <requestid>1400776</requestid>
+  </revision>
 </revisionlist>
