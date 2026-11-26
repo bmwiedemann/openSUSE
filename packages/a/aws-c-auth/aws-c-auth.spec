@@ -16,11 +16,11 @@
 #
 
 
-%define library_version 1.0.0
-%define library_pkg 1_0
+%define library_version 1.1.0
+%define library_pkg 1_1
 %define library_soversion 1
 Name:           aws-c-auth
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        AWS C99 library implementation of AWS client-side authentication
 License:        Apache-2.0
@@ -50,8 +50,8 @@ should be considered constant time.
 %package -n lib%{name}%{library_pkg}
 Summary:        Shared library files for aws-c-auth library
 Group:          Development/Libraries/C and C++
-Provides:       lib%{name}1_0_0 = %{version}
-Obsoletes:      lib%{name}1_0_0 < %{version}
+Provides:       lib%{name}1_0 = %{version}
+Obsoletes:      lib%{name}1_0 < %{version}
 
 %description -n lib%{name}%{library_pkg}
 AWS C99 library implementation of AWS client-side authentication:
@@ -98,7 +98,7 @@ ln -s lib%{name}.so.%{library_version} %{buildroot}%{_libdir}/lib%{name}.so.%{li
 %license LICENSE
 %{_libdir}/lib%{name}.so.%{library_soversion}
 %{_libdir}/lib%{name}.so.%{library_version}
-%{_libdir}/lib%{name}.so.1.0
+%{_libdir}/lib%{name}.so.1.1
 
 %files devel
 %{_libdir}/cmake/%{name}/

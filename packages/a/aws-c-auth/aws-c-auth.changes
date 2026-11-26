@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Nov 24 12:33:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to verson 1.1.0
+  * Actually use the tls context in the imds client if appropriate
+    by @bretambrose in (#313)
+  * Add optional sticky provider chain by @rakshil14-2 in (#317)
+  * Fix a crash triggered by failure to fully construct an IMDS
+    client by @bretambrose in (#316)
+- Bump library_version to 1.1.0
+- Bump library_pkg to 1_1
+- Update Provides and Obsoletes for previous shared library version
+
+-------------------------------------------------------------------
 Tue Oct 13 10:15:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.0.0
