@@ -1,0 +1,43 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 25 Nov 2026 18:10:00 +0000
+Subject: [PATCH] Replace deprecated pkg_resources with importlib.resources
+
+pkg_resources was removed in setuptools 84.0.0. Use standard library
+importlib.resources to locate the bundled arch.conf file and templates
+directory.
+---
+ archmage/__init__.py | 4 ++--
+ archmage/arch.conf   | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+--- a/archmage/__init__.py
++++ b/archmage/__init__.py
+@@ -21,14 +21,14 @@
+ #
+ __version__ = "0.4.2.1"
+ 
+-import os, pkg_resources
++import os, importlib.resources
+ 
+ # what config file to use - local or a system wide?
+ user_config = os.path.join(os.path.expanduser("~"), ".arch.conf")
+ if os.path.exists(user_config):
+     config = user_config
+ else:
+-    config = pkg_resources.resource_filename("archmage", "arch.conf")
++    config = str(importlib.resources.files("archmage") / "arch.conf")
+ 
+ 
+ def file2dir(filename):
+--- a/archmage/arch.conf
++++ b/archmage/arch.conf
+@@ -1,7 +1,7 @@
+ from os.path import basename, join
+-import pkg_resources
++import importlib.resources
+ 
+ # Directory for templates
+-templates_dir = pkg_resources.resource_filename('archmage', 'templates/')
++templates_dir = str(importlib.resources.files('archmage') / 'templates')
+ 
+ # Directory with icons

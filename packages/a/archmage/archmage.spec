@@ -26,6 +26,7 @@ URL:            https://github.com/dottedmag/archmage
 Source:         https://github.com/dottedmag/archmage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM archmage-fix-bytes-regex.patch boo#1178542 -- fix "archmage -c pdf" crash by matching the bytes data with bytes regex patterns
 Patch0:         archmage-fix-bytes-regex.patch
+Patch1:         archmage-use-importlib-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

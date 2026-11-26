@@ -39,4 +39,12 @@
     <comment>Fix 'archmage -c pdf' bytes-regex crash (boo#1178542); register archmage.1 man-page update-alternatives slave (boo#1202977)</comment>
     <requestid>1361163</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>53738b772c48a1c19bb614753d787c9c</srcmd5>
+    <version>0.4.2.1</version>
+    <time>1795704835</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400627</requestid>
+  </revision>
 </revisionlist>

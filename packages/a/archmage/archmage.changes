@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 18:09:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add archmage-use-importlib-resources.patch: Replace removed
+  pkg_resources with importlib.resources.
+
+-------------------------------------------------------------------
 Mon Jun 22 14:14:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add archmage-fix-bytes-regex.patch: fix "archmage -c pdf" crashing
