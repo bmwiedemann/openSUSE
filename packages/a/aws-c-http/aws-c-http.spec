@@ -17,11 +17,11 @@
 #
 
 
-%define library_version 1.2.0
-%define library_pkg 1_2
-%define library_soversion 1.2
+%define library_version 1.3.1
+%define library_pkg 1_3
+%define library_soversion 1.3
 Name:           aws-c-http
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 License:        Apache-2.0
@@ -45,8 +45,8 @@ C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
 %package -n lib%{name}%{library_pkg}
 Summary:        C99 implementation of the HTTP/1.1 and HTTP/2 specifications
 Group:          System/Libraries
-Provides:       lib%{name}1_0_0 = %{version}
-Obsoletes:      lib%{name}1_0_0 < %{version}
+Provides:       lib%{name}1_2 = %{version}
+Obsoletes:      lib%{name}1_2 < %{version}
 
 %description -n lib%{name}%{library_pkg}
 C99 implementation of the HTTP/1.1 and HTTP/2 specifications.
