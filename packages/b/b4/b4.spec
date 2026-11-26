@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://git.kernel.org/pub/scm/utils/b4/b4.git
 Source0:        https://github.com/mricon/b4/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         i586-tui-tracking-test-timing.patch
+Patch1:         i586-tui-tracking-footer-race.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

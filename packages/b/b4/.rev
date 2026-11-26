@@ -729,4 +729,14 @@
 Depends on sr#1370170 and sr#1370171.</comment>
     <requestid>1370172</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>2d3fb58dda1df5ae26c9c6b31f6cd0bc</srcmd5>
+    <version>0.16.0</version>
+    <time>1795704904</time>
+    <user>anag_factory</user>
+    <comment>- add
+  * i586-tui-tracking-test-timing.patch
+  * i586-tui-tracking-footer-race.patch</comment>
+    <requestid>1400763</requestid>
+  </revision>
 </revisionlist>

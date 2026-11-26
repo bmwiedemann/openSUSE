@@ -1,0 +1,37 @@
+--- a/src/b4/review_tui/_tracking_app.py	2026-11-09 10:07:09.098984181 +0100
++++ b/src/b4/review_tui/_tracking_app.py	2026-11-09 10:08:06.729134755 +0100
+@@ -1303,12 +1303,22 @@
+             ):
+                 await widget.remove()
+ 
++            try:
++                footer = self.query_one(Footer)
++            except NoMatches:
++                # The widget.remove() calls above yield control back to the
++                # event loop; if the app is shutting down concurrently (e.g.
++                # a pending refresh racing app teardown), the Footer may
++                # already be gone by the time we get here. Nothing left to
++                # update.
++                return
++
+             if not display_series:
+                 empty = Static(
+                     'No tracked series. Use "b4 review track" to add series.',
+                     id='tracking-empty',
+                 )
+-                await self.mount(empty, before=self.query_one(Footer))
++                await self.mount(empty, before=footer)
+                 return
+ 
+             header_text = f'{"Submitter":<20s}{"A":>1s} {"A·R·T":>7s}  {"Msgs":>6s}  {"S":<4s}{"Subject"}'
+@@ -1316,8 +1326,8 @@
+ 
+             list_items: List[ListItem] = [TrackedSeriesItem(s) for s in display_series]
+             lv = ReplacementListView(*list_items, id='tracking-list', scroll_y=scroll_y)
+-            await self.mount(header, before=self.query_one(Footer))
+-            await self.mount(lv, before=self.query_one(Footer))
++            await self.mount(header, before=footer)
++            await self.mount(lv, before=footer)
+ 
+         new_index = 0
+         if self._focus_change_id:

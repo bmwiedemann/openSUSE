@@ -1,0 +1,23 @@
+--- a/src/tests/test_tui_tracking.py	2026-08-05 18:36:05.000000000 +0200
++++ b/src/tests/test_tui_tracking.py	2026-11-06 07:29:06.052790975 +0100
+@@ -2076,6 +2076,20 @@
+         app = TrackingApp(identifier)
+         async with app.run_test(size=(120, 30)) as pilot:
+             await pilot.pause()
++            # pilot.pause() with no explicit delay relies on Textual's
++            # wait_for_idle() heuristic, which compares wall-clock time to
++            # this process's own CPU time to decide the app has settled.
++            # on_mount() here spawns several real `git` subprocesses (branch
++            # tip lookup, plus a background _startup_rescan worker thread)
++            # before the deferred _refresh_list() call actually mounts
++            # #tracking-list. While this process is blocked waiting for a
++            # forked git subprocess, it isn't burning its own CPU time, so
++            # the heuristic can decide "idle" before those subprocesses (and
++            # the resulting mount) have actually finished -- especially on
++            # slow/emulated builders where subprocess fork+exec overhead is
++            # much higher in wall-clock terms. An explicit extra pause makes
++            # the wait robust regardless of that heuristic.
++            await pilot.pause(0.5)
+             lv = app.query_one('#tracking-list', ListView)
+             items = [c for c in lv.children if isinstance(c, TrackedSeriesItem)]
+             assert len(items) == 3
