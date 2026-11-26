@@ -22,7 +22,7 @@
 %global __requires_exclude typelib\\(AppIndicator3|AyatanaAppIndicator3\\)
 %{?sle15_python_module_pythons}
 Name:           lutris
-Version:        0.5.22
+Version:        0.5.23
 Release:        0
 Summary:        Manager for game installation and execution
 License:        GPL-3.0-or-later
@@ -30,8 +30,6 @@ URL:            https://lutris.net
 Source0:        https://github.com/lutris/lutris/archive/refs/tags/v%{version}.tar.gz
 Source1:        %{name}.apparmor
 Patch0:         fix-webkit-typelib.patch
-# PATCH-FIX-UPSTREAM fix-removed-attributes-in-gnomedesktop.patch -- fix compatibility with newer GNOME versions
-Patch1:         fix-removed-attributes-in-gnomedesktop.patch
 Requires:       xrandr
 # boo#1213440
 Recommends:     ca-certificates-steamtricks

@@ -638,4 +638,41 @@
     <comment>1</comment>
     <requestid>1396284</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2a79af860bd95360020245dee5b2d7c0</srcmd5>
+    <version>0.5.23</version>
+    <time>1795704904</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.23:
+  * Add GOG depot-based downloads, DLC installs, and incremental updates via gogdl integration
+  * Add a repair option for GOG depot installs under &quot;Install updates&quot;
+  * Add GOG cloud save synchronization
+  * Add GameJolt as a game source
+  * Add DLsite as a game source
+  * Add store page URLs for GOG, Steam, itch.io, Humble Bundle, Flathub, ZOOM Platform, and GameJolt
+  * Add Playtron import
+  * Add parallel GOG download connections with resume support
+  * Replace google-protobuf dependency with custom decoder for Battle.net
+  * Improve Humble Bundle authentication and error handling
+  * Offer both the Linux and Windows installers for Humble Bundle games
+  * Fall back to the other OS's GOG installers when none match the runner
+  * Show release dates for Amazon games
+  * Improve EA App auth handling and logo compositing
+  * Refresh expired Epic Games Store tokens automatically instead of forcing a re-login
+  * Speed up Epic Games Store library sync by batching catalog requests
+  * Hide Fab and Unreal Engine editor resources from the Epic Games Store library
+  * Add &quot;Kill all Wine processes&quot; menu option
+  * Make the Lutris.net login sync banner dismissable
+  * Add links to the issue tracker from the main menu and the About dialog
+  * Show the default Wine version in System Information
+  * Honor a custom RetroArch cores directory in the libretro runner
+  * Update the Ruffle runner to release 0.6.0
+  * Follow the desktop (KDE, GNOME) proxy settings for downloads and API requests
+  * Use GE-Proton through umu as the default for installers instead of downloading a Wine build
+  * Download GE-Proton releases pinned by an installer script from GitHub
+  * Allow regedit files to delete single registry values
+  * Show the install location page when an installer script uses $GAMEDIR
+  * Enable DXVK-Sarek on Proton runners when Vulkan &lt; 1.3</comment>
+    <requestid>1400756</requestid>
+  </revision>
 </revisionlist>
