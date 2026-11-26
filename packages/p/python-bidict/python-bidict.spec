@@ -1,7 +1,7 @@
 #
 # spec file for package python-bidict
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bidict
-Version:        0.23.1
+Version:        0.24.1
 Release:        0
 Summary:        Bidirectional map implementation for Python
 License:        MPL-2.0
@@ -26,10 +26,11 @@ URL:            https://github.com/jab/bidict
 Source:         https://github.com/jab/bidict/archive/refs/tags/v%{version}.tar.gz#/bidict-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module uv-build >= 0.8.13}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-typing-extensions
+Requires:       (python-typing-extensions if python-base < 3.12)
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module sortedcollections}

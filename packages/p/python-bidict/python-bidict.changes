@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov  9 14:58:35 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.24.1:
+  * Fix the RECORD file in the published 0.24.0 wheel by upgrading
+    to a fixed version of uv_build.
+  * Fix a test failure on Python 3.15 caused by changes to
+    UserDict.
+- Update to 0.24.0:
+  * Remove bidict.metadata and associated metadata from the bidict
+    module (e.g. bidict.__version__). Use e.g.
+    importlib.metadata.metadata("bidict")["Version"] instead.
+  * Fix a bug where pickling or deepcopying an instance of a
+    dynamically-generated inverse class (see extending:Dynamic
+    Inverse Class Generation) could change the order of its items.
+
+-------------------------------------------------------------------
 Fri Mar 22 19:53:11 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:
