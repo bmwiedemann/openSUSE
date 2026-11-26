@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Nov  1 08:08:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.7.0:
+  * Update shared lib version for meson for master
+  * Remove unused parameters in VAACalcSad_lsx
+  * meson.build: Add FreeBSD to common posix platforms
+  * Fix crashes on 2k3000
+  * guard aarch64 assembly with aarch64
+  * fix: harden parse-only VCL NAL save logic in au_parser
+  * Make sure we allocate enough space for all slices
+  * build: upgrade bundled gtest to 1.15.2
+  * Prevent potential undedefined behavior in WelsCommon::BsFlush()
+  * Fix SumOfFrame for extremely wide frames by @sprangerik
+  * Fix dynamic slice adjustment for frames with extreme aspect ratios
+  * Revert "Fix dynamic slice adjustment for frames with extreme aspect ratios"
+  * Clamp screen content scroll motion vectors to configured range
+  * Fix thread cleanup and memory leaks during partial initialization
+  * decoder: initialize iPicBuffIdx and validate before picture buffer indexing
+  * Fix asymmetric chroma plane stride handling in encoder preprocessing
+  * Fix slice buffer size validation and allocation during dynamic load
+    balancing
+  * decoder: validate FMO slice-group run length before building allocation map
+  * decoder: bounds-check CAVLC I_PCM copy before reading bitstream
+  * psnr: add coverage for the per-frame PSNR API
+  * encoder: validate geometry area using widened arithmetic
+  * decoder: guard GetColocatedMb null colocPic before wait
+  * processing: validate chroma strides before downsample
+  * decoder: prevent threaded decoder deadlock on lost references
+  * decoder: re-derive stale thread picture before reference write
+  * security: fix ExpandBsBuffer queued retarget UAF
+  * test/decoder: fix sanitizer findings in UT and timeout math
+  * rate control: prevent signed integer overflow in target bit allocation
+  * decoder: harden bitstream tail reads without OOB
+  * decoder: validate GMP BufferLength32 lengths before rewrite
+  * Fix -loadbalancing parsing when used as the final option
+  * decoder: validate EC copy source/destination compatibility
+  * encoder: use memset instead of mmx for fixed-size buffer zero-ing
+  * decoder: retarget parse-only pNalPos after saved-buffer growth
+  * decoder: guard sRawData wrap against queued slice overwrite
+  * decoder: snapshot per-thread pPreviousDecodedPictureInDpb before finish
+    signal
+  * decoder: restrict IncreasePicBuff ownership reset to new slots only
+  * decoder: zero-initialise CWelsDecoder reordering state in constructor
+  * decoder: serialize buffered-picture queue under decoder lock
+  * decoder: re-sync threaded reference snapshot after MMCO5 reset
+  * decoder: avoid threaded post-return writes to caller ppDst
+  * Revert "decoder: avoid threaded post-return writes to caller ppDst"
+  * decoder: guard ResetCurrentAccessUnit against AU list counter overflow
+  * decoder: guard threaded DPB reallocation
+  * bound AVCC SPS/PPS walk against codec-specific data size
+  * decoder: clear stale hand-off signals when the new-sequence chain is cut
+  * Fix crashes at WelsDec::DecodeFrameConstruction() as reported
+  * decoder: fix bi-predicted 16x8/8x16 macroblocks in B slices
+  * Revert PR4002 && PR4010
+  * Teach GMP encoder to notify on encoding failures
+  * Fix regression when encoding very large frames
+  * Align Android shared libraries to 16 KB pages
+  * Re-land #4002 and #4010 with a fix for the stall they caused
+  * Fix signed integer overflow in CVpFrameWork::CheckValid()
+  * Optimize AArch64 NEON 16x8 and 16x16 SAD
+
+-------------------------------------------------------------------
 Thu Mar 20 11:48:10 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.6.0:

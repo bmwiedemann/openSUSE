@@ -63,4 +63,12 @@ This is per https://code.opensuse.org/leap/features/issue/22#comment-838</commen
   + Fix build with meson on riscv64</comment>
     <requestid>1291173</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b9bc4bb42a213debe8b85a8f0f470ece</srcmd5>
+    <version>2.7.0</version>
+    <time>1795704804</time>
+    <user>anag_factory</user>
+    <comment>Resubmit</comment>
+    <requestid>1400854</requestid>
+  </revision>
 </revisionlist>

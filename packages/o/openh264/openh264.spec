@@ -4,6 +4,7 @@
 # Copyright (c) 2021 Red Hat, Inc.
 # Copyright (c) 2024 Neal Gompa <ngompa@opensuse.org>.
 # Copyright (c) 2025 Bjørn Lie <bjorn.lie@gmail.com>.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +27,7 @@
 %global devname lib%{name}-devel
 
 Name:           openh264
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        H.264 codec library
 Group:          Productivity/Multimedia/Other
