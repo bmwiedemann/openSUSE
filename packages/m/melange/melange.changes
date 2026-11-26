@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:41:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.66.0:
+  * build(deps): bump the gomod group across 1 directory with 11
+    updates (#2753)
+  * docs(git-checkout): note the TERM delay and Wolfi's system lfs
+    filter (#2759)
+  * feat(source-package): record stash entries obtained with
+    credentials (#2738)
+  * build(deps): bump the actions group across 1 directory with 4
+    updates (#2757)
+  * fix(bubblewrap): bind a traversable rootfs child as the guest
+    root (#2755)
+
+-------------------------------------------------------------------
 Mon Nov 16 05:38:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.65.0:
