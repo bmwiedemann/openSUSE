@@ -1,8 +1,8 @@
 #
 # spec file for package gpp
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017-2023 Tristan Miller <psychonaut@nothingisreal.com>
+# Copyright (c) 2026 SUSE LLC and contributors
+#               2017-2026 Tristan Miller <psychonaut@nothingisreal.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -13,9 +13,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
 
 Name:           gpp
 Version:        2.28
@@ -37,18 +36,19 @@ There are built-in macros for use with C/C++, LaTeX, HTML, XHTML, and
 Prolog files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 %configure \
   --docdir=%{_docdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%doc AUTHORS COPYING COPYING.LESSER README THANKS
+%license COPYING COPYING.LESSER
+%doc AUTHORS README THANKS
 %{_bindir}/gpp
 %{_docdir}/%{name}
 %{_mandir}/man1/gpp.1%{ext_man}
