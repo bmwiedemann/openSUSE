@@ -16,15 +16,21 @@
 #
 
 
+# Static libpar2.a/libpar2cli.a must carry real code and debuginfo;
+# keep LTO through fat objects instead of slim ones.
+%define _lto_cflags -flto=auto -ffat-lto-objects
 Name:           par2cmdline
-Version:        1.4.0
+Version:        2.0.0
 Release:        0
 Summary:        A PAR 2.0 compatible file creation, verification, and repair tool
 License:        GPL-2.0-or-later
 URL:            https://github.com/Parchive/par2cmdline
 Source:         https://github.com/Parchive/par2cmdline/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cxxopts) >= 3
 # The following 2 provides/obsoletes lines have been added becase at one point
 # the 'par' package was updated to use the 'par2cmdline' sources. Any package
 # that depends on 'par' version 0.8.0 should actually depend on 'par2cmdline'
@@ -38,18 +44,26 @@ Provides:       par2 = %{version}
 par2cmdline is a program for creating and using PAR2 files to detect damage in
 data files and repair them if necessary. It can be used with any kind of file.
 
+%package devel
+Summary:        Static library and headers for par2cmdline
+Requires:       %{name} = %{version}
+
+%description devel
+Static libraries, public headers and CMake package files for developing
+applications on top of par2cmdline's par2 library.
+
 %prep
 %autosetup -p1
 
 %build
-%configure
-%make_build
+%cmake -DPAR2_SYSTEM_CXXOPTS:BOOL=ON
+%cmake_build
 
 %install
-%make_install
+%cmake_install
 
 %check
-%make_build check
+%ctest
 
 %files
 %license COPYING
@@ -62,5 +76,11 @@ data files and repair them if necessary. It can be used with any kind of file.
 %{_mandir}/man1/par2create.1%{?ext_man}
 %{_mandir}/man1/par2repair.1%{?ext_man}
 %{_mandir}/man1/par2verify.1%{?ext_man}
+
+%files devel
+%{_includedir}/par2/
+%{_libdir}/libpar2.a
+%{_libdir}/libpar2cli.a
+%{_libdir}/cmake/par2/
 
 %changelog

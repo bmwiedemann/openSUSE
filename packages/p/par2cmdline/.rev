@@ -114,4 +114,12 @@ source_validator clean; spec-cleaner diff empty.
     <comment>Update to 1.4.0: parallel block verification, follow-symlinks create flag, non-OpenMP tail-count fix.</comment>
     <requestid>1376813</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a7ddd2f51946fe21a7508fb0b8fc0ef8</srcmd5>
+    <version>2.0.0</version>
+    <time>1795704822</time>
+    <user>anag_factory</user>
+    <comment>Update par2cmdline to 2.0.0: CMake build, system cxxopts, new -devel subpackage, GHSA-cw55-67pr-cr5w fix.</comment>
+    <requestid>1400531</requestid>
+  </revision>
 </revisionlist>

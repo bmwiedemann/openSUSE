@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:40:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.0:
+  * Security fix GHSA-cw55-67pr-cr5w (no CVE assigned upstream):
+    repair could follow links and write outside the repair base
+    path
+  * Build with CMake instead of autotools
+  * Replace OpenMP with a std::thread pool: file blocks are
+    verified in parallel by a reader thread feeding the workers
+  * Parse the command line with cxxopts, with long options and
+    clearer errors
+  * Put the library in namespace par2, move the public headers
+    to include/par2 and add Par2Creator and Par2Verifier handles
+    with progress observer and cancel support
+  * Repair damaged files in place
+  * Faster CRC32 using ARM and x86 hardware instructions
+  * Fall back on spare recovery blocks when the repair matrix
+    is singular instead of asserting
+  * Fix recovery with -p purging a complete file found under
+    another file's name
+  * Unicode filename packet, code-page name and wildcard
+    matching fixes; clean cancel on Ctrl+C or SIGTERM
+- Packaging: build against the system cxxopts and ship the new
+  static library, headers and CMake files in a par2cmdline-devel
+  subpackage
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.0:
