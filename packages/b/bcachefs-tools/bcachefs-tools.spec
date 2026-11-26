@@ -17,7 +17,7 @@
 
 
 Name:           bcachefs-tools
-Version:        1.39.6
+Version:        1.39.7
 Release:        0
 Summary:        Configuration utilities for bcachefs
 License:        Apache-2.0 AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR Apache-2.0 WITH LLVM-exception OR MIT) AND MIT AND MPL-2.0 AND (MIT OR Unlicense) AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-only
@@ -29,6 +29,12 @@ Source0:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version
 Source1:        https://evilpiepirate.org/bcachefs-tools/%name-vendored-%version.tar.sign
 Source2:        %name.keyring
 Source3:        bcachefs-preamble
+Patch1:         messages.patch
+Patch2:         bcachefs-tools-bvec_iter-bi_offset.patch
+# PATCH-FIX-UPSTREAM f906fcbae386277b9827299956c94ca9a751f226 fusemount: build on targets with a 32 bit time_t
+Patch3:         bcachefs-tools-fusemount-32bit-time_t.patch
+# PATCH-FIX-UPSTREAM f129d0ef4c282ec03c10d42ea95074422d1b53cb vfs: folio reservation: use div_u64() for the sectors per replica
+Patch4:         bcachefs-tools-pagecache-div_u64.patch
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  libaio-devel >= 0.3.111

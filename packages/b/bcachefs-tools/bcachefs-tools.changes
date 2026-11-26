@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:37:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add bcachefs-tools-pagecache-div_u64.patch: Use div_u64 for
+  disk_res.r.sectors division to fix __udivdi3 modpost link error
+  in 32-bit kernel module build.
+
+-------------------------------------------------------------------
+Wed Nov 25 17:28:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add bcachefs-tools-fusemount-32bit-time_t.patch: Widen tv_sec to
+  i64 before unsigned_abs() so Duration::from_secs() compiles on
+  32-bit targets like i586.
+
+-------------------------------------------------------------------
+Wed Nov 18 11:15:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add bcachefs-tools-bvec_iter-bi_offset.patch: in include/linux/bvec.h,
+  use an anonymous union in struct bvec_iter to alias bi_bvec_done
+  and bi_offset. Fixes build against Linux 7.3+ kernel headers where
+  kernel-synced fs/data/read.c accesses bi_offset.
+
+-------------------------------------------------------------------
+Mon Oct  5 18:21:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.39.7
+  * Disk accounting now has replication level fully plumbed
+  * FUSE mount support
+  * Added a dracut module
+  * Added journal scrubbing
+
+-------------------------------------------------------------------
+Thu Oct  1 09:54:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add messages.patch
+
+-------------------------------------------------------------------
 Sun Sep 13 14:24:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.39.6

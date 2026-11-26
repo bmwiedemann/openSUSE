@@ -1,0 +1,52 @@
+* Do away with unhelpful SPLINES log messages and tell the user what's actually
+  happening.
+* kmod: We build the kernel module, therefore we know what's enabled.
+  Don't steer users anywhere in particular.
+* userspace: Warn about future unavailability (failure to compile, including
+  cases unrelated to rust).
+---
+ fs/Makefile             |    2 +-
+ src/bcachefs.rs         |    3 +++
+ src/recovery_display.rs |    2 +-
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+
+Index: bcachefs-tools-1.39.7/fs/Makefile
+===================================================================
+--- bcachefs-tools-1.39.7.orig/fs/Makefile
++++ bcachefs-tools-1.39.7/fs/Makefile
+@@ -266,7 +266,7 @@ BCACHEFS_RUST ?= auto
+ # Why the kernel's own Rust can't be used; empty if it can:
+ bcachefs-kernel-rust-why :=
+ ifndef CONFIG_RUST
+-bcachefs-kernel-rust-why := kernel $(KERNELVERSION) was built without CONFIG_RUST
++bcachefs-kernel-rust-why := ignore
+ else ifeq ($(BCACHEFS_RUST_VENDOR),1)
+ bcachefs-kernel-rust-why := vendored Rust forced with BCACHEFS_RUST_VENDOR=1
+ else ifneq ($(BCACHEFS_RUST),1)
+Index: bcachefs-tools-1.39.7/src/bcachefs.rs
+===================================================================
+--- bcachefs-tools-1.39.7.orig/src/bcachefs.rs
++++ bcachefs-tools-1.39.7/src/bcachefs.rs
+@@ -72,6 +72,9 @@ fn check_kernel_warnings() {
+     let Some(config) = read_kernel_config() else { return };
+ 
+     if !kernel_config_has(&config, "CONFIG_RUST") {
++        eprintln!("WARNING: bcachefs may stop functioning in the future if it exceeds the kernel APIs available in this distro");
++    }
++    if false {
+         eprintln!("WARNING: kernel does not have CONFIG_RUST enabled; \
+                    this will be required for bcachefs in the near future");
+         eprintln!("         please alert your distribution or kernel developers \
+Index: bcachefs-tools-1.39.7/src/recovery_display.rs
+===================================================================
+--- bcachefs-tools-1.39.7.orig/src/recovery_display.rs
++++ bcachefs-tools-1.39.7/src/recovery_display.rs
+@@ -347,7 +347,7 @@ fn render_block(f: &Fields, cols: usize)
+         lines.push(l);
+     }
+ 
+-    lines.push(format!("  {}...", crate::splines::reticulate(f.elapsed)));
++    lines.push(format!("  running recovery..."));
+ 
+     for l in &mut lines {
+         truncate(l, cols);

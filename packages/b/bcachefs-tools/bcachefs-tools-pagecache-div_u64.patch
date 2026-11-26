@@ -1,0 +1,32 @@
+From f129d0ef4c282ec03c10d42ea95074422d1b53cb Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Tue, 6 Oct 2026 18:19:04 -0700
+Subject: [PATCH] vfs: folio reservation: use div_u64() for the sectors per
+ replica
+
+disk_reservation.sectors is a u64; dividing it with a plain / makes gcc
+emit a libgcc call on 32 bit, which the kernel doesn't provide. The DKMS
+build on armv7 fails at modpost:
+
+  ERROR: modpost: "__aeabi_uldivmod" [src/fs/bcachefs/bcachefs.ko] undefined!
+
+With this the module links on armv7 (7.2.7, C-only build) and loads.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ fs/vfs/pagecache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/fs/vfs/pagecache.c b/fs/vfs/pagecache.c
+index 221db88be4..249010f3d8 100644
+--- a/fs/vfs/pagecache.c
++++ b/fs/vfs/pagecache.c
+@@ -535,7 +535,7 @@ static ssize_t __bch2_folio_reservation_get(struct bch_fs *c,
+ 					      res->disk.nr_replicas,
+ 					      partial ? BCH_DISK_RESERVATION_PARTIAL : 0));
+ 
+-		unsigned got = disk_res.r.sectors / disk_res.r.nr_replicas;
++		unsigned got = div_u64(disk_res.r.sectors, disk_res.r.nr_replicas);
+ 		if (unlikely(got < last - first)) {
+ 			/*
+ 			 * Make sure to get a reservation that's aligned to the

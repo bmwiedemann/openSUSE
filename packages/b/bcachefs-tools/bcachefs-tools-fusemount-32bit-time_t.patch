@@ -1,0 +1,44 @@
+From f906fcbae386277b9827299956c94ca9a751f226 Mon Sep 17 00:00:00 2001
+From: Kent Overstreet <kent.overstreet@linux.dev>
+Date: Tue, 6 Oct 2026 08:23:16 -0500
+Subject: [PATCH] fusemount: build on targets with a 32 bit time_t
+
+On i586 tv_sec is an i32, so unsigned_abs() returns a u32 and
+Duration::from_secs() won't take it:
+
+  error[E0308]: mismatched types
+     --> src/commands/fusemount.rs:904:42
+  904 |         UNIX_EPOCH - Duration::from_secs(ts.tv_sec.unsigned_abs()) + nsec
+      |                                          ^^^^^^^^^^^^^^^^^^^^^^^^ expected `u64`, found `u32`
+
+Widen to i64 first. That cast is a no-op on 64 bit targets, which
+clippy flags, hence the allow.
+
+Fixes: a2a1faa21e0f ("fusemount: times before 1970")
+Closes: https://github.com/koverstreet/bcachefs-tools/issues/1087
+
+Co-Authored-By: Proof of Concept <poc@bcachefs.org>
+---
+ src/commands/fusemount.rs | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/commands/fusemount.rs b/src/commands/fusemount.rs
+index 9a0950af8c..033c41f8c5 100644
+--- a/src/commands/fusemount.rs
++++ b/src/commands/fusemount.rs
+@@ -896,12 +896,14 @@ impl BcachefsFs {
+ 
+ /// Times before 1970 are valid on bcachefs: a timespec's tv_sec is then
+ /// negative, with tv_nsec still counting forwards from it.
++// time_t is 32 bits on some targets (i586): the cast isn't a no-op there
++#[allow(clippy::unnecessary_cast)]
+ fn ts_to_systime(ts: c::timespec) -> SystemTime {
+     let nsec = Duration::from_nanos(ts.tv_nsec as u64);
+     if ts.tv_sec >= 0 {
+         UNIX_EPOCH + Duration::from_secs(ts.tv_sec as u64) + nsec
+     } else {
+-        UNIX_EPOCH - Duration::from_secs(ts.tv_sec.unsigned_abs()) + nsec
++        UNIX_EPOCH - Duration::from_secs((ts.tv_sec as i64).unsigned_abs()) + nsec
+     }
+ }
+ 

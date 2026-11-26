@@ -7,4 +7,17 @@
     <comment></comment>
     <requestid>1377743</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0b04426cc7ed10f3fcc4c7799daea3a3</srcmd5>
+    <version>1.39.7</version>
+    <time>1795704848</time>
+    <user>anag_factory</user>
+    <comment>- Add bcachefs-tools-pagecache-div_u64.patch: Use div_u64 for
+  disk_res.r.sectors division to fix __udivdi3 modpost link error
+  in 32-bit kernel module build.
+- Add bcachefs-tools-fusemount-32bit-time_t.patch: Widen tv_sec to
+  i64 before unsigned_abs() so Duration::from_secs() compiles on
+  32-bit targets like i586.</comment>
+    <requestid>1400622</requestid>
+  </revision>
 </revisionlist>
