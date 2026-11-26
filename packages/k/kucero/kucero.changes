@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct 24 17:55:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.0:
+  * CVE-2023-39325: HTTP/2 rapid stream resets causing excessive
+    server work via vendored golang.org/x/net below 0.17.0
+    (boo#1230323); shipped tree is now x/net 0.49.0
+  * Run as unprivileged container: drop nsenter, forbid privilege
+    escalation and drop all capabilities
+  * Switch container base image to wolfi
+  * Drop the velero dependency
+  * Extend Kubernetes support to 1.35 and raise the Go toolchain
+    to 1.26
+  * Refresh Kubernetes libraries to 0.36.0 and controller-runtime
+    to 0.23.x
+- Spec cleanup: drop Group tag and use macro-style Go helpers
+
+-------------------------------------------------------------------
 Mon Jan 23 11:02:40 UTC 2023 - dmueller@suse.com
 
 - Update to version 1.6.2:

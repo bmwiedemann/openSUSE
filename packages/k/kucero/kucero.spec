@@ -17,18 +17,16 @@
 
 
 %define goipath github.com/jenting/kucero
-
 Name:           kucero
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Kubernetes control plane certificate auto rotation
 License:        Apache-2.0
-Group:          System/Management
 URL:            https://github.com/SUSE/kucero
 Source0:        https://github.com/SUSE/kucero/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
 
 %description
 A Kubernetes daemonset to perform automatic control plane certificate rotation.
@@ -37,15 +35,14 @@ A Kubernetes daemonset to perform automatic control plane certificate rotation.
 %autosetup -p1 -a 1
 
 %build
-%goprep %{goipath}
+%{goprep} %{goipath}
 export CGO_ENABLED=0
-%gobuild -mod vendor -ldflags "-s -w -X main.version=%{version}" cmd/kucero
+%{gobuild} -mod vendor -ldflags "-s -w -X main.version=%{version}" cmd/kucero
 
 %install
-%goinstall
+%{goinstall}
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
