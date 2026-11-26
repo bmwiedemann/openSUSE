@@ -1,0 +1,7 @@
+# Both OBS flavors use suricata.spec, while the DPDK source RPM is named
+# suricata-dpdk. The mismatch is intentional for this multibuild flavor.
+addFilter(r'^suricata-dpdk\.src: E: invalid-spec-name$')
+# The flavor suffix distinguishes the mutually exclusive library builds.
+addFilter(r'^libsuricata[0-9_]+-dpdk\.[^:]+: E: shlib-policy-name-error')
+# Both conflicting flavors manage the same logrotate configuration.
+addFilter(r'^suricata-dpdk\.[^:]+: E: incoherent-logrotate-file /etc/logrotate\.d/suricata$')

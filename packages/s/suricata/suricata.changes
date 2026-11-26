@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Nov 17 20:17:21 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add rpmlint exceptions for the intentional multibuild spec,
+  library and logrotate names, compatible with SLE 15 and newer
+  rpmlint versions.
+- Specify permissions for ghost files.
+
+-------------------------------------------------------------------
+Tue Nov 17 18:37:18 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Make hiredis, NFLOG, AF_XDP/eBPF and Hyperscan optional on
+  SLE 15 SP7, where their build dependencies are unavailable.
+- Select the standard DPDK development package on SLE 15 SP7.
+
+-------------------------------------------------------------------
+Tue Nov 17 18:29:33 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add a DPDK multibuild flavor with separate, conflicting runtime
+  and development packages; keep the default flavor free of DPDK
+  dependencies.
+
+-------------------------------------------------------------------
 Tue Nov  3 10:11:53 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 8.0.8:
