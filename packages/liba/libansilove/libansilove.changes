@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Nov 25 19:12:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.6
+  * Expand manual pages with API usage and reference documentation.
+  * Fix image memory leak on Tundra parsing errors.
+  * Prevent IDF RLE records from consuming embedded font or palette
+    bytes.
+  * Reject incomplete IDF character and RLE records.
+
+-------------------------------------------------------------------
 Mon Nov 16 18:32:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.6
