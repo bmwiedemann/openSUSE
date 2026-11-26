@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Nov 22 07:18:49 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.18.0:
+  * Added toNdarray to coordinates::Cartesian.
+  * Added toNdarray to coordinates::Euler.
+  * Added toNdarray to coordinates::Orientation.
+  * Added toNdarray to coordinates::reference_frames::AER.
+  * Added toNdarray to coordinates::reference_frames::Geocentric.
+  * Added toNdarray to coordinates::reference_frames::LLA.
+  * Added coordinates::transforms::cart2sph.
+  * Added coordinates::transforms::sph2cart.
+  * Added Quaternion::rotate on Cartesian.
+  * Added Quaternion::angularSeperation.
+  * Added additional Cartesian and Vec2/Vec3 interoperability.
+  * Includes cleanup.
+
+-------------------------------------------------------------------
 Thu Sep 24 09:39:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.17.0:
