@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
-    <param name="revision">9ed9e8c36608035769534e7450d1885483df8eaf</param>
+    <param name="revision">2a8ba9c6a9f860eb576269368e984ecd5e9976e3</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">*mstflint*.tar</param>

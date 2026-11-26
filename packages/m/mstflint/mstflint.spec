@@ -16,10 +16,10 @@
 #
 
 
-%define git_ver -1.60.9ed9e8c3
+%define git_ver -1.0.2a8ba9c6
 
 Name:           mstflint
-Version:        4.33.0
+Version:        4.38.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -69,7 +69,9 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %{_bindir}/mstconfig
 %{_bindir}/mstcongestion
 %{_bindir}/mstdevices_info
+%{_bindir}/mstefuse
 %{_bindir}/mstflint
+%{_bindir}/mstflintlogger
 %{_bindir}/mstfwctrl
 %{_bindir}/mstfwreset
 %{_bindir}/mstmcra
@@ -77,6 +79,7 @@ rm -rf %{buildroot}%{_bindir}/hca_self_test.ofed
 %{_bindir}/mstmread
 %{_bindir}/mstmtserver
 %{_bindir}/mstmwrite
+%{_bindir}/mstpcie
 %{_bindir}/mstregdump
 %{_bindir}/mstresourcedump
 %{_bindir}/mstresourceparse

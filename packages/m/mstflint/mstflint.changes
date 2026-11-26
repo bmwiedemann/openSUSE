@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:59:54 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to mstflint-4.38.0-1
+  - See https://github.com/Mellanox/mstflint/releases/tag/v4.38.0-1
+- Refresh Fix-gcc7-and-gcc8.patch against new sources.
+
+-------------------------------------------------------------------
 Tue Nov 18 16:42:34 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add _service to fetch from git directly

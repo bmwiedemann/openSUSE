@@ -303,4 +303,14 @@
   - PIE.patch</comment>
     <requestid>1318729</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>898b5e4c27de8c8e83908b5a9bc36a70</srcmd5>
+    <version>4.38.0</version>
+    <time>1795704910</time>
+    <user>anag_factory</user>
+    <comment>- Update to mstflint-4.38.0-1
+  - See https://github.com/Mellanox/mstflint/releases/tag/v4.38.0-1
+- Refresh Fix-gcc7-and-gcc8.patch against new sources.</comment>
+    <requestid>1400813</requestid>
+  </revision>
 </revisionlist>
