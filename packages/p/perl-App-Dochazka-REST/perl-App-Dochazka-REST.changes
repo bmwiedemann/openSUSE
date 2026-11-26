@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May  7 13:25:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop systemd BuildRequires and %systemd_requires macro: the
+  presence of a service file does not mean the package requires
+  systemd to run. If the package is installed on a regular system,
+  systemd is there. If it's in a container, systemd won't run anyway,
+  even if installed.
+
+-------------------------------------------------------------------
 Wed Mar 27 20:58:36 UTC 2024 - Nathan Cutler <ncutler@suse.com>
 
 - spec:

@@ -64,4 +64,12 @@
   + add user() and group() provides (boo#1221423)</comment>
     <requestid>1163147</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>aa231da50e91341458e3bbbf02d27fee</srcmd5>
+    <version>0.559</version>
+    <time>1795704922</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1400816</requestid>
+  </revision>
 </revisionlist>
