@@ -159,4 +159,32 @@
     class ({pr}`950`).</comment>
     <requestid>1396182</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>264d9bb1495bc4a01d124337a77ebac7</srcmd5>
+    <version>0.22.0</version>
+    <time>1795704867</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.22.0:
+  * Raise ValueError when setting gc=False on a struct with a weakref slot
+  * Add frozendict support on Python 3.15+ and PyEmscripten support
+  * Support callable decimal_format in JSON and MessagePack Encoders
+  * Support Literal[True] and Literal[False] types
+  * Fix PEP 695 type parameter syntax and types.GenericAlias in annotations
+  * Fix NameError creating a Struct with unquoted forward refs on Python 3.14
+  * Fix crash on invalid ClassVar and AttributeError when missing __name__
+  * Fix overriding an inherited field alias back to the field's own name
+  * Raise ValidationError on out-of-range int to float conversion
+  * Improve expected-type names in validation errors for Raw fields
+  * Fix out-of-range Meta bound error messages and add Meta stub overloads
+  * Fix reference leaks in msgpack Ext decoding, to_builtins, and encoders
+  * Fix JSON schema generation for mixed Literals, optional unions,
+    array_like=True structs, and set/bytearray default factories
+  * Preserve JSON Schema metadata in propertyNames for annotated dict keys
+  * Fix json.encode failing for dicts keyed by str-valued Enum
+  * Fix missing GC traversal, allocation error handling, and Python 3.15
+    compilation warnings
+  * Report leading encode/decode arg as positional-only in inspect.signature
+  * Update type stubs across encoders, decoders, and annotations</comment>
+    <requestid>1400683</requestid>
+  </revision>
 </revisionlist>

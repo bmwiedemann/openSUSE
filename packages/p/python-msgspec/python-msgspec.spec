@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-msgspec
-Version:        0.21.1
+Version:        0.22.0
 Release:        0
 Summary:        A fast serialization and validation library
 License:        BSD-3-Clause
-URL:            https://jcristharif.com/msgspec/
-Source:         https://github.com/jcrist/msgspec/archive/refs/tags/%{version}.tar.gz#/msgspec-%{version}.tar.gz
-BuildRequires:  %{python_module devel >= 3.9}
+URL:            https://msgspec.dev
+Source:         https://github.com/msgspec/msgspec/archive/refs/tags/%{version}.tar.gz#/msgspec-%{version}.tar.gz
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools-scm >= 8}
@@ -55,14 +55,12 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Requires to import the module, but other tests require the path
-# Can be dropped next release
-donttest="test_raw_copy_doesnt_leak"
+donttest=""
 if [ $(getconf LONG_BIT) = 32 ]; then
     # Overflow errors on 32 bit arches
-    donttest="$donttest or test_hashtable or test_decoding_large_arrays or test_timestamp"
+    donttest="test_hashtable or test_decoding_large_arrays or test_timestamp"
 fi
-%pytest_arch tests/unit -k "not ($donttest)"
+%pytest_arch tests/unit ${donttest:+-k "not ($donttest)"}
 
 %files %{python_files}
 %doc README.md
