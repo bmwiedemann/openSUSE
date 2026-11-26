@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:18:42 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 276:
+  * peers can advertise their models automatically: llama-swap reads the
+    peer's /v1/models instead of every model ID being listed in the
+    configuration, so discovered models route, list and update without a
+    restart or a configuration reload
+  * peers.*.models accepts "add <regex>" and "remove <regex>" rules, applied
+    from top to bottom, and a new peers.*.catalog block sets path, refresh,
+    limit and transitive; catalogs are fetched in the background, are cached,
+    and the last good list is kept when a fetch fails
+  * new GET /api/peers and POST /api/peers/{peer}/refresh endpoints
+  * the Models page is split into Local, Peers, Selectors and Profiles tabs
+    that show counts, hide when empty and remember the chosen tab; the
+    Profiles tab lists every configured profile with its description and
+    mappings, so switching is one click
+  * FastFlowLM throughput metrics (usage.prefill_speed_tps and
+    usage.decoding_speed_tps) are read, so its throughput shows in the
+    Activity view
+
+-------------------------------------------------------------------
 Sun Nov 22 12:30:00 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
 
 - Update to version 275:

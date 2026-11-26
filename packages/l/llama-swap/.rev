@@ -7,4 +7,28 @@
     <comment>nex package: llama-swap allowing inference engines routing similar to llamacpp</comment>
     <requestid>1399796</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>daa1337b2fb456a58adc3912cf5aee76</srcmd5>
+    <version>276</version>
+    <time>1795714335</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 276:
+  * peers can advertise their models automatically: llama-swap reads the
+    peer's /v1/models instead of every model ID being listed in the
+    configuration, so discovered models route, list and update without a
+    restart or a configuration reload
+  * peers.*.models accepts &quot;add &lt;regex&gt;&quot; and &quot;remove &lt;regex&gt;&quot; rules, applied
+    from top to bottom, and a new peers.*.catalog block sets path, refresh,
+    limit and transitive; catalogs are fetched in the background, are cached,
+    and the last good list is kept when a fetch fails
+  * new GET /api/peers and POST /api/peers/{peer}/refresh endpoints
+  * the Models page is split into Local, Peers, Selectors and Profiles tabs
+    that show counts, hide when empty and remember the chosen tab; the
+    Profiles tab lists every configured profile with its description and
+    mappings, so switching is one click
+  * FastFlowLM throughput metrics (usage.prefill_speed_tps and
+    usage.decoding_speed_tps) are read, so its throughput shows in the
+    Activity view</comment>
+    <requestid>1400860</requestid>
+  </revision>
 </revisionlist>
