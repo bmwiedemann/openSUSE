@@ -95,4 +95,31 @@
     <comment></comment>
     <requestid>1046095</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>82c77b859f9e5c336249d1834a0bab74</srcmd5>
+    <version>0.6</version>
+    <time>1795704934</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.6 (re-rolled tarball with documented known limitation)
+
+- Use the official released tarball from
+  https://mirrorbrain.org/files/releases/withlock-0.6.tar.gz
+- README, man page and BUGS section now document the sub-second race that
+  the lock file unlink at exit leaves open; harmless for cron jobs, only
+  relevant when several jobs per second are spawned, and the obvious
+  solution (no cleanup) is pointed out
+- withlock-0.5-fixboo864785.patch is folded into the upstream sources
+  (re-open the lock file before every locking attempt, boo#864785)
+- New THANKS file from upstream, installed with the documentation
+- Re-add fix-use-python3.patch: upstream uses '#!/usr/bin/env python3'
+  for portability, the package pins /usr/bin/python3
+- Man page regenerated with ronn-ng
+
+Previous submission 1400681 was declined by factory-auto for a changelog
+date that was stamped in local CET but labelled UTC, putting it an hour
+into the future at validation time. Corrected to the real UTC time.
+
+(prepared with help of rool.dev)</comment>
+    <requestid>1400864</requestid>
+  </revision>
 </revisionlist>

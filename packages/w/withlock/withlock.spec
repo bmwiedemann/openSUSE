@@ -1,7 +1,7 @@
 #
 # spec file for package withlock
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,14 @@
 
 
 Name:           withlock
-Version:        0.5
+Version:        0.6
 Release:        0
 Summary:        A locking wrapper script
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/poeml/withlock
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://mirrorbrain.org/files/releases/%{name}-%{version}.tar.gz
 Patch0:         fix-use-python3.patch
-Patch1:         withlock-0.5-fixboo864785.patch
 Requires:       python3
 BuildArch:      noarch
 
@@ -50,7 +49,7 @@ install -D -m 0644 -t %{buildroot}%{_mandir}/man1/ %{name}.1
 
 %files
 %license LICENSE-2.0.txt
-%doc README.md withlock.1.html
+%doc README.md THANKS withlock.1.html
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

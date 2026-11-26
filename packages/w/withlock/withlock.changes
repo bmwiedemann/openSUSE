@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Nov 25 23:20:00 UTC 2026 - Peter Poeml <poeml@cmdline.net>
+
+- Update to 0.6 (released tarball from mirrorbrain.org)
+  * Document known limitation: the lock file is unlinked at exit, which
+    leaves a sub-second window for overlapping jobs if several are
+    spawned per second. Harmless for cron jobs. Noted in README, man
+    page and the BUGS section
+  * Fold withlock-0.5-fixboo864785.patch into the sources: re-open the
+    lock file before every locking attempt (boo#864785)
+  * Add THANKS file, installed with the documentation
+  * Man page regenerated with ronn-ng
+  * Running under Python 3 is now required; the Python 2 version is
+    archived in attic/
+  * Dropped: withlock-0.5-fixboo864785.patch
+- Re-add fix-use-python3.patch: upstream keeps
+  "#!/usr/bin/env python3" for portability, the package uses the
+  absolute /usr/bin/python3 path (rpmlint: env-script-interpreter)
+  (prepared with help of rool.dev)
+
+-------------------------------------------------------------------
 Sun Jan  1 13:51:36 UTC 2023 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add withlock-0.5-fixboo864785.patch to fix concurrent locking (boo#864785)
