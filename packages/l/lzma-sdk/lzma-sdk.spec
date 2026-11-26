@@ -16,12 +16,12 @@
 #
 
 
-%define _sver   2604
+%define _sver   2606
 %define _maver  26
-%define _miver  04
+%define _miver  06
 %define lname   liblzmasdk%_maver
 Name:           lzma-sdk
-Version:        26.04
+Version:        26.06
 Release:        0
 Summary:        An implementation of LZMA compression
 # Actually the site says "Public Domain". See license file.
@@ -29,9 +29,9 @@ License:        LGPL-2.1-only
 Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/sdk.html
 #Git-Clone:     https://github.com/ip7z/7zip
-Source0:        https://www.7-zip.org/a/lzma%_sver.7z
-Source1:        lzma-sdk-LICENSE.fedora
-Source2:        baselibs.conf
+Source:         https://github.com/ip7z/7zip/releases/download/%version/lzma%_sver.7z
+Source2:        lzma-sdk-LICENSE.fedora
+Source3:        baselibs.conf
 Patch1:         lzma-sdk-shlib.patch
 Patch2:         lzma-simd.patch
 BuildRequires:  7zip
@@ -74,7 +74,7 @@ implementation.
 %autosetup -c -n lzma%_sver -p1
 perl -i -pe 's{AC_INIT.*}{AC_INIT([lzma-sdk], [%version])}' configure.ac
 dos2unix DOC/*.txt
-install -p -m 0644 %SOURCE1 .
+install -p -m 0644 %_sourcedir/lzma-sdk-LICENSE.fedora .
 
 %build
 autoreconf -fi

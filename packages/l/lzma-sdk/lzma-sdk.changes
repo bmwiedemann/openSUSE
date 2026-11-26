@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 21:39:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 26.06
+  * Improved support for split files created by "split"
+    utility in Linux.
+
+-------------------------------------------------------------------
 Sat Oct 17 14:47:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 26.04

@@ -290,4 +290,12 @@
     <comment>- Update to release 26.04</comment>
     <requestid>1385695</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9bb458a7bab4bdfa4e96ab38386bc3be</srcmd5>
+    <version>26.06</version>
+    <time>1795704811</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 26.06</comment>
+    <requestid>1400412</requestid>
+  </revision>
 </revisionlist>
