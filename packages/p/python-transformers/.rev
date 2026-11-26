@@ -210,4 +210,12 @@ also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <comment>Update python-transformers to 5.24.0: new models, cache rename, exporter trust_remote_code split.</comment>
     <requestid>1399731</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7eb6bd116860ade66fe28118af381369</srcmd5>
+    <version>5.24.1</version>
+    <time>1795704819</time>
+    <user>anag_factory</user>
+    <comment>Update python-transformers to 5.24.1: restore attn-mask and cache-rename compat, fix Llama4, Dory, distributed, OmniASR.</comment>
+    <requestid>1400526</requestid>
+  </revision>
 </revisionlist>

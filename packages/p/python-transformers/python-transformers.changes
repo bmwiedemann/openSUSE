@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:57:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.24.1:
+  * Restore modeling_attn_mask_utils and cache-rename backward
+    compatibility for remote code (unblocks vLLM consumers)
+  * Fix Llama4 forward crash on missing image_outputs and Dory
+    static cache handling
+  * Distributed fixes: allow expert parallelism alone with empty
+    tp_plan, fix strided checkpoint reads on PyTorch 2.9
+  * OmniASR audio encoder supports a CPU-kept padding_mask
+
+-------------------------------------------------------------------
 Sun Nov 22 09:39:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.24.0:
