@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Nov 26 08:08:26 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.35.11:
+  * [release-1.35] Update build images to Go 1.26.11
+  * [release-1.35] Bump .go-version to 1.26.11
+  * Fix TestEventSeries flaky only focus on testPod namespace
+  * Fix code that can cause crash for KCM and kubelet for vsphere volumes
+  * scheduler: split Pod update with a changed UID into delete and add
+  * Improve webhook client config IP matching, encoded handling
+  * Update cmd/kube-proxy/app/server.go
+  * kube-proxy: avoid missing initial topology update
+  * Refresh cached Node UID when creating or verifying CSINode ownership
+  * kubeadm: i observe before, `upgrade plan` crashed. Now it shows an error.
+  * kubeadm: the missing CA hint shows again
+  * apiserver: deflake TestTimeTravelHealthcheck
+  * Dereference pointer args passed to %d in Errorf/Fatalf calls
+  * Tolerate json/v2 output in YAML tests
+  * Tolerate json/v2 invalid UTF-8 munging in unstructured serialization tests
+  * kubeadm: fix etcd data rollback and retry the etcd backup
+  * kubeadm: retry etcd member listing on transient errors
+  * Validate labels and annotations in pods/binding
+  * kubelet: Reject subordinate ID ranges ending at or past 2^32-1
+  * kubelet: Don't allocate the 2^32-1 user to a pod
+  * kubelet: Properly handle missing getsubids executable
+  * fix: extend csrf filter for kubectl proxy
+  * gce: pick newest image from image family
+  * kubelet: adapt probe worker regression test to release-1.35
+  * kubelet: detach probe workers from the pod sync context
+
+- Update .spec file to bump go version build requirements:
+  `BuildRequires:  go >= 1.26.11`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.35.11/.go-version
+
+-------------------------------------------------------------------
 Wed Oct 28 06:54:03 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.35.10:
