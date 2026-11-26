@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-actioncable-8.0
-Version:        8.0.5
+Version:        8.0.5.2
 Release:        0
 %define mod_name actioncable
 %define mod_full_name %{mod_name}-%{version}
