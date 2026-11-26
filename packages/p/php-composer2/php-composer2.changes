@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Nov 18 15:15:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.11.2:
+  * Security fixes:
+    - Fixed arbitrary command execution via the
+      prevent_url_access_callable transport option loaded from
+      composer.lock or installed.json (GHSA-jhfp-4ppm-crmm).
+    - Fixed malicious zip archives writing outside package dir
+      via symlinked entries when falling back to ZipArchive
+      (GHSA-w6hj-6587-3jh5).
+    - Fixed inline repository HTTP credentials sent to dist
+      mirrors on other hosts from composer.lock or installed.json
+      (GHSA-x82q-x274-r6pq).
+    - Updated bundled symfony/filesystem to fix
+      GHSA-6prc-h956-hxjq.
+  * Added exclude-branches option to VCS repositories.
+  * Performance and memory improvements in dependency resolution.
+- Changes from 2.11.1:
+  * Fixed GitLab CI job tokens failing to authenticate against
+    the GitLab Composer package registry.
+  * Added warning when cache dir is on Windows drive in WSL.
+- Changes from 2.11.0:
+  * BC break: removed source-fallback config option.
+  * Security fixes:
+    - Fixed package names in installed.json escaping vendor dir
+      during install/reinstall (GHSA-c968-33g3-wh7p).
+    - Fixed inline repository HTTP headers like API tokens being
+      written into composer.lock (GHSA-fm2w-xgf2-f9fh).
+    - Reject TLS connections presenting distrusted intermediate
+      certificates (compromised eMudhra ones).
+  * Added cooldown policy to withhold newly released package
+    versions for a configurable period.
+  * Added --direct (-D) option to audit direct dependencies.
+  * Improved dependency resolution performance and memory usage.
+- Drop php-composer2-little-endian-no-machine-order.patch: merged
+  upstream in seld/phar-utils 1.2.2 (PR#13).
+- Spec cleanup: remove obsolete Group tag.
+
+-------------------------------------------------------------------
 Fri Aug 28 11:02:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.10.3

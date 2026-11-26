@@ -575,4 +575,12 @@
     <comment>[bsc#1279898], CVE-2026-59944</comment>
     <requestid>1377825</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9d1564dd144ad5e74895a793ea035cf5</srcmd5>
+    <version>2.11.2</version>
+    <time>1795704829</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1400601</requestid>
+  </revision>
 </revisionlist>

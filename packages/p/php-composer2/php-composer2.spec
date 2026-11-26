@@ -17,20 +17,18 @@
 
 
 Name:           php-composer2
-Version:        2.10.3
+Version:        2.11.2
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
-Group:          Development/Libraries/Other
 URL:            https://getcomposer.org/
 Source0:        https://github.com/composer/composer/archive/refs/tags/%{version}/composer-%{version}.tar.gz
 Source1:        https://github.com/composer/composer/releases/download/%{version}/composer.phar
 Source2:        https://github.com/composer/composer/releases/download/%{version}/composer.phar.asc
 # 161DFBE342889F01DDAC4E61CBB3D576F2A0946F
 Source3:        %{name}.keyring
+# PATCH-FIX-OPENSUSE php-composer2-compiler-env.patch pgajdos@suse.com -- allow compiling phar from env vars without git repo
 Patch0:         php-composer2-compiler-env.patch
-# https://github.com/Seldaek/phar-utils/pull/13
-Patch1:         php-composer2-little-endian-no-machine-order.patch
 BuildRequires:  php-cli
 BuildRequires:  php-phar
 Requires:       php >= 7.2.5
@@ -70,8 +68,8 @@ echo '{}' > vendor/composer/installed.json
 %build
 # Build the phar file using our environment-driven Compiler
 export COMPOSER_VERSION="%{version}"
-# Hardcode a fixed and reproducible release date for version 2.10.2
-export COMPOSER_DATE="2026-07-15 12:00:00"
+# Hardcode a fixed and reproducible release date for version 2.11.2
+export COMPOSER_DATE="2026-11-10 09:24:59"
 echo 'phar.readonly=Off' > php.ini
 PHPRC=./php.ini php -d phar.readonly=Off -r 'require "src/bootstrap.php"; $c = new Composer\Compiler(); $c->compile();'
 
