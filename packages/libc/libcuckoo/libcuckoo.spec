@@ -1,7 +1,7 @@
 #
 # spec file for package libcuckoo
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        A high-performance, concurrent hash table
 License:        Apache-2.0
 URL:            https://github.com/efficient/%{name}
 Source:         https://github.com/efficient/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM libcuckoo-fix-concurrency-segfault.patch gh#efficient/libcuckoo#174
+Patch0:         libcuckoo-fix-concurrency-segfault.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 

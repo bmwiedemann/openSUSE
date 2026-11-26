@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:53:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libcuckoo-fix-concurrency-segfault.patch: Backport upstream
+  fixes for data races and segfaults during table resizing
+  (gh#efficient/libcuckoo#174). Fixes SEGFAULT in universal_benchmark
+  / read_insert_expansion.
+
+-------------------------------------------------------------------
 Thu Dec 29 23:00:34 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.1:
