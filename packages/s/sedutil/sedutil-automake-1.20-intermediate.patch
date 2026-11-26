@@ -1,0 +1,21 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 25 Nov 2026 18:30:00 +0000
+Subject: [PATCH] Drop .INTERMEDIATE target for automake 1.20 compatibility
+
+Automake 1.20 defines the internal make target .INTERMEDIATE in distdir.am.
+Defining .INTERMEDIATE in Makefile.am causes automake to issue an override
+warning, which fails the build under AM_INIT_AUTOMAKE([-Wall -Werror]).
+---
+ Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -45,7 +45,6 @@ EXTRA_DIST = linux/GitVersion.sh linux/P
+ man_MANS = docs/sedutil-cli.8
+ linux/Version.h:
+ 	$(srcdir)/linux/GitVersion.sh > linux/Version.h
+-.INTERMEDIATE: linux/Version.h
+ maintainer-clean-local:
+ 	rm config.status configure config.log
+ 	rm Makefile

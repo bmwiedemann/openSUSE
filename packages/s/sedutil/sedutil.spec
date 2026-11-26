@@ -1,7 +1,7 @@
 #
 # spec file for package sedutil
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source2:        linuxpba.sh
 Source3:        sedutil-pba.pl
 Patch0:         kernel_nvme_header.patch
 Patch1:         Fix-build-with-GCC-13.patch
+Patch2:         sedutil-automake-1.20-intermediate.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
