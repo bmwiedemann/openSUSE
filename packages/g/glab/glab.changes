@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:56:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.133.0:
+  * Features
+    - feat(repo): support cloning from a leaf group (a68930d9)
+  * Bug Fixes
+    - fix(attestation): stop passing deprecated --new-bundle-format
+      to cosign (bc2ec324)
+    - fix(config): stop repository-local config choosing programs
+      glab runs (721823c6)
+    - fix(df): read Maven settings the way the launcher does
+      (15a1d900)
+    - fix(df): trust the user's JVM truststore in the job-level
+      proxy (4ac99797)
+    - fix(mr): resolve an all-digit discussion ID prefix (aa8b7372)
+  * Maintenance
+    - chore: restore '--panicOnWarning' option to Hugo test run for
+      docs (d45b6d8c)
+  * Dependencies
+    - chore(deps): update module github.com/docker/cli to
+      v29.10.0+incompatible (aa8762bd)
+    - chore(deps): update module
+      gitlab.com/gitlab-org/protos/gen/go/gitlab/autoflow to
+      v0.1.18 (eb06a101)
+    - chore(deps): update module golang.org/x/net to v0.63.0
+      (66f7c608)
+  * Others
+    - Added the plan approval config (8c2e6499)
+    - test(df): use a reserved port for the unreachable Go proxy
+      (778b18c6)
+
+-------------------------------------------------------------------
 Wed Nov 25 05:46:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.132.0:
