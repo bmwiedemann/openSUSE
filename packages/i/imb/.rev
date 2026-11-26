@@ -187,4 +187,13 @@
     <comment>- Add mvapich[34] flavors</comment>
     <requestid>1316689</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>34b6e8cbef5c1c08a6db81ff307198b4</srcmd5>
+    <version>2021.10</version>
+    <time>1795704908</time>
+    <user>anag_factory</user>
+    <comment>- Enable mvapich5 flavors
+- Drop mvapich 2 and 3 flavors</comment>
+    <requestid>1400774</requestid>
+  </revision>
 </revisionlist>

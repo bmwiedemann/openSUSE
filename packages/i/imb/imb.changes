@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov  6 16:48:06 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Enable mvapich5 flavors
+- Drop mvapich 2 and 3 flavors
+
+-------------------------------------------------------------------
 Sun Nov  9 12:38:50 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Add mvapich[34] flavors
