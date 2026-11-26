@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.3
-%define patchversion 7.3.5
-%define git_commit b2eda329c22ffb33b0331f29bccd7ede92d21d63
+%define patchversion 7.3.6
+%define git_commit 54b636b037c1e2c901001d5faaac6352511aac70
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-lpae
-Version:        7.3.5
+Version:        7.3.6
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gb2eda32
+Release:        <RELEASE>.g54b636b
 %else
 Release:        0
 %endif
