@@ -186,4 +186,43 @@
     <comment></comment>
     <requestid>1278585</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e3d5227a7334b6090678cf5d313761f6</srcmd5>
+    <version>0.9.31</version>
+    <time>1795704930</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1400579 from dspinella
+
+- Update to 0.9.31:
+    * Bugfix/issue 90 windows perf
+  - Update to 0.9.30:
+    * ConcurrentTimedRotatingFileHandler no longer creates the log
+      file in its constructor.
+    * Remove a duplicate stale-file check from each write. On a local
+      disk this cuts the time per write by about 13% when maxBytes is
+      set, for both handlers.
+    * 0.9.30
+    * Mark Python 3.15 as supported.
+    * Fix permission race window between file create and chmod, when
+      the chmod and/or owner kwargs are configured.
+    * Fix lost records when a process opens a lock file or log file
+      that another user owns, with chmod or owner configured.
+  - Update to 0.9.29:
+    * Fix race conditions when a handler created before fork() is
+      used by multiple child processes.
+    * Depend on portalocker &gt;= 2.6.0 instead of 1.6.0. Earlier
+      versions of portalocker on Windows can be problematic.
+    * Add finalize_handler_configuration() hook to
+      ConcurrentTimedRotatingFileHandler to allow customization of
+      the handler before the first rollover.
+  - Update to 0.9.28:
+    * 0.9.28
+    * Fix missing a rollover when the app was shutdown during the
+      scheduled time.
+    * Fix NameError when logging during Python shutdown.
+  - Update to 0.9.27:
+    * Adds deprecation warning to queue.py setup_logging_queues().
+    * Fixes - issues cleaning up old rotation files</comment>
+    <requestid>1400845</requestid>
+  </revision>
 </revisionlist>

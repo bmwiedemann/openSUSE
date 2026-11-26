@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:33:19 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.9.31:
+  * Bugfix/issue 90 windows perf
+- Update to 0.9.30:
+  * ConcurrentTimedRotatingFileHandler no longer creates the log
+    file in its constructor.
+  * Remove a duplicate stale-file check from each write. On a local
+    disk this cuts the time per write by about 13% when maxBytes is
+    set, for both handlers.
+  * 0.9.30
+  * Mark Python 3.15 as supported.
+  * Fix permission race window between file create and chmod, when
+    the chmod and/or owner kwargs are configured.
+  * Fix lost records when a process opens a lock file or log file
+    that another user owns, with chmod or owner configured.
+- Update to 0.9.29:
+  * Fix race conditions when a handler created before fork() is
+    used by multiple child processes.
+  * Depend on portalocker >= 2.6.0 instead of 1.6.0. Earlier
+    versions of portalocker on Windows can be problematic.
+  * Add finalize_handler_configuration() hook to
+    ConcurrentTimedRotatingFileHandler to allow customization of
+    the handler before the first rollover.
+- Update to 0.9.28:
+  * 0.9.28
+  * Fix missing a rollover when the app was shutdown during the
+    scheduled time.
+  * Fix NameError when logging during Python shutdown.
+- Update to 0.9.27:
+  * Adds deprecation warning to queue.py setup_logging_queues().
+  * Fixes - issues cleaning up old rotation files
+  * Fixes - issues around syncing time to rollover
+  * Stop using this and just use regular synchronous logging calls
+    (the standard handlers)
+- Update to 0.9.26:
+  * GitHub Actions no longer supports runners for automated testing
+    under Python 3.6 and 3.7.
+  * Ensure required packages like black are installed in "dev mode"
+    (pip install -e .[dev]).
+  * 0.9.26
+  * Significant performance improvements, especially on the POSIX
+    side.
+  * This is mainly from keeping the file handles open for both the
+    log file and the lock file, reducing system calls and overhead.
+  * You can revert to the old behavior by setting
+    keep_file_open=False in the constructor. The default is True.
+- Update to 0.9.25:
+  * Updates to use pyproject.toml with a few other features
+  * Fixes: ConcurrentTimedRotatingFileHandler rotating gzip fil…
+  * Initial support for typing
+- Update to 0.9.24:
+  * see
+    https://github.com/Preston-Landers/concurrent-log-handler/releases/tag/0.9.24
+- Update to 0.9.23:
+  * 0.9.23
+  * Begin requiring Python 3.6 or higher.
+  * Fix - don't fail when setting owner on Windows, though it will
+    have no effect.
+- Update to 0.9.23-alpha-1:
+  * see
+    https://github.com/Preston-Landers/concurrent-log-handler/releases/tag/0.9.23-alpha-1
+- Update to 0.9.22:
+  * see
+    https://github.com/Preston-Landers/concurrent-log-handler/releases/tag/0.9.22
+- Update to 0.9.21:
+  * Added new optional parameter "lock_file_directory"
+  * Creates given directory, if it does not exist.
+  * Writes lock file into given directory, instead next to the
+    logging file itself.
+  * Useful when the log files reside in a cloud synced folder like
+    Dropbox, Google Drive, OneDrive, etc. Sometimes these do not
+    work correctly with the lock files.
+  * Fix not replacing the last file (greatest backup number) when
+    rotating. Thanks tzongw.
+  * PR#52
+- Update to 0.9.20:
+  * see
+    https://github.com/Preston-Landers/concurrent-log-handler/releases/tag/0.9.20
+- Fix the stress test path in %check after the tests moved to
+  tests/
+- Run the pytest suite in %check since stresstest.py fails as a
+  script
+- Remove the leading shebang line from the installed
+  concurrent_log_handler module
+
+-------------------------------------------------------------------
 Fri May 16 10:04:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
