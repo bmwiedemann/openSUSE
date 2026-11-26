@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Nov 25 19:09:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.10.0
+  * sip: add negotiated audio codec column to call list.
+  * ui: mouse support in every panel.
+  * media: SIP-free RTP stream inspection (--media-only).
+  * ui: add color themes to settings.
+  * build: show Git commit in version output.
+  * eep: add TCP support for HEP3 listen.
+  * docs: add installable sngreprc(5) manpage.
+  * ui: Media Inspector screen (F6).
+  * media: show RTPengine sessions via the NG control protocol.
+  * sip: fix off-by-one OOB read on full-size SIP payloads.
+  * capture: fix infinite loop on crafted NFLOG TLVs.
+  * main: make --eep-parse take no argument.
+  * ui: export call list entries as CSV (#265).
+  * main: fix crash and garbled error on unknown long options.
+  * doc: drop settings the sample sngreprc names but nothing reads.
+  * setting: include background in the --dump-config output.
+
+-------------------------------------------------------------------
 Tue Oct  6 07:23:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Switch from autotools to cmake

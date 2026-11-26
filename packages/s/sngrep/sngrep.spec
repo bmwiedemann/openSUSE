@@ -19,7 +19,7 @@
 
 
 Name:           sngrep
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
@@ -73,6 +73,7 @@ rm -rf %{buildroot}/usr/share/doc/packages/sngrep
 %doc AUTHORS README.md
 %config %{_sysconfdir}/sngreprc
 %{_bindir}/sngrep
+%{_mandir}/man5/sngreprc.5%{?ext_man}
 %{_mandir}/man8/sngrep.8%{?ext_man}
 
 %changelog
