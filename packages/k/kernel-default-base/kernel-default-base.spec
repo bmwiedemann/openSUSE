@@ -42,7 +42,7 @@ hv_vmbus hyperv-keyboard hv_netvsc hv_storvsc scsi_transport_fc hyperv_fb
 %define scsi_modules scsi_transport_iscsi sd_mod sg sr_mod st scsi_mod
 
 %define block_drivers loop dm-mod libata libahci ahci ata_piix mptsas mptspi \
-        BusLogic sym53c8xx am53c974 rbd brd dm-crypt nvme nvme_fabrics
+        BusLogic sym53c8xx am53c974 rbd brd dm-crypt nvme nvme_fabrics zram
 
 %define usb_modules usb-common usbcore ehci-hcd ehci-pci ohci-hcd ohci-pci uhci-hcd \
 xhci-hcd xhci-pci typec typec_ucsi ucsi_acpi typec ums-alauda ums-cypress ums-datafab \
@@ -57,7 +57,7 @@ ums-realtek ums-sddr09 ums-sddr55 ums-usbat usb-storage usbhid
 af_packet arptable_filter arp_tables arpt_mangle bpfilter bridge br_netfilter    \
 cls_bpf ebt_.* ebtable_.* ebtables ip6table_.* ip6_tables ip6t_.* ip_.* ipt_.* iptable_.* \
 nf_.* nfnetlink.* nft_.* openvswitch sch_ingress tun veth xfrm.*_tunnel xfrm_.* \
-x_tables xt_.* vport-.* vxlan vport-.* wireguard macvlan 8021q \
+x_tables xt_.* vport-.* vxlan vport-.* wireguard macvlan 8021q ipvlan \
 netlink_diag af_packet_diag raw_diag inet_diag tcp_diag udp_diag unix_diag vsock_diag
 
 %define crypto_modules \
