@@ -492,4 +492,57 @@
   * Restore the steampipe query assertion in the duplicate connection name test (#5153) (forwarded request 1400264 from ph03nix)</comment>
     <requestid>1400280</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>bc2678ce61302902e233000f38f03be1</srcmd5>
+    <version>2.5.3</version>
+    <time>1795704823</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.3:
+  * chore(release): v2.5.3
+  * A remote database URL that cannot be used no longer shows its password (#5218)
+  * Move to tablewriter v1 with the plugin SDK and pipe-fittings (#5215)
+  * Update Go dependencies to their latest compatible releases. Closes #5122 (#5216)
+  * [dep][go](deps): Bump github.com/jackc/pgx/v5 from 5.10.0 to 5.13.0 (#5208)
+  * chore(fleet): enable dependencies chore, drop Dependabot version updates (#5214)
+  * [dep][actions](deps): Bump goreleaser/goreleaser-action (#5170)
+  * [dep][actions](deps): Bump actions/setup-go from 6.5.0 to 7.1.0 (#5171)
+  * [dep][go](deps): Bump github.com/jedib0t/go-pretty/v6 (#5209)
+  * [dep][actions](deps): Bump actions/upload-artifact from 4.6.2 to 7.0.2 (#5210)
+  * [dep][actions](deps): Bump docker/setup-buildx-action (#5211)
+  * Let the fleet's release-PR hook open the release PR (#5212)
+  * fix(db_client): close rows of failed queries. Fixes #5054 (#5207)
+  * fix(connection): report a failed save of connection state, closes #5058 (#5206)
+  * fix(db_local): a new install dir stops only its own leftovers, closes #5158 (#5195)
+  * chore(ci): drop the unused personal access token from acceptance tests. Closes #5175 (#5181)
+  * Carry pg_hba.conf.d rules over on a Postgres upgrade. Fixes #5149 (#5200)
+  * chore(ci): park shipyard-pr.yml link fix on line 2. Closes #5199 (#5204)
+  * fix(db): leave the old pg_hba.conf alone during an upgrade. Fixes #5148 (#5198)
+  * fix(db): clear the two go vet findings. closes #5141 (#5203)
+  * fix(db): reject an oversized max-parallel value with a clear error, closes #5052 (#5202)
+  * fix(config): report an unreadable plugin as an error, not as not installed. Fixes #5057 (#5201)
+  * fix(interactive): fall back to plain input and log when highlighting fails (#5196)
+  * fix(pluginmanager): send rate limiter changes to custom-named plugin instances, closes #5150 (#5194)
+  * fix(connection): compare aggregator children with one separator, closes #5197 (#5205)
+  * [dep][actions](deps): Bump actions/cache from 4.3.0 to 6.1.0 (#5172)
+  * [dep][actions](deps): Bump actions/download-artifact from 5.0.0 to 8.0.2 (#5169)
+  * chore(release): replace deprecated goreleaser options, closes #5179 (#5186)
+  * ci: a ci job gates every PR check (#5189)
+  * Find the release PR from the head branch when a record run was started by hand
+  * chore(release): v2.5.2
+  * Quote the service password and keep the SSL passphrase out of the command line, logs and errors (#5183)
+  * fix(config): leave a malformed .spc file out of the workspace profile load, closes #5147 (#5182)
+  * Keep the setup-unfinished marker in internal/ so a read-only db folder works, closes #5173 (#5180)
+  * [dep][go](deps): Bump github.com/spf13/pflag from 1.0.9 to 1.1.0 (#5168)
+  * Release through the shared release workflows (#5178)
+  * chore: set the repo up for agent-fleet (#5174)
+  * [dep][go](deps): Bump github.com/Masterminds/semver/v3 (#5125)
+  * Remove a former teammate from the Dependabot config (#5167)
+  * [dep][actions](deps): Bump geekyeggo/delete-artifact from 5.1.0 to 6.0.0 (#5011)
+  * [dep][go](deps): Bump github.com/dustin/go-humanize from 1.0.1 to 1.1.0 (#5127)
+  * [dep][actions](deps): Bump docker/login-action from 3.6.0 to 4.8.0 (#5128)
+  * [dep][actions](deps): Bump golangci/golangci-lint-action (#5129)
+  * [dep][actions](deps): Bump actions/checkout from 5.0.0 to 7.0.1 (#5130)
+  * Harden GitHub Actions: pin actions to SHAs and set explicit permissions (#4965) (forwarded request 1400493 from ph03nix)</comment>
+    <requestid>1400587</requestid>
+  </revision>
 </revisionlist>
