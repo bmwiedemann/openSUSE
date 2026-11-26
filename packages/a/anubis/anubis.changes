@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Nov 19 09:55:43 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Update to the new upstream release 1.28.2
+  - 1.28.2 changes
+    * feat: add Catalan (ca) localization.
+    * feat: allow Renovate in git clients for github/gitlab api endpoint.
+    * fix: add utils/cmd/botgenerate for automatically updating crawler IP ranges. Also apply the updates.
+    * fix: do not reject with 400 Bad Request a request whose Content-Type is multipart/form-data but whose body is empty, including when the content length is unknown (-1, for example a chunked request). Reverse proxies that strip the body for auth  * fix: subrequests (for example nginx' auth_request) still forward the original Content-Type, which made prepareChallengeForm fail and answer with a spurious 400.
+    * fix: reject requests with no User-Agent header or an empty User-Agent header via (data)/bots/spec-violations.yaml.
+    * fix: accept GeoIP2 ISP databases for ASN lookups and GeoLite2 City databases for country lookups.
+    * fix: fix concurrent WASM challenge validation failures by instantiating transient modules anonymously, allowing the existing four-slot verifier concurrency limit to work as intended.
+  - 1.28.1 changes
+    * Bugfix: revert systemd isolation change that worked fine in testing but failed in prod.
+  - 1.28.0 changes
+    * build(deps-dev): bump the npm group across 1 directory with 8 updates by @dependabot[bot] in #1978
+    * build(deps-dev): bump the npm group with 4 updates by @dependabot[bot] in #1943
+    * build(deps-dev): bump the npm group with 5 updates by @dependabot[bot] in #1999
+    * build(deps): bump github/codeql-action/upload-sarif from 4.37.8 to 4.37.9 in the github-actions group by @dependabot[bot] in #1945
+    * build(deps): bump github/codeql-action/upload-sarif from 4.38.1 to 4.38.2 in the github-actions group by @dependabot[bot] in #2001
+    * build(deps): bump the github-actions group across 1 directory with 7 updates by @dependabot[bot] in #1979
+    * build(deps): bump the github-actions group across 1 directory with 14 updates by @dependabot[bot] in #1910
+    * build(deps): bump the gomod group across 1 directory with 8 updates by @dependabot[bot] in #1944
+    * build(deps): bump the gomod group across 1 directory with 14 updates by @dependabot[bot] in #2000
+    * build(deps): bump the gomod group across 1 directory with 16 updates by @dependabot[bot] in #1907
+    * build(deps): bump the npm group across 1 directory with 10 updates by @dependabot[bot] in #1909
+    * chore: Add Valve's SteamOS gitlab to known-instances.md by @lbellomo in #1964
+    * chore: bump grpc to v1.82.1 by @Xe in #1862
+    * chore: fix wasm build scripts on macOS by @Xe in #1914
+    * chore: npm run format by @Xe in #1849
+    * chore: use the simplified explanation by default by @Xe in #1983
+    * chore(js/worker): consolidate webcrypto and purejs workers by @Xe in #1767
+    * chore(localization): improved norwegian nynorsk localization by @ysccsyysc in #1844
+    * ci: add rust to all steps of the CI flow by @Xe in #1899
+    * docs: add 's3api' to list of storage backends by @bibliotechy in #1975
+    * docs: add synthient diamond sponsor banner by @Xe in #1990
+    * docs: fix typo by @Coobyk in #1928
+    * docs: replace removed DIFFICULTY env with bot policy mount in Kubernetes guide by @MeGaurav4 in #1984
+    * docs: rework developer docs tree by @Xe in #1848
+    * docs: update enterprise features by @Xe in #1987
+    * docs: update for wasm changes by @Xe in #1905
+    * docs(admin/faq): fix typo by @Xe in #1843
+    * docs(blog): add post about WASM in Anubis by @Xe in #1941
+    * docs(test): document tales of woe by @Xe in #1837
+    * feat: add rust code for proof of work by @Xe in #1901
+    * feat: add wasm go package by @Xe in #1902
+    * feat: challenge extensions by @Xe in #1962
+    * feat: Support for dynamic ip lists by @SniperCZE in #1965
+    * feat(anubis): log when challenges are accepted by @poespas in #1879
+    * feat(blog): add v1.27.0 release blogpost by @Xe in #1841
+    * feat(data/bots): add HyperAgent by @Xe in #1894
+    * feat(data/bots): block Cloudflare Kitesurf by @Xe in #1839
+    * feat(default-config): add default rule for domain fronting by @Xe in #1882
+    * feat(geoip)!: rip out Thoth in favour of local Maxmind GeoIP databases by @Xe in #1986
+    * feat(lib): add AI agent honeypot method by @Xe in #1895
+    * feat(lib): add DYNAMIC_COOKIE_SUFFIX setting for toggling the dynamically generated cookie suffix by @Earl0fPudding in #1992
+    * feat(lib/challenge)!: add wasm challenge by @Xe in #1904
+    * feat(localization): add Portuguese (Portugal) locale by @Blackspirits in #1993
+    * feat(utils): add precompiled wasm-opt and wasm2js binaries by @Xe in #1900
+    * feat(utils): add wazero-exec fallback for running wasi modules on any host by @Xe in #1898
+    * feat(web): add frontend JS for WASM patch by @Xe in #1903
+    * feat(yeetfile): build binaries for netbsd by @Xe in #1911
+    * fix: integrate security findings and hardening by @Xe in #1989
+    * fix: remove client-supplied X-Anubis-* header spoofing vector by @JasonLovesDoggo in #1919
+    * fix: restore original Referer across the challenge redirect by @fabianpeusser in #1926
+    * fix(ci): update golangci lint to not die by @JasonLovesDoggo in #1915
+    * fix(lib): Clarify getChallenge error log by @dwhitemv25 in #1942
+    * fix(lib): don't clear the auth cookie when the request sent none by @CybotTM in #1828
+    * fix(lib): Don't log challenge twice by @dwhitemv25 in #1922
+    * fix(lib): original-referer cookie not being affected by cookie-prefix setting by @Earl0fPudding in #1977
+    * fix(lib): retry missing verification cookie once by @GustavFredrikson in #2004
+    * fix(lib): use the configured deny status for non-gzip challenge clients by @bhcopeland in #1958
+    * fix(lib): validate subrequest authentication redirects consistently by @nijel in #1947
+    * fix(lib/store/bbolt): stop syncing the freelist on every commit by @dominik-matic in #2013
+    * fix(localization): correct Dutch go_home typo by @fogrye in #1892
+    * fix(ogtags): OG fetch omits X-Forwarded-Host, silently breaking passthrough when --target-host is set by @tsueri in #1881
+    * fix(ssh-ci): minor fixes to appease CI by @Xe in #1923
+    * fix(wasm): adopt resilience fixes, actually test this with CI by @Xe in #1912
+    * fix(wasm): run wasm-opt / wasm2js via nodejs in CI by @Xe in #2009
+    * fix(web/js): properly spawn workers with strict CSP settings by @Xe in #1874
+    * revert(lib): remove AI agent honeypot method by @Xe in #1913
+    * test(internal/test): make the Playwright suite runnable again by @CybotTM in #1830 
+
+-------------------------------------------------------------------
 Wed Aug 19 22:28:43 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 1.27.0
