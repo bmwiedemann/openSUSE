@@ -18,7 +18,7 @@
 
 
 Name:           racket
-Version:        9.1
+Version:        9.3
 Release:        0
 Summary:        Scheme implementation with teaching tools
 License:        Apache-2.0 OR MIT
