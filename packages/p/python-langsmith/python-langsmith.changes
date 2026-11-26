@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:40:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.2:
+  * Annotation queues: list a queue's reviewers
+    with their progress
+  * SDK: keep only span context for ended OTel
+    spans
+  * SDK: log Gemini model turns with the assistant
+    role in wrapper inputs
+  * No new runtime dependencies
+- Refresh langsmith-python314-iscoroutinefunction.patch
+  for the new sources.
+- Point URL at the new langsmith-python repo; the SDK
+  moved out of langsmith-sdk.
+
+-------------------------------------------------------------------
 Tue Nov 24 06:29:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.1:

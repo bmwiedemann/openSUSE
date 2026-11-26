@@ -579,4 +579,12 @@ consumer passes the removed arguments.
     <comment>Update python-langsmith to 0.16.1: CLI sandbox memory/lifecycle/snapshot/volume/file options, thread feedback in Python and JS SDKs.</comment>
     <requestid>1400203</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>7b2299a8354cd0053cf66507e945fb36</srcmd5>
+    <version>0.16.2</version>
+    <time>1795704820</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.16.2: annotation queue reviewers, OTel span fix, Gemini turns, repo URL move.</comment>
+    <requestid>1400528</requestid>
+  </revision>
 </revisionlist>
