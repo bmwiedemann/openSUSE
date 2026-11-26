@@ -1,8 +1,8 @@
 #
 # spec file for package health-check
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 
 Name:           health-check
-Version:        0.03.09
+Version:        0.04.01
 Release:        0
 Summary:        Process monitoring tool
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            https://kernel.ubuntu.com/~cking/health-check
-Source:         https://kernel.ubuntu.com/~cking/tarballs/%{name}/%{name}-%{version}.tar.gz
+URL:            https://github.com/ColinIanKing/health-check
+Source:         https://github.com/ColinIanKing/health-check/archive/refs/tags/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libbsd)

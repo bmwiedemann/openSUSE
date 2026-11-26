@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 24 19:44:00 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update URL
+- Update to version 0.04.01
+  * syscall: fix incorrect order of params to calloc calls.
+- Update to version 0.04.00
+  * syscall: add more locking around fc->filename on dup call.
+  * syscall: add missing system calls.
+  * syscall: fix out-of-bounds access into syscall array.
+  * stress-syscall: add missing lock around fc->filename access.
+- Update to version 0.03.12
+  * Check for array bounds limit while parsing pid length string.
+- Update to version 0.03.11
+  * syscall.c: remove empty line.
+  * json.c, net.c: define _GNU_SOURCE.
+  * syscall: memset regs structures and add const to arrays.
+  * syscall: various constifications of units pointers.
+  * json.c: constify 1st argument in j_obj_is_null function.
+  * syscall: use strlcpy instead of unsafe strncpy.
+- Update to version 0.03.10
+  * Add README.md.
+  * syscall: clean up static analysis warning.
+  * timeval: ensure multiplication is 64 bit to avoid 32 bit
+    overflow.
+
+-------------------------------------------------------------------
 Tue Aug  4 17:40:25 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.03.09:
