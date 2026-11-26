@@ -1,0 +1,26 @@
+From: Dominique Leuenberger <dimstar@opensuse.org>
+Date: Wed, 25 Nov 2026 18:45:00 +0000
+Subject: [PATCH] Avoid circular macro definition with Flex 2.6.5+
+
+In Flex 2.6.5+, Flex defines YY_BUF_SIZE as (2 * YY_READ_BUF_SIZE).
+Defining YY_READ_BUF_SIZE as YY_BUF_SIZE in interact.h creates a
+circular macro expansion, causing compilation of lex.yy.cc to fail with:
+  error: 'YY_BUF_SIZE' was not declared in this scope
+
+Remove the redundant #define YY_READ_BUF_SIZE YY_BUF_SIZE from interact.h.
+---
+ interact.h | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff -up asymptote-3.15/interact.h.orig asymptote-3.15/interact.h
+--- asymptote-3.15/interact.h.orig
++++ asymptote-3.15/interact.h
+@@ -66,8 +66,6 @@ public:
+ 
+ void setCompleter(completer *c);
+ 
+-#define YY_READ_BUF_SIZE YY_BUF_SIZE
+-
+ void init_readline(bool tabcompletion);
+ }
+ 

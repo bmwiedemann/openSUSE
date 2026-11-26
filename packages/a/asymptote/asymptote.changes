@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 21:50:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add asymptote-flex-2.6.5.patch: Avoid circular macro definition
+  with Flex 2.6.5+.
+
+-------------------------------------------------------------------
 Tue Sep 15 13:38:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.15

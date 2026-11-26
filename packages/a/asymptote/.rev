@@ -100,4 +100,12 @@
     <comment>- Update to release 3.15</comment>
     <requestid>1378360</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>13af3e2d47d1e18823c59f18944f3f56</srcmd5>
+    <version>3.15</version>
+    <time>1795704871</time>
+    <user>anag_factory</user>
+    <comment>- Add asymptote-flex-2.6.5.patch: Avoid circular macro definition with Flex 2.6.5+.</comment>
+    <requestid>1400693</requestid>
+  </revision>
 </revisionlist>

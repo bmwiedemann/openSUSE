@@ -28,6 +28,7 @@ URL:            https://asymptote.sourceforge.io/
 Source:         https://github.com/vectorgraphics/asymptote/archive/refs/tags/%version.tar.gz
 #NEWS:          https://asymptote.sourceforge.io/ReleaseNotes
 Patch1:         use-system-libs.patch
+Patch2:         asymptote-flex-2.6.5.patch
 BuildRequires:  automake
 BuildRequires:  bison
 BuildRequires:  flex
@@ -77,7 +78,7 @@ provides for figures the same quality of typesetting that LaTeX does
 for scientific text.
 
 %prep
-%autosetup
+%autosetup -p1
 rm -Rfv libatomic_ops gc
 
 %build
