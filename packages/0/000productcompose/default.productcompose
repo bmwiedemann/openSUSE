@@ -265,6 +265,7 @@ packagesets:
    - calendarsupport # reason: dvd:patterns-kde-kde
    - canberra-gtk-play # reason: dvd:patterns-gnome-gnome
    - canokey-qemu # reason: dvd:patterns-media-rest_dvd
+   - canokey-qemu-libvirt # reason: dvd:patterns-media-rest_dvd
    - cantarell-fonts # reason: dvd:openSUSE-release
    - catfish # reason: dvd:patterns-xfce-xfce
    - catfish-lang # reason: dvd:patterns-xfce-xfce
@@ -2648,7 +2649,7 @@ packagesets:
    - libsigc-2_0-0 # reason: dvd:patterns-gnome-gnome
    - libsigc-3_0-0 # reason: dvd:patterns-gnome-gnome
    - libsignon-qt6-1 # reason: dvd:patterns-kde-kde
-   - libsimdutf38 # reason: dvd:patterns-gnome-gnome
+   - libsimdutf39 # reason: dvd:patterns-gnome-gnome
    - libslang2 # reason: dvd:patterns-kde-kde
    - libslirp0 # reason: dvd:patterns-media-rest_dvd
    - libslp1 # reason: dvd:patterns-yast-yast2_install_wf
@@ -4186,8 +4187,8 @@ packagesets:
    - xdelta3 # reason: dvd:xdelta3
    - xdg-dbus-proxy # reason: dvd:patterns-gnome-gnome
    - xdg-desktop-portal # reason: dvd:patterns-gnome-gnome
-   - xdg-desktop-portal-gnome # reason: dvd:patterns-media-rest_dvd
-   - xdg-desktop-portal-gnome-lang # reason: dvd:patterns-media-rest_dvd
+   - xdg-desktop-portal-gnome # reason: dvd:patterns-gnome-gnome
+   - xdg-desktop-portal-gnome-lang # reason: dvd:patterns-gnome-gnome
    - xdg-desktop-portal-gtk # reason: dvd:patterns-gnome-gnome
    - xdg-desktop-portal-gtk-lang # reason: dvd:patterns-gnome-gnome
    - xdg-desktop-portal-kde6 # reason: dvd:patterns-kde-kde
@@ -5293,6 +5294,7 @@ packagesets:
    - libavif16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libavutil60 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libb2-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libbd_btrfs3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbd_crypto3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbd_fs3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbd_loop3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5751,6 +5753,7 @@ packagesets:
    - libudev1 # reason: opensuse_microos:patterns-base-hardware
    - libudfread3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libudisks2-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libudisks2-0_btrfs # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libunibreak6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libunistring5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libunwind8 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -6438,10 +6441,7 @@ packagesets:
    - cpio # reason: opensuse_kalpa:patterns-kalpa-base
    - cpp # reason: opensuse_kalpa:patterns-kalpa-base
    - cpp16 # reason: opensuse_kalpa:patterns-kalpa-base
-   - cracklib # reason: opensuse_kalpa:patterns-kalpa-base
-   - cracklib-dict-full # reason: opensuse_kalpa:patterns-kalpa-base
    - crypto-policies # reason: opensuse_kalpa:patterns-kalpa-base
-   - cryptsetup # reason: opensuse_kalpa:patterns-kalpa-base
    - cups # reason: opensuse_kalpa:patterns-kalpa-base
    - cups-client # reason: opensuse_kalpa:patterns-kalpa-base
    - cups-config # reason: opensuse_kalpa:patterns-kalpa-base
@@ -6477,7 +6477,6 @@ packagesets:
    - dosfstools # reason: opensuse_kalpa:patterns-kalpa-base
    - dracut # reason: opensuse_kalpa:patterns-kalpa-base
    - dracut-transactional-update # reason: opensuse_kalpa:patterns-kalpa-base
-   - e2fsprogs # reason: opensuse_kalpa:patterns-kalpa-base
    - efibootmgr # reason: opensuse_kalpa:patterns-kalpa-base
    - elfutils # reason: opensuse_kalpa:patterns-kalpa-base
    - envsubst # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7051,6 +7050,7 @@ packagesets:
    - libavif16 # reason: opensuse_kalpa:patterns-kalpa-base
    - libavutil60 # reason: opensuse_kalpa:patterns-kalpa-base
    - libb2-1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libbd_btrfs3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbd_crypto3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbd_fs3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbd_loop3 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7097,7 +7097,6 @@ packagesets:
    - libconfig15 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcontainers-common # reason: opensuse_kalpa:patterns-kalpa-base
    - libcontainers-default-policy # reason: opensuse_kalpa:patterns-kalpa-base
-   - libcrack2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcrypt1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcryptsetup12 # reason: opensuse_kalpa:patterns-kalpa-base
    - libcups2 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7385,7 +7384,6 @@ packagesets:
    - libpsl5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpulse-mainloop-glib0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpulse0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libpwquality1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpxbackend-1_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpython3_13-1_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libqaccessibilityclient-qt6 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7483,12 +7481,12 @@ packagesets:
    - libudev1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libudfread3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libudisks2-0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libudisks2-0_btrfs # reason: opensuse_kalpa:patterns-kalpa-base
    - libunibreak6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libunistring5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libunwind8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libupnp22 # reason: opensuse_kalpa:patterns-kalpa-base
    - libupower-glib3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - liburcu8 # reason: opensuse_kalpa:patterns-kalpa-base
    - liburing2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libusb-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libusbmuxd-2_0-7 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7882,7 +7880,6 @@ packagesets:
    - xdm # reason: opensuse_kalpa:patterns-kalpa-base
    - xdpyinfo # reason: opensuse_kalpa:patterns-kalpa-base
    - xen-libs # reason: opensuse_kalpa:patterns-kalpa-base
-   - xfsprogs # reason: opensuse_kalpa:patterns-kalpa-base
    - xkbcomp # reason: opensuse_kalpa:patterns-kalpa-base
    - xkeyboard-config # reason: opensuse_kalpa:patterns-kalpa-base
    - xmessage # reason: opensuse_kalpa:patterns-kalpa-base
