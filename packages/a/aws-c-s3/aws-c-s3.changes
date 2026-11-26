@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Nov 24 12:32:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.5.2
+  * Adding Retry headers to every attempt by @rakshil14-2 in (#710)
+  * Zero-copy uploads: request_body on PUT_OBJECT by @kramyaa-amazon
+    in (#709)
+- from version 1.5.1
+  * Resume token ETag with caller If-Match by @sfod in (#708)
+  * Getters for default max part size and configured memory limit
+    by @sbSteveK in (#711)
+- from version 1.5.0
+  * fix: limit the eventloops spawned by @azkrishpy in (#702)
+  * Add recv_buffer: buffer-pool by @kramyaa-amazon in (#693)
+  * Fix Clang 21 -Wdefault-const-init-field-unsafe error
+    by @sbSteveK in (#707)
+- from version 1.4.1
+  * Get Defalut Part Size by @sbSteveK in (#706)
+- from version 1.4.0
+  * Fix undefined behavior from function pointer type casts flagged
+    by UBSan by @sfod in (#688)
+  * Validate whole-object checksum before finish decides outcome
+    by @sbSteveK in (#698)
+  * fix: stream creation failure on odd part sizes by @azkrishpy
+    in (#699)
+  * fix: surface errors with first part get by @azkrishpy in (#700)
+  * fix: prevent segfault from early request finish by @azkrishpy
+    in (#701)
+  * Retry strategy Modes by @rakshil14-2 in (#705)
+  * User Agent fix by @sbSteveK in (#703)
+- Bump library_version to 1.5.2
+- Bump library_pkg to 1_5
+- Bump library_soversion to 1.5
+- Update Provides and Obsoletes for previous shared library version
+
+-------------------------------------------------------------------
 Wed Oct  7 13:54:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.3.1
