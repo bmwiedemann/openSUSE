@@ -23,6 +23,8 @@ Summary:        Removable disk automounter for udisks
 License:        MIT
 URL:            https://github.com/coldfix/udiskie
 Source:         https://files.pythonhosted.org/packages/source/u/%{name}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM b75fd77dfb15bc879d9209c091a0bc19fce38835 Fix keyutils.read_key truncating at NUL bytes
+Patch0:         udiskie-read_key-nul-bytes.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gettext-tools
@@ -110,6 +112,8 @@ python3 -m unittest discover -s test -v
 %{python3_sitelib}/%{name}
 %{python3_sitelib}/%{name}-*-py%{py3_ver}.egg-info
 %{_mandir}/man?/%{name}*.?%{ext_man}
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_udiskie*
 %{_datadir}/bash-completion/completions/*
 

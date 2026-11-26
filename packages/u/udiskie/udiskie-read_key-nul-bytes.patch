@@ -1,0 +1,49 @@
+From b75fd77dfb15bc879d9209c091a0bc19fce38835 Mon Sep 17 00:00:00 2001
+From: desmitry <desmitry@users.noreply.github.com>
+Date: Sat, 14 Nov 2026 14:33:54 +0500
+Subject: [PATCH] Fix keyutils.read_key truncating at NUL bytes
+
+read_key returned ctypes' buffer.value, which stops at the first NUL
+byte. Keyring contents are a binary array of 32-bit key IDs, so
+list_keys() raised 'ValueError: bytes length not a multiple of item
+size' whenever a key ID contained a zero byte (PasswordCache.__bool__
+hit this randomly). Return the exact bytes the kernel wrote instead.
+
+test_invalidate: the kernel may still report a just-invalidated key as
+revoked (EKEYREVOKED) until its garbage collector removes it, so accept
+KeyRevoked as well as KeyNotAvailable.
+
+Assisted-by: Claude Code (Claude Opus 5.5)
+---
+ test/test_keyutils.py | 4 +++-
+ udiskie/keyutils.py   | 2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/test/test_keyutils.py b/test/test_keyutils.py
+index f008279..891a67d 100644
+--- a/test/test_keyutils.py
++++ b/test/test_keyutils.py
+@@ -60,7 +60,9 @@ def test_invalidate(self):
+         keyutils.invalidate(key_id)
+         with self.assertRaises(keyutils.KeyutilsError):
+             keyutils.read_key(key_id)
+-        with self.assertRaises(keyutils.KeyNotAvailable):
++        # The kernel may still report the invalidated key as revoked until
++        # its garbage collector has removed it.
++        with self.assertRaises((keyutils.KeyNotAvailable, keyutils.KeyRevoked)):
+             keyutils.request_key(key)
+ 
+     def test_update(self):
+diff --git a/udiskie/keyutils.py b/udiskie/keyutils.py
+index 7c504bd..da24028 100644
+--- a/udiskie/keyutils.py
++++ b/udiskie/keyutils.py
+@@ -159,7 +159,7 @@ def read_key(key_id: int) -> bytes:
+         buffer = ctypes.create_string_buffer(buflen)
+         ret = _errcheck(_keyctl_read(key_id, buffer, buflen))
+         if 0 <= ret <= buflen:
+-            return buffer.value
++            return buffer.raw[:ret]
+         buflen = ret
+ 
+ 
