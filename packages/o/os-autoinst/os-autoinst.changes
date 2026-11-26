@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Nov 25 22:58:53 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795647520.2cff646:
+  * fix: Honor SUT_SSH_PORT in sshSerial console
+  * docs: List the consoles honoring SUT_SSH_PORT
+  * docs: Use SUT_SSH_PORT in jump host example
+
+-------------------------------------------------------------------
 Tue Nov 24 16:45:38 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795538728.d4232cc:
