@@ -117,9 +117,6 @@ Recommends:     simple-scan
 # do we need an LXDE_MULTIMEDIA pattern??
 Recommends:     totem
 Recommends:     totem-browser-plugin
-# Use Qt UI for YaST
-Recommends:     libyui-qt-pkg
-Recommends:     yast2-control-center-qt
 # Use NM by default
 Recommends:     NetworkManager
 Recommends:     NetworkManager-applet

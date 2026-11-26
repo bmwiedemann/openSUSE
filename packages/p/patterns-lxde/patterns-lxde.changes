@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 13 11:19:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer recommend deprecated yast for default installation.
+
+-------------------------------------------------------------------
 Tue Dec 14 12:15:22 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Install pulseaudio + pavucontrol by default.

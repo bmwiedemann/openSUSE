@@ -22,4 +22,12 @@
     <comment></comment>
     <requestid>940737</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>bad914e44482c231061ef318d31a5579</srcmd5>
+    <version>20170319</version>
+    <time>1795704912</time>
+    <user>anag_factory</user>
+    <comment>- No longer recommend deprecated yast for default installation.</comment>
+    <requestid>1400786</requestid>
+  </revision>
 </revisionlist>
