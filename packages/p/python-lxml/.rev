@@ -1269,4 +1269,12 @@ Send to Staging:E.
 - update to 6.1.0 (bsc#1263254, CVE-2026-41066):</comment>
     <requestid>1365350</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>31c8fe621873d62f169754f039b7355f</srcmd5>
+    <version>6.1.3</version>
+    <time>1795804810</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1386541</requestid>
+  </revision>
 </revisionlist>

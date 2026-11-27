@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 17 15:16:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 6.1.3:
+  * LP#2165901: external parameter entity parsing was allowed
+    by default (with ``resolve_entities="internal"``).
+  * Changes in 6.1.2: GH#526 (some build files were missing in
+    the sdist); built with Cython 3.2.9.
+  * Packaging: raise Cython floor to >= 3.2.9 per upstream.
+
+-------------------------------------------------------------------
 Sun Jun 28 10:56:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.1 (bsc#1270285, CVE-2026-49825):

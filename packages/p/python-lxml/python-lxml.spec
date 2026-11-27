@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml
-Version:        6.1.1
+Version:        6.1.3
 Release:        0
 Summary:        Pythonic XML processing library
 License:        BSD-3-Clause AND GPL-2.0-or-later
@@ -29,22 +29,23 @@ Source99:       python-lxml.rpmlintrc
 # PATCH-FIX-OPENSUSE Skip a test under libxml2 2.10.4+
 # https://bugs.launchpad.net/lxml/+bug/2016939
 Patch1:         skip-test-under-libxml2-2.10.4.patch
-BuildRequires:  %{python_module Cython >= 3}
+BuildRequires:  %{python_module Cython >= 3.2.9}
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cssselect >= 0.9.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 18.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libxslt) >= 1.1.27
+Requires:       python-cssselect >= 0.9.1
 %if 0%{?suse_version} == 1500
 # Assume the best that the old libxml2 in SLE15 is patched for  https://gitlab.gnome.org/GNOME/libxml2/-/issues/378 (CVE-2022-2309)
-BuildRequires:  libxml2-devel
+BuildRequires:  pkgconfig(libxml-2.0)
 %else
-BuildRequires:  libxml2-devel >= 2.10.2
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.10.2
 %endif
-BuildRequires:  libxslt-devel >= 1.1.27
-BuildRequires:  python-rpm-macros
-Requires:       python-cssselect >= 0.9.1
 %python_subpackages
 
 %description
@@ -56,7 +57,6 @@ RelaxNG, XML Schema, XSLT and C14N.
 %if 0%{?suse_version} > 1500
 %package -n %{name}-doc
 Summary:        Documentation for python-lxml, an XML processing library
-Group:          Documentation/Other
 BuildArch:      noarch
 
 %description -n %{name}-doc
@@ -70,7 +70,6 @@ This package contains documentation for lxml (HTML and PDF).
 
 %package devel
 Summary:        Development files for python-lxml
-Group:          Development/Libraries/Python
 Requires:       %{name} = %{version}
 
 %description devel
