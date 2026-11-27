@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Nov 24 06:48:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.1.2): third media assets bundle
+  for ComfyUI workflow templates:
+  * Nine webp previews for the five new templates
+    (UltraTex texture-a-3D-model, MiniMax-H3 character swap,
+    SenseNova U1.6 edit and t2i, RMBG 3.0 removal)
+  * Ten additive provider logos (breezeblue, fish-audio,
+    heygen, higgsfield, meta, mirelo, pruna, recraft,
+    sync_so, veed)
+  * Pulled in unconditionally by comfyui-workflow-templates
+    0.11.118
+
