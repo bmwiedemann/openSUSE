@@ -24,7 +24,7 @@ Summary:        Airgap Swiss Army Knife
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/hauler-dev/hauler
-Source:         https://github.com/hauler-dev/hauler/archive/refs/tags/v%{version}.tar.gz#/hauler-%{version}.tar.gz
+Source:         hauler-%{version}.tar.zst
 Source1:        vendor.tar.zst
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cosign
@@ -46,7 +46,7 @@ non-image OCI Artifacts.
 
 %prep
 %autosetup -p1 -a1
-rm -v testdata/haul.tar.zst
+if test -f testdata/haul.tar.zst; then echo "should not be there"; exit 1; fi
 
 %build
 export CGO_ENABLED=1

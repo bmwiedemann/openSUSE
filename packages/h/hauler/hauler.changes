@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 15:11:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- switch to exclude problematic testsuite file from tarball
+  instead to avoid legal flagging
+
+-------------------------------------------------------------------
 Fri Nov 20 09:50:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:

@@ -536,4 +536,12 @@
   github.com/go-jose/go-jose before 4.1.6</comment>
     <requestid>1398951</requestid>
   </revision>
+  <revision rev="33" vrev="6">
+    <srcmd5>bcc0ca6e266c5095c1a984237add6376</srcmd5>
+    <version>2.1.2</version>
+    <time>1795805129</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1401173</requestid>
+  </revision>
 </revisionlist>
