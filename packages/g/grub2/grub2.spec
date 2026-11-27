@@ -35,6 +35,7 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  pkgconfig(fuse3)
 %if 0%{?suse_version} >= 1140
@@ -410,6 +411,7 @@ Patch:          0002-blsuki-Refactor-set_bli_loader_entries-error-handlin.patch
 Patch:          0003-blsuki-clean-up-UTF-16-size-handling-in-LoaderEntrie.patch
 Patch:          0004-blsuki-Cleanup-indentation-without-code-change.patch
 Patch:          0001-configure.ac-bump-SBAT-for-September-2026-CVE.patch
+Patch:          0001-commands-efi-tpcm-Fix-pointer-to-int-cast-error-on-3.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -1294,6 +1296,34 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %fdupes %buildroot%{_bindir}
 %fdupes %buildroot%{_libdir}
 %fdupes %buildroot%{_datadir}
+
+%check
+# Run the upstream tests that use host tools only. The tests that drive
+# grub-shell (qemu) or grub-fs-tester (loop devices, mount, cryptsetup,
+# zpool) cannot work on an OBS worker and are not selected. The two
+# grub-mkconfig BootNext tests need a real EFI host (/sys/firmware/efi)
+# and skip here, so they are not selected either.
+checkdir=
+for d in build build-emu build-efi; do
+    if [ -f "$d/Makefile" ]; then
+        checkdir=$d
+        break
+    fi
+done
+[ -n "$checkdir" ] || { echo "no configured build directory found"; exit 1; }
+cd "$checkdir"
+unit_tests="example_unit_test printf_test date_test priority_queue_unit_test \
+    fdt_unit_test loadenv_unit_test image_unit_test cmp_test"
+# tpcm_unit_test compiles grub-core/commands/efi/tpcm.c for the host and
+# fails on 32-bit: upstream casts a pointer to grub_uint64_t instead of
+# grub_addr_t, which trips -Werror=pointer-to-int-cast on i586.
+if [ "$(getconf LONG_BIT)" = "64" ]; then
+    unit_tests="$unit_tests tpcm_unit_test"
+fi
+tool_tests="example_scripted_test grub_script_blanklines grub_script_dollar \
+    grub_script_final_semicolon grub_script_no_commands syslinux_test \
+    gettext_strings_test"
+make check-TESTS TESTS="$unit_tests $tool_tests"
 
 %if 0%{?suse_version} >= 1600
 %pre common

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:43:55 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix build error on i586
+  * 0001-commands-efi-tpcm-Fix-pointer-to-int-cast-error-on-3.patch
+
+-------------------------------------------------------------------
+Mon Nov 23 07:53:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Enable the upstream unit and host-tool tests: add %check that builds
+  and runs the unit test programs and the script tests that need no
+  qemu, loop devices or root. The two grub-mkconfig BootNext tests are
+  not run because they need a real EFI host. Tests that boot GRUB in
+  qemu or use loop devices are not run in the build environment.
+- Skip tpcm_unit_test on 32-bit: upstream casts a pointer to
+  grub_uint64_t instead of grub_addr_t and it fails with -Werror.
+- Add gcc-c++ BuildRequires for priority_queue_unit_test.
+
+-------------------------------------------------------------------
 Mon Nov  9 11:29:08 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - CVE-2026-97876: Bypass of GRUB lockdown restriction in Secure Boot mode via
