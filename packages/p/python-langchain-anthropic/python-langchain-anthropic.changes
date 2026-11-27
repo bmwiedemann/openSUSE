@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:07:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.13:
+  * ChatAnthropic accepts custom HTTP clients (http_client,
+    http_async_client) and whole SDK clients (client,
+    async_client), e.g. AnthropicBedrock/Vertex variants; the
+    model never closes a passed-in client and conflicting
+    combinations raise an error
+  * Refresh model profile data
+
+-------------------------------------------------------------------
 Fri Nov 20 06:24:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.12:
