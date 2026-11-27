@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Nov 26 11:33:25 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- make it possible to configure (and run) multiple instances
+  in parallel via gufo@ service
+- pre-configure some default models
+
+-------------------------------------------------------------------
+Thu Nov 26 10:24:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.37.0
+  * core: BREAKING: encode PNG images in Rust and drop
+    libpng
+  * serve: BREAKING: serve HTTP with tokio and hyper
+  * tools: BREAKING: bound tool grammar value-kind checks
+    on recursive schemas
+  * ext: expose Flash-Next stages and weight sources as
+    experimental extension headers
+  * ext: expose the Qwen family as an experimental
+    extension library
+  * ext: let extensions depend on and link other
+    extensions
+  * ext: let loadable modules depend on in-tree
+    extensions
+  * ext: stream mixture-of-experts weights from disk into
+    a bounded device cache
+  * inkling2: add Inkling 2 Mini
+  * qwen: load tokenizer from Hugging Face tokenizer.json
+  * diagnose: warn on small GTT and log GPU memory on
+    load failure
+  * cli: let runner providers supply their own speculative
+    draft
+  * cli: pass speculative settings to providers loaded by
+    prompt
+  * cli: stream chat answers from runner-only providers
+  * loom: constrain Inkling 2 tool calls and keep automatic
+    tool use on device
+  * qwen38-flash-next: round one-row dense Q4_K draft head
+    like wider batches
+  * qwen: report non-finite router logits instead of routed
+    GEMM failure
+  * qwen: split snapshot copies at KV mapping boundaries
+  * serve: bound tool schema checks on recursive allOf
+  * server: advance deferred token before a multi-token
+    decode step
+  * tools: honor required alternatives in native tool
+    schemas
+  * inkling2: speed up concurrent and sampled DSpark,
+    capture prefill checkpoints in-pass
+  * inkling2: speed up vision encoder 2-2.5x with
+    bit-identical output
+  * core: load tokenizer.json files in Rust
+  * ds4: drop the IQ2 sign table for the arithmetic fold
+  * qwen38-flash-next: route layers through overridable
+    stages and weight sources
+  * serve: decode chat requests in Rust
+  * serve: encode chat responses and SSE in Rust
+  * serve: parse generated reasoning and tool calls in
+    Rust
+  * serve: run the Realtime voice protocol in Rust
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.37.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Tue Nov 24 07:12:38 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.36.0
+  * core: BREAKING: decode JPEG images in Rust
+  * asr: accept FLAC, MP3 and Ogg uploads
+  * asr: reject undecodable WAV with 400
+    invalid_audio_input
+  * ext: add directory models, grammar hooks and
+    hardware queue caps for speech providers
+  * ext: preserve available memory on meminfo overflow
+  * loom: build the Loom extension into Gufo
+  * mem: let the core allocate declared session state
+  * mem: avoid stride overflow and finish eager HIP
+    clears before publishing state regions
+  * nix: add timer-only model sync and registry discovery
+  * nix: declare Qwen3-TTS and MiniMax H3 installs
+  * serve: report load stage as progress in replies
+  * serve: bound tagged-call gaps, count reasoning in
+    text, execute capped final tokens and omit
+    Content-Length on 204 responses
+  * serve: keep host reserve inside free CMA pages
+  * server: return RAM-cache memory to the host under
+    pressure and share session state when sessions don't fit
+  * cache: preserve edit history, checkpoints, turn ends
+    and replies across retries, idle sessions and ledgers
+  * cache: persist disk checkpoints and grid restores,
+    charge manifests once, reserve private-state backing
+    linearly and commit before disk restore capture
+  * qwen-image: accept recommended Qwen-Image-2.1 sizes
+  * qwen38-flash-next: release prefill scratch when the
+    server goes idle
+  * diagnose: report gfx1151 compute units from KFD
+  * embedding-gemma2: match short NPU input batching
+  * Release notes: https://github.com/gufo-org/gufo/releases/tag/v0.36.0
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Nov 19 09:11:34 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- split out npu support into own subpackage
+
+-------------------------------------------------------------------
 Tue Nov 17 11:16:42 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Updated to version 0.35.0

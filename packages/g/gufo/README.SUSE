@@ -1,0 +1,25 @@
+Configuration files
+===================
+
+/etc/sysconfig/gufo
+
+  Is the global configuration file with defaults
+
+/etc/gufo/MODEL_ID.conf
+
+  Are the models pre-configured. Each of them on a different port to allow
+  parallel execution (if enough memory is provided) and to be able to distinguish them.
+
+Install Models
+==============
+
+Before starting a model instance it must get downloaded. The pre-configured models
+can be downloaded for example with
+
+ # su -s /bin/sh - gufo
+ # gufo model import qwen27-q4
+
+Afterwards the engine can get started via
+
+ # systemctl start gufo@qwen27-q4
+

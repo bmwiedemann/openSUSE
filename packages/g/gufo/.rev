@@ -120,4 +120,41 @@
     gfx1151 (#945)</comment>
     <requestid>1398601</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2964c6a0b32b269918c943e36d3322c</srcmd5>
+    <version>0.37.0</version>
+    <time>1795805015</time>
+    <user>anag_factory</user>
+    <comment>- make it possible to configure (and run) multiple instances
+  in parallel via gufo@ service
+- pre-configure some default models
+
+- Updated to version 0.37.0
+  * core: BREAKING: encode PNG images in Rust and drop
+    libpng
+  * serve: BREAKING: serve HTTP with tokio and hyper
+  * tools: BREAKING: bound tool grammar value-kind checks
+    on recursive schemas
+  * ext: expose Flash-Next stages and weight sources as
+    experimental extension headers
+  * ext: expose the Qwen family as an experimental
+    extension library
+  * ext: let extensions depend on and link other
+    extensions
+  * ext: let loadable modules depend on in-tree
+    extensions
+  * ext: stream mixture-of-experts weights from disk into
+    a bounded device cache
+  * inkling2: add Inkling 2 Mini
+  * qwen: load tokenizer from Hugging Face tokenizer.json
+  * diagnose: warn on small GTT and log GPU memory on
+    load failure
+  * cli: let runner providers supply their own speculative
+    draft
+  * cli: pass speculative settings to providers loaded by
+    prompt
+  * cli: stream chat answers from runner-only providers
+  * loom: constrain Inkling 2 tool calls and keep automatic</comment>
+    <requestid>1401057</requestid>
+  </revision>
 </revisionlist>

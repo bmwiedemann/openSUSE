@@ -17,18 +17,21 @@
 
 
 Name:           gufo
-Version:        0.35.0
+Version:        0.37.0
 Release:        0
 Summary:        Local inference engine for AMD Strix Halo hardware
 License:        MIT
 URL:            https://github.com/gufo-org/gufo
-Source:         https://github.com/gufo-org/gufo/archive/refs/tags/v%{version}.tar.gz#/gufo-%{version}.tar.gz
+Source:         v0.37.0.tar.gz#/gufo-%{version}.tar.gz
 Source1:        gufo.service
 Source2:        90-gufo.preset
 Source3:        sysconfig.%{name}
 Source4:        gufo-user.conf
 #!CreateArchive
 Source5:        vendor.tar.zst
+#!CreateArchive
+Source6:        configs.tar.zst
+Source7:        README.SUSE
 
 ExclusiveArch:  x86_64
 
@@ -45,9 +48,9 @@ BuildRequires:  libavutil-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libuuid-devel
 BuildRequires:  libsndfile-devel
 BuildRequires:  libswresample-devel
+BuildRequires:  libuuid-devel
 BuildRequires:  libwebp-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
@@ -82,9 +85,22 @@ Requires:       %{name} = %{version}
 Development files for gufo, the local inference engine for AMD Strix Halo
 hardware. This package contains the files installed under /usr/lib/gufo.
 
+%package npu_xrt
+Summary:        AMD NPU support plugin
+Requires:       %{name} = %{version}
+
+%description npu_xrt
+NPU support for gufo
+
 %prep
 %autosetup -p1 -a 5
+cp %{SOURCE7} README.SUSE
 mv vendor/{.cargo,Cargo.lock,vendor-cargo} .
+
+# disable loom until we have hrx working
+sed -i '/gufo_loom_register_tests()/d' CMakeLists.txt
+sed -i '/loom/d' extensions.lock
+rm -r src/models/loom
 
 %build
 export CXX="g++-%gcc_version"
@@ -102,39 +118,48 @@ export CXXFLAGS="$CXXFLAGS -fPIC"
 %install
 %cmake_install
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
-install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/gufo.service
+install -D -m 644 %{SOURCE1} %{buildroot}%{_unitdir}/gufo@.service
 install -D -m 644 %{SOURCE2} %{buildroot}%{_presetdir}/90-gufo.preset
 install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/gufo-user.conf
 
+# some template files matching upstream config
+mkdir -p %{buildroot}/etc/gufo/
+tar xfv %{SOURCE6} --strip-components=1 -C %{buildroot}/etc/gufo/
+
 %pre
-%service_add_pre gufo.service
+%service_add_pre gufo@.service
 
 %post
 %sysusers_create gufo-user.conf
 %fillup_only -n %{name}
-%service_add_post gufo.service
+%service_add_post gufo@.service
 
 %preun
-%service_del_preun gufo.service
+%service_del_preun gufo@.service
 
 %postun
 if [ $1 -ge 1 ]; then
-  %service_del_postun gufo.service
+  %service_del_postun gufo@.service
 fi
 
 %files
-%doc LICENSE NOTICE THIRD_PARTY_NOTICES.md docs/
+%doc README.SUSE NOTICE THIRD_PARTY_NOTICES.md docs/
 %license LICENSE
 %{_bindir}/gufo
 %{_bindir}/gufo-server
 %{_datadir}/gufo
 %{_datadir}/licenses/gufo
-%{_unitdir}/gufo.service
+%{_unitdir}/gufo@.service
 %{_presetdir}/90-gufo.preset
 %{_sysusersdir}/gufo-user.conf
 %{_fillupdir}/sysconfig.%{name}
+%config(noreplace) /etc/gufo
+
+%files npu_xrt
+/usr/lib/gufo/libgufo_npu_xrt.so
 
 %files devel
+%exclude /usr/lib/gufo/libgufo_npu_xrt.so
 /usr/lib/gufo
 
 %changelog
