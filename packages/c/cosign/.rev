@@ -954,4 +954,41 @@
   * bsc#1279215, CVE-2026-84304 (forwarded request 1380120 from dirkmueller)</comment>
     <requestid>1380205</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d8007a07897735e1b5965761ff3678e6</srcmd5>
+    <version>3.1.6</version>
+    <time>1795805042</time>
+    <user>anag_factory</user>
+    <comment>- Security issues fixed:
+  - CVE-2026-128085: go.opentelemetry.io/otel/trace: Denial of Service
+    via attribute truncation bypass using Unicode replacement characters
+    (bsc#1290740)
+  - CVE-2026-122132: github.com/go-chi/chi/v5: Open redirect via encoded
+    tab characters in RedirectSlashes middleware (bsc#1289757)
+  - CVE-2026-118681: github.com/go-chi/chi/v5: Authentication bypass
+    via SuppressNotFound middleware (bsc#1289102)
+  - CVE-2026-116585,CVE-2026-116586,CVE-2026-116587: multiple security
+    issues in github.com/go-jose/go-jose before 4.1.6 (bsc#1288373)
+  - CVE-2026-114437: github.com/go-chi/chi/v5: client IP spoofing in
+    `ClientIPFromXFF` via `X-Forwarded-For` (bsc#1287884)
+  - CVE-2026-97032: golang.org/x/net/http2: HTTP/2 server crash due to
+    HPACK encoder race (bsc#1287491)
+  - CVE-2026-78663: golang.org/x/net/http2: double flow control refund
+    on HTTP/2 server streams (bsc#1287149)
+  - CVE-2026-78660: golang.org/x/net/http2: HTTP/2 transport accepts
+    malformed framing-related headers (bsc#1287068)
+  - CVE-2026-78659: golang.org/x/net/http2: HTTP/2 server memory
+    exhaustion due to Trailer headers (bsc#1287003)
+  - CVE-2026-78669: golang.org/x/net/http2: excessive CPU consumption
+    from repeated initial window changes (bsc#1285482)
+  - CVE-2026-109425: github.com/tink-crypto/tink-go/v2/keyset: missing
+    structural validation in NewHandleWithNoSecrets() allows malformed
+    public keysets (bsc#1285109)
+  - CVE-2026-63209: github.com/klauspost/compress: signed integer overflow
+    in s2.NewDict() allows an attacker to bypass repeat index validation
+    and cause a process crash (bsc#1283654)
+  - CVE-2026-84303: google.golang.org/grpc: xDS RBAC HTTP filter
+    implementation issue allows for bypass of authorization policies via (forwarded request 1401082 from msmeissn)</comment>
+    <requestid>1401083</requestid>
+  </revision>
 </revisionlist>

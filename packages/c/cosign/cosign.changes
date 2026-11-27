@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:16:14 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- Security issues fixed:
+  - CVE-2026-128085: go.opentelemetry.io/otel/trace: Denial of Service
+    via attribute truncation bypass using Unicode replacement characters
+    (bsc#1290740)
+  - CVE-2026-122132: github.com/go-chi/chi/v5: Open redirect via encoded
+    tab characters in RedirectSlashes middleware (bsc#1289757)
+  - CVE-2026-118681: github.com/go-chi/chi/v5: Authentication bypass
+    via SuppressNotFound middleware (bsc#1289102)
+  - CVE-2026-116585,CVE-2026-116586,CVE-2026-116587: multiple security
+    issues in github.com/go-jose/go-jose before 4.1.6 (bsc#1288373)
+  - CVE-2026-114437: github.com/go-chi/chi/v5: client IP spoofing in
+    `ClientIPFromXFF` via `X-Forwarded-For` (bsc#1287884)
+  - CVE-2026-97032: golang.org/x/net/http2: HTTP/2 server crash due to
+    HPACK encoder race (bsc#1287491)
+  - CVE-2026-78663: golang.org/x/net/http2: double flow control refund
+    on HTTP/2 server streams (bsc#1287149)
+  - CVE-2026-78660: golang.org/x/net/http2: HTTP/2 transport accepts
+    malformed framing-related headers (bsc#1287068)
+  - CVE-2026-78659: golang.org/x/net/http2: HTTP/2 server memory
+    exhaustion due to Trailer headers (bsc#1287003)
+  - CVE-2026-78669: golang.org/x/net/http2: excessive CPU consumption
+    from repeated initial window changes (bsc#1285482)
+  - CVE-2026-109425: github.com/tink-crypto/tink-go/v2/keyset: missing
+    structural validation in NewHandleWithNoSecrets() allows malformed
+    public keysets (bsc#1285109)
+  - CVE-2026-63209: github.com/klauspost/compress: signed integer overflow
+    in s2.NewDict() allows an attacker to bypass repeat index validation
+    and cause a process crash (bsc#1283654)
+  - CVE-2026-84303: google.golang.org/grpc: xDS RBAC HTTP filter
+    implementation issue allows for bypass of authorization policies via
+    mixed-case or canonical-case header matches (bsc#1279318)
+  - CVE-2026-84304: google.golang.org/grpc: heap memory exhaustion via
+    HTTP/2 DATA frame fragmentation (bsc#1279215)
+  - CVE-2026-84445: google.golang.org/grpc: DoS via crash due to missing
+    ':authority' and 'Host' headers in gRPC-Go xDS servers (bsc#1278988)
+  - CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: golang.org/x/crypto/ssh:
+    authentication bypass and deadlocks in the crypto/ssh library
+    (bsc#1278614)
+  - CVE-2026-37236: github.com/grpc-ecosystem/grpc-gateway/v2/runtime:
+    client can override the HTTP method of a POST request through the
+    X-HTTP-Method-Override header and bypass established access control
+    (bsc#1277967)
+  - CVE-2026-41178: go.opentelemetry.io/otel/baggage: no rejection of
+    raw-length headers in baggage parsing allows for DoS via oversized
+    inputs (bsc#1276732)
+  - CVE-2026-72815,CVE-2026-72816,CVE-2026-72817:
+    github.com/go-chi/chi/v5: multiple IP spoofing vulnerabilities
+    allow authentication bypass, authorization override, and log forgery
+    (bsc#1276179)
+  - CVE-2026-49478: github.com/sigstore/fulcio: OIDC discovery redirect
+    following allows SSRF and JWKS substitution for meta-issuer paths,
+    with Kubernetes service-account token leakage (bsc#1270629)
+  - CVE-2026-49835: github.com/sigstore/timestamp-authority/v2 has OOM
+    due to unbounded metric label cardinality (bsc#1270030)
+  - CVE-2026-48702: github.com/sigstore/rekor: unbounded gzip
+    decompression in Alpine APK parsing logic can lead to OOM condition
+    and a DoS (bsc#1269467)
+  - CVE-2026-39821: golang.org/x/net/idna: failure to reject ASCII-only
+    Punycode-encoded labels allows for validation bypass and privilege
+    escalation (bsc#1266634)
+  - CVE-2026-33814: golang.org/x/net/http2: infinite loop in HTTP/2
+    transport when given bad SETTINGS_MAX_FRAME_SIZE (bsc#1265793)
+  - CVE-2026-34986: github.com/go-jose/go-jose/v4: crafted JWE input with
+    a missing encrypted key can lead to a denial of service (bsc#1262949)
+  - CVE-2026-39984: github.com/sigstore/timestamp-authority/v2/pkg/verification:
+    improper certificate validation can be used to bypass some
+    authorization controls (bsc#1262382)
+  - CVE-2026-39395: cosign: Incorrect attestation verification due to
+    malformed payloads or mismatched predicate types (bsc#1261860)
+  - CVE-2026-33186: google.golang.org/grpc: authorization bypass due to
+    improper validation of the HTTP/2 :path pseudo-header (bsc#1260287)
+- updated to 3.1.6:
+  - Have cosign verify require https://sigstore.dev/cosign/sign/v1 predic… (#5253)
+  - Ensure that when we read local manifests, they match their claimed digest (#5249)
+  - Get timestamp bytes from payload for attestations (#5250)
+  - Move old verifier to encoding/json/v2 for case sensitivity (#5252)
+  - Update sigstore-go to v1.4.1 (#5246)
+- updated to 3.1.5:
+  * [release-3.1] bump sigstore/sigstore to v1.11.4 (#5242)
+- updated to 3.1.4:
+  - Build releases with go 1.27.3 (#5177)
+  - Add AGENTS.md, update contributors.md with reference to AI policy (#5176)
+  - Implement cosign bundle create-from-container (#5144)
+  - Mention windows builds in readme (#5147)
+  - fix(verify): don't panic on a bundle entry with no hash (#5127)
+  - refactor: remove uploadToRekor parameter from ConfirmPrivacyStatement
+  - fix(sign): pass digest hash algorithm to underlying signer in SignData
+  - fix(e2e): enable UseSignedTimestamps in *TSAMTLSWithSigningConfig
+  - test(verify): add failure cases for new bundle verification
+  - fix(sign): propagate BundlePath from SignOptions to KeyOpts
+  - clean: update inaccurate warning (#4909)
+  - fix: write referrers when image index has attestations (#5111)
+  - fix(verify): enforce mutually exclusive key and security key (#5124)
+  - Reorder events in LoadTrustedMaterialAndSigningConfig
+  - fix(layout): preserve manifest artifactType in index.json when saving (#4821)
+  - fix(load): upload bundle layer blobs before manifest PUT
+  - fix: strip trailing whitespace from attached signature files/stdin (#5058)
+  - fix: clarify COSIGN_REPOSITORY error when repository path is missing
+  - fix: include annotations in implied payload for offline verify
+  - Cap the bundle layer read in ociremote.Bundle
+  - Align privacy statement prompt behavior (#5076)
+  - copy annotations by key instead of copying obj (#5103)
+  - Add org.opencontainers.image.title annotation to attestation layers (#4498)
+  - feat: Add org.opencontainers.image.source label to images (#5095)
+  - refactor: extract signing flag validation (#5070)
+  - fix: restrict bundle signing and attestation to one artifact (#5081)
+  - fix: pass missing OIDC flags to KeyOpts (#5079)
+  - fix(verify): support image indexes in local bundle discovery (#5080)
+  - fix(verify): propagate CommonVerifyOptions to VerifyCommand (#5094)
+  - fix: verify-blob should not force SHA256 for non-default key hash algorithms (#5064)
+  - fix(providers): clearer errors when GitHub OIDC token request fails (#5062)
+  - feat: --slot option argument shell completion (#5057)
+  - Deprecate --use-signing-config (#5056)
+  - fix: use correct Rekor URLs to activate privacy warning (#5054)
+  - fix: only show public-instance privacy statement for the default Rekor URL (#5042)
+
+-------------------------------------------------------------------
 Thu Sep 24 08:04:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.3 (bsc#1282542, GHSA-fx35-mq7g-6g98):

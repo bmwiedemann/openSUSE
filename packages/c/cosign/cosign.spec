@@ -17,7 +17,8 @@
 
 
 Name:           cosign
-Version:        3.1.3
+%define hash 252f10a80ba871152a12e5ee324ad1e02c85d079
+Version:        3.1.6
 Release:        0
 Summary:        Container Signing, Verification and Storage in an OCI registry
 License:        Apache-2.0
@@ -26,7 +27,7 @@ Source:         https://github.com/sigstore/cosign/archive/refs/tags/v%{version}
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.26
+BuildRequires:  golang(API) = 1.27
 
 %description
 Cosign aims to make signatures invisible infrastructure.
@@ -73,7 +74,7 @@ zsh command line completion support for %{name}.
 %autosetup -p1 -a1
 
 %build
-COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+COMMIT_HASH="%hash"
 
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
