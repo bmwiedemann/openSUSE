@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:37:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.4:
+  * 2.2.4: fix quoting issues on Windows
+  * fix: shellescape filepaths on windows (#1659)
+  * fix: preserve quoting of run commands and forwarded script args
+    (#1464)
+  * chore(ai): unify instructions for different agents (#1657)
+  * fix: copy scope names and excludes instead of appending in
+    place (#1654)
+  * fix: run git status with --no-optional-locks (#1655)
+
+-------------------------------------------------------------------
 Wed Nov 25 05:46:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.3:
