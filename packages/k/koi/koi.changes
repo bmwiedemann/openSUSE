@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 27 07:48:07 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 0.7
+  * Native Qt6 Timer Scheduling
+  * Unified Cross-Distribution Theme Discovery
+  * Updated SunRise Library (2.1.0)
+  * Dynamic Executable Lookup
+  * Out-of-Tree CMake & GNUInstallDirs Integration
+  * UI, Configuration & Documentation Updates
+
+-------------------------------------------------------------------
 Sat Oct 25 13:50:11 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.6
