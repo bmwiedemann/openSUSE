@@ -1,0 +1,22 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/uutils/coreutils.git</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="scm">git</param>
+    <param name="revision">0.13.0</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">coreutils</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srcdir">coreutils</param>
+    <param name="compression">zst</param>
+  </service>
+</services>

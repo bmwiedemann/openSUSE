@@ -1,0 +1,11 @@
+<package name="uutils-coreutils" project="openSUSE:Factory">
+  <title>Rust rewrite of the GNU coreutils</title>
+  <description>uutils aims to be a drop-in replacement for the GNU utils.
+Differences with GNU are treated as bugs.
+
+This package can replace GNU coreutils (Conflicts/Provides);
+without Obsoletes the switch happens only on explicit install.
+It installs the standard %{_bindir} utilities, man pages and
+completions.</description>
+  <url>https://github.com/uutils/coreutils</url>
+</package>

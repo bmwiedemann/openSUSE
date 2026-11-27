@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Tue Nov 24 13:00:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix Factory %check: stage target/release/libstdbuf.so into
+  target/release/deps/ for test_stdbuf_search_order_exe_dir_first;
+  cargo 1.100 drops the unhashed copy Tumbleweed 1.99 left.
+
+-------------------------------------------------------------------
+Sat Nov 21 16:52:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the _multibuild test flavor: single straight build with the
+  upstream suite in the main %check, all skips carried over.
+
+-------------------------------------------------------------------
+Fri Nov 20 19:26:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package uutils-coreutils 0.13.0, replacement for
+  GNU coreutils; upstream tag 0.13.0 verified, 2026-11-20.
+- GNU compatibility: sort option checks, date case flags,
+  dd conv fixes, ls time-style, tail symlinks, printf and
+  friends aligned with GNU.
+- Safer handling: cp via symlinks, mv/ln dir checks,
+  chown/chgrp preserve-root, install backup, rm escape.
+- Faster and robust: panics fixed, non-UTF-8, basenc 35x,
+  cut/date/join faster; WASI tests; 684/707 GNU pass.
+- Packaging: Conflicts/Provides coreutils plus single/systemd
+  and doc/systemd-doc splits (9.12), no Obsoletes so the switch
+  happens only on explicit install; SKIP hostname/more/kill;
+  ships [, libstdbuf, man and completions; tests run in
+  -test flavor; vendor MIT audited.
+
