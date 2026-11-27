@@ -1,0 +1,13 @@
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -76,6 +76,10 @@
+ 
+ add_library(box2d ${BOX2D_SOURCE_FILES} ${BOX2D_API_FILES})
+ 
++# math_functions.c uses sqrtf/sinf/cosf/atan2f: link libm explicitly
++# instead of inheriting it transitively from whatever links box2d.
++target_link_libraries(box2d PUBLIC m)
++
+ target_include_directories(box2d
+   PUBLIC
+     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>

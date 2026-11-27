@@ -87,4 +87,33 @@ It's a necessary dependency for qml-box2d and thus newer gcompris-qt</comment>
     <comment></comment>
     <requestid>1273222</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8a44f5968b6fd9843a4e90545f7eb906</srcmd5>
+    <version>3.1.1</version>
+    <time>1795804817</time>
+    <user>anag_factory</user>
+    <comment>- Fix i586 build: enable SSE/SSE2 on 32-bit x86, the 3.x sources
+  use SSE intrinsics unconditionally
+- Update to version 3.1.1:
+  * Box2D 3 is a full rewrite in portable C17 with a new C API built
+    around ids (b2WorldId, b2BodyId, ...) instead of C++ classes:
+    deterministic solver, continuous collision, SIMD and multithreading
+    support, sensors, contact and movement events.
+  * Joints are now revolute, prismatic, distance, weld, wheel, motor
+    and mouse joints with limits, motors, springs and friction.
+  * The 2.x C++ API (b2World class, b2Body/b2Fixture/b2Joint trees)
+    is gone; the shared library soname moves libbox2d.so.2 -&gt; .so.3.
+  * 3.1.x bugfixes add surface-material accessors, revolute/prismatic
+    targets and tunable joint stiffness.
+- Packaging changes:
+  * Rename the shlib package libbox2d2 -&gt; libbox2d3 (baselibs.conf
+    follows); the -devel file layout is unchanged.
+  * Require cmake &gt;= 3.22; build only the library: samples, tests and
+    benchmarks fetch their deps (glfw, enkiTS) over the network.
+    Drop the testbed-only X11/glfw BuildRequires and link libm
+    explicitly via box2d-link-libm.patch.
+  * Spec cleanup (dropped obsolete Group tags).
+</comment>
+    <requestid>1387088</requestid>
+  </revision>
 </revisionlist>

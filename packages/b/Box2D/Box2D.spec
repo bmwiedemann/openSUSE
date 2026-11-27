@@ -1,7 +1,7 @@
 #
 # spec file for package Box2D
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Adam Mizerski <adam@mizerski.pl>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,50 +17,51 @@
 #
 
 
-%define major 2
+%define major 3
 %define libname libbox2d
 Name:           Box2D
-Version:        2.4.1
+Version:        3.1.1
 Release:        0
 Summary:        A 2D Physics Engine for Games
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://box2d.org/
 Source0:        https://github.com/erincatto/box2d/archive/v%{version}.tar.gz#/box2d-%{version}.tar.gz
 Source1:        baselibs.conf
-BuildRequires:  cmake >= 3
+Patch0:         box2d-link-libm.patch
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
-BuildRequires:  libX11-devel
-BuildRequires:  libXcursor-devel
-BuildRequires:  libXi-devel
-BuildRequires:  libXinerama-devel
-BuildRequires:  libXrandr-devel
-BuildRequires:  libglfw-devel
 
 %description
-Box2D is an open source C++ engine for simulating rigid bodies in 2D.
+Box2D is an open source physics engine for simulating rigid bodies in 2D.
 
 %package -n %{libname}%{major}
 Summary:        A 2D Physics Engine for Games
-Group:          System/Libraries
 
 %description -n %{libname}%{major}
-Box2D is an open source C++ engine for simulating rigid bodies in 2D.
+Box2D is an open source physics engine for simulating rigid bodies in 2D.
 
 %package -n %{libname}-devel
 Summary:        A 2D Physics Engine for Games
-Group:          Development/Libraries/C and C++
 Requires:       %{libname}%{major} = %{version}
 
 %description -n %{libname}-devel
-Box2D is an open source C++ engine for simulating rigid bodies in 2D.
+Box2D is an open source physics engine for simulating rigid bodies in 2D.
 
 %prep
 %setup -q -n box2d-%{version}
+%patch -P 0 -p1
 
 %build
+# Samples, tests and benchmarks fetch dependencies (glfw, enkiTS) over the
+# network via FetchContent, so they stay off for the OBS build.
+%ifarch %{ix86}
+# Box2D 3.x uses SSE intrinsics unconditionally, enable them on 32-bit x86.
+export CFLAGS="%{optflags} -msse -msse2"
+%endif
 %cmake \
-       -DBOX2D_BUILD_UNIT_TESTS=OFF
+        -DBOX2D_SAMPLES=OFF \
+        -DBOX2D_UNIT_TESTS=OFF \
+        -DBOX2D_BENCHMARKS=OFF
 %make_build
 
 %install
