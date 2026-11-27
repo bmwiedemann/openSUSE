@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:20:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.1:
+  * Codemode decision models (Copilot gpt-6-luna-decisions, Radius)
+    via models.classify(), with provider responseId and billed cost
+  * Per-event transcript notice settings replace the single
+    showCacheMissNotices toggle (upstream extension API break)
+  * Extension dialogs take a blockedKind for permission,
+    question or login prompts; default Mistral model is now
+    mistral-medium-latest
+  * Fixed Wayland copies silently discarded: pi now copies
+    as text/plain
+  * Fixed Gemini 4 thinking levels, GPT-6 starting level and
+    dropped reasoning, and retired models still offered
+  * Fixed very large sessions failing to load, slow large-line
+    handling, and stalls with huge extension catalogues
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * Undici stays at 8.12.4, already carried in the vendored tree
+- Refresh the vendored node_modules 1.6.0 -> 1.6.1: the seven
+  @earendil-works packages move to 1.6.1 with @google/genai 3.6.1,
+  rolldown 1.3.4 and aws/smithy patch bumps riding along. The
+  dev and optional platform addons stay out, and the pi-tui
+  1.6.1 tarball is repacked without its prebuilt .node files,
+  so the payload is still built from source throughout
+  * The licence union is unchanged
+
+-------------------------------------------------------------------
 Sun Nov 22 09:48:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.0:

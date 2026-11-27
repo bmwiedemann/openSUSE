@@ -360,4 +360,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update pi-coding-agent to 1.6.0: GPT-6.2 models, Qwen/deepseek variants, gateway/find/threads changes, render breaking change.</comment>
     <requestid>1399732</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>42addf161995aea886f3a21b76774766</srcmd5>
+    <version>1.6.1</version>
+    <time>1795804930</time>
+    <user>anag_factory</user>
+    <comment>Update pi-coding-agent to 1.6.1: decision models, per-event notices, Wayland copy and large-session fixes.</comment>
+    <requestid>1400965</requestid>
+  </revision>
 </revisionlist>
