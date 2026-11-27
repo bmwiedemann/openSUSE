@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Nov 25 17:04:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.90.2:
+  * Various security fixes
+  * Bugs fixed:
+    + CVE-2026-102038: Windows Argument Injection in GWin32AppInfo via
+      Post-Quote Backslash Rewriting
+    + Stack buffer overflow in GRegex
+    + Deadlock getting various singletons during
+      `GNetworkMonitorNetlink.can_reach_async()` with `GProxyResolverGnome`
+    + GDBus client authentication can exhaust memory on unterminated peer input
+    + Gdbus-auth test intermittently fails with socket error
+    + Buffer overflow in g_unix_socket_address_to_native
+    + Gdbus-server-auth test uses uninitialised memory under valgrind
+    + Backport !5395 “gtimezone: Fix leak of TimeZoneKeyName buffer on Windows”
+      to glib-2-90
+    + Backport !5399 “gmessages: Fix an unused variable warning” to glib-2-90
+    + Backport !5427 “win32: Fix leak of the new name in file monitor renames”
+      to glib-2-90
+    + Backport !5436 “gdesktopappinfo: Check for relatively symlinked
+      mimeapps.list” to glib-2-90
+    + Backport !5438 and !5447 “gdbusauth: bound client authentication line
+      length” to glib-2-90
+    + Backport !5444 “gthread: Only use nanosleep for g_thread_yield on select
+      kernels” to glib-2-90
+    + Backport !5453 “Avoid setting TCP_NODELAY on AF_UNIX sockets.” to
+      glib-2-90
+    + Backport !5418 “gnetworkmonitornetlink: Avoid deadlock by creating
+      enumerator directly in can_reach_async()” to glib-2-90
+    + Backport !5473 “unixsocketaddress: Don't use strcpy()” to glib-2-90
+    + Backport !5493 “gutf8: Fix resync after invalid bytes before non-BMP
+      characters” to glib-2-90
+    + Backport !5426 “gdbus: bound received UNIX FDs and reject unnegotiated
+      passing” to glib-2-90
+    + Backport !5480 “gdocumentportal: Percent-encode document portal URIs” to
+      glib-2-90
+    + Backport !5423 “gregex: Fix thinko in branch condition” to glib-2-90
+    + Backport !5449 and !5466: gwin32appinfo and gdesktopappinfo: Various
+      field codes quoting fixes to glib-2-90
+    + Backport !5507 “ci: Temporarily disable msys2-clang64 CI” to glib-2-90
+    + Backport !5506 “gbitlock: fix GOTO_ASM clobber” to glib-2-90
+    + Backport !5512 “gdbusconnection: use-after-free in property calls to
+      unregistered objects and to subtrees” to glib-2-90
+    + Backport !5513 “test-msys2.sh: Adapt for change in package name (python3
+      => python)” to glib-2-90
+    + Backport !5517 “CI: Drop ccache for MSYS2-MINGW32 job” to glib-2-90
+  * Updated translations.
+
+-------------------------------------------------------------------
 Fri Oct  9 08:50:07 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.90.1:

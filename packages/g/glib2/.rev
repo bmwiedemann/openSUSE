@@ -2605,4 +2605,41 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     <comment>Push GNOME 51.1</comment>
     <requestid>1385405</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>79a8c8419133108570177d14e20dce50</srcmd5>
+    <version>2.90.2</version>
+    <time>1795809777</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.90.2:
+  * Various security fixes
+  * Bugs fixed:
+    + CVE-2026-102038: Windows Argument Injection in GWin32AppInfo via
+      Post-Quote Backslash Rewriting
+    + Stack buffer overflow in GRegex
+    + Deadlock getting various singletons during
+      `GNetworkMonitorNetlink.can_reach_async()` with `GProxyResolverGnome`
+    + GDBus client authentication can exhaust memory on unterminated peer input
+    + Gdbus-auth test intermittently fails with socket error
+    + Buffer overflow in g_unix_socket_address_to_native
+    + Gdbus-server-auth test uses uninitialised memory under valgrind
+    + Backport !5395 “gtimezone: Fix leak of TimeZoneKeyName buffer on Windows”
+      to glib-2-90
+    + Backport !5399 “gmessages: Fix an unused variable warning” to glib-2-90
+    + Backport !5427 “win32: Fix leak of the new name in file monitor renames”
+      to glib-2-90
+    + Backport !5436 “gdesktopappinfo: Check for relatively symlinked
+      mimeapps.list” to glib-2-90
+    + Backport !5438 and !5447 “gdbusauth: bound client authentication line
+      length” to glib-2-90
+    + Backport !5444 “gthread: Only use nanosleep for g_thread_yield on select
+      kernels” to glib-2-90
+    + Backport !5453 “Avoid setting TCP_NODELAY on AF_UNIX sockets.” to
+      glib-2-90
+    + Backport !5418 “gnetworkmonitornetlink: Avoid deadlock by creating
+      enumerator directly in can_reach_async()” to glib-2-90
+    + Backport !5473 “unixsocketaddress: Don't use strcpy()” to glib-2-90
+    + Backport !5493 “gutf8: Fix resync after invalid bytes before non-BMP
+      characters” to glib-2-90</comment>
+    <requestid>1400655</requestid>
+  </revision>
 </revisionlist>
