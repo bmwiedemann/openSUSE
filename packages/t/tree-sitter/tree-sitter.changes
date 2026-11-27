@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Nov 25 01:30:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.27.2:
+  * detect corpus parse errors from the tree
+  * only match the whole name ERROR in ts_language_symbol_for_name
+  * copy all supertype map entries
+  * Windows symbol visibility backport
+  * handle terminal ERROR nodes in ts_node_has_error
+  * reject symbol names with embedded NULL suffixes
+  * handle large child indices in reverse cursor traversal
+  * address new unnecessary-box-pin lint
+  * preserve reserved-word behavior when merging states
+  * don't remove tree-sitter dir on uninstall
+  * backport zig
+  * bump wasmtime to v48.0.10 (bsc#1290412 CVE-2026-126407, bsc#1284176 CVE-2026-104855)
+
+-------------------------------------------------------------------
+Fri Oct 16 16:58:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.1:
+  * Fix query test capture range matching across lines, which changes
+    the captured ranges reported by `tree-sitter test`
+  * Fix query handling: token names in the parser debug output,
+    external word tokens in keyword extraction, and other query issues
+  * Fix grammar generation: detect indirect recursion in flattened
+    productions, keep GCC jump tables enabled for large lexers
+  * Fix the parser to check shifted stack versions during error recovery
+  * Fix preserving column dependencies when balancing repeat nodes
+  * Fix decoding of UTF-16 surrogate pairs to use the input endianness
+  * Load the Node bindings under Bun again
+  * Take capture lists from a free stack instead of scanning them
+  * CVE-2026-104855 (boo#1284176): wasmtime is 48.0.6, above the 47.0.3 fix
+
+-------------------------------------------------------------------
 Sun Sep 20 06:24:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Require binaryen on every architecture that has it: 0.27's

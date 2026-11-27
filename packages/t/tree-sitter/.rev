@@ -388,4 +388,38 @@ Leap 16.0: no failures. The ports arches need binaryen in the build
 root, which is why the earlier x86_64-only Requires had to go.</comment>
     <requestid>1379270</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>778035670912d1c690ee9b5af7d246b1</srcmd5>
+    <version>0.27.2</version>
+    <time>1795809784</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.27.2:
+  * detect corpus parse errors from the tree
+  * only match the whole name ERROR in ts_language_symbol_for_name
+  * copy all supertype map entries
+  * Windows symbol visibility backport
+  * handle terminal ERROR nodes in ts_node_has_error
+  * reject symbol names with embedded NULL suffixes
+  * handle large child indices in reverse cursor traversal
+  * address new unnecessary-box-pin lint
+  * preserve reserved-word behavior when merging states
+  * don't remove tree-sitter dir on uninstall
+  * backport zig
+  * bump wasmtime to v48.0.10 (bsc#1290412 CVE-2026-126407, bsc#1284176 CVE-2026-104855)
+
+- Update to version 0.27.1:
+  * Fix query test capture range matching across lines, which changes
+    the captured ranges reported by `tree-sitter test`
+  * Fix query handling: token names in the parser debug output,
+    external word tokens in keyword extraction, and other query issues
+  * Fix grammar generation: detect indirect recursion in flattened
+    productions, keep GCC jump tables enabled for large lexers
+  * Fix the parser to check shifted stack versions during error recovery
+  * Fix preserving column dependencies when balancing repeat nodes
+  * Fix decoding of UTF-16 surrogate pairs to use the input endianness
+  * Load the Node bindings under Bun again
+  * Take capture lists from a free stack instead of scanning them
+  * CVE-2026-104855 (boo#1284176): wasmtime is 48.0.6, above the 47.0.3 fix</comment>
+    <requestid>1400755</requestid>
+  </revision>
 </revisionlist>

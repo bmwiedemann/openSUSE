@@ -21,7 +21,7 @@
 # switch of automatic generating of cargo provides (bsc#1261839)
 %global __provides_exclude_from ^%{_bindir}/%{name}$
 Name:           tree-sitter
-Version:        0.27.0
+Version:        0.27.2
 Release:        0
 Summary:        An incremental parsing system for programming tools
 License:        LGPL-3.0-or-later AND MIT
