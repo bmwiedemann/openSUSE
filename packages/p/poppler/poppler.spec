@@ -40,13 +40,18 @@ Group:          Development/Libraries/C and C++
 URL:            https://poppler.freedesktop.org
 Source:         %{url}/%{sname}-%{version}.tar.xz
 Source1:        %{url}/%{sname}-%{version}.tar.xz.sig
+# git archive --prefix test/ of https://gitlab.freedesktop.org/poppler/test.git
+# at 0ef006dca68d2206387eca1d36ae06733812e387 (2026-10-27)
+Source2:        poppler-test-2026-10-27-0ef006dca68d2206387eca1d36ae06733812e387.tar.xz
 Source90:       poppler.keyring
 Source99:       baselibs.conf
 
 BuildRequires:  cmake >= 3.22
+BuildRequires:  google-droid-fonts
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.74
 BuildRequires:  libgpgmepp-devel >= 1.19
+BuildRequires:  noto-sans-fonts
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -91,6 +96,9 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5Xml)
+%endif
+%if "%{flavor}" == ""
+BuildRequires:  pkgconfig(gtk+-3.0)
 %endif
 %if "%{flavor}" == "qt6"
 BuildRequires:  cmake(Qt6Core) >= 6.4
@@ -231,6 +239,7 @@ developed by Derek Noonburg of Glyph and Cog, LLC.
 
 %prep
 %autosetup -p1 -n poppler-%{version}
+tar -xf %{SOURCE2} -C ..
 
 %build
 %if "%{flavor}" == "qt5"
@@ -249,7 +258,12 @@ export LD_LIBRARY_PATH=$(pwd)/build
 	-DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
 	-DENABLE_ZLIB=ON \
 	-DENABLE_LIBCURL=ON \
+	-DTESTDATADIR=%{_builddir}/test \
+%if "%{flavor}" == ""
+	-DBUILD_GTK_TESTS=ON \
+%else
 	-DBUILD_GTK_TESTS=OFF \
+%endif
 %if 0%{?suse_version} < 1550
         -DCMAKE_C_FLAGS='%{optflags} -fPIE' \
         -DCMAKE_CXX_FLAGS='%{optflags} -fPIE' \
@@ -298,6 +312,10 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %ldconfig_scriptlets -n libpoppler-cpp%{poppler_cpp_sover}
 %ldconfig_scriptlets -n libpoppler-qt5-%{poppler_qt5_sover}
 %ldconfig_scriptlets -n libpoppler-qt6-%{poppler_qt6_sover}
+
+%check
+cd build
+ctest --output-on-failure
 
 %if "%{flavor}" == "qt5"
 %files -n libpoppler-qt5-%{poppler_qt5_sover}
