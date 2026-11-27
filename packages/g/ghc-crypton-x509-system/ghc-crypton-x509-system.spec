@@ -19,7 +19,7 @@
 %global pkg_name crypton-x509-system
 %bcond_with ghc_prof
 Name:           ghc-%pkg_name
-Version:        1.10.1
+Version:        1.10.2
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        Handle per-operating-system X.509 accessors and storage
