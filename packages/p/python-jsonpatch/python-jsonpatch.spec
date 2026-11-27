@@ -23,16 +23,16 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-jsonpatch
-Version:        1.37
+Version:        1.48
 Release:        0
 Summary:        Python - JSON-Patches
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/stefankoegl/python-json-patch
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpatch/jsonpatch-%{version}.tar.gz
 BuildRequires:  %{python_module jsonpointer >= 3.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module simplejson}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20210929
@@ -79,9 +79,12 @@ rm %{buildroot}%{_bindir}/jsondiff
 
 %files %{python_files}
 %license LICENSE
-%doc AUTHORS README.md
+%doc README.md
 %python_alternative %{_bindir}/jsonpatch
-%{python_sitelib}/jsonpatch*
+%{python_sitelib}/jsonpatch_cli.py
+%{python_sitelib}/jsonpatch.py
 %pycache_only %{python_sitelib}/__pycache__/jsonpatch*.pyc
+%{python_sitelib}/jsonpatch-stubs
+%{python_sitelib}/jsonpatch-%{version}.dist-info
 
 %changelog

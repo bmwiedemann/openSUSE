@@ -295,4 +295,41 @@
   * Support whole document operations on scalar documents</comment>
     <requestid>1392650</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>3999913a7e5eefcca69ef268c863d615</srcmd5>
+    <version>1.48</version>
+    <time>1795804827</time>
+    <user>anag_factory</user>
+    <comment>- Add simplejson as build requirement.
+- Clean up %files.
+
+- update to 1.48:
+  * test: compare Unicode string values exactly
+  * Serialize and compare patches whose paths are pointer objects
+  * Report errors of jsondiff and jsonpatch in one line
+  * Let jsonpatch --backup replace an existing backup
+  * Reject diffs that change a member whose name is not a string
+  * from_diff: avoid the generic deepcopy and the sorted copy for
+    move keys
+- update to 1.47:
+  * Drop support for Python 3.10
+  * Remove the AUTHORS file
+  * Use the wording of LICENSE in the source file headers
+  * Update the Read the Docs build and the documentation theme
+  * Fix the flake8 warnings and make the lint check strict
+  * Don't show the e-mail address in the copyright line of the
+    docs
+  * Clean up leftovers and inconsistencies found in a project
+    audit
+  * Add support for Python 3.15
+- update to 1.46:
+  * jsondiff/jsonpatch crash with a raw traceback on UTF-8 BOM
+    files
+  * Compare read-only containers recursively in test operations
+- update to 1.45:
+  * Add opt-in JsonPatchWithAppend for string appends
+  * Add path_split and path_join utility functions
+- update to 1.44:</comment>
+    <requestid>1400423</requestid>
+  </revision>
 </revisionlist>

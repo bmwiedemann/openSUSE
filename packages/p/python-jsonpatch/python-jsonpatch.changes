@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Wed Nov 25 00:30:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add simplejson as build requirement.
+- Clean up %files.
+
+-------------------------------------------------------------------
+Sat Nov 21 21:09:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.48:
+  * test: compare Unicode string values exactly
+  * Serialize and compare patches whose paths are pointer objects
+  * Report errors of jsondiff and jsonpatch in one line
+  * Let jsonpatch --backup replace an existing backup
+  * Reject diffs that change a member whose name is not a string
+  * from_diff: avoid the generic deepcopy and the sorted copy for
+    move keys
+- update to 1.47:
+  * Drop support for Python 3.10
+  * Remove the AUTHORS file
+  * Use the wording of LICENSE in the source file headers
+  * Update the Read the Docs build and the documentation theme
+  * Fix the flake8 warnings and make the lint check strict
+  * Don't show the e-mail address in the copyright line of the
+    docs
+  * Clean up leftovers and inconsistencies found in a project
+    audit
+  * Add support for Python 3.15
+- update to 1.46:
+  * jsondiff/jsonpatch crash with a raw traceback on UTF-8 BOM
+    files
+  * Compare read-only containers recursively in test operations
+- update to 1.45:
+  * Add opt-in JsonPatchWithAppend for string appends
+  * Add path_split and path_join utility functions
+- update to 1.44:
+  * Return concrete types in type stubs
+- update to 1.43:
+  * Copy generated patch values independently of input documents
+  * Close jsondiff input files after loading documents
+- update to 1.42:
+  * Raise JsonPatchPathNotFound for operations on missing
+    locations
+  * Add opt-in atomic application of in-place patches
+- update to 1.41:
+  * Ship type stubs as a jsonpatch-stubs package
+  * **Note:** If you have `types-jsonpatch` installed, uninstall
+    it before upgrading. It pins jsonpatch to 1.32, and
+    uninstalling it later deletes jsonpatch’s own stubs. If you
+    already upgraded, uninstall it and then run `pip install
+    --force-reinstall jsonpatch`.
+- update to 1.40:
+  * Reject invalid CLI patches before modifying the input file
+  * Attach failing operation to JsonPatchException as `op` by
+    @sammaphey and @stefankoegl in
+    https://github.com/stefankoegl/python-json-patch/pull/247
+  * Add option to generate test operations in diffs by
+    @RobertCochran and @stefankoegl in
+    https://github.com/stefankoegl/python-json-patch/pull/248
+  * **Full Changelog**: https://github.com/stefankoegl/python-
+    json-patch/compare/v1.39...v1.40
+- update to 1.39:
+  * Test that the code examples in the docs run and match their
+    output
+  * Raise JsonPatchConflict when removing from immutable
+    containers
+  * docs: explain copy and in-place behavior when a patch fails
+- update to 1.38:
+  * Document whole-document results and root replacement
+  * Preserve one-shot operation iterators during patch validation
+  * Clean temporary output after fdopen setup failure
+
+-------------------------------------------------------------------
 Mon Oct 26 08:06:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.37:
