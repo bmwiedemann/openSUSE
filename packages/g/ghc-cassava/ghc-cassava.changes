@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 14:50:03 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete Cabal build flag.
+
+-------------------------------------------------------------------
 Thu Nov 19 20:52:26 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update build for ghc-rpm-macros >= 2.9.2.

@@ -133,7 +133,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 %autosetup -p1 -n %pkg_name-%{version}
 
 %build
-%define cabal_configure_options -f-bytestring--lt-0_10_4
 %ghc_lib_build
 
 %install
