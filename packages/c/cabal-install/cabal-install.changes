@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Nov 21 16:09:55 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Jailbreak over-specified dependency on open-browser.
+
+-------------------------------------------------------------------
 Wed Aug 19 19:57:50 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update cabal-install to version 3.16.0.0 revision 5.

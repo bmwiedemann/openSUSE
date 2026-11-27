@@ -181,6 +181,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %prep
 %autosetup -p1
 cp -p %{SOURCE1} %{name}.cabal
+cabal-tweak-dep-ver open-browser '< 0.5' '< 0.6'
 
 %build
 %ghc_lib_build
