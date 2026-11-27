@@ -291,7 +291,7 @@ Optional dependency offering bash completion for git-annex
 %autosetup -p1
 
 %build
-%define cabal_configure_options -f-benchmark -f-debuglocks -f-memory -f-nollmdependencies -f-ospath -f-tastytap -fassistant -fblake3 -fbotan -fdbus -fmagicmime -fproduction -ftorrentparser -fxxh3
+%define cabal_configure_options -f-benchmark -f-debuglocks -f-memory -f-nollmdependencies -f-ospath -f-tastytap -fassistant -fblake3 -fdbus -fmagicmime -fproduction -ftorrentparser -fxxh3
 %ghc_bin_build
 # without the stamp, `make install-bins` reconfigures with the Makefile's own
 # options, discarding the ones above, and rebuilds+relinks the binary

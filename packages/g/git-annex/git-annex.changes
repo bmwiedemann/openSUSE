@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 14:51:17 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Drop obsolete Cabal build flag.
+
+-------------------------------------------------------------------
 Thu Nov 19 20:56:26 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - drop 0001-persistent-2.12.0.1-include-the-code-from-persistent.patch
