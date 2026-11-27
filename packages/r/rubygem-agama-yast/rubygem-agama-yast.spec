@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-agama-yast
-Version:        25.devel475.275dd4727
+Version:        25.devel716.ede8beaca
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
@@ -42,11 +42,13 @@ BuildRequires:  %{rubygem nokogiri}
 BuildRequires:  %{rubygem rspec}
 BuildRequires:  augeas-lenses
 BuildRequires:  distribution-release
-BuildRequires:  libstorage-ng-ruby
-BuildRequires:  xsltproc
-BuildRequires:  yast2-pkg-bindings
 BuildRequires:  yast2-ruby-bindings
 BuildRequires:  yast2-transfer
+# 4.5.369 or newer is needed for the partition ids from the Discoverable Partitions Specification
+BuildRequires:  libstorage-ng-ruby >= 4.5.369
+BuildRequires:  xsltproc
+# GPG module dependency
+BuildRequires:  gpg2
 # lsmod
 BuildRequires:  kmod
 # /MANUAL
