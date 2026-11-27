@@ -7,4 +7,41 @@
     <comment>New package, for Kalpa (and others), provides a GUI for btrfs snapshot management</comment>
     <requestid>1359309</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>dd9dc16f1699e41dcabcb5a92668dc9d</srcmd5>
+    <version>1.4.3</version>
+    <time>1795804920</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.3:
+  * Security hardening following the openSUSE security review
+    (boo#1288229):
+    + directories opened by the D-Bus service must now be reached
+      through a trusted chain (root-owned, not writable by group or
+      other) by default
+    + the nearest existing ancestor of the log directory is verified
+      before the directory is created, and the full chain is
+      re-checked before the log file is opened
+    + the service exits on idle timeout only when no reply, pending
+      polkit authorization, restore or timer operation is outstanding
+    + the number of pending polkit authorizations is bounded
+    + requests to create a missing directory with mode 0 are rejected
+  * New D-Bus signal authorizationGranted, sent only to the calling
+    connection; the GUI uses it to show &quot;Waiting for
+    authentication...&quot; and never for access decisions
+  * SELinux: allow connecting to systemd-userdb sockets when NSS
+    resolves user and group names
+  * Fix binding loops on the settings page
+
+- Update to 1.4.2 (no changelog entries were added for 1.3.4 to
+  1.4.1, so those releases are summarized here as well):
+  * Security fixes (fixed upstream):
+    + 1.4.2: when running as root, restore refuses to write beneath
+      directories in which a user other than the owner can rename
+      entries (group/other write bits or ACLs), preventing directory
+      swap attacks that redirect a restore onto another user's files
+    + 1.4.2: snapshot trees and restore destinations must be reached
+      through root-owned directories not writable by other users;
+      symlinks in snapshot paths are no longer followed</comment>
+    <requestid>1400956</requestid>
+  </revision>
 </revisionlist>

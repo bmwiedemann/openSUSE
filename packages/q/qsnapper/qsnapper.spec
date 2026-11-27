@@ -18,10 +18,10 @@
 %global selinuxtype targeted
 
 Name:           qsnapper
-Version:        1.3.3
+Version:        1.4.3
 Release:        0
 Summary:        Qt Gui application for managing btrfs snapshots
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 URL:            https://github.com/presire/qSnapper
 Source:         %{url}/archive/v%{version}/%{rname}-%{version}.tar.gz
 
@@ -29,24 +29,27 @@ Source:         %{url}/archive/v%{version}/%{rname}-%{version}.tar.gz
 Patch0:         0001-improve-translation-installation.patch
 
 
-BuildRequires:  cmake >= 3.16
+BuildRequires:  cmake >= 3.19
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libsnapper-devel
 BuildRequires:  policycoreutils
+BuildRequires:  scdoc
 BuildRequires:  selinux-policy-devel
 BuildRequires:  systemd-rpm-macros
 
 BuildRequires:  cmake(PolkitQt6-1)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6Gui)
-BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6Quick)
-BuildRequires:  cmake(Qt6QuickControls2)
-BuildRequires:  cmake(Qt6DBus)
+BuildRequires:  cmake(Qt6Core) >= 6.5
+BuildRequires:  cmake(Qt6DBus) >= 6.5
+BuildRequires:  cmake(Qt6Gui) >= 6.5
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.5
+BuildRequires:  cmake(Qt6Qml) >= 6.5
+BuildRequires:  cmake(Qt6Quick) >= 6.5
+BuildRequires:  cmake(Qt6QuickControls2) >= 6.5
 
 BuildRequires:  pkgconfig(libbtrfsutil)
+BuildRequires:  pkgconfig(polkit-gobject-1)
 
 %description
 qSnapper is a graphical user interface for the Snapper snapshot management
@@ -115,6 +118,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/system-services/com.presire.%{name}.Operations.service
 %{_datadir}/dbus-1/system.d/com.presire.%{name}.Operations.conf
 %{_datadir}/icons/hicolor/*/apps/%{rname}.png
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/polkit-1/actions/com.presire.%{name}.policy
 %{_tmpfilesdir}/qsnapper.conf
 %ghost %dir %attr(0700,root,root) %{_localstatedir}/log/qsnapper

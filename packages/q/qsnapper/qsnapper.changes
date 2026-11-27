@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:12:33 UTC 2026 - Tomoki Fujikawa <presire2@gmail.com>
+
+- Update to 1.4.3:
+  * Security hardening following the openSUSE security review
+    (boo#1288229):
+    + directories opened by the D-Bus service must now be reached
+      through a trusted chain (root-owned, not writable by group or
+      other) by default
+    + the nearest existing ancestor of the log directory is verified
+      before the directory is created, and the full chain is
+      re-checked before the log file is opened
+    + the service exits on idle timeout only when no reply, pending
+      polkit authorization, restore or timer operation is outstanding
+    + the number of pending polkit authorizations is bounded
+    + requests to create a missing directory with mode 0 are rejected
+  * New D-Bus signal authorizationGranted, sent only to the calling
+    connection; the GUI uses it to show "Waiting for
+    authentication..." and never for access decisions
+  * SELinux: allow connecting to systemd-userdb sockets when NSS
+    resolves user and group names
+  * Fix binding loops on the settings page
+
+-------------------------------------------------------------------
+Wed Oct 28 04:40:23 UTC 2026 - Tomoki Fujikawa <presire2@gmail.com>
+
+- Update to 1.4.2 (no changelog entries were added for 1.3.4 to
+  1.4.1, so those releases are summarized here as well):
+  * Security fixes (fixed upstream):
+    + 1.4.2: when running as root, restore refuses to write beneath
+      directories in which a user other than the owner can rename
+      entries (group/other write bits or ACLs), preventing directory
+      swap attacks that redirect a restore onto another user's files
+    + 1.4.2: snapshot trees and restore destinations must be reached
+      through root-owned directories not writable by other users;
+      symlinks in snapshot paths are no longer followed
+    + 1.4.2: Unicode bidirectional control characters in displayed
+      paths and change records are replaced to prevent spoofing
+    + 1.4.1: restore plans require diff-view authorization and are
+      limited per user; progress/completion signals go only to the
+      plan owner; expired plans are cleaned up automatically
+    + 1.4.1: setuid/setgid bits and file capabilities are not applied
+      when file ownership cannot be restored
+    + 1.4.1: the GUI refuses to start as root and rejects instance
+      handoff from other users
+    + 1.3.10: legacy one-shot restore D-Bus methods removed; all
+      restores use the staged single-authorization restore plan
+    + 1.3.10: stricter validation of restore destinations, config
+      names and values; per-user and global restore plan limits;
+      restore signals no longer carry file paths or error details
+    + 1.3.10: deletion during restore never follows symlinks or
+      crosses mount boundaries; special files are not opened for
+      reading; hardened service log and single-instance guard
+    + 1.3.9: fix record-boundary injection via newlines in paths or
+      descriptions; fix symlink escape in restore read helpers;
+      re-validate staged restore entries at commit time
+    + 1.3.7: staged multi-file restore authorized exactly once
+      against a frozen manifest (polkit-gobject-1 used directly)
+    + 1.3.4: remaining live-path restore operations migrated to
+      dirfd-based no-follow helpers
+  * User-visible changes:
+    + Qt 6.5 or later is now required (was 6.2)
+    + D-Bus API: staged restore plan methods added in 1.3.7, legacy
+      one-shot restore methods removed in 1.3.10
+    + Pre-snapshot bookkeeping moved to the user's data directory
+  * New features:
+    + 1.4.0: Settings tab (cleanup and space limits, background
+      comparison, Btrfs quota), systemd timer management, creation
+      and deletion of Snapper configurations, read-only Filesystem
+      tab with Btrfs space usage and subvolume list, bulk snapshot
+      deletion, important flag and user data on snapshot creation,
+      grouped Pre/Post pairs, theme following the system scheme
+    + 1.3.8/1.3.9: restore based on the Pre/Post snapshot diff
+    + 1.3.8: main window size and maximized state are remembered
+    + 1.3.4: add manual page
+  * Fixes:
+    + 1.4.2: empty values shown as "undefined" with Qt 6.12; German
+      and Japanese translations; desktop entry no longer declares
+      that the application accepts files
+    + 1.4.1: restore records after cancellation, error message when
+      the snapshot list cannot be loaded, header overlapping tab bar
+    + 1.3.9: commas in descriptions no longer corrupt the snapshot
+      list (RFC 4180 CSV)
+- Correct License tag to GPL-2.0-or-later, matching upstream
+- Add BuildRequires: pkgconfig(polkit-gobject-1), scdoc, cmake(Qt6Qml)
+  and require Qt 6.5; package the new manual page
+
+-------------------------------------------------------------------
 Sun Jun 14 20:07:02 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Add 0001-improve-translation-installation.patch
