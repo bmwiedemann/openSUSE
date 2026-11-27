@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Nov 25 10:17:17 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Remove vendored tornado for Python 3.11 and newer as unused
+
+- Multiple CVE fixes for vendored tornado
+  * CVE-2026-82397: an unauthenticated request body containing
+    millions of separator-delimited fields can synchronously stall
+    the single-threaded event loop and delay every connection
+  * CVE-2026-91991: incomplete fix for cookie attribute injection
+    allows for cookie validation bypass via semicolon-delimited data
+    in capitalized parameters
+  * CVE-2026-103261: Tornado before 6.5.9 fails to limit the number
+    of query string fields in HTTPServerRequest.__init__, allowing
+    remote attackers to cause event-loop stalling
+  * CVE-2026-103262: Tornado versions before 6.5.9 contain an
+    unbounded memory accumulation vulnerability in CurlAsyncHTTPClient
+    that allows remote attackers to cause denial of service
+  * CVE-2026-103263: Tornado before 6.5.9 contains a path traversal
+    vulnerability in StaticFileHandler that follows symbolic links
+    inside the static root
+  * CVE-2026-115927: Denial of Service via chunked transfer encoding
+    processing
+  * CVE-2026-116577: Denial of Service via obsolete HTTP header line
+    folding
+  * CVE-2026-116578: Open redirect via crafted request paths in
+    RedirectHandler URL templates
+
+- Added:
+  * multiple-cve-fixes-for-vendored-tornado.patch
+
+-------------------------------------------------------------------
 Mon Nov  9 12:22:43 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix asyncio_loop AttributeError in SyncWrapper on Python 3.6

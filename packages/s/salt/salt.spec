@@ -729,6 +729,8 @@ Patch234:       stabilize-testsuite-791.patch
 Patch235:       support-the-oscap-options-that-select-rules-and-cont.patch
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/792
 Patch236:       fix-asyncio_loop-attributeerror-in-syncwrapper-on-py.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/794
+Patch237:       multiple-cve-fixes-for-vendored-tornado.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
@@ -1339,6 +1341,9 @@ cd doc && make html && rm _build/html/.buildinfo && rm _build/html/_images/proxy
 %{python_expand #
 mv _build.%{$python_bin_suffix} build
 $python setup.py --salt-transport=both install --prefix=%{_prefix} --root=%{buildroot}
+%if 0%{$python_version_nodots} >= 311
+rm -rf %{buildroot}%{$python_sitelib}/salt/ext/tornado
+%endif
 mv build _build.%{$python_bin_suffix}
 
 DEF_PYPATH=_build.%{$python_bin_suffix}/scripts-*/
