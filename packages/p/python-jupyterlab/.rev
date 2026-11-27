@@ -1403,4 +1403,41 @@
     <comment>1</comment>
     <requestid>1381696</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>28cfb508ebd7109a17addbdb8d464dd3</srcmd5>
+    <version>4.6.6</version>
+    <time>1795804856</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.6.6
+  * Do not scroll back to a newly inserted cell after the user scrolls away in full windowing mode #20387 (@KUMAR-AKASH-M)
+  * Keep an equals sign inside a query string value #19621 (@MahathirMohammadShuvo)
+  * Do not write metadata from a form built for another cell #20002 (@Mrun25)
+  * Fix pasting cut files over files with the same name, and no longer offer to overwrite folders #20397 (@Yash990-bit)
+  * Fix search issues when &quot;Show editor for read-only Markdown cells&quot; is off #20309 (@krassowski)
+  * Fix scrolling to and numbering of ToC headings after their Markdown cell is edited #20408 (@dturaev)
+  * Fix selected-cell search counter and match synchronization #19977 (@minwookshin)
+  * Ignore = and - lines inside $$ math in the table of contents #19818 (@Yagnik-Trivedi)
+  * Let editors, links, and buttons in dialogs handle the Enter key #20370 (@aeodice21)
+  * Fix cells running in the old kernel when restarting right after a page load #20398 (@Darshan808)
+  * Ignore a second click on the debugger button while the debugger starts or stops #20349 (@r0c0y)
+  * Fix activation of extensions with an underscore in their plugin ID #20381 (@Eapp1e)
+  * Fix keyboard navigation in menus opened from toolbar buttons #20265 (@Parth-ui-commits)
+  * Open links to Markdown files in Markdown Preview instead of Editor #20355 (@DebankurPaul)
+  * Fix the warning when closing a tab while several files are uploading #20038 (@chrikrah)
+  * Fix the warning when closing a tab after a failed upload #20019 (@lowgame)
+  * Fix the right-side area collapsing on load when the activity bar is at the top or bottom #20328 (@krassowski)
+  * Fix text selection in a rendered Markdown cell being cut one second after an edit #20330 (@krassowski)
+  * Fix inline completion ghost text appearing after leaving edit mode #20325 (@krassowski)
+  * Fix missing collapse button on a heading typed while the Markdown parser loads #20334 (@krassowski)
+- Release 4.6.5
+  * Restrict path suggestions to the file dialog root #20298 (@krassowski)
+  * Fix find in the JSON viewer #20023 (@jtpio)
+  * Fix editor rulers drawn at the wrong columns when the code font loads late #20310 (@krassowski)
+  * Fix &quot;New Python File&quot; appearing twice in the file browser context menu #20305 (@dturaev)
+  * Upgrade @codemirror/view to 6.43.15, fixing text loss when typing with dead keys #20302 (@dturaev)
+  * Fix React toolbar items flickering when they move into the &quot;More commands&quot; menu #20285 (@brichet)
+  * Brighten mirror-editor attribute color in the dark themes #19257 (@nina-mir)
+  * Fix memory leaks affecting common everyday use scenarios #19370 (@krassowski)</comment>
+    <requestid>1400969</requestid>
+  </revision>
 </revisionlist>

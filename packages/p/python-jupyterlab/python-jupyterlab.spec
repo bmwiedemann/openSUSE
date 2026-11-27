@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 4.5.11
+%define distversion 4.6.6
 Name:           python-jupyterlab
-Version:        4.5.11
+Version:        4.6.6
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -26,25 +26,27 @@ Group:          Development/Languages/Python
 URL:            https://github.com/jupyterlab/jupyterlab
 Source0:        https://files.pythonhosted.org/packages/source/j/jupyterlab/jupyterlab-%{version}.tar.gz
 Source99:       python-jupyterlab-rpmlintrc
-BuildRequires:  %{python_module Jinja2 >= 3.0.3}
-BuildRequires:  %{python_module async_lru >= 1.0.0}
-BuildRequires:  %{python_module base >= 3.9}
+# Section build-system
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling >= 1.21.1}
+BuildRequires:  %{python_module jupyter-builder >= 1.0.2}
+# /Section
+BuildRequires:  %{python_module Jinja2 >= 3.0.3}
+BuildRequires:  %{python_module async_lru >= 1.0.0}
 BuildRequires:  %{python_module httpx >= 0.25.0 with %python-httpx < 1.0}
-BuildRequires:  %{python_module importlib-metadata >= 4.8.3 if %python-base < 3.10}
 BuildRequires:  %{python_module ipykernel >= 6.5.0}
 BuildRequires:  %{python_module jupyter-lsp >= 2.0.0}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module jupyter_server >= 2.4.0 with %python-jupyter_server < 3}
+BuildRequires:  %{python_module jupyter_server >= 2.19.0 with %python-jupyter_server < 3}
 BuildRequires:  %{python_module jupyterlab_server >= 2.28 with %python-jupyterlab_server < 3}
 BuildRequires:  %{python_module notebook_shim >= 0.2}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 41.1}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module tomli >= 1.2.2 if %python-base < 3.11}
 BuildRequires:  %{python_module tornado >= 6.2.0}
 BuildRequires:  %{python_module traitlets}
+BuildRequires:  %{python_module typing-extensions >= 4.4.0 if %python-base < 3.12}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jupyter-rpm-macros
@@ -55,18 +57,18 @@ Requires:       jupyter-jupyterlab = %{version}
 Requires:       python-Jinja2 >= 3.0.3
 Requires:       python-async_lru >= 1.0.0
 Requires:       python-ipykernel >= 6.5.0
+Requires:       python-jupyter-builder >= 1.0.2
 Requires:       python-jupyter-lsp >= 2.0.0
 Requires:       python-jupyter_core
 Requires:       python-notebook_shim >= 0.2
-Requires:       python-packaging
-Requires:       python-setuptools >= 41.1
+Requires:       python-packaging >= 23.2
 Requires:       python-tornado >= 6.2.0
 Requires:       python-traitlets
 Requires:       (python-httpx >= 0.25.0 with python-httpx < 1.0)
-Requires:       (python-importlib-metadata >= 4.8.3 if python-base < 3.10)
-Requires:       (python-jupyter_server >= 2.4.0 with python-jupyter_server < 3)
+Requires:       (python-jupyter_server >= 2.19.0 with python-jupyter_server < 3)
 Requires:       (python-jupyterlab_server >= 2.28.0 with python-jupyterlab_server < 3)
 Requires:       (python-tomli >= 1.2.2 if python-base < 3.11)
+Requires:       (python-typing-extensions >= 4.4.0 if python-base < 3.12)
 Suggests:       python-jupyter-collaboration >= 1
 Provides:       python-jupyter_jupyterlab = %{version}
 Obsoletes:      python-jupyter_jupyterlab < %{version}
@@ -115,8 +117,6 @@ etc.).
 
 %prep
 %autosetup -p1 -n jupyterlab-%{version}
-sed -i -e 's|^#!%{_bindir}/env node|#!%{_bindir}/node|' jupyterlab/staging/yarn.js
-chmod a+x jupyterlab/staging/yarn.js
 find jupyterlab -name yarn.lock -delete
 find jupyterlab -name .yarnrc.yml -delete
 
@@ -132,7 +132,6 @@ find jupyterlab -name .yarnrc.yml -delete
 %python_clone -a %{buildroot}%{_bindir}/jupyter-lab
 %python_clone -a %{buildroot}%{_bindir}/jupyter-labextension
 %python_clone -a %{buildroot}%{_bindir}/jupyter-labhub
-%python_clone -a %{buildroot}%{_bindir}/jlpm
 
 %check
 # This is only a rudimentary set of tests which we can run offline using pytest directly. The full test
@@ -157,7 +156,7 @@ donttest="$donttest or (TestBuildAPI and test_build)"
 %pytest -k "not (${donttest:4} ${$python_donttest})"
 
 %post
-%python_install_alternative jupyter-lab jupyter-labextension jupyter-labhub jlpm
+%python_install_alternative jupyter-lab jupyter-labextension jupyter-labhub
 
 %postun
 %python_uninstall_alternative jupyter-lab
@@ -169,7 +168,6 @@ donttest="$donttest or (TestBuildAPI and test_build)"
 %python_alternative %{_bindir}/jupyter-lab
 %python_alternative %{_bindir}/jupyter-labextension
 %python_alternative %{_bindir}/jupyter-labhub
-%python_alternative %{_bindir}/jlpm
 
 %files -n jupyter-jupyterlab
 %license LICENSE
