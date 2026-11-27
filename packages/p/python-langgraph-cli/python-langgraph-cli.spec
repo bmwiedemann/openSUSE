@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-langgraph-cli
-Version:        0.4.43
+Version:        0.4.44
 Release:        0
 Summary:        CLI for interacting with the LangGraph API
 License:        MIT

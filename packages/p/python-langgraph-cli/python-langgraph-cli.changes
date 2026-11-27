@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:06:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.44:
+  * deploy list --json now includes the deployment URL.
+  * Omit an empty secrets list when updating a deployment.
+  * Support deploying to BYOC data planes with only an API key.
+
+-------------------------------------------------------------------
 Thu Nov 12 19:38:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.43:

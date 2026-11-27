@@ -87,4 +87,12 @@
     <comment>Update python-langgraph-cli to 0.4.43: Agent Server flags with hidden deploy aliases, debugger image dropped for studio/api URL overrides.</comment>
     <requestid>1397188</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4b8a14a3a34ba39f953616aef9d4f501</srcmd5>
+    <version>0.4.44</version>
+    <time>1795804919</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph-cli to 0.4.44: deploy list --json gains URL, empty secrets omitted, BYOC deploy with API key only.</comment>
+    <requestid>1400957</requestid>
+  </revision>
 </revisionlist>
