@@ -17,7 +17,7 @@
 
 
 Name:           llama-swap
-Version:        276
+Version:        277
 Release:        0
 Summary:        OpenAI-compatible proxy that hot swaps llama.cpp models on demand
 License:        MIT

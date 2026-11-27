@@ -31,4 +31,24 @@
     Activity view</comment>
     <requestid>1400860</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8c3ee926b470201c75d47c58f20bdeb</srcmd5>
+    <version>277</version>
+    <time>1795805064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 277:
+  * security fix: cross-site requests that carry Basic auth are rejected, so a
+    third-party page can no longer unload models, pause or resume them or start
+    generations with a login the browser attached to them; Sec-Fetch-Site
+    marks such requests and an Origin against Host check covers browsers
+    without Fetch Metadata, top-level GET navigation to /ui/ still works from
+    other sites, and Bearer, x-api-key and non-browser clients are untouched
+  * newer nvidia-smi drivers that print a fractional temperature.gpu value
+    (620.70.06 prints 56.90) no longer leave the Performance tab's temperature
+    chart at zero
+- packaging: no dependency refresh needed, go.mod, go.sum, the UI
+  package.json and ui/package-lock.json are unchanged since 276, so
+  vendor.tar.gz and node_modules.tar.gz keep their content</comment>
+    <requestid>1401102</requestid>
+  </revision>
 </revisionlist>
