@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 21 01:37:17 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypto-token to version 0.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Nov 19 20:52:44 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update build for ghc-rpm-macros >= 2.9.2.

@@ -1,0 +1,48 @@
+cabal-version: >=1.10
+name:          crypto-token
+version:       0.2.1
+x-revision:    1
+license:       BSD3
+license-file:  LICENSE
+maintainer:    Kazu Yamamoto <kazu@iij.ad.jp>
+author:        Kazu Yamamoto <kazu@iij.ad.jp>
+synopsis:      crypto tokens
+description:   Encrypted tokens/tickets to keep state in the client side.
+category:      Cryptography, Network
+build-type:    Simple
+extra-source-files: ChangeLog.md
+
+source-repository head
+    type:     git
+    location: https://github.com/kazu-yamamoto/crypto-token
+
+library
+    exposed-modules:  Crypto.Token
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=4.11 && <5,
+        array >=0.5 && <0.6,
+        bytestring >=0.10 && <0.13,
+        crypton >=1.1.0 && <2.4,
+        network-byte-order >=0.1.6 && <0.2,
+        ram >=0.19 && <0.23
+
+    default-extensions: Strict StrictData
+
+test-suite spec
+    type:               exitcode-stdio-1.0
+    main-is:            Spec.hs
+    build-tool-depends: hspec-discover:hspec-discover
+    hs-source-dirs:     test
+    other-modules:
+        TokenSpec
+
+    default-language:   Haskell2010
+    default-extensions: Strict StrictData
+    ghc-options:        -Wall -threaded -rtsopts
+    build-depends:
+        base >=4.11 && <5,
+        bytestring >=0.10 && <0.13,
+        crypto-token,
+        hspec
