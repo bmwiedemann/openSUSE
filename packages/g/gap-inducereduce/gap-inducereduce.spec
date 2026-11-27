@@ -17,7 +17,7 @@
 
 
 Name:           gap-inducereduce
-Version:        1.4
+Version:        1.5
 Release:        0
 Summary:        GAP: Unger's algorithm
 License:        GPL-3.0-or-later

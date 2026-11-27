@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:50:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5
+  * The test suite no longer assumes an order of the conjugacy
+    classes of a character table, or that `Irr` selects the method
+    of this package. Both assumptions fail when the `CCTab` package
+    is loaded.
+  * Fixed `IrrUnger( G, opts )` and `CharacterTableUnger( G, opts
+    )`, which returned wrong characters or raised an error when
+    called a second time for the same group. Every call with
+    options now runs the algorithm anew. `UngerRecord( G )` is now
+    the finished record of the run with the default options.
+  * Fixed `IrrUnger` and `CharacterTableUnger` with option
+    `DoCyclicFirst`, which raised an error for the trivial group.
+  * The manual states that `CharacterTableUnger( G )` stores its
+    result in `G`, and its `InfoCTUnger` example no longer shows a
+    trace for a stored result.
+
+-------------------------------------------------------------------
 Sat Aug  1 10:21:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4
