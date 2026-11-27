@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Nov 27 06:14:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.3.7:
+  * Fixed
+    - format: preserve Markdown containers and add opt-in checks
+      (3b9de26)
+    - MD052: validate reference labels and definitions (0ce09f7)
+    - MD007: track separate lists after ordered items (ec1c96d)
+    - md044: accept every configured casing of a proper name
+      (b44da24)
+
+-------------------------------------------------------------------
 Wed Nov 25 06:03:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.3.6:
