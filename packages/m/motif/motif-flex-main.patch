@@ -1,0 +1,12 @@
+--- a/tools/wml/wmluiltok.l
++++ b/tools/wml/wmluiltok.l
+@@ -209,3 +209,9 @@ int yywrap ()
+ 	 }
+     return (1);
+ }
++
++int main (void)
++{
++    while (yylex() != 0) ;
++    return 0;
++}

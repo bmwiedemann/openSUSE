@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 10:20:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Replace 18-option-main.patch with local motif-flex-main.patch:
+  Flex 2.7.4 dropped libmain.c and does not support "%option main".
+  Define main() in tools/wml/wmluiltok.l instead.
+
+-------------------------------------------------------------------
 Fri Jul 25 06:20:02 UTC 2025 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - fix build with gcc15
