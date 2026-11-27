@@ -205,4 +205,12 @@
     <comment>1</comment>
     <requestid>1394878</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>bbd481ebda4c6400f36796cd48a2c13a</srcmd5>
+    <version>8.2.8</version>
+    <time>1795804959</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Requires on mdit-py-plugins.</comment>
+    <requestid>1401007</requestid>
+  </revision>
 </revisionlist>

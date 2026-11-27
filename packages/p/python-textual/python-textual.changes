@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 03:34:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on mdit-py-plugins.
+
+-------------------------------------------------------------------
 Wed Nov  4 08:53:12 UTC 2026 - Jiri Slaby <jslaby@suse.com>
 
 - Drop "python_module tree-sitter" BuildRequires from tests, it is

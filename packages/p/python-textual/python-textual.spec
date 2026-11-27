@@ -33,7 +33,6 @@ License:        MIT
 URL:            https://github.com/Textualize/textual
 Source:         https://files.pythonhosted.org/packages/source/t/textual/textual-%{version}.tar.gz
 #
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 %if %{with test}
@@ -52,6 +51,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #
 Requires:       python-markdown-it-py >= 2.1.0
+Requires:       python-mdit-py-plugins
 # 2.19.2 is spelled out in pypoject.toml. But in SLFO, only 2.19.1 is
 # available. Given the version was picked rather arbitrarily:
 #   https://github.com/Textualize/textual/commit/4659ee939424
