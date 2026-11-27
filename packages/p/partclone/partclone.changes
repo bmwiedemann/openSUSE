@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 27 09:55:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.55:
+  * bitmap: fix big-endian tail-truncation: on big-endian hosts
+    the used bits of a partially used trailing word were cut
+    off the image, so the last blocks went missing (e.g. NTFS
+    tail restores failing on s390x); images now store the used
+    tail bytes while pre-0.3.55 images keep being read with the
+    historic layout, so old images restore exactly as before
+
+-------------------------------------------------------------------
 Sun Nov 15 07:41:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.54:

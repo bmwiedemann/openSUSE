@@ -341,4 +341,12 @@ verified to resolve via osc buildinfo on i586, x86_64, Leap 16.0 and 16.1.</comm
     <comment>Update partclone to 0.3.54: ZFS log spacemap off-by-one fix (#325).</comment>
     <requestid>1397669</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>4123f3b2cda9399b10f24d5f1da792ad</srcmd5>
+    <version>0.3.55</version>
+    <time>1795805035</time>
+    <user>anag_factory</user>
+    <comment>Update partclone to 0.3.55: fix big-endian bitmap tail-truncation losing last blocks (e.g. NTFS on s390x).</comment>
+    <requestid>1401075</requestid>
+  </revision>
 </revisionlist>
