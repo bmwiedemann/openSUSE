@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:51:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.58.1:
+  * Bugfixes
+    - [BACKPORT] Harden build subcommand in #6001
+
+-------------------------------------------------------------------
 Thu Nov 05 14:21:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.58.0:
