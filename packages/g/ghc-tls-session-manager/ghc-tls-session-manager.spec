@@ -20,7 +20,7 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        In-memory TLS session DB and session ticket
