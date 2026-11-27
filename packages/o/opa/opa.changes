@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:59:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.23.0:
+  This release contains a mix of new features, performance
+  improvements and bug fixes. Notably:
+  * Enforcement of bundle structure: now rooted at their .manifest
+    file
+  * Lucene (Solr) target for the Compile API
+  * Hardening of the MySQL Compile API target: use of startswith,
+    endswith and contains built-in functions is rejected
+  * Improvements to the rule indexer
+  * A new json.pointer_escape built-in function
+  Note
+  Help us improve OPA, and fill out the 2026 OPA Community Survey!
+  * Bundles are rooted at their .manifest file (#9459)
+    Breaking change: OPA now treats the directory containing a
+    bundle's .manifest file as the bundle root, as the bundle
+    documentation describes.
+    Previously, the root depended on the path a bundle was loaded
+    from, which made bundle contents, data placement, and
+    signatures depend on how a path was typed.
+    - Bundle directories (opa build -b, opa run -b, opa eval -b,
+      opa sign --bundle, ...) are rooted at the directory
+      containing .manifest, even when it is nested below the
+      provided path. Files above it are not part of the bundle. opa
+      build and opa sign warn about policy and data files they
+      leave out, but other commands do not, so keep other .manifest
+      files (e.g., test fixtures) out of directories loaded as
+      bundles.
+    - Bundle tarballs loaded from disk must have .manifest at the
+      root of the archive. opa build always writes it there.
+    - Signatures: file names in .signatures.json are relative to
+      the bundle root, with / separators on every platform. Bundles
+      signed by opa sign <dir> or opa build -b <dir> with older OPA
+      versions must be re-signed, and --exclude-files-verify
+      patterns may need updating.
+    - opa build with multiple bundles places each bundle's files
+      under the path it was given with -b, with a new .manifest at
+      the root. Leading .. segments are replaced with the name of
+      the directory they refer to.  Merging fails when two bundles
+      would be placed under the same path. opa sign with multiple
+      bundle paths names files under each bundle's path, like opa
+      build does when merging. A merged opa build output has its
+      own new .manifest, so signatures from multiple separate
+      source bundles cannot be used to verify a merged build.
+    - opa build -t plan and -t wasm replace any plan, or wasm
+      resolvers that were carried in from the input bundles.
+    - .manifest, .signatures.json, and patch.json must be at the
+      bundle root, and only files named exactly .manifest are
+      treated as manifests.
+
+    For example, consider this tarball, built without opa build:
+
+      $ tar tzf bundle.tar.gz
+      bundle/.manifest
+      bundle/data.json
+      bundle/authz.rego
+
+    Previously, opa run -b bundle.tar.gz loaded it with
+    bundle/data.json placed under data.bundle. It is now rejected
+    because .manifest is not at the root of the archive. Running
+    opa build -b bundle/ on the extracted directory produces a
+    bundle rooted at bundle/, with data.json placed at the root of
+    data.
+    To avoid breaking existing deployments, bundles that the bundle
+    plugin downloads over HTTP or from an OCI registry (and their
+    persisted copies) are still loaded as before, and OPA logs a
+    warning each time a bundle with a misplaced .manifest,
+    .signatures.json, or patch.json is loaded. These bundles will
+    fail to load in a future OPA release. Rebuild them with opa
+    build to place the manifest at the root.
+    Go API: the bundle.Reader expects bundle-relative descriptor
+    paths, so directory loaders configured with the SlashRooted or
+    Passthrough path formats now have their manifests rejected.
+    When Reader.WithBaseDir is used, module paths include the
+    manifest's directory, which directory loaders report through a
+    RootOffset() string method. Custom loaders that wrap a
+    directory loader should forward RootOffset.
+  * Lucene (Solr) target for the Compile API (#9376)
+    The Compile API can now translate a policy into a Lucene query
+    for Solr's fq or q, with Accept:
+    application/vnd.opa.lucene.solr+json. The one unknown is the
+    document searched:
+
+      # METADATA
+      # scope: package
+      # compile:
+      #   unknowns: [input.doc]
+      package filters
+
+      include if {
+          input.doc.owner == input.user
+          input.doc.level >= 3
+          not input.doc.status == "draft"
+      }
+
+    For the user alice, this compiles to (owner:"alice" AND
+    level:[3 TO *] AND NOT status:"draft").
+    Multi-valued fields are compared by their elements, as in "a"
+    in input.doc.tags; schemas annotations declare which fields
+    are, and solr_schema.rego generates them from Solr's Schema
+    API. The target can't be combined with others in a multitarget
+    request.
+    See Lucene filters.
+    https://www.openpolicyagent.org/docs/filtering/lucene
+  * Compile API: no startswith, endswith or contains for MySQL (#9624)
+    Breaking change: the MySQL target rejects startswith, endswith
+    and contains, as the SQLite target already did. They were
+    translated to LIKE, which is case- and accent-insensitive in
+    MySQL's default collations, so startswith(input.fruits.name,
+    "APP") also matched apple. Policies using them now fail to
+    compile for application/vnd.opa.sql.mysql+json, and for
+    multitarget requests that include mysql.
+  * Generated bundles
+    A bundle whose policies are generated, for example from a
+    policy database, can say so in its manifest:
+
+      {
+        "revision": "...",
+        "roots": ["authz"],
+        "generated": true
+      }
+
+    OPA then parses its policies without source locations. In a
+    benchmark of 20000 generated rules, that cut the memory the
+    compiled policies hold by 40%. Annotations are kept. See the
+    manifest documentation.
+    https://www.openpolicyagent.org/docs/management-bundles#bundle-file-format
+  * Rule indexing covers more ways of saying "any of these"
+    The rule index now narrows down rules written with:
+
+    - a local iterating a literal set, array or object, in any
+      indexable statement:
+
+        some g in {"devs", "ops"}; data.groups[g].members[input.subject];
+
+    - collection lookups in the operands of and and or:
+
+        {data.groups.devs.members[input.subject]} or {data.groups.ops.members[input.subject]};
+
+    - a collection lookup keyed by any element of a collection:
+      data.groups.devs.members[input.subjects[_]].
+
+    Looking up a key in a collection in base data also no longer
+    converts the store's data on every query: in benchmarks of 500
+    rules gated by group membership, that takes 40-55% off
+    evaluation and partial evaluation where every candidate is
+    evaluated.
+
+    See Use indexed statements.
+    https://www.openpolicyagent.org/docs/policy-performance#use-indexed-statements
+
+    - ast: Index a collection lookup keyed by an element of a
+      collection (#9461)
+    - ast: Index collection lookups in and/or operands (#9461)
+    - ast: Index expressions over a local iterating a literal
+      (#9461)
+    - ast: Keep a rule indexed as "anything" for in with a var
+      member (#9506)
+    - rego: Compare indexed and unindexed evaluation for every
+      index condition (#9525)
+    - topdown: Ask the index candidates whether a rule depends on
+      unknowns (#9570)
+    - topdown: Report key conflicts in indexed object
+      comprehensions (#9613)
+  * New json.pointer_escape built-in function (#9591)
+    Escapes a string so it can be used as one reference token of a
+    JSON Pointer, as defined in RFC 6901.
+    The characters ~ and / are replaced with ~0 and ~1.
+    For example: json.pointer_escape(\"a/b~c\") results in
+    \"a~1b~0c\".
+  * Runtime, SDK, Tooling
+    - cmd(fmt): Honor --drop-v0-imports when formatting stdin
+      (#9619)
+    - cmd/inspect: Show labels metadata with -a (#9504)
+    - cmd: Add --v2-compatible flag (#9251)
+    - cmd: Replace --v2-compatible with --compatible= (#9496)
+    - compile: Compile without indices where nothing evaluates
+      (#9605)
+    - compile: Release the checking compiler after a rego build
+      (#9604)
+    - format: Preserve nested comparison grouping (#9407)
+    - plugins/bundle: Activate generated bundles incrementally
+      (#9359)
+    - plugins/logs: Copy JSON-shaped values natively for console
+      logs (#9576)
+    - plugins/logs: Split oversized chunks without decoding them
+      (#9577)
+    - plugins: Close the Wasm resolvers a bundle update replaces
+      (#9513)
+    - rego: Close the Wasm engine after Rego.Eval (#9513)
+    - rego: Close the Wasm resolvers a prepared query loaded
+      (#9513)
+    - rego: Drop the test that Close does nothing on the default
+      target (#9513)
+    - rego: Exclude wasm compile time from context timeout test
+      (#9455)
+    - rego: Test a Wasm resolver result not named "result" (#9541)
+    - repl: Allow implicit function bodies (#9539)
+    - server: Fix oversized request body status in v2-compatible
+      mode (#9497)
+    - storage/inmem: Speed up NonEmpty conflict checks (#9545)
+      reported and
+    - tester: Add --strict-builtin-errors to opa test (#6816)
+    - tester: Close the Wasm engine after each test (#9513)
+    - tester: Close the Wasm engine of a benchmark (#9513)
+    - tester: Do not wait forever to evaluate a closed engine
+      (#9513)
+    - wasm: Return an error when the result has no "result" key
+      (#9541)
+    - wasm: Replace non-object values when upserting for with
+      (#6304)
+  * Compiler, Topdown and Rego
+    - ast: Allocate each parser term cache entry once (#9585)
+    - ast: Allocate type tree children lazily (#9572)
+    - ast: Allow iterating empty collections in the type checker
+      (#9517)
+    - ast: Allow keys of empty collections in rules replaced by
+      with (#9529)
+    - ast: Allow mixed rule kinds on disjoint ref heads (#7182)
+    - ast: Compare numbers beyond float64 precision exactly (#9508)
+    - ast: Compiler tweaks to improve perf (-12% allocs) (#9567)
+    - ast: Correct default rule location text (#9516)
+    - ast: Decode every expressions from JSON (#9544)
+    - ast: Decode some declarations from JSON (#9544)
+    - ast: Fix negative number location text (for issue #9531)
+      (#9531)
+    - ast: Give a function without a body the location of its whole
+      statement (#9579)
+    - ast: In lazyObj, check cache before digging up path (#9460)
+    - ast: Parse modules without locations (#9485)
+    - ast: Parse not {..}[..] as a ref on a set literal under v2
+      (#9540)
+    - ast: Probe base data collections without converting them
+      (#9447)
+    - ast: Reduce size of Head struct from 128 to 96 bytes (#9607)
+    - ast: Report template string errors once (#8243)
+    - ast: Reuse compiled rules across compiles (#9359)
+    - ast: Say when an array index is out of bounds (#9505)
+    - ast: Set scan opts when needed to reduce allocs (#9583)
+    - ast: Skip per-rule recursion check when graph sorts (#9582)
+    - ast: Skip repeated rule names when resolving refs (#9602)
+    - ast: Value only built-in type env (#9586)
+    - ast: ast, bundle, plugins/bundle: remove rule reuse (#9560)
+    - ast: don't copy expressions before rewriting (#9580)
+    - bundle: Let the reader leave out rules the compiler can reuse
+      (#9359)
+    - bundle: Parse at most GOMAXPROCS modules at once (#9484)
+    - bundle: Read generated bundles without locations (#9359)
+    - eval: A few more fixes reducing allocations (#9514)
+    - eval: Store and retrieve call operands from pool (#9501)
+    - perf: Add sync pool for evalTermNext, improve hasCollisions
+      (#9550)
+    - perf: Allow iterate objects without allocations (#9481)
+    - perf: Make sink writer perform on par with bytes.Buffer
+      (#9537)
+    - perf: Non-allocating out-of-bounds array.slice (#9549)
+    - topdown/walk: Alloc less when building walk paths (#9554)
+    - topdown: Add compliance cases for empty and undefined inputs
+      (#9499)
+    - topdown: Allocate less in replace and replace_n (#9590)
+    - topdown: Avoid compiling unused regexes in
+      regex.template_match (#9569)
+    - topdown: Bound magnitude of units.parse/parse_bytes results
+      (#9404) reported and
+    - topdown: Corpus cases (#9564)
+    - topdown: Cover the ordering of values of different types
+      (#9509)
+    - topdown: Cover time.date, clock, weekday and diff with small
+      timestamps (#9498)
+    - topdown: Fix ceil and floor of negative fractions above -1
+      (#9562) reported by @kroekle
+    - topdown: Fix net.cidr_merge panic on IPv4-mapped IPv6 CIDRs
+      (#9528) reported and
+    - topdown: Lazily allocate comp. cache children (#9573)
+    - topdown: Make the partial object collision check linear
+      (#9612)
+    - topdown: Remove stale comment re sync.Pool (#9571)
+    - topdown: Reuse pooled step continuation for bare terms
+      (#9614)
+    - topdown: Use YAML cases for replace tests (#9597)
+  * Docs, Website, Ecosystem
+    - docs: Add blog post on opa-java-wasm moving to the OPA org
+      (#9515)
+    - docs: Amend security reporting docs to cover scanners (#9551)
+    - docs: Document number representation differences in Wasm
+      (#3298)
+    - docs: Explain http_request_duration_seconds buckets (#5195)
+    - docs: Fix broken links from link checker report (#9463)
+    - docs: Fix the examples of the data filtering fragment (#9630)
+    - docs: Fix typos (#9594)
+    - docs: Make a few index examples more clear (#9482)
+    - docs: ocp: document git source depth (#9503)
+    - ecosystem: Add formal.ai (#9511)
+    - website: Update security docs (#9476)
+    - website: Add redirect for wrong security.txt path (#9477)
+    - website: Show live code query, highlight output some more
+      (#9533)
+  * Miscellaneous
+    - types: Decode set types without an element type (#9544)
+    - types: Decode type JSON in linear time (#9473)
+    - util/test: don't panic in MakeTempFS when creating files
+      fails (#9578)
+    - Dependency updates; notably:
+      - build(go): Bump to 1.27.4 (#9543)
+      - build(deps): Bump github.com/agnivade/levenshtein from
+        1.2.1 to 1.2.2
+      - build(deps): Bump github.com/foxcpp/go-mockdns from 1.2.0
+        to 1.3.0
+      - build(deps): Bump github.com/gobwas/glob from 1.0.0 to
+        1.1.0
+      - build(deps): Bump github.com/huandu/go-sqlbuilder from
+        1.43.0 to 1.44.1
+      - build(deps): Bump github.com/klauspost/compress from 1.20.0
+        to 1.20.4
+      - build(deps): Bump github.com/lestrrat-go/jwx/v3 from 3.3.0
+        to 3.4.0
+      - build(deps): Bump github.com/prometheus/client_golang from
+        1.24.1 to 1.25.0
+      - build(deps): Bump github.com/sergi/go-diff from 1.4.0 to
+        1.4.5
+      - build(deps): Bump github.com/spf13/pflag from 1.0.10 to
+        1.1.0
+      - build(deps): Bump github.com/vektah/gqlparser/v2 from
+        2.5.58 to 2.5.64
+      - build(deps): bump go.opentelemetry.io deps from
+        1.46.0/0.71.0 to 1.47.0/0.72.0
+      - build(deps): Bump go.opentelemetry.io/proto/otlp from
+        1.11.0 to 1.11.1
+      - build(deps): Bump go.yaml.in/yaml/v3 from 3.0.5 to 3.0.6
+      - build(deps): Bump golang.org/x/sync from 0.23.0 to 0.25.0
+      - build(deps): Bump golang.org/x/term from 0.46.0 to 0.48.0
+      - build(deps): Bump golang.org/x/text from 0.42.0 to 0.44.0
+      - build(deps): Bump golang.org/x/net from v0.60.0 to v0.62.0
+        (#9555)
+      - build(deps): Bump google.golang.org/grpc from 1.84.0 to
+        1.85.0
+      - build(deps): Bump gopkg.in/ini.v1 from 1.67.3 to 1.68.0
+      - build(deps): Bump oras.land/oras-go/v2 from 2.6.2 to 2.7.0
+
+-------------------------------------------------------------------
 Fri Nov 13 05:39:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.22.4:
