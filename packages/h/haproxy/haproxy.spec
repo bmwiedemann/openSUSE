@@ -44,7 +44,7 @@
 %bcond_with opentelemetry
 
 Name:           haproxy
-Version:        3.4.8+git0.1b15b69ac
+Version:        3.4.9+git0.ab5581fd1
 Release:        0
 %if %{with opentelemetry}
 %global otel_revision 2.3.0+git2.b031728
@@ -81,6 +81,9 @@ Patch3:         haproxy-1.6.0-sec-options.patch
 # PATCH-OPENSUSE
 Patch4:         haproxy-service.patch
 BuildRequires:  gcc%{?force_gcc_version}-c++
+%if 0%{?suse_version} >= 1699
+BuildRequires:  jose
+%endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
@@ -273,6 +276,19 @@ install -D -m 0644 %{SOURCE3}                   %{buildroot}%{_sysconfdir}/appar
 %endif
 
 rm examples/*init*
+
+
+%check
+# Upstream runs the unit tests (make unit-tests) on a binary built with
+# -DDEBUG_UNIT. Rebuild a test binary in place so the shipped binary is
+# not changed. The upstream harness skips smoke (it needs a
+# -fsanitize=address build) always, and jws where jose is not available
+# (Leap 16).
+%if 0%{?suse_version} > 1500
+%make_build clean
+%make_build %{shared_make_flags} DEBUG="-DDEBUG_UNIT" %{main_binaries}
+%make_build unit-tests
+%endif
 
 
 %pre -f haproxy.pre
