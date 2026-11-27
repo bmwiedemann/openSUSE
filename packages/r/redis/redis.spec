@@ -50,7 +50,7 @@
 %define _conf_dir      %{_sysconfdir}/%{origname}
 %define _module_dir    %{_libdir}/%{origname}/modules
 Name:           %{origname}%{psuffix}
-Version:        8.10.3
+Version:        8.12.0
 Release:        0
 Summary:        Persistent key-value database
 License:        AGPL-3.0-only
@@ -74,16 +74,14 @@ Source21:       vendor-redisjson.tar.zst
 # The one dependency redisearch's bundled VectorSimilarity still clones from
 # git once the SVS backend is off; there is no cpu_features package to build
 # against. "modules" flavour only.
-Source22:       https://github.com/google/cpu_features/archive/refs/tags/v0.10.1.tar.gz#/cpu_features-0.10.1.tar.gz
+Source22:       https://github.com/google/cpu_features/archive/refs/tags/v0.11.0.tar.gz#/cpu_features-0.11.0.tar.gz
 Patch0:         %{origname}-conf.patch
 Patch1:         reproducible.patch
 Patch2:         ppc-atomic.patch
-# PATCH-FIX-UPSTREAM vectorsimilarity-guard-svs-include.patch mpluskal@suse.com -- USE_SVS=OFF does not compile, https://github.com/RedisAI/VectorSimilarity/pull/1006
+# PATCH-FIX-UPSTREAM vectorsimilarity-guard-svs-include.patch mpluskal@suse.com -- USE_SVS=OFF does not compile, https://github.com/RedisAI/VectorSimilarity/pull/1006 (changed)
 Patch3:         vectorsimilarity-guard-svs-include.patch
 # PATCH-FIX-UPSTREAM scripting-test-disable-aof-after-use.patch mpluskal@suse.com -- test leaves AOF on, racing the next test's SHUTDOWN NOSAVE, https://github.com/valkey-io/valkey/pull/1156
 Patch4:         scripting-test-disable-aof-after-use.patch
-# PATCH-FIX-UPSTREAM lazyfree-test-explicit-stream-ids.patch mpluskal@suse.com -- lazyfree stream test measures how fast the builder is, not lazyfree, https://github.com/redis/redis/pull/15585
-Patch5:         lazyfree-test-explicit-stream-ids.patch
 BuildRequires:  gcc-c++
 BuildRequires:  python3
 BuildRequires:  pkgconfig
@@ -228,11 +226,11 @@ tar -xf %{SOURCE21}
 # up as a plain -I, so pointing it at the system headers both keeps the build
 # offline and avoids carrying a second copy of boost.
 ln -s %{_includedir} modules/redisearch/src/.install/boost
-# redisjson builds with --all-targets, which includes the test executables.
+# redisjson builds with --bins --tests, which includes the test executables.
 # Those reference the RedisModule_* API that only exists inside the server that
 # dlopen()s the module, so they cannot link -- and the module itself, a cdylib,
 # does not need them. Build the libraries only.
-sed -i 's/ --all-targets//' modules/redisjson/src/Makefile
+sed -i 's/ --bins --tests//' modules/redisjson/src/Makefile
 # Both Rust modules split their own debug info out into a .so.debug sibling and
 # leave a .gnu_debuglink behind. That sibling is not something a package should
 # ship, and the debuglink makes rpm's find-debuginfo skip the file entirely, so
@@ -263,7 +261,7 @@ export IGNORE_MISSING_DEPS=1
 # FETCHCONTENT_SOURCE_DIR_* is cmake's own way of satisfying a FetchContent
 # dependency from a local tree instead of the network; cpu_features is the only
 # one left once SVS is off.
-export CMAKE_ARGS="-DUSE_SVS=OFF -DFETCHCONTENT_SOURCE_DIR_CPU_FEATURES=$(pwd)/cpu_features-0.10.1"
+export CMAKE_ARGS="-DUSE_SVS=OFF -DFETCHCONTENT_SOURCE_DIR_CPU_FEATURES=$(pwd)/cpu_features-0.11.0"
 # modules.yaml asks for LTO on redisearch, which there means clang driving
 # ld.bfd through LLVMgold.so -- a plugin openSUSE's clang does not ship, so
 # every compiler probe fails before a line is compiled. common.mk applies the

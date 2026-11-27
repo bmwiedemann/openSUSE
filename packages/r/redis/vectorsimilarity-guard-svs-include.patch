@@ -1,34 +1,7 @@
-From: Martin Pluskal <mpluskal@suse.com>
-Subject: VectorSimilarity: guard the SVS code paths so USE_SVS=OFF builds
-Upstream PR: https://github.com/RedisAI/VectorSimilarity/pull/1006
-
-Building redisearch with -DUSE_SVS=OFF -- an option VectorSimilarity offers
-itself, via cmake_dependent_option(USE_SVS ...) in cmake/svs.cmake -- does not
-compile. HAVE_SVS is then 0 and the ScalableVectorSearch sources are never
-fetched, but two translation units still reach for SVS unconditionally:
-
-  src/VecSim/algorithms/svs/svs.h:21:10: fatal error:
-      svs/index/vamana/dynamic_index.h: No such file or directory
-    (via tiered_factory.h -> svs_tiered.h -> svs.h)
-
-  src/VecSim/algorithms/svs/svs_utils.h:16:10: fatal error:
-      svs/core/distance.h: No such file or directory
-    (via vec_sim.cpp)
-
-tiered_factory.h needs nothing from svs_tiered.h -- none of its declarations
-mention an SVS type -- so that include is simply guarded, the way
-tiered_factory.cpp and svs_factory.cpp already guard the same headers.
-
-vec_sim.cpp does use VecSimSVSThreadPool, in two functions that are part of the
-public C API and so have to keep existing either way: with no SVS there is no
-shared pool for VecSim_UpdateThreadPoolSize() to resize, and no shared
-allocation for VecSim_GetSharedMemory() to report.
-
-diff --git a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
-index fbb55d3..3cf0d5d 100644
---- a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
-+++ b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
-@@ -13,7 +13,9 @@
+diff -Pdpru redis-8.12.0.orig/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h redis-8.12.0/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h
+--- redis-8.12.0.orig/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h	2026-11-22 15:33:24.000000000 +0300
++++ redis-8.12.0/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/index_factories/tiered_factory.h	2026-11-23 11:24:12.647068037 +0300
+@@ -15,7 +15,9 @@
  #include "VecSim/memory/vecsim_malloc.h"
  #include "VecSim/vec_sim_index.h"
  #include "VecSim/algorithms/hnsw/hnsw_tiered.h"
@@ -38,10 +11,9 @@ index fbb55d3..3cf0d5d 100644
  #include "VecSim/algorithms/brute_force/brute_force.h"
  #include "VecSim/index_factories/factory_utils.h"
  
-diff --git a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
-index 4fed53a..9da4eb3 100644
---- a/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
-+++ b/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
+diff -Pdpru redis-8.12.0.orig/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp redis-8.12.0/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp
+--- redis-8.12.0.orig/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp	2026-11-22 15:33:24.000000000 +0300
++++ redis-8.12.0/modules/redisearch/src/deps/VectorSimilarity/src/VecSim/vec_sim.cpp	2026-11-23 11:32:58.367942925 +0300
 @@ -15,7 +15,9 @@
  #include "VecSim/vec_sim_index.h"
  #include "VecSim/vec_sim_adhoc_bf_ctx.h"
@@ -50,9 +22,9 @@ index 4fed53a..9da4eb3 100644
  #include "VecSim/algorithms/svs/svs_utils.h"
 +#endif
  #include <cassert>
- #include "memory.h"
- 
-@@ -41,10 +43,16 @@ extern "C" void VecSim_UpdateThreadPoolSize(size_t new_size) {
+ #include <cstdarg>
+ #include <cstdio>
+@@ -43,10 +45,16 @@ extern "C" void VecSim_UpdateThreadPoolS
      } else {
          VecSimIndex::setWriteMode(VecSim_WriteAsync);
      }
@@ -68,8 +40,8 @@ index 4fed53a..9da4eb3 100644
 +#endif
  }
  
- static VecSimResolveCode _ResolveParams_EFRuntime(VecSimAlgo index_type, VecSimRawParam rparam,
-@@ -392,7 +400,13 @@ extern "C" VecSimDebugInfoIterator *VecSimIndex_DebugInfoIterator(VecSimIndex *i
+ namespace {
+@@ -492,7 +500,13 @@ extern "C" VecSimDebugInfoIterator *VecS
  }
  
  extern "C" size_t VecSim_GetSharedMemory(void) {
