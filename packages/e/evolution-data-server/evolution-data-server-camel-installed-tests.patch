@@ -1,45 +1,79 @@
-From: Zoltan Balogh <zbalogh@suse.com>
-Subject: Camel: fix installed tests on an installed system
-References: bsc#1290886
+From 99ae9d87e99078a4e006f5a7e5b47715f107ff26 Mon Sep 17 00:00:00 2001
+From: Milan Crha <mcrha@redhat.com>
+Date: Wed, 25 Nov 2026 18:08:58 +0100
+Subject: [PATCH] I#681 - Correct Camel installed tests
 
-The Camel installed tests fail on an installed system for two reasons:
+Closes https://gitlab.gnome.org/GNOME/evolution-data-server/-/work_items/681
 
-1. camel_test_provider_init() always loads the provider modules from
-   CAMEL_BUILD_DIR, a build-tree path that does not exist after
-   installation. In installed mode the providers are discoverable
-   through CAMEL_PROVIDERDIR, so initialise the provider registry and
-   let Camel load the requested module lazily.
+Assisted-by: DeepSeek V4.1 Flash
+---
+ src/camel/tests/CMakeLists.txt            |  4 ++++
+ src/camel/tests/lib/CMakeLists.txt        |  3 +--
+ src/camel/tests/lib/camel-test-provider.c | 12 +++++++++++-
+ 3 files changed, 16 insertions(+), 3 deletions(-)
 
-2. camel_test_get_data_file() reads the test data from
-   INSTALLED_TEST_DIR/data, but src/camel/tests/data is never
-   installed. Install it alongside the test binaries.
-
+diff --git a/src/camel/tests/CMakeLists.txt b/src/camel/tests/CMakeLists.txt
+index d4ed04451..f54f19b68 100644
 --- a/src/camel/tests/CMakeLists.txt
 +++ b/src/camel/tests/CMakeLists.txt
-@@ -96,3 +96,10 @@
+@@ -98,3 +98,7 @@ set(TESTS_SKIP
  
  add_camel_tests(TESTS ON)
  add_camel_tests(TESTS_SKIP OFF)
 +
 +if(ENABLE_INSTALLED_TESTS)
-+	file(GLOB DATA_FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/*)
-+	install(FILES ${DATA_FILES}
-+		DESTINATION ${INSTALLED_TESTS_EXEC_DIR}/data
-+	)
++	install(DIRECTORY data DESTINATION ${INSTALLED_TESTS_EXEC_DIR})
 +endif(ENABLE_INSTALLED_TESTS)
+diff --git a/src/camel/tests/lib/CMakeLists.txt b/src/camel/tests/lib/CMakeLists.txt
+index d79a01605..9229ee6f2 100644
+--- a/src/camel/tests/lib/CMakeLists.txt
++++ b/src/camel/tests/lib/CMakeLists.txt
+@@ -22,7 +22,6 @@ add_dependencies(cameltest camel)
+ 
+ target_compile_definitions(cameltest PRIVATE
+ 	-DG_LOG_DOMAIN=\"camel-test\"
+-	-DCAMEL_BUILD_DIR=\"${CMAKE_BINARY_DIR}/src/camel\"
+ 	-DINSTALLED_TEST_DIR=\"${INSTALLED_TESTS_EXEC_DIR}\"
+ )
+ 
+@@ -53,7 +52,7 @@ add_dependencies(cameltest-provider camel)
+ 
+ target_compile_definitions(cameltest-provider PRIVATE
+ 	-DG_LOG_DOMAIN=\"camel-test-provider\"
+-	-DCAMEL_BUILD_DIR=\"${CMAKE_BINARY_DIR}/src/camel\"
++	-DCAMEL_PROVIDERDIR=\"${camel_providerdir}\"
+ )
+ 
+ target_compile_options(cameltest-provider PUBLIC
+diff --git a/src/camel/tests/lib/camel-test-provider.c b/src/camel/tests/lib/camel-test-provider.c
+index 72b4cc34b..2a58771a0 100644
 --- a/src/camel/tests/lib/camel-test-provider.c
 +++ b/src/camel/tests/lib/camel-test-provider.c
-@@ -13,6 +13,13 @@
+@@ -9,13 +9,23 @@ void
+ camel_test_provider_init (gint argc,
+                           const gchar **argv)
+ {
++	const gchar *provider_dir;
+ 	gchar *name, *path;
++	gboolean installed;
  	gint i;
  	GError *error = NULL;
  
-+	/* Installed tests load providers from CAMEL_PROVIDERDIR, which is
-+	   where camel_provider_init() looks by default. */
-+	if (g_getenv ("TEST_INSTALLED_SERVICES") != NULL) {
-+		camel_provider_init ();
-+		return;
-+	}
++	installed = g_getenv ("TEST_INSTALLED_SERVICES") != NULL;
++	provider_dir = g_getenv (EDS_CAMEL_PROVIDER_DIR);
++	if (!provider_dir)
++		provider_dir = CAMEL_PROVIDERDIR;
 +
  	for (i = 0; i < argc; i++) {
  		name = g_strdup_printf ("libcamel%s."G_MODULE_SUFFIX, argv[i]);
- 		path = g_build_filename (CAMEL_BUILD_DIR, "providers", argv[i], name, NULL);
+-		path = g_build_filename (CAMEL_BUILD_DIR, "providers", argv[i], name, NULL);
++		if (installed)
++			path = g_build_filename (provider_dir, name, NULL);
++		else
++			path = g_test_build_filename (G_TEST_BUILT, "..", "providers", argv[i], name, NULL);
+ 		g_free (name);
+ 		camel_provider_load (path, &error);
+ 		g_assert_no_error (error);
+-- 
+GitLab
+

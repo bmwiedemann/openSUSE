@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:21:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Replace evolution-data-server-camel-installed-tests.patch with
+  the upstream fix from the gnome-51 branch (commit 99ae9d87,
+  glgo#GNOME/evolution-data-server#681, bsc#1290886). Drop the
+  patch when updating to 3.62.2.
+
+-------------------------------------------------------------------
 Thu Nov 19 08:37:52 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add evolution-data-server-camel-installed-tests.patch: fix Camel

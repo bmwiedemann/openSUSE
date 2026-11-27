@@ -2603,4 +2603,15 @@ New stable rel</comment>
   systems (bsc#1290886).</comment>
     <requestid>1399903</requestid>
   </revision>
+  <revision rev="279" vrev="3">
+    <srcmd5>77c4246e21718ef88b553d3d3c3ef1d5</srcmd5>
+    <version>3.62.1</version>
+    <time>1795809786</time>
+    <user>anag_factory</user>
+    <comment>- Replace evolution-data-server-camel-installed-tests.patch with
+  the upstream fix from the gnome-51 branch (commit 99ae9d87,
+  glgo#GNOME/evolution-data-server#681, bsc#1290886). Drop the
+  patch when updating to 3.62.2.</comment>
+    <requestid>1400762</requestid>
+  </revision>
 </revisionlist>
