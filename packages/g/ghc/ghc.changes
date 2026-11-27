@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Nov 25 10:37:30 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Fix the LLVM dependencies:
+  * Use llvm19 on all distributions. It's the newest version ghc 9.14.1
+    supports that Tumbleweed, Leap 16.0, and Leap 16.1 all ship. The
+    previous 'suse_version == 1600' test picked llvm15 on Leap 16.0 and
+    llvm19 everywhere else.
+  * Pass LLC, OPT, and LLVMAS to both configure runs. Before, only the
+    source tree's configure saw LLC and OPT, so the installed settings file
+    referred to whatever unversioned llc, opt, and clang were on the PATH.
+  * Fail the build if the installed settings file doesn't refer to the
+    versioned LLVM tools.
+
+-------------------------------------------------------------------
 Sun Nov 15 17:11:23 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.14.1

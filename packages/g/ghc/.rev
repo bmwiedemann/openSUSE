@@ -1223,4 +1223,12 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
     <comment>update for ghc-9.14.1</comment>
     <requestid>1399034</requestid>
   </revision>
+  <revision rev="123" vrev="2">
+    <srcmd5>b207e8dcc11978bcc7eda316e97495bd</srcmd5>
+    <version>9.14.1</version>
+    <time>1795805089</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1401142</requestid>
+  </revision>
 </revisionlist>

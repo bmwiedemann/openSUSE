@@ -17,11 +17,10 @@
 %define full_version 9.14.1
 %define short_version 9.14.1
 
-%if 0%{suse_version} == 1600
-%global llvm_major 15
-%else
+# ghc 9.14.1 supports LLVM 13 to 20. llvm19 is available on Tumbleweed,
+# Leap 16.0 (SLFO), and Leap 16.1 (Backports).
 %global llvm_major 19
-%endif
+%global llvm_tools LLC=%{_bindir}/llc-%{llvm_major} OPT=%{_bindir}/opt-%{llvm_major} LLVMAS=%{_bindir}/clang-%{llvm_major}
 
 %ifarch s390x
 %bcond releasebuild 0
@@ -105,6 +104,8 @@ BuildRequires:  gmp-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libtool
+# Needed on all architectures: configure records the LLVM tool paths in the
+# settings file only if it can run them and they have a supported version.
 BuildRequires:  clang%{llvm_major}
 BuildRequires:  llvm%{llvm_major}
 BuildRequires:  memory-constraints
@@ -296,8 +297,7 @@ rm libffi-tarballs/libffi-*.tar.gz
 
 export LANG=C.utf8
 export CC=%{_bindir}/gcc
-export LLC=%{_bindir}/llc-%{llvm_major}
-export OPT=%{_bindir}/opt-%{llvm_major}
+export %{llvm_tools}
 export LD=%{_bindir}/ld
 
 autoupdate
@@ -339,9 +339,14 @@ hadrian %{?_smp_mflags} --flavour=%{hadrian_flavour}+no_profiled_libs%{?hadrian_
 
 (
 cd _build/bindist/ghc-%{version}-*
-./configure --prefix=%{buildroot}%{ghclibdir} --bindir=%{buildroot}%{_bindir} --libdir=%{buildroot}%{_libdir} --mandir=%{buildroot}%{_mandir} --docdir=%{buildroot}%{_docdir}/%{name}-%{version}
+./configure --prefix=%{buildroot}%{ghclibdir} --bindir=%{buildroot}%{_bindir} --libdir=%{buildroot}%{_libdir} --mandir=%{buildroot}%{_mandir} --docdir=%{buildroot}%{_docdir}/%{name}-%{version} %{llvm_tools}
 make install
 )
+
+# Make sure the installed compiler refers to the versioned LLVM tools.
+grep -q '"%{_bindir}/llc-%{llvm_major}"' %{buildroot}%{ghcliblib}/settings
+grep -q '"%{_bindir}/opt-%{llvm_major}"' %{buildroot}%{ghcliblib}/settings
+grep -q '"%{_bindir}/clang-%{llvm_major}"' %{buildroot}%{ghcliblib}/settings
 
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 
