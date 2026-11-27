@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:44:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.5:
+  This release includes the following contributed bug fixes and
+  improvements:
+  * Install valijsonConfig.cmake into /usr/share instead of
+    /usr/lib in #261
+  * Fix propertyNames in nested subschemas in #254
+  * Validate test suite cases with and without ValidationResults in
+    #263
+  * Register missing Draft 7 test suite files and fix enum test
+    parser in #264
+  * Support json-pointer, relative-json-pointer and regex formats
+    in #265
+  * Reject leading zeros in IPv4 addresses embedded in IPv6
+    addresses in #269
+  * Require four-digit years in date and date-time formats in #268
+  * Other small fixes:
+    - Fix int64 bounds check in QtJsonAdapter. Note that Qt 5
+      support is deprecated and will be removed in v1.2.0.
+    - Fix undefined behaviour when converting from double to int64
+      in adapters that store all numbers as floating point.
+    - Ensure tests construct NlohmannJsonAdapter instances using
+      non-temporary values.
+
+-------------------------------------------------------------------
 Wed Nov 11 05:46:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.4:

@@ -17,7 +17,7 @@
 
 
 Name:           valijson
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        Header-only C++ library for JSON Schema validation
 License:        BSD-2-Clause
@@ -55,8 +55,8 @@ validation library for C++11.
 %files devel
 %dir %{_includedir}/valijson/
 %{_includedir}/valijson/*
-%dir %{_libdir}/cmake/valijson/
-%{_libdir}/cmake/valijson/valijsonConfig.cmake
+%dir %{_datadir}/cmake/valijson/
+%{_datadir}/cmake/valijson/valijsonConfig.cmake
 %license LICENSE
 %doc README.md
 
