@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Fri Nov 13 08:54:59 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.17.2:
+  * Add SASLMemcachedCache and SpreadSASLMemcachedCache backends
+    from flask-caching.
+- Update to 0.17.1:
+  * Add backends from flask-caching to prepare for deprecation of
+    flask-caching backends and rely on cachelib backends that
+    includes introducing new backends in cachelib like
+    GoogleCloudStorageCache, RedisSentinelCache, and
+    RedisClusterCache and unlink function in Redis and Valkey
+    backends.
+- Update to 0.17.0:
+  * Float timeouts are deprecated and now rounded up to whole
+    seconds
+  * Timeout now also accepts a datetime.timedelta in addition to
+    int. :pr:510
+  * Add memcache_client_lib parameter to MemcachedCache to select
+    which memcache client library to use (pylibmc, google,
+    memcache, or libmc).
+- Update to 0.16.1:
+  * Add check_connection parameter to allow users to control
+    whether the constructor will attempt to ping the client on
+    init. :pr:508
+- Update to 0.16.0:
+  * Change FileSystemCache default hash method to hashlib.sha256
+    because hashlib.md5 is not available in FIPs builds. :issue:500
+  * Ping backends servers on init to ensure they are reachable.
+    :pr:503
+  * Fix Memcached with python-memcached client returned None
+    instead of True when flush_all was successful. :pr:504
+  * Add ignore_delete_many_errors parameter to all cache backends
+    to allow users to control whether delete_many() raises a
+    RuntimeError if any key fails to delete.
+- Update to 0.15.4:
+  * Fix dumps in RedisCache to not use pickle for integers, so they
+    remain compatible with the native INCRBY/ DECRBY operations
+    used by :meth:inc/:meth:dec. :pr:497
+- Update to 0.15.3:
+  * Fix MemcachedCache inc and dec methods double normalizing keys.
+    :pr:495
+- Update to 0.15.2:
+  * Fix libmc in MemcachedCache no reserve nor blocking. :pr:493
+- Update to 0.15.1:
+  * Add JSONSerializer serializer and use the same base class for
+    DynamoDB serialization. :pr:490
+  * Fix MemcachedCache libmc client not being created correctly
+    :pr:491
+- Update to 0.15.0:
+  * Drop support for Python 3.8, 3.9 and 3.10. :issue:477
+  * Make SimpleCache thread-safe using a threading.RLock.
+    :issue:446
+  * Make pylibmc and libmc clients thread-safe by using ClientPool.
+    :pr:287
+  * Add support for optional dependencies in pyproject.toml to
+    allow users to install the dependencies for specific cache
+    backends as needed. :pr:459
+- Update the packaging
+- Drop skip-failing-tests.patch, no longer needed
+
+-------------------------------------------------------------------
+Sun Jul 12 22:58:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.14.0:
+  - Features
+    - Add valkey backend based on redis. #441
+  - Issues
+    - Replace deprecated datetime.utcnow() with datetime.now().
+      #421
+    - Fix FileSystemCache permission errors on Network Attached
+      Storage (NAS) when trying to perform operations on files
+      that are open in other processes. #424
+    - Fix serializer returning an unbound variable error instead
+      of None when a pickle error is raised during serialization.
+      #448
+    - Fix add() in SimpleCache treating expired keys as still
+      valid, preventing them from being overwritten until
+      explicitly deleted. #449
+    - Fix delete_many() in RedisCache and MemcachedCache
+      incorrectly reporting failed deletions due to comparing
+      normalized keys against non-normalized keys. #443
+  - Documentation
+    - Add quickstart example. #430
+    - Add installation page. #431
+  - Code Changes
+    - remove ruff's UP038 and pin boto3. #445
+    - refresh project layout. #420
+
+-------------------------------------------------------------------
 Fri Mar 27 09:43:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

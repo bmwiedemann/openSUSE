@@ -18,15 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cachelib
-Version:        0.13.0
+Version:        0.17.2
 Release:        0
 Summary:        A collection of cache libraries in the same API interface
 License:        BSD-3-Clause
 URL:            https://github.com/pallets-eco/cachelib
 Source:         https://files.pythonhosted.org/packages/source/c/cachelib/cachelib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip-failing-tests.patch gh#pallets-eco/cachelib#228 mcepl@suse.com
-# skip failing tests
-Patch0:         skip-failing-tests.patch
+BuildRequires:  %{python_module boto3}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module setuptools}
@@ -37,18 +36,23 @@ BuildRequires:  redis
 Recommends:     python-pylibmc
 BuildArch:      noarch
 # SECTION test
+BuildRequires:  %{python_module google-cloud-storage}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pylibmc}
 BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module redis}
+BuildRequires:  %{python_module valkey}
 BuildRequires:  memcached
 # /SECTION
 %python_subpackages
 
 %description
-A collection of cache libraries in the same API interface.
+CacheLib provides cache backends behind one API, extracted from Werkzeug.
+Backends include files, in-memory storage, Memcached, Redis, Valkey, MongoDB,
+DynamoDB, Google Cloud Storage and uWSGI caching.
 
 %prep
 %autosetup -p1 -n cachelib-%{version}
@@ -71,12 +75,13 @@ export PATH="%{_sbindir}/:$PATH"
 PYTEST_ADDOPTS="--capture=tee-sys --tb=short --basetemp=${BASETEMP}"
 PYTEST_ADDOPTS="$PYTEST_ADDOPTS --ignore=tests/test_redis_cache.py"
 PYTEST_ADDOPTS="$PYTEST_ADDOPTS --ignore=tests/test_memcached_cache.py"
+PYTEST_ADDOPTS="$PYTEST_ADDOPTS --ignore=tests/test_dynamodb_cache.py"
 export PYTEST_ADDOPTS
 %pytest -rs -k "not network"
 
 %files %{python_files}
-%license LICENSE.rst
-%doc README.rst
+%license LICENSE.txt
+%doc README.md
 %{python_sitelib}/cachelib
 %{python_sitelib}/cachelib-%{version}.dist-info
 
