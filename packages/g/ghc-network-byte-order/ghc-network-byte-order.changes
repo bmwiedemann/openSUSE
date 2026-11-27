@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Nov 26 05:54:13 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update network-byte-order to version 0.1.10.
+  ## 0.1.10
+
+  * Check bounds in shiftLastN
+    [#5](https://github.com/kazu-yamamoto/network-byte-order/pull/5)
+  * Add unsafeBufferIO and deprecate bufferIO
+    [#6](https://github.com/kazu-yamamoto/network-byte-order/pull/6)
+
+-------------------------------------------------------------------
 Thu Nov 19 20:54:20 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update build for ghc-rpm-macros >= 2.9.2.

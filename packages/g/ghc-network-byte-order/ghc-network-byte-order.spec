@@ -19,7 +19,7 @@
 %global pkg_name network-byte-order
 %bcond_with ghc_prof
 Name:           ghc-%pkg_name
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        Network byte order utilities
