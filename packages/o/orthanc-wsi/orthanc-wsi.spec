@@ -65,6 +65,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libuuid-devel
+BuildRequires:  minizip-devel
 # Check was missing:
 BuildRequires:  libxml2-devel
 BuildRequires:  tcpd-devel
