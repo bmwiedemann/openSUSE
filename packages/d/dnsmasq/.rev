@@ -1066,4 +1066,14 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     buffer in the DNSSEC validator (dnsmasq-CVE-2026-93011.patch).</comment>
     <requestid>1394549</requestid>
   </revision>
+  <revision rev="110" vrev="4">
+    <srcmd5>6058bb9cbd2bee2cf80daa14c9f4a950</srcmd5>
+    <version>2.93</version>
+    <time>1795804841</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-133730, bsc#1291656: Use-after-free of the relay header
+  in relay_upstream6() when a large DHCPv6 message causes the
+  output buffer to be reallocated (dnsmasq-CVE-2026-133730.patch).</comment>
+    <requestid>1400549</requestid>
+  </revision>
 </revisionlist>

@@ -45,6 +45,7 @@ Patch2:         dnsmasq-CVE-2026-93007.patch
 Patch3:         dnsmasq-CVE-2026-93008.patch
 Patch4:         dnsmasq-CVE-2026-93009.patch
 Patch5:         dnsmasq-CVE-2026-93011.patch
+Patch6:         dnsmasq-CVE-2026-133730.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libnettle-devel

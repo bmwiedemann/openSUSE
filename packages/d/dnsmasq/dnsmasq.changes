@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:51:15 UTC 2026 - Reinhard Max <max@suse.com>
+
+- CVE-2026-133730, bsc#1291656: Use-after-free of the relay header
+  in relay_upstream6() when a large DHCPv6 message causes the
+  output buffer to be reallocated (dnsmasq-CVE-2026-133730.patch).
+
+-------------------------------------------------------------------
 Fri Oct 30 14:50:00 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Add upstream security fixes:
