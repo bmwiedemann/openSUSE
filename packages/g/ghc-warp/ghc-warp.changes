@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov 23 02:36:56 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update warp to version 3.4.22.
+  ## 3.4.22
+
+  * warp: backport total HTTP/2 transport checks to v3.4
+    [#1177](https://github.com/yesodweb/wai/pull/1177)
+
+-------------------------------------------------------------------
 Fri Nov  6 06:59:56 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update warp to version 3.4.21.

@@ -20,7 +20,7 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        3.4.21
+Version:        3.4.22
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        A fast, light-weight web server for WAI applications
