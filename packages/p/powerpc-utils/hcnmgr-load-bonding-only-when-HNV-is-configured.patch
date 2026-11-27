@@ -1,0 +1,84 @@
+From 526c2eaf369beb9086d20ccd69f5c6fca5ba43a8 Mon Sep 17 00:00:00 2001
+From: Ranjani Suraj <sranjani@linux.ibm.com>
+Date: Wed, 18 Nov 2026 11:36:58 -0600
+Subject: [PATCH] hcnmgr: load bonding only when HNV is configured
+
+When HNV is not configured, unconditionally loading the bonding module
+at startup is unneeded, and if the bonding module is unavailable,
+modprobe will fail and hcnmgr will throw an error.
+
+We drop the unconditional modprobe and load the module when we have
+ensured that HNV is configured, using a load_bonding() helper function
+* in do_config_vdevice() before configuring a device
+* in scanhcn_wicked() after at least one HCN device is found
+
+Note: do_config_vdevice() is reached from cfghcn (NetworkManager and
+wicked), and from scanhcn_nm(), so scanhcn_nm() does not need its own
+load_bonding() call. However, scanhcn_wicked() configures bonds in a
+batch and as such does not call do_config_vdevice(), so it has a
+load_bonding() call.
+
+Signed-off-by: Ranjani Suraj <sranjani@linux.ibm.com>
+Reviewed-by: Mingming Cao <mmc@linux.ibm.com>
+---
+ scripts/hcnmgr | 23 +++++++++++++++++------
+ 1 file changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/scripts/hcnmgr b/scripts/hcnmgr
+index 6a15795..8ae9b94 100644
+--- a/scripts/hcnmgr
++++ b/scripts/hcnmgr
+@@ -346,6 +346,17 @@ check_transfer_ip_to_bond_nm() {
+ 	return 0
+ }
+ 
++#
++# function load_bonding
++#	load the bonding module (only called once HNV is known to be configured)
++#
++load_bonding() {
++	hcnlog DEBUG "HCNMGR: Loading bonding module if not already present"
++	if ! modprobe bonding $BOND_MODPROBE_OPTS; then
++		err $E_NOMODULE
++	fi
++}
++
+ #
+ # function do_config_vdevice_nm
+ #	configure or create HCN (active-backup bonding)
+@@ -535,6 +546,7 @@ do_config_vdevice_wicked() {
+ }
+ 
+ do_config_vdevice() {
++	load_bonding
+ 	hcnid_state_create "$HCNID"
+ 	case $SERVICE in
+ 		NetworkManager.service)
+@@ -1016,6 +1028,11 @@ scanhcn_wicked() {
+ 		fi
+ 	done
+ 
++	# Load the bonding module only if HNV is configured
++	if [ ${#hcnids[@]} -gt 0 ]; then
++		load_bonding
++	fi
++
+ 	# Cleanup (and shutdown) obsolete bondings or unenslave obsolete slaves
+ 	# This can happen when the LPAR has been shut down and reconfigured at
+ 	# next boot (or as attempt to fix via manual rescan when something went
+@@ -1206,12 +1223,6 @@ fi
+ #Init the distribution and the network service
+ check_network_service
+ 
+-#Validate bonding module is loaded
+-hcnlog DEBUG "HCNMGR: Loading bonding module if not already present"
+-if ! modprobe bonding $BOND_MODPROBE_OPTS; then
+-	err $E_NOMODULE
+-fi
+-
+ #Parse the DRC_INDEX and HCN_ID from the arguments
+ for param in "$@"; do
+ 	if [[ $param =~ ^DRC_INDEX=(.+)$ ]]; then
+-- 
+2.56.1
+

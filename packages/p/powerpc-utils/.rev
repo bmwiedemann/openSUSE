@@ -1361,4 +1361,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1374459</requestid>
   </revision>
+  <revision rev="162" vrev="6">
+    <srcmd5>8d1d9cb10321ff7a3ba1c0b29044f8f3</srcmd5>
+    <version>1.3.14</version>
+    <time>1795804837</time>
+    <user>anag_factory</user>
+    <comment>- hcnmgr: load bonding only when HNV is configured (bsc#1246862 ltc#214374)
+  * hcnmgr-load-bonding-only-when-HNV-is-configured.patch</comment>
+    <requestid>1400542</requestid>
+  </revision>
 </revisionlist>

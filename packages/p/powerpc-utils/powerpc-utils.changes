@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 11:00:10 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- hcnmgr: load bonding only when HNV is configured (bsc#1246862 ltc#214374)
+  * hcnmgr-load-bonding-only-when-HNV-is-configured.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 13:17:28 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Delete obsolete powerpc-utils-lsprop.patch
