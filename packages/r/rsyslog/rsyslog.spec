@@ -248,6 +248,7 @@ Patch10:        0006-CVE-2026-129836-rsyslog-imdtls-incomplete-handshake-.patch
 Patch11:        0007-CVE-2026-129838-rsyslog-imuxsock-trusted-property-at.patch
 Patch12:        0008-CVE-2026-129839-rsyslog-template-JSON-escaping-defec.patch
 Patch13:        0009-CVE-2026-129837-rsyslog-weekday-formatting-crash-bsc.patch
+Patch14:        0001-CVE-2026-132145-rsyslog-authentication-bypass-in-omd.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing

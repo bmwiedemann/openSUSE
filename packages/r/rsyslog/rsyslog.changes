@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 07:22:41 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- VUL-0: CVE-2026-132145: rsyslog: authentication bypass in omdtls 
+  (bsc#1291237)
+  *add  0001-CVE-2026-132145-rsyslog-authentication-bypass-in-omd.patch 
+
+-------------------------------------------------------------------
 Wed Nov 18 14:38:12 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix several security bugs
