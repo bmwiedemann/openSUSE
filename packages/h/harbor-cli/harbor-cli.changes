@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:37:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.28:
+  * fix(apt): move the apt repo to harbor-cli.goharbor.io (#1209)
+  * fix(user): escape usernames in the exact-name user lookup
+    (#1208)
+  * test(e2e): reuse createUser for the tag retention guest (#1207)
+  * fix(cli): show the Harbor error message for scanner and member
+    prompts (#1206)
+  * fix(prompt): reject empty lists before opening selection
+    prompts (#1205)
+  * fix(vulnerability): escape the q filter sent to Security Hub
+    (#1148)
+  * fix(artifact): list all tags of an artifact (#1152)
+  * fix(prompt): return API errors from selection prompts (#1203)
+  * fix(replication): return prompt errors instead of exiting
+    (#1202)
+  * fix(retention): return rule lookup errors from tag retention
+    delete (#1201)
+  * fix(project): accept storage limits with units and stop
+    dropping parse errors (#1200)
+  * fix(user): fail when a user name or ID does not resolve (#1199)
+  * fix(user): fetch user list once in user delete (#1198)
+  * fix(replication): keep label values when only the label filter
+    type changes (#1197)
+  * ci: run Scoop update last and commit manifest on top of main
+    (#1195)
+  * fix(views): correct package names in six view files (#1186)
+  * fix(replication): keep label filter on unrelated policy updates
+    (#1185)
+  * fix(cve-allowlist): accept YYYY-MM-DD expiration dates (#1184)
+  * fix(project): update the right membership with member update
+    --member (#1183)
+  * fix: immutable cmd - list all immutable tag rules across pages
+    (#1182)
+  * docs: regenerate harbor context switch docs (#1181)
+  * fix: remove none from context switch cmd usage (#1073)
+  * chore(deps): upgrade remaining dependencies to latest (#1174)
+  * chore(deps): upgrade spf13 modules to latest (#1173)
+  * chore(deps): upgrade charmbracelet and terminal UI modules to
+    latest (#1172)
+  * chore(deps): upgrade dagger engine to v0.21.12 and dagger Go to
+    1.27.4 (#1177)
+  * chore(deps): upgrade go-openapi modules to latest (#1176)
+  * chore(deps): upgrade golang.org/x modules to latest (#1171)
+  * chore(deps): update Go to 1.27.4 (#1170)
+  * chore: add security-insights.yml for OSPS baseline (#1165)
+  * chore(deps): bump grpc in Dagger module to patch critical CVE
+    (#1168)
+  * fix(deps): bump go to 1.26.11 and x/net to v0.62.0 (#1166)
+  * build(deps): bump golang.org/x/term from 0.45.0 to 0.47.0
+  * fix: validate arg count for artifact tags create/delete (#1071)
+
+-------------------------------------------------------------------
 Wed Oct 21 05:05:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.27:
