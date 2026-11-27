@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 26 01:26:10 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.7.8~0:
+  * Bump versions
+  * Fix purl qualifiers in auditable2cdx
+  * Release v0.7.8
+  * Bump format revision
+  * fix: read rustc arguments from argfiles
+  * Add test that exercises the proc macro with bin and test targets edge case
+  * Consider proc macro crates with test targets as build-time-only
+  * Upgrade cargo-dist to work around macos 14 deprecation
+  * Upgrade cargo-dist to fix eMudhra CA revocation
+  * Update "What about embedded platforms?" in the README now that embedded is explicitly supported
+
+-------------------------------------------------------------------
 Fri Oct 09 03:44:27 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.7.7~0:
