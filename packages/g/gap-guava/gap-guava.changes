@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:54:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.23
+  * Fixed issues:
+  * The [35,9,14] table entry carried a truncated construction.
+  * PermutationGroup is an obsolete synonym of
+    PermutationAutomorphismGroup.
+  * minimum-weight's short options -l and -m took no argument and
+    read a null pointer.
+  * BestKnownLinearCode(39,7) returned a [39,7,16] code instead of
+    the [39,7,17] code the table claims.
+  * GUAVA's own method for a codeword in a linear code compared a
+    syndrome of length n-k against a zero word of length n and so
+    reported every word as outside the code.
+  * MinimumWeight sets the minimum distance, so a code no longer
+    keeps printing the bounds it had before the weight was
+    computed.
+
+-------------------------------------------------------------------
 Sat Sep 19 21:35:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.22

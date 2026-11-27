@@ -17,7 +17,7 @@
 
 
 Name:           gap-guava
-Version:        3.22
+Version:        3.23
 Release:        0
 Summary:        GAP package for computing with error-correcting codes
 License:        GPL-2.0-or-later
