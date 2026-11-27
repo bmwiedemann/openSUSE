@@ -1,9 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 27 14:46:37 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updated to v0.3.6
+  * allows acces to remote systemd instances via ssh
+
+-------------------------------------------------------------------
+Thu Sep 24 14:45:45 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updated to v0.3.5
+  * allows local connected server to have same access rights as the user
+  * fixed log rtreival for time spans
+
+-------------------------------------------------------------------
 Tue Jun 16 10:12:35 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - reworded the test package description that it is only for internal
   tests
-- added README-TESTING.md
 
 -------------------------------------------------------------------
 Mon May  4 12:40:30 UTC 2026 - Christian Goll <cgoll@suse.com>

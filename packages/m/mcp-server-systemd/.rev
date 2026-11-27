@@ -26,4 +26,17 @@
 - added README-TESTING.md</comment>
     <requestid>1359776</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d71e13ddf43487b52b14337fbc0e97c9</srcmd5>
+    <version>0.3.6</version>
+    <time>1795805116</time>
+    <user>anag_factory</user>
+    <comment>- updated to v0.3.6
+  * allows acces to remote systemd instances via ssh
+
+- updated to v0.3.5
+  * allows local connected server to have same access rights as the user
+  * fixed log rtreival for time spans</comment>
+    <requestid>1401140</requestid>
+  </revision>
 </revisionlist>

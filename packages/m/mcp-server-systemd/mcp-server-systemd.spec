@@ -17,7 +17,7 @@
 
 
 %define gitname systemd-mcp
-%define vers 0.3.4
+%define vers 0.3.6
 #%%define verssuf -preview3
 #%%define verssuf_plain %%(echo %%{verssuf} | sed 's/^-//')
 Name:           mcp-server-systemd
@@ -54,16 +54,15 @@ logs. The service itself listens to a socket to which is sends the file descript
 to the system log if authorized via polkit.
 
 # integrated tests checking also the man tool call, so man is needed here
-%package testsuite
+%package test
 Summary:        Internal test files for %{name} DO NOT INSTALL
-Obsoletes:      %{name}-test <= %{version}
 BuildArch:      noarch
 Requires:       bats
 Requires:       podman
 Requires:       man
 Requires:       go >= 1.24
 
-%description testsuite
+%description test
 The bats based tests. For testing the rpm itself the env variables TEST_CONTAINER
 TEST_BINARY must be set accordingly.
 
@@ -106,12 +105,12 @@ install -D -m 0644 test/bci-init-build.docker %{buildroot}%{_docdir}/%{name}/tes
 %check
 # call test manul as man will fail in build env due to missing man pages
 # and sdjournald due to wrong vendor in build env 
+# not testing journal as we need a running systemd for testing
 go test \
     github.com/openSUSE/systemd-mcp \
   	github.com/openSUSE/systemd-mcp/authkeeper	\
   	github.com/openSUSE/systemd-mcp/dbus \
   	github.com/openSUSE/systemd-mcp/internal/pkg/file	\
-  	github.com/openSUSE/systemd-mcp/internal/pkg/journal \
   	github.com/openSUSE/systemd-mcp/internal/pkg/systemd \
   	github.com/openSUSE/systemd-mcp/internal/pkg/util	\
   	github.com/openSUSE/systemd-mcp/remoteauth \
@@ -130,7 +129,7 @@ go test \
 %{_unitdir}/gatekeeper.service
 %{_unitdir}/gatekeeper.socket
 
-%files testsuite
+%files test
 %doc README-TESTING.md
 %dir %{_docdir}/%{name}/test
 %{_docdir}/%{name}/test/integrated-tests.bats
