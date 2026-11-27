@@ -1012,4 +1012,12 @@
   * A release with a single bugfix (forwarded request 1384011 from Kieltux)</comment>
     <requestid>1384183</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>ccd30251086f296d5e6b0f150b379129</srcmd5>
+    <version>5.3.5</version>
+    <time>1795805027</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1401071</requestid>
+  </revision>
 </revisionlist>
