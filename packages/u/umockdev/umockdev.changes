@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:36:45 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.20.0:
+  * preload: Keep emulating devices on dup()ed fds.
+  * preload: Emulate devices opened with openat() and an absolute
+    path.
+  * preload: Let host devices with their own ioctl handler reach
+    it again.
+  * preload: Keep the ioctl emulation usable in forked children.
+  * preload: Only export the wrapped libc functions.
+  * preload: Lots of race condition fixes.
+  * umockdev-record: Fix recording attributes in nested
+    subdirectories.
+
+-------------------------------------------------------------------
 Fri Oct 23 17:39:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.19.9:
