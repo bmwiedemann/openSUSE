@@ -18,7 +18,6 @@
 
 # Use for pulling RC versions
 %define version_suf %{nil}
-
 Name:           openucx
 Version:        1.23.0
 Release:        0
@@ -26,19 +25,21 @@ Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            http://openucx.org/
-
 #Git-Clone:	git://github.com/openucx/ucx
 #Git-Web:	https://github.com/openucx/ucx
 Source:         https://github.com/openucx/ucx/releases/download/v%version%{?version_suf}/ucx-%version.tar.gz
 Source100:      README.md
 Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
-Patch3:         UCS-add-missing-include-for-UCS_INFINITY.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libibverbs-devel
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  zlib-devel
+ExclusiveArch:  aarch64 %power64 x86_64 s390x riscv64
 %if 0%{?suse_version} < 1330
 %ifnarch s390x
 BuildRequires:  libnuma-devel
@@ -46,11 +47,6 @@ BuildRequires:  libnuma-devel
 %else
 BuildRequires:  libnuma-devel
 %endif
-BuildRequires:  libtool
-BuildRequires:  pkg-config
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-ExclusiveArch:  aarch64 %power64 x86_64 s390x riscv64
 
 %description
 UCX stands for Unified Communication X. UCX provides a communication
@@ -137,7 +133,7 @@ Low-level API that expose network operations supported by underlying
 hardware.
 
 %prep
-%setup -qn ucx-%version
+%setup -q -n ucx-%version
 %autopatch -p0
 
 %build
@@ -163,16 +159,12 @@ export UCX_CFLAGS="$UCX_CFLAGS -mno-sse -mno-sse2"
 		 --with-mlx5 --with-rdmacm
 
 # Override BASE_CFLAGS to disable Werror (boo#1121267)
-make %{?_smp_mflags} V=1 BASE_CFLAGS="-g -Wall"
+%make_build BASE_CFLAGS="-g -Wall"
 
-%post   -n libucp0 -p /sbin/ldconfig
-%postun -n libucp0 -p /sbin/ldconfig
-%post   -n libucs0 -p /sbin/ldconfig
-%postun -n libucs0 -p /sbin/ldconfig
-%post   -n libuct0 -p /sbin/ldconfig
-%postun -n libuct0 -p /sbin/ldconfig
-%post   -n libucm0 -p /sbin/ldconfig
-%postun -n libucm0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libucp0
+%ldconfig_scriptlets -n libucs0
+%ldconfig_scriptlets -n libuct0
+%ldconfig_scriptlets -n libucm0
 
 %install
 %make_install
@@ -187,7 +179,6 @@ mv %buildroot/%_bindir/io_demo  %buildroot/%_libexecdir/%{name}/
 rm -f %{buildroot}/%{_docdir}/openucx/LICENSE %{buildroot}/%{_docdir}/openucx/THIRD_PARTY_NOTICES
 
 %files tools
-%defattr(-,root,root)
 %_bindir/ucx_*
 %_datadir/%{name}/
 %_libexecdir/%{name}
@@ -201,44 +192,36 @@ rm -f %{buildroot}/%{_docdir}/openucx/LICENSE %{buildroot}/%{_docdir}/openucx/TH
 %doc NEWS
 
 %files -n libucm0
-%defattr(-,root,root)
 %_libdir/libucm.so.*
 
 %files -n libucm-devel
-%defattr(-,root,root)
 %_includedir/ucm/
 %_libdir/libucm.so
 
 %files -n libucp0
-%defattr(-,root,root)
 %_libdir/libucp.so.*
 
 %files -n libucp-devel
-%defattr(-,root,root)
 %_includedir/ucp/
 %_libdir/libucp.so
 
 %files -n libucs0
-%defattr(-,root,root)
 %_libdir/libucs.so.*
 %_libdir/libucs_signal.so.*
 
 %files -n libucs-devel
-%defattr(-,root,root)
 %_includedir/ucs/
 %_libdir/libucs.so
 %_libdir/libucs_signal.so
 %_libdir/pkgconfig/ucx-ucs.pc
 
 %files -n libuct0
-%defattr(-,root,root)
 %_libdir/libuct.so.*
 %dir %_libdir/ucx/
 %_libdir/ucx/libuct_*.so.*
 %_libdir/ucx/libucx_perftest_mad.so.*
 
 %files -n libuct-devel
-%defattr(-,root,root)
 %_includedir/uct/
 %_libdir/libuct.so
 %dir %_libdir/ucx/

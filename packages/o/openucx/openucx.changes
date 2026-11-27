@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Nov 24 20:50:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop UCS-add-missing-include-for-UCS_INFINITY.patch
+  (redundant, was already upstream)
+- light spec file modernization
+
+-------------------------------------------------------------------
 Mon Nov 23 12:58:58 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v1.23.0

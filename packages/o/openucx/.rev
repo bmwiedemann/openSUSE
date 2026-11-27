@@ -544,4 +544,14 @@
     - UCX_IB_PCI_RELAXED_ORDERING=yes now requires all memory keys to use relaxed ordering and</comment>
     <requestid>1400221</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>f1d6dad7034d5cc4bf89d7b3e0ec5ea3</srcmd5>
+    <version>1.23.0</version>
+    <time>1795809790</time>
+    <user>anag_factory</user>
+    <comment>- drop UCS-add-missing-include-for-UCS_INFINITY.patch
+  (redundant, was already upstream)
+- light spec file modernization</comment>
+    <requestid>1400799</requestid>
+  </revision>
 </revisionlist>
