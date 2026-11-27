@@ -2467,4 +2467,17 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1394390</requestid>
   </revision>
+  <revision rev="229" vrev="8">
+    <srcmd5>1ac30b8a2010ccee71d02881bd2f24ea</srcmd5>
+    <version>31.1</version>
+    <time>1795809780</time>
+    <user>anag_factory</user>
+    <comment>- Add patch emacs-31-ace-dir-locals.patch
+  * Fix bsc#1290800 (CVE-2026-131959): arbitrary code execution via
+    crafted directory-local configuration
+- Add patch emacs-31-regression-set-auto-mode.patch
+  * Fix regression introduced by patch
+    emacs-31-ace-dir-locals.patch (forwarded request 1400347 from jfooken)</comment>
+    <requestid>1400745</requestid>
+  </revision>
 </revisionlist>

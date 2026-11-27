@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Nov 24 16:00:47 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Add patch emacs-31-ace-dir-locals.patch
+  * Fix bsc#1290800 (CVE-2026-131959): arbitrary code execution via
+    crafted directory-local configuration
+- Add patch emacs-31-regression-set-auto-mode.patch
+  * Fix regression introduced by patch
+    emacs-31-ace-dir-locals.patch
+
+-------------------------------------------------------------------
 Mon Oct 26 07:57:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid cleaning the default native compilation cache when

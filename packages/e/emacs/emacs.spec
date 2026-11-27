@@ -262,6 +262,8 @@ Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
 Patch58:        bsc1282390.patch
 Patch59:        emacs-bsc1284345.patch
+Patch60:        emacs-31-ace-dir-locals.patch
+Patch61:        emacs-31-regression-set-auto-mode.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -438,6 +440,8 @@ and most assembler-like syntaxes.
 %patch -P57 -p1
 %patch -P58 -p1
 %patch -P59 -p1
+%patch -P60 -p1
+%patch -P61 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc
