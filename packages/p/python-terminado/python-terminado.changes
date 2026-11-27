@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 19:51:55 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Add terminado-pr254-fixtest.patch gh#jupyter/terminado#254
+  * Fix flaky test
+
+-------------------------------------------------------------------
 Fri Mar 29 19:41:13 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.18.1

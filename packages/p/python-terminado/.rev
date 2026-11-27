@@ -199,4 +199,13 @@
   * Maintenance and upkeep improvements</comment>
     <requestid>1163601</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9b484ec9977d088d66f41a3d3dbfa2fc</srcmd5>
+    <version>0.18.1</version>
+    <time>1795804858</time>
+    <user>anag_factory</user>
+    <comment>- Add terminado-pr254-fixtest.patch gh#jupyter/terminado#254
+  * Fix flaky test</comment>
+    <requestid>1400971</requestid>
+  </revision>
 </revisionlist>

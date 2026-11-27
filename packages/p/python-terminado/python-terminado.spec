@@ -1,7 +1,7 @@
 #
 # spec file for package python-terminado
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/terminado
 Source:         https://files.pythonhosted.org/packages/source/t/terminado/terminado-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM  terminado-pr254-fixtest.patch gh#jupyter/terminado#254
+Patch0:         https://github.com/jupyter/terminado/pull/254.patch#/terminado-pr254-fixtest.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}
@@ -49,7 +51,7 @@ ultimately derived from the public-domain Ajaxterm code (also on Github as part
 of QWeb).
 
 %prep
-%setup -q -n terminado-%{version}
+%autosetup -p1 -n terminado-%{version}
 sed -i '/addopts/ s/--durations 10 --color=yes//' pyproject.toml
 
 %build
