@@ -151,4 +151,15 @@
     <comment>1</comment>
     <requestid>1400644</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>9cd75560e1d614f3d59ddec027eb88f1</srcmd5>
+    <version>1.10.0</version>
+    <time>1795805021</time>
+    <user>anag_factory</user>
+    <comment>- description fix
+
+- CVE-2024-35434: heap buffer overflow in rtp_check_packet
+- 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch</comment>
+    <requestid>1401065</requestid>
+  </revision>
 </revisionlist>

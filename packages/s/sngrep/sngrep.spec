@@ -21,7 +21,7 @@
 Name:           sngrep
 Version:        1.10.0
 Release:        0
-Summary:        Ncurses SIP Messages flow viewer
+Summary:        Ncurses SIP messages flow viewer
 License:        GPL-3.0-or-later
 Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(ncursesw)
 
 %description
-sngrep displays SIP Messages grouped by Call-Id into flow
+sngrep displays SIP messages grouped by Call-Id into flow
 diagrams. It can be used as an offline pcap viewer or online
 capture using libpcap functions.
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 09:13:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- description fix
+
+-------------------------------------------------------------------
 Wed Nov 25 19:09:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.10.0
@@ -100,7 +105,7 @@ Sat Dec 21 20:44:37 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Thu May 30 20:02:23 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- CVE-2024-35434: heap buffer overflow in rtp_check_packet 
+- CVE-2024-35434: heap buffer overflow in rtp_check_packet
   add sngrep-1.8.1-CVE-2024-35434.patch (boo#1225638)
 - run tests
 
@@ -225,7 +230,7 @@ Sat May 23 08:03:33 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 Thu Nov 15 20:04:49 UTC 2018 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Switch to ncurses6w.
-- 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch 
+- 0001-ui-add-support-for-ncurses-compiled-with-opaque-stru.patch
   setting ESCDELAY global can't be done with ncurses6 opaque, must
   use set_escdelay
 
