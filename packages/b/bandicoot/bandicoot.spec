@@ -16,10 +16,11 @@
 #
 
 
-%define sover 4
+%define sover 5
 %define shlib lib%{name}%{sover}
+%bcond_with tests
 Name:           bandicoot
-Version:        4.0.1
+Version:        5.0.0
 Release:        0
 Summary:        C++ library for GPU accelerated linear algebra
 License:        Apache-2.0
@@ -31,7 +32,12 @@ BuildRequires:  libopenblas_openmp-devel
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-cpp-headers
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(clBLAS)
+%if %{with tests}
+BuildRequires:  Mesa-libRusticlOpenCL
+BuildRequires:  memory-constraints
+%endif
 
 %description
 Bandicoot is a GPU linear algebra library (matrix maths) for the C++ language,
@@ -63,11 +69,23 @@ This package provides headers and sources for developing against %{name}.
 %autosetup
 
 %build
-%cmake -DOPENBLAS_PROVIDES_LAPACK:BOOL=true
+%if %{with tests}
+# Building test exe takes a lot of memory
+%limit_build -m 4096
+%endif
+%cmake \
+  -DOPENBLAS_PROVIDES_LAPACK:BOOL=true \
+  -DBUILD_TESTS:BOOL=%{?with_tests:ON}%{!?with_tests:OFF} \
+	%{nil}
 %cmake_build
 
 %install
 %cmake_install
+
+%if %{with tests}
+%check
+%ctest
+%endif
 
 %ldconfig_scriptlets -n %{shlib}
 

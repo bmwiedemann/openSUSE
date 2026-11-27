@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 16 06:51:15 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.0:
+  * C++17 is now the minimum required C++ standard
+  * Redesigned generated kernel framework for additional runtime
+    and compilation efficiency
+  * Support for the Vulkan backend is now stable
+  * Fix various OpenCL backend bugs
+  * Expanded trans() and .t() to handle cubes
+  * Added cubemul() for batched matrix multiplication of cube
+    slices
+  * Added repcube()
+  * Added .each_slice() for cubes
+  * Added sum() and mean() support for cubes
+- Set up for tests but do not implement it yet (requires openCL
+  device to be set up).
+
+-------------------------------------------------------------------
 Fri May 15 14:14:09 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.0.1:
