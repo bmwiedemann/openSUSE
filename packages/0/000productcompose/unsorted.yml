@@ -371,6 +371,7 @@ unsorted:
   - YODA-matplotlib-style 
   - ZArchive 
   - ZArchive-devel 
+  - a2a-serve 
   - a2jmidid 
   - a2ps 
   - a2ps-devel 
@@ -3407,7 +3408,6 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
-  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -8555,11 +8555,10 @@ unsorted:
   - imake 
   - imapfilter 
   - imb-mpich 
-  - imb-mvapich2 
-  - imb-mvapich3-ofi 
-  - imb-mvapich3-ucx 
   - imb-mvapich4-ofi 
   - imb-mvapich4-ucx 
+  - imb-mvapich5-ofi 
+  - imb-mvapich5-ucx 
   - imb-openmpi4 
   - imb-openmpi5 
   - imgp 
@@ -10501,6 +10500,8 @@ unsorted:
   - kxml 
   - kxml-javadoc 
   - kxmlgui-devel 
+  - kxstitch 
+  - kxstitch-lang 
   - kyotocabinet 
   - kyverno 
   - kyverno-bash-completion 
@@ -10614,6 +10615,7 @@ unsorted:
   - lazarus-lcl-qt6 
   - lazarus-tools 
   - lazygit 
+  - lazysql 
   - lazyworktree 
   - lazyworktree-bash-completion 
   - lazyworktree-fish-completion 
@@ -11910,15 +11912,15 @@ unsorted:
   - libavutil59 
   - libavutil60-32bit 
   - libavutil61 
-  - libaws-c-auth1_0 
+  - libaws-c-auth1_1 
   - libaws-c-cal1_0 
   - libaws-c-common1_0 
   - libaws-c-compression1_0_0 
   - libaws-c-event-stream1 
-  - libaws-c-http1_2 
+  - libaws-c-http1_3 
   - libaws-c-io1_1 
   - libaws-c-mqtt1_0_0 
-  - libaws-c-s31_3 
+  - libaws-c-s31_5 
   - libaws-c-sdkutils1_0_0 
   - libaws-checksums-devel 
   - libaws-checksums1 
@@ -12851,7 +12853,7 @@ unsorted:
   - libetonyek-devel-doc 
   - libetonyek-tools 
   - libetpan-devel 
-  - libetpan26 
+  - libetpan27 
   - libetrophy0 
   - libev-devel 
   - libev-libevent-devel 
@@ -16320,6 +16322,7 @@ unsorted:
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
   - libsuricata8_0_8 
+  - libsuricata8_0_8-dpdk 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -19165,18 +19168,22 @@ unsorted:
   - mpiP-mpich-devel 
   - mpiP-mpich-devel-static 
   - mpiP-mpich-doc 
-  - mpiP-mvapich2 
-  - mpiP-mvapich2-devel 
-  - mpiP-mvapich2-devel-static 
-  - mpiP-mvapich2-doc 
-  - mpiP-mvapich3-ofi 
-  - mpiP-mvapich3-ofi-devel 
-  - mpiP-mvapich3-ofi-devel-static 
-  - mpiP-mvapich3-ofi-doc 
-  - mpiP-mvapich3-ucx 
-  - mpiP-mvapich3-ucx-devel 
-  - mpiP-mvapich3-ucx-devel-static 
-  - mpiP-mvapich3-ucx-doc 
+  - mpiP-mvapich4-ofi 
+  - mpiP-mvapich4-ofi-devel 
+  - mpiP-mvapich4-ofi-devel-static 
+  - mpiP-mvapich4-ofi-doc 
+  - mpiP-mvapich4-ucx 
+  - mpiP-mvapich4-ucx-devel 
+  - mpiP-mvapich4-ucx-devel-static 
+  - mpiP-mvapich4-ucx-doc 
+  - mpiP-mvapich5-ofi 
+  - mpiP-mvapich5-ofi-devel 
+  - mpiP-mvapich5-ofi-devel-static 
+  - mpiP-mvapich5-ofi-doc 
+  - mpiP-mvapich5-ucx 
+  - mpiP-mvapich5-ucx-devel 
+  - mpiP-mvapich5-ucx-devel-static 
+  - mpiP-mvapich5-ucx-doc 
   - mpiP-openmpi4 
   - mpiP-openmpi4-devel 
   - mpiP-openmpi4-devel-static 
@@ -19194,12 +19201,10 @@ unsorted:
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-ofi 
-  - mpitests-mvapich2 
-  - mpitests-mvapich2-psm2 
-  - mpitests-mvapich3-ofi 
-  - mpitests-mvapich3-ucx 
   - mpitests-mvapich4-ofi 
   - mpitests-mvapich4-ucx 
+  - mpitests-mvapich5-ofi 
+  - mpitests-mvapich5-ucx 
   - mpitests-openmpi4 
   - mpitests-openmpi5 
   - mplus-code-latin-variable-fonts 
@@ -21075,6 +21080,7 @@ unsorted:
   - paps 
   - par 
   - par2cmdline 
+  - par2cmdline-devel 
   - par_text 
   - paracon 
   - parallel-hashmap-devel 
@@ -35042,6 +35048,8 @@ unsorted:
   - surgescript-devel 
   - suricata 
   - suricata-devel 
+  - suricata-dpdk 
+  - suricata-dpdk-devel 
   - suru-plus-dark-icon-theme 
   - suse-build-key 
   - suse-kabi-tools 

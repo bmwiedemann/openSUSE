@@ -1934,7 +1934,7 @@ packagesets:
    - libfdt1 # reason: dvd:patterns-media-rest_dvd
    - libffi8 # reason: dvd:openSUSE-release
    - libffi8-32bit # reason: dvd:patterns-media-rest_dvd
-   - libffmpegthumbnailer4 # reason: dvd:patterns-xfce-xfce
+   - libffmpegthumbnailer5 # reason: dvd:patterns-xfce-xfce
    - libfftw3-3 # reason: dvd:openSUSE-release
    - libfido2-1 # reason: dvd:grub2
    - libfido2-udev # reason: dvd:patterns-gnome-gnome
@@ -4643,7 +4643,8 @@ packagesets:
    - discover6-backend-fwupd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - discover6-notifier # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - displaymanager-sysconfig # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - distribution-logos-openSUSE-MicroOS # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - distribution-logos-openSUSE-Aeon # reason: opensuse_microos:patterns-microos-alt_onlyDVD
+   - distribution-logos-openSUSE-MicroOS # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - distribution-logos-openSUSE-icons # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - distrobox # reason: opensuse_microos_desktop:expansion
    - distrobox-bash-completion # reason: opensuse_microos_desktop:expansion
