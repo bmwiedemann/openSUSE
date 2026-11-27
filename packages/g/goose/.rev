@@ -293,4 +293,12 @@ all changelog gates clean.
     <comment>Update goose to 1.61.0: llmman and amazee.ai providers, MCP server.json import, optional tool approval, refreshed vendoring.</comment>
     <requestid>1400554</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>121efdea0b378d3421be8d00e5451a65</srcmd5>
+    <version>1.61.1</version>
+    <time>1795804937</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.61.1: session import hardening, vendoring refresh</comment>
+    <requestid>1400966</requestid>
+  </revision>
 </revisionlist>

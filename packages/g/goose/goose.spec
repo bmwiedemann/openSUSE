@@ -18,14 +18,14 @@
 
 %global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.61.0
+Version:        1.61.1
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: the tag below covers the whole linked set (the shipped
 # binary statically links its vendored Rust dependencies), derived as:
 # - "cargo tree --offline -p goose-cli -e normal --no-default-features
 #   --features %%{goose_features}" over the vendored tree (1102 crates vendored).
-# - Linked: 460 third-party crates plus the nine goose workspace crates (the
+# - Linked: 487 third-party crates plus the nine goose workspace crates (the
 #   code-mode, local-inference and cuda branches are not built).
 # - The cudaforge git dependency is unused (only the cuda branch needs it).
 # - Elections: Apache-2.0 where offered else MIT; no other "OR" adds an id:

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:18:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.61.1:
+  * Drop tool approval state from imported sessions so opening one
+    cannot auto-run its tool calls
+  * Import sessions with local extensions and goose mode;
+    drop recipe retry, recipe values, container and provider IDs
+  * Stop re-rendering recipe templates on session load and fork
+  * Remove dotenv from the desktop app to avoid unintended
+    environment variable loading
+- Refresh the vendored dependencies (1102 crates vendored)
+- Re-strip the Windows-only prebuilt objects from the new
+  vendoring (aws-lc-sys prebuilt-nasm and ring pregenerated
+  objects, 43 files with their .cargo-checksum.json entries);
+  only test fixtures remain, still covered by the
+  Source-Binary-Exception lines
+
+-------------------------------------------------------------------
 Wed Nov 25 10:32:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.61.0:
