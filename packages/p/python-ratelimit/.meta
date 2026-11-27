@@ -1,0 +1,6 @@
+<package name="python-ratelimit" project="openSUSE:Factory">
+  <title>API rate limit decorator</title>
+  <description>Function decorator that limits how often a function can be called
+within a time period, for example to stay under the rate limit of a
+remote API.</description>
+</package>
