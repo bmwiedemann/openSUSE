@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 27 08:35:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.18.3
+  * {func}pikepdf.pdfa.check now predicts the right stream filters
+    with qpdf versions newer than 12.4.2. Those versions keep the
+    compressed data of a stream whose /Filter is the one-element
+    array [/FlateDecode] instead of recompressing it. qpdf 12.4.2
+    recompressed such streams, which removed any predictor and
+    could make scanned images larger. {issue}qpdf/qpdf#1785
+- Update to version 10.18.2
+  * The extension module is now built with link-time optimization,
+    which makes it about 14% smaller. Source builds use it where
+    the toolchain supports it. To build without it, pass
+    "-C cmake.define.PIKEPDF_LTO=OFF".
+- Update to version 10.18.1
+  * Assigning None into a page list, with pdf.pages.extend(),
+    slice assignment or pdf.pages[i] = None, now raises the usual
+    "only pikepdf pages" TypeError. When pikepdf was built with
+    nanobind older than 2.13, as some Linux distributions do, an
+    iterator containing None could instead be silently discarded
+    without inserting any pages, or a misleading "incompatible
+    function arguments" error was raised. {pr}759
+  * pikepdf now requires nanobind 2.5.0 or newer to build, and is
+    tested against it.
+
+-------------------------------------------------------------------
 Sun Nov  8 07:44:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 10.18.0
