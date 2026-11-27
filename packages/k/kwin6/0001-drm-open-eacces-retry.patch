@@ -1,0 +1,98 @@
+From 125e5844a6cc5aaa9d253d473437b6aedd36fc4a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tomas.chvatal@gmail.com>
+Date: Thu, 5 Nov 2026 18:43:12 +0000
+Subject: [PATCH] drm: expose EACCES as a Session::Error and retry DRM open on
+ EBusy or EAccess
+
+---
+ src/backends/drm/drm_backend.cpp | 3 ++-
+ src/core/session.cpp             | 2 ++
+ src/core/session.h               | 1 +
+ src/core/session_consolekit.cpp  | 3 +++
+ src/core/session_logind.cpp      | 3 +++
+ src/core/session_noop.cpp        | 2 ++
+ 6 files changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/drm/drm_backend.cpp b/src/backends/drm/drm_backend.cpp
+index 896c260..40a5910 100644
+--- a/src/backends/drm/drm_backend.cpp
++++ b/src/backends/drm/drm_backend.cpp
+@@ -61,7 +61,8 @@ public:
+         timer.start();
+         // Switching between sessions / drm masters seems to be racy in some situations.
+         // Lacking a proper solution for that, retry opening the node for up to 5s.
+-        while (!fd.has_value() && fd.error() == Session::Error::EBusy && timer.durationElapsed() < 5s) {
++        // The session may not be active yet either, which fails as EACCES, not EBusy.
++        while (!fd.has_value() && (fd.error() == Session::Error::EBusy || fd.error() == Session::Error::EAccess) && timer.durationElapsed() < 5s) {
+             qCDebug(KWIN_DRM, "Retrying openRestricted(%s)", qPrintable(filePath));
+             std::this_thread::sleep_for(100ms);
+             fd = m_session->openRestricted(filePath);
+diff --git a/src/core/session.cpp b/src/core/session.cpp
+index 8038b5e..289a441 100644
+--- a/src/core/session.cpp
++++ b/src/core/session.cpp
+@@ -47,6 +47,8 @@ Session::Error Session::errorFromErrno()
+ {
+     if (errno == EBUSY) {
+         return Error::EBusy;
++    } else if (errno == EACCES) {
++        return Error::EAccess;
+     } else {
+         return Error::Other;
+     }
+diff --git a/src/core/session.h b/src/core/session.h
+index 377cc89..7e1bbf8 100644
+--- a/src/core/session.h
++++ b/src/core/session.h
+@@ -73,6 +73,7 @@ public:
+ 
+     enum class Error {
+         EBusy,
++        EAccess,
+         Other,
+     };
+ 
+diff --git a/src/core/session_consolekit.cpp b/src/core/session_consolekit.cpp
+index 5d0418a..140233c 100644
+--- a/src/core/session_consolekit.cpp
++++ b/src/core/session_consolekit.cpp
+@@ -162,6 +162,9 @@ std::expected<int, Session::Error> ConsoleKitSession::openRestricted(const QStri
+                 qPrintable(fileName), qPrintable(reply.errorMessage()));
+         if (reply.errorName() == "System.Error.EBUSY") {
+             return std::unexpected(Error::EBusy);
++        } else if (reply.errorName() == "System.Error.EACCES"
++            || reply.errorName() == "org.freedesktop.DBus.Error.AccessDenied") {
++            return std::unexpected(Error::EAccess);
+         } else {
+             return std::unexpected(Error::Other);
+         }
+diff --git a/src/core/session_logind.cpp b/src/core/session_logind.cpp
+index d9f664b..a9dd752 100644
+--- a/src/core/session_logind.cpp
++++ b/src/core/session_logind.cpp
+@@ -160,6 +160,9 @@ std::expected<int, Session::Error> LogindSession::openRestricted(const QString &
+                   qPrintable(fileName), qPrintable(reply.errorMessage()));
+         if (reply.errorName() == "System.Error.EBUSY") {
+             return std::unexpected(Error::EBusy);
++        } else if (reply.errorName() == "System.Error.EACCES"
++            || reply.errorName() == "org.freedesktop.DBus.Error.AccessDenied") {
++            return std::unexpected(Error::EAccess);
+         } else {
+             return std::unexpected(Error::Other);
+         }
+diff --git a/src/core/session_noop.cpp b/src/core/session_noop.cpp
+index 4ad66e1..3d21917 100644
+--- a/src/core/session_noop.cpp
++++ b/src/core/session_noop.cpp
+@@ -49,6 +49,8 @@ std::expected<int, Session::Error> NoopSession::openRestricted(const QString &fi
+     } else {
+         if (errno == EBUSY) {
+             return std::unexpected(Error::EBusy);
++        } else if (errno == EACCES) {
++            return std::unexpected(Error::EAccess);
+         } else {
+             return std::unexpected(Error::Other);
+         }
+-- 
+2.56.0
+

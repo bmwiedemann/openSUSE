@@ -516,4 +516,20 @@
     <comment>Plasma 6.8.3</comment>
     <requestid>1396779</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>4e9268804cc883e534a15a05dad945f3</srcmd5>
+    <version>6.8.3</version>
+    <time>1795804824</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream changes:
+  * 0001-backends-libinput-only-process-device-add-events-on-.patch (kde#528936)
+  * 0001-input-only-init-backends-after-InputRedirection.patch (kde#528824)
+
+- Fix the Plasma Wayland session on driverless hardware (no render
+  node, e.g. QEMU std VGA), so it starts reliably: expose EACCES
+  as a Session::Error and retry the DRM open on EBusy or EAccess
+  (MR !10326, backported to Plasma/6.8 in MR !10367).
+  * 0001-drm-open-eacces-retry.patch</comment>
+    <requestid>1400377</requestid>
+  </revision>
 </revisionlist>

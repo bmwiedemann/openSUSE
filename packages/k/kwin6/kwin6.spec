@@ -39,6 +39,17 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# Fix the Plasma Wayland session on driverless hardware (no render node):
+# expose EACCES as a Session::Error and retry the DRM open on EBusy
+# or EAccess, so a transient logind TakeDevice failure does not lose
+# the render device.
+# https://invent.kde.org/plasma/kwin/-/merge_requests/10326
+# Backport to Plasma/6.8: https://invent.kde.org/plasma/kwin/-/merge_requests/10367
+Patch0:         0001-drm-open-eacces-retry.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-backends-libinput-only-process-device-add-events-on-.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-input-only-init-backends-after-InputRedirection.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
