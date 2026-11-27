@@ -1,7 +1,7 @@
 #
 # spec file for package liborigin
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define shlib %{name}3
 Name:           liborigin
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        A library for reading OriginLab OPJ project files
 License:        GPL-3.0-or-later
