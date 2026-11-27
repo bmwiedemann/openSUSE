@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Nov 23 16:02:22 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.830.0 (4.83)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.83 2026-11-23 (rurban)
+
+  	- Security fixes, reported by Albert Gierlach (rivit):
+  	  * decode: free the temporary encoding name when the input starts with
+  	    a UTF-16 or UTF-32 BOM (leak of a scalar per call, successful or
+  	    not). CVE-2026-134876
+  	  * decode: with allow_tags free the enclosing arrays and hashes when
+  	    a THAW method dies (leak). CVE-2026-134877
+  	  * decode: free the key of every enclosing object member when a
+  	    filter_json_object or filter_json_single_key_object callback dies
+  	    or a THAW method dies (leak). CVE-2026-134878
+  	  * encode: encode_stringify freed neither its string copy nor the
+  	    overloaded object when encode_str croaked on malformed UTF-8,
+  	    e.g. with allow_stringify (leak). CVE-2026-134879
+  	- encode: no signed overflow negating IV_MIN with JSON_TYPE_INT, and
+  	  no read of uninitialized memory when checking short formatted numbers
+  	  and bignum strings for inf and nan.
+  	- utf8_range: cast byte constants to char for _mm_set1_epi8
+  	  (clang -Wconstant-conversion).
+
+-------------------------------------------------------------------
 Mon Nov 16 13:40:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.820.0 (4.82)

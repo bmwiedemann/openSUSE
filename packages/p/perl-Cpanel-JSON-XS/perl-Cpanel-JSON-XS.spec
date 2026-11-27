@@ -18,10 +18,10 @@
 
 %define cpan_name Cpanel-JSON-XS
 Name:           perl-Cpanel-JSON-XS
-Version:        4.820.0
+Version:        4.830.0
 Release:        0
-# 4.82 -> normalize -> 4.820.0
-%define cpan_version 4.82
+# 4.83 -> normalize -> 4.830.0
+%define cpan_version 4.83
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        CPanel fork of JSON::XS, fast and correct serializing
 URL:            https://metacpan.org/release/%{cpan_name}
