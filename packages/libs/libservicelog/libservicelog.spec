@@ -23,11 +23,10 @@
 %global system_user_pkg 1
 %endif
 Name:           libservicelog
-Version:        1.1.19
+Version:        1.1.20
 Release:        0
 Summary:        Servicelog Database and Library
 License:        LGPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/power-ras/libservicelog/
 #Git-Clone:	https://github.com/power-ras/libservicelog.git
 #Git-Web:	https://github.com/power-ras/libservicelog/
@@ -35,13 +34,12 @@ Source0:        https://github.com/power-ras/libservicelog/archive/v%{version}.t
 Source1:        baselibs.conf
 Source2:        libservicelog-rpmlintrc
 Source3:        system-group-service.conf
-Patch1:         libservicelog-Fix-timezone-handling-in-servicelog-ev.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig(sqlite3)
 ExclusiveArch:  ppc ppc64 ppc64le
 %if %{system_user_pkg}
 Requires(pre):  sysuser-tools
@@ -58,7 +56,6 @@ system.
 
 %package -n %{lname}
 Summary:        Servicelog Database and Library
-Group:          System/Libraries
 Requires:       %{name}
 
 %description -n %{lname}
@@ -70,10 +67,9 @@ system.
 
 %package        devel
 Summary:        Development files for libservicelog
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       glibc-devel
-Requires:       sqlite3-devel
+Requires:       pkgconfig(sqlite3)
 
 %description    devel
 Header files for building with libservicelog.
@@ -84,7 +80,7 @@ Header files for building with libservicelog.
 %build
 autoreconf -fiv
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 %if %{system_user_pkg}
 %sysusers_generate_pre %{SOURCE3} libservicelog system-group-service.conf
 %else
@@ -101,7 +97,6 @@ install -m 0644 -D -t %{buildroot}%{_sysusersdir}/ %{SOURCE3}
 %endif
 
 %pre -f libservicelog.pre
-
 %post    -n %{lname} -p /sbin/ldconfig
 %postun  -n %{lname} -p /sbin/ldconfig
 

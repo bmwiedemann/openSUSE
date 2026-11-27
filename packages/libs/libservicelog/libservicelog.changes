@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:22:26 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.20:
+  * Drop libservicelog-Fix-timezone-handling-in-servicelog-ev.patch
+    (merged upstream).
+  * Fix buffer size underflow leading to stack overflow in
+    sl_printf().
+  * Do not wrap a line already terminated by newline in
+    sl_printf().
+  * Handle zero-sized buffers in strNcpy().
+- Modernize spec file:
+  * Remove obsolete Group tags.
+  * Use pkgconfig(sqlite3) BuildRequires.
+  * Use %make_build macro.
+
+-------------------------------------------------------------------
 Fri Jan 23 09:13:17 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix timezone handling (jsc#PED-14538)
