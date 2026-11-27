@@ -18,18 +18,6 @@
 
 %define  soname 5_4_1
 %define  major  5
-%if 0%{?fedora_version}
-%define ext_man .gz
-%define ext_info .gz
-BuildRequires:  antlr-C++
-BuildRequires:  antlr-tool
-BuildRequires:  java-headless
-BuildRequires:  texinfo-tex
-%else
-BuildRequires:  antlr-devel
-Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
-%endif
 Name:           nco
 Version:        5.4.1
 Release:        0
@@ -39,7 +27,11 @@ URL:            https://github.com/nco/nco/
 Source0:        https://github.com/nco/nco/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 # PATCH-FIX-UPSTREAM be82ad2d63946f8efcd0b24a6f07d4059674c483 Change (void)yyunput(X,Y) to (void)yyunput(X) for Flex 2.6.5+
+%if ! 0%{?fedora_version}
+%if %{pkg_vcmp flex >= 2.6.5}
 Patch0:         nco-flex-yyunput.patch
+%endif
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  flex
@@ -53,10 +45,20 @@ BuildRequires:  pkgconfig
 BuildRequires:  texinfo
 BuildRequires:  udunits2-devel
 BuildRequires:  pkgconfig(gsl)
-BuildRequires:  pkgconfig(hdf5) >= 1.8.8
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(netcdf) >= 4.1.3
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?fedora_version}
+BuildRequires:  antlr-C++
+BuildRequires:  antlr-tool
+BuildRequires:  java-headless
+BuildRequires:  texinfo-tex
+%else
+BuildRequires:  antlr-devel
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
+%endif
+
 #---netcdf is for TW no longer available on 32bit archs, disable them:
 %if 0%{?suse_version} > 1600
 ExcludeArch:    %{ix86} %{arm}
@@ -127,7 +129,7 @@ This package contains the documentation for %{name}.
 sed -i 's|# AC_CXX_HAVE_VALARRAY|AC_CXX_HAVE_VALARRAY|' configure.ac
 
 %build
-autoreconf -fi
+autoreconf -i
 %configure \
     --disable-static \
     --prefix=%{_prefix} \
@@ -184,25 +186,25 @@ fi
 %{_bindir}/ncrename
 %{_bindir}/ncwa
 %{_bindir}/ncz2psx
-%{_mandir}/man1/ncap2.1%{?ext_man}
-%{_mandir}/man1/ncatted.1%{?ext_man}
-%{_mandir}/man1/ncbo.1%{?ext_man}
-%{_mandir}/man1/ncchecker.1%{?ext_man}
-%{_mandir}/man1/ncclimo.1%{?ext_man}
-%{_mandir}/man1/ncecat.1%{?ext_man}
-%{_mandir}/man1/nces.1%{?ext_man}
-%{_mandir}/man1/ncflint.1%{?ext_man}
-%{_mandir}/man1/ncks.1%{?ext_man}
-%{_mandir}/man1/nco.1%{?ext_man}
-%{_mandir}/man1/ncpdq.1%{?ext_man}
-%{_mandir}/man1/ncra.1%{?ext_man}
-%{_mandir}/man1/ncrcat.1%{?ext_man}
-%{_mandir}/man1/ncremap.1%{?ext_man}
-%{_mandir}/man1/ncrename.1%{?ext_man}
-%{_mandir}/man1/ncwa.1%{?ext_man}
-%{_mandir}/man1/ncz2psx.1%{?ext_man}
-%{_infodir}/nco*.info%{?ext_info}
-%{_infodir}/nco.info-*%{?ext_info}
+%{_mandir}/man1/ncap2.1%{?ext_man}*
+%{_mandir}/man1/ncatted.1%{?ext_man}*
+%{_mandir}/man1/ncbo.1%{?ext_man}*
+%{_mandir}/man1/ncchecker.1%{?ext_man}*
+%{_mandir}/man1/ncclimo.1%{?ext_man}*
+%{_mandir}/man1/ncecat.1%{?ext_man}*
+%{_mandir}/man1/nces.1%{?ext_man}*
+%{_mandir}/man1/ncflint.1%{?ext_man}*
+%{_mandir}/man1/ncks.1%{?ext_man}*
+%{_mandir}/man1/nco.1%{?ext_man}*
+%{_mandir}/man1/ncpdq.1%{?ext_man}*
+%{_mandir}/man1/ncra.1%{?ext_man}*
+%{_mandir}/man1/ncrcat.1%{?ext_man}*
+%{_mandir}/man1/ncremap.1%{?ext_man}*
+%{_mandir}/man1/ncrename.1%{?ext_man}*
+%{_mandir}/man1/ncwa.1%{?ext_man}*
+%{_mandir}/man1/ncz2psx.1%{?ext_man}*
+%{_infodir}/nco*.info%{?ext_info}*
+%{_infodir}/nco.info-*%{?ext_info}*
 
 %files doc
 %license doc/LICENSE COPYING

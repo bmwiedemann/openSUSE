@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:36:07 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- build fixes and cleanup:
+  * Use of pkgconfig(hdf5) breaks build on Leap and Fedora, remove
+      entry as it is an indirect dependency
+  * Make flex patch application conditional, broke Leap and Slowroll
+  * autoreconf -fi broke build on Leap, resort to autoreconf -i
+  * Fix mindless spec-cleaner churn and move BuildRequires block
+      to where it belongs
+  * Remove definition of ext_man and ext_info which caused spec-cleaner
+      confusion and resort to use asterixes
+
+-------------------------------------------------------------------
 Wed Nov 25 19:59:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use autoreconf -fi instead of broken manual autoconf/aclocal
