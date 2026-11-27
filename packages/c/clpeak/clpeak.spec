@@ -18,7 +18,7 @@
 
 
 Name:           clpeak
-Version:        3.0.5
+Version:        3.1.0
 Release:        0
 Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
 # Legal-Review-Notice:
@@ -36,6 +36,8 @@ Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
 #    third_party/onnxruntime (3 MIT headers, microsoft/onnxruntime v1.31.0) and
 #    third_party/litert (35 Apache-2.0 headers, google-ai-edge/LiteRT v2.3.0).
 #    Both runtimes are dlopen'd at run time, so none of their code is linked.
+#  * third_party/webgpu/webgpu.h, new in 3.1.0, BSD-3-Clause header-only
+#    (webgpu-native/webgpu-headers 706853a9), likewise dlopen'd at run time.
 #  * third_party/libopencl-stub and third_party/Vulkan-Headers are not
 #    shipped -- git submodules, absent from the release archive, and referenced
 #    only by the Android FFI build (src/ffi/android).

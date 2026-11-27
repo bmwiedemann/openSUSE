@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:06:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.1.0:
+  * New WebGPU backend: GPUs and CPU fallback adapters offered
+    by a webgpu.h runtime (e.g. wgpu-native, Dawn) now run clpeak's
+    tests -- fp32, fp16, mixed-precision and int32/packed-int8
+    compute, global, workgroup and image bandwidth, host/device
+    transfer and kernel launch latency. The runtime is loaded when
+    clpeak runs (no SDK needed to build); enabled by default where
+    one is found, with --no-webgpu to leave it out and --webgpu-lib
+    to point at one.
+  * Desktop app, Android and iOS build changes only; nothing in the
+    built CLI besides the above.
+
+-------------------------------------------------------------------
 Sun Nov  8 08:50:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.0.5:
