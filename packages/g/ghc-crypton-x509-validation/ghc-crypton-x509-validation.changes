@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Nov 20 00:43:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-validation to version 1.11.0 revision 1.
+  ## 1.11.0
+
+  The constructors of `ValidationChecks` and `ValidationHooks` are hidden;
+  use `defaultChecks` and `defaultHooks` with record update syntax.
+  RSA-PSS signatures are verified with their own parameters and the
+  restrictions of RSASSA-PSS keys, and SHA-3 signatures are supported.
+
+  * Hide the constructors of ValidationChecks and ValidationHooks
+    [#51](https://github.com/kazu-yamamoto/crypton-certificate/pull/51)
+  * Add checkRejectSHA1 and OtherReason
+    [#52](https://github.com/kazu-yamamoto/crypton-certificate/pull/52)
+  * Keep RSA-PSS parameters
+    [#53](https://github.com/kazu-yamamoto/crypton-certificate/pull/53)
+  * Keep multi-valued RDNs
+    [#54](https://github.com/kazu-yamamoto/crypton-certificate/pull/54)
+  * Keep all GeneralName forms
+    [#57](https://github.com/kazu-yamamoto/crypton-certificate/pull/57)
+  * Support RSASSA-PSS keys
+    [#61](https://github.com/kazu-yamamoto/crypton-certificate/pull/61)
+  * Support SHA-3 signature algorithms
+    [#62](https://github.com/kazu-yamamoto/crypton-certificate/pull/62)
+
+-------------------------------------------------------------------
 Wed Nov 18 08:15:46 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-validation to version 1.10.3.
