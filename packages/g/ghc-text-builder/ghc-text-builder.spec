@@ -20,7 +20,7 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        1.0.0.5
+Version:        1.0.0.6
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        Efficient and flexible strict text builder

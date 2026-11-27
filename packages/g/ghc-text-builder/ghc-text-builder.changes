@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Nov 26 06:55:54 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update text-builder to version 1.0.0.6.
+  Upstream has not updated the file "CHANGELOG.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Thu Nov 19 20:55:34 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update build for ghc-rpm-macros >= 2.9.2.
