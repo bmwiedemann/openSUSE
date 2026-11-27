@@ -95,4 +95,12 @@
     <comment>42.7.11</comment>
     <requestid>1358511</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6faf234df6d15b4b8f1bcba97740ceda</srcmd5>
+    <version>42.7.15</version>
+    <time>1795805023</time>
+    <user>anag_factory</user>
+    <comment>Update to postgresql-jdbc 42.7.15</comment>
+    <requestid>1401070</requestid>
+  </revision>
 </revisionlist>

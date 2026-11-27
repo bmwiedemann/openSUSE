@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Nov 25 14:56:13 UTC 2026 - Michael Calmer <mc@suse.com>
+
+- Upgrade to upstream version 42.7.15
+  * CVE-2026-134841: postgresql-jdbc parses quoted text as SQL in
+    JDBC escapes, dollar quotes and E strings (bsc#1291477)
+  * CVE-2026-134842: postgresql-jdbc can quote a string parameter
+    for the wrong value of standard_conforming_strings when
+    preferQueryMode=simple is set (bsc#1291478)
+  * CVE-2026-134843: postgresql-jdbc does not close the connection
+    when an unchecked exception interrupts a request (bsc#1291479)
+  * CVE-2026-134844: postgresql-jdbc uses unqualified operators and
+    functions in the catalog queries of DatabaseMetaData,
+    ResultSetMetaData and TypeInfoCache (bsc#1291480)
+  * CVE-2026-134845: postgresql-jdbc does not enforce TLS for some
+    settings that ask for it (bsc#1291481)
+  * CVE-2026-134846: postgresql-jdbc does not check the token state
+    that GSSContext.unwrap() reports on a GSS-encrypted connection
+    (bsc#1291483)
+  * CVE-2026-134847: postgresql-jdbc cuts the weight and scale of a
+    BigDecimal to 16 bits when it sends the value in binary, which
+    is the default (bsc#1291484)
+  * CVE-2026-134848: postgresql-jdbc does not refuse a NUL character
+    in a startup parameter (bsc#1291486)
+- Upgrade to upstream version 42.7.14
+  * CVE-2026-107314: requireAuth is silently not enforced when the
+    value excludes every authentication method (bsc#1284658)
+  * CVE-2026-107315: Driver stores bytes of earlier statements when
+    it pads a value shorter than its declared length (bsc#1284660)
+- Upgrade to upstream version 42.7.13
+  * Bugfixes
+- Upgrade to upstream version 42.7.12
+  CVE-2026-54291: Silent channel-binding authentication downgrade
+  (bsc#1270405)
+
+-------------------------------------------------------------------
 Mon May 11 14:20:45 UTC 2026 - Thomas Florio <thomas.florio@suse.com>
 
 - Upgrade to upstream version 42.7.11
