@@ -26,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} USE_SYSTEMD=yes BUILD_TLS=yes BUILD_RDMA=yes
 
 Name:           valkey
-Version:        9.1.3
+Version:        9.2.0
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -62,6 +62,7 @@ BuildRequires:  tcl
 BuildRequires:  pkgconfig(libibverbs)
 BuildRequires:  pkgconfig(librdmacm)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
 # there is no tcl-tls package yet, which is said to be needed for testing tls support
 Recommends:     logrotate
