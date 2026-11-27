@@ -317,4 +317,12 @@ Add support for ppc64le.</comment>
     <comment>- update bootstrap compiler to ghc-9.10.1</comment>
     <requestid>1315269</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>1dbd64e9860ad7daeafda433e3ab5ea7</srcmd5>
+    <version>9.10.1</version>
+    <time>1795805090</time>
+    <user>anag_factory</user>
+    <comment>version update</comment>
+    <requestid>1401143</requestid>
+  </revision>
 </revisionlist>

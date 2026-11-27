@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Wed Nov 25 07:05:25 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Fix the LLVM dependencies:
+  * Use llvm15 on Leap 16.x and llvm18 on Tumbleweed. The previous
+    'suse_version == 1600' test sent Leap 16.1 to the Tumbleweed branch,
+    which asked for llvm18. Leap 16.1 doesn't have it.
+  * Require clang/llvm only on s390x, the only architecture where
+    ghc 9.10.1 uses the LLVM backend.
+  * Point the llc, opt, and llvm-as commands in the settings file at the
+    versioned binaries. The unversioned names don't exist in the build
+    environment, so the s390x builds failed with 'could not execute: opt'.
+
+-------------------------------------------------------------------
 Sat Oct 18 17:17:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update bootstrap compiler to ghc-9.10.1 
+- update bootstrap compiler to ghc-9.10.1
 
 -------------------------------------------------------------------
 Thu Jan 30 15:58:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -11,7 +24,7 @@ Thu Jan 30 15:58:55 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Fri Nov 22 15:11:19 UTC 2024 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update bootstrap compiler to ghc-9.8.2 
+- Update bootstrap compiler to ghc-9.8.2
 
 -------------------------------------------------------------------
 Mon Nov 13 12:17:42 UTC 2023 - Andreas Schwab <schwab@suse.de>
@@ -21,7 +34,7 @@ Mon Nov 13 12:17:42 UTC 2023 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Tue Nov  7 22:37:47 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update bootsrap compiler to ghc-9.4.4 
+- Update bootsrap compiler to ghc-9.4.4
 
 -------------------------------------------------------------------
 Sat May 27 09:53:22 UTC 2023 - Andreas Schwab <schwab@suse.de>
@@ -36,7 +49,7 @@ Mon Apr 24 11:06:22 UTC 2023 - Andreas Schwab <schwab@suse.de>
 -------------------------------------------------------------------
 Mon Apr  3 09:13:52 UTC 2023 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update bootstrap compiler to 9.2.3 using hadrian build 
+- update bootstrap compiler to 9.2.3 using hadrian build
 
 -------------------------------------------------------------------
 Thu Feb  2 14:27:08 UTC 2023 - Peter Simons <psimons@suse.com>
@@ -76,7 +89,7 @@ Tue Aug 24 14:06:42 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Sat Dec 19 18:55:21 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- drop 32bit intel 
+- drop 32bit intel
 
 -------------------------------------------------------------------
 Sat Oct  3 15:57:01 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>

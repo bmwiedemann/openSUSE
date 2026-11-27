@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,12 @@
 #
 
 
-%if 0%{suse_version} == 1600
-%global llvm_major 15
-%else
+# ghc 9.10.1 supports LLVM 13 to 15. Leap 16.x ships llvm15. Tumbleweed has
+# nothing older than llvm18, which works but triggers a version warning.
+%if 0%{?suse_version} >= 1690
 %global llvm_major 18
+%else
+%global llvm_major 15
 %endif
 
 %ifarch ppc64le
@@ -89,10 +91,13 @@ AutoReq:        off
 %ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
-Requires:       clang%{llvm_major}
 Requires:       libffi-devel
 Requires:       libnuma-devel
+%ifarch s390x
+# ghc 9.10.1 has no native code generator on s390x and needs LLVM.
+Requires:       clang%{llvm_major}
 Requires:       llvm%{llvm_major}
+%endif
 
 %description
 This package contains a binary distribution of "The Glorious Glasgow
@@ -127,6 +132,17 @@ echo "/opt/lib/ghc-%{version}/lib/%{arch}-linux-ghc-%{version}" > %{buildroot}%{
 for i in $(find %{buildroot} -type f -executable -exec sh -c "file {} | grep -q 'dynamically linked'" \; -print); do
     chrpath -d $i
 done
+
+# Refer to the versioned LLVM tools explicitly. The binary distribution uses
+# the unversioned names, which our llvmNN packages don't reliably provide.
+sed -i \
+  -e 's|("LLVM llc command", "[^"]*")|("LLVM llc command", "%{_bindir}/llc-%{llvm_major}")|' \
+  -e 's|("LLVM opt command", "[^"]*")|("LLVM opt command", "%{_bindir}/opt-%{llvm_major}")|' \
+  -e 's|("LLVM llvm-as command", "[^"]*")|("LLVM llvm-as command", "%{_bindir}/clang-%{llvm_major}")|' \
+  %{buildroot}/opt/lib/ghc-%{version}/lib/settings
+grep -q '"%{_bindir}/llc-%{llvm_major}"' %{buildroot}/opt/lib/ghc-%{version}/lib/settings
+grep -q '"%{_bindir}/opt-%{llvm_major}"' %{buildroot}/opt/lib/ghc-%{version}/lib/settings
+grep -q '"%{_bindir}/clang-%{llvm_major}"' %{buildroot}/opt/lib/ghc-%{version}/lib/settings
 
 rm %{buildroot}/opt/lib/ghc-%{version}/lib/package.conf.d/.stamp
 (cd %{buildroot}/opt/lib/ghc-%{version}/lib/package.conf.d/
