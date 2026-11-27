@@ -35,6 +35,8 @@ Patch1:         fix-tests-valkey-9.1-module-list.patch
 # PATCH-FIX-UPSTREAM fix-tests-valkey-9.1-acl-databases.patch
 # https://github.com/valkey-io/valkey-py/commit/046c7fb9e8260c2d69d05141b1519903c4e40efe
 Patch2:         fix-tests-valkey-9.1-acl-databases.patch
+# PATCH-FIX-UPSTREAM fix-tests-valkey-9.2.patch gh#valkey-io/valkey-py@668cd5f
+Patch3:         fix-tests-valkey-9.2.patch
 BuildRequires:  %{python_module base >= 3.10}
 # Tests
 BuildRequires:  %{python_module cachetools}

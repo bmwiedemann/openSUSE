@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>1367680</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>4586ca81f425a64a13a2dd6cd27b001b</srcmd5>
+    <version>6.1.1</version>
+    <time>1795809763</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-tests-valkey-9.2.patch to fix tests with new valkey version</comment>
+    <requestid>1400608</requestid>
+  </revision>
 </revisionlist>

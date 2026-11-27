@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Nov 25 16:13:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add fix-tests-valkey-9.2.patch to fix tests with new valkey version
+
+-------------------------------------------------------------------
 Fri Jul 24 14:03:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add fix-tests-valkey-9.1-module-list.patch and

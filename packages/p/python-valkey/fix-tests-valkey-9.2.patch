@@ -1,0 +1,57 @@
+From 668cd5f0d22147c65f41aeb062e3117a5eddd9f8 Mon Sep 17 00:00:00 2001
+From: Bogdan Petre <bogdan.petre@aiven.io>
+Date: Fri, 20 Nov 2026 11:19:19 +0400
+Subject: [PATCH] Accept the new XINFO GROUPS lag in
+ test_xgroup_create_entries_read
+
+valkey-io/valkey#4983 changed how the consumer group lag is computed
+when the group's last ID is before the stream's first entry and no
+tombstone follows it: the lag is now the stream length instead of
+entries_added - entries_read. For this test that turns -6 into 1.
+
+The change shipped in 9.2.0 and was backported to 8.0.13, 8.1.12,
+9.0.8 and 9.1.4, so a single server version guard cannot tell the two
+behaviours apart. Accept either lag and keep asserting the other
+fields exactly, including entries-read, which is what the test covers.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Signed-off-by: Bogdan Petre <bogdan.petre@aiven.io>
+---
+ tests/test_commands.py | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+Index: valkey-py-6.1.1/tests/test_commands.py
+===================================================================
+--- valkey-py-6.1.1.orig/tests/test_commands.py
++++ valkey-py-6.1.1/tests/test_commands.py
+@@ -4342,17 +4342,19 @@ class TestValkeyCommands:
+         assert r.xinfo_groups(stream) == []
+ 
+         assert r.xgroup_create(stream, group, 0, entries_read=7)
+-        expected = [
+-            {
+-                "name": group.encode(),
+-                "consumers": 0,
+-                "pending": 0,
+-                "last-delivered-id": b"0-0",
+-                "entries-read": 7,
+-                "lag": -6,
+-            }
+-        ]
+-        assert r.xinfo_groups(stream) == expected
++        [info] = r.xinfo_groups(stream)
++        # The lag for a group positioned before the first entry changed in
++        # valkey-io/valkey#4983 (backported to 8.0.13, 8.1.12, 9.0.8 and
++        # 9.1.4): it is now the stream length instead of
++        # entries_added - entries_read.
++        assert info.pop("lag") in (-6, 1)
++        assert info == {
++            "name": group.encode(),
++            "consumers": 0,
++            "pending": 0,
++            "last-delivered-id": b"0-0",
++            "entries-read": 7,
++        }
+ 
+     @skip_if_server_version_lt("5.0.0")
+     def test_xgroup_delconsumer(self, r):
