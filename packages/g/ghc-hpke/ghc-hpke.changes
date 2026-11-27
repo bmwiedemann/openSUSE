@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Nov 21 01:37:24 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hpke to version 0.4.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Oct 27 08:04:58 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hpke to version 0.4.0.
