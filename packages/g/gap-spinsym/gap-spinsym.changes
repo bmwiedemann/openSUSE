@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Nov 27 00:18:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.3
+  * `SpinSymClassFusion` returns `fail` for unsupported pairs of
+    tables instead of raising an error; its messages are now
+    printed via the new info class `InfoSpinSym` (warnings via
+    `InfoWarning`).
+  * Notify CTblLib of all character tables in one call, which makes
+    loading SpinSym about 45 ms faster.
+
+-------------------------------------------------------------------
 Sat Nov 19 01:27:27 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.2
