@@ -6984,4 +6984,16 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   unkonwn reasons (boo#1290770)</comment>
     <requestid>1398269</requestid>
   </revision>
+  <revision rev="595" vrev="1">
+    <srcmd5>96322af9d40c49cce53c69f9b9953356</srcmd5>
+    <version>26.2.8</version>
+    <time>1795809764</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.2.8 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.8
+
+- tlsdesc_test.patch: replace with
+  https://gitlab.freedesktop.org/mesa/mesa/-/merge_requests/45593</comment>
+    <requestid>1400609</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package Mesa
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define provide_gl_headers_for_mesa 1
 
@@ -151,9 +152,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.7
+Version:        26.2.8
 Release:        0
-%define pkg_version 26.2.7
+%define pkg_version 26.2.8
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries
@@ -234,6 +235,7 @@ BuildRequires:  pkgconfig(presentproto)
 BuildRequires:  pkgconfig(vulkan)
 %endif
 %endif
+BuildRequires:  pkgconfig(libdisplay-info) >= 0.1.1
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb-dri3)
@@ -246,7 +248,6 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libdisplay-info) >= 0.1.1
 Provides:       Mesa7 = %{version}
 Obsoletes:      Mesa7 < %{version}
 Provides:       intel-i810-Mesa = %{version}
@@ -264,16 +265,16 @@ Obsoletes:      libXvMC_nouveau < %{version}
 Provides:       libXvMC_r600 = %{version}
 Obsoletes:      libXvMC_r600 < %{version}
 Provides:       libtxc_dxtn = %{version}
-Obsoletes:      libtxc_dxtn < %{version}
-Obsoletes:      libxatracker2 < %{version}
 Obsoletes:      Mesa-gallium < %{version}
-Obsoletes:      Mesa-libd3d < %{version}
 Obsoletes:      Mesa-libOpenCL < %{version}
+Obsoletes:      Mesa-libd3d < %{version}
+Obsoletes:      libtxc_dxtn < %{version}
+Obsoletes:      libvdpau_d3d12 < %{version}
 Obsoletes:      libvdpau_nouveau < %{version}
 Obsoletes:      libvdpau_r600 < %{version}
 Obsoletes:      libvdpau_radeonsi < %{version}
 Obsoletes:      libvdpau_virtio_gpu < %{version}
-Obsoletes:      libvdpau_d3d12 < %{version}
+Obsoletes:      libxatracker2 < %{version}
 %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
 BuildRequires:  python3-pycparser >= 2.20
@@ -363,9 +364,9 @@ Obsoletes:      Mesa-libIndirectGL-devel < %{version}
 Provides:       s2tc-devel = %{version}
 Obsoletes:      s2tc-devel < %{version}
 Provides:       libtxc_dxtn-devel = %{version}
+Obsoletes:      Mesa-libd3d-devel < %{version}
 Obsoletes:      libtxc_dxtn-devel < %{version}
 Obsoletes:      libxatracker-devel < %{version}
-Obsoletes:      Mesa-libd3d-devel < %{version}
 
 %description devel
 Mesa is a 3-D graphics library with an API which is very similar to
