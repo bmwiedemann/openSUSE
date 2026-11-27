@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:08:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.1:
+  * malloc_graph.use_stream() now preserves the original
+    exception when restoring the previous stream fails, instead
+    of masking it; a restore that fails with no body error still
+    raises the compile error, and the entered stream stays
+    selected (native path, which this build does not compile)
+  * New unit test for the stream-restore error paths (CUDA-only
+    runner gains the new test module)
+- Keep comfy-aimdo-detect-vendor-without-local-version.patch
+  (control.py unchanged, still applies cleanly)
+
+-------------------------------------------------------------------
 Thu Oct 22 11:42:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.6.0:

@@ -152,4 +152,12 @@ unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.
     <comment>Update to 0.6.0</comment>
     <requestid>1387097</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>cdc527a753af9e2b19a684dbcb725667</srcmd5>
+    <version>0.6.1</version>
+    <time>1795804932</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfy-aimdo to 0.6.1: use_stream() preserves original exception on failed stream restore; new stream-restore error tests.</comment>
+    <requestid>1400961</requestid>
+  </revision>
 </revisionlist>
