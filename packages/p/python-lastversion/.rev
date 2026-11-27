@@ -88,4 +88,16 @@
   * Transient HTTP failures are retried through the cache adapter</comment>
     <requestid>1382614</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e40d55cf4fae9d488b38ada22ebf945e</srcmd5>
+    <version>3.6.20</version>
+    <time>1795805128</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.20 (bsc#1292110, CVE-2026-137539)
+  * lastversion extract now rejects tar entries and links that
+    point outside the extraction directory. Safe links within the
+    archive are preserved.
+- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1401170</requestid>
+  </revision>
 </revisionlist>

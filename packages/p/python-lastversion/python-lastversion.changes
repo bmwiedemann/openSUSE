@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Nov 27 15:15:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.6.20 (bsc#1292110, CVE-2026-137539)
+  * lastversion extract now rejects tar entries and links that
+    point outside the extraction directory. Safe links within the
+    archive are preserved.
+- Convert to libalternatives on SLE-16-based and newer systems
+
+-------------------------------------------------------------------
 Mon Oct  5 19:07:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.19:

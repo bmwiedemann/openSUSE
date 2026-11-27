@@ -16,8 +16,13 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-lastversion
-Version:        3.6.19
+Version:        3.6.20
 Release:        0
 Summary:        Find the latest stable release version of an arbitrary project
 License:        BSD-2-Clause
@@ -39,9 +44,14 @@ Requires:       python-packaging
 Requires:       python-python-dateutil
 Requires:       python-requests >= 2.16.0
 Requires:       python-tqdm
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 # SECTION test requirements
 BuildRequires:  %{python_module CacheControl}
 BuildRequires:  %{python_module PyYAML}
@@ -79,6 +89,9 @@ inconsistent versioning schemes, pre-release detection, and asset filtering.
 
 %postun
 %python_uninstall_alternative lastversion
+
+%pre
+%python_libalternatives_reset_alternative lastversion
 
 %check
 # Mosts tests require network connection
