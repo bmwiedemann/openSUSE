@@ -16,20 +16,23 @@
 #
 
 Name:           gitea-cli
-Version:        1.2.0
+Version:        2.0.0
 Release:        0
 Summary:        Command-line client for Gitea
 License:        MIT
 URL:            https://gitea.com/gitea/cli
 Source0:        https://gitea.com/gitea/cli/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch1:         unix-set-R12-before-the-ppc64x-syscall-branch.patch
+# PATCH-FIX-UPSTREAM oauth-callback-graceful-shutdown.patch mcepl@cepl.eu
+# Let the OAuth callback response finish before closing its server
+Patch0:         oauth-callback-graceful-shutdown.patch
 BuildRequires:  git-core
 BuildRequires:  golang(API) >= 1.27
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
 Requires:       ca-certificates
 Requires:       git-core
+ExcludeArch:    %{ix86} %{arm32}
 
 %description
 The official Gitea command-line client, gt, manages repositories, issues,

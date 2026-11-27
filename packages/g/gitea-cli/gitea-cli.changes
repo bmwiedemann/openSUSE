@@ -1,4 +1,176 @@
 -------------------------------------------------------------------
+Thu Nov 19 10:28:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add oauth-callback-graceful-shutdown.patch: shut down the OAuth
+  loopback callback server gracefully, so the callback response
+  is not cut off with EOF (fixes intermittent failure of
+  TestOAuthLoginOpensAuthorizationURLInBrowser).
+
+-------------------------------------------------------------------
+Thu Nov 19 00:18:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.0.0:
+  gt 2.0.0 brings gt's flags and JSON output in line with gh,
+  keeps settings and stored tokens readable across versions,
+  works with narrowly scoped CI tokens, and fixes many bugs.
+  - Breaking changes
+    - --json and --csv require a field list. Like gh, --json
+      without fields fails with a usage error that lists the
+      available fields. Use --jq . or --template to read every
+      field. gt no longer guesses whether the word after --json
+      is a field list or an argument (#127).
+    - Absent values in JSON are null. A field without a value is
+      now null instead of "" or a missing key, an empty list is
+      [], and every declared field is always present. Timestamps
+      are RFC 3339 in UTC to the second. Fields that cost extra
+      requests, such as reviewers or blocked_by, are read only
+      when --json names them or the --jq/--template expression
+      mentions them (#127).
+    - gt pr merge uses gh's flag names: --message is now --body
+      (-b), --message-file is --body-file (-F) and --title is
+      --subject (-t). -s is now --squash instead of --method, and
+      --merge and --rebase gain -m and -r. --method stays,
+      long-only, for Gitea's other merge styles (#125).
+    - Renamed or removed flags, matching gh (#126):
+    - Teams are requested as ORG/TEAM in pr create --reviewer, pr
+      edit --add-reviewer/--remove-reviewer and pr review
+      request/cancel-request --reviewer. --reviewer-team,
+      --add-reviewer-team, --remove-reviewer-team and --team are
+      removed.
+    - pr create --allow-maintainer-edits is now
+      --no-maintainer-edit.
+    - search issue|pr replaces --assigned, --authored and
+      --mentioned with --assignee, --author and --mentions, which
+      take a user or @me.
+    - repo edit --actions is now --enable-actions, and repo edit
+      --private is removed in favour of --visibility.
+    - The hidden --before of gt notification is removed; use
+      --until.
+    - gt issue edit and gt pr edit rename
+      --add-blocks/--remove-blocks to gh's
+      --add-blocking/--remove-blocking (#99).
+    - Plain output is smaller for scripts and agents: job logs
+      print without Gitea's per-line timestamp (--timestamps
+      keeps it), run logs --failed and run view --log-failed
+      print only the failed steps, and piped lists shorten commit
+      IDs to twelve characters and drop the URL column where the
+      row already identifies the item (#115).
+    - Tokens in the system keyring move to the service
+      gitea-cli:HOST[/PATH] with the account name, so they can be
+      found in Keychain Access and similar tools. Existing tokens
+      are moved the first time 2.0 uses them; gt 1.x cannot read
+      moved tokens (#124).
+    - gt config set with an unknown key now stores it with a
+      warning instead of failing (#124).
+    - A 403 for a missing token scope now exits 4
+      (authentication) instead of 1 (#123).
+    - Polling commands (run watch, run logs --follow, workflow
+      run --follow, pr checks --watch, notification watch)
+      require --interval of at least 1s (#122).
+    - go install is no longer a supported way to install gt: the
+      module stays at gitea.dev/cli, so go install …@latest keeps
+      resolving to 1.x. Use a release binary, a package or the
+      install script (#118).
+  - Features
+    - gt issue create --blocked-by and --blocking set
+      dependencies on the new issue, gt label list takes
+      --search, --sort, --order and --web, and gt repo list takes
+      --visibility, --archived, --no-archived, --topic and
+      --language (#99).
+    - Settings files from a later gt, or with settings this
+      version does not know, are read and kept when gt rewrites
+      them, so several gt versions can share one configuration
+      (#124).
+    - A GITEA_TOKEN without the read:user scope now works for
+      every command that does not need to know whose token it is,
+      and so does the git credential helper. gt auth login --help
+      and gt help environment explain which scopes a token needs
+      (#123).
+    - Issue and pull request JSON gains locked, and pull request
+      JSON gains pinned. gt pr view tells a deleted head branch
+      or open blockers apart from conflicts (#120).
+    - gt extension list marks a local extension whose executable
+      no longer exists (#119).
+    - gt schema marks date-time fields (#127).
+  - Security
+    - Local extensions run only when their executable, or what it
+      links to, is a regular file owned by you or root that not
+      every user can write to or replace (#119).
+    - The commit an extension install resolves must be a full
+      commit ID before it is shown or passed to git (#119).
+    - --debug strips control characters from transport errors,
+      which can quote server text (#119).
+    - gt run download checks every artifact name before writing
+      anything, also when extracting into directories (#119).
+    - A job log that is missing no longer prints the server's raw
+      error, which could include its storage path (#122).
+  - Fixes
+    - secret set and variable set refuse values that are not
+      valid UTF-8 instead of silently changing them (#119).
+    - gt issue create --blocked-by/--blocking refuses a missing
+      issue before creating the new one (#120).
+    - Pin, unpin, lock and unlock on an issue or pull request
+      already in that state report it and change nothing, instead
+      of a server error (#120).
+    - Merging a pull request blocked by an open dependency names
+      the blocking issues instead of a server error (#120).
+    - gt commit pr prints the pull request without --json and
+      accepts abbreviated SHAs (#120).
+    - gt pr checks --required names the base branch when its
+      protection requires no checks, gt status --json prints
+      mentions: [] instead of null, gt pr review --pending and gt
+      pr review reply report a missing body correctly, and gt
+      time cancel no longer asks to discard a stopwatch that is
+      not running (#120).
+    - repo edit --dry-run with topic flags, and repo delete/repo
+      archive with --dry-run in a clone, no longer fail (#121).
+    - repo archive with several repositories checks every
+      argument before archiving any, repo create --team checks
+      its owner before any request, and repo list
+      --archived=false is honoured (#121).
+    - tag list and tag create JSON fill the tagger and
+      verification fields, and tag protect warns when Gitea
+      leaves out users or teams (#121).
+    - A case-only rename of an organization's owner team is
+      refused before it reaches Gitea, gpg-key verify accepts the
+      numeric ID shown by gpg-key list, and release download
+      skips an asset whose name cannot be a file name instead of
+      downloading nothing (#121).
+    - gt run watch and gt workflow run --follow work on servers
+      that cannot list workflows or jobs, as gt run view does
+      (#122).
+    - gt run logs reports a job whose logs are missing, for
+      example removed by retention, and goes on with the other
+      jobs (#122).
+    - The missing-runner hint also covers queued jobs after other
+      jobs started, runner view --global no longer claims a
+      runner belongs to the instance, project … --account errors
+      no longer name an empty repository, and run cancel --force
+      --dry-run refuses a completed run (#122).
+  - Build
+    - Tags such as v2.0.0-rc1 are published as pre-releases and
+      no longer move the Docker latest tag, and version
+      comparison orders pre-releases before their release, so gt
+      upgrade and the update notice see 2.0.0 as newer than
+      2.0.0-rc1 (#118).
+    - The release workflow of a new Go extension (gt extension
+      create --precompiled=go) installs the released gt instead
+      of running go run …@latest (#118).
+    - Update the Go toolchain to 1.27.4 (#109).
+  - Internal
+    - Transport timeout tests run on a fake clock, so they no
+      longer fail on a busy machine, such as during a makepkg
+      check (#110, fixes #108).
+    - Dependency updates, including golang.org/x/crypto v0.59.0,
+      golang.org/x/oauth2 v0.38.0 and github.com/spf13/pflag
+      v1.1.0, and Gitea 28.4.0 for the integration tests (#116,
+      #128).
+- Don’t build on 32bit architectures (are there any developers
+  using that?)
+- Remove upstreamed patch:
+  - unix-set-R12-before-the-ppc64x-syscall-branch.patch
+
+-------------------------------------------------------------------
 Mon Nov  9 23:03:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.2.0:
@@ -77,7 +249,6 @@ Mon Nov  9 23:03:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
       github.com/itchyny/gojq to v0.12.20 (#107).
     - Fix a flaky test that counted requests during concurrent
       page reads (#106).
-
 
 -------------------------------------------------------------------
 Thu Nov  5 19:37:22 UTC 2026 - Matej Cepl <mcepl@cepl.eu>

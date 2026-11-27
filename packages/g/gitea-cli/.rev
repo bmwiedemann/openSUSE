@@ -82,4 +82,41 @@ suitable for local development and CI.</comment>
       those who administer the repository. --match-head-commit</comment>
     <requestid>1396488</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>836322702306b92985152d82a7528962</srcmd5>
+    <version>2.0.0</version>
+    <time>1795805039</time>
+    <user>anag_factory</user>
+    <comment>- Add oauth-callback-graceful-shutdown.patch: shut down the OAuth
+  loopback callback server gracefully, so the callback response
+  is not cut off with EOF (fixes intermittent failure of
+  TestOAuthLoginOpensAuthorizationURLInBrowser).
+
+- Update to 2.0.0:
+  gt 2.0.0 brings gt's flags and JSON output in line with gh,
+  keeps settings and stored tokens readable across versions,
+  works with narrowly scoped CI tokens, and fixes many bugs.
+  - Breaking changes
+    - --json and --csv require a field list. Like gh, --json
+      without fields fails with a usage error that lists the
+      available fields. Use --jq . or --template to read every
+      field. gt no longer guesses whether the word after --json
+      is a field list or an argument (#127).
+    - Absent values in JSON are null. A field without a value is
+      now null instead of &quot;&quot; or a missing key, an empty list is
+      [], and every declared field is always present. Timestamps
+      are RFC 3339 in UTC to the second. Fields that cost extra
+      requests, such as reviewers or blocked_by, are read only
+      when --json names them or the --jq/--template expression
+      mentions them (#127).
+    - gt pr merge uses gh's flag names: --message is now --body
+      (-b), --message-file is --body-file (-F) and --title is
+      --subject (-t). -s is now --squash instead of --method, and
+      --merge and --rebase gain -m and -r. --method stays,
+      long-only, for Gitea's other merge styles (#125).
+    - Renamed or removed flags, matching gh (#126):
+    - Teams are requested as ORG/TEAM in pr create --reviewer, pr
+      edit --add-reviewer/--remove-reviewer and pr review</comment>
+    <requestid>1401079</requestid>
+  </revision>
 </revisionlist>

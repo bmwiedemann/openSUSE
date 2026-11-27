@@ -1,0 +1,35 @@
+From: Matěj Cepl <mcepl@cepl.eu>
+Subject: auth: shut down the OAuth callback server gracefully
+
+The loopback callback handler hands the authorization code to
+OAuthLogin before its response is flushed. OAuthLogin may then
+exchange the code and return, and the deferred server.Close()
+closes active connections at once, so the browser (or the test
+client) gets EOF instead of "Authorization received".
+
+Use server.Shutdown() with a short timeout, which waits for
+in-flight responses to finish, and fall back to Close().
+
+This made TestOAuthLoginOpensAuthorizationURLInBrowser fail
+intermittently in OBS with:
+  Get "http://127.0.0.1:NNNN?code=valid-code&state=...": EOF
+Index: b/internal/auth/oauth.go
+===================================================================
+--- a/internal/auth/oauth.go
++++ b/internal/auth/oauth.go
+@@ -109,7 +109,14 @@
+ 			}
+ 		}
+ 	}()
+-	defer server.Close()
++	// Shut down gracefully so the browser receives the callback response before the connection closes.
++	defer func() {
++		shutdownCtx, cancel := context.WithTimeout(context.WithoutCancel(parent), time.Second)
++		defer cancel()
++		if server.Shutdown(shutdownCtx) != nil {
++			_ = server.Close()
++		}
++	}()
+ 	authorizeURL := config.AuthCodeURL(state, oauth2.S256ChallengeOption(verifier))
+ 	if opts.Authorize == nil {
+ 		return Credential{}, errors.New("OAuth requires an authorization URL handler")
