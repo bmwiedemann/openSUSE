@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:43:45 UTC 2026 - Marguerite Su <i@marguerite.su>
+
+- update to 5.1.16
+  * Sanitize the theme name
+  * Implement the new fcitx behavior: default theme can not be
+    override by user file (#87)
+  * Since how we always update cached surrounding, the surrounding
+    also need to be replayed
+  * No matter IC is created or not, update should update ICData.
+- changes in 5.1.15
+  * fix: pixelated candidate window theme images on Wayland
+    fractional scale (#84)
+- changes in 5.1.13
+  * Remove custom xdg_popup_reposition() implementation when Qt
+    version is greater equal than 6.10.
+
+-------------------------------------------------------------------
 Sat Feb  7 06:34:32 UTC 2026 - Marguerite Su <i@marguerite.su>
 
 - update to 5.1.12

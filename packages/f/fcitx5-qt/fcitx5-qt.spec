@@ -29,7 +29,7 @@
 
 %define build_qt5 1
 Name:           fcitx5-qt
-Version:        5.1.12
+Version:        5.1.16
 Release:        0
 Summary:        Qt library and IM module for fcitx5
 License:        BSD-3-Clause AND LGPL-2.1-or-later
