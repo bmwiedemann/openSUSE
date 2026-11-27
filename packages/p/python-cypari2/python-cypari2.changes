@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Nov 24 18:16:26 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.2.9
+  * Revert the dedicated PARI owner thread from #215
+  * Preserve active GP stack frames across Python callbacks and invoke the installed Sage doctest runner
+
+-------------------------------------------------------------------
+Sat Nov 21 19:34:19 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Initial Checkin
