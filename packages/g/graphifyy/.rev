@@ -159,4 +159,12 @@
     <comment>Update graphifyy to 0.9.119: extractor fixes (python/go/cobol), serve on core install, query/export perf.</comment>
     <requestid>1400530</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b8081a9ddc4669207ba6ee3da7dbd4fe</srcmd5>
+    <version>0.9.120</version>
+    <time>1795804939</time>
+    <user>anag_factory</user>
+    <comment>Update graphifyy to 0.9.120: affected MCP tool, query perf, python shadowing fixes, exporter hardening.</comment>
+    <requestid>1400968</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 # (successor of the python-graphifyy multibuild package).
 %define pythons %{primary_python}
 Name:           graphifyy
-Version:        0.9.119
+Version:        0.9.120
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -242,7 +242,10 @@ python%{python_version} -m compileall -q -f -o 0 -o 1 --invalidation-mode unchec
 # PYTEST_ADDOPTS --basetemp avoids pytest-of-abuild: two query CLI
 # tests assert "build" not in the output, which matches the OBS user
 export PYTEST_ADDOPTS="--basetemp=%{_tmppath}/gfytmp"
-%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_terraform_modules.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py --ignore tests/test_erlang_extractor.py --ignore tests/test_r_extractor.py --ignore tests/test_solidity_extractor.py --ignore tests/test_vbnet_extractor.py --ignore tests/test_ext_tagged_id_clash.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload or test_strings_and_comments_are_never_blanked or test_julia_qualified_and_relative_imports or test_julia_enum_and_members_are_extracted or test_julia_struct_field_type_context or test_recovery_keeps_a_real_routine_sharing_the_misread_line or test_call_through_a_global_reaches_the_method or test_parameterless_qualified_call_is_seen_at_all or test_global_call_beats_a_same_named_method_on_the_caller or test_method_inherited_by_the_globals_class_resolves or test_shadowed_names_produce_no_call_at_all or test_local_and_field_qualifiers_are_withheld_by_the_extractor or test_array_typed_global_is_not_given_its_element_type or test_global_is_invisible_without_a_uses_clause or test_resolver_only_adds_extracted_call_edges)"
+# the two rejected-arguments tests assert the new serve tool's own handler
+# messages, but Factory ships mcp 1.30 (upstream lockfile: 2.3.0) whose
+# server schema-validates tool input first ("Input validation error: ...")
+%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_terraform_modules.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py --ignore tests/test_erlang_extractor.py --ignore tests/test_r_extractor.py --ignore tests/test_solidity_extractor.py --ignore tests/test_vbnet_extractor.py --ignore tests/test_ext_tagged_id_clash.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload or test_strings_and_comments_are_never_blanked or test_julia_qualified_and_relative_imports or test_julia_enum_and_members_are_extracted or test_julia_struct_field_type_context or test_recovery_keeps_a_real_routine_sharing_the_misread_line or test_call_through_a_global_reaches_the_method or test_parameterless_qualified_call_is_seen_at_all or test_global_call_beats_a_same_named_method_on_the_caller or test_method_inherited_by_the_globals_class_resolves or test_shadowed_names_produce_no_call_at_all or test_local_and_field_qualifiers_are_withheld_by_the_extractor or test_array_typed_global_is_not_given_its_element_type or test_global_is_invisible_without_a_uses_clause or test_resolver_only_adds_extracted_call_edges or test_affected_rejects_bad_arguments or test_query_graph_rejects_malformed_seeds)"
 
 %files
 %doc README.md
