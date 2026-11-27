@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
+Provides:       bundled(mxml) = 2.7
 Requires:       pkgconfig(udev)
 # FIXME: The application dlopens libcolordcompat.so, which does not
 # exists in openSUSE colord package. We should use Suggests
@@ -125,7 +126,7 @@ install -d -m 0755 %{buildroot}%{_udevrulesdir}
 install -p -m 0644 usb/55-Argyll.rules \
         %{buildroot}%{_udevrulesdir}
 chmod a-x *.txt
-find doc -type f -exec chmod a-x {} \;
+find doc -type f -exec chmod a-x {} +
 
 %files
 %doc *.txt

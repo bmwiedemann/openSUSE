@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Nov 21 19:28:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Mark specfile with bundled(mxml) so we can identify outdated
+  bundled copies of mxml.
+- Use multi-argument chmod execution from for find -exec.
+
+-------------------------------------------------------------------
 Sat Sep 26 15:53:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.5.0 (bug fix release):
