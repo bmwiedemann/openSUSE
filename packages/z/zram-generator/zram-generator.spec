@@ -1,7 +1,7 @@
 #
 # spec file for package zram-generator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,34 +16,35 @@
 #
 
 
-%global _systemd_util_dir /usr/lib/systemd
-
+%global _systemd_util_dir %{_prefix}/lib/systemd
 Name:           zram-generator
 Version:        1.2.1
 Release:        0
 Summary:        Systemd unit generator for zram swap devices
 License:        MIT
 Group:          Development/Libraries/Rust
-
 # Upstream license specification: MIT
 URL:            https://github.com/systemd/zram-generator
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
-
 # pregenerated man-pages to avoid dependency on ronn
 Source2:        zram-generator.conf.5
 Source3:        zram-generator.8
-
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig
+BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(systemd)
 
 %description
-This is a systemd unit generator that enables swap on zram.
-(With zram, there is no physical swap device. Part of the avaialable RAM
-is used to store compressed pages, essentially trading CPU cycles for memory.)
+This is a systemd unit generator that enables swap on zram.  (With zram, there
+is no physical swap device. Part of the avaialable RAM is used to store
+compressed pages, essentially trading CPU cycles for memory.)
 
-To configure and activate swap and zram devices with file-systems,  create a configuration file in /etc/systemd/zram-generator.conf. You can consult  %{_datadir}/doc/%{name}/zram-generator.conf.example for an example and a list of available settings.
+To configure and activate swap and zram devices with file-systems,  create a
+configuration file in %{_sysconfdir}/systemd/zram-generator.conf. You can consult
+%{_datadir}/doc/%{name}/zram-generator.conf.example for an example and a list
+of available settings.
 
 %prep
 %autosetup -a1 -p1 -n %{name}-%{version}
@@ -59,6 +60,8 @@ export LC_ALL=C.UTF-8
 
 %install
 %make_install SYSTEMD_SYSTEM_UNIT_DIR=%{_unitdir} SYSTEMD_SYSTEM_GENERATOR_DIR=%{_systemdgeneratordir} NOBUILD=1
+install -d %{buildroot}/%{_modulesloaddir}
+printf "zram\n" > %{buildroot}/%{_modulesloaddir}/%{name}.conf
 
 %check
 export SYSTEMD_UTIL_DIR=%{_systemd_util_dir}
@@ -71,7 +74,8 @@ export SYSTEMD_UTIL_DIR=%{_systemd_util_dir}
 %dir %{_systemdgeneratordir}
 %{_systemdgeneratordir}/zram-generator
 %{_unitdir}/systemd-zram-setup@.service
-%{_mandir}/man8/zram-generator.8*
-%{_mandir}/man5/zram-generator.conf.5*
+%{_modulesloaddir}/%{name}.conf
+%{_mandir}/man8/zram-generator.8%{?ext_man}
+%{_mandir}/man5/zram-generator.conf.5%{?ext_man}
 
 %changelog

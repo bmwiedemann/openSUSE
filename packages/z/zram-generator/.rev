@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1230796</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2107585eb1ce55ee636a02e8f04e93ae</srcmd5>
+    <version>1.2.1</version>
+    <time>1795805044</time>
+    <user>anag_factory</user>
+    <comment>- autoload the zram module</comment>
+    <requestid>1401086</requestid>
+  </revision>
 </revisionlist>

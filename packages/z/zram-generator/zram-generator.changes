@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Nov 27 10:53:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- autoload the zram module
+
+-------------------------------------------------------------------
 Tue Dec 10 16:18:41 UTC 2024 - bbrunner@suse.com
 
 - Update to version 1.2.1:
@@ -67,7 +72,7 @@ Fri Nov 26 15:16:23 UTC 2021 - Benjamin Brunner <bbrunner@suse.com>
   rubygem-ronn, which is no longer maintained
 
 -------------------------------------------------------------------
-Thu Nov 11 08:54:15 UTC 2021 -  Benjamin Brunner <bbrunner@suse.com> 
+Thu Nov 11 08:54:15 UTC 2021 -  Benjamin Brunner <bbrunner@suse.com>
 
 - Update to version 1.0.1~git25.5e0ec60:
   * make: add BUILDTYPE switch
