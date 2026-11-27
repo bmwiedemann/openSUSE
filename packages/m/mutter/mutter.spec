@@ -40,6 +40,8 @@ Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 # PATCH-FIX-UPSTREAM mutter-fix-aarch64.patch boo#1289464
 Patch5:         mutter-fix-aarch64.patch
+# PATCH-FIX-UPSTREAM mutter-fix-evdi-leak.patch bsc#1291211, glgo#GNOME/mutter!5372 alynx.zhou@suse.com -- Fix DisplayLink/evdi memory leak
+Patch6:         mutter-fix-evdi-leak.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  meson >= 1.3.0

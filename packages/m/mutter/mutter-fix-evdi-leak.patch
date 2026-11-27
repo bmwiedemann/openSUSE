@@ -1,0 +1,67 @@
+From 9bc8cd8427a5aa9bf8976acaef4426ce09a08537 Mon Sep 17 00:00:00 2001
+From: Koundinya Goparaju <koundinya.goparaju@gmail.com>
+Date: Tue, 6 Oct 2026 16:57:39 +0200
+Subject: [PATCH] onscreen/native: Check the CRTC GPU's copy mode for zero-copy
+ surfaces
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Since commit 8003d680, create_bos_gbm() only looks up the CRTC's
+primary plane for surfaces that aren't sharable. Sharable surfaces get
+the first entry of default_formats, ARGB2101010, even when the buffer
+will be scanned out directly on the secondary GPU through zero-copy.
+evdi (DisplayLink) planes don't support that format, so the atomic
+commit fails and the monitor stays black.
+
+Also look up the primary plane when the GPU driving the CRTC uses
+zero-copy, so the format is limited to what that plane supports.
+
+The copy mode has to come from the CRTC's GPU. renderer_gpu_data here
+belongs to the render GPU, and its copy mode is SECONDARY_GPU whenever
+it could act as a secondary GPU itself.
+
+Based on a test patch by Michel Dänzer.
+
+Fixes: 8003d6806a ("onscreen/native: Choose GBM format directly for FBO path")
+Closes: https://gitlab.gnome.org/GNOME/mutter/-/issues/5100
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5372>
+---
+ src/backends/native/meta-onscreen-native.c | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
+index 7297ab1da5f..d8dd12fd1c1 100644
+--- a/src/backends/native/meta-onscreen-native.c
++++ b/src/backends/native/meta-onscreen-native.c
+@@ -2720,6 +2720,7 @@ create_bos_gbm (CoglOnscreen  *onscreen,
+     meta_renderer_egl_get_renderer_gpu_data (META_RENDERER_EGL (cogl_renderer));
+   MetaCrtcKms *crtc_kms = META_CRTC_KMS (onscreen_native->crtc);
+   MetaKmsPlane *kms_plane = NULL;
++  MetaRendererNativeGpuData *crtc_gpu_data = NULL;
+   uint32_t gbm_flags = GBM_BO_USE_RENDERING;
+   size_t num_bos = G_N_ELEMENTS (onscreen_native->gbm.bos);
+   MetaRenderDevice *render_device;
+@@ -2733,7 +2734,18 @@ create_bos_gbm (CoglOnscreen  *onscreen,
+   int i;
+ 
+   should_be_sharable = should_surface_be_sharable (onscreen);
+-  if (!should_be_sharable)
++  if (should_be_sharable)
++    {
++      MetaGpu *crtc_gpu = meta_crtc_get_gpu (onscreen_native->crtc);
++
++      crtc_gpu_data =
++        meta_renderer_native_get_gpu_data (renderer_native,
++                                           META_GPU_KMS (crtc_gpu));
++    }
++
++  if (!should_be_sharable ||
++      crtc_gpu_data->secondary.copy_mode ==
++      META_SHARED_FRAMEBUFFER_COPY_MODE_ZERO)
+     {
+       kms_plane = meta_crtc_kms_get_assigned_primary_plane (crtc_kms);
+       gbm_flags |= GBM_BO_USE_SCANOUT;
+-- 
+GitLab
+

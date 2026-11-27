@@ -2562,4 +2562,13 @@ New stable rel</comment>
   *  mutter-fix-aarch64.patch</comment>
     <requestid>1397283</requestid>
   </revision>
+  <revision rev="275" vrev="3">
+    <srcmd5>162210d4845072b7945fb44056921c94</srcmd5>
+    <version>51.1</version>
+    <time>1795804831</time>
+    <user>anag_factory</user>
+    <comment>- Add mutter-fix-evdi-leak.patch: Fix memory leak when using
+  DisplayLink/evdi. (bsc#1291211, glgo#GNOME/mutter!5372)</comment>
+    <requestid>1400485</requestid>
+  </revision>
 </revisionlist>

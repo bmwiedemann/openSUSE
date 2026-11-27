@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Nov 25 01:27:18 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add mutter-fix-evdi-leak.patch: Fix memory leak when using
+  DisplayLink/evdi. (bsc#1291211, glgo#GNOME/mutter!5372)
+
+-------------------------------------------------------------------
 Thu Nov 12 08:44:28 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix boo#1289464 on aarch64:
