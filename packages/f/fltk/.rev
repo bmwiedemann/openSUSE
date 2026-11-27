@@ -459,4 +459,12 @@ Feel free to revert the update to submit it to Factory or to leave the request o
     <comment>[bsc#1288053], [bsc#1288054], CVE-2026-116723, CVE-2026-116724</comment>
     <requestid>1393607</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>7018b3ec73c309cd45f4c8c4d1903ef7</srcmd5>
+    <version>1.3.11</version>
+    <time>1795804832</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1291607], CVE-2026-135433</comment>
+    <requestid>1400504</requestid>
+  </revision>
 </revisionlist>

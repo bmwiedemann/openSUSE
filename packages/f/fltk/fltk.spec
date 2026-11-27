@@ -32,6 +32,8 @@ Patch0:         fltk-1.3.4-fltk_config.patch
 Patch2:         fltk-1.3.2-verbose_build.patch
 # CVE-2026-116723: stack-based buffer overflow in `Fl_BMP_Image:load_bmp_()` can lead to crash or code execution [bsc#1288053]|CVE-2026-116724: integer overflow in `Fl_BMP_Image:load_bmp_()` can lead to heap corruption [bsc#1288054]
 Patch3:         fltk-CVE-2026-116723,116724.patch
+# CVE-2026-135433: a heap buffer overflow vulnerability in Fl_BMP_Image:load_bmp_() [bsc#1291607]
+Patch4:         fltk-CVE-2026-135433.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel

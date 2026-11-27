@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Nov 25 08:53:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-135433: a heap buffer overflow vulnerability in Fl_BMP_Image:load_bmp_() [bsc#1291607]
+  * fltk-CVE-2026-135433.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 10:40:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
