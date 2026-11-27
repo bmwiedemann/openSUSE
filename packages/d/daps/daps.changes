@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:14:23 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta19
+
+Beta release DAPS 4.0~beta19
+
+* New feature
+  Allow HTML_EXTRA_DIR to overwrite files in static/
+  HTML_EXTRA_DIR allows to add additional CSS or images. This update
+  allows to additionally overwrite files provided by the stylesheet
+  if you use the same directory structure and filenames. To e.g.
+  overwrite static/images/logo.svg from the stylesheet package,
+  create a directory $PRJ_DIR/html_extra/static/images/logo.svg and
+  run daps -d <DC> html --extra-dir=html_extra/static/
+
+* Bugfix:
+  Fix building daps with python-lxml 6.1.3, which no longer loads
+  external parameter entities by default.
+  Fix provided by Ana Guerrero.
+  (https://bugzilla.opensuse.org/show_bug.cgi?id=1289922)
+
+-------------------------------------------------------------------
+Fri Oct 16 19:54:38 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta18
+
+Beta release DAPS 4.0~beta18
+
+* Bugfix:
+  - Fixed "Argument list too long" for list-srcfiles
+    . On big projects the list of files may become too long so
+      ARG_MAX of bash is exceeded causing an "argument list too
+      long" error.
+      Workaround: writing the list into a file using make's $(file)
+      funktion and then read from the file
+
+-------------------------------------------------------------------
 Fri Oct 16 10:39:04 UTC 2026 - Frank Sundermeyer <fs@suse.com> - 4.0~beta17
 
 Beta release DAPS 4.0~beta17

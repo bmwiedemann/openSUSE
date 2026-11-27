@@ -412,4 +412,12 @@ Changelog:
   page for adoc sources</comment>
     <requestid>1392074</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>7c4e9196eaf3533ac109b12d77e01723</srcmd5>
+    <version>4.0~beta19</version>
+    <time>1795804814</time>
+    <user>anag_factory</user>
+    <comment>Beta release DAPS 4.0~beta19 (fixes build issues in Factory)</comment>
+    <requestid>1401171</requestid>
+  </revision>
 </revisionlist>
