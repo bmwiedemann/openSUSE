@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Nov 21 13:30:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.49.0 (2.049)
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.049     2026-11-20
+      - Prevent an infinite loop in PDFs with multiple cross-reference streams
+        using the same object ID.
+      - Prevent an infinite loop if a series of cross-reference tables contain a
+        circular reference. [CVE-2026-135092] [bsc#1292127]
+      - [GH-97] Fix: When embedding from multiple PDFs, import_page/embed_page can
+        embed an object from a prior PDF due to an unreliable cache key (reported
+        by Adam Wipprecht).
+
+-------------------------------------------------------------------
 Tue Oct 14 12:16:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.48.0 (2.048)
