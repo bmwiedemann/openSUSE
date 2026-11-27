@@ -17,7 +17,7 @@
 
 
 Name:           ktop
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        A top-like tool for your Kubernetes clusters
 License:        Apache-2.0

@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:51:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.7.9:
+  ktop v0.7.9 introduces the [4] Storage and [5] Network TUI tabs,
+  live kubelet volume capacity and inode utilization telemetry,
+  EndpointSlice readiness health tracking, cAdvisor network packet
+  drop and error rates, matching --noui snapshot schema additions,
+  and Pod Detail storage/network enrichments (#178).
+  * Storage Telemetry & [4] Storage Tab (prom, metrics,
+    views/model, k8s, views/storage)
+    - Kubelet Volume Metrics Scraping (prom/types.go,
+      metrics/source.go, metrics/prom/prom_source.go): Added
+      kubelet_volume_stats_{capacity_bytes,used_bytes,available_bytes,inodes,inodes_used}
+      to DefaultMetricAllowlist and implemented
+      metrics.VolumeStatsProvider
+      (PromMetricsSource.GetAllVolumeStats) to aggregate per-PVC
+      byte usage, fill percentage, and inode utilization
+      percentages.
+    - Storage View Models & Controller
+      (views/model/storage_model.go, k8s/client_controller.go,
+      k8s/storage_controller.go): Added normalized PVCModel,
+      PVModel, StorageClassModel, StorageSummary, and
+      StorageSnapshot types alongside sorting helpers
+      (SortPVCModelsBy, SortPVModelsBy). Added startup RBAC
+      capability checks for StorageClass alongside existing
+      PersistentVolume and PersistentVolumeClaim informers,
+      exposing Controller.GetStorageSnapshot and
+      SetStorageRefreshFunc.
+    - [4] Storage TUI Page (views/storage/summary.go,
+      views/storage/page.go): Added a 1-line summary bar displaying
+      bound/pending PVCs, >=85% fill alert count, PV bound totals,
+      StorageClasses, used/capacity totals, and disk read/write
+      rates, paired with interactive sortable/filterable
+      PersistentVolumeClaims (FILL% and INODES% highlighted at
+      >=85% warning and >=95% error thresholds) and
+      PersistentVolumes tables, y clipboard copy, / row filtering,
+      global namespace filter sync, and Enter YAML inspection
+      modals.
+  * Network Telemetry & [5] Network Tab (prom, metrics,
+    views/model, k8s, views/network)
+    - cAdvisor Drop & Error Counters (prom/types.go,
+      prom/scraper.go, metrics/source.go,
+      metrics/prom/prom_source.go): Added
+      container_network_{receive,transmit}_{packets_dropped,errors}_total
+      to DefaultMetricAllowlist and updated
+      shouldKeepCAdvisorSeries to retain both node-root (id="/")
+      and pod-sandbox (container="POD") series for drop and error
+      counters. Implemented metrics.NetworkErrorsProvider
+      (GetClusterNetworkErrorRates and GetPodNetworkErrorRates).
+    - Network View Models & Controller
+      (views/model/network_model.go, k8s/client_controller.go,
+      k8s/network_controller.go): Added normalized ServiceModel
+      (with HasEndpointAlert()), IngressModel, NodeNetworkModel,
+      NetworkSummary, and NetworkSnapshot types with
+      SortServiceModelsBy and SortIngressModelsBy. Added RBAC-gated
+      informers for Service, EndpointSlice (discovery.k8s.io/v1),
+      and Ingress with deduplicated ready/total endpoint
+      aggregation in Controller.GetNetworkSnapshot.
+    - [5] Network TUI Page (views/network/summary.go,
+      views/network/page.go): Added a summary strip reporting total
+      Services, zero-endpoint alert counts, Ingresses, cluster
+      RX/TX throughput, and drop/error rates, paired with Services
+      (highlighting selector-backed services with zero ready
+      endpoints) and Ingresses tables, / row filtering, y copy, and
+      Enter YAML modals.
+  * Snapshots, Pod Detail, Navigation & Documentation
+    (internal/snapshot, collector, views/overview, views/pod,
+    application, config, cmd, ui, docs, hack/load-test)
+    - Headless Snapshot & Collector Support
+      (internal/snapshot/snapshot.go, internal/snapshot/builder.go,
+      collector/collector.go, collector/k8s_provider.go): Extended
+      Snapshot, BuildInput, and collector.Aggregate with Storage
+      (*StorageData) and Network (*NetworkData) sections, added
+      VolumeUsages, NetworkDropsPerSec, and NetworkErrorsPerSec on
+      PodData, and updated Snapshot.Clone() to deep-copy all nested
+      slices.
+    - Pod Detail Enrichments (views/overview/main_panel.go,
+      views/pod/detail.go): Joined mounted PVC usage stats and
+      per-pod network drop/error rates in buildPodDetailData,
+      rendering PVCs: fill percentages (colored at >=85% and >=95%)
+      and non-zero NetErr: counters inside the Pod Detail view.
+    - Navigation, CLI, Docs & Load Test Fixtures (application/,
+      config/, cmd/, ui/, docs/, hack/load-test/): Registered [4]
+      Storage (PageStorage) and [5] Network (PageNetwork), added
+      storage and network to --page / ui.default_page validation
+      and ui.StorageContext / ui.NetworkContext footers, updated
+      docs/cli.md, docs/noui.md, and docs/prometheus.md, and
+      expanded hack/load-test/ with live PVC/PV disk I/O and
+      Service/Ingress/HTTP traffic workloads.
+  * Upgrade & Compatibility Notes
+    - Backward Compatibility: Fully compatible with existing CLI
+      flags, kubectl ktop plugin invocation, ~/.ktop/config.yaml,
+      and existing --noui JSON/JSONL consumers; new storage,
+      network, and per-pod fields are additive with omitempty.
+    - RBAC Resilience: StorageClass, Service, EndpointSlice, and
+      Ingress informers probe cluster permissions on startup and
+      degrade without error if RBAC restricts listing optional
+      resources.
+    - Deprecations & Migration Actions: None.
+
+-------------------------------------------------------------------
 Thu Nov 26 06:35:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.8:
