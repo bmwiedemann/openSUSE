@@ -3328,4 +3328,20 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   using LANGUAGE env var (CVE-2026-84243, bsc#1289299, BZ #17142) (forwarded request 1396497 from Andreas_Schwab)</comment>
     <requestid>1396498</requestid>
   </revision>
+  <revision rev="311" vrev="5">
+    <srcmd5>8afcca3751a9066b769b907ce575fe9f</srcmd5>
+    <version>2.44</version>
+    <time>1795804805</time>
+    <user>anag_factory</user>
+    <comment>- regex-alloc-fail-double-free.patch: posix: Fix double free after
+  allocation failure in regcomp and regexec (CVE-2026-100290, bsc#1290239,
+  BZ #34991)
+- wide-scanf-double-null.patch: stdio-common: Fix double null terminator
+  in wide scanf %s and %[ (CVE-2026-115819, bsc#1290240, BZ #34989)
+- iso-2022-cn-ext-so-handling.patch: iconv: ISO-2022-CN-EXT: fix SO
+  handling without a designation (CVE-2026-121758, bsc#1290813, BZ #34774)
+- ibm139x-read-input-bounds.patch: IBM1390/IBM1399 encoders read past
+  input bounds (CVE-2026-124024, bsc#1290815, BZ #34914) (forwarded request 1400835 from Andreas_Schwab)</comment>
+    <requestid>1400836</requestid>
+  </revision>
 </revisionlist>

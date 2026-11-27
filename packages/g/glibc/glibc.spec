@@ -371,6 +371,14 @@ Patch1020:      power8-strncasecmp-overread.patch
 Patch1021:      realloc-mmap-non-mremap.patch
 # PATCH-FIX-UPSTREAM intl: Restrict path traversal when using LANGUAGE env var (CVE-2026-84243, BZ #17142)
 Patch1022:      intl-restrict-path-traversal.patch
+# PATCH-FIX-UPSTREAM posix: Fix double free after allocation failure in regcomp and regexec (CVE-2026-100290, BZ #34991)
+Patch1023:      regex-alloc-fail-double-free.patch
+# PATCH-FIX-UPSTREAM stdio-common: Fix double null terminator in wide scanf %%s and %%[ (CVE-2026-115819, BZ #34989)
+Patch1024:      wide-scanf-double-null.patch
+# PATCH-FIX-UPSTREAM iconv: ISO-2022-CN-EXT: fix SO handling without a designation (CVE-2026-121758, BZ #34774)
+Patch1025:      iso-2022-cn-ext-so-handling.patch
+# PATCH-FIX-UPSTREAM IBM1390/IBM1399 encoders read past input bounds (CVE-2026-124024, BZ #34914)
+Patch1026:      ibm139x-read-input-bounds.patch
 %endif
 
 ###

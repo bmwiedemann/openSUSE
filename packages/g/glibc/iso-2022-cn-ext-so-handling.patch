@@ -1,0 +1,283 @@
+From 625054f30f0e7a961519f045f2364aa3ca6c1c6b Mon Sep 17 00:00:00 2001
+From: JT Wang <skyman-wftw@hotmail.com>
+Date: Thu, 12 Nov 2026 05:08:42 +0000
+Subject: [PATCH] iconv: ISO-2022-CN-EXT: fix SO handling without a designation
+ (bug 34774)
+
+In the FROM loop, the SO (0x0e) handler advances inptr before
+checking whether an SO designation had been announced.  Without a
+designation the SO byte is an error, but by the time the error is
+reported the byte has already been consumed.  Consequences:
+
+* With //IGNORE, STANDARD_FROM_LOOP_ERR_HANDLER skips one more byte
+  after the already-consumed SO.  If the SO is the last input byte,
+  inptr ends up one past inend; the loop condition inptr != inend
+  then no longer terminates the loop, and the converter keeps
+  reading past the end of the input buffer and may convert
+  out-of-bounds bytes into the output, in addition to the
+  *inbytesleft wraparound described in the report.  This is also
+  the path taken by iconv -c, which sets the ignore flag for the
+  conversion.  If the SO is not the last byte, the byte following
+  it is silently dropped.
+* Without //IGNORE there is no out-of-bounds access, but iconv()
+  returns EILSEQ with the SO already consumed, so *inbuf does not
+  point at the offending byte and the reported remaining length is
+  one byte short (or exhausted when the SO is the last byte).  A
+  caller that skips the offending byte on EILSEQ and calls iconv()
+  again then decrements an already-exhausted length.
+
+Move the increment after the error handler: the ignore path skips
+the SO exactly once, and the non-ignore path leaves the input
+pointer on the SO byte as POSIX expects.  Sequences with an
+announced designation are unaffected.
+
+Also update the stale comment in that branch, and extend
+tst-iconv-iso-2022-cn-ext with FROM-direction regressions covering
+the error paths, a trailing SO with //IGNORE placed next to an
+inaccessible page, and a designated-SO positive case.
+
+Signed-off-by: JT Wang <skyman-wftw@hotmail.com>
+Reviewed-by: Adhemerval Zanella  <adhemerval.zanella@linaro.org>
+(cherry picked from commit 170ee485fa89b95c3bb7d5606c9812c6c100c9be)
+---
+ NEWS                                  |   3 +
+ iconvdata/iso-2022-cn-ext.c           |  10 +-
+ iconvdata/tst-iconv-iso-2022-cn-ext.c | 180 ++++++++++++++++++++++++++
+ 3 files changed, 187 insertions(+), 6 deletions(-)
+
+diff --git a/iconvdata/iso-2022-cn-ext.c b/iconvdata/iso-2022-cn-ext.c
+index d0b1083fba..cc8349a050 100644
+--- a/iconvdata/iso-2022-cn-ext.c
++++ b/iconvdata/iso-2022-cn-ext.c
+@@ -248,12 +248,9 @@ enum
+       }									      \
+     else if (ch == SO)							      \
+       {									      \
+-	/* Switch to use GB2312, GB12345, CNS 11643 plane 1, or ISO-IR-165,   \
+-	   depending on which S0 designation came last.  The only problem     \
+-	   is what to do with faulty input files where no designator came.    \
+-	   XXX For now I'll default to use GB2312.  If this is not the	      \
+-	   best behavior (e.g., we should flag an error) let me know.  */     \
+-	++inptr;							      \
++	/* Switch to the character set designated last for SO.  A faulty      \
++	   input file may contain an SO byte without a prior SO               \
++	   designation; treat such a lone SO as an illegal sequence.  */      \
+ 	if ((ann & SO_ann) != 0)					      \
+ 	  switch (ann & SO_ann)						      \
+ 	    {								      \
+@@ -276,6 +273,7 @@ enum
+ 	  {								      \
+ 	    STANDARD_FROM_LOOP_ERR_HANDLER (1);				      \
+ 	  }								      \
++	++inptr;							      \
+ 	continue;							      \
+       }									      \
+     else if (ch == SI)							      \
+diff --git a/iconvdata/tst-iconv-iso-2022-cn-ext.c b/iconvdata/tst-iconv-iso-2022-cn-ext.c
+index 5559fceef1..39c34009e8 100644
+--- a/iconvdata/tst-iconv-iso-2022-cn-ext.c
++++ b/iconvdata/tst-iconv-iso-2022-cn-ext.c
+@@ -25,6 +25,7 @@
+ 
+ #include <support/xunistd.h>
+ #include <support/check.h>
++#include <support/next_to_fault.h>
+ #include <support/support.h>
+ 
+ /* The test sets up a two memory page buffer with the second page marked
+@@ -37,6 +38,177 @@
+    character sets and may run out of buffer space while doing the
+    operation.  */
+ 
++/* FROM-direction regression tests for bug 34774: a lone SO (0x0e)
++   without any announced SO designation.  The error paths must leave
++   the input pointer on the offending SO byte, and //IGNORE must skip
++   it exactly once.  */
++
++static void
++test_lone_so_plain (void)
++{
++  iconv_t cd = iconv_open ("UTF-8", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 0x0e };
++  char out[8];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  TEST_VERIFY (ip == in);
++  TEST_COMPARE (il, (size_t) 1);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_so_after_ascii (void)
++{
++  iconv_t cd = iconv_open ("UTF-8", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 'A', 0x0e, 'B' };
++  char out[8];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  TEST_VERIFY (ip == in + 1);
++  TEST_COMPARE (il, (size_t) 2);
++  TEST_VERIFY (op == out + 1);
++  TEST_COMPARE_BLOB (out, op - out, "A", 1);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_lone_so_ignore (void)
++{
++  iconv_t cd = iconv_open ("UTF-8//IGNORE", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 0x0e, 'A', 'B' };
++  char out[8];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  /* With //IGNORE the offending SO must be skipped exactly once and the
++     following ASCII must be converted.  Note that glibc still reports
++     EILSEQ here: the ignore arm of STANDARD_FROM_LOOP_ERR_HANDLER does
++     not reset result, which stays __GCONV_ILLEGAL_INPUT, and the
++     iconv() wrapper maps that status to -1 plus EILSEQ
++     unconditionally (iconv/iconv.c).  */
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  TEST_VERIFY (ip == in + 3);
++  TEST_COMPARE (il, (size_t) 0);
++  TEST_COMPARE_BLOB (out, op - out, "AB", 2);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_caller_skip_no_underflow (void)
++{
++  /* A caller that skips the offending byte on EILSEQ and calls
++     iconv() again.  With the fix, the first call reports the SO as
++     unconsumed input, so the skip drops the SO itself and the rest of
++     the input still converts.  */
++  iconv_t cd = iconv_open ("UTF-8", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 0x0e, 'A' };
++  char out[8];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  /* The SO is the offending byte and must still be unconsumed; do not
++     run the caller-side skip unless this precondition holds, or the
++     test itself would advance past the end of the input.  */
++  TEST_VERIFY_EXIT (ip == in);
++  TEST_VERIFY_EXIT (il == 2);
++  ++ip;
++  --il;
++  op = out;
++  ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) 0);
++  TEST_COMPARE (il, (size_t) 0);
++  TEST_COMPARE ((size_t) (op - out), (size_t) 1);
++  TEST_COMPARE_BLOB (out, op - out, "A", 1);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_lone_so_tail_caller_skip (void)
++{
++  /* A lone SO at the end of the input.  Before the fix the first call
++     consumed the SO and left the remaining length at 0, so a caller
++     skipping the offending byte decremented that length to
++     (size_t) -1.  */
++  iconv_t cd = iconv_open ("UTF-8", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 'A', 0x0e };
++  char out[8];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  TEST_VERIFY_EXIT (ip == in + 1);
++  TEST_VERIFY_EXIT (il == 1);
++  ++ip;
++  --il;
++  op = out;
++  ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) 0);
++  TEST_COMPARE (il, (size_t) 0);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_designated_so (void)
++{
++  /* Positive case: with an announced designation the SO switches to
++     the designated set, consumes exactly one byte, and the following
++     7-bit GB2312 pair converts.  ESC $ ) A designates GB2312;
++     0x52 0x3b is the 7-bit form of the GB2312 code for U+4E00.  */
++  iconv_t cd = iconv_open ("UTF-8", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char in[] = { 0x1b, '$', ')', 'A', 0x0e, 0x52, 0x3b, 0x0f, 'Z' };
++  char out[16];
++  char *ip = in, *op = out;
++  size_t il = sizeof in, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) 0);
++  TEST_COMPARE (il, (size_t) 0);
++  TEST_COMPARE ((size_t) (op - out), (size_t) 4);
++  TEST_COMPARE_BLOB (out, 4, "\xe4\xb8\x80Z", 4);
++  TEST_COMPARE (iconv_close (cd), 0);
++}
++
++static void
++test_trailing_so_ignore (void)
++{
++  /* The shape from bug 34774: a lone SO as the last input byte with
++     //IGNORE.  Place the input right before an inaccessible page so
++     that a read past the end faults.  */
++  struct support_next_to_fault ntf = support_next_to_fault_allocate (2);
++  ntf.buffer[0] = 'A';
++  ntf.buffer[1] = 0x0e;
++  iconv_t cd = iconv_open ("UTF-8//IGNORE", "ISO-2022-CN-EXT");
++  TEST_VERIFY_EXIT (cd != (iconv_t) -1);
++  char out[8];
++  char *ip = ntf.buffer, *op = out;
++  size_t il = 2, ol = sizeof out;
++  errno = 0;
++  TEST_COMPARE (iconv (cd, &ip, &il, &op, &ol), (size_t) -1);
++  TEST_COMPARE (errno, EILSEQ);
++  TEST_VERIFY (ip == ntf.buffer + 2);
++  TEST_COMPARE (il, (size_t) 0);
++  TEST_COMPARE_BLOB (out, op - out, "A", 1);
++  TEST_COMPARE (iconv_close (cd), 0);
++  support_next_to_fault_free (&ntf);
++}
++
+ static int
+ do_test (void)
+ {
+@@ -122,6 +294,14 @@ do_test (void)
+ 
+   xmunmap (ntf, ntfsize);
+ 
++  test_trailing_so_ignore ();
++  test_lone_so_plain ();
++  test_so_after_ascii ();
++  test_lone_so_ignore ();
++  test_caller_skip_no_underflow ();
++  test_lone_so_tail_caller_skip ();
++  test_designated_so ();
++
+   return 0;
+ }
+ 
+-- 
+2.56.1
+
