@@ -132,6 +132,18 @@ Tue Nov 10 05:59:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * [BUGFIX] wechat: Report template errors in corp_id and
     api_secret instead of sending a token request with empty
     values. #5688
+  * CVE-2026-78659: Bump golang.org/x/net to version 0.61.0 to fix
+                    HTTP/2 server memory exhaustion due to Trailer
+                    headers (bsc#1287001)
+  * CVE-2026-97032: Bump golang.org/x/net to version 0.61.0 to fix
+                    HTTP/2 server crash due to HPACK encoder race
+                    (bsc#1287452)
+  * CVE-2026-78663: Bump golang.org/x/net to version 0.61.0 to fix
+                    double flow control refund on HTTP/2 server
+                    streams (bsc#1287148)
+  * CVE-2026-78660: Bump golang.org/x/net to version 0.61.0 to fix
+                    malformed framing-related headers handling
+                    (bsc#1287059)
 
 -------------------------------------------------------------------
 Fri Oct 30 06:01:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
