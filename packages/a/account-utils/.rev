@@ -162,4 +162,29 @@ Add conflicts to busybox-adduser</comment>
     <comment>1</comment>
     <requestid>1376965</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a060c2b6235cf2936f1bee6bd5232a88</srcmd5>
+    <version>1.5.0</version>
+    <time>1795805050</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.0:
+  * Release version 1.5.0
+  * CI: add test for issue#43 (subXid)
+  * Fix reading /etc/subXid with multiple entries (#43)
+  * newidmapd: use close(TAKE_FD())
+  * pam_unix_ng: free the bus error in start_pwaccessd()
+  * newidmapd: don't close the mapping fd twice
+  * newidmapd: free the account name in verify_ranges()
+  * libclient: allow a NULL default in get_logindefs_string()
+  * libcommon, pwupdd: fix waiting for the password lock
+  * Fix the InternalError domain name
+  * varlink: take the event loop for Quit from the connection
+  * CI: add test case for PR#35
+  * newxidmap: return negative errno from get_map_ranges
+  * pwupdd: send chsh shell warning as notification
+  * pwupdd: don't probe the file system for unprivileged chsh callers
+  * pwupdd: fix name of service file
+  * Fix typo in comment</comment>
+    <requestid>1401087</requestid>
+  </revision>
 </revisionlist>
