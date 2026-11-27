@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sun Nov  8 20:46:59 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add 0001-txnupd-maint-handle-selinuxenabled.patch
+
+-------------------------------------------------------------------
+Fri Nov  6 21:04:34 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 1.1 Release:
+  * Verify snapshot ID's that don't exist can't be passed to tukit
+  * fix resume hint when commans fails
+  * Use default snapshot as base for new snapshots
+  * Add bootloader handling for Fedora
+
+-------------------------------------------------------------------
+Wed Aug 19 22:29:36 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- 1.1.beta release
+  * Separates daemon/client code for better privilege seperation
+  * Update manpages
+
+-------------------------------------------------------------------
+Fri Jun 19 09:57:52 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- 1.0.beta release
+
+-------------------------------------------------------------------
+Thu Jun 18 08:27:39 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add missed Reqires: tukitd
+
+-------------------------------------------------------------------
+Sat Jun 13 16:38:22 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add systemd macros for pre/post
+
+-------------------------------------------------------------------
+Sat Jun 13 16:15:41 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Initial Packaging

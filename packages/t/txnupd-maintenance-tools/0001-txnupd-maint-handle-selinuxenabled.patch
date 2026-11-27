@@ -1,0 +1,54 @@
+From 682f55585b7b200ed56fd6c8e44828eebe5d1139 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Sun, 8 Nov 2026 20:37:48 +0000
+Subject: [PATCH] txnupd-maint: handle selinuxenabled
+
+_selinux_enabled() fell back to /usr/sbin/selinuxenabled when the
+selinux Python module was unavailable.  On systems without the SELinux
+userland, the path doesnt exist, so 'update-grub' crashes with
+FileNotFoundError
+
+Return Fale when selinuxenabled is not found, add test
+---
+ tests/test_txnupd_maint.py | 9 +++++++++
+ txnupd_maint.py.in         | 4 +++-
+ 2 files changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_txnupd_maint.py b/tests/test_txnupd_maint.py
+index 0ccb147..031fbcb 100644
+--- a/tests/test_txnupd_maint.py
++++ b/tests/test_txnupd_maint.py
+@@ -144,6 +144,15 @@ class TestSelinuxEnabled:
+         ):
+             assert maint_module._selinux_enabled() is False
+ 
++    def test_no_module_no_binary_does_not_run(self, maint_module):
++        with (
++            patch.object(maint_module, "_HAVE_SELINUX", False),
++            patch("shutil.which", return_value=None),
++            patch("subprocess.run", side_effect=FileNotFoundError) as run,
++        ):
++            assert maint_module._selinux_enabled() is False
++            run.assert_not_called()
++
+ 
+ # ---------------------------------------------------------------------------
+ # _run_in_transaction
+diff --git a/txnupd_maint.py.in b/txnupd_maint.py.in
+index 614d6a1..3abdb01 100644
+--- a/txnupd_maint.py.in
++++ b/txnupd_maint.py.in
+@@ -308,7 +308,9 @@ def _path_writable(path: str) -> bool:
+ def _selinux_enabled() -> bool:
+     if _HAVE_SELINUX:
+         return bool(_selinux.is_selinux_enabled())
+-    binary = shutil.which("selinuxenabled") or "/usr/sbin/selinuxenabled"
++    binary = shutil.which("selinuxenabled")
++    if binary is None:
++        return False  # no SELinux userland installed (e.g. Tumbleweed image)
+     return subprocess.run([binary], capture_output=True).returncode == 0
+ 
+ 
+-- 
+2.56.0
+

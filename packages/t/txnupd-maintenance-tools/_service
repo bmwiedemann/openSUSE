@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://codeberg.org/KalpaDesktop/txnupd-maintenance-tools</param>
+    <param name="scm">git</param>
+    <param name="revision">main</param>
+    <param name="filename">txnupd-maintenance-tools</param>
+    <param name="versionformat">0.%cd.%h</param>
+  </service>
+  <service name="tar" mode="manual" />
+  <service name="recompress" mode="manual">
+    <param name="compression">zst</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual" />
+</services>
