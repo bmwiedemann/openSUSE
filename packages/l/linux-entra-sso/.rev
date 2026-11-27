@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5932ac853f4a9f58654b554378acb99d</srcmd5>
+    <version>1.13.0</version>
+    <time>1795804953</time>
+    <user>anag_factory</user>
+    <comment>Companion of sso-mib, this allows SSO in browsers like Firefox or Chromium. Native Messaging connector python module that the browsers will call out to. Extensions are not shipped, and have to be installed in the appropriate and supported way in the browser in order to be used.</comment>
+    <requestid>1401001</requestid>
+  </revision>
+</revisionlist>

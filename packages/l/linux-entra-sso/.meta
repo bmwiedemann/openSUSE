@@ -1,0 +1,5 @@
+<package name="linux-entra-sso" project="openSUSE:Factory">
+  <title>Browser Single-Sign-On with CA for Entra</title>
+  <description>Native Messaging connector for browsers extensions for Entra SSO</description>
+  <url>https://github.com/siemens/linux-entra-sso</url>
+</package>
