@@ -280,4 +280,14 @@ and python-pydantic-settings</comment>
   * The `customize` hook now receives `snapshot_value` (or `...` if missing)</comment>
     <requestid>1397826</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a59623246da0c873c0d1e3e15a7d2d72</srcmd5>
+    <version>0.37.0</version>
+    <time>1795804829</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.37.0:
+  * Added `is_snapshot()` so extensions can recognize inline and external
+    snapshot objects</comment>
+    <requestid>1400469</requestid>
+  </revision>
 </revisionlist>
