@@ -52,7 +52,6 @@ to the 'yacc' tool for C.
 %autosetup -p1
 
 %build
-%define cabal_configure_options -f-bootstrap
 %ghc_bin_build
 
 %install
