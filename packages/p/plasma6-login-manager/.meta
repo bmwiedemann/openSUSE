@@ -1,0 +1,7 @@
+<package name="plasma6-login-manager" project="openSUSE:Factory">
+  <title>QML based login manager for the Plasma Desktop</title>
+  <description>Plasma Login provides a display manager for KDE Plasma and with a new frontend
+providing a greeter, wallpaper plugin integration and a System Settings
+configuration module (KCM).</description>
+  <url>https://invent.kde.org/plasma/plasma-login-manager</url>
+</package>

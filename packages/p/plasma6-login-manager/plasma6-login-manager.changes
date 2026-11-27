@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Wed Nov 11 13:57:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop obsolete noqmlcache.conf
+
+-------------------------------------------------------------------
+Wed Nov 11 08:32:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update plasma.keyring
+
+-------------------------------------------------------------------
+Tue Nov 10 09:43:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.3
+- Changes since 6.8.2:
+  * Update version for new release 6.8.3
+
+-------------------------------------------------------------------
+Thu Nov  5 10:41:05 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add disable-switch-to-greeter.patch (bsc#1260402): remove the logic to
+  switch to the greeter, since the method is unauthenticated and also seems
+  unused. (boo#1260402)
+
+-------------------------------------------------------------------
+Sat Oct 31 13:21:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.8.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/6/6.8.2
+- Drop patch, merged upstream:
+  * 223.patch
+
+-------------------------------------------------------------------
+Sun Oct 25 00:45:57 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 6.8.1 Release
+- Add 223.patch (https://invent.kde.org/plasma/plasma-login-manager/-/merge_requests/223)(boo#1260930)
+
+-------------------------------------------------------------------
+Sat Mar 21 18:23:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Use /usr path for Xsession command where applicable
+- Don't move files from /usr/share/plasmalogin to /etc
+- Fix %pre scriptlet for plasmalogin.service
+- Drop 0001-set-environmentfile-in-plasmalogin-service.patch and
+  plasmalogin.sysconfig
+- Merge system-user-plasmalogin into the main package
+- Fix path for plasmalogin.service.d
+- Fix version of KF6Screen dependency
+- Drop unneeded BuildRequires on systemd and kf6-filesystem
+- Make it build for 15.6 as well
+- Fix dependency on the KCM subpackage
+- Drop unnecessary KCM subpackage dependencies
+- Omit fdupes, not necessary
+
+-------------------------------------------------------------------
+Tue Feb 17 22:58:04 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Add 0001-set-environmentfile-in-plasmalogin-service.patch
+
+-------------------------------------------------------------------
+Sat Feb  7 17:30:07 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Added noqmlcache.conf
+- Dropped Added 0001-set-environment-variable.patch
+- Added BuildRequire for kscreen6
+
+-------------------------------------------------------------------
+Sat Dec  6 00:07:16 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Revisions to specfile
+  - Dropped plasmalogin-environment_file.patch
+  - Added 0001-set-environment-variable.patch
+
+-------------------------------------------------------------------
+Thu Dec  4 01:50:00 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Packaging of pre-release git pull
+

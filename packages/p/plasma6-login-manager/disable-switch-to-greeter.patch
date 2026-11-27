@@ -1,0 +1,25 @@
+Author: Matthias Gerstner <matthias.gerstner@suse.com>
+Remove the logic to switch to the greeter, since the method is unauthenticated
+and also seems unused.
+
+Ref: https://bugzilla.opensuse.org/1260402
+
+Index: plasma-login-manager-6.8.2/src/daemon/DisplayManager.cpp
+===================================================================
+--- plasma-login-manager-6.8.2.orig/src/daemon/DisplayManager.cpp
++++ plasma-login-manager-6.8.2/src/daemon/DisplayManager.cpp
+@@ -166,7 +166,13 @@ const QString &DisplayManagerSeat::Path(
+ 
+ void DisplayManagerSeat::SwitchToGreeter()
+ {
+-    daemonApp->seatManager()->switchToGreeter(m_name);
++    /*
++     * disabled due to bsc#1260402:
++     *
++     * - anybody can call this method without authentication
++     * - it seems there are no consumers of this method
++     */
++    //daemonApp->seatManager()->switchToGreeter(m_name);
+ }
+ 
+ void DisplayManagerSeat::SwitchToGuest(const QString & /*session*/)
