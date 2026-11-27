@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Nov 25 22:30:00 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Disable _FORTIFY_SOURCE to prevent crashes in cysignals stack
+  switching during signal handling.
+
+-------------------------------------------------------------------
+Wed Nov 25 22:15:59 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Initial checkin
