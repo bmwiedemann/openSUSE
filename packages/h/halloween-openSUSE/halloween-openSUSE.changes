@@ -1,0 +1,85 @@
+-------------------------------------------------------------------
+Tue Oct 27 21:14:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.10.6:
+  * An optional default that makes the Firefox theme the theme of
+    every Firefox profile created from then on; existing profiles
+    keep their theme
+  * An optional default that gives Plasma Login Manager's login
+    screen the Halloween background
+  * Picking the global theme in System Settings now brings the
+    colour scheme too
+- Add the halloween-openSUSE-plasmalogin-defaults and
+  halloween-openSUSE-firefox-defaults subpackages; the login
+  background ships in halloween-openSUSE-plasma
+
+-------------------------------------------------------------------
+Tue Oct 20 12:43:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.10.5:
+  * New app icons by Pablo Herranz Ramírez: a code editor for
+    vscodium, codium and vscode, chat bubbles for Slack, Polari
+    and NeoChat, and the mail and music icons for Thunderbird
+    and Spotify; kde/ now links 560 names to Breeze Dark
+  * tools/check.py --release now also checks that every master
+    in art/source/ is listed by a record in art/prompts/
+  * The Firefox theme changes only in its version number
+  * The new artwork is CC-BY-SA-4.0 like the rest; no licence,
+    path or packaging changes
+- adwaita-icon-theme description: it also serves Sway
+
+-------------------------------------------------------------------
+Tue Oct 20 06:10:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.10.4:
+  * Plasma keeps Breeze's own icons for names that only start like
+    a file type's, such as the tray's volume icon, microphones,
+    speakers, image-missing and the brightness applet; kde/ now
+    links 548 names to Breeze Dark
+- Changes in 2026.10.3:
+  * A Sway edition: window colours, borders and gaps for Sway, a
+    Waybar stylesheet and a SwayNotificationCenter theme
+  * One-colour icons for the bell, notifications and
+    SwayNotificationCenter's empty list
+  * Plasma's battery applet keeps Breeze's icons for blocked and
+    unblocked sleep
+- Add the halloween-openSUSE-sway-theme subpackage; the GTK 3 theme
+  and the Adwaita icon variant now also come with Sway
+
+-------------------------------------------------------------------
+Mon Oct 19 19:20:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.10.2:
+  * One-colour icons for more GNOME Settings rows: Users, Screen
+    Lock, Location, File History & Trash, Diagnostics, Proxy,
+    Pointing and Clicking and Screen Time
+  * One-colour icons come hinted for 16 px
+  * GTK 4 now draws the one-colour icons with its own faster parser
+- Changes in 2026.10.1:
+  * Icons for KDE System Settings' modules and categories,
+    one-colour icons for GNOME Settings' panels, and one-colour
+    twins of the settings icons Plasma uses in trays and menus
+  * Plasma shows Breeze's own icons where it took the theme's for a
+    longer Breeze name (battery, KWin effects, YaST modules): a new
+    kde/ folder links most of them to Breeze Dark's, and the
+    generic yast and blueman-device icons are dropped
+  * Settings lists no longer show the same icon twice on one page
+  * The GTK 3 theme is LGPL-2.1-only throughout
+- The icon theme requires kf6-breeze-icons (also to build) for its
+  kde/ links even without Plasma, so GNOME and Xfce get it too
+- Run tools/check.py in full, with reuse's licence lint; follow
+  upstream's floors: Pillow 11.3, jsonschema 4.24 and
+  license-expression 30.0
+
+-------------------------------------------------------------------
+Mon Oct 19 16:19:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 2026.10.0: an autumn Halloween theme for
+  Plasma 6, GNOME 50 and Xfce 4.20: wallpapers, two icon themes,
+  Plasma, SDDM, Plymouth, GTK 3/GNOME Shell/Xfce and Firefox
+  themes, and SDDM and GNOME defaults; the halloween-openSUSE
+  metapackage pulls in the pieces for the installed desktops
+- Build the Firefox theme as its own flavor that requires the
+  same-architecture MozillaFirefox, since Firefox loads it only
+  from its architecture-specific directory; the rest is noarch
+
