@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Nov 26 18:11:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.5.0:
+  * Add hf auth revoke and revoke_tokens() to revoke leaked
+    tokens without logging in; token owner is notified
+  * Sandbox network policies: run with no internet access or
+    an allowlist of IPs, ranges and hostnames
+  * hf datasets sql auto-loads the DuckDB hf_dataset()
+    extension for direct dataset queries
+  * HfFileSystem supports fsspec transactions for buckets
+  * Spaces OAuth works without a client secret via PKCE;
+    signing key change means OAuth users log in again
+  * chat_completion with HF token and provider now routes
+    through the Hub router
+  * Jobs, CLI, Inference and HfFileSystem fixes (exclusive
+    create, streaming write modes, download/upload and
+    cache fixes)
+  * Many more fixes; see upstream's release notes for the
+    full list
+- No dependency, licence or console-script change, so the
+  existing packaging still applies
+
+-------------------------------------------------------------------
 Fri Oct 30 07:59:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.4.0:

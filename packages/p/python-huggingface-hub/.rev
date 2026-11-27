@@ -229,4 +229,12 @@ import smoke py313/py314.</comment>
     <comment>Update to 2.4.0.</comment>
     <requestid>1393851</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>39842f7c5fee739d2c602a2f2f7307f7</srcmd5>
+    <version>2.5.0</version>
+    <time>1795804922</time>
+    <user>anag_factory</user>
+    <comment>Update python-huggingface-hub to 2.5.0: token revoke, sandbox network policies, PKCE OAuth, Hub-router chat_completion.</comment>
+    <requestid>1400958</requestid>
+  </revision>
 </revisionlist>
