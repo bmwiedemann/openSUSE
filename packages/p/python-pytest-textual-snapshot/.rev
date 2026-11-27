@@ -7,4 +7,13 @@
     <comment>needed by python-mistral-vibe</comment>
     <requestid>1327339</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>670962241ddf9a925c95c0071f7deed2</srcmd5>
+    <version>1.1.0</version>
+    <time>1795804957</time>
+    <user>anag_factory</user>
+    <comment>- Move the text check to the BuildRequires, so the Requires actually work.
+- Ship the license and the README in the built packages.</comment>
+    <requestid>1401005</requestid>
+  </revision>
 </revisionlist>

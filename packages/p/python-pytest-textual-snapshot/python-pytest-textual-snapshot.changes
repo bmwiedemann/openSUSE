@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 27 02:55:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Move the text check to the BuildRequires, so the Requires actually work.
+- Ship the license and the README in the built packages.
+
+-------------------------------------------------------------------
 Wed Jan 14 14:47:24 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial packaging effort for python-pytest-textual-snapshot 1.1.0.

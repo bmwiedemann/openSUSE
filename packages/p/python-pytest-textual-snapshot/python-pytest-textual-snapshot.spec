@@ -28,20 +28,20 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module jinja2 >= 3.0.0}
 BuildRequires:  %{python_module pytest >= 8.0.0}
 BuildRequires:  %{python_module rich >= 12.0.0}
 BuildRequires:  %{python_module syrupy >= 4.8.0}
 BuildRequires:  %{python_module textual >= 0.28.0}
+%endif
 BuildRequires:  fdupes
-%if %{with test}
 # /SECTION
 Requires:       python-jinja2 >= 3.0.0
 Requires:       python-pytest >= 8.0.0
 Requires:       python-rich >= 12.0.0
 Requires:       python-syrupy >= 4.8.0
 Requires:       python-textual >= 0.28.0
-%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -70,8 +70,10 @@ applications.
 %endif
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %pycache_only %{python_sitelib}/__pycache__/pytest_textual_snapshot*.pyc
 %{python_sitelib}/pytest_textual_snapshot.py
-%{python_sitelib}/pytest_textual_snapshot-%{version}*-info
+%{python_sitelib}/pytest_textual_snapshot-%{version}.dist-info
 
 %changelog
