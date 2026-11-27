@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:04:43 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795755868.789af64c:
+  * chore(deps): Dependency cron 2026-11-27
+  * fix(gru): Reconcile orphaned Gru tasks
+  * feat(munin): Add plugin for job stats per group
+
+-------------------------------------------------------------------
+Thu Nov 26 11:54:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795692061.5f354ef5:
+  * fix: Downgrade destroyed tx in `reply.exception`
+  * fix: Guard async Gru callbacks if tx is destroyed
+  * fix: Guard `before_render` against lost transaction
+  * perf: Check status before accepts in before_render
+
+-------------------------------------------------------------------
+Thu Nov 26 10:19:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795688376.1dbabc4a:
+  * docs: document upfront archiving and configuration parameters
+  * feat: archive important jobs upfront when results storage is full
+  * feat: add upfront archiving configuration and validation
+  * refactor: extract important-jobs condition builder
+
+-------------------------------------------------------------------
+Thu Nov 26 05:06:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1795669574.57f4021c:
+  * chore(deps): Dependency cron 2026-11-26
+
+-------------------------------------------------------------------
 Wed Nov 25 17:10:26 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1795626606.295f3489:
