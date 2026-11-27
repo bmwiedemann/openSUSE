@@ -18,7 +18,7 @@
 
 Name:           86Box
 Version:        6.0
-Release:        1
+Release:        0
 Summary:        Emulator of x86-based machines based on PCem
 License:        GPL-2.0-or-later
 URL:            https://86box.net/
@@ -75,11 +75,14 @@ done
 mkdir -p %{buildroot}%{_datadir}/applications
 install -Dpm 0644 src/unix/assets/net.86box.86Box.desktop %{buildroot}%{_datadir}/applications/net.86box.86Box.desktop
 %suse_update_desktop_file -r net.86box.86Box Emulator
+mkdir -p %{buildroot}%{_datadir}/metainfo
+install -Dpm 0644 src/unix/assets/net.86box.86Box.metainfo.xml %{buildroot}%{_datadir}/metainfo/net.86box.86Box.metainfo.xml
 
 %files
 %license COPYING
 %{_bindir}/%{name}
 %{_datadir}/applications/net.86box.86Box.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
+%{_datadir}/metainfo/net.86box.86Box.metainfo.xml
 
 %changelog
