@@ -17,7 +17,7 @@
 
 
 Name:           rbac-manager
-Version:        1.10.2
+Version:        1.10.4
 Release:        0
 Summary:        Kubernetes operator for easier RBAC management
 License:        Apache-2.0
@@ -25,7 +25,7 @@ Group:          System/Management
 URL:            https://github.com/FairwindsOps/rbac-manager
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.25 >= 1.25.5
+BuildRequires:  go1.27 >= 1.27.4
 BuildRequires:  golang-packaging
 
 # test dependency

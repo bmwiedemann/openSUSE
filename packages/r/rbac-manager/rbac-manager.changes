@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:38:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.4:
+  * INS-3259: Fix rbac-manager CVEs (#626)
+- Update to version 1.10.3:
+  * Update module k8s.io/klog to v2 (#615)
+  * Update module sigs.k8s.io/controller-runtime to v0.25.3 (#624)
+  * Update all non-major dependencies (#612)
+  * Update module golang.org/x/net to v0.55.0 [SECURITY] (#618)
+  * docs: update documentation from template (#621)
+  * INS-2912: Prepare rbac-manager for unifying circleci (#617)
+
+-------------------------------------------------------------------
 Tue Aug 11 06:33:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.2:
