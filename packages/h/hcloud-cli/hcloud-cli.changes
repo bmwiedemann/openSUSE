@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Nov 27 05:51:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.71.0:
+  * Features
+    - server: add screenshot command (#1435) (06903a4)
+    - server: allow forwarding VNC port locally (#1515) (1e06c94)
+  * Bug Fixes
+    - output: do not render empty output table (#1524) (c9b04e2)
+    - storage-box: missing nil check in snapshot label commands
+      (434b489)
+    - storage-box: implement missing subaccount label commands
+      (#1553) (db53edc)
+  * Dependencies
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.9.2
+      (#1554)
+    - deps: update module golang.org/x/net to v0.63.0 (#1555)
+    - deps: update dependency jdx/mise to v2026.11.8 (#1541)
+    - deps: update golang.org/x/ (#1537)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.9.1
+      (#1550)
+    - deps: update module github.com/tenthirtyam/go-vnc to v1.0.2
+      (#1540)
+    - deps: update dependency go to v1.27.4 (#1539)
+    - deps: update module github.com/cheggaaa/pb/v3 to v3.3.0
+      (#1533)
+    - deps: update module golang.org/x/net to v0.62.0 (#1528)
+
+-------------------------------------------------------------------
 Tue Oct 27 06:58:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.70.2:
