@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Nov 27 09:58:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.24:
+  * -tar on Windows now keeps everything NTFS keeps: junctions
+    and symlinks, alternate data streams, raw EFS data, NTFS and
+    WOF compression, sparse files, object IDs and times to 100 ns
+  * New experimental `ac -tar`: back up the Windows disk with C:
+    taken by its files, with new `xc` restore and `fix` to
+    re-verify Store apps after a file-level restore
+  * -tar on Linux: a file leaving or joining a hard link group
+    with unchanged date and size is now detected (issue 382)
+  * -index is refused for image backups and `ac`, and `l -715`
+    output matches zpaq 7.15 to the byte (issue 383)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Wed Nov 25 08:58:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.23:

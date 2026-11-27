@@ -290,4 +290,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update zpaqfranz to 65.23: new -m8l default, per-kind -compress, faster multi-version restore.</comment>
     <requestid>1400518</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>12265ae6ef963c649217be556c9a48e9</srcmd5>
+    <version>65.24</version>
+    <time>1795805032</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.24: NTFS -tar keeps junctions, streams, EFS data and compression; new experimental ac -tar; hardlink change detection, zpaq 7.15 parity.</comment>
+    <requestid>1401076</requestid>
+  </revision>
 </revisionlist>
