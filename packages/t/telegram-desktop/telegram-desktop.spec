@@ -22,17 +22,17 @@
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   4.1.1
 %define owt_ver   git20261122
-%define td_ver    git20261123
+%define td_ver    git20261126
 %define tlottie_ver 1.0.6
 %define wallet_engine_ver 0.0.7
 Name:           telegram-desktop
-Version:        7.4.6
+Version:        7.4.7
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
 URL:            https://github.com/telegramdesktop/tdesktop
 Source0:        https://github.com/telegramdesktop/tdesktop/releases/download/v%{version}/tdesktop-%{version}-full.tar.gz
-# n=twidget-vendor && v=7.4.6 && d=$n-$v && f=$d.tar.xz && dt=tdesktop-$v-full && cd /tmp && curl -fsSL https://github.com/telegramdesktop/tdesktop/releases/download/v$v/$dt.tar.gz | tar -xz && pushd $dt/Telegram/ThirdParty/twidget/rust && mkdir .cargo && cargo vendor vendor > .cargo/config.toml && mkdir "$d" && mv .cargo vendor "$d" && tar c --remove-files "$d" | xz -9e > "../../../../../$f" && popd && rm -r "$dt"
+# n=twidget-vendor && v=7.4.7 && d=$n-$v && f=$d.tar.xz && dt=tdesktop-$v-full && cd /tmp && curl -fsSL https://github.com/telegramdesktop/tdesktop/releases/download/v$v/$dt.tar.gz | tar -xz && pushd $dt/Telegram/ThirdParty/twidget/rust && mkdir .cargo && cargo vendor vendor > .cargo/config.toml && mkdir "$d" && mv .cargo vendor "$d" && tar c --remove-files "$d" | xz -9e > "../../../../../$f" && popd && rm -r "$dt"
 Source1:        twidget-vendor-%{version}.tar.xz
 Source2:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar.gz#/ada-%{ada_ver}.tar.gz
 # n=tg_owt && cd /tmp && git clone --depth=1 https://github.com/desktop-app/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && git -c gc.autoDetach=false -c maintenance.autoDetach=false submodule update --init --depth=1 && rm -rf .??* && popd && mv "$n" "$d" && tar c --remove-files "$d" | xz -9e > "$f"
