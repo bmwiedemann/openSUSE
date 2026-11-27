@@ -1,8 +1,8 @@
 #
 # spec file for package gnuhealth-thalamus
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-# Copyright (c) 2017-2025 Dr. Axel Braun
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %define modname thalamus
 Name:           gnuhealth-%{modname}
-Version:        0.9.16
+Version:        0.9.18
 Release:        0
 Summary:        The GNU Health Federation Message and Authentication Server
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ URL:            http://health.gnu.org
 Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
