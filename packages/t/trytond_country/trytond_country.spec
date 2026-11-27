@@ -57,10 +57,6 @@ module.
 
 %prep
 %setup -q
-# TW uses newer pycountry
-## %if 0%{?suse_version} > 1500
-## %patch -P 0 -P 1 -P 2 -p1
-## %endif
 
 %build
 %pyproject_wheel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:39:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove obsolete commented-out %patch directives in %prep that
+  break rpm 4.20+ spec parsing.
+
+-------------------------------------------------------------------
 Fri Jun 12 00:26:02 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - Version 7.0.1 - Bugfix Release
