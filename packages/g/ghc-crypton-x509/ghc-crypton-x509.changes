@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Nov 20 00:43:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509 to version 1.11.0 revision 1.
+  ## 1.11.0
+
+  Certificates are represented without losing information: RSA-PSS
+  parameters, multi-valued RDNs, all GeneralName forms and all fields of
+  AuthorityKeyIdentifier and DistributionPoint are kept.  Constructors of
+  types that may grow are hidden; use the `default...` values with record
+  update syntax.  `DistinguishedName`, `ExtAuthorityKeyId` and
+  `MLDSAKeyForm` (now `MLKeyForm`) keep working through pattern synonyms.
+  X9.42 DH, RSASSA-PSS and ML-KEM keys and SHA-3 signatures are supported.
+
+  * Keep RSA-PSS parameters
+    [#53](https://github.com/kazu-yamamoto/crypton-certificate/pull/53)
+  * Keep multi-valued RDNs
+    [#54](https://github.com/kazu-yamamoto/crypton-certificate/pull/54)
+  * Represent X9.42 DH public keys
+    [#55](https://github.com/kazu-yamamoto/crypton-certificate/pull/55)
+  * Keep all GeneralName forms
+    [#57](https://github.com/kazu-yamamoto/crypton-certificate/pull/57)
+  * Keep all fields of AuthorityKeyIdentifier
+    [#58](https://github.com/kazu-yamamoto/crypton-certificate/pull/58)
+  * Keep all fields of DistributionPoint
+    [#59](https://github.com/kazu-yamamoto/crypton-certificate/pull/59)
+  * Add more DnElement attributes
+    [#60](https://github.com/kazu-yamamoto/crypton-certificate/pull/60)
+  * Support RSASSA-PSS keys
+    [#61](https://github.com/kazu-yamamoto/crypton-certificate/pull/61)
+  * Support SHA-3 signature algorithms
+    [#62](https://github.com/kazu-yamamoto/crypton-certificate/pull/62)
+  * Support ML-KEM keys
+    [#63](https://github.com/kazu-yamamoto/crypton-certificate/pull/63)
+  * Encode NULL parameters for RSA with SHA-3
+    [#64](https://github.com/kazu-yamamoto/crypton-certificate/pull/64)
+
+-------------------------------------------------------------------
 Wed Nov 18 08:15:44 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509 to version 1.10.3.
