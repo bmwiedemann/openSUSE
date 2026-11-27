@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Nov 23 08:51:19 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.6.1:
+  * Fix a bug in sort_product that could mess up spinor lines.
+  * Fix a bug in canonicalise that would prevent it from finding
+    the canonical form.
+  * Make rename_dummies correctly report when an expression has
+    not changed.
+  * Fix pattern matching bug that prevented fierz from working in
+    certain cases.
+  * Updated example notebooks and automatic colab notebook
+    generation.
+- Drop cadabra2-microtex-inc-FcFreeTypeQuery-def.patch:
+  upstreamed.
+
+-------------------------------------------------------------------
 Sun Oct 18 05:32:42 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.6.0:

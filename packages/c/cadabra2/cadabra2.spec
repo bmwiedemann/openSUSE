@@ -32,7 +32,7 @@
 %bcond_with jupyter
 %endif
 Name:           cadabra2
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        A computer algebra system for solving problems in field theory
 License:        GPL-3.0-or-later
@@ -41,8 +41,6 @@ URL:            https://cadabra.science/
 Source0:        %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cadabra2-disable-components-test.patch gh#kpeeters/cadabra2#212 badshah400@gmail.com -- Disable a test that crashes for unknown reasons
 Patch0:         cadabra2-disable-components-test.patch
-# PATCH-FIX-UPSTREAM cadabra2-microtex-inc-FcFreeTypeQuery-def.patch  badshah400@gmail.com -- Include fontconfig/fcfreetype.h header for FcFreeTypeQuery definition
-Patch2:         cadabra2-microtex-inc-FcFreeTypeQuery-def.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module gobject-devel}
 BuildRequires:  %{python_module matplotlib}
@@ -219,7 +217,7 @@ export HOME=`pwd`
 %{_datadir}/texmf
 %{python3_sitearch}/cadabra2*.so
 %{python3_sitearch}/cadabra2_defaults.py
-%{python3_sitearch}/cdb_appdirs.py
+%{python3_sitearch}/cdb_*.py
 %{python3_sitearch}/cdb/
 %{_mandir}/man1/cadabra*.1%{?ext_man}
 
