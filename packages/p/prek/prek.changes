@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 27 06:14:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.12:
+  * Enhancements
+    - Explain empty final diffs after hook changes (#3057)
+    - Replace pre-commit shims during installation (#3054)
+  * Performance
+    - Skip unnecessary content reads during file identification
+      (#3049)
+  * Bug fixes
+    - Fix post-merge squash status environment variable (#3053)
+    - Protect running hooks from cache cleanup (#3068)
+    - Skip binary and BOM-marked UTF-16/32 files in text fixers
+      (#3058)
+    - Select Haskell package executables explicitly (#3067)
+    - Skip unreleased mise versions (#3071)
+  * Documentation
+    - Add sponsor recognition to README and website (#3051)
+
+-------------------------------------------------------------------
 Tue Nov 17 05:48:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.11:
