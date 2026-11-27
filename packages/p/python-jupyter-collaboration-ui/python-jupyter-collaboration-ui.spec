@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 2.4
+%define distversion 3.0.4
 Name:           python-jupyter-collaboration-ui
-Version:        2.4.0
+Version:        3.0.4
 Release:        0
 Summary:        Jupyter extension providing collaboration
 License:        BSD-3-Clause
@@ -27,7 +27,7 @@ Source:         https://files.pythonhosted.org/packages/source/j/jupyter_collabo
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-jupyter-builder >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.4.0}
-BuildRequires:  %{python_module jupyterlab >= 4.0.0}
+BuildRequires:  %{python_module jupyter-builder >= 1.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-rpm-macros
