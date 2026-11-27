@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Nov 20 19:08:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.44:
+  * Fixed catastrophic backtracking in the RFC3966 phone-context
+    domainname check across Java, JavaScript, and C++.
+  * Update phone metadata for region code(s):
+    BF, CN, DZ, EE, GY, HK, KR, NO, NZ, PA, PK, RU, SN, YE
+  * Update short number metadata for region code(s): CR, KR, NZ,
+    TW
+  * Update geocoding data for country calling code(s): 86 (en, zh),
+    226 (en)
+  * Update carrier data for country calling code(s):
+    7 (en, kk, ru), 92 (en), 221 (en), 592 (en), 852 (en, zh), 967
+    (en)
+- includes changes from 9.0.43:
+  * Update phone metadata for region code(s):
+    BJ, CN, DE, EC, ET, GE, LA, RO, ZW
+  * Update geocoding data for country calling code(s):
+    61 (en), 86 (zh), 263 (en)
+  * Update carrier data for country calling code(s):
+    7 (en, kk), 40 (en), 43 (en), 46 (en), 48 (en), 49 (en), 81
+    (en), 263 (en), 420 (en), 593 (en), 856 (en), 995 (en)
+- includes changes from 9.0.42:
+   * Update alternate formatting data for country calling code(s):
+     91
+   * Update phone metadata for region code(s):
+     AU, AX, BW, CC, CN, CO, CR, CV, CX, DK, ES, FI, GH, GY, IN,
+     KE, KW, PG, PY, RU, SH
+   * Update short number metadata for region code(s): BW, CO
+   * Update geocoding data for country calling code(s):
+     86 (en, zh), 91 (en), 233 (en), 267 (en)
+   * New carrier data for country calling code(s): 7 (kk)
+   * Update carrier data for country calling code(s):
+     7 (en, ru), 33 (en), 34 (en), 40 (en), 57 (en), 91 (en), 238
+     (en), 254 (en), 267 (en), 290 (en), 358 (en), 501 (en), 592
+     (en), 595 (en), 965 (ar, en), 973 (en)
+- drop 0001-Fix-build-with-Boost-1.89.0.patch
+
+-------------------------------------------------------------------
 Mon Oct 12 19:28:54 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.41:
