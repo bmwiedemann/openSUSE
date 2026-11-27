@@ -20,7 +20,7 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        ASN.1 data (raw, BER or DER) readers and writers
