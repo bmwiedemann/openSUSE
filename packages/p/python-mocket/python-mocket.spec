@@ -36,16 +36,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mocket%{psuffix}
-Version:        3.14.4
+Version:        3.15.1
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use RESP2 (protocol=2) in RedisTestCase for redis-py >= 8.2.0
+Patch0:         support-redis-8.2.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-decorator >= 4
@@ -113,12 +114,6 @@ sleep 2
 
 # Checks the ability to record a real request and response. Not available inside obs.
 donttest="test_asyncio_record_replay or test_truesendall_with_dump_from_recording or test_no_dangling_fds"
-# The reference recording has different headers in this case
-%if %{pkg_vcmp %{mypython}-httpx < 0.23}
-donttest="$donttest or test_truesendall_with_dump_from_recording"
-%endif
-# fails with new incompatible aiohttp version https://github.com/mindflayer/python-mocket/issues/247
-donttest="$donttest or test_aiohttp"
 %pytest -rfEs -k "not ($donttest)" ${pytest_$python_ignore} tests
 %endif
 

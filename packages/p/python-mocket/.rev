@@ -712,4 +712,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1376494</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>743b7409fd903773616646f6555ffd1b</srcmd5>
+    <version>3.15.1</version>
+    <time>1795804828</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.15.1:
+  * Pin right version for typing-extensions
+  * Preserve encoded query parameters in recorded requests
+  * Add Python 3.15 support
+  * Fix socketpair() on platforms without _socket.socketpair
+- Add patch support-redis-8.2.patch:
+  * Support redis-py 8.2.0+.</comment>
+    <requestid>1400425</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+Index: mocket-3.15.1/tests/test_redis.py
+===================================================================
+--- mocket-3.15.1.orig/tests/test_redis.py
++++ mocket-3.15.1/tests/test_redis.py
+@@ -155,7 +155,7 @@ class TrueRedisTestCase(TestCase):
+ 
+ class RedisTestCase(TestCase):
+     def setUp(self):
+-        self.rclient = redis.StrictRedis()
++        self.rclient = redis.StrictRedis(protocol=2)
+ 
+     def mocketize_setup(self):
+         Entry.register_response("CLIENT SETINFO LIB-NAME redis-py", OK)

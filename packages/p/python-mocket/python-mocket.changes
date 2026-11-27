@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Nov 25 00:48:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.15.1:
+  * Pin right version for typing-extensions
+  * Preserve encoded query parameters in recorded requests
+  * Add Python 3.15 support
+  * Fix socketpair() on platforms without _socket.socketpair
+- Add patch support-redis-8.2.patch:
+  * Support redis-py 8.2.0+.
+
+-------------------------------------------------------------------
 Tue Sep  1 20:50:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.4:
