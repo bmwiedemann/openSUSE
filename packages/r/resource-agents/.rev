@@ -2200,4 +2200,12 @@
   * podman-etcd: pre-check force_new_cluster holders before writing</comment>
     <requestid>1397317</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>9688a16200c59c1cc5f4f61a3df664bd</srcmd5>
+    <version>4.18.0+git121.9448ae58</version>
+    <time>1795804845</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1400580</requestid>
+  </revision>
 </revisionlist>
