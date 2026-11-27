@@ -17,12 +17,16 @@
 
 
 %if %suse_version < 1600
+%if %suse_version < 1500
+%define force_gcc_version 8
+%else
 %define force_gcc_version 14
+%endif
 %endif
 
 Name:           psqlODBC
-Version:        18.00.0006
-%define tarv    18_00_0006
+Version:        18.00.0007
+%define tarv    18_00_0007
 Release:        0
 Summary:        ODBC Driver for PostgreSQL
 License:        LGPL-2.1-or-later

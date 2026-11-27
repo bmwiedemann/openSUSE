@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Nov 27 10:41:29 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 18.00.0007:
+  * https://odbc.postgresql.org/docs/release.html
+  * CVE-2026-136499, bsc#1292037: Driver sends application memory
+    to the server or returns it to the caller.
+  * CVE-2026-136500, bsc#1292040: SQL injection with BIG5 aliases
+    and the JOHAB, EUC_TW, EUC_CN and EUC_KR client encodings.
+  * CVE-2026-136501, bsc#1292045: Positioned writes go to another
+    user's table through name and case matching.
+  * CVE-2026-136502, bsc#1292050: SQL injection and redirected
+    writes because the driver reads SQL text differently from the
+    server.
+  * CVE-2026-136503, bsc#1292063: Use after free, double free and
+    out-of-bounds writes in result and transaction clean-up.
+  * CVE-2026-136504, bsc#1292095: Debug log records the database
+    password in clear text.
+  * CVE-2026-136505, bsc#1292064: Unchecked sizes and counters
+    overflow driver buffers.
+  * CVE-2026-136506, bsc#1292065: SQL injection through names the
+    driver puts into its own queries.
+  * CVE-2026-136507, bsc#1292066: Connection string injection in
+    SQLDriverConnect and the MSDTC XA open string.
+  * CVE-2026-136508, bsc#1292067: MSDTC connections drop the
+    connection's TLS and channel binding settings (Windows only).
+  * CVE-2026-136509, bsc#1292049: Driver does not check that server
+    replies match the queries it sent.
+  * CVE-2026-136510, bsc#1292068: Statement after an abandoned
+    parameter array sends the abandoned batch's rows instead of its
+    own.
+  * CVE-2026-136511, bsc#1292069: An SSLmode value written with
+    capitals or braces connects without TLS.
+  * CVE-2026-136512, bsc#1292070: Buffer overflows when a converted
+    value does not fit the application's buffer.
+  * CVE-2026-136513, bsc#1292071: Another local user can redirect
+    log files (incomplete fix for CVE-2026-120066).
+  * CVE-2026-136514, bsc#1292072: Another database user can crash
+    applications by changing a table they own.
+  * CVE-2026-136515, bsc#1292073: Memory corruption and crashes
+    when the driver rewrites statements for cursors and escapes.
+  * Several behavior changes come with these fixes, mostly in
+    identifier case folding in the catalog functions, multibyte
+    client encoding handling and connection string parsing. See
+    the release notes for details.
+
+-------------------------------------------------------------------
 Fri Nov  6 10:36:16 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to 18.00.0006:
