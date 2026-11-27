@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 07:49:05 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Add a patch to fix CVE-2026-133475 (bsc#1291591)
+  * 0001-totemsrp-Check-upper-bound-length-in-memb_commit_tok.patch
+
+-------------------------------------------------------------------
 Mon Sep  7 02:43:52 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Add a patch to fix CVE-2026-81665 (bsc#1278738) 

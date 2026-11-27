@@ -43,6 +43,7 @@ Patch0:         0001-harden-services-with-systemd-sandboxing.patch
 Patch1:         820.patch
 Patch2:         0001-totemsrp-Fix-int-overflow-in-commit_token_sanity.patch
 Patch3:         0002-totempg-Replace-assert-with-check-in-deliver_fn.patch
+Patch4:         0001-totemsrp-Check-upper-bound-length-in-memb_commit_tok.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
