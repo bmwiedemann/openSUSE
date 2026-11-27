@@ -15,4 +15,12 @@
     <comment>Update yara-x to 1.24.0 (adds upstream cli/man/*.1 man pages, security fix for include path traversal aae52cc, refreshes vendor.tar.zst, and fixes %check %{arm} macro for armv7hl). Assisted-by: Antigravity (Gemini)</comment>
     <requestid>1399785</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5fa91df135309b5b703922885c6d75c7</srcmd5>
+    <version>1.25.0</version>
+    <time>1795804863</time>
+    <user>anag_factory</user>
+    <comment>Update yara-x to 1.25.0 (replaces bincode with postcard, adds ELF/PE constants, security hardening for vba ZIP bombs ee84a73 and Authenticode DoS 15b9026/1638d56, thread-safety fix #907, refreshes vendor.tar.zst). Assisted-by: Antigravity (Gemini)</comment>
+    <requestid>1400837</requestid>
+  </revision>
 </revisionlist>

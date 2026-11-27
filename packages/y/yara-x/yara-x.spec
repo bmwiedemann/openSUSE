@@ -17,7 +17,7 @@
 
 
 Name:           yara-x
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        A malware identification and classification tool
 License:        BSD-3-Clause
