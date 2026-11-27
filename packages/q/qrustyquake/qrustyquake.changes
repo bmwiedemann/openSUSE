@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 27 08:12:31 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to 1.0.2
+  - Improved performance on multi-core systems
+  - Gamepad keys get bound correctly on more gamepad types by default
+  - Miscellaneous minor fixes and performance optimizations
+
+-------------------------------------------------------------------
 Fri Nov 20 15:17:23 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Update to 1.0.1
