@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Nov 20 00:43:23 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509-store to version 1.10.2 revision 1.
+  ## 1.10.2
+
+  Support crypton-x509 1.11.
+
+  * Support RSASSA-PSS keys
+    [#61](https://github.com/kazu-yamamoto/crypton-certificate/pull/61)
+  * Support ML-KEM keys
+    [#63](https://github.com/kazu-yamamoto/crypton-certificate/pull/63)
+
+-------------------------------------------------------------------
 Wed Nov 18 08:15:45 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509-store to version 1.10.1.
