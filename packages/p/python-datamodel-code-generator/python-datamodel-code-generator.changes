@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Nov 26 04:19:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.102.0:
+  * Drop Python 3.10 runtime support (requires-python >= 3.11; drop tomli)
+  * Add Python 3.15 target support and update Python 3.15 dependency bounds
+  * Add datamodel-code-generator console script alias alongside
+    datamodel-codegen
+  * Add experimental --generate-server (fastapi) and --generate-client
+    (httpx2) targets for OpenAPI and AsyncAPI
+  * Add generate_dynamic_module() returning root and per-location classes
+  * Add --untrusted-input to refuse external refs and code keywords
+  * Add dated standard-py3XX and practical-py3XX presets (20261104,
+    20261106, 20261111)
+  * Add --read-format-as-annotation, --untyped-value-type,
+    --filter-literal-values, and --read-const-beside-enum
+  * Add --intersect-combined-schema-keywords, --distribute-allof-over-unions
+    and --apply-default-values-to-true-properties
+  * Add --no- forms for boolean options and --write-pyproject-config
+  * Report output encoding failures as Error and align builtin formatter
+    wrapping and quotes with black
+  * Attribute deprecation and migration notices to the calling frame
+  * Fix allOf intersections, discriminated union reuse, strict bytes
+    decoding, and package class vs submodule shadowing
+
+-------------------------------------------------------------------
 Fri Oct  9 01:58:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.83.0:

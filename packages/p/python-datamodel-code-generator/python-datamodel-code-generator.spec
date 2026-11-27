@@ -18,7 +18,7 @@
 
 %define upname datamodel-code-generator
 Name:           python-datamodel-code-generator
-Version:        0.83.0
+Version:        0.102.0
 Release:        0
 Summary:        Datamodel Code Generator
 License:        MIT
@@ -52,12 +52,11 @@ Recommends:     python-ruff >= 0.9.10
 Recommends:     python-watchfiles >= 1.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module black >= 19.10b0}
 BuildRequires:  %{python_module PySnooper >= 0.4.1}
 BuildRequires:  %{python_module argcomplete >= 1.11.1}
 BuildRequires:  %{python_module black >= 19.10b0}
+BuildRequires:  %{python_module cryptography >= 50}
 BuildRequires:  %{python_module email-validator >= 2.2}
-BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module genson >= 1.2.1}
 BuildRequires:  %{python_module graphql-core}
 BuildRequires:  %{python_module grpcio-tools}
@@ -65,12 +64,12 @@ BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module hypothesis >= 6.136.6}
 BuildRequires:  %{python_module hypothesis-jsonschema >= 0.23.1}
 BuildRequires:  %{python_module inflect >= 4.1.0}
-BuildRequires:  %{python_module inline-snapshot >= 0.34.2}
+BuildRequires:  %{python_module inline-snapshot >= 0.37}
 BuildRequires:  %{python_module isort >= 4.3.21}
 BuildRequires:  %{python_module jinja2 >= 2.11.2}
 BuildRequires:  %{python_module jsonschema >= 4.24}
 BuildRequires:  %{python_module lxml >= 5.3}
-BuildRequires:  %{python_module msgspec >= 0.18}
+BuildRequires:  %{python_module msgspec >= 0.22}
 BuildRequires:  %{python_module openapi-spec-validator >= 0.2.8}
 BuildRequires:  %{python_module prance >= 0.18.2}
 BuildRequires:  %{python_module pydantic >= 2.12}
@@ -85,7 +84,6 @@ BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module time-machine >= 3.1}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module covdefaults}
-BuildRequires:  %{python_module toml >= 0.10.1}
 BuildRequires:  %{python_module watchfiles}
 BuildRequires:  git-core
 # /SECTION
@@ -104,32 +102,53 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/datamodel-codegen
+%python_clone -a %{buildroot}%{_bindir}/datamodel-code-generator
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-skiptests="test_openapi_parser_parse_remote_ref"
-skiptests+=" or test_watch_cli_resolves_relative_coverage_file_for_other_working_directory"
-skiptests+=" or test_regular_generation_does_not_load_watch_dependency_collector"
-# ruff newline changes
-skiptests+=" or test_ruff_check_and_format_combined or test_ruff_check_only"
-skiptests+=" or est_ruff_batch_formatting_directory or test_type_checking_imports_default_to_runtime_imports_for_modular_pydantic_ruff"
-skiptests+=" or test_no_use_type_checking_imports"
+workers=$(( ($(nproc) + 1) / 2 ))
 # Requires node installed
-skiptests+=" or test_release_benchmark_chart_range_e2e_uses_fixture_data"
+skiptests="test_release_benchmark_chart_range_e2e_uses_fixture_data"
+ignore=" --ignore tests/test_build_migration_docs_script.py"
+# Pydantic 2.14 oddness
+skiptests+=" or test_multi_module_output"
+skiptests+=" or test_multi_module_relative_parent_import"
+skiptests+=" or test_generated_root_model_aliases"
+# Missing upstream snapshots in 0.102.0
+skiptests+=" or test_payload_validation_cases_cover_discovered_schema_files"
+skiptests+=" or reuse_reference_identifier_starts"
+skiptests+=" or identifier_type_alias_target"
+# Heavy multi-subprocess determinism test crashes xdist worker in OBS
+skiptests+=" or test_generation_is_deterministic"
 # PYTHONPATH wierdness
 skiptests+=" or test_model_resolver_pickles_are_compatible_across_the_resolver_state_rename"
-%pytest -k "not ($skiptests)"
+skiptests+=" or test_regular_generation_does_not_load_watch_dependency_collector"
+ignore+=" --ignore tests/test_behaviour_diff_script.py"
+ignore+=" --ignore tests/test_compare_release_script.py"
+ignore+=" --ignore tests/test_verify_script.py"
+ignore+=" --ignore tests/test_conftest_helpers.py"
+ignore+=" --ignore tests/main/test_shape_compositions.py"
+# Upstream CI-only script tests
+ignore+=" --ignore tests/test_ci_coverage_script.py"
+ignore+=" --ignore tests/test_recommender_calibrate_script.py"
+# Run testsuite in two chunks due to memory pressure
+%pytest tests/main $ignore -n $workers -m "not perf" -k "not ($skiptests)"
+ignore+=" --ignore tests/main"
+# Requires collecting tests/main in the same pytest run
+skiptests+=" or test_all_options_have_cli_doc_markers"
+%pytest $ignore -n $workers -m "not perf" -k "not ($skiptests)"
 
 %post
-%python_install_alternative datamodel-codegen
+%python_install_alternative datamodel-codegen datamodel-code-generator
 
 %postun
-%python_uninstall_alternative datamodel-codegen
+%python_uninstall_alternative datamodel-codegen datamodel-code-generator
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
 %python_alternative %{_bindir}/datamodel-codegen
+%python_alternative %{_bindir}/datamodel-code-generator
 %{python_sitelib}/datamodel[_-]code[_-]generator
 %{python_sitelib}/datamodel[_-]code[_-]generator-%{version}.dist-info
 
