@@ -6673,4 +6673,41 @@ I cannot test locally unfortunately.
     Same-origin policy bypass in the DOM: Navigation component</comment>
     <requestid>1393557</requestid>
   </revision>
+  <revision rev="399" vrev="1">
+    <srcmd5>836e980b8c90a89c95e8f46efb8f9a98</srcmd5>
+    <version>153.8.0</version>
+    <time>1795804883</time>
+    <user>anag_factory</user>
+    <comment>- Activate RLBox / WASM sandboxing feature
+- Add patch mozilla-fix-wasm-sysroot.patch for correcting the target triplet
+- Remove SLE12 as a build-target
+
+- Mozilla Thunderbird 153.8.0 ESR
+  * changed: Thundermail built-in add-on updated to v2.0.30
+    (bmo#2077546)
+  * fixed: Contact edits by Manifest V3 extensions stored excess
+    data and caused slowdowns (bmo#2085594)
+  * fixed: Some IMAP messages caused the message pane to reload
+    endlessly (bmo#2089523)
+  * fixed: Security fixes
+- Mozilla Firefox ESR 153.8
+  MFSA 2026-133 (bsc#1290863)
+  * CVE-2026-135500 (bmo#2049799)
+    Privilege escalation due to integer overflow in the Graphics:
+    WebGPU component
+  * CVE-2026-135503 (bmo#2058620)
+    Invalid pointer in the DOM: Networking component
+  * CVE-2026-135504 (bmo#2059024)
+    Privilege escalation due to use-after-free in the Graphics
+    component
+  * CVE-2026-135505 (bmo#2061258)
+    Privilege escalation due to incorrect boundary conditions in
+    the Audio/Video: Playback component
+  * CVE-2026-135506 (bmo#2067949)
+    Sandbox escape in the Graphics: Text component
+  * CVE-2026-135507 (bmo#2068455)
+    Use-after-free in the Disability Access APIs component
+  * CVE-2026-135508 (bmo#2073689)</comment>
+    <requestid>1400936</requestid>
+  </revision>
 </revisionlist>

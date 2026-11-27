@@ -1,4 +1,425 @@
 -------------------------------------------------------------------
+Wed Nov 25 11:16:49 UTC 2026 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Activate RLBox / WASM sandboxing feature
+- Add patch mozilla-fix-wasm-sysroot.patch for correcting the target triplet
+- Remove SLE12 as a build-target
+
+-------------------------------------------------------------------
+Tue Nov 24 18:19:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Mozilla Thunderbird 153.8.0 ESR
+  * changed: Thundermail built-in add-on updated to v2.0.30
+    (bmo#2077546)
+  * fixed: Contact edits by Manifest V3 extensions stored excess
+    data and caused slowdowns (bmo#2085594)
+  * fixed: Some IMAP messages caused the message pane to reload
+    endlessly (bmo#2089523)
+  * fixed: Security fixes
+- Mozilla Firefox ESR 153.8
+  MFSA 2026-133 (bsc#1290863)
+  * CVE-2026-135500 (bmo#2049799)
+    Privilege escalation due to integer overflow in the Graphics:
+    WebGPU component
+  * CVE-2026-135503 (bmo#2058620)
+    Invalid pointer in the DOM: Networking component
+  * CVE-2026-135504 (bmo#2059024)
+    Privilege escalation due to use-after-free in the Graphics
+    component
+  * CVE-2026-135505 (bmo#2061258)
+    Privilege escalation due to incorrect boundary conditions in
+    the Audio/Video: Playback component
+  * CVE-2026-135506 (bmo#2067949)
+    Sandbox escape in the Graphics: Text component
+  * CVE-2026-135507 (bmo#2068455)
+    Use-after-free in the Disability Access APIs component
+  * CVE-2026-135508 (bmo#2073689)
+    Sandbox escape due to use-after-free in the Graphics
+    component
+  * CVE-2026-135509 (bmo#2074205)
+    Sandbox escape due to use-after-free in the Graphics:
+    WebRender component
+  * CVE-2026-135511 (bmo#2076000)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-135512 (bmo#2078599)
+    Use-after-free in the Cycle Collector component
+  * CVE-2026-135514 (bmo#2079172)
+    Use-after-free in the Cycle Collector component
+  * CVE-2026-135515 (bmo#2074175, bmo#2079254)
+    Incorrect boundary conditions in the Networking: Cache
+    component
+  * CVE-2026-135516 (bmo#2079258)
+    Invalid pointer in the Graphics: WebGPU component
+  * CVE-2026-135517 (bmo#2079465)
+    Use-after-free in the Networking: Cache component
+  * CVE-2026-135518 (bmo#2079922)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-135519 (bmo#2080097)
+    Sandbox escape due to use-after-free in the Networking
+    component
+  * CVE-2026-135610 (bmo#2080101)
+    Invalid pointer in the Audio/Video: Playback component
+  * CVE-2026-135520 (bmo#2080133)
+    Sandbox escape in the Graphics: CanvasWebGL component
+  * CVE-2026-135521 (bmo#2080757)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-135524 (bmo#2082119)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-135525 (bmo#2082140)
+    Sandbox escape due to use-after-free in the Graphics:
+    WebRender component
+  * CVE-2026-135526 (bmo#2082192)
+    Use-after-free in the DOM: Networking component
+  * CVE-2026-135527 (bmo#2084649)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-135528 (bmo#2085481)
+    Race condition in the Networking: HTTP component
+  * CVE-2026-135529 (bmo#2086014)
+    Sandbox escape in the Graphics: Text component
+  * CVE-2026-135530 (bmo#2086293)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking: HTTP component
+  * CVE-2026-135531 (bmo#2088537)
+    Privilege escalation due to use-after-free in the Networking:
+    Cache component
+  * CVE-2026-135532 (bmo#2088539)
+    Use-after-free in the Networking component
+  * CVE-2026-135533 (bmo#2088658)
+    Incorrect boundary conditions in the Layout: Tables component
+  * CVE-2026-135534 (bmo#2088670)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-135535 (bmo#2088854)
+    Incorrect boundary conditions in the Graphics: Skia component
+  * CVE-2026-135536 (bmo#2089267)
+    Uninitialized memory in the DOM: Editor component
+  * CVE-2026-135537 (bmo#2089592)
+    Incorrect boundary conditions in the Layout: Text and Fonts
+    component
+  * CVE-2026-135538 (bmo#2089680)
+    Use-after-free in the Graphics: ImageLib component
+  * CVE-2026-135539 (bmo#2089704)
+    Use-after-free in the DOM: CSS Object Model component
+  * CVE-2026-135540 (bmo#2089774)
+    Incorrect boundary conditions in the JavaScript Engine: JIT
+    component
+  * CVE-2026-135541 (bmo#2089775)
+    Use-after-free in the XSLT component
+  * CVE-2026-135542 (bmo#2089819)
+    Incorrect boundary conditions in the Layout: Text and Fonts
+    component
+  * CVE-2026-135543 (bmo#2090113)
+    Invalid pointer in the Networking component
+  * CVE-2026-135544 (bmo#2090118)
+    Invalid pointer in the DOM: Navigation component
+  * CVE-2026-135545 (bmo#2090123)
+    Invalid pointer in the DOM: Editor component
+  * CVE-2026-135546 (bmo#2090147)
+    Privilege escalation due to incorrect boundary conditions in
+    the Layout: Text and Fonts component
+  * CVE-2026-135547 (bmo#2090172)
+    Sandbox escape due to incorrect boundary conditions in the
+    DOM: Networking component
+  * CVE-2026-135548 (bmo#2090182)
+    Use-after-free in the Layout component
+  * CVE-2026-135549 (bmo#2090289)
+    Use-after-free in the XSLT component
+  * CVE-2026-135550 (bmo#2090592)
+    Invalid pointer in the Audio/Video: Web Codecs component
+  * CVE-2026-135551 (bmo#2090620)
+    Use-after-free in the Layout component
+  * CVE-2026-135552 (bmo#2090893)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-135553 (bmo#2090897)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-135554 (bmo#2090900)
+    Use-after-free in the DOM: Navigation component
+  * CVE-2026-135555 (bmo#2090902)
+    Use-after-free in the XML component
+  * CVE-2026-135556 (bmo#2091136)
+    Invalid pointer in the JavaScript Engine: JIT component
+  * CVE-2026-135557 (bmo#2091345)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-135558 (bmo#2091968)
+    Uninitialized memory in the Graphics: Text component
+  * CVE-2026-135611 (bmo#1797016)
+    Privilege escalation in the Internationalization component
+  * CVE-2026-135560 (bmo#1821458)
+    Use-after-free in the Gecko Profiler component
+  * CVE-2026-135562 (bmo#2054666)
+    Site isolation issue in the Networking: Cookies component
+  * CVE-2026-135612 (bmo#2054753)
+    Privilege escalation in the Messaging System component
+  * CVE-2026-135563 (bmo#2059999)
+    Site isolation issue in the Audio/Video component
+  * CVE-2026-135613 (bmo#2066981)
+    Mitigation bypass in the WebExtensions component
+  * CVE-2026-135565 (bmo#2068399)
+    Use-after-free in the Graphics component
+  * CVE-2026-135567 (bmo#2073679)
+    Incorrect boundary conditions in the Networking: HTTP
+    component
+  * CVE-2026-135568 (bmo#2076412)
+    Use-after-free in the Graphics: CanvasWebGL component
+  * CVE-2026-135570 (bmo#2077077)
+    Use-after-free in the DOM: Workers component
+  * CVE-2026-135571 (bmo#2077760)
+    Sandbox escape due to use-after-free in the Panning and
+    Zooming component
+  * CVE-2026-135572 (bmo#2078279)
+    Information disclosure in the DOM: File component
+  * CVE-2026-135573 (bmo#2079712)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-135579 (bmo#2083091)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics component
+  * CVE-2026-135581 (bmo#2058376, bmo#2082002, bmo#2083628)
+    Use-after-free in the Audio/Video: Playback component
+  * CVE-2026-135584 (bmo#2084816)
+    Race condition in the Graphics component
+  * CVE-2026-135585 (bmo#2089582)
+    Use-after-free in the Layout: Scrolling and Overflow
+    component
+  * CVE-2026-135587 (bmo#2091272)
+    Information disclosure in the DOM: Security component
+  * CVE-2026-135588 (bmo#2091273)
+    Use-after-free in the DOM: UI Events & Focus Handling
+    component
+  * CVE-2026-135590 (bmo#2025335)
+    Use-after-free in the Storage: Cache API component
+  * CVE-2026-135592 (bmo#2044364)
+    Spoofing issue in the Site Permissions component
+  * CVE-2026-135595 (bmo#2059187)
+    Uninitialized memory in the Graphics: CanvasWebGL component
+  * CVE-2026-135596 (bmo#2074187)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebRender component
+  * CVE-2026-135597 (bmo#2074218)
+    Sandbox escape due to use-after-free in the DOM: Navigation
+    component
+  * CVE-2026-135601 (bmo#2084028)
+    Other issue in the Enterprise Policies component
+  * CVE-2026-135603 (bmo#2084492)
+    Other issue in the Internationalization component
+  * CVE-2026-135604 (bmo#2085837)
+    Spoofing issue in the Site Identity component
+  * CVE-2026-135605 (bmo#2085895)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-135606 (bmo#2086816)
+    Cryptographic issue in the Security: PSM component
+  * CVE-2026-135608 (bmo#2090109)
+    Frame poisoning in the Layout component
+  * CVE-2026-135609 (bmo#2090126)
+    Frame poisoning in the DOM: Core & HTML component
+
+-------------------------------------------------------------------
+Thu Nov 19 15:11:51 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Use clang21-devel even on Leap 16.0
+- Add the following environment variables to ensure clang/bindgen
+  will use the binutils from the right version:
+  LLVM_AR, LLVM_NM, LLVM_OBJCOPY, LLVM_OBJDUMP, LLVM_OBJDUMP,
+  LLVM_READELF
+
+-------------------------------------------------------------------
+Wed Nov 18 16:27:01 UTC 2026 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- Mozilla Thunderbird 153.7.0 ESR
+  * Opening a window could cause Thunderbird to crash
+  * MP4 attachments could be truncated when forwarding messages
+  * Exchange autodiscovery failed when redirected to another email address
+  * Legacy IMAP tag changes were not sent to the server and reverted
+    after refresh
+  * SMTP Kerberos authentication failed on Linux with STARTTLS
+  MFSA 2026-129 (bsc#1289275)
+  * CVE-2026-126132 (bmo#2081919)
+    Attachments could be replaced with local file content when
+    forwarding
+  * CVE-2026-126133 (bmo#2083485)
+    Calendar server credentials could be sent to an HTTP proxy
+  * CVE-2026-126134 (bmo#2083584)
+    Feed subscriptions could leak NTLM credentials on Windows
+  * CVE-2026-126135 (bmo#2085343)
+    SMTP and POP3 response injection when using STARTTLS
+  * CVE-2026-126136 (bmo#2085865)
+    OAuth2 access token could be sent over an unencrypted connection
+    with Exchange accounts
+  * CVE-2026-124853 (bmo#2058035)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: Text component
+  * CVE-2026-124854 (bmo#2060230)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-124855 (bmo#2072096)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-124856 (bmo#2072437)
+    Incorrect boundary conditions in the Networking: HTTP component
+  * CVE-2026-124857 (bmo#2073695)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-124858 (bmo#2074172)
+    Use-after-free in the DOM: HTML Parser component
+  * CVE-2026-124859 (bmo#2074179)
+    Sandbox escape due to incorrect boundary conditions in the
+    Storage: Cache API component
+  * CVE-2026-124860 (bmo#2074194)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-124861 (bmo#2074210)
+    Sandbox escape due to use-after-free in the Audio/Video: cubeb
+    component
+  * CVE-2026-124862 (bmo#2074220)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-118007 (bmo#2075296)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-124863 (bmo#2075975)
+    Use-after-free in the DOM: HTML Parser component
+  * CVE-2026-124864 (bmo#2075976)
+    Sandbox escape due to use-after-free in the DOM: Service Workers
+    component
+  * CVE-2026-124865 (bmo#2076414)
+    Use-after-free in the Audio/Video component
+  * CVE-2026-124866 (bmo#2078993)
+    Use-after-free in the Layout component
+  * CVE-2026-124868 (bmo#2079169)
+    Incorrect boundary conditions in the DOM: Core & HTML component
+  * CVE-2026-124869 (bmo#2079170)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-124870 (bmo#2079466)
+    Incorrect boundary conditions in the JavaScript: GC component
+  * CVE-2026-124872 (bmo#2079689)
+    Use-after-free in the Cycle Collector component
+  * CVE-2026-124873 (bmo#2079937)
+    Invalid pointer in the DOM: Editor component
+  * CVE-2026-124874 (bmo#2080420)
+    Same-origin policy bypass in the Networking: HTTP component
+  * CVE-2026-124875 (bmo#2081380)
+    Incorrect boundary conditions in the DOM: CSS Object Model
+    component
+  * CVE-2026-124876 (bmo#2081550)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-124877 (bmo#2081939)
+    Use-after-free in the Layout: Positioned component
+  * CVE-2026-124879 (bmo#2081949)
+    Invalid pointer in the Networking: Cache component
+  * CVE-2026-124880 (bmo#2081966)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-124881 (bmo#2081980)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-124882 (bmo#2081982)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-124883 (bmo#2081991)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-124884 (bmo#2081994)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-124885 (bmo#2082006)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-124886 (bmo#2082021)
+    Invalid pointer in the Layout: Text and Fonts component
+  * CVE-2026-124887 (bmo#2082024)
+    Incorrect boundary conditions in the Layout: Text and Fonts
+    component
+  * CVE-2026-124888 (bmo#2082025)
+    Incorrect boundary conditions in the Layout: Text and Fonts
+    component
+  * CVE-2026-124889 (bmo#2082033)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-124890 (bmo#2082039)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-124891 (bmo#2082075)
+    Incorrect boundary conditions in the DOM: Selection component
+  * CVE-2026-124892 (bmo#2082083)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-124893 (bmo#2082097)
+    Use-after-free in the DOM: Workers component
+  * CVE-2026-124894 (bmo#2082101)
+    Use-after-free in the Networking: Cookies component
+  * CVE-2026-124895 (bmo#2082109)
+    Use-after-free in the Storage: localStorage & sessionStorage
+    component
+  * CVE-2026-124896 (bmo#2082181)
+    Invalid pointer in the Layout: Text and Fonts component
+  * CVE-2026-124897 (bmo#2082186)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-124898 (bmo#2082205)
+    Use-after-free in the DOM: Editor component
+  * CVE-2026-124899 (bmo#2082451)
+    Use-after-free in the Layout: Text and Fonts component
+  * CVE-2026-124901 (bmo#2083626)
+    Other issue in the Networking: JAR component
+  * CVE-2026-124902 (bmo#2083629)
+    Same-origin policy bypass due to race condition in the Audio/Video
+    component
+  * CVE-2026-124903 (bmo#2084673)
+    Sandbox escape due to use-after-free in the IPC component
+  * CVE-2026-124905 (bmo#2086254)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-124906 (bmo#2086296)
+    Use-after-free in the Graphics: WebRender component
+  * CVE-2026-124907 (bmo#2087324)
+    Privilege escalation, sandbox escape due to use-after-free in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-124909 (bmo#1730261)
+    Information disclosure in the Private Browsing component
+  * CVE-2026-124910 (bmo#1792485)
+    Mitigation bypass in the WebExtensions component
+  * CVE-2026-124912 (bmo#2025197)
+    Spoofing issue in the DOM: Security component
+  * CVE-2026-118019 (bmo#2025386)
+    Race condition, use-after-free in the DOM: File component
+  * CVE-2026-124913 (bmo#2045704)
+    Site isolation issue in the Networking component
+  * CVE-2026-124914 (bmo#2056107)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-124915 (bmo#2056172)
+    Incorrect boundary conditions in the Graphics: WebGPU component
+  * CVE-2026-124917 (bmo#2058648)
+    Sandbox escape due to use-after-free in the Widget: Gtk component
+  * CVE-2026-124918 (bmo#2058993)
+    Privilege escalation due to incorrect boundary conditions in the
+    Graphics: WebRender component
+  * CVE-2026-124919 (bmo#2061331)
+    Privilege escalation due to use-after-free in the WebRTC:
+    Networking component
+  * CVE-2026-124922 (bmo#2074190)
+    Use-after-free in the CSS Transitions and Animations component
+  * CVE-2026-118021 (bmo#2076695)
+    Sandbox escape due to use-after-free in the XPCOM component
+  * CVE-2026-124924 (bmo#2076710)
+    Incorrect boundary conditions in the Graphics: WebRender component
+  * CVE-2026-124926 (bmo#2077727)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-124927 (bmo#2078669)
+    Site isolation issue in the Graphics: WebRender component
+  * CVE-2026-124929 (bmo#2080889)
+    Information disclosure in the Layout: Form Controls component
+  * CVE-2026-118024 (bmo#2081959)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-124930 (bmo#2082172)
+    Information disclosure in the Address Bar component
+  * CVE-2026-124931 (bmo#2083990)
+    Same-origin policy bypass in the DOM: Core & HTML component
+  * CVE-2026-124932 (bmo#2084555)
+    Use-after-free in the Graphics component
+  * CVE-2026-124933 (bmo#2085424)
+    Sandbox escape in the Console component
+  * CVE-2026-124934 (bmo#1847625)
+    Spoofing issue in the Security component
+  * CVE-2026-124935 (bmo#2061793)
+    Undefined behavior in the WebRTC: Networking component
+  * CVE-2026-124938 (bmo#2075948)
+    Mitigation bypass in the Add-ons Manager component
+  * CVE-2026-124939 (bmo#2076663)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-124940 (bmo#2076948)
+    Mitigation bypass in the File Handling component
+  * CVE-2026-124941 (bmo#2077405)
+    Information disclosure in the Security: RLBox component
+  * CVE-2026-124942 (bmo#2077728)
+    Invalid pointer in the DOM: Streams component
+  * CVE-2026-124948 (bmo#2081960)
+    Incorrect boundary conditions, use-after-free in the Graphics
+    component
+  * CVE-2026-124951 (bmo#2085124)
+    Privilege escalation in the Nimbus Desktop Client component
+
+-------------------------------------------------------------------
 Wed Oct 28 21:58:09 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 153.6.0 ESR

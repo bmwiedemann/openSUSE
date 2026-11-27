@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2006-2026 Wolfgang Rosenauer <wr@rosenauer.org>
-# Copyright (c) 2025 Tristan Miller <psychonaut@nothingisreal.com>
+# Copyright (c) 2025-2026 Tristan Miller <psychonaut@nothingisreal.com>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          153
-%define mainver        %major.6.0
-%define orig_version   153.6.0
+%define mainver        %major.8.0
+%define orig_version   153.8.0
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -52,6 +52,17 @@
 # ccache doesn't work with pgo
 %if 0%{?do_profiling}
 %define useccache     0
+%endif
+
+# Build the wasm-sandboxed libraries (RLBox).
+%define wasm_sandbox   1
+# WASM compilation in general not possible on big endian
+%ifarch s390x
+%define wasm_sandbox   0
+%endif
+# WASM not yet supported on Leap
+%if 0%{?suse_version} < 1699
+%define wasm_sandbox   0
 %endif
 
 ExclusiveArch:  aarch64 ppc64le x86_64 s390x riscv64
@@ -137,11 +148,24 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if 0%{?suse_version} < 1599
-BuildRequires:  clang19-devel
+%if 0%{?suse_version} >= 1610
+%define clang_version   21
 %else
-BuildRequires:  clang-devel
+%define clang_version   21
 %endif
+BuildRequires:  clang%{clang_version}-devel
+%if %{wasm_sandbox}
+BuildRequires:  lld%{clang_version}
+BuildRequires:  llvm%{clang_version}
+BuildRequires:  wasi-libc
+BuildRequires:  wasi-libcxx
+%endif
+# Because of reasons, clang-tools is not versioned and leads often
+# to unresolvable or broken builds, because it pulls in different
+# clang-versions then the one we try to use here.
+# But we don't need clang-tools at all, it is just pulled in via
+# the clang-devel-package, so we tell OBS to not use it
+#!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -191,6 +215,7 @@ Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 # Gecko/Toolkit
 Patch1:         mozilla-ntlm-full-path.patch
 Patch2:         mozilla-aarch64-startup-crash.patch
+Patch3:         mozilla-fix-wasm-sysroot.patch
 Patch4:         mozilla-s390-context.patch
 Patch5:         mozilla-pgo.patch
 Patch6:         mozilla-reduce-rust-debuginfo.patch
@@ -312,13 +337,6 @@ DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
-# SLE-12 provides python311, but that package does not provide a python3 binary
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-sed -i "s|/usr/bin/env python3|/usr/bin/env python3.11|" mach
-sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f\"python3.11.{i}\"|" mach
-export PYTHON3=/usr/bin/python3.11
-%endif
-
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh
 %else
@@ -348,6 +366,15 @@ export RANLIB=gcc-ranlib-%{gcc_version}
 export CC=clang
 export CXX=clang++
 %endif
+# Add the following variables to ensure clang/bindgen will use the
+# binutils from the right version:
+export LLVM_AR=llvm-ar-%{clang_version}
+export LLVM_NM=llvm-nm-%{clang_version}
+export LLVM_OBJCOPY=llvm-objcopy-%{clang_version}
+export LLVM_OBJDUMP=llvm-objdump-%{clang_version}
+export LLVM_RANLIB=llvm-ranlib-%{clang_version}
+export LLVM_READELF=llvm-readelf-%{clang_version}
+
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
 ### ld to go OOM (https://sourceware.org/bugzilla/show_bug.cgi?id=30756)
@@ -417,8 +444,11 @@ ac_add_options --disable-debug
 ac_add_options --enable-update-channel=%{update_channel}
 ac_add_options --with-unsigned-addon-scopes=app
 ac_add_options --allow-addon-sideload
-# at least temporary until the "wasi-sysroot" issue is solved
+%if %{wasm_sandbox}
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot/
+%else
 ac_add_options --without-wasm-sandboxed-libraries
+%endif
 %ifarch x86_64 aarch64
 ac_add_options --enable-rust-simd
 %endif
