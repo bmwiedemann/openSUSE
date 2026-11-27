@@ -1,0 +1,5 @@
+<package name="python-mpegdash" project="openSUSE:Factory">
+  <title>MPEG-DASH MPD (Media Presentation Description) parser</title>
+  <description>Parser and writer for MPEG-DASH MPD (Media Presentation Description)
+manifests.</description>
+</package>
