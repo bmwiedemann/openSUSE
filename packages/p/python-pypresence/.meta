@@ -1,0 +1,5 @@
+<package name="python-pypresence" project="openSUSE:Factory">
+  <title>Discord RPC and Rich Presence client</title>
+  <description>Discord IPC and Rich Presence client library for Python, with both
+synchronous and asyncio interfaces.</description>
+</package>
