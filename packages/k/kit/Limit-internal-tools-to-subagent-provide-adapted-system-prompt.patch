@@ -1,9 +1,8 @@
 From: Egbert Eich <eich@suse.com>
-Date: Mon Jun 29 08:48:15 2026 +0200
+Date: Thu Nov 26 19:11:42 2026 +0100
 Subject: Limit internal tools to subagent, provide adapted system prompt
-Patch-mainline: N/A
-Git-repo: https://github.com/mark3labs/kit
-Git-commit: 845715044b419fc40249aafdd0acf4ff93ae5659
+Patch-mainline: Not yet
+Git-commit: 9a2153802da5436d77b60c0e8a6082834ac7efd3
 References: 
 
 When kit starts and does not find a config file in any of its
@@ -18,10 +17,10 @@ Signed-off-by: Egbert Eich <eich@suse.de>
  internal/config/config.go | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
 diff --git a/internal/config/config.go b/internal/config/config.go
-index 343bf209..c577c7ef 100644
+index bfab2ec..3277f5b 100644
 --- a/internal/config/config.go
 +++ b/internal/config/config.go
-@@ -545,6 +545,26 @@ mcpServers:
+@@ -618,6 +618,26 @@ mcpServers:
  #       topP: 0.95
  #       topK: 40
  #       systemPrompt: "You are a helpful local assistant."
@@ -47,4 +46,4 @@ index 343bf209..c577c7ef 100644
 +"
  `
  
- 	_, err = file.WriteString(content)
+ 	if _, err := file.WriteString(content); err != nil {

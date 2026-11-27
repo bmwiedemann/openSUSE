@@ -18,7 +18,7 @@
 %{bcond_with vulncheck}
 
 Name:           kit
-Version:        0.107.0
+Version:        0.145.0
 Release:        0
 Summary:        A CLI host application for the Model Context Protocol (MCP)
 License:        MIT and Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause

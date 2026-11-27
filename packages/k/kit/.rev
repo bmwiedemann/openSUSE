@@ -7,4 +7,41 @@
     <comment>This submission intends to add the new package 'kit' to openSUSE Factory.</comment>
     <requestid>1378381</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f98e35d5fdbd3bd0da3521c4dab477b</srcmd5>
+    <version>0.145.0</version>
+    <time>1795805082</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.145.0
+  * Features
+    - acp:
+      - ACP mode now supports permissions, client file system and
+        terminal access, slash commands, plans and authentication
+        errors.
+      - Extensions now work in ACP mode.
+    - acpserver:
+      - The ACP server supports changing the model of a session
+        (`session/set_model`).
+    - agent:
+      - Failed streaming steps are resumed after transient errors.
+    - agents:
+      - Agents can be defined by name, and each agent can have its
+        own tool restrictions.
+    - app:
+      - Token counts and context fill are updated after every step.
+    - auth:
+      - Kit starts without API keys, and a `/connect` dialog lets
+        you enter a key.
+    - codemode:
+      - A new code mode tool runs JavaScript that calls other tools.
+    - compaction:
+      - Compaction uses adaptive budgets, estimates tokens over
+        full message parts and anchors its summaries.
+      - On context overflow errors, the conversation is compacted
+        automatically and the request is retried.
+    - config:
+      - A `noOAuth` flag skips OAuth for public MCP servers.
+      - Custom models can set their own `baseUrl` and `apiKey`.</comment>
+    <requestid>1401130</requestid>
+  </revision>
 </revisionlist>
