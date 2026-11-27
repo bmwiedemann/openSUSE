@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Nov 25 09:36:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 0.22.3
+  * destimage var added to omp parallel statement
+  * changed (wrong) static to stack in normalize_model
+  * xtrans interpolate: incorrect memmove data size
+  * X-Trans/half interpolation: find green pixel based on CFA pattern, not pixel values
+  * xtrans_interpolate: fix logic error, interpolation should use original pixel values,
+    not ones adjusted on previous tile. Note: 2x image memory needed
+  * mask decodecache index in Sony YCbCr decoder
+  * use local static strnlen version b/c global may be missing
+  * Better gps ref recording
+  * tiff_head: perform strip bytes calculation in 64 bit, check against 2^31-1
+  * CRX decoder: use 64 bit offsets in data
+  * lossless DNG/SOF1-IDCT case: refuse images with tiff_samples > 1
+  * x3f camf matrix setup: size check
+  * implement explicit 6-bit mask on shift argument in pana8 decoder
+  * CRX decoder: clamp qParam table index in legacy quantization path
+  * allocated image size data check implemented in x3f loaded
+  * additional offset check in x3f thumbnail loader
+  * fixed wrong 32=>64 bit conversion in CIFF parser
+  * dng: initialize tone-curve table before OpcodeList2 parsing
+  * Fix: there is no isnan/isinf in MSVC 2010 and older
+  * Initi hassy's tmp_model w/ zeroes
+  * better Hasselblad model parsing
+  * explicitly initialize _fsize for bigfile datastream
+  * add stream validity check before cr3 size checking
+  * Revert "check TIFF tag type for NewSubfileType"
+  * parse_kodak_ifd: fixed possible body name overrun
+  * unset progress bit if open stage failed
+  * X3F utils: data size check added
+  * wavelet denoise/OpenMP case: add missed size initialization
+  * Check for valid float/double in getreal
+  * check TIFF tag type for NewSubfileType
+  * CRX decoder: prevent possible index overrun on damaged files 
+- fixes CVE-2026-88387 [bsc#1282783]
+- deleted patches
+  * libraw-CVE-2026-88387.patch (upstreamed)
+- added patches
+  CVE-2026-135167: a heap out-of-bounds read vulnerability in HuffTable:len() [bsc#1291640]
+  * libraw-CVE-2026-135167.patch
+  CVE-2026-135177: an out-of-bounds read vulnerability in LibRaw:pentax_4shot_load_raw() [bsc#1291641]
+  * libraw-CVE-2026-135177.patch
+
+-------------------------------------------------------------------
 Tue Sep 29 07:46:51 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

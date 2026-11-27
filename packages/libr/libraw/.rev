@@ -833,4 +833,12 @@ The only dup reported was for /usr/lib64/libraw.a and libraw_r.a (forwarded requ
     <comment>[bsc#1282783], CVE-2026-88387</comment>
     <requestid>1381326</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>55cad56c00b7c40e5d385588733a271a</srcmd5>
+    <version>0.22.3</version>
+    <time>1795804839</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1282783], [bsc#1291640], [bsc#1291641], CVE-2026-135167, CVE-2026-135177, CVE-2026-88387</comment>
+    <requestid>1400547</requestid>
+  </revision>
 </revisionlist>

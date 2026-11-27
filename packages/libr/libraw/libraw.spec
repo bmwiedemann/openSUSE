@@ -23,7 +23,7 @@
 %define lver    25
 %define lname	libraw%{lver}
 Name:           libraw
-Version:        0.22.2
+Version:        0.22.3
 Release:        0
 Summary:        Library for reading RAW files obtained from digital photo cameras
 License:        CDDL-1.0 OR LGPL-2.1-only
@@ -32,8 +32,10 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
-# CVE-2026-88387:  incorrect numeric conversion in `LibRaw::parse_tiff_ifd()` when processing TIFF tag `0x00fe` can lead to undefined behavior and a process crash when a specially crafted file is processed [bsc#1282783]
-Patch0:         libraw-CVE-2026-88387.patch
+# CVE-2026-135167: a heap out-of-bounds read vulnerability in HuffTable:len() [bsc#1291640]
+Patch1:         libraw-CVE-2026-135167.patch
+# CVE-2026-135177: an out-of-bounds read vulnerability in LibRaw:pentax_4shot_load_raw() [bsc#1291641]
+Patch2:         libraw-CVE-2026-135177.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
