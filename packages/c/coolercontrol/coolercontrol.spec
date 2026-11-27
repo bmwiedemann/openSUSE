@@ -20,7 +20,7 @@
 %global _daemon coolercontrold
 %{!?_metainfodir: %define _metainfodir %{_datadir}/metainfo}
 Name:           coolercontrol
-Version:        4.3.1
+Version:        5.1.2
 Release:        0
 Summary:        Cooling control and monitoring
 License:        GPL-3.0-or-later
@@ -30,24 +30,25 @@ Source1:        vendor.tar.xz
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
 Source15:       node_modules.sums
-%include %_sourcedir/node_modules.spec.inc
-BuildRequires:  pkgconfig(appstream-glib)
-BuildRequires:  pkgconfig(libdrm)
-BuildRequires:  pkgconfig(ocl-icd)
+%include %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  cargo >= 1.85
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  local-npm-registry
+BuildRequires:  nodejs >= 22
+BuildRequires:  npm >= 22
+BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6)
 BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebEngineCore)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 BuildRequires:  cmake(protobuf)
-BuildRequires:  npm >= 22 
-BuildRequires:  nodejs >= 22
-BuildRequires:  local-npm-registry
+BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(ocl-icd)
 Recommends:     %{_daemon} = %{version}
 
 %description

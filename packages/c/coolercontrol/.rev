@@ -24,4 +24,13 @@
 Updaze to 4.3.1 and fix the package.</comment>
     <requestid>1362028</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c78d06c8125ce3aea903dbe43d1516c6</srcmd5>
+    <version>5.1.2</version>
+    <time>1795804861</time>
+    <user>anag_factory</user>
+    <comment>Current version 5.1.2
+The package in Factory is very old and not linked</comment>
+    <requestid>1400814</requestid>
+  </revision>
 </revisionlist>

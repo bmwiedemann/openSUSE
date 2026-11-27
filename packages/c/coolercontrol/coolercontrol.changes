@@ -1,4 +1,2446 @@
 -------------------------------------------------------------------
+Thu Nov 26 09:45:21 UTC 2026 - ecsos@opensuse.org
+
+- Update to version 5.1.2:
+  * Release 5.1.2
+  * fix(api): mark per-stream SSE routes deprecated
+  * fix(api): title each SSE event variant
+  * fix(api): document the LCD image upload form
+  * refactor(daemon): separate plugin identity check in rescan
+  * test(daemon): reword plugin discovery test goal
+  * test(daemon): cover plugin type change on rescan
+  * refactor(daemon): validate rescanned manifests without cloning
+  * refactor(ui): load plugins overview through rescan
+  * style(ui): use solid variant for plugin rescan button
+  * style(ui): match plugins overview header to plugin page
+  * feat(ui): replace plugin manifest reload with rescan
+  * feat(daemon): replace plugin manifest reload with rescan
+  * feat(ui): add plugin rescan button to overview
+  * build: skip openapi-check in pr-check when absent
+  * ci: validate the OpenAPI spec
+  * build: add openapi-check target to pr-check
+  * docs(daemon): narrow plugin restart_required docs
+  * test(api): check plain path templates pass unchanged
+  * fix(ui): show plugins awaiting restart in the panel
+  * feat(ui): offer daemon restart for new device plugins
+  * refactor(api): fail loudly on non-array tuple items
+  * feat(daemon): flag plugins that need a daemon restart
+  * fix(api): strip catch-all markers from OpenAPI paths
+  * fix(api): drop bearerFormat from basic auth scheme
+  * fix(api): emit tuples as prefixItems in OpenAPI
+  * fix(api): name split schemas -Input and -Output
+  * Edit zh.ts
+  * Edit zh.ts
+  * style(api): tidy OpenAPI json lint allows and refs
+  * fix(api): declare documented routes after awaits
+  * fix(api): reject numbered OpenAPI schema names
+  * refactor(api): split OpenAPI schema walk
+  * fix(api): walk every OpenAPI schema site
+  * style(api): backtick ETag in doc comment
+  * test(api): match full split collision message
+  * style(api): drop no-op disallowed_types allow
+  * Revert "Edit zh.ts"
+  * Edit zh.ts
+  * update zh.ts
+  * test(api): cover release discard of doc state
+  * style(api): give disallowed_types exceptions a reason
+  * test(api): keep serialize contract checks non-vacuous
+  * test(api): pin panic on split name collision
+  * test(api): state method in OpenAPI schema tests
+  * refactor(api): assert OpenAPI merge postconditions
+  * perf(api): free OpenAPI schema state in release
+  * fix(api): prune unreferenced OpenAPI schemas
+  * fix(api): document responses by serialize contract
+  * feat(api): add operation IDs to every route
+  * fix(test): import changed const
+  * chore(ui): the three wise men
+  * build(daemon): lint beside the test build in ci-test
+  * ci: drop test_all's unused debug build
+  * ci: key the debug build cache by lockfile and image
+  * fix(api): keep the plugin lib out of compression
+  * fix(api): assert the validators before matching them
+  * build(daemon): assert the asset hash inputs and output
+  * fix(api): match If-None-Match * on static files
+  * test(api): name the 304 test for what it checks
+  * style(api): split compound validator assertions
+  * style(api): wrap the allocation test comment
+  * fix(api): give gzip copies their own ETag
+  * style(api): satisfy pedantic clippy on validators
+  * docs(api): link the plugin lib path to build.rs
+  * test(api): state each validator test's method
+  * refactor(api): rename validate to apply_validators
+  * refactor(api): pin-project the Last-Modified future
+  * docs(daemon): point the serve-static note at its owner
+  * fix(api): keep Content-Type off static 304s
+  * fix(api): send a content ETag with Last-Modified
+  * refactor(daemon): move asset embedding out of main
+  * perf(api): serve static files without from_fn
+  * fix(plugins): revalidate the plugin lib
+  * perf(api): validate static files without from_fn
+  * fix(api): send Last-Modified from musl builds
+  * fix(liquidctl): end retry pauses on shutdown
+  * fix(liquidctl): assert dropped device counts
+  * fix(qt): cancel stale UI bridge checks
+  * test(daemon): add goal comment to CSP index test
+  * fix(qt): warn when the UI bridge never connects
+  * fix(qt): show a start-in-tray window that never loaded
+  * fix(ui): serve qwebchannel.js instead of using qrc
+  * refactor(liquidctl): borrow unreadable device list
+  * refactor(liquidctl): name first read delay with its unit
+  * fix(liquidctl): name the device in first read retries
+  * fix(liquidctl): stop first status retries on shutdown
+  * fix(liquidctl): assert first status drop postconditions
+  * test(liquidctl): pin unreadable device drop wiring
+  * fix(liquidctl): drop devices with no first status
+  * feat(ui): use numeric dates in local log stamps
+  * test(daemon): count the first windowed tick's allocations
+  * fix(daemon): assert the handed-over backfill window
+  * test(daemon): move the backfill rescan into a helper
+  * refactor(daemon): split out the backfill window check
+  * docs(ui): note log stamp localization in header
+  * perf(daemon): hand the backfill window to the live tick
+  * perf(daemon): slide the windowed backfill window
+  * feat(ui): show daemon log stamps in local time
+  * docs(daemon): sharpen allocation and clone style rules
+  * fix(ci): compile musl tests before the timed run
+  * fix(docker): keep D-Bus on with a custom bus address
+  * ci: bound the musl test run with a timeout
+  * refactor(nvidia): rename presence check to nvidia_presence
+  * test(nvidia): pin nvidia-smi GPU count saturation
+  * feat(docker): enable D-Bus when its socket is mounted
+  * ci: shorten the musl job comment
+  * ci: run daemon tests on musl
+  * test(nvidia): pin the detection path order
+  * fix(nvidia): drop assert on nvidia-smi GPU count
+  * perf(daemon): read windowed backfill samples in place
+  * fix(nvidia): say fans keep their speed without Xauthority
+  * fix(nvidia): make the Xauthority warning actionable
+  * fix(nvidia): clamp the nvidia-smi GPU count to u8
+  * fix(nvidia): warn on musl only with the NVIDIA driver
+  * feat(nvidia): log when no NVIDIA path reaches a GPU
+  * fix(nvidia): log a missing Xauthority once as a warning
+  * fix(nvidia): skip NVIDIA GPUs in musl builds
+  * fix(amd): name the fan effect of missing libdrm
+  * docs(daemon): point history zeroing at the repo method
+  * test(daemon): pin engine history zeroing delegation
+  * fix(daemon): reset reading count with history zeroing
+  * refactor(daemon): assert windowed backfill bounds
+  * refactor(daemon): use saturating_sub for first reading
+  * refactor(daemon): name the reading count as a count
+  * docs(daemon): note lockstep status history ticks
+  * fix(daemon): start windowed sensors from real readings
+  * chore(deps): update zbus to 6
+  * chore(deps): pin libloading at 0.8
+  * docs(deps): correct sha2 hold reason
+  * chore(deps): update axum-server to 0.9
+  * refactor(daemon): replace nu-glob with glob
+  * chore(deps): lift sysinfo and serial_test msrv holds
+  * chore(deps): update transient rust deps
+  * chore(deps): update daemon toml_edit to 0.25
+  * chore(deps): update cc-detect toml to 1.2
+  * chore(deps): update worktree msrv
+  * chore(deps): update base rust deps
+  * chore(deps): update sass
+  * fix(qt): keep fullscreen state owned by the window
+  * ci: drop withdrawn braces advisory ignore
+  * fix(deps): override glob and minimatch to patched majors
+  * chore(deps): drop redundant js-beautify override
+  * chore(deps): update vue-fullscreen to v5
+  * chore(deps): update transient npm deps
+  * chore(deps): update base npm deps
+  * fix(docker): make libdrm loadable in images
+  * fix(amd): clarify the missing libdrm warning
+  * test(cc-detect): report descendant pids in a file
+  * test: remove timing races from runner tests
+  * refactor(daemon): keep pipe drains local to the sidecar
+  * refactor(cc-detect): split the reader finished check
+  * refactor: assert command capture invariants
+  * fix(cc-detect): limit output before trimming it
+  * fix(cc-detect): keep draining after the caller returns
+  * fix(daemon): keep draining after the caller returns
+  * fix(cc-detect): read command output while waiting
+  * fix(daemon): drain command output while waiting
+  * fix(ui): drop distro name from Podman reset label
+  * fix(ui): translate container reset command labels
+  * docs(plugins): note EEXIST when a config reappears
+  * test(plugins): rename NOBODY to NOBODY_ID
+  * test(plugins): use safe geteuid in sticky folder test
+  * feat(ui): show container password reset commands
+  * fix(plugins): save config without O_CREAT on existing file
+  * test(hwmon): drop root-dependent refused-write test
+  * fix(api): save Unmanaged when its hand-back fails
+  * fix(amd): return curve error over Zero RPM errors
+  * test(hwmon): share take_every_fan1 across modules
+  * refactor(repos): size taken channels at init
+  * fix(hwmon): read ThinkPad fan control, not probe it
+  * fix(amd): keep card taken on failed Zero RPM reset
+  * fix(nvidia): refuse aliased NVML fan names
+  * docs: note unmanaged fans are left alone
+  * fix(nvidia): only reset fans the daemon took
+  * fix(amd): only reset channels the daemon took
+  * fix(hwmon): gate resets on untaken Apple fans
+  * fix(hwmon): only reset fans the daemon took
+  * refactor(ui): merge AMD overdrive messages
+  * fix(daemon): refuse AMD overdrive setup in a container
+  * refactor(detect): check for a container under a root
+  * refactor(daemon): assert overdrive invariants in release
+  * fix(ui): show a rebuild that is still running
+  * refactor(ui): spell out overdrive plan i18n keys
+  * refactor(daemon): name the rpm-ostree tool id
+  * refactor(daemon): assert overdrive setup invariants
+  * fix(daemon): read only the rebuild output tail
+  * fix(daemon): size the rebuild argv for its longest form
+  * test(daemon): stage overdrive twice without a rebuild
+  * fix(daemon): keep a timed-out rebuild from being retried
+  * fix(daemon): limit overdrive changes to the UI session
+  * feat(ui): add AMD overdrive setup progress and Disable
+  * feat(daemon): add AMD GPU overdrive disable
+  * feat(daemon): add an overdrive plan and config-only enable
+  * feat(daemon): check the system before a rebuild
+  * feat(daemon): track AMD overdrive setup as a job
+  * fix(daemon): detect the boot image tool in use
+  * fix(liquidctl): recheck abandonment after connecting
+  * fix(deps): update vulnerable crates
+  * test(ui): pin the cooldown info icon in Modes
+  * feat(ui): document the performance-profile cooldown in Modes
+  * feat(daemon): hold cooling 10s when leaving the performance profile
+  * docs(plugins): correct LCD stop budget comment
+  * fix(plugins): keep a stopped LCD update off WARN
+  * fix(plugins): start LCD stop budget at first call
+  * fix(plugins): treat an aborted duty write as done
+  * fix(plugins): share one LCD budget at stop
+  * docs(plugins): state the plugin call deadlines
+  * fix(plugins): abort in-flight plugin calls on stop
+  * fix(plugins): give the shutdown RPC a short budget
+  * fix(plugins): bound plugin RPCs with the wait timeout
+  * docs: update stale bug template text
+  * docs: ask for the hardware report in bug reports
+  * refactor(sleep): keep sleep state in a mutex
+  * docs(sleep): name the lock's close-on-exec window
+  * docs(main_loop): note the failed deadline retry rate
+  * docs(main_loop): correct sleep deadline retry note
+  * fix(sleep): read wake count and sleep flag atomically
+  * refactor(sleep): assert lock and deadline invariants
+  * refactor(sleep): name the DBus timeout for every call
+  * refactor(watchdog): name the sleep tick poll_period
+  * test(watchdog): gate the real-time budget refresh test
+  * test(main_loop): cover a sleep signal starting a tick
+  * fix(sleep): release only the lock for this sleep
+  * test(watchdog): gate the socket test constructor
+  * fix(sleep): keep the lock until the deadline widens
+  * fix(sleep): end the listener when its stream ends
+  * style(main_loop): wrap sleep arm calls under 100 cols
+  * fix(sleep): keep the delay lock from child processes
+  * fix(sleep): log a mid-sleep lock refusal as info
+  * fix(sleep): resume control if the listener stops
+  * fix(sleep): cut the wake pause short on a new sleep
+  * fix(sleep): hold a delay lock until prepared
+  * fix(watchdog): refresh the sleep budget
+  * fix(settings): keep device extensions a save omits
+  * refactor(daemon): assert sleep budget invariants
+  * fix(watchdog): retry a deadline the manager missed
+  * docs(changelog): improve wording
+  * fix(sleep): track wakes so none is missed
+  * fix(watchdog): widen the deadline while asleep
+  * fix(deps): [security] bump follow-redirects
+  * fix(deps): [security] bump the npm-security group across 1 directory with 3 updates
+  * fix(deps): update vulnerable crates
+  * test(scripts): fix zero RPM latch test verdicts
+  * test(scripts): add RDNA4 zero RPM latch test
+  * test(gpu): cover a failed Zero RPM stop temp stage
+  * fix(gpu): assert staged Zero RPM and curve values
+  * refactor(gpu): split the zero duty condition
+  * refactor(gpu): model staged Zero RPM as an enum
+  * test(hwmon): serve recorded writes on the test thread
+  * docs(changelog): note the AMD zero RPM fix
+  * fix(gpu): upload AMD fan settings in one commit
+  * test(hwmon): add a recording DeviceIo for tests
+  * refactor(cpu): assert startup thread freq bounds
+  * fix(ui): band only CPU thread freq channels
+  * style(ui): match thread freq sort to channel sort
+  * test(cpu): cover per-thread freq init and poll wiring
+  * refactor(cpu): assert per-thread freq bounds
+  * perf(cpu): presize the core id table
+  * refactor(cpu): box the fixed thread freq buffer
+  * refactor(cpu): state cpuinfo line filter positively
+  * refactor(config): extract device extensions writer
+  * feat(ui): color per-thread freqs in violet
+  * feat(ui): add per-thread freq toggle
+  * feat(cpu): add per-thread freq channels
+  * feat(settings): add per_thread_freq device option
+  * feat(cpu): parse per-thread freqs from cpuinfo
+  * fix(cpu): number freq channels per device
+  * fix(cpu): skip read slots for cpuinfo freqs
+  * refactor(nvidia): assert PCI detection constants
+  * fix(nvidia): run detection when a PCI function is unreadable
+  * test(nvidia): cover the PCI device cap fail-open
+  * fix(nvidia): skip NVML without an NVIDIA GPU
+  * test(api): let served-stack tests run without the UI
+  * test(api): cover compression on the served stack
+  * test(api): rename status_ticks helper to status_tick
+  * docs(api): note route layers run innermost
+  * refactor(plugins): hold refusal service id in Rc
+  * perf(api): apply shared layers outside the router
+  * perf(plugins): trim plugin client per-call allocations
+  * perf(api): share each status tick across SSE subscribers
+  * refactor(liquidctl): rename liqctld_client to liqctld_schema
+  * perf(hotplug): wake on uevent readiness, not a timer
+  * fix(api): reject a fixed profile speed above 100
+  * style(engine): drop a redundant sortedness assert
+  * style(engine): check mix member subset when normalized
+  * style: place a doc comment and test uses first
+  * style(engine): assert write path invariants
+  * refactor(hwmon): split the pending write into helpers
+  * perf(engine): find parent-owned mix channels by scan
+  * perf(nvidia): write fan duties without allocating
+  * perf(nvidia): parse the fan index without a regex
+  * perf(liquidctl): write duties without allocating
+  * perf(hwmon): write duties without allocating
+  * perf(engine): write a tick's duties from one task
+  * perf(calibration): dispatch duty writes statically
+  * perf(calibration): dispatch by borrowed channel names
+  * refactor(rt): assert a recycled slot is clean
+  * fix(deps): [security] bump undici
+  * fix(deps): update vulnerable crates
+  * test(hwmon): pin that a timed-out batch orphans its slot
+  * test: state goal and method in new tests
+  * docs(cpu): note Apple Silicon replaces the freq map
+  * docs(rt): say why reply slot expects hold
+  * perf(rt): size the reply pool's spare list up front
+  * docs(engine): say why apply maps start empty
+  * refactor(mix): name the member duty accumulator fold
+  * refactor(mix): assert single-level Mix nesting
+  * test(main_loop): drive preload test without a timer
+  * perf(cpu): read frequencies into last poll's map
+  * perf(engine): find a write failure run by borrowed keys
+  * perf(liquidctl): recycle the status reply channel
+  * perf(hwmon): recycle device read reply channels
+  * perf(engine): allocate apply maps only on apply
+  * perf(engine): drop the mix commander's tick maps
+  * perf(repositories): make update_statuses synchronous
+  * perf(repositories): iterate repos without a Vec
+  * perf(repositories): join the tick preloads in place
+  * test(liquidctl): cover add_missing_speed_channels
+  * docs(liquidctl): restore lowercase_names doc
+  * refactor(gpu): assert AMD status refill bounds
+  * refactor(liquidctl): name status refill params refill
+  * refactor(liquidctl): share the missing fan zero fill
+  * refactor(custom-sensors): drop the write_tick unwrap
+  * docs(gpu): fix the fdinfo load sample doc
+  * fix(liquidctl): log unexpected fan numbers at info
+  * refactor(liquidctl): split compound fan line conditions
+  * refactor(liquidctl): split status storing from preload
+  * fix(gpu): keep AMD status readable during preload
+  * perf(liquidctl): parse statuses into recycled lines
+  * perf(custom-sensors): reuse tick values and buffers
+  * perf(liquidctl): refill driver statuses in place
+  * perf(gpu): refill NVML statuses in place each tick
+  * perf(cpu): swap status buffers instead of rebuilding
+  * perf(gpu): refill AMD statuses in place each tick
+  * perf(hwmon): keep stored status names across ticks
+  * fix(gpu): log fdinfo client overflow once
+  * refactor(gpu): hold fdinfo clients as one list
+  * test(gpu): use tempdir in the fdinfo walk test
+  * refactor(gpu): assert the held fdinfo client bound
+  * fix(gpu): stamp fdinfo load after the client scan
+  * fix(gpu): bound held fdinfo clients to one per client
+  * perf(gpu): hold AMD fdinfo clients between /proc walks
+  * refactor(cc_fs): read held proc files into a shared buffer
+  * test(hwmon): split cache drop test setup
+  * fix(hwmon): decide fan reads once per pass
+  * docs(hwmon): explain pairing temps with results
+  * docs(hwmon): narrow read_many panics note
+  * refactor(hwmon): check inline batch limit before reading
+  * refactor(hwmon): split fan channel interpretation out
+  * perf(gpu): hand back the AMD temps without a copy
+  * perf(hwmon): read channels without per-tick plan vecs
+  * perf(hwmon): reuse read batch buffers across ticks
+  * perf(hwmon): build fallback read paths lazily
+  * test(daemon): restore the log level with a guard
+  * refactor(liquidctl): assert the refreshed status map
+  * test(daemon): assert lazy log names build when logged
+  * test(liquidctl): escape the degree sign in the status body
+  * refactor(daemon): assert the main CPU is in the mask
+  * refactor(daemon): rename the liqctld worker spawn helper
+  * refactor(daemon): assert the affinity mask invariants
+  * refactor(daemon): split compound affinity conditions
+  * test(daemon): cover the worker confinement decisions
+  * docs(cc_fs): give the reason for tokio over compio
+  * docs(logger): give the reason for the queue depth
+  * fix(liquidctl): rearm device probes on a catch-up
+  * fix(deps): bump vitest to 4.1.12
+  * perf(daemon): gate worker confinement on preemption
+  * perf(liquidctl): refresh status maps in place
+  * perf(liquidctl): skip the unused status metric
+  * perf(daemon): name devices only for log lines
+  * perf(failsafe): gather per-channel refs lazily
+  * perf(hwmon): build fan paths only for log lines
+  * perf(hwmon): drop the per-read fan placeholder error
+  * perf(daemon): run device workers on the main core
+  * fix(daemon): stop threads inheriting the main CPU pin
+  * test(daemon): pin non-root commands before runtime
+  * style(cc-stress): rewrap the GPU stress test comment
+  * test(hwmon): correct the FIFO reader comment
+  * chore: tidy MSRV comments
+  * docs(daemon): rewrap the proc file module doc
+  * test(daemon): gate the late interval tick test
+  * fix(daemon): check the interval period subtraction
+  * fix(daemon): run stress commands outside the runtime
+  * docs(daemon): retire compio wording
+  * refactor(daemon): move the main runtime to tokio
+  * test(logger): pin the panic drain bound per thread
+  * refactor(logger): move sink helpers below the Log impl
+  * refactor(logger): rename dropped to dropped_count
+  * refactor(logger): assert log writer and notify invariants
+  * test(watchdog): pin the READY wait on a stalled manager
+  * fix(logger): bound the panic drain on the main thread
+  * fix(logger): write the drop report straight to the sink
+  * fix(logger): satisfy pedantic clippy in log writer
+  * perf(watchdog): send notifications without blocking main
+  * perf(logger): write log lines on a cc-log thread
+  * fix(custom-sensors): cap only check workers still parked
+  * test(custom-sensors): pin no inline check fallback
+  * test(gpu): pin no fdinfo probe on unanswered AMD load
+  * fix(custom-sensors): cap stalled File check workers
+  * refactor(daemon): extract per-device init steps
+  * refactor(plugins): share the owner root shortcut
+  * refactor(daemon): read the banner's board info once
+  * refactor(cpu): share the driver-wide skip warning
+  * refactor(gpu): name NVML init readings with units
+  * docs(plugins): drop a doubled comment line
+  * docs(cpu): drop a blank leading doc line
+  * style(daemon): use .not() for the prepared check
+  * docs(hwmon): restore displaced doc comments
+  * fix(gpu): keep AMD load off when its read is unanswered
+  * test(hwmon): cover driver name from the driver link
+  * fix(lcd): skip a Carousel image that panics its decoder
+  * fix(custom-sensors): run check reads on their own worker
+  * refactor(hotplug): derive the identity timeout from config
+  * fix(hwmon): remember stalled devices per identity reader
+  * refactor(diagnostics): state the scan check positively
+  * fix(diagnostics): never read an unanswered hwmon device
+  * perf(daemon): run one-time data moves off main
+  * perf(diagnostics): read the hardware report on workers
+  * perf(gpu): init NVML off main and read GPUs on workers
+  * perf(plugins): secure plugin files on the blocking pool
+  * perf(lcd): scan Carousel images on the blocking pool
+  * perf(diagnostics): read system info and drivers off main
+  * perf(gpu): search for Xauthority on the blocking pool
+  * perf(daemon): run startup Super-I/O detection off main
+  * perf(hwmon): scan pci.ids on the blocking pool
+  * perf(hwmon): read device identities on init workers
+  * perf(custom-sensors): check File reads on the File worker
+  * perf(cpu): probe RAPL zones on the CPU worker
+  * perf(gpu): probe AMD load and PMFW on the GPU worker
+  * perf(hwmon): read labels and applesmc probes on workers
+  * perf(hwmon): skip CPU chips with only temps early
+  * refactor(gpu): bound the nvidia hotspot latch
+  * docs(daemon): state goal and method of new tests
+  * refactor(gpu): assert nvidia hotspot invariants
+  * fix(gpu): log an impossible nvapi hotspot once
+  * refactor(daemon): share the poll rate fallback
+  * fix(gpu): carry the nvapi hotspot until a read fails
+  * style(cpu): move AppleSilicon::io below hot paths
+  * fix(gpu): drop non-finite nvapi hotspot readings
+  * fix(gpu): bound all init hotspot reads by one budget
+  * refactor(gpu): keep the hotspot PCI bus from init
+  * fix(gpu): store NVML status before the nvapi hotspot
+  * perf(gpu): read the NVIDIA hotspot on an nvapi thread
+  * perf(cpu): read Apple Silicon cpufreq on a worker
+  * perf(gpu): scan AMD fdinfo with yielding preads
+  * perf(gpu): detect AMD GPUs once at startup
+  * fix(liquidctl): reset device health on rearm
+  * build(daemon): loosen the httparse requirement
+  * refactor(liquidctl): assert liqctld worker invariants
+  * fix(liquidctl): bound interrupted liqctld reads
+  * test(liquidctl): cover failed device worker removal
+  * fix(custom-sensors): name stalled File sensors
+  * test(liquidctl): cover init retries
+  * perf(custom-sensors): queue File reads with join_all
+  * refactor(liquidctl): rename init attempt limit
+  * fix(liquidctl): rearm device probes on resume
+  * build(daemon): drop cyper-core and compio net
+  * perf(liquidctl): move liqctld commands to workers
+  * perf(liquidctl): read status on blocking per-device workers
+  * refactor(custom-sensors): assert the taken File read
+  * style(custom-sensors): use debug_assert_eq for id check
+  * docs(custom-sensors): note File sensors share a worker
+  * refactor(custom-sensors): drop unread File read error
+  * docs(custom-sensors): restore current_temp_for doc
+  * refactor(custom-sensors): assert File read pass invariants
+  * test(custom-sensors): cover the startup File read
+  * perf(custom-sensors): read File sources on a worker
+  * test(cc_fs): cover a failed first read holding its fd
+  * refactor(cc_fs): share the blocking pread re-issue loop
+  * refactor(cc_fs): assert fd cache slot state
+  * docs(cc_fs): give the reason a failed first read holds
+  * docs(cc_fs): wrap module doc to 100 columns
+  * docs(hwmon): name File sources as per-tick reads
+  * perf(hwmon): serve device IO without a runtime
+  * perf(cc_fs): read held sysfs descriptors with pread
+  * refactor(liquidctl): name failed devices only when logged
+  * refactor(liquidctl): move no_init to the helpers
+  * refactor(liquidctl): assert merged episode keeps devices
+  * fix(liquidctl): name devices a catch-up leaves unrecovered
+  * fix(liquidctl): keep a given-up recovery given up
+  * docs(liquidctl): trim service restart docs
+  * refactor(liquidctl): assert service restart invariants
+  * fix(liquidctl): keep reads live while catch-up waits
+  * style(liquidctl): split service poll guards
+  * test(liquidctl): pin catch-up escalation to recovery
+  * fix(liquidctl): skip catch-up recovery when init is off
+  * fix(liquidctl): merge catch-up failures into recovery
+  * fix(deps): [security] bump the npm-security group across 1 directory with 2 updates
+  * fix(deps): update vulnerable crates
+  * fix(liquidctl): restore direct access after liqctld restart
+  * Fix also CVE's:
+    - CVE-2026-120222: undici: Denial of Service via unhandled exception
+      in cache-interceptor response replay (boo#1290306)
+    - CVE-2026-120415: undici: cross-origin credential disclosure
+      via array-of-tuples headers bypassing redirect stripping
+      (boo#1290318)
+    - CVE-2026-120423: coolercontrol: undici: Subresource Integrity
+      bypass via whitespace in integrity metadata (boo#1290338)
+    - CVE-2026-116630: coolercontrol: undici: cross-user information
+      disclosure via cross-origin redirect revalidation (boo#1290352)
+    - CVE-2026-120474: coolercontrol: undici: cross-user cache
+      disclosure via same-origin redirect (boo#1290380)
+
+-------------------------------------------------------------------
+Fri Oct 23 15:39:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.1.1:
+  * Tests that depend on the build environment are now gated
+    behind the `gated-tests` cargo feature (off by default);
+    this fixes the daemon unit test failure on aarch64 with
+    glibc 2.43 and newer.
+  * Refresh bundled UI dependencies since 4.3.1 (axios 1.15.2
+    to 1.20.0, svgo 3.3.3 to 3.3.5, browserslist 4.28.2 to
+    4.28.8), fixing the following CVEs:
+  * CVE-2026-67312: axios unbounded recursion in form data
+    path parsing, call stack overflow (boo#1273565)
+  * CVE-2026-67313: axios unbounded recursion in nested
+    bracket path parsing, form data serialization denial of
+    service (boo#1273624)
+  * CVE-2026-67314: axios inherited prototype properties in
+    Basic auth header parsing, outbound request tampering
+    (boo#1273635)
+  * CVE-2026-67315: axios 0.0.0.0 not treated as local in
+    proxy bypass, local service requests misrouted
+    (boo#1273640)
+  * CVE-2026-67316: axios inherited prototype properties in
+    bodyless method aliases, unauthorized request bodies
+    (boo#1273655)
+  * CVE-2026-67317: axios upload limit bypass for unmeasured
+    streaming bodies, resource exhaustion (boo#1273675)
+  * CVE-2026-67318: axios maxBodyLength bypass on HTTP/2
+    streamed bodies, resource exhaustion (boo#1273697)
+  * CVE-2026-67319: axios nested request options as plain
+    objects under prototype pollution, header injection
+    (boo#1273717)
+  * CVE-2026-67320: axios inherited prototype properties in
+    interceptor-cloned config, unauthorized proxying
+    (boo#1273725)
+  * CVE-2026-67321: axios depth check bypass via object keys
+    ending in {} in form serialization, denial of service
+    (boo#1273732)
+  * CVE-2026-73650: svgo removeScripts plugin leaves
+    executable scripts intact, possible XSS (boo#1275336)
+  * CVE-2026-73088: browserslist prototype pollution via
+    unguarded for...in over untrusted keys (boo#1275389)
+
+-------------------------------------------------------------------
+Sat Oct 17 19:48:52 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.1.0:
+  * Release 5.1.0
+  * fix(packaging): bump only the daemon crate version
+  * chore(packaging): stage workspace crates on release
+  * fix(packaging): stage the daemon Cargo.toml on release
+  * refactor(cpu): assert proc buffer bound constants
+  * refactor(cpu): assert proc read postconditions
+  * refactor(cpu): share the proc buffer growth step
+  * refactor(cpu): order proc reader methods by use
+  * refactor(cpu): name frequency tally units
+  * refactor(cpu): split compound guards in proc reads
+  * perf(cpu): reuse the CPU load buffers each poll
+  * perf(cpu): read proc files with runtime yields
+  * perf(cpu): read cpuinfo without allocating
+  * fix(ui): skip legend save on no-op key resize
+  * fix(ui): save legend height only on real resize
+  * refactor(daemon): group stored credential modules
+  * refactor(daemon): group SSE event broadcast modules
+  * feat(ui): make the stats legend height draggable
+  * refactor(daemon): group system listeners modules
+  * refactor(daemon): group hardware diagnostics modules
+  * refactor(device): move uid and health under device/
+  * feat(ui): link legend sensors to their charts
+  * feat(ui): tint selector device icons with device color
+  * docs(device): explain the status ring's math
+  * refactor(device): use bitflags for ring flags
+  * refactor(device): always check new ring column sizes
+  * fix(device): ask for a bug report on too many names
+  * refactor(device): assert ring column and layout invariants
+  * perf(device): size ring rebuild vectors up front
+  * test(api): split the golden status fixture builders
+  * test(device): state the method of each ring test
+  * docs(device): wrap the status ring module doc
+  * refactor(device): call a field series' byte count size
+  * refactor(device): rename Lane and Layout in the ring
+  * docs(device): say when the status ring length changes
+  * docs(daemon): say why startup still loads the passwd
+  * test(daemon): state the mmap probe goal and method
+  * refactor(daemon): split the mmap threshold bound assert
+  * refactor(daemon): nest the legacy hash migration check
+  * perf(daemon): skip argon2 when no password is set
+  * perf(daemon): cache the default password check
+  * perf(daemon): pin glibc's mmap threshold at startup
+  * perf(api): drop brotli response compression
+  * perf(api): refresh only the daemon process in health
+  * refactor(gpu): move rare nvidia helpers to impl end
+  * refactor(device): assert status ring write bounds
+  * refactor(repos): share the status writer loop
+  * refactor(repos): lead impls with new
+  * test(device): state the poll rate bound test goals
+  * refactor(device): order the impl hot path first
+  * refactor(device): state history bounds positively
+  * refactor(device): split compound status ring checks
+  * refactor(device): name the rebuild column structs
+  * docs(custom-sensors): state the backfill missing rule
+  * perf(status): copy only matching entries for since
+  * fix(gpu): fail safe after NVML reads go unanswered
+  * fix(custom-sensors): backfill missing source values like a live tick
+  * perf(hwmon): name the device only when staleness logs
+  * perf(nvidia): build the NVML read plan once per GPU
+  * refactor(daemon): keep set_status for tests only
+  * perf(custom-sensors): write each tick's status in place
+  * perf(plugins): write each tick's status in place
+  * perf(liquidctl): write each tick's status in place
+  * perf(gpu): write each tick's status in place
+  * fix(gpu): keep NVML values when a read gets no answer
+  * perf(cpu): write each tick's status in place
+  * perf(hwmon): write each tick's status in place
+  * refactor(daemon): write status entries in place
+  * refactor(daemon): stamp each tick's statuses with one time
+  * fix(daemon): reuse stale history names in place
+  * fix(daemon): bound the names a status history keeps
+  * perf(daemon): keep status history in a fixed ring
+  * refactor(daemon): read status history through accessors
+  * test(api): pin status output with golden tests
+  * docs(daemon): tighten alloc_count test gating
+  * perf(calibration): reuse the augmenter lookup key
+  * perf(daemon): fold tick stats without cloning the status
+  * test(daemon): drop blank lines in tempdir fixtures
+  * test(daemon): probe the OpenRC eval in a tempdir
+  * test(daemon): write config test files in a tempdir
+  * test(daemon): own inline fixture dirs in a tempdir
+  * test(daemon): keep custom sensor files in a tempdir
+  * test(daemon): own fixture dirs in a tempdir
+  * fix(deps): update vulnerable crates
+  * test(daemon): add Method comment to uid store test
+  * test(daemon): inject UID side store paths
+  * test(daemon): cover every JSON store in UID migration
+  * fix(daemon): assert the migrated UID store contents
+  * test(daemon): add method lines to i2c identity tests
+  * test(daemon): build the i2c test fixtures in a tempdir
+  * fix(daemon): migrate UIDs in every JSON config store
+  * fix(daemon): handle ACPI-named and muxed i2c clients
+  * docs(daemon): backtick SMBus for pedantic clippy
+  * fix(daemon): identify an i2c client by its adapter
+  * refactor(daemon): group Apple Silicon CPU state
+  * refactor(daemon): rename AppleMacSMC to AppleSmcLegacy
+  * refactor(daemon): move Apple fan files into hwmon/apple
+  * refactor(daemon): rename apple_mac_smc to apple_smc_legacy
+  * refactor(daemon): drop an empty AppleMacSMC impl
+  * test(ui): drop a repeated docs link assertion
+  * refactor(daemon): share the fanN_target fan detection
+  * test(daemon): shorten the Apple first status test
+  * test(daemon): state goal and method of Apple tests
+  * style(ui): put the docs map comment on the map
+  * fix(ui): pick Apple docs by the kernel driver name
+  * fix(daemon): let only the mode write fail a 7.3 switch
+  * fix(daemon): hand back fully on a session's first 0%
+  * fix(daemon): retry a failed Apple Silicon reset
+  * fix(ui): link Apple fan verdicts to the Apple page
+  * fix(daemon): mark a read-only Apple fan file in the report
+  * fix(daemon): judge Apple fans by their own control file
+  * fix(daemon): warn of unread fan speeds at start only
+  * fix(daemon): return Apple fan init errors
+  * fix(daemon): log applesmc fan limits at start only
+  * docs(daemon): describe what the Apple fan file holds
+  * fix(daemon): skip the reset of a read-only Apple fan
+  * feat(daemon): control applesmc fans on Linux 7.3
+  * refactor(daemon): share the Apple fan file helpers
+  * fix(daemon): describe Apple fans in the hardware report
+  * fix(daemon): report an Apple fan's duty from the first status
+  * refactor(daemon): drop the dead macsmc path from applesmc
+  * fix(daemon): control macsmc_hwmon fans on Apple Silicon
+  * fix(daemon): return Apple fans to automatic on shutdown
+  * refactor(daemon): pick the Apple fan handler in one place
+  * perf(daemon): read Apple CPU clocks once per cluster
+  * fix(daemon): accept an unsampled tas2764 temperature
+  * feat(daemon): add a CPU device for Apple Silicon
+  * fix(daemon): return to Off when the kick write fails
+  * refactor(daemon): drop unused AppliedDuty re-export
+  * docs(daemon): drop repeated dispatch plan rationale
+  * fix(daemon): keep a failure run open on a skipped write
+  * refactor(daemon): share the skipped-dispatch check
+  * refactor(daemon): split mapped arm out of dispatch_core
+  * perf(daemon): stop cloning calibration on dispatch
+  * fix(daemon): name the device duty in sweep progress
+  * fix(daemon): log both curves for a mapped firmware profile
+  * fix(daemon): name the device duty in repository logs
+  * fix(daemon): log calibration kick and walk-down duties
+  * fix(daemon): use labels in profile duty write logs
+  * fix(daemon): show true and device duty when applying
+  * fix(daemon): ignore a blank profile read on connect
+  * fix(ui): load power profile mapping after a failed load
+  * fix(ui): refresh only the offered power profiles
+  * fix(daemon): ignore a blank active power profile
+  * fix(ui): refresh power profiles on the Modes page
+  * fix(ui): keep power profiles on a failed fetch
+  * fix(daemon): follow power profile daemon restarts
+  * fix(daemon): refresh power profiles when they change
+  * fix(daemon): keep power profiles on a failed read
+  * fix(daemon): never auto-start the power profile daemon
+  * fix(daemon): use the user's labels in the disable refusal
+  * docs(daemon): say why a custom sensor id is unique
+  * refactor(daemon): type custom sensor samples as f64
+  * refactor(daemon): type custom sensor ids as CustomSensorId
+  * test(daemon): pin the Mode strip to a real delete
+  * fix(daemon): sanitize the LCD device name in refusals
+  * refactor(daemon): type the quoted sensor ids as parents
+  * fix(daemon): keep raw source names in the failsafe log
+  * perf(daemon): build the failsafe reason on entry only
+  * fix(daemon): name a sensor's sole reader in the delete refusal
+  * fix(daemon): use labels in custom sensor logs
+  * fix(daemon): use labels in custom sensor messages
+  * fix(daemon): name the parent in the nested sensor refusal
+  * fix(liqctld): size commander st reports to 64 bytes
+  * build(ci): pin apt-publish to its own v3 tag
+  * fix(apt): pin the native arch in apt sources
+  * fix(apt): declare armhf and i386 in Release
+  * test(daemon): keep the actor test out of the cwd
+  * refactor(ui): share the Monitoring header button
+  * refactor(daemon): share the LCD shows-temp check
+  * refactor(daemon): reuse typed sensor source errors
+  * docs(daemon): name sensors 5.0.x cannot load
+  * style(daemon): wrap test comments at 100 columns
+  * test(daemon): pin the custom sensor delete wiring
+  * fix(daemon): persist parents of a deleted sensor
+  * fix(ui): set the Monitoring button apart from delete
+  * refactor(ui): move the full chart link below the chart
+  * feat(ui): add a Monitoring button to editor headers
+  * fix(ui): show a refused sensor delete for longer
+  * refactor(daemon): give the custom sensor delete a method
+  * fix(daemon): strip a deleted custom sensor from Modes
+  * fix(daemon): refuse deleting a sensor an alert watches
+  * fix(daemon): check every LCD before a sensor delete
+  * fix(daemon): match the sensor delete guard on device
+  * fix(daemon): name what blocks a custom sensor delete
+  * fix(ui): border the custom sensor value cards
+  * fix(i18n): use the zh-tw term for custom sensor
+  * refactor(ui): share the lost source wording rule
+  * refactor(daemon): drop temp from source names
+  * test(daemon): say what the mix weight test proves
+  * test(daemon): lift attribute limits test fixture
+  * refactor(daemon): type custom sensor value errors
+  * refactor(daemon): split custom sensor key reset
+  * fix(ui): keep custom sensor order across metrics
+  * feat(ui): show the decimal of a scaled fan limit
+  * feat(ui): name custom sensor sources without a metric
+  * feat(ui): list custom sensors of every metric
+  * feat(ui): edit custom sensors of any metric
+  * feat(ui): model custom sensor metrics
+  * refactor(daemon): name the custom sensor fold input neutrally
+  * feat(daemon): accept custom sensors of every metric
+  * feat(daemon): forward driver limits to custom sensors
+  * feat(daemon): keep a custom sensor's metric fixed
+  * test(daemon): cover disabling a custom sensor channel source
+  * feat(daemon): track health of custom sensor channel sources
+  * feat(daemon): read file sensors in their metric's unit
+  * feat(daemon): compute custom sensors for channel metrics
+  * feat(daemon): add a sum mix function to custom sensors
+  * feat(daemon): add scale to the offset custom sensor
+  * feat(daemon): add a metric to custom sensors
+  * refactor(daemon): flatten the custom sensor source model
+  * refactor(daemon): remove the custom sensor order endpoint
+  * fix(daemon): seed mix folds from their sources
+  * fix(daemon): check custom sensor id before backfill
+  * fix(ui): block saving a file sensor without a path
+  * fix(daemon): reject a mix sensor without sources
+  * fix(daemon): reject a zero custom sensor weight
+  * fix(ui): give new custom sensors a hashed id
+  * fix(deps): bump shell-quote to 1.12.0
+  * ci: let the dependabot npm job fail
+  * ci: ignore the disputed braces advisory
+  * fix(deps): override postcss-selector-parser to 7.1.6
+  * test(ui): cover the embed palette store wiring
+  * fix(ui): refresh chart colors on a theme switch
+  * fix(ui): request the embed palette before login
+  * docs(ui): correct the system palette comments
+  * fix(ui): say which palette tokens were refused
+  * refactor(ui): send embed notices through one helper
+  * fix(ui): accept palettes from the parent only
+  * fix(deps): [security] bump the npm-security group across 1 directory with 2 updates
+  * send palette as object
+  * follow established message convention
+  * generalize receiving system palette from iframe parent
+  * fix(ui): let a second plugin link click prompt
+  * fix(daemon): send frame activation with openLink
+  * refactor(ui): rename the opener frame ref
+  * refactor(ui): make the plugin link gate a boolean
+  * test(ui): pin plugin library link routing
+  * fix(ui): arm the plugin link opener late
+  * fix(ui): rate limit plugin link requests
+  * fix(daemon): skip link routing when unframed
+  * fix(ui): open the manifest link via the opener
+  * feat(daemon): add openLink to the plugin library
+  * feat(ui): confirm and open plugin links
+  * fix(ci): allow unknown lints in clippy report
+  * docs: fix formatting
+  * docs: ai policy
+  * docs: adjust for the driver-general principle
+  * refactor(daemon): move flow sensor info to the driver
+  * feat(ui): title the chart axis with a shared label unit
+  * fix(daemon): drop the hint of an unlabeled channel
+  * refactor(ui): rename CoolingPanel liveRpm helper
+  * refactor(ui): reuse isFanChannel for cooling channels
+  * fix(ui): list info-only unit sensors on the device page
+  * fix(ui): follow a channel rename in the page charts
+  * fix(daemon): serve live detected labels as hints
+  * fix(ui): escape the label unit in the chart tooltip
+  * feat(daemon): label the liquidctl flow channel
+  * fix(ui): refresh tray sensors after a channel rename
+  * feat(qt): show label units in the tray
+  * feat(ui): treat uncontrollable unit channels as sensors
+  * docs(ui): note plugin link check is first hop only
+  * refactor(ui): wrap plugin link validation for the UI
+  * test(daemon): split the per-file policy test
+  * feat(ui): show label units in alerts
+  * feat(ui): show label units on the cooling pages
+  * feat(ui): show label units in charts and tables
+  * fix(qt): hand only web links to the browser
+  * fix(ui): validate the plugin manifest link
+  * fix(daemon): sandbox plugin UI responses
+  * feat(ui): show label units in the sensor panels
+  * feat(ui): group long rpm values in the panels
+  * feat(ui): group long numbers in dashboards
+  * feat(ui): raise the manual rpm axis maximum
+  * fix(ui): keep rpm axis ticks on large scales
+  * fix(ui): put alert sources first in one column
+  * fix(ui): shorten the alert reference help
+  * fix(ui): fit the alert log table in narrow windows
+  * fix(ui): keep alert log names on one line
+  * fix(ui): hold new alert name until created
+  * docs(daemon): describe unit-labelled fan limits
+  * refactor(ui): tidy the alert reference card
+  * refactor(ui): share the alert source type
+  * style(ui): escape the no-break space literals
+  * fix(ui): group only rpm alert thresholds
+  * fix(ui): exclude runs that only equal the warmup
+  * feat(ui): rework the alert editor layout
+  * feat(ui): show time outside the alert thresholds
+  * feat(ui): add reference values to the alert editor
+  * fix(daemon): return limits of unit-labelled fan inputs
+  * feat(ui): group long numbers on the Alerts page
+  * feat(ui): add digit grouping to number inputs
+  * feat(ui): add an unlockable RPM range to alerts
+  * fix(ui): show the clamped value in number inputs
+  * fix(ci): Don't check for transitive dependency updates
+  * test(daemon): reduce false positive Basic scans
+  * fix(daemon): log why a plugin config save failed
+  * fix(daemon): never follow a link at a plugin config
+  * refactor(daemon): open a plugin file apart from securing
+  * perf(daemon): look up a plugin's owner once
+  * fix(daemon): remove a hard linked plugin credential
+  * refactor(ui): share the plugin enable and disable toasts
+  * docs(daemon): state the method of four plugin tests
+  * docs(daemon): say why the plugin dispatch is long
+  * refactor(daemon): assert plugin lifecycle invariants
+  * fix(daemon): report a plugin service left running
+  * fix(daemon): log a broken plugin manifest once
+  * fix(daemon): hand over a plugin whose user changed
+  * fix(daemon): remove a service its manifest dropped
+  * test(daemon): pin that enable reports a failed start
+  * fix(daemon): stop a failing plugin before a handover
+  * fix(daemon): keep a plugin folder root's in a handover
+  * fix(daemon): never secure a plugin file through a link
+  * feat(ui): add a plugin manifest reload button
+  * feat(daemon): reload a plugin manifest on request
+  * fix(ui): show a re-read plugin manifest
+  * feat(daemon): re-read a plugin manifest on start
+  * refactor(daemon): read one plugin manifest alone
+  * docs(ui): update the new plugin note
+  * feat(daemon): find plugins added while running
+  * fix(daemon): stop a plugin replacing its manifest
+  * fix(ui): show why a plugin action failed
+  * fix(ui): share plugin status across views
+  * fix(daemon): keep the cause of a plugin failure
+  * fix(daemon): bring a plugin up fully on start
+  * refactor(daemon): share the plugin file handover
+  * fix(daemon): report why a plugin unit stopped
+  * fix(daemon): reset a plugin unit before starting it
+  * fix(ui): restart the Mode warning grace on a profile switch
+  * docs(ui): trim the unapplied Mode helper comment
+  * test(daemon): reset the Modes file in listener tests
+  * fix(i18n): correct zh-tw inactive Mode wording
+  * test(daemon): cover shutdown during the boot wait
+  * test(daemon): correct the seed assertion message
+  * fix(ui): delay the inactive Mode warning
+  * fix(ui): split Mode warning into two blocks
+  * fix(daemon): assert startup Mode invariants
+  * feat(ui): warn of an inactive power profile Mode
+  * fix(daemon): activate power profile Mode at startup
+  * fix(ui): draw temp min as a limit line
+  * feat(ui): show rated and power attributes
+  * feat(daemon): read rated and power attributes
+  * test(ui): sort detail bands numerically
+  * refactor(daemon): name hwmon attribute helper inner
+  * refactor(daemon): split hwmon attribute read helper
+  * fix(ui): pad the detail window around sample times
+  * test(daemon): drop ungated shutdown latency assert
+  * refactor(daemon): rename permit device to device_label
+  * docs(ui): trim chart stats comments to one line
+  * refactor(ui): type chart scale keys
+  * refactor(ui): rename tir to activeTimeInRange
+  * refactor(ui): render stats panel detail rows in a loop
+  * refactor(ui): resolve channel settings once
+  * docs(daemon): note microbar fan limits on pressure
+  * test(daemon): cover shutdown in the attribute wait
+  * fix(ui): pad the detail window by half a poll
+  * docs(daemon): write attribute kind units as sentences
+  * refactor(daemon): assert channel attribute invariants
+  * refactor(daemon): name the leakshield bound in microbar
+  * refactor(daemon): split the leakshield channel check
+  * fix(ui): track a new channel dashboard's edits
+  * fix(ui): shorten the visible range label
+  * refactor(ui): pick line dashes by data type
+  * refactor(ui): drop stats reset and scale key relays
+  * refactor(ui): rename TablePosition to OverlayPosition
+  * refactor(ui): name driver limits LimitLine
+  * refactor(ui): build limit lines in one push
+  * refactor(ui): look up stat rules per data type
+  * refactor(ui): add lifetime stats display lookup
+  * refactor(ui): pass chart lines as one LineKey
+  * refactor(ui): share stat formatting for chart stats
+  * refactor(ui): group time chart overlays in one v-if
+  * fix(ui): paint stats panel as a solid surface
+  * fix(ui): point jitter help to Function hysteresis
+  * refactor(ui): share the visible range label
+  * refactor(daemon): share attribute permit wait
+  * feat(daemon): accept Leakshield pressure limits
+  * feat(ui): add since start switch to stats legend
+  * fix(ui): show time chart for unknown chart types
+  * feat(ui): switch stats panel line from its header
+  * fix(ui): reduce stats panel column wrapping
+  * feat(ui): add time in range and fan stats to panel
+  * feat(ui): add small size to toggle group
+  * feat(ui): draw driver limit lines on individual chart
+  * feat(ui): add stats panel to individual chart
+  * feat(ui): add channel attributes client
+  * feat(ui): add stats legend to dashboard time chart
+  * refactor(ui): share lifetime stats between table and charts
+  * feat(daemon): serve channel attributes on demand
+  * docs(daemon): rule out tests of log output
+  * test(daemon): stop asserting on log output
+  * fix(ui): open the new custom sensor after saving
+  * fix(ui): hold new custom sensor name until created
+  * fix(daemon): broken test
+  * docs(daemon): state method in listener tests
+  * test(daemon): pin IPV6_V6ONLY choice per address
+  * fix(daemon): set IPV6_V6ONLY on every IPv6 listener
+  * test(daemon): skip IPv6 bind tests without IPv6
+  * fix(daemon): bind IPv4-mapped IPv6 addresses
+  * refactor(daemon): stop shadowing listener fns
+  * test(daemon): pin OpenAPI doc to debug builds
+  * test(daemon): cover API server bind failure
+  * perf(daemon): skip OpenAPI doc in release builds
+  * fix(daemon): log API server failures as they happen
+  * fix(daemon): bind IPv6 API listener as IPv6 only
+  * fix(ui): use disconnect icon for unreachable rows
+  * refactor(ui): reuse shared health text
+  * refactor(ui): group pinned row channel fields
+  * fix(ui): show not responding on fan cards
+  * test(ui): assert pinned health tooltip text
+  * refactor(ui): extract channel health icon
+  * refactor(ui): merge health predicates into one
+  * fix(ui): apply shared health rule to Cooling rows
+  * docs(daemon): prefer https frame ancestors
+  * fix(daemon): fail closed on a drifted CSP baseline
+  * fix(daemon): cap frame_ancestors entries read
+  * test(daemon): share the document CSP layer helper
+  * refactor(daemon): rename frame ancestors cap constant
+  * refactor(daemon): hoist refused origins test table
+  * fix(daemon): warn of the cap only when it drops
+  * docs(daemon): explain frame_ancestors entries
+  * fix(ui): show failsafe warning on pinned rows
+  * fix(daemon): keep origins out of the settings API
+  * fix(daemon): tighten frame_ancestors validation
+  * fix(daemon): admit frame ancestors on plugin pages
+  * perf(daemon): compose frame-ancestors CSP at startup
+  * add load start and end notifications to parent window during UI loading
+  * nudge colours
+  * formatting
+  *  make browser UI theme reactive, set system theme if embeded in cockpit
+  * add project felt themes
+  * fix(deps): [security] bump the npm-security group across 1 directory with 2 updates
+  * test(daemon): reset modes.json before real router test
+  * test(daemon): pin rpm guard on rpm-only fan read
+  * test(daemon): pin login promotion in the real router
+  * fix(daemon): reject ']' inside a label unit
+  * test(daemon): add method notes to connection tests
+  * docs(daemon): clarify what the pre-auth pool protects
+  * refactor(daemon): extract fan batch slot gathering
+  * refactor(daemon): split connection count invariant asserts
+  * fix(daemon): pool unauthenticated remote connections
+  * docs(daemon): list throttle test peer allotments
+  * refactor(daemon): share trusted_proxies entry asserts
+  * refactor(daemon): move token test helpers to impl end
+  * test(daemon): add method notes to auth tests
+  * test(daemon): pin legacy token first-burst cost
+  * refactor(daemon): assert trusted_proxies entries on write
+  * fix(daemon): charge legacy token checks on arrival
+  * docs(daemon): note local proxies share the loopback pool
+  * test(daemon): state goals of digest match tests
+  * refactor(daemon): name first_bytes_timeout for its unit
+  * refactor(daemon): move trimmed_entries into config
+  * fix(daemon): log an unreadable file limit at DEBUG
+  * refactor(daemon): assert breaker and limiter invariants
+  * refactor(daemon): extract trusted_proxies config helpers
+  * test(daemon): pin client address ahead of auth throttles
+  * fix(daemon): cap waiters on the legacy token pass
+  * fix(daemon): recheck a legacy token after its pass
+  * refactor(daemon): keep trusted_proxies out of the API
+  * fix(daemon): skip rpm guard for labelled units
+  * fix(daemon): restore rpm guard on batched fan reads
+  * ci: refresh dependabot advisories on each run
+  * clippy changes + formatting
+  * add back `x-frame-options: SAMEORIGIN`, disallow frame_ancestors URL paths other than "/"
+  * remove frame_ancestors from API exposed settings
+  * add frame_ancestors config key, validate frame_ancestors values
+  * add custom origins to CSP frame-ancestors
+  * fix(deps): [security] bump undici
+  * fix(daemon): raise a low file limit only to 65536
+  * refactor(daemon): bundle API server parameters
+  * feat(daemon): serve build-time gzip of static assets
+  * feat(daemon): trust X-Forwarded-For from set proxies
+  * refactor(daemon): shorten settings merge
+  * fix(daemon): serialize verify-session password check
+  * fix(daemon): verify legacy tokens off the reactor
+  * feat(daemon): cap concurrent API connections
+  * feat(daemon): raise the open file soft limit
+  * fix(daemon): bound time to first request bytes
+  * fix(daemon): enable HTTP header and keepalive timers
+  * fix(daemon): drop the global password lockout
+  * feat(daemon): let known-good peers bypass the breaker
+  * feat(daemon): add remote password breaker
+  * fix(daemon): charge password attempts on arrival
+  * fix(daemon): split password and token throttle budgets
+  * refactor(daemon): key auth throttle by peer network
+  * fix(daemon): stop decompressing API responses
+  * fix(daemon): keep IPv6 literal hosts in HTTPS redirect
+  * docs: intentions for lcd and lighting
+  * feat(ui): add debug logging toggle and indicator
+  * feat(daemon): add debug logging setting
+  * feat(daemon): keep mode for external lcd writes
+  * fix(daemon): only clear modes on setting change
+  * fix(daemon): skip no-op active mode clear
+  * fix(daemon): count requests, not reads, in the unreachable warning
+  * test(daemon): drop redundant upper-bound timing checks
+  * fix(daemon): name writes in the device timeout error
+  * test(daemon): de-flake the threaded device io tests
+  * refactor(daemon): derive gRPC routes from service names
+  * fix(daemon): keep the tls_strict note in [settings]
+  * fix(daemon): correct the tls_strict note on localhost
+  * fix(daemon): explain a remote that requires TLS
+  * ci: fix osv-scanner binary path
+  * fix(deps): update vulnerable crates
+  * ci: run npm_audit on the schedule only
+  * ci: run cargo_audit on the schedule only
+  * ci: run only security jobs on schedules
+  * ci: open npm security MRs with dependabot
+  * ci: drop duplicate dependency scanners
+  * ci: audit UI npm lockfile with osv-scanner
+  * ci: audit daemon crates and open fix MRs
+  * fix(daemon): drop stale time advisory ignore
+  * fix(daemon): space out the plugin health retries
+  * fix(daemon): report a plugin's refused credentials
+  * feat(daemon): log whether a plugin link uses TLS
+  * fix(daemon): repair the plugin refusal message and its docs
+  * chore: formatting
+  * refactor(daemon): assert the plugin trust preconditions
+  * fix(daemon): explain credential refusals on every rpc
+  * fix(daemon): refuse a plugin token that cannot be sent
+  * refactor(daemon): resolve a plugin link once, asynchronously
+  * refactor(daemon): build the fingerprint without utf8 checks
+  * refactor(daemon): drop the one-variant server enum
+  * refactor(daemon): pair each gRPC code with its message
+  * test(daemon): reject an expired token over gRPC
+  * fix(daemon): let gRPC clients read the request timeout
+  * fix(daemon): harden plugin credentials despite a failure
+  * feat(daemon): let the token decide the plugin transport
+  * test(daemon): restore the manifest permissions test
+  * fix(daemon): name gRPC in the API listening log
+  * fix(daemon): report refused plugin credentials clearly
+  * feat(daemon): publish and protect TLS trust material
+  * feat(daemon): authenticate and pin outbound plugin links
+  * feat(daemon): authenticate gRPC on the REST listener
+  * feat(daemon): add ability to set service dir
+
+-------------------------------------------------------------------
+Sat Sep 19 18:19:11 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.0.1
+
+- Update to version 5.0.1:
+  * feat(daemon): disable the device listener by default
+  * chore: remove no-longer-needed vendor workaround
+  * feat(ui): add custom sensors from the panel headers
+  * feat(ui): move the Cooling button to the name row
+  * feat(ui): open custom sensor charts from Monitoring
+  * fix(daemon): name devices in shutdown logs
+  * refactor(daemon): copy detected names at startup
+  * fix(daemon): name the channel in calibration errors
+  * fix(daemon): name devices and channels in calibration logs
+  * fix(daemon): resolve log names through one chain
+  * fix(calibration): judge the duty floor against the fan's plateau
+  * feat(ui): show the implausible-curve calibration warning
+  * fix(calibration): reject flat, inverted and high-floor curves
+  * test(liqctld): avoid a slice flake8 rejects
+  * feat(daemon): reconnect a failed device before restarting liqctld
+  * fix(liqctld): resync corsair psu reads to their command
+  * fix(daemon): narrow the liqctld recovery success claim
+  * fix(liqctld): drain stale reports before corsair psu commands
+  * feat(daemon): restart liqctld to recover failed devices
+  * fix(daemon): key init summaries by device uid
+  * fix(daemon): gate repeated duty write errors
+  * fix(liqctld): bound serving a stale device status
+  * fix(liqctld): surface device scan failures
+  * fix(daemon): skip hidraw lookup for non-hidraw addresses
+  * fix(daemon): route the pwm_enable fallback read through the device
+  * perf(daemon): read Apple SMC fans through their slots
+  * fix(daemon): keep a slotless channel out of a batched reply
+  * perf(daemon): read AMD gpu load through its slot
+  * fix(ui): rebuild the chart when its line set changes
+  * fix(daemon): keep NVML cards on NVML after workers start
+  * build(daemon): lint test code with a clippy-tests gate
+  * fix(daemon): actually drop the signal future before the mask restore
+  * test(daemon): scope borrows so none is held across an await
+  * refactor(daemon): address the sysfs read cache by slot
+  * docs(daemon): cut the design-doc comments back to the why
+  * test(daemon): prove the descriptor cache on a real worker
+  * test(daemon): assert staleness and failsafe on a wedged device
+  * test(ui): assert health precedence on the real composable
+  * refactor(ui): share device health through one composable
+  * feat(daemon): report unreachable NVIDIA GPUs
+  * feat(daemon): give each GPU its own NVML thread
+  * test(daemon): cover the shared worker health rules
+  * refactor(daemon): split worker health state from the queue
+  * feat(daemon): route device writes through DeviceIo
+  * perf(daemon): rotate the tick order in place
+  * perf(daemon): cache channel paths as Arc<Path>
+  * refactor(daemon): share the fan duty cache lookup
+  * refactor(daemon): fold the stream readers into extract
+  * refactor(ui): inline the unreachableKey helper
+  * perf(daemon): drop the worker thread name clone
+  * style(daemon): prefer .not() in freq detection
+  * refactor(daemon): inline the until_readable wrapper
+  * perf(daemon): batch the per-tick reads each device actually needs
+  * perf(daemon): batch each device's per-tick reads into one hop
+  * feat(ui): show unreachable devices distinctly from failsafe
+  * feat(daemon): bound NVML calls off the runtime thread
+  * feat(daemon): surface unreachable devices in device health
+  * feat(daemon): bound the shutdown reset per device
+  * test(daemon): prove a wedged device cannot stall a healthy one
+  * feat(daemon): isolate each device's sysfs IO on its own thread
+  * refactor(daemon): improve reissue logs
+  * refactor(daemon): improve sysfs backoff retry timing
+  * feat(daemon): probe check all hwmon sysfs files at init
+  * fix(daemon): handle interruptable sysfs hwmon reads
+  * test(daemon): de-flake the heartbeat count test
+  * refactor(daemon): drop the tokio runtime backend
+  * fix(daemon): unmask signals while awaiting shutdown
+  * test(daemon): stop writing to the process environment
+  * test(daemon): take the fastest of five timing runs
+  * fix(daemon): warn when OpenRC collapses argument whitespace
+  * fix(daemon): quote the systemd working directory
+  * refactor(daemon): assert the escaping postconditions
+  * fix(daemon): reject an address that reparses as a URI
+  * refactor(daemon): extract the manifest address parse
+  * refactor(daemon): give a plugin env var its own type
+  * fix(daemon): report why a plugin manifest was skipped
+  * fix(daemon): validate manifest fields instead of guessing
+  * fix(daemon): quote OpenRC values against its eval
+  * fix(daemon): stop mangling plugin manifest values
+  * fix(engine): re-derive response delay stack depth
+  * refactor(daemon): move CPU device association to its own module
+  * fix(daemon): fail on an unreadable CPU physical id
+  * refactor(daemon): parse cpuinfo once into a topology
+  * refactor(daemon): key CPU devices by their association
+  * refactor(daemon): group the CPU modules under cpu/
+  * fix(daemon): keep CPU temps and freqs in every poll
+  * fix(daemon): report CPU power in every poll
+  * fix(daemon): report CPU load in every poll
+  * fix(daemon): restore per-socket CPU load
+  * fix(daemon): match CPU temps by zone id when one is offline
+  * fix(daemon): tie each package's first die to its socket
+  * fix(daemon): number CPU zone devices apart from sockets
+  * fix(daemon): keep zone-keyed CPU devices past name lookup
+  * refactor(daemon): name the CPU zone id apart from a physical id
+  * fix(daemon): omit CPU power without an energy counter
+  * fix(daemon): match AMD CPU temps by k10temp node id
+  * fix(daemon): match Intel CPU temps by coretemp zone
+  * fix(daemon): degrade CPU init instead of failing
+  * chore(ui): patch vitest and svgo advisories
+  * fix(ci): disable attestations on the multi-arch build
+  * feat(daemon): accept only epoll or io_uring as the override
+  * docs(daemon): note NO_IOWAIT clears the iowait on 6.15+
+  * ci: build the dockerhub image with node 24
+  * ci: verify the daemon builds on its declared MSRV
+  * build(daemon): upgrade compio and raise MSRV to 1.95
+  * fix(daemon): register the runtime driver env var
+  * feat(daemon): allow forcing the polling reactor
+  * docs: add nix review step
+  * build(vendor): clear exec bits across the vendor tree
+  * fix(packaging): strip exec bits from vendored rust sources
+
+-------------------------------------------------------------------
+Sat Sep 19 18:19:11 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.0.1:
+  * Release 5.0.1
+  * feat(daemon): disable the device listener by default
+  * chore: remove no-longer-needed vendor workaround
+  * feat(ui): add custom sensors from the panel headers
+  * feat(ui): move the Cooling button to the name row
+  * feat(ui): open custom sensor charts from Monitoring
+  * fix(daemon): name devices in shutdown logs
+  * refactor(daemon): copy detected names at startup
+  * fix(daemon): name the channel in calibration errors
+  * fix(daemon): name devices and channels in calibration logs
+  * fix(daemon): resolve log names through one chain
+  * fix(calibration): judge the duty floor against the fan's plateau
+  * feat(ui): show the implausible-curve calibration warning
+  * fix(calibration): reject flat, inverted and high-floor curves
+  * test(liqctld): avoid a slice flake8 rejects
+  * feat(daemon): reconnect a failed device before restarting liqctld
+  * fix(liqctld): resync corsair psu reads to their command
+  * fix(daemon): narrow the liqctld recovery success claim
+  * fix(liqctld): drain stale reports before corsair psu commands
+  * feat(daemon): restart liqctld to recover failed devices
+  * fix(daemon): key init summaries by device uid
+  * fix(daemon): gate repeated duty write errors
+  * fix(liqctld): bound serving a stale device status
+  * fix(liqctld): surface device scan failures
+  * fix(daemon): skip hidraw lookup for non-hidraw addresses
+  * fix(daemon): route the pwm_enable fallback read through the device
+  * perf(daemon): read Apple SMC fans through their slots
+  * fix(daemon): keep a slotless channel out of a batched reply
+  * perf(daemon): read AMD gpu load through its slot
+  * fix(ui): rebuild the chart when its line set changes
+  * fix(daemon): keep NVML cards on NVML after workers start
+  * build(daemon): lint test code with a clippy-tests gate
+  * fix(daemon): actually drop the signal future before the mask restore
+  * test(daemon): scope borrows so none is held across an await
+  * refactor(daemon): address the sysfs read cache by slot
+  * docs(daemon): cut the design-doc comments back to the why
+  * test(daemon): prove the descriptor cache on a real worker
+  * test(daemon): assert staleness and failsafe on a wedged device
+  * test(ui): assert health precedence on the real composable
+  * refactor(ui): share device health through one composable
+  * feat(daemon): report unreachable NVIDIA GPUs
+  * feat(daemon): give each GPU its own NVML thread
+  * test(daemon): cover the shared worker health rules
+  * refactor(daemon): split worker health state from the queue
+  * feat(daemon): route device writes through DeviceIo
+  * perf(daemon): rotate the tick order in place
+  * perf(daemon): cache channel paths as Arc<Path>
+  * refactor(daemon): share the fan duty cache lookup
+  * refactor(daemon): fold the stream readers into extract
+  * refactor(ui): inline the unreachableKey helper
+  * perf(daemon): drop the worker thread name clone
+  * style(daemon): prefer .not() in freq detection
+  * refactor(daemon): inline the until_readable wrapper
+  * perf(daemon): batch the per-tick reads each device actually needs
+  * perf(daemon): batch each device's per-tick reads into one hop
+  * feat(ui): show unreachable devices distinctly from failsafe
+  * feat(daemon): bound NVML calls off the runtime thread
+  * feat(daemon): surface unreachable devices in device health
+  * feat(daemon): bound the shutdown reset per device
+  * test(daemon): prove a wedged device cannot stall a healthy one
+  * feat(daemon): isolate each device's sysfs IO on its own thread
+  * refactor(daemon): improve reissue logs
+  * refactor(daemon): improve sysfs backoff retry timing
+  * feat(daemon): probe check all hwmon sysfs files at init
+  * fix(daemon): handle interruptable sysfs hwmon reads
+  * test(daemon): de-flake the heartbeat count test
+  * refactor(daemon): drop the tokio runtime backend
+  * fix(daemon): unmask signals while awaiting shutdown
+  * test(daemon): stop writing to the process environment
+  * test(daemon): take the fastest of five timing runs
+  * fix(daemon): warn when OpenRC collapses argument whitespace
+  * fix(daemon): quote the systemd working directory
+  * refactor(daemon): assert the escaping postconditions
+  * fix(daemon): reject an address that reparses as a URI
+  * refactor(daemon): extract the manifest address parse
+  * refactor(daemon): give a plugin env var its own type
+  * fix(daemon): report why a plugin manifest was skipped
+  * fix(daemon): validate manifest fields instead of guessing
+  * fix(daemon): quote OpenRC values against its eval
+  * fix(daemon): stop mangling plugin manifest values
+  * fix(engine): re-derive response delay stack depth
+  * refactor(daemon): move CPU device association to its own module
+  * fix(daemon): fail on an unreadable CPU physical id
+  * refactor(daemon): parse cpuinfo once into a topology
+  * refactor(daemon): key CPU devices by their association
+  * refactor(daemon): group the CPU modules under cpu/
+  * fix(daemon): keep CPU temps and freqs in every poll
+  * fix(daemon): report CPU power in every poll
+  * fix(daemon): report CPU load in every poll
+  * fix(daemon): restore per-socket CPU load
+  * fix(daemon): match CPU temps by zone id when one is offline
+  * fix(daemon): tie each package's first die to its socket
+  * fix(daemon): number CPU zone devices apart from sockets
+  * fix(daemon): keep zone-keyed CPU devices past name lookup
+  * refactor(daemon): name the CPU zone id apart from a physical id
+  * fix(daemon): omit CPU power without an energy counter
+  * fix(daemon): match AMD CPU temps by k10temp node id
+  * fix(daemon): match Intel CPU temps by coretemp zone
+  * fix(daemon): degrade CPU init instead of failing
+  * chore(ui): patch vitest and svgo advisories
+  * fix(ci): disable attestations on the multi-arch build
+  * feat(daemon): accept only epoll or io_uring as the override
+  * docs(daemon): note NO_IOWAIT clears the iowait on 6.15+
+  * ci: build the dockerhub image with node 24
+  * ci: verify the daemon builds on its declared MSRV
+  * build(daemon): upgrade compio and raise MSRV to 1.95
+  * fix(daemon): register the runtime driver env var
+  * feat(daemon): allow forcing the polling reactor
+  * docs: add nix review step
+  * build(vendor): clear exec bits across the vendor tree
+  * fix(packaging): strip exec bits from vendored rust sources
+
+-------------------------------------------------------------------
+Sun Sep 06 17:37:13 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.0.0
+
+- Update to version 5.0.0:
+  * docs(release): correct the theme count
+  * docs: update with apt repo change
+  * fix: image formatting
+  * fix(metadata): satisfy strict appstream checks
+  * fix(metadata): use the modern developer element
+  * fix(metadata): point issue links at work_items
+  * docs(packaging): drop the OBS release steps
+  * chore(packaging): drop OBS from the version bump
+  * chore: formatting
+  * docs: update the 5.0.0 changelog
+  * chore(release): set 5.0.0 date to 2026-09-06
+  * feat(packaging): add a round app icon variant
+  * fix(daemon): report a GPU enumeration outage once
+  * fix(daemon): inform, not warn, when listing no GPUs
+  * chore: remove deprecated obs files
+  * fix(daemon): report power daemon outages once
+  * fix(daemon): silence zbus cache warning without ppd
+  * fix(daemon): stop serving gRPC reflection
+  * test(daemon): drop the argon2 timing assertion
+  * fix(daemon): survive a poisoned last-used cache
+  * refactor(daemon): give token digests their own type
+  * fix(daemon): count only adjudicated auth outcomes
+  * fix(daemon): reject malformed Basic auth without panicking
+  * feat(daemon): throttle failed auth attempts per peer
+  * perf(daemon): validate tokens by digest, not argon2
+  * test(daemon): pin exact ramp cadence, share setup
+  * fix(daemon): keep ramping to 0% and 100% targets
+  * perf(daemon): skip ramp check when unclamped
+  * fix(ui): clarify threshold hopping max step
+  * fix(daemon): continue rate-limited fan ramps
+  * docs: ask for the install source in bug reports
+  * feat(apt): add a landing page for the repo root
+  * docs: update the 5.0.0 changelog
+  * refactor(ui): drop the unused group sort helper
+  * refactor(ui): build picker groups with a composable
+  * refactor(ui): trim the library folder comments
+  * refactor(ui): move libraryOptions out of cooling
+  * feat(ui): link mode table rows to their pages
+  * feat(ui): group profile and function pickers
+  * fix(ui): autoscroll every panel list while dragging
+  * fix(ui): autoscroll the panel while dragging
+  * fix(ui): never drop a folder on an unrelated write
+  * fix(ui): rebuild library rows after a drop
+  * fix(ui): stop the drag re-rendering its own list
+  * fix(ui): give LibraryList a single root element
+  * feat(ui): drag profiles and functions into folders
+  * feat(ui): render library folders in the cooling panel
+  * feat(ui): add library folder model and settings
+  * fix(apt): make root object refresh opt-in
+  * build(ci): stop publishing releases to Cloudsmith
+  * fix(apt): drop the redundant Architectures field
+  * fix(ci): shell formatting
+  * build(docker): disable buildx attestations on local builds
+  * feat(apt): allow forcing the package tree in setup.sh
+  * fix(deb): keep the apt keyring across package removal
+  * fix(ui): drop focus ring after a mouse select
+  * fix(ui): avoid empty SelectItem value in mode mapping
+  * feat(deb): repoint apt sources to apt.coolercontrol.org
+  * fix(test): isolate the LCD image dir per test
+  * docs: update the 5.0.0 changelog
+  * feat(daemon): report readiness and liveness to systemd
+  * build: reload systemd units on a source install
+  * style(ui): color help icons with the info token
+  * style(ui): drop labels from the minor help icons
+  * feat(ui): make help icons findable with one shared component
+  * feat(ui): mark renameable titles with an edit icon
+  * fix(daemon): give each LCD channel its own image file
+  * fix(daemon): drop LCD shutdown settings whose image is gone
+  * fix(daemon): fall back to the stock LCD shutdown image
+  * docs(scripts): note the LCD shutdown output
+  * style(icons): optimize the LCD shutdown image
+  * fix(icons): inset the LCD shutdown mark for round bezels
+  * fix(icons): regenerate the LCD shutdown image from the logo
+  * fix(test): skip the validator check without embedded assets
+  * fix(api): revalidate unhashed assets instead of pinning them
+  * perf(ui): bundle the logo and fonts so they are content-hashed
+  * fix(icons): open <svg> within gdk-pixbuf's 256-byte sniff window
+  * build(trunk): drop trivy, its checks bundle fails in CI
+  * fix(daemon): allow required async on trait impls
+  * refactor(daemon): use new() instead of with_capacity(0)
+  * fix(deps): update h2 for GHSA-q83h-524g-xf6h
+  * test(ui): survive Node 26's undefined localStorage global
+  * build(trunk): drop nixpkgs-fmt
+  * style: reformat for black 26 and prettier 3.9
+  * chore: update trunk
+  * build(trunk): bump trivy past the pulled 0.65.0 release
+  * style(scripts): apply black to the icon generator
+  * fix(scripts): hide the generated SVG SPDX tags from reuse
+  * fix(make): make uninstall work without a build tree
+  * fix(make): install the desktop entry under /usr/share
+  * feat(make): refresh icon and desktop caches on install
+  * fix(make): keep the source-install build unprivileged
+  * fix(icons): cut the badge gap with a clip path, not a mask
+  * fix(icons): class the alert badge so symbolic hosts keep it red
+  * fix(qt): fall back to the pre-rename alert icon name
+  * build: alias the pre-rename tray alert icon filename
+  * fix(qt): keep the -symbolic suffix on the tray alert icon
+  * fix: satisfy oxipng, clang-format and flake8
+  * fix(ui): fit the rail logo and its highlight to the icons
+  * fix(icons): scale the badge halo with the mark's inset
+  * fix(icons): normalize the notification icon framing
+  * fix(icons): give every variant the same inset and weight
+  * fix(icons): inset the symbolic icon to sit with tray peers
+  * chore(icons): rebuild the animated logo
+  * fix(icons): match notification icons to the app stroke
+  * fix(icons): re-weight the colour icon and fill its canvas
+  * fix(qt): use the colour icon as window-icon fallback
+  * fix(icons): redraw the symbolic icon for tray sizes
+  * feat(scripts): add the icon generators
+  * chore(icons): symlink the duplicated app icons
+  * fix(ui): refit chart height when leaving full page
+  * fix(ui): right-align the full-page dashboard toggle
+  * refactor(ui): share one entity page header layout
+  * fix(ui): stop chart graphic errors on resize
+  * fix(ui): move restart hint beside the setting control
+  * feat(daemon): hint at ThinkPad fan control on write errors
+  * fix(ui): keep panel fades below the full-page chart
+  * fix: reflect ThinkPad fan control state without restart
+  * refactor(ui): remove the Simple interface
+  * fix(daemon): prune power profile modes on Mode delete
+  * fix(daemon): reconnect the power profile listener
+  * feat(ui): map system power profiles to Modes
+  * feat(daemon): switch Modes on power profile changes
+  * docs(daemon): note the OpenRC 0.45 minimum for plugins
+  * refactor(daemon): assert the stop poll count at compile time
+  * refactor(daemon): assert the plugin chown arguments
+  * test(daemon): install the sidecar for plugin user tests
+  * feat(daemon): deny new privileges for plugin services
+  * fix(daemon): harden plugin folder ownership
+  * fix(ui): replace off-scheme colors with themed tokens
+  * fix(ui): draw tag severities from the themed colors
+  * feat(ui): publish the whole theme palette to plugin UIs
+  * fix(ui): pad the plugin toolbar against its iframe
+  * fix(daemon): install a plugin service when enabling it
+  * fix(daemon): restart plugin services instead of replacing them
+  * fix(ui): let the disable-sensors button grow when it wraps
+  * fix(ui): keep the disable-sensors button from squashing
+  * fix(ui): reflow helpful links instead of wrapping
+  * fix(ui): stop the shell pane forcing nowrap
+  * fix(ui): only restore search focus for keyboard users
+  * refactor(ui): size the search field to its content
+  * fix(ui): drop the focus ring after taking a result
+  * fix(ui): use a control surface for the search field
+  * feat(ui): surface search in the tour and shortcuts
+  * feat(ui): add a global search palette
+  * fix(alerts): name the sensor that left the watch list
+  * fix(alerts): notify when an edit clears the alert
+  * fix(ui): list Error alerts on the home page
+  * refactor(ui): share one alert state color map
+  * refactor(alerts): share edge bookkeeping and split notifications
+  * fix(alerts): carry an announced Error across an edit
+  * refactor: trim alert comments and docs
+  * fix(ui): keep alert count reactive to silence expiry
+  * docs: record AlertLog.resolved deprecation
+  * feat(ui): toast alert-level edges and surface Error state
+  * feat(alerts): announce alert-level edges, not per-source
+  * fix(alerts): show resolved channel labels in messages
+  * feat(liqctld): report frames outgrowing a bucket
+  * fix: cap LCD images at liquidctl's gif limit
+  * feat: hide LCD gifs on firmware that refuses them
+  * perf(liqctld): send the Kraken 2023 fw2 frame once
+  * fix(ui): darken the modal overlay dim
+  * fix(ui): dim modals with opacity instead of blur
+  * feat(ui): collapse the menu from the rail's empty space
+  * fix(alerts): re-evaluate after a source is removed
+  * feat(ui): explain missing and uncontrollable fans
+  * docs: cut the Simple mode release notes section
+  * docs: drop the Simple interface entry
+  * refactor(ui): drop a dead watchEffect
+  * fix(ui): put the color trigger on the action pitch
+  * fix(ui): keep panel action icons in fixed columns
+  * fix(ui): match the rows' drag grab area in headers
+  * fix(ui): link the whole device header band
+  * fix(ui): align device header actions with rows
+  * fix(ui): release device header actions on unhover
+  * feat(ui): make device panel headers link and sort
+  * fix(ui): show pinned monitoring rows in pin order
+  * fix(ui): order panel row actions by universality
+  * fix(ui): size every panel item icon alike
+  * fix(ui): rename to Manage Devices and Sensors
+  * fix(ui): enlarge landing buttons and panel row icons
+  * fix(ui): store the chosen language in the daemon
+  * fix(ui): keep long rail labels inside the rail
+  * feat(ui): remove the interface toggle and simple tour
+  * fix(ui): list All GPUs last in the stress picker
+  * fix(stress): stress each card in a matched GPU pair
+  * fix(stress): run 4 stress-ng GPU workers
+  * feat(stress): choose which GPU to stress test
+  * fix(ui): spin while the hardware report loads
+  * fix(ui): extend the hardware report timeout
+  * fix(daemon): bound hardware report reads per device
+  * fix(daemon): tolerate transient file sensor read failures
+  * fix(daemon): read drive power state via SAT passthrough
+  * fix(daemon): derive sd drive UIDs from stable hardware identity
+  * fix(daemon): tolerate transient file sensor read failures
+  * fix(daemon): read drive power state via SAT passthrough
+  * fix(daemon): derive sd drive UIDs from stable hardware identity
+  * fix(liqctld): stop warning on a supported liquidctl
+  * fix(ui): check the hex alphabet without a regex
+  * fix(liqctld): tolerate liquidctl older than the C packing
+  * fix(ui): drop the dynamic regex from theme code decoding
+  * feat(daemon): add an env subcommand listing env vars
+  * docs: scope the System theme entry to what desktops offer
+  * docs: update the 5.0.0 changelog
+  * feat(ui): apply the desktop palette to the System theme
+  * feat(qt): read the desktop color palette
+  * fix: formatting
+  * feat(ui): adapt the shell to installed windows
+  * fix(daemon): revalidate manifest and service worker
+  * feat(ui): add a web app manifest and icons
+  * fix(ui): follow Omarchy palettes for the new themes
+  * feat(ui): add Hackerman and Solitude themes
+  * docs(release): more adjustments
+  * docs(release): tighten the 5.0.0 presentation copy
+  * chore: remove no longer used webm
+  * docs(screenshots): update overview and speed for 5.0
+  * fix(qt): keep tray daemon rows across a switch
+  * docs(readme): replace the hero video with a collage
+  * docs(readme): add docs index and 5.0 highlights link
+  * docs(release): add the 5.0.0 feature presentation
+  * ci(release): link the feature presentation when present
+  * refactor(ui): use layer icons for the interface switch
+  * fix(ui): hide card wizard and alert icons in simple mode
+  * refactor(ui): use the canonical mode names in the header
+  * docs: update the 5.0.0 changelog
+  * fix(ui): hold the mode row height without Activate
+  * feat(ui): open a mode from anywhere on its row
+  * fix(ui): warn when leaving a channel unapplied
+  * fix(ui): reconnect the embedded profile editor to Apply
+  * feat(ui): offer a channel's last profile back
+  * fix(ui): keep a fan's simple curve across a fixed speed
+  * fix(ui): stop the profile page crashing on delete
+  * fix(ui): keep the sourceless default curve on the chart
+  * fix(ui): start a simple curve from the default curve
+  * fix(ui): hide the fan-control tip in simple mode
+  * refactor(ui): rename modeRoute to uiModeRoute
+  * feat(ui): give each interface its own tour
+  * feat(ui): move the page with the interface switch
+  * refactor(ui): move the interface switch into the header
+  * test(ui): guard the interface mode i18n keys
+  * feat(ui): slim the simple home and default new configs to it
+  * feat(ui): add the simple sensors section
+  * feat(ui): add the simple fan page and per-fan curves
+  * feat(ui): add a simple interface mode to the shell
+  * i18n(ui): point the plugins link at finding plugins
+  * fix(ui): clarify and bound forked profile names
+  * fix(ui): left-align the confirm dialog message
+  * test(ui): guard the dynamic i18n keys from pruning
+  * fix(ui): restore wheel adjustment on number inputs
+  * fix(ui): discard stale stress test status responses
+  * i18n(ui): translate the stress test error toasts
+  * fix(ui): remount the alert editor per sensor
+  * fix(ui): keep saved entities on wizard failure
+  * fix(ui): roll back device edits the daemon refuses
+  * fix(ui): correct kit contrast and layering
+  * style(ui): drop em and en dashes from sensor table
+  * fix(ui): register LCD watchers inside the effect scope
+  * fix(ui): roll back a duplicate when its save fails
+  * fix(ui): escape sensor labels in the chart tooltip
+  * fix(qt): stop the retry timer before switching daemons
+  * fix(qt): stop a blanked page counting as a loaded UI
+  * fix(qt): reset the web-load flag on daemon switch
+  * style(daemon): apply tigerstyle to alert hot paths
+  * test(daemon): cover the alert request validation
+  * fix(daemon): enforce source and window caps on load
+  * refactor(daemon): split oversized functions
+  * fix(daemon): match power channels by their feature name
+  * fix(daemon): validate parents before mutating
+  * fix(daemon): keep alert state following its sources
+  * fix(daemon): align downgrade-compat markers with 5.0.0
+  * fix(ui): clear the alert badge when a silence expires
+  * fix(ui): roll back wizard entries when a save fails
+  * fix(ui): enforce LCD image validation on drop
+  * fix(ui): carry all fields when duplicating a function
+  * fix(ui): stop a cleared sensor name override returning
+  * fix(ui): copy arrays when duplicating a profile
+  * fix(ui): guard setTranslations against an older Qt app
+  * fix(ui): keep sensor edits when the restart confirm is cancelled
+  * fix(ui): unstick toast countdowns when the stack empties
+  * fix(qt): allow only one health probe in flight
+  * fix(qt): restart the connection loop on an SSE 401
+  * fix(daemon): keep sibling sources when deleting a child sensor
+  * fix(daemon): trust rpm over a sub-floor stall reading
+  * fix(daemon): cancel pending shutdowns when alerts are quieted
+  * fix(ui): follow daemon settings on mode change
+  * fix(ui): fit scroll panes to the panel height
+  * test(liqctld): drop /tmp literals from mock paths
+  * fix(ci): install liquidctl with its dependencies
+  * feat(ui): show actual fan duty on graph profile charts
+  * fix(daemon): derive sustain floor across misaligned sweeps
+  * fix(ui): warn when conversion floors points to zero
+  * fix(ui): label the fork confirm button Create copy
+  * fix(ui): name the copy and tighten convert layout
+  * feat(ui): confirm before forking a profile for a fan
+  * feat(ui): always show fork and sharing state on channels
+  * fix(daemon): correct inverse duty map boundaries
+  * feat(ui): convert fan settings for a calibrated fan
+  * feat(daemon): add calibration duty map endpoint
+  * fix(ui): seed overlay live lines into the chart option
+  * feat(ui): add calibration wizard progress bars
+  * feat(ui): add a hidden support wizards tribute
+  * fix(qt): stop the disconnect notice racing the reconnect
+  * fix(qt): shorten the disconnect notification delay to 10s
+  * feat(ui): scale the connection-lost wait to the poll rate
+  * fix(qt): hold the disconnect notification for 15s
+  * i18n(ui): translate the restarting overlay text
+  * style(ui): match the loading overlay to the reconnect screen
+  * fix(ui): stop reconnect falling into the disconnect branch
+  * feat(ui): show a reconnecting screen on daemon loss
+  * test(liqctld): run the python tests in CI
+  * refactor(liqctld): drop the unused LCD fw2 product id
+  * fix(liqctld): check every method the LCD patch calls
+  * fix(liqctld): ignore liquid-mode LCD bucket switches
+  * fix(liqctld): keep the LCD transfer cap bounding writes
+  * fix(liqctld): check the LCD bucket free and setup
+  * docs(lcd): tighten the dropped-initialize comment
+  * docs(liqctld): tighten the LCD comments
+  * feat(liqctld): report each LCD's model, path and packing
+  * docs(liqctld): scope the LCD report-queue claims to what is proven
+  * feat(liqctld): log why an LCD frame skips the rotation
+  * fix(liqctld): drain the report queue before set_screen reads
+  * fix(liqctld): drain stale reports before LCD frames
+  * perf(liqctld): pack the Kraken 2023 framebuffer in C
+  * perf(lcd): drop the per-apply LCD re-initialize
+  * perf(liqctld): write LCD frames in one transfer
+  * perf(liqctld): pack the LCD framebuffer in C
+  * perf(daemon): hold sysfs descriptors across ticks
+  * test(paths): start sandbox dirs clean
+  * fix(custom-sensors): reset windows on order replace
+  * fix(lcd): skip metadata update for cleared channel
+  * fix(lcd): write per-channel single-temp images
+  * test(paths): sandbox config and data dirs in test builds
+  * perf(lcd): generate single-temp images on the blocking pool
+  * perf(custom-sensors): cache sample windows for TimeAverage and EMA
+  * perf(cc-fs): read sysfs values without heap allocation
+  * fix(daemon): make the exhaust bias a static offset
+  * fix(daemon): give case intake the base profile directly
+  * fix(ui): refine the overlay chart duty lines
+  * feat(ui): show live duties on the overlay chart
+  * fix(ui): keep the overlay points table inside the axes
+  * fix(ui): save the points table corner per profile
+  * feat(ui): persist the points table corner
+  * i18n: translate hardware support strings, add parity test
+  * i18n: translate the auto-create wizard strings
+  * fix(ui): warn rather than inform on the starting point note
+  * fix(ui): reword the auto-create starting point note
+  * fix(daemon): adjust values
+  * fix(daemon): squash liquid range, hold gpu fans at zero
+  * fix(daemon): lower base radiator fan speed
+  * fix(daemon): convert auto curves for calibrated fans
+  * fix(daemon): reuse existing auto-created entities
+  * fix(ui): let the user choose the wizard's key temps
+  * fix(daemon): up the pump response delayy
+  * fix(daemon): reshape auto AIO curves and mix in GPU
+  * fix(ui): show device names in the fan wizards
+  * fix(ui): redirect after deleting a profile
+  * fix(ui): mark fixed profile duty edits as dirty
+  * chore(daemon): update tower-http
+  * chore(ui): update npm deps
+  * chore(daemon): update cargo deps
+  * docs: improve and fix new items
+  * chore: update to new RC version
+  * docs: update the 5.0.0 changelog
+  * fix(daemon): thread detection support through derive_findings
+  * fix(daemon): inject detection support into findings
+  * fix(ui): keep the panel heading from scrolling away
+  * docs: document the reuse tooling prerequisite
+  * fix: stop injecting SPDX into the AppStream metainfo
+  * fix(ci): give the copyright job git so gitignore applies
+  * fix(ci): install reuse with charset-normalizer
+  * fix: silence bandit findings in copyright-fix
+  * chore: update Roboto fonts to their OFL release
+  * chore: refresh packaging copyright metadata
+  * chore: enforce REUSE licensing compliance
+  * chore: convert license headers to SPDX short-form
+  * fix(daemon): make report tests architecture-independent
+  * build: raise MSRV to 1.88 and drop time patch
+  * docs: correct FileSessionStore attribution
+  * docs: add AUTHORS file
+  * fix(ui): open rail menus to the right of the rail
+  * refactor(ci): merge ubuntu-arm64 into multi-arch ubuntu
+  * refactor(ci): reuse ubuntu-arm64 image for arm64 debs
+  * feat(ci): publish releases to apt.coolercontrol.org
+  * feat(ci): build ubuntu arm64 packages
+  * build(ci): pin rclone 1.75 in apt-publish image
+  * docs(apt): correct seeding and arm64 notes
+  * build(ci): add apt-publish image
+  * feat(apt): add aptly repo tooling for R2
+  * fix(ui): speed up animation slightly
+  * fix(ui): ease the logo hue back on hover out
+  * feat(ui): animate the rail logo on hover
+  * fix(ui): bump brace-expansion to clear DoS advisory
+  * test(ui): build bidi controls from code points
+  * fix(ci): sanitize branch refs in package uploads
+  * perf(daemon): build the compact report from retained hwmon info
+  * fix(gpu): reject unusable AMD fan curves and narrow reset
+  * fix(daemon): stop the report reading liquidctl-owned devices
+  * feat(daemon): report fan counts for every device repository
+  * perf(gpu): stop resetting the AMD fan curve before applying
+  * fix(gpu): correct AMD zero RPM notice and explain EIO
+  * chore(scripts): bump rdna4 diagnostic to 0.3.0
+  * fix(ui): keep the report preview in step
+  * fix(ui): correct the hardware support card rows
+  * refactor(daemon): order impls, test publish paths
+  * fix(daemon): bound hardware report generation
+  * fix(daemon): log fan verdicts once per boot
+  * fix(daemon): refresh findings after an explicit rescan
+  * fix(daemon): send the detected chip device id
+  * fix(daemon): record disabled apple fans as hidden
+  * fix(gpu): abort AMD fan curve apply on staging failure
+  * fix(gpu): detect AMD zero RPM support by content
+  * fix(scripts): skip unwritable baseline curve points
+  * docs(daemon): describe GET /detect as retained results
+  * fix(daemon): clear out the dropped report command
+  * fix(daemon): stop condemning apple smc fans
+  * refactor(daemon): drop the CLI report and its duplicate probing
+  * feat: defer the duty-response probe to its own branch
+  * fix: run the probe off the request that asked for it
+  * test(daemon): pin the probe wire shape, log unknown results
+  * fix: restore the probed duty and stop guessing unknown results
+  * feat(scripts): add RDNA3/4 PMFW fan diagnostic
+  * fix(daemon): watch each probe rung instead of sleeping through it
+  * feat: try several speeds before condemning a stopped fan
+  * feat: probe stopped fans and move the test into guided setup
+  * ci: stop SAST reporting the arabic locale as a bidi attack
+  * feat(ui): copy the hardware report as a code block
+  * fix(daemon): say which repository handles an hwmon entry
+  * fix(daemon): stop calling GPU and liquidctl devices hidden
+  * feat(daemon): mark hidden channels and label fans in the report
+  * feat(daemon): mark hwmon devices the app hides in the report
+  * feat(ui): add the per-channel fan response test
+  * feat(daemon): run the duty-response probe on request
+  * feat(daemon): add tested decision rules for the duty-response probe
+  * feat(daemon): include raw pwm state for uncontrollable channels
+  * feat(daemon): list disabled liquidctl devices in the report
+  * fix(ui): scope the detection button name to chip detection
+  * feat(ui): show what the startup hardware probe found
+  * feat(daemon): serve retained detection results from GET /detect
+  * fix(ui): match the hardware report button to the other card buttons
+  * fix(ui): move hardware support card below the primary cards
+  * feat(ui): preview the hardware report before sharing it
+  * feat(ui): surface hardware support facts apart from device health
+  * feat(ui): render verdicts that carry no measured evidence
+  * feat(daemon): let every repository publish a channel verdict
+  * test(daemon): cover the init-time verdict publish path
+  * feat(ui): explain why a fan channel cannot be controlled
+  * feat(daemon): serve the hardware report with liquidctl devices
+  * docs(daemon): note why the report omits liquidctl devices
+  * feat(daemon): include chip address and device id in the report
+  * feat(daemon): add a paste-ready hardware report subcommand
+  * perf(daemon): keep pwm_enable reads out of the fan write path
+  * fix(qt): pass the switched connection by value
+  * fix(qt): keep the tray and the saved list consistent
+  * fix(qt): correct connection add and tray menu teardown
+  * feat(qt): manage saved connections in the wizard
+  * feat(daemon): split device health into permanent and current sections
+  * feat(qt): add a tray submenu to switch daemons
+  * refactor(qt): extract the daemon switch from the wizard
+  * feat(qt): key the daemon access token per connection
+  * feat(qt): add a saved daemon connection list
+  * fix(qt): raise the window on a tray mode auth error
+  * feat(daemon): detect and re-assert firmware-reclaimed fan control
+  * fix(qt): apply TLS policy to the tray mode request
+  * feat(daemon): add hardware support verdicts and system findings
+  * fix(qt): only claim a failure when one happened
+  * fix(qt): show the error on the address page too
+  * fix(qt): key tray pinned sensors per daemon
+  * feat(qt): add icons to the tray menu items
+  * fix(qt): title the wizard for how it was opened
+  * refactor(qt): rename tray Daemon Address to Connection
+  * fix(qt): stop the reconnect notification loop
+  * feat(qt): show why the daemon connection failed
+  * fix(qt): apply certificate validation without a restart
+  * fix(qt): prompt to trust a daemon certificate
+  * feat(qt): manage trusted daemon certificates
+  * feat(qt): confine the web engine to the daemon
+  * feat(qt): pin and validate daemon TLS certificates
+  * fix(ui): send tray sensor colors as hex
+  * feat(qt): color and open pinned tray sensors
+  * docs(scripts): note the A/B measurement traps
+  * feat(qt): poll tray sensors and submenu large sets
+  * feat(qt): show pinned sensor readings in the tray
+  * fix(qt): reword the close-to-tray prompt
+  * feat(qt): translate the tray, wizard and dialogs
+  * feat(qt): prompt once before closing to the tray
+  * feat(ui): push translated strings to the Qt app
+  * fix(qt): do not gate discard on recommendedState
+  * feat(qt): discard the renderer while in the tray
+  * feat(qt): delete superseded access tokens
+  * fix(qt): restrict settings file to owner-only
+  * feat(qt): authenticate with an owned bearer token
+  * chore(scripts): add Qt app memory sampling harness
+  * feat(daemon): make SseEvent the source of truth for the wire format
+  * refactor(qt): consume daemon events on one SSE stream
+  * docs: record the SSE endpoint and its deprecations
+  * refactor(ui): consume all daemon events on one SSE stream
+  * feat(daemon): add a multiplexed /sse endpoint
+  * fix(ui): stop blocking Home navigation on /health
+  * fix(ui): tear down charts and observers on unmount
+  * build: regenerate the openapi spec on version bump
+  * build(daemon): pretty-print the openapi spec
+  * build(daemon): generate the openapi spec offline
+  * build(daemon): drop zstd from tower-http compression
+  * build(daemon): align sha2 with the digest stack in use
+  * refactor(daemon): replace derive_more with thiserror
+  * build(daemon): drop axum-typed-multipart dependency
+  * build: prompt for sudo before the build, not after
+  * docs: adjust deprecation versions.
+  * build(ui): deny unused dependency install scripts
+  * fix(nvidia): reuse register-read buffer, trim comments
+  * feat(nvidia): read Blackwell hotspot from register
+  * build(ui): empty the out dir in build-daemon-ui
+  * build: fold dev-build and dev-test into standard targets
+  * build: mirror UI assets into the embedded app dir
+  * fix(ui): give selected panel rows a background
+  * feat(ui): add the interface font setting
+  * feat(ui): set live values in the numeric face
+  * feat(ui): bundle the IBM Plex faces
+  * feat(ui): mark profile-driven fans on cooling cards
+  * feat(ui): brand the chain end and tint its temp source
+  * feat(ui): mark the current section with the brand gradient
+  * feat(ui): adopt the logo blue as the accent
+  * feat(ui): add accent-gradient-to theme token
+  * fix(ui): badge calibration fans only when firmware applies
+  * feat(ui): flag firmware-controlled fans in the calibration picker
+  * feat(daemon): skip the clamped duty band in calibration sweeps
+  * feat(daemon): map firmware curves through calibration
+  * fix(ui): abbreviate the temperature column header
+  * fix(ui): correct korean minute abbreviation
+  * fix(ui): stop custom sensor page rendering blank
+  * feat(ui): add live chart to the custom sensor page
+  * fix(ui): keep header buttons right-aligned when wrapped
+  * fix(ui): refresh translations that drifted from english
+  * test(ui): guard tour keys against locale pruning
+  * fix(ui): restore the tour step translations
+  * fix(ui): badge firmware curves only when actually applied
+  * feat(ui): flag firmware curves and profile health on fan cards
+  * feat(ui): make the curve dialog the calibration hub
+  * refactor(ui): use the speedometer mark for calibration state
+  * feat(ui): surface calibration state on cooling channels
+  * chore(ui): drop unused locale keys
+  * feat(ui): rework the tour and replay it for all users
+  * fix(ui): stop flex from collapsing separators
+  * fix(ui): ignore pinned rows when revealing panel entries
+  * feat(ui): keep listed monitoring fans on their chart
+  * fix(ui): keep revealed panel entries clear of scroll fades
+  * fix(ui): reveal the panel entry for the opened page
+  * fix(ui): resolve startup page outside the router
+  * feat(ui): add hover highlight to the rail logo
+  * feat(ui): send app logo to the configured startup page
+  * style(ui): strengthen daemon setting group separation
+  * fix(ui): close channel settings popup on view curve
+  * feat(ui): add range unlock for guarded settings
+  * feat(ui): group daemon settings into subsections
+  * fix(ui): respect saved main menu panel width
+  * feat: extend max startup delay to 120s
+  * docs: add 5.0.0 changelog entry
+  * feat(ui): drop json theme file import and export
+  * feat(ui): pick installed themes, extend custom theme
+  * feat(ui): group select options and add swatch strip
+  * feat(ui): add installed color theme registry
+  * fix(ui): darken success color for light themes
+  * fix(profiles): retune auto-created laptop presets
+  * fix(ui): darken warning color for light themes
+  * fix(ui): reset names without restarting the UI
+  * fix(ui): link system status to logs when healthy
+  * fix(ui): keep krpm axis title clear of watts axis
+  * feat(ui): show temp and power during stress tests
+  * fix(stress): run GPU stress off the async runtime
+  * test(stress): add multi-adapter serialization probe
+  * test(stress): add GPU stress load probe harness
+  * fix(make): use portable sort -c for feature detect
+  * test(ui): guard the chrome 90 browser floor
+  * ci: build images with node 24
+  * docs: raise node floor to 22.22.2
+  * chore(ui): bump npm-run-all2 to 9.x
+  * chore(ui): upgrade pinia to 4.x
+  * docs(ui): note typescript 7 hold
+  * fix(ui): clear brace-expansion audit advisories
+  * chore(ui): upgrade deps
+  * fix(ui): bump postcss to clear audit advisory
+  * fix(daemon): skip settings for missing channels
+  * refactor(daemon): use plain pub in tuning module
+  * refactor(daemon): move auto-profile setups to data
+  * refactor(daemon): externalize auto-profile tuning
+  * fix(ui): update deps to clear audit advisories
+  * fix(daemon): update crates to clear audit advisories
+  * chore(ui): drop unused blacklisted devices ref
+  * fix(ui): deserialize channel settings correctly
+  * Stop before drivers unload
+  * feat(daemon): log applied sensors.conf labels
+  * feat(ui): add lm-sensors config setting
+  * feat(daemon): hide sensors.conf ignored channels
+  * refactor(daemon): fold sensors.conf into overrides
+  * feat(daemon): apply labels from sensors.conf
+  * feat(hwmon): derive libsensors chip names
+  * chore(daemon): clear remaining clippy warnings
+  * refactor(calibration): extract outcome logging
+  * fix(api): decouple REST and GRPC server startup
+  * fix(api): log disabled IP family at info not warn
+  * fix(ui): close 1px fade pass-through in scroll areas
+  * fix(ui): lift chart section above profile editor overhang
+  * fix(ui): full chart link hover surface, centered
+  * feat(ui): unify fan row hover actions across panels
+  * feat(ui): cross-link fan chart and cooling pages
+  * feat(ui): route fan channels entity-first
+  * fix(ui): clear indicators when alert is disabled
+  * feat(calibration): show warnings in completion log
+  * fix(app): drive tray alert badge from UI state
+  * feat(ui): push alert state to Qt tray over IPC
+  * feat(ui): show warnings on calibration picker
+  * feat(ui): label channel settings button
+  * feat(ui): show calibration warnings in wizard
+  * feat(ui): ringing bell icon for active alerts
+  * fix(ui): scroll fade cue in wizard dialogs
+  * fix(ui): alert indicator skips silenced alerts
+  * feat(ui): top-bar alert indicator
+  * feat(ui): fail-alert action on cooling cards
+  * fix(ui): clear krpm axis title from tick values
+  * fix(ui): warning-color calibration info icons
+  * fix(ui): wrap long calibration failure messages
+  * refactor(ui): shared alert silence menu and actions
+  * fix(ui): apply tag color reset to new-tag swatch
+  * fix(ui): show tooltip for focus-visible children
+  * fix(ui): restore icon layout in setting row slots
+  * fix(ui): toast severity follows alert event kind
+  * fix(alerts): shutdown warning, partial recovery, clone
+  * feat(ui): status button routes to logs on issues
+  * feat(ui): responsive function and sensor layouts
+  * fix(ui): keep step precision in number inputs
+  * feat(ui): responsive alert editor card grid
+  * fix(ui): setting rows wrap control below long labels
+  * fix(ui): wrap long setting row labels
+  * fix(ui): alert source list height in stacked layout
+  * fix(ui): reset previews in picker, pin setup trigger
+  * fix(ui): color picker escape, reset, pinned rows
+  * fix(ui): pin hover rows open while popovers anchor
+  * fix(ui): stronger popup shadows, portal popovers
+  * fix(ui): anchor panel silence menu to its trigger
+  * feat(ui): translate new alert keys to all locales
+  * feat(ui): alert hover actions in monitoring panel
+  * fix(ui): title-case alert setting labels
+  * feat(ui): alert editor sections and silence menu
+  * fix(ui): fold metric hint into source tooltip
+  * feat(ui): scroll listbox to selection on mount
+  * fix(ui): align fail-alert prefill with rpm ceiling
+  * feat(ui): raise alert RPM ceiling to 30000
+  * fix(ui): phrase alert card range as trigger condition
+  * fix(ui): label alert card time with its state
+  * feat(ui): silenced sleep glyph on home page alerts
+  * feat(ui): state colors with sleep glyph when silenced
+  * feat(ui): silenced and disabled icons in menu panel
+  * feat(ui): silenced alerts get yellow sleep icon
+  * fix(ui): dismiss tooltip on anchor activation
+  * fix(ui): focus tooltip only on keyboard focus
+  * fix(ui): attach enable-switch tooltip to element
+  * fix(ui): tolerate argless Alert construction
+  * feat(ui): multi-source alerts and silencing
+  * feat(alerts): abort calibration on active alert
+  * feat(alerts): settle suppressed-source shutdowns
+  * feat(alerts): multi-source alerts and silencing
+  * fix(ui): fit mobile chart, widen dashboard picker
+  * feat(ui): add mobile dashboard switcher
+  * fix(ui): keep toggle group labels on one line
+  * fix(ui): keep home action buttons in bounds
+  * fix(ui): contain stress test table on mobile
+  * feat(ui): add mobile header overflow menu
+  * refactor(ui): extract access and power menu items
+  * fix(ui): always show plugins rail icon
+  * feat(ui): dock settings icon to rail bottom
+  * perf(ui): swap animated logo gif for svg
+  * perf(ui): throttle and gate live chart animation
+  * feat(daemon): per-channel plugin failsafes
+  * fix(ui): create color entry for info-only sensors
+  * fix(ui): guard rgbToHex against empty color input
+  * chore(daemon): fix clippy 1.96 lints
+  * fix(daemon): formatting
+  * fix(daemon): skip liqctld init retries on shutdown
+  * fix(liqctld): exit promptly on shutdown signal
+  * fix(daemon): never orphan liqctld at shutdown
+  * fix(build): make make/*.mk includes optional
+  * build: drop protoc from packaging and docker images
+  * build(daemon): drop protoc build dep via protox
+  * feat(ui): use bell icons for panel alerts
+  * feat(ui): restore open in browser action
+  * feat(ui): add desktop back button in header
+  * fix(daemon): write restored credentials owner-only
+  * feat(ui): link pinned custom sensors to editor
+  * fix(daemon): restore only files listed in the backup manifest
+  * fix(daemon): bound backup archive extraction size
+  * fix(daemon): create secret backup archives owner-only
+  * feat(ui): collapse pinned device name first
+  * feat(daemon): skip system info banner for cli commands
+  * feat(ui): open tag manager from tag chips
+  * fix(calibration): add over-limit count and retry hint
+  * fix(calibration): name hot sensor in temp failures
+  * fix(ui): match axis options button height
+  * feat(ui): add device health status dot
+  * feat(daemon): add restore, list and config check commands
+  * feat(daemon): add backup archive and secrets options
+  * feat(daemon): add rotated backup subcommand
+  * fix(liquidctl): resolve stable realpath for UID distinguisher
+  * refactor(daemon): associate UID functions with Device
+  * test(daemon): expand device_uid unit test coverage
+  * fix(daemon): apply UID dedup guard to amd and liquidctl
+  * fix(daemon): guard against duplicate device UIDs
+  * refactor(daemon): move create_uid_from to device_uid module
+  * feat(ui): always show collapse icon, drop hide setting
+  * feat(ui): add menu collapse button to header
+  * i18n: translate channel setup menu labels
+  * feat(ui): tighten select and popover side-offset to 2
+  * feat(ui): tighten default dropdown side-offset to 2
+  * feat(ui): left-align channel setup menu closer to button
+  * feat(ui): per-channel setup menu with scoped wizards
+  * feat(ui): enable auto-create wizard on all branches
+  * feat(ui): add arrow after chain tree expander
+  * feat(ui): move tree expander to front of chain
+  * feat(ui): draw control-flow tree with CSS lines
+  * feat(ui): link control-flow chain pills to editors
+  * feat(ui): persist control-flow tree open state
+  * feat(ui): richer control-flow tree with links
+  * feat(ui): expandable control-flow tree on channels
+  * fix(ui): auto-place points table in overlay editor
+  * perf(ui): points table auto-place only on load
+  * fix(ui): widen points-table overlap margin
+  * feat(ui): auto-place Profile points table
+  * fix(ui): fade in Profile graph to hide resize flash
+  * fix(ui): reduce Profile graph bottom padding
+  * feat(ui): device-type icons on landing section headers
+  * fix(ui): row hover actions stay hidden on click
+  * fix(ui): pinned rows prioritize channel name width
+  * feat(ui): type icons in used-by lists
+  * feat(ui): mix/overlay profiles in Profile used-by
+  * feat(ui): link Used by profiles and channels
+  * fix(ui): tag control on Monitoring pinned rows
+  * feat(ui): assign tags from the Cooling panel
+  * refactor(ui): drop Cooling panel tag filter
+  * refactor(ui): tag chips as colored tag icons
+  * feat(ui): tag filter bar on Cooling panel
+  * feat(ui): tag chips on channel rows
+  * feat(ui): use Linux icon for Hwmon devices
+  * feat(ui): device icons on Devices landing cards
+  * feat(ui): device-type icons on Devices panel
+  * feat(ui): channel-type icons on panel rows
+  * feat(ui): stronger shadow on floating overlays
+  * fix(ui): rail menu focus ring on keyboard only
+  * feat(ui): edge fade cue on scrollable rail panels
+  * fix(ui): center dashboard header action row
+  * refactor(ui): unify entity header actions, alert duplicate
+  * fix(ui): adaptive control surface via elevation var
+  * fix(ui): bg-two bodies for on-page controls
+  * refactor(ui): single function concept without types
+  * refactor(ui): remove deprecated EMA function type
+  * refactor(daemon): remove deprecated EMA function type
+  * feat(ui): target vs actual duty in mix editor
+  * feat(ui): profile curves in cooling mini graphs
+  * feat(ui): hover-pause, copy, and cap toast stack
+  * build(ui): silence reka-ui pure-annotation warnings
+  * fix(ui): add @types/lodash to devDependencies
+  * docs(ui): prune obsolete held-back dependencies
+  * refactor(ui): kit number input for delay and duty
+  * fix(ui): add ellipsis to disable-sensors button
+  * fix(ui): clearer save icon and label on mode page
+  * chore(i18n): translate new strings, purge stale keys
+  * refactor(ui): move sensor editor actions to the top
+  * fix(ui): show disabled device names in sensor editor
+  * feat(ui): bulk device and sensor enable/disable editor
+  * refactor(ui): convert native title tooltips to v-tooltip
+  * feat(ui): add hover show-delay to kit tooltips
+  * fix(ui): use kit v-tooltip in monitoring panel
+  * feat(ui): create-alert button on monitoring sensor rows
+  * fix(ui): apply startup page only on a root launch
+  * refactor(ui): rework onboarding tour for the new shell
+  * refactor(ui): replace primeicons with mdi svg icons
+  * refactor(ui): remove primevue dependency and presets
+  * fix(ui): drop always-on accent from access rail icon
+  * fix(ui): let escape close click-protected dialogs
+  * fix(ui): date picker prefers ui language then os region
+  * fix(ui): match native controls to theme color-scheme
+  * fix(ui): render tooltips above modal dialogs
+  * refactor(ui): kit modal for app error dialogs
+  * refactor(ui): kit access-tokens dialog replaces primevue
+  * fix(ui): default confirm buttons to yes/no labels
+  * refactor(ui): kit password input replaces primevue
+  * refactor(ui): kit dialog host replaces DynamicDialog
+  * fix(ui): default modal text to theme text color
+  * fix(ui): contrast-aware foreground for filled buttons
+  * refactor(ui): kit confirm replaces primevue confirm
+  * refactor(ui): kit toast replaces primevue toast
+  * refactor(ui): generate wizard on kit + clearable selects
+  * refactor(ui): function-apply + mode wizards on kit
+  * fix(ui): constrain wizard duty number and slider width
+  * fix(ui): autofocus wizard name inputs
+  * refactor(ui): profile wizard family on kit
+  * fix(ui): align overlay wizard points table inside axes
+  * refactor(ui): fan-control chart editors on kit
+  * fix(ui): ctrl-only zoom in wizard graph editors
+  * fix(ui): render kit dropdowns above modal dialogs
+  * refactor(ui): fan-control form editors on kit
+  * refactor(ui): fan-control wizard controls on kit
+  * refactor(ui): calibration wizard on kit
+  * refactor(ui): calibration and not-found widgets on kit
+  * refactor(ui): plugin page widgets on kit
+  * feat(ui): per-alert log table on alert pages
+  * fix(ui): kit tooltip directive survives re-renders
+  * refactor(ui): alerts overview as card grid
+  * fix(ui): align temp sources title spacing
+  * refactor(ui): bordered frame for component tables
+  * refactor(ui): drop header separator bars
+  * refactor(ui): tables on kit
+  * refactor(ui): profile and mode widgets on kit
+  * fix(ui): tag filter colors as dots not lines
+  * refactor(ui): dashboard filters on kit multiselect
+  * fix(ui): group boxes for lcd and lighting controls
+  * refactor(ui): lighting and lcd editors on kit
+  * feat(ui): underlined panel headers in heading colors
+  * refactor(ui): flat devices panel, badge tooltips, sensor fixes
+  * refactor(ui): custom sensors managed from devices section
+  * refactor(ui): settings header matches page style
+  * fix(ui): pad settings card grid
+  * refactor(ui): settings as anchored card grid, drop tabs
+  * fix(ui): align alert column tops exactly
+  * fix(ui): match alert source list and conditions height
+  * refactor(ui): settings-row cards replace option tables
+  * refactor(ui): alert, function, sensor editors on kit
+  * feat(ui): listbox and grouped listbox kit components
+  * fix(ui): focus rename input on first click
+  * feat(ui): hold to repeat number input steppers
+  * fix(ui): round float noise in number input steps
+  * fix(ui): stop select trigger collapsing on open
+  * refactor(ui): shared components on kit widgets
+  * chore(ui): drop radix-vue for reka-ui
+  * fix(ui): keep helpful link icons from shrinking
+  * feat(ui): group helpful links into three columns
+  * fix(ui): match log filter and download button sizes
+  * feat(ui): status to logs path with level filter
+  * fix(ui): hug number input suffix to the value
+  * refactor(ui): settings and language picker on kit widgets
+  * feat(ui): tabs, number and text input kit components
+  * chore(ui): drop element-plus dependency
+  * refactor(ui): replace element-plus switches and loading
+  * feat(ui): previous mode indicator on modes page
+  * feat(ui): cooling wizard entries, rail labels, settings panel
+  * feat(ui): enable cooling wizard on ui-shell and dev
+  * fix(ui): keep closed lock icon for auth menu
+  * feat(ui): plugin panel order, status, hover actions
+  * fix(ui): link all plugin panel rows to plugin page
+  * feat(ui): plugins panel, drop section placeholders
+  * fix(ui): rewire calibration resume, drop dead emits
+  * feat(ui): panel drag order on legacy menuOrder
+  * feat(ui): startup page honoring, section hotkeys
+  * feat(ui): modes crud, apply wizards, where-used
+  * feat(ui): rail auth and power menus
+  * feat(ui): rail logo, version info in home header
+  * feat(ui): home section, dissolve info view
+  * feat(ui): capped log lines with per-line highlight
+  * feat(ui): device landing type sections, default dots
+  * feat(ui): sort device cards by device type
+  * feat(ui): device type groups, monitoring panel order
+  * refactor(ui): device params, drop settings device tab
+  * feat(ui): devices section pages and panel
+  * feat(ui): profile and function page actions
+  * feat(ui): library add buttons, row icons, badges
+  * chore(ui): drop orphaned menu and wizard files
+  * feat(ui): monitoring panel with sensor tags
+  * feat(ui): monitoring routes and dashboard actions
+  * fix(ui): shared chip matches profile row controls
+  * fix(ui): unified profile row group, table inside axes
+  * refactor(ui): static anchors for overlay points table
+  * fix(ui): no unanchored flash for overlay points table
+  * fix(ui): reactive live values, anchor overlay table to plot
+  * fix(ui): overlay points table inside plot, tighter axis gaps
+  * fix(ui): align overlay editor table and axis footprint
+  * feat(ui): active library highlight, section icons
+  * feat(ui): text size sweep across shell pages and kit
+  * feat(ui): larger rail and bottom nav labels
+  * feat(ui): device-grouped landing, larger text, panel clearance
+  * fix(ui): panel focus ring, unpin icon, library section
+  * feat(ui): panel polish, header modes menu, channel rename
+  * fix(ui): drop redundant separator before live chart
+  * feat(ui): responsive manual gauge height
+  * feat(ui): grouped manual duty control with sized gauge
+  * feat(ui): dynamic save and apply button label
+  * feat(ui): single apply button saves profile edits
+  * fix(ui): adaptive axis ticks for small time charts
+  * feat(ui): temp source before function in graph controls
+  * feat(ui): reorder profile controls, responsive editor height
+  * feat(ui): embed original profile editor on channel page
+  * fix(ui): working graph editor with legacy gestures
+  * feat(ui): group labeled profile controls on channel page
+  * fix(ui): scroll page over charts, zoom with ctrl+wheel
+  * feat(ui): surface channel settings in control row
+  * fix(ui): cooling layout and selection fixes from browser pass
+  * fix(ui): nest cooling shell i18n keys correctly
+  * chore(ui): drop vue-flow dependencies
+  * refactor(ui): remove legacy shell and control views
+  * refactor(ui): make new shell the only shell
+  * feat(ui): add consolidated cooling channel page
+  * feat(ui): add cooling panel and landing grid
+  * feat(ui): vendor kit inputs for new shell
+  * feat(ui): scaffold new shell behind newShell flag
+  * feat(ui): add newShell feature flag
+  * chore(ui): add reka-ui dependency
+  * build(daemon): fail release build without UI assets
+  * fix(ui): surface custom sensor name save errors
+  * fix(ui): prefer model for device reset hint
+  * refactor(daemon): assert name resolver invariants
+  * fix(daemon): keep override cascade on save error
+  * fix(daemon): harden overrides store writes
+  * build: split Makefile into includes + make help
+  * ci(daemon): bound cargo test runtime in ci-test
+  * fix(daemon): unhang fifo pairing in wedged tests
+  * fix(daemon): resolve clippy pedantic violations
+  * feat(make): add pr-check pre-PR gate target
+  * refactor(daemon): apply review style tweaks
+  * refactor(daemon): tidy lcd colors shim style
+  * docs: align downgrade compat marker wording
+  * fix(daemon): gate liquidctl status error spam
+  * fix(daemon): bound log buffer, coalesce SSE bursts
+  * docs: add downgrade compat deprecation policy
+  * fix(daemon): keep no-op lcd colors for downgrade
+  * feat(ui): show detected label hint in rename dialog
+  * test(daemon): cover resolved-name log consumers
+  * feat(daemon): resolve names in repo failsafe logs
+  * fix(daemon): harden name override writes
+  * feat(ui): rename via daemon name overrides
+  * fix(qt): escape markup in notification body
+  * feat(daemon): use resolved names in logs and alerts
+  * feat(daemon): migrate names from config-ui.json
+  * fix(daemon): reject injection-capable name chars
+  * feat(daemon): add name override API and DTO resolution
+  * feat(daemon): add overrides.toml store and resolver
+  * fix(ui): move health warning into control panel
+  * fix: unify device-first pipe format in health names
+  * feat(ui): show health warning on entity edit pages
+  * fix(ui): keep info page tooltips open on log updates
+  * feat(ui): break health tooltip hint onto own line
+  * feat(ui): surface stale temp sources in health
+  * feat(daemon): flag refs to failsafed temp sources
+  * refactor: rename MissingRef to SourceRef
+  * feat: show device name for missing temp sources
+  * fix(ui): dedupe failsafed custom sensor health rows
+  * fix(ui): use error severity for health badges
+  * feat(ui): add device health help tooltip
+  * feat(ui): reword health tooltip hint
+  * feat(ui): use red health badges in menu
+  * fix(ui): keep health tooltip open on menu updates
+  * docs(daemon): strip name-restating health docs
+  * refactor(daemon): expect with reason in sse streams
+  * perf(daemon): gate health scan on config changes
+  * test(daemon): cover health candidates and dto wire
+  * feat(daemon): report service plugin failsafe
+  * refactor(daemon): extract failsafe ref helpers
+  * docs(daemon): remove stale device health comments
+  * feat(ui): apply batched health events and resync
+  * feat(daemon): batch health SSE and resync on lag
+  * feat(ui): show failsafe reason in device health
+  * feat(daemon): add reason to failsafe health refs
+  * feat(ui): move device health above stress tests
+  * feat(ui): explain health badges with a tooltip
+  * feat(ui): warn when custom sensor sources are missing
+  * feat(ui): add device health panel to info page
+  * feat(ui): show health badges in device menu
+  * feat(ui): apply health events from status SSE
+  * feat(ui): track device health in settings store
+  * feat(ui): add device health models and client fetch
+  * feat(daemon): track failsafe channels and temps
+  * feat(daemon): track missing temp sources
+  * test(daemon): gate sysfs read test behind gated-tests
+  * test(daemon): skip unreadable hwmon inputs in sysfs read test
+  * fix(ui): detect korean browser locale
+  * perf(daemon): cache nvapi thermals fn and pci bus
+  * docs(daemon): document gated-tests convention
+  * test(daemon): add gated-tests feature for ci tests
+  * feat(daemon): release NVML when zero GPUs detected
+  * refactor(daemon): dedupe starting_nvidia_index
+  * refactor(daemon): harden NVML disabled-check paths
+  * refactor(daemon): dedupe NVML disabled-check
+  * feat(daemon): release NVML when all GPUs disabled
+  * fix(ui): clamp temp indicator to chart edges
+  * fix: handle install on user systems that use rustup with no system symlink
+  * feat(ui): calibrate fans first from Auto-Create
+  * docs: fix stale sequential calibration wording
+  * docs(daemon): drop stale read_sysfs pool comments
+  * refactor(daemon): make diagnoser tests rt-agnostic
+  * docs(daemon): note why startup and signal expect() cannot fail
+  * fix(daemon): clamp generated curve floors to channel min_duty
+  * test(daemon): cover service-plugin client proxy handle
+  * fix(i18n): cleanup Russian calibration note
+  * style(daemon): use plain pub
+  * feat(ci): add build to check bookworm MSRV
+  * feat: handle features dependant on Cargo version
+  * fix: drop floor deb requirements
+  * fix(ci): change debian package builds for rustup dep
+  * fix: issue with cargo dep
+  * chore(ci): update CI images with newer suppported cargo versions
+  * feat: use compio by default
+  * chore: update affinity docs
+  * feat: log which backend is active
+  * fix: improve detection and handling of newer RDNA AMD GPUs
+  * feat: feature flag system for UI
+  * chore: update minor deps
+  * chore: update major deps
+  * fix: npm vulnerabilities
+  * fix: formatting
+  * feat: add local running of arm images
+  * docs: update contributing
+  * refactor: udpate gitlab templates
+  * refactor: improve handling for wedged liquidctl usb device
+  * fix: liquidctl read delay
+  * refactor: enhance command delay for liquidctl devices
+  * feat: liqctl client device serialization
+  * feat: reap idle liqctld connections
+  * refactor: do argon cpu work on the blocking thread pool
+  * fix: shell linting errors
+  * refactor: adjust to recent fdinfo changes
+  * fix: graceful shutdown
+  * chore: formatting
+  * refactor: improve benching stats
+  * fix: getting pid of test process
+  * refactor: drop drm fallback for fdinfo
+  * feat: daemon perf script helpers
+  * chore: let's leave stripping to the distro package defaults
+  * refactor: pull runtime dep out of cc-image
+  * fix: 0.18 buffer isn't handles very well for concurrent reads
+  * refactor: remove no longer needed notify subcommand
+  * fix: several panic paths that require tokio at runtime
+  * refactor: downgrade compio to 0.18 for 1.88 compat
+  * fix: remove unnecessary feature
+  * refactor: tests rt agnostic
+  * refactor: make the sidecar global and handle shell commands through it
+  * feat: more compio integration and blocking task handling
+  * refactor: liqctld client and process sup support for compio
+  * refactor: have api fs actions use the sidecar/tokio fs (needed)
+  * feat: add compio and split rt module
+  * feat: enable tokio sidecar usage
+  * refactor: use a Actor/proxy to handle the tonic client on the tokio runtime
+  * feat: prep service plugin client to run on tokio runtime
+  * refactor: run sleep listener on sidecar
+  * feat: move the api servers to the sidecar
+  * feat: base sidecar impl
+  * refactor: improve and replace parts with rt module and std instant
+  * feat: new runtime fascade to handle all runtime actions
+  * refactor: removal of the no-longer-needed tokio-uring feature
+  * fix: outdated test
+  * fix: use libdrm as fallback for amdgpu metrics not present in the hwmon driver
+  * fix: log entry and keep libdrm handle
+  * feat: locale translations for new wizards
+  * refactor: improved select all button
+  * fix: calibration batch size layout issue
+  * refactor: move the new wizards to the bottom of the Add menu
+  * feat: add system wizard buttons to controls page
+  * feat: calibration batch size control
+  * fix: spinner overflow issue
+  * fix: some pumps are classified as stepped, when they are smooth just with a high floor
+  * fix: properly handle expected 404
+  * feat: add calibration wizard
+  * feat: improve gen wiz
+  * feat: add calibration batch API
+  * feat: add a note about the created entities
+  * refactor: auto-create menu item tweaks
+  * fix: reload the UI when new entities are created
+  * fix: changes from Function refactor
+  * fix: CustomSensorKind renaming
+  * fix: toast noise on multiple custom sensor creation
+  * feat: fill out generation UI
+  * feat: initial Generate UI
+  * feat: UI client and models
+  * feat: handle laptop and ema assignments
+  * feat: aio pump and radiator fan logic
+  * feat: case fans logic
+  * feat: air-cooled set logic
+  * feat: init basic profile creation flow
+  * feat: colling-entity generation endpoint
+  * fix: only log deprecation warning once
+  * feat: enable reading of UI setting for names and colors by other parties
+  * refactor: hide now deprecated EMA Function types from UI when creating new Functions.
+  * refactor: Function kind enum
+  * refactor: use explicit kind enum name
+  * refactor: Channel Info enum
+  * refactor: Profile type enum
+  * refactor: remove unused colors field from lcd settings enum
+  * refactor: Lcd Mode enum
+  * fix: formatting---
+  * refactor: out helper function
+  * refactor: handling of custom sensor kinds
+  * refactor: read new CustomSensor kind and Settings kind
+  * fix: add import after rebase
+  * fix: formatting
+  * fix: bug when reading backward lighting setting
+  * refactor: handle matching if new enum
+  * refactor: handle SettingKind enum config saving/loading
+  * refactor: Setting struct
+  * fix: clippy (pedantic) issues
+  * chore: add regression test to confirm channels are restored to their original settings after calibration
+  * fix: make sure fans are in manual mode before starting calibration
+  * feat: align drop shadow styling across app
+  * fix: handle breaking change for popovers with primevue update
+  * chore: remplace legacy echart setting
+  * fix: vue router deprecation warning
+  * fix: settings save on navigation
+  * chore: cleanup no longer needed overrides
+  * chore: update npm transient deps
+  * chore: update main npm deps
+  * fix(ci): use source address for forks for asset creation
+  * chore: update transient deps
+  * fix: deprecation warning from lib update
+  * chore: update cargo deps for our MSRV
+  * fix(ci): issue with git branchs with slashes and build assets
+  * chore: update nix prep
+  * chore: update Vue
+  * chore: update openapi spec
+- Should be fixed now:
+  boo#1273565, boo#1273624, boo#1273635, boo#1273640, boo#1273655,
+  boo#1273675, boo#1273697, boo#1273717, boo#1273725, boo#1273732,
+  boo#1275336, boo#1275389
+
+-------------------------------------------------------------------
 Thu Jun 25 14:34:24 UTC 2026 - ecsos <ecsos@opensuse.org> - 4.3.1
 
 - Fix connection error.

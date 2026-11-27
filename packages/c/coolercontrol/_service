@@ -4,7 +4,7 @@
     <param name="url">https://gitlab.com/coolercontrol/coolercontrol.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">4.3.1</param>
+    <param name="revision">5.1.2</param>
     <param name="match-tag">*</param>
     <param name="changesgenerate">enable</param>
   </service>
