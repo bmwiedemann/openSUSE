@@ -696,9 +696,6 @@ else
     fi
 fi
 
-echo "Support Himmelblau: Financial support helps keep cloud identity for Linux open."
-echo "Learn more: https://himmelblau-idm.org/donations/"
-
 %postun
 is_debian_family() {
     (
