@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Nov 23 12:01:47 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Update to CMake 4.5.1
+  * The FindCUDAToolkit module in 4.5.0 created CUDAToolkit::
+    namespace targets and changed the existing CUDA:: namespace
+    targets to be alias targets. This has been reverted.
+
+-------------------------------------------------------------------
 Fri Nov 13 20:44:59 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Update to CMake 4.5.0
