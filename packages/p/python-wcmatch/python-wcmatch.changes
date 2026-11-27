@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Tue Nov 24 13:38:56 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 12.0.4
+  * FIX: Include bracex 3.2.4 for minor bug fix.
+  * FIX: Avoid returning nonexistent directories for literal . and
+    .. prefixes when root_dir is missing or is not a directory.
+- Update to 12.0.0
+  * BREAK: Various fixes to !(...) patterns to more closely align
+    to Bash. 100% Bash behavior is impossible with regular
+    expression, but behavior in many ways was improved, but there
+    may be some surprising behavior changes.
+  * BREAK: Match Bash logic such that @(*|.a).b can match .b in an
+    extended pattern if the pattern contains an explicit leading .
+    in one of the alternatives exists. In this scenario, * is
+    allowed to match nothing before .b, but * won't physically
+    match the ..
+  * NEW: Generate tighter regular expressions with the same behavior.
+  * FIX: A leading * can no longer match nothing so that a literal
+    dot can match the leading dot of a file name, e.g. *.env no
+    longer matches .env unless DOTGLOB/DOTMATCH is enabled. This
+    agrees with Bash, Python's glob, and fnmatch, which already
+    behaved this way. Use .*env to explicitly match hidden names.
+  * FIX: Fix glob and iglob missing a file name without a directory
+    part, e.g. a.txt, when dir_fd is file descriptor 0, which a
+    directory can get when it is opened while standard input is closed.
+  * FIX: Fix WcMatch returning a file after kill is called from a
+    directory validation hook or its error handler.
+  * FIX: Preserve bare drive roots such as D: in WcMatch on Windows,
+    so searches use that drive's current directory instead of its
+    root directory.
+  * FIX: Fix a ? or bracket expression after a leading * matching
+    the leading dot of a file name, e.g. *?a matching .a.
+  * FIX: Fix a wildcard in an EXTGLOB/EXTMATCH group, such as
+    ?(old-)@(*), matching the leading dot of a file name when the
+    text before it, e.g. an optional group or the start of another
+    group slot, matched nothing. Wildcards in later iterations of a
+    repeated group, e.g. +(.?|*) and .a., are no longer wrongly
+    restricted.
+  * FIX: Fix an EXTGLOB/EXTMATCH @(...) or +(...) group that can
+    match nothing, e.g. @(?(a)), +(*(a)) or @(a|?(b)), letting a
+    literal dot after it match the leading dot of a file name, e.g.
+    @(?(a)).hidden matching .hidden. Such a group must match
+    something, so it can no longer be skipped to reach the dot, as
+    in Bash, unless DOTGLOB/DOTMATCH is enabled or an alternative
+    starts with a dot.
+  * FIX: Fix a ? or bracket expression at the start of a repeated
+    EXTGLOB group matching a path separator in globmatch and
+    related functions, e.g. +(?) matching a/b. This was a
+    regression in 11.0.1.
+  * FIX: Fix an EXTGLOB/EXTMATCH group that is simplified to a
+    different group type, e.g. @(+(b)) or @(!(b)), losing its
+    meaning when it is then reduced into its parent group. Repeats
+    and negations were dropped, e.g. @(a|@(!(b))) matched b and
+    not c, and !(@(+(a))) matched aa. This was a regression in 11.0.
+  * FIX: Preserve byte file names when globbing with dir_fd,
+    including names requiring surrogate escaping.
+  * FIX: Use the same case-insensitive matching for literal and
+    wildcard path components in glob and iglob, including Unicode
+    case equivalences.
+  * FIX: Preserve a terminal directory separator after GLOBSTAR
+    patterns in globmatch, globfilter, and translated patterns.
+    Patterns such as **/ and dir/**/ no longer match regular files.
+  * FIX: Require the literal prefix of recursive glob and iglob
+    patterns such as file/** to name a directory.
+  * FIX: Count duplicate exclusion expansions toward the shared
+    pattern limit in compiled matchers and translation.
+  * FIX: Treat an empty root_dir ('' or b'') as the current
+    directory in glob and iglob, including when the directory is
+    selected with dir_fd.
+  * FIX: Fix glob and iglob returning synthetic . and .. matches
+    with SCANDOTDIR when a directory cannot be opened for scanning.
+  * FIX: Require bracex 3.2.1 which contains a number of brace
+    related bug fixes.
+- Update to 11.2.0 (fixes CVE-2026-132276, bsc#1291588)
+  * NEW: Drop support for Python 3.10.
+  * FIX: Require bracex 3.2 for various bug fixes.
+  * FIX: Filter filename iterables without evaluating their
+    "truthiness", allowing collections such as numpy arrays
+  * FIX: Improve performance when multiple * are used for file name
+    matching. Performance is only improved in cases where variable
+    length EXTGLOB patterns would not interfere with matching.
+  * FIX: Apply one pattern limit to includes and exclusions when
+    scanning with glob and iglob, and preserve unlimited expansion
+    across multiple patterns with negative limits.
+  * FIX: Use the documented default limit of 1000 patterns in
+    WcMatch instead of 32.
+  * FIX: Preserve unlimited pattern expansion with exclusions in
+    compiled matchers and translation, and enforce finite limits
+    when exclusions consume the entire pattern budget.
+  * FIX: Fix an invalid regular expression error when an
+    EXTGLOB/EXTMATCH inverse group, !(...), is followed by an
+    extended group that contains another extended group,
+    e.g. !(a)@(b|*(c)).
+  * FIX: Fix an EXTGLOB/EXTMATCH star group, *(...), being matched
+    as literal text when it directly follows another *, e.g. a**(b).
+  * FIX: Fix glob and iglob returning the same path twice when two
+    patterns find it and case is ignored, e.g. ['A*', '*b'] with
+    IGNORECASE and a file named Ab. Files that only differ by case
+    are no longer treated as duplicates when the file system is
+    case sensitive.
+  * FIX: According to Bash, a file name that starts with an
+    extended group should never match . or ...
+  * FIX: Preserve leading-dot restrictions for wildcards after
+    extended groups that can match an empty string, such as ?(a)*,
+    and avoid returning . and .. from these directory scans.
+  * FIX: Fix rglob treating a pattern that starts with ** or ***
+    as if it started with *, e.g. **/a.txt with GLOBSTAR missed
+    a.txt in the searched folder and returned a.txt from inside a
+    symlinked folder.
+
+-------------------------------------------------------------------
 Sat Aug 22 14:11:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.0.1:

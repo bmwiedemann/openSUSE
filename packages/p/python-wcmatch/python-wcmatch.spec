@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        11.0.1
+Version:        12.0.4
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT
@@ -54,7 +54,7 @@ is found where Wildcard Match seems to deviate in an illogical way, we'd love to
 [issue tracker](https://github.com/facelessuser/wcmatch/issues).
 
 %prep
-%setup -q -n wcmatch-%{version}
+%autosetup -p1 -n wcmatch-%{version}
 
 %build
 %pyproject_wheel
