@@ -1,0 +1,41 @@
+From 4c35b667845120e3ebcad4fc7d1e311af6ba47bb Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 5 Oct 2026 10:12:26 +0000
+Subject: [PATCH 621/623] fax/marvellfax: raise Error instead of calling
+ sys.exit()
+
+Calling sys.exit() from MarvellFaxDevice.__init__() terminates GUI
+callers such as hp-setup. Raise Error(ERROR_DEVICE_IO_ERROR) instead,
+which the SANE code also uses for a missing plugin. Also, convert the
+OSError raised by os.readlink() or cdll.LoadLibrary() into an Error.
+The previous "except Error" clause was never triggered.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ fax/marvellfax.py | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/fax/marvellfax.py b/fax/marvellfax.py
+index 524b99b..e13c846 100644
+--- a/fax/marvellfax.py
++++ b/fax/marvellfax.py
+@@ -110,12 +110,12 @@ class MarvellFaxDevice(FaxDevice):
+                 if self.service is not None:
+                     self.service.SendEvent(device_uri, printer_name,
+                                            EVENT_FAX_FAILED_MISSING_PLUGIN, os.getenv('USER'), job_id, "Plugin is not installed")
+-                sys.exit(1)
++                raise Error(ERROR_DEVICE_IO_ERROR)
+             else:
+                 self.libfax_marvell = cdll.LoadLibrary(lib_name)
+-        except Error as e:
+-            log.error("Loading fax_marvell failed (%s)\n" % e.msg);
+-            sys.exit(1)
++        except (OSError, IOError) as e:
++            log.error("Loading fax_marvell failed (%s)\n" % e);
++            raise Error(ERROR_DEVICE_IO_ERROR)
+ 
+     def isAuthRequired(self):
+         return False; 
+-- 
+2.55.0
+

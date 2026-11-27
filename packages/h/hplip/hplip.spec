@@ -152,6 +152,12 @@ Patch615:       hplip-fix-handling-of-ConfigParser-.readfp-vs.-read_.patch
 # lp#2154206, fixup for patch 607
 Patch616:       pluginhandler-fix-plugin-installation-from-local-fil.patch
 Patch617:       pluginhandler.py-add-fallback-location-for-3.26.6.patch
+# bsc#1282965
+Patch620:       0620-fax-marvellfax-don-t-dereference-self.service-if-it-.patch
+Patch621:       0621-fax-marvellfax-raise-Error-instead-of-calling-sys.ex.patch
+Patch622:       0622-setup-handle-getFaxDevice-errors.patch
+Patch623:       0623-sendfax-handle-getFaxDevice-errors.patch
+Patch624:       0624-sane-avoid-duplicate-increment-of-bytes_read.patch
 
 # Compatibility patches for old SUSE releases
 Patch701:       hpcups-fix-compilation-on-SLE12.patch
@@ -515,6 +521,11 @@ This package is only required by developers.
 %patch -P 615 -p1
 %patch -P 616 -p1
 %patch -P 617 -p1
+%patch -P 620 -p1
+%patch -P 621 -p1
+%patch -P 622 -p1
+%patch -P 623 -p1
+%patch -P 624 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
 %patch -P 701 -p1
@@ -731,8 +742,28 @@ exit 0
 %post -n libhplip0 -p %{run_ldconfig}
 %postun -n libhplip0 -p %{run_ldconfig}
 
-%post base -p %{run_ldconfig}
-%postun base -p %{run_ldconfig}
+%post base
+if [ $1 -gt 0 ]; then
+    mkdir -p %{_localstatedir}/adm/update-messages
+    cat > %{_localstatedir}/adm/update-messages/%{name}-base-%{version}-%{release}-1 << EOF
+Note to users of the proprietary HPLIP plugin
+---------------------------------------------
+
+Run "hp-plugin" manually to install the plugin for hplip %{version}.
+Since HPLIP 3.26.6, the plugin must always be installed manually.
+EOF
+fi
+if [ $1 -gt 0 ] && ! [ -e /etc/issue ]; then
+    touch /etc/issue
+    cat > %{_localstatedir}/adm/update-messages/%{name}-base-%{version}-%{release}-2 << EOF
+Note to HPLIP users
+-------------------
+
+File /etc/issue created, a library from the HPLIP plugin may crash if it is missing.
+See https://bugzilla.suse.com/show_bug.cgi?id=1253755#c26.
+If you don't need the plugin, you can safely remove the file.
+EOF
+fi
 
 %files
 # empty

@@ -1,0 +1,90 @@
+From 625c9757c99637d25c2655b2e3a8a6083934826b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 5 Oct 2026 10:12:26 +0000
+Subject: [PATCH 622/623] setup: handle getFaxDevice() errors
+
+Skip fax header setup with a warning if the fax device can't be
+created, rather than crashing hp-setup.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ setup.py           | 7 ++++++-
+ ui/setupform.py    | 6 +++++-
+ ui4/setupdialog.py | 6 +++++-
+ ui5/setupdialog.py | 6 +++++-
+ 4 files changed, 21 insertions(+), 4 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 892dd94..49b0274 100755
+--- a/setup.py
++++ b/setup.py
+@@ -801,9 +801,14 @@ else: # INTERACTIVE_MODE
+ 
+                     log.error("Please enter 'y' or 'n'")
+ 
++            d = None
+             if setup_fax:
+-                d = fax.getFaxDevice(fax_uri, disable_dbus=True)
++                try:
++                    d = fax.getFaxDevice(fax_uri, disable_dbus=True)
++                except Error as e:
++                    log.error("Unable to set up fax device %s: %s" % (fax_uri, e.msg))
+ 
++            if d is not None:
+                 try:
+                     d.open()
+                 except Error:
+diff --git a/ui/setupform.py b/ui/setupform.py
+index 1c58e65..929e8ef 100644
+--- a/ui/setupform.py
++++ b/ui/setupform.py
+@@ -793,7 +793,11 @@ class SetupForm(SetupForm_base):
+         try:
+             QApplication.setOverrideCursor(QApplication.waitCursor)
+ 
+-            d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            try:
++                d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            except Error as e:
++                log.warn("Unable to set up fax device %s: %s" % (self.fax_uri, e.msg))
++                return
+ 
+             while True:
+                 try:
+diff --git a/ui4/setupdialog.py b/ui4/setupdialog.py
+index 649d118..6cda8d9 100644
+--- a/ui4/setupdialog.py
++++ b/ui4/setupdialog.py
+@@ -1136,7 +1136,11 @@ class SetupDialog(QDialog, Ui_Dialog):
+         try:
+             QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+ 
+-            d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            try:
++                d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            except Error as e:
++                log.warn("Unable to set up fax device %s: %s" % (self.fax_uri, e.msg))
++                return
+ 
+             while True:
+                 try:
+diff --git a/ui5/setupdialog.py b/ui5/setupdialog.py
+index 2874884..66e7cd5 100644
+--- a/ui5/setupdialog.py
++++ b/ui5/setupdialog.py
+@@ -1196,7 +1196,11 @@ class SetupDialog(QDialog, Ui_Dialog):
+         try:
+             QApplication.setOverrideCursor(QCursor(Qt.WaitCursor))
+ 
+-            d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            try:
++                d = fax.getFaxDevice(self.fax_uri, disable_dbus=True)
++            except Error as e:
++                log.warn("Unable to set up fax device %s: %s" % (self.fax_uri, e.msg))
++                return
+ 
+             while True:
+                 try:
+-- 
+2.55.0
+

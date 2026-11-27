@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Nov 24 11:03:46 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- sane: Add fix for "http_read: response exceeds buffer" error
+  (lp#2169330, bsc#1253755)
+  * add 0624-sane-avoid-duplicate-increment-of-bytes_read.patch
+- hplip.spec: create /etc/issue to avoid crash in plugin library
+  (bsc#1253755)
+
+-------------------------------------------------------------------
+Mon Oct 12 15:45:08 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Add an update-messages file explaining that the plugin needs
+  to be installed manually since 3.26.6
+
+-------------------------------------------------------------------
+Mon Oct  5 10:33:25 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Fix python exception and core dump in Marvell fax driver
+  (boo#1282965)
+
+  * add 0620-fax-marvellfax-don-t-dereference-self.service-if-it-.patch
+  * add 0621-fax-marvellfax-raise-Error-instead-of-calling-sys.ex.patch
+  * add 0622-setup-handle-getFaxDevice-errors.patch
+  * add 0623-sendfax-handle-getFaxDevice-errors.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 21:26:53 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - hpmud.rules: use SYSTEMD_WANTS for firmware upload to USB printers

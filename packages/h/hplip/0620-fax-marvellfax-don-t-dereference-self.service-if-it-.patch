@@ -1,0 +1,33 @@
+From b385addda29ce1fa711dbfd31dccfea41ef56deb Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 5 Oct 2026 10:12:25 +0000
+Subject: [PATCH 620/623] fax/marvellfax: don't dereference self.service if it
+ is None
+
+FaxDevice sets self.service to None if D-Bus is disabled, as hp-setup
+does. If the fax plugin is missing, this caused an AttributeError in a
+PyQt5 slot, which aborted hp-setup via qFatal().
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ fax/marvellfax.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/fax/marvellfax.py b/fax/marvellfax.py
+index 0fea7e7..524b99b 100644
+--- a/fax/marvellfax.py
++++ b/fax/marvellfax.py
+@@ -107,7 +107,9 @@ class MarvellFaxDevice(FaxDevice):
+                 log.error("Loading %s failed. Try after installing plugin libraries\n" %lib_name);
+                 log.info("Run \"hp-plugin\" to installa plugin libraries if you are not automatically prompted\n")
+                 job_id =0;
+-                self.service.SendEvent(device_uri, printer_name, EVENT_FAX_FAILED_MISSING_PLUGIN, os.getenv('USER'), job_id, "Plugin is not installed")
++                if self.service is not None:
++                    self.service.SendEvent(device_uri, printer_name,
++                                           EVENT_FAX_FAILED_MISSING_PLUGIN, os.getenv('USER'), job_id, "Plugin is not installed")
+                 sys.exit(1)
+             else:
+                 self.libfax_marvell = cdll.LoadLibrary(lib_name)
+-- 
+2.55.0
+

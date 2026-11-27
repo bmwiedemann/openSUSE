@@ -1,0 +1,108 @@
+From 41bd43706cfbcc4c5f60d1c8f9a6a49e70728f87 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 5 Oct 2026 10:12:26 +0000
+Subject: [PATCH 623/623] sendfax: handle getFaxDevice() errors
+
+Abort sending the fax with an error message if the fax device can't
+be created, rather than crashing hp-sendfax.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ sendfax.py           |  6 +++++-
+ ui/scrollfax.py      | 11 ++++++++---
+ ui4/sendfaxdialog.py | 14 +++++++++++---
+ ui5/sendfaxdialog.py | 14 +++++++++++---
+ 4 files changed, 35 insertions(+), 10 deletions(-)
+
+diff --git a/sendfax.py b/sendfax.py
+index 491c8f9..c2f5c57 100755
+--- a/sendfax.py
++++ b/sendfax.py
+@@ -497,7 +497,11 @@ else: # NON_INTERACTIVE_MODE
+ 
+             log.debug("\nChecking device state...")
+             try:
+-                dev = fax.getFaxDevice(device_uri, printer_name)
++                try:
++                    dev = fax.getFaxDevice(device_uri, printer_name)
++                except Error as e:
++                    log.error("Unable to open fax device %s: %s" % (device_uri, e.msg))
++                    sys.exit(1)
+ 
+                 try:
+                     dev.open()
+diff --git a/ui/scrollfax.py b/ui/scrollfax.py
+index ab1d840..9f79ec4 100644
+--- a/ui/scrollfax.py
++++ b/ui/scrollfax.py
+@@ -1162,9 +1162,14 @@ class ScrollFaxView(ScrollView):
+ 
+         QApplication.setOverrideCursor(QApplication.waitCursor)
+ 
+-        self.dev = fax.getFaxDevice(self.cur_device.device_uri,
+-                                   self.cur_printer, None,
+-                                   self.cur_device.mq['fax-type'])
++        try:
++            self.dev = fax.getFaxDevice(self.cur_device.device_uri,
++                                       self.cur_printer, None,
++                                       self.cur_device.mq['fax-type'])
++        except Error as e:
++            log.error("Unable to open fax device %s: %s" % (self.cur_device.device_uri, e.msg))
++            QApplication.restoreOverrideCursor()
++            return
+ 
+         try:
+             try:
+diff --git a/ui4/sendfaxdialog.py b/ui4/sendfaxdialog.py
+index a1ecb59..c0f35d9 100644
+--- a/ui4/sendfaxdialog.py
++++ b/ui4/sendfaxdialog.py
+@@ -743,9 +743,17 @@ class SendFaxDialog(QDialog, Ui_Dialog):
+ 
+         mq = device.queryModelByURI(self.device_uri)
+ 
+-        self.dev = fax.getFaxDevice(self.device_uri,
+-                                   self.printer_name, None,
+-                                   mq['fax-type'])
++        try:
++            self.dev = fax.getFaxDevice(self.device_uri,
++                                       self.printer_name, None,
++                                       mq['fax-type'])
++        except Error as e:
++            log.error("Unable to open fax device %s: %s" % (self.device_uri, e.msg))
++            endWaitCursor()
++            FailureUI(self, self.__tr("<b>Unable to open the fax device.</b><p>%s"%e.msg))
++            self.busy = False
++            self.BackButton.setEnabled(True)
++            return
+ 
+         try:
+             try:
+diff --git a/ui5/sendfaxdialog.py b/ui5/sendfaxdialog.py
+index 3c3e880..d2dd866 100644
+--- a/ui5/sendfaxdialog.py
++++ b/ui5/sendfaxdialog.py
+@@ -751,9 +751,17 @@ class SendFaxDialog(QDialog, Ui_Dialog):
+ 
+         mq = device.queryModelByURI(self.device_uri)
+ 
+-        self.dev = fax.getFaxDevice(self.device_uri,
+-                                   self.printer_name, None,
+-                                   mq['fax-type'])
++        try:
++            self.dev = fax.getFaxDevice(self.device_uri,
++                                       self.printer_name, None,
++                                       mq['fax-type'])
++        except Error as e:
++            log.error("Unable to open fax device %s: %s" % (self.device_uri, e.msg))
++            endWaitCursor()
++            FailureUI(self, self.__tr("<b>Unable to open the fax device.</b><p>%s"%e.msg))
++            self.busy = False
++            self.BackButton.setEnabled(True)
++            return
+ 
+         try:
+             try:
+-- 
+2.55.0
+

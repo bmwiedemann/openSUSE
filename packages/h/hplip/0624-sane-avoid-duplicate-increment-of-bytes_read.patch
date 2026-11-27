@@ -1,0 +1,27 @@
+From 362daf8cbb9fd3508ed8f2cd75521ed35b0cabc8 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 24 Nov 2026 11:34:57 +0100
+Subject: [PATCH] sane: avoid duplicate increment of bytes_read
+
+Taken from Fedora's rpm, hplip-scan-exceed-buf.patch.
+Upstream: lp#2169330
+bsc#1253755
+---
+ scan/sane/http.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/scan/sane/http.c b/scan/sane/http.c
+index dda7cf2..ad7208a 100644
+--- a/scan/sane/http.c
++++ b/scan/sane/http.c
+@@ -496,7 +496,6 @@ enum HTTP_RESULT __attribute__ ((visibility ("hidden"))) http_read(HTTP_HANDLE h
+          while(1)
+          {
+             ret = read_line (ps, line, sizeof(line), tmo, &len);
+-            *bytes_read += len;
+             if(ret) //failed to read line 
+ 		    {
+ 		            ps->footer = 0;
+-- 
+2.56.0
+

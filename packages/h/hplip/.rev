@@ -1681,4 +1681,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment>Update to 3.26.6, fixes for recent CVEs - note: hp plugin not yet available!</comment>
     <requestid>1379766</requestid>
   </revision>
+  <revision rev="171" vrev="2">
+    <srcmd5>0425600d89cf27de0b707f87a341622d</srcmd5>
+    <version>3.26.6</version>
+    <time>1795804839</time>
+    <user>anag_factory</user>
+    <comment>boo#1253755</comment>
+    <requestid>1400545</requestid>
+  </revision>
 </revisionlist>
