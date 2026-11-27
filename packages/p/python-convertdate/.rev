@@ -120,4 +120,18 @@
   * Remove trailing commas in some month names</comment>
     <requestid>1343774</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b86435d67ffe0b430108d5250e42ed49</srcmd5>
+    <version>2.5.1</version>
+    <time>1795809796</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1400583 from dspinella
+
+- Update to 2.5.1:
+    * Bug fix for Bahai calendar
+  - Update to 2.5.0:
+    * Bug fix for Coptic calendar
+    * Bug fix for ordinal calendar</comment>
+    <requestid>1400847</requestid>
+  </revision>
 </revisionlist>

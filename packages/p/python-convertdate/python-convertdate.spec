@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-convertdate
-Version:        2.4.1
+Version:        2.5.1
 Release:        0
 Summary:        Module for date conversions from and to Gregorian calendar
 License:        MIT
@@ -28,10 +28,10 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyMeeus >= 0.3.6
+Requires:       python-PyMeeus >= 0.3.13
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyMeeus >= 0.3.6}
+BuildRequires:  %{python_module PyMeeus >= 0.3.13}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 # /SECTION

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Nov  9 15:52:17 UTC 2026 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.5.1:
+  * Bug fix for Bahai calendar
+- Update to 2.5.0:
+  * Bug fix for Coptic calendar
+  * Bug fix for ordinal calendar
+
+-------------------------------------------------------------------
 Mon Mar 30 21:27:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.1:
