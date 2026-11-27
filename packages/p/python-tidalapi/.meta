@@ -1,0 +1,6 @@
+<package name="python-tidalapi" project="openSUSE:Factory">
+  <title>Unofficial API for the TIDAL music streaming service</title>
+  <description>Unofficial Python API for TIDAL, a music streaming service. It supports
+OAuth login, browsing albums, artists, playlists and mixes, and
+retrieving stream URLs and DASH manifests.</description>
+</package>
