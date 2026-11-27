@@ -17,13 +17,12 @@
 
 
 Name:           sc-controller
-Version:        1.0.7
+Version:        1.1.0
 Release:        0
 Summary:        User-mode driver, mapper, and GTK4-based GUI for the Steam Controller and many other controllers.
 License:        GPL-2.0-only
 URL:            https://github.com/C0rn3j/sc-controller
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-libgtk4-layer-shell-so-name.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Nov 26 14:52:07 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 1.1.0
+  * You can now disable support for Steam Controller (2015) - even separately, for Dongle, USB and Bluetooth
+  * You can now disable support for Steam Controller (2026)
+  * Fixed Grid, Radial and Quick menus not working
+  * Fixed Menus not correctly setting auto for some settings due to a missing SpinButton GTK 4 migration
+  * Fixed Menus instaclosing on some controllers when bound to stick movement
+  * Disabled Add Controller button if no functional driver is loaded and vice versa
+  * Updated translations
+- Update to 1.0.9
+  * Fixed RSTICKPRESS not being able to be set in Controller Registration, and also DPAD having non-existent press action there
+  * Fixed menu popping out from under the window instead of under the cursor in Controller Registration
+  * scc-daemon now uses --profile instead of a positional argument, to fix always having to pass /dev/null as a parameter
+  * Fixed detecting short vs long HID items, fixing USB HID support for some controllers
+  * Fixed USBHIDController not converting bytearray into bytes, fixing USB HID support for some controllers
+  * Fix some USB HID devices not showing in Controller Registration
+  * Fixed shipping a printing backend in some AppImages, which was causing harmless error messages
+  * Improved driver loading, now also reporting when a driver is enabled but missing
+  * Improved daemon startup handling
+  * Reworked scc-osd-daemon and scc-autoswitch-daemon to be under scc/bin instead of being treated as special cases
+  * Further cross-platform fixes and features
+  * Updated translations
+- Update to 1.0.8
+  * Fix incorrect GTK Layer Shell loading on some distributions
+  * Fix OSD daemon not escaping characters properly
+  * Fix --alone support
+  * Fix loading gyroscope image
+  * Fix launching OSD keyboard directly
+  * Further cross-platform fixes and features, allowing for platform-specific drivers among other things
+  * Some deprecation fixes
+  * Updated translations
+- Dropped fix-libgtk4-layer-shell-so-name.patch (fixed upstream
+
+-------------------------------------------------------------------
 Sun Oct 18 06:13:42 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 1.0.7
