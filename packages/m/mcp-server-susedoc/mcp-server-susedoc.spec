@@ -17,7 +17,7 @@
 
 
 Name:           mcp-server-susedoc
-Version:        0.1.4
+Version:        0.1.5
 Release:        0
 Summary:        MCP server for openSUSE and SUSE documentation
 License:        MIT

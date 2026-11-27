@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 16:10:57 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+-  Updated to v0.1.5 which does asynchronous load of the 
+   database
+
+-------------------------------------------------------------------
 Fri Nov 20 14:39:35 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Initial package of mcp-server-susedoc 0.1.4:
