@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Nov 27 12:22:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.12.2
+  * Restore positional provisioning names and add URI factories.
+- Update to version 2.12.1
+  * Allow subclasses to override minimum secret length (#208).
+
+-------------------------------------------------------------------
 Mon Nov 16 19:05:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.12.0
