@@ -74,4 +74,12 @@
   * tests: fix test_entry_point() when there are several monitors</comment>
     <requestid>1345083</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c70fa53d91b634d748152274e833d16e</srcmd5>
+    <version>10.2.0</version>
+    <time>1795805077</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1401132</requestid>
+  </revision>
 </revisionlist>

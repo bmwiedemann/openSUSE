@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Nov 27 13:06:59 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 10.2.0:
+  * Introduce unified MSS API entry point (mss.MSS);
+    platform-specific classes are deprecated.
+  * Linux: implement XCB-based backend with XShm shared memory
+    support (XShmGetImage) for faster captures and improved
+    multithreading reliability.
+  * Use per-instance locking instead of global locking.
+  * Enhance monitor metadata: add sct.primary_monitor property,
+    is_primary, name, and unique_id attributes.
+  * Deprecate ScreenShot.raw in favor of bgra.
+  * Introduce ScreenShotCPU class.
+  * Fix check for negative coordinates.
+  * Gracefully handle ScreenShotError from CLI.
+- Add missing XCB library requirements (libxcb1, libxcb-randr0,
+  libxcb-render0, libxcb-shm0, libxcb-xfixes0) for the new default
+  Linux capture backend.
+
+-------------------------------------------------------------------
 Tue Apr  7 22:05:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.0:

@@ -18,11 +18,10 @@
 
 %bcond_without libalternatives
 Name:           python-mss
-Version:        10.1.0
+Version:        10.2.0
 Release:        0
 Summary:        Python multiple screenshots module
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/BoboTiG/python-mss
 Source:         https://files.pythonhosted.org/packages/source/m/mss/mss-%{version}.tar.gz
 BuildRequires:  %{python_module Pillow}
@@ -36,11 +35,21 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
+BuildRequires:  libxcb-randr0
+BuildRequires:  libxcb-render0
+BuildRequires:  libxcb-shm0
+BuildRequires:  libxcb-xfixes0
+BuildRequires:  libxcb1
 BuildRequires:  lsof
 BuildRequires:  python-rpm-macros
 BuildRequires:  xrandr
 BuildRequires:  xvfb-run
 Requires:       alts
+Requires:       libxcb-randr0
+Requires:       libxcb-render0
+Requires:       libxcb-shm0
+Requires:       libxcb-xfixes0
+Requires:       libxcb1
 Requires:       python-Pillow
 Requires:       python-numpy
 Requires:       xrandr
