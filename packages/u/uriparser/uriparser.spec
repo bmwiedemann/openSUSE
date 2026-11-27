@@ -31,7 +31,7 @@
 
 %define so_ver  1
 Name:           uriparser%{psuffix}
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 %if "%{flavor}" == "doc"
 Summary:        Documentation files for the uriparser URI parsing library
