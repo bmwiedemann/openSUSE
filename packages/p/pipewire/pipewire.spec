@@ -75,7 +75,7 @@
 %endif
 
 Name:           pipewire
-Version:        1.6.11
+Version:        1.6.12
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -88,7 +88,6 @@ Patch0:         reduce-meson-dependency.patch
 Patch1:         0001-pulse-server-add-client-props-to-sink_input_source_output.patch
 Patch3:         0003-modules-improve-error-reporting.patch
 Patch5:         pipewire-const-correctness-2.patch
-Patch6:         0001-spa-libcamera-device-0.8-compatibility.patch
 
 BuildRequires:  docutils
 %if 0%{suse_version} > 1500
