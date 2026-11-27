@@ -20,14 +20,13 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        2.5.3
+Version:        2.6.4
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%pkg_name
 Source0:        https://hackage.haskell.org/package/%pkg_name-%{version}/%pkg_name-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%pkg_name-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base16-bytestring-devel
@@ -48,6 +47,7 @@ BuildRequires:  ghc-ram-devel
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros >= 2.9.2
 BuildRequires:  ghc-serialise-devel
+BuildRequires:  ghc-stm-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unix-time-devel
 BuildRequires:  ghc-zlib-devel
@@ -71,6 +71,7 @@ BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-serialise-prof
+BuildRequires:  ghc-stm-prof
 BuildRequires:  ghc-transformers-prof
 BuildRequires:  ghc-unix-time-prof
 BuildRequires:  ghc-zlib-prof
@@ -124,7 +125,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -p1 -n %pkg_name-%{version}
-cp -p %{SOURCE1} %pkg_name.cabal
 
 %build
 %ghc_lib_build

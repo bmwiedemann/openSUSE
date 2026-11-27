@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Nov 25 02:49:11 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.6.4.
+  ## Version 2.6.4
+
+  * An interrupted receive breaks the receive side and wakes PHA waiters.
+    [#668](https://github.com/haskell-tls/hs-tls/pull/668)
+  * bye gives up on close_notify with the backend's SendWith.
+    [#670](https://github.com/haskell-tls/hs-tls/pull/670)
+  * handshakeWith, recvDataWith, sendDataWith and byeWith give up on an STM action.
+    [#672](https://github.com/haskell-tls/hs-tls/pull/672)
+
+-------------------------------------------------------------------
+Tue Nov 24 07:46:02 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.6.3.
+  ## Version 2.6.3
+
+  * Never wrap around the RTT of a ticket, and cap it at 10 seconds.
+    [#661](https://github.com/haskell-tls/hs-tls/pull/661)
+  * Keep contexts closable after failures of the backend.
+    [#663](https://github.com/haskell-tls/hs-tls/pull/663)
+  * bye neither sends nor waits after a failed send.
+    [#664](https://github.com/haskell-tls/hs-tls/pull/664)
+  * Throw the exception of a failed send again on later sends.
+    [#665](https://github.com/haskell-tls/hs-tls/pull/665)
+  * bye sends close_notify when the backend gives up by itself.
+    [#666](https://github.com/haskell-tls/hs-tls/pull/666)
+
+-------------------------------------------------------------------
+Sat Nov 21 03:35:11 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.6.2.
+  ## Version 2.6.2
+
+  * Make bye robust after a failed handshake or a vanished peer.
+    [#657](https://github.com/haskell-tls/hs-tls/pull/657)
+  * Close the connection when post-handshake auth fails.
+    [#659](https://github.com/haskell-tls/hs-tls/pull/659)
+
+  ## Version 2.6.1
+
+  * Use up a session for 0-RTT only after checking the ClientHello.
+    [#655](https://github.com/haskell-tls/hs-tls/pull/655)
+
+-------------------------------------------------------------------
+Fri Nov 20 06:07:32 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.6.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/tls-2.6.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
+Fri Nov 20 00:51:22 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls to version 2.5.3 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Nov 19 09:37:53 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tls to version 2.5.3 revision 1.
