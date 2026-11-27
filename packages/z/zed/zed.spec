@@ -22,7 +22,7 @@
 %global build_rustflags "-C" "linker=clang" "-C" "link-arg=-fuse-ld=%{_bindir}/mold" "-C" "debuginfo=1" "-C" "incremental=false" "-C" "strip=none"
 %global appid dev.zed.Zed
 Name:           zed
-Version:        1.29.2
+Version:        1.30.2
 Release:        0
 Summary:        A high-performance, multiplayer code editor
 # The zed and cli crates are GPL-3.0-or-later. The rest of the tag is the
@@ -30,12 +30,9 @@ Summary:        A high-performance, multiplayer code editor
 # `cargo tree --offline -e normal --target x86_64-unknown-linux-gnu` run for
 # -p zed and for -p cli: every dual-licensed crate is taken under Apache-2.0
 # or MIT, and every licence left in the tag has no alternative to fall back
-# on. MPL-2.0 covers 12 linked crates (the five symphonia 0.5.5 crates,
-# cssparser 0.36.0, cssparser-macros, dtoa-short, nucleo-matcher,
-# selectors 0.37.0, option-ext, yawc); cbindgen, dwrote, mdbook, cssparser
-# 0.37.0, nvim-rs and webpki-roots 0.26.11 are vendored but not linked. The
-# webpki-roots that does link is 1.0.10, whose license is CDLA-Permissive-2.0,
-# not MPL-2.0.
+# on. MPL-2.0 covers 12 linked crates: five symphonia 0.5.5, cssparser 0.37.0
+# and 0.38.0, cssparser-macros, dtoa-short, nucleo-matcher, option-ext, yawc.
+# Both linked webpki-roots (0.26.11 and 1.0.10) are CDLA-Permissive-2.0.
 # OFL-1.1 is the IBM Plex Sans and Lilex faces embedded in the binary. nvim-rs
 # is LGPL-3.0 but sits behind the non-default "neovim" feature that nothing
 # enables, so it is not linked and not declared here.

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Nov 27 11:41:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.30.2 (from 1.29.2):
+  * 1.29.3: prompt caching for reusable OpenAI system
+    instructions on GPT-6.2 and later; Text Finder no longer
+    shows stale results after a no-match search
+  * 1.30.2: reduced GPU usage across the app; model picker
+    for AI commit message generation in the Git Panel;
+    title_bar.show setting to hide the title bar; GPT-6.1
+    Terra support; faster scanning of large projects
+  * File finder no longer pre-fills its query from the
+    selection by default
+  * Re-strip the prebuilt wasm modules the re-vendor brought
+    back (wit-bindgen fixture, guest archives, dead libdl)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Nov 19 07:53:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.29.2 (from 1.28.1):

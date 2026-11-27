@@ -39,4 +39,13 @@
     <comment>Update zed to 1.29.2: branch-mode listing, bookmarks, date formats, Fable/Mythos 5.2, Snap</comment>
     <requestid>1399724</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e97c92e4f7a90be26541b005798ad508</srcmd5>
+    <version>1.30.2</version>
+    <time>1795805063</time>
+    <user>anag_factory</user>
+    <comment>Update zed to 1.30.2: lower GPU use, AI commit-message picker, hideable title bar.
+- Covers 1.29.3 (sr#1400218): OpenAI prompt caching, text finder stale-result fix.</comment>
+    <requestid>1401099</requestid>
+  </revision>
 </revisionlist>
