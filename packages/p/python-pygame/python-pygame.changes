@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Nov 20 03:23:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-cython-3.3.0.patch:
+  * Support Cython 3.3 changes.
+
+-------------------------------------------------------------------
 Fri Apr 10 07:43:11 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Add fix-tests-with-3-14.patch to fix tests

@@ -28,6 +28,8 @@ Source0:        %{url}/archive/%{version}.tar.gz#/pygame-%{version}.tar.gz
 Patch0:         skip-broken-tests.patch
 # PATCH-FIX-UPSTREAM fix-tests-with-3-14.patch
 Patch1:         fix-tests-with-3-14.patch
+# PATCH-FIX-UPSTREAM gh#pygame/pygame#4912
+Patch2:         support-cython-3.3.0.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
@@ -146,7 +148,7 @@ $python -m pygame.tests.__main__ -v --exclude opengl --time_out 300
 %doc README.rst
 %license docs/LGPL.txt
 %{python_sitearch}/pygame/
-%{python_sitearch}/pygame-%{version}*-info
+%{python_sitearch}/pygame-%{version}.dist-info
 
 %files %{python_files devel}
 %license docs/LGPL.txt
