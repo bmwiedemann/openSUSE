@@ -1229,4 +1229,12 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1394998</requestid>
   </revision>
+  <revision rev="57" vrev="57">
+    <srcmd5>42422bc90c85bcc5361231802cb4f1ca</srcmd5>
+    <version>0</version>
+    <time>1795804834</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1400509</requestid>
+  </revision>
 </revisionlist>
