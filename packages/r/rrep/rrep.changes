@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Nov 16 22:06:00 UTC 2026 - asnelt@asnelt.org
+
+- Update to version 1.4.1
+  * Corrected verbose line numbers.
+  * Made file status handling more robust.
+  * Added examples to man documentation.
+  * Cleaned up code, messages and documentation.
+  * Updated GNU Gnulib modules.
+- Added libattr-devel BuildRequires so that ACLs are copied as
+  extended attributes.
+
+-------------------------------------------------------------------
 Fri Oct 30 22:24:50 UTC 2026 - asnelt@asnelt.org
 
 - Update to version 1.4.0

@@ -32,4 +32,20 @@
 </comment>
     <requestid>1393984</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>401e5ec697bbb8d5999113326ac5ed6a</srcmd5>
+    <version>1.4.1</version>
+    <time>1795804948</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.1
+  * Corrected verbose line numbers.
+  * Made file status handling more robust.
+  * Added examples to man documentation.
+  * Cleaned up code, messages and documentation.
+  * Updated GNU Gnulib modules.
+- Added libattr-devel BuildRequires so that ACLs are copied as
+  extended attributes.
+</comment>
+    <requestid>1400989</requestid>
+  </revision>
 </revisionlist>

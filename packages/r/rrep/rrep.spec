@@ -17,7 +17,7 @@
 
 
 Name:           rrep
-Version:        1.4.0
+Version:        1.4.1
 Release:        1%{?dist}
 Summary:        Recursive pattern replacement utility
 License:        GPL-3.0-or-later
@@ -28,6 +28,7 @@ Source1:        https://git.sr.ht/~asnelt/%{name}/refs/download/upstream/%{versi
 Source2:        %{name}.keyring
 BuildRequires:  gettext
 BuildRequires:  libacl-devel
+BuildRequires:  libattr-devel
 BuildRequires:  texinfo
 
 %description
