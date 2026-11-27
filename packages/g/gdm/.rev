@@ -2628,4 +2628,27 @@
     https://gitlab.gnome.org/GNOME/gdm/-/work_items/1059</comment>
     <requestid>1393592</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>19c35e32f26706590ded55573dd6e762</srcmd5>
+    <version>51.2</version>
+    <time>1795804835</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.2:
+  * Fixed authentication bypass (CVE-2026-132858)
+  * Fixed reauthentication privilege escalation (CVE-2026-133445)
+  * Fixed remote display creation during direct login
+  * Fixed an authorization memory leak
+  * Fixed smartcard login not switching to an existing user session when the
+    username becomes known during authentication
+  * Notify the greeter when PAM changes the selected user
+  * Fixed D-Bus startup races and reconnect handling
+  * Fixed reauthentication session cleanup
+  * Fixed PAM rules not skipping both keyring modules when pam_gdm fails
+  * Stop GDM before accounts-daemon at shutdown
+  * Fixed a memory leak in PAM environment handling
+  * Search XDG_DATA_DIRS for GNOME session files, fixing initial setup with
+    non-standard installation paths
+- Refresh patches with quilt.</comment>
+    <requestid>1400516</requestid>
+  </revision>
 </revisionlist>

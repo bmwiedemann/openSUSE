@@ -1,7 +1,7 @@
-Index: gdm-50.beta/common/gdm-settings-system-backend.c
+Index: gdm-51.2/common/gdm-settings-system-backend.c
 ===================================================================
 --- /dev/null
-+++ gdm-50.beta/common/gdm-settings-system-backend.c
++++ gdm-51.2/common/gdm-settings-system-backend.c
 @@ -0,0 +1,339 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -342,10 +342,10 @@ Index: gdm-50.beta/common/gdm-settings-system-backend.c
 +
 +        return GDM_SETTINGS_BACKEND (object);
 +}
-Index: gdm-50.beta/common/gdm-settings-system-backend.h
+Index: gdm-51.2/common/gdm-settings-system-backend.h
 ===================================================================
 --- /dev/null
-+++ gdm-50.beta/common/gdm-settings-system-backend.h
++++ gdm-51.2/common/gdm-settings-system-backend.h
 @@ -0,0 +1,56 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -403,22 +403,22 @@ Index: gdm-50.beta/common/gdm-settings-system-backend.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SETTINGS_SYSTEM_BACKEND_H */
-Index: gdm-50.beta/common/gdm-settings.c
+Index: gdm-51.2/common/gdm-settings.c
 ===================================================================
---- gdm-50.beta.orig/common/gdm-settings.c
-+++ gdm-50.beta/common/gdm-settings.c
+--- gdm-51.2.orig/common/gdm-settings.c
++++ gdm-51.2/common/gdm-settings.c
 @@ -38,6 +38,7 @@
  #include "gdm-settings.h"
- 
+
  #include "gdm-settings-desktop-backend.h"
 +#include "gdm-settings-system-backend.h"
- 
+
  struct _GdmSettings
  {
-@@ -203,6 +204,10 @@ gdm_settings_reload (GdmSettings *settin
+@@ -205,6 +206,10 @@ gdm_settings_reload (GdmSettings *settin
          if (backend)
                  settings->backends = g_list_prepend (NULL, backend);
- 
+
 +        backend = gdm_settings_system_backend_new ();
 +        if (backend)
 +                settings->backends = g_list_prepend (settings->backends, backend);
@@ -426,10 +426,10 @@ Index: gdm-50.beta/common/gdm-settings.c
          backend = gdm_settings_desktop_backend_new (GDM_RUNTIME_CONF);
          if (backend)
                  settings->backends = g_list_prepend (settings->backends, backend);
-Index: gdm-50.beta/common/gdm-sysconfig.c
+Index: gdm-51.2/common/gdm-sysconfig.c
 ===================================================================
 --- /dev/null
-+++ gdm-50.beta/common/gdm-sysconfig.c
++++ gdm-51.2/common/gdm-sysconfig.c
 @@ -0,0 +1,509 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -940,10 +940,10 @@ Index: gdm-50.beta/common/gdm-sysconfig.c
 +        g_strfreev (lines);
 +        return result;
 +}
-Index: gdm-50.beta/common/gdm-sysconfig.h
+Index: gdm-51.2/common/gdm-sysconfig.h
 ===================================================================
 --- /dev/null
-+++ gdm-50.beta/common/gdm-sysconfig.h
++++ gdm-51.2/common/gdm-sysconfig.h
 @@ -0,0 +1,43 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -988,22 +988,22 @@ Index: gdm-50.beta/common/gdm-sysconfig.h
 +G_END_DECLS
 +
 +#endif /* __GDM_SYSCONFIG_H */
-Index: gdm-50.beta/data/gdm.conf-custom.in
+Index: gdm-51.2/data/gdm.conf-custom.in
 ===================================================================
---- gdm-50.beta.orig/data/gdm.conf-custom.in
-+++ gdm-50.beta/data/gdm.conf-custom.in
+--- gdm-51.2.orig/data/gdm.conf-custom.in
++++ gdm-51.2/data/gdm.conf-custom.in
 @@ -1,4 +1,7 @@
  # GDM configuration storage
 +#
 +# Note: settings from /etc/sysconfig/displaymanager have a higher priority
 +#
- 
+
  [daemon]
- 
-Index: gdm-50.beta/common/meson.build
+
+Index: gdm-51.2/common/meson.build
 ===================================================================
---- gdm-50.beta.orig/common/meson.build
-+++ gdm-50.beta/common/meson.build
+--- gdm-51.2.orig/common/meson.build
++++ gdm-51.2/common/meson.build
 @@ -5,9 +5,11 @@ libgdmcommon_src = files(
    'gdm-profile.c',
    'gdm-settings-backend.c',
@@ -1014,5 +1014,5 @@ Index: gdm-50.beta/common/meson.build
    'gdm-settings.c',
 +  'gdm-sysconfig.c',
  )
- 
+
  libgdmcommon_deps = [

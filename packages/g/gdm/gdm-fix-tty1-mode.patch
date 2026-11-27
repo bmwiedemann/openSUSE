@@ -1,8 +1,8 @@
-diff --git a/daemon/gdm-session-worker.c b/daemon/gdm-session-worker.c
-index ac6bf69..18c412f 100644
---- a/daemon/gdm-session-worker.c
-+++ b/daemon/gdm-session-worker.c
-@@ -1013,9 +1013,37 @@ fix_terminal_vt_mode (GdmSessionWorker  *worker,
+Index: gdm-51.2/daemon/gdm-session-worker.c
+===================================================================
+--- gdm-51.2.orig/daemon/gdm-session-worker.c
++++ gdm-51.2/daemon/gdm-session-worker.c
+@@ -1060,9 +1060,37 @@ fix_terminal_vt_mode (GdmSessionWorker
                        int                tty_fd)
  {
          struct vt_mode getmode_reply = { 0 };
@@ -37,6 +37,6 @@ index ac6bf69..18c412f 100644
 +                mode_fixed = TRUE;
 +                goto out;
 +        }
- 
+
          if (ioctl (tty_fd, VT_GETMODE, &getmode_reply) < 0) {
                  g_debug ("GdmSessionWorker: couldn't query VT mode: %m");

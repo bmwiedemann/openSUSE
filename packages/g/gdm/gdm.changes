@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Nov 24 22:29:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.2:
+  * Fixed authentication bypass (CVE-2026-132858)
+  * Fixed reauthentication privilege escalation (CVE-2026-133445)
+  * Fixed remote display creation during direct login
+  * Fixed an authorization memory leak
+  * Fixed smartcard login not switching to an existing user session when the
+    username becomes known during authentication
+  * Notify the greeter when PAM changes the selected user
+  * Fixed D-Bus startup races and reconnect handling
+  * Fixed reauthentication session cleanup
+  * Fixed PAM rules not skipping both keyring modules when pam_gdm fails
+  * Stop GDM before accounts-daemon at shutdown
+  * Fixed a memory leak in PAM environment handling
+  * Search XDG_DATA_DIRS for GNOME session files, fixing initial setup with
+    non-standard installation paths
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
 Mon Oct 26 03:17:22 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gdm-timeout-for-plymouth-quit.patch: Use a separate timeout

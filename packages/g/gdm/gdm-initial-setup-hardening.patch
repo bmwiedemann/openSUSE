@@ -1,14 +1,14 @@
-Index: gdm-51.0/daemon/gdm-display.c
+Index: gdm-51.2/daemon/gdm-display.c
 ===================================================================
---- gdm-51.0.orig/daemon/gdm-display.c
-+++ gdm-51.0/daemon/gdm-display.c
-@@ -1083,12 +1083,12 @@ can_create_environment (const char *sess
-         return session_exists;
+--- gdm-51.2.orig/daemon/gdm-display.c
++++ gdm-51.2/daemon/gdm-display.c
+@@ -1127,12 +1127,12 @@ can_create_environment (const char *sess
+         return FALSE;
  }
- 
+
 -#define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
 +#define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
- 
+
  static gboolean
 -already_done_initial_setup_on_this_boot (void)
 +already_done_initial_setup (void)
@@ -16,42 +16,42 @@ Index: gdm-51.0/daemon/gdm-display.c
 -        if (g_file_test (ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT, G_FILE_TEST_EXISTS))
 +        if (g_file_test (BLOCK_INITIAL_SETUP, G_FILE_TEST_EXISTS))
                  return TRUE;
- 
+
          return FALSE;
-@@ -1170,7 +1170,7 @@ wants_initial_setup (GdmDisplay *self)
- 
+@@ -1214,7 +1214,7 @@ wants_initial_setup (GdmDisplay *self)
+
          priv = gdm_display_get_instance_private (self);
- 
+
 -        if (already_done_initial_setup_on_this_boot ()) {
 +        if (already_done_initial_setup ()) {
                  return FALSE;
          }
- 
-Index: gdm-51.0/daemon/gdm-manager.c
+
+Index: gdm-51.2/daemon/gdm-manager.c
 ===================================================================
---- gdm-51.0.orig/daemon/gdm-manager.c
-+++ gdm-51.0/daemon/gdm-manager.c
+--- gdm-51.2.orig/daemon/gdm-manager.c
++++ gdm-51.2/daemon/gdm-manager.c
 @@ -61,7 +61,7 @@
  #define GDM_MANAGER_PATH          GDM_DBUS_PATH "/Manager"
  #define GDM_MANAGER_DISPLAYS_PATH GDM_DBUS_PATH "/Displays"
- 
+
 -#define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
 +#define BLOCK_INITIAL_SETUP LOCALSTATEDIR "/lib/gdm/block-initial-setup"
  #define INITIAL_SETUP_EXPORT_DIR GDM_RUN_DIR "/gnome-initial-setup"
- 
+
  static GQuark gdm_display_user_session_quark;
-@@ -1605,6 +1605,7 @@ on_start_user_session (StartUserSessionO
+@@ -1643,6 +1643,7 @@ on_start_user_session (StartUserSessionO
          const char *session_id;
          gboolean doing_initial_setup = FALSE;
          uid_t allowed_uid;
 +        int fd = -1;
- 
-         g_debug ("GdmManager: start or jump to session");
- 
-@@ -1634,22 +1635,20 @@ on_start_user_session (StartUserSessionO
+
+         g_debug ("GdmManager: start session");
+
+@@ -1655,22 +1656,20 @@ on_start_user_session (StartUserSessionO
                        "doing-initial-setup", &doing_initial_setup,
                        NULL);
- 
+
 +        fd = open(BLOCK_INITIAL_SETUP, O_RDONLY|O_CREAT|O_EXCL|O_NOFOLLOW|O_CLOEXEC, 0644);
 +        if (fd == -1 && errno != EEXIST) {
 +              g_warning ("GdmDisplay: Could not write initial-setup-done marker to %s: %s",
@@ -81,12 +81,12 @@ Index: gdm-51.0/daemon/gdm-manager.c
          } else {
                  g_debug ("GdmManager: session has its display server, reusing our server for another login screen");
          }
-Index: gdm-51.0/daemon/meson.build
+Index: gdm-51.2/daemon/meson.build
 ===================================================================
---- gdm-51.0.orig/daemon/meson.build
-+++ gdm-51.0/daemon/meson.build
+--- gdm-51.2.orig/daemon/meson.build
++++ gdm-51.2/daemon/meson.build
 @@ -215,6 +215,7 @@ endif
- 
+
  gdm_daemon = executable('gdm',
    [ gdm_daemon_sources, gdm_daemon_gen_sources ],
 +  c_args: '-DLOCALSTATEDIR="'+get_option('localstatedir')+'"',
