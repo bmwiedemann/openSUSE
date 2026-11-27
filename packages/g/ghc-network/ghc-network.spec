@@ -20,7 +20,7 @@
 %bcond_with ghc_prof
 %bcond_with tests
 Name:           ghc-%pkg_name
-Version:        3.2.14.0
+Version:        3.2.16.0
 Release:        0
 %global pkgver %pkg_name-%{version}
 Summary:        Low-level networking interface

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Nov 23 03:48:59 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.2.16.0.
+  ## Version 3.2.16.0
+
+  * Export AcceptConn
+    [#665](https://github.com/haskell/network/pull/665)
+
+-------------------------------------------------------------------
+Sun Nov 22 04:23:28 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update network to version 3.2.15.0.
+  ## Version 3.2.15.0
+
+  * acceptWith: keep to the give-up when another waiter takes the connection
+    [#663](https://github.com/haskell/network/pull/663)
+
+-------------------------------------------------------------------
 Thu Nov 19 20:54:19 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update build for ghc-rpm-macros >= 2.9.2.
