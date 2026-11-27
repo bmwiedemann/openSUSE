@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Nov 26 13:39:59 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Refresh box2d-detection.patch: detect system box2d 3.x, which ships no pkg-config file (bsc#1291895)
+- Bundle liborcus below suse_version 1699, i.e. on SLE/Leap 16 too
+
+-------------------------------------------------------------------
 Mon Nov 23 06:28:45 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Declare the SLE-only patches unconditionally, so that source_validator sees them

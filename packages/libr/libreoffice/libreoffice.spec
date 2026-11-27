@@ -690,7 +690,7 @@
 # ---- orcus
 %global version_orcus            0.21.0
 %global enable_orcus             1
-%if 0%{?suse_version} < 1600
+%if 0%{?suse_version} < 1699
 %global bundle_orcus             1
 %global support_orcus            --without-system-orcus
 %else

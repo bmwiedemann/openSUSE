@@ -2,41 +2,71 @@ Fix system box2d detection when box2d ships no pkg-config file.
 
 Since the box2d 3.x support was added, configure derives the version from
 `pkg-config --modversion box2d' and only assigns _BOX2D_LIB inside the
-"major == 2" branch.  box2d 2.4.x (as shipped by openSUSE) installs no
-box2d.pc, so BOX2D_VERSION ends up empty:
+"major == 2" branch. Neither box2d 2.4.x nor box2d 3.x install a box2d.pc
+(3.x only installs CMake config files), so BOX2D_VERSION ends up empty:
 
     ./configure: line 42900: test: : integer expected
     checking for main in -l... no
     configure: error: box2d library not found.
 
-Fall back to probing box2d/box2d.h when pkg-config has nothing to say, and
-default _BOX2D_LIB to box2d so that the 3.x path gets a library name too.
+When pkg-config has nothing to say, tell the versions apart by their
+headers: only 3.x installs box2d/id.h, and its exact version is obtained
+from b2GetVersion(), since slideshow distinguishes 3.0 from 3.1. Otherwise
+fall back to box2d/box2d.h (2.4) or Box2D/Box2D.h (2.3). Also default
+_BOX2D_LIB to box2d, so that the 3.x path gets a library name too.
 
-diff --git a/configure.ac b/configure.ac
+Without the box2d/id.h test, box2d 3.x was taken for 2.4, and the 2.x code
+path in slideshow/source/engine/box2dtools.cxx failed to compile against the
+3.x headers (bsc#1291895).
+
 --- a/configure.ac
 +++ b/configure.ac
-@@ -12252,19 +12252,22 @@
+@@ -12261,20 +12261,47 @@
      SYSTEM_BOX2D=TRUE
      AC_LANG_PUSH([C++])
      BOX2D_VERSION=`$PKG_CONFIG --modversion box2d 2>/dev/null`
-+    if test -z "$BOX2D_VERSION"; then
-+        dnl box2d 2.4.x does not install a pkg-config file, probe the header
-+        dnl instead so that we do not end up comparing an empty version.
-+        AC_CHECK_HEADER([box2d/box2d.h], [BOX2D_VERSION=2.4], [BOX2D_VERSION=2.3])
-+    fi
-     BOX2D_MAJOR=`echo $BOX2D_VERSION | cut -d"." -f1`
-     BOX2D_MINOR=`echo $BOX2D_VERSION | cut -d"." -f2`
+-    BOX2D_MAJOR=`echo $BOX2D_VERSION | cut -d"." -f1`
+-    BOX2D_MINOR=`echo $BOX2D_VERSION | cut -d"." -f2`
 -    if test "$BOX2D_MAJOR" -eq "2"; then
 -        if test "$BOX2D_MINOR" -eq "4"; then
 -            _BOX2D_LIB=box2d
 -            AC_DEFINE(BOX2D_HEADER,<box2d/box2d.h>)
--        else
++    if test -z "$BOX2D_VERSION"; then
++        dnl Neither box2d 2.4.x nor 3.x install a pkg-config file. Only 3.x
++        dnl has box2d/id.h, and it reports its version through b2GetVersion().
++        AC_CHECK_HEADER([box2d/id.h], [libo_box2d_3=yes], [libo_box2d_3=no])
++        if test "$libo_box2d_3" = "yes"; then
++            AC_MSG_CHECKING([box2d 3.x version])
++            save_LIBS=$LIBS
++            LIBS="$LIBS -lbox2d"
++            AC_RUN_IFELSE([AC_LANG_PROGRAM([[
++#include <stdio.h>
++#include <box2d/box2d.h>
++]], [[
++    b2Version v = b2GetVersion();
++    FILE *f = fopen("conftest.box2d", "w");
++    if (!f)
++        return 1;
++    fprintf(f, "%d.%d.%d", v.major, v.minor, v.revision);
++    return fclose(f) != 0;
++]])],
++                [BOX2D_VERSION=`cat conftest.box2d`],
++                [AC_MSG_ERROR([could not determine the box2d 3.x version])],
++                [AC_MSG_ERROR([cross-compiling: cannot determine the box2d 3.x version without box2d.pc])])
++            rm -f conftest.box2d
++            LIBS=$save_LIBS
++            AC_MSG_RESULT([$BOX2D_VERSION])
+         else
 -            # fail this. there's no other alternative to check when we are here.
 -            AC_CHECK_HEADER([Box2D/Box2D.h], [],
 -                [AC_MSG_ERROR(box2d headers not found.)])
 -            _BOX2D_LIB=Box2D
 -            AC_DEFINE(BOX2D_HEADER,<Box2D/Box2D.h>)
--        fi
++            AC_CHECK_HEADER([box2d/box2d.h], [BOX2D_VERSION=2.4], [BOX2D_VERSION=2.3])
+         fi
+     fi
++    BOX2D_MAJOR=`echo $BOX2D_VERSION | cut -d"." -f1`
++    BOX2D_MINOR=`echo $BOX2D_VERSION | cut -d"." -f2`
 +    if test "$BOX2D_MAJOR" -eq "2" -a "$BOX2D_MINOR" -ne "4"; then
 +        # fail this. there's no other alternative to check when we are here.
 +        AC_CHECK_HEADER([Box2D/Box2D.h], [],
@@ -46,6 +76,7 @@ diff --git a/configure.ac b/configure.ac
 +    else
 +        _BOX2D_LIB=box2d
 +        AC_DEFINE(BOX2D_HEADER,<box2d/box2d.h>)
-     fi
++    fi
      AC_CHECK_LIB([$_BOX2D_LIB], [main], [:],
          [ AC_MSG_ERROR(box2d library not found.) ], [])
+     BOX2D_LIBS=-l$_BOX2D_LIB

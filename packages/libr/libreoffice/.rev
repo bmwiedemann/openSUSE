@@ -3946,4 +3946,13 @@ Petr</comment>
   * bsc#1290651 CVE-2026-98100</comment>
     <requestid>1399854</requestid>
   </revision>
+  <revision rev="328" vrev="2">
+    <srcmd5>1aa4f8b9de44b29a686afa44dfdef3e1</srcmd5>
+    <version>26.8.3.1</version>
+    <time>1795804820</time>
+    <user>anag_factory</user>
+    <comment>- Refresh box2d-detection.patch: detect system box2d 3.x, which ships no pkg-config file (bsc#1291895)
+- Bundle liborcus below suse_version 1699, i.e. on SLE/Leap 16 too</comment>
+    <requestid>1400858</requestid>
+  </revision>
 </revisionlist>
