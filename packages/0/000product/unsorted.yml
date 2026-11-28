@@ -7921,6 +7921,7 @@ unsorted:
   - guestfs-tools-man-pages-uk 
   - gufo 
   - gufo-devel 
+  - gufo-npu_xrt 
   - guice-assistedinject 
   - guice-bom 
   - guice-extensions 
@@ -8002,6 +8003,20 @@ unsorted:
   - haguichi-lang 
   - half-devel 
   - halibut 
+  - halloween-openSUSE 
+  - halloween-openSUSE-adwaita-icon-theme 
+  - halloween-openSUSE-firefox-defaults 
+  - halloween-openSUSE-firefox-theme 
+  - halloween-openSUSE-gnome-defaults 
+  - halloween-openSUSE-gtk3-theme 
+  - halloween-openSUSE-icon-theme 
+  - halloween-openSUSE-plasma 
+  - halloween-openSUSE-plasmalogin-defaults 
+  - halloween-openSUSE-plymouth-theme 
+  - halloween-openSUSE-sddm-defaults 
+  - halloween-openSUSE-sddm-theme 
+  - halloween-openSUSE-sway-theme 
+  - halloween-openSUSE-wallpapers 
   - halloy 
   - hamclock 
   - hamcrest 
@@ -10624,6 +10639,7 @@ unsorted:
   - lbreakouthd 
   - lbzip2 
   - lcab 
+  - lcalc 
   - lcdf-typetools 
   - lcms2 
   - lcov 
@@ -10999,6 +11015,8 @@ unsorted:
   - libLTO22 
   - libLTO23 
   - libLerc4-32bit 
+  - libLfunction-devel 
+  - libLfunction2 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-1 
   - libMIOpen1 
@@ -11941,7 +11959,7 @@ unsorted:
   - libb64-devel 
   - libbacktrace-devel 
   - libbamf3-2 
-  - libbandicoot4 
+  - libbandicoot5 
   - libbaresip30 
   - libbarvinok23 
   - libbase 
@@ -12795,6 +12813,9 @@ unsorted:
   - libebtc0 
   - libebur128-1-32bit 
   - libebur128-devel 
+  - libec 
+  - libec-devel 
+  - libec16 
   - libecap-devel 
   - libecap3 
   - libecholib-devel 
@@ -14283,6 +14304,8 @@ unsorted:
   - liblpcnetfreedv0_5 
   - liblqr-1-0-32bit 
   - liblqr-devel 
+  - liblrcalc-devel 
+  - liblrcalc2 
   - liblrdf-devel 
   - liblrdf2 
   - liblrs1 
@@ -17387,6 +17410,7 @@ unsorted:
   - linutil 
   - linux-bpf-devel 
   - linux-enable-ir-emitter 
+  - linux-entra-sso 
   - linux-ftools 
   - linux-libertine-fonts 
   - linux-npu-driver 
@@ -17634,6 +17658,7 @@ unsorted:
   - lpe 
   - lpsolve 
   - lpsolve-devel 
+  - lrcalc 
   - lrslib 
   - lrslib-devel 
   - lsb 
@@ -18589,7 +18614,7 @@ unsorted:
   - mcp-server-susedoc 
   - mcp-server-systemd 
   - mcp-server-systemd-gatekeeper 
-  - mcp-server-systemd-testsuite 
+  - mcp-server-systemd-test 
   - mcphost 
   - mcphost-bash-completion 
   - mcphost-fish-completion 
@@ -19360,12 +19385,6 @@ unsorted:
   - mvapich2-psm2-devel 
   - mvapich2-psm2-devel-static 
   - mvapich2-psm2-doc 
-  - mvapich3-ofi 
-  - mvapich3-ofi-devel 
-  - mvapich3-ofi-doc 
-  - mvapich3-ucx 
-  - mvapich3-ucx-devel 
-  - mvapich3-ucx-doc 
   - mvapich4-ofi 
   - mvapich4-ofi-devel 
   - mvapich4-ofi-doc 
@@ -23079,6 +23098,8 @@ unsorted:
   - plasma6-keyboard-kcm 
   - plasma6-kup 
   - plasma6-kup-lang 
+  - plasma6-login-manager 
+  - plasma6-login-manager-kcm 
   - plasma6-mobile 
   - plasma6-mobile-lang 
   - plasma6-nano 
@@ -25293,6 +25314,7 @@ unsorted:
   - python313-comfyui-workflow-templates-media-api 
   - python313-comfyui-workflow-templates-media-assets-01 
   - python313-comfyui-workflow-templates-media-assets-02 
+  - python313-comfyui-workflow-templates-media-assets-03 
   - python313-comfyui-workflow-templates-media-image 
   - python313-comfyui-workflow-templates-media-other 
   - python313-comfyui-workflow-templates-media-video 
@@ -25316,6 +25338,7 @@ unsorted:
   - python313-control 
   - python313-conu 
   - python313-convertdate 
+  - python313-conway-polynomials 
   - python313-cookiecutter 
   - python313-cookies 
   - python313-cooldict 
@@ -25363,6 +25386,8 @@ unsorted:
   - python313-cyclopts 
   - python313-cymem 
   - python313-cymruwhois 
+  - python313-cypari2 
+  - python313-cypari2-devel 
   - python313-cyrtranslit 
   - python313-cysignals 
   - python313-cysignals-devel 
@@ -25774,6 +25799,7 @@ unsorted:
   - python313-formats 
   - python313-formerly 
   - python313-fpdf2 
+  - python313-fpylll 
   - python313-fqdn 
   - python313-framel 
   - python313-framework16_inputmodule 
@@ -26159,6 +26185,7 @@ unsorted:
   - python313-junos-eznc 
   - python313-jupyter 
   - python313-jupyter-bokeh 
+  - python313-jupyter-builder 
   - python313-jupyter-client 
   - python313-jupyter-collaboration 
   - python313-jupyter-collaboration-ui 
@@ -26369,6 +26396,7 @@ unsorted:
   - python313-logilab-common 
   - python313-loguru 
   - python313-logutils 
+  - python313-lrcalc 
   - python313-lscsoft-glue 
   - python313-lsprotocol 
   - python313-lupa 
@@ -26434,6 +26462,7 @@ unsorted:
   - python313-mdit-py-plugins 
   - python313-mechanize 
   - python313-mediafile 
+  - python313-memory_allocator 
   - python313-memory_profiler 
   - python313-mercantile 
   - python313-merge3 
@@ -26487,6 +26516,7 @@ unsorted:
   - python313-moto 
   - python313-moto-all 
   - python313-moto-server 
+  - python313-mpegdash 
   - python313-mpi4py 
   - python313-mpi4py-devel 
   - python313-mpl-animators 
@@ -26559,6 +26589,7 @@ unsorted:
   - python313-ndtiff 
   - python313-neovim 
   - python313-nest-asyncio 
+  - python313-nest-asyncio2 
   - python313-net-snmp 
   - python313-netCDF4 
   - python313-nethsm 
@@ -27140,6 +27171,7 @@ unsorted:
   - python313-pypng 
   - python313-pyppmd 
   - python313-pyprel 
+  - python313-pypresence 
   - python313-pyprimes 
   - python313-pyproj 
   - python313-pyproject-api 
@@ -27486,6 +27518,7 @@ unsorted:
   - python313-rapidfuzz 
   - python313-rarfile 
   - python313-rarfile-doc 
+  - python313-ratelimit 
   - python313-rcssmin 
   - python313-rdflib 
   - python313-re-assert 
@@ -27906,6 +27939,7 @@ unsorted:
   - python313-thrift 
   - python313-thriftpy2 
   - python313-tibs 
+  - python313-tidalapi 
   - python313-tifffile 
   - python313-tiktoken 
   - python313-time-machine 
@@ -29376,6 +29410,7 @@ unsorted:
   - python314-comfyui-workflow-templates-media-api 
   - python314-comfyui-workflow-templates-media-assets-01 
   - python314-comfyui-workflow-templates-media-assets-02 
+  - python314-comfyui-workflow-templates-media-assets-03 
   - python314-comfyui-workflow-templates-media-image 
   - python314-comfyui-workflow-templates-media-other 
   - python314-comfyui-workflow-templates-media-video 
@@ -29402,6 +29437,7 @@ unsorted:
   - python314-control 
   - python314-conu 
   - python314-convertdate 
+  - python314-conway-polynomials 
   - python314-cookiecutter 
   - python314-cookies 
   - python314-cooldict 
@@ -29452,6 +29488,8 @@ unsorted:
   - python314-cyclopts 
   - python314-cymem 
   - python314-cymruwhois 
+  - python314-cypari2 
+  - python314-cypari2-devel 
   - python314-cyrtranslit 
   - python314-cysignals 
   - python314-cysignals-devel 
@@ -29869,6 +29907,7 @@ unsorted:
   - python314-formats 
   - python314-formerly 
   - python314-fpdf2 
+  - python314-fpylll 
   - python314-fqdn 
   - python314-framel 
   - python314-framework16_inputmodule 
@@ -30269,6 +30308,7 @@ unsorted:
   - python314-junos-eznc 
   - python314-jupyter 
   - python314-jupyter-bokeh 
+  - python314-jupyter-builder 
   - python314-jupyter-client 
   - python314-jupyter-collaboration 
   - python314-jupyter-collaboration-ui 
@@ -30483,6 +30523,7 @@ unsorted:
   - python314-loguru 
   - python314-logutils 
   - python314-looseversion 
+  - python314-lrcalc 
   - python314-lscsoft-glue 
   - python314-lsprotocol 
   - python314-lupa 
@@ -30547,6 +30588,7 @@ unsorted:
   - python314-mdurl 
   - python314-mechanize 
   - python314-mediafile 
+  - python314-memory_allocator 
   - python314-memory_profiler 
   - python314-mercantile 
   - python314-merge3 
@@ -30599,6 +30641,7 @@ unsorted:
   - python314-moto 
   - python314-moto-all 
   - python314-moto-server 
+  - python314-mpegdash 
   - python314-mpi4py 
   - python314-mpi4py-devel 
   - python314-mpl-animators 
@@ -30673,6 +30716,7 @@ unsorted:
   - python314-ndtiff 
   - python314-neovim 
   - python314-nest-asyncio 
+  - python314-nest-asyncio2 
   - python314-net-snmp 
   - python314-netCDF4 
   - python314-netaddr 
@@ -31275,6 +31319,7 @@ unsorted:
   - python314-pypng 
   - python314-pyppmd 
   - python314-pyprel 
+  - python314-pypresence 
   - python314-pyprimes 
   - python314-pyproj 
   - python314-pyproject-api 
@@ -31624,6 +31669,7 @@ unsorted:
   - python314-rapidfuzz 
   - python314-rarfile 
   - python314-rarfile-doc 
+  - python314-ratelimit 
   - python314-rcssmin 
   - python314-rdflib 
   - python314-re-assert 
@@ -32058,6 +32104,7 @@ unsorted:
   - python314-thrift 
   - python314-thriftpy2 
   - python314-tibs 
+  - python314-tidalapi 
   - python314-tifffile 
   - python314-tiktoken 
   - python314-time-machine 
@@ -46018,6 +46065,7 @@ unsorted:
   - twm 
   - twolame 
   - twups 
+  - txnupd-maintenance-tools 
   - txt2man 
   - typelib-1_0-Accounts-1_0 
   - typelib-1_0-Adap-1 
@@ -46509,6 +46557,11 @@ unsorted:
   - uudeview 
   - uuid-devel 
   - uuidd 
+  - uutils-coreutils 
+  - uutils-coreutils-bash-completion 
+  - uutils-coreutils-doc 
+  - uutils-coreutils-fish-completion 
+  - uutils-coreutils-zsh-completion 
   - uv-bash-completion 
   - uv-fish-completion 
   - uv-zsh-completion 
