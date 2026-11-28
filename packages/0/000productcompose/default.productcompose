@@ -150,8 +150,8 @@ packagesets:
    - amavisd-milter # reason: common_locks:expansion
    - amavisd-new # reason: dvd:patterns-server-mail_server
    - amavisd-new-docs # reason: dvd:patterns-server-mail_server
-   - analitza # reason: dvd:patterns-kde-kde_edutainment
-   - analitza-lang # reason: dvd:patterns-kde-kde_edutainment
+   - analitza # reason: dvd:patterns-media-rest_dvd
+   - analitza-lang # reason: dvd:patterns-media-rest_dvd
    - apache2 # reason: dvd:patterns-server-lamp_server
    - apache2-manual # reason: dvd:patterns-server-lamp_server
    - apache2-mod_php8 # reason: dvd:patterns-server-lamp_server
@@ -256,7 +256,7 @@ packagesets:
    - busybox-sed # reason: dvd:openSUSE-release
    - busybox-static # reason: dvd:patterns-gnome-gnome
    - busybox-tar # reason: dvd:openSUSE-release
-   - busybox-which # reason: dvd:patterns-kde-kde_edutainment
+   - busybox-which # reason: dvd:patterns-server-lamp_server
    - busybox-xz # reason: dvd:openSUSE-release
    - bzip2 # reason: dvd:patterns-base-console
    - ca-certificates # reason: dvd:openSUSE-release
@@ -385,7 +385,7 @@ packagesets:
    - dvd+rw-tools # reason: dvd:patterns-gnome-gnome
    - e2fsprogs # reason: dvd:grub2
    - ed # reason: dvd:patterns-base-console
-   - edict-eucjp # reason: dvd:patterns-kde-kde_edutainment
+   - edict-eucjp # reason: dvd:patterns-media-rest_dvd
    - eekboard # reason: dvd:patterns-media-rest_dvd
    - efibootmgr # reason: dvd:grub2-x86_64-efi
    - efont-unicode-bitmap-fonts # reason: dvd:patterns-fonts-fonts
@@ -451,14 +451,14 @@ packagesets:
    - folks-lang # reason: dvd:patterns-gnome-gnome
    - fontconfig # reason: dvd:openSUSE-release
    - fontconfig-lang # reason: dvd:openSUSE-release
-   - fonts-KanjiStrokeOrders # reason: dvd:patterns-kde-kde_edutainment
+   - fonts-KanjiStrokeOrders # reason: dvd:patterns-media-rest_dvd
    - fonts-config # reason: dvd:patterns-gnome-gnome
    - fprintd # reason: dvd:patterns-media-rest_cd_core
    - fprintd-lang # reason: dvd:patterns-media-rest_cd_core
    - fprintd-pam # reason: dvd:patterns-media-rest_cd_core
    - fprintd-pam-32bit # reason: dvd:patterns-media-rest_dvd
    - freecell-solver-presets # reason: dvd:patterns-kde-kde
-   - fribidi # reason: dvd:patterns-kde-kde_edutainment
+   - fribidi # reason: dvd:patterns-media-rest_cd_core
    - fuse # reason: dvd:patterns-base-console
    - fuse-exfat # reason: dvd:patterns-media-rest_dvd
    - fuse3 # reason: dvd:openSUSE-release
@@ -836,10 +836,10 @@ packagesets:
    - kaddressbook-doc # reason: dvd:patterns-kde-kde
    - kaddressbook-lang # reason: dvd:patterns-kde-kde
    - kalendarac # reason: dvd:patterns-kde-kde
-   - kalgebra # reason: dvd:patterns-kde-kde_edutainment
-   - kalgebra-lang # reason: dvd:patterns-kde-kde_edutainment
-   - kanagram # reason: dvd:patterns-kde-kde_edutainment
-   - kanagram-lang # reason: dvd:patterns-kde-kde_edutainment
+   - kalgebra # reason: dvd:patterns-media-rest_dvd
+   - kalgebra-lang # reason: dvd:patterns-media-rest_dvd
+   - kanagram # reason: dvd:patterns-media-rest_dvd
+   - kanagram-lang # reason: dvd:patterns-media-rest_dvd
    - kapptemplate # reason: dvd:patterns-kde-kde_ide
    - kapptemplate-lang # reason: dvd:patterns-kde-kde_ide
    - kate # reason: dvd:patterns-kde-kde
@@ -870,7 +870,7 @@ packagesets:
    - kde-gtk-config6 # reason: dvd:patterns-kde-kde
    - kde-gtk-config6-gtk3 # reason: dvd:patterns-kde-kde
    - kded # reason: dvd:patterns-kde-kde
-   - kdeedu-data # reason: dvd:patterns-kde-kde_edutainment
+   - kdeedu-data # reason: dvd:patterns-media-rest_dvd
    - kdegames-carddecks-default # reason: dvd:patterns-kde-kde
    - kdegraphics-thumbnailers # reason: dvd:patterns-kde-kde
    - kdenetwork-filesharing # reason: dvd:patterns-kde-kde
@@ -1028,15 +1028,15 @@ packagesets:
    - kgeography # reason: dvd:patterns-kde-kde_edutainment
    - kgeography-lang # reason: dvd:patterns-kde-kde_edutainment
    - kglobalacceld6 # reason: dvd:patterns-kde-kde
-   - khangman # reason: dvd:patterns-kde-kde_edutainment
-   - khangman-lang # reason: dvd:patterns-kde-kde_edutainment
+   - khangman # reason: dvd:patterns-media-rest_dvd
+   - khangman-lang # reason: dvd:patterns-media-rest_dvd
    - khelpcenter # reason: dvd:patterns-kde-kde
    - khelpcenter-lang # reason: dvd:patterns-kde-kde
    - khmeros-fonts # reason: dvd:patterns-media-rest_dvd
    - kidentitymanagement # reason: dvd:patterns-kde-kde
    - kidentitymanagement-lang # reason: dvd:patterns-kde-kde
-   - kig # reason: dvd:patterns-kde-kde_edutainment
-   - kig-lang # reason: dvd:patterns-kde-kde_edutainment
+   - kig # reason: dvd:patterns-media-rest_dvd
+   - kig-lang # reason: dvd:patterns-media-rest_dvd
    - kimap # reason: dvd:patterns-kde-kde
    - kinfocenter6 # reason: dvd:patterns-kde-kde
    - kinfocenter6-lang # reason: dvd:patterns-kde-kde
@@ -1052,8 +1052,8 @@ packagesets:
    - kio_kamera-lang # reason: dvd:patterns-media-rest_dvd
    - kirigami-addons6 # reason: dvd:patterns-kde-kde
    - kirigami-addons6-lang # reason: dvd:patterns-kde-kde
-   - kiten # reason: dvd:patterns-kde-kde_edutainment
-   - kiten-lang # reason: dvd:patterns-kde-kde_edutainment
+   - kiten # reason: dvd:patterns-media-rest_dvd
+   - kiten-lang # reason: dvd:patterns-media-rest_dvd
    - kitinerary # reason: dvd:patterns-kde-kde
    - kiwi-pxeboot # reason: dvd:patterns-media-rest_dvd
    - kldap # reason: dvd:patterns-kde-kde
@@ -1079,8 +1079,8 @@ packagesets:
    - kmod # reason: dvd:grub2
    - kmousetool # reason: dvd:patterns-kde-kde
    - kmousetool-lang # reason: dvd:patterns-kde-kde
-   - kmplot # reason: dvd:patterns-kde-kde_edutainment
-   - kmplot-lang # reason: dvd:patterns-kde-kde_edutainment
+   - kmplot # reason: dvd:patterns-media-rest_dvd
+   - kmplot-lang # reason: dvd:patterns-media-rest_dvd
    - knighttime6 # reason: dvd:patterns-kde-kde
    - kompare # reason: dvd:patterns-kde-kde
    - kompare-lang # reason: dvd:patterns-kde-kde
@@ -1144,18 +1144,18 @@ packagesets:
    - kwayland6 # reason: dvd:patterns-kde-kde
    - kwin6 # reason: dvd:patterns-kde-kde
    - kwin6-lang # reason: dvd:patterns-kde-kde
-   - kwordquiz # reason: dvd:patterns-kde-kde_edutainment
-   - kwordquiz-lang # reason: dvd:patterns-kde-kde_edutainment
+   - kwordquiz # reason: dvd:patterns-media-rest_dvd
+   - kwordquiz-lang # reason: dvd:patterns-media-rest_dvd
    - lastlog2 # reason: dvd:patterns-gnome-gnome
    - layer-shell-qt6 # reason: dvd:patterns-kde-kde
    - ldns # reason: dvd:patterns-media-rest_dvd
    - lensfun-data # reason: dvd:patterns-gnome-gnome
-   - less # reason: dvd:patterns-kde-kde_edutainment
+   - less # reason: dvd:patterns-base-console
    - lftp # reason: dvd:kdump
    - lhasa # reason: dvd:patterns-server-mail_server
    - lib2geom1_4_0 # reason: dvd:inkscape
    - lib389 # reason: dvd:patterns-media-rest_dvd
-   - libAnalitza9 # reason: dvd:patterns-kde-kde_edutainment
+   - libAnalitza9 # reason: dvd:patterns-media-rest_dvd
    - libAppStreamQt3 # reason: dvd:patterns-kde-kde
    - libBasicUsageEnvironment2 # reason: dvd:patterns-kde-kde
    - libFLAC14 # reason: dvd:openSUSE-release
@@ -1177,8 +1177,8 @@ packagesets:
    - libKDEGames6 # reason: dvd:patterns-kde-kde
    - libKDSoapWSDiscoveryClient0 # reason: dvd:patterns-kde-kde
    - libKDcrawQt6-5 # reason: dvd:patterns-kde-kde
-   - libKEduVocDocument5 # reason: dvd:patterns-kde-kde_edutainment
-   - libKEduVocDocument5-lang # reason: dvd:patterns-kde-kde_edutainment
+   - libKEduVocDocument5 # reason: dvd:patterns-media-rest_dvd
+   - libKEduVocDocument5-lang # reason: dvd:patterns-media-rest_dvd
    - libKExiv2Qt6-0 # reason: dvd:patterns-kde-kde
    - libKF5Archive5 # reason: dvd:patterns-kde-kde
    - libKF5Archive5-lang # reason: dvd:patterns-kde-kde
@@ -1303,7 +1303,7 @@ packagesets:
    - libKF6Package6 # reason: dvd:patterns-kde-kde
    - libKF6Parts6 # reason: dvd:patterns-kde-kde
    - libKF6Parts6-lang # reason: dvd:patterns-kde-kde
-   - libKF6Plotting6 # reason: dvd:patterns-kde-kde_edutainment
+   - libKF6Plotting6 # reason: dvd:patterns-media-rest_dvd
    - libKF6Prison6 # reason: dvd:patterns-kde-kde
    - libKF6Pty6 # reason: dvd:patterns-kde-kde
    - libKF6Pty6-lang # reason: dvd:patterns-kde-kde
@@ -1728,11 +1728,11 @@ packagesets:
    - libboost_iostreams1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_locale1_92_0 # reason: dvd:openSUSE-release
    - libboost_locale1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_python-py3-1_92_0 # reason: dvd:patterns-kde-kde_edutainment
+   - libboost_python-py3-1_92_0 # reason: dvd:patterns-media-rest_dvd
    - libboost_python-py3-1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_thread1_92_0 # reason: dvd:openSUSE-release
    - libboost_thread1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libbox2d2 # reason: dvd:openSUSE-release
+   - libbox2d3 # reason: dvd:openSUSE-release
    - libbpf1 # reason: dvd:openSUSE-release
    - libbrlapi0_8 # reason: dvd:patterns-gnome-gnome
    - libbrotlicommon1 # reason: dvd:openSUSE-release
@@ -2072,8 +2072,8 @@ packagesets:
    - libgsasl18 # reason: dvd:patterns-base-console
    - libgsf-1-114 # reason: dvd:patterns-gnome-gnome
    - libgsf-lang # reason: dvd:patterns-gnome-gnome
-   - libgsl28 # reason: dvd:patterns-kde-kde_edutainment
-   - libgslcblas0 # reason: dvd:patterns-kde-kde_edutainment
+   - libgsl28 # reason: dvd:patterns-media-rest_dvd
+   - libgslcblas0 # reason: dvd:patterns-media-rest_dvd
    - libgsm1 # reason: dvd:openSUSE-release
    - libgsound0 # reason: dvd:patterns-gnome-gnome
    - libgspell-1-3 # reason: dvd:patterns-gnome-gnome
@@ -3192,8 +3192,8 @@ packagesets:
    - paratype-pt-mono-fonts # reason: dvd:openSUSE-release
    - paratype-pt-sans-fonts # reason: dvd:openSUSE-release
    - paratype-pt-serif-fonts # reason: dvd:openSUSE-release
-   - parley # reason: dvd:patterns-kde-kde_edutainment
-   - parley-lang # reason: dvd:patterns-kde-kde_edutainment
+   - parley # reason: dvd:patterns-media-rest_dvd
+   - parley-lang # reason: dvd:patterns-media-rest_dvd
    - parole # reason: dvd:patterns-xfce-xfce
    - parole-lang # reason: dvd:patterns-xfce-xfce
    - parted # reason: dvd:patterns-base-console
@@ -3725,7 +3725,7 @@ packagesets:
    - rgb # reason: dvd:patterns-media-rest_cd_core
    - ristretto # reason: dvd:patterns-xfce-xfce
    - ristretto-lang # reason: dvd:patterns-xfce-xfce
-   - rlwrap # reason: dvd:patterns-kde-kde_edutainment
+   - rlwrap # reason: dvd:patterns-media-rest_dvd
    - rng-tools # reason: dvd:rng-tools
    - rpcbind # reason: dvd:patterns-server-file_server
    - rpm # reason: dvd:grub2
@@ -3861,8 +3861,8 @@ packagesets:
    - sssd-krb5-common # reason: dvd:patterns-media-rest_cd_core
    - sssd-ldap # reason: dvd:patterns-media-rest_cd_core
    - star # reason: dvd:patterns-base-console
-   - step # reason: dvd:patterns-kde-kde_edutainment
-   - step-lang # reason: dvd:patterns-kde-kde_edutainment
+   - step # reason: dvd:patterns-media-rest_dvd
+   - step-lang # reason: dvd:patterns-media-rest_dvd
    - stix-fonts # reason: dvd:patterns-fonts-fonts
    - strace # reason: dvd:patterns-base-console
    - sudo # reason: dvd:patterns-base-console
@@ -3997,7 +3997,7 @@ packagesets:
    - tpm2-0-tss # reason: dvd:patterns-media-rest_cd_core
    - tpm2.0-tools # reason: dvd:patterns-media-rest_cd_core
    - traceroute # reason: dvd:patterns-media-rest_cd_core
-   - translate-shell # reason: dvd:patterns-kde-kde_edutainment
+   - translate-shell # reason: dvd:patterns-media-rest_dvd
    - transmission-common # reason: dvd:patterns-xfce-xfce
    - transmission-gtk # reason: dvd:patterns-xfce-xfce
    - transmission-gtk-lang # reason: dvd:patterns-xfce-xfce
